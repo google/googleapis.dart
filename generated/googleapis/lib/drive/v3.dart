@@ -3383,7 +3383,7 @@ class ChangeList {
 }
 
 /// An notification channel used to watch for resource changes.
-typedef Channel = $Channel;
+typedef Channel = $Channel00;
 
 /// The file content to which the comment refers, typically within the anchor
 /// region.
@@ -4290,7 +4290,7 @@ class FileCapabilities {
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
-  /// this item, or this item itself if it is not a folder, can be read.
+  /// this item, or this item itself if it isn't a folder, can be read.
   core.bool? canReadRevisions;
 
   /// Deprecated - use canReadDrive instead.
@@ -4600,7 +4600,8 @@ class FileContentHintsThumbnail {
 class FileContentHints {
   /// Text to be indexed for the file to improve fullText queries.
   ///
-  /// This is limited to 128KB in length and may contain HTML elements.
+  /// This is limited to 128 KB in length and may contain HTML elements. For
+  /// more information, see Manage file metadata.
   core.String? indexableText;
 
   /// A thumbnail for the file.
@@ -5048,8 +5049,8 @@ class File {
   ///
   /// May contain multiple concatenated extensions, such as "tar.gz". This is
   /// only available for files with binary content in Google Drive.
-  /// This is automatically updated when the name field changes, however it is
-  /// not cleared if the new name does not contain a valid extension.
+  /// This is automatically updated when the name field changes, however it
+  /// isn't cleared if the new name does not contain a valid extension.
   core.String? fullFileExtension;
 
   /// Whether there are permissions directly on this file.
@@ -5181,13 +5182,13 @@ class File {
   /// The SHA1 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? sha1Checksum;
 
   /// The SHA256 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? sha256Checksum;
 
   /// Whether the file has been shared.
@@ -6290,6 +6291,7 @@ class Permission {
   /// The time at which this permission will expire (RFC 3339 date-time).
   ///
   /// Expiration times have the following restrictions:
+  /// - They cannot be set on shared drive items
   /// - They can only be set on user and group permissions
   /// - The time must be in the future
   /// - The time cannot be more than a year in the future

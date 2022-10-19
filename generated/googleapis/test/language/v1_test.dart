@@ -406,11 +406,33 @@ void checkClassificationCategory(api.ClassificationCategory o) {
   buildCounterClassificationCategory--;
 }
 
+core.int buildCounterClassificationModelOptions = 0;
+api.ClassificationModelOptions buildClassificationModelOptions() {
+  final o = api.ClassificationModelOptions();
+  buildCounterClassificationModelOptions++;
+  if (buildCounterClassificationModelOptions < 3) {
+    o.v1Model = buildV1Model();
+    o.v2Model = buildV2Model();
+  }
+  buildCounterClassificationModelOptions--;
+  return o;
+}
+
+void checkClassificationModelOptions(api.ClassificationModelOptions o) {
+  buildCounterClassificationModelOptions++;
+  if (buildCounterClassificationModelOptions < 3) {
+    checkV1Model(o.v1Model!);
+    checkV2Model(o.v2Model!);
+  }
+  buildCounterClassificationModelOptions--;
+}
+
 core.int buildCounterClassifyTextRequest = 0;
 api.ClassifyTextRequest buildClassifyTextRequest() {
   final o = api.ClassifyTextRequest();
   buildCounterClassifyTextRequest++;
   if (buildCounterClassifyTextRequest < 3) {
+    o.classificationModelOptions = buildClassificationModelOptions();
     o.document = buildDocument();
   }
   buildCounterClassifyTextRequest--;
@@ -420,6 +442,7 @@ api.ClassifyTextRequest buildClassifyTextRequest() {
 void checkClassifyTextRequest(api.ClassifyTextRequest o) {
   buildCounterClassifyTextRequest++;
   if (buildCounterClassifyTextRequest < 3) {
+    checkClassificationModelOptions(o.classificationModelOptions!);
     checkDocument(o.document!);
   }
   buildCounterClassifyTextRequest--;
@@ -616,6 +639,7 @@ api.Features buildFeatures() {
   final o = api.Features();
   buildCounterFeatures++;
   if (buildCounterFeatures < 3) {
+    o.classificationModelOptions = buildClassificationModelOptions();
     o.classifyText = true;
     o.extractDocumentSentiment = true;
     o.extractEntities = true;
@@ -629,6 +653,7 @@ api.Features buildFeatures() {
 void checkFeatures(api.Features o) {
   buildCounterFeatures++;
   if (buildCounterFeatures < 3) {
+    checkClassificationModelOptions(o.classificationModelOptions!);
     unittest.expect(o.classifyText!, unittest.isTrue);
     unittest.expect(o.extractDocumentSentiment!, unittest.isTrue);
     unittest.expect(o.extractEntities!, unittest.isTrue);
@@ -818,6 +843,43 @@ void checkToken(api.Token o) {
   buildCounterToken--;
 }
 
+core.int buildCounterV1Model = 0;
+api.V1Model buildV1Model() {
+  final o = api.V1Model();
+  buildCounterV1Model++;
+  if (buildCounterV1Model < 3) {}
+  buildCounterV1Model--;
+  return o;
+}
+
+void checkV1Model(api.V1Model o) {
+  buildCounterV1Model++;
+  if (buildCounterV1Model < 3) {}
+  buildCounterV1Model--;
+}
+
+core.int buildCounterV2Model = 0;
+api.V2Model buildV2Model() {
+  final o = api.V2Model();
+  buildCounterV2Model++;
+  if (buildCounterV2Model < 3) {
+    o.contentCategoriesVersion = 'foo';
+  }
+  buildCounterV2Model--;
+  return o;
+}
+
+void checkV2Model(api.V2Model o) {
+  buildCounterV2Model++;
+  if (buildCounterV2Model < 3) {
+    unittest.expect(
+      o.contentCategoriesVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterV2Model--;
+}
+
 void main() {
   unittest.group('obj-schema-AnalyzeEntitiesRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -926,6 +988,16 @@ void main() {
       final od = api.ClassificationCategory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkClassificationCategory(od);
+    });
+  });
+
+  unittest.group('obj-schema-ClassificationModelOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClassificationModelOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClassificationModelOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkClassificationModelOptions(od);
     });
   });
 
@@ -1046,6 +1118,26 @@ void main() {
       final od =
           api.Token.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkToken(od);
+    });
+  });
+
+  unittest.group('obj-schema-V1Model', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildV1Model();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.V1Model.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkV1Model(od);
+    });
+  });
+
+  unittest.group('obj-schema-V2Model', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildV2Model();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.V2Model.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkV2Model(od);
     });
   });
 

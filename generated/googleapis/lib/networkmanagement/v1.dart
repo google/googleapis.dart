@@ -877,6 +877,11 @@ class AbortInfo {
   /// - "MISMATCHED_DESTINATION_NETWORK" : Aborted because the destination
   /// network does not match the destination endpoint.
   /// - "UNSUPPORTED" : Aborted because the test scenario is not supported.
+  /// - "MISMATCHED_IP_VERSION" : Aborted because the source and destination
+  /// resources have no common IP version.
+  /// - "GKE_KONNECTIVITY_PROXY_UNSUPPORTED" : Aborted because the connection
+  /// between the control plane and the node of the source cluster is initiated
+  /// by the node and managed by the Konnectivity proxy.
   core.String? cause;
 
   /// List of project IDs that the user has specified in the request but does
@@ -914,6 +919,72 @@ class AbortInfo {
         if (projectsMissingPermission != null)
           'projectsMissingPermission': projectsMissingPermission!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+/// Wrapper for app engine service version attributes.
+class AppEngineVersionEndpoint {
+  /// An [App Engine](https://cloud.google.com/appengine)
+  /// [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
+  /// name.
+  core.String? uri;
+
+  AppEngineVersionEndpoint({
+    this.uri,
+  });
+
+  AppEngineVersionEndpoint.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with an App Engine version.
+class AppEngineVersionInfo {
+  /// Name of an App Engine version.
+  core.String? displayName;
+
+  /// App Engine execution environment for a version.
+  core.String? environment;
+
+  /// Runtime of the App Engine version.
+  core.String? runtime;
+
+  /// URI of an App Engine version.
+  core.String? uri;
+
+  AppEngineVersionInfo({
+    this.displayName,
+    this.environment,
+    this.runtime,
+    this.uri,
+  });
+
+  AppEngineVersionInfo.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.String
+              : null,
+          runtime: json_.containsKey('runtime')
+              ? json_['runtime'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (environment != null) 'environment': environment!,
+        if (runtime != null) 'runtime': runtime!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -995,12 +1066,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -1060,9 +1133,9 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Wrapper for cloud function attributes.
+/// Wrapper for Cloud Function attributes.
 class CloudFunctionEndpoint {
-  /// A [Cloud function](https://cloud.google.com/functions) name.
+  /// A [Cloud Function](https://cloud.google.com/functions) name.
   core.String? uri;
 
   CloudFunctionEndpoint({
@@ -1081,18 +1154,18 @@ class CloudFunctionEndpoint {
 
 /// For display only.
 ///
-/// Metadata associated with a Cloud function.
+/// Metadata associated with a Cloud Function.
 class CloudFunctionInfo {
-  /// Name of a Cloud function.
+  /// Name of a Cloud Function.
   core.String? displayName;
 
-  /// Location in which the Cloud function is deployed.
+  /// Location in which the Cloud Function is deployed.
   core.String? location;
 
-  /// URI of a Cloud function.
+  /// URI of a Cloud Function.
   core.String? uri;
 
-  /// Latest successfully deployed version id of the Cloud function.
+  /// Latest successfully deployed version id of the Cloud Function.
   core.String? versionId;
 
   CloudFunctionInfo({
@@ -1121,6 +1194,75 @@ class CloudFunctionInfo {
         if (location != null) 'location': location!,
         if (uri != null) 'uri': uri!,
         if (versionId != null) 'versionId': versionId!,
+      };
+}
+
+/// Wrapper for Cloud Run revision attributes.
+class CloudRunRevisionEndpoint {
+  /// A [Cloud Run](https://cloud.google.com/run)
+  /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+  /// URI.
+  ///
+  /// The format is:
+  /// projects/{project}/locations/{location}/revisions/{revision}
+  core.String? uri;
+
+  CloudRunRevisionEndpoint({
+    this.uri,
+  });
+
+  CloudRunRevisionEndpoint.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with a Cloud Run revision.
+class CloudRunRevisionInfo {
+  /// Name of a Cloud Run revision.
+  core.String? displayName;
+
+  /// Location in which this revision is deployed.
+  core.String? location;
+
+  /// URI of Cloud Run service this revision belongs to.
+  core.String? serviceUri;
+
+  /// URI of a Cloud Run revision.
+  core.String? uri;
+
+  CloudRunRevisionInfo({
+    this.displayName,
+    this.location,
+    this.serviceUri,
+    this.uri,
+  });
+
+  CloudRunRevisionInfo.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          serviceUri: json_.containsKey('serviceUri')
+              ? json_['serviceUri'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (location != null) 'location': location!,
+        if (serviceUri != null) 'serviceUri': serviceUri!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1358,6 +1500,12 @@ class DeliverInfo {
   /// - "GOOGLE_API" : Target is a Google API.
   /// - "GKE_MASTER" : Target is a Google Kubernetes Engine cluster master.
   /// - "CLOUD_SQL_INSTANCE" : Target is a Cloud SQL instance.
+  /// - "PSC_PUBLISHED_SERVICE" : Target is a published service that uses
+  /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+  /// - "PSC_GOOGLE_API" : Target is all Google APIs that use
+  /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
+  /// - "PSC_VPC_SC" : Target is a VPC-SC that uses
+  /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
   core.String? target;
 
   DeliverInfo({
@@ -1414,6 +1562,9 @@ class DropInfo {
   /// IP address is being used in the project.
   /// - "FORWARDING_RULE_MISMATCH" : Forwarding rule's protocol and ports do not
   /// match the packet header.
+  /// - "FORWARDING_RULE_REGION_MISMATCH" : Packet could be dropped because it
+  /// was sent from a different region to a regional forwarding without global
+  /// access.
   /// - "FORWARDING_RULE_NO_INSTANCES" : Forwarding rule does not have backends
   /// configured.
   /// - "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" : Firewalls block
@@ -1422,6 +1573,10 @@ class DropInfo {
   /// [Health check firewall rules](https://cloud.google.com/load-balancing/docs/health-checks#firewall_rules).
   /// - "INSTANCE_NOT_RUNNING" : Packet is sent from or to a Compute Engine
   /// instance that is not in a running state.
+  /// - "GKE_CLUSTER_NOT_RUNNING" : Packet sent from or to a GKE cluster that is
+  /// not in running state.
+  /// - "CLOUD_SQL_INSTANCE_NOT_RUNNING" : Packet sent from or to a Cloud SQL
+  /// instance that is not in running state.
   /// - "TRAFFIC_TYPE_BLOCKED" : The type of traffic is blocked and the user
   /// cannot configure a firewall rule to enable it. See
   /// [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic)
@@ -1443,12 +1598,31 @@ class DropInfo {
   /// Services Network.
   /// - "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS" : Packet was dropped because the
   /// Cloud SQL instance has neither a private nor a public IP address.
+  /// - "GKE_CONTROL_PLANE_REGION_MISMATCH" : Packet was dropped because a GKE
+  /// cluster private endpoint is unreachable from a region different from the
+  /// cluster's region.
+  /// - "PUBLIC_GKE_CONTROL_PLANE_TO_PRIVATE_DESTINATION" : Packet sent from a
+  /// public GKE cluster control plane to a private IP address.
+  /// - "GKE_CONTROL_PLANE_NO_ROUTE" : Packet was dropped because there is no
+  /// route from a GKE cluster control plane to a destination network.
+  /// - "CLOUD_SQL_INSTANCE_NOT_CONFIGURED_FOR_EXTERNAL_TRAFFIC" : Packet sent
+  /// from a Cloud SQL instance to an external IP address is not allowed. The
+  /// Cloud SQL instance is not configured to send packets to external IP
+  /// addresses.
+  /// - "PUBLIC_CLOUD_SQL_INSTANCE_TO_PRIVATE_DESTINATION" : Packet sent from a
+  /// Cloud SQL instance with only a public IP address to a private IP address.
+  /// - "CLOUD_SQL_INSTANCE_NO_ROUTE" : Packet was dropped because there is no
+  /// route from a Cloud SQL instance to a destination network.
   /// - "CLOUD_FUNCTION_NOT_ACTIVE" : Packet could be dropped because the Cloud
-  /// function is not in an active status.
+  /// Function is not in an active status.
   /// - "VPC_CONNECTOR_NOT_SET" : Packet could be dropped because no VPC
   /// connector is set.
   /// - "VPC_CONNECTOR_NOT_RUNNING" : Packet could be dropped because the VPC
   /// connector is not in a running state.
+  /// - "PSC_CONNECTION_NOT_ACCEPTED" : The Private Service Connect endpoint is
+  /// in a project that is not approved to connect to the service.
+  /// - "CLOUD_RUN_REVISION_NOT_READY" : Packet sent from a Cloud Run revision
+  /// that is not ready.
   core.String? cause;
 
   /// URI of the resource that caused the drop.
@@ -1484,8 +1658,16 @@ typedef Empty = $Empty;
 
 /// Source or destination of the Connectivity Test.
 class Endpoint {
-  /// A [Cloud function](https://cloud.google.com/functions).
+  /// An [App Engine](https://cloud.google.com/appengine)
+  /// [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+  AppEngineVersionEndpoint? appEngineVersion;
+
+  /// A [Cloud Function](https://cloud.google.com/functions).
   CloudFunctionEndpoint? cloudFunction;
+
+  /// A [Cloud Run](https://cloud.google.com/run)
+  /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+  CloudRunRevisionEndpoint? cloudRunRevision;
 
   /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
   core.String? cloudSqlInstance;
@@ -1536,7 +1718,9 @@ class Endpoint {
   core.String? projectId;
 
   Endpoint({
+    this.appEngineVersion,
     this.cloudFunction,
+    this.cloudRunRevision,
     this.cloudSqlInstance,
     this.gkeMasterCluster,
     this.instance,
@@ -1549,9 +1733,17 @@ class Endpoint {
 
   Endpoint.fromJson(core.Map json_)
       : this(
+          appEngineVersion: json_.containsKey('appEngineVersion')
+              ? AppEngineVersionEndpoint.fromJson(json_['appEngineVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           cloudFunction: json_.containsKey('cloudFunction')
               ? CloudFunctionEndpoint.fromJson(
                   json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudRunRevision: json_.containsKey('cloudRunRevision')
+              ? CloudRunRevisionEndpoint.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? json_['cloudSqlInstance'] as core.String
@@ -1578,7 +1770,9 @@ class Endpoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appEngineVersion != null) 'appEngineVersion': appEngineVersion!,
         if (cloudFunction != null) 'cloudFunction': cloudFunction!,
+        if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
@@ -1719,6 +1913,9 @@ class FirewallInfo {
   /// that are managed by serverless VPC access to allow ingress access. They
   /// are not visible in the Google Cloud console. For details, see
   /// [VPC connector's implicit rules](https://cloud.google.com/functions/docs/networking/connecting-vpc#restrict-access).
+  /// - "NETWORK_FIREWALL_POLICY_RULE" : Global network firewall policy rule.
+  /// For details, see
+  /// [Network firewall policies](https://cloud.google.com/vpc/docs/network-firewall-policies).
   core.String? firewallRuleType;
 
   /// The URI of the VPC network that the firewall rule is associated with.
@@ -1828,6 +2025,7 @@ class ForwardInfo {
   /// - "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" : Forwarded to the next hop of a custom
   /// route imported from a peering VPC.
   /// - "CLOUD_SQL_INSTANCE" : Forwarded to a Cloud SQL instance.
+  /// - "ANOTHER_PROJECT" : Forwarded to a VPC network in another project.
   core.String? target;
 
   ForwardInfo({
@@ -2235,6 +2433,7 @@ class LoadBalancerInfo {
   /// - "BACKEND_TYPE_UNSPECIFIED" : Type is unspecified.
   /// - "BACKEND_SERVICE" : Backend Service as the load balancer's backend.
   /// - "TARGET_POOL" : Target Pool as the load balancer's backend.
+  /// - "TARGET_INSTANCE" : Target Instance as the load balancer's backend.
   core.String? backendType;
 
   /// Backend configuration URI.
@@ -2612,6 +2811,11 @@ class RouteInfo {
   /// Destination IP range of the route.
   core.String? destIpRange;
 
+  /// Destination port ranges of the route.
+  ///
+  /// Policy based routes only.
+  core.List<core.String>? destPortRanges;
+
   /// Name of a Compute Engine route.
   core.String? displayName;
 
@@ -2650,6 +2854,11 @@ class RouteInfo {
   /// Priority of the route.
   core.int? priority;
 
+  /// Protocols of the route.
+  ///
+  /// Policy based routes only.
+  core.List<core.String>? protocols;
+
   /// Type of route.
   /// Possible string values are:
   /// - "ROUTE_TYPE_UNSPECIFIED" : Unspecified type. Default value.
@@ -2660,7 +2869,18 @@ class RouteInfo {
   /// - "PEERING_SUBNET" : A subnet route received from peering network.
   /// - "PEERING_STATIC" : A static route received from peering network.
   /// - "PEERING_DYNAMIC" : A dynamic route received from peering network.
+  /// - "POLICY_BASED" : Policy based route.
   core.String? routeType;
+
+  /// Source IP address range of the route.
+  ///
+  /// Policy based routes only.
+  core.String? srcIpRange;
+
+  /// Source port ranges of the route.
+  ///
+  /// Policy based routes only.
+  core.List<core.String>? srcPortRanges;
 
   /// URI of a Compute Engine route.
   ///
@@ -2670,13 +2890,17 @@ class RouteInfo {
 
   RouteInfo({
     this.destIpRange,
+    this.destPortRanges,
     this.displayName,
     this.instanceTags,
     this.networkUri,
     this.nextHop,
     this.nextHopType,
     this.priority,
+    this.protocols,
     this.routeType,
+    this.srcIpRange,
+    this.srcPortRanges,
     this.uri,
   });
 
@@ -2684,6 +2908,11 @@ class RouteInfo {
       : this(
           destIpRange: json_.containsKey('destIpRange')
               ? json_['destIpRange'] as core.String
+              : null,
+          destPortRanges: json_.containsKey('destPortRanges')
+              ? (json_['destPortRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
@@ -2705,21 +2934,38 @@ class RouteInfo {
           priority: json_.containsKey('priority')
               ? json_['priority'] as core.int
               : null,
+          protocols: json_.containsKey('protocols')
+              ? (json_['protocols'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           routeType: json_.containsKey('routeType')
               ? json_['routeType'] as core.String
+              : null,
+          srcIpRange: json_.containsKey('srcIpRange')
+              ? json_['srcIpRange'] as core.String
+              : null,
+          srcPortRanges: json_.containsKey('srcPortRanges')
+              ? (json_['srcPortRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destIpRange != null) 'destIpRange': destIpRange!,
+        if (destPortRanges != null) 'destPortRanges': destPortRanges!,
         if (displayName != null) 'displayName': displayName!,
         if (instanceTags != null) 'instanceTags': instanceTags!,
         if (networkUri != null) 'networkUri': networkUri!,
         if (nextHop != null) 'nextHop': nextHop!,
         if (nextHopType != null) 'nextHopType': nextHopType!,
         if (priority != null) 'priority': priority!,
+        if (protocols != null) 'protocols': protocols!,
         if (routeType != null) 'routeType': routeType!,
+        if (srcIpRange != null) 'srcIpRange': srcIpRange!,
+        if (srcPortRanges != null) 'srcPortRanges': srcPortRanges!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -2777,11 +3023,17 @@ class Step {
   /// Display information of the final state "abort" and reason.
   AbortInfo? abort;
 
+  /// Display information of an App Engine service version.
+  AppEngineVersionInfo? appEngineVersion;
+
   /// This is a step that leads to the final state Drop.
   core.bool? causesDrop;
 
-  /// Display information of a Cloud function.
+  /// Display information of a Cloud Function.
   CloudFunctionInfo? cloudFunction;
+
+  /// Display information of a Cloud Run revision.
+  CloudRunRevisionInfo? cloudRunRevision;
 
   /// Display information of a Cloud SQL instance.
   CloudSQLInstanceInfo? cloudSqlInstance;
@@ -2850,8 +3102,14 @@ class Step {
   /// a Cloud SQL instance. A CloudSQLInstanceInfo is populated with starting
   /// instance information.
   /// - "START_FROM_CLOUD_FUNCTION" : Initial state: packet originating from a
-  /// Cloud function. A CloudFunctionInfo is populated with starting function
+  /// Cloud Function. A CloudFunctionInfo is populated with starting function
   /// information.
+  /// - "START_FROM_APP_ENGINE_VERSION" : Initial state: packet originating from
+  /// an App Engine service version. An AppEngineVersionInfo is populated with
+  /// starting version information.
+  /// - "START_FROM_CLOUD_RUN_REVISION" : Initial state: packet originating from
+  /// a Cloud Run revision. A CloudRunRevisionInfo is populated with starting
+  /// revision information.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
@@ -2895,8 +3153,10 @@ class Step {
 
   Step({
     this.abort,
+    this.appEngineVersion,
     this.causesDrop,
     this.cloudFunction,
+    this.cloudRunRevision,
     this.cloudSqlInstance,
     this.deliver,
     this.description,
@@ -2923,12 +3183,20 @@ class Step {
               ? AbortInfo.fromJson(
                   json_['abort'] as core.Map<core.String, core.dynamic>)
               : null,
+          appEngineVersion: json_.containsKey('appEngineVersion')
+              ? AppEngineVersionInfo.fromJson(json_['appEngineVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           causesDrop: json_.containsKey('causesDrop')
               ? json_['causesDrop'] as core.bool
               : null,
           cloudFunction: json_.containsKey('cloudFunction')
               ? CloudFunctionInfo.fromJson(
                   json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudRunRevision: json_.containsKey('cloudRunRevision')
+              ? CloudRunRevisionInfo.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? CloudSQLInstanceInfo.fromJson(json_['cloudSqlInstance']
@@ -3002,8 +3270,10 @@ class Step {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (abort != null) 'abort': abort!,
+        if (appEngineVersion != null) 'appEngineVersion': appEngineVersion!,
         if (causesDrop != null) 'causesDrop': causesDrop!,
         if (cloudFunction != null) 'cloudFunction': cloudFunction!,
+        if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (deliver != null) 'deliver': deliver!,
         if (description != null) 'description': description!,

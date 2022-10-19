@@ -250,6 +250,7 @@ api.EnvironmentConfig buildEnvironmentConfig() {
     o.nodeConfig = buildNodeConfig();
     o.nodeCount = 42;
     o.privateEnvironmentConfig = buildPrivateEnvironmentConfig();
+    o.recoveryConfig = buildRecoveryConfig();
     o.softwareConfig = buildSoftwareConfig();
     o.webServerConfig = buildWebServerConfig();
     o.webServerNetworkAccessControl = buildWebServerNetworkAccessControl();
@@ -288,6 +289,7 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
       unittest.equals(42),
     );
     checkPrivateEnvironmentConfig(o.privateEnvironmentConfig!);
+    checkRecoveryConfig(o.recoveryConfig!);
     checkSoftwareConfig(o.softwareConfig!);
     checkWebServerConfig(o.webServerConfig!);
     checkWebServerNetworkAccessControl(o.webServerNetworkAccessControl!);
@@ -489,6 +491,36 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
+core.int buildCounterLoadSnapshotRequest = 0;
+api.LoadSnapshotRequest buildLoadSnapshotRequest() {
+  final o = api.LoadSnapshotRequest();
+  buildCounterLoadSnapshotRequest++;
+  if (buildCounterLoadSnapshotRequest < 3) {
+    o.skipAirflowOverridesSetting = true;
+    o.skipEnvironmentVariablesSetting = true;
+    o.skipGcsDataCopying = true;
+    o.skipPypiPackagesInstallation = true;
+    o.snapshotPath = 'foo';
+  }
+  buildCounterLoadSnapshotRequest--;
+  return o;
+}
+
+void checkLoadSnapshotRequest(api.LoadSnapshotRequest o) {
+  buildCounterLoadSnapshotRequest++;
+  if (buildCounterLoadSnapshotRequest < 3) {
+    unittest.expect(o.skipAirflowOverridesSetting!, unittest.isTrue);
+    unittest.expect(o.skipEnvironmentVariablesSetting!, unittest.isTrue);
+    unittest.expect(o.skipGcsDataCopying!, unittest.isTrue);
+    unittest.expect(o.skipPypiPackagesInstallation!, unittest.isTrue);
+    unittest.expect(
+      o.snapshotPath!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLoadSnapshotRequest--;
+}
+
 core.int buildCounterMaintenanceWindow = 0;
 api.MaintenanceWindow buildMaintenanceWindow() {
   final o = api.MaintenanceWindow();
@@ -551,6 +583,28 @@ void checkMasterAuthorizedNetworksConfig(api.MasterAuthorizedNetworksConfig o) {
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterMasterAuthorizedNetworksConfig--;
+}
+
+core.int buildCounterNetworkingConfig = 0;
+api.NetworkingConfig buildNetworkingConfig() {
+  final o = api.NetworkingConfig();
+  buildCounterNetworkingConfig++;
+  if (buildCounterNetworkingConfig < 3) {
+    o.connectionType = 'foo';
+  }
+  buildCounterNetworkingConfig--;
+  return o;
+}
+
+void checkNetworkingConfig(api.NetworkingConfig o) {
+  buildCounterNetworkingConfig++;
+  if (buildCounterNetworkingConfig < 3) {
+    unittest.expect(
+      o.connectionType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNetworkingConfig--;
 }
 
 core.List<core.String> buildUnnamed6() => [
@@ -802,6 +856,7 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
     o.cloudSqlIpv4CidrBlock = 'foo';
     o.enablePrivateEnvironment = true;
     o.enablePrivatelyUsedPublicIps = true;
+    o.networkingConfig = buildNetworkingConfig();
     o.privateClusterConfig = buildPrivateClusterConfig();
     o.webServerIpv4CidrBlock = 'foo';
     o.webServerIpv4ReservedRange = 'foo';
@@ -831,6 +886,7 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
     );
     unittest.expect(o.enablePrivateEnvironment!, unittest.isTrue);
     unittest.expect(o.enablePrivatelyUsedPublicIps!, unittest.isTrue);
+    checkNetworkingConfig(o.networkingConfig!);
     checkPrivateClusterConfig(o.privateClusterConfig!);
     unittest.expect(
       o.webServerIpv4CidrBlock!,
@@ -842,6 +898,81 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
     );
   }
   buildCounterPrivateEnvironmentConfig--;
+}
+
+core.int buildCounterRecoveryConfig = 0;
+api.RecoveryConfig buildRecoveryConfig() {
+  final o = api.RecoveryConfig();
+  buildCounterRecoveryConfig++;
+  if (buildCounterRecoveryConfig < 3) {
+    o.scheduledSnapshotsConfig = buildScheduledSnapshotsConfig();
+  }
+  buildCounterRecoveryConfig--;
+  return o;
+}
+
+void checkRecoveryConfig(api.RecoveryConfig o) {
+  buildCounterRecoveryConfig++;
+  if (buildCounterRecoveryConfig < 3) {
+    checkScheduledSnapshotsConfig(o.scheduledSnapshotsConfig!);
+  }
+  buildCounterRecoveryConfig--;
+}
+
+core.int buildCounterSaveSnapshotRequest = 0;
+api.SaveSnapshotRequest buildSaveSnapshotRequest() {
+  final o = api.SaveSnapshotRequest();
+  buildCounterSaveSnapshotRequest++;
+  if (buildCounterSaveSnapshotRequest < 3) {
+    o.snapshotLocation = 'foo';
+  }
+  buildCounterSaveSnapshotRequest--;
+  return o;
+}
+
+void checkSaveSnapshotRequest(api.SaveSnapshotRequest o) {
+  buildCounterSaveSnapshotRequest++;
+  if (buildCounterSaveSnapshotRequest < 3) {
+    unittest.expect(
+      o.snapshotLocation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSaveSnapshotRequest--;
+}
+
+core.int buildCounterScheduledSnapshotsConfig = 0;
+api.ScheduledSnapshotsConfig buildScheduledSnapshotsConfig() {
+  final o = api.ScheduledSnapshotsConfig();
+  buildCounterScheduledSnapshotsConfig++;
+  if (buildCounterScheduledSnapshotsConfig < 3) {
+    o.enabled = true;
+    o.snapshotCreationSchedule = 'foo';
+    o.snapshotLocation = 'foo';
+    o.timeZone = 'foo';
+  }
+  buildCounterScheduledSnapshotsConfig--;
+  return o;
+}
+
+void checkScheduledSnapshotsConfig(api.ScheduledSnapshotsConfig o) {
+  buildCounterScheduledSnapshotsConfig++;
+  if (buildCounterScheduledSnapshotsConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.snapshotCreationSchedule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.snapshotLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterScheduledSnapshotsConfig--;
 }
 
 core.int buildCounterSchedulerResource = 0;
@@ -1335,6 +1466,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LoadSnapshotRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLoadSnapshotRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoadSnapshotRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLoadSnapshotRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-MaintenanceWindow', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMaintenanceWindow();
@@ -1352,6 +1493,16 @@ void main() {
       final od = api.MasterAuthorizedNetworksConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMasterAuthorizedNetworksConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-NetworkingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNetworkingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNetworkingConfig(od);
     });
   });
 
@@ -1392,6 +1543,36 @@ void main() {
       final od = api.PrivateEnvironmentConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPrivateEnvironmentConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RecoveryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecoveryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecoveryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecoveryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SaveSnapshotRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSaveSnapshotRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SaveSnapshotRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSaveSnapshotRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ScheduledSnapshotsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScheduledSnapshotsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScheduledSnapshotsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScheduledSnapshotsConfig(od);
     });
   });
 
@@ -1703,6 +1884,64 @@ void main() {
       checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
     });
 
+    unittest.test('method--loadSnapshot', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildLoadSnapshotRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LoadSnapshotRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLoadSnapshotRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.loadSnapshot(arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.CloudComposerApi(mock).projects.locations.environments;
@@ -1763,6 +2002,64 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--saveSnapshot', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildSaveSnapshotRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SaveSnapshotRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSaveSnapshotRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.saveSnapshot(arg_request, arg_environment,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

@@ -23,6 +23,7 @@
 ///     - [ProjectsLocationsDeliveryPipelinesResource]
 ///       - [ProjectsLocationsDeliveryPipelinesReleasesResource]
 ///         - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource]
+/// - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTargetsResource]
 library clouddeploy.v1;
@@ -907,6 +908,11 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
 class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource
+      get jobRuns =>
+          ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource(
+              _requester);
+
   ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource(
       commons.ApiRequester client)
       : _requester = client;
@@ -1118,6 +1124,157 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
       queryParams: queryParams_,
     );
     return ListRolloutsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retries the specified Job in a Rollout.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [rollout] - Required. Name of the Rollout. Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+  /// releases/{release}/rollouts/{rollout}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetryJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetryJobResponse> retryJob(
+    RetryJobRequest request,
+    core.String rollout, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$rollout') + ':retryJob';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RetryJobResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single JobRun.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `JobRun`. Format must be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+/jobRuns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [JobRun].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<JobRun> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return JobRun.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists JobRuns in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The `Rollout` which owns this collection of `JobRun`
+  /// objects.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter results to be returned. See
+  /// https://google.aip.dev/160 for more details.
+  ///
+  /// [orderBy] - Optional. Field to sort by. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. The maximum number of `JobRun` objects to return.
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// `JobRun` objects will be returned. The maximum value is 1000; values above
+  /// 1000 will be set to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListJobRuns` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other provided parameters match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListJobRunsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListJobRunsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobRuns';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListJobRunsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2016,9 +2173,9 @@ typedef CancelOperationRequest = $Empty;
 
 /// Information specifying where to deploy a Cloud Run Service.
 class CloudRunLocation {
-  /// The location where the Cloud Run Service should be located.
+  /// The location for the Cloud Run Service.
   ///
-  /// Format is `projects/{project}/locations/{location}`.
+  /// Format must be `projects/{project}/locations/{location}`.
   ///
   /// Required.
   core.String? location;
@@ -2190,8 +2347,7 @@ class DeliveryPipeline {
   /// User annotations.
   ///
   /// These attributes can only be set and used by the user, and not by Google
-  /// Cloud Deploy. See https://google.aip.dev/128#annotations for more details
-  /// such as format and size limitations.
+  /// Cloud Deploy.
   core.Map<core.String, core.String>? annotations;
 
   /// Information around the state of the Delivery Pipeline.
@@ -2321,6 +2477,143 @@ class DeliveryPipeline {
         if (suspended != null) 'suspended': suspended!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A deploy Job.
+typedef DeployJob = $Empty;
+
+/// DeployJobRun contains information specific to a deploy `JobRun`.
+class DeployJobRun {
+  /// The resource name of the Cloud Build `Build` object that is used to
+  /// deploy.
+  ///
+  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  ///
+  /// Output only.
+  core.String? build;
+
+  /// The reason the deploy failed.
+  ///
+  /// This will always be unspecified while the deploy is in progress or if it
+  /// succeeded.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Google Cloud Deploy has insufficient
+  /// permissions. See \[Required
+  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
+  /// check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : The deploy build did not complete within the
+  /// alloted time.
+  core.String? failureCause;
+
+  /// Additional information about the deploy failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  /// Metadata containing information about the deploy job run.
+  ///
+  /// Output only.
+  DeployJobRunMetadata? metadata;
+
+  DeployJobRun({
+    this.build,
+    this.failureCause,
+    this.failureMessage,
+    this.metadata,
+  });
+
+  DeployJobRun.fromJson(core.Map json_)
+      : this(
+          build:
+              json_.containsKey('build') ? json_['build'] as core.String : null,
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
+              : null,
+          failureMessage: json_.containsKey('failureMessage')
+              ? json_['failureMessage'] as core.String
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? DeployJobRunMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
+/// DeployJobRunMetadata surfaces information associated with a `DeployJobRun`
+/// to the user.
+class DeployJobRunMetadata {
+  /// The name of the Cloud Run Service that is associated with a
+  /// `DeployJobRun`.
+  ///
+  /// Output only.
+  CloudRunMetadata? cloudRun;
+
+  DeployJobRunMetadata({
+    this.cloudRun,
+  });
+
+  DeployJobRunMetadata.fromJson(core.Map json_)
+      : this(
+          cloudRun: json_.containsKey('cloudRun')
+              ? CloudRunMetadata.fromJson(
+                  json_['cloudRun'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudRun != null) 'cloudRun': cloudRun!,
+      };
+}
+
+/// Deployment job composition.
+class DeploymentJobs {
+  /// The deploy Job.
+  ///
+  /// This is the first job run in the phase.
+  ///
+  /// Output only.
+  Job? deployJob;
+
+  /// The verify Job.
+  ///
+  /// Runs after a deploy if the deploy succeeds.
+  ///
+  /// Output only.
+  Job? verifyJob;
+
+  DeploymentJobs({
+    this.deployJob,
+    this.verifyJob,
+  });
+
+  DeploymentJobs.fromJson(core.Map json_)
+      : this(
+          deployJob: json_.containsKey('deployJob')
+              ? Job.fromJson(
+                  json_['deployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          verifyJob: json_.containsKey('verifyJob')
+              ? Job.fromJson(
+                  json_['verifyJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployJob != null) 'deployJob': deployJob!,
+        if (verifyJob != null) 'verifyJob': verifyJob!,
       };
 }
 
@@ -2494,6 +2787,208 @@ class GkeCluster {
       };
 }
 
+/// Job represents an operation for a `Rollout`.
+class Job {
+  /// A deploy Job.
+  ///
+  /// Output only.
+  DeployJob? deployJob;
+
+  /// The ID of the Job.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The name of the `JobRun` responsible for the most recent invocation of
+  /// this Job.
+  ///
+  /// Output only.
+  core.String? jobRun;
+
+  /// The current state of the Job.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The Job has an unspecified state.
+  /// - "PENDING" : The Job is waiting for an earlier Phase(s) or Job(s) to
+  /// complete.
+  /// - "DISABLED" : The Job is disabled.
+  /// - "IN_PROGRESS" : The Job is in progress.
+  /// - "SUCCEEDED" : The Job succeeded.
+  /// - "FAILED" : The Job failed.
+  /// - "ABORTED" : The Job was aborted.
+  core.String? state;
+
+  /// A verify Job.
+  ///
+  /// Output only.
+  VerifyJob? verifyJob;
+
+  Job({
+    this.deployJob,
+    this.id,
+    this.jobRun,
+    this.state,
+    this.verifyJob,
+  });
+
+  Job.fromJson(core.Map json_)
+      : this(
+          deployJob: json_.containsKey('deployJob')
+              ? DeployJob.fromJson(
+                  json_['deployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          jobRun: json_.containsKey('jobRun')
+              ? json_['jobRun'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          verifyJob: json_.containsKey('verifyJob')
+              ? VerifyJob.fromJson(
+                  json_['verifyJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployJob != null) 'deployJob': deployJob!,
+        if (id != null) 'id': id!,
+        if (jobRun != null) 'jobRun': jobRun!,
+        if (state != null) 'state': state!,
+        if (verifyJob != null) 'verifyJob': verifyJob!,
+      };
+}
+
+/// A `JobRun` resource in the Google Cloud Deploy API.
+///
+/// A `JobRun` contains information of a single `Rollout` job evaluation.
+class JobRun {
+  /// Time at which the `JobRun` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Information specific to a deploy `JobRun`.
+  ///
+  /// Output only.
+  DeployJobRun? deployJobRun;
+
+  /// Time at which the `JobRun` ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// ID of the `Rollout` job this `JobRun` corresponds to.
+  ///
+  /// Output only.
+  core.String? jobId;
+
+  /// Name of the `JobRun`.
+  ///
+  /// Format is projects/{project}/locations/{location}/
+  /// deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/
+  /// {rollouts}/jobRuns/{uuid}.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// ID of the `Rollout` phase this `JobRun` belongs in.
+  ///
+  /// Output only.
+  core.String? phaseId;
+
+  /// Time at which the `JobRun` was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The current state of the `JobRun`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The `JobRun` has an unspecified state.
+  /// - "IN_PROGRESS" : The `JobRun` is in progress.
+  /// - "SUCCEEDED" : The `JobRun` has succeeded.
+  /// - "FAILED" : The `JobRun` has failed.
+  core.String? state;
+
+  /// Unique identifier of the `JobRun`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Information specific to a verify `JobRun`.
+  ///
+  /// Output only.
+  VerifyJobRun? verifyJobRun;
+
+  JobRun({
+    this.createTime,
+    this.deployJobRun,
+    this.endTime,
+    this.etag,
+    this.jobId,
+    this.name,
+    this.phaseId,
+    this.startTime,
+    this.state,
+    this.uid,
+    this.verifyJobRun,
+  });
+
+  JobRun.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deployJobRun: json_.containsKey('deployJobRun')
+              ? DeployJobRun.fromJson(
+                  json_['deployJobRun'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          phaseId: json_.containsKey('phaseId')
+              ? json_['phaseId'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          verifyJobRun: json_.containsKey('verifyJobRun')
+              ? VerifyJobRun.fromJson(
+                  json_['verifyJobRun'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deployJobRun != null) 'deployJobRun': deployJobRun!,
+        if (endTime != null) 'endTime': endTime!,
+        if (etag != null) 'etag': etag!,
+        if (jobId != null) 'jobId': jobId!,
+        if (name != null) 'name': name!,
+        if (phaseId != null) 'phaseId': phaseId!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (verifyJobRun != null) 'verifyJobRun': verifyJobRun!,
+      };
+}
+
 /// The response object from `ListDeliveryPipelines`.
 class ListDeliveryPipelinesResponse {
   /// The `DeliveryPipeline` objects.
@@ -2533,6 +3028,50 @@ class ListDeliveryPipelinesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryPipelines != null) 'deliveryPipelines': deliveryPipelines!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// ListJobRunsResponse is the response object returned by `ListJobRuns`.
+class ListJobRunsResponse {
+  /// The `JobRun` objects.
+  core.List<JobRun>? jobRuns;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached
+  core.List<core.String>? unreachable;
+
+  ListJobRunsResponse({
+    this.jobRuns,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListJobRunsResponse.fromJson(core.Map json_)
+      : this(
+          jobRuns: json_.containsKey('jobRuns')
+              ? (json_['jobRuns'] as core.List)
+                  .map((value) => JobRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobRuns != null) 'jobRuns': jobRuns!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2737,7 +3276,7 @@ class ListTargetsResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
-/// Metadata surfaces information associated with a `Rollout` to the user.
+/// Metadata includes information associated with a `Rollout`.
 class Metadata {
   /// The name of the Cloud Run Service that is associated with a `Rollout`.
   ///
@@ -2834,6 +3373,55 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Phase represents a collection of jobs that are logically grouped together
+/// for a `Rollout`.
+class Phase {
+  /// Deployment job composition.
+  ///
+  /// Output only.
+  DeploymentJobs? deploymentJobs;
+
+  /// The ID of the Phase.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Current state of the Phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The Phase has an unspecified state.
+  /// - "PENDING" : The Phase is waiting for an earlier Phase(s) to complete.
+  /// - "IN_PROGRESS" : The Phase is in progress.
+  /// - "SUCCEEDED" : The Phase has succeeded.
+  /// - "FAILED" : The Phase has failed.
+  /// - "ABORTED" : The Phase was aborted.
+  core.String? state;
+
+  Phase({
+    this.deploymentJobs,
+    this.id,
+    this.state,
+  });
+
+  Phase.fromJson(core.Map json_)
+      : this(
+          deploymentJobs: json_.containsKey('deploymentJobs')
+              ? DeploymentJobs.fromJson(json_['deploymentJobs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentJobs != null) 'deploymentJobs': deploymentJobs!,
+        if (id != null) 'id': id!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3330,6 +3918,41 @@ class Release {
       };
 }
 
+/// RetryJobRequest is the request object used by `RetryJob`.
+class RetryJobRequest {
+  /// The job ID for the Job to retry.
+  ///
+  /// Required.
+  core.String? jobId;
+
+  /// The phase ID the Job to retry belongs to.
+  ///
+  /// Required.
+  core.String? phaseId;
+
+  RetryJobRequest({
+    this.jobId,
+    this.phaseId,
+  });
+
+  RetryJobRequest.fromJson(core.Map json_)
+      : this(
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
+          phaseId: json_.containsKey('phaseId')
+              ? json_['phaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobId != null) 'jobId': jobId!,
+        if (phaseId != null) 'phaseId': phaseId!,
+      };
+}
+
+/// The response object from 'RetryJob'.
+typedef RetryJobResponse = $Empty;
+
 /// A `Rollout` resource in the Google Cloud Deploy API.
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
@@ -3385,6 +4008,8 @@ class Rollout {
   /// time.
   /// - "RELEASE_FAILED" : Release is in a failed state.
   /// - "RELEASE_ABANDONED" : Release is abandoned.
+  /// - "VERIFICATION_CONFIG_NOT_FOUND" : No skaffold verify configuration was
+  /// found.
   core.String? deployFailureCause;
 
   /// Time at which the `Rollout` started deploying.
@@ -3445,6 +4070,11 @@ class Rollout {
   /// Optional.
   core.String? name;
 
+  /// The phases that represent the workflows of this `Rollout`.
+  ///
+  /// Output only.
+  core.List<Phase>? phases;
+
   /// Current state of the `Rollout`.
   ///
   /// Output only.
@@ -3487,6 +4117,7 @@ class Rollout {
     this.labels,
     this.metadata,
     this.name,
+    this.phases,
     this.state,
     this.targetId,
     this.uid,
@@ -3547,6 +4178,12 @@ class Rollout {
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          phases: json_.containsKey('phases')
+              ? (json_['phases'] as core.List)
+                  .map((value) => Phase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           targetId: json_.containsKey('targetId')
@@ -3572,6 +4209,7 @@ class Rollout {
         if (labels != null) 'labels': labels!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
+        if (phases != null) 'phases': phases!,
         if (state != null) 'state': state!,
         if (targetId != null) 'targetId': targetId!,
         if (uid != null) 'uid': uid!,
@@ -3679,6 +4317,11 @@ class Stage {
   /// `Target`.
   core.List<core.String>? profiles;
 
+  /// The strategy to use for a `Rollout` to this stage.
+  ///
+  /// Optional.
+  Strategy? strategy;
+
   /// The target_id to which this stage points.
   ///
   /// This field refers exclusively to the last segment of a target name. For
@@ -3690,6 +4333,7 @@ class Stage {
 
   Stage({
     this.profiles,
+    this.strategy,
     this.targetId,
   });
 
@@ -3700,6 +4344,10 @@ class Stage {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          strategy: json_.containsKey('strategy')
+              ? Strategy.fromJson(
+                  json_['strategy'] as core.Map<core.String, core.dynamic>)
+              : null,
           targetId: json_.containsKey('targetId')
               ? json_['targetId'] as core.String
               : null,
@@ -3707,7 +4355,28 @@ class Stage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (profiles != null) 'profiles': profiles!,
+        if (strategy != null) 'strategy': strategy!,
         if (targetId != null) 'targetId': targetId!,
+      };
+}
+
+/// Standard represents the standard deployment strategy.
+class Standard {
+  /// Whether to verify a deployment.
+  core.bool? verify;
+
+  Standard({
+    this.verify,
+  });
+
+  Standard.fromJson(core.Map json_)
+      : this(
+          verify:
+              json_.containsKey('verify') ? json_['verify'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (verify != null) 'verify': verify!,
       };
 }
 
@@ -3719,6 +4388,29 @@ class Stage {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Strategy contains deployment strategy information.
+class Strategy {
+  /// Standard deployment strategy executes a single deploy and allows verifying
+  /// the deployment.
+  Standard? standard;
+
+  Strategy({
+    this.standard,
+  });
+
+  Strategy.fromJson(core.Map json_)
+      : this(
+          standard: json_.containsKey('standard')
+              ? Standard.fromJson(
+                  json_['standard'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (standard != null) 'standard': standard!,
+      };
+}
 
 /// A `Target` resource in the Google Cloud Deploy API.
 ///
@@ -3960,8 +4652,8 @@ class TargetRender {
   /// Possible string values are:
   /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
   /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
-  /// it is not enabled or because Cloud Deploy has insufficient permissions.
-  /// See \[required
+  /// it is not enabled or because Google Cloud Deploy has insufficient
+  /// permissions. See \[required
   /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The render operation did not complete successfully;
   /// check Cloud Build logs.
@@ -4069,3 +4761,88 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// A verify Job.
+typedef VerifyJob = $Empty;
+
+/// VerifyJobRun contains information specific to a verify `JobRun`.
+class VerifyJobRun {
+  /// URI of a directory containing the verify artifacts.
+  ///
+  /// This contains the Skaffold event log.
+  ///
+  /// Output only.
+  core.String? artifactUri;
+
+  /// The resource name of the Cloud Build `Build` object that is used to
+  /// verify.
+  ///
+  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  ///
+  /// Output only.
+  core.String? build;
+
+  /// File path of the Skaffold event log relative to the artifact URI.
+  ///
+  /// Output only.
+  core.String? eventLogPath;
+
+  /// The reason the verify failed.
+  ///
+  /// This will always be unspecified while the verify is in progress or if it
+  /// succeeded.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Google Cloud Deploy has insufficient
+  /// permissions. See \[required
+  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The verify operation did not complete successfully;
+  /// check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : The verify build did not complete within the
+  /// alloted time.
+  /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
+  /// found.
+  core.String? failureCause;
+
+  /// Additional information about the verify failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  VerifyJobRun({
+    this.artifactUri,
+    this.build,
+    this.eventLogPath,
+    this.failureCause,
+    this.failureMessage,
+  });
+
+  VerifyJobRun.fromJson(core.Map json_)
+      : this(
+          artifactUri: json_.containsKey('artifactUri')
+              ? json_['artifactUri'] as core.String
+              : null,
+          build:
+              json_.containsKey('build') ? json_['build'] as core.String : null,
+          eventLogPath: json_.containsKey('eventLogPath')
+              ? json_['eventLogPath'] as core.String
+              : null,
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
+              : null,
+          failureMessage: json_.containsKey('failureMessage')
+              ? json_['failureMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactUri != null) 'artifactUri': artifactUri!,
+        if (build != null) 'build': build!,
+        if (eventLogPath != null) 'eventLogPath': eventLogPath!,
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+      };
+}

@@ -30,6 +30,7 @@
 ///   - [CustomersReportsResource]
 ///   - [CustomersTelemetryResource]
 ///     - [CustomersTelemetryDevicesResource]
+///     - [CustomersTelemetryEventsResource]
 library chromemanagement.v1;
 
 import 'dart:async' as async;
@@ -423,6 +424,60 @@ class CustomersReportsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Counts of devices with a specific hardware specification from the
+  /// requested hardware type (for example model name, processor type).
+  ///
+  /// Further information can be found here
+  /// https://support.google.com/chrome/a/answer/10564947
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit. If omitted, all
+  /// data will be returned.
+  ///
+  /// [readMask] - Required. Mask of the fields that should be populated in the
+  /// returned report.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>
+      countChromeHardwareFleetDevices(
+    core.String customer, {
+    core.String? orgUnitId,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeHardwareFleetDevices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of installed Chrome versions.
   ///
   /// Request parameters:
@@ -637,6 +692,8 @@ class CustomersTelemetryResource {
 
   CustomersTelemetryDevicesResource get devices =>
       CustomersTelemetryDevicesResource(_requester);
+  CustomersTelemetryEventsResource get events =>
+      CustomersTelemetryEventsResource(_requester);
 
   CustomersTelemetryResource(commons.ApiRequester client) : _requester = client;
 }
@@ -739,6 +796,69 @@ class CustomersTelemetryDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersTelemetryEventsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryEventsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List telemetry events.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter.
+  /// Supported filter fields: * device_id * user_id * device_org_unit_id *
+  /// user_org_unit_id * timestamp * event_type
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Default value
+  /// is 100. Maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. Token to specify next page in the list.
+  ///
+  /// [readMask] - Required. Read mask to specify which fields to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1ListTelemetryEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1ListTelemetryEventsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/telemetry/events';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1389,6 +1509,81 @@ class GoogleChromeManagementV1BatteryStatusReport {
       };
 }
 
+/// Boot performance report of a device.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceBootMode](https://chromeenterprise.google/policies/#ReportDeviceBootMode)
+/// * Data Collection Frequency: On every boot up event * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: Yes * Reported for affiliated users only: N/A
+class GoogleChromeManagementV1BootPerformanceReport {
+  /// Total time to boot up.
+  core.String? bootUpDuration;
+
+  /// The timestamp when power came on.
+  core.String? bootUpTime;
+
+  /// Timestamp when the report was collected.
+  core.String? reportTime;
+
+  /// Total time since shutdown start to power off.
+  core.String? shutdownDuration;
+
+  /// The shutdown reason.
+  /// Possible string values are:
+  /// - "SHUTDOWN_REASON_UNSPECIFIED" : Shutdown reason is not specified.
+  /// - "USER_REQUEST" : User initiated.
+  /// - "SYSTEM_UPDATE" : System update initiated.
+  /// - "LOW_BATTERY" : Shutdown due to low battery.
+  /// - "OTHER" : Shutdown due to other reasons.
+  core.String? shutdownReason;
+
+  /// The timestamp when shutdown.
+  core.String? shutdownTime;
+
+  GoogleChromeManagementV1BootPerformanceReport({
+    this.bootUpDuration,
+    this.bootUpTime,
+    this.reportTime,
+    this.shutdownDuration,
+    this.shutdownReason,
+    this.shutdownTime,
+  });
+
+  GoogleChromeManagementV1BootPerformanceReport.fromJson(core.Map json_)
+      : this(
+          bootUpDuration: json_.containsKey('bootUpDuration')
+              ? json_['bootUpDuration'] as core.String
+              : null,
+          bootUpTime: json_.containsKey('bootUpTime')
+              ? json_['bootUpTime'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          shutdownDuration: json_.containsKey('shutdownDuration')
+              ? json_['shutdownDuration'] as core.String
+              : null,
+          shutdownReason: json_.containsKey('shutdownReason')
+              ? json_['shutdownReason'] as core.String
+              : null,
+          shutdownTime: json_.containsKey('shutdownTime')
+              ? json_['shutdownTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootUpDuration != null) 'bootUpDuration': bootUpDuration!,
+        if (bootUpTime != null) 'bootUpTime': bootUpTime!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (shutdownDuration != null) 'shutdownDuration': shutdownDuration!,
+        if (shutdownReason != null) 'shutdownReason': shutdownReason!,
+        if (shutdownTime != null) 'shutdownTime': shutdownTime!,
+      };
+}
+
 /// Describes a browser version and its install count.
 class GoogleChromeManagementV1BrowserVersion {
   /// The release channel of the installed browser.
@@ -1482,6 +1677,11 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? isCwsHosted;
 
+  /// Whether an app supports policy for extensions.
+  ///
+  /// Output only.
+  core.bool? isExtensionPolicySupported;
+
   /// Whether the app is only for Kiosk mode on ChromeOS devices
   ///
   /// Output only.
@@ -1530,6 +1730,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
   GoogleChromeManagementV1ChromeAppInfo({
     this.googleOwned,
     this.isCwsHosted,
+    this.isExtensionPolicySupported,
     this.isKioskOnly,
     this.isTheme,
     this.kioskEnabled,
@@ -1547,6 +1748,10 @@ class GoogleChromeManagementV1ChromeAppInfo {
           isCwsHosted: json_.containsKey('isCwsHosted')
               ? json_['isCwsHosted'] as core.bool
               : null,
+          isExtensionPolicySupported:
+              json_.containsKey('isExtensionPolicySupported')
+                  ? json_['isExtensionPolicySupported'] as core.bool
+                  : null,
           isKioskOnly: json_.containsKey('isKioskOnly')
               ? json_['isKioskOnly'] as core.bool
               : null,
@@ -1581,6 +1786,8 @@ class GoogleChromeManagementV1ChromeAppInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleOwned != null) 'googleOwned': googleOwned!,
         if (isCwsHosted != null) 'isCwsHosted': isCwsHosted!,
+        if (isExtensionPolicySupported != null)
+          'isExtensionPolicySupported': isExtensionPolicySupported!,
         if (isKioskOnly != null) 'isKioskOnly': isKioskOnly!,
         if (isTheme != null) 'isTheme': isTheme!,
         if (kioskEnabled != null) 'kioskEnabled': kioskEnabled!,
@@ -1876,6 +2083,77 @@ class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse {
         if (pendingUpdate != null) 'pendingUpdate': pendingUpdate!,
         if (unsupportedPolicyCount != null)
           'unsupportedPolicyCount': unsupportedPolicyCount!,
+      };
+}
+
+/// Response containing a list of devices with a specific type of hardware
+/// specification from the requested hardware type.
+class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
+  /// The DeviceHardwareCountReport for device cpu type (for example Intel(R)
+  /// Core(TM) i7-10610U CPU @ 1.80GHz).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? cpuReports;
+
+  /// The DeviceHardwareCountReport for device memory amount in gigabytes (for
+  /// example 16).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? memoryReports;
+
+  /// The DeviceHardwareCountReport for device model type (for example Acer C7
+  /// Chromebook).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? modelReports;
+
+  /// The DeviceHardwareCountReport for device storage amount in gigabytes (for
+  /// example 128).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? storageReports;
+
+  GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse({
+    this.cpuReports,
+    this.memoryReports,
+    this.modelReports,
+    this.storageReports,
+  });
+
+  GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse.fromJson(
+      core.Map json_)
+      : this(
+          cpuReports: json_.containsKey('cpuReports')
+              ? (json_['cpuReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          memoryReports: json_.containsKey('memoryReports')
+              ? (json_['memoryReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          modelReports: json_.containsKey('modelReports')
+              ? (json_['modelReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          storageReports: json_.containsKey('storageReports')
+              ? (json_['storageReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuReports != null) 'cpuReports': cpuReports!,
+        if (memoryReports != null) 'memoryReports': memoryReports!,
+        if (modelReports != null) 'modelReports': modelReports!,
+        if (storageReports != null) 'storageReports': storageReports!,
       };
 }
 
@@ -2260,6 +2538,35 @@ class GoogleChromeManagementV1DeviceAueCountReport {
         if (count != null) 'count': count!,
         if (expired != null) 'expired': expired!,
         if (model != null) 'model': model!,
+      };
+}
+
+/// Report for CountChromeDevicesPerHardwareSpecResponse, contains the count of
+/// devices with a unique hardware specification.
+class GoogleChromeManagementV1DeviceHardwareCountReport {
+  /// Public name of the hardware specification.
+  core.String? bucket;
+
+  /// Count of devices with a unique hardware specification.
+  core.String? count;
+
+  GoogleChromeManagementV1DeviceHardwareCountReport({
+    this.bucket,
+    this.count,
+  });
+
+  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (count != null) 'count': count!,
       };
 }
 
@@ -2864,6 +3171,39 @@ class GoogleChromeManagementV1ListTelemetryDevicesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for listing telemetry events for a customer.
+class GoogleChromeManagementV1ListTelemetryEventsResponse {
+  /// Token to specify next page in the list.
+  core.String? nextPageToken;
+
+  /// Telemetry events returned in the response.
+  core.List<GoogleChromeManagementV1TelemetryEvent>? telemetryEvents;
+
+  GoogleChromeManagementV1ListTelemetryEventsResponse({
+    this.nextPageToken,
+    this.telemetryEvents,
+  });
+
+  GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          telemetryEvents: json_.containsKey('telemetryEvents')
+              ? (json_['telemetryEvents'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TelemetryEvent.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (telemetryEvents != null) 'telemetryEvents': telemetryEvents!,
       };
 }
 
@@ -3549,6 +3889,10 @@ class GoogleChromeManagementV1StorageStatusReport {
       };
 }
 
+/// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run
+/// out of buffer data for more than 5 seconds.
+typedef GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent = $Empty;
+
 /// Telemetry data collected from a managed device.
 class GoogleChromeManagementV1TelemetryDevice {
   /// Audio reports collected periodically sorted in a decreasing order of
@@ -3566,6 +3910,12 @@ class GoogleChromeManagementV1TelemetryDevice {
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1BatteryStatusReport>? batteryStatusReport;
+
+  /// Boot performance reports of the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1BootPerformanceReport>?
+      bootPerformanceReport;
 
   /// Information regarding CPU specs for the device.
   ///
@@ -3670,6 +4020,7 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.audioStatusReport,
     this.batteryInfo,
     this.batteryStatusReport,
+    this.bootPerformanceReport,
     this.cpuInfo,
     this.cpuStatusReport,
     this.customer,
@@ -3709,6 +4060,13 @@ class GoogleChromeManagementV1TelemetryDevice {
               ? (json_['batteryStatusReport'] as core.List)
                   .map((value) =>
                       GoogleChromeManagementV1BatteryStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bootPerformanceReport: json_.containsKey('bootPerformanceReport')
+              ? (json_['bootPerformanceReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1BootPerformanceReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3811,6 +4169,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (batteryInfo != null) 'batteryInfo': batteryInfo!,
         if (batteryStatusReport != null)
           'batteryStatusReport': batteryStatusReport!,
+        if (bootPerformanceReport != null)
+          'bootPerformanceReport': bootPerformanceReport!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReport != null) 'cpuStatusReport': cpuStatusReport!,
         if (customer != null) 'customer': customer!,
@@ -3834,6 +4194,274 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (storageStatusReport != null)
           'storageStatusReport': storageStatusReport!,
         if (thunderboltInfo != null) 'thunderboltInfo': thunderboltInfo!,
+      };
+}
+
+/// Information about a device associated with telemetry data.
+class GoogleChromeManagementV1TelemetryDeviceInfo {
+  /// The unique Directory API ID of the device.
+  ///
+  /// This value is the same as the Admin Console's Directory API ID in the
+  /// ChromeOS Devices tab.
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Organization unit ID of the device.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  GoogleChromeManagementV1TelemetryDeviceInfo({
+    this.deviceId,
+    this.orgUnitId,
+  });
+
+  GoogleChromeManagementV1TelemetryDeviceInfo.fromJson(core.Map json_)
+      : this(
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+      };
+}
+
+/// Telemetry data reported by a managed device.
+class GoogleChromeManagementV1TelemetryEvent {
+  /// Payload for audio severe underrun event.
+  ///
+  /// Present only when the `event_type` field is `AUDIO_SEVERE_UNDERRUN`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent?
+      audioSevereUnderrunEvent;
+
+  /// Information about the device associated with the event.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryDeviceInfo? device;
+
+  /// The event type of the current event.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Event type unknown.
+  /// - "AUDIO_SEVERE_UNDERRUN" : Triggered when a audio devices run out of
+  /// buffer data for more than 5 seconds.
+  /// - "NETWORK_CONNECTION_STATE_CHANGE" : Triggered immediately on any changes
+  /// to a network connection.
+  /// - "USB_ADDED" : Triggered when USB devices are added.
+  /// - "USB_REMOVED" : Triggered when USB devices are removed.
+  /// - "NETWORK_HTTPS_LATENCY_CHANGE" : Triggered when a new HTTPS latency
+  /// problem was detected or the device has recovered form an existing HTTPS
+  /// latency problem.
+  core.String? eventType;
+
+  /// Payload for HTTPS latency change event.
+  ///
+  /// Present only when `event_type` is `NETWORK_HTTPS_LATENCY_CHANGE`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent?
+      httpsLatencyChangeEvent;
+
+  /// Resource name of the event.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Payload for network connection state change event.
+  ///
+  /// Present only when `event_type` is `NETWORK_CONNECTION_STATE_CHANGE`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent?
+      networkConnectionStateChangeEvent;
+
+  /// Timestamp that represents when the event was reported.
+  core.String? reportTime;
+
+  /// Information about the user associated with the event.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryUserInfo? user;
+
+  GoogleChromeManagementV1TelemetryEvent({
+    this.audioSevereUnderrunEvent,
+    this.device,
+    this.eventType,
+    this.httpsLatencyChangeEvent,
+    this.name,
+    this.networkConnectionStateChangeEvent,
+    this.reportTime,
+    this.user,
+  });
+
+  GoogleChromeManagementV1TelemetryEvent.fromJson(core.Map json_)
+      : this(
+          audioSevereUnderrunEvent:
+              json_.containsKey('audioSevereUnderrunEvent')
+                  ? GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
+                      .fromJson(json_['audioSevereUnderrunEvent']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          device: json_.containsKey('device')
+              ? GoogleChromeManagementV1TelemetryDeviceInfo.fromJson(
+                  json_['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventType: json_.containsKey('eventType')
+              ? json_['eventType'] as core.String
+              : null,
+          httpsLatencyChangeEvent: json_.containsKey('httpsLatencyChangeEvent')
+              ? GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+                  .fromJson(json_['httpsLatencyChangeEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkConnectionStateChangeEvent: json_
+                  .containsKey('networkConnectionStateChangeEvent')
+              ? GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+                  .fromJson(json_['networkConnectionStateChangeEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          user: json_.containsKey('user')
+              ? GoogleChromeManagementV1TelemetryUserInfo.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioSevereUnderrunEvent != null)
+          'audioSevereUnderrunEvent': audioSevereUnderrunEvent!,
+        if (device != null) 'device': device!,
+        if (eventType != null) 'eventType': eventType!,
+        if (httpsLatencyChangeEvent != null)
+          'httpsLatencyChangeEvent': httpsLatencyChangeEvent!,
+        if (name != null) 'name': name!,
+        if (networkConnectionStateChangeEvent != null)
+          'networkConnectionStateChangeEvent':
+              networkConnectionStateChangeEvent!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (user != null) 'user': user!,
+      };
+}
+
+/// Https latency routine is run periodically and
+/// `TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
+/// detected or if the device has recovered from a latency problem..
+class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
+  /// HTTPS latency routine data that triggered the event.
+  GoogleChromeManagementV1HttpsLatencyRoutineData? httpsLatencyRoutineData;
+
+  /// Current HTTPS latency state.
+  /// Possible string values are:
+  /// - "HTTPS_LATENCY_STATE_UNSPECIFIED" : HTTPS latency state is unspecified.
+  /// - "RECOVERY" : HTTPS latency recovered from a problem.
+  /// - "PROBLEM" : HTTPS latency problem.
+  core.String? httpsLatencyState;
+
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent({
+    this.httpsLatencyRoutineData,
+    this.httpsLatencyState,
+  });
+
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent.fromJson(
+      core.Map json_)
+      : this(
+          httpsLatencyRoutineData: json_.containsKey('httpsLatencyRoutineData')
+              ? GoogleChromeManagementV1HttpsLatencyRoutineData.fromJson(
+                  json_['httpsLatencyRoutineData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          httpsLatencyState: json_.containsKey('httpsLatencyState')
+              ? json_['httpsLatencyState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (httpsLatencyRoutineData != null)
+          'httpsLatencyRoutineData': httpsLatencyRoutineData!,
+        if (httpsLatencyState != null) 'httpsLatencyState': httpsLatencyState!,
+      };
+}
+
+/// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+/// connection state changes.
+class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent {
+  /// Current connection state of the network.
+  /// Possible string values are:
+  /// - "NETWORK_CONNECTION_STATE_UNSPECIFIED" : Network connection state
+  /// unspecified.
+  /// - "ONLINE" : The network is connected and internet connectivity is
+  /// available.
+  /// - "CONNECTED" : The network is connected and not in a detected portal
+  /// state, but internet connectivity may not be available.
+  /// - "PORTAL" : The network is connected but a portal state was detected.
+  /// Internet connectivity may be limited.
+  /// - "CONNECTING" : The network is in the process of connecting.
+  /// - "NOT_CONNECTED" : The network is not connected.
+  core.String? connectionState;
+
+  /// Unique identifier of the network.
+  core.String? guid;
+
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent({
+    this.connectionState,
+    this.guid,
+  });
+
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent.fromJson(
+      core.Map json_)
+      : this(
+          connectionState: json_.containsKey('connectionState')
+              ? json_['connectionState'] as core.String
+              : null,
+          guid: json_.containsKey('guid') ? json_['guid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionState != null) 'connectionState': connectionState!,
+        if (guid != null) 'guid': guid!,
+      };
+}
+
+/// Information about a user associated with telemetry data.
+class GoogleChromeManagementV1TelemetryUserInfo {
+  /// User's email.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// Organization unit ID of the user.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  GoogleChromeManagementV1TelemetryUserInfo({
+    this.email,
+    this.orgUnitId,
+  });
+
+  GoogleChromeManagementV1TelemetryUserInfo.fromJson(core.Map json_)
+      : this(
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
       };
 }
 

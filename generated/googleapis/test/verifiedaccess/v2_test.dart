@@ -100,10 +100,12 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
   final o = api.VerifyChallengeResponseResult();
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
+    o.customerId = 'foo';
     o.devicePermanentId = 'foo';
     o.deviceSignal = 'foo';
     o.keyTrustLevel = 'foo';
     o.signedPublicKeyAndChallenge = 'foo';
+    o.virtualDeviceId = 'foo';
   }
   buildCounterVerifyChallengeResponseResult--;
   return o;
@@ -112,6 +114,10 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
 void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
+    unittest.expect(
+      o.customerId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.devicePermanentId!,
       unittest.equals('foo'),
@@ -126,6 +132,10 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
     );
     unittest.expect(
       o.signedPublicKeyAndChallenge!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.virtualDeviceId!,
       unittest.equals('foo'),
     );
   }

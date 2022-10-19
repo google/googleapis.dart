@@ -1389,12 +1389,18 @@ class Endpoint {
   /// Optional.
   core.int? port;
 
+  /// The globally unique identifier of the endpoint in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Endpoint({
     this.address,
     this.annotations,
     this.name,
     this.network,
     this.port,
+    this.uid,
   });
 
   Endpoint.fromJson(core.Map json_)
@@ -1416,6 +1422,7 @@ class Endpoint {
               ? json_['network'] as core.String
               : null,
           port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1424,6 +1431,7 @@ class Endpoint {
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (port != null) 'port': port!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1626,9 +1634,15 @@ class Namespace {
   /// Immutable.
   core.String? name;
 
+  /// The globally unique identifier of the namespace in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Namespace({
     this.labels,
     this.name,
+    this.uid,
   });
 
   Namespace.fromJson(core.Map json_)
@@ -1642,11 +1656,13 @@ class Namespace {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1880,10 +1896,16 @@ class Service {
   /// Immutable.
   core.String? name;
 
+  /// The globally unique identifier of the service in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Service({
     this.annotations,
     this.endpoints,
     this.name,
+    this.uid,
   });
 
   Service.fromJson(core.Map json_)
@@ -1904,12 +1926,14 @@ class Service {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (endpoints != null) 'endpoints': endpoints!,
         if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
       };
 }
 

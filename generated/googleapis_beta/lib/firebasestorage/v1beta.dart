@@ -251,41 +251,20 @@ typedef AddFirebaseRequest = $Empty;
 
 /// A storage bucket and its relation to a parent Firebase project.
 class Bucket {
-  /// Location of the storage bucket.
-  ///
-  /// Output only.
-  core.String? location;
-
   /// Resource name of the bucket.
   core.String? name;
 
-  /// Represents whether a bucket is being moved to a new location, in which
-  /// case reconciling is set to true.
-  ///
-  /// Output only.
-  core.bool? reconciling;
-
   Bucket({
-    this.location,
     this.name,
-    this.reconciling,
   });
 
   Bucket.fromJson(core.Map json_)
       : this(
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
       };
 }
 

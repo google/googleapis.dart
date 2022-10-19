@@ -169,6 +169,7 @@ api.Case buildCase() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.escalated = true;
+    o.languageCode = 'foo';
     o.name = 'foo';
     o.priority = 'foo';
     o.severity = 'foo';
@@ -200,6 +201,10 @@ void checkCase(api.Case o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.escalated!, unittest.isTrue);
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

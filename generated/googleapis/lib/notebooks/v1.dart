@@ -620,6 +620,48 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a Diagnostic File and runs Diagnostic Tool given an Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> diagnose(
+    DiagnoseInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':diagnose';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Instance.
   ///
   /// Request parameters:
@@ -1836,6 +1878,48 @@ class ProjectsLocationsRuntimesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtimes_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> diagnose(
+    DiagnoseRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':diagnose';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Runtime.
   ///
   /// The location must be a regional endpoint rather than zonal.
@@ -2399,6 +2483,48 @@ class ProjectsLocationsRuntimesResource {
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Upgrades a Managed Notebook Runtime to the latest version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+    UpgradeRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':upgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsSchedulesResource {
@@ -2815,6 +2941,133 @@ class DataprocParameters {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
+      };
+}
+
+/// Request for creating a notebook instance diagnostic file.
+class DiagnoseInstanceRequest {
+  /// Defines flags that are used to run the diagnostic tool
+  ///
+  /// Required.
+  DiagnosticConfig? diagnosticConfig;
+
+  DiagnoseInstanceRequest({
+    this.diagnosticConfig,
+  });
+
+  DiagnoseInstanceRequest.fromJson(core.Map json_)
+      : this(
+          diagnosticConfig: json_.containsKey('diagnosticConfig')
+              ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+      };
+}
+
+/// Request for creating a notebook instance diagnostic file.
+class DiagnoseRuntimeRequest {
+  /// Defines flags that are used to run the diagnostic tool
+  ///
+  /// Required.
+  DiagnosticConfig? diagnosticConfig;
+
+  DiagnoseRuntimeRequest({
+    this.diagnosticConfig,
+  });
+
+  DiagnoseRuntimeRequest.fromJson(core.Map json_)
+      : this(
+          diagnosticConfig: json_.containsKey('diagnosticConfig')
+              ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+      };
+}
+
+/// Defines flags that are used to run the diagnostic tool
+class DiagnosticConfig {
+  /// Enables flag to copy all `/home/jupyter` folder contents
+  ///
+  /// Optional.
+  core.bool? copyHomeFilesFlagEnabled;
+
+  /// User Cloud Storage bucket location (REQUIRED) ## Must be formatted with
+  /// path prefix (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: -
+  /// storage.buckets.writer: Must be given to the project's service account
+  /// attached to VM.
+  ///
+  /// Google Managed Notebooks: - storage.buckets.writer: Must be given to the
+  /// project's service account or ## user credentials attached to VM depending
+  /// on authentication mode. Cloud Storage bucket Log file will be written to
+  /// gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+  ///
+  /// Required.
+  core.String? gcsBucket;
+
+  /// Enables flag to capture packets from the instance for 30 seconds
+  ///
+  /// Optional.
+  core.bool? packetCaptureFlagEnabled;
+
+  /// Defines the relative storage path in the Cloud Storage bucket where the
+  /// diagnostic logs will be written: Default path will be the root directory
+  /// of the Cloud Storage bucket (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example
+  /// of full path where Log file will be written:
+  /// gs://$GCS_BUCKET/$RELATIVE_PATH/
+  ///
+  /// Optional.
+  core.String? relativePath;
+
+  /// Enables flag to repair service for instance
+  ///
+  /// Optional.
+  core.bool? repairFlagEnabled;
+
+  DiagnosticConfig({
+    this.copyHomeFilesFlagEnabled,
+    this.gcsBucket,
+    this.packetCaptureFlagEnabled,
+    this.relativePath,
+    this.repairFlagEnabled,
+  });
+
+  DiagnosticConfig.fromJson(core.Map json_)
+      : this(
+          copyHomeFilesFlagEnabled:
+              json_.containsKey('copyHomeFilesFlagEnabled')
+                  ? json_['copyHomeFilesFlagEnabled'] as core.bool
+                  : null,
+          gcsBucket: json_.containsKey('gcsBucket')
+              ? json_['gcsBucket'] as core.String
+              : null,
+          packetCaptureFlagEnabled:
+              json_.containsKey('packetCaptureFlagEnabled')
+                  ? json_['packetCaptureFlagEnabled'] as core.bool
+                  : null,
+          relativePath: json_.containsKey('relativePath')
+              ? json_['relativePath'] as core.String
+              : null,
+          repairFlagEnabled: json_.containsKey('repairFlagEnabled')
+              ? json_['repairFlagEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copyHomeFilesFlagEnabled != null)
+          'copyHomeFilesFlagEnabled': copyHomeFilesFlagEnabled!,
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (packetCaptureFlagEnabled != null)
+          'packetCaptureFlagEnabled': packetCaptureFlagEnabled!,
+        if (relativePath != null) 'relativePath': relativePath!,
+        if (repairFlagEnabled != null) 'repairFlagEnabled': repairFlagEnabled!,
       };
 }
 
@@ -5216,8 +5469,7 @@ class RuntimeAcceleratorConfig {
   /// Accelerator model.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Accelerator type is not specified.
-  /// - "NVIDIA_TESLA_K80" : b/241005111 K80 deprecation in Google Managed
-  /// Notebooks Accelerator type is Nvidia Tesla K80.
+  /// - "NVIDIA_TESLA_K80" : Accelerator type is Nvidia Tesla K80.
   /// - "NVIDIA_TESLA_P100" : Accelerator type is Nvidia Tesla P100.
   /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
@@ -6161,6 +6413,12 @@ class UpgradeInstanceRequest {
         if (type != null) 'type': type!,
       };
 }
+
+/// Request for upgrading a Managed Notebook Runtime to the latest version.
+///
+/// option (google.api.message_visibility).restriction =
+/// "TRUSTED_TESTER,SPECIAL_TESTER";
+typedef UpgradeRuntimeRequest = $RuntimeRequest;
 
 /// Parameters used in Vertex AI JobType executions.
 class VertexAIParameters {

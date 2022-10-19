@@ -449,62 +449,16 @@ class $Date {
 
 /// Used by:
 ///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy
-/// - analyticsdata:v1beta : DimensionOrderBy
-class $DimensionOrderBy {
-  /// A dimension name in the request to order by.
-  core.String? dimensionName;
-
-  /// Controls the rule for dimension value ordering.
-  /// Possible string values are:
-  /// - "ORDER_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "ALPHANUMERIC" : Alphanumeric sort by Unicode code point. For example,
-  /// "2" \< "A" \< "X" \< "b" \< "z".
-  /// - "CASE_INSENSITIVE_ALPHANUMERIC" : Case insensitive alphanumeric sort by
-  /// lower case Unicode code point. For example, "2" \< "A" \< "b" \< "X" \<
-  /// "z".
-  /// - "NUMERIC" : Dimension values are converted to numbers before sorting.
-  /// For example in NUMERIC sort, "25" \< "100", and in `ALPHANUMERIC` sort,
-  /// "100" \< "25". Non-numeric dimension values all have equal ordering value
-  /// below all numeric values.
-  core.String? orderType;
-
-  $DimensionOrderBy({
-    this.dimensionName,
-    this.orderType,
-  });
-
-  $DimensionOrderBy.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
-          orderType: json_.containsKey('orderType')
-              ? json_['orderType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (orderType != null) 'orderType': orderType!,
-      };
-}
-
-/// Used by:
-///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
 /// - adexchangebuyer2:v2beta1 : Empty
 /// - adexchangebuyer2:v2beta1 : ResumeProposalRequest
 /// - adexchangebuyer2:v2beta1 : StopWatchingCreativeRequest
 /// - alertcenter:v1beta1 : Empty
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveAudienceRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
-/// - analyticsadmin:v1alpha : GoogleProtobufEmpty
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest
+/// - analyticsadmin:v1beta : GoogleProtobufEmpty
 /// - area120tables:v1alpha1 : Empty
 /// - bigqueryconnection:v1beta1 : Empty
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
@@ -575,10 +529,18 @@ class $DimensionOrderBy {
 /// - toolresults:v1beta3 : IosRoboTest
 /// - toolresults:v1beta3 : MatrixDimensionDefinition
 /// - toolresults:v1beta3 : StepSummary
+/// - tpu:v2alpha1 : AcceptedData
+/// - tpu:v2alpha1 : ActiveData
+/// - tpu:v2alpha1 : BestEffort
+/// - tpu:v2alpha1 : CreatingData
+/// - tpu:v2alpha1 : DeletingData
 /// - tpu:v2alpha1 : Empty
 /// - tpu:v2alpha1 : GenerateServiceIdentityRequest
+/// - tpu:v2alpha1 : ProvisioningData
 /// - tpu:v2alpha1 : StartNodeRequest
 /// - tpu:v2alpha1 : StopNodeRequest
+/// - tpu:v2alpha1 : SuspendedData
+/// - tpu:v2alpha1 : SuspendingData
 class $Empty {
   $Empty();
 
@@ -861,42 +823,6 @@ class $GitSourceContext {
 
 /// Used by:
 ///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessInListFilter
-/// - analyticsdata:v1beta : InListFilter
-class $InListFilter {
-  /// If true, the string value is case sensitive.
-  core.bool? caseSensitive;
-
-  /// The list of string values.
-  ///
-  /// Must be non-empty.
-  core.List<core.String>? values;
-
-  $InListFilter({
-    this.caseSensitive,
-    this.values,
-  });
-
-  $InListFilter.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (values != null) 'values': values!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1beta1 : License
 /// - ondemandscanning:v1beta1 : License
 class $License {
@@ -1045,30 +971,6 @@ class $Material {
 
 /// Used by:
 ///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy
-/// - analyticsdata:v1beta : MetricOrderBy
-class $MetricOrderBy {
-  /// A metric name in the request to order by.
-  core.String? metricName;
-
-  $MetricOrderBy({
-    this.metricName,
-  });
-
-  $MetricOrderBy.fromJson(core.Map json_)
-      : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
-}
-
-/// Used by:
-///
 /// - adexchangebuyer2:v2beta1 : Money
 /// - documentai:v1beta3 : GoogleTypeMoney
 /// - domains:v1beta1 : Money
@@ -1110,38 +1012,6 @@ class $Money {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaNumericValue
-/// - analyticsdata:v1beta : NumericValue
-class $NumericValue {
-  /// Double value
-  core.double? doubleValue;
-
-  /// Integer value
-  core.String? int64Value;
-
-  $NumericValue({
-    this.doubleValue,
-    this.int64Value,
-  });
-
-  $NumericValue.fromJson(core.Map json_)
-      : this(
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
-          int64Value: json_.containsKey('int64Value')
-              ? json_['int64Value'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
       };
 }
 
@@ -1361,38 +1231,6 @@ class $ProjectRepoId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
         if (repoName != null) 'repoName': repoName!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessQuotaStatus
-/// - analyticsdata:v1beta : QuotaStatus
-class $QuotaStatus {
-  /// Quota consumed by this request.
-  core.int? consumed;
-
-  /// Quota remaining after this request.
-  core.int? remaining;
-
-  $QuotaStatus({
-    this.consumed,
-    this.remaining,
-  });
-
-  $QuotaStatus.fromJson(core.Map json_)
-      : this(
-          consumed: json_.containsKey('consumed')
-              ? json_['consumed'] as core.int
-              : null,
-          remaining: json_.containsKey('remaining')
-              ? json_['remaining'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (consumed != null) 'consumed': consumed!,
-        if (remaining != null) 'remaining': remaining!,
       };
 }
 
@@ -2640,55 +2478,6 @@ class $Status {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessStringFilter
-/// - analyticsdata:v1beta : StringFilter
-class $StringFilter {
-  /// If true, the string value is case sensitive.
-  core.bool? caseSensitive;
-
-  /// The match type for this filter.
-  /// Possible string values are:
-  /// - "MATCH_TYPE_UNSPECIFIED" : Unspecified
-  /// - "EXACT" : Exact match of the string value.
-  /// - "BEGINS_WITH" : Begins with the string value.
-  /// - "ENDS_WITH" : Ends with the string value.
-  /// - "CONTAINS" : Contains the string value.
-  /// - "FULL_REGEXP" : Full match for the regular expression with the string
-  /// value.
-  /// - "PARTIAL_REGEXP" : Partial match for the regular expression with the
-  /// string value.
-  core.String? matchType;
-
-  /// The string value used for the matching.
-  core.String? value;
-
-  $StringFilter({
-    this.caseSensitive,
-    this.matchType,
-    this.value,
-  });
-
-  $StringFilter.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (matchType != null) 'matchType': matchType!,
-        if (value != null) 'value': value!,
       };
 }
 

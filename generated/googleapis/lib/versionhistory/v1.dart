@@ -554,6 +554,7 @@ class Platform {
   /// - "LACROS_ARM32"
   /// - "CHROMEOS"
   /// - "LACROS_ARM64"
+  /// - "FUCHSIA"
   core.String? platformType;
 
   Platform({

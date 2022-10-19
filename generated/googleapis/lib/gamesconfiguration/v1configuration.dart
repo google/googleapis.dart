@@ -22,7 +22,6 @@
 /// Create an instance of [GamesConfigurationApi] to access these resources:
 ///
 /// - [AchievementConfigurationsResource]
-/// - [ImageConfigurationsResource]
 /// - [LeaderboardConfigurationsResource]
 library gamesConfiguration.v1configuration;
 
@@ -36,15 +35,7 @@ import 'package:http/http.dart' as http;
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show
-        ApiRequestError,
-        DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
-        DownloadOptions,
-        PartialDownloadOptions,
-        ByteRange;
+    show ApiRequestError, DetailedApiRequestError;
 
 /// The Google Play Game Services Publishing API allows developers to configure
 /// their games in Game Services.
@@ -57,8 +48,6 @@ class GamesConfigurationApi {
 
   AchievementConfigurationsResource get achievementConfigurations =>
       AchievementConfigurationsResource(_requester);
-  ImageConfigurationsResource get imageConfigurations =>
-      ImageConfigurationsResource(_requester);
   LeaderboardConfigurationsResource get leaderboardConfigurations =>
       LeaderboardConfigurationsResource(_requester);
 
@@ -273,71 +262,6 @@ class AchievementConfigurationsResource {
       queryParams: queryParams_,
     );
     return AchievementConfiguration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ImageConfigurationsResource {
-  final commons.ApiRequester _requester;
-
-  ImageConfigurationsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Uploads an image for a resource with the given ID and image type.
-  ///
-  /// Request parameters:
-  ///
-  /// [resourceId] - The ID of the resource used by this method.
-  ///
-  /// [imageType] - Selects which image in a resource for this method.
-  /// Possible string values are:
-  /// - "IMAGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
-  /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [uploadMedia] - The media to upload.
-  ///
-  /// Completes with a [ImageConfiguration].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ImageConfiguration> upload(
-    core.String resourceId,
-    core.String imageType, {
-    core.String? $fields,
-    commons.Media? uploadMedia,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    core.String url_;
-    if (uploadMedia == null) {
-      url_ = 'games/v1configuration/images/' +
-          commons.escapeVariable('$resourceId') +
-          '/imageType/' +
-          commons.escapeVariable('$imageType');
-    } else {
-      url_ = '/upload/games/v1configuration/images/' +
-          commons.escapeVariable('$resourceId') +
-          '/imageType/' +
-          commons.escapeVariable('$imageType');
-    }
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-      uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.defaultOptions,
-    );
-    return ImageConfiguration.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -878,53 +802,6 @@ class GamesNumberFormatConfiguration {
         if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces!,
         if (numberFormatType != null) 'numberFormatType': numberFormatType!,
         if (suffix != null) 'suffix': suffix!,
-      };
-}
-
-/// An image configuration resource.
-class ImageConfiguration {
-  /// The image type for the image.
-  /// Possible string values are:
-  /// - "IMAGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
-  /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
-  core.String? imageType;
-
-  /// Uniquely identifies the type of this resource.
-  ///
-  /// Value is always the fixed string `gamesConfiguration#imageConfiguration`.
-  core.String? kind;
-
-  /// The resource ID of resource which the image belongs to.
-  core.String? resourceId;
-
-  /// The url for this image.
-  core.String? url;
-
-  ImageConfiguration({
-    this.imageType,
-    this.kind,
-    this.resourceId,
-    this.url,
-  });
-
-  ImageConfiguration.fromJson(core.Map json_)
-      : this(
-          imageType: json_.containsKey('imageType')
-              ? json_['imageType'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          resourceId: json_.containsKey('resourceId')
-              ? json_['resourceId'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageType != null) 'imageType': imageType!,
-        if (kind != null) 'kind': kind!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (url != null) 'url': url!,
       };
 }
 

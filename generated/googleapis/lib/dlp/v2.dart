@@ -5797,8 +5797,10 @@ class GooglePrivacyDlpV2Action {
   /// Create a de-identified copy of the input data.
   GooglePrivacyDlpV2Deidentify? deidentify;
 
-  /// Enable email notification for project owners and editors on job's
-  /// completion/failure.
+  /// Sends an email when the job completes.
+  ///
+  /// The email goes to IAM project owners and technical
+  /// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
   GooglePrivacyDlpV2JobNotificationEmails? jobNotificationEmails;
 
   /// Publish a notification to a Pub/Sub topic.
@@ -7108,7 +7110,6 @@ class GooglePrivacyDlpV2Container {
       };
 }
 
-/// Container structure for the content to inspect.
 class GooglePrivacyDlpV2ContentItem {
   /// Content data to inspect or redact.
   ///
@@ -8251,7 +8252,8 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
 
   /// The item to de-identify.
   ///
-  /// Will be treated as text.
+  /// Will be treated as text. This value must be of type Table if your
+  /// deidentify_config is a RecordTransformations object.
   GooglePrivacyDlpV2ContentItem? item;
 
   /// This field has no effect.
@@ -8889,6 +8891,45 @@ class GooglePrivacyDlpV2Error {
       };
 }
 
+/// The rule to exclude findings based on a hotword.
+///
+/// For record inspection of tables, column names are considered hotwords. An
+/// example of this is to exclude a finding if it belongs to a BigQuery column
+/// that matches a specific pattern.
+class GooglePrivacyDlpV2ExcludeByHotword {
+  /// Regular expression pattern defining what qualifies as a hotword.
+  GooglePrivacyDlpV2Regex? hotwordRegex;
+
+  /// Range of characters within which the entire hotword must reside.
+  ///
+  /// The total length of the window cannot exceed 1000 characters. The
+  /// windowBefore property in proximity should be set to 1 if the hotword needs
+  /// to be included in a column header.
+  GooglePrivacyDlpV2Proximity? proximity;
+
+  GooglePrivacyDlpV2ExcludeByHotword({
+    this.hotwordRegex,
+    this.proximity,
+  });
+
+  GooglePrivacyDlpV2ExcludeByHotword.fromJson(core.Map json_)
+      : this(
+          hotwordRegex: json_.containsKey('hotwordRegex')
+              ? GooglePrivacyDlpV2Regex.fromJson(
+                  json_['hotwordRegex'] as core.Map<core.String, core.dynamic>)
+              : null,
+          proximity: json_.containsKey('proximity')
+              ? GooglePrivacyDlpV2Proximity.fromJson(
+                  json_['proximity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hotwordRegex != null) 'hotwordRegex': hotwordRegex!,
+        if (proximity != null) 'proximity': proximity!,
+      };
+}
+
 /// List of excluded infoTypes.
 class GooglePrivacyDlpV2ExcludeInfoTypes {
   /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
@@ -8927,6 +8968,11 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// Dictionary which defines the rule.
   GooglePrivacyDlpV2Dictionary? dictionary;
 
+  /// Drop if the hotword rule is contained in the proximate context.
+  ///
+  /// For tabular data, the context includes the column name.
+  GooglePrivacyDlpV2ExcludeByHotword? excludeByHotword;
+
   /// Set of infoTypes for which findings would affect this rule.
   GooglePrivacyDlpV2ExcludeInfoTypes? excludeInfoTypes;
 
@@ -8951,6 +8997,7 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   GooglePrivacyDlpV2ExclusionRule({
     this.dictionary,
+    this.excludeByHotword,
     this.excludeInfoTypes,
     this.matchingType,
     this.regex,
@@ -8961,6 +9008,11 @@ class GooglePrivacyDlpV2ExclusionRule {
           dictionary: json_.containsKey('dictionary')
               ? GooglePrivacyDlpV2Dictionary.fromJson(
                   json_['dictionary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          excludeByHotword: json_.containsKey('excludeByHotword')
+              ? GooglePrivacyDlpV2ExcludeByHotword.fromJson(
+                  json_['excludeByHotword']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           excludeInfoTypes: json_.containsKey('excludeInfoTypes')
               ? GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
@@ -8978,6 +9030,7 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dictionary != null) 'dictionary': dictionary!,
+        if (excludeByHotword != null) 'excludeByHotword': excludeByHotword!,
         if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
         if (matchingType != null) 'matchingType': matchingType!,
         if (regex != null) 'regex': regex!,
@@ -9914,7 +9967,7 @@ class GooglePrivacyDlpV2InfoType {
   /// the names listed at https://cloud.google.com/dlp/docs/infotypes-reference
   /// when specifying a built-in type. When sending Cloud DLP results to Data
   /// Catalog, infoType names should conform to the pattern
-  /// `[A-Za-z0-9$-_]{1,64}`.
+  /// `[A-Za-z0-9$_-]{1,64}`.
   core.String? name;
 
   /// Optional version name for this InfoType.
@@ -9996,6 +10049,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "URUGUAY" : The infoType is typically used in Uruguay.
   /// - "VENEZUELA" : The infoType is typically used in Venezuela.
   /// - "INTERNAL" : The infoType is typically used in Google internally.
+  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   core.String? locationCategory;
 
   /// The class of identifiers where this infoType belongs
@@ -10059,6 +10113,9 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// Internal name of the infoType.
   core.String? name;
 
+  /// The default sensitivity of the infoType.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
   /// Which parts of the API supports this InfoType.
   core.List<core.String>? supportedBy;
 
@@ -10070,6 +10127,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.description,
     this.displayName,
     this.name,
+    this.sensitivityScore,
     this.supportedBy,
     this.versions,
   });
@@ -10089,6 +10147,11 @@ class GooglePrivacyDlpV2InfoTypeDescription {
               ? json_['displayName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           supportedBy: json_.containsKey('supportedBy')
               ? (json_['supportedBy'] as core.List)
                   .map((value) => value as core.String)
@@ -10107,6 +10170,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (supportedBy != null) 'supportedBy': supportedBy!,
         if (versions != null) 'versions': versions!,
       };
@@ -13381,6 +13445,37 @@ class GooglePrivacyDlpV2SelectedInfoTypes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null) 'infoTypes': infoTypes!,
+      };
+}
+
+/// Score is a summary of all elements in the data profile.
+///
+/// A higher number means more sensitive.
+class GooglePrivacyDlpV2SensitivityScore {
+  /// The score applied to the resource.
+  /// Possible string values are:
+  /// - "SENSITIVITY_SCORE_UNSPECIFIED" : Unused.
+  /// - "SENSITIVITY_LOW" : No sensitive information detected. Limited access.
+  /// - "SENSITIVITY_MODERATE" : Medium risk - PII, potentially sensitive data,
+  /// or fields with free-text data that are at higher risk of having
+  /// intermittent sensitive data. Consider limiting access.
+  /// - "SENSITIVITY_HIGH" : High risk – SPII may be present. Exfiltration of
+  /// data may lead to user data loss. Re-identification of users may be
+  /// possible. Consider limiting usage and or removing SPII.
+  core.String? score;
+
+  GooglePrivacyDlpV2SensitivityScore({
+    this.score,
+  });
+
+  GooglePrivacyDlpV2SensitivityScore.fromJson(core.Map json_)
+      : this(
+          score:
+              json_.containsKey('score') ? json_['score'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (score != null) 'score': score!,
       };
 }
 

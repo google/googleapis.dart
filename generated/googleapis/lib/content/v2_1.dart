@@ -49,6 +49,7 @@
 ///   - [ProductstatusesRepricingreportsResource]
 /// - [PromotionsResource]
 /// - [PubsubnotificationsettingsResource]
+/// - [QuotasResource]
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
 /// - [ReportsResource]
@@ -117,6 +118,7 @@ class ShoppingContentApi {
   PromotionsResource get promotions => PromotionsResource(_requester);
   PubsubnotificationsettingsResource get pubsubnotificationsettings =>
       PubsubnotificationsettingsResource(_requester);
+  QuotasResource get quotas => QuotasResource(_requester);
   RegionalinventoryResource get regionalinventory =>
       RegionalinventoryResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
@@ -2572,13 +2574,19 @@ class DatafeedstatusesResource {
   ///
   /// [datafeedId] - The ID of the datafeed.
   ///
-  /// [country] - The country for which to get the datafeed status. If this
-  /// parameter is provided then language must also be provided. Note that this
-  /// parameter is required for feeds targeting multiple countries and
+  /// [country] - Deprecated. Use `feedLabel` instead. The country to get the
+  /// datafeed status for. If this parameter is provided then `language` must
+  /// also be provided. Note that this parameter is required for feeds targeting
+  /// multiple countries and languages, since a feed may have a different status
+  /// for each target.
+  ///
+  /// [feedLabel] - The feed label to get the datafeed status for. If this
+  /// parameter is provided then `language` must also be provided. Note that
+  /// this parameter is required for feeds targeting multiple countries and
   /// languages, since a feed may have a different status for each target.
   ///
-  /// [language] - The language for which to get the datafeed status. If this
-  /// parameter is provided then country must also be provided. Note that this
+  /// [language] - The language to get the datafeed status for. If this
+  /// parameter is provided then `country` must also be provided. Note that this
   /// parameter is required for feeds targeting multiple countries and
   /// languages, since a feed may have a different status for each target.
   ///
@@ -2596,11 +2604,13 @@ class DatafeedstatusesResource {
     core.String merchantId,
     core.String datafeedId, {
     core.String? country,
+    core.String? feedLabel,
     core.String? language,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
+      if (feedLabel != null) 'feedLabel': [feedLabel],
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2671,6 +2681,10 @@ class FreelistingsprogramResource {
       : _requester = client;
 
   /// Retrieves the status and review eligibility for the free listing program.
+  ///
+  /// Returns errors and warnings if they require action to resolve, will become
+  /// disapprovals, or impact impressions. Use `accountstatuses` to view all
+  /// issues for an account.
   ///
   /// Request parameters:
   ///
@@ -5730,9 +5744,10 @@ class ProductsResource {
   /// [updateMask] - The comma-separated list of product attributes to be
   /// updated. Example: `"title,salePrice"`. Attributes specified in the update
   /// mask without a value specified in the body will be deleted from the
-  /// product. Only top-level product attributes can be updated. If not defined,
-  /// product attributes with set values will be updated and other attributes
-  /// will stay unchanged.
+  /// product. *You must specify the update mask to delete attributes.* Only
+  /// top-level product attributes can be updated. If not defined, product
+  /// attributes with set values will be updated and other attributes will stay
+  /// unchanged.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6002,7 +6017,10 @@ class PromotionsResource {
 
   /// Inserts a promotion for your Merchant Center account.
   ///
-  /// If the promotion already exists, then it updates the promotion instead.
+  /// If the promotion already exists, then it updates the promotion instead. To
+  /// [end or delete](https://developers.google.com/shopping-content/guides/promotions#end_a_promotion)
+  /// a promotion update the time period of the promotion to a time that has
+  /// already passed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6166,6 +6184,60 @@ class PubsubnotificationsettingsResource {
       queryParams: queryParams_,
     );
     return PubsubNotificationSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class QuotasResource {
+  final commons.ApiRequester _requester;
+
+  QuotasResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the daily call quota and usage per method for your Merchant Center
+  /// account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that has quota. This
+  /// account must be an admin.
+  ///
+  /// [pageSize] - The maximum number of quotas to return in the response, used
+  /// for paging. Defaults to 500; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
+  /// other parameters must match the original call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMethodQuotasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMethodQuotasResponse> list(
+    core.String merchantId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') + '/quotas';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMethodQuotasResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7940,6 +8012,10 @@ class ShoppingadsprogramResource {
   ShoppingadsprogramResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the status and review eligibility for the Shopping Ads program.
+  ///
+  /// Returns errors and warnings if they require action to resolve, will become
+  /// disapprovals, or impact impressions. Use `accountstatuses` to view all
+  /// issues for an account.
   ///
   /// Request parameters:
   ///
@@ -10550,6 +10626,170 @@ class Amount {
       };
 }
 
+/// Fields related to the
+/// [Best Sellers reports](https://support.google.com/merchants/answer/9488679).
+class BestSellers {
+  /// Google product category ID to calculate the ranking for, represented in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  ///
+  /// If a `WHERE` condition on `best_sellers.category_id` is not specified in
+  /// the query, rankings for all top-level categories are returned.
+  core.String? categoryId;
+
+  /// Country where the ranking is calculated.
+  ///
+  /// A `WHERE` condition on `best_sellers.country_code` is required in the
+  /// query.
+  core.String? countryCode;
+
+  /// Popularity rank in the previous week or month.
+  core.String? previousRank;
+
+  /// Estimated demand in relation to the item with the highest popularity rank
+  /// in the same category and country in the previous week or month.
+  /// Possible string values are:
+  /// - "RELATIVE_DEMAND_UNSPECIFIED" : Relative demand is unknown.
+  /// - "VERY_LOW" : Demand is 0-5% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "LOW" : Demand is 6-10% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "MEDIUM" : Demand is 11-20% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "HIGH" : Demand is 21-50% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "VERY_HIGH" : Demand is 51-100% of the demand of the highest ranked
+  /// product clusters or brands.
+  core.String? previousRelativeDemand;
+
+  /// Popularity on Shopping ads and free listings, in the selected category and
+  /// country, based on the estimated number of units sold.
+  core.String? rank;
+
+  /// Estimated demand in relation to the item with the highest popularity rank
+  /// in the same category and country.
+  /// Possible string values are:
+  /// - "RELATIVE_DEMAND_UNSPECIFIED" : Relative demand is unknown.
+  /// - "VERY_LOW" : Demand is 0-5% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "LOW" : Demand is 6-10% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "MEDIUM" : Demand is 11-20% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "HIGH" : Demand is 21-50% of the demand of the highest ranked product
+  /// clusters or brands.
+  /// - "VERY_HIGH" : Demand is 51-100% of the demand of the highest ranked
+  /// product clusters or brands.
+  core.String? relativeDemand;
+
+  /// Change in the estimated demand.
+  ///
+  /// Whether it rose, sank or remained flat.
+  /// Possible string values are:
+  /// - "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED" : Relative demand change is
+  /// unknown.
+  /// - "SINKER" : Relative demand is lower than previous time period.
+  /// - "FLAT" : Relative demand is equal to previous time period.
+  /// - "RISER" : Relative demand is higher than the previous time period.
+  core.String? relativeDemandChange;
+
+  /// Report date.
+  ///
+  /// The value of this field can only be one of the following: * The first day
+  /// of the week (Monday) for weekly reports. * The first day of the month for
+  /// monthly reports. If a `WHERE` condition on `best_sellers.report_date` is
+  /// not specified in the query, the latest available weekly or monthly report
+  /// is returned.
+  Date? reportDate;
+
+  /// Granularity of the report.
+  ///
+  /// The ranking can be done over a week or a month timeframe. A `WHERE`
+  /// condition on `best_sellers.report_granularity` is required in the query.
+  /// Possible string values are:
+  /// - "REPORT_GRANULARITY_UNSPECIFIED" : Report granularity is unknown.
+  /// - "WEEKLY" : Ranking is done over a week timeframe.
+  /// - "MONTHLY" : Ranking is done over a month timeframe.
+  core.String? reportGranularity;
+
+  BestSellers({
+    this.categoryId,
+    this.countryCode,
+    this.previousRank,
+    this.previousRelativeDemand,
+    this.rank,
+    this.relativeDemand,
+    this.relativeDemandChange,
+    this.reportDate,
+    this.reportGranularity,
+  });
+
+  BestSellers.fromJson(core.Map json_)
+      : this(
+          categoryId: json_.containsKey('categoryId')
+              ? json_['categoryId'] as core.String
+              : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          previousRank: json_.containsKey('previousRank')
+              ? json_['previousRank'] as core.String
+              : null,
+          previousRelativeDemand: json_.containsKey('previousRelativeDemand')
+              ? json_['previousRelativeDemand'] as core.String
+              : null,
+          rank: json_.containsKey('rank') ? json_['rank'] as core.String : null,
+          relativeDemand: json_.containsKey('relativeDemand')
+              ? json_['relativeDemand'] as core.String
+              : null,
+          relativeDemandChange: json_.containsKey('relativeDemandChange')
+              ? json_['relativeDemandChange'] as core.String
+              : null,
+          reportDate: json_.containsKey('reportDate')
+              ? Date.fromJson(
+                  json_['reportDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reportGranularity: json_.containsKey('reportGranularity')
+              ? json_['reportGranularity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (previousRank != null) 'previousRank': previousRank!,
+        if (previousRelativeDemand != null)
+          'previousRelativeDemand': previousRelativeDemand!,
+        if (rank != null) 'rank': rank!,
+        if (relativeDemand != null) 'relativeDemand': relativeDemand!,
+        if (relativeDemandChange != null)
+          'relativeDemandChange': relativeDemandChange!,
+        if (reportDate != null) 'reportDate': reportDate!,
+        if (reportGranularity != null) 'reportGranularity': reportGranularity!,
+      };
+}
+
+/// Brand fields.
+///
+/// Values are only set for fields requested explicitly in the request's search
+/// query.
+class Brand {
+  /// Name of the brand.
+  core.String? name;
+
+  Brand({
+    this.name,
+  });
+
+  Brand.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 class BusinessDayConfig {
   /// Regular business days, such as '"monday"'.
   ///
@@ -11756,6 +11996,9 @@ class DatafeedStatus {
   /// The list of errors occurring in the feed.
   core.List<DatafeedStatusError>? errors;
 
+  /// The feed label status is reported for.
+  core.String? feedLabel;
+
   /// The number of items in the feed that were processed.
   core.String? itemsTotal;
 
@@ -11790,6 +12033,7 @@ class DatafeedStatus {
     this.country,
     this.datafeedId,
     this.errors,
+    this.feedLabel,
     this.itemsTotal,
     this.itemsValid,
     this.kind,
@@ -11812,6 +12056,9 @@ class DatafeedStatus {
                   .map((value) => DatafeedStatusError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          feedLabel: json_.containsKey('feedLabel')
+              ? json_['feedLabel'] as core.String
               : null,
           itemsTotal: json_.containsKey('itemsTotal')
               ? json_['itemsTotal'] as core.String
@@ -11841,6 +12088,7 @@ class DatafeedStatus {
         if (country != null) 'country': country!,
         if (datafeedId != null) 'datafeedId': datafeedId!,
         if (errors != null) 'errors': errors!,
+        if (feedLabel != null) 'feedLabel': feedLabel!,
         if (itemsTotal != null) 'itemsTotal': itemsTotal!,
         if (itemsValid != null) 'itemsValid': itemsValid!,
         if (kind != null) 'kind': kind!,
@@ -11933,13 +12181,26 @@ class DatafeedStatusExample {
 }
 
 class DatafeedTarget {
+  /// Use `feedLabel` instead.
+  ///
   /// The country where the items in the feed will be included in the search
   /// index, represented as a CLDR territory code.
+  ///
+  /// Deprecated.
   core.String? country;
 
   /// The list of destinations to exclude for this target (corresponds to
   /// cleared check boxes in Merchant Center).
+  ///
+  /// Products that are excluded from all destinations for more than 7 days are
+  /// automatically deleted.
   core.List<core.String>? excludedDestinations;
+
+  /// Feed label for the DatafeedTarget.
+  ///
+  /// Either `country` or `feedLabel` is required. If both `feedLabel` and
+  /// `country` is specified, the values must match.
+  core.String? feedLabel;
 
   /// The list of destinations to include for this target (corresponds to
   /// checked check boxes in Merchant Center).
@@ -11953,11 +12214,19 @@ class DatafeedTarget {
   /// Must be a valid language for `targets[].country`.
   core.String? language;
 
+  /// The countries where the items may be displayed.
+  ///
+  /// Represented as a CLDR territory code. Will be ignored for "product
+  /// inventory" feeds.
+  core.List<core.String>? targetCountries;
+
   DatafeedTarget({
     this.country,
     this.excludedDestinations,
+    this.feedLabel,
     this.includedDestinations,
     this.language,
+    this.targetCountries,
   });
 
   DatafeedTarget.fromJson(core.Map json_)
@@ -11970,6 +12239,9 @@ class DatafeedTarget {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          feedLabel: json_.containsKey('feedLabel')
+              ? json_['feedLabel'] as core.String
+              : null,
           includedDestinations: json_.containsKey('includedDestinations')
               ? (json_['includedDestinations'] as core.List)
                   .map((value) => value as core.String)
@@ -11978,15 +12250,22 @@ class DatafeedTarget {
           language: json_.containsKey('language')
               ? json_['language'] as core.String
               : null,
+          targetCountries: json_.containsKey('targetCountries')
+              ? (json_['targetCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (excludedDestinations != null)
           'excludedDestinations': excludedDestinations!,
+        if (feedLabel != null) 'feedLabel': feedLabel!,
         if (includedDestinations != null)
           'includedDestinations': includedDestinations!,
         if (language != null) 'language': language!,
+        if (targetCountries != null) 'targetCountries': targetCountries!,
       };
 }
 
@@ -12230,18 +12509,27 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int? batchId;
 
-  /// The country for which to get the datafeed status.
+  /// Use `feedLabel` instead.
   ///
-  /// If this parameter is provided then language must also be provided. Note
-  /// that for multi-target datafeeds this parameter is required.
+  /// The country to get the datafeed status for. If this parameter is provided,
+  /// then `language` must also be provided. Note that for multi-target
+  /// datafeeds this parameter is required.
+  ///
+  /// Deprecated.
   core.String? country;
 
   /// The ID of the data feed to get.
   core.String? datafeedId;
 
-  /// The language for which to get the datafeed status.
+  /// The feed label to get the datafeed status for.
   ///
-  /// If this parameter is provided then country must also be provided. Note
+  /// If this parameter is provided, then `language` must also be provided. Note
+  /// that for multi-target datafeeds this parameter is required.
+  core.String? feedLabel;
+
+  /// The language to get the datafeed status for.
+  ///
+  /// If this parameter is provided then `country` must also be provided. Note
   /// that for multi-target datafeeds this parameter is required.
   core.String? language;
 
@@ -12257,6 +12545,7 @@ class DatafeedstatusesCustomBatchRequestEntry {
     this.batchId,
     this.country,
     this.datafeedId,
+    this.feedLabel,
     this.language,
     this.merchantId,
     this.method,
@@ -12273,6 +12562,9 @@ class DatafeedstatusesCustomBatchRequestEntry {
           datafeedId: json_.containsKey('datafeedId')
               ? json_['datafeedId'] as core.String
               : null,
+          feedLabel: json_.containsKey('feedLabel')
+              ? json_['feedLabel'] as core.String
+              : null,
           language: json_.containsKey('language')
               ? json_['language'] as core.String
               : null,
@@ -12288,6 +12580,7 @@ class DatafeedstatusesCustomBatchRequestEntry {
         if (batchId != null) 'batchId': batchId!,
         if (country != null) 'country': country!,
         if (datafeedId != null) 'datafeedId': datafeedId!,
+        if (feedLabel != null) 'feedLabel': feedLabel!,
         if (language != null) 'language': language!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
@@ -14471,6 +14764,40 @@ class ListCssesResponse {
       };
 }
 
+/// Response message for the ListMethodQuotas method.
+class ListMethodQuotasResponse {
+  /// The current quota usage and limits per each method.
+  core.List<MethodQuota>? methodQuotas;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMethodQuotasResponse({
+    this.methodQuotas,
+    this.nextPageToken,
+  });
+
+  ListMethodQuotasResponse.fromJson(core.Map json_)
+      : this(
+          methodQuotas: json_.containsKey('methodQuotas')
+              ? (json_['methodQuotas'] as core.List)
+                  .map((value) => MethodQuota.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (methodQuotas != null) 'methodQuotas': methodQuotas!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for the `ListRegions` method.
 class ListRegionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -15211,6 +15538,50 @@ class MerchantRejectionReason {
       };
 }
 
+/// The quota information per method in the Content API.
+///
+/// Includes only methods with current usage greater than zero for your account.
+class MethodQuota {
+  /// The method name, for example `products.list`.
+  ///
+  /// Method name does not contain version because quota can be shared between
+  /// different API versions of the same method.
+  core.String? method;
+
+  /// The current quota limit per day, meaning the maximum number of calls for
+  /// the method.
+  core.String? quotaLimit;
+
+  /// The current quota usage, meaning the number of calls already made to the
+  /// method.
+  core.String? quotaUsage;
+
+  MethodQuota({
+    this.method,
+    this.quotaLimit,
+    this.quotaUsage,
+  });
+
+  MethodQuota.fromJson(core.Map json_)
+      : this(
+          method: json_.containsKey('method')
+              ? json_['method'] as core.String
+              : null,
+          quotaLimit: json_.containsKey('quotaLimit')
+              ? json_['quotaLimit'] as core.String
+              : null,
+          quotaUsage: json_.containsKey('quotaUsage')
+              ? json_['quotaUsage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (method != null) 'method': method!,
+        if (quotaLimit != null) 'quotaLimit': quotaLimit!,
+        if (quotaUsage != null) 'quotaUsage': quotaUsage!,
+      };
+}
+
 /// Performance metrics.
 ///
 /// Values are only set for metrics requested explicitly in the request's search
@@ -15222,8 +15593,9 @@ class Metrics {
   /// customer_country_code.**
   core.double? aos;
 
-  /// Average order value - the average value (total price of items) of all
-  /// placed orders.
+  /// Average order value in micros (1 millionth of a standard unit, 1 USD =
+  /// 1000000 micros) - the average value (total price of items) of all placed
+  /// orders.
   ///
   /// The currency of the returned value is stored in the currency_code segment.
   /// If this metric is selected, 'segments.currency_code' is automatically
@@ -15243,8 +15615,9 @@ class Metrics {
   /// program.
   core.double? conversionRate;
 
-  /// Value of conversions in micros attributed to the product, reported on the
-  /// conversion date.
+  /// Value of conversions in micros (1 millionth of a standard unit, 1 USD =
+  /// 1000000 micros) attributed to the product, reported on the conversion
+  /// date.
   ///
   /// The metric is currently available only for the FREE_PRODUCT_LISTING
   /// program. The currency of the returned value is stored in the currency_code
@@ -15290,7 +15663,8 @@ class Metrics {
   /// segmented by customer_country_code.**
   core.double? itemFillRate;
 
-  /// Total price of ordered items.
+  /// Total price of ordered items in micros (1 millionth of a standard unit, 1
+  /// USD = 1000000 micros).
   ///
   /// Excludes shipping, taxes (US only), and customer cancellations that
   /// happened within 30 minutes of placing the order. The currency of the
@@ -15335,8 +15709,9 @@ class Metrics {
   /// **This metric cannot be segmented by customer_country_code.**
   core.String? returnedItems;
 
-  /// Total price of ordered items sent back for return, reported on the date
-  /// when the merchant accepted the return.
+  /// Total price of ordered items sent back for return in micros (1 millionth
+  /// of a standard unit, 1 USD = 1000000 micros), reported on the date when the
+  /// merchant accepted the return.
   ///
   /// The currency of the returned value is stored in the currency_code segment.
   /// If this metric is selected, 'segments.currency_code' is automatically
@@ -15345,7 +15720,8 @@ class Metrics {
   /// response. **This metric cannot be segmented by customer_country_code.**
   core.String? returnsMicros;
 
-  /// Total price of shipped items, reported on the order date.
+  /// Total price of shipped items in micros (1 millionth of a standard unit, 1
+  /// USD = 1000000 micros), reported on the order date.
   ///
   /// Excludes shipping and taxes (US only). The currency of the returned value
   /// is stored in the currency_code segment. If this metric is selected,
@@ -21720,6 +22096,172 @@ typedef Price = $Shared03;
 /// The price represented as a number and currency.
 typedef PriceAmount = $Shared03;
 
+/// Price Competitiveness fields requested by the merchant in the query.
+///
+/// Field values are only set if the merchant queries
+/// `PriceCompetitivenessProductView`.
+/// https://support.google.com/merchants/answer/9626903
+class PriceCompetitiveness {
+  /// The price benchmark currency (ISO 4217 code).
+  core.String? benchmarkPriceCurrencyCode;
+
+  /// The latest available price benchmark in micros (1 millionth of a standard
+  /// unit, 1 USD = 1000000 micros) for the product's catalog in the benchmark
+  /// country.
+  core.String? benchmarkPriceMicros;
+
+  /// The country of the price benchmark (ISO 3166 code).
+  core.String? countryCode;
+
+  PriceCompetitiveness({
+    this.benchmarkPriceCurrencyCode,
+    this.benchmarkPriceMicros,
+    this.countryCode,
+  });
+
+  PriceCompetitiveness.fromJson(core.Map json_)
+      : this(
+          benchmarkPriceCurrencyCode:
+              json_.containsKey('benchmarkPriceCurrencyCode')
+                  ? json_['benchmarkPriceCurrencyCode'] as core.String
+                  : null,
+          benchmarkPriceMicros: json_.containsKey('benchmarkPriceMicros')
+              ? json_['benchmarkPriceMicros'] as core.String
+              : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (benchmarkPriceCurrencyCode != null)
+          'benchmarkPriceCurrencyCode': benchmarkPriceCurrencyCode!,
+        if (benchmarkPriceMicros != null)
+          'benchmarkPriceMicros': benchmarkPriceMicros!,
+        if (countryCode != null) 'countryCode': countryCode!,
+      };
+}
+
+/// Price Insights fields requested by the merchant in the query.
+///
+/// Field values are only set if the merchant queries
+/// `PriceInsightsProductView`.
+/// https://support.google.com/merchants/answer/11916926
+class PriceInsights {
+  /// The predicted change in clicks as a fraction after introducing the
+  /// suggested price compared to current active price.
+  ///
+  /// For example, 0.05 is a 5% predicted increase in clicks.
+  core.double? predictedClicksChangeFraction;
+
+  /// The predicted change in conversions as a fraction after introducing the
+  /// suggested price compared to current active price.
+  ///
+  /// For example, 0.05 is a 5% predicted increase in conversions).
+  core.double? predictedConversionsChangeFraction;
+
+  /// The predicted change in gross profit as a fraction after introducing the
+  /// suggested price compared to current active price.
+  ///
+  /// For example, 0.05 is a 5% predicted increase in gross profit.
+  core.double? predictedGrossProfitChangeFraction;
+
+  /// The predicted change in impressions as a fraction after introducing the
+  /// suggested price compared to current active price.
+  ///
+  /// For example, 0.05 is a 5% predicted increase in impressions.
+  core.double? predictedImpressionsChangeFraction;
+
+  /// The predicted monthly gross profit change currency (ISO 4217 code).
+  core.String? predictedMonthlyGrossProfitChangeCurrencyCode;
+
+  /// The predicted change in gross profit in micros (1 millionth of a standard
+  /// unit, 1 USD = 1000000 micros) after introducing the suggested price for a
+  /// month compared to current active price.
+  core.String? predictedMonthlyGrossProfitChangeMicros;
+
+  /// The suggested price currency (ISO 4217 code).
+  core.String? suggestedPriceCurrencyCode;
+
+  /// The latest suggested price in micros (1 millionth of a standard unit, 1
+  /// USD = 1000000 micros) for the product.
+  core.String? suggestedPriceMicros;
+
+  PriceInsights({
+    this.predictedClicksChangeFraction,
+    this.predictedConversionsChangeFraction,
+    this.predictedGrossProfitChangeFraction,
+    this.predictedImpressionsChangeFraction,
+    this.predictedMonthlyGrossProfitChangeCurrencyCode,
+    this.predictedMonthlyGrossProfitChangeMicros,
+    this.suggestedPriceCurrencyCode,
+    this.suggestedPriceMicros,
+  });
+
+  PriceInsights.fromJson(core.Map json_)
+      : this(
+          predictedClicksChangeFraction: json_
+                  .containsKey('predictedClicksChangeFraction')
+              ? (json_['predictedClicksChangeFraction'] as core.num).toDouble()
+              : null,
+          predictedConversionsChangeFraction:
+              json_.containsKey('predictedConversionsChangeFraction')
+                  ? (json_['predictedConversionsChangeFraction'] as core.num)
+                      .toDouble()
+                  : null,
+          predictedGrossProfitChangeFraction:
+              json_.containsKey('predictedGrossProfitChangeFraction')
+                  ? (json_['predictedGrossProfitChangeFraction'] as core.num)
+                      .toDouble()
+                  : null,
+          predictedImpressionsChangeFraction:
+              json_.containsKey('predictedImpressionsChangeFraction')
+                  ? (json_['predictedImpressionsChangeFraction'] as core.num)
+                      .toDouble()
+                  : null,
+          predictedMonthlyGrossProfitChangeCurrencyCode:
+              json_.containsKey('predictedMonthlyGrossProfitChangeCurrencyCode')
+                  ? json_['predictedMonthlyGrossProfitChangeCurrencyCode']
+                      as core.String
+                  : null,
+          predictedMonthlyGrossProfitChangeMicros: json_
+                  .containsKey('predictedMonthlyGrossProfitChangeMicros')
+              ? json_['predictedMonthlyGrossProfitChangeMicros'] as core.String
+              : null,
+          suggestedPriceCurrencyCode:
+              json_.containsKey('suggestedPriceCurrencyCode')
+                  ? json_['suggestedPriceCurrencyCode'] as core.String
+                  : null,
+          suggestedPriceMicros: json_.containsKey('suggestedPriceMicros')
+              ? json_['suggestedPriceMicros'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (predictedClicksChangeFraction != null)
+          'predictedClicksChangeFraction': predictedClicksChangeFraction!,
+        if (predictedConversionsChangeFraction != null)
+          'predictedConversionsChangeFraction':
+              predictedConversionsChangeFraction!,
+        if (predictedGrossProfitChangeFraction != null)
+          'predictedGrossProfitChangeFraction':
+              predictedGrossProfitChangeFraction!,
+        if (predictedImpressionsChangeFraction != null)
+          'predictedImpressionsChangeFraction':
+              predictedImpressionsChangeFraction!,
+        if (predictedMonthlyGrossProfitChangeCurrencyCode != null)
+          'predictedMonthlyGrossProfitChangeCurrencyCode':
+              predictedMonthlyGrossProfitChangeCurrencyCode!,
+        if (predictedMonthlyGrossProfitChangeMicros != null)
+          'predictedMonthlyGrossProfitChangeMicros':
+              predictedMonthlyGrossProfitChangeMicros!,
+        if (suggestedPriceCurrencyCode != null)
+          'suggestedPriceCurrencyCode': suggestedPriceCurrencyCode!,
+        if (suggestedPriceMicros != null)
+          'suggestedPriceMicros': suggestedPriceMicros!,
+      };
+}
+
 /// Required product attributes are primarily defined by the products data
 /// specification.
 ///
@@ -21838,6 +22380,9 @@ class Product {
 
   /// The list of destinations to exclude for this target (corresponds to
   /// cleared check boxes in Merchant Center).
+  ///
+  /// Products that are excluded from all destinations for more than 7 days are
+  /// automatically deleted.
   core.List<core.String>? excludedDestinations;
 
   /// Date on which the item should expire, as specified upon insertion, in ISO
@@ -22083,7 +22628,7 @@ class Product {
   /// an item with an associated subscription contract.
   ProductSubscriptionCost? subscriptionCost;
 
-  /// The CLDR territory code for the item.
+  /// The CLDR territory code for the item's country of sale.
   ///
   /// Required.
   core.String? targetCountry;
@@ -22667,6 +23212,135 @@ class ProductAmount {
         if (priceAmount != null) 'priceAmount': priceAmount!,
         if (remittedTaxAmount != null) 'remittedTaxAmount': remittedTaxAmount!,
         if (taxAmount != null) 'taxAmount': taxAmount!,
+      };
+}
+
+/// Product cluster fields.
+///
+/// A product cluster is a grouping for different offers that represent the same
+/// product. Values are only set for fields requested explicitly in the
+/// request's search query.
+class ProductCluster {
+  /// Brand of the product cluster.
+  core.String? brand;
+
+  /// Tells if there is at least one product of the brand currently `IN_STOCK`
+  /// in your product feed across multiple countries, all products are
+  /// `OUT_OF_STOCK` in your product feed, or `NOT_IN_INVENTORY`.
+  ///
+  /// The field doesn't take the Best Sellers report country filter into
+  /// account.
+  /// Possible string values are:
+  /// - "INVENTORY_STATUS_UNSPECIFIED" : Inventory status is unknown.
+  /// - "IN_STOCK" : Merchant has a product for this product cluster or brand in
+  /// stock.
+  /// - "OUT_OF_STOCK" : Merchant has a product for this product cluster or
+  /// brand in inventory but it is currently out of stock.
+  /// - "NOT_IN_INVENTORY" : Merchant does not have a product for this product
+  /// cluster or brand in inventory.
+  core.String? brandInventoryStatus;
+
+  /// Product category (1st level) of the product cluster, represented in
+  /// Google's product taxonomy.
+  core.String? categoryL1;
+
+  /// Product category (2nd level) of the product cluster, represented in
+  /// Google's product taxonomy.
+  core.String? categoryL2;
+
+  /// Product category (3rd level) of the product cluster, represented in
+  /// Google's product taxonomy.
+  core.String? categoryL3;
+
+  /// Product category (4th level) of the product cluster, represented in
+  /// Google's product taxonomy.
+  core.String? categoryL4;
+
+  /// Product category (5th level) of the product cluster, represented in
+  /// Google's product taxonomy.
+  core.String? categoryL5;
+
+  /// Tells whether the product cluster is `IN_STOCK` in your product feed
+  /// across multiple countries, `OUT_OF_STOCK` in your product feed, or
+  /// `NOT_IN_INVENTORY` at all.
+  ///
+  /// The field doesn't take the Best Sellers report country filter into
+  /// account.
+  /// Possible string values are:
+  /// - "INVENTORY_STATUS_UNSPECIFIED" : Inventory status is unknown.
+  /// - "IN_STOCK" : Merchant has a product for this product cluster or brand in
+  /// stock.
+  /// - "OUT_OF_STOCK" : Merchant has a product for this product cluster or
+  /// brand in inventory but it is currently out of stock.
+  /// - "NOT_IN_INVENTORY" : Merchant does not have a product for this product
+  /// cluster or brand in inventory.
+  core.String? inventoryStatus;
+
+  /// Title of the product cluster.
+  core.String? title;
+
+  /// GTINs of example variants of the product cluster.
+  core.List<core.String>? variantGtins;
+
+  ProductCluster({
+    this.brand,
+    this.brandInventoryStatus,
+    this.categoryL1,
+    this.categoryL2,
+    this.categoryL3,
+    this.categoryL4,
+    this.categoryL5,
+    this.inventoryStatus,
+    this.title,
+    this.variantGtins,
+  });
+
+  ProductCluster.fromJson(core.Map json_)
+      : this(
+          brand:
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          brandInventoryStatus: json_.containsKey('brandInventoryStatus')
+              ? json_['brandInventoryStatus'] as core.String
+              : null,
+          categoryL1: json_.containsKey('categoryL1')
+              ? json_['categoryL1'] as core.String
+              : null,
+          categoryL2: json_.containsKey('categoryL2')
+              ? json_['categoryL2'] as core.String
+              : null,
+          categoryL3: json_.containsKey('categoryL3')
+              ? json_['categoryL3'] as core.String
+              : null,
+          categoryL4: json_.containsKey('categoryL4')
+              ? json_['categoryL4'] as core.String
+              : null,
+          categoryL5: json_.containsKey('categoryL5')
+              ? json_['categoryL5'] as core.String
+              : null,
+          inventoryStatus: json_.containsKey('inventoryStatus')
+              ? json_['inventoryStatus'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          variantGtins: json_.containsKey('variantGtins')
+              ? (json_['variantGtins'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (brandInventoryStatus != null)
+          'brandInventoryStatus': brandInventoryStatus!,
+        if (categoryL1 != null) 'categoryL1': categoryL1!,
+        if (categoryL2 != null) 'categoryL2': categoryL2!,
+        if (categoryL3 != null) 'categoryL3': categoryL3!,
+        if (categoryL4 != null) 'categoryL4': categoryL4!,
+        if (categoryL5 != null) 'categoryL5': categoryL5!,
+        if (inventoryStatus != null) 'inventoryStatus': inventoryStatus!,
+        if (title != null) 'title': title!,
+        if (variantGtins != null) 'variantGtins': variantGtins!,
       };
 }
 
@@ -23480,7 +24154,8 @@ class ProductUnitPricingMeasure {
 /// Product fields.
 ///
 /// Values are only set for fields requested explicitly in the request's search
-/// query.
+/// query. Available only to selected merchants. Submit the
+/// [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
 class ProductView {
   /// Aggregated destination status.
   /// Possible string values are:
@@ -23498,6 +24173,26 @@ class ProductView {
 
   /// Brand of the product.
   core.String? brand;
+
+  /// First level of the product category in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? categoryL1;
+
+  /// Second level of the product category in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? categoryL2;
+
+  /// Third level of the product category in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? categoryL3;
+
+  /// Fourth level of the product category in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? categoryL4;
+
+  /// Fifth level of the product category in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? categoryL5;
 
   /// Channel of the product (online versus local).
   /// Possible string values are:
@@ -23544,11 +24239,32 @@ class ProductView {
   /// Merchant-provided id of the product.
   core.String? offerId;
 
-  /// Product price specified as micros in the product currency.
+  /// Product price specified as micros (1 millionth of a standard unit, 1 USD =
+  /// 1000000 micros) in the product currency.
   ///
   /// Absent in case the information about the price of the product is not
   /// available.
   core.String? priceMicros;
+
+  /// First level of the product type in merchant's own
+  /// [product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? productTypeL1;
+
+  /// Second level of the product type in merchant's own
+  /// [product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? productTypeL2;
+
+  /// Third level of the product type in merchant's own
+  /// [product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? productTypeL3;
+
+  /// Fourth level of the product type in merchant's own
+  /// [product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? productTypeL4;
+
+  /// Fifth level of the product type in merchant's own
+  /// [product taxonomy](https://support.google.com/merchants/answer/6324436).
+  core.String? productTypeL5;
 
   /// The normalized shipping label specified in the feed
   core.String? shippingLabel;
@@ -23560,6 +24276,11 @@ class ProductView {
     this.aggregatedDestinationStatus,
     this.availability,
     this.brand,
+    this.categoryL1,
+    this.categoryL2,
+    this.categoryL3,
+    this.categoryL4,
+    this.categoryL5,
     this.channel,
     this.condition,
     this.creationTime,
@@ -23572,6 +24293,11 @@ class ProductView {
     this.languageCode,
     this.offerId,
     this.priceMicros,
+    this.productTypeL1,
+    this.productTypeL2,
+    this.productTypeL3,
+    this.productTypeL4,
+    this.productTypeL5,
     this.shippingLabel,
     this.title,
   });
@@ -23587,6 +24313,21 @@ class ProductView {
               : null,
           brand:
               json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          categoryL1: json_.containsKey('categoryL1')
+              ? json_['categoryL1'] as core.String
+              : null,
+          categoryL2: json_.containsKey('categoryL2')
+              ? json_['categoryL2'] as core.String
+              : null,
+          categoryL3: json_.containsKey('categoryL3')
+              ? json_['categoryL3'] as core.String
+              : null,
+          categoryL4: json_.containsKey('categoryL4')
+              ? json_['categoryL4'] as core.String
+              : null,
+          categoryL5: json_.containsKey('categoryL5')
+              ? json_['categoryL5'] as core.String
+              : null,
           channel: json_.containsKey('channel')
               ? json_['channel'] as core.String
               : null,
@@ -23627,6 +24368,21 @@ class ProductView {
           priceMicros: json_.containsKey('priceMicros')
               ? json_['priceMicros'] as core.String
               : null,
+          productTypeL1: json_.containsKey('productTypeL1')
+              ? json_['productTypeL1'] as core.String
+              : null,
+          productTypeL2: json_.containsKey('productTypeL2')
+              ? json_['productTypeL2'] as core.String
+              : null,
+          productTypeL3: json_.containsKey('productTypeL3')
+              ? json_['productTypeL3'] as core.String
+              : null,
+          productTypeL4: json_.containsKey('productTypeL4')
+              ? json_['productTypeL4'] as core.String
+              : null,
+          productTypeL5: json_.containsKey('productTypeL5')
+              ? json_['productTypeL5'] as core.String
+              : null,
           shippingLabel: json_.containsKey('shippingLabel')
               ? json_['shippingLabel'] as core.String
               : null,
@@ -23639,6 +24395,11 @@ class ProductView {
           'aggregatedDestinationStatus': aggregatedDestinationStatus!,
         if (availability != null) 'availability': availability!,
         if (brand != null) 'brand': brand!,
+        if (categoryL1 != null) 'categoryL1': categoryL1!,
+        if (categoryL2 != null) 'categoryL2': categoryL2!,
+        if (categoryL3 != null) 'categoryL3': categoryL3!,
+        if (categoryL4 != null) 'categoryL4': categoryL4!,
+        if (categoryL5 != null) 'categoryL5': categoryL5!,
         if (channel != null) 'channel': channel!,
         if (condition != null) 'condition': condition!,
         if (creationTime != null) 'creationTime': creationTime!,
@@ -23651,6 +24412,11 @@ class ProductView {
         if (languageCode != null) 'languageCode': languageCode!,
         if (offerId != null) 'offerId': offerId!,
         if (priceMicros != null) 'priceMicros': priceMicros!,
+        if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
+        if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
+        if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
+        if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
+        if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
         if (shippingLabel != null) 'shippingLabel': shippingLabel!,
         if (title != null) 'title': title!,
       };
@@ -23902,9 +24668,10 @@ class ProductsCustomBatchRequestEntry {
   ///
   /// Example: `"title,salePrice"`. Attributes specified in the update mask
   /// without a value specified in the body will be deleted from the product.
-  /// Only top-level product attributes can be updated. If not defined, product
-  /// attributes with set values will be updated and other attributes will stay
-  /// unchanged. Only defined if the method is `update`.
+  /// *You must specify the update mask to delete attributes.* Only top-level
+  /// product attributes can be updated. If not defined, product attributes with
+  /// set values will be updated and other attributes will stay unchanged. Only
+  /// defined if the method is `update`.
   core.String? updateMask;
 
   ProductsCustomBatchRequestEntry({
@@ -24457,6 +25224,12 @@ class Promotion {
   /// Required.
   core.String? promotionId;
 
+  /// URL to the page on the merchant's site where the promotion shows.
+  ///
+  /// Local Inventory ads promotions throw an error if no promo url is included.
+  /// URL is used to confirm that the promotion is valid and can be redeemed.
+  core.String? promotionUrl;
+
   /// Redemption channel for the promotion.
   ///
   /// At least one channel is required.
@@ -24466,6 +25239,25 @@ class Promotion {
 
   /// Shipping service names for the promotion.
   core.List<core.String>? shippingServiceNames;
+
+  /// Whether the promotion applies to all stores, or only specified stores.
+  ///
+  /// Local Inventory ads promotions throw an error if no store applicability is
+  /// included. An INVALID_ARGUMENT error is thrown if store_applicability is
+  /// set to ALL_STORES and store_code or score_code_exclusion is set to a
+  /// value.
+  /// Possible string values are:
+  /// - "STORE_APPLICABILITY_UNSPECIFIED" : Which store codes the promotion
+  /// applies to is unknown.
+  /// - "ALL_STORES" : Promotion applies to all stores.
+  /// - "SPECIFIC_STORES" : Promotion applies to only the specified stores.
+  core.String? storeApplicability;
+
+  /// Store codes to include for the promotion.
+  core.List<core.String>? storeCode;
+
+  /// Store codes to exclude for the promotion.
+  core.List<core.String>? storeCodeExclusion;
 
   /// The target country used as part of the unique identifier.
   ///
@@ -24508,8 +25300,12 @@ class Promotion {
     this.promotionEffectiveDates,
     this.promotionEffectiveTimePeriod,
     this.promotionId,
+    this.promotionUrl,
     this.redemptionChannel,
     this.shippingServiceNames,
+    this.storeApplicability,
+    this.storeCode,
+    this.storeCodeExclusion,
     this.targetCountry,
   });
 
@@ -24640,6 +25436,9 @@ class Promotion {
           promotionId: json_.containsKey('promotionId')
               ? json_['promotionId'] as core.String
               : null,
+          promotionUrl: json_.containsKey('promotionUrl')
+              ? json_['promotionUrl'] as core.String
+              : null,
           redemptionChannel: json_.containsKey('redemptionChannel')
               ? (json_['redemptionChannel'] as core.List)
                   .map((value) => value as core.String)
@@ -24647,6 +25446,19 @@ class Promotion {
               : null,
           shippingServiceNames: json_.containsKey('shippingServiceNames')
               ? (json_['shippingServiceNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          storeApplicability: json_.containsKey('storeApplicability')
+              ? json_['storeApplicability'] as core.String
+              : null,
+          storeCode: json_.containsKey('storeCode')
+              ? (json_['storeCode'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          storeCodeExclusion: json_.containsKey('storeCodeExclusion')
+              ? (json_['storeCodeExclusion'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -24702,9 +25514,15 @@ class Promotion {
         if (promotionEffectiveTimePeriod != null)
           'promotionEffectiveTimePeriod': promotionEffectiveTimePeriod!,
         if (promotionId != null) 'promotionId': promotionId!,
+        if (promotionUrl != null) 'promotionUrl': promotionUrl!,
         if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
         if (shippingServiceNames != null)
           'shippingServiceNames': shippingServiceNames!,
+        if (storeApplicability != null)
+          'storeApplicability': storeApplicability!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (storeCodeExclusion != null)
+          'storeCodeExclusion': storeCodeExclusion!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
       };
 }
@@ -25330,16 +26148,45 @@ class RegionalinventoryCustomBatchResponseEntry {
 
 /// Result row returned from the search query.
 class ReportRow {
+  /// Best Sellers fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries
+  /// `BestSellersProductClusterView` or `BestSellersBrandView`.
+  BestSellers? bestSellers;
+
+  /// Brand fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries `BestSellersBrandView`.
+  Brand? brand;
+
   /// Metrics requested by the merchant in the query.
   ///
   /// Metric values are only set for metrics requested explicitly in the query.
   Metrics? metrics;
 
+  /// Price Competitiveness fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries
+  /// `PriceCompetitivenessProductView`.
+  PriceCompetitiveness? priceCompetitiveness;
+
+  /// Price Insights fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries
+  /// `PriceInsightsProductView`.
+  PriceInsights? priceInsights;
+
+  /// Product cluster fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries
+  /// `BestSellersProductClusterView`.
+  ProductCluster? productCluster;
+
   /// Product fields requested by the merchant in the query.
   ///
-  /// Field values are only set if the merchant queries `ProductView`.
-  /// `product_view` field is available only to allowlisted users who can query
-  /// the `ProductView` table.
+  /// Field values are only set if the merchant queries `ProductView`. Available
+  /// only to selected merchants. Submit the
+  /// [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
   ProductView? productView;
 
   /// Segmentation dimensions requested by the merchant in the query.
@@ -25349,16 +26196,41 @@ class ReportRow {
   Segments? segments;
 
   ReportRow({
+    this.bestSellers,
+    this.brand,
     this.metrics,
+    this.priceCompetitiveness,
+    this.priceInsights,
+    this.productCluster,
     this.productView,
     this.segments,
   });
 
   ReportRow.fromJson(core.Map json_)
       : this(
+          bestSellers: json_.containsKey('bestSellers')
+              ? BestSellers.fromJson(
+                  json_['bestSellers'] as core.Map<core.String, core.dynamic>)
+              : null,
+          brand: json_.containsKey('brand')
+              ? Brand.fromJson(
+                  json_['brand'] as core.Map<core.String, core.dynamic>)
+              : null,
           metrics: json_.containsKey('metrics')
               ? Metrics.fromJson(
                   json_['metrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priceCompetitiveness: json_.containsKey('priceCompetitiveness')
+              ? PriceCompetitiveness.fromJson(json_['priceCompetitiveness']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          priceInsights: json_.containsKey('priceInsights')
+              ? PriceInsights.fromJson(
+                  json_['priceInsights'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productCluster: json_.containsKey('productCluster')
+              ? ProductCluster.fromJson(json_['productCluster']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           productView: json_.containsKey('productView')
               ? ProductView.fromJson(
@@ -25371,7 +26243,13 @@ class ReportRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bestSellers != null) 'bestSellers': bestSellers!,
+        if (brand != null) 'brand': brand!,
         if (metrics != null) 'metrics': metrics!,
+        if (priceCompetitiveness != null)
+          'priceCompetitiveness': priceCompetitiveness!,
+        if (priceInsights != null) 'priceInsights': priceInsights!,
+        if (productCluster != null) 'productCluster': productCluster!,
         if (productView != null) 'productView': productView!,
         if (segments != null) 'segments': segments!,
       };

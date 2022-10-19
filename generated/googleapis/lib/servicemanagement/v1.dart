@@ -2519,7 +2519,50 @@ typedef DocumentationRule = $DocumentationRule;
 /// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
 /// to be passed to the API frontend, for it # to decide whether the subsequent
 /// cross-origin request is allowed # to proceed. allow_cors: true
-typedef Endpoint = $Endpoint;
+class Endpoint {
+  /// Allowing
+  /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
+  /// cross-domain traffic, would allow the backends served from this endpoint
+  /// to receive and respond to HTTP OPTIONS requests.
+  ///
+  /// The response will be used by the browser to determine whether the
+  /// subsequent cross-origin request is allowed to proceed.
+  core.bool? allowCors;
+
+  /// The canonical name of this endpoint.
+  core.String? name;
+
+  /// The specification of an Internet routable address of API frontend that
+  /// will handle requests to this
+  /// [API Endpoint](https://cloud.google.com/apis/design/glossary).
+  ///
+  /// It should be either a valid IPv4 address or a fully-qualified domain name.
+  /// For example, "8.8.8.8" or "myservice.appspot.com".
+  core.String? target;
+
+  Endpoint({
+    this.allowCors,
+    this.name,
+    this.target,
+  });
+
+  Endpoint.fromJson(core.Map json_)
+      : this(
+          allowCors: json_.containsKey('allowCors')
+              ? json_['allowCors'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          target: json_.containsKey('target')
+              ? json_['target'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowCors != null) 'allowCors': allowCors!,
+        if (name != null) 'name': name!,
+        if (target != null) 'target': target!,
+      };
+}
 
 /// Enum type definition.
 class Enum {
@@ -4434,12 +4477,11 @@ class Policy {
 /// checks at runtime. An example quota configuration in yaml format: quota:
 /// limits: - name: apiWriteQpsPerProject metric:
 /// library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for
-/// consumer projects values: STANDARD: 10000 # The metric rules bind all
-/// methods to the read_calls metric, # except for the UpdateBook and DeleteBook
-/// methods. These two methods # are mapped to the write_calls metric, with the
-/// UpdateBook method # consuming at twice rate as the DeleteBook method.
-/// metric_rules: - selector: "*" metric_costs:
-/// library.googleapis.com/read_calls: 1 - selector:
+/// consumer projects values: STANDARD: 10000 (The metric rules bind all methods
+/// to the read_calls metric, except for the UpdateBook and DeleteBook methods.
+/// These two methods are mapped to the write_calls metric, with the UpdateBook
+/// method consuming at twice rate as the DeleteBook method.) metric_rules: -
+/// selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector:
 /// google.example.library.v1.LibraryService.UpdateBook metric_costs:
 /// library.googleapis.com/write_calls: 2 - selector:
 /// google.example.library.v1.LibraryService.DeleteBook metric_costs:
@@ -4449,11 +4491,11 @@ class Policy {
 /// library.googleapis.com/write_calls display_name: Write requests metric_kind:
 /// DELTA value_type: INT64
 class Quota {
-  /// List of `QuotaLimit` definitions for the service.
+  /// List of QuotaLimit definitions for the service.
   core.List<QuotaLimit>? limits;
 
-  /// List of `MetricRule` definitions, each one mapping a selected method to
-  /// one or more metrics.
+  /// List of MetricRule definitions, each one mapping a selected method to one
+  /// or more metrics.
   core.List<MetricRule>? metricRules;
 
   Quota({

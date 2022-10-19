@@ -11,19 +11,6 @@ index 537f0163d..e33fcefab 100644
      "icons": {
          "x16": "http://www.google.com/images/icons/product/search-16.gif",
          "x32": "http://www.google.com/images/icons/product/search-32.gif"
-diff --git a/discovery/googleapis_beta/analyticsadmin__v1alpha.json b/discovery/googleapis_beta/analyticsadmin__v1alpha.json
-index ae3d3b001..a3c6fea43 100644
---- a/discovery/googleapis_beta/analyticsadmin__v1alpha.json
-+++ b/discovery/googleapis_beta/analyticsadmin__v1alpha.json
-@@ -23,7 +23,7 @@
-     "canonicalName": "Google Analytics Admin",
-     "description": "",
-     "discoveryVersion": "v1",
--    "documentationLink": "http://code.google.com/apis/analytics/docs/mgmt/home.html",
-+    "documentationLink": "https://developers.google.com/analytics/devguides/config/",
-     "icons": {
-         "x16": "http://www.google.com/images/icons/product/search-16.gif",
-         "x32": "http://www.google.com/images/icons/product/search-32.gif"
 diff --git a/discovery/googleapis/chromepolicy__v1.json b/discovery/googleapis/chromepolicy__v1.json
 index 8a9583c22..48cd14409 100644
 --- a/discovery/googleapis/chromepolicy__v1.json

@@ -1275,6 +1275,7 @@ api.Repository buildRepository() {
     o.labels = buildUnnamed21();
     o.mavenConfig = buildMavenRepositoryConfig();
     o.name = 'foo';
+    o.satisfiesPzs = true;
     o.sizeBytes = 'foo';
     o.updateTime = 'foo';
   }
@@ -1307,6 +1308,7 @@ void checkRepository(api.Repository o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.sizeBytes!,
       unittest.equals('foo'),
@@ -1556,6 +1558,66 @@ void checkUploadAptArtifactRequest(api.UploadAptArtifactRequest o) {
   buildCounterUploadAptArtifactRequest--;
 }
 
+core.int buildCounterUploadKfpArtifactMediaResponse = 0;
+api.UploadKfpArtifactMediaResponse buildUploadKfpArtifactMediaResponse() {
+  final o = api.UploadKfpArtifactMediaResponse();
+  buildCounterUploadKfpArtifactMediaResponse++;
+  if (buildCounterUploadKfpArtifactMediaResponse < 3) {
+    o.operation = buildOperation();
+  }
+  buildCounterUploadKfpArtifactMediaResponse--;
+  return o;
+}
+
+void checkUploadKfpArtifactMediaResponse(api.UploadKfpArtifactMediaResponse o) {
+  buildCounterUploadKfpArtifactMediaResponse++;
+  if (buildCounterUploadKfpArtifactMediaResponse < 3) {
+    checkOperation(o.operation!);
+  }
+  buildCounterUploadKfpArtifactMediaResponse--;
+}
+
+core.List<core.String> buildUnnamed26() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUploadKfpArtifactRequest = 0;
+api.UploadKfpArtifactRequest buildUploadKfpArtifactRequest() {
+  final o = api.UploadKfpArtifactRequest();
+  buildCounterUploadKfpArtifactRequest++;
+  if (buildCounterUploadKfpArtifactRequest < 3) {
+    o.description = 'foo';
+    o.tags = buildUnnamed26();
+  }
+  buildCounterUploadKfpArtifactRequest--;
+  return o;
+}
+
+void checkUploadKfpArtifactRequest(api.UploadKfpArtifactRequest o) {
+  buildCounterUploadKfpArtifactRequest++;
+  if (buildCounterUploadKfpArtifactRequest < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed26(o.tags!);
+  }
+  buildCounterUploadKfpArtifactRequest--;
+}
+
 core.int buildCounterUploadYumArtifactMediaResponse = 0;
 api.UploadYumArtifactMediaResponse buildUploadYumArtifactMediaResponse() {
   final o = api.UploadYumArtifactMediaResponse();
@@ -1590,7 +1652,7 @@ void checkUploadYumArtifactRequest(api.UploadYumArtifactRequest o) {
   buildCounterUploadYumArtifactRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed26() => {
+core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1603,7 +1665,7 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -1635,12 +1697,12 @@ void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.Tag> buildUnnamed27() => [
+core.List<api.Tag> buildUnnamed28() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed27(core.List<api.Tag> o) {
+void checkUnnamed28(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -1653,9 +1715,9 @@ api.Version buildVersion() {
   if (buildCounterVersion < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
-    o.metadata = buildUnnamed26();
+    o.metadata = buildUnnamed27();
     o.name = 'foo';
-    o.relatedTags = buildUnnamed27();
+    o.relatedTags = buildUnnamed28();
     o.updateTime = 'foo';
   }
   buildCounterVersion--;
@@ -1673,12 +1735,12 @@ void checkVersion(api.Version o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.metadata!);
+    checkUnnamed27(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.relatedTags!);
+    checkUnnamed28(o.relatedTags!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -2054,6 +2116,26 @@ void main() {
       final od = api.UploadAptArtifactRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUploadAptArtifactRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UploadKfpArtifactMediaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUploadKfpArtifactMediaResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UploadKfpArtifactMediaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadKfpArtifactMediaResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-UploadKfpArtifactRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUploadKfpArtifactRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UploadKfpArtifactRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadKfpArtifactRequest(od);
     });
   });
 
@@ -3254,6 +3336,75 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListFilesResponse(response as api.ListFilesResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRepositoriesKfpArtifactsResource',
+      () {
+    unittest.test('method--upload', () async {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .kfpArtifacts;
+      final arg_request = buildUploadKfpArtifactRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UploadKfpArtifactRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUploadKfpArtifactRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUploadKfpArtifactMediaResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.upload(arg_request, arg_parent, $fields: arg_$fields);
+      checkUploadKfpArtifactMediaResponse(
+          response as api.UploadKfpArtifactMediaResponse);
     });
   });
 

@@ -168,6 +168,8 @@ api.BuildConfig buildBuildConfig() {
   buildCounterBuildConfig++;
   if (buildCounterBuildConfig < 3) {
     o.build = 'foo';
+    o.buildpackStack = 'foo';
+    o.dockerRegistry = 'foo';
     o.dockerRepository = 'foo';
     o.entryPoint = 'foo';
     o.environmentVariables = buildUnnamed3();
@@ -185,6 +187,14 @@ void checkBuildConfig(api.BuildConfig o) {
   if (buildCounterBuildConfig < 3) {
     unittest.expect(
       o.build!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.buildpackStack!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dockerRegistry!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1218,14 +1228,17 @@ api.ServiceConfig buildServiceConfig() {
   buildCounterServiceConfig++;
   if (buildCounterServiceConfig < 3) {
     o.allTrafficOnLatestRevision = true;
+    o.availableCpu = 'foo';
     o.availableMemory = 'foo';
     o.environmentVariables = buildUnnamed20();
     o.ingressSettings = 'foo';
     o.maxInstanceCount = 42;
+    o.maxInstanceRequestConcurrency = 42;
     o.minInstanceCount = 42;
     o.revision = 'foo';
     o.secretEnvironmentVariables = buildUnnamed21();
     o.secretVolumes = buildUnnamed22();
+    o.securityLevel = 'foo';
     o.service = 'foo';
     o.serviceAccountEmail = 'foo';
     o.timeoutSeconds = 42;
@@ -1242,6 +1255,10 @@ void checkServiceConfig(api.ServiceConfig o) {
   if (buildCounterServiceConfig < 3) {
     unittest.expect(o.allTrafficOnLatestRevision!, unittest.isTrue);
     unittest.expect(
+      o.availableCpu!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.availableMemory!,
       unittest.equals('foo'),
     );
@@ -1255,6 +1272,10 @@ void checkServiceConfig(api.ServiceConfig o) {
       unittest.equals(42),
     );
     unittest.expect(
+      o.maxInstanceRequestConcurrency!,
+      unittest.equals(42),
+    );
+    unittest.expect(
       o.minInstanceCount!,
       unittest.equals(42),
     );
@@ -1264,6 +1285,10 @@ void checkServiceConfig(api.ServiceConfig o) {
     );
     checkUnnamed21(o.secretEnvironmentVariables!);
     checkUnnamed22(o.secretVolumes!);
+    unittest.expect(
+      o.securityLevel!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.service!,
       unittest.equals('foo'),

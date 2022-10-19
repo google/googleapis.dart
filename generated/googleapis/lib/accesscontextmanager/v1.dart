@@ -3038,7 +3038,8 @@ class ServicePerimeter {
   /// perimeter bridges, the restricted service list as well as access level
   /// lists must be empty.
   /// Possible string values are:
-  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
+  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter. When no value is
+  /// specified, the perimeter uses this type.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String? perimeterType;
 

@@ -982,6 +982,8 @@ class PartnersDevicesResource {
 
   /// Updates reseller metadata associated with the device.
   ///
+  /// Android devices only.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1122,7 +1124,8 @@ class PartnersDevicesResource {
   ///
   /// This method updates devices asynchronously and returns an `Operation` that
   /// can be used to track progress. Read \[Long‑running batch
-  /// operations\](/zero-touch/guides/how-it-works#operations).
+  /// operations\](/zero-touch/guides/how-it-works#operations). Android Devices
+  /// only.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1276,8 +1279,6 @@ class PartnersVendorsCustomersResource {
 /// Request message to claim a device on behalf of a customer.
 class ClaimDeviceRequest {
   /// The ID of the customer for whom the device is being claimed.
-  ///
-  /// Required.
   core.String? customerId;
 
   /// The device identifier of the device to claim.
@@ -1290,6 +1291,14 @@ class ClaimDeviceRequest {
   /// Optional.
   DeviceMetadata? deviceMetadata;
 
+  /// The Google Workspace customer ID.
+  core.String? googleWorkspaceCustomerId;
+
+  /// Must and can only be set for Chrome OS devices.
+  ///
+  /// Optional.
+  core.String? preProvisioningToken;
+
   /// The section type of the device's provisioning record.
   ///
   /// Required.
@@ -1299,11 +1308,22 @@ class ClaimDeviceRequest {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
+  /// Must and can only be set when DeviceProvisioningSectionType is
+  /// SECTION_TYPE_SIM_LOCK.
+  ///
+  /// The unique identifier of the SimLock profile (go/simlock/profiles).
+  ///
+  /// Optional.
+  core.String? simlockProfileId;
+
   ClaimDeviceRequest({
     this.customerId,
     this.deviceIdentifier,
     this.deviceMetadata,
+    this.googleWorkspaceCustomerId,
+    this.preProvisioningToken,
     this.sectionType,
+    this.simlockProfileId,
   });
 
   ClaimDeviceRequest.fromJson(core.Map json_)
@@ -1319,8 +1339,18 @@ class ClaimDeviceRequest {
               ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          googleWorkspaceCustomerId:
+              json_.containsKey('googleWorkspaceCustomerId')
+                  ? json_['googleWorkspaceCustomerId'] as core.String
+                  : null,
+          preProvisioningToken: json_.containsKey('preProvisioningToken')
+              ? json_['preProvisioningToken'] as core.String
+              : null,
           sectionType: json_.containsKey('sectionType')
               ? json_['sectionType'] as core.String
+              : null,
+          simlockProfileId: json_.containsKey('simlockProfileId')
+              ? json_['simlockProfileId'] as core.String
               : null,
         );
 
@@ -1328,7 +1358,12 @@ class ClaimDeviceRequest {
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null) 'deviceIdentifier': deviceIdentifier!,
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
+        if (googleWorkspaceCustomerId != null)
+          'googleWorkspaceCustomerId': googleWorkspaceCustomerId!,
+        if (preProvisioningToken != null)
+          'preProvisioningToken': preProvisioningToken!,
         if (sectionType != null) 'sectionType': sectionType!,
+        if (simlockProfileId != null) 'simlockProfileId': simlockProfileId!,
       };
 }
 
@@ -1416,6 +1451,13 @@ class Company {
   /// Required.
   core.String? companyName;
 
+  /// The Google Workspace account associated with this customer.
+  ///
+  /// Only used for customer Companies.
+  ///
+  /// Output only.
+  GoogleWorkspaceAccount? googleWorkspaceAccount;
+
   /// Input only.
   ///
   /// The preferred locale of the customer represented as a BCP47 language code.
@@ -1481,6 +1523,7 @@ class Company {
     this.adminEmails,
     this.companyId,
     this.companyName,
+    this.googleWorkspaceAccount,
     this.languageCode,
     this.name,
     this.ownerEmails,
@@ -1500,6 +1543,10 @@ class Company {
               : null,
           companyName: json_.containsKey('companyName')
               ? json_['companyName'] as core.String
+              : null,
+          googleWorkspaceAccount: json_.containsKey('googleWorkspaceAccount')
+              ? GoogleWorkspaceAccount.fromJson(json_['googleWorkspaceAccount']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           languageCode: json_.containsKey('languageCode')
               ? json_['languageCode'] as core.String
@@ -1522,6 +1569,8 @@ class Company {
         if (adminEmails != null) 'adminEmails': adminEmails!,
         if (companyId != null) 'companyId': companyId!,
         if (companyName != null) 'companyName': companyName!,
+        if (googleWorkspaceAccount != null)
+          'googleWorkspaceAccount': googleWorkspaceAccount!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (ownerEmails != null) 'ownerEmails': ownerEmails!,
@@ -1908,7 +1957,7 @@ class CustomerUnclaimDeviceRequest {
       };
 }
 
-/// An Android device registered for zero-touch enrollment.
+/// An Android or Chrome OS device registered for zero-touch enrollment.
 class Device {
   /// The provisioning claims for a device.
   ///
@@ -2008,6 +2057,9 @@ class DeviceClaim {
   /// service you must enroll with the partnership team.
   core.String? additionalService;
 
+  /// The ID of the Google Workspace account that owns the Chrome OS device.
+  core.String? googleWorkspaceCustomerId;
+
   /// The ID of the Customer that purchased the device.
   core.String? ownerCompanyId;
 
@@ -2035,6 +2087,7 @@ class DeviceClaim {
 
   DeviceClaim({
     this.additionalService,
+    this.googleWorkspaceCustomerId,
     this.ownerCompanyId,
     this.resellerId,
     this.sectionType,
@@ -2047,6 +2100,10 @@ class DeviceClaim {
           additionalService: json_.containsKey('additionalService')
               ? json_['additionalService'] as core.String
               : null,
+          googleWorkspaceCustomerId:
+              json_.containsKey('googleWorkspaceCustomerId')
+                  ? json_['googleWorkspaceCustomerId'] as core.String
+                  : null,
           ownerCompanyId: json_.containsKey('ownerCompanyId')
               ? json_['ownerCompanyId'] as core.String
               : null,
@@ -2066,6 +2123,8 @@ class DeviceClaim {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalService != null) 'additionalService': additionalService!,
+        if (googleWorkspaceCustomerId != null)
+          'googleWorkspaceCustomerId': googleWorkspaceCustomerId!,
         if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId!,
         if (resellerId != null) 'resellerId': resellerId!,
         if (sectionType != null) 'sectionType': sectionType!,
@@ -2081,6 +2140,19 @@ class DeviceClaim {
 /// To understand requirements on identifier sets, read
 /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
 class DeviceIdentifier {
+  /// An identifier provided by OEMs, carried through the production and sales
+  /// process.
+  ///
+  /// Only applicable to Chrome OS devices.
+  core.String? chromeOsAttestedDeviceId;
+
+  /// The type of the device
+  /// Possible string values are:
+  /// - "DEVICE_TYPE_UNSPECIFIED" : Device type is not specified.
+  /// - "DEVICE_TYPE_ANDROID" : Android device
+  /// - "DEVICE_TYPE_CHROME_OS" : Chrome OS device
+  core.String? deviceType;
+
   /// The device’s IMEI number.
   ///
   /// Validated on input.
@@ -2089,8 +2161,8 @@ class DeviceIdentifier {
   /// The device manufacturer’s name.
   ///
   /// Matches the device's built-in value returned from
-  /// `android.os.Build.MANUFACTURER`. Allowed values are listed in
-  /// \[manufacturers\](/zero-touch/resources/manufacturer-names#manufacturers-names).
+  /// `android.os.Build.MANUFACTURER`. Allowed values are listed in \[Android
+  /// manufacturers\](/zero-touch/resources/manufacturer-names#manufacturers-names).
   core.String? manufacturer;
 
   /// The device’s MEID number.
@@ -2098,9 +2170,9 @@ class DeviceIdentifier {
 
   /// The device model's name.
   ///
-  /// Matches the device's built-in value returned from
-  /// `android.os.Build.MODEL`. Allowed values are listed in
-  /// \[models\](/zero-touch/resources/manufacturer-names#model-names).
+  /// Allowed values are listed in \[Android
+  /// models\](/zero-touch/resources/manufacturer-names#model-names) and
+  /// [Chrome OS models](https://support.google.com/chrome/a/answer/10130175#identify_compatible).
   core.String? model;
 
   /// The manufacturer's serial number for the device.
@@ -2109,6 +2181,8 @@ class DeviceIdentifier {
   core.String? serialNumber;
 
   DeviceIdentifier({
+    this.chromeOsAttestedDeviceId,
+    this.deviceType,
     this.imei,
     this.manufacturer,
     this.meid,
@@ -2118,6 +2192,13 @@ class DeviceIdentifier {
 
   DeviceIdentifier.fromJson(core.Map json_)
       : this(
+          chromeOsAttestedDeviceId:
+              json_.containsKey('chromeOsAttestedDeviceId')
+                  ? json_['chromeOsAttestedDeviceId'] as core.String
+                  : null,
+          deviceType: json_.containsKey('deviceType')
+              ? json_['deviceType'] as core.String
+              : null,
           imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
           manufacturer: json_.containsKey('manufacturer')
               ? json_['manufacturer'] as core.String
@@ -2131,6 +2212,9 @@ class DeviceIdentifier {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (chromeOsAttestedDeviceId != null)
+          'chromeOsAttestedDeviceId': chromeOsAttestedDeviceId!,
+        if (deviceType != null) 'deviceType': deviceType!,
         if (imei != null) 'imei': imei!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (meid != null) 'meid': meid!,
@@ -2358,9 +2442,10 @@ class FindDevicesByDeviceIdentifierResponse {
 /// Request to find devices by customers.
 class FindDevicesByOwnerRequest {
   /// The list of customer IDs to search for.
-  ///
-  /// Required.
   core.List<core.String>? customerId;
+
+  /// The list of IDs of Google Workspace accounts to search for.
+  core.List<core.String>? googleWorkspaceCustomerId;
 
   /// The maximum number of devices to show in a page of results.
   ///
@@ -2383,6 +2468,7 @@ class FindDevicesByOwnerRequest {
 
   FindDevicesByOwnerRequest({
     this.customerId,
+    this.googleWorkspaceCustomerId,
     this.limit,
     this.pageToken,
     this.sectionType,
@@ -2395,6 +2481,12 @@ class FindDevicesByOwnerRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          googleWorkspaceCustomerId:
+              json_.containsKey('googleWorkspaceCustomerId')
+                  ? (json_['googleWorkspaceCustomerId'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           limit:
               json_.containsKey('limit') ? json_['limit'] as core.String : null,
           pageToken: json_.containsKey('pageToken')
@@ -2407,6 +2499,8 @@ class FindDevicesByOwnerRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
+        if (googleWorkspaceCustomerId != null)
+          'googleWorkspaceCustomerId': googleWorkspaceCustomerId!,
         if (limit != null) 'limit': limit!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (sectionType != null) 'sectionType': sectionType!,
@@ -2452,6 +2546,42 @@ class FindDevicesByOwnerResponse {
         if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// A Google Workspace customer.
+class GoogleWorkspaceAccount {
+  /// The customer ID.
+  ///
+  /// Required.
+  core.String? customerId;
+
+  /// The pre-provisioning tokens previously used to claim devices.
+  ///
+  /// Output only.
+  core.List<core.String>? preProvisioningTokens;
+
+  GoogleWorkspaceAccount({
+    this.customerId,
+    this.preProvisioningTokens,
+  });
+
+  GoogleWorkspaceAccount.fromJson(core.Map json_)
+      : this(
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
+          preProvisioningTokens: json_.containsKey('preProvisioningTokens')
+              ? (json_['preProvisioningTokens'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
+        if (preProvisioningTokens != null)
+          'preProvisioningTokens': preProvisioningTokens!,
       };
 }
 
@@ -2659,8 +2789,6 @@ class Operation {
 /// Identifies one claim request.
 class PartnerClaim {
   /// The ID of the customer for whom the device is being claimed.
-  ///
-  /// Required.
   core.String? customerId;
 
   /// Device identifier of the device.
@@ -2672,6 +2800,14 @@ class PartnerClaim {
   ///
   /// Required.
   DeviceMetadata? deviceMetadata;
+
+  /// The Google Workspace customer ID.
+  core.String? googleWorkspaceCustomerId;
+
+  /// Must and can only be set for Chrome OS devices.
+  ///
+  /// Optional.
+  core.String? preProvisioningToken;
 
   /// The section type of the device's provisioning record.
   ///
@@ -2686,6 +2822,8 @@ class PartnerClaim {
     this.customerId,
     this.deviceIdentifier,
     this.deviceMetadata,
+    this.googleWorkspaceCustomerId,
+    this.preProvisioningToken,
     this.sectionType,
   });
 
@@ -2702,6 +2840,13 @@ class PartnerClaim {
               ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          googleWorkspaceCustomerId:
+              json_.containsKey('googleWorkspaceCustomerId')
+                  ? json_['googleWorkspaceCustomerId'] as core.String
+                  : null,
+          preProvisioningToken: json_.containsKey('preProvisioningToken')
+              ? json_['preProvisioningToken'] as core.String
+              : null,
           sectionType: json_.containsKey('sectionType')
               ? json_['sectionType'] as core.String
               : null,
@@ -2711,6 +2856,10 @@ class PartnerClaim {
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null) 'deviceIdentifier': deviceIdentifier!,
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
+        if (googleWorkspaceCustomerId != null)
+          'googleWorkspaceCustomerId': googleWorkspaceCustomerId!,
+        if (preProvisioningToken != null)
+          'preProvisioningToken': preProvisioningToken!,
         if (sectionType != null) 'sectionType': sectionType!,
       };
 }

@@ -517,6 +517,13 @@ class CheckError {
   /// should not be used to reject client requests.
   /// - "LOCATION_POLICY_BACKEND_UNAVAILABLE" : Backend server for evaluating
   /// location policy is unavailable.
+  /// - "INJECTED_ERROR" : Part of the project of fault injection:
+  /// go/chemist-slo-validation. To distinguish between artificially injected
+  /// errors and organic ones, this value will be exported for the
+  /// per_service_check_error_count streamz.
+  /// http://google3/apiserving/servicecontrol/server/controller_service.cc;l=196
+  /// Rpcinjectz2 works by injecting errors early in the rpc life cycle, before
+  /// any of the chemist business logic runs.
   core.String? code;
 
   /// Free-form text providing details on the error cause of the error.
@@ -2303,6 +2310,9 @@ class ReportResponse {
 
 /// Describes a resource associated with this operation.
 class ResourceInfo {
+  /// The resource permission required for this request.
+  core.String? permission;
+
   /// The identifier of the parent of this resource instance.
   ///
   /// Must be in one of the following formats: - `projects/` - `folders/` -
@@ -2322,6 +2332,7 @@ class ResourceInfo {
   core.String? resourceName;
 
   ResourceInfo({
+    this.permission,
     this.resourceContainer,
     this.resourceLocation,
     this.resourceName,
@@ -2329,6 +2340,9 @@ class ResourceInfo {
 
   ResourceInfo.fromJson(core.Map json_)
       : this(
+          permission: json_.containsKey('permission')
+              ? json_['permission'] as core.String
+              : null,
           resourceContainer: json_.containsKey('resourceContainer')
               ? json_['resourceContainer'] as core.String
               : null,
@@ -2341,6 +2355,7 @@ class ResourceInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (permission != null) 'permission': permission!,
         if (resourceContainer != null) 'resourceContainer': resourceContainer!,
         if (resourceLocation != null) 'resourceLocation': resourceLocation!,
         if (resourceName != null) 'resourceName': resourceName!,

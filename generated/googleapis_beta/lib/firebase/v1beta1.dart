@@ -2736,7 +2736,7 @@ class FirebaseProject {
   /// associated with the Project, but it should generally be treated as a
   /// convenience alias to reference the Project.
   ///
-  /// Output only.
+  /// Output only. Immutable.
   core.String? projectId;
 
   /// The globally unique, Google-assigned canonical identifier for the Project.
@@ -2744,7 +2744,7 @@ class FirebaseProject {
   /// Use this identifier when configuring integrations and/or making API calls
   /// to Firebase or third-party services.
   ///
-  /// Output only.
+  /// Output only. Immutable.
   core.String? projectNumber;
 
   /// The default Firebase resources associated with the Project.
@@ -3445,6 +3445,14 @@ class RemoveAndroidAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
+  /// Determines whether to _immediately_ delete the App.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means
+  /// that the App may be restored to the Project within 30 days using
+  /// UndeleteAndroidApp.
+  core.bool? immediate;
+
   /// If set to true, the request is only validated.
   ///
   /// The App will _not_ be removed.
@@ -3453,6 +3461,7 @@ class RemoveAndroidAppRequest {
   RemoveAndroidAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3462,6 +3471,9 @@ class RemoveAndroidAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3470,6 +3482,7 @@ class RemoveAndroidAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3483,6 +3496,14 @@ class RemoveIosAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
+  /// Determines whether to _immediately_ delete the App.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means
+  /// that the App may be restored to the Project within 30 days using
+  /// UndeleteIosApp
+  core.bool? immediate;
+
   /// If set to true, the request is only validated.
   ///
   /// The App will _not_ be removed.
@@ -3491,6 +3512,7 @@ class RemoveIosAppRequest {
   RemoveIosAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3500,6 +3522,9 @@ class RemoveIosAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3508,6 +3533,7 @@ class RemoveIosAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3521,6 +3547,14 @@ class RemoveWebAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
+  /// Determines whether to _immediately_ delete the App.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means
+  /// that the App may be restored to the Project within 30 days using
+  /// UndeleteWebApp
+  core.bool? immediate;
+
   /// If set to true, the request is only validated.
   ///
   /// The App will _not_ be removed.
@@ -3529,6 +3563,7 @@ class RemoveWebAppRequest {
   RemoveWebAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3538,6 +3573,9 @@ class RemoveWebAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3546,6 +3584,7 @@ class RemoveWebAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }

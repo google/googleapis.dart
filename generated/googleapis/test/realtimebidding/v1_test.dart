@@ -693,6 +693,7 @@ api.Creative buildCreative() {
     o.impressionTrackingUrls = buildUnnamed16();
     o.name = 'foo';
     o.native = buildNativeContent();
+    o.renderUrl = 'foo';
     o.restrictedCategories = buildUnnamed17();
     o.version = 42;
     o.video = buildVideoContent();
@@ -745,6 +746,10 @@ void checkCreative(api.Creative o) {
       unittest.equals('foo'),
     );
     checkNativeContent(o.native!);
+    unittest.expect(
+      o.renderUrl!,
+      unittest.equals('foo'),
+    );
     checkUnnamed17(o.restrictedCategories!);
     unittest.expect(
       o.version!,

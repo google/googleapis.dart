@@ -911,7 +911,7 @@
             }
         }
     },
-    "revision": "20220909",
+    "revision": "20221129",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "schemas": {
         "AccessApprovalServiceAccount": {

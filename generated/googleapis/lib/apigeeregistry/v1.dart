@@ -4885,12 +4885,14 @@ class Api {
 
   /// The recommended deployment of the API.
   ///
-  /// Format: `apis/{api}/deployments/{deployment}`
+  /// Format:
+  /// `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
   core.String? recommendedDeployment;
 
   /// The recommended version of the API.
   ///
-  /// Format: `apis/{api}/versions/{version}`
+  /// Format:
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
   core.String? recommendedVersion;
 
   /// Last update timestamp.

@@ -599,6 +599,7 @@ api.GoogleCloudDialogflowV2AutomatedAgentReply
   if (buildCounterGoogleCloudDialogflowV2AutomatedAgentReply < 3) {
     o.allowCancellation = true;
     o.automatedAgentReplyType = 'foo';
+    o.cxCurrentPage = 'foo';
     o.detectIntentResponse = buildGoogleCloudDialogflowV2DetectIntentResponse();
   }
   buildCounterGoogleCloudDialogflowV2AutomatedAgentReply--;
@@ -612,6 +613,10 @@ void checkGoogleCloudDialogflowV2AutomatedAgentReply(
     unittest.expect(o.allowCancellation!, unittest.isTrue);
     unittest.expect(
       o.automatedAgentReplyType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cxCurrentPage!,
       unittest.equals('foo'),
     );
     checkGoogleCloudDialogflowV2DetectIntentResponse(o.detectIntentResponse!);
@@ -1209,6 +1214,7 @@ api.GoogleCloudDialogflowV2ConversationModelEvaluation
     o.displayName = 'foo';
     o.evaluationConfig = buildGoogleCloudDialogflowV2EvaluationConfig();
     o.name = 'foo';
+    o.rawHumanEvalTemplateCsv = 'foo';
     o.smartReplyMetrics = buildGoogleCloudDialogflowV2SmartReplyMetrics();
   }
   buildCounterGoogleCloudDialogflowV2ConversationModelEvaluation--;
@@ -1230,6 +1236,10 @@ void checkGoogleCloudDialogflowV2ConversationModelEvaluation(
     checkGoogleCloudDialogflowV2EvaluationConfig(o.evaluationConfig!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rawHumanEvalTemplateCsv!,
       unittest.equals('foo'),
     );
     checkGoogleCloudDialogflowV2SmartReplyMetrics(o.smartReplyMetrics!);
@@ -5506,6 +5516,7 @@ api.GoogleCloudDialogflowV2Participant
   if (buildCounterGoogleCloudDialogflowV2Participant < 3) {
     o.documentsMetadataFilters = buildUnnamed77();
     o.name = 'foo';
+    o.obfuscatedExternalUserId = 'foo';
     o.role = 'foo';
     o.sipRecordingMediaLabel = 'foo';
   }
@@ -5520,6 +5531,10 @@ void checkGoogleCloudDialogflowV2Participant(
     checkUnnamed77(o.documentsMetadataFilters!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.obfuscatedExternalUserId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6330,6 +6345,7 @@ api.GoogleCloudDialogflowV2SpeechToTextConfig
   final o = api.GoogleCloudDialogflowV2SpeechToTextConfig();
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig++;
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
+    o.model = 'foo';
     o.speechModelVariant = 'foo';
   }
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig--;
@@ -6340,6 +6356,10 @@ void checkGoogleCloudDialogflowV2SpeechToTextConfig(
     api.GoogleCloudDialogflowV2SpeechToTextConfig o) {
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig++;
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.speechModelVariant!,
       unittest.equals('foo'),

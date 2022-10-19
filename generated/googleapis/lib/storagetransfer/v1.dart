@@ -580,10 +580,10 @@ class TransferJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Attempts to start a new TransferOperation for the current TransferJob.
+  /// Starts a new operation for the specified transfer job.
   ///
-  /// A TransferJob has a maximum of one active TransferOperation. If this
-  /// method is called while a TransferOperation is active, an error will be
+  /// A `TransferJob` has a maximum of one active `TransferOperation`. If this
+  /// method is called while a `TransferOperation` is active, an error is
   /// returned.
   ///
   /// [request] - The metadata request object.

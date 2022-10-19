@@ -175,6 +175,77 @@ void checkDataprocParameters(api.DataprocParameters o) {
   buildCounterDataprocParameters--;
 }
 
+core.int buildCounterDiagnoseInstanceRequest = 0;
+api.DiagnoseInstanceRequest buildDiagnoseInstanceRequest() {
+  final o = api.DiagnoseInstanceRequest();
+  buildCounterDiagnoseInstanceRequest++;
+  if (buildCounterDiagnoseInstanceRequest < 3) {
+    o.diagnosticConfig = buildDiagnosticConfig();
+  }
+  buildCounterDiagnoseInstanceRequest--;
+  return o;
+}
+
+void checkDiagnoseInstanceRequest(api.DiagnoseInstanceRequest o) {
+  buildCounterDiagnoseInstanceRequest++;
+  if (buildCounterDiagnoseInstanceRequest < 3) {
+    checkDiagnosticConfig(o.diagnosticConfig!);
+  }
+  buildCounterDiagnoseInstanceRequest--;
+}
+
+core.int buildCounterDiagnoseRuntimeRequest = 0;
+api.DiagnoseRuntimeRequest buildDiagnoseRuntimeRequest() {
+  final o = api.DiagnoseRuntimeRequest();
+  buildCounterDiagnoseRuntimeRequest++;
+  if (buildCounterDiagnoseRuntimeRequest < 3) {
+    o.diagnosticConfig = buildDiagnosticConfig();
+  }
+  buildCounterDiagnoseRuntimeRequest--;
+  return o;
+}
+
+void checkDiagnoseRuntimeRequest(api.DiagnoseRuntimeRequest o) {
+  buildCounterDiagnoseRuntimeRequest++;
+  if (buildCounterDiagnoseRuntimeRequest < 3) {
+    checkDiagnosticConfig(o.diagnosticConfig!);
+  }
+  buildCounterDiagnoseRuntimeRequest--;
+}
+
+core.int buildCounterDiagnosticConfig = 0;
+api.DiagnosticConfig buildDiagnosticConfig() {
+  final o = api.DiagnosticConfig();
+  buildCounterDiagnosticConfig++;
+  if (buildCounterDiagnosticConfig < 3) {
+    o.copyHomeFilesFlagEnabled = true;
+    o.gcsBucket = 'foo';
+    o.packetCaptureFlagEnabled = true;
+    o.relativePath = 'foo';
+    o.repairFlagEnabled = true;
+  }
+  buildCounterDiagnosticConfig--;
+  return o;
+}
+
+void checkDiagnosticConfig(api.DiagnosticConfig o) {
+  buildCounterDiagnosticConfig++;
+  if (buildCounterDiagnosticConfig < 3) {
+    unittest.expect(o.copyHomeFilesFlagEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.gcsBucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.packetCaptureFlagEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.relativePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.repairFlagEnabled!, unittest.isTrue);
+  }
+  buildCounterDiagnosticConfig--;
+}
+
 core.List<api.GuestOsFeature> buildUnnamed1() => [
       buildGuestOsFeature(),
       buildGuestOsFeature(),
@@ -2941,6 +3012,28 @@ void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
   buildCounterUpgradeInstanceRequest--;
 }
 
+core.int buildCounterUpgradeRuntimeRequest = 0;
+api.UpgradeRuntimeRequest buildUpgradeRuntimeRequest() {
+  final o = api.UpgradeRuntimeRequest();
+  buildCounterUpgradeRuntimeRequest++;
+  if (buildCounterUpgradeRuntimeRequest < 3) {
+    o.requestId = 'foo';
+  }
+  buildCounterUpgradeRuntimeRequest--;
+  return o;
+}
+
+void checkUpgradeRuntimeRequest(api.UpgradeRuntimeRequest o) {
+  buildCounterUpgradeRuntimeRequest++;
+  if (buildCounterUpgradeRuntimeRequest < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpgradeRuntimeRequest--;
+}
+
 core.Map<core.String, core.String> buildUnnamed45() => {
       'x': 'foo',
       'y': 'foo',
@@ -3249,6 +3342,36 @@ void main() {
       final od = api.DataprocParameters.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDataprocParameters(od);
+    });
+  });
+
+  unittest.group('obj-schema-DiagnoseInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDiagnoseInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DiagnoseInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDiagnoseInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DiagnoseRuntimeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDiagnoseRuntimeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DiagnoseRuntimeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDiagnoseRuntimeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DiagnosticConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDiagnosticConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DiagnosticConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDiagnosticConfig(od);
     });
   });
 
@@ -3889,6 +4012,16 @@ void main() {
       final od = api.UpgradeInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpgradeInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeRuntimeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeRuntimeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeRuntimeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpgradeRuntimeRequest(od);
     });
   });
 
@@ -4658,6 +4791,64 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--diagnose', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
+      final arg_request = buildDiagnoseInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DiagnoseInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDiagnoseInstanceRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.diagnose(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -6250,6 +6441,64 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--diagnose', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildDiagnoseRuntimeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DiagnoseRuntimeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDiagnoseRuntimeRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.diagnose(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
@@ -6962,6 +7211,64 @@ void main() {
           $fields: arg_$fields);
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
+    });
+
+    unittest.test('method--upgrade', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildUpgradeRuntimeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UpgradeRuntimeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpgradeRuntimeRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.upgrade(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 

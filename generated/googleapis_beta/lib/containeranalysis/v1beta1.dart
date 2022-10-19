@@ -26,7 +26,6 @@
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
-///   - [ProjectsScanConfigsResource]
 library containeranalysis.v1beta1;
 
 import 'dart:async' as async;
@@ -68,8 +67,6 @@ class ProjectsResource {
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
-  ProjectsScanConfigsResource get scanConfigs =>
-      ProjectsScanConfigsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1043,141 +1040,6 @@ class ProjectsOccurrencesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsScanConfigsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsScanConfigsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the specified scan configuration.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the scan configuration in the form of
-  /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-  /// Value must have pattern `^projects/\[^/\]+/scanConfigs/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ScanConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ScanConfig> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ScanConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists scan configurations for the specified project.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The name of the project to list scan configurations
-  /// for in the form of `projects/[PROJECT_ID]`.
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [filter] - Required. The filter expression.
-  ///
-  /// [pageSize] - The number of scan configs to return in the list.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListScanConfigsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListScanConfigsResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListScanConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates the specified scan configuration.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the scan configuration in the form of
-  /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-  /// Value must have pattern `^projects/\[^/\]+/scanConfigs/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ScanConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ScanConfig> update(
-    ScanConfig request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PUT',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return ScanConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2619,7 +2481,7 @@ class Distribution {
 }
 
 /// DocumentNote represents an SPDX Document Creation Information section:
-/// https://spdx.github.io/spdx-spec/2-document-creation-information/
+/// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 class DocumentNote {
   /// Compliance with the SPDX specification includes populating the SPDX fields
   /// therein with data related to such fields ("SPDX-Metadata")
@@ -2651,7 +2513,7 @@ class DocumentNote {
 }
 
 /// DocumentOccurrence represents an SPDX Document Creation Information section:
-/// https://spdx.github.io/spdx-spec/2-document-creation-information/
+/// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 class DocumentOccurrence {
   /// Identify when the SPDX file was originally created.
   ///
@@ -3499,6 +3361,15 @@ class GrafeasV1beta1VulnerabilityDetails {
   /// Output only.
   core.double? cvssScore;
 
+  /// CVSS version used to populate cvss_score and severity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CVSS_VERSION_UNSPECIFIED"
+  /// - "CVSS_VERSION_2"
+  /// - "CVSS_VERSION_3"
+  core.String? cvssVersion;
+
   /// The distro assigned severity for this vulnerability when it is available,
   /// and note provider assigned severity when distro has not yet assigned a
   /// severity for this vulnerability.
@@ -3558,6 +3429,7 @@ class GrafeasV1beta1VulnerabilityDetails {
 
   GrafeasV1beta1VulnerabilityDetails({
     this.cvssScore,
+    this.cvssVersion,
     this.effectiveSeverity,
     this.longDescription,
     this.packageIssue,
@@ -3571,6 +3443,9 @@ class GrafeasV1beta1VulnerabilityDetails {
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssVersion: json_.containsKey('cvssVersion')
+              ? json_['cvssVersion'] as core.String
               : null,
           effectiveSeverity: json_.containsKey('effectiveSeverity')
               ? json_['effectiveSeverity'] as core.String
@@ -3601,6 +3476,7 @@ class GrafeasV1beta1VulnerabilityDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (longDescription != null) 'longDescription': longDescription!,
         if (packageIssue != null) 'packageIssue': packageIssue!,
@@ -4114,41 +3990,6 @@ class ListOccurrencesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (occurrences != null) 'occurrences': occurrences!,
-      };
-}
-
-/// Response for listing scan configurations.
-class ListScanConfigsResponse {
-  /// The next pagination token in the list response.
-  ///
-  /// It should be used as `page_token` for the following request. An empty
-  /// value means no more results.
-  core.String? nextPageToken;
-
-  /// The scan configurations requested.
-  core.List<ScanConfig>? scanConfigs;
-
-  ListScanConfigsResponse({
-    this.nextPageToken,
-    this.scanConfigs,
-  });
-
-  ListScanConfigsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          scanConfigs: json_.containsKey('scanConfigs')
-              ? (json_['scanConfigs'] as core.List)
-                  .map((value) => ScanConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (scanConfigs != null) 'scanConfigs': scanConfigs!,
       };
 }
 
@@ -5613,70 +5454,6 @@ class Resource {
       };
 }
 
-/// A scan configuration specifies whether Cloud components in a project have a
-/// particular type of analysis being run.
-///
-/// For example, it can configure whether vulnerability scanning is being done
-/// on Docker images or not.
-class ScanConfig {
-  /// The time this scan config was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// A human-readable description of what the scan configuration does.
-  ///
-  /// Output only.
-  core.String? description;
-
-  /// Whether the scan is enabled.
-  core.bool? enabled;
-
-  /// The name of the scan configuration in the form of
-  /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The time this scan config was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  ScanConfig({
-    this.createTime,
-    this.description,
-    this.enabled,
-    this.name,
-    this.updateTime,
-  });
-
-  ScanConfig.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (enabled != null) 'enabled': enabled!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -5995,6 +5772,13 @@ class Vulnerability {
   /// The full description of the CVSS for version 3.
   CVSSv3? cvssV3;
 
+  /// CVSS version used to populate cvss_score and severity.
+  /// Possible string values are:
+  /// - "CVSS_VERSION_UNSPECIFIED"
+  /// - "CVSS_VERSION_2"
+  /// - "CVSS_VERSION_3"
+  core.String? cvssVersion;
+
   /// A list of CWE for this vulnerability.
   ///
   /// For details, see: https://cwe.mitre.org/index.html
@@ -6035,6 +5819,7 @@ class Vulnerability {
     this.cvssScore,
     this.cvssV2,
     this.cvssV3,
+    this.cvssVersion,
     this.cwe,
     this.details,
     this.severity,
@@ -6054,6 +5839,9 @@ class Vulnerability {
           cvssV3: json_.containsKey('cvssV3')
               ? CVSSv3.fromJson(
                   json_['cvssV3'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cvssVersion: json_.containsKey('cvssVersion')
+              ? json_['cvssVersion'] as core.String
               : null,
           cwe: json_.containsKey('cwe')
               ? (json_['cwe'] as core.List)
@@ -6084,6 +5872,7 @@ class Vulnerability {
         if (cvssScore != null) 'cvssScore': cvssScore!,
         if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssV3 != null) 'cvssV3': cvssV3!,
+        if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cwe != null) 'cwe': cwe!,
         if (details != null) 'details': details!,
         if (severity != null) 'severity': severity!,

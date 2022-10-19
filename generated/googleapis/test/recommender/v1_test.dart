@@ -59,7 +59,11 @@ api.GoogleCloudRecommenderV1Impact buildGoogleCloudRecommenderV1Impact() {
   if (buildCounterGoogleCloudRecommenderV1Impact < 3) {
     o.category = 'foo';
     o.costProjection = buildGoogleCloudRecommenderV1CostProjection();
+    o.reliabilityProjection =
+        buildGoogleCloudRecommenderV1ReliabilityProjection();
     o.securityProjection = buildGoogleCloudRecommenderV1SecurityProjection();
+    o.sustainabilityProjection =
+        buildGoogleCloudRecommenderV1SustainabilityProjection();
   }
   buildCounterGoogleCloudRecommenderV1Impact--;
   return o;
@@ -73,7 +77,11 @@ void checkGoogleCloudRecommenderV1Impact(api.GoogleCloudRecommenderV1Impact o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudRecommenderV1CostProjection(o.costProjection!);
+    checkGoogleCloudRecommenderV1ReliabilityProjection(
+        o.reliabilityProjection!);
     checkGoogleCloudRecommenderV1SecurityProjection(o.securityProjection!);
+    checkGoogleCloudRecommenderV1SustainabilityProjection(
+        o.sustainabilityProjection!);
   }
   buildCounterGoogleCloudRecommenderV1Impact--;
 }
@@ -1247,13 +1255,98 @@ void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   );
 }
 
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudRecommenderV1ReliabilityProjection = 0;
+api.GoogleCloudRecommenderV1ReliabilityProjection
+    buildGoogleCloudRecommenderV1ReliabilityProjection() {
+  final o = api.GoogleCloudRecommenderV1ReliabilityProjection();
+  buildCounterGoogleCloudRecommenderV1ReliabilityProjection++;
+  if (buildCounterGoogleCloudRecommenderV1ReliabilityProjection < 3) {
+    o.details = buildUnnamed22();
+    o.risks = buildUnnamed23();
+  }
+  buildCounterGoogleCloudRecommenderV1ReliabilityProjection--;
+  return o;
+}
+
+void checkGoogleCloudRecommenderV1ReliabilityProjection(
+    api.GoogleCloudRecommenderV1ReliabilityProjection o) {
+  buildCounterGoogleCloudRecommenderV1ReliabilityProjection++;
+  if (buildCounterGoogleCloudRecommenderV1ReliabilityProjection < 3) {
+    checkUnnamed22(o.details!);
+    checkUnnamed23(o.risks!);
+  }
+  buildCounterGoogleCloudRecommenderV1ReliabilityProjection--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed24() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted14 = (o['x']!) as core.Map;
+  unittest.expect(casted14, unittest.hasLength(3));
+  unittest.expect(
+    casted14['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted14['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted14['string'],
+    unittest.equals('foo'),
+  );
+  var casted15 = (o['y']!) as core.Map;
+  unittest.expect(casted15, unittest.hasLength(3));
+  unittest.expect(
+    casted15['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted15['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted15['string'],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudRecommenderV1SecurityProjection = 0;
 api.GoogleCloudRecommenderV1SecurityProjection
     buildGoogleCloudRecommenderV1SecurityProjection() {
   final o = api.GoogleCloudRecommenderV1SecurityProjection();
   buildCounterGoogleCloudRecommenderV1SecurityProjection++;
   if (buildCounterGoogleCloudRecommenderV1SecurityProjection < 3) {
-    o.details = buildUnnamed22();
+    o.details = buildUnnamed24();
   }
   buildCounterGoogleCloudRecommenderV1SecurityProjection--;
   return o;
@@ -1263,9 +1356,38 @@ void checkGoogleCloudRecommenderV1SecurityProjection(
     api.GoogleCloudRecommenderV1SecurityProjection o) {
   buildCounterGoogleCloudRecommenderV1SecurityProjection++;
   if (buildCounterGoogleCloudRecommenderV1SecurityProjection < 3) {
-    checkUnnamed22(o.details!);
+    checkUnnamed24(o.details!);
   }
   buildCounterGoogleCloudRecommenderV1SecurityProjection--;
+}
+
+core.int buildCounterGoogleCloudRecommenderV1SustainabilityProjection = 0;
+api.GoogleCloudRecommenderV1SustainabilityProjection
+    buildGoogleCloudRecommenderV1SustainabilityProjection() {
+  final o = api.GoogleCloudRecommenderV1SustainabilityProjection();
+  buildCounterGoogleCloudRecommenderV1SustainabilityProjection++;
+  if (buildCounterGoogleCloudRecommenderV1SustainabilityProjection < 3) {
+    o.duration = 'foo';
+    o.kgCO2e = 42.0;
+  }
+  buildCounterGoogleCloudRecommenderV1SustainabilityProjection--;
+  return o;
+}
+
+void checkGoogleCloudRecommenderV1SustainabilityProjection(
+    api.GoogleCloudRecommenderV1SustainabilityProjection o) {
+  buildCounterGoogleCloudRecommenderV1SustainabilityProjection++;
+  if (buildCounterGoogleCloudRecommenderV1SustainabilityProjection < 3) {
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kgCO2e!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleCloudRecommenderV1SustainabilityProjection--;
 }
 
 core.int buildCounterGoogleCloudRecommenderV1ValueMatcher = 0;
@@ -1557,6 +1679,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRecommenderV1ReliabilityProjection',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecommenderV1ReliabilityProjection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecommenderV1ReliabilityProjection(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRecommenderV1SecurityProjection', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRecommenderV1SecurityProjection();
@@ -1564,6 +1697,17 @@ void main() {
       final od = api.GoogleCloudRecommenderV1SecurityProjection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommenderV1SecurityProjection(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRecommenderV1SustainabilityProjection',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecommenderV1SustainabilityProjection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecommenderV1SustainabilityProjection(od);
     });
   });
 
@@ -1584,6 +1728,136 @@ void main() {
       final od = api.GoogleTypeMoney.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeMoney(od);
+    });
+  });
+
+  unittest.group('resource-BillingAccountsLocationsInsightTypesResource', () {
+    unittest.test('method--getConfig', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.RecommenderApi(mock).billingAccounts.locations.insightTypes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecommenderV1InsightTypeConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1InsightTypeConfig(
+          response as api.GoogleCloudRecommenderV1InsightTypeConfig);
+    });
+
+    unittest.test('method--updateConfig', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.RecommenderApi(mock).billingAccounts.locations.insightTypes;
+      final arg_request = buildGoogleCloudRecommenderV1InsightTypeConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1InsightTypeConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecommenderV1InsightTypeConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateConfig(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1InsightTypeConfig(
+          response as api.GoogleCloudRecommenderV1InsightTypeConfig);
     });
   });
 
@@ -1788,6 +2062,136 @@ void main() {
           await res.markAccepted(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleCloudRecommenderV1Insight(
           response as api.GoogleCloudRecommenderV1Insight);
+    });
+  });
+
+  unittest.group('resource-BillingAccountsLocationsRecommendersResource', () {
+    unittest.test('method--getConfig', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.RecommenderApi(mock).billingAccounts.locations.recommenders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecommenderV1RecommenderConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1RecommenderConfig(
+          response as api.GoogleCloudRecommenderV1RecommenderConfig);
+    });
+
+    unittest.test('method--updateConfig', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.RecommenderApi(mock).billingAccounts.locations.recommenders;
+      final arg_request = buildGoogleCloudRecommenderV1RecommenderConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1RecommenderConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecommenderV1RecommenderConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateConfig(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1RecommenderConfig(
+          response as api.GoogleCloudRecommenderV1RecommenderConfig);
     });
   });
 

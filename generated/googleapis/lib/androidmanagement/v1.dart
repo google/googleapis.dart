@@ -395,7 +395,9 @@ class EnterprisesDevicesResource {
 
   /// Deletes a device.
   ///
-  /// This operation wipes the device.
+  /// This operation wipes the device. Deleted devices do not show up in
+  /// enterprises.devices.list calls and a 404 is returned from
+  /// enterprises.devices.get.
   ///
   /// Request parameters:
   ///
@@ -442,6 +444,8 @@ class EnterprisesDevicesResource {
   }
 
   /// Gets a device.
+  ///
+  /// Deleted devices will respond with a 404 error.
   ///
   /// Request parameters:
   ///
@@ -522,6 +526,8 @@ class EnterprisesDevicesResource {
   }
 
   /// Lists devices for a given enterprise.
+  ///
+  /// Deleted devices are not returned in the response.
   ///
   /// Request parameters:
   ///
@@ -2182,7 +2188,7 @@ class ApplicationPolicy {
 
   /// Whether the app is allowed to lock itself in full-screen mode.
   ///
-  /// DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to to
+  /// DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to
   /// configure a dedicated device.
   core.bool? lockTaskAllowed;
 
@@ -2226,6 +2232,18 @@ class ApplicationPolicy {
   /// which apply to all apps.
   core.List<PermissionGrant>? permissionGrants;
 
+  /// Specifies whether the app installed in the work profile is allowed to add
+  /// widgets to the home screen.
+  /// Possible string values are:
+  /// - "WORK_PROFILE_WIDGETS_UNSPECIFIED" : Unspecified. Defaults to
+  /// work_profile_widgets_default
+  /// - "WORK_PROFILE_WIDGETS_ALLOWED" : Work profile widgets are allowed. This
+  /// means the application will be able to add widgets to the home screen.
+  /// - "WORK_PROFILE_WIDGETS_DISALLOWED" : Work profile widgets are disallowed.
+  /// This means the application will not be able to add widgets to the home
+  /// screen.
+  core.String? workProfileWidgets;
+
   ApplicationPolicy({
     this.accessibleTrackIds,
     this.alwaysOnVpnLockdownExemption,
@@ -2242,6 +2260,7 @@ class ApplicationPolicy {
     this.minimumVersionCode,
     this.packageName,
     this.permissionGrants,
+    this.workProfileWidgets,
   });
 
   ApplicationPolicy.fromJson(core.Map json_)
@@ -2305,6 +2324,9 @@ class ApplicationPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          workProfileWidgets: json_.containsKey('workProfileWidgets')
+              ? json_['workProfileWidgets'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2330,6 +2352,8 @@ class ApplicationPolicy {
           'minimumVersionCode': minimumVersionCode!,
         if (packageName != null) 'packageName': packageName!,
         if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+        if (workProfileWidgets != null)
+          'workProfileWidgets': workProfileWidgets!,
       };
 }
 
@@ -2349,9 +2373,7 @@ class ApplicationReport {
   /// The display name of the app.
   core.String? displayName;
 
-  /// List of app events.
-  ///
-  /// The most recent 20 events are stored in the list.
+  /// The list of app events which have occurred in the last 30 hours.
   core.List<ApplicationEvent>? events;
 
   /// The package name of the app that installed this app.
@@ -3066,10 +3088,28 @@ class CrossProfilePolicies {
   /// incoming calls
   core.String? showWorkContactsInPersonalProfile;
 
+  /// Specifies the default behaviour for work profile widgets.
+  ///
+  /// If the policy does not specify work_profile_widgets for a specific
+  /// application, it will behave according to the value specified here.
+  /// Possible string values are:
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED" : Unspecified. Defaults to
+  /// WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED.
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_ALLOWED" : Work profile widgets are
+  /// allowed by default. This means that if the policy does not specify
+  /// work_profile_widgets as WORK_PROFILE_WIDGETS_DISALLOWED for the
+  /// application, it will be able to add widgets to the home screen.
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED" : Work profile widgets are
+  /// disallowed by default. This means that if the policy does not specify
+  /// work_profile_widgets as WORK_PROFILE_WIDGETS_ALLOWED for the application,
+  /// it will be unable to add widgets to the home screen.
+  core.String? workProfileWidgetsDefault;
+
   CrossProfilePolicies({
     this.crossProfileCopyPaste,
     this.crossProfileDataSharing,
     this.showWorkContactsInPersonalProfile,
+    this.workProfileWidgetsDefault,
   });
 
   CrossProfilePolicies.fromJson(core.Map json_)
@@ -3084,6 +3124,10 @@ class CrossProfilePolicies {
               json_.containsKey('showWorkContactsInPersonalProfile')
                   ? json_['showWorkContactsInPersonalProfile'] as core.String
                   : null,
+          workProfileWidgetsDefault:
+              json_.containsKey('workProfileWidgetsDefault')
+                  ? json_['workProfileWidgetsDefault'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3094,6 +3138,8 @@ class CrossProfilePolicies {
         if (showWorkContactsInPersonalProfile != null)
           'showWorkContactsInPersonalProfile':
               showWorkContactsInPersonalProfile!,
+        if (workProfileWidgetsDefault != null)
+          'workProfileWidgetsDefault': workProfileWidgetsDefault!,
       };
 }
 
@@ -3980,6 +4026,15 @@ class Enterprise {
 
 /// Configuration to enable an app as an extension app, with the capability of
 /// interacting with Android Device Policy offline.
+///
+/// For Android versions 13 and above, extension apps are exempt from battery
+/// restrictions so will not be placed into the restricted App Standby Bucket
+/// (https://developer.android.com/topic/performance/appstandby#restricted-bucket).
+/// Extensions apps are also protected against users clearing their data or
+/// force-closing the application, although admins can continue to use the clear
+/// app data command
+/// (https://developer.android.com/management/reference/rest/v1/enterprises.devices/issueCommand#CommandType)
+/// on extension apps if needed for Android 13 and above.
 class ExtensionConfig {
   /// Fully qualified class name of the receiver service class for Android
   /// Device Policy to notify the extension app of any local command status
@@ -5939,7 +5994,7 @@ class PersonalUsagePolicies {
   /// Account types that can't be managed by the user.
   core.List<core.String>? accountTypesWithManagementDisabled;
 
-  /// Whether camera is disabled.
+  /// If true, the camera is disabled on the personal profile.
   core.bool? cameraDisabled;
 
   /// Controls how long the work profile can stay off.
@@ -5965,7 +6020,7 @@ class PersonalUsagePolicies {
   /// personal profile.
   core.String? personalPlayStoreMode;
 
-  /// Whether screen capture is disabled.
+  /// If true, screen capture is disabled for all users.
   core.bool? screenCaptureDisabled;
 
   PersonalUsagePolicies({
@@ -6221,7 +6276,9 @@ class Policy {
   /// This field has no effect.
   core.bool? installUnknownSourcesAllowed;
 
-  /// Whether the keyguard is disabled.
+  /// If true, this disables the Lock Screen
+  /// (https://source.android.com/docs/core/display/multi_display/lock-screen)
+  /// for primary and/or secondary displays.
   core.bool? keyguardDisabled;
 
   /// Disabled keyguard customizations, such as widgets.
@@ -6454,6 +6511,9 @@ class Policy {
   core.List<SetupAction>? setupActions;
 
   /// Whether location sharing is disabled.
+  ///
+  /// share_location_disabled is supported for both fully managed devices and
+  /// personally owned work profiles.
   core.bool? shareLocationDisabled;
 
   /// A message displayed to the user in the settings screen wherever
@@ -6533,10 +6593,11 @@ class Policy {
   /// Whether configuring VPN is disabled.
   core.bool? vpnConfigDisabled;
 
-  /// Whether configuring Wi-Fi access points is disabled.Note: If a network
-  /// connection can't be made at boot time and configuring Wi-Fi is disabled
-  /// then network escape hatch will be shown in order to refresh the device
-  /// policy (see networkEscapeHatchEnabled).
+  /// Whether configuring Wi-Fi access points is disabled.
+  ///
+  /// Note: If a network connection can't be made at boot time and configuring
+  /// Wi-Fi is disabled then network escape hatch will be shown in order to
+  /// refresh the device policy (see networkEscapeHatchEnabled).
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
@@ -7134,7 +7195,7 @@ class Policy {
 /// A rule that defines the actions to take if a device or work profile is not
 /// compliant with the policy specified in settingName.
 class PolicyEnforcementRule {
-  /// An action to block access to apps and data on a fully managed device or in
+  /// An action to block access to apps and data on a company owned device or in
   /// a work profile.
   ///
   /// This action also triggers a user-facing notification with information
@@ -7147,7 +7208,7 @@ class PolicyEnforcementRule {
   /// For example, applications or passwordPolicies.
   core.String? settingName;
 
-  /// An action to reset a fully managed device or delete a work profile.
+  /// An action to reset a company owned device or delete a work profile.
   ///
   /// Note: blockAction must also be specified.
   WipeAction? wipeAction;
@@ -8247,7 +8308,7 @@ class WebToken {
       };
 }
 
-/// An action to reset a fully managed device or delete a work profile.
+/// An action to reset a company owned device or delete a work profile.
 ///
 /// Note: blockAction must also be specified.
 class WipeAction {

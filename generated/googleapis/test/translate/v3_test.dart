@@ -1371,6 +1371,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
     o.documentInputConfig = buildDocumentInputConfig();
     o.documentOutputConfig = buildDocumentOutputConfig();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
+    o.isTranslateNativePdfOnly = true;
     o.labels = buildUnnamed26();
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -1390,6 +1391,7 @@ void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
     checkDocumentInputConfig(o.documentInputConfig!);
     checkDocumentOutputConfig(o.documentOutputConfig!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
+    unittest.expect(o.isTranslateNativePdfOnly!, unittest.isTrue);
     checkUnnamed26(o.labels!);
     unittest.expect(
       o.model!,

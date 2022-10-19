@@ -110,8 +110,9 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent project for which to create a database instance, in
-  /// the form: `projects/{project-number}/locations/{location-id}`.
+  /// [parent] - Required. The parent project for which to create a database
+  /// instance, in the form:
+  /// `projects/{project-number}/locations/{location-id}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [databaseId] - The globally unique identifier of the database instance.
@@ -164,8 +165,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -209,8 +210,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -251,8 +252,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   /// `database-id` is a globally unique identifier across all parent
   /// collections. For convenience, this method allows you to supply `-` as a
@@ -301,9 +302,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent project for which to list database instances, in the
-  /// form: `projects/{project-number}/locations/{location-id}` To list across
-  /// all locations, use a parent in the form:
+  /// [parent] - Required. The parent project for which to list database
+  /// instances, in the form:
+  /// `projects/{project-number}/locations/{location-id}` To list across all
+  /// locations, use a parent in the form:
   /// `projects/{project-number}/locations/-`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -364,8 +366,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -414,8 +416,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.

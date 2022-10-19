@@ -1915,6 +1915,7 @@ class ReauthSettings {
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
   /// - "LOGIN" : Prompts the user to log in again.
   /// - "SECURE_KEY" : User must use their secure key 2nd factor device.
+  /// - "ENROLLED_SECOND_FACTORS" : User can use any enabled 2nd factor.
   core.String? method;
 
   /// How IAP determines the effective policy in cases of hierarchial policies.
@@ -2073,10 +2074,14 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A TunnelDestGroup.
 class TunnelDestGroup {
-  /// null List of CIDRs that this group applies to.
+  /// Unordered list.
+  ///
+  /// List of CIDRs that this group applies to.
   core.List<core.String>? cidrs;
 
-  /// null List of FQDNs that this group applies to.
+  /// Unordered list.
+  ///
+  /// List of FQDNs that this group applies to.
   core.List<core.String>? fqdns;
 
   /// Identifier for the TunnelDestGroup.

@@ -98,9 +98,10 @@ class V1Resource {
   /// Exchanges a credential for a Google OAuth 2.0 access token.
   ///
   /// The token asserts an external identity within an identity pool, or it
-  /// applies a Credential Access Boundary to a Google access token. When you
-  /// call this method, do not send the `Authorization` HTTP header in the
-  /// request. This method does not require the `Authorization` header, and
+  /// applies a Credential Access Boundary to a Google access token. Note that
+  /// workforce pools do not support Credential Access Boundary at the moment.
+  /// When you call this method, do not send the `Authorization` HTTP header in
+  /// the request. This method does not require the `Authorization` header, and
   /// using the header can cause the request to fail.
   ///
   /// [request] - The metadata request object.
@@ -142,7 +143,10 @@ class V1Resource {
 /// Request message for ExchangeToken.
 class GoogleIdentityStsV1ExchangeTokenRequest {
   /// The full resource name of the identity provider; for example:
-  /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/`.
+  /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/`
+  /// for workload identity pool providers, or
+  /// `//iam.googleapis.com/locations/global/workforcePools//providers/` for
+  /// workforce pool providers.
   ///
   /// Required when exchanging an external credential for a Google access token.
   core.String? audience;
@@ -200,7 +204,10 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// identity pools, this must be a value specified in the allowed audiences
   /// for the workload identity pool provider, or one of the audiences allowed
   /// by default if no audiences were specified. See
-  /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc
+  /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc.
+  /// For workforce pools, this must match the client ID specified in the
+  /// provider configuration. See
+  /// https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers#oidc.
   /// Example header: ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example
   /// payload: ``` { "iss": "https://accounts.google.com", "iat": 1517963104,
   /// "exp": 1517966704, "aud":
@@ -447,7 +454,10 @@ class GoogleIdentityStsV1IntrospectTokenResponse {
   ///
   /// For example, if the provided token is associated with a workload identity
   /// pool, this field contains a value in the following format:
-  /// `principal://iam.googleapis.com/projects//locations/global/workloadIdentityPools//subject/`
+  /// `principal://iam.googleapis.com/projects//locations/global/workloadIdentityPools//subject/`.
+  /// If the provided token is associated with a workforce pool, this field
+  /// contains a value in the following format:
+  /// `principal://iam.googleapis.com/locations/global/workforcePools//subject/`.
   core.String? username;
 
   GoogleIdentityStsV1IntrospectTokenResponse({

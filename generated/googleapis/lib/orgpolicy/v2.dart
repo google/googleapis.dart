@@ -694,6 +694,9 @@ class OrganizationsCustomConstraintsResource {
   /// organization. Format of the name should be *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
   /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  /// The max length is 70 characters and the min length is 1. Note that the
+  /// prefix "organizations/{organization_id}/customConstraints/" is not
+  /// counted.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
   ///
@@ -1513,40 +1516,7 @@ typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
 
 /// A `Constraint` that allows or disallows a list of string values, which are
 /// configured by an Organization's policy administrator with a `Policy`.
-class GoogleCloudOrgpolicyV2ConstraintListConstraint {
-  /// Indicates whether values grouped into categories can be used in
-  /// `Policy.allowed_values` and `Policy.denied_values`.
-  ///
-  /// For example, `"in:Python"` would match any value in the 'Python' group.
-  core.bool? supportsIn;
-
-  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
-  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
-  ///
-  /// For example, `"under:folders/123"` would match any resource under the
-  /// 'folders/123' folder.
-  core.bool? supportsUnder;
-
-  GoogleCloudOrgpolicyV2ConstraintListConstraint({
-    this.supportsIn,
-    this.supportsUnder,
-  });
-
-  GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(core.Map json_)
-      : this(
-          supportsIn: json_.containsKey('supportsIn')
-              ? json_['supportsIn'] as core.bool
-              : null,
-          supportsUnder: json_.containsKey('supportsUnder')
-              ? json_['supportsUnder'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (supportsIn != null) 'supportsIn': supportsIn!,
-        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
-      };
-}
+typedef GoogleCloudOrgpolicyV2ConstraintListConstraint = $ListConstraint;
 
 /// A custom constraint defined by customers which can *only* be applied to the
 /// given resource types and organization.
@@ -1566,13 +1536,18 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
   ///
   /// For example:
   /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
-  /// `resource.management.auto_upgrade == true`
+  /// `resource.management.auto_upgrade == true` The max length of the condition
+  /// is 1000 characters.
   core.String? condition;
 
   /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
   core.String? description;
 
   /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
   core.String? displayName;
 
   /// All the operations being applied for this constraint.
@@ -1583,6 +1558,9 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
   /// This is unique within the organization. Format of the name should be *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
   /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  /// The max length is 70 characters and the min length is 1. Note that the
+  /// prefix "organizations/{organization_id}/customConstraints/" is not
+  /// counted.
   ///
   /// Immutable.
   core.String? name;
@@ -1994,38 +1972,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 /// "folders/1234" - "organizations/", e.g. "organizations/1234" The
 /// `supports_under` field of the associated `Constraint` defines whether
 /// ancestry prefixes can be used.
-class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
-  /// List of values allowed at this resource.
-  core.List<core.String>? allowedValues;
-
-  /// List of values denied at this resource.
-  core.List<core.String>? deniedValues;
-
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
-
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-      core.Map json_)
-      : this(
-          allowedValues: json_.containsKey('allowedValues')
-              ? (json_['allowedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          deniedValues: json_.containsKey('deniedValues')
-              ? (json_['deniedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-      };
-}
+typedef GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = $StringValues;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

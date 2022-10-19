@@ -1242,6 +1242,9 @@ class ApkManifest {
   /// Maximum API level on which the application is designed to run.
   core.int? maxSdkVersion;
 
+  /// Meta-data tags defined in the manifest.
+  core.List<Metadata>? metadata;
+
   /// Minimum API level required for the application to run.
   core.int? minSdkVersion;
 
@@ -1250,6 +1253,9 @@ class ApkManifest {
 
   /// Specifies the API Level on which the application is designed to run.
   core.int? targetSdkVersion;
+
+  /// Feature usage tags defined in the manifest.
+  core.List<UsesFeature>? usesFeature;
 
   /// Permissions declared to be used by the application
   core.List<core.String>? usesPermission;
@@ -1264,9 +1270,11 @@ class ApkManifest {
     this.applicationLabel,
     this.intentFilters,
     this.maxSdkVersion,
+    this.metadata,
     this.minSdkVersion,
     this.packageName,
     this.targetSdkVersion,
+    this.usesFeature,
     this.usesPermission,
     this.versionCode,
     this.versionName,
@@ -1286,6 +1294,12 @@ class ApkManifest {
           maxSdkVersion: json_.containsKey('maxSdkVersion')
               ? json_['maxSdkVersion'] as core.int
               : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.List)
+                  .map((value) => Metadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           minSdkVersion: json_.containsKey('minSdkVersion')
               ? json_['minSdkVersion'] as core.int
               : null,
@@ -1294,6 +1308,12 @@ class ApkManifest {
               : null,
           targetSdkVersion: json_.containsKey('targetSdkVersion')
               ? json_['targetSdkVersion'] as core.int
+              : null,
+          usesFeature: json_.containsKey('usesFeature')
+              ? (json_['usesFeature'] as core.List)
+                  .map((value) => UsesFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           usesPermission: json_.containsKey('usesPermission')
               ? (json_['usesPermission'] as core.List)
@@ -1312,9 +1332,11 @@ class ApkManifest {
         if (applicationLabel != null) 'applicationLabel': applicationLabel!,
         if (intentFilters != null) 'intentFilters': intentFilters!,
         if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
+        if (metadata != null) 'metadata': metadata!,
         if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
         if (packageName != null) 'packageName': packageName!,
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
+        if (usesFeature != null) 'usesFeature': usesFeature!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
@@ -2504,6 +2526,34 @@ class ManualSharding {
       };
 }
 
+/// A tag within a manifest.
+///
+/// https://developer.android.com/guide/topics/manifest/meta-data-element.html
+class Metadata {
+  /// The android:name value
+  core.String? name;
+
+  /// The android:value value
+  core.String? value;
+
+  Metadata({
+    this.name,
+    this.value,
+  });
+
+  Metadata.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
 class NetworkConfiguration {
   /// The emulation rule applying to the download traffic.
   TrafficRule? downRule;
@@ -3372,6 +3422,9 @@ class TestMatrix {
   /// access the APK file.
   /// - "INVALID_APK_PREVIEW_SDK" : APK is built for a preview SDK which is
   /// unsupported
+  /// - "MATRIX_TOO_LARGE" : The matrix expanded to contain too many executions.
+  /// - "DEVICE_QUOTA_EXCEEDED" : Not enough device quota to run the executions
+  /// in this matrix.
   core.String? invalidMatrixDetails;
 
   /// The overall outcome of the test.
@@ -4009,6 +4062,35 @@ class UniformSharding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numShards != null) 'numShards': numShards!,
+      };
+}
+
+/// A tag within a manifest.
+///
+/// https://developer.android.com/guide/topics/manifest/uses-feature-element.html
+class UsesFeature {
+  /// The android:required value
+  core.bool? isRequired;
+
+  /// The android:name value
+  core.String? name;
+
+  UsesFeature({
+    this.isRequired,
+    this.name,
+  });
+
+  UsesFeature.fromJson(core.Map json_)
+      : this(
+          isRequired: json_.containsKey('isRequired')
+              ? json_['isRequired'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isRequired != null) 'isRequired': isRequired!,
+        if (name != null) 'name': name!,
       };
 }
 

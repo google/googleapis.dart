@@ -741,6 +741,50 @@
                                         }
                                     }
                                 },
+                                "kfpArtifacts": {
+                                    "methods": {
+                                        "upload": {
+                                            "description": "Directly uploads a KFP artifact. The returned Operation will complete once the resource is uploaded. Package, Version, and File resources will be created based on the uploaded artifact. Uploaded artifacts that conflict with existing resources will be overwritten.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/repositories/{repositoriesId}/kfpArtifacts:create",
+                                            "httpMethod": "POST",
+                                            "id": "artifactregistry.projects.locations.repositories.kfpArtifacts.upload",
+                                            "mediaUpload": {
+                                                "accept": [
+                                                    "*/*"
+                                                ],
+                                                "protocols": {
+                                                    "simple": {
+                                                        "multipart": true,
+                                                        "path": "/upload/v1/{+parent}/kfpArtifacts:create"
+                                                    }
+                                                }
+                                            },
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "parent": {
+                                                    "description": "The resource name of the repository where the KFP artifact will be uploaded.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/kfpArtifacts:create",
+                                            "request": {
+                                                "$ref": "UploadKfpArtifactRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "UploadKfpArtifactMediaResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ],
+                                            "supportsMediaUpload": true
+                                        }
+                                    }
+                                },
                                 "mavenArtifacts": {
                                     "methods": {
                                         "get": {
@@ -1411,7 +1455,7 @@
             }
         }
     },
-    "revision": "20220829",
+    "revision": "20221130",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "AptArtifact": {
@@ -1775,6 +1819,22 @@
                         "$ref": "YumArtifact"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "KfpArtifact": {
+            "description": "A detailed representation of a GooGet artifact.",
+            "id": "KfpArtifact",
+            "properties": {
+                "name": {
+                    "description": "Output only. Resource name of the KFP artifact. Since users don't directly interact with this resource, the name will be derived from the associated version. For example, when version = \".../versions/sha256:abcdef...\", the name will be \".../kfpArtifacts/sha256:abcdef...\".",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version associated with the KFP artifact. Must follow the Semantic Versioning standard.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2303,6 +2363,11 @@
                     "description": "The name of the repository, for example: \"projects/p1/locations/us-central1/repositories/repo1\".",
                     "type": "string"
                 },
+                "satisfiesPzs": {
+                    "description": "Output only. If set, the repository satisfies physical zone separation.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "sizeBytes": {
                     "description": "Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.",
                     "format": "int64",
@@ -2435,6 +2500,41 @@
             },
             "type": "object"
         },
+        "UploadKfpArtifactMediaResponse": {
+            "description": "The response to upload an artifact.",
+            "id": "UploadKfpArtifactMediaResponse",
+            "properties": {
+                "operation": {
+                    "$ref": "Operation",
+                    "description": "Operation that will be returned to the user."
+                }
+            },
+            "type": "object"
+        },
+        "UploadKfpArtifactMetadata": {
+            "description": "The operation metadata for uploading KFP artifacts.",
+            "id": "UploadKfpArtifactMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "UploadKfpArtifactRequest": {
+            "description": "The request to upload an artifact.",
+            "id": "UploadKfpArtifactRequest",
+            "properties": {
+                "description": {
+                    "description": "Description of the package version.",
+                    "type": "string"
+                },
+                "tags": {
+                    "description": "Tags to be created with the version.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "UploadYumArtifactMediaResponse": {
             "description": "The response to upload an artifact.",
             "id": "UploadYumArtifactMediaResponse",
@@ -2490,7 +2590,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "Output only. Repository-specific Metadata stored against this version. The fields returned are defined by the underlying repository-specific resource. Currently, the only resource in use is DockerImage",
+                    "description": "Output only. Repository-specific Metadata stored against this version. The fields returned are defined by the underlying repository-specific resource. Currently, the resources could be: DockerImage MavenArtifact",
                     "readOnly": true,
                     "type": "object"
                 },

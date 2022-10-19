@@ -26,6 +26,7 @@
 ///   - [FoldersBigQueryExportsResource]
 ///   - [FoldersFindingsResource]
 ///   - [FoldersMuteConfigsResource]
+///   - [FoldersNotificationConfigsResource]
 ///   - [FoldersSourcesResource]
 ///     - [FoldersSourcesFindingsResource]
 ///       - [FoldersSourcesFindingsExternalSystemsResource]
@@ -44,6 +45,7 @@
 ///   - [ProjectsBigQueryExportsResource]
 ///   - [ProjectsFindingsResource]
 ///   - [ProjectsMuteConfigsResource]
+///   - [ProjectsNotificationConfigsResource]
 ///   - [ProjectsSourcesResource]
 ///     - [ProjectsSourcesFindingsResource]
 ///       - [ProjectsSourcesFindingsExternalSystemsResource]
@@ -93,6 +95,8 @@ class FoldersResource {
   FoldersFindingsResource get findings => FoldersFindingsResource(_requester);
   FoldersMuteConfigsResource get muteConfigs =>
       FoldersMuteConfigsResource(_requester);
+  FoldersNotificationConfigsResource get notificationConfigs =>
+      FoldersNotificationConfigsResource(_requester);
   FoldersSourcesResource get sources => FoldersSourcesResource(_requester);
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
@@ -110,7 +114,7 @@ class FoldersAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization to groupBy. Its format is
+  /// [parent] - Required. Name of the parent to groupBy. Its format is
   /// "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -151,7 +155,7 @@ class FoldersAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// [parent] - Required. Name of the parent assets should belong to. Its
   /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -871,6 +875,245 @@ class FoldersMuteConfigsResource {
   }
 }
 
+class FoldersNotificationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersNotificationConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a notification config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new notification config's
+  /// parent. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [configId] - Required. Unique identifier provided by the client within the
+  /// parent scope. It must be between 1 and 128 characters, and contains
+  /// alphanumeric characters, underscores or hyphens only.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> create(
+    NotificationConfig request,
+    core.String parent, {
+    core.String? configId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to delete. Its format
+  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to get. Its format is
+  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists notification configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list notification configs. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListNotificationConfigsResponse`; indicates that this is a continuation
+  /// of a prior `ListNotificationConfigs` call, and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotificationConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotificationConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNotificationConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  ///  Updates a notification config.
+  ///
+  /// The following update fields are allowed: description, pubsub_topic,
+  /// streaming_config.filter
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this notification config. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
+  /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the notification config.
+  /// If empty all mutable fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> patch(
+    NotificationConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersSourcesResource {
   final commons.ApiRequester _requester;
 
@@ -1190,9 +1433,9 @@ class FoldersSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -1236,7 +1479,7 @@ class FoldersSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -1511,7 +1754,7 @@ class OrganizationsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization to groupBy. Its format is
+  /// [parent] - Required. Name of the parent to groupBy. Its format is
   /// "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -1552,7 +1795,7 @@ class OrganizationsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// [parent] - Required. Name of the parent assets should belong to. Its
   /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -2334,8 +2577,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/\[organization_id\]" or
-  /// "projects/\[project_id\]".
+  /// parent. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
@@ -2382,7 +2625,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to delete. Its format
-  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]".
+  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -2419,7 +2664,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to get. Its format is
-  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]".
+  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -2456,8 +2703,8 @@ class OrganizationsNotificationConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization to list notification
-  /// configs. Its format is "organizations/\[organization_id\]" or
+  /// [parent] - Required. Name of the parent to list notification configs. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
   /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -2515,7 +2762,9 @@ class OrganizationsNotificationConfigsResource {
   /// [name] - The relative resource name of this notification config. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -3366,9 +3615,9 @@ class OrganizationsSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -3412,7 +3661,7 @@ class OrganizationsSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -3577,6 +3826,8 @@ class ProjectsResource {
   ProjectsFindingsResource get findings => ProjectsFindingsResource(_requester);
   ProjectsMuteConfigsResource get muteConfigs =>
       ProjectsMuteConfigsResource(_requester);
+  ProjectsNotificationConfigsResource get notificationConfigs =>
+      ProjectsNotificationConfigsResource(_requester);
   ProjectsSourcesResource get sources => ProjectsSourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
@@ -3594,7 +3845,7 @@ class ProjectsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization to groupBy. Its format is
+  /// [parent] - Required. Name of the parent to groupBy. Its format is
   /// "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -3635,7 +3886,7 @@ class ProjectsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// [parent] - Required. Name of the parent assets should belong to. Its
   /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
   /// projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -4356,6 +4607,245 @@ class ProjectsMuteConfigsResource {
   }
 }
 
+class ProjectsNotificationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsNotificationConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a notification config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new notification config's
+  /// parent. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [configId] - Required. Unique identifier provided by the client within the
+  /// parent scope. It must be between 1 and 128 characters, and contains
+  /// alphanumeric characters, underscores or hyphens only.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> create(
+    NotificationConfig request,
+    core.String parent, {
+    core.String? configId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to delete. Its format
+  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to get. Its format is
+  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
+  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
+  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists notification configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list notification configs. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListNotificationConfigsResponse`; indicates that this is a continuation
+  /// of a prior `ListNotificationConfigs` call, and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotificationConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotificationConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNotificationConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  ///  Updates a notification config.
+  ///
+  /// The following update fields are allowed: description, pubsub_topic,
+  /// streaming_config.filter
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this notification config. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
+  /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the notification config.
+  /// If empty all mutable fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> patch(
+    NotificationConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsSourcesResource {
   final commons.ApiRequester _requester;
 
@@ -4675,9 +5165,9 @@ class ProjectsSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -4721,7 +5211,7 @@ class ProjectsSourcesFindingsResource {
   /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -4931,6 +5421,13 @@ class Access {
   /// embedded or stand-alone applications, etc.
   core.String? userAgentFamily;
 
+  /// A string representing a username.
+  ///
+  /// This is likely not an IAM principal. For instance, this may be the system
+  /// user name if the finding is VM-related, or this may be some type of
+  /// application login user name, depending on the type of finding.
+  core.String? userName;
+
   Access({
     this.callerIp,
     this.callerIpGeo,
@@ -4941,6 +5438,7 @@ class Access {
     this.serviceAccountKeyName,
     this.serviceName,
     this.userAgentFamily,
+    this.userName,
   });
 
   Access.fromJson(core.Map json_)
@@ -4977,6 +5475,9 @@ class Access {
           userAgentFamily: json_.containsKey('userAgentFamily')
               ? json_['userAgentFamily'] as core.String
               : null,
+          userName: json_.containsKey('userName')
+              ? json_['userName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4991,6 +5492,7 @@ class Access {
           'serviceAccountKeyName': serviceAccountKeyName!,
         if (serviceName != null) 'serviceName': serviceName!,
         if (userAgentFamily != null) 'userAgentFamily': userAgentFamily!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
@@ -6164,7 +6666,7 @@ class Finding {
   /// Contains information about the IP connection associated with the finding.
   core.List<Connection>? connections;
 
-  /// Map containing the point of contacts for the given finding.
+  /// Map containing the points of contact for the given finding.
   ///
   /// The key represents the type of contact, while the value contains a list of
   /// all the contacts that pertain. Please refer to:
@@ -6217,6 +6719,9 @@ class Finding {
   /// This field is guaranteed to be either empty or a well formed URL.
   core.String? externalUri;
 
+  /// File associated with the finding.
+  core.List<File>? files;
+
   /// The class of the finding.
   /// Possible string values are:
   /// - "FINDING_CLASS_UNSPECIFIED" : Unspecified finding class.
@@ -6240,6 +6745,9 @@ class Finding {
   /// with high confidence, indicates a computer intrusion. Reference:
   /// https://en.wikipedia.org/wiki/Indicator_of_compromise
   Indicator? indicator;
+
+  /// Kernel Rootkit signature.
+  KernelRootkit? kernelRootkit;
 
   /// Kubernetes resources associated with the finding.
   Kubernetes? kubernetes;
@@ -6294,7 +6802,7 @@ class Finding {
   core.String? parent;
 
   /// The human readable display name of the finding source such as "Event
-  /// Threat Detection" or "Security Health Analytics"
+  /// Threat Detection" or "Security Health Analytics".
   ///
   /// Output only.
   core.String? parentDisplayName;
@@ -6403,9 +6911,11 @@ class Finding {
     this.exfiltration,
     this.externalSystems,
     this.externalUri,
+    this.files,
     this.findingClass,
     this.iamBindings,
     this.indicator,
+    this.kernelRootkit,
     this.kubernetes,
     this.mitreAttack,
     this.mute,
@@ -6494,6 +7004,12 @@ class Finding {
           externalUri: json_.containsKey('externalUri')
               ? json_['externalUri'] as core.String
               : null,
+          files: json_.containsKey('files')
+              ? (json_['files'] as core.List)
+                  .map((value) => File.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           findingClass: json_.containsKey('findingClass')
               ? json_['findingClass'] as core.String
               : null,
@@ -6506,6 +7022,10 @@ class Finding {
           indicator: json_.containsKey('indicator')
               ? Indicator.fromJson(
                   json_['indicator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kernelRootkit: json_.containsKey('kernelRootkit')
+              ? KernelRootkit.fromJson(
+                  json_['kernelRootkit'] as core.Map<core.String, core.dynamic>)
               : null,
           kubernetes: json_.containsKey('kubernetes')
               ? Kubernetes.fromJson(
@@ -6574,9 +7094,11 @@ class Finding {
         if (exfiltration != null) 'exfiltration': exfiltration!,
         if (externalSystems != null) 'externalSystems': externalSystems!,
         if (externalUri != null) 'externalUri': externalUri!,
+        if (files != null) 'files': files!,
         if (findingClass != null) 'findingClass': findingClass!,
         if (iamBindings != null) 'iamBindings': iamBindings!,
         if (indicator != null) 'indicator': indicator!,
+        if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
         if (kubernetes != null) 'kubernetes': kubernetes!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (mute != null) 'mute': mute!,
@@ -7532,6 +8054,110 @@ class Indicator {
       };
 }
 
+/// Kernel mode rootkit signatures.
+class KernelRootkit {
+  /// Rootkit name when available.
+  core.String? name;
+
+  /// Flag indicating unexpected modifications of kernel code memory.
+  core.bool? unexpectedCodeModification;
+
+  /// Flag indicating presence of ftrace points with callbacks pointing to
+  /// regions that are not in the expected kernel or module code range.
+  core.bool? unexpectedFtraceHandler;
+
+  /// Flag indicating presence of interrupt handlers that are are not in the
+  /// expected kernel, module code regions.
+  core.bool? unexpectedInterruptHandler;
+
+  /// Flag indicating presence of kernel code pages that are not in the expected
+  /// kernel, module code regions.
+  core.bool? unexpectedKernelCodePages;
+
+  /// Flag indicating presence of kprobe points with callbacks pointing to
+  /// regions that are not in the expected kernel or module code range.
+  core.bool? unexpectedKprobeHandler;
+
+  /// Flag indicating unexpected process(es) in the scheduler run-queue, those
+  /// that are in the run-queue, but not in the process task-list.
+  core.bool? unexpectedProcessesInRunqueue;
+
+  /// Flag indicating unexpected modifications of kernel read-only data memory.
+  core.bool? unexpectedReadOnlyDataModification;
+
+  /// Flag indicating presence of system call handlers that are are not in the
+  /// expected kernel, module code regions.
+  core.bool? unexpectedSystemCallHandler;
+
+  KernelRootkit({
+    this.name,
+    this.unexpectedCodeModification,
+    this.unexpectedFtraceHandler,
+    this.unexpectedInterruptHandler,
+    this.unexpectedKernelCodePages,
+    this.unexpectedKprobeHandler,
+    this.unexpectedProcessesInRunqueue,
+    this.unexpectedReadOnlyDataModification,
+    this.unexpectedSystemCallHandler,
+  });
+
+  KernelRootkit.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          unexpectedCodeModification:
+              json_.containsKey('unexpectedCodeModification')
+                  ? json_['unexpectedCodeModification'] as core.bool
+                  : null,
+          unexpectedFtraceHandler: json_.containsKey('unexpectedFtraceHandler')
+              ? json_['unexpectedFtraceHandler'] as core.bool
+              : null,
+          unexpectedInterruptHandler:
+              json_.containsKey('unexpectedInterruptHandler')
+                  ? json_['unexpectedInterruptHandler'] as core.bool
+                  : null,
+          unexpectedKernelCodePages:
+              json_.containsKey('unexpectedKernelCodePages')
+                  ? json_['unexpectedKernelCodePages'] as core.bool
+                  : null,
+          unexpectedKprobeHandler: json_.containsKey('unexpectedKprobeHandler')
+              ? json_['unexpectedKprobeHandler'] as core.bool
+              : null,
+          unexpectedProcessesInRunqueue:
+              json_.containsKey('unexpectedProcessesInRunqueue')
+                  ? json_['unexpectedProcessesInRunqueue'] as core.bool
+                  : null,
+          unexpectedReadOnlyDataModification:
+              json_.containsKey('unexpectedReadOnlyDataModification')
+                  ? json_['unexpectedReadOnlyDataModification'] as core.bool
+                  : null,
+          unexpectedSystemCallHandler:
+              json_.containsKey('unexpectedSystemCallHandler')
+                  ? json_['unexpectedSystemCallHandler'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (unexpectedCodeModification != null)
+          'unexpectedCodeModification': unexpectedCodeModification!,
+        if (unexpectedFtraceHandler != null)
+          'unexpectedFtraceHandler': unexpectedFtraceHandler!,
+        if (unexpectedInterruptHandler != null)
+          'unexpectedInterruptHandler': unexpectedInterruptHandler!,
+        if (unexpectedKernelCodePages != null)
+          'unexpectedKernelCodePages': unexpectedKernelCodePages!,
+        if (unexpectedKprobeHandler != null)
+          'unexpectedKprobeHandler': unexpectedKprobeHandler!,
+        if (unexpectedProcessesInRunqueue != null)
+          'unexpectedProcessesInRunqueue': unexpectedProcessesInRunqueue!,
+        if (unexpectedReadOnlyDataModification != null)
+          'unexpectedReadOnlyDataModification':
+              unexpectedReadOnlyDataModification!,
+        if (unexpectedSystemCallHandler != null)
+          'unexpectedSystemCallHandler': unexpectedSystemCallHandler!,
+      };
+}
+
 /// Kubernetes related attributes.
 class Kubernetes {
   /// Provides information on any Kubernetes access reviews (i.e. privilege
@@ -8188,7 +8814,9 @@ class NotificationConfig {
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
   core.String? name;
 
   /// The Pub/Sub topic to send notifications to.

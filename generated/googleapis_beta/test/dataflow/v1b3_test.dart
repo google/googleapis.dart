@@ -4110,6 +4110,7 @@ api.PipelineDescription buildPipelineDescription() {
     o.displayData = buildUnnamed67();
     o.executionPipelineStage = buildUnnamed68();
     o.originalPipelineTransform = buildUnnamed69();
+    o.stepNamesHash = 'foo';
   }
   buildCounterPipelineDescription--;
   return o;
@@ -4121,6 +4122,10 @@ void checkPipelineDescription(api.PipelineDescription o) {
     checkUnnamed67(o.displayData!);
     checkUnnamed68(o.executionPipelineStage!);
     checkUnnamed69(o.originalPipelineTransform!);
+    unittest.expect(
+      o.stepNamesHash!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPipelineDescription--;
 }
@@ -9960,6 +9965,7 @@ void main() {
       final arg_projectId = 'foo';
       final arg_filter = 'foo';
       final arg_location = 'foo';
+      final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_view = 'foo';
@@ -10018,6 +10024,10 @@ void main() {
           unittest.equals(arg_location),
         );
         unittest.expect(
+          queryMap['name']!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -10043,6 +10053,7 @@ void main() {
       final response = await res.aggregated(arg_projectId,
           filter: arg_filter,
           location: arg_location,
+          name: arg_name,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           view: arg_view,
@@ -10321,6 +10332,7 @@ void main() {
       final arg_projectId = 'foo';
       final arg_filter = 'foo';
       final arg_location = 'foo';
+      final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_view = 'foo';
@@ -10379,6 +10391,10 @@ void main() {
           unittest.equals(arg_location),
         );
         unittest.expect(
+          queryMap['name']!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -10404,6 +10420,7 @@ void main() {
       final response = await res.list(arg_projectId,
           filter: arg_filter,
           location: arg_location,
+          name: arg_name,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           view: arg_view,
@@ -11640,6 +11657,7 @@ void main() {
       final arg_projectId = 'foo';
       final arg_location = 'foo';
       final arg_filter = 'foo';
+      final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_view = 'foo';
@@ -11708,6 +11726,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['name']!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -11732,6 +11754,7 @@ void main() {
       }), true);
       final response = await res.list(arg_projectId, arg_location,
           filter: arg_filter,
+          name: arg_name,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           view: arg_view,

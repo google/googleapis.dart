@@ -24,6 +24,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAutoscalingPoliciesResource]
 ///     - [ProjectsLocationsBatchesResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsWorkflowTemplatesResource]
 ///   - [ProjectsRegionsResource]
 ///     - [ProjectsRegionsAutoscalingPoliciesResource]
@@ -82,6 +83,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsAutoscalingPoliciesResource(_requester);
   ProjectsLocationsBatchesResource get batches =>
       ProjectsLocationsBatchesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsWorkflowTemplatesResource get workflowTemplates =>
       ProjectsLocationsWorkflowTemplatesResource(_requester);
 
@@ -668,6 +671,194 @@ class ProjectsLocationsBatchesResource {
       queryParams: queryParams_,
     );
     return ListBatchesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns google.rpc.Code.UNIMPLEMENTED.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5220,9 +5411,10 @@ class ExecutionConfig {
   /// The duration to keep the session alive while it's idling.
   ///
   /// Passing this threshold will cause the session to be terminated. Minimum
-  /// value is 30 minutes; maximum value is 14 days (see JSON representation of
+  /// value is 10 minutes; maximum value is 14 days (see JSON representation of
   /// Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  /// Defaults to 10 minutes if not set.
   ///
   /// Optional.
   core.String? idleTtl;
@@ -5698,18 +5890,25 @@ class GkeNodeConfig {
   /// Optional.
   core.String? minCpuPlatform;
 
-  /// Whether the nodes are created as preemptible VM instances
+  /// Whether the nodes are created as legacy preemptible VM instances
   /// (https://cloud.google.com/compute/docs/instances/preemptible).
   ///
-  /// Preemptible nodes cannot be used in a node pool with the CONTROLLER role
-  /// or in the DEFAULT node pool if the CONTROLLER role is not assigned (the
-  /// DEFAULT node pool will assume the CONTROLLER role).
+  /// Also see Spot VMs, preemptible VM instances without a maximum lifetime.
+  /// Legacy and Spot preemptible nodes cannot be used in a node pool with the
+  /// CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not
+  /// assigned (the DEFAULT node pool will assume the CONTROLLER role).
   ///
   /// Optional.
   core.bool? preemptible;
 
-  /// Spot flag for enabling Spot VM, which is a rebrand of the existing
-  /// preemptible flag.
+  /// Whether the nodes are created as Spot VM instances
+  /// (https://cloud.google.com/compute/docs/instances/spot).
+  ///
+  /// Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not
+  /// have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used
+  /// in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+  /// CONTROLLER role is not assigned (the DEFAULT node pool will assume the
+  /// CONTROLLER role).
   ///
   /// Optional.
   core.bool? spot;
@@ -6408,11 +6607,18 @@ class InstanceGroupConfig {
   /// - "NON_PREEMPTIBLE" : Instances are non-preemptible.This option is allowed
   /// for all instance groups and is the only valid value for Master and Worker
   /// instance groups.
-  /// - "PREEMPTIBLE" : Instances are preemptible.This option is allowed only
-  /// for secondary worker groups.
-  /// - "SPOT" : Instances are Spot VMsThis option is allowed only for secondary
-  /// worker groups. See Spot VMs
-  /// (https://cloud.google.com/compute/docs/instances/spot).
+  /// - "PREEMPTIBLE" : Instances are preemptible
+  /// (https://cloud.google.com/compute/docs/instances/preemptible).This option
+  /// is allowed only for secondary worker
+  /// (https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms)
+  /// groups.
+  /// - "SPOT" : Instances are Spot VMs
+  /// (https://cloud.google.com/compute/docs/instances/spot).This option is
+  /// allowed only for secondary worker
+  /// (https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms)
+  /// groups. Spot VMs are the latest version of preemptible VMs
+  /// (https://cloud.google.com/compute/docs/instances/preemptible), and provide
+  /// additional features.
   core.String? preemptibility;
 
   InstanceGroupConfig({
@@ -9164,6 +9370,13 @@ class RuntimeConfig {
 
 /// Runtime information about workload execution.
 class RuntimeInfo {
+  /// Approximate workload resource usage calculated after workload finishes
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Output only.
+  UsageMetrics? approximateUsage;
+
   /// A URI pointing to the location of the diagnostics tarball.
   ///
   /// Output only.
@@ -9181,6 +9394,7 @@ class RuntimeInfo {
   core.String? outputUri;
 
   RuntimeInfo({
+    this.approximateUsage,
     this.diagnosticOutputUri,
     this.endpoints,
     this.outputUri,
@@ -9188,6 +9402,10 @@ class RuntimeInfo {
 
   RuntimeInfo.fromJson(core.Map json_)
       : this(
+          approximateUsage: json_.containsKey('approximateUsage')
+              ? UsageMetrics.fromJson(json_['approximateUsage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           diagnosticOutputUri: json_.containsKey('diagnosticOutputUri')
               ? json_['diagnosticOutputUri'] as core.String
               : null,
@@ -9205,6 +9423,7 @@ class RuntimeInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (approximateUsage != null) 'approximateUsage': approximateUsage!,
         if (diagnosticOutputUri != null)
           'diagnosticOutputUri': diagnosticOutputUri!,
         if (endpoints != null) 'endpoints': endpoints!,
@@ -10422,6 +10641,43 @@ class TrinoJob {
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
         if (queryList != null) 'queryList': queryList!,
+      };
+}
+
+/// Usage metrics represent approximate total resources consumed by a workload.
+class UsageMetrics {
+  /// DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc
+  /// Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliDcuSeconds;
+
+  /// Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? shuffleStorageGbSeconds;
+
+  UsageMetrics({
+    this.milliDcuSeconds,
+    this.shuffleStorageGbSeconds,
+  });
+
+  UsageMetrics.fromJson(core.Map json_)
+      : this(
+          milliDcuSeconds: json_.containsKey('milliDcuSeconds')
+              ? json_['milliDcuSeconds'] as core.String
+              : null,
+          shuffleStorageGbSeconds: json_.containsKey('shuffleStorageGbSeconds')
+              ? json_['shuffleStorageGbSeconds'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (milliDcuSeconds != null) 'milliDcuSeconds': milliDcuSeconds!,
+        if (shuffleStorageGbSeconds != null)
+          'shuffleStorageGbSeconds': shuffleStorageGbSeconds!,
       };
 }
 

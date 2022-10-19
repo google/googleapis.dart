@@ -102,13 +102,52 @@ class V1Resource {
   }
 }
 
+/// Contains a signal helping apps differentiating between likely genuine users
+/// and likely non-genuine traffic (such as accounts being used for fraud,
+/// accounts used by automated traffic, or accounts used in device farms) based
+/// on the presence and volume of Play store activity.
+class AccountActivity {
+  /// Indicates the activity level of the account.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACTIVITY_LEVEL_UNSPECIFIED" : Activity level has not been set.
+  /// - "UNEVALUATED" : Account activity level is not evaluated because one of
+  /// the prerequisite conditions is not met (e.g., device is not trusted, the
+  /// user does not have Play app license)
+  /// - "UNUSUAL" : Google Play store activity is unusual for at least one of
+  /// the user accounts on the device. Google Play recommends checking that this
+  /// is a real user.
+  /// - "UNKNOWN" : Google Play does not have sufficient activity for the user
+  /// account on the device. The account may be new, or it may lack activity on
+  /// Google Play.
+  /// - "TYPICAL_BASIC" : Google Play store activity is typical for the user
+  /// account or accounts on the device.
+  /// - "TYPICAL_STRONG" : Google Play store activity is typical for the user
+  /// account or accounts on the device, with harder to replicate signals.
+  core.String? activityLevel;
+
+  AccountActivity({
+    this.activityLevel,
+  });
+
+  AccountActivity.fromJson(core.Map json_)
+      : this(
+          activityLevel: json_.containsKey('activityLevel')
+              ? json_['activityLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activityLevel != null) 'activityLevel': activityLevel!,
+      };
+}
+
 /// Contains the account information such as the licensing status for the user
 /// in the scope.
 class AccountDetails {
-  /// Details about the account risk for the user in the scope.
-  ///
-  /// This feature is available only to selected developers.
-  AccountRiskVerdict? accountRiskVerdict;
+  /// Details about the account activity for the user in the scope.
+  AccountActivity? accountActivity;
 
   /// Details about the licensing status of the user for the app in the scope.
   ///
@@ -126,14 +165,14 @@ class AccountDetails {
   core.String? appLicensingVerdict;
 
   AccountDetails({
-    this.accountRiskVerdict,
+    this.accountActivity,
     this.appLicensingVerdict,
   });
 
   AccountDetails.fromJson(core.Map json_)
       : this(
-          accountRiskVerdict: json_.containsKey('accountRiskVerdict')
-              ? AccountRiskVerdict.fromJson(json_['accountRiskVerdict']
+          accountActivity: json_.containsKey('accountActivity')
+              ? AccountActivity.fromJson(json_['accountActivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
           appLicensingVerdict: json_.containsKey('appLicensingVerdict')
@@ -142,71 +181,9 @@ class AccountDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountRiskVerdict != null)
-          'accountRiskVerdict': accountRiskVerdict!,
+        if (accountActivity != null) 'accountActivity': accountActivity!,
         if (appLicensingVerdict != null)
           'appLicensingVerdict': appLicensingVerdict!,
-      };
-}
-
-/// Contains information about account risk that indicates if the current user
-/// session seems low risk, unknown, or risky before you allow important actions
-/// to proceed.
-class AccountRiskVerdict {
-  /// Indicates the account risk level of the current user session.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RISK_UNSPECIFIED" : Risk has not been set.
-  /// - "UNEVALUATED" : The account risk is not evaluated, because the device is
-  /// not trusted or the user does not have a Play app license.
-  /// - "HIGHER" : Play thinks that at least one of the user accounts on the
-  /// device has some unusual store engagement behavior that could be risky.
-  /// - "UNKNOWN" : Play does not have sufficient information to assess the
-  /// risk. The account may be new, or it may lack activity on the Play Store.
-  /// - "LOWER" : Play thinks the user could be genuine, since there is some
-  /// store engagement. However, some signals to support the trust level are
-  /// missing.
-  /// - "LOWEST" : Play thinks the user is more likely to be genuine due to
-  /// harder to replicate store engagement signals.
-  core.String? risk;
-
-  /// Indicates the account risk level of the current user session.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RISK_LEVEL_UNSPECIFIED" : Risk level has not been set.
-  /// - "RISK_LEVEL_UNEVALUATED" : The account risk is not evaluated, because
-  /// the device is not trusted or the user does not have a Play app license.
-  /// - "RISK_LEVEL_RISK" : Play thinks that at least one of the user accounts
-  /// on the device has some unusual store engagement behavior that could be
-  /// risky.
-  /// - "RISK_LEVEL_UNKNOWN" : Play does not have sufficient information to
-  /// assess the risk. The account may be new, or it may lack activity on the
-  /// Play Store.
-  /// - "RISK_LEVEL_LOW_RISK" : Play thinks the user could be genuine, since
-  /// there is some store engagement. However, some signals to support the trust
-  /// level are missing.
-  /// - "RISK_LEVEL_LOWEST_RISK" : Play thinks the user is more likely to be
-  /// genuine due to harder to replicate store engagement signals.
-  core.String? riskLevel;
-
-  AccountRiskVerdict({
-    this.risk,
-    this.riskLevel,
-  });
-
-  AccountRiskVerdict.fromJson(core.Map json_)
-      : this(
-          risk: json_.containsKey('risk') ? json_['risk'] as core.String : null,
-          riskLevel: json_.containsKey('riskLevel')
-              ? json_['riskLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (risk != null) 'risk': risk!,
-        if (riskLevel != null) 'riskLevel': riskLevel!,
       };
 }
 

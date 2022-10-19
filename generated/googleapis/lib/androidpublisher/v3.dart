@@ -14,7 +14,9 @@
 
 /// Google Play Android Developer API - v3
 ///
-/// Lets Android application developers access their Google Play accounts.
+/// Lets Android application developers access their Google Play accounts. At a
+/// high level, the expected workflow is to "insert" an Edit, make changes as
+/// necessary, and then "commit" it.
 ///
 /// For more information, see <https://developers.google.com/android-publisher>
 ///
@@ -76,6 +78,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ByteRange;
 
 /// Lets Android application developers access their Google Play accounts.
+///
+/// At a high level, the expected workflow is to "insert" an Edit, make changes
+/// as necessary, and then "commit" it.
 class AndroidPublisherApi {
   /// View and manage your Google Play Developer account
   static const androidpublisherScope =
@@ -5460,6 +5465,15 @@ class AutoRenewingBasePlanType {
   /// plan can be marked as legacy compatible for a given subscription.
   core.bool? legacyCompatible;
 
+  /// Subscription offer id which is legacy compatible.
+  ///
+  /// The backward compatible subscription offer is returned by the Google Play
+  /// Billing Library deprecated method querySkuDetailsAsync(). Only one
+  /// subscription offer can be marked as legacy compatible for a given renewing
+  /// base plan. To have no Subscription offer as legacy compatible set this
+  /// field as empty string.
+  core.String? legacyCompatibleSubscriptionOfferId;
+
   /// The proration mode for the base plan determines what happens when a user
   /// switches to this plan from another base plan.
   ///
@@ -5489,6 +5503,7 @@ class AutoRenewingBasePlanType {
     this.billingPeriodDuration,
     this.gracePeriodDuration,
     this.legacyCompatible,
+    this.legacyCompatibleSubscriptionOfferId,
     this.prorationMode,
     this.resubscribeState,
   });
@@ -5504,6 +5519,10 @@ class AutoRenewingBasePlanType {
           legacyCompatible: json_.containsKey('legacyCompatible')
               ? json_['legacyCompatible'] as core.bool
               : null,
+          legacyCompatibleSubscriptionOfferId:
+              json_.containsKey('legacyCompatibleSubscriptionOfferId')
+                  ? json_['legacyCompatibleSubscriptionOfferId'] as core.String
+                  : null,
           prorationMode: json_.containsKey('prorationMode')
               ? json_['prorationMode'] as core.String
               : null,
@@ -5518,6 +5537,9 @@ class AutoRenewingBasePlanType {
         if (gracePeriodDuration != null)
           'gracePeriodDuration': gracePeriodDuration!,
         if (legacyCompatible != null) 'legacyCompatible': legacyCompatible!,
+        if (legacyCompatibleSubscriptionOfferId != null)
+          'legacyCompatibleSubscriptionOfferId':
+              legacyCompatibleSubscriptionOfferId!,
         if (prorationMode != null) 'prorationMode': prorationMode!,
         if (resubscribeState != null) 'resubscribeState': resubscribeState!,
       };
@@ -5529,8 +5551,13 @@ class AutoRenewingPlan {
   /// canceled the subscription
   core.bool? autoRenewEnabled;
 
+  /// The information of the last price change for the item since subscription
+  /// signup.
+  SubscriptionItemPriceChangeDetails? priceChangeDetails;
+
   AutoRenewingPlan({
     this.autoRenewEnabled,
+    this.priceChangeDetails,
   });
 
   AutoRenewingPlan.fromJson(core.Map json_)
@@ -5538,10 +5565,17 @@ class AutoRenewingPlan {
           autoRenewEnabled: json_.containsKey('autoRenewEnabled')
               ? json_['autoRenewEnabled'] as core.bool
               : null,
+          priceChangeDetails: json_.containsKey('priceChangeDetails')
+              ? SubscriptionItemPriceChangeDetails.fromJson(
+                  json_['priceChangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewEnabled != null) 'autoRenewEnabled': autoRenewEnabled!,
+        if (priceChangeDetails != null)
+          'priceChangeDetails': priceChangeDetails!,
       };
 }
 
@@ -7935,6 +7969,51 @@ typedef MigrateBasePlanPricesResponse = $Empty;
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
 
+/// Offer details information related to a purchase line item.
+class OfferDetails {
+  /// The base plan ID.
+  ///
+  /// Present for all base plan and offers.
+  core.String? basePlanId;
+
+  /// The offer ID.
+  ///
+  /// Only present for discounted offers.
+  core.String? offerId;
+
+  /// The latest offer tags associated with the offer.
+  ///
+  /// It includes tags inherited from the base plan.
+  core.List<core.String>? offerTags;
+
+  OfferDetails({
+    this.basePlanId,
+    this.offerId,
+    this.offerTags,
+  });
+
+  OfferDetails.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          offerId: json_.containsKey('offerId')
+              ? json_['offerId'] as core.String
+              : null,
+          offerTags: json_.containsKey('offerTags')
+              ? (json_['offerTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+      };
+}
+
 /// Represents a custom tag specified for base plans and subscription offers.
 class OfferTag {
   /// Must conform with RFC-1034.
@@ -8203,9 +8282,10 @@ class PrepaidBasePlanType {
 
 /// Information related to a prepaid plan.
 class PrepaidPlan {
-  /// After this time, the subscription is allowed for a new top-up purchase.
+  /// If present, this is the time after which top up purchases are allowed for
+  /// the prepaid plan.
   ///
-  /// Not present if the subscription is already extended by a top-up purchase.
+  /// Will not be present for expired prepaid plans.
   core.String? allowExtendAfterTime;
 
   PrepaidPlan({
@@ -8625,6 +8705,29 @@ class RegionalTaxRateInfo {
   /// Field only supported in United States.
   core.bool? eligibleForStreamingServiceTaxRate;
 
+  /// To collect communications or amusement taxes in the United States, choose
+  /// the appropriate tax category.
+  ///
+  /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax).
+  /// Possible string values are:
+  /// - "STREAMING_TAX_TYPE_UNSPECIFIED" : No telecommunications tax collected.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL" : US-specific telecommunications
+  /// tax tier for video streaming, on demand, rentals / subscriptions /
+  /// pay-per-view.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES" : US-specific telecommunications
+  /// tax tier for video streaming of pre-recorded content like movies, tv
+  /// shows.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for video streaming of multi-channel
+  /// programming.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL" : US-specific telecommunications
+  /// tax tier for audio streaming, rental / subscription.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES" : US-specific telecommunications
+  /// tax tier for audio streaming, sale / permanent download.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for multi channel audio streaming like radio.
+  core.String? streamingTaxType;
+
   /// Tax tier to specify reduced tax rate.
   ///
   /// Developers who sell digital news, magazines, newspapers, books, or
@@ -8641,6 +8744,7 @@ class RegionalTaxRateInfo {
 
   RegionalTaxRateInfo({
     this.eligibleForStreamingServiceTaxRate,
+    this.streamingTaxType,
     this.taxTier,
   });
 
@@ -8650,6 +8754,9 @@ class RegionalTaxRateInfo {
               json_.containsKey('eligibleForStreamingServiceTaxRate')
                   ? json_['eligibleForStreamingServiceTaxRate'] as core.bool
                   : null,
+          streamingTaxType: json_.containsKey('streamingTaxType')
+              ? json_['streamingTaxType'] as core.String
+              : null,
           taxTier: json_.containsKey('taxTier')
               ? json_['taxTier'] as core.String
               : null,
@@ -8659,6 +8766,7 @@ class RegionalTaxRateInfo {
         if (eligibleForStreamingServiceTaxRate != null)
           'eligibleForStreamingServiceTaxRate':
               eligibleForStreamingServiceTaxRate!,
+        if (streamingTaxType != null) 'streamingTaxType': streamingTaxType!,
         if (taxTier != null) 'taxTier': taxTier!,
       };
 }
@@ -9070,6 +9178,71 @@ class SubscriptionDeferralInfo {
           'desiredExpiryTimeMillis': desiredExpiryTimeMillis!,
         if (expectedExpiryTimeMillis != null)
           'expectedExpiryTimeMillis': expectedExpiryTimeMillis!,
+      };
+}
+
+/// Price change related information of a subscription item.
+class SubscriptionItemPriceChangeDetails {
+  /// The renewal time at which the price change will become effective for the
+  /// user.
+  ///
+  /// This is subject to change(to a future time) due to cases where the renewal
+  /// time shifts like pause.
+  core.String? expectedNewPriceChargeTime;
+
+  /// New recurring price for the subscription item.
+  Money? newPrice;
+
+  /// Price change mode specifies how the subscription item price is changing.
+  /// Possible string values are:
+  /// - "PRICE_CHANGE_MODE_UNSPECIFIED" : Price change mode unspecified. This
+  /// value should never be set.
+  /// - "PRICE_DECREASE" : If the subscription price is decreasing.
+  /// - "PRICE_INCREASE" : If the subscription price is increasing and the user
+  /// needs to accept it.
+  core.String? priceChangeMode;
+
+  /// State the price change is currently in.
+  /// Possible string values are:
+  /// - "PRICE_CHANGE_STATE_UNSPECIFIED" : Price change state unspecified. This
+  /// value should not be used.
+  /// - "OUTSTANDING" : Waiting for the user to agree for the price change.
+  /// - "CONFIRMED" : The price change is confirmed to happen for the user.
+  /// - "APPLIED" : The price change is applied, i.e. the user has started being
+  /// charged the new price.
+  core.String? priceChangeState;
+
+  SubscriptionItemPriceChangeDetails({
+    this.expectedNewPriceChargeTime,
+    this.newPrice,
+    this.priceChangeMode,
+    this.priceChangeState,
+  });
+
+  SubscriptionItemPriceChangeDetails.fromJson(core.Map json_)
+      : this(
+          expectedNewPriceChargeTime:
+              json_.containsKey('expectedNewPriceChargeTime')
+                  ? json_['expectedNewPriceChargeTime'] as core.String
+                  : null,
+          newPrice: json_.containsKey('newPrice')
+              ? Money.fromJson(
+                  json_['newPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priceChangeMode: json_.containsKey('priceChangeMode')
+              ? json_['priceChangeMode'] as core.String
+              : null,
+          priceChangeState: json_.containsKey('priceChangeState')
+              ? json_['priceChangeState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedNewPriceChargeTime != null)
+          'expectedNewPriceChargeTime': expectedNewPriceChargeTime!,
+        if (newPrice != null) 'newPrice': newPrice!,
+        if (priceChangeMode != null) 'priceChangeMode': priceChangeMode!,
+        if (priceChangeState != null) 'priceChangeState': priceChangeState!,
       };
 }
 
@@ -9772,6 +9945,9 @@ class SubscriptionPurchaseLineItem {
   /// renews).
   core.String? expiryTime;
 
+  /// The offer details for this item.
+  OfferDetails? offerDetails;
+
   /// The item is prepaid.
   PrepaidPlan? prepaidPlan;
 
@@ -9781,6 +9957,7 @@ class SubscriptionPurchaseLineItem {
   SubscriptionPurchaseLineItem({
     this.autoRenewingPlan,
     this.expiryTime,
+    this.offerDetails,
     this.prepaidPlan,
     this.productId,
   });
@@ -9794,6 +9971,10 @@ class SubscriptionPurchaseLineItem {
           expiryTime: json_.containsKey('expiryTime')
               ? json_['expiryTime'] as core.String
               : null,
+          offerDetails: json_.containsKey('offerDetails')
+              ? OfferDetails.fromJson(
+                  json_['offerDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           prepaidPlan: json_.containsKey('prepaidPlan')
               ? PrepaidPlan.fromJson(
                   json_['prepaidPlan'] as core.Map<core.String, core.dynamic>)
@@ -9806,6 +9987,7 @@ class SubscriptionPurchaseLineItem {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewingPlan != null) 'autoRenewingPlan': autoRenewingPlan!,
         if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (offerDetails != null) 'offerDetails': offerDetails!,
         if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
         if (productId != null) 'productId': productId!,
       };

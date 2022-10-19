@@ -1031,6 +1031,30 @@ void checkDiskEncryptionStatus(api.DiskEncryptionStatus o) {
   buildCounterDiskEncryptionStatus--;
 }
 
+core.int buildCounterExportContextBakExportOptions = 0;
+api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
+  final o = api.ExportContextBakExportOptions();
+  buildCounterExportContextBakExportOptions++;
+  if (buildCounterExportContextBakExportOptions < 3) {
+    o.stripeCount = 42;
+    o.striped = true;
+  }
+  buildCounterExportContextBakExportOptions--;
+  return o;
+}
+
+void checkExportContextBakExportOptions(api.ExportContextBakExportOptions o) {
+  buildCounterExportContextBakExportOptions++;
+  if (buildCounterExportContextBakExportOptions < 3) {
+    unittest.expect(
+      o.stripeCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.striped!, unittest.isTrue);
+  }
+  buildCounterExportContextBakExportOptions--;
+}
+
 core.int buildCounterExportContextCsvExportOptions = 0;
 api.ExportContextCsvExportOptions buildExportContextCsvExportOptions() {
   final o = api.ExportContextCsvExportOptions();
@@ -1160,6 +1184,7 @@ api.ExportContext buildExportContext() {
   final o = api.ExportContext();
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
+    o.bakExportOptions = buildExportContextBakExportOptions();
     o.csvExportOptions = buildExportContextCsvExportOptions();
     o.databases = buildUnnamed8();
     o.fileType = 'foo';
@@ -1175,6 +1200,7 @@ api.ExportContext buildExportContext() {
 void checkExportContext(api.ExportContext o) {
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
+    checkExportContextBakExportOptions(o.bakExportOptions!);
     checkExportContextCsvExportOptions(o.csvExportOptions!);
     checkUnnamed8(o.databases!);
     unittest.expect(
@@ -1456,6 +1482,7 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
     o.encryptionOptions = buildImportContextBakImportOptionsEncryptionOptions();
+    o.striped = true;
   }
   buildCounterImportContextBakImportOptions--;
   return o;
@@ -1465,6 +1492,7 @@ void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
     checkImportContextBakImportOptionsEncryptionOptions(o.encryptionOptions!);
+    unittest.expect(o.striped!, unittest.isTrue);
   }
   buildCounterImportContextBakImportOptions--;
 }
@@ -1904,6 +1932,7 @@ api.IpConfiguration buildIpConfiguration() {
   if (buildCounterIpConfiguration < 3) {
     o.allocatedIpRange = 'foo';
     o.authorizedNetworks = buildUnnamed18();
+    o.enablePrivatePathForGoogleCloudServices = true;
     o.ipv4Enabled = true;
     o.privateNetwork = 'foo';
     o.requireSsl = true;
@@ -1920,6 +1949,8 @@ void checkIpConfiguration(api.IpConfiguration o) {
       unittest.equals('foo'),
     );
     checkUnnamed18(o.authorizedNetworks!);
+    unittest.expect(
+        o.enablePrivatePathForGoogleCloudServices!, unittest.isTrue);
     unittest.expect(o.ipv4Enabled!, unittest.isTrue);
     unittest.expect(
       o.privateNetwork!,
@@ -3776,6 +3807,16 @@ void main() {
       final od = api.DiskEncryptionStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDiskEncryptionStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExportContextBakExportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportContextBakExportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportContextBakExportOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExportContextBakExportOptions(od);
     });
   });
 
@@ -8320,6 +8361,7 @@ void main() {
       final arg_project = 'foo';
       final arg_instance = 'foo';
       final arg_name = 'foo';
+      final arg_host = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -8387,6 +8429,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['host']!.first,
+          unittest.equals(arg_host),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8398,7 +8444,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_project, arg_instance, arg_name,
-          $fields: arg_$fields);
+          host: arg_host, $fields: arg_$fields);
       checkUser(response as api.User);
     });
 

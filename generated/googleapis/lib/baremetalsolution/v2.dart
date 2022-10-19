@@ -30,8 +30,10 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvisioningConfigsResource]
 ///     - [ProjectsLocationsProvisioningQuotasResource]
+///     - [ProjectsLocationsSshKeysResource]
 ///     - [ProjectsLocationsVolumesResource]
 ///       - [ProjectsLocationsVolumesLunsResource]
+///       - [ProjectsLocationsVolumesSnapshotsResource]
 library baremetalsolution.v2;
 
 import 'dart:async' as async;
@@ -94,6 +96,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsProvisioningConfigsResource(_requester);
   ProjectsLocationsProvisioningQuotasResource get provisioningQuotas =>
       ProjectsLocationsProvisioningQuotasResource(_requester);
+  ProjectsLocationsSshKeysResource get sshKeys =>
+      ProjectsLocationsSshKeysResource(_requester);
   ProjectsLocationsVolumesResource get volumes =>
       ProjectsLocationsVolumesResource(_requester);
 
@@ -313,6 +317,92 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$instance') + ':detachLun';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disable the interactive serial console feature on an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableInteractiveSerialConsole(
+    DisableInteractiveSerialConsoleRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        ':disableInteractiveSerialConsole';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable the interactive serial console feature on an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableInteractiveSerialConsole(
+    EnableInteractiveSerialConsoleRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        ':enableInteractiveSerialConsole';
 
     final response_ = await _requester.request(
       url_,
@@ -726,7 +816,7 @@ class ProjectsLocationsNetworksResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/networks/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to update. The only currently supported
-  /// fields are: `labels`, `reservations`
+  /// fields are: `labels`, `reservations`, `vrf.vlan_attachments`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1121,7 +1211,8 @@ class ProjectsLocationsProvisioningConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The name of the provisioning config.
+  /// [name] - Output only. The system-generated name of the provisioning
+  /// config. This follows the UUID format.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/provisioningConfigs/\[^/\]+$`.
   ///
@@ -1264,11 +1355,152 @@ class ProjectsLocationsProvisioningQuotasResource {
   }
 }
 
+class ProjectsLocationsSshKeysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSshKeysResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Register a public SSH key in the specified project for use with the
+  /// interactive serial console feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent containing the SSH keys.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [sshKeyId] - Required. The ID to use for the key, which will become the
+  /// final component of the key's resource name. This value must match the
+  /// regex: \[a-zA-Z0-9@.\-_\]{1,64}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SSHKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SSHKey> create(
+    SSHKey request,
+    core.String parent, {
+    core.String? sshKeyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (sshKeyId != null) 'sshKeyId': [sshKeyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sshKeys';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SSHKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a public SSH key registered in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SSH key to delete. Currently, the only
+  /// valid value for the location is "global".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sshKeys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the public SSH keys registered for the specified project.
+  ///
+  /// These SSH keys are used only for the interactive serial console feature.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent containing the SSH keys. Currently, the
+  /// only valid value for the location is "global".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSSHKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSSHKeysResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sshKeys';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSSHKeysResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsVolumesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsVolumesLunsResource get luns =>
       ProjectsLocationsVolumesLunsResource(_requester);
+  ProjectsLocationsVolumesSnapshotsResource get snapshots =>
+      ProjectsLocationsVolumesSnapshotsResource(_requester);
 
   ProjectsLocationsVolumesResource(commons.ApiRequester client)
       : _requester = client;
@@ -1538,6 +1770,229 @@ class ProjectsLocationsVolumesLunsResource {
   }
 }
 
+class ProjectsLocationsVolumesSnapshotsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsVolumesSnapshotsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Takes a snapshot of a boot volume.
+  ///
+  /// Returns INVALID_ARGUMENT if called for a non-boot volume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The volume to snapshot.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VolumeSnapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VolumeSnapshot> create(
+    VolumeSnapshot request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/snapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return VolumeSnapshot.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a volume snapshot.
+  ///
+  /// Returns INVALID_ARGUMENT if called for a non-boot volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the snapshot to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified snapshot resource.
+  ///
+  /// Returns INVALID_ARGUMENT if called for a non-boot volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the snapshot.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VolumeSnapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VolumeSnapshot> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VolumeSnapshot.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of snapshots for the specified volume.
+  ///
+  /// Returns a response with an empty list of snapshots if called for a
+  /// non-boot volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListVolumesRequest.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server might return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results from the server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVolumeSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVolumeSnapshotsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/snapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListVolumeSnapshotsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Uses the specified snapshot to restore its parent volume.
+  ///
+  /// Returns INVALID_ARGUMENT if called for a non-boot volume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeSnapshot] - Required. Name of the snapshot which will be used to
+  /// restore its parent volume.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restoreVolumeSnapshot(
+    RestoreVolumeSnapshotRequest request,
+    core.String volumeSnapshot, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$volumeSnapshot') +
+        ':restoreVolumeSnapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Represents an 'access point' for the share.
 class AllowedClient {
   /// Allow dev flag.
@@ -1663,6 +2118,20 @@ class DetachLunRequest {
         if (skipReboot != null) 'skipReboot': skipReboot!,
       };
 }
+
+/// Message for disabling the interactive serial console on an instance.
+typedef DisableInteractiveSerialConsoleRequest = $Empty;
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// Message for enabling the interactive serial console on an instance.
+typedef EnableInteractiveSerialConsoleRequest = $Empty;
 
 /// Response with all provisioning settings.
 class FetchInstanceProvisioningSettingsResponse {
@@ -1875,6 +2344,10 @@ class Instance {
   /// - "PROVISIONING" : The server is being provisioned.
   /// - "RUNNING" : The server is running.
   /// - "DELETED" : The server has been deleted.
+  /// - "UPDATING" : The server is being updated.
+  /// - "STARTING" : The server is starting.
+  /// - "STOPPING" : The server is stopping.
+  /// - "SHUTDOWN" : The server is shutdown.
   core.String? state;
 
   /// Update a time stamp.
@@ -2477,6 +2950,81 @@ class ListProvisioningQuotasResponse {
       };
 }
 
+/// Message for response of ListSSHKeys.
+class ListSSHKeysResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The SSH keys registered in the project.
+  core.List<SSHKey>? sshKeys;
+
+  ListSSHKeysResponse({
+    this.nextPageToken,
+    this.sshKeys,
+  });
+
+  ListSSHKeysResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          sshKeys: json_.containsKey('sshKeys')
+              ? (json_['sshKeys'] as core.List)
+                  .map((value) => SSHKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sshKeys != null) 'sshKeys': sshKeys!,
+      };
+}
+
+/// Response message containing the list of volume snapshots.
+class ListVolumeSnapshotsResponse {
+  /// A token identifying a page of results from the server.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// The list of snapshots.
+  core.List<VolumeSnapshot>? volumeSnapshots;
+
+  ListVolumeSnapshotsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.volumeSnapshots,
+  });
+
+  ListVolumeSnapshotsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          volumeSnapshots: json_.containsKey('volumeSnapshots')
+              ? (json_['volumeSnapshots'] as core.List)
+                  .map((value) => VolumeSnapshot.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (volumeSnapshots != null) 'volumeSnapshots': volumeSnapshots!,
+      };
+}
+
 /// Response message containing the list of storage volumes.
 class ListVolumesResponse {
   /// A token identifying a page of results from the server.
@@ -2715,6 +3263,11 @@ class Network {
   /// The cidr of the Network.
   core.String? cidr;
 
+  /// Gateway ip address.
+  ///
+  /// Output only.
+  core.String? gatewayIp;
+
   /// An identifier for the `Network`, generated by the backend.
   core.String? id;
 
@@ -2764,6 +3317,7 @@ class Network {
   /// - "PROVISIONING" : The Network is provisioning.
   /// - "PROVISIONED" : The Network has been provisioned.
   /// - "DEPROVISIONING" : The Network is being deprovisioned.
+  /// - "UPDATING" : The Network is being updated.
   core.String? state;
 
   /// The type of this network.
@@ -2782,6 +3336,7 @@ class Network {
 
   Network({
     this.cidr,
+    this.gatewayIp,
     this.id,
     this.ipAddress,
     this.jumboFramesEnabled,
@@ -2801,6 +3356,9 @@ class Network {
   Network.fromJson(core.Map json_)
       : this(
           cidr: json_.containsKey('cidr') ? json_['cidr'] as core.String : null,
+          gatewayIp: json_.containsKey('gatewayIp')
+              ? json_['gatewayIp'] as core.String
+              : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           ipAddress: json_.containsKey('ipAddress')
               ? json_['ipAddress'] as core.String
@@ -2852,6 +3410,7 @@ class Network {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidr != null) 'cidr': cidr!,
+        if (gatewayIp != null) 'gatewayIp': gatewayIp!,
         if (id != null) 'id': id!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (jumboFramesEnabled != null)
@@ -3486,6 +4045,11 @@ class ProvisioningConfig {
   /// Output only.
   core.String? cloudConsoleUri;
 
+  /// The user-defined identifier of the provisioning config.
+  ///
+  /// Optional.
+  core.String? customId;
+
   /// Email provided to send a confirmation with provisioning config to.
   ///
   /// Deprecated in favour of email field in request messages.
@@ -3505,7 +4069,9 @@ class ProvisioningConfig {
   /// Optional.
   core.String? location;
 
-  /// The name of the provisioning config.
+  /// The system-generated name of the provisioning config.
+  ///
+  /// This follows the UUID format.
   ///
   /// Output only.
   core.String? name;
@@ -3551,6 +4117,7 @@ class ProvisioningConfig {
 
   ProvisioningConfig({
     this.cloudConsoleUri,
+    this.customId,
     this.email,
     this.handoverServiceAccount,
     this.instances,
@@ -3569,6 +4136,9 @@ class ProvisioningConfig {
       : this(
           cloudConsoleUri: json_.containsKey('cloudConsoleUri')
               ? json_['cloudConsoleUri'] as core.String
+              : null,
+          customId: json_.containsKey('customId')
+              ? json_['customId'] as core.String
               : null,
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
@@ -3615,6 +4185,7 @@ class ProvisioningConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudConsoleUri != null) 'cloudConsoleUri': cloudConsoleUri!,
+        if (customId != null) 'customId': customId!,
         if (email != null) 'email': email!,
         if (handoverServiceAccount != null)
           'handoverServiceAccount': handoverServiceAccount!,
@@ -3764,6 +4335,43 @@ class ResizeVolumeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sizeGib != null) 'sizeGib': sizeGib!,
+      };
+}
+
+/// Message for restoring a volume snapshot.
+typedef RestoreVolumeSnapshotRequest = $Empty;
+
+/// An SSH key, used for authorizing with the interactive serial console
+/// feature.
+class SSHKey {
+  /// The name of this SSH key.
+  ///
+  /// Currently, the only valid value for the location is "global".
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The public SSH key.
+  ///
+  /// This must be in OpenSSH .authorized_keys format.
+  core.String? publicKey;
+
+  SSHKey({
+    this.name,
+    this.publicKey,
+  });
+
+  SSHKey.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          publicKey: json_.containsKey('publicKey')
+              ? json_['publicKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (publicKey != null) 'publicKey': publicKey!,
       };
 }
 
@@ -4133,7 +4741,8 @@ class Volume {
   /// Possible string values are:
   /// - "VOLUME_PERFORMANCE_TIER_UNSPECIFIED" : Value is not specified.
   /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
-  /// - "VOLUME_PERFORMANCE_TIER_DEDICATED" : Dedicated (assigned) aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_ASSIGNED" : Assigned aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_HT" : High throughput aggregates.
   core.String? performanceTier;
 
   /// Pod name.
@@ -4182,6 +4791,7 @@ class Volume {
   /// - "CREATING" : The storage volume is being created.
   /// - "READY" : The storage volume is ready for use.
   /// - "DELETING" : The storage volume has been requested to be deleted.
+  /// - "UPDATING" : The storage volume is being updated.
   core.String? state;
 
   /// The storage type for this volume.
@@ -4352,7 +4962,8 @@ class VolumeConfig {
   /// Possible string values are:
   /// - "VOLUME_PERFORMANCE_TIER_UNSPECIFIED" : Value is not specified.
   /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
-  /// - "VOLUME_PERFORMANCE_TIER_DEDICATED" : Dedicated (assigned) aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_ASSIGNED" : Assigned aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_HT" : High throughput aggregates.
   core.String? performanceTier;
 
   /// Volume protocol.
@@ -4448,5 +5059,76 @@ class VolumeConfig {
         if (snapshotsEnabled != null) 'snapshotsEnabled': snapshotsEnabled!,
         if (type != null) 'type': type!,
         if (userNote != null) 'userNote': userNote!,
+      };
+}
+
+/// A snapshot of a volume.
+///
+/// Only boot volumes can have snapshots.
+class VolumeSnapshot {
+  /// The creation time of the snapshot.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the snapshot.
+  core.String? description;
+
+  /// An identifier for the snapshot, generated by the backend.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The name of the snapshot.
+  core.String? name;
+
+  /// The name of the volume which this snapshot belongs to.
+  ///
+  /// Output only.
+  core.String? storageVolume;
+
+  /// The type of the snapshot which indicates whether it was scheduled or
+  /// manual/ad-hoc.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SNAPSHOT_TYPE_UNSPECIFIED" : Type is not specified.
+  /// - "AD_HOC" : Snapshot was taken manually by user.
+  /// - "SCHEDULED" : Snapshot was taken automatically as a part of a snapshot
+  /// schedule.
+  core.String? type;
+
+  VolumeSnapshot({
+    this.createTime,
+    this.description,
+    this.id,
+    this.name,
+    this.storageVolume,
+    this.type,
+  });
+
+  VolumeSnapshot.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          storageVolume: json_.containsKey('storageVolume')
+              ? json_['storageVolume'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (storageVolume != null) 'storageVolume': storageVolume!,
+        if (type != null) 'type': type!,
       };
 }

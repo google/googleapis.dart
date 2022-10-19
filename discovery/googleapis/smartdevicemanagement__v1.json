@@ -4,9 +4,6 @@
             "scopes": {
                 "https://www.googleapis.com/auth/sdm.service": {
                     "description": "See and/or control the devices that you selected"
-                },
-                "https://www.googleapis.com/auth/sdm.thermostat.service": {
-                    "description": "See and control the Nest thermostats that you select"
                 }
             }
         }
@@ -135,8 +132,7 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service",
-                                "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
                         "get": {
@@ -161,8 +157,7 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Device"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service",
-                                "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
                         "list": {
@@ -203,8 +198,7 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service",
-                                "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                "https://www.googleapis.com/auth/sdm.service"
                             ]
                         }
                     }
@@ -233,8 +227,7 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Structure"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service",
-                                "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
                         "list": {
@@ -275,8 +268,7 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListStructuresResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service",
-                                "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                "https://www.googleapis.com/auth/sdm.service"
                             ]
                         }
                     },
@@ -305,8 +297,7 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1Room"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service",
-                                        "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                        "https://www.googleapis.com/auth/sdm.service"
                                     ]
                                 },
                                 "list": {
@@ -342,8 +333,7 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1ListRoomsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service",
-                                        "https://www.googleapis.com/auth/sdm.thermostat.service"
+                                        "https://www.googleapis.com/auth/sdm.service"
                                     ]
                                 }
                             }
@@ -353,7 +343,7 @@
             }
         }
     },
-    "revision": "20220904",
+    "revision": "20221128",
     "rootUrl": "https://smartdevicemanagement.googleapis.com/",
     "schemas": {
         "GoogleHomeEnterpriseSdmV1Device": {

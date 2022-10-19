@@ -26,6 +26,35 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAlterMetadataResourceLocationRequest = 0;
+api.AlterMetadataResourceLocationRequest
+    buildAlterMetadataResourceLocationRequest() {
+  final o = api.AlterMetadataResourceLocationRequest();
+  buildCounterAlterMetadataResourceLocationRequest++;
+  if (buildCounterAlterMetadataResourceLocationRequest < 3) {
+    o.locationUri = 'foo';
+    o.resourceName = 'foo';
+  }
+  buildCounterAlterMetadataResourceLocationRequest--;
+  return o;
+}
+
+void checkAlterMetadataResourceLocationRequest(
+    api.AlterMetadataResourceLocationRequest o) {
+  buildCounterAlterMetadataResourceLocationRequest++;
+  if (buildCounterAlterMetadataResourceLocationRequest < 3) {
+    unittest.expect(
+      o.locationUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAlterMetadataResourceLocationRequest--;
+}
+
 core.List<api.AuditLogConfig> buildUnnamed0() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -1264,6 +1293,38 @@ void checkMetadataManagementActivity(api.MetadataManagementActivity o) {
   buildCounterMetadataManagementActivity--;
 }
 
+core.int buildCounterMoveTableToDatabaseRequest = 0;
+api.MoveTableToDatabaseRequest buildMoveTableToDatabaseRequest() {
+  final o = api.MoveTableToDatabaseRequest();
+  buildCounterMoveTableToDatabaseRequest++;
+  if (buildCounterMoveTableToDatabaseRequest < 3) {
+    o.dbName = 'foo';
+    o.destinationDbName = 'foo';
+    o.tableName = 'foo';
+  }
+  buildCounterMoveTableToDatabaseRequest--;
+  return o;
+}
+
+void checkMoveTableToDatabaseRequest(api.MoveTableToDatabaseRequest o) {
+  buildCounterMoveTableToDatabaseRequest++;
+  if (buildCounterMoveTableToDatabaseRequest < 3) {
+    unittest.expect(
+      o.dbName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationDbName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMoveTableToDatabaseRequest--;
+}
+
 core.List<api.Consumer> buildUnnamed24() => [
       buildConsumer(),
       buildConsumer(),
@@ -1467,6 +1528,28 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
+core.int buildCounterQueryMetadataRequest = 0;
+api.QueryMetadataRequest buildQueryMetadataRequest() {
+  final o = api.QueryMetadataRequest();
+  buildCounterQueryMetadataRequest++;
+  if (buildCounterQueryMetadataRequest < 3) {
+    o.query = 'foo';
+  }
+  buildCounterQueryMetadataRequest--;
+  return o;
+}
+
+void checkQueryMetadataRequest(api.QueryMetadataRequest o) {
+  buildCounterQueryMetadataRequest++;
+  if (buildCounterQueryMetadataRequest < 3) {
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterQueryMetadataRequest--;
+}
+
 core.int buildCounterRemoveIamPolicyRequest = 0;
 api.RemoveIamPolicyRequest buildRemoveIamPolicyRequest() {
   final o = api.RemoveIamPolicyRequest();
@@ -1641,6 +1724,7 @@ api.Service buildService() {
     o.releaseChannel = 'foo';
     o.state = 'foo';
     o.stateMessage = 'foo';
+    o.telemetryConfig = buildTelemetryConfig();
     o.tier = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -1699,6 +1783,7 @@ void checkService(api.Service o) {
       o.stateMessage!,
       unittest.equals('foo'),
     );
+    checkTelemetryConfig(o.telemetryConfig!);
     unittest.expect(
       o.tier!,
       unittest.equals('foo'),
@@ -1824,6 +1909,28 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterTelemetryConfig = 0;
+api.TelemetryConfig buildTelemetryConfig() {
+  final o = api.TelemetryConfig();
+  buildCounterTelemetryConfig++;
+  if (buildCounterTelemetryConfig < 3) {
+    o.logFormat = 'foo';
+  }
+  buildCounterTelemetryConfig--;
+  return o;
+}
+
+void checkTelemetryConfig(api.TelemetryConfig o) {
+  buildCounterTelemetryConfig++;
+  if (buildCounterTelemetryConfig < 3) {
+    unittest.expect(
+      o.logFormat!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTelemetryConfig--;
+}
+
 core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
@@ -1897,6 +2004,16 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AlterMetadataResourceLocationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAlterMetadataResourceLocationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AlterMetadataResourceLocationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAlterMetadataResourceLocationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -2197,6 +2314,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MoveTableToDatabaseRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMoveTableToDatabaseRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MoveTableToDatabaseRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMoveTableToDatabaseRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-NetworkConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNetworkConfig();
@@ -2224,6 +2351,16 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-QueryMetadataRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryMetadataRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryMetadataRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkQueryMetadataRequest(od);
     });
   });
 
@@ -2304,6 +2441,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-TelemetryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTelemetryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TelemetryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTelemetryConfig(od);
     });
   });
 
@@ -3135,6 +3282,64 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsServicesResource', () {
+    unittest.test('method--alterLocation', () async {
+      final mock = HttpServerMock();
+      final res = api.DataprocMetastoreApi(mock).projects.locations.services;
+      final arg_request = buildAlterMetadataResourceLocationRequest();
+      final arg_service = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AlterMetadataResourceLocationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAlterMetadataResourceLocationRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.alterLocation(arg_request, arg_service,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.DataprocMetastoreApi(mock).projects.locations.services;
@@ -3509,6 +3714,64 @@ void main() {
       checkListServicesResponse(response as api.ListServicesResponse);
     });
 
+    unittest.test('method--moveTableToDatabase', () async {
+      final mock = HttpServerMock();
+      final res = api.DataprocMetastoreApi(mock).projects.locations.services;
+      final arg_request = buildMoveTableToDatabaseRequest();
+      final arg_service = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.MoveTableToDatabaseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMoveTableToDatabaseRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.moveTableToDatabase(arg_request, arg_service,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.DataprocMetastoreApi(mock).projects.locations.services;
@@ -3575,6 +3838,64 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           requestId: arg_requestId,
           updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--queryMetadata', () async {
+      final mock = HttpServerMock();
+      final res = api.DataprocMetastoreApi(mock).projects.locations.services;
+      final arg_request = buildQueryMetadataRequest();
+      final arg_service = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.QueryMetadataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryMetadataRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.queryMetadata(arg_request, arg_service,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });

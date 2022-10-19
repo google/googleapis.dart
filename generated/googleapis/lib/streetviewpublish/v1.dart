@@ -1718,6 +1718,7 @@ class PhotoSequence {
   /// - "UNSUPPORTED_CAMERA" : The camera is not supported.
   /// - "NOT_OUTDOORS" : Some frames were indoors, which is unsupported.
   /// - "INSUFFICIENT_VIDEO_FRAMES" : Not enough video frames.
+  /// - "INSUFFICIENT_MOVEMENT" : Not enough moving data.
   core.String? failureReason;
 
   /// The filename of the upload.

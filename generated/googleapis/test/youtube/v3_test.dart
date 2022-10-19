@@ -3522,6 +3522,7 @@ api.LiveBroadcastStatistics buildLiveBroadcastStatistics() {
   final o = api.LiveBroadcastStatistics();
   buildCounterLiveBroadcastStatistics++;
   if (buildCounterLiveBroadcastStatistics < 3) {
+    o.concurrentViewers = 'foo';
     o.totalChatCount = 'foo';
   }
   buildCounterLiveBroadcastStatistics--;
@@ -3531,6 +3532,10 @@ api.LiveBroadcastStatistics buildLiveBroadcastStatistics() {
 void checkLiveBroadcastStatistics(api.LiveBroadcastStatistics o) {
   buildCounterLiveBroadcastStatistics++;
   if (buildCounterLiveBroadcastStatistics < 3) {
+    unittest.expect(
+      o.concurrentViewers!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.totalChatCount!,
       unittest.equals('foo'),

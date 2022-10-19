@@ -25,6 +25,7 @@ packages:
     - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - analytics:v3 # https://developers.google.com/analytics/
+    - analyticshub:v1
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androiddeviceprovisioning:v1 # https://developers.google.com/zero-touch/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
@@ -40,6 +41,7 @@ packages:
     - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
     - baremetalsolution:v2
+    - batch:v1
     - beyondcorp:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
@@ -86,6 +88,7 @@ packages:
     - container:v1 # https://cloud.google.com/container-engine/
     - containeranalysis:v1
     - content:v2.1 # https://developers.google.com/shopping-content/
+    - contentwarehouse:v1
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datacatalog:v1
     - datafusion:v1
@@ -103,6 +106,7 @@ packages:
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
     - discovery:v1 # https://developers.google.com/discovery/
     - displayvideo:v1
+    - displayvideo:v2
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
@@ -159,6 +163,7 @@ packages:
     - managedidentities:v1
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - memcache:v1
+    - metastore:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
@@ -230,9 +235,11 @@ packages:
     - testing:v1 # https://developers.google.com/cloud-test-lab/
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
+    - tpu:v2
     - trafficdirector:v2
     - transcoder:v1
     - translate:v3
+    - travelimpactmodel:v1
     - vault:v1 # https://apps.google.com/products/vault/
     - verifiedaccess:v1
     - verifiedaccess:v2
@@ -261,7 +268,7 @@ packages:
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
-    - analyticsadmin:v1alpha
+    - analyticsadmin:v1beta
     - analyticsdata:v1beta
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
@@ -306,15 +313,15 @@ additional_apis:
 skipped_apis:
 - accesscontextmanager:v1beta
 - admob:v1beta #v1 included
+- analyticsadmin:v1alpha
 - analyticshub:v1beta1
 - apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
-- baremetalsolution:v1alpha1
+- assuredworkloads:v1beta1
 - beyondcorp:v1alpha
-- bigqueryreservation:v1beta1 # v1 included
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
 - blogger:v2 # v3 included
@@ -322,6 +329,7 @@ skipped_apis:
 - cloudasset:v1p1beta1 # v1 included
 - cloudasset:v1p5beta1 # v1 included
 - cloudasset:v1p7beta1 # v1 included
+- cloudbilling:v1beta
 - cloudbuild:v1alpha1 # v1 included
 - cloudbuild:v1alpha2 # v1 included
 - cloudbuild:v1beta1
@@ -367,9 +375,10 @@ skipped_apis:
 - healthcare:v1beta1 # v1 included
 - iam:v2beta
 - iap:v1beta1 # v1 included
+- ideahub:v1alpha
 - identitytoolkit:v1
 - identitytoolkit:v2
-- ideahub:v1alpha
+- integrations:v1alpha
 - jobs:v3p1beta1 # v3 included
 - language:v1beta1 # v1 included
 - language:v1beta2 # v1 included
@@ -422,3 +431,5 @@ skipped_apis:
 - websecurityscanner:v1beta # v1 included
 - workflowexecutions:v1beta # v1 included
 - workflows:v1beta # v1 included
+- discoveryengine:v1alpha
+- discoveryengine:v1beta

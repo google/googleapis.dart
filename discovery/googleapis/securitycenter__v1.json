@@ -117,7 +117,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -178,7 +178,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -587,6 +587,163 @@
                         }
                     }
                 },
+                "notificationConfigs": {
+                    "methods": {
+                        "create": {
+                            "description": "Creates a notification config.",
+                            "flatPath": "v1/folders/{foldersId}/notificationConfigs",
+                            "httpMethod": "POST",
+                            "id": "securitycenter.folders.notificationConfigs.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "configId": {
+                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Resource name of the new notification config's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/notificationConfigs",
+                            "request": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "delete": {
+                            "description": "Deletes a notification config.",
+                            "flatPath": "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "DELETE",
+                            "id": "securitycenter.folders.notificationConfigs.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the notification config to delete. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a notification config.",
+                            "flatPath": "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.folders.notificationConfigs.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the notification config to get. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists notification configs.",
+                            "flatPath": "v1/folders/{foldersId}/notificationConfigs",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.folders.notificationConfigs.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListNotificationConfigsResponse`; indicates that this is a continuation of a prior `ListNotificationConfigs` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/notificationConfigs",
+                            "response": {
+                                "$ref": "ListNotificationConfigsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "patch": {
+                            "description": " Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter",
+                            "flatPath": "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "PATCH",
+                            "id": "securitycenter.folders.notificationConfigs.patch",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\", \"folders/{folder_id}/notificationConfigs/notify_public_bucket\", or \"projects/{project_id}/notificationConfigs/notify_public_bucket\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "The FieldMask to use when updating the notification config. If empty all mutable fields will be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
                 "sources": {
                     "methods": {
                         "list": {
@@ -765,7 +922,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/finding/{finding_id}\", \"projects/{project_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -793,7 +950,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -972,7 +1129,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1033,7 +1190,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1487,7 +1644,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the new notification config's parent. Its format is \"organizations/[organization_id]\" or \"projects/[project_id]\".",
+                                    "description": "Required. Resource name of the new notification config's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1515,7 +1672,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the notification config to delete. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\".",
+                                    "description": "Required. Name of the notification config to delete. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/notificationConfigs/[^/]+$",
                                     "required": true,
@@ -1540,7 +1697,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the notification config to get. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\".",
+                                    "description": "Required. Name of the notification config to get. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/notificationConfigs/[^/]+$",
                                     "required": true,
@@ -1576,7 +1733,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization to list notification configs. Its format is \"organizations/[organization_id]\" or \"projects/[project_id]\".",
+                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1601,7 +1758,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\".",
+                                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\", \"folders/{folder_id}/notificationConfigs/notify_public_bucket\", or \"projects/{project_id}/notificationConfigs/notify_public_bucket\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/notificationConfigs/[^/]+$",
                                     "required": true,
@@ -2129,7 +2286,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/finding/{finding_id}\", \"projects/{project_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -2157,7 +2314,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -2275,7 +2432,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -2336,7 +2493,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -2745,6 +2902,163 @@
                         }
                     }
                 },
+                "notificationConfigs": {
+                    "methods": {
+                        "create": {
+                            "description": "Creates a notification config.",
+                            "flatPath": "v1/projects/{projectsId}/notificationConfigs",
+                            "httpMethod": "POST",
+                            "id": "securitycenter.projects.notificationConfigs.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "configId": {
+                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Resource name of the new notification config's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/notificationConfigs",
+                            "request": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "delete": {
+                            "description": "Deletes a notification config.",
+                            "flatPath": "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "DELETE",
+                            "id": "securitycenter.projects.notificationConfigs.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the notification config to delete. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a notification config.",
+                            "flatPath": "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.projects.notificationConfigs.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the notification config to get. Its format is \"organizations/[organization_id]/notificationConfigs/[config_id]\", \"folders/[folder_id]/notificationConfigs/[config_id]\", or \"projects/[project_id]/notificationConfigs/[config_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists notification configs.",
+                            "flatPath": "v1/projects/{projectsId}/notificationConfigs",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.projects.notificationConfigs.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListNotificationConfigsResponse`; indicates that this is a continuation of a prior `ListNotificationConfigs` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/notificationConfigs",
+                            "response": {
+                                "$ref": "ListNotificationConfigsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "patch": {
+                            "description": " Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter",
+                            "flatPath": "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
+                            "httpMethod": "PATCH",
+                            "id": "securitycenter.projects.notificationConfigs.patch",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\", \"folders/{folder_id}/notificationConfigs/notify_public_bucket\", or \"projects/{project_id}/notificationConfigs/notify_public_bucket\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/notificationConfigs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "The FieldMask to use when updating the notification config. If empty all mutable fields will be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "response": {
+                                "$ref": "NotificationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
                 "sources": {
                     "methods": {
                         "list": {
@@ -2923,7 +3237,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/finding/{finding_id}\", \"projects/{project_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -2951,7 +3265,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -3056,7 +3370,7 @@
             }
         }
     },
-    "revision": "20220909",
+    "revision": "20221121",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
@@ -3100,6 +3414,10 @@
                 },
                 "userAgentFamily": {
                     "description": "What kind of user agent is associated, e.g. operating system shells, embedded or stand-alone applications, etc.",
+                    "type": "string"
+                },
+                "userName": {
+                    "description": "A string representing a username. This is likely not an IAM principal. For instance, this may be the system user name if the finding is VM-related, or this may be some type of application login user name, depending on the type of finding.",
                     "type": "string"
                 }
             },
@@ -3215,6 +3533,25 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AssociatedFinding": {
+            "description": "A finding that is associated with this node in the exposure path.",
+            "id": "AssociatedFinding",
+            "properties": {
+                "canonicalFindingName": {
+                    "description": "Canonical name of the associated findings. Example: organizations/123/sources/456/findings/789",
+                    "type": "string"
+                },
+                "findingCategory": {
+                    "description": "The additional taxonomy group within findings from a given source.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Full resource name of the finding.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3630,6 +3967,21 @@
             },
             "type": "object"
         },
+        "Edge": {
+            "description": "Represents a connection between a source node and a destination node in this exposure path.",
+            "id": "Edge",
+            "properties": {
+                "destination": {
+                    "description": "This is the resource name of the destination node.",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "This is the resource name of the source node.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
@@ -3780,7 +4132,7 @@
                     "additionalProperties": {
                         "$ref": "ContactDetails"
                     },
-                    "description": "Output only. Map containing the point of contacts for the given finding. The key represents the type of contact, while the value contains a list of all the contacts that pertain. Please refer to: https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories { \"security\": { \"contacts\": [ { \"email\": \"person1@company.com\" }, { \"email\": \"person2@company.com\" } ] } }",
+                    "description": "Output only. Map containing the points of contact for the given finding. The key represents the type of contact, while the value contains a list of all the contacts that pertain. Please refer to: https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories { \"security\": { \"contacts\": [ { \"email\": \"person1@company.com\" }, { \"email\": \"person2@company.com\" } ] } }",
                     "readOnly": true,
                     "type": "object"
                 },
@@ -3825,6 +4177,13 @@
                     "description": "The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL.",
                     "type": "string"
                 },
+                "files": {
+                    "description": "File associated with the finding.",
+                    "items": {
+                        "$ref": "File"
+                    },
+                    "type": "array"
+                },
                 "findingClass": {
                     "description": "The class of the finding.",
                     "enum": [
@@ -3855,6 +4214,10 @@
                 "indicator": {
                     "$ref": "Indicator",
                     "description": "Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise"
+                },
+                "kernelRootkit": {
+                    "$ref": "KernelRootkit",
+                    "description": "Kernel Rootkit signature."
                 },
                 "kubernetes": {
                     "$ref": "Kubernetes",
@@ -3903,7 +4266,7 @@
                     "type": "string"
                 },
                 "parentDisplayName": {
-                    "description": "Output only. The human readable display name of the finding source such as \"Event Threat Detection\" or \"Security Health Analytics\"",
+                    "description": "Output only. The human readable display name of the finding source such as \"Event Threat Detection\" or \"Security Health Analytics\".",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4095,6 +4458,81 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV1ExposedResource": {
+            "description": "A resource that is exposed as a result of a finding.",
+            "id": "GoogleCloudSecuritycenterV1ExposedResource",
+            "properties": {
+                "displayName": {
+                    "description": "Human readable name of the resource that is exposed.",
+                    "type": "string"
+                },
+                "methods": {
+                    "description": "The ways in which this resource is exposed. Examples: Read, Write",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Exposed Resource Name e.g.: `organizations/123/attackExposureResults/456/exposedResources/789`",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "The name of the resource that is exposed. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "The resource type of the exposed resource. See: https://cloud.google.com/asset-inventory/docs/supported-asset-types",
+                    "type": "string"
+                },
+                "resourceValue": {
+                    "description": "How valuable this resource is.",
+                    "enum": [
+                        "RESOURCE_VALUE_UNSPECIFIED",
+                        "RESOURCE_VALUE_LOW",
+                        "RESOURCE_VALUE_MEDIUM",
+                        "RESOURCE_VALUE_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "The resource value isn't specified.",
+                        "This is a low value resource.",
+                        "This is a medium value resource.",
+                        "This is a high value resource."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ExposurePath": {
+            "description": "A path that an attacker could take to reach an exposed resource.",
+            "id": "GoogleCloudSecuritycenterV1ExposurePath",
+            "properties": {
+                "edges": {
+                    "description": "A list of the edges between nodes in this exposure path.",
+                    "items": {
+                        "$ref": "Edge"
+                    },
+                    "type": "array"
+                },
+                "exposedResource": {
+                    "$ref": "GoogleCloudSecuritycenterV1ExposedResource",
+                    "description": "The leaf node of this exposure path."
+                },
+                "name": {
+                    "description": "Exposure Path Name e.g.: `organizations/123/attackExposureResults/456/exposurePaths/789`",
+                    "type": "string"
+                },
+                "pathNodes": {
+                    "description": "A list of nodes that exist in this exposure path.",
+                    "items": {
+                        "$ref": "PathNode"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV1ExternalSystem": {
             "description": "Representation of third party SIEM/SOAR fields within SCC.",
             "id": "GoogleCloudSecuritycenterV1ExternalSystem",
@@ -4236,6 +4674,10 @@
                     "description": "Name for the resource value config",
                     "type": "string"
                 },
+                "resourceType": {
+                    "description": "Apply resource_value only to resources that match resource_type. resource_type will be checked with \"AND\" of other resources. E.g. \"storage.googleapis.com/Bucket\" with resource_value \"HIGH\" will apply \"HIGH\" value only to \"storage.googleapis.com/Bucket\" resources.",
+                    "type": "string"
+                },
                 "resourceValue": {
                     "description": "Required. Resource value level this expression represents",
                     "enum": [
@@ -4252,6 +4694,10 @@
                         "Low resource value",
                         "No resource value, e.g. ignore these resources"
                     ],
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "Project or folder to scope this config to. For example, \"project/456\" would apply this config only to resources in \"project/456\" scope will be checked with \"AND\" of other resources.",
                     "type": "string"
                 },
                 "tagValues": {
@@ -4742,6 +5188,49 @@
             },
             "type": "object"
         },
+        "KernelRootkit": {
+            "description": "Kernel mode rootkit signatures.",
+            "id": "KernelRootkit",
+            "properties": {
+                "name": {
+                    "description": "Rootkit name when available.",
+                    "type": "string"
+                },
+                "unexpectedCodeModification": {
+                    "description": "Flag indicating unexpected modifications of kernel code memory.",
+                    "type": "boolean"
+                },
+                "unexpectedFtraceHandler": {
+                    "description": "Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected kernel or module code range.",
+                    "type": "boolean"
+                },
+                "unexpectedInterruptHandler": {
+                    "description": "Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.",
+                    "type": "boolean"
+                },
+                "unexpectedKernelCodePages": {
+                    "description": "Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.",
+                    "type": "boolean"
+                },
+                "unexpectedKprobeHandler": {
+                    "description": "Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected kernel or module code range.",
+                    "type": "boolean"
+                },
+                "unexpectedProcessesInRunqueue": {
+                    "description": "Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not in the process task-list.",
+                    "type": "boolean"
+                },
+                "unexpectedReadOnlyDataModification": {
+                    "description": "Flag indicating unexpected modifications of kernel read-only data memory.",
+                    "type": "boolean"
+                },
+                "unexpectedSystemCallHandler": {
+                    "description": "Flag indicating presence of system call handlers that are are not in the expected kernel, module code regions.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Kubernetes": {
             "description": "Kubernetes related attributes.",
             "id": "Kubernetes",
@@ -5114,7 +5603,8 @@
                             "IMPAIR_DEFENSES",
                             "NETWORK_SERVICE_DISCOVERY",
                             "ACCESS_TOKEN_MANIPULATION",
-                            "ABUSE_ELEVATION_CONTROL_MECHANISM"
+                            "ABUSE_ELEVATION_CONTROL_MECHANISM",
+                            "DEFAULT_ACCOUNTS"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -5151,7 +5641,8 @@
                             "T1562",
                             "T1046",
                             "T1134",
-                            "T1548"
+                            "T1548",
+                            "T1078.001"
                         ],
                         "type": "string"
                     },
@@ -5233,7 +5724,8 @@
                             "IMPAIR_DEFENSES",
                             "NETWORK_SERVICE_DISCOVERY",
                             "ACCESS_TOKEN_MANIPULATION",
-                            "ABUSE_ELEVATION_CONTROL_MECHANISM"
+                            "ABUSE_ELEVATION_CONTROL_MECHANISM",
+                            "DEFAULT_ACCOUNTS"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -5270,7 +5762,8 @@
                             "T1562",
                             "T1046",
                             "T1134",
-                            "T1548"
+                            "T1548",
+                            "T1078.001"
                         ],
                         "type": "string"
                     },
@@ -5321,7 +5814,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\".",
+                    "description": "The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/notificationConfigs/notify_public_bucket\", \"folders/{folder_id}/notificationConfigs/notify_public_bucket\", or \"projects/{project_id}/notificationConfigs/notify_public_bucket\".",
                     "type": "string"
                 },
                 "pubsubTopic": {
@@ -5389,6 +5882,32 @@
                 },
                 "name": {
                     "description": "The relative resource name of the settings. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/organizationSettings\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PathNode": {
+            "description": "Represents one point that an attacker passes through in this exposure path.",
+            "id": "PathNode",
+            "properties": {
+                "associatedFindings": {
+                    "description": "The findings associated with this node in the exposure path.",
+                    "items": {
+                        "$ref": "AssociatedFinding"
+                    },
+                    "type": "array"
+                },
+                "displayName": {
+                    "description": "Human readable name of this resource.",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "The name of the resource at this point in the exposure path. The format of the name is: https://cloud.google.com/apis/design/resource_names#full_resource_name",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "The resource type of this resource. See: https://cloud.google.com/asset-inventory/docs/supported-asset-types",
                     "type": "string"
                 }
             },

@@ -1614,13 +1614,15 @@ class Company {
   /// A URI that hosts the employer's company logo.
   core.String? imageUri;
 
-  /// A list of keys of filterable Job.custom_attributes, whose corresponding
-  /// `string_values` are used in keyword searches.
+  /// This field is deprecated.
   ///
-  /// Jobs with `string_values` under these specified field keys are returned if
-  /// any of the values match the search keyword. Custom field values with
-  /// parenthesis, brackets and special symbols are not searchable as-is, and
-  /// those keyword queries must be surrounded by quotes.
+  /// Please set the searchability of the custom attribute in the
+  /// Job.custom_attributes going forward. A list of keys of filterable
+  /// Job.custom_attributes, whose corresponding `string_values` are used in
+  /// keyword searches. Jobs with `string_values` under these specified field
+  /// keys are returned if any of the values match the search keyword. Custom
+  /// field values with parenthesis, brackets and special symbols are not
+  /// searchable as-is, and those keyword queries must be surrounded by quotes.
   core.List<core.String>? keywordSearchableJobCustomAttributes;
 
   /// Required during company update.
@@ -3888,11 +3890,11 @@ class SearchJobsRequest {
   /// or bucket(1, 10). Job histogram facets: * company_display_name: histogram
   /// by \[Job.company_display_name. * employment_type: histogram by
   /// Job.employment_types, for example, "FULL_TIME", "PART_TIME". *
-  /// company_size: histogram by CompanySize, for example, "SMALL", "MEDIUM",
-  /// "BIG". * publish_time_in_day: histogram by the Job.posting_publish_time in
-  /// days. Must specify list of numeric buckets in spec. *
-  /// publish_time_in_month: histogram by the Job.posting_publish_time in
-  /// months. Must specify list of numeric buckets in spec. *
+  /// company_size (DEPRECATED): histogram by CompanySize, for example, "SMALL",
+  /// "MEDIUM", "BIG". * publish_time_in_day: histogram by the
+  /// Job.posting_publish_time in days. Must specify list of numeric buckets in
+  /// spec. * publish_time_in_month: histogram by the Job.posting_publish_time
+  /// in months. Must specify list of numeric buckets in spec. *
   /// publish_time_in_year: histogram by the Job.posting_publish_time in years.
   /// Must specify list of numeric buckets in spec. * degree_types: histogram by
   /// the Job.degree_types, for example, "Bachelors", "Masters". * job_level:

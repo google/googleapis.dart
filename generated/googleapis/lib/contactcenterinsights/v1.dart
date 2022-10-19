@@ -181,6 +181,48 @@ class ProjectsLocationsConversationsResource {
   ProjectsLocationsConversationsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Analyzes multiple conversations in a single request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create analyses in.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkAnalyze(
+    GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:bulkAnalyze';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets conversation statistics.
   ///
   /// Request parameters:
@@ -364,6 +406,49 @@ class ProjectsLocationsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports conversations and processes them according to the user's
+  /// configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for new conversations.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> ingest(
+    GoogleCloudContactcenterinsightsV1IngestConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:ingest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1058,6 +1143,43 @@ class ProjectsLocationsIssueModelsIssuesResource {
 
   ProjectsLocationsIssueModelsIssuesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes an issue.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the issue to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/issueModels/\[^/\]+/issues/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets an issue.
   ///
@@ -1786,6 +1908,11 @@ class GoogleCloudContactcenterinsightsV1Analysis {
   /// Output only.
   GoogleCloudContactcenterinsightsV1AnalysisResult? analysisResult;
 
+  /// To select the annotators to run and the phrase matchers to use (if any).
+  ///
+  /// If not specified, all annotators will be run.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector? annotatorSelector;
+
   /// The time at which the analysis was created, which occurs when the
   /// long-running operation completes.
   ///
@@ -1807,6 +1934,7 @@ class GoogleCloudContactcenterinsightsV1Analysis {
 
   GoogleCloudContactcenterinsightsV1Analysis({
     this.analysisResult,
+    this.annotatorSelector,
     this.createTime,
     this.name,
     this.requestTime,
@@ -1817,6 +1945,11 @@ class GoogleCloudContactcenterinsightsV1Analysis {
           analysisResult: json_.containsKey('analysisResult')
               ? GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(
                   json_['analysisResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          annotatorSelector: json_.containsKey('annotatorSelector')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+                  json_['annotatorSelector']
                       as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
@@ -1830,6 +1963,7 @@ class GoogleCloudContactcenterinsightsV1Analysis {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisResult != null) 'analysisResult': analysisResult!,
+        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (requestTime != null) 'requestTime': requestTime!,
@@ -1998,6 +2132,117 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundary {
       };
 }
 
+/// Selector of all available annotators and phrase matchers to run.
+class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
+  /// The issue model to run.
+  ///
+  /// If not provided, the most recently deployed topic model will be used. The
+  /// provided issue model will only be used for inference if the issue model is
+  /// deployed and if run_issue_model_annotator is set to true. If more than one
+  /// issue model is provided, only the first provided issue model will be used
+  /// for inference.
+  core.List<core.String>? issueModels;
+
+  /// The list of phrase matchers to run.
+  ///
+  /// If not provided, all active phrase matchers will be used. If inactive
+  /// phrase matchers are provided, they will not be used. Phrase matchers will
+  /// be run only if run_phrase_matcher_annotator is set to true. Format:
+  /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+  core.List<core.String>? phraseMatchers;
+
+  /// Whether to run the entity annotator.
+  core.bool? runEntityAnnotator;
+
+  /// Whether to run the intent annotator.
+  core.bool? runIntentAnnotator;
+
+  /// Whether to run the interruption annotator.
+  core.bool? runInterruptionAnnotator;
+
+  /// Whether to run the issue model annotator.
+  ///
+  /// A model should have already been deployed for this to take effect.
+  core.bool? runIssueModelAnnotator;
+
+  /// Whether to run the active phrase matcher annotator(s).
+  core.bool? runPhraseMatcherAnnotator;
+
+  /// Whether to run the sentiment annotator.
+  core.bool? runSentimentAnnotator;
+
+  /// Whether to run the silence annotator.
+  core.bool? runSilenceAnnotator;
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector({
+    this.issueModels,
+    this.phraseMatchers,
+    this.runEntityAnnotator,
+    this.runIntentAnnotator,
+    this.runInterruptionAnnotator,
+    this.runIssueModelAnnotator,
+    this.runPhraseMatcherAnnotator,
+    this.runSentimentAnnotator,
+    this.runSilenceAnnotator,
+  });
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(core.Map json_)
+      : this(
+          issueModels: json_.containsKey('issueModels')
+              ? (json_['issueModels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          phraseMatchers: json_.containsKey('phraseMatchers')
+              ? (json_['phraseMatchers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          runEntityAnnotator: json_.containsKey('runEntityAnnotator')
+              ? json_['runEntityAnnotator'] as core.bool
+              : null,
+          runIntentAnnotator: json_.containsKey('runIntentAnnotator')
+              ? json_['runIntentAnnotator'] as core.bool
+              : null,
+          runInterruptionAnnotator:
+              json_.containsKey('runInterruptionAnnotator')
+                  ? json_['runInterruptionAnnotator'] as core.bool
+                  : null,
+          runIssueModelAnnotator: json_.containsKey('runIssueModelAnnotator')
+              ? json_['runIssueModelAnnotator'] as core.bool
+              : null,
+          runPhraseMatcherAnnotator:
+              json_.containsKey('runPhraseMatcherAnnotator')
+                  ? json_['runPhraseMatcherAnnotator'] as core.bool
+                  : null,
+          runSentimentAnnotator: json_.containsKey('runSentimentAnnotator')
+              ? json_['runSentimentAnnotator'] as core.bool
+              : null,
+          runSilenceAnnotator: json_.containsKey('runSilenceAnnotator')
+              ? json_['runSilenceAnnotator'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issueModels != null) 'issueModels': issueModels!,
+        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+        if (runEntityAnnotator != null)
+          'runEntityAnnotator': runEntityAnnotator!,
+        if (runIntentAnnotator != null)
+          'runIntentAnnotator': runIntentAnnotator!,
+        if (runInterruptionAnnotator != null)
+          'runInterruptionAnnotator': runInterruptionAnnotator!,
+        if (runIssueModelAnnotator != null)
+          'runIssueModelAnnotator': runIssueModelAnnotator!,
+        if (runPhraseMatcherAnnotator != null)
+          'runPhraseMatcherAnnotator': runPhraseMatcherAnnotator!,
+        if (runSentimentAnnotator != null)
+          'runSentimentAnnotator': runSentimentAnnotator!,
+        if (runSilenceAnnotator != null)
+          'runSilenceAnnotator': runSilenceAnnotator!,
+      };
+}
+
 /// The feedback that the customer has about a certain answer in the
 /// conversation.
 class GoogleCloudContactcenterinsightsV1AnswerFeedback {
@@ -2112,6 +2357,63 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
         if (source != null) 'source': source!,
         if (title != null) 'title': title!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// The request to analyze conversations in bulk.
+class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
+  /// Percentage of selected conversation to analyze, between \[0, 100\].
+  ///
+  /// Required.
+  core.double? analysisPercentage;
+
+  /// To select the annotators to run and the phrase matchers to use (if any).
+  ///
+  /// If not specified, all annotators will be run.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector? annotatorSelector;
+
+  /// Filter used to select the subset of conversations to analyze.
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// The parent resource to create analyses in.
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest({
+    this.analysisPercentage,
+    this.annotatorSelector,
+    this.filter,
+    this.parent,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
+      core.Map json_)
+      : this(
+          analysisPercentage: json_.containsKey('analysisPercentage')
+              ? (json_['analysisPercentage'] as core.num).toDouble()
+              : null,
+          annotatorSelector: json_.containsKey('annotatorSelector')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+                  json_['annotatorSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisPercentage != null)
+          'analysisPercentage': analysisPercentage!,
+        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+        if (filter != null) 'filter': filter!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -2363,6 +2665,9 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
   /// Data specifying an interruption.
   GoogleCloudContactcenterinsightsV1InterruptionData? interruptionData;
 
+  /// Data specifying an issue match.
+  GoogleCloudContactcenterinsightsV1IssueMatchData? issueMatchData;
+
   /// Data specifying a phrase match.
   GoogleCloudContactcenterinsightsV1PhraseMatchData? phraseMatchData;
 
@@ -2380,6 +2685,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
     this.holdData,
     this.intentMatchData,
     this.interruptionData,
+    this.issueMatchData,
     this.phraseMatchData,
     this.sentimentData,
     this.silenceData,
@@ -2419,6 +2725,11 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
                   json_['interruptionData']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          issueMatchData: json_.containsKey('issueMatchData')
+              ? GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(
+                  json_['issueMatchData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           phraseMatchData: json_.containsKey('phraseMatchData')
               ? GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
                   json_['phraseMatchData']
@@ -2444,6 +2755,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
         if (holdData != null) 'holdData': holdData!,
         if (intentMatchData != null) 'intentMatchData': intentMatchData!,
         if (interruptionData != null) 'interruptionData': interruptionData!,
+        if (issueMatchData != null) 'issueMatchData': issueMatchData!,
         if (phraseMatchData != null) 'phraseMatchData': phraseMatchData!,
         if (sentimentData != null) 'sentimentData': sentimentData!,
         if (silenceData != null) 'silenceData': silenceData!,
@@ -3574,6 +3886,142 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
 /// The data for a hold annotation.
 typedef GoogleCloudContactcenterinsightsV1HoldData = $Empty;
 
+/// The request to ingest conversations.
+class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
+  /// Configuration that applies to all conversations.
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig?
+      conversationConfig;
+
+  /// A cloud storage bucket source.
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource?
+      gcsSource;
+
+  /// The parent resource for new conversations.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// Configuration for when `source` contains conversation transcripts.
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig?
+      transcriptObjectConfig;
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequest({
+    this.conversationConfig,
+    this.gcsSource,
+    this.parent,
+    this.transcriptObjectConfig,
+  });
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
+      core.Map json_)
+      : this(
+          conversationConfig: json_.containsKey('conversationConfig')
+              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
+                  .fromJson(json_['conversationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: json_.containsKey('gcsSource')
+              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
+                  .fromJson(
+                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          transcriptObjectConfig: json_.containsKey('transcriptObjectConfig')
+              ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
+                  .fromJson(json_['transcriptObjectConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationConfig != null)
+          'conversationConfig': conversationConfig!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (parent != null) 'parent': parent!,
+        if (transcriptObjectConfig != null)
+          'transcriptObjectConfig': transcriptObjectConfig!,
+      };
+}
+
+/// Configuration that applies to all conversations.
+class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
+  /// An opaque, user-specified string representing the human agent who handled
+  /// the conversations.
+  core.String? agentId;
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig({
+    this.agentId,
+  });
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
+      core.Map json_)
+      : this(
+          agentId: json_.containsKey('agentId')
+              ? json_['agentId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentId != null) 'agentId': agentId!,
+      };
+}
+
+/// Configuration for Cloud Storage bucket sources.
+class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
+  /// The Cloud Storage bucket containing source objects.
+  ///
+  /// Required.
+  core.String? bucketUri;
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource({
+    this.bucketUri,
+  });
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
+      core.Map json_)
+      : this(
+          bucketUri: json_.containsKey('bucketUri')
+              ? json_['bucketUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketUri != null) 'bucketUri': bucketUri!,
+      };
+}
+
+/// Configuration for processing transcript objects.
+class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig {
+  /// The medium transcript objects represent.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MEDIUM_UNSPECIFIED" : Default value, if unspecified will default to
+  /// PHONE_CALL.
+  /// - "PHONE_CALL" : The format for conversations that took place over the
+  /// phone.
+  /// - "CHAT" : The format for conversations that took place over chat.
+  core.String? medium;
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig({
+    this.medium,
+  });
+
+  GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig.fromJson(
+      core.Map json_)
+      : this(
+          medium: json_.containsKey('medium')
+              ? json_['medium'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (medium != null) 'medium': medium!,
+      };
+}
+
 /// The data for an intent.
 ///
 /// Represents a detected intent in the conversation, for example MAKES_PROMISE.
@@ -3651,6 +4099,12 @@ class GoogleCloudContactcenterinsightsV1Issue {
   /// Immutable.
   core.String? name;
 
+  /// Resource names of the sample representative utterances that match to this
+  /// issue.
+  ///
+  /// Output only.
+  core.List<core.String>? sampleUtterances;
+
   /// The most recent time that this issue was updated.
   ///
   /// Output only.
@@ -3660,6 +4114,7 @@ class GoogleCloudContactcenterinsightsV1Issue {
     this.createTime,
     this.displayName,
     this.name,
+    this.sampleUtterances,
     this.updateTime,
   });
 
@@ -3672,6 +4127,11 @@ class GoogleCloudContactcenterinsightsV1Issue {
               ? json_['displayName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sampleUtterances: json_.containsKey('sampleUtterances')
+              ? (json_['sampleUtterances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -3681,6 +4141,7 @@ class GoogleCloudContactcenterinsightsV1Issue {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (sampleUtterances != null) 'sampleUtterances': sampleUtterances!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3727,6 +4188,29 @@ class GoogleCloudContactcenterinsightsV1IssueAssignment {
       };
 }
 
+/// The data for an issue match annotation.
+class GoogleCloudContactcenterinsightsV1IssueMatchData {
+  /// Information about the issue's assignment.
+  GoogleCloudContactcenterinsightsV1IssueAssignment? issueAssignment;
+
+  GoogleCloudContactcenterinsightsV1IssueMatchData({
+    this.issueAssignment,
+  });
+
+  GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(core.Map json_)
+      : this(
+          issueAssignment: json_.containsKey('issueAssignment')
+              ? GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
+                  json_['issueAssignment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issueAssignment != null) 'issueAssignment': issueAssignment!,
+      };
+}
+
 /// The issue model resource.
 class GoogleCloudContactcenterinsightsV1IssueModel {
   /// The time at which this issue model was created.
@@ -3739,6 +4223,11 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
 
   /// Configs for the input data that used to create the issue model.
   GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig? inputDataConfig;
+
+  /// Number of issues in this issue model.
+  ///
+  /// Output only.
+  core.String? issueCount;
 
   /// The resource name of the issue model.
   ///
@@ -3774,6 +4263,7 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
     this.createTime,
     this.displayName,
     this.inputDataConfig,
+    this.issueCount,
     this.name,
     this.state,
     this.trainingStats,
@@ -3793,6 +4283,9 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
                   .fromJson(json_['inputDataConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          issueCount: json_.containsKey('issueCount')
+              ? json_['issueCount'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -3809,6 +4302,7 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
+        if (issueCount != null) 'issueCount': issueCount!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (trainingStats != null) 'trainingStats': trainingStats!,
@@ -4725,17 +5219,28 @@ class GoogleCloudContactcenterinsightsV1Settings {
 
 /// Default configuration when creating Analyses in Insights.
 class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
+  /// To select the annotators to run and the phrase matchers to use (if any).
+  ///
+  /// If not specified, all annotators will be run.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector? annotatorSelector;
+
   /// Percentage of conversations created using Dialogflow runtime integration
   /// to analyze automatically, between \[0, 100\].
   core.double? runtimeIntegrationAnalysisPercentage;
 
   GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig({
+    this.annotatorSelector,
     this.runtimeIntegrationAnalysisPercentage,
   });
 
   GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
       core.Map json_)
       : this(
+          annotatorSelector: json_.containsKey('annotatorSelector')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+                  json_['annotatorSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           runtimeIntegrationAnalysisPercentage:
               json_.containsKey('runtimeIntegrationAnalysisPercentage')
                   ? (json_['runtimeIntegrationAnalysisPercentage'] as core.num)
@@ -4744,6 +5249,7 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
         if (runtimeIntegrationAnalysisPercentage != null)
           'runtimeIntegrationAnalysisPercentage':
               runtimeIntegrationAnalysisPercentage!,

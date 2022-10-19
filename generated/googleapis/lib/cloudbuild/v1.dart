@@ -31,6 +31,9 @@
 /// - [ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource]
 ///       - [ProjectsLocationsBitbucketServerConfigsReposResource]
 ///     - [ProjectsLocationsBuildsResource]
+///     - [ProjectsLocationsGitLabConfigsResource]
+///       - [ProjectsLocationsGitLabConfigsConnectedRepositoriesResource]
+///       - [ProjectsLocationsGitLabConfigsReposResource]
 ///     - [ProjectsLocationsGithubEnterpriseConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
@@ -855,6 +858,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsBitbucketServerConfigsResource(_requester);
   ProjectsLocationsBuildsResource get builds =>
       ProjectsLocationsBuildsResource(_requester);
+  ProjectsLocationsGitLabConfigsResource get gitLabConfigs =>
+      ProjectsLocationsGitLabConfigsResource(_requester);
   ProjectsLocationsGithubEnterpriseConfigsResource
       get githubEnterpriseConfigs =>
           ProjectsLocationsGithubEnterpriseConfigsResource(_requester);
@@ -1584,6 +1589,411 @@ class ProjectsLocationsBuildsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsConnectedRepositoriesResource
+      get connectedRepositories =>
+          ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
+              _requester);
+  ProjectsLocationsGitLabConfigsReposResource get repos =>
+      ProjectsLocationsGitLabConfigsReposResource(_requester);
+
+  ProjectsLocationsGitLabConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [gitlabConfigId] - Optional. The ID to use for the GitLabConfig, which
+  /// will become the final component of the GitLabConfig’s resource name.
+  /// gitlab_config_id must meet the following requirements: + They must contain
+  /// only alphanumeric characters and dashes. + They can be 1-64 characters
+  /// long. + They must begin and end with an alphanumeric character
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GitLabConfig request,
+    core.String parent, {
+    core.String? gitlabConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (gitlabConfigId != null) 'gitlabConfigId': [gitlabConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gitLabConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GitLabConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GitLabConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GitLabConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all `GitLabConfigs` for a given project.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 configs will be
+  /// returned. The maximum value is 1000;, values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// ‘ListGitlabConfigsRequest’ call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// ‘ListGitlabConfigsRequest’ must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGitLabConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGitLabConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gitLabConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGitLabConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the config.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GitLabConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove a GitLab repository from a given GitLabConfig's connected
+  /// repositories.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [config] - Required. The name of the `GitLabConfig` to remove a connected
+  /// repository. Format:
+  /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeGitLabConnectedRepository(
+    RemoveGitLabConnectedRepositoryRequest request,
+    core.String config, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$config') +
+        ':removeGitLabConnectedRepository';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsConnectedRepositoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Batch connecting GitLab repositories to Cloud Build.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the `GitLabConfig` that adds connected
+  /// repositories. Format:
+  /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchCreate(
+    BatchCreateGitLabConnectedRepositoriesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/connectedRepositories:batchCreate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsReposResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsReposResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all repositories for a given `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of repositories to return. The service may
+  /// return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// ListGitLabRepositoriesRequest\` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// \`ListGitLabRepositoriesRequest\` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGitLabRepositoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGitLabRepositoriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGitLabRepositoriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3132,6 +3542,15 @@ class Artifacts {
   /// FAILURE.
   core.List<core.String>? images;
 
+  /// A list of Maven artifacts to be uploaded to Artifact Registry upon
+  /// successful completion of all build steps.
+  ///
+  /// Artifacts in the workspace matching specified paths globs will be uploaded
+  /// to the specified Artifact Registry repository using the builder service
+  /// account's credentials. If any artifacts fail to be pushed, the build is
+  /// marked FAILURE.
+  core.List<MavenArtifact>? mavenArtifacts;
+
   /// A list of objects to be uploaded to Cloud Storage upon successful
   /// completion of all build steps.
   ///
@@ -3142,9 +3561,18 @@ class Artifacts {
   /// pushed, the build is marked FAILURE.
   ArtifactObjects? objects;
 
+  /// A list of Python packages to be uploaded to Artifact Registry upon
+  /// successful completion of all build steps.
+  ///
+  /// The build service account credentials will be used to perform the upload.
+  /// If any objects fail to be pushed, the build is marked FAILURE.
+  core.List<PythonPackage>? pythonPackages;
+
   Artifacts({
     this.images,
+    this.mavenArtifacts,
     this.objects,
+    this.pythonPackages,
   });
 
   Artifacts.fromJson(core.Map json_)
@@ -3154,15 +3582,29 @@ class Artifacts {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          mavenArtifacts: json_.containsKey('mavenArtifacts')
+              ? (json_['mavenArtifacts'] as core.List)
+                  .map((value) => MavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           objects: json_.containsKey('objects')
               ? ArtifactObjects.fromJson(
                   json_['objects'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pythonPackages: json_.containsKey('pythonPackages')
+              ? (json_['pythonPackages'] as core.List)
+                  .map((value) => PythonPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (images != null) 'images': images!,
+        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
         if (objects != null) 'objects': objects!,
+        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
 }
 
@@ -3185,6 +3627,34 @@ class BatchCreateBitbucketServerConnectedRepositoriesRequest {
               ? (json_['requests'] as core.List)
                   .map((value) =>
                       CreateBitbucketServerConnectedRepositoryRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC
+/// method.
+class BatchCreateGitLabConnectedRepositoriesRequest {
+  /// Requests to connect GitLab repositories.
+  ///
+  /// Required.
+  core.List<CreateGitLabConnectedRepositoryRequest>? requests;
+
+  BatchCreateGitLabConnectedRepositoriesRequest({
+    this.requests,
+  });
+
+  BatchCreateGitLabConnectedRepositoriesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      CreateGitLabConnectedRepositoryRequest.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3783,9 +4253,10 @@ class Build {
   /// Stores timing information for phases of the build.
   ///
   /// Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to
-  /// push all specified images. * FETCHSOURCE: time to fetch source. *
-  /// SETUPBUILD: time to set up build. If the build does not specify source or
-  /// images, these keys will not be included.
+  /// push all artifacts including docker images and non docker artifacts. *
+  /// FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If
+  /// the build does not specify source or images, these keys will not be
+  /// included.
   ///
   /// Output only.
   core.Map<core.String, TimeSpan>? timing;
@@ -4533,6 +5004,10 @@ class BuildTrigger {
   /// Mutually exclusive with `trigger_template`.
   GitHubEventsConfig? github;
 
+  /// GitLabEnterpriseEventsConfig describes the configuration of a trigger that
+  /// creates a build whenever a GitLab Enterprise event is received.
+  GitLabEventsConfig? gitlabEnterpriseEventsConfig;
+
   /// Unique identifier of the trigger.
   ///
   /// Output only.
@@ -4581,6 +5056,10 @@ class BuildTrigger {
   /// PubsubConfig describes the configuration of a trigger that creates a build
   /// whenever a Pub/Sub message is published.
   PubsubConfig? pubsubConfig;
+
+  /// The configuration of a trigger that creates a build whenever an event from
+  /// Repo API is received.
+  RepositoryEventConfig? repositoryEventConfig;
 
   /// The `Trigger` name with format:
   /// `projects/{project}/locations/{location}/triggers/{trigger}`, where
@@ -4635,12 +5114,14 @@ class BuildTrigger {
     this.filter,
     this.gitFileSource,
     this.github,
+    this.gitlabEnterpriseEventsConfig,
     this.id,
     this.ignoredFiles,
     this.includeBuildLogs,
     this.includedFiles,
     this.name,
     this.pubsubConfig,
+    this.repositoryEventConfig,
     this.resourceName,
     this.serviceAccount,
     this.sourceToBuild,
@@ -4695,6 +5176,12 @@ class BuildTrigger {
               ? GitHubEventsConfig.fromJson(
                   json_['github'] as core.Map<core.String, core.dynamic>)
               : null,
+          gitlabEnterpriseEventsConfig:
+              json_.containsKey('gitlabEnterpriseEventsConfig')
+                  ? GitLabEventsConfig.fromJson(
+                      json_['gitlabEnterpriseEventsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           ignoredFiles: json_.containsKey('ignoredFiles')
               ? (json_['ignoredFiles'] as core.List)
@@ -4713,6 +5200,10 @@ class BuildTrigger {
           pubsubConfig: json_.containsKey('pubsubConfig')
               ? PubsubConfig.fromJson(
                   json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repositoryEventConfig: json_.containsKey('repositoryEventConfig')
+              ? RepositoryEventConfig.fromJson(json_['repositoryEventConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resourceName: json_.containsKey('resourceName')
               ? json_['resourceName'] as core.String
@@ -4762,12 +5253,16 @@ class BuildTrigger {
         if (filter != null) 'filter': filter!,
         if (gitFileSource != null) 'gitFileSource': gitFileSource!,
         if (github != null) 'github': github!,
+        if (gitlabEnterpriseEventsConfig != null)
+          'gitlabEnterpriseEventsConfig': gitlabEnterpriseEventsConfig!,
         if (id != null) 'id': id!,
         if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
         if (includeBuildLogs != null) 'includeBuildLogs': includeBuildLogs!,
         if (includedFiles != null) 'includedFiles': includedFiles!,
         if (name != null) 'name': name!,
         if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+        if (repositoryEventConfig != null)
+          'repositoryEventConfig': repositoryEventConfig!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!,
@@ -4896,6 +5391,45 @@ class CreateBitbucketServerConnectedRepositoryRequest {
         if (bitbucketServerConnectedRepository != null)
           'bitbucketServerConnectedRepository':
               bitbucketServerConnectedRepository!,
+        if (parent != null) 'parent': parent!,
+      };
+}
+
+/// Request to connect a repository from a connected GitLab host.
+class CreateGitLabConnectedRepositoryRequest {
+  /// The GitLab repository to connect.
+  ///
+  /// Required.
+  GitLabConnectedRepository? gitlabConnectedRepository;
+
+  /// The name of the `GitLabConfig` that adds connected repository.
+  ///
+  /// Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  CreateGitLabConnectedRepositoryRequest({
+    this.gitlabConnectedRepository,
+    this.parent,
+  });
+
+  CreateGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
+      : this(
+          gitlabConnectedRepository:
+              json_.containsKey('gitlabConnectedRepository')
+                  ? GitLabConnectedRepository.fromJson(
+                      json_['gitlabConnectedRepository']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConnectedRepository != null)
+          'gitlabConnectedRepository': gitlabConnectedRepository!,
         if (parent != null) 'parent': parent!,
       };
 }
@@ -5317,6 +5851,387 @@ class GitHubEventsConfig {
       };
 }
 
+/// GitLabConfig represents the configuration for a GitLab integration.
+class GitLabConfig {
+  /// Connected GitLab.com or GitLabEnterprise repositories for this config.
+  core.List<GitLabRepositoryId>? connectedRepositories;
+
+  /// Time when the config was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// GitLabEnterprise config.
+  ///
+  /// Optional.
+  GitLabEnterpriseConfig? enterpriseConfig;
+
+  /// The resource name for the config.
+  core.String? name;
+
+  /// Secret Manager secrets needed by the config.
+  ///
+  /// Required.
+  GitLabSecrets? secrets;
+
+  /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will
+  /// use.
+  core.String? username;
+
+  /// UUID included in webhook requests.
+  ///
+  /// The UUID is used to look up the corresponding config.
+  ///
+  /// Output only.
+  core.String? webhookKey;
+
+  GitLabConfig({
+    this.connectedRepositories,
+    this.createTime,
+    this.enterpriseConfig,
+    this.name,
+    this.secrets,
+    this.username,
+    this.webhookKey,
+  });
+
+  GitLabConfig.fromJson(core.Map json_)
+      : this(
+          connectedRepositories: json_.containsKey('connectedRepositories')
+              ? (json_['connectedRepositories'] as core.List)
+                  .map((value) => GitLabRepositoryId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          enterpriseConfig: json_.containsKey('enterpriseConfig')
+              ? GitLabEnterpriseConfig.fromJson(json_['enterpriseConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          secrets: json_.containsKey('secrets')
+              ? GitLabSecrets.fromJson(
+                  json_['secrets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+          webhookKey: json_.containsKey('webhookKey')
+              ? json_['webhookKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepositories != null)
+          'connectedRepositories': connectedRepositories!,
+        if (createTime != null) 'createTime': createTime!,
+        if (enterpriseConfig != null) 'enterpriseConfig': enterpriseConfig!,
+        if (name != null) 'name': name!,
+        if (secrets != null) 'secrets': secrets!,
+        if (username != null) 'username': username!,
+        if (webhookKey != null) 'webhookKey': webhookKey!,
+      };
+}
+
+/// GitLabConnectedRepository represents a GitLab connected repository request
+/// response.
+class GitLabConnectedRepository {
+  /// The name of the `GitLabConfig` that added connected repository.
+  ///
+  /// Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  core.String? parent;
+
+  /// The GitLab repositories to connect.
+  GitLabRepositoryId? repo;
+
+  /// The status of the repo connection request.
+  ///
+  /// Output only.
+  Status? status;
+
+  GitLabConnectedRepository({
+    this.parent,
+    this.repo,
+    this.status,
+  });
+
+  GitLabConnectedRepository.fromJson(core.Map json_)
+      : this(
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          repo: json_.containsKey('repo')
+              ? GitLabRepositoryId.fromJson(
+                  json_['repo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (repo != null) 'repo': repo!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
+/// integration.
+class GitLabEnterpriseConfig {
+  /// The URI of the GitlabEnterprise host.
+  ///
+  /// Immutable.
+  core.String? hostUri;
+
+  /// The Service Directory configuration to be used when reaching out to the
+  /// GitLab Enterprise instance.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// The SSL certificate to use in requests to GitLab Enterprise instances.
+  core.String? sslCa;
+
+  GitLabEnterpriseConfig({
+    this.hostUri,
+    this.serviceDirectoryConfig,
+    this.sslCa,
+  });
+
+  GitLabEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
+              : null,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCa:
+              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCa != null) 'sslCa': sslCa!,
+      };
+}
+
+/// GitLabEventsConfig describes the configuration of a trigger that creates a
+/// build whenever a GitLab event is received.
+class GitLabEventsConfig {
+  /// The GitLabConfig specified in the gitlab_config_resource field.
+  ///
+  /// Output only.
+  GitLabConfig? gitlabConfig;
+
+  /// The GitLab config resource that this trigger config maps to.
+  core.String? gitlabConfigResource;
+
+  /// Namespace of the GitLab project.
+  core.String? projectNamespace;
+
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches, tags.
+  PushFilter? push;
+
+  GitLabEventsConfig({
+    this.gitlabConfig,
+    this.gitlabConfigResource,
+    this.projectNamespace,
+    this.pullRequest,
+    this.push,
+  });
+
+  GitLabEventsConfig.fromJson(core.Map json_)
+      : this(
+          gitlabConfig: json_.containsKey('gitlabConfig')
+              ? GitLabConfig.fromJson(
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gitlabConfigResource: json_.containsKey('gitlabConfigResource')
+              ? json_['gitlabConfigResource'] as core.String
+              : null,
+          projectNamespace: json_.containsKey('projectNamespace')
+              ? json_['projectNamespace'] as core.String
+              : null,
+          pullRequest: json_.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: json_.containsKey('push')
+              ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
+        if (gitlabConfigResource != null)
+          'gitlabConfigResource': gitlabConfigResource!,
+        if (projectNamespace != null) 'projectNamespace': projectNamespace!,
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
+      };
+}
+
+/// Proto Representing a GitLabRepository
+class GitLabRepository {
+  /// Link to the browse repo page on the GitLab instance
+  core.String? browseUri;
+
+  /// Description of the repository
+  core.String? description;
+
+  /// Display name of the repository
+  core.String? displayName;
+
+  /// The resource name of the repository
+  core.String? name;
+
+  /// Identifier for a repository
+  GitLabRepositoryId? repositoryId;
+
+  GitLabRepository({
+    this.browseUri,
+    this.description,
+    this.displayName,
+    this.name,
+    this.repositoryId,
+  });
+
+  GitLabRepository.fromJson(core.Map json_)
+      : this(
+          browseUri: json_.containsKey('browseUri')
+              ? json_['browseUri'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          repositoryId: json_.containsKey('repositoryId')
+              ? GitLabRepositoryId.fromJson(
+                  json_['repositoryId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (browseUri != null) 'browseUri': browseUri!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (repositoryId != null) 'repositoryId': repositoryId!,
+      };
+}
+
+/// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+/// GitLabEnterprise
+class GitLabRepositoryId {
+  /// Identifier for the repository.
+  ///
+  /// example: "namespace/project-slug", namespace is usually the username or
+  /// group ID
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The ID of the webhook that was created for receiving events from this
+  /// repo.
+  ///
+  /// We only create and manage a single webhook for each repo.
+  ///
+  /// Output only.
+  core.int? webhookId;
+
+  GitLabRepositoryId({
+    this.id,
+    this.webhookId,
+  });
+
+  GitLabRepositoryId.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          webhookId: json_.containsKey('webhookId')
+              ? json_['webhookId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (webhookId != null) 'webhookId': webhookId!,
+      };
+}
+
+/// GitLabSecrets represents the secrets in Secret Manager for a GitLab
+/// integration.
+class GitLabSecrets {
+  /// The resource name for the api access token’s secret version
+  ///
+  /// Required.
+  core.String? apiAccessTokenVersion;
+
+  /// API Key that will be attached to webhook requests from GitLab to Cloud
+  /// Build.
+  ///
+  /// Required. Immutable.
+  core.String? apiKeyVersion;
+
+  /// The resource name for the read access token’s secret version
+  ///
+  /// Required.
+  core.String? readAccessTokenVersion;
+
+  /// The resource name for the webhook secret’s secret version.
+  ///
+  /// Once this field has been set, it cannot be changed. If you need to change
+  /// it, please create another GitLabConfig.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretVersion;
+
+  GitLabSecrets({
+    this.apiAccessTokenVersion,
+    this.apiKeyVersion,
+    this.readAccessTokenVersion,
+    this.webhookSecretVersion,
+  });
+
+  GitLabSecrets.fromJson(core.Map json_)
+      : this(
+          apiAccessTokenVersion: json_.containsKey('apiAccessTokenVersion')
+              ? json_['apiAccessTokenVersion'] as core.String
+              : null,
+          apiKeyVersion: json_.containsKey('apiKeyVersion')
+              ? json_['apiKeyVersion'] as core.String
+              : null,
+          readAccessTokenVersion: json_.containsKey('readAccessTokenVersion')
+              ? json_['readAccessTokenVersion'] as core.String
+              : null,
+          webhookSecretVersion: json_.containsKey('webhookSecretVersion')
+              ? json_['webhookSecretVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiAccessTokenVersion != null)
+          'apiAccessTokenVersion': apiAccessTokenVersion!,
+        if (apiKeyVersion != null) 'apiKeyVersion': apiKeyVersion!,
+        if (readAccessTokenVersion != null)
+          'readAccessTokenVersion': readAccessTokenVersion!,
+        if (webhookSecretVersion != null)
+          'webhookSecretVersion': webhookSecretVersion!,
+      };
+}
+
 /// GitRepoSource describes a repo and ref of a code repository.
 class GitRepoSource {
   /// The full resource name of the bitbucket server config.
@@ -5622,6 +6537,74 @@ class ListBuildsResponse {
       };
 }
 
+/// RPC response object returned by ListGitLabConfigs RPC method.
+class ListGitLabConfigsResponse {
+  /// A list of GitLabConfigs
+  core.List<GitLabConfig>? gitlabConfigs;
+
+  /// A token that can be sent as `page_token` to retrieve the next page If this
+  /// field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListGitLabConfigsResponse({
+    this.gitlabConfigs,
+    this.nextPageToken,
+  });
+
+  ListGitLabConfigsResponse.fromJson(core.Map json_)
+      : this(
+          gitlabConfigs: json_.containsKey('gitlabConfigs')
+              ? (json_['gitlabConfigs'] as core.List)
+                  .map((value) => GitLabConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConfigs != null) 'gitlabConfigs': gitlabConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// RPC response object returned by the ListGitLabRepositories RPC method.
+class ListGitLabRepositoriesResponse {
+  /// List of GitLab repositories
+  core.List<GitLabRepository>? gitlabRepositories;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListGitLabRepositoriesResponse({
+    this.gitlabRepositories,
+    this.nextPageToken,
+  });
+
+  ListGitLabRepositoriesResponse.fromJson(core.Map json_)
+      : this(
+          gitlabRepositories: json_.containsKey('gitlabRepositories')
+              ? (json_['gitlabRepositories'] as core.List)
+                  .map((value) => GitLabRepository.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabRepositories != null)
+          'gitlabRepositories': gitlabRepositories!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// RPC response object returned by ListGithubEnterpriseConfigs RPC method.
 class ListGithubEnterpriseConfigsResponse {
   /// A list of GitHubEnterpriseConfigs
@@ -5678,6 +6661,69 @@ class ListWorkerPoolsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workerPools != null) 'workerPools': workerPools!,
+      };
+}
+
+/// A Maven artifact to upload to Artifact Registry upon successful completion
+/// of all build steps.
+class MavenArtifact {
+  /// Maven `artifactId` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? artifactId;
+
+  /// Maven `groupId` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? groupId;
+
+  /// Path to an artifact in the build's workspace to be uploaded to Artifact
+  /// Registry.
+  ///
+  /// This can be either an absolute path, e.g.
+  /// /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from
+  /// /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+  core.String? path;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the
+  /// workspace specified by path will be uploaded to Artifact Registry with
+  /// this location as a prefix.
+  core.String? repository;
+
+  /// Maven `version` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? version;
+
+  MavenArtifact({
+    this.artifactId,
+    this.groupId,
+    this.path,
+    this.repository,
+    this.version,
+  });
+
+  MavenArtifact.fromJson(core.Map json_)
+      : this(
+          artifactId: json_.containsKey('artifactId')
+              ? json_['artifactId'] as core.String
+              : null,
+          groupId: json_.containsKey('groupId')
+              ? json_['groupId'] as core.String
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactId != null) 'artifactId': artifactId!,
+        if (groupId != null) 'groupId': groupId!,
+        if (path != null) 'path': path!,
+        if (repository != null) 'repository': repository!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -6013,6 +7059,47 @@ class PushFilter {
       };
 }
 
+/// Python package to upload to Artifact Registry upon successful completion of
+/// all build steps.
+///
+/// A package can encapsulate multiple objects to be uploaded to a single
+/// repository.
+class PythonPackage {
+  /// Path globs used to match files in the build's workspace.
+  ///
+  /// For Python/ Twine, this is usually `dist / * `, and sometimes additionally
+  /// an `.asc` file.
+  core.List<core.String>? paths;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the
+  /// workspace matching any path pattern will be uploaded to Artifact Registry
+  /// with this location as a prefix.
+  core.String? repository;
+
+  PythonPackage({
+    this.paths,
+    this.repository,
+  });
+
+  PythonPackage.fromJson(core.Map json_)
+      : this(
+          paths: json_.containsKey('paths')
+              ? (json_['paths'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (paths != null) 'paths': paths!,
+        if (repository != null) 'repository': repository!,
+      };
+}
+
 /// ReceiveTriggerWebhookResponse \[Experimental\] is the response object for
 /// the ReceiveTriggerWebhook method.
 typedef ReceiveTriggerWebhookResponse = $Empty;
@@ -6033,6 +7120,29 @@ class RemoveBitbucketServerConnectedRepositoryRequest {
               ? BitbucketServerRepositoryId.fromJson(
                   json_['connectedRepository']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
+      };
+}
+
+/// RPC request object accepted by RemoveGitLabConnectedRepository RPC method.
+class RemoveGitLabConnectedRepositoryRequest {
+  /// The connected repository to remove.
+  GitLabRepositoryId? connectedRepository;
+
+  RemoveGitLabConnectedRepositoryRequest({
+    this.connectedRepository,
+  });
+
+  RemoveGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
+      : this(
+          connectedRepository: json_.containsKey('connectedRepository')
+              ? GitLabRepositoryId.fromJson(json_['connectedRepository']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6137,14 +7247,71 @@ class RepoSource {
       };
 }
 
+/// The configuration of a trigger that creates a build whenever an event from
+/// Repo API is received.
+class RepositoryEventConfig {
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches, tags.
+  PushFilter? push;
+
+  /// The resource name of the Repo API resource.
+  core.String? repository;
+
+  /// The type of the SCM vendor the repository points to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPOSITORY_TYPE_UNSPECIFIED" : If unspecified, RepositoryType defaults
+  /// to GITHUB.
+  /// - "GITHUB" : The SCM repo is GITHUB.
+  /// - "GITHUB_ENTERPRISE" : The SCM repo is GITHUB Enterprise.
+  /// - "GITLAB_ENTERPRISE" : The SCM repo is GITLAB Enterprise.
+  core.String? repositoryType;
+
+  RepositoryEventConfig({
+    this.pullRequest,
+    this.push,
+    this.repository,
+    this.repositoryType,
+  });
+
+  RepositoryEventConfig.fromJson(core.Map json_)
+      : this(
+          pullRequest: json_.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: json_.containsKey('push')
+              ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+          repositoryType: json_.containsKey('repositoryType')
+              ? json_['repositoryType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
+        if (repository != null) 'repository': repository!,
+        if (repositoryType != null) 'repositoryType': repositoryType!,
+      };
+}
+
 /// Artifacts created by the build pipeline.
 class Results {
-  /// Path to the artifact manifest.
+  /// Path to the artifact manifest for non-container artifacts uploaded to
+  /// Cloud Storage.
   ///
-  /// Only populated when artifacts are uploaded.
+  /// Only populated when artifacts are uploaded to Cloud Storage.
   core.String? artifactManifest;
 
-  /// Time to push all non-container artifacts.
+  /// Time to push all non-container artifacts to Cloud Storage.
   TimeSpan? artifactTiming;
 
   /// List of build step digests, in the order corresponding to build step
@@ -6162,10 +7329,16 @@ class Results {
   /// Container images that were built as a part of the build.
   core.List<BuiltImage>? images;
 
-  /// Number of artifacts uploaded.
+  /// Maven artifacts uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedMavenArtifact>? mavenArtifacts;
+
+  /// Number of non-container artifacts uploaded to Cloud Storage.
   ///
-  /// Only populated when artifacts are uploaded.
+  /// Only populated when artifacts are uploaded to Cloud Storage.
   core.String? numArtifacts;
+
+  /// Python artifacts uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedPythonPackage>? pythonPackages;
 
   Results({
     this.artifactManifest,
@@ -6173,7 +7346,9 @@ class Results {
     this.buildStepImages,
     this.buildStepOutputs,
     this.images,
+    this.mavenArtifacts,
     this.numArtifacts,
+    this.pythonPackages,
   });
 
   Results.fromJson(core.Map json_)
@@ -6201,8 +7376,20 @@ class Results {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          mavenArtifacts: json_.containsKey('mavenArtifacts')
+              ? (json_['mavenArtifacts'] as core.List)
+                  .map((value) => UploadedMavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           numArtifacts: json_.containsKey('numArtifacts')
               ? json_['numArtifacts'] as core.String
+              : null,
+          pythonPackages: json_.containsKey('pythonPackages')
+              ? (json_['pythonPackages'] as core.List)
+                  .map((value) => UploadedPythonPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
         );
 
@@ -6212,7 +7399,9 @@ class Results {
         if (buildStepImages != null) 'buildStepImages': buildStepImages!,
         if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
         if (images != null) 'images': images!,
+        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
         if (numArtifacts != null) 'numArtifacts': numArtifacts!,
+        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
 }
 
@@ -6408,6 +7597,31 @@ class Secrets {
   core.Map<core.String, core.dynamic> toJson() => {
         if (inline != null) 'inline': inline!,
         if (secretManager != null) 'secretManager': secretManager!,
+      };
+}
+
+/// ServiceDirectoryConfig represents Service Directory configuration for a SCM
+/// host connection.
+class ServiceDirectoryConfig {
+  /// The Service Directory service name.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+  core.String? service;
+
+  ServiceDirectoryConfig({
+    this.service,
+  });
+
+  ServiceDirectoryConfig.fromJson(core.Map json_)
+      : this(
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
       };
 }
 
@@ -6657,6 +7871,84 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// A Maven artifact uploaded using the MavenArtifact directive.
+class UploadedMavenArtifact {
+  /// Hash types and values of the Maven Artifact.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  core.String? uri;
+
+  UploadedMavenArtifact({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedMavenArtifact.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Artifact uploaded using the PythonPackage directive.
+class UploadedPythonPackage {
+  /// Hash types and values of the Python Artifact.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  core.String? uri;
+
+  UploadedPythonPackage({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedPythonPackage.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
       };
 }
 

@@ -5414,6 +5414,7 @@ api.EventFilter buildEventFilter() {
   if (buildCounterEventFilter < 3) {
     o.dimensionFilter = buildPathReportDimensionValue();
     o.kind = 'foo';
+    o.uvarFilter = buildUvarFilter();
   }
   buildCounterEventFilter--;
   return o;
@@ -5427,6 +5428,7 @@ void checkEventFilter(api.EventFilter o) {
       o.kind!,
       unittest.equals('foo'),
     );
+    checkUvarFilter(o.uvarFilter!);
   }
   buildCounterEventFilter--;
 }
@@ -12624,6 +12626,59 @@ void checkUserRolesListResponse(api.UserRolesListResponse o) {
   buildCounterUserRolesListResponse--;
 }
 
+core.List<core.String> buildUnnamed223() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed223(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUvarFilter = 0;
+api.UvarFilter buildUvarFilter() {
+  final o = api.UvarFilter();
+  buildCounterUvarFilter++;
+  if (buildCounterUvarFilter < 3) {
+    o.complement = true;
+    o.index = 'foo';
+    o.kind = 'foo';
+    o.match = 'foo';
+    o.values = buildUnnamed223();
+  }
+  buildCounterUvarFilter--;
+  return o;
+}
+
+void checkUvarFilter(api.UvarFilter o) {
+  buildCounterUvarFilter++;
+  if (buildCounterUvarFilter < 3) {
+    unittest.expect(o.complement!, unittest.isTrue);
+    unittest.expect(
+      o.index!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.match!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed223(o.values!);
+  }
+  buildCounterUvarFilter--;
+}
+
 core.int buildCounterVideoFormat = 0;
 api.VideoFormat buildVideoFormat() {
   final o = api.VideoFormat();
@@ -12663,12 +12718,12 @@ void checkVideoFormat(api.VideoFormat o) {
   buildCounterVideoFormat--;
 }
 
-core.List<api.VideoFormat> buildUnnamed223() => [
+core.List<api.VideoFormat> buildUnnamed224() => [
       buildVideoFormat(),
       buildVideoFormat(),
     ];
 
-void checkUnnamed223(core.List<api.VideoFormat> o) {
+void checkUnnamed224(core.List<api.VideoFormat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoFormat(o[0]);
   checkVideoFormat(o[1]);
@@ -12680,7 +12735,7 @@ api.VideoFormatsListResponse buildVideoFormatsListResponse() {
   buildCounterVideoFormatsListResponse++;
   if (buildCounterVideoFormatsListResponse < 3) {
     o.kind = 'foo';
-    o.videoFormats = buildUnnamed223();
+    o.videoFormats = buildUnnamed224();
   }
   buildCounterVideoFormatsListResponse--;
   return o;
@@ -12693,7 +12748,7 @@ void checkVideoFormatsListResponse(api.VideoFormatsListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed223(o.videoFormats!);
+    checkUnnamed224(o.videoFormats!);
   }
   buildCounterVideoFormatsListResponse--;
 }
@@ -12770,23 +12825,6 @@ void checkVideoSettings(api.VideoSettings o) {
     checkTranscodeSetting(o.transcodeSettings!);
   }
   buildCounterVideoSettings--;
-}
-
-core.List<core.String> buildUnnamed224() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed224(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed225() => [
@@ -14393,6 +14431,23 @@ core.List<core.String> buildUnnamed319() => [
     ];
 
 void checkUnnamed319(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed320() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed320(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -16855,6 +16910,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UvarFilter', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUvarFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.UvarFilter.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkUvarFilter(od);
+    });
+  });
+
   unittest.group('obj-schema-VideoFormat', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVideoFormat();
@@ -17438,7 +17503,7 @@ void main() {
       final res = api.DfareportingApi(mock).accountUserProfiles;
       final arg_profileId = 'foo';
       final arg_active = true;
-      final arg_ids = buildUnnamed224();
+      final arg_ids = buildUnnamed225();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -17802,7 +17867,7 @@ void main() {
       final res = api.DfareportingApi(mock).accounts;
       final arg_profileId = 'foo';
       final arg_active = true;
-      final arg_ids = buildUnnamed225();
+      final arg_ids = buildUnnamed226();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -18230,26 +18295,26 @@ void main() {
       final arg_active = true;
       final arg_advertiserId = 'foo';
       final arg_archived = true;
-      final arg_audienceSegmentIds = buildUnnamed226();
-      final arg_campaignIds = buildUnnamed227();
+      final arg_audienceSegmentIds = buildUnnamed227();
+      final arg_campaignIds = buildUnnamed228();
       final arg_compatibility = 'foo';
-      final arg_creativeIds = buildUnnamed228();
-      final arg_creativeOptimizationConfigurationIds = buildUnnamed229();
+      final arg_creativeIds = buildUnnamed229();
+      final arg_creativeOptimizationConfigurationIds = buildUnnamed230();
       final arg_dynamicClickTracker = true;
-      final arg_ids = buildUnnamed230();
-      final arg_landingPageIds = buildUnnamed231();
+      final arg_ids = buildUnnamed231();
+      final arg_landingPageIds = buildUnnamed232();
       final arg_maxResults = 42;
       final arg_overriddenEventTagId = 'foo';
       final arg_pageToken = 'foo';
-      final arg_placementIds = buildUnnamed232();
-      final arg_remarketingListIds = buildUnnamed233();
+      final arg_placementIds = buildUnnamed233();
+      final arg_remarketingListIds = buildUnnamed234();
       final arg_searchString = 'foo';
-      final arg_sizeIds = buildUnnamed234();
+      final arg_sizeIds = buildUnnamed235();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_sslCompliant = true;
       final arg_sslRequired = true;
-      final arg_type = buildUnnamed235();
+      final arg_type = buildUnnamed236();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -18826,7 +18891,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertiserGroups;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed236();
+      final arg_ids = buildUnnamed237();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -19354,10 +19419,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertiserLandingPages;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed237();
+      final arg_advertiserIds = buildUnnamed238();
       final arg_archived = true;
-      final arg_campaignIds = buildUnnamed238();
-      final arg_ids = buildUnnamed239();
+      final arg_campaignIds = buildUnnamed239();
+      final arg_ids = buildUnnamed240();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -19800,9 +19865,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertisers;
       final arg_profileId = 'foo';
-      final arg_advertiserGroupIds = buildUnnamed240();
-      final arg_floodlightConfigurationIds = buildUnnamed241();
-      final arg_ids = buildUnnamed242();
+      final arg_advertiserGroupIds = buildUnnamed241();
+      final arg_floodlightConfigurationIds = buildUnnamed242();
+      final arg_ids = buildUnnamed243();
       final arg_includeAdvertisersWithoutGroupsOnly = true;
       final arg_maxResults = 42;
       final arg_onlyParent = true;
@@ -20363,15 +20428,15 @@ void main() {
       final res = api.DfareportingApi(mock).billingProfiles;
       final arg_profileId = 'foo';
       final arg_currencyCode = 'foo';
-      final arg_ids = buildUnnamed243();
+      final arg_ids = buildUnnamed244();
       final arg_maxResults = 42;
       final arg_name = 'foo';
       final arg_onlySuggestion = true;
       final arg_pageToken = 'foo';
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
-      final arg_status = buildUnnamed244();
-      final arg_subaccountIds = buildUnnamed245();
+      final arg_status = buildUnnamed245();
+      final arg_subaccountIds = buildUnnamed246();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -21087,12 +21152,12 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).campaigns;
       final arg_profileId = 'foo';
-      final arg_advertiserGroupIds = buildUnnamed246();
-      final arg_advertiserIds = buildUnnamed247();
+      final arg_advertiserGroupIds = buildUnnamed247();
+      final arg_advertiserIds = buildUnnamed248();
       final arg_archived = true;
       final arg_atLeastOneOptimizationActivity = true;
-      final arg_excludedIds = buildUnnamed248();
-      final arg_ids = buildUnnamed249();
+      final arg_excludedIds = buildUnnamed249();
+      final arg_ids = buildUnnamed250();
       final arg_maxResults = 42;
       final arg_overriddenEventTagId = 'foo';
       final arg_pageToken = 'foo';
@@ -21474,15 +21539,15 @@ void main() {
       final res = api.DfareportingApi(mock).changeLogs;
       final arg_profileId = 'foo';
       final arg_action = 'foo';
-      final arg_ids = buildUnnamed250();
+      final arg_ids = buildUnnamed251();
       final arg_maxChangeTime = 'foo';
       final arg_maxResults = 42;
       final arg_minChangeTime = 'foo';
-      final arg_objectIds = buildUnnamed251();
+      final arg_objectIds = buildUnnamed252();
       final arg_objectType = 'foo';
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
-      final arg_userProfileIds = buildUnnamed252();
+      final arg_userProfileIds = buildUnnamed253();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -21606,10 +21671,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).cities;
       final arg_profileId = 'foo';
-      final arg_countryDartIds = buildUnnamed253();
-      final arg_dartIds = buildUnnamed254();
+      final arg_countryDartIds = buildUnnamed254();
+      final arg_dartIds = buildUnnamed255();
       final arg_namePrefix = 'foo';
-      final arg_regionDartIds = buildUnnamed255();
+      final arg_regionDartIds = buildUnnamed256();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -22084,7 +22149,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).contentCategories;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed256();
+      final arg_ids = buildUnnamed257();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -23032,7 +23097,7 @@ void main() {
       final res = api.DfareportingApi(mock).creativeFieldValues;
       final arg_profileId = 'foo';
       final arg_creativeFieldId = 'foo';
-      final arg_ids = buildUnnamed257();
+      final arg_ids = buildUnnamed258();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -23576,8 +23641,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).creativeFields;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed258();
-      final arg_ids = buildUnnamed259();
+      final arg_advertiserIds = buildUnnamed259();
+      final arg_ids = buildUnnamed260();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -24003,9 +24068,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).creativeGroups;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed260();
+      final arg_advertiserIds = buildUnnamed261();
       final arg_groupNumber = 42;
-      final arg_ids = buildUnnamed261();
+      final arg_ids = buildUnnamed262();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -24440,18 +24505,18 @@ void main() {
       final arg_advertiserId = 'foo';
       final arg_archived = true;
       final arg_campaignId = 'foo';
-      final arg_companionCreativeIds = buildUnnamed262();
-      final arg_creativeFieldIds = buildUnnamed263();
-      final arg_ids = buildUnnamed264();
+      final arg_companionCreativeIds = buildUnnamed263();
+      final arg_creativeFieldIds = buildUnnamed264();
+      final arg_ids = buildUnnamed265();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
-      final arg_renderingIds = buildUnnamed265();
+      final arg_renderingIds = buildUnnamed266();
       final arg_searchString = 'foo';
-      final arg_sizeIds = buildUnnamed266();
+      final arg_sizeIds = buildUnnamed267();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_studioCreativeId = 'foo';
-      final arg_types = buildUnnamed267();
+      final arg_types = buildUnnamed268();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -25011,7 +25076,7 @@ void main() {
       final arg_acceptsPublisherPaidPlacements = true;
       final arg_active = true;
       final arg_dfpNetworkCode = 'foo';
-      final arg_ids = buildUnnamed268();
+      final arg_ids = buildUnnamed269();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -25310,7 +25375,7 @@ void main() {
       final res = api.DfareportingApi(mock).dynamicTargetingKeys;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_names = buildUnnamed269();
+      final arg_names = buildUnnamed270();
       final arg_objectId = 'foo';
       final arg_objectType = 'foo';
       final arg_$fields = 'foo';
@@ -25643,8 +25708,8 @@ void main() {
       final arg_campaignId = 'foo';
       final arg_definitionsOnly = true;
       final arg_enabled = true;
-      final arg_eventTagTypes = buildUnnamed270();
-      final arg_ids = buildUnnamed271();
+      final arg_eventTagTypes = buildUnnamed271();
+      final arg_ids = buildUnnamed272();
       final arg_searchString = 'foo';
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
@@ -26421,12 +26486,12 @@ void main() {
       final res = api.DfareportingApi(mock).floodlightActivities;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_floodlightActivityGroupIds = buildUnnamed272();
+      final arg_floodlightActivityGroupIds = buildUnnamed273();
       final arg_floodlightActivityGroupName = 'foo';
       final arg_floodlightActivityGroupTagString = 'foo';
       final arg_floodlightActivityGroupType = 'foo';
       final arg_floodlightConfigurationId = 'foo';
-      final arg_ids = buildUnnamed273();
+      final arg_ids = buildUnnamed274();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -26887,7 +26952,7 @@ void main() {
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_floodlightConfigurationId = 'foo';
-      final arg_ids = buildUnnamed274();
+      final arg_ids = buildUnnamed275();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -27249,7 +27314,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).floodlightConfigurations;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed275();
+      final arg_ids = buildUnnamed276();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -27580,12 +27645,12 @@ void main() {
       final res = api.DfareportingApi(mock).inventoryItems;
       final arg_profileId = 'foo';
       final arg_projectId = 'foo';
-      final arg_ids = buildUnnamed276();
+      final arg_ids = buildUnnamed277();
       final arg_inPlan = true;
       final arg_maxResults = 42;
-      final arg_orderId = buildUnnamed277();
+      final arg_orderId = buildUnnamed278();
       final arg_pageToken = 'foo';
-      final arg_siteId = buildUnnamed278();
+      final arg_siteId = buildUnnamed279();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_type = 'foo';
@@ -27944,8 +28009,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).mobileApps;
       final arg_profileId = 'foo';
-      final arg_directories = buildUnnamed279();
-      final arg_ids = buildUnnamed280();
+      final arg_directories = buildUnnamed280();
+      final arg_ids = buildUnnamed281();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -28596,12 +28661,12 @@ void main() {
       final arg_profileId = 'foo';
       final arg_projectId = 'foo';
       final arg_approved = true;
-      final arg_ids = buildUnnamed281();
+      final arg_ids = buildUnnamed282();
       final arg_maxResults = 42;
-      final arg_orderId = buildUnnamed282();
+      final arg_orderId = buildUnnamed283();
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
-      final arg_siteId = buildUnnamed283();
+      final arg_siteId = buildUnnamed284();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -28831,11 +28896,11 @@ void main() {
       final res = api.DfareportingApi(mock).orders;
       final arg_profileId = 'foo';
       final arg_projectId = 'foo';
-      final arg_ids = buildUnnamed284();
+      final arg_ids = buildUnnamed285();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
-      final arg_siteId = buildUnnamed285();
+      final arg_siteId = buildUnnamed286();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -29114,12 +29179,12 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placementGroups;
       final arg_profileId = 'foo';
-      final arg_activeStatus = buildUnnamed286();
-      final arg_advertiserIds = buildUnnamed287();
-      final arg_campaignIds = buildUnnamed288();
-      final arg_contentCategoryIds = buildUnnamed289();
-      final arg_directorySiteIds = buildUnnamed290();
-      final arg_ids = buildUnnamed291();
+      final arg_activeStatus = buildUnnamed287();
+      final arg_advertiserIds = buildUnnamed288();
+      final arg_campaignIds = buildUnnamed289();
+      final arg_contentCategoryIds = buildUnnamed290();
+      final arg_directorySiteIds = buildUnnamed291();
+      final arg_ids = buildUnnamed292();
       final arg_maxEndDate = 'foo';
       final arg_maxResults = 42;
       final arg_maxStartDate = 'foo';
@@ -29127,10 +29192,10 @@ void main() {
       final arg_minStartDate = 'foo';
       final arg_pageToken = 'foo';
       final arg_placementGroupType = 'foo';
-      final arg_placementStrategyIds = buildUnnamed292();
-      final arg_pricingTypes = buildUnnamed293();
+      final arg_placementStrategyIds = buildUnnamed293();
+      final arg_pricingTypes = buildUnnamed294();
       final arg_searchString = 'foo';
-      final arg_siteIds = buildUnnamed294();
+      final arg_siteIds = buildUnnamed295();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -29689,7 +29754,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placementStrategies;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed295();
+      final arg_ids = buildUnnamed296();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -29958,8 +30023,8 @@ void main() {
       final res = api.DfareportingApi(mock).placements;
       final arg_profileId = 'foo';
       final arg_campaignId = 'foo';
-      final arg_placementIds = buildUnnamed296();
-      final arg_tagFormats = buildUnnamed297();
+      final arg_placementIds = buildUnnamed297();
+      final arg_tagFormats = buildUnnamed298();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -30201,14 +30266,14 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placements;
       final arg_profileId = 'foo';
-      final arg_activeStatus = buildUnnamed298();
-      final arg_advertiserIds = buildUnnamed299();
-      final arg_campaignIds = buildUnnamed300();
-      final arg_compatibilities = buildUnnamed301();
-      final arg_contentCategoryIds = buildUnnamed302();
-      final arg_directorySiteIds = buildUnnamed303();
-      final arg_groupIds = buildUnnamed304();
-      final arg_ids = buildUnnamed305();
+      final arg_activeStatus = buildUnnamed299();
+      final arg_advertiserIds = buildUnnamed300();
+      final arg_campaignIds = buildUnnamed301();
+      final arg_compatibilities = buildUnnamed302();
+      final arg_contentCategoryIds = buildUnnamed303();
+      final arg_directorySiteIds = buildUnnamed304();
+      final arg_groupIds = buildUnnamed305();
+      final arg_ids = buildUnnamed306();
       final arg_maxEndDate = 'foo';
       final arg_maxResults = 42;
       final arg_maxStartDate = 'foo';
@@ -30216,11 +30281,11 @@ void main() {
       final arg_minStartDate = 'foo';
       final arg_pageToken = 'foo';
       final arg_paymentSource = 'foo';
-      final arg_placementStrategyIds = buildUnnamed306();
-      final arg_pricingTypes = buildUnnamed307();
+      final arg_placementStrategyIds = buildUnnamed307();
+      final arg_pricingTypes = buildUnnamed308();
       final arg_searchString = 'foo';
-      final arg_siteIds = buildUnnamed308();
-      final arg_sizeIds = buildUnnamed309();
+      final arg_siteIds = buildUnnamed309();
+      final arg_sizeIds = buildUnnamed310();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -30941,8 +31006,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).projects;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed310();
-      final arg_ids = buildUnnamed311();
+      final arg_advertiserIds = buildUnnamed311();
+      final arg_ids = buildUnnamed312();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -32833,9 +32898,9 @@ void main() {
       final arg_acceptsPublisherPaidPlacements = true;
       final arg_adWordsSite = true;
       final arg_approved = true;
-      final arg_campaignIds = buildUnnamed312();
-      final arg_directorySiteIds = buildUnnamed313();
-      final arg_ids = buildUnnamed314();
+      final arg_campaignIds = buildUnnamed313();
+      final arg_directorySiteIds = buildUnnamed314();
+      final arg_ids = buildUnnamed315();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -33304,7 +33369,7 @@ void main() {
       final arg_profileId = 'foo';
       final arg_height = 42;
       final arg_iabStandard = true;
-      final arg_ids = buildUnnamed315();
+      final arg_ids = buildUnnamed316();
       final arg_width = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -33553,7 +33618,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).subaccounts;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed316();
+      final arg_ids = buildUnnamed317();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -34168,7 +34233,7 @@ void main() {
       final res = api.DfareportingApi(mock).targetingTemplates;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_ids = buildUnnamed317();
+      final arg_ids = buildUnnamed318();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -34789,7 +34854,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).userRolePermissions;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed318();
+      final arg_ids = buildUnnamed319();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -35100,7 +35165,7 @@ void main() {
       final res = api.DfareportingApi(mock).userRoles;
       final arg_profileId = 'foo';
       final arg_accountUserRoleOnly = true;
-      final arg_ids = buildUnnamed319();
+      final arg_ids = buildUnnamed320();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';

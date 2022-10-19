@@ -423,6 +423,49 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Runs an aggregation query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RunAggregationQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RunAggregationQueryResponse> runAggregationQuery(
+    RunAggregationQueryRequest request,
+    core.String projectId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectId') +
+        ':runAggregationQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RunAggregationQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Queries for entities.
   ///
   /// [request] - The metadata request object.
@@ -850,6 +893,177 @@ class ProjectsOperationsResource {
   }
 }
 
+/// Defines a aggregation that produces a single result.
+class Aggregation {
+  /// Optional name of the property to store the result of the aggregation.
+  ///
+  /// If not provided, Datastore will pick a default name following the format
+  /// `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ...
+  /// ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2) AS property_1, COUNT_UP_TO(3) AS count_up_to_3,
+  /// COUNT_UP_TO(4) AS property_2 OVER ( ... ); ``` Requires: * Must be unique
+  /// across all aggregation aliases. * Conform to entity property name
+  /// limitations.
+  ///
+  /// Optional.
+  core.String? alias;
+
+  /// Count aggregator.
+  Count? count;
+
+  Aggregation({
+    this.alias,
+    this.count,
+  });
+
+  Aggregation.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          count: json_.containsKey('count')
+              ? Count.fromJson(
+                  json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (count != null) 'count': count!,
+      };
+}
+
+/// Datastore query for running an aggregation over a Query.
+class AggregationQuery {
+  /// Series of aggregations to apply over the results of the `nested_query`.
+  ///
+  /// Requires: * A minimum of one and maximum of five aggregations per query.
+  ///
+  /// Optional.
+  core.List<Aggregation>? aggregations;
+
+  /// Nested query for aggregation
+  Query? nestedQuery;
+
+  AggregationQuery({
+    this.aggregations,
+    this.nestedQuery,
+  });
+
+  AggregationQuery.fromJson(core.Map json_)
+      : this(
+          aggregations: json_.containsKey('aggregations')
+              ? (json_['aggregations'] as core.List)
+                  .map((value) => Aggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nestedQuery: json_.containsKey('nestedQuery')
+              ? Query.fromJson(
+                  json_['nestedQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregations != null) 'aggregations': aggregations!,
+        if (nestedQuery != null) 'nestedQuery': nestedQuery!,
+      };
+}
+
+/// The result of a single bucket from a Datastore aggregation query.
+///
+/// The keys of `aggregate_properties` are the same for all results in an
+/// aggregation query, unlike entity queries which can have different fields
+/// present for each result.
+class AggregationResult {
+  /// The result of the aggregation functions, ex: `COUNT(*) AS total_entities`.
+  ///
+  /// The key is the alias assigned to the aggregation function on input and the
+  /// size of this map equals the number of aggregation functions in the query.
+  core.Map<core.String, Value>? aggregateProperties;
+
+  AggregationResult({
+    this.aggregateProperties,
+  });
+
+  AggregationResult.fromJson(core.Map json_)
+      : this(
+          aggregateProperties: json_.containsKey('aggregateProperties')
+              ? (json_['aggregateProperties']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateProperties != null)
+          'aggregateProperties': aggregateProperties!,
+      };
+}
+
+/// A batch of aggregation results produced by an aggregation query.
+class AggregationResultBatch {
+  /// The aggregation results for this batch.
+  core.List<AggregationResult>? aggregationResults;
+
+  /// The state of the query after the current batch.
+  ///
+  /// Only COUNT(*) aggregations are supported in the initial launch. Therefore,
+  /// expected result type is limited to `NO_MORE_RESULTS`.
+  /// Possible string values are:
+  /// - "MORE_RESULTS_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
+  /// - "NOT_FINISHED" : There may be additional batches to fetch from this
+  /// query.
+  /// - "MORE_RESULTS_AFTER_LIMIT" : The query is finished, but there may be
+  /// more results after the limit.
+  /// - "MORE_RESULTS_AFTER_CURSOR" : The query is finished, but there may be
+  /// more results after the end cursor.
+  /// - "NO_MORE_RESULTS" : The query is finished, and there are no more
+  /// results.
+  core.String? moreResults;
+
+  /// Read timestamp this batch was returned from.
+  ///
+  /// In a single transaction, subsequent query result batches for the same
+  /// query can have a greater timestamp. Each batch's read timestamp is valid
+  /// for all preceding batches.
+  core.String? readTime;
+
+  AggregationResultBatch({
+    this.aggregationResults,
+    this.moreResults,
+    this.readTime,
+  });
+
+  AggregationResultBatch.fromJson(core.Map json_)
+      : this(
+          aggregationResults: json_.containsKey('aggregationResults')
+              ? (json_['aggregationResults'] as core.List)
+                  .map((value) => AggregationResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          moreResults: json_.containsKey('moreResults')
+              ? json_['moreResults'] as core.String
+              : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationResults != null)
+          'aggregationResults': aggregationResults!,
+        if (moreResults != null) 'moreResults': moreResults!,
+        if (readTime != null) 'readTime': readTime!,
+      };
+}
+
 /// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
   /// The ID of the database against which to make the request.
@@ -1156,6 +1370,36 @@ class CompositeFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null) 'filters': filters!,
         if (op != null) 'op': op!,
+      };
+}
+
+/// Count of entities that match the query.
+///
+/// The `COUNT(*)` aggregation function operates on the entire entity so it does
+/// not require a field reference.
+class Count {
+  /// Optional constraint on the maximum number of entities to count.
+  ///
+  /// This provides a way to set an upper bound on the number of entities to
+  /// scan, limiting latency and cost. Unspecified is interpreted as no bound.
+  /// If a zero value is provided, a count result of zero should always be
+  /// expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER (
+  /// SELECT * FROM k ); ``` Requires: * Must be non-negative when present.
+  ///
+  /// Optional.
+  core.String? upTo;
+
+  Count({
+    this.upTo,
+  });
+
+  Count.fromJson(core.Map json_)
+      : this(
+          upTo: json_.containsKey('upTo') ? json_['upTo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upTo != null) 'upTo': upTo!,
       };
 }
 
@@ -2859,6 +3103,104 @@ class RollbackRequest {
 ///
 /// (an empty message).
 typedef RollbackResponse = $Empty;
+
+/// The request for Datastore.RunAggregationQuery.
+class RunAggregationQueryRequest {
+  /// The query to run.
+  AggregationQuery? aggregationQuery;
+
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
+  core.String? databaseId;
+
+  /// The GQL query to run.
+  ///
+  /// This query must be an aggregation query.
+  GqlQuery? gqlQuery;
+
+  /// Entities are partitioned into subsets, identified by a partition ID.
+  ///
+  /// Queries are scoped to a single partition. This partition ID is normalized
+  /// with the standard default context partition ID.
+  PartitionId? partitionId;
+
+  /// The options for this query.
+  ReadOptions? readOptions;
+
+  RunAggregationQueryRequest({
+    this.aggregationQuery,
+    this.databaseId,
+    this.gqlQuery,
+    this.partitionId,
+    this.readOptions,
+  });
+
+  RunAggregationQueryRequest.fromJson(core.Map json_)
+      : this(
+          aggregationQuery: json_.containsKey('aggregationQuery')
+              ? AggregationQuery.fromJson(json_['aggregationQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          databaseId: json_.containsKey('databaseId')
+              ? json_['databaseId'] as core.String
+              : null,
+          gqlQuery: json_.containsKey('gqlQuery')
+              ? GqlQuery.fromJson(
+                  json_['gqlQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partitionId: json_.containsKey('partitionId')
+              ? PartitionId.fromJson(
+                  json_['partitionId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          readOptions: json_.containsKey('readOptions')
+              ? ReadOptions.fromJson(
+                  json_['readOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationQuery != null) 'aggregationQuery': aggregationQuery!,
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (gqlQuery != null) 'gqlQuery': gqlQuery!,
+        if (partitionId != null) 'partitionId': partitionId!,
+        if (readOptions != null) 'readOptions': readOptions!,
+      };
+}
+
+/// The response for Datastore.RunAggregationQuery.
+class RunAggregationQueryResponse {
+  /// A batch of aggregation results.
+  ///
+  /// Always present.
+  AggregationResultBatch? batch;
+
+  /// The parsed form of the `GqlQuery` from the request, if it was set.
+  AggregationQuery? query;
+
+  RunAggregationQueryResponse({
+    this.batch,
+    this.query,
+  });
+
+  RunAggregationQueryResponse.fromJson(core.Map json_)
+      : this(
+          batch: json_.containsKey('batch')
+              ? AggregationResultBatch.fromJson(
+                  json_['batch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          query: json_.containsKey('query')
+              ? AggregationQuery.fromJson(
+                  json_['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batch != null) 'batch': batch!,
+        if (query != null) 'query': query!,
+      };
+}
 
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {

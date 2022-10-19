@@ -1428,9 +1428,9 @@ class QuerySourcesResource {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. The suggest API does
-  /// not use this parameter. Instead, suggest autocompletes only based on
-  /// characters in the query.
+  /// results are biased towards the specified language. From Suggest API
+  /// perspective, for 3p suggest this is used as a hint while making
+  /// predictions to add language boosting.
   ///
   /// [requestOptions_searchApplicationId] - The ID generated when you create a
   /// search application using the
@@ -1778,6 +1778,15 @@ class SettingsDatasourcesResource {
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `name`, `displayName`. * If `update_mask` is non-empty, then only the
+  /// fields specified in the `update_mask` are updated. * If you specify a
+  /// field in the `update_mask`, but don't specify its value in the source,
+  /// that field is cleared. * If the `update_mask` is not present or empty or
+  /// has the value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1792,12 +1801,14 @@ class SettingsDatasourcesResource {
     DataSource request,
     core.String name, {
     core.bool? debugOptions_enableDebugging,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2050,6 +2061,16 @@ class SettingsSearchapplicationsResource {
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `search_application.name`, `search_application.displayName`. * If
+  /// `update_mask` is non-empty, then only the fields specified in the
+  /// `update_mask` are updated. * If you specify a field in the `update_mask`,
+  /// but don't specify its value in the `search_application`, then that field
+  /// is cleared. * If the `update_mask` is not present or empty or has the
+  /// value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2063,10 +2084,12 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> patch(
     SearchApplication request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2137,6 +2160,16 @@ class SettingsSearchapplicationsResource {
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `search_application.name`, `search_application.displayName`. * If
+  /// `update_mask` is non-empty, then only the fields specified in the
+  /// `update_mask` are updated. * If you specify a field in the `update_mask`,
+  /// but don't specify its value in the `search_application`, then that field
+  /// is cleared. * If the `update_mask` is not present or empty or has the
+  /// value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2150,10 +2183,12 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> update(
     SearchApplication request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4096,6 +4131,10 @@ class FacetBucket {
   /// percentages which are always returned.
   core.int? count;
 
+  /// Filter to be passed in the search request if the corresponding bucket is
+  /// selected.
+  Filter? filter;
+
   /// Percent of results that match the bucket value.
   ///
   /// The returned value is between (0-100\], and is rounded down to an integer
@@ -4108,6 +4147,7 @@ class FacetBucket {
 
   FacetBucket({
     this.count,
+    this.filter,
     this.percentage,
     this.value,
   });
@@ -4115,6 +4155,10 @@ class FacetBucket {
   FacetBucket.fromJson(core.Map json_)
       : this(
           count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          filter: json_.containsKey('filter')
+              ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
           percentage: json_.containsKey('percentage')
               ? json_['percentage'] as core.int
               : null,
@@ -4126,6 +4170,7 @@ class FacetBucket {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (filter != null) 'filter': filter!,
         if (percentage != null) 'percentage': percentage!,
         if (value != null) 'value': value!,
       };
@@ -4136,6 +4181,13 @@ class FacetBucket {
 /// There will be one FacetResult for every
 /// source_name/object_type/operator_name combination.
 class FacetOptions {
+  /// If set, describes integer faceting options for the given integer property.
+  ///
+  /// The corresponding integer property in the schema should be marked
+  /// isFacetable. The number of buckets returned would be minimum of this and
+  /// num_facet_buckets.
+  IntegerFacetingOptions? integerFacetingOptions;
+
   /// Maximum number of facet buckets that should be returned for this facet.
   ///
   /// Defaults to 10. Maximum value is 100.
@@ -4158,6 +4210,7 @@ class FacetOptions {
   core.String? sourceName;
 
   FacetOptions({
+    this.integerFacetingOptions,
     this.numFacetBuckets,
     this.objectType,
     this.operatorName,
@@ -4166,6 +4219,10 @@ class FacetOptions {
 
   FacetOptions.fromJson(core.Map json_)
       : this(
+          integerFacetingOptions: json_.containsKey('integerFacetingOptions')
+              ? IntegerFacetingOptions.fromJson(json_['integerFacetingOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           numFacetBuckets: json_.containsKey('numFacetBuckets')
               ? json_['numFacetBuckets'] as core.int
               : null,
@@ -4181,6 +4238,8 @@ class FacetOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (integerFacetingOptions != null)
+          'integerFacetingOptions': integerFacetingOptions!,
         if (numFacetBuckets != null) 'numFacetBuckets': numFacetBuckets!,
         if (objectType != null) 'objectType': objectType!,
         if (operatorName != null) 'operatorName': operatorName!,
@@ -4850,6 +4909,32 @@ class IndexItemRequest {
 /// Request message for `InitializeCustomer` method.
 typedef InitializeCustomerRequest = $Empty;
 
+/// Used to specify integer faceting options.
+class IntegerFacetingOptions {
+  /// Buckets for given integer values should be in strictly ascending order.
+  ///
+  /// For example, if values supplied are (1,5,10,100), the following facet
+  /// buckets will be formed {\<1, \[1,5), \[5-10), \[10-100), \>=100}.
+  core.List<core.String>? integerBuckets;
+
+  IntegerFacetingOptions({
+    this.integerBuckets,
+  });
+
+  IntegerFacetingOptions.fromJson(core.Map json_)
+      : this(
+          integerBuckets: json_.containsKey('integerBuckets')
+              ? (json_['integerBuckets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integerBuckets != null) 'integerBuckets': integerBuckets!,
+      };
+}
+
 /// Used to provide a search operator for integer properties.
 ///
 /// This is optional. Search operators let users restrict the query to specific
@@ -4919,6 +5004,11 @@ class IntegerOperatorOptions {
 
 /// The options for integer properties.
 class IntegerPropertyOptions {
+  /// If set, describes integer faceting options for the given integer property.
+  ///
+  /// The corresponding integer property should be marked isFacetable.
+  IntegerFacetingOptions? integerFacetingOptions;
+
   /// The maximum value of the property.
   ///
   /// The minimum and maximum values for the property are used to rank results
@@ -4951,6 +5041,7 @@ class IntegerPropertyOptions {
   core.String? orderedRanking;
 
   IntegerPropertyOptions({
+    this.integerFacetingOptions,
     this.maximumValue,
     this.minimumValue,
     this.operatorOptions,
@@ -4959,6 +5050,10 @@ class IntegerPropertyOptions {
 
   IntegerPropertyOptions.fromJson(core.Map json_)
       : this(
+          integerFacetingOptions: json_.containsKey('integerFacetingOptions')
+              ? IntegerFacetingOptions.fromJson(json_['integerFacetingOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           maximumValue: json_.containsKey('maximumValue')
               ? json_['maximumValue'] as core.String
               : null,
@@ -4975,6 +5070,8 @@ class IntegerPropertyOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (integerFacetingOptions != null)
+          'integerFacetingOptions': integerFacetingOptions!,
         if (maximumValue != null) 'maximumValue': maximumValue!,
         if (minimumValue != null) 'minimumValue': minimumValue!,
         if (operatorOptions != null) 'operatorOptions': operatorOptions!,
@@ -6782,7 +6879,8 @@ class PropertyDefinition {
   ///
   /// Only supported for Text properties. IsReturnable must be true to set this
   /// option. In a given datasource maximum of 5 properties can be marked as
-  /// is_wildcard_searchable.
+  /// is_wildcard_searchable. For more details, see
+  /// [Define object properties](https://developers.google.com/cloud-search/docs/guides/schema-guide#properties)
   core.bool? isWildcardSearchable;
 
   /// The name of the property.
@@ -7526,9 +7624,9 @@ class RequestOptions {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. The suggest API does
-  /// not use this parameter. Instead, suggest autocompletes only based on
-  /// characters in the query.
+  /// results are biased towards the specified language. From Suggest API
+  /// perspective, for 3p suggest this is used as a hint while making
+  /// predictions to add language boosting.
   core.String? languageCode;
 
   /// The ID generated when you create a search application using the
@@ -7601,37 +7699,7 @@ class ResetSearchApplicationRequest {
 }
 
 /// Debugging information about the response.
-class ResponseDebugInfo {
-  /// Experiments enabled in QAPI.
-  core.List<core.int>? enabledExperiments;
-
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResponseDebugInfo({
-    this.enabledExperiments,
-    this.formattedDebugInfo,
-  });
-
-  ResponseDebugInfo.fromJson(core.Map json_)
-      : this(
-          enabledExperiments: json_.containsKey('enabledExperiments')
-              ? (json_['enabledExperiments'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledExperiments != null)
-          'enabledExperiments': enabledExperiments!,
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResponseDebugInfo = $DebugInfo;
 
 /// Result count information
 class ResultCounts {
@@ -7659,26 +7727,7 @@ class ResultCounts {
 }
 
 /// Debugging information about the result.
-class ResultDebugInfo {
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResultDebugInfo({
-    this.formattedDebugInfo,
-  });
-
-  ResultDebugInfo.fromJson(core.Map json_)
-      : this(
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResultDebugInfo = $DebugInfo;
 
 /// Display Fields for Search Results
 class ResultDisplayField {
@@ -9329,9 +9378,21 @@ class UpdateDataSourceRequest {
   DebugOptions? debugOptions;
   DataSource? source;
 
+  /// Only applies to
+  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  ///
+  /// Update mask to control which fields to update. Example field paths:
+  /// `name`, `displayName`. * If `update_mask` is non-empty, then only the
+  /// fields specified in the `update_mask` are updated. * If you specify a
+  /// field in the `update_mask`, but don't specify its value in the source,
+  /// that field is cleared. * If the `update_mask` is not present or empty or
+  /// has the value `*`, then all fields are updated.
+  core.String? updateMask;
+
   UpdateDataSourceRequest({
     this.debugOptions,
     this.source,
+    this.updateMask,
   });
 
   UpdateDataSourceRequest.fromJson(core.Map json_)
@@ -9344,11 +9405,15 @@ class UpdateDataSourceRequest {
               ? DataSource.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugOptions != null) 'debugOptions': debugOptions!,
         if (source != null) 'source': source!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 

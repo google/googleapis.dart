@@ -106,6 +106,9 @@ class ConversionResource {
   ///
   /// [criterionId] - Numeric ID of the criterion.
   ///
+  /// [customerId] - Customer ID of a client account in the new Search Ads 360
+  /// experience.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -128,6 +131,7 @@ class ConversionResource {
     core.String? adId,
     core.String? campaignId,
     core.String? criterionId,
+    core.String? customerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -139,6 +143,7 @@ class ConversionResource {
       if (adId != null) 'adId': [adId],
       if (campaignId != null) 'campaignId': [campaignId],
       if (criterionId != null) 'criterionId': [criterionId],
+      if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -148,6 +153,94 @@ class ConversionResource {
         commons.escapeVariable('$advertiserId') +
         '/engine/' +
         commons.escapeVariable('$engineAccountId') +
+        '/conversion';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConversionList.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of conversions from a DoubleClick Search engine account.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Customer ID of a client account in the new Search Ads 360
+  /// experience.
+  ///
+  /// [endDate] - Last date (inclusive) on which to retrieve conversions. Format
+  /// is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [rowCount] - The number of conversions to return per call.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [startDate] - First date (inclusive) on which to retrieve conversions.
+  /// Format is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [startRow] - The 0-based starting index for retrieving conversions
+  /// results.
+  ///
+  /// [adGroupId] - Numeric ID of the ad group.
+  ///
+  /// [adId] - Numeric ID of the ad.
+  ///
+  /// [advertiserId] - Numeric ID of the advertiser.
+  ///
+  /// [agencyId] - Numeric ID of the agency.
+  ///
+  /// [campaignId] - Numeric ID of the campaign.
+  ///
+  /// [criterionId] - Numeric ID of the criterion.
+  ///
+  /// [engineAccountId] - Numeric ID of the engine account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionList> getByCustomerId(
+    core.String customerId,
+    core.int endDate,
+    core.int rowCount,
+    core.int startDate,
+    core.int startRow, {
+    core.String? adGroupId,
+    core.String? adId,
+    core.String? advertiserId,
+    core.String? agencyId,
+    core.String? campaignId,
+    core.String? criterionId,
+    core.String? engineAccountId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endDate': ['${endDate}'],
+      'rowCount': ['${rowCount}'],
+      'startDate': ['${startDate}'],
+      'startRow': ['${startRow}'],
+      if (adGroupId != null) 'adGroupId': [adGroupId],
+      if (adId != null) 'adId': [adId],
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (agencyId != null) 'agencyId': [agencyId],
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (criterionId != null) 'criterionId': [criterionId],
+      if (engineAccountId != null) 'engineAccountId': [engineAccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'doubleclicksearch/v2/customer/' +
+        commons.escapeVariable('$customerId') +
         '/conversion';
 
     final response_ = await _requester.request(
@@ -553,6 +646,9 @@ class Availability {
   /// The time by which all conversions have been uploaded, in epoch millis UTC.
   core.String? availabilityTimestamp;
 
+  /// Customer ID of a client account in the new Search Ads 360 experience.
+  core.String? customerId;
+
   /// The numeric segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity ID).
   core.String? segmentationId;
@@ -569,6 +665,7 @@ class Availability {
     this.advertiserId,
     this.agencyId,
     this.availabilityTimestamp,
+    this.customerId,
     this.segmentationId,
     this.segmentationName,
     this.segmentationType,
@@ -584,6 +681,9 @@ class Availability {
               : null,
           availabilityTimestamp: json_.containsKey('availabilityTimestamp')
               ? json_['availabilityTimestamp'] as core.String
+              : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
           segmentationId: json_.containsKey('segmentationId')
               ? json_['segmentationId'] as core.String
@@ -601,6 +701,7 @@ class Availability {
         if (agencyId != null) 'agencyId': agencyId!,
         if (availabilityTimestamp != null)
           'availabilityTimestamp': availabilityTimestamp!,
+        if (customerId != null) 'customerId': customerId!,
         if (segmentationId != null) 'segmentationId': segmentationId!,
         if (segmentationName != null) 'segmentationName': segmentationName!,
         if (segmentationType != null) 'segmentationType': segmentationType!,
@@ -671,6 +772,9 @@ class Conversion {
 
   /// Custom metrics for the conversion.
   core.List<CustomMetric>? customMetric;
+
+  /// Customer ID of a client account in the new Search Ads 360 experience.
+  core.String? customerId;
 
   /// The type of device on which the conversion occurred.
   core.String? deviceType;
@@ -762,6 +866,7 @@ class Conversion {
     this.currencyCode,
     this.customDimension,
     this.customMetric,
+    this.customerId,
     this.deviceType,
     this.dsConversionId,
     this.engineAccountId,
@@ -836,6 +941,9 @@ class Conversion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
           deviceType: json_.containsKey('deviceType')
               ? json_['deviceType'] as core.String
               : null,
@@ -905,6 +1013,7 @@ class Conversion {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (customDimension != null) 'customDimension': customDimension!,
         if (customMetric != null) 'customMetric': customMetric!,
+        if (customerId != null) 'customerId': customerId!,
         if (deviceType != null) 'deviceType': deviceType!,
         if (dsConversionId != null) 'dsConversionId': dsConversionId!,
         if (engineAccountId != null) 'engineAccountId': engineAccountId!,

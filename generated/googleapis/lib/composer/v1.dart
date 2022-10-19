@@ -249,6 +249,51 @@ class ProjectsLocationsEnvironmentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Loads a snapshot of a Cloud Composer environment.
+  ///
+  /// As a result of this operation, a snapshot of environment's specified in
+  /// LoadSnapshotRequest is loaded into the environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the target environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> loadSnapshot(
+    LoadSnapshotRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':loadSnapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Update an environment.
   ///
   /// [request] - The metadata request object.
@@ -367,6 +412,51 @@ class ProjectsLocationsEnvironmentsResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a snapshots of a Cloud Composer environment.
+  ///
+  /// As a result of this operation, snapshot of environment's state is stored
+  /// in a location specified in the SaveSnapshotRequest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the source environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> saveSnapshot(
+    SaveSnapshotRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':saveSnapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -908,6 +998,14 @@ class EnvironmentConfig {
   /// The configuration used for the Private IP Cloud Composer environment.
   PrivateEnvironmentConfig? privateEnvironmentConfig;
 
+  /// The Recovery settings configuration of an environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  RecoveryConfig? recoveryConfig;
+
   /// The configuration settings for software inside the environment.
   SoftwareConfig? softwareConfig;
 
@@ -945,6 +1043,7 @@ class EnvironmentConfig {
     this.nodeConfig,
     this.nodeCount,
     this.privateEnvironmentConfig,
+    this.recoveryConfig,
     this.softwareConfig,
     this.webServerConfig,
     this.webServerNetworkAccessControl,
@@ -996,6 +1095,10 @@ class EnvironmentConfig {
                       json_['privateEnvironmentConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          recoveryConfig: json_.containsKey('recoveryConfig')
+              ? RecoveryConfig.fromJson(json_['recoveryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           softwareConfig: json_.containsKey('softwareConfig')
               ? SoftwareConfig.fromJson(json_['softwareConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1030,6 +1133,7 @@ class EnvironmentConfig {
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
           'privateEnvironmentConfig': privateEnvironmentConfig!,
+        if (recoveryConfig != null) 'recoveryConfig': recoveryConfig!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (webServerConfig != null) 'webServerConfig': webServerConfig!,
         if (webServerNetworkAccessControl != null)
@@ -1303,6 +1407,71 @@ class ListOperationsResponse {
       };
 }
 
+/// Request to load a snapshot into a Cloud Composer environment.
+class LoadSnapshotRequest {
+  /// Whether or not to skip setting Airflow overrides when loading the
+  /// environment's state.
+  core.bool? skipAirflowOverridesSetting;
+
+  /// Whether or not to skip setting environment variables when loading the
+  /// environment's state.
+  core.bool? skipEnvironmentVariablesSetting;
+
+  /// Whether or not to skip copying Cloud Storage data when loading the
+  /// environment's state.
+  core.bool? skipGcsDataCopying;
+
+  /// Whether or not to skip installing Pypi packages when loading the
+  /// environment's state.
+  core.bool? skipPypiPackagesInstallation;
+
+  /// A Cloud Storage path to a snapshot to load, e.g.:
+  /// "gs://my-bucket/snapshots/project_location_environment_timestamp".
+  core.String? snapshotPath;
+
+  LoadSnapshotRequest({
+    this.skipAirflowOverridesSetting,
+    this.skipEnvironmentVariablesSetting,
+    this.skipGcsDataCopying,
+    this.skipPypiPackagesInstallation,
+    this.snapshotPath,
+  });
+
+  LoadSnapshotRequest.fromJson(core.Map json_)
+      : this(
+          skipAirflowOverridesSetting:
+              json_.containsKey('skipAirflowOverridesSetting')
+                  ? json_['skipAirflowOverridesSetting'] as core.bool
+                  : null,
+          skipEnvironmentVariablesSetting:
+              json_.containsKey('skipEnvironmentVariablesSetting')
+                  ? json_['skipEnvironmentVariablesSetting'] as core.bool
+                  : null,
+          skipGcsDataCopying: json_.containsKey('skipGcsDataCopying')
+              ? json_['skipGcsDataCopying'] as core.bool
+              : null,
+          skipPypiPackagesInstallation:
+              json_.containsKey('skipPypiPackagesInstallation')
+                  ? json_['skipPypiPackagesInstallation'] as core.bool
+                  : null,
+          snapshotPath: json_.containsKey('snapshotPath')
+              ? json_['snapshotPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipAirflowOverridesSetting != null)
+          'skipAirflowOverridesSetting': skipAirflowOverridesSetting!,
+        if (skipEnvironmentVariablesSetting != null)
+          'skipEnvironmentVariablesSetting': skipEnvironmentVariablesSetting!,
+        if (skipGcsDataCopying != null)
+          'skipGcsDataCopying': skipGcsDataCopying!,
+        if (skipPypiPackagesInstallation != null)
+          'skipPypiPackagesInstallation': skipPypiPackagesInstallation!,
+        if (snapshotPath != null) 'snapshotPath': snapshotPath!,
+      };
+}
+
 /// The configuration settings for Cloud Composer maintenance window.
 ///
 /// The following example: ``` { "startTime":"2019-08-01T01:00:00Z"
@@ -1393,6 +1562,41 @@ class MasterAuthorizedNetworksConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
         if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration options for networking connections in the Composer 2
+/// environment.
+class NetworkingConfig {
+  /// Indicates the user requested specifc connection type between Tenant and
+  /// Customer projects.
+  ///
+  /// You cannot set networking connection type in public IP environment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : No specific connection type was
+  /// requested, so the environment uses the default value corresponding to the
+  /// rest of its configuration.
+  /// - "VPC_PEERING" : Requests the use of VPC peerings for connecting the
+  /// Customer and Tenant projects.
+  /// - "PRIVATE_SERVICE_CONNECT" : Requests the use of Private Service Connect
+  /// for connecting the Customer and Tenant projects.
+  core.String? connectionType;
+
+  NetworkingConfig({
+    this.connectionType,
+  });
+
+  NetworkingConfig.fromJson(core.Map json_)
+      : this(
+          connectionType: json_.containsKey('connectionType')
+              ? json_['connectionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionType != null) 'connectionType': connectionType!,
       };
 }
 
@@ -1772,6 +1976,12 @@ class PrivateEnvironmentConfig {
   /// Optional.
   core.bool? enablePrivatelyUsedPublicIps;
 
+  /// Configuration for the network connections configuration in the
+  /// environment.
+  ///
+  /// Optional.
+  NetworkingConfig? networkingConfig;
+
   /// Configuration for the private GKE cluster for a Private IP Cloud Composer
   /// environment.
   ///
@@ -1802,6 +2012,7 @@ class PrivateEnvironmentConfig {
     this.cloudSqlIpv4CidrBlock,
     this.enablePrivateEnvironment,
     this.enablePrivatelyUsedPublicIps,
+    this.networkingConfig,
     this.privateClusterConfig,
     this.webServerIpv4CidrBlock,
     this.webServerIpv4ReservedRange,
@@ -1832,6 +2043,10 @@ class PrivateEnvironmentConfig {
               json_.containsKey('enablePrivatelyUsedPublicIps')
                   ? json_['enablePrivatelyUsedPublicIps'] as core.bool
                   : null,
+          networkingConfig: json_.containsKey('networkingConfig')
+              ? NetworkingConfig.fromJson(json_['networkingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           privateClusterConfig: json_.containsKey('privateClusterConfig')
               ? PrivateClusterConfig.fromJson(json_['privateClusterConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1861,12 +2076,121 @@ class PrivateEnvironmentConfig {
           'enablePrivateEnvironment': enablePrivateEnvironment!,
         if (enablePrivatelyUsedPublicIps != null)
           'enablePrivatelyUsedPublicIps': enablePrivatelyUsedPublicIps!,
+        if (networkingConfig != null) 'networkingConfig': networkingConfig!,
         if (privateClusterConfig != null)
           'privateClusterConfig': privateClusterConfig!,
         if (webServerIpv4CidrBlock != null)
           'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
         if (webServerIpv4ReservedRange != null)
           'webServerIpv4ReservedRange': webServerIpv4ReservedRange!,
+      };
+}
+
+/// The Recovery settings of an environment.
+class RecoveryConfig {
+  /// The configuration for scheduled snapshot creation mechanism.
+  ///
+  /// Optional.
+  ScheduledSnapshotsConfig? scheduledSnapshotsConfig;
+
+  RecoveryConfig({
+    this.scheduledSnapshotsConfig,
+  });
+
+  RecoveryConfig.fromJson(core.Map json_)
+      : this(
+          scheduledSnapshotsConfig:
+              json_.containsKey('scheduledSnapshotsConfig')
+                  ? ScheduledSnapshotsConfig.fromJson(
+                      json_['scheduledSnapshotsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scheduledSnapshotsConfig != null)
+          'scheduledSnapshotsConfig': scheduledSnapshotsConfig!,
+      };
+}
+
+/// Request to create a snapshot of a Cloud Composer environment.
+class SaveSnapshotRequest {
+  /// Location in a Cloud Storage where the snapshot is going to be stored,
+  /// e.g.: "gs://my-bucket/snapshots".
+  core.String? snapshotLocation;
+
+  SaveSnapshotRequest({
+    this.snapshotLocation,
+  });
+
+  SaveSnapshotRequest.fromJson(core.Map json_)
+      : this(
+          snapshotLocation: json_.containsKey('snapshotLocation')
+              ? json_['snapshotLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
+      };
+}
+
+/// The configuration for scheduled snapshot creation mechanism.
+class ScheduledSnapshotsConfig {
+  /// Whether scheduled snapshots creation is enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The cron expression representing the time when snapshots creation
+  /// mechanism runs.
+  ///
+  /// This field is subject to additional validation around frequency of
+  /// execution.
+  ///
+  /// Optional.
+  core.String? snapshotCreationSchedule;
+
+  /// The Cloud Storage location for storing automatically created snapshots.
+  ///
+  /// Optional.
+  core.String? snapshotLocation;
+
+  /// Time zone that sets the context to interpret snapshot_creation_schedule.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  ScheduledSnapshotsConfig({
+    this.enabled,
+    this.snapshotCreationSchedule,
+    this.snapshotLocation,
+    this.timeZone,
+  });
+
+  ScheduledSnapshotsConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          snapshotCreationSchedule:
+              json_.containsKey('snapshotCreationSchedule')
+                  ? json_['snapshotCreationSchedule'] as core.String
+                  : null,
+          snapshotLocation: json_.containsKey('snapshotLocation')
+              ? json_['snapshotLocation'] as core.String
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (snapshotCreationSchedule != null)
+          'snapshotCreationSchedule': snapshotCreationSchedule!,
+        if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 

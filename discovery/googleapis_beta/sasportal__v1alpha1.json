@@ -4,9 +4,6 @@
             "scopes": {
                 "https://www.googleapis.com/auth/sasportal": {
                     "description": "Read, create, update, and delete your SAS Portal data."
-                },
-                "https://www.googleapis.com/auth/userinfo.email": {
-                    "description": "See your primary Google Account email address"
                 }
             }
         }
@@ -129,8 +126,7 @@
                         "$ref": "SasPortalCustomer"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "list": {
@@ -157,8 +153,7 @@
                         "$ref": "SasPortalListCustomersResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "patch": {
@@ -192,8 +187,7 @@
                         "$ref": "SasPortalCustomer"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -225,8 +219,7 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -251,8 +244,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -277,8 +269,7 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -319,8 +310,7 @@
                                 "$ref": "SasPortalListDeploymentsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -348,8 +338,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -383,8 +372,7 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -416,8 +404,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -445,8 +432,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -487,8 +473,7 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -522,8 +507,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "createSigned": {
@@ -551,8 +535,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -577,8 +560,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -603,8 +585,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -645,8 +626,7 @@
                                 "$ref": "SasPortalListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -674,8 +654,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -709,8 +688,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -738,8 +716,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -767,8 +744,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -800,8 +776,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -826,8 +801,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -852,8 +826,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -894,8 +867,7 @@
                                 "$ref": "SasPortalListNodesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -923,8 +895,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -958,8 +929,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -991,8 +961,7 @@
                                         "$ref": "SasPortalDeployment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1033,8 +1002,7 @@
                                         "$ref": "SasPortalListDeploymentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1066,8 +1034,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -1095,8 +1062,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1137,8 +1103,7 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1170,8 +1135,7 @@
                                         "$ref": "SasPortalNode"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1212,8 +1176,7 @@
                                         "$ref": "SasPortalListNodesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1246,8 +1209,7 @@
                         "$ref": "SasPortalDeployment"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -1276,8 +1238,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1302,8 +1263,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1331,8 +1291,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1366,8 +1325,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -1395,8 +1353,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -1424,8 +1381,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -1449,8 +1405,7 @@
                         "$ref": "SasPortalGenerateSecretResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "validate": {
@@ -1468,8 +1423,7 @@
                         "$ref": "SasPortalValidateInstallerResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             }
@@ -1498,8 +1452,7 @@
                         "$ref": "SasPortalNode"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -1528,8 +1481,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1554,8 +1506,7 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -1596,8 +1547,7 @@
                                 "$ref": "SasPortalListDeploymentsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1625,8 +1575,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1660,8 +1609,7 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -1693,8 +1641,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -1722,8 +1669,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1764,8 +1710,7 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1799,8 +1744,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "createSigned": {
@@ -1828,8 +1772,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -1854,8 +1797,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1880,8 +1822,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -1922,8 +1863,7 @@
                                 "$ref": "SasPortalListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1951,8 +1891,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1986,8 +1925,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -2015,8 +1953,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -2044,8 +1981,7 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -2077,8 +2013,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -2103,8 +2038,7 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -2129,8 +2063,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -2171,8 +2104,7 @@
                                 "$ref": "SasPortalListNodesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -2200,8 +2132,7 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -2235,8 +2166,7 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -2268,8 +2198,7 @@
                                         "$ref": "SasPortalDeployment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2310,8 +2239,7 @@
                                         "$ref": "SasPortalListDeploymentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2343,8 +2271,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -2372,8 +2299,7 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2414,8 +2340,7 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2447,8 +2372,7 @@
                                         "$ref": "SasPortalNode"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2489,8 +2413,7 @@
                                         "$ref": "SasPortalListNodesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2516,8 +2439,7 @@
                         "$ref": "SasPortalPolicy"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "set": {
@@ -2535,8 +2457,7 @@
                         "$ref": "SasPortalPolicy"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "test": {
@@ -2554,14 +2475,13 @@
                         "$ref": "SasPortalTestPermissionsResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             }
         }
     },
-    "revision": "20220825",
+    "revision": "20221013",
     "rootUrl": "https://sasportal.googleapis.com/",
     "schemas": {
         "SasPortalAssignment": {

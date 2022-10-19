@@ -2182,6 +2182,8 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// Creates key value entries in a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2230,9 +2232,10 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
   /// Deletes a key value entry from a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
-  /// **Note:** After you delete the key value entry, the policy consuming the
-  /// entry will continue to function with its cached values for a few minutes.
-  /// This is expected behavior.
+  /// **Notes:** * After you delete the key value entry, the policy consuming
+  /// the entry will continue to function with its cached values for a few
+  /// minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x
+  /// and higher.
   ///
   /// Request parameters:
   ///
@@ -2276,7 +2279,10 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  /// Get the key value entry value for a key value map scoped to an
+  /// organization, environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -2322,6 +2328,8 @@ class OrganizationsApisKeyvaluemapsEntriesResource {
 
   /// Lists key value entries for key values maps scoped to an organization,
   /// environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -4963,9 +4971,10 @@ class OrganizationsEndpointAttachmentsResource {
   /// in.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [endpointAttachmentId] - ID to use for the endpoint attachment. The ID can
-  /// contain lowercase letters and numbers, must start with a letter, and must
-  /// be 1-20 characters in length.
+  /// [endpointAttachmentId] - ID to use for the endpoint attachment. ID must
+  /// start with a lowercase letter followed by up to 31 lowercase letters,
+  /// numbers, or hyphens, and cannot end with a hyphen. The minimum length is
+  /// 2.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5699,6 +5708,49 @@ class OrganizationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the API Security runtime configuration for an environment.
+  ///
+  /// This named ApiSecurityRuntimeConfig to prevent conflicts with
+  /// ApiSecurityConfig from addon config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the environment API Security Runtime
+  /// configuration resource. Use the following structure in your request:
+  /// `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apiSecurityRuntimeConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiSecurityRuntimeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiSecurityRuntimeConfig>
+      getApiSecurityRuntimeConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiSecurityRuntimeConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -8243,6 +8295,8 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// Creates key value entries in a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -8291,9 +8345,10 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
   /// Deletes a key value entry from a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
-  /// **Note:** After you delete the key value entry, the policy consuming the
-  /// entry will continue to function with its cached values for a few minutes.
-  /// This is expected behavior.
+  /// **Notes:** * After you delete the key value entry, the policy consuming
+  /// the entry will continue to function with its cached values for a few
+  /// minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x
+  /// and higher.
   ///
   /// Request parameters:
   ///
@@ -8337,7 +8392,10 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  /// Get the key value entry value for a key value map scoped to an
+  /// organization, environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -8383,6 +8441,8 @@ class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
 
   /// Lists key value entries for key values maps scoped to an organization,
   /// environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -11923,6 +11983,8 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// Creates key value entries in a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -11970,9 +12032,10 @@ class OrganizationsKeyvaluemapsEntriesResource {
   /// Deletes a key value entry from a key value map scoped to an organization,
   /// environment, or API proxy.
   ///
-  /// **Note:** After you delete the key value entry, the policy consuming the
-  /// entry will continue to function with its cached values for a few minutes.
-  /// This is expected behavior.
+  /// **Notes:** * After you delete the key value entry, the policy consuming
+  /// the entry will continue to function with its cached values for a few
+  /// minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x
+  /// and higher.
   ///
   /// Request parameters:
   ///
@@ -12016,7 +12079,10 @@ class OrganizationsKeyvaluemapsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  /// Get the key value entry value for a key value map scoped to an
+  /// organization, environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -12062,6 +12128,8 @@ class OrganizationsKeyvaluemapsEntriesResource {
 
   /// Lists key value entries for key values maps scoped to an organization,
   /// environment, or API proxy.
+  ///
+  /// **Note**: Supported for Apigee hybrid 1.8.x and higher.
   ///
   /// Request parameters:
   ///
@@ -14735,6 +14803,64 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (expiresAt != null) 'expiresAt': expiresAt!,
+      };
+}
+
+/// Response for
+/// GetApiSecurityRuntimeConfig\[EnvironmentService.GetApiSecurityRuntimeConfig\].
+class GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
+  /// A list of up to 5 Cloud Storage Blobs that contain SecurityActions.
+  core.List<core.String>? location;
+
+  /// Name of the environment API Security Runtime configuration resource.
+  ///
+  /// Format: `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig`
+  core.String? name;
+
+  /// Revision ID of the API Security Runtime configuration.
+  ///
+  /// The higher the value, the more recently the configuration was deployed.
+  core.String? revisionId;
+
+  /// Unique ID for the API Security Runtime configuration.
+  ///
+  /// The ID will only change if the environment is deleted and recreated.
+  core.String? uid;
+
+  /// Time that the API Security Runtime configuration was updated.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1ApiSecurityRuntimeConfig({
+    this.location,
+    this.name,
+    this.revisionId,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1ApiSecurityRuntimeConfig.fromJson(core.Map json_)
+      : this(
+          location: json_.containsKey('location')
+              ? (json_['location'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -19413,6 +19539,8 @@ class GoogleCloudApigeeV1KeyAliasReference {
 
 /// Key value map pair where the value represents the data associated with the
 /// corresponding key.
+///
+/// **Note**: Supported for Apigee hybrid 1.8.x and higher.
 class GoogleCloudApigeeV1KeyValueEntry {
   /// Resource URI that can be used to identify the scope of the key value map
   /// entries.
@@ -20181,7 +20309,7 @@ class GoogleCloudApigeeV1ListInstancesResponse {
       };
 }
 
-/// The request structure for listing Key value map keys and its corrresponding
+/// The request structure for listing key value map keys and its corresponding
 /// values.
 class GoogleCloudApigeeV1ListKeyValueEntriesResponse {
   /// One or more key value map keys and values.
@@ -23918,7 +24046,8 @@ class GoogleCloudApigeeV1SecurityReport {
   /// `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   core.String? self;
 
-  /// Query state could be "enqueued", "running", "completed", "failed".
+  /// Query state could be "enqueued", "running", "completed", "expired" and
+  /// "failed".
   core.String? state;
 
   /// Last updated timestamp for the query.
@@ -25405,7 +25534,7 @@ typedef GoogleCloudApigeeV1TraceSamplingConfig = $TraceSamplingConfig;
 class GoogleCloudApigeeV1UpdateError {
   /// Status code.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when

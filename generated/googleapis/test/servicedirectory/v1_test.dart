@@ -111,6 +111,7 @@ api.Endpoint buildEndpoint() {
     o.name = 'foo';
     o.network = 'foo';
     o.port = 42;
+    o.uid = 'foo';
   }
   buildCounterEndpoint--;
   return o;
@@ -135,6 +136,10 @@ void checkEndpoint(api.Endpoint o) {
     unittest.expect(
       o.port!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
     );
   }
   buildCounterEndpoint--;
@@ -480,6 +485,7 @@ api.Namespace buildNamespace() {
   if (buildCounterNamespace < 3) {
     o.labels = buildUnnamed8();
     o.name = 'foo';
+    o.uid = 'foo';
   }
   buildCounterNamespace--;
   return o;
@@ -491,6 +497,10 @@ void checkNamespace(api.Namespace o) {
     checkUnnamed8(o.labels!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
       unittest.equals('foo'),
     );
   }
@@ -619,6 +629,7 @@ api.Service buildService() {
     o.annotations = buildUnnamed10();
     o.endpoints = buildUnnamed11();
     o.name = 'foo';
+    o.uid = 'foo';
   }
   buildCounterService--;
   return o;
@@ -631,6 +642,10 @@ void checkService(api.Service o) {
     checkUnnamed11(o.endpoints!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
       unittest.equals('foo'),
     );
   }

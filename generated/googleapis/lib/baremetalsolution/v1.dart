@@ -22,9 +22,6 @@
 /// Create an instance of [BaremetalsolutionApi] to access these resources:
 ///
 /// - [OperationsResource]
-/// - [ProjectsResource]
-///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsInstancesResource]
 library baremetalsolution.v1;
 
 import 'dart:async' as async;
@@ -52,7 +49,6 @@ class BaremetalsolutionApi {
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);
-  ProjectsResource get projects => ProjectsResource(_requester);
 
   BaremetalsolutionApi(http.Client client,
       {core.String rootUrl = 'https://baremetalsolution.googleapis.com/',
@@ -250,74 +246,6 @@ class OperationsResource {
   }
 }
 
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsResource get locations =>
-      ProjectsLocationsResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsInstancesResource get instances =>
-      ProjectsLocationsInstancesResource(_requester);
-
-  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsInstancesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsInstancesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Perform an ungraceful, hard reset on a machine (equivalent to shutting the
-  /// power off, and then turning it back on).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [instance] - Required. Name of the instance to reset.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ResetInstanceResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ResetInstanceResponse> resetInstance(
-    ResetInstanceRequest request,
-    core.String instance, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$instance') + ':resetInstance';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return ResetInstanceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -436,12 +364,6 @@ class Operation {
         if (response != null) 'response': response!,
       };
 }
-
-/// Request for ResetInstance.
-typedef ResetInstanceRequest = $Empty;
-
-/// Response for ResetInstance.
-typedef ResetInstanceResponse = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

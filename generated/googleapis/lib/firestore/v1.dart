@@ -1453,6 +1453,59 @@ class ProjectsDatabasesDocumentsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Runs an aggregation query.
+  ///
+  /// Rather than producing Document results like Firestore.RunQuery, this API
+  /// allows running an aggregation to produce a series of AggregationResult
+  /// server-side. High-Level Example: ``` -- Return the number of documents in
+  /// table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a =
+  /// true ); ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. In the format:
+  /// `projects/{project_id}/databases/{database_id}/documents` or
+  /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+  /// For example: `projects/my-project/databases/my-database/documents` or
+  /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RunAggregationQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RunAggregationQueryResponse> runAggregationQuery(
+    RunAggregationQueryRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':runAggregationQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RunAggregationQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Runs a query.
   ///
   /// [request] - The metadata request object.
@@ -1827,6 +1880,80 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Defines a aggregation that produces a single result.
+class Aggregation {
+  /// Optional name of the field to store the result of the aggregation into.
+  ///
+  /// If not provided, Firestore will pick a default name following the format
+  /// `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ...
+  /// ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4)
+  /// AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all
+  /// aggregation aliases. * Conform to document field name limitations.
+  ///
+  /// Optional.
+  core.String? alias;
+
+  /// Count aggregator.
+  Count? count;
+
+  Aggregation({
+    this.alias,
+    this.count,
+  });
+
+  Aggregation.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          count: json_.containsKey('count')
+              ? Count.fromJson(
+                  json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (count != null) 'count': count!,
+      };
+}
+
+/// The result of a single bucket from a Firestore aggregation query.
+///
+/// The keys of `aggregate_fields` are the same for all results in an
+/// aggregation query, unlike document queries which can have different fields
+/// present for each result.
+class AggregationResult {
+  /// The result of the aggregation functions, ex: `COUNT(*) AS total_docs`.
+  ///
+  /// The key is the alias assigned to the aggregation function on input and the
+  /// size of this map equals the number of aggregation functions in the query.
+  core.Map<core.String, Value>? aggregateFields;
+
+  AggregationResult({
+    this.aggregateFields,
+  });
+
+  AggregationResult.fromJson(core.Map json_)
+      : this(
+          aggregateFields: json_.containsKey('aggregateFields')
+              ? (json_['aggregateFields']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateFields != null) 'aggregateFields': aggregateFields!,
+      };
 }
 
 /// An array value.
@@ -2269,6 +2396,35 @@ class CompositeFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null) 'filters': filters!,
         if (op != null) 'op': op!,
+      };
+}
+
+/// Count of documents that match the query.
+///
+/// The `COUNT(*)` aggregation function operates on the entire document so it
+/// does not require a field reference.
+class Count {
+  /// Optional constraint on the maximum number of documents to count.
+  ///
+  /// This provides a way to set an upper bound on the number of documents to
+  /// scan, limiting latency and cost. Unspecified is interpreted as no bound.
+  /// High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k
+  /// ); ``` Requires: * Must be greater than zero when present.
+  ///
+  /// Optional.
+  core.String? upTo;
+
+  Count({
+    this.upTo,
+  });
+
+  Count.fromJson(core.Map json_)
+      : this(
+          upTo: json_.containsKey('upTo') ? json_['upTo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upTo != null) 'upTo': upTo!,
       };
 }
 
@@ -2829,6 +2985,14 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// Unspecified means all collections.
   core.List<core.String>? collectionIds;
 
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for databases that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the database has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
+
   /// The output URI.
   ///
   /// Currently only supports Google Cloud Storage URIs of the form:
@@ -2843,6 +3007,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 
   GoogleFirestoreAdminV1ExportDocumentsRequest({
     this.collectionIds,
+    this.namespaceIds,
     this.outputUriPrefix,
   });
 
@@ -2853,6 +3018,11 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          namespaceIds: json_.containsKey('namespaceIds')
+              ? (json_['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           outputUriPrefix: json_.containsKey('outputUriPrefix')
               ? json_['outputUriPrefix'] as core.String
               : null,
@@ -2860,6 +3030,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
         if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
       };
 }
@@ -2945,9 +3116,18 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   /// google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
   core.String? inputUriPrefix;
 
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for databases that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the database has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
+
   GoogleFirestoreAdminV1ImportDocumentsRequest({
     this.collectionIds,
     this.inputUriPrefix,
+    this.namespaceIds,
   });
 
   GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map json_)
@@ -2960,17 +3140,31 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
           inputUriPrefix: json_.containsKey('inputUriPrefix')
               ? json_['inputUriPrefix'] as core.String
               : null,
+          namespaceIds: json_.containsKey('namespaceIds')
+              ? (json_['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionIds != null) 'collectionIds': collectionIds!,
         if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
       };
 }
 
 /// Cloud Firestore indexes enable simple and complex queries against documents
 /// in a database.
 class GoogleFirestoreAdminV1Index {
+  /// The API scope supported by this index.
+  /// Possible string values are:
+  /// - "ANY_API" : The index can be used by both Firestore Native and Firestore
+  /// in Datastore Mode query API. This is the default.
+  /// - "DATASTORE_MODE_API" : The index can only be used by the Firestore in
+  /// Datastore Mode query API.
+  core.String? apiScope;
+
   /// The fields supported by this index.
   ///
   /// For composite indexes, this requires a minimum of 2 and a maximum of 100
@@ -3009,6 +3203,8 @@ class GoogleFirestoreAdminV1Index {
   /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
   /// specified allow queries against all collections that has the collection id
   /// specified by the index.
+  /// - "COLLECTION_RECURSIVE" : Include all the collections's ancestor in the
+  /// index. Only available for Datastore Mode databases.
   core.String? queryScope;
 
   /// The serving state of the index.
@@ -3031,6 +3227,7 @@ class GoogleFirestoreAdminV1Index {
   core.String? state;
 
   GoogleFirestoreAdminV1Index({
+    this.apiScope,
     this.fields,
     this.name,
     this.queryScope,
@@ -3039,6 +3236,9 @@ class GoogleFirestoreAdminV1Index {
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
       : this(
+          apiScope: json_.containsKey('apiScope')
+              ? json_['apiScope'] as core.String
+              : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
@@ -3054,6 +3254,7 @@ class GoogleFirestoreAdminV1Index {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiScope != null) 'apiScope': apiScope!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (queryScope != null) 'queryScope': queryScope!,
@@ -3901,6 +4102,120 @@ class RollbackRequest {
       };
 }
 
+/// The request for Firestore.RunAggregationQuery.
+class RunAggregationQueryRequest {
+  /// Starts a new transaction as part of the query, defaulting to read-only.
+  ///
+  /// The new transaction ID will be returned as the first response in the
+  /// stream.
+  TransactionOptions? newTransaction;
+
+  /// Executes the query at the given timestamp.
+  ///
+  /// Requires: * Cannot be more than 270 seconds in the past.
+  core.String? readTime;
+
+  /// An aggregation query.
+  StructuredAggregationQuery? structuredAggregationQuery;
+
+  /// Run the aggregation within an already active transaction.
+  ///
+  /// The value here is the opaque transaction ID to execute the query in.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  RunAggregationQueryRequest({
+    this.newTransaction,
+    this.readTime,
+    this.structuredAggregationQuery,
+    this.transaction,
+  });
+
+  RunAggregationQueryRequest.fromJson(core.Map json_)
+      : this(
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+          structuredAggregationQuery:
+              json_.containsKey('structuredAggregationQuery')
+                  ? StructuredAggregationQuery.fromJson(
+                      json_['structuredAggregationQuery']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newTransaction != null) 'newTransaction': newTransaction!,
+        if (readTime != null) 'readTime': readTime!,
+        if (structuredAggregationQuery != null)
+          'structuredAggregationQuery': structuredAggregationQuery!,
+        if (transaction != null) 'transaction': transaction!,
+      };
+}
+
+/// The response for Firestore.RunAggregationQuery.
+class RunAggregationQueryResponse {
+  /// The time at which the aggregate value is valid for.
+  core.String? readTime;
+
+  /// A single aggregation result.
+  ///
+  /// Not present when reporting partial progress.
+  AggregationResult? result;
+
+  /// The transaction that was started as part of this request.
+  ///
+  /// Only present on the first response when the request requested to start a
+  /// new transaction.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  RunAggregationQueryResponse({
+    this.readTime,
+    this.result,
+    this.transaction,
+  });
+
+  RunAggregationQueryResponse.fromJson(core.Map json_)
+      : this(
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+          result: json_.containsKey('result')
+              ? AggregationResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readTime != null) 'readTime': readTime!,
+        if (result != null) 'result': result!,
+        if (transaction != null) 'transaction': transaction!,
+      };
+}
+
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
   /// Starts a new transaction and reads the documents.
@@ -4074,6 +4389,44 @@ class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Firestore query for running an aggregation over a StructuredQuery.
+class StructuredAggregationQuery {
+  /// Series of aggregations to apply over the results of the
+  /// `structured_query`.
+  ///
+  /// Requires: * A minimum of one and maximum of five aggregations per query.
+  ///
+  /// Optional.
+  core.List<Aggregation>? aggregations;
+
+  /// Nested structured query.
+  StructuredQuery? structuredQuery;
+
+  StructuredAggregationQuery({
+    this.aggregations,
+    this.structuredQuery,
+  });
+
+  StructuredAggregationQuery.fromJson(core.Map json_)
+      : this(
+          aggregations: json_.containsKey('aggregations')
+              ? (json_['aggregations'] as core.List)
+                  .map((value) => Aggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          structuredQuery: json_.containsKey('structuredQuery')
+              ? StructuredQuery.fromJson(json_['structuredQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregations != null) 'aggregations': aggregations!,
+        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
+      };
+}
 
 /// A Firestore query.
 class StructuredQuery {

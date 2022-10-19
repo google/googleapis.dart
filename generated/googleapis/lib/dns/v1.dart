@@ -847,9 +847,9 @@ class ManagedZonesResource {
 
   /// Returns permissions that a caller has on the specified resource.
   ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
+  /// If the resource does not exist, this returns an empty set of permissions,
+  /// not a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -1798,7 +1798,7 @@ class ResponsePoliciesResource {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
-  /// [responsePolicy] - User assigned name of the Respones Policy addressed by
+  /// [responsePolicy] - User assigned name of the response policy addressed by
   /// this request.
   ///
   /// [clientOperationId] - For mutating operation requests only. An optional
@@ -3329,11 +3329,18 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
   /// IPv4 address of a target name server.
   core.String? ipv4Address;
+
+  /// IPv6 address of a target name server.
+  ///
+  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
+  /// as of November 2022.
+  core.String? ipv6Address;
   core.String? kind;
 
   ManagedZoneForwardingConfigNameServerTarget({
     this.forwardingPath,
     this.ipv4Address,
+    this.ipv6Address,
     this.kind,
   });
 
@@ -3345,12 +3352,16 @@ class ManagedZoneForwardingConfigNameServerTarget {
           ipv4Address: json_.containsKey('ipv4Address')
               ? json_['ipv4Address'] as core.String
               : null,
+          ipv6Address: json_.containsKey('ipv6Address')
+              ? json_['ipv6Address'] as core.String
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4107,13 +4118,20 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// - "private" : Cloud DNS always forwards to this target through the VPC.
   core.String? forwardingPath;
 
-  /// IPv4 address to forward to.
+  /// IPv4 address to forward queries to.
   core.String? ipv4Address;
+
+  /// IPv6 address to forward to.
+  ///
+  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
+  /// as of November 2022.
+  core.String? ipv6Address;
   core.String? kind;
 
   PolicyAlternativeNameServerConfigTargetNameServer({
     this.forwardingPath,
     this.ipv4Address,
+    this.ipv6Address,
     this.kind,
   });
 
@@ -4125,12 +4143,16 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
           ipv4Address: json_.containsKey('ipv4Address')
               ? json_['ipv4Address'] as core.String
               : null,
+          ipv6Address: json_.containsKey('ipv6Address')
+              ? json_['ipv6Address'] as core.String
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5013,15 +5035,16 @@ class ResponseHeader {
 class ResponsePoliciesListResponse {
   ResponseHeader? header;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// The presence of this field indicates that more results exist following
+  /// your last page of results in pagination order.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you the complete contents of even very large collections
-  /// one page at a time. However, if the contents of the collection change
-  /// between the first and last paginated list request, the set of all elements
-  /// returned are an inconsistent view of the collection. You cannot retrieve a
-  /// consistent snapshot of a collection larger than the maximum page size.
+  /// To fetch them, make another list request by using this value as your page
+  /// token. This lets you view the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You cannot
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The Response Policy resources.
@@ -5125,6 +5148,9 @@ class ResponsePolicy {
   core.String? id;
   core.String? kind;
 
+  /// User labels.
+  core.Map<core.String, core.String>? labels;
+
   /// List of network names specifying networks to which this policy is applied.
   core.List<ResponsePolicyNetwork>? networks;
 
@@ -5136,6 +5162,7 @@ class ResponsePolicy {
     this.gkeClusters,
     this.id,
     this.kind,
+    this.labels,
     this.networks,
     this.responsePolicyName,
   });
@@ -5153,6 +5180,14 @@ class ResponsePolicy {
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           networks: json_.containsKey('networks')
               ? (json_['networks'] as core.List)
                   .map((value) => ResponsePolicyNetwork.fromJson(
@@ -5169,6 +5204,7 @@ class ResponsePolicy {
         if (gkeClusters != null) 'gkeClusters': gkeClusters!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
         if (networks != null) 'networks': networks!,
         if (responsePolicyName != null)
           'responsePolicyName': responsePolicyName!,

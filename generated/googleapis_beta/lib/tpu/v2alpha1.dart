@@ -25,6 +25,7 @@
 ///     - [ProjectsLocationsAcceleratorTypesResource]
 ///     - [ProjectsLocationsNodesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsQueuedResourcesResource]
 ///     - [ProjectsLocationsRuntimeVersionsResource]
 library tpu.v2alpha1;
 
@@ -78,6 +79,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsNodesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsQueuedResourcesResource get queuedResources =>
+      ProjectsLocationsQueuedResourcesResource(_requester);
   ProjectsLocationsRuntimeVersionsResource get runtimeVersions =>
       ProjectsLocationsRuntimeVersionsResource(_requester);
 
@@ -893,6 +896,186 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsQueuedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsQueuedResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a QueuedResource TPU instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [queuedResourceId] - The unqualified resource name. Should follow the
+  /// ^\[A-Za-z0-9_.~+%-\]+$ regex format.
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    QueuedResource request,
+    core.String parent, {
+    core.String? queuedResourceId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (queuedResourceId != null) 'queuedResourceId': [queuedResourceId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2alpha1/' + core.Uri.encodeFull('$parent') + '/queuedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a QueuedResource TPU instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queuedResources/\[^/\]+$`.
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2alpha1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a queued resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queuedResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueuedResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueuedResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2alpha1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueuedResource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists queued resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListQueuedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListQueuedResourcesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2alpha1/' + core.Uri.encodeFull('$parent') + '/queuedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListQueuedResourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsRuntimeVersionsResource {
   final commons.ApiRequester _requester;
 
@@ -996,7 +1179,7 @@ class AcceleratorType {
   /// The resource name.
   core.String? name;
 
-  /// the accelerator type.
+  /// The accelerator type.
   core.String? type;
 
   AcceleratorType({
@@ -1015,6 +1198,9 @@ class AcceleratorType {
         if (type != null) 'type': type!,
       };
 }
+
+/// Further data for the accepted state.
+typedef AcceptedData = $Empty;
 
 /// An access config attached to the TPU worker.
 class AccessConfig {
@@ -1038,6 +1224,9 @@ class AccessConfig {
         if (externalIp != null) 'externalIp': externalIp!,
       };
 }
+
+/// Further data for the active state.
+typedef ActiveData = $Empty;
 
 /// A node-attached disk resource.
 ///
@@ -1079,6 +1268,15 @@ class AttachedDisk {
       };
 }
 
+/// BestEffort tier definition.
+typedef BestEffort = $Empty;
+
+/// Further data for the creating state.
+typedef CreatingData = $Empty;
+
+/// Further data for the deleting state.
+typedef DeletingData = $Empty;
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1086,6 +1284,28 @@ class AttachedDisk {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Further data for the failed state.
+class FailedData {
+  /// The error that caused the queued resource to enter the FAILED state.
+  Status? error;
+
+  FailedData({
+    this.error,
+  });
+
+  FailedData.fromJson(core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+      };
+}
 
 /// Request for GenerateServiceIdentity.
 typedef GenerateServiceIdentityRequest = $Empty;
@@ -1166,6 +1386,42 @@ class GetGuestAttributesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guestAttributes != null) 'guestAttributes': guestAttributes!,
+      };
+}
+
+/// Guaranteed tier definition.
+class Guaranteed {
+  /// Defines the minimum duration of the guarantee.
+  ///
+  /// If specified, the requested resources will only be provisioned if they can
+  /// be allocated for at least the given duration.
+  ///
+  /// Optional.
+  core.String? minDuration;
+
+  /// Specifies the request should be scheduled on reserved capacity.
+  ///
+  /// Optional.
+  core.bool? reserved;
+
+  Guaranteed({
+    this.minDuration,
+    this.reserved,
+  });
+
+  Guaranteed.fromJson(core.Map json_)
+      : this(
+          minDuration: json_.containsKey('minDuration')
+              ? json_['minDuration'] as core.String
+              : null,
+          reserved: json_.containsKey('reserved')
+              ? json_['reserved'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minDuration != null) 'minDuration': minDuration!,
+        if (reserved != null) 'reserved': reserved!,
       };
 }
 
@@ -1257,6 +1513,50 @@ class GuestAttributesValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null) 'items': items!,
+      };
+}
+
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end. When the start equals the
+/// end, the interval is empty (matches no time). When both start and end are
+/// unspecified, the interval matches any time.
+class Interval {
+  /// Exclusive end of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Inclusive start of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  Interval({
+    this.endTime,
+    this.startTime,
+  });
+
+  Interval.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1405,6 +1705,48 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response for ListQueuedResources.
+class ListQueuedResourcesResponse {
+  /// The next page token or empty if none.
+  core.String? nextPageToken;
+
+  /// The listed queued resources.
+  core.List<QueuedResource>? queuedResources;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListQueuedResourcesResponse({
+    this.nextPageToken,
+    this.queuedResources,
+    this.unreachable,
+  });
+
+  ListQueuedResourcesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          queuedResources: json_.containsKey('queuedResources')
+              ? (json_['queuedResources'] as core.List)
+                  .map((value) => QueuedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (queuedResources != null) 'queuedResources': queuedResources!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -1632,6 +1974,11 @@ class Node {
   /// Output only.
   core.List<NetworkEndpoint>? networkEndpoints;
 
+  /// The qualified name of the QueuedResource that requested this Node.
+  ///
+  /// Output only.
+  core.String? queuedResource;
+
   /// The runtime version running in the Node.
   ///
   /// Required.
@@ -1697,6 +2044,7 @@ class Node {
     this.name,
     this.networkConfig,
     this.networkEndpoints,
+    this.queuedResource,
     this.runtimeVersion,
     this.schedulingConfig,
     this.serviceAccount,
@@ -1763,6 +2111,9 @@ class Node {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          queuedResource: json_.containsKey('queuedResource')
+              ? json_['queuedResource'] as core.String
+              : null,
           runtimeVersion: json_.containsKey('runtimeVersion')
               ? json_['runtimeVersion'] as core.String
               : null,
@@ -1808,6 +2159,7 @@ class Node {
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (networkEndpoints != null) 'networkEndpoints': networkEndpoints!,
+        if (queuedResource != null) 'queuedResource': queuedResource!,
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (schedulingConfig != null) 'schedulingConfig': schedulingConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -1816,6 +2168,56 @@ class Node {
         if (state != null) 'state': state!,
         if (symptoms != null) 'symptoms': symptoms!,
         if (tags != null) 'tags': tags!,
+      };
+}
+
+/// Details of the TPU node(s) being requested.
+///
+/// Users can request either a single node or multiple nodes. NodeSpec provides
+/// the specification for node(s) to be created.
+class NodeSpec {
+  /// The node.
+  ///
+  /// Required.
+  Node? node;
+
+  /// The unqualified resource name.
+  ///
+  /// Should follow the ^\[A-Za-z0-9_.~+%-\]+$ regex format. This is only
+  /// specified when requesting a single node. In case of multi-node requests,
+  /// multi_node_params must be populated instead. It's an error to specify both
+  /// node_id and multi_node_params.
+  core.String? nodeId;
+
+  /// The parent resource name.
+  ///
+  /// Required.
+  core.String? parent;
+
+  NodeSpec({
+    this.node,
+    this.nodeId,
+    this.parent,
+  });
+
+  NodeSpec.fromJson(core.Map json_)
+      : this(
+          node: json_.containsKey('node')
+              ? Node.fromJson(
+                  json_['node'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeId: json_.containsKey('nodeId')
+              ? json_['nodeId'] as core.String
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (node != null) 'node': node!,
+        if (nodeId != null) 'nodeId': nodeId!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -1892,6 +2294,254 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Further data for the provisioning state.
+typedef ProvisioningData = $Empty;
+
+/// A QueuedResource represents a request for resources that will be placed in a
+/// queue and fulfilled when the necessary resources are available.
+class QueuedResource {
+  /// The BestEffort tier.
+  BestEffort? bestEffort;
+
+  /// The Guaranteed tier
+  Guaranteed? guaranteed;
+
+  /// The name of the QueuedResource.
+  ///
+  /// Output only. Immutable.
+  core.String? name;
+
+  /// The queueing policy of the QueuedRequest.
+  QueueingPolicy? queueingPolicy;
+
+  /// State of the QueuedResource request
+  ///
+  /// Output only.
+  QueuedResourceState? state;
+
+  /// Defines a TPU resource.
+  Tpu? tpu;
+
+  QueuedResource({
+    this.bestEffort,
+    this.guaranteed,
+    this.name,
+    this.queueingPolicy,
+    this.state,
+    this.tpu,
+  });
+
+  QueuedResource.fromJson(core.Map json_)
+      : this(
+          bestEffort: json_.containsKey('bestEffort')
+              ? BestEffort.fromJson(
+                  json_['bestEffort'] as core.Map<core.String, core.dynamic>)
+              : null,
+          guaranteed: json_.containsKey('guaranteed')
+              ? Guaranteed.fromJson(
+                  json_['guaranteed'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          queueingPolicy: json_.containsKey('queueingPolicy')
+              ? QueueingPolicy.fromJson(json_['queueingPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_.containsKey('state')
+              ? QueuedResourceState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tpu: json_.containsKey('tpu')
+              ? Tpu.fromJson(
+                  json_['tpu'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bestEffort != null) 'bestEffort': bestEffort!,
+        if (guaranteed != null) 'guaranteed': guaranteed!,
+        if (name != null) 'name': name!,
+        if (queueingPolicy != null) 'queueingPolicy': queueingPolicy!,
+        if (state != null) 'state': state!,
+        if (tpu != null) 'tpu': tpu!,
+      };
+}
+
+/// QueuedResourceState defines the details of the QueuedResource request.
+class QueuedResourceState {
+  /// Further data for the accepted state.
+  AcceptedData? acceptedData;
+
+  /// Further data for the active state.
+  ActiveData? activeData;
+
+  /// Further data for the creating state.
+  CreatingData? creatingData;
+
+  /// Further data for the deleting state.
+  DeletingData? deletingData;
+
+  /// Further data for the failed state.
+  FailedData? failedData;
+
+  /// Further data for the provisioning state.
+  ProvisioningData? provisioningData;
+
+  /// State of the QueuedResource request.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State of the QueuedResource request is not
+  /// known/set.
+  /// - "CREATING" : The QueuedResource request has been received. We’re still
+  /// working on determining if we will be able to honor this request.
+  /// - "ACCEPTED" : The QueuedResource request has passed initial
+  /// validation/admission control and has been persisted in the queue.
+  /// - "PROVISIONING" : The QueuedResource request has been selected. The
+  /// associated resources are currently being provisioned (or very soon will
+  /// begin provisioning).
+  /// - "FAILED" : The request could not be completed. This may be due to some
+  /// late-discovered problem with the request itself, or due to unavailability
+  /// of resources within the constraints of the request (e.g., the ‘valid
+  /// until’ start timing constraint expired).
+  /// - "DELETING" : The QueuedResource is being deleted.
+  /// - "ACTIVE" : The resources specified in the QueuedResource request have
+  /// been provisioned and are ready for use by the end-user/consumer.
+  /// - "SUSPENDING" : The resources specified in the QueuedResource request are
+  /// being deleted. This may have been initiated by the user, or the Cloud TPU
+  /// service. Inspect the state data for more details.
+  /// - "SUSPENDED" : The resources specified in the QueuedResource request have
+  /// been deleted.
+  core.String? state;
+
+  /// Further data for the suspended state.
+  SuspendedData? suspendedData;
+
+  /// Further data for the suspending state.
+  SuspendingData? suspendingData;
+
+  QueuedResourceState({
+    this.acceptedData,
+    this.activeData,
+    this.creatingData,
+    this.deletingData,
+    this.failedData,
+    this.provisioningData,
+    this.state,
+    this.suspendedData,
+    this.suspendingData,
+  });
+
+  QueuedResourceState.fromJson(core.Map json_)
+      : this(
+          acceptedData: json_.containsKey('acceptedData')
+              ? AcceptedData.fromJson(
+                  json_['acceptedData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          activeData: json_.containsKey('activeData')
+              ? ActiveData.fromJson(
+                  json_['activeData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          creatingData: json_.containsKey('creatingData')
+              ? CreatingData.fromJson(
+                  json_['creatingData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deletingData: json_.containsKey('deletingData')
+              ? DeletingData.fromJson(
+                  json_['deletingData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          failedData: json_.containsKey('failedData')
+              ? FailedData.fromJson(
+                  json_['failedData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          provisioningData: json_.containsKey('provisioningData')
+              ? ProvisioningData.fromJson(json_['provisioningData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          suspendedData: json_.containsKey('suspendedData')
+              ? SuspendedData.fromJson(
+                  json_['suspendedData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          suspendingData: json_.containsKey('suspendingData')
+              ? SuspendingData.fromJson(json_['suspendingData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceptedData != null) 'acceptedData': acceptedData!,
+        if (activeData != null) 'activeData': activeData!,
+        if (creatingData != null) 'creatingData': creatingData!,
+        if (deletingData != null) 'deletingData': deletingData!,
+        if (failedData != null) 'failedData': failedData!,
+        if (provisioningData != null) 'provisioningData': provisioningData!,
+        if (state != null) 'state': state!,
+        if (suspendedData != null) 'suspendedData': suspendedData!,
+        if (suspendingData != null) 'suspendingData': suspendingData!,
+      };
+}
+
+/// Defines the policy of the QueuedRequest.
+class QueueingPolicy {
+  /// A relative time after which resources may be created.
+  core.String? validAfterDuration;
+
+  /// An absolute time at which resources may be created.
+  core.String? validAfterTime;
+
+  /// An absolute time interval within which resources may be created.
+  Interval? validInterval;
+
+  /// A relative time after which resources should not be created.
+  ///
+  /// If the request cannot be fulfilled by this time the request will be
+  /// failed.
+  core.String? validUntilDuration;
+
+  /// An absolute time after which resources should not be created.
+  ///
+  /// If the request cannot be fulfilled by this time the request will be
+  /// failed.
+  core.String? validUntilTime;
+
+  QueueingPolicy({
+    this.validAfterDuration,
+    this.validAfterTime,
+    this.validInterval,
+    this.validUntilDuration,
+    this.validUntilTime,
+  });
+
+  QueueingPolicy.fromJson(core.Map json_)
+      : this(
+          validAfterDuration: json_.containsKey('validAfterDuration')
+              ? json_['validAfterDuration'] as core.String
+              : null,
+          validAfterTime: json_.containsKey('validAfterTime')
+              ? json_['validAfterTime'] as core.String
+              : null,
+          validInterval: json_.containsKey('validInterval')
+              ? Interval.fromJson(
+                  json_['validInterval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validUntilDuration: json_.containsKey('validUntilDuration')
+              ? json_['validUntilDuration'] as core.String
+              : null,
+          validUntilTime: json_.containsKey('validUntilTime')
+              ? json_['validUntilTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (validAfterDuration != null)
+          'validAfterDuration': validAfterDuration!,
+        if (validAfterTime != null) 'validAfterTime': validAfterTime!,
+        if (validInterval != null) 'validInterval': validInterval!,
+        if (validUntilDuration != null)
+          'validUntilDuration': validUntilDuration!,
+        if (validUntilTime != null) 'validUntilTime': validUntilTime!,
       };
 }
 
@@ -2068,6 +2718,12 @@ typedef Status = $Status;
 /// Request for StopNode.
 typedef StopNodeRequest = $Empty;
 
+/// Further data for the suspended state.
+typedef SuspendedData = $Empty;
+
+/// Further data for the suspending state.
+typedef SuspendingData = $Empty;
+
 /// A Symptom instance.
 class Symptom {
   /// Timestamp when the Symptom is created.
@@ -2120,5 +2776,29 @@ class Symptom {
         if (details != null) 'details': details!,
         if (symptomType != null) 'symptomType': symptomType!,
         if (workerId != null) 'workerId': workerId!,
+      };
+}
+
+/// Details of the TPU resource(s) being requested.
+class Tpu {
+  /// The TPU node(s) being requested.
+  core.List<NodeSpec>? nodeSpec;
+
+  Tpu({
+    this.nodeSpec,
+  });
+
+  Tpu.fromJson(core.Map json_)
+      : this(
+          nodeSpec: json_.containsKey('nodeSpec')
+              ? (json_['nodeSpec'] as core.List)
+                  .map((value) => NodeSpec.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeSpec != null) 'nodeSpec': nodeSpec!,
       };
 }

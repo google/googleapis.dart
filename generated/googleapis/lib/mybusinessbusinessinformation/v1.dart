@@ -15,7 +15,8 @@
 /// My Business Business Information API - v1
 ///
 /// The My Business Business Information API provides an interface for managing
-/// business information on Google.
+/// business information. Note - If you have a quota of 0 after enabling the
+/// API, please request for GBP API access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -47,7 +48,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The My Business Business Information API provides an interface for managing
-/// business information on Google.
+/// business information.
+///
+/// Note - If you have a quota of 0 after enabling the API, please request for
+/// GBP API access.
 class MyBusinessBusinessInformationApi {
   final commons.ApiRequester _requester;
 

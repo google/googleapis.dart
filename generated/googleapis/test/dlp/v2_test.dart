@@ -1999,6 +1999,29 @@ void checkGooglePrivacyDlpV2Error(api.GooglePrivacyDlpV2Error o) {
   buildCounterGooglePrivacyDlpV2Error--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2ExcludeByHotword = 0;
+api.GooglePrivacyDlpV2ExcludeByHotword
+    buildGooglePrivacyDlpV2ExcludeByHotword() {
+  final o = api.GooglePrivacyDlpV2ExcludeByHotword();
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword++;
+  if (buildCounterGooglePrivacyDlpV2ExcludeByHotword < 3) {
+    o.hotwordRegex = buildGooglePrivacyDlpV2Regex();
+    o.proximity = buildGooglePrivacyDlpV2Proximity();
+  }
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2ExcludeByHotword(
+    api.GooglePrivacyDlpV2ExcludeByHotword o) {
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword++;
+  if (buildCounterGooglePrivacyDlpV2ExcludeByHotword < 3) {
+    checkGooglePrivacyDlpV2Regex(o.hotwordRegex!);
+    checkGooglePrivacyDlpV2Proximity(o.proximity!);
+  }
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword--;
+}
+
 core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed21() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
@@ -2037,6 +2060,7 @@ api.GooglePrivacyDlpV2ExclusionRule buildGooglePrivacyDlpV2ExclusionRule() {
   buildCounterGooglePrivacyDlpV2ExclusionRule++;
   if (buildCounterGooglePrivacyDlpV2ExclusionRule < 3) {
     o.dictionary = buildGooglePrivacyDlpV2Dictionary();
+    o.excludeByHotword = buildGooglePrivacyDlpV2ExcludeByHotword();
     o.excludeInfoTypes = buildGooglePrivacyDlpV2ExcludeInfoTypes();
     o.matchingType = 'foo';
     o.regex = buildGooglePrivacyDlpV2Regex();
@@ -2050,6 +2074,7 @@ void checkGooglePrivacyDlpV2ExclusionRule(
   buildCounterGooglePrivacyDlpV2ExclusionRule++;
   if (buildCounterGooglePrivacyDlpV2ExclusionRule < 3) {
     checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
+    checkGooglePrivacyDlpV2ExcludeByHotword(o.excludeByHotword!);
     checkGooglePrivacyDlpV2ExcludeInfoTypes(o.excludeInfoTypes!);
     unittest.expect(
       o.matchingType!,
@@ -2822,6 +2847,7 @@ api.GooglePrivacyDlpV2InfoTypeDescription
     o.description = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.supportedBy = buildUnnamed31();
     o.versions = buildUnnamed32();
   }
@@ -2846,6 +2872,7 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
       o.name!,
       unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     checkUnnamed31(o.supportedBy!);
     checkUnnamed32(o.versions!);
   }
@@ -5476,6 +5503,30 @@ void checkGooglePrivacyDlpV2SelectedInfoTypes(
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2SensitivityScore = 0;
+api.GooglePrivacyDlpV2SensitivityScore
+    buildGooglePrivacyDlpV2SensitivityScore() {
+  final o = api.GooglePrivacyDlpV2SensitivityScore();
+  buildCounterGooglePrivacyDlpV2SensitivityScore++;
+  if (buildCounterGooglePrivacyDlpV2SensitivityScore < 3) {
+    o.score = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2SensitivityScore--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2SensitivityScore(
+    api.GooglePrivacyDlpV2SensitivityScore o) {
+  buildCounterGooglePrivacyDlpV2SensitivityScore++;
+  if (buildCounterGooglePrivacyDlpV2SensitivityScore < 3) {
+    unittest.expect(
+      o.score!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2SensitivityScore--;
+}
+
 core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> buildUnnamed77() => [
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
@@ -7255,6 +7306,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2ExcludeByHotword', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ExcludeByHotword();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ExcludeByHotword.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ExcludeByHotword(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2ExcludeInfoTypes', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2ExcludeInfoTypes();
@@ -8332,6 +8393,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2SelectedInfoTypes.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SelectedInfoTypes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2SensitivityScore', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2SensitivityScore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2SensitivityScore.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2SensitivityScore(od);
     });
   });
 

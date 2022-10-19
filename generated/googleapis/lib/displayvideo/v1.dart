@@ -488,7 +488,7 @@ class AdvertisersResource {
   /// suffix "desc" should be added to the field name. For example, `displayName
   /// desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -913,7 +913,7 @@ class AdvertisersCampaignsResource {
   /// suffix "desc" should be added to the field name. Example: `displayName
   /// desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -1519,7 +1519,7 @@ class AdvertisersChannelsResource {
   /// ascending. To specify descending order for a field, a suffix " desc"
   /// should be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -2118,7 +2118,7 @@ class AdvertisersCreativesResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `createTime desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -2985,7 +2985,7 @@ class AdvertisersInvoicesResource {
   /// - "LOI_SAPIN_INVOICE_TYPE_MEDIA" : Invoices with Media cost.
   /// - "LOI_SAPIN_INVOICE_TYPE_PLATFORM" : Invoices with Platform fee.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -3095,8 +3095,8 @@ class AdvertisersLineItemsResource {
   /// create the assigned targeting options provided in
   /// BulkEditLineItemAssignedTargetingOptionsRequest.create_requests. Requests
   /// to this endpoint cannot be made concurrently with the following requests
-  /// updating the same line item: * BulkEditLineItemAssignedTargetingOptions *
-  /// UpdateLineItem * CreateLineItemAssignedTargetingOption *
+  /// updating the same line item: * UpdateLineItem *
+  /// CreateLineItemAssignedTargetingOption *
   /// DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
@@ -3464,7 +3464,7 @@ class AdvertisersLineItemsResource {
   /// order for a field, a suffix "desc" should be added to the field name.
   /// Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -3515,7 +3515,7 @@ class AdvertisersLineItemsResource {
   ///
   /// Returns the updated line item if successful. Requests to this endpoint
   /// cannot be made concurrently with the following requests updating the same
-  /// line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+  /// line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems *
   /// CreateLineItemAssignedTargetingOption *
   /// DeleteLineItemAssignedTargetingOption
   ///
@@ -3594,9 +3594,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// Returns the assigned targeting option if successful. Requests to this
   /// endpoint cannot be made concurrently with the following requests updating
-  /// the same line item: * BulkEditLineItemAssignedTargetingOptions *
-  /// UpdateLineItem * CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// the same line item: * BulkEditAssignedTargetingOptions * BulkUpdate *
+  /// UpdateLineItem * DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
   ///
@@ -3752,10 +3751,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Deletes an assigned targeting option from a line item.
   ///
   /// Requests to this endpoint cannot be made concurrently with the following
-  /// requests updating the same line item: *
-  /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
-  /// CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// requests updating the same line item: * BulkEditAssignedTargetingOptions *
+  /// BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption
   ///
   /// Request parameters:
   ///
@@ -4367,7 +4364,7 @@ class AdvertisersLocationListsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. Defaults
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. Defaults
   /// to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid
   /// value is specified.
   ///
@@ -4653,7 +4650,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
   /// specify descending order for a field, a suffix " desc" should be added to
   /// the field name. Example: `assignedLocationId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -4930,7 +4927,7 @@ class AdvertisersManualTriggersResource {
   /// To specify descending order for a field, a suffix "desc" should be added
   /// to the field name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -5188,7 +5185,7 @@ class AdvertisersNegativeKeywordListsResource {
   /// fetched negative keyword lists belong.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. Defaults
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. Defaults
   /// to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid
   /// value is specified.
   ///
@@ -5905,8 +5902,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6055,8 +6051,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6294,7 +6289,7 @@ class CombinedAudiencesResource {
   /// is ascending. To specify descending order for a field, a suffix "desc"
   /// should be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -6475,7 +6470,7 @@ class CustomBiddingAlgorithmsResource {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -6768,7 +6763,7 @@ class CustomBiddingAlgorithmsScriptsResource {
   /// specify ascending order for a field, the suffix "desc" should be removed.
   /// Example: `createTime`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -6891,7 +6886,7 @@ class CustomListsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -7109,7 +7104,7 @@ class FirstAndThirdPartyAudiencesResource {
   /// suffix "desc" should be added to the field name. Example: `displayName
   /// desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -7394,7 +7389,7 @@ class GoogleAudiencesResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -7621,8 +7616,8 @@ class GuaranteedOrdersResource {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified or greater than `100` will default to `100`.
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
+  /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -7913,7 +7908,7 @@ class InventorySourceGroupsResource {
   /// order is ascending. To specify descending order for a field, a suffix
   /// "desc" should be added to the field name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -8446,7 +8441,7 @@ class InventorySourcesResource {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -8787,7 +8782,7 @@ class PartnersResource {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -8955,7 +8950,7 @@ class PartnersChannelsResource {
   /// ascending. To specify descending order for a field, a suffix " desc"
   /// should be added to the field name. Example: `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -9933,7 +9928,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -10398,7 +10393,7 @@ class TargetingTypesTargetingOptionsResource {
   /// specify descending order for a field, a suffix "desc" should be added to
   /// the field name. Example: `targetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -10788,7 +10783,7 @@ class UsersResource {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. For example, `displayName desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -10883,145 +10878,11 @@ class UsersResource {
 typedef ActivateManualTriggerRequest = $Empty;
 
 /// Configuration for custom Active View video viewability metrics.
-class ActiveViewVideoViewabilityMetricConfig {
-  /// The display name of the custom metric.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The minimum visible video duration required (in seconds) in order for an
-  /// impression to be recorded.
-  ///
-  /// You must specify minimum_duration, minimum_quartile or both. If both are
-  /// specified, an impression meets the metric criteria if either requirement
-  /// is met (whichever happens first).
-  /// Possible string values are:
-  /// - "VIDEO_DURATION_UNSPECIFIED" : Value is not specified or is unknown in
-  /// this version.
-  /// - "VIDEO_DURATION_SECONDS_NONE" : No duration value.
-  /// - "VIDEO_DURATION_SECONDS_0" : 0 seconds.
-  /// - "VIDEO_DURATION_SECONDS_1" : 1 second.
-  /// - "VIDEO_DURATION_SECONDS_2" : 2 seconds.
-  /// - "VIDEO_DURATION_SECONDS_3" : 3 seconds.
-  /// - "VIDEO_DURATION_SECONDS_4" : 4 seconds.
-  /// - "VIDEO_DURATION_SECONDS_5" : 5 seconds.
-  /// - "VIDEO_DURATION_SECONDS_6" : 6 seconds.
-  /// - "VIDEO_DURATION_SECONDS_7" : 7 seconds.
-  /// - "VIDEO_DURATION_SECONDS_8" : 8 seconds.
-  /// - "VIDEO_DURATION_SECONDS_9" : 9 seconds.
-  /// - "VIDEO_DURATION_SECONDS_10" : 10 seconds.
-  /// - "VIDEO_DURATION_SECONDS_11" : 11 seconds.
-  /// - "VIDEO_DURATION_SECONDS_12" : 12 seconds.
-  /// - "VIDEO_DURATION_SECONDS_13" : 13 seconds.
-  /// - "VIDEO_DURATION_SECONDS_14" : 14 seconds.
-  /// - "VIDEO_DURATION_SECONDS_15" : 15 seconds.
-  /// - "VIDEO_DURATION_SECONDS_30" : 30 seconds.
-  /// - "VIDEO_DURATION_SECONDS_45" : 45 seconds.
-  /// - "VIDEO_DURATION_SECONDS_60" : 60 seconds.
-  core.String? minimumDuration;
-
-  /// The minimum visible video duration required, based on the video quartiles,
-  /// in order for an impression to be recorded.
-  ///
-  /// You must specify minimum_duration, minimum_quartile or both. If both are
-  /// specified, an impression meets the metric criteria if either requirement
-  /// is met (whichever happens first).
-  /// Possible string values are:
-  /// - "VIDEO_DURATION_QUARTILE_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "VIDEO_DURATION_QUARTILE_NONE" : No quartile value.
-  /// - "VIDEO_DURATION_QUARTILE_FIRST" : First quartile.
-  /// - "VIDEO_DURATION_QUARTILE_SECOND" : Second quartile (midpoint).
-  /// - "VIDEO_DURATION_QUARTILE_THIRD" : Third quartile.
-  /// - "VIDEO_DURATION_QUARTILE_FOURTH" : Fourth quartile (completion).
-  core.String? minimumQuartile;
-
-  /// The minimum percentage of the video ad's pixels visible on the screen in
-  /// order for an impression to be recorded.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIEWABILITY_PERCENT_UNSPECIFIED" : Value is not specified or is unknown
-  /// in this version.
-  /// - "VIEWABILITY_PERCENT_0" : 0% viewable.
-  /// - "VIEWABILITY_PERCENT_25" : 25% viewable.
-  /// - "VIEWABILITY_PERCENT_50" : 50% viewable.
-  /// - "VIEWABILITY_PERCENT_75" : 75% viewable.
-  /// - "VIEWABILITY_PERCENT_100" : 100% viewable.
-  core.String? minimumViewability;
-
-  /// The minimum percentage of the video ad's volume required in order for an
-  /// impression to be recorded.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIDEO_VOLUME_PERCENT_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "VIDEO_VOLUME_PERCENT_0" : 0% volume.
-  /// - "VIDEO_VOLUME_PERCENT_10" : 10% volume.
-  core.String? minimumVolume;
-
-  ActiveViewVideoViewabilityMetricConfig({
-    this.displayName,
-    this.minimumDuration,
-    this.minimumQuartile,
-    this.minimumViewability,
-    this.minimumVolume,
-  });
-
-  ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          minimumDuration: json_.containsKey('minimumDuration')
-              ? json_['minimumDuration'] as core.String
-              : null,
-          minimumQuartile: json_.containsKey('minimumQuartile')
-              ? json_['minimumQuartile'] as core.String
-              : null,
-          minimumViewability: json_.containsKey('minimumViewability')
-              ? json_['minimumViewability'] as core.String
-              : null,
-          minimumVolume: json_.containsKey('minimumVolume')
-              ? json_['minimumVolume'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (minimumDuration != null) 'minimumDuration': minimumDuration!,
-        if (minimumQuartile != null) 'minimumQuartile': minimumQuartile!,
-        if (minimumViewability != null)
-          'minimumViewability': minimumViewability!,
-        if (minimumVolume != null) 'minimumVolume': minimumVolume!,
-      };
-}
+typedef ActiveViewVideoViewabilityMetricConfig
+    = $ActiveViewVideoViewabilityMetricConfig;
 
 /// Details of Adloox settings.
-class Adloox {
-  /// Adloox's brand safety settings.
-  core.List<core.String>? excludedAdlooxCategories;
-
-  Adloox({
-    this.excludedAdlooxCategories,
-  });
-
-  Adloox.fromJson(core.Map json_)
-      : this(
-          excludedAdlooxCategories:
-              json_.containsKey('excludedAdlooxCategories')
-                  ? (json_['excludedAdlooxCategories'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedAdlooxCategories != null)
-          'excludedAdlooxCategories': excludedAdlooxCategories!,
-      };
-}
+typedef Adloox = $Adloox;
 
 /// A single advertiser in Display & Video 360 (DV360).
 class Advertiser {
@@ -11231,69 +11092,7 @@ class AdvertiserAdServerConfig {
 }
 
 /// Creatives related settings of an advertiser.
-class AdvertiserCreativeConfig {
-  /// Whether or not the advertiser is enabled for dynamic creatives.
-  core.bool? dynamicCreativeEnabled;
-
-  /// An ID for configuring campaign monitoring provided by Integral Ad Service
-  /// (IAS).
-  ///
-  /// The DV360 system will append an IAS "Campaign Monitor" tag containing this
-  /// ID to the creative tag.
-  core.String? iasClientId;
-
-  /// Whether or not to use DV360's Online Behavioral Advertising (OBA)
-  /// compliance.
-  ///
-  /// Warning: Changing OBA settings may cause the audit status of your
-  /// creatives to be reset by some ad exchanges, making them ineligible to
-  /// serve until they are re-approved.
-  core.bool? obaComplianceDisabled;
-
-  /// By setting this field to `true`, you, on behalf of your company, authorize
-  /// Google to use video creatives associated with this Display & Video 360
-  /// advertiser to provide reporting and features related to the advertiser's
-  /// television campaigns.
-  ///
-  /// Applicable only when the advertiser has a CM360 hybrid ad server
-  /// configuration.
-  core.bool? videoCreativeDataSharingAuthorized;
-
-  AdvertiserCreativeConfig({
-    this.dynamicCreativeEnabled,
-    this.iasClientId,
-    this.obaComplianceDisabled,
-    this.videoCreativeDataSharingAuthorized,
-  });
-
-  AdvertiserCreativeConfig.fromJson(core.Map json_)
-      : this(
-          dynamicCreativeEnabled: json_.containsKey('dynamicCreativeEnabled')
-              ? json_['dynamicCreativeEnabled'] as core.bool
-              : null,
-          iasClientId: json_.containsKey('iasClientId')
-              ? json_['iasClientId'] as core.String
-              : null,
-          obaComplianceDisabled: json_.containsKey('obaComplianceDisabled')
-              ? json_['obaComplianceDisabled'] as core.bool
-              : null,
-          videoCreativeDataSharingAuthorized:
-              json_.containsKey('videoCreativeDataSharingAuthorized')
-                  ? json_['videoCreativeDataSharingAuthorized'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicCreativeEnabled != null)
-          'dynamicCreativeEnabled': dynamicCreativeEnabled!,
-        if (iasClientId != null) 'iasClientId': iasClientId!,
-        if (obaComplianceDisabled != null)
-          'obaComplianceDisabled': obaComplianceDisabled!,
-        if (videoCreativeDataSharingAuthorized != null)
-          'videoCreativeDataSharingAuthorized':
-              videoCreativeDataSharingAuthorized!,
-      };
-}
+typedef AdvertiserCreativeConfig = $AdvertiserCreativeConfig;
 
 /// Settings that control how advertiser related data may be accessed.
 class AdvertiserDataAccessConfig {
@@ -11320,72 +11119,7 @@ class AdvertiserDataAccessConfig {
 }
 
 /// General settings of an advertiser.
-class AdvertiserGeneralConfig {
-  /// Advertiser's currency in ISO 4217 format.
-  ///
-  /// Accepted codes and the currencies they represent are: Currency Code :
-  /// Currency Name * `ARS` : Argentine Peso * `AUD` : Australian Dollar * `BRL`
-  /// : Brazilian Real * `CAD` : Canadian Dollar * `CHF` : Swiss Franc * `CLP` :
-  /// Chilean Peso * `CNY` : Chinese Yuan * `COP` : Colombian Peso * `CZK` :
-  /// Czech Koruna * `DKK` : Danish Krone * `EGP` : Egyption Pound * `EUR` :
-  /// Euro * `GBP` : British Pound * `HKD` : Hong Kong Dollar * `HUF` :
-  /// Hungarian Forint * `IDR` : Indonesian Rupiah * `ILS` : Israeli Shekel *
-  /// `INR` : Indian Rupee * `JPY` : Japanese Yen * `KRW` : South Korean Won *
-  /// `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit * `NGN` : Nigerian Naira
-  /// * `NOK` : Norwegian Krone * `NZD` : New Zealand Dollar * `PEN` : Peruvian
-  /// Nuevo Sol * `PLN` : Polish Zloty * `RON` : New Romanian Leu * `RUB` :
-  /// Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New
-  /// Taiwan Dollar * `USD` : US Dollar * `ZAR` : South African Rand
-  ///
-  /// Required. Immutable.
-  core.String? currencyCode;
-
-  /// The domain URL of the advertiser's primary website.
-  ///
-  /// The system will send this information to publishers that require website
-  /// URL to associate a campaign with an advertiser. Provide a URL with no path
-  /// or query string, beginning with `http:` or `https:`. For example,
-  /// http://www.example.com
-  ///
-  /// Required.
-  core.String? domainUrl;
-
-  /// The standard TZ database name of the advertiser's time zone.
-  ///
-  /// For example, `America/New_York`. See more at:
-  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360
-  /// hybrid advertisers, the time zone is the same as that of the associated
-  /// CM360 account; for third-party only advertisers, the time zone is the same
-  /// as that of the parent partner.
-  ///
-  /// Output only.
-  core.String? timeZone;
-
-  AdvertiserGeneralConfig({
-    this.currencyCode,
-    this.domainUrl,
-    this.timeZone,
-  });
-
-  AdvertiserGeneralConfig.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          domainUrl: json_.containsKey('domainUrl')
-              ? json_['domainUrl'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (domainUrl != null) 'domainUrl': domainUrl!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
-}
+typedef AdvertiserGeneralConfig = $AdvertiserGeneralConfig;
 
 /// Structured Data Files (SDF) settings of an advertiser.
 class AdvertiserSdfConfig {
@@ -11428,28 +11162,7 @@ class AdvertiserSdfConfig {
 }
 
 /// Targeting settings related to ad serving of an advertiser.
-class AdvertiserTargetingConfig {
-  /// Whether or not connected TV devices are exempt from viewability targeting
-  /// for all video line items under the advertiser.
-  core.bool? exemptTvFromViewabilityTargeting;
-
-  AdvertiserTargetingConfig({
-    this.exemptTvFromViewabilityTargeting,
-  });
-
-  AdvertiserTargetingConfig.fromJson(core.Map json_)
-      : this(
-          exemptTvFromViewabilityTargeting:
-              json_.containsKey('exemptTvFromViewabilityTargeting')
-                  ? json_['exemptTvFromViewabilityTargeting'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptTvFromViewabilityTargeting != null)
-          'exemptTvFromViewabilityTargeting': exemptTvFromViewabilityTargeting!,
-      };
-}
+typedef AdvertiserTargetingConfig = $AdvertiserTargetingConfig;
 
 /// Represents a targetable age range.
 ///
@@ -11474,26 +11187,6 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
   /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
   /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
   /// The targeting_option_id of a TargetingOption of type
@@ -11542,26 +11235,6 @@ class AgeRangeTargetingOptionDetails {
   /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
   /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
   /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
   AgeRangeTargetingOptionDetails({
@@ -11584,121 +11257,15 @@ class AgeRangeTargetingOptionDetails {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_APP`.
-class AppAssignedTargetingOptionDetails {
-  /// The ID of the app.
-  ///
-  /// Android's Play store app uses bundle ID, for example
-  /// `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for
-  /// example `422689480`.
-  ///
-  /// Required.
-  core.String? appId;
-
-  /// Indicates the platform of the targeted app.
-  ///
-  /// If this field is not specified, the app platform will be assumed to be
-  /// mobile (i.e., Android or iOS), and we will derive the appropriate mobile
-  /// platform from the app ID.
-  /// Possible string values are:
-  /// - "APP_PLATFORM_UNSPECIFIED" : Default value when app platform is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real platform option.
-  /// - "APP_PLATFORM_IOS" : The app platform is iOS.
-  /// - "APP_PLATFORM_ANDROID" : The app platform is Android.
-  /// - "APP_PLATFORM_ROKU" : The app platform is Roku.
-  /// - "APP_PLATFORM_AMAZON_FIRETV" : The app platform is Amazon FireTV.
-  /// - "APP_PLATFORM_PLAYSTATION" : The app platform is Playstation.
-  /// - "APP_PLATFORM_APPLE_TV" : The app platform is Apple TV.
-  /// - "APP_PLATFORM_XBOX" : The app platform is Xbox.
-  /// - "APP_PLATFORM_SAMSUNG_TV" : The app platform is Samsung TV.
-  /// - "APP_PLATFORM_ANDROID_TV" : The app platform is Android TV.
-  /// - "APP_PLATFORM_GENERIC_CTV" : The app platform is a CTV platform that is
-  /// not explicitly listed elsewhere.
-  core.String? appPlatform;
-
-  /// The display name of the app.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  AppAssignedTargetingOptionDetails({
-    this.appId,
-    this.appPlatform,
-    this.displayName,
-    this.negative,
-  });
-
-  AppAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          appPlatform: json_.containsKey('appPlatform')
-              ? json_['appPlatform'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (appPlatform != null) 'appPlatform': appPlatform!,
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-      };
-}
+typedef AppAssignedTargetingOptionDetails = $AppAssignedTargetingOptionDetails;
 
 /// Details for assigned app category targeting option.
 ///
 /// This will be populated in the app_category_details field of an
 /// AssignedTargetingOption when targeting_type is
 /// `TARGETING_TYPE_APP_CATEGORY`.
-class AppCategoryAssignedTargetingOptionDetails {
-  /// The display name of the app category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_APP_CATEGORY`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  AppCategoryAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef AppCategoryAssignedTargetingOptionDetails
+    = $AppCategoryAssignedTargetingOptionDetails;
 
 /// Represents a targetable collection of apps.
 ///
@@ -11706,61 +11273,10 @@ class AppCategoryAssignedTargetingOptionDetails {
 /// maintained by the platform, for example `All Apps/Google Play/Games`. This
 /// will be populated in the app_category_details field when targeting_type is
 /// `TARGETING_TYPE_APP_CATEGORY`.
-class AppCategoryTargetingOptionDetails {
-  /// The name of the app collection.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  AppCategoryTargetingOptionDetails({
-    this.displayName,
-  });
-
-  AppCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef AppCategoryTargetingOptionDetails = $AppCategoryTargetingOptionDetails;
 
 /// A single asset.
-class Asset {
-  /// The asset content.
-  ///
-  /// For uploaded assets, the content is the serving path.
-  core.String? content;
-
-  /// Media ID of the uploaded asset.
-  ///
-  /// This is a unique identifier for the asset. This ID can be passed to other
-  /// API calls, e.g. CreateCreative to associate the asset with a creative.
-  core.String? mediaId;
-
-  Asset({
-    this.content,
-    this.mediaId,
-  });
-
-  Asset.fromJson(core.Map json_)
-      : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          mediaId: json_.containsKey('mediaId')
-              ? json_['mediaId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (mediaId != null) 'mediaId': mediaId!,
-      };
-}
+typedef Asset = $Asset;
 
 /// Asset association for the creative.
 class AssetAssociation {
@@ -11878,100 +11394,13 @@ class AssetAssociation {
 
 /// An assignment between a targetable inventory source and an inventory source
 /// group.
-class AssignedInventorySource {
-  /// The unique ID of the assigned inventory source.
-  ///
-  /// The ID is only unique within a given inventory source group. It may be
-  /// reused in other contexts.
-  ///
-  /// Output only.
-  core.String? assignedInventorySourceId;
-
-  /// The ID of the inventory source entity being targeted.
-  ///
-  /// Required.
-  core.String? inventorySourceId;
-
-  /// The resource name of the assigned inventory source.
-  ///
-  /// Output only.
-  core.String? name;
-
-  AssignedInventorySource({
-    this.assignedInventorySourceId,
-    this.inventorySourceId,
-    this.name,
-  });
-
-  AssignedInventorySource.fromJson(core.Map json_)
-      : this(
-          assignedInventorySourceId:
-              json_.containsKey('assignedInventorySourceId')
-                  ? json_['assignedInventorySourceId'] as core.String
-                  : null,
-          inventorySourceId: json_.containsKey('inventorySourceId')
-              ? json_['inventorySourceId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedInventorySourceId != null)
-          'assignedInventorySourceId': assignedInventorySourceId!,
-        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef AssignedInventorySource = $AssignedInventorySource;
 
 /// An assignment between a location list and a relevant targeting option.
 ///
 /// Currently, geo region targeting options are the only supported option for
 /// assignment.
-class AssignedLocation {
-  /// The unique ID of the assigned location.
-  ///
-  /// The ID is only unique within a location list. It may be reused in other
-  /// contexts.
-  ///
-  /// Output only.
-  core.String? assignedLocationId;
-
-  /// The resource name of the assigned location.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The ID of the targeting option assigned to the location list.
-  ///
-  /// Must be of type TARGETING_TYPE_GEO_REGION.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  AssignedLocation({
-    this.assignedLocationId,
-    this.name,
-    this.targetingOptionId,
-  });
-
-  AssignedLocation.fromJson(core.Map json_)
-      : this(
-          assignedLocationId: json_.containsKey('assignedLocationId')
-              ? json_['assignedLocationId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedLocationId != null)
-          'assignedLocationId': assignedLocationId!,
-        if (name != null) 'name': name!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef AssignedLocation = $AssignedLocation;
 
 /// A single assigned targeting option, which defines the state of a targeting
 /// option for an entity with targeting settings.
@@ -12788,94 +12217,7 @@ class AssignedTargetingOption {
 
 /// A single assigned user role, which defines a user's authorized interaction
 /// with a specified partner or advertiser.
-class AssignedUserRole {
-  /// The ID of the advertiser that the assigend user role applies to.
-  core.String? advertiserId;
-
-  /// The ID of the assigned user role.
-  ///
-  /// Output only.
-  core.String? assignedUserRoleId;
-
-  /// The ID of the partner that the assigned user role applies to.
-  core.String? partnerId;
-
-  /// The user role to assign to a user for the entity.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "USER_ROLE_UNSPECIFIED" : Default value when the user role is not
-  /// specified or is unknown in this version.
-  /// - "ADMIN" : The user can manage campaigns, creatives, insertion orders,
-  /// line items, and reports for the entity. They can view and edit billing
-  /// information, create or modify users, and enable or disable exchanges. This
-  /// role can only be assigned for a partner entity.
-  /// - "ADMIN_PARTNER_CLIENT" : The user can manage campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They can create
-  /// and modify other `ADMIN_PARTNER_CLIENT` users and view billing
-  /// information. They cannot view revenue models, markups, or any other
-  /// reseller-sensitive fields. This role can only be assigned for a partner
-  /// entity.
-  /// - "STANDARD" : The user can manage campaigns, creatives, insertion orders,
-  /// line items, and reports for the entity. They cannot create and modify
-  /// users or view billing information.
-  /// - "STANDARD_PLANNER" : The user can view all campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity, including all
-  /// cost data. They can create and modify planning-related features, including
-  /// plans and inventory.
-  /// - "STANDARD_PLANNER_LIMITED" : The user can view all campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They can create
-  /// or modify planning-related features, including plans and inventory. They
-  /// have no access to cost data and cannot start, accept, or negotiate deals.
-  /// - "STANDARD_PARTNER_CLIENT" : The user can manage campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They cannot
-  /// create or modify other users or view billing information. They cannot view
-  /// revenue models, markups, or any other reseller-sensitive fields. This role
-  /// can only be assigned for an advertiser entity.
-  /// - "READ_ONLY" : The user can only build reports and view data for the
-  /// entity.
-  /// - "REPORTING_ONLY" : The user can only create and manage reports.
-  /// - "LIMITED_REPORTING_ONLY" : The user can only create and manage the
-  /// following client-safe reports: General, Audience Performance,
-  /// Cross-Partner, Keyword, Order ID, Category, and Third-Party Data Provider.
-  /// - "CREATIVE" : The user can view media plan information they need to
-  /// collaborate, but can't view cost-related data or Marketplace.
-  /// - "CREATIVE_ADMIN" : The user can view media plan information they need to
-  /// collaborate, but can't view cost-related data or Marketplace. In addition,
-  /// they can add other creative admins or creative users to the entity.
-  core.String? userRole;
-
-  AssignedUserRole({
-    this.advertiserId,
-    this.assignedUserRoleId,
-    this.partnerId,
-    this.userRole,
-  });
-
-  AssignedUserRole.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          assignedUserRoleId: json_.containsKey('assignedUserRoleId')
-              ? json_['assignedUserRoleId'] as core.String
-              : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-          userRole: json_.containsKey('userRole')
-              ? json_['userRole'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (assignedUserRoleId != null)
-          'assignedUserRoleId': assignedUserRoleId!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (userRole != null) 'userRole': userRole!,
-      };
-}
+typedef AssignedUserRole = $AssignedUserRole;
 
 /// Assigned audience group targeting option details.
 ///
@@ -13044,273 +12386,28 @@ class AudioContentTypeAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the audio_content_type_details field when
 /// targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
-class AudioContentTypeTargetingOptionDetails {
-  /// The audio content type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
-  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
-  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
-  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
-  core.String? audioContentType;
-
-  AudioContentTypeTargetingOptionDetails({
-    this.audioContentType,
-  });
-
-  AudioContentTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_.containsKey('audioContentType')
-              ? json_['audioContentType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audioContentType != null) 'audioContentType': audioContentType!,
-      };
-}
+typedef AudioContentTypeTargetingOptionDetails
+    = $AudioContentTypeTargetingOptionDetails;
 
 /// The length an audio or a video has been played.
-class AudioVideoOffset {
-  /// The offset in percentage of the audio or video duration.
-  core.String? percentage;
-
-  /// The offset in seconds from the start of the audio or video.
-  core.String? seconds;
-
-  AudioVideoOffset({
-    this.percentage,
-    this.seconds,
-  });
-
-  AudioVideoOffset.fromJson(core.Map json_)
-      : this(
-          percentage: json_.containsKey('percentage')
-              ? json_['percentage'] as core.String
-              : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentage != null) 'percentage': percentage!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef AudioVideoOffset = $AudioVideoOffset;
 
 /// Response message for AdvertiserService.AuditAdvertiser.
-class AuditAdvertiserResponse {
-  /// The number of individual targeting options from the following targeting
-  /// types that are assigned to a line item under this advertiser.
-  ///
-  /// These individual targeting options count towards the limit of 4500000 ad
-  /// group targeting options per advertiser. Qualifying Targeting types: *
-  /// Channels, URLs, apps, and collections * Demographic * Google Audiences,
-  /// including Affinity, Custom Affinity, and In-market audiences * Inventory
-  /// source * Keyword * Mobile app category * User lists * Video targeting *
-  /// Viewability
-  core.String? adGroupCriteriaCount;
-
-  /// The number of individual targeting options from the following targeting
-  /// types that are assigned to a line item under this advertiser.
-  ///
-  /// These individual targeting options count towards the limit of 900000
-  /// campaign targeting options per advertiser. Qualifying Targeting types: *
-  /// Position * Browser * Connection speed * Day and time * Device and
-  /// operating system * Digital content label * Sensitive categories *
-  /// Environment * Geography, including business chains and proximity * ISP *
-  /// Language * Third-party verification
-  core.String? campaignCriteriaCount;
-
-  /// The number of channels created under this advertiser.
-  ///
-  /// These channels count towards the limit of 1000 channels per advertiser.
-  core.String? channelsCount;
-
-  /// The number of negative keyword lists created under this advertiser.
-  ///
-  /// These negative keyword lists count towards the limit of 20 negative
-  /// keyword lists per advertiser.
-  core.String? negativeKeywordListsCount;
-
-  /// The number of negatively targeted channels created under this advertiser.
-  ///
-  /// These negatively targeted channels count towards the limit of 5 negatively
-  /// targeted channels per advertiser.
-  core.String? negativelyTargetedChannelsCount;
-
-  /// The number of ACTIVE and PAUSED campaigns under this advertiser.
-  ///
-  /// These campaigns count towards the limit of 9999 campaigns per advertiser.
-  core.String? usedCampaignsCount;
-
-  /// The number of ACTIVE, PAUSED and DRAFT insertion orders under this
-  /// advertiser.
-  ///
-  /// These insertion orders count towards the limit of 9999 insertion orders
-  /// per advertiser.
-  core.String? usedInsertionOrdersCount;
-
-  /// The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser.
-  ///
-  /// These line items count towards the limit of 9999 line items per
-  /// advertiser.
-  core.String? usedLineItemsCount;
-
-  AuditAdvertiserResponse({
-    this.adGroupCriteriaCount,
-    this.campaignCriteriaCount,
-    this.channelsCount,
-    this.negativeKeywordListsCount,
-    this.negativelyTargetedChannelsCount,
-    this.usedCampaignsCount,
-    this.usedInsertionOrdersCount,
-    this.usedLineItemsCount,
-  });
-
-  AuditAdvertiserResponse.fromJson(core.Map json_)
-      : this(
-          adGroupCriteriaCount: json_.containsKey('adGroupCriteriaCount')
-              ? json_['adGroupCriteriaCount'] as core.String
-              : null,
-          campaignCriteriaCount: json_.containsKey('campaignCriteriaCount')
-              ? json_['campaignCriteriaCount'] as core.String
-              : null,
-          channelsCount: json_.containsKey('channelsCount')
-              ? json_['channelsCount'] as core.String
-              : null,
-          negativeKeywordListsCount:
-              json_.containsKey('negativeKeywordListsCount')
-                  ? json_['negativeKeywordListsCount'] as core.String
-                  : null,
-          negativelyTargetedChannelsCount:
-              json_.containsKey('negativelyTargetedChannelsCount')
-                  ? json_['negativelyTargetedChannelsCount'] as core.String
-                  : null,
-          usedCampaignsCount: json_.containsKey('usedCampaignsCount')
-              ? json_['usedCampaignsCount'] as core.String
-              : null,
-          usedInsertionOrdersCount:
-              json_.containsKey('usedInsertionOrdersCount')
-                  ? json_['usedInsertionOrdersCount'] as core.String
-                  : null,
-          usedLineItemsCount: json_.containsKey('usedLineItemsCount')
-              ? json_['usedLineItemsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupCriteriaCount != null)
-          'adGroupCriteriaCount': adGroupCriteriaCount!,
-        if (campaignCriteriaCount != null)
-          'campaignCriteriaCount': campaignCriteriaCount!,
-        if (channelsCount != null) 'channelsCount': channelsCount!,
-        if (negativeKeywordListsCount != null)
-          'negativeKeywordListsCount': negativeKeywordListsCount!,
-        if (negativelyTargetedChannelsCount != null)
-          'negativelyTargetedChannelsCount': negativelyTargetedChannelsCount!,
-        if (usedCampaignsCount != null)
-          'usedCampaignsCount': usedCampaignsCount!,
-        if (usedInsertionOrdersCount != null)
-          'usedInsertionOrdersCount': usedInsertionOrdersCount!,
-        if (usedLineItemsCount != null)
-          'usedLineItemsCount': usedLineItemsCount!,
-      };
-}
+typedef AuditAdvertiserResponse = $AuditAdvertiserResponse;
 
 /// Represents an assigned authorized seller status.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
-class AuthorizedSellerStatusAssignedTargetingOptionDetails {
-  /// The authorized seller status to target.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
-  /// seller status is not specified in this version. This enum is a placeholder
-  /// for default value and does not represent a real authorized seller status
-  /// option.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
-  /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
-  /// All authorized sellers, including publishers that have not posted an
-  /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers.
-  core.String? authorizedSellerStatus;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  AuthorizedSellerStatusAssignedTargetingOptionDetails({
-    this.authorizedSellerStatus,
-    this.targetingOptionId,
-  });
-
-  AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          authorizedSellerStatus: json_.containsKey('authorizedSellerStatus')
-              ? json_['authorizedSellerStatus'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedSellerStatus != null)
-          'authorizedSellerStatus': authorizedSellerStatus!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef AuthorizedSellerStatusAssignedTargetingOptionDetails
+    = $AuthorizedSellerStatusAssignedTargetingOptionDetails;
 
 /// Represents a targetable authorized seller status.
 ///
 /// This will be populated in the authorized_seller_status_details field when
 /// targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
-class AuthorizedSellerStatusTargetingOptionDetails {
-  /// The authorized seller status.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
-  /// seller status is not specified in this version. This enum is a placeholder
-  /// for default value and does not represent a real authorized seller status
-  /// option.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
-  /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
-  /// All authorized sellers, including publishers that have not posted an
-  /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers.
-  core.String? authorizedSellerStatus;
-
-  AuthorizedSellerStatusTargetingOptionDetails({
-    this.authorizedSellerStatus,
-  });
-
-  AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          authorizedSellerStatus: json_.containsKey('authorizedSellerStatus')
-              ? json_['authorizedSellerStatus'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedSellerStatus != null)
-          'authorizedSellerStatus': authorizedSellerStatus!,
-      };
-}
+typedef AuthorizedSellerStatusTargetingOptionDetails
+    = $AuthorizedSellerStatusTargetingOptionDetails;
 
 /// Settings that control the bid strategy.
 ///
@@ -13378,75 +12475,14 @@ class BiddingStrategy {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_BROWSER`.
-class BrowserAssignedTargetingOptionDetails {
-  /// The display name of the browser.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned browser targeting options on the same resource must have the
-  /// same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_BROWSER`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  BrowserAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  BrowserAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef BrowserAssignedTargetingOptionDetails
+    = $BrowserAssignedTargetingOptionDetails;
 
 /// Represents a targetable browser.
 ///
 /// This will be populated in the browser_details field when targeting_type is
 /// `TARGETING_TYPE_BROWSER`.
-class BrowserTargetingOptionDetails {
-  /// The display name of the browser.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  BrowserTargetingOptionDetails({
-    this.displayName,
-  });
-
-  BrowserTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef BrowserTargetingOptionDetails = $BrowserTargetingOptionDetails;
 
 /// Summarized information of an individual campaign budget.
 class BudgetSummary {
@@ -14267,195 +13303,20 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
-class BusinessChainAssignedTargetingOptionDetails {
-  /// The display name of a business chain, e.g. "KFC", "Chase Bank".
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The radius of the area around the business chain that will be targeted.
-  ///
-  /// The units of the radius are specified by proximity_radius_unit. Must be 1
-  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
-  /// `DISTANCE_UNIT_MILES`. The minimum increment for both cases is 0.1. Inputs
-  /// will be rounded to the nearest acceptable value if it is too granular,
-  /// e.g. 15.57 will become 15.6.
-  ///
-  /// Required.
-  core.double? proximityRadiusAmount;
-
-  /// The unit of distance by which the targeting radius is measured.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "DISTANCE_UNIT_MILES" : Miles.
-  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
-  core.String? proximityRadiusUnit;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_BUSINESS_CHAIN`.
-  ///
-  /// Accepted business chain targeting option IDs can be retrieved using
-  /// SearchTargetingOptions.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  BusinessChainAssignedTargetingOptionDetails({
-    this.displayName,
-    this.proximityRadiusAmount,
-    this.proximityRadiusUnit,
-    this.targetingOptionId,
-  });
-
-  BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
-              ? (json_['proximityRadiusAmount'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef BusinessChainAssignedTargetingOptionDetails
+    = $BusinessChainAssignedTargetingOptionDetails;
 
 /// Search terms for Business Chain targeting options.
 ///
 /// At least one of the field should be populated.
-class BusinessChainSearchTerms {
-  /// The search query for the desired business chain.
-  ///
-  /// The query must be the full name of the business, e.g. "KFC",
-  /// "mercedes-benz".
-  core.String? businessChainQuery;
-
-  /// The search query for the desired geo region, e.g. "Seattle", "United
-  /// State".
-  core.String? regionQuery;
-
-  BusinessChainSearchTerms({
-    this.businessChainQuery,
-    this.regionQuery,
-  });
-
-  BusinessChainSearchTerms.fromJson(core.Map json_)
-      : this(
-          businessChainQuery: json_.containsKey('businessChainQuery')
-              ? json_['businessChainQuery'] as core.String
-              : null,
-          regionQuery: json_.containsKey('regionQuery')
-              ? json_['regionQuery'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (businessChainQuery != null)
-          'businessChainQuery': businessChainQuery!,
-        if (regionQuery != null) 'regionQuery': regionQuery!,
-      };
-}
+typedef BusinessChainSearchTerms = $BusinessChainSearchTerms;
 
 /// Represents a targetable business chain within a geo region.
 ///
 /// This will be populated in the business_chain_details field when
 /// targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
-class BusinessChainTargetingOptionDetails {
-  /// The display name of the business chain, e.g. "KFC", "Chase Bank".
-  ///
-  /// Output only.
-  core.String? businessChain;
-
-  /// The display name of the geographic region, e.g. "Ontario, Canada".
-  ///
-  /// Output only.
-  core.String? geoRegion;
-
-  /// The type of the geographic region.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  core.String? geoRegionType;
-
-  BusinessChainTargetingOptionDetails({
-    this.businessChain,
-    this.geoRegion,
-    this.geoRegionType,
-  });
-
-  BusinessChainTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          businessChain: json_.containsKey('businessChain')
-              ? json_['businessChain'] as core.String
-              : null,
-          geoRegion: json_.containsKey('geoRegion')
-              ? json_['geoRegion'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (businessChain != null) 'businessChain': businessChain!,
-        if (geoRegion != null) 'geoRegion': geoRegion!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-      };
-}
+typedef BusinessChainTargetingOptionDetails
+    = $BusinessChainTargetingOptionDetails;
 
 /// A single campaign.
 class Campaign {
@@ -14834,458 +13695,50 @@ class CampaignGoal {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`.
-class CarrierAndIspAssignedTargetingOptionDetails {
-  /// The display name of the carrier or ISP.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned carrier and ISP targeting options on the same resource must
-  /// have the same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_CARRIER_AND_ISP`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  CarrierAndIspAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef CarrierAndIspAssignedTargetingOptionDetails
+    = $CarrierAndIspAssignedTargetingOptionDetails;
 
 /// Represents a targetable carrier or ISP.
 ///
 /// This will be populated in the carrier_and_isp_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`.
-class CarrierAndIspTargetingOptionDetails {
-  /// The display name of the carrier or ISP.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type indicating if it's carrier or ISP.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CARRIER_AND_ISP_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown in this version.
-  /// - "CARRIER_AND_ISP_TYPE_ISP" : Indicates this targeting resource refers to
-  /// an ISP.
-  /// - "CARRIER_AND_ISP_TYPE_CARRIER" : Indicates this targeting resource
-  /// refers to a mobile carrier.
-  core.String? type;
-
-  CarrierAndIspTargetingOptionDetails({
-    this.displayName,
-    this.type,
-  });
-
-  CarrierAndIspTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef CarrierAndIspTargetingOptionDetails
+    = $CarrierAndIspTargetingOptionDetails;
 
 /// Assigned category targeting option details.
 ///
 /// This will be populated in the category_details field when targeting_type is
 /// `TARGETING_TYPE_CATEGORY`.
-class CategoryAssignedTargetingOptionDetails {
-  /// The display name of the category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CATEGORY`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  CategoryAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  CategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef CategoryAssignedTargetingOptionDetails
+    = $CategoryAssignedTargetingOptionDetails;
 
 /// Represents a targetable category.
 ///
 /// This will be populated in the category_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_CATEGORY`.
-class CategoryTargetingOptionDetails {
-  /// The display name of the category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  CategoryTargetingOptionDetails({
-    this.displayName,
-  });
-
-  CategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef CategoryTargetingOptionDetails = $CategoryTargetingOptionDetails;
 
 /// A single channel.
 ///
 /// Channels are custom groups of related websites and apps.
-class Channel {
-  /// The ID of the advertiser that owns the channel.
-  core.String? advertiserId;
-
-  /// The unique ID of the channel.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? channelId;
-
-  /// The display name of the channel.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The resource name of the channel.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Number of line items that are directly targeting this channel negatively.
-  ///
-  /// Output only.
-  core.String? negativelyTargetedLineItemCount;
-
-  /// The ID of the partner that owns the channel.
-  core.String? partnerId;
-
-  /// Number of line items that are directly targeting this channel positively.
-  ///
-  /// Output only.
-  core.String? positivelyTargetedLineItemCount;
-
-  Channel({
-    this.advertiserId,
-    this.channelId,
-    this.displayName,
-    this.name,
-    this.negativelyTargetedLineItemCount,
-    this.partnerId,
-    this.positivelyTargetedLineItemCount,
-  });
-
-  Channel.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          negativelyTargetedLineItemCount:
-              json_.containsKey('negativelyTargetedLineItemCount')
-                  ? json_['negativelyTargetedLineItemCount'] as core.String
-                  : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-          positivelyTargetedLineItemCount:
-              json_.containsKey('positivelyTargetedLineItemCount')
-                  ? json_['positivelyTargetedLineItemCount'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (channelId != null) 'channelId': channelId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (negativelyTargetedLineItemCount != null)
-          'negativelyTargetedLineItemCount': negativelyTargetedLineItemCount!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (positivelyTargetedLineItemCount != null)
-          'positivelyTargetedLineItemCount': positivelyTargetedLineItemCount!,
-      };
-}
+typedef Channel = $Channel01;
 
 /// Details for assigned channel targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_CHANNEL`.
-class ChannelAssignedTargetingOptionDetails {
-  /// ID of the channel.
-  ///
-  /// Should refer to the channel ID field on a \[Partner-owned
-  /// channel\](partners.channels#Channel.FIELDS.channel_id) or
-  /// \[advertiser-owned
-  /// channel\](advertisers.channels#Channel.FIELDS.channel_id) resource.
-  ///
-  /// Required.
-  core.String? channelId;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// For advertiser level assigned targeting option, this field must be true.
-  core.bool? negative;
-
-  ChannelAssignedTargetingOptionDetails({
-    this.channelId,
-    this.negative,
-  });
-
-  ChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (channelId != null) 'channelId': channelId!,
-        if (negative != null) 'negative': negative!,
-      };
-}
+typedef ChannelAssignedTargetingOptionDetails
+    = $ChannelAssignedTargetingOptionDetails;
 
 /// Settings for advertisers that use both Campaign Manager 360 (CM360) and
 /// third-party ad servers.
-class CmHybridConfig {
-  /// Account ID of the CM360 Floodlight configuration linked with the DV360
-  /// advertiser.
-  ///
-  /// Required. Immutable.
-  core.String? cmAccountId;
-
-  /// ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
-  ///
-  /// Required. Immutable.
-  core.String? cmFloodlightConfigId;
-
-  /// By setting this field to `true`, you, on behalf of your company, authorize
-  /// the sharing of information from the given Floodlight configuration to this
-  /// Display & Video 360 advertiser.
-  ///
-  /// Required. Immutable.
-  core.bool? cmFloodlightLinkingAuthorized;
-
-  /// A list of CM360 sites whose placements will be synced to DV360 as
-  /// creatives.
-  ///
-  /// If absent or empty in CreateAdvertiser method, the system will
-  /// automatically create a CM360 site. Removing sites from this list may cause
-  /// DV360 creatives synced from CM360 to be deleted. At least one site must be
-  /// specified.
-  core.List<core.String>? cmSyncableSiteIds;
-
-  /// Whether or not to report DV360 cost to CM360.
-  core.bool? dv360ToCmCostReportingEnabled;
-
-  /// Whether or not to include DV360 data in CM360 data transfer reports.
-  core.bool? dv360ToCmDataSharingEnabled;
-
-  CmHybridConfig({
-    this.cmAccountId,
-    this.cmFloodlightConfigId,
-    this.cmFloodlightLinkingAuthorized,
-    this.cmSyncableSiteIds,
-    this.dv360ToCmCostReportingEnabled,
-    this.dv360ToCmDataSharingEnabled,
-  });
-
-  CmHybridConfig.fromJson(core.Map json_)
-      : this(
-          cmAccountId: json_.containsKey('cmAccountId')
-              ? json_['cmAccountId'] as core.String
-              : null,
-          cmFloodlightConfigId: json_.containsKey('cmFloodlightConfigId')
-              ? json_['cmFloodlightConfigId'] as core.String
-              : null,
-          cmFloodlightLinkingAuthorized:
-              json_.containsKey('cmFloodlightLinkingAuthorized')
-                  ? json_['cmFloodlightLinkingAuthorized'] as core.bool
-                  : null,
-          cmSyncableSiteIds: json_.containsKey('cmSyncableSiteIds')
-              ? (json_['cmSyncableSiteIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dv360ToCmCostReportingEnabled:
-              json_.containsKey('dv360ToCmCostReportingEnabled')
-                  ? json_['dv360ToCmCostReportingEnabled'] as core.bool
-                  : null,
-          dv360ToCmDataSharingEnabled:
-              json_.containsKey('dv360ToCmDataSharingEnabled')
-                  ? json_['dv360ToCmDataSharingEnabled'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cmAccountId != null) 'cmAccountId': cmAccountId!,
-        if (cmFloodlightConfigId != null)
-          'cmFloodlightConfigId': cmFloodlightConfigId!,
-        if (cmFloodlightLinkingAuthorized != null)
-          'cmFloodlightLinkingAuthorized': cmFloodlightLinkingAuthorized!,
-        if (cmSyncableSiteIds != null) 'cmSyncableSiteIds': cmSyncableSiteIds!,
-        if (dv360ToCmCostReportingEnabled != null)
-          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
-        if (dv360ToCmDataSharingEnabled != null)
-          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
-      };
-}
+typedef CmHybridConfig = $CmHybridConfig;
 
 /// A Campaign Manager 360 tracking ad.
-class CmTrackingAd {
-  /// The ad ID of the campaign manager 360 tracking Ad.
-  core.String? cmAdId;
-
-  /// The creative ID of the campaign manager 360 tracking Ad.
-  core.String? cmCreativeId;
-
-  /// The placement ID of the campaign manager 360 tracking Ad.
-  core.String? cmPlacementId;
-
-  CmTrackingAd({
-    this.cmAdId,
-    this.cmCreativeId,
-    this.cmPlacementId,
-  });
-
-  CmTrackingAd.fromJson(core.Map json_)
-      : this(
-          cmAdId: json_.containsKey('cmAdId')
-              ? json_['cmAdId'] as core.String
-              : null,
-          cmCreativeId: json_.containsKey('cmCreativeId')
-              ? json_['cmCreativeId'] as core.String
-              : null,
-          cmPlacementId: json_.containsKey('cmPlacementId')
-              ? json_['cmPlacementId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cmAdId != null) 'cmAdId': cmAdId!,
-        if (cmCreativeId != null) 'cmCreativeId': cmCreativeId!,
-        if (cmPlacementId != null) 'cmPlacementId': cmPlacementId!,
-      };
-}
+typedef CmTrackingAd = $CmTrackingAd;
 
 /// Describes a combined audience resource.
-class CombinedAudience {
-  /// The unique ID of the combined audience.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? combinedAudienceId;
-
-  /// The display name of the combined audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The resource name of the combined audience.
-  ///
-  /// Output only.
-  core.String? name;
-
-  CombinedAudience({
-    this.combinedAudienceId,
-    this.displayName,
-    this.name,
-  });
-
-  CombinedAudience.fromJson(core.Map json_)
-      : this(
-          combinedAudienceId: json_.containsKey('combinedAudienceId')
-              ? json_['combinedAudienceId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (combinedAudienceId != null)
-          'combinedAudienceId': combinedAudienceId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef CombinedAudience = $CombinedAudience;
 
 /// Details of combined audience group.
 ///
@@ -15320,119 +13773,10 @@ class CombinedAudienceGroup {
 }
 
 /// Details of combined audience targeting setting.
-class CombinedAudienceTargetingSetting {
-  /// Combined audience id of combined audience targeting setting.
-  ///
-  /// This id is combined_audience_id.
-  ///
-  /// Required.
-  core.String? combinedAudienceId;
-
-  CombinedAudienceTargetingSetting({
-    this.combinedAudienceId,
-  });
-
-  CombinedAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          combinedAudienceId: json_.containsKey('combinedAudienceId')
-              ? json_['combinedAudienceId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (combinedAudienceId != null)
-          'combinedAudienceId': combinedAudienceId!,
-      };
-}
+typedef CombinedAudienceTargetingSetting = $CombinedAudienceTargetingSetting;
 
 /// Contact information defining a Customer Match audience member.
-class ContactInfo {
-  /// Country code of the member.
-  ///
-  /// Must also be set with the following fields: * hashed_first_name *
-  /// hashed_last_name * zip_codes
-  core.String? countryCode;
-
-  /// A list of SHA256 hashed email of the member.
-  ///
-  /// Before hashing, remove all whitespace and make sure the string is all
-  /// lowercase.
-  core.List<core.String>? hashedEmails;
-
-  /// SHA256 hashed first name of the member.
-  ///
-  /// Before hashing, remove all whitespace and make sure the string is all
-  /// lowercase. Must also be set with the following fields: * country_code *
-  /// hashed_last_name * zip_codes
-  core.String? hashedFirstName;
-
-  /// SHA256 hashed last name of the member.
-  ///
-  /// Before hashing, remove all whitespace and make sure the string is all
-  /// lowercase. Must also be set with the following fields: * country_code *
-  /// hashed_first_name * zip_codes
-  core.String? hashedLastName;
-
-  /// A list of SHA256 hashed phone numbers of the member.
-  ///
-  /// Before hashing, all phone numbers must be formatted using the \[E.164
-  /// format\](//en.wikipedia.org/wiki/E.164) and include the country calling
-  /// code.
-  core.List<core.String>? hashedPhoneNumbers;
-
-  /// A list of zip codes of the member.
-  ///
-  /// Must also be set with the following fields: * country_code *
-  /// hashed_first_name * hashed_last_name
-  core.List<core.String>? zipCodes;
-
-  ContactInfo({
-    this.countryCode,
-    this.hashedEmails,
-    this.hashedFirstName,
-    this.hashedLastName,
-    this.hashedPhoneNumbers,
-    this.zipCodes,
-  });
-
-  ContactInfo.fromJson(core.Map json_)
-      : this(
-          countryCode: json_.containsKey('countryCode')
-              ? json_['countryCode'] as core.String
-              : null,
-          hashedEmails: json_.containsKey('hashedEmails')
-              ? (json_['hashedEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          hashedFirstName: json_.containsKey('hashedFirstName')
-              ? json_['hashedFirstName'] as core.String
-              : null,
-          hashedLastName: json_.containsKey('hashedLastName')
-              ? json_['hashedLastName'] as core.String
-              : null,
-          hashedPhoneNumbers: json_.containsKey('hashedPhoneNumbers')
-              ? (json_['hashedPhoneNumbers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          zipCodes: json_.containsKey('zipCodes')
-              ? (json_['zipCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (hashedEmails != null) 'hashedEmails': hashedEmails!,
-        if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
-        if (hashedLastName != null) 'hashedLastName': hashedLastName!,
-        if (hashedPhoneNumbers != null)
-          'hashedPhoneNumbers': hashedPhoneNumbers!,
-        if (zipCodes != null) 'zipCodes': zipCodes!,
-      };
-}
+typedef ContactInfo = $ContactInfo;
 
 /// Wrapper message for a list of contact information defining Customer Match
 /// audience members.
@@ -15468,86 +13812,15 @@ class ContactInfoList {
 /// targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting
 /// all options is not supported. Remove all content duration targeting options
 /// to achieve this effect.
-class ContentDurationAssignedTargetingOptionDetails {
-  /// The content duration.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content duration.
-  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
-  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
-  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
-  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
-  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
-  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
-  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
-  core.String? contentDuration;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_DURATION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  ContentDurationAssignedTargetingOptionDetails({
-    this.contentDuration,
-    this.targetingOptionId,
-  });
-
-  ContentDurationAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentDuration: json_.containsKey('contentDuration')
-              ? json_['contentDuration'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentDuration != null) 'contentDuration': contentDuration!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef ContentDurationAssignedTargetingOptionDetails
+    = $ContentDurationAssignedTargetingOptionDetails;
 
 /// Represents a targetable content duration.
 ///
 /// This will be populated in the content_duration_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_DURATION`.
-class ContentDurationTargetingOptionDetails {
-  /// The content duration.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content duration.
-  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
-  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
-  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
-  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
-  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
-  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
-  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
-  core.String? contentDuration;
-
-  ContentDurationTargetingOptionDetails({
-    this.contentDuration,
-  });
-
-  ContentDurationTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentDuration: json_.containsKey('contentDuration')
-              ? json_['contentDuration'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentDuration != null) 'contentDuration': contentDuration!,
-      };
-}
+typedef ContentDurationTargetingOptionDetails
+    = $ContentDurationTargetingOptionDetails;
 
 /// Details for content genre assigned targeting option.
 ///
@@ -15555,72 +13828,15 @@ class ContentDurationTargetingOptionDetails {
 /// targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all
 /// options is not supported. Remove all content genre targeting options to
 /// achieve this effect.
-class ContentGenreAssignedTargetingOptionDetails {
-  /// The display name of the content genre.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_GENRE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  ContentGenreAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  ContentGenreAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef ContentGenreAssignedTargetingOptionDetails
+    = $ContentGenreAssignedTargetingOptionDetails;
 
 /// Represents a targetable content genre.
 ///
 /// This will be populated in the content_genre_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_GENRE`.
-class ContentGenreTargetingOptionDetails {
-  /// The display name of the content genre
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  ContentGenreTargetingOptionDetails({
-    this.displayName,
-  });
-
-  ContentGenreTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef ContentGenreTargetingOptionDetails
+    = $ContentGenreTargetingOptionDetails;
 
 /// Assigned content instream position targeting option details.
 ///
@@ -15701,39 +13917,8 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the content_instream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
-class ContentInstreamPositionTargetingOptionDetails {
-  /// The content instream position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real in stream ad position.
-  /// - "CONTENT_INSTREAM_POSITION_PRE_ROLL" : Ads that play before streaming
-  /// content.
-  /// - "CONTENT_INSTREAM_POSITION_MID_ROLL" : Ads that play between the
-  /// beginning and end of streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
-  /// streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
-  core.String? contentInstreamPosition;
-
-  ContentInstreamPositionTargetingOptionDetails({
-    this.contentInstreamPosition,
-  });
-
-  ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentInstreamPosition: json_.containsKey('contentInstreamPosition')
-              ? json_['contentInstreamPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentInstreamPosition != null)
-          'contentInstreamPosition': contentInstreamPosition!,
-      };
-}
+typedef ContentInstreamPositionTargetingOptionDetails
+    = $ContentInstreamPositionTargetingOptionDetails;
 
 /// Assigned content outstream position targeting option details.
 ///
@@ -15820,44 +14005,8 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the content_outstream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
-class ContentOutstreamPositionTargetingOptionDetails {
-  /// The content outstream position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real content outstream position.
-  /// - "CONTENT_OUTSTREAM_POSITION_UNKNOWN" : The ad position is unknown in the
-  /// content outstream.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE" : Ads that appear between the
-  /// paragraphs of your pages.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_BANNER" : Ads that display on the top and
-  /// the sides of a page.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_FEED" : Ads that appear in a scrollable
-  /// stream of content. A feed is typically editorial (e.g. a list of articles
-  /// or news) or listings (e.g. a list of products or services).
-  /// - "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL" : Ads shown before or between
-  /// content loads.
-  core.String? contentOutstreamPosition;
-
-  ContentOutstreamPositionTargetingOptionDetails({
-    this.contentOutstreamPosition,
-  });
-
-  ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentOutstreamPosition:
-              json_.containsKey('contentOutstreamPosition')
-                  ? json_['contentOutstreamPosition'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentOutstreamPosition != null)
-          'contentOutstreamPosition': contentOutstreamPosition!,
-      };
-}
+typedef ContentOutstreamPositionTargetingOptionDetails
+    = $ContentOutstreamPositionTargetingOptionDetails;
 
 /// Details for content stream type assigned targeting option.
 ///
@@ -15865,76 +14014,15 @@ class ContentOutstreamPositionTargetingOptionDetails {
 /// targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting
 /// all options is not supported. Remove all content stream type targeting
 /// options to achieve this effect.
-class ContentStreamTypeAssignedTargetingOptionDetails {
-  /// The content stream type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
-  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
-  core.String? contentStreamType;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  ContentStreamTypeAssignedTargetingOptionDetails({
-    this.contentStreamType,
-    this.targetingOptionId,
-  });
-
-  ContentStreamTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentStreamType: json_.containsKey('contentStreamType')
-              ? json_['contentStreamType'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef ContentStreamTypeAssignedTargetingOptionDetails
+    = $ContentStreamTypeAssignedTargetingOptionDetails;
 
 /// Represents a targetable content stream type.
 ///
 /// This will be populated in the content_stream_type_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
-class ContentStreamTypeTargetingOptionDetails {
-  /// The content stream type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
-  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
-  core.String? contentStreamType;
-
-  ContentStreamTypeTargetingOptionDetails({
-    this.contentStreamType,
-  });
-
-  ContentStreamTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentStreamType: json_.containsKey('contentStreamType')
-              ? json_['contentStreamType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
-      };
-}
+typedef ContentStreamTypeTargetingOptionDetails
+    = $ContentStreamTypeTargetingOptionDetails;
 
 /// Settings that control how conversions are counted.
 ///
@@ -15983,60 +14071,10 @@ class ConversionCountingConfig {
 }
 
 /// Counter event of the creative.
-class CounterEvent {
-  /// The name of the counter event.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The name used to identify this counter event in reports.
-  ///
-  /// Required.
-  core.String? reportingName;
-
-  CounterEvent({
-    this.name,
-    this.reportingName,
-  });
-
-  CounterEvent.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-      };
-}
+typedef CounterEvent = $CounterEvent;
 
 /// A request message for CreateAsset.
-class CreateAssetRequest {
-  /// The filename of the asset, including the file extension.
-  ///
-  /// The filename must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? filename;
-
-  CreateAssetRequest({
-    this.filename,
-  });
-
-  CreateAssetRequest.fromJson(core.Map json_)
-      : this(
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (filename != null) 'filename': filename!,
-      };
-}
+typedef CreateAssetRequest = $CreateAssetRequest;
 
 /// A response message for CreateAsset.
 class CreateAssetResponse {
@@ -17469,74 +15507,11 @@ class CustomBiddingScript {
 }
 
 /// The reference to the uploaded custom bidding script file.
-class CustomBiddingScriptRef {
-  /// A resource name to be used in media.download to Download the script files.
-  ///
-  /// Or media.upload to Upload the script files. Resource names have the format
-  /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
-  core.String? resourceName;
-
-  CustomBiddingScriptRef({
-    this.resourceName,
-  });
-
-  CustomBiddingScriptRef.fromJson(core.Map json_)
-      : this(
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
-}
+typedef CustomBiddingScriptRef = $CustomBiddingScriptRef;
 
 /// Describes a custom list entity, such as a custom affinity or custom intent
 /// audience list.
-class CustomList {
-  /// The unique ID of the custom list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? customListId;
-
-  /// The display name of the custom list.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The resource name of the custom list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  CustomList({
-    this.customListId,
-    this.displayName,
-    this.name,
-  });
-
-  CustomList.fromJson(core.Map json_)
-      : this(
-          customListId: json_.containsKey('customListId')
-              ? json_['customListId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customListId != null) 'customListId': customListId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef CustomList = $CustomList;
 
 /// Details of custom list group.
 ///
@@ -17569,29 +15544,7 @@ class CustomListGroup {
 }
 
 /// Details of custom list targeting setting.
-class CustomListTargetingSetting {
-  /// Custom id of custom list targeting setting.
-  ///
-  /// This id is custom_list_id.
-  ///
-  /// Required.
-  core.String? customListId;
-
-  CustomListTargetingSetting({
-    this.customListId,
-  });
-
-  CustomListTargetingSetting.fromJson(core.Map json_)
-      : this(
-          customListId: json_.containsKey('customListId')
-              ? json_['customListId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customListId != null) 'customListId': customListId!,
-      };
-}
+typedef CustomListTargetingSetting = $CustomListTargetingSetting;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -17645,286 +15598,30 @@ class DateRange {
 ///
 /// The time represented by `start_hour` must be before the time represented by
 /// `end_hour`.
-class DayAndTimeAssignedTargetingOptionDetails {
-  /// The day of the week for this day and time targeting setting.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
-  /// - "MONDAY" : Monday
-  /// - "TUESDAY" : Tuesday
-  /// - "WEDNESDAY" : Wednesday
-  /// - "THURSDAY" : Thursday
-  /// - "FRIDAY" : Friday
-  /// - "SATURDAY" : Saturday
-  /// - "SUNDAY" : Sunday
-  core.String? dayOfWeek;
-
-  /// The end hour for day and time targeting.
-  ///
-  /// Must be between 1 (1 hour after start of day) and 24 (end of day).
-  ///
-  /// Required.
-  core.int? endHour;
-
-  /// The start hour for day and time targeting.
-  ///
-  /// Must be between 0 (start of day) and 23 (1 hour before end of day).
-  ///
-  /// Required.
-  core.int? startHour;
-
-  /// The mechanism used to determine which timezone to use for this day and
-  /// time targeting setting.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TIME_ZONE_RESOLUTION_UNSPECIFIED" : Time zone resolution is either
-  /// unspecific or unknown.
-  /// - "TIME_ZONE_RESOLUTION_END_USER" : Times are resolved in the time zone of
-  /// the user that saw the ad.
-  /// - "TIME_ZONE_RESOLUTION_ADVERTISER" : Times are resolved in the time zone
-  /// of the advertiser that served the ad.
-  core.String? timeZoneResolution;
-
-  DayAndTimeAssignedTargetingOptionDetails({
-    this.dayOfWeek,
-    this.endHour,
-    this.startHour,
-    this.timeZoneResolution,
-  });
-
-  DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
-          endHour: json_.containsKey('endHour')
-              ? json_['endHour'] as core.int
-              : null,
-          startHour: json_.containsKey('startHour')
-              ? json_['startHour'] as core.int
-              : null,
-          timeZoneResolution: json_.containsKey('timeZoneResolution')
-              ? json_['timeZoneResolution'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-        if (endHour != null) 'endHour': endHour!,
-        if (startHour != null) 'startHour': startHour!,
-        if (timeZoneResolution != null)
-          'timeZoneResolution': timeZoneResolution!,
-      };
-}
+typedef DayAndTimeAssignedTargetingOptionDetails
+    = $DayAndTimeAssignedTargetingOptionDetails;
 
 /// Request message for ManualTriggerService.DeactivateManualTrigger.
 typedef DeactivateManualTriggerRequest = $Empty;
 
 /// A request listing which assigned targeting options of a given targeting type
 /// should be deleted.
-class DeleteAssignedTargetingOptionsRequest {
-  /// The assigned targeting option IDs to delete.
-  ///
-  /// Required.
-  core.List<core.String>? assignedTargetingOptionIds;
-
-  /// Identifies the type of this assigned targeting option.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
-  /// or is unknown in this version.
-  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
-  /// websites or apps).
-  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
-  /// education or puzzle games).
-  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
-  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
-  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
-  /// on a specific day.
-  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
-  /// example, 18-24).
-  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
-  /// regions on a regional location list.
-  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
-  /// points of interest on a proximity location list.
-  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
-  /// female or male).
-  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
-  /// for video ads.
-  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
-  /// for video ads.
-  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
-  /// status (for example, parent or not a parent).
-  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
-  /// in a specific content instream position (for example, pre-roll, mid-roll,
-  /// or post-roll).
-  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
-  /// content outstream position.
-  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
-  /// example, tablet or connected TV).
-  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
-  /// audiences. Singleton field, at most one can exist on a single Lineitem at
-  /// a time.
-  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
-  /// example, Chrome).
-  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
-  /// income range (for example, top 10%).
-  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
-  /// position.
-  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
-  /// party verification (for example, IAS or DoubleVerify).
-  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
-  /// specific digital content label ratings (for example, DL-MA: suitable only
-  /// for mature audiences).
-  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
-  /// by sensitive categories (for example, adult).
-  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
-  /// example, web or app).
-  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
-  /// carrier or internet service provider (ISP) (for example, Comcast or
-  /// Orange).
-  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
-  /// system (for example, macOS).
-  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
-  /// make or model (for example, Roku or Samsung).
-  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
-  /// example, dog or retriever).
-  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
-  /// negative keyword list.
-  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
-  /// example, 80% viewable).
-  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
-  /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
-  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
-  /// example, English or Japanese).
-  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
-  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
-  /// (for example, a city or state).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
-  /// group of deals and auction packages.
-  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
-  /// exchanges.
-  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
-  /// sub-exchanges.
-  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
-  /// such as a notable building, a street address, or latitude/longitude
-  /// coordinates.
-  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
-  /// business chain within a specific geo region.
-  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
-  /// content duration.
-  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
-  /// content stream type.
-  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
-  /// native content position.
-  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
-  /// inventory.
-  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
-  /// content type.
-  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
-  core.String? targetingType;
-
-  DeleteAssignedTargetingOptionsRequest({
-    this.assignedTargetingOptionIds,
-    this.targetingType,
-  });
-
-  DeleteAssignedTargetingOptionsRequest.fromJson(core.Map json_)
-      : this(
-          assignedTargetingOptionIds:
-              json_.containsKey('assignedTargetingOptionIds')
-                  ? (json_['assignedTargetingOptionIds'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          targetingType: json_.containsKey('targetingType')
-              ? json_['targetingType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedTargetingOptionIds != null)
-          'assignedTargetingOptionIds': assignedTargetingOptionIds!,
-        if (targetingType != null) 'targetingType': targetingType!,
-      };
-}
+typedef DeleteAssignedTargetingOptionsRequest
+    = $DeleteAssignedTargetingOptionsRequest;
 
 /// Assigned device make and model targeting option details.
 ///
 /// This will be populated in the device_make_model_details field when
 /// targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
-class DeviceMakeModelAssignedTargetingOptionDetails {
-  /// The display name of the device make and model.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  DeviceMakeModelAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef DeviceMakeModelAssignedTargetingOptionDetails
+    = $DeviceMakeModelAssignedTargetingOptionDetails;
 
 /// Represents a targetable device make and model.
 ///
 /// This will be populated in the device_make_model_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
-class DeviceMakeModelTargetingOptionDetails {
-  /// The display name of the device make and model.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  DeviceMakeModelTargetingOptionDetails({
-    this.displayName,
-  });
-
-  DeviceMakeModelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef DeviceMakeModelTargetingOptionDetails
+    = $DeviceMakeModelTargetingOptionDetails;
 
 /// Targeting details for device type.
 ///
@@ -17974,35 +15671,7 @@ class DeviceTypeAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the device_type_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`.
-class DeviceTypeTargetingOptionDetails {
-  /// The device type that is used to be targeted.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real device type option.
-  /// - "DEVICE_TYPE_COMPUTER" : The device type is computer.
-  /// - "DEVICE_TYPE_CONNECTED_TV" : The device type is connected TV.
-  /// - "DEVICE_TYPE_SMART_PHONE" : The device type is smart phone..
-  /// - "DEVICE_TYPE_TABLET" : The device type is tablet.
-  core.String? deviceType;
-
-  DeviceTypeTargetingOptionDetails({
-    this.deviceType,
-  });
-
-  DeviceTypeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          deviceType: json_.containsKey('deviceType')
-              ? json_['deviceType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceType != null) 'deviceType': deviceType!,
-      };
-}
+typedef DeviceTypeTargetingOptionDetails = $DeviceTypeTargetingOptionDetails;
 
 /// Targeting details for digital content label.
 ///
@@ -18094,33 +15763,7 @@ class DigitalContentLabelTargetingOptionDetails {
 }
 
 /// Dimensions.
-class Dimensions {
-  /// The height in pixels.
-  core.int? heightPixels;
-
-  /// The width in pixels.
-  core.int? widthPixels;
-
-  Dimensions({
-    this.heightPixels,
-    this.widthPixels,
-  });
-
-  Dimensions.fromJson(core.Map json_)
-      : this(
-          heightPixels: json_.containsKey('heightPixels')
-              ? json_['heightPixels'] as core.int
-              : null,
-          widthPixels: json_.containsKey('widthPixels')
-              ? json_['widthPixels'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
-}
+typedef Dimensions = $Dimensions;
 
 /// Details of DoubleVerify settings.
 class DoubleVerify {
@@ -18210,273 +15853,19 @@ class DoubleVerify {
 }
 
 /// Details of DoubleVerify star ratings settings.
-class DoubleVerifyAppStarRating {
-  /// Avoid bidding on apps with insufficient star ratings.
-  core.bool? avoidInsufficientStarRating;
-
-  /// Avoid bidding on apps with the star ratings.
-  /// Possible string values are:
-  /// - "APP_STAR_RATE_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any app star rating options.
-  /// - "APP_STAR_RATE_1_POINT_5_LESS" : Official Apps with rating \< 1.5 Stars.
-  /// - "APP_STAR_RATE_2_LESS" : Official Apps with rating \< 2 Stars.
-  /// - "APP_STAR_RATE_2_POINT_5_LESS" : Official Apps with rating \< 2.5 Stars.
-  /// - "APP_STAR_RATE_3_LESS" : Official Apps with rating \< 3 Stars.
-  /// - "APP_STAR_RATE_3_POINT_5_LESS" : Official Apps with rating \< 3.5 Stars.
-  /// - "APP_STAR_RATE_4_LESS" : Official Apps with rating \< 4 Stars.
-  /// - "APP_STAR_RATE_4_POINT_5_LESS" : Official Apps with rating \< 4.5 Stars.
-  core.String? avoidedStarRating;
-
-  DoubleVerifyAppStarRating({
-    this.avoidInsufficientStarRating,
-    this.avoidedStarRating,
-  });
-
-  DoubleVerifyAppStarRating.fromJson(core.Map json_)
-      : this(
-          avoidInsufficientStarRating:
-              json_.containsKey('avoidInsufficientStarRating')
-                  ? json_['avoidInsufficientStarRating'] as core.bool
-                  : null,
-          avoidedStarRating: json_.containsKey('avoidedStarRating')
-              ? json_['avoidedStarRating'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidInsufficientStarRating != null)
-          'avoidInsufficientStarRating': avoidInsufficientStarRating!,
-        if (avoidedStarRating != null) 'avoidedStarRating': avoidedStarRating!,
-      };
-}
+typedef DoubleVerifyAppStarRating = $DoubleVerifyAppStarRating;
 
 /// Settings for brand safety controls.
-class DoubleVerifyBrandSafetyCategories {
-  /// Unknown or unrateable.
-  core.bool? avoidUnknownBrandSafetyCategory;
-
-  /// Brand safety high severity avoidance categories.
-  core.List<core.String>? avoidedHighSeverityCategories;
-
-  /// Brand safety medium severity avoidance categories.
-  core.List<core.String>? avoidedMediumSeverityCategories;
-
-  DoubleVerifyBrandSafetyCategories({
-    this.avoidUnknownBrandSafetyCategory,
-    this.avoidedHighSeverityCategories,
-    this.avoidedMediumSeverityCategories,
-  });
-
-  DoubleVerifyBrandSafetyCategories.fromJson(core.Map json_)
-      : this(
-          avoidUnknownBrandSafetyCategory:
-              json_.containsKey('avoidUnknownBrandSafetyCategory')
-                  ? json_['avoidUnknownBrandSafetyCategory'] as core.bool
-                  : null,
-          avoidedHighSeverityCategories:
-              json_.containsKey('avoidedHighSeverityCategories')
-                  ? (json_['avoidedHighSeverityCategories'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          avoidedMediumSeverityCategories:
-              json_.containsKey('avoidedMediumSeverityCategories')
-                  ? (json_['avoidedMediumSeverityCategories'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidUnknownBrandSafetyCategory != null)
-          'avoidUnknownBrandSafetyCategory': avoidUnknownBrandSafetyCategory!,
-        if (avoidedHighSeverityCategories != null)
-          'avoidedHighSeverityCategories': avoidedHighSeverityCategories!,
-        if (avoidedMediumSeverityCategories != null)
-          'avoidedMediumSeverityCategories': avoidedMediumSeverityCategories!,
-      };
-}
+typedef DoubleVerifyBrandSafetyCategories = $DoubleVerifyBrandSafetyCategories;
 
 /// Details of DoubleVerify display viewability settings.
-class DoubleVerifyDisplayViewability {
-  /// Target web and app inventory to maximize IAB viewable rate.
-  /// Possible string values are:
-  /// - "IAB_VIEWED_RATE_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any IAB viewed rate options.
-  /// - "IAB_VIEWED_RATE_80_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 80% or higher.
-  /// - "IAB_VIEWED_RATE_75_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 75% or higher.
-  /// - "IAB_VIEWED_RATE_70_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 70% or higher.
-  /// - "IAB_VIEWED_RATE_65_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 65% or higher.
-  /// - "IAB_VIEWED_RATE_60_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 60% or higher.
-  /// - "IAB_VIEWED_RATE_55_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 55% or higher.
-  /// - "IAB_VIEWED_RATE_50_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 50% or higher.
-  /// - "IAB_VIEWED_RATE_40_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 40% or higher.
-  /// - "IAB_VIEWED_RATE_30_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 30% or higher.
-  core.String? iab;
-
-  /// Target web and app inventory to maximize 100% viewable duration.
-  /// Possible string values are:
-  /// - "AVERAGE_VIEW_DURATION_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any average view duration options.
-  /// - "AVERAGE_VIEW_DURATION_5_SEC" : Target web and app inventory to maximize
-  /// 100% viewable duration 5 seconds or more.
-  /// - "AVERAGE_VIEW_DURATION_10_SEC" : Target web and app inventory to
-  /// maximize 100% viewable duration 10 seconds or more.
-  /// - "AVERAGE_VIEW_DURATION_15_SEC" : Target web and app inventory to
-  /// maximize 100% viewable duration 15 seconds or more.
-  core.String? viewableDuring;
-
-  DoubleVerifyDisplayViewability({
-    this.iab,
-    this.viewableDuring,
-  });
-
-  DoubleVerifyDisplayViewability.fromJson(core.Map json_)
-      : this(
-          iab: json_.containsKey('iab') ? json_['iab'] as core.String : null,
-          viewableDuring: json_.containsKey('viewableDuring')
-              ? json_['viewableDuring'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (iab != null) 'iab': iab!,
-        if (viewableDuring != null) 'viewableDuring': viewableDuring!,
-      };
-}
+typedef DoubleVerifyDisplayViewability = $DoubleVerifyDisplayViewability;
 
 /// DoubleVerify Fraud & Invalid Traffic settings.
-class DoubleVerifyFraudInvalidTraffic {
-  /// Insufficient Historical Fraud & IVT Stats.
-  core.bool? avoidInsufficientOption;
-
-  /// Avoid Sites and Apps with historical Fraud & IVT.
-  /// Possible string values are:
-  /// - "FRAUD_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any fraud and invalid traffic options.
-  /// - "AD_IMPRESSION_FRAUD_100" : 100% Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_50" : 50% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_25" : 25% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_10" : 10% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_8" : 8% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_6" : 6% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_4" : 4% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_2" : 2% or Higher Fraud & IVT.
-  core.String? avoidedFraudOption;
-
-  DoubleVerifyFraudInvalidTraffic({
-    this.avoidInsufficientOption,
-    this.avoidedFraudOption,
-  });
-
-  DoubleVerifyFraudInvalidTraffic.fromJson(core.Map json_)
-      : this(
-          avoidInsufficientOption: json_.containsKey('avoidInsufficientOption')
-              ? json_['avoidInsufficientOption'] as core.bool
-              : null,
-          avoidedFraudOption: json_.containsKey('avoidedFraudOption')
-              ? json_['avoidedFraudOption'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidInsufficientOption != null)
-          'avoidInsufficientOption': avoidInsufficientOption!,
-        if (avoidedFraudOption != null)
-          'avoidedFraudOption': avoidedFraudOption!,
-      };
-}
+typedef DoubleVerifyFraudInvalidTraffic = $DoubleVerifyFraudInvalidTraffic;
 
 /// Details of DoubleVerify video viewability settings.
-class DoubleVerifyVideoViewability {
-  /// Target inventory to maximize impressions with 400x300 or greater player
-  /// size.
-  /// Possible string values are:
-  /// - "PLAYER_SIZE_400X300_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any impressions options.
-  /// - "PLAYER_SIZE_400X300_95" : Sites with 95%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_70" : Sites with 70%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_25" : Sites with 25%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_5" : Sites with 5%+ of impressions.
-  core.String? playerImpressionRate;
-
-  /// Target web inventory to maximize IAB viewable rate.
-  /// Possible string values are:
-  /// - "VIDEO_IAB_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any video IAB viewable rate options.
-  /// - "IAB_VIEWABILITY_80_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 80% or higher.
-  /// - "IAB_VIEWABILITY_75_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 75% or higher.
-  /// - "IAB_VIEWABILITY_70_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 70% or higher.
-  /// - "IAB_VIEWABILITY_65_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 65% or higher.
-  /// - "IAB_VIEWABILITY_60_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 60% or higher.
-  /// - "IAB_VIEWABILITY_55_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 55% or higher.
-  /// - "IAB_VIEWABILITY_50_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 50% or higher.
-  /// - "IAB_VIEWABILITY_40_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 40% or higher.
-  /// - "IAB_VIEWABILITY_30_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 30% or higher.
-  core.String? videoIab;
-
-  /// Target web inventory to maximize fully viewable rate.
-  /// Possible string values are:
-  /// - "VIDEO_VIEWABLE_RATE_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any video viewable rate options.
-  /// - "VIEWED_PERFORMANCE_40_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 40% or higher.
-  /// - "VIEWED_PERFORMANCE_35_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 35% or higher.
-  /// - "VIEWED_PERFORMANCE_30_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 30% or higher.
-  /// - "VIEWED_PERFORMANCE_25_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 25% or higher.
-  /// - "VIEWED_PERFORMANCE_20_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 20% or higher.
-  /// - "VIEWED_PERFORMANCE_10_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 10% or higher.
-  core.String? videoViewableRate;
-
-  DoubleVerifyVideoViewability({
-    this.playerImpressionRate,
-    this.videoIab,
-    this.videoViewableRate,
-  });
-
-  DoubleVerifyVideoViewability.fromJson(core.Map json_)
-      : this(
-          playerImpressionRate: json_.containsKey('playerImpressionRate')
-              ? json_['playerImpressionRate'] as core.String
-              : null,
-          videoIab: json_.containsKey('videoIab')
-              ? json_['videoIab'] as core.String
-              : null,
-          videoViewableRate: json_.containsKey('videoViewableRate')
-              ? json_['videoViewableRate'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (playerImpressionRate != null)
-          'playerImpressionRate': playerImpressionRate!,
-        if (videoIab != null) 'videoIab': videoIab!,
-        if (videoViewableRate != null) 'videoViewableRate': videoViewableRate!,
-      };
-}
+typedef DoubleVerifyVideoViewability = $DoubleVerifyVideoViewability;
 
 /// Request message for
 /// FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
@@ -18528,117 +15917,13 @@ class EditCustomerMatchMembersRequest {
 }
 
 /// The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-class EditCustomerMatchMembersResponse {
-  /// The ID of the updated Customer Match FirstAndThirdPartyAudience.
-  ///
-  /// Required.
-  core.String? firstAndThirdPartyAudienceId;
-
-  EditCustomerMatchMembersResponse({
-    this.firstAndThirdPartyAudienceId,
-  });
-
-  EditCustomerMatchMembersResponse.fromJson(core.Map json_)
-      : this(
-          firstAndThirdPartyAudienceId:
-              json_.containsKey('firstAndThirdPartyAudienceId')
-                  ? json_['firstAndThirdPartyAudienceId'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (firstAndThirdPartyAudienceId != null)
-          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
-      };
-}
+typedef EditCustomerMatchMembersResponse = $EditCustomerMatchMembersResponse;
 
 /// Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
-class EditGuaranteedOrderReadAccessorsRequest {
-  /// The advertisers to add as read accessors to the guaranteed order.
-  core.List<core.String>? addedAdvertisers;
-
-  /// The partner context in which the change is being made.
-  ///
-  /// Required.
-  core.String? partnerId;
-
-  /// Whether to give all advertisers of the read/write accessor partner read
-  /// access to the guaranteed order.
-  ///
-  /// Only applicable if read_write_partner_id is set in the guaranteed order.
-  core.bool? readAccessInherited;
-
-  /// The advertisers to remove as read accessors to the guaranteed order.
-  core.List<core.String>? removedAdvertisers;
-
-  EditGuaranteedOrderReadAccessorsRequest({
-    this.addedAdvertisers,
-    this.partnerId,
-    this.readAccessInherited,
-    this.removedAdvertisers,
-  });
-
-  EditGuaranteedOrderReadAccessorsRequest.fromJson(core.Map json_)
-      : this(
-          addedAdvertisers: json_.containsKey('addedAdvertisers')
-              ? (json_['addedAdvertisers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-          readAccessInherited: json_.containsKey('readAccessInherited')
-              ? json_['readAccessInherited'] as core.bool
-              : null,
-          removedAdvertisers: json_.containsKey('removedAdvertisers')
-              ? (json_['removedAdvertisers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
-        if (partnerId != null) 'partnerId': partnerId!,
-        if (readAccessInherited != null)
-          'readAccessInherited': readAccessInherited!,
-        if (removedAdvertisers != null)
-          'removedAdvertisers': removedAdvertisers!,
-      };
-}
-
-class EditGuaranteedOrderReadAccessorsResponse {
-  /// Whether all advertisers of read_write_partner_id have read access to the
-  /// guaranteed order.
-  core.bool? readAccessInherited;
-
-  /// The IDs of advertisers with read access to the guaranteed order.
-  core.List<core.String>? readAdvertiserIds;
-
-  EditGuaranteedOrderReadAccessorsResponse({
-    this.readAccessInherited,
-    this.readAdvertiserIds,
-  });
-
-  EditGuaranteedOrderReadAccessorsResponse.fromJson(core.Map json_)
-      : this(
-          readAccessInherited: json_.containsKey('readAccessInherited')
-              ? json_['readAccessInherited'] as core.bool
-              : null,
-          readAdvertiserIds: json_.containsKey('readAdvertiserIds')
-              ? (json_['readAdvertiserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (readAccessInherited != null)
-          'readAccessInherited': readAccessInherited!,
-        if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
-      };
-}
+typedef EditGuaranteedOrderReadAccessorsRequest
+    = $EditGuaranteedOrderReadAccessorsRequest;
+typedef EditGuaranteedOrderReadAccessorsResponse
+    = $EditGuaranteedOrderReadAccessorsResponse;
 
 /// Request message for
 /// InventorySourceService.EditInventorySourceReadWriteAccessors.
@@ -18690,39 +15975,8 @@ class EditInventorySourceReadWriteAccessorsRequest {
 
 /// Update to the list of advertisers with read/write access to the inventory
 /// source.
-class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
-  /// The advertisers to add.
-  core.List<core.String>? addedAdvertisers;
-
-  /// The advertisers to remove.
-  core.List<core.String>? removedAdvertisers;
-
-  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate({
-    this.addedAdvertisers,
-    this.removedAdvertisers,
-  });
-
-  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
-      core.Map json_)
-      : this(
-          addedAdvertisers: json_.containsKey('addedAdvertisers')
-              ? (json_['addedAdvertisers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          removedAdvertisers: json_.containsKey('removedAdvertisers')
-              ? (json_['removedAdvertisers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
-        if (removedAdvertisers != null)
-          'removedAdvertisers': removedAdvertisers!,
-      };
-}
+typedef EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
+    = $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -18789,42 +16043,7 @@ class EnvironmentAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the environment_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_ENVIRONMENT`.
-class EnvironmentTargetingOptionDetails {
-  /// The serving environment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real environment option.
-  /// - "ENVIRONMENT_WEB_OPTIMIZED" : Target inventory displayed in browsers.
-  /// This includes inventory that was designed for the device it was viewed on,
-  /// such as mobile websites viewed on a mobile device.
-  /// ENVIRONMENT_WEB_NOT_OPTIMIZED, if targeted, should be deleted prior to the
-  /// deletion of this targeting option.
-  /// - "ENVIRONMENT_WEB_NOT_OPTIMIZED" : Target inventory displayed in
-  /// browsers. This includes inventory that was not designed for the device but
-  /// viewed on it, such as websites optimized for desktop but viewed on a
-  /// mobile device. ENVIRONMENT_WEB_OPTIMIZED should be targeted prior to the
-  /// addition of this targeting option.
-  /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
-  core.String? environment;
-
-  EnvironmentTargetingOptionDetails({
-    this.environment,
-  });
-
-  EnvironmentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-      };
-}
+typedef EnvironmentTargetingOptionDetails = $EnvironmentTargetingOptionDetails;
 
 /// Details for assigned exchange targeting option.
 ///
@@ -18880,396 +16099,19 @@ class ExchangeConfig {
 }
 
 /// An enabled exchange in the partner.
-class ExchangeConfigEnabledExchange {
-  /// The enabled exchange.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  core.String? exchange;
-
-  /// Agency ID of Google Ad Manager.
-  ///
-  /// The field is only relevant when Google Ad Manager is the enabled exchange.
-  ///
-  /// Output only.
-  core.String? googleAdManagerAgencyId;
-
-  /// Network ID of Google Ad Manager.
-  ///
-  /// The field is only relevant when Google Ad Manager is the enabled exchange.
-  ///
-  /// Output only.
-  core.String? googleAdManagerBuyerNetworkId;
-
-  /// Seat ID of the enabled exchange.
-  ///
-  /// Output only.
-  core.String? seatId;
-
-  ExchangeConfigEnabledExchange({
-    this.exchange,
-    this.googleAdManagerAgencyId,
-    this.googleAdManagerBuyerNetworkId,
-    this.seatId,
-  });
-
-  ExchangeConfigEnabledExchange.fromJson(core.Map json_)
-      : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-          googleAdManagerAgencyId: json_.containsKey('googleAdManagerAgencyId')
-              ? json_['googleAdManagerAgencyId'] as core.String
-              : null,
-          googleAdManagerBuyerNetworkId:
-              json_.containsKey('googleAdManagerBuyerNetworkId')
-                  ? json_['googleAdManagerBuyerNetworkId'] as core.String
-                  : null,
-          seatId: json_.containsKey('seatId')
-              ? json_['seatId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-        if (googleAdManagerAgencyId != null)
-          'googleAdManagerAgencyId': googleAdManagerAgencyId!,
-        if (googleAdManagerBuyerNetworkId != null)
-          'googleAdManagerBuyerNetworkId': googleAdManagerBuyerNetworkId!,
-        if (seatId != null) 'seatId': seatId!,
-      };
-}
+typedef ExchangeConfigEnabledExchange = $ExchangeConfigEnabledExchange;
 
 /// Exchange review status for the creative.
-class ExchangeReviewStatus {
-  /// The exchange reviewing the creative.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  core.String? exchange;
-
-  /// Status of the exchange review.
-  /// Possible string values are:
-  /// - "REVIEW_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "REVIEW_STATUS_APPROVED" : The creative is approved.
-  /// - "REVIEW_STATUS_REJECTED" : The creative is rejected.
-  /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
-  core.String? status;
-
-  ExchangeReviewStatus({
-    this.exchange,
-    this.status,
-  });
-
-  ExchangeReviewStatus.fromJson(core.Map json_)
-      : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-        if (status != null) 'status': status!,
-      };
-}
+typedef ExchangeReviewStatus = $ExchangeReviewStatus;
 
 /// Represents a targetable exchange.
 ///
 /// This will be populated in the exchange_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_EXCHANGE`.
-class ExchangeTargetingOptionDetails {
-  /// The type of exchange.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  core.String? exchange;
-
-  ExchangeTargetingOptionDetails({
-    this.exchange,
-  });
-
-  ExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-      };
-}
+typedef ExchangeTargetingOptionDetails = $ExchangeTargetingOptionDetails;
 
 /// Exit event of the creative.
-class ExitEvent {
-  /// The name of the click tag of the exit event.
-  ///
-  /// The name must be unique within one creative. Leave it empty or unset for
-  /// creatives containing image assets only.
-  core.String? name;
-
-  /// The name used to identify this event in reports.
-  ///
-  /// Leave it empty or unset for creatives containing image assets only.
-  core.String? reportingName;
-
-  /// The type of the exit event.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "EXIT_EVENT_TYPE_UNSPECIFIED" : Exit event type is not specified or is
-  /// unknown in this version.
-  /// - "EXIT_EVENT_TYPE_DEFAULT" : The exit event is the default one.
-  /// - "EXIT_EVENT_TYPE_BACKUP" : The exit event is a backup exit event. There
-  /// could be multiple backup exit events in a creative.
-  core.String? type;
-
-  /// The click through URL of the exit event.
-  ///
-  /// This is required when type is: * `EXIT_EVENT_TYPE_DEFAULT` *
-  /// `EXIT_EVENT_TYPE_BACKUP`
-  ///
-  /// Required.
-  core.String? url;
-
-  ExitEvent({
-    this.name,
-    this.reportingName,
-    this.type,
-    this.url,
-  });
-
-  ExitEvent.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef ExitEvent = $ExitEvent;
 
 /// Describes a first or third party audience list used for targeting.
 ///
@@ -19586,103 +16428,11 @@ class FirstAndThirdPartyAudienceGroup {
 }
 
 /// Details of first and third party audience targeting setting.
-class FirstAndThirdPartyAudienceTargetingSetting {
-  /// First and third party audience id of the first and third party audience
-  /// targeting setting.
-  ///
-  /// This id is first_and_third_party_audience_id.
-  ///
-  /// Required.
-  core.String? firstAndThirdPartyAudienceId;
-
-  /// The recency of the first and third party audience targeting setting.
-  ///
-  /// Only applicable to first party audiences, otherwise will be ignored. For
-  /// more info, refer to
-  /// https://support.google.com/displayvideo/answer/2949947#recency When
-  /// unspecified, no recency limit will be used.
-  /// Possible string values are:
-  /// - "RECENCY_NO_LIMIT" : No limit of recency.
-  /// - "RECENCY_1_MINUTE" : Recency is 1 minute.
-  /// - "RECENCY_5_MINUTES" : Recency is 5 minutes.
-  /// - "RECENCY_10_MINUTES" : Recency is 10 minutes.
-  /// - "RECENCY_15_MINUTES" : Recency is 15 minutes.
-  /// - "RECENCY_30_MINUTES" : Recency is 30 minutes.
-  /// - "RECENCY_1_HOUR" : Recency is 1 hour.
-  /// - "RECENCY_2_HOURS" : Recency is 2 hours.
-  /// - "RECENCY_3_HOURS" : Recency is 3 hours.
-  /// - "RECENCY_6_HOURS" : Recency is 6 hours.
-  /// - "RECENCY_12_HOURS" : Recency is 12 hours.
-  /// - "RECENCY_1_DAY" : Recency is 1 day.
-  /// - "RECENCY_2_DAYS" : Recency is 2 days.
-  /// - "RECENCY_3_DAYS" : Recency is 3 days.
-  /// - "RECENCY_5_DAYS" : Recency is 5 days.
-  /// - "RECENCY_7_DAYS" : Recency is 7 days.
-  /// - "RECENCY_10_DAYS" : Recency is 10 days.
-  /// - "RECENCY_14_DAYS" : Recency is 14 days.
-  /// - "RECENCY_15_DAYS" : Recency is 15 days.
-  /// - "RECENCY_21_DAYS" : Recency is 21 days.
-  /// - "RECENCY_28_DAYS" : Recency is 28 days.
-  /// - "RECENCY_30_DAYS" : Recency is 30 days.
-  /// - "RECENCY_40_DAYS" : Recency is 40 days.
-  /// - "RECENCY_45_DAYS" : Recency is 45 days.
-  /// - "RECENCY_60_DAYS" : Recency is 60 days.
-  /// - "RECENCY_90_DAYS" : Recency is 90 days.
-  /// - "RECENCY_120_DAYS" : Recency is 120 days.
-  /// - "RECENCY_180_DAYS" : Recency is 180 days.
-  /// - "RECENCY_270_DAYS" : Recency is 270 days.
-  /// - "RECENCY_365_DAYS" : Recency is 365 days.
-  core.String? recency;
-
-  FirstAndThirdPartyAudienceTargetingSetting({
-    this.firstAndThirdPartyAudienceId,
-    this.recency,
-  });
-
-  FirstAndThirdPartyAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          firstAndThirdPartyAudienceId:
-              json_.containsKey('firstAndThirdPartyAudienceId')
-                  ? json_['firstAndThirdPartyAudienceId'] as core.String
-                  : null,
-          recency: json_.containsKey('recency')
-              ? json_['recency'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (firstAndThirdPartyAudienceId != null)
-          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
-        if (recency != null) 'recency': recency!,
-      };
-}
+typedef FirstAndThirdPartyAudienceTargetingSetting
+    = $FirstAndThirdPartyAudienceTargetingSetting;
 
 /// A strategy that uses a fixed bidding price.
-class FixedBidStrategy {
-  /// The fixed bid amount, in micros of the advertiser's currency.
-  ///
-  /// For insertion order entity, bid_amount_micros should be set as 0. For line
-  /// item entity, bid_amount_micros must be greater than or equal to billable
-  /// unit of the given currency and smaller than or equal to the upper limit
-  /// 1000000000. For example, 1500000 represents 1.5 standard units of the
-  /// currency.
-  core.String? bidAmountMicros;
-
-  FixedBidStrategy({
-    this.bidAmountMicros,
-  });
-
-  FixedBidStrategy.fromJson(core.Map json_)
-      : this(
-          bidAmountMicros: json_.containsKey('bidAmountMicros')
-              ? json_['bidAmountMicros'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
-      };
-}
+typedef FixedBidStrategy = $FixedBidStrategy;
 
 /// A single Floodlight group.
 class FloodlightGroup {
@@ -19918,34 +16668,7 @@ class GenderAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the gender_details field of a TargetingOption when
 /// targeting_type is `TARGETING_TYPE_GENDER`.
-class GenderTargetingOptionDetails {
-  /// The gender of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
-  /// this version. This enum is a place holder for default value and does not
-  /// represent a real gender option.
-  /// - "GENDER_MALE" : The audience gender is male.
-  /// - "GENDER_FEMALE" : The audience gender is female.
-  /// - "GENDER_UNKNOWN" : The audience gender is unknown.
-  core.String? gender;
-
-  GenderTargetingOptionDetails({
-    this.gender,
-  });
-
-  GenderTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gender != null) 'gender': gender!,
-      };
-}
+typedef GenderTargetingOptionDetails = $GenderTargetingOptionDetails;
 
 /// Request message for LineItemService.GenerateDefaultLineItem.
 class GenerateDefaultLineItemRequest {
@@ -20032,265 +16755,22 @@ class GenerateDefaultLineItemRequest {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_GEO_REGION`.
-class GeoRegionAssignedTargetingOptionDetails {
-  /// The display name of the geographic region (e.g., "Ontario, Canada").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type of geographic region targeting.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  core.String? geoRegionType;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_GEO_REGION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  GeoRegionAssignedTargetingOptionDetails({
-    this.displayName,
-    this.geoRegionType,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef GeoRegionAssignedTargetingOptionDetails
+    = $GeoRegionAssignedTargetingOptionDetails;
 
 /// Search terms for geo region targeting options.
-class GeoRegionSearchTerms {
-  /// The search query for the desired geo region.
-  ///
-  /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
-  core.String? geoRegionQuery;
-
-  GeoRegionSearchTerms({
-    this.geoRegionQuery,
-  });
-
-  GeoRegionSearchTerms.fromJson(core.Map json_)
-      : this(
-          geoRegionQuery: json_.containsKey('geoRegionQuery')
-              ? json_['geoRegionQuery'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery!,
-      };
-}
+typedef GeoRegionSearchTerms = $GeoRegionSearchTerms;
 
 /// Represents a targetable geographic region.
 ///
 /// This will be populated in the geo_region_details field when targeting_type
 /// is `TARGETING_TYPE_GEO_REGION`.
-class GeoRegionTargetingOptionDetails {
-  /// The display name of the geographic region (e.g., "Ontario, Canada").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type of geographic region targeting.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  core.String? geoRegionType;
-
-  GeoRegionTargetingOptionDetails({
-    this.displayName,
-    this.geoRegionType,
-  });
-
-  GeoRegionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
-      };
-}
+typedef GeoRegionTargetingOptionDetails = $GeoRegionTargetingOptionDetails;
 
 /// Describes a Google audience resource.
 ///
 /// Includes Google audience lists.
-class GoogleAudience {
-  /// The display name of the Google audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The unique ID of the Google audience.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? googleAudienceId;
-
-  /// The type of Google audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GOOGLE_AUDIENCE_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown.
-  /// - "GOOGLE_AUDIENCE_TYPE_AFFINITY" : Affinity type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_IN_MARKET" : In-Market type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS" : Installed-Apps type Google
-  /// audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES" : New-Mobile-Devices type
-  /// Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT" : Life-Event type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC" : Extended-Demographic type
-  /// Google audience.
-  core.String? googleAudienceType;
-
-  /// The resource name of the google audience.
-  ///
-  /// Output only.
-  core.String? name;
-
-  GoogleAudience({
-    this.displayName,
-    this.googleAudienceId,
-    this.googleAudienceType,
-    this.name,
-  });
-
-  GoogleAudience.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          googleAudienceId: json_.containsKey('googleAudienceId')
-              ? json_['googleAudienceId'] as core.String
-              : null,
-          googleAudienceType: json_.containsKey('googleAudienceType')
-              ? json_['googleAudienceType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
-        if (googleAudienceType != null)
-          'googleAudienceType': googleAudienceType!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef GoogleAudience = $GoogleAudience;
 
 /// Details of Google audience group.
 ///
@@ -20323,29 +16803,7 @@ class GoogleAudienceGroup {
 }
 
 /// Details of Google audience targeting setting.
-class GoogleAudienceTargetingSetting {
-  /// Google audience id of the Google audience targeting setting.
-  ///
-  /// This id is google_audience_id.
-  ///
-  /// Required.
-  core.String? googleAudienceId;
-
-  GoogleAudienceTargetingSetting({
-    this.googleAudienceId,
-  });
-
-  GoogleAudienceTargetingSetting.fromJson(core.Map json_)
-      : this(
-          googleAudienceId: json_.containsKey('googleAudienceId')
-              ? json_['googleAudienceId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
-      };
-}
+typedef GoogleAudienceTargetingSetting = $GoogleAudienceTargetingSetting;
 
 /// Media resource.
 typedef GoogleBytestreamMedia = $Media;
@@ -20604,73 +17062,7 @@ class GuaranteedOrder {
 }
 
 /// The status settings of the guaranteed order.
-class GuaranteedOrderStatus {
-  /// The configuration status of the guaranteed order.
-  ///
-  /// Acceptable values are `PENDING` and `COMPLETED`. A guaranteed order must
-  /// be configured (fill in the required fields, choose creatives, and select a
-  /// default campaign) before it can serve. Currently the configuration action
-  /// can only be performed via UI.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED" : The approval status is
-  /// not specified or is unknown in this version.
-  /// - "PENDING" : The beginning state of a guaranteed order. The guaranteed
-  /// order in this state needs to be configured before it can serve.
-  /// - "COMPLETED" : The state after the buyer configures a guaranteed order.
-  core.String? configStatus;
-
-  /// The user-provided reason for pausing this guaranteed order.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 100 bytes. Only applicable
-  /// when entity_status is set to `ENTITY_STATUS_PAUSED`.
-  core.String? entityPauseReason;
-
-  /// Whether or not the guaranteed order is servable.
-  ///
-  /// Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`,
-  /// and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
-  /// Possible string values are:
-  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
-  /// or is unknown in this version.
-  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
-  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
-  /// spending are disabled. An entity can be deleted after archived. Deleted
-  /// entities cannot be retrieved.
-  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
-  /// spending are disabled.
-  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
-  /// entity.
-  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
-  /// deletion.
-  core.String? entityStatus;
-
-  GuaranteedOrderStatus({
-    this.configStatus,
-    this.entityPauseReason,
-    this.entityStatus,
-  });
-
-  GuaranteedOrderStatus.fromJson(core.Map json_)
-      : this(
-          configStatus: json_.containsKey('configStatus')
-              ? json_['configStatus'] as core.String
-              : null,
-          entityPauseReason: json_.containsKey('entityPauseReason')
-              ? json_['entityPauseReason'] as core.String
-              : null,
-          entityStatus: json_.containsKey('entityStatus')
-              ? json_['entityStatus'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (configStatus != null) 'configStatus': configStatus!,
-        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
-        if (entityStatus != null) 'entityStatus': entityStatus!,
-      };
-}
+typedef GuaranteedOrderStatus = $GuaranteedOrderStatus;
 
 /// Details for assigned household income targeting option.
 ///
@@ -20731,136 +17123,11 @@ class HouseholdIncomeAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the household_income_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`.
-class HouseholdIncomeTargetingOptionDetails {
-  /// The household income of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
-  /// not specified in this version. This enum is a placeholder for default
-  /// value and does not represent a real household income option.
-  /// - "HOUSEHOLD_INCOME_UNKNOWN" : The household income of the audience is
-  /// unknown.
-  /// - "HOUSEHOLD_INCOME_LOWER_50_PERCENT" : The audience is in the lower 50%
-  /// of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_41_TO_50_PERCENT" : The audience is in the top
-  /// 41-50% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT" : The audience is in the top
-  /// 31-40% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT" : The audience is in the top
-  /// 21-30% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT" : The audience is in the top
-  /// 11-20% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_10_PERCENT" : The audience is in the top 10% of
-  /// U.S. household incomes.
-  core.String? householdIncome;
-
-  HouseholdIncomeTargetingOptionDetails({
-    this.householdIncome,
-  });
-
-  HouseholdIncomeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_.containsKey('householdIncome')
-              ? json_['householdIncome'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (householdIncome != null) 'householdIncome': householdIncome!,
-      };
-}
+typedef HouseholdIncomeTargetingOptionDetails
+    = $HouseholdIncomeTargetingOptionDetails;
 
 /// A filtering option that filters entities by their entity IDs.
-class IdFilter {
-  /// YouTube Ads to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupAdIds;
-
-  /// YouTube Ad Groups to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupIds;
-
-  /// Campaigns to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? campaignIds;
-
-  /// Insertion Orders to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? insertionOrderIds;
-
-  /// Line Items to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? lineItemIds;
-
-  /// Media Products to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? mediaProductIds;
-
-  IdFilter({
-    this.adGroupAdIds,
-    this.adGroupIds,
-    this.campaignIds,
-    this.insertionOrderIds,
-    this.lineItemIds,
-    this.mediaProductIds,
-  });
-
-  IdFilter.fromJson(core.Map json_)
-      : this(
-          adGroupAdIds: json_.containsKey('adGroupAdIds')
-              ? (json_['adGroupAdIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          adGroupIds: json_.containsKey('adGroupIds')
-              ? (json_['adGroupIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          campaignIds: json_.containsKey('campaignIds')
-              ? (json_['campaignIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          insertionOrderIds: json_.containsKey('insertionOrderIds')
-              ? (json_['insertionOrderIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          lineItemIds: json_.containsKey('lineItemIds')
-              ? (json_['lineItemIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          mediaProductIds: json_.containsKey('mediaProductIds')
-              ? (json_['mediaProductIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
-        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
-        if (campaignIds != null) 'campaignIds': campaignIds!,
-        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
-        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
-        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
-      };
-}
+typedef IdFilter = $IdFilter;
 
 /// A single insertion order.
 class InsertionOrder {
@@ -21197,8 +17464,7 @@ class InsertionOrderBudgetSegment {
   /// The budget segment description.
   ///
   /// It can be used to enter Purchase Order information for each budget segment
-  /// and have that information printed on the invoices. Must be UTF-8 encoded
-  /// with a length of no more than 80 characters.
+  /// and have that information printed on the invoices. Must be UTF-8 encoded.
   core.String? description;
 
   InsertionOrderBudgetSegment({
@@ -21235,249 +17501,10 @@ class InsertionOrderBudgetSegment {
 }
 
 /// Details of Integral Ad Science settings.
-class IntegralAdScience {
-  /// The custom segment ID provided by Integral Ad Science.
-  ///
-  /// The ID must be between `1000001` and `1999999`, inclusive.
-  core.List<core.String>? customSegmentId;
-
-  /// Display Viewability section (applicable to display line items only).
-  /// Possible string values are:
-  /// - "PERFORMANCE_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any display viewability options.
-  /// - "PERFORMANCE_VIEWABILITY_40" : Target 40% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_50" : Target 50% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_60" : Target 60% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_70" : Target 70% Viewability or Higher.
-  core.String? displayViewability;
-
-  /// Brand Safety - **Unrateable**.
-  core.bool? excludeUnrateable;
-
-  /// Ad Fraud settings.
-  /// Possible string values are:
-  /// - "SUSPICIOUS_ACTIVITY_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any ad fraud prevention options.
-  /// - "SUSPICIOUS_ACTIVITY_HR" : Ad Fraud - Exclude High Risk.
-  /// - "SUSPICIOUS_ACTIVITY_HMR" : Ad Fraud - Exclude High and Moderate Risk.
-  core.String? excludedAdFraudRisk;
-
-  /// Brand Safety - **Adult content**.
-  /// Possible string values are:
-  /// - "ADULT_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any adult options.
-  /// - "ADULT_HR" : Adult - Exclude High Risk.
-  /// - "ADULT_HMR" : Adult - Exclude High and Moderate Risk.
-  core.String? excludedAdultRisk;
-
-  /// Brand Safety - **Alcohol**.
-  /// Possible string values are:
-  /// - "ALCOHOL_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any alcohol options.
-  /// - "ALCOHOL_HR" : Alcohol - Exclude High Risk.
-  /// - "ALCOHOL_HMR" : Alcohol - Exclude High and Moderate Risk.
-  core.String? excludedAlcoholRisk;
-
-  /// Brand Safety - **Drugs**.
-  /// Possible string values are:
-  /// - "DRUGS_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any drugs options.
-  /// - "DRUGS_HR" : Drugs - Exclude High Risk.
-  /// - "DRUGS_HMR" : Drugs - Exclude High and Moderate Risk.
-  core.String? excludedDrugsRisk;
-
-  /// Brand Safety - **Gambling**.
-  /// Possible string values are:
-  /// - "GAMBLING_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any gambling options.
-  /// - "GAMBLING_HR" : Gambling - Exclude High Risk.
-  /// - "GAMBLING_HMR" : Gambling - Exclude High and Moderate Risk.
-  core.String? excludedGamblingRisk;
-
-  /// Brand Safety - **Hate speech**.
-  /// Possible string values are:
-  /// - "HATE_SPEECH_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any hate speech options.
-  /// - "HATE_SPEECH_HR" : Hate Speech - Exclude High Risk.
-  /// - "HATE_SPEECH_HMR" : Hate Speech - Exclude High and Moderate Risk.
-  core.String? excludedHateSpeechRisk;
-
-  /// Brand Safety - **Illegal downloads**.
-  /// Possible string values are:
-  /// - "ILLEGAL_DOWNLOADS_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any illegal downloads options.
-  /// - "ILLEGAL_DOWNLOADS_HR" : Illegal Downloads - Exclude High Risk.
-  /// - "ILLEGAL_DOWNLOADS_HMR" : Illegal Downloads - Exclude High and Moderate
-  /// Risk.
-  core.String? excludedIllegalDownloadsRisk;
-
-  /// Brand Safety - **Offensive language**.
-  /// Possible string values are:
-  /// - "OFFENSIVE_LANGUAGE_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any language options.
-  /// - "OFFENSIVE_LANGUAGE_HR" : Offensive Language - Exclude High Risk.
-  /// - "OFFENSIVE_LANGUAGE_HMR" : Offensive Language - Exclude High and
-  /// Moderate Risk.
-  core.String? excludedOffensiveLanguageRisk;
-
-  /// Brand Safety - **Violence**.
-  /// Possible string values are:
-  /// - "VIOLENCE_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any violence options.
-  /// - "VIOLENCE_HR" : Violence - Exclude High Risk.
-  /// - "VIOLENCE_HMR" : Violence - Exclude High and Moderate Risk.
-  core.String? excludedViolenceRisk;
-
-  /// True advertising quality (applicable to Display line items only).
-  /// Possible string values are:
-  /// - "TRAQ_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any true advertising quality scores.
-  /// - "TRAQ_250" : TRAQ score 250-1000.
-  /// - "TRAQ_500" : TRAQ score 500-1000.
-  /// - "TRAQ_600" : TRAQ score 600-1000.
-  /// - "TRAQ_700" : TRAQ score 700-1000.
-  /// - "TRAQ_750" : TRAQ score 750-1000.
-  /// - "TRAQ_875" : TRAQ score 875-1000.
-  /// - "TRAQ_1000" : TRAQ score 1000.
-  core.String? traqScoreOption;
-
-  /// Video Viewability Section (applicable to video line items only).
-  /// Possible string values are:
-  /// - "VIDEO_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any video viewability options.
-  /// - "VIDEO_VIEWABILITY_40" : 40%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_50" : 50%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_60" : 60%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_70" : 70%+ in view (IAB video viewability standard).
-  core.String? videoViewability;
-
-  IntegralAdScience({
-    this.customSegmentId,
-    this.displayViewability,
-    this.excludeUnrateable,
-    this.excludedAdFraudRisk,
-    this.excludedAdultRisk,
-    this.excludedAlcoholRisk,
-    this.excludedDrugsRisk,
-    this.excludedGamblingRisk,
-    this.excludedHateSpeechRisk,
-    this.excludedIllegalDownloadsRisk,
-    this.excludedOffensiveLanguageRisk,
-    this.excludedViolenceRisk,
-    this.traqScoreOption,
-    this.videoViewability,
-  });
-
-  IntegralAdScience.fromJson(core.Map json_)
-      : this(
-          customSegmentId: json_.containsKey('customSegmentId')
-              ? (json_['customSegmentId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          displayViewability: json_.containsKey('displayViewability')
-              ? json_['displayViewability'] as core.String
-              : null,
-          excludeUnrateable: json_.containsKey('excludeUnrateable')
-              ? json_['excludeUnrateable'] as core.bool
-              : null,
-          excludedAdFraudRisk: json_.containsKey('excludedAdFraudRisk')
-              ? json_['excludedAdFraudRisk'] as core.String
-              : null,
-          excludedAdultRisk: json_.containsKey('excludedAdultRisk')
-              ? json_['excludedAdultRisk'] as core.String
-              : null,
-          excludedAlcoholRisk: json_.containsKey('excludedAlcoholRisk')
-              ? json_['excludedAlcoholRisk'] as core.String
-              : null,
-          excludedDrugsRisk: json_.containsKey('excludedDrugsRisk')
-              ? json_['excludedDrugsRisk'] as core.String
-              : null,
-          excludedGamblingRisk: json_.containsKey('excludedGamblingRisk')
-              ? json_['excludedGamblingRisk'] as core.String
-              : null,
-          excludedHateSpeechRisk: json_.containsKey('excludedHateSpeechRisk')
-              ? json_['excludedHateSpeechRisk'] as core.String
-              : null,
-          excludedIllegalDownloadsRisk:
-              json_.containsKey('excludedIllegalDownloadsRisk')
-                  ? json_['excludedIllegalDownloadsRisk'] as core.String
-                  : null,
-          excludedOffensiveLanguageRisk:
-              json_.containsKey('excludedOffensiveLanguageRisk')
-                  ? json_['excludedOffensiveLanguageRisk'] as core.String
-                  : null,
-          excludedViolenceRisk: json_.containsKey('excludedViolenceRisk')
-              ? json_['excludedViolenceRisk'] as core.String
-              : null,
-          traqScoreOption: json_.containsKey('traqScoreOption')
-              ? json_['traqScoreOption'] as core.String
-              : null,
-          videoViewability: json_.containsKey('videoViewability')
-              ? json_['videoViewability'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customSegmentId != null) 'customSegmentId': customSegmentId!,
-        if (displayViewability != null)
-          'displayViewability': displayViewability!,
-        if (excludeUnrateable != null) 'excludeUnrateable': excludeUnrateable!,
-        if (excludedAdFraudRisk != null)
-          'excludedAdFraudRisk': excludedAdFraudRisk!,
-        if (excludedAdultRisk != null) 'excludedAdultRisk': excludedAdultRisk!,
-        if (excludedAlcoholRisk != null)
-          'excludedAlcoholRisk': excludedAlcoholRisk!,
-        if (excludedDrugsRisk != null) 'excludedDrugsRisk': excludedDrugsRisk!,
-        if (excludedGamblingRisk != null)
-          'excludedGamblingRisk': excludedGamblingRisk!,
-        if (excludedHateSpeechRisk != null)
-          'excludedHateSpeechRisk': excludedHateSpeechRisk!,
-        if (excludedIllegalDownloadsRisk != null)
-          'excludedIllegalDownloadsRisk': excludedIllegalDownloadsRisk!,
-        if (excludedOffensiveLanguageRisk != null)
-          'excludedOffensiveLanguageRisk': excludedOffensiveLanguageRisk!,
-        if (excludedViolenceRisk != null)
-          'excludedViolenceRisk': excludedViolenceRisk!,
-        if (traqScoreOption != null) 'traqScoreOption': traqScoreOption!,
-        if (videoViewability != null) 'videoViewability': videoViewability!,
-      };
-}
+typedef IntegralAdScience = $IntegralAdScience;
 
 /// Integration details of an entry.
-class IntegrationDetails {
-  /// Additional details of the entry in string format.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 1000 characters.
-  core.String? details;
-
-  /// An external identifier to be associated with the entry.
-  ///
-  /// The integration code will show up together with the entry in many places
-  /// in the system, for example, reporting. Must be UTF-8 encoded with a length
-  /// of no more than 500 characters.
-  core.String? integrationCode;
-
-  IntegrationDetails({
-    this.details,
-    this.integrationCode,
-  });
-
-  IntegrationDetails.fromJson(core.Map json_)
-      : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          integrationCode: json_.containsKey('integrationCode')
-              ? json_['integrationCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (integrationCode != null) 'integrationCode': integrationCode!,
-      };
-}
+typedef IntegrationDetails = $IntegrationDetails;
 
 /// An inventory source.
 class InventorySource {
@@ -21868,77 +17895,19 @@ class InventorySourceAccessors {
 }
 
 /// The advertisers with access to the inventory source.
-class InventorySourceAccessorsAdvertiserAccessors {
-  /// The IDs of the advertisers.
-  core.List<core.String>? advertiserIds;
-
-  InventorySourceAccessorsAdvertiserAccessors({
-    this.advertiserIds,
-  });
-
-  InventorySourceAccessorsAdvertiserAccessors.fromJson(core.Map json_)
-      : this(
-          advertiserIds: json_.containsKey('advertiserIds')
-              ? (json_['advertiserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
-      };
-}
+typedef InventorySourceAccessorsAdvertiserAccessors
+    = $InventorySourceAccessorsAdvertiserAccessors;
 
 /// The partner with access to the inventory source.
-class InventorySourceAccessorsPartnerAccessor {
-  /// The ID of the partner.
-  core.String? partnerId;
-
-  InventorySourceAccessorsPartnerAccessor({
-    this.partnerId,
-  });
-
-  InventorySourceAccessorsPartnerAccessor.fromJson(core.Map json_)
-      : this(
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (partnerId != null) 'partnerId': partnerId!,
-      };
-}
+typedef InventorySourceAccessorsPartnerAccessor
+    = $InventorySourceAccessorsPartnerAccessor;
 
 /// Targeting details for inventory source.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`.
-class InventorySourceAssignedTargetingOptionDetails {
-  /// ID of the inventory source.
-  ///
-  /// Should refer to the inventory_source_id field of an InventorySource
-  /// resource.
-  ///
-  /// Required.
-  core.String? inventorySourceId;
-
-  InventorySourceAssignedTargetingOptionDetails({
-    this.inventorySourceId,
-  });
-
-  InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          inventorySourceId: json_.containsKey('inventorySourceId')
-              ? json_['inventorySourceId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
-      };
-}
+typedef InventorySourceAssignedTargetingOptionDetails
+    = $InventorySourceAssignedTargetingOptionDetails;
 
 /// The configuration for display creatives.
 class InventorySourceDisplayCreativeConfig {
@@ -21964,241 +17933,24 @@ class InventorySourceDisplayCreativeConfig {
 }
 
 /// A filtering option for filtering on Inventory Source entities.
-class InventorySourceFilter {
-  /// Inventory Sources to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest. Leave empty to download all Inventory
-  /// Sources for the selected Advertiser or Partner.
-  core.List<core.String>? inventorySourceIds;
-
-  InventorySourceFilter({
-    this.inventorySourceIds,
-  });
-
-  InventorySourceFilter.fromJson(core.Map json_)
-      : this(
-          inventorySourceIds: json_.containsKey('inventorySourceIds')
-              ? (json_['inventorySourceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceIds != null)
-          'inventorySourceIds': inventorySourceIds!,
-      };
-}
+typedef InventorySourceFilter = $InventorySourceFilter;
 
 /// A collection of targetable inventory sources.
-class InventorySourceGroup {
-  /// The display name of the inventory source group.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The unique ID of the inventory source group.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? inventorySourceGroupId;
-
-  /// The resource name of the inventory source group.
-  ///
-  /// Output only.
-  core.String? name;
-
-  InventorySourceGroup({
-    this.displayName,
-    this.inventorySourceGroupId,
-    this.name,
-  });
-
-  InventorySourceGroup.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          inventorySourceGroupId: json_.containsKey('inventorySourceGroupId')
-              ? json_['inventorySourceGroupId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (inventorySourceGroupId != null)
-          'inventorySourceGroupId': inventorySourceGroupId!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef InventorySourceGroup = $InventorySourceGroup;
 
 /// Targeting details for inventory source group.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
-class InventorySourceGroupAssignedTargetingOptionDetails {
-  /// ID of the inventory source group.
-  ///
-  /// Should refer to the inventory_source_group_id field of an
-  /// InventorySourceGroup resource.
-  ///
-  /// Required.
-  core.String? inventorySourceGroupId;
-
-  InventorySourceGroupAssignedTargetingOptionDetails({
-    this.inventorySourceGroupId,
-  });
-
-  InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          inventorySourceGroupId: json_.containsKey('inventorySourceGroupId')
-              ? json_['inventorySourceGroupId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySourceGroupId != null)
-          'inventorySourceGroupId': inventorySourceGroupId!,
-      };
-}
+typedef InventorySourceGroupAssignedTargetingOptionDetails
+    = $InventorySourceGroupAssignedTargetingOptionDetails;
 
 /// The status related settings of the inventory source.
-class InventorySourceStatus {
-  /// The configuration status of the inventory source.
-  ///
-  /// Only applicable for guaranteed inventory sources. Acceptable values are
-  /// `INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and
-  /// `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be
-  /// configured (fill in the required fields, choose creatives, and select a
-  /// default campaign) before it can serve.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_CONFIG_STATUS_UNSPECIFIED" : The approval status is
-  /// not specified or is unknown in this version.
-  /// - "INVENTORY_SOURCE_CONFIG_STATUS_PENDING" : The beginning state of a
-  /// guaranteed inventory source. The inventory source in this state needs to
-  /// be configured.
-  /// - "INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED" : The state after the buyer
-  /// configures a guaranteed inventory source.
-  core.String? configStatus;
-
-  /// The user-provided reason for pausing this inventory source.
-  ///
-  /// Must not exceed 100 characters. Only applicable when entity_status is set
-  /// to `ENTITY_STATUS_PAUSED`.
-  core.String? entityPauseReason;
-
-  /// Whether or not the inventory source is servable.
-  ///
-  /// Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`,
-  /// and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
-  /// Possible string values are:
-  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
-  /// or is unknown in this version.
-  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
-  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
-  /// spending are disabled. An entity can be deleted after archived. Deleted
-  /// entities cannot be retrieved.
-  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
-  /// spending are disabled.
-  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
-  /// entity.
-  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
-  /// deletion.
-  core.String? entityStatus;
-
-  /// The seller-provided reason for pausing this inventory source.
-  ///
-  /// Only applicable for inventory sources synced directly from the publishers
-  /// and when seller_status is set to `ENTITY_STATUS_PAUSED`.
-  ///
-  /// Output only.
-  core.String? sellerPauseReason;
-
-  /// The status set by the seller for the inventory source.
-  ///
-  /// Only applicable for inventory sources synced directly from the publishers.
-  /// Acceptable values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_PAUSED`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
-  /// or is unknown in this version.
-  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
-  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
-  /// spending are disabled. An entity can be deleted after archived. Deleted
-  /// entities cannot be retrieved.
-  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
-  /// spending are disabled.
-  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
-  /// entity.
-  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
-  /// deletion.
-  core.String? sellerStatus;
-
-  InventorySourceStatus({
-    this.configStatus,
-    this.entityPauseReason,
-    this.entityStatus,
-    this.sellerPauseReason,
-    this.sellerStatus,
-  });
-
-  InventorySourceStatus.fromJson(core.Map json_)
-      : this(
-          configStatus: json_.containsKey('configStatus')
-              ? json_['configStatus'] as core.String
-              : null,
-          entityPauseReason: json_.containsKey('entityPauseReason')
-              ? json_['entityPauseReason'] as core.String
-              : null,
-          entityStatus: json_.containsKey('entityStatus')
-              ? json_['entityStatus'] as core.String
-              : null,
-          sellerPauseReason: json_.containsKey('sellerPauseReason')
-              ? json_['sellerPauseReason'] as core.String
-              : null,
-          sellerStatus: json_.containsKey('sellerStatus')
-              ? json_['sellerStatus'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (configStatus != null) 'configStatus': configStatus!,
-        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
-        if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason!,
-        if (sellerStatus != null) 'sellerStatus': sellerStatus!,
-      };
-}
+typedef InventorySourceStatus = $InventorySourceStatus;
 
 /// The configuration for video creatives.
-class InventorySourceVideoCreativeConfig {
-  /// The duration requirements for the video creatives that can be assigned to
-  /// the inventory source.
-  core.String? duration;
-
-  InventorySourceVideoCreativeConfig({
-    this.duration,
-  });
-
-  InventorySourceVideoCreativeConfig.fromJson(core.Map json_)
-      : this(
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-      };
-}
+typedef InventorySourceVideoCreativeConfig
+    = $InventorySourceVideoCreativeConfig;
 
 /// A single invoice.
 class Invoice {
@@ -22435,113 +18187,21 @@ class Invoice {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_KEYWORD`.
-class KeywordAssignedTargetingOptionDetails {
-  /// The keyword, for example `car insurance`.
-  ///
-  /// Positive keyword cannot be offensive word. Must be UTF-8 encoded with a
-  /// maximum size of 255 bytes. Maximum number of characters is 80. Maximum
-  /// number of words is 10.
-  ///
-  /// Required.
-  core.String? keyword;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  KeywordAssignedTargetingOptionDetails({
-    this.keyword,
-    this.negative,
-  });
-
-  KeywordAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          keyword: json_.containsKey('keyword')
-              ? json_['keyword'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyword != null) 'keyword': keyword!,
-        if (negative != null) 'negative': negative!,
-      };
-}
+typedef KeywordAssignedTargetingOptionDetails
+    = $KeywordAssignedTargetingOptionDetails;
 
 /// Details for assigned language targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_LANGUAGE`.
-class LanguageAssignedTargetingOptionDetails {
-  /// The display name of the language (e.g., "French").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned language targeting options on the same resource must have the
-  /// same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_LANGUAGE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  LanguageAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  LanguageAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef LanguageAssignedTargetingOptionDetails
+    = $LanguageAssignedTargetingOptionDetails;
 
 /// Represents a targetable language.
 ///
 /// This will be populated in the language_details field when targeting_type is
 /// `TARGETING_TYPE_LANGUAGE`.
-class LanguageTargetingOptionDetails {
-  /// The display name of the language (e.g., "French").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  LanguageTargetingOptionDetails({
-    this.displayName,
-  });
-
-  LanguageTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef LanguageTargetingOptionDetails = $LanguageTargetingOptionDetails;
 
 /// A single line item.
 class LineItem {
@@ -22711,12 +18371,16 @@ class LineItem {
   /// inventory source.
   core.String? reservationType;
 
-  /// The
-  /// [targeting expansion](https://support.google.com/displayvideo/answer/10191558)
-  /// settings of the line item.
+  /// The \[targeting
+  /// expansion\](//support.google.com/displayvideo/answer/10191558) settings of
+  /// the line item.
   ///
   /// This config is only applicable when eligible audience list targeting is
-  /// assigned to the line item.
+  /// assigned to the line item. Beginning November 7, 2022, these settings may
+  /// represent the \[optimized targeting
+  /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
+  /// targeting expansion. This feature will be rolled out to all partners by
+  /// November 9, 2022.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -22894,76 +18558,7 @@ class LineItem {
 }
 
 /// Settings that control how budget is allocated.
-class LineItemBudget {
-  /// The type of the budget allocation.
-  ///
-  /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when
-  /// automatic budget allocation is enabled for the parent insertion order.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC" : Automatic budget
-  /// allocation is enabled for the line item.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED" : A fixed max budget amount is
-  /// allocated for the line item.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED" : No budget limit is
-  /// applied to the line item.
-  core.String? budgetAllocationType;
-
-  /// The budget unit specifies whether the budget is currency based or
-  /// impression based.
-  ///
-  /// This value is inherited from the parent insertion order.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BUDGET_UNIT_UNSPECIFIED" : Type value is not specified or is unknown in
-  /// this version.
-  /// - "BUDGET_UNIT_CURRENCY" : Budgeting in currency amounts.
-  /// - "BUDGET_UNIT_IMPRESSIONS" : Budgeting in impression amounts.
-  core.String? budgetUnit;
-
-  /// The maximum budget amount the line item will spend.
-  ///
-  /// Must be greater than 0. When budget_allocation_type is: *
-  /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and
-  /// is set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if
-  /// budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents maximum
-  /// budget amount to spend, in micros of the advertiser's currency. For
-  /// example, 1500000 represents 1.5 standard units of the currency. -
-  /// `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of
-  /// impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this
-  /// field is not applicable and will be ignored by the system.
-  core.String? maxAmount;
-
-  LineItemBudget({
-    this.budgetAllocationType,
-    this.budgetUnit,
-    this.maxAmount,
-  });
-
-  LineItemBudget.fromJson(core.Map json_)
-      : this(
-          budgetAllocationType: json_.containsKey('budgetAllocationType')
-              ? json_['budgetAllocationType'] as core.String
-              : null,
-          budgetUnit: json_.containsKey('budgetUnit')
-              ? json_['budgetUnit'] as core.String
-              : null,
-          maxAmount: json_.containsKey('maxAmount')
-              ? json_['maxAmount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (budgetAllocationType != null)
-          'budgetAllocationType': budgetAllocationType!,
-        if (budgetUnit != null) 'budgetUnit': budgetUnit!,
-        if (maxAmount != null) 'maxAmount': maxAmount!,
-      };
-}
+typedef LineItemBudget = $LineItemBudget;
 
 /// Settings that control the active duration of a line item.
 class LineItemFlight {
@@ -24191,422 +19786,29 @@ class ListUsersResponse {
 }
 
 /// A list of locations used for targeting.
-class LocationList {
-  /// The unique ID of the advertiser the location list belongs to.
-  ///
-  /// Required. Immutable.
-  core.String? advertiserId;
-
-  /// The display name of the location list.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The unique ID of the location list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? locationListId;
-
-  /// The type of location.
-  ///
-  /// All locations in the list will share this type.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "TARGETING_LOCATION_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown.
-  /// - "TARGETING_LOCATION_TYPE_PROXIMITY" : The type for proximity geo
-  /// location.
-  /// - "TARGETING_LOCATION_TYPE_REGIONAL" : The type for regional geo location.
-  core.String? locationType;
-
-  /// The resource name of the location list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  LocationList({
-    this.advertiserId,
-    this.displayName,
-    this.locationListId,
-    this.locationType,
-    this.name,
-  });
-
-  LocationList.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          locationListId: json_.containsKey('locationListId')
-              ? json_['locationListId'] as core.String
-              : null,
-          locationType: json_.containsKey('locationType')
-              ? json_['locationType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (locationListId != null) 'locationListId': locationListId!,
-        if (locationType != null) 'locationType': locationType!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef LocationList = $LocationList;
 
 /// Specifies how many days into the past to look when determining whether to
 /// record a conversion.
-class LookbackWindow {
-  /// Lookback window, in days, from the last time a given user clicked on one
-  /// of your ads.
-  core.int? clickDays;
-
-  /// Lookback window, in days, from the last time a given user viewed one of
-  /// your ads.
-  core.int? impressionDays;
-
-  LookbackWindow({
-    this.clickDays,
-    this.impressionDays,
-  });
-
-  LookbackWindow.fromJson(core.Map json_)
-      : this(
-          clickDays: json_.containsKey('clickDays')
-              ? json_['clickDays'] as core.int
-              : null,
-          impressionDays: json_.containsKey('impressionDays')
-              ? json_['impressionDays'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clickDays != null) 'clickDays': clickDays!,
-        if (impressionDays != null) 'impressionDays': impressionDays!,
-      };
-}
-
-class LookupInvoiceCurrencyResponse {
-  /// Currency used by the advertiser in ISO 4217 format.
-  core.String? currencyCode;
-
-  LookupInvoiceCurrencyResponse({
-    this.currencyCode,
-  });
-
-  LookupInvoiceCurrencyResponse.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
-}
+typedef LookbackWindow = $LookbackWindow;
+typedef LookupInvoiceCurrencyResponse = $LookupInvoiceCurrencyResponse;
 
 /// A single manual trigger in Display & Video 360.
-class ManualTrigger {
-  /// The maximum duration of each activation in minutes.
-  ///
-  /// Must be between 1 and 360 inclusive. After this duration, the trigger will
-  /// be automatically deactivated.
-  ///
-  /// Required.
-  core.String? activationDurationMinutes;
-
-  /// The unique ID of the advertiser that the manual trigger belongs to.
-  ///
-  /// Required. Immutable.
-  core.String? advertiserId;
-
-  /// The display name of the manual trigger.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The timestamp of the trigger's latest activation.
-  ///
-  /// Output only.
-  core.String? latestActivationTime;
-
-  /// The resource name of the manual trigger.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The state of the manual trigger.
-  ///
-  /// Will be set to the `INACTIVE` state upon creation.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value when state is not specified or is
-  /// unknown in this version.
-  /// - "INACTIVE" : The trigger is currently inactive and ready to be
-  /// activated.
-  /// - "ACTIVE" : The trigger is currently active (activated).
-  core.String? state;
-
-  /// The unique ID of the manual trigger.
-  ///
-  /// Output only.
-  core.String? triggerId;
-
-  ManualTrigger({
-    this.activationDurationMinutes,
-    this.advertiserId,
-    this.displayName,
-    this.latestActivationTime,
-    this.name,
-    this.state,
-    this.triggerId,
-  });
-
-  ManualTrigger.fromJson(core.Map json_)
-      : this(
-          activationDurationMinutes:
-              json_.containsKey('activationDurationMinutes')
-                  ? json_['activationDurationMinutes'] as core.String
-                  : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latestActivationTime: json_.containsKey('latestActivationTime')
-              ? json_['latestActivationTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          triggerId: json_.containsKey('triggerId')
-              ? json_['triggerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (activationDurationMinutes != null)
-          'activationDurationMinutes': activationDurationMinutes!,
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (latestActivationTime != null)
-          'latestActivationTime': latestActivationTime!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (triggerId != null) 'triggerId': triggerId!,
-      };
-}
+typedef ManualTrigger = $ManualTrigger;
 
 /// A strategy that automatically adjusts the bid to optimize a specified
 /// performance goal while spending the full budget.
-class MaximizeSpendBidStrategy {
-  /// The ID of the Custom Bidding Algorithm used by this strategy.
-  ///
-  /// Only applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
-  core.String? customBiddingAlgorithmId;
-
-  /// The maximum average CPM that may be bid, in micros of the advertiser's
-  /// currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency.
-  /// For example, 1500000 represents 1.5 standard units of the currency.
-  core.String? maxAverageCpmBidAmountMicros;
-
-  /// The type of the performance goal that the bidding strategy tries to
-  /// minimize while spending the full budget.
-  ///
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for
-  /// this strategy.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
-  /// algorithm.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
-  /// audible views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
-  /// secs views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
-  /// impressions.
-  core.String? performanceGoalType;
-
-  /// Whether the strategy takes deal floor prices into account.
-  core.bool? raiseBidForDeals;
-
-  MaximizeSpendBidStrategy({
-    this.customBiddingAlgorithmId,
-    this.maxAverageCpmBidAmountMicros,
-    this.performanceGoalType,
-    this.raiseBidForDeals,
-  });
-
-  MaximizeSpendBidStrategy.fromJson(core.Map json_)
-      : this(
-          customBiddingAlgorithmId:
-              json_.containsKey('customBiddingAlgorithmId')
-                  ? json_['customBiddingAlgorithmId'] as core.String
-                  : null,
-          maxAverageCpmBidAmountMicros:
-              json_.containsKey('maxAverageCpmBidAmountMicros')
-                  ? json_['maxAverageCpmBidAmountMicros'] as core.String
-                  : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
-          raiseBidForDeals: json_.containsKey('raiseBidForDeals')
-              ? json_['raiseBidForDeals'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customBiddingAlgorithmId != null)
-          'customBiddingAlgorithmId': customBiddingAlgorithmId!,
-        if (maxAverageCpmBidAmountMicros != null)
-          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-        if (raiseBidForDeals != null) 'raiseBidForDeals': raiseBidForDeals!,
-      };
-}
+typedef MaximizeSpendBidStrategy = $MaximizeSpendBidStrategy;
 
 /// Measurement settings of a partner.
-class MeasurementConfig {
-  /// Whether or not to report DV360 cost to CM360.
-  core.bool? dv360ToCmCostReportingEnabled;
-
-  /// Whether or not to include DV360 data in CM360 data transfer reports.
-  core.bool? dv360ToCmDataSharingEnabled;
-
-  MeasurementConfig({
-    this.dv360ToCmCostReportingEnabled,
-    this.dv360ToCmDataSharingEnabled,
-  });
-
-  MeasurementConfig.fromJson(core.Map json_)
-      : this(
-          dv360ToCmCostReportingEnabled:
-              json_.containsKey('dv360ToCmCostReportingEnabled')
-                  ? json_['dv360ToCmCostReportingEnabled'] as core.bool
-                  : null,
-          dv360ToCmDataSharingEnabled:
-              json_.containsKey('dv360ToCmDataSharingEnabled')
-                  ? json_['dv360ToCmDataSharingEnabled'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dv360ToCmCostReportingEnabled != null)
-          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled!,
-        if (dv360ToCmDataSharingEnabled != null)
-          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled!,
-      };
-}
+typedef MeasurementConfig = $MeasurementConfig;
 
 /// A mobile app promoted by a mobile app install line item.
-class MobileApp {
-  /// The ID of the app provided by the platform store.
-  ///
-  /// Android apps are identified by the bundle ID used by Android's Play store,
-  /// such as `com.google.android.gm`. iOS apps are identified by a nine-digit
-  /// app ID used by Apple's App store, such as `422689480`.
-  ///
-  /// Required.
-  core.String? appId;
-
-  /// The app name.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The app platform.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Platform is not specified.
-  /// - "IOS" : iOS platform.
-  /// - "ANDROID" : Android platform.
-  core.String? platform;
-
-  /// The app publisher.
-  ///
-  /// Output only.
-  core.String? publisher;
-
-  MobileApp({
-    this.appId,
-    this.displayName,
-    this.platform,
-    this.publisher,
-  });
-
-  MobileApp.fromJson(core.Map json_)
-      : this(
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          platform: json_.containsKey('platform')
-              ? json_['platform'] as core.String
-              : null,
-          publisher: json_.containsKey('publisher')
-              ? json_['publisher'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (platform != null) 'platform': platform!,
-        if (publisher != null) 'publisher': publisher!,
-      };
-}
+typedef MobileApp = $MobileApp01;
 
 /// Wrapper message for a list of mobile device IDs defining Customer Match
 /// audience members.
-class MobileDeviceIdList {
-  /// A list of mobile device IDs defining Customer Match audience members.
-  ///
-  /// The size of mobile_device_ids mustn't be greater than 500,000.
-  core.List<core.String>? mobileDeviceIds;
-
-  MobileDeviceIdList({
-    this.mobileDeviceIds,
-  });
-
-  MobileDeviceIdList.fromJson(core.Map json_)
-      : this(
-          mobileDeviceIds: json_.containsKey('mobileDeviceIds')
-              ? (json_['mobileDeviceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mobileDeviceIds != null) 'mobileDeviceIds': mobileDeviceIds!,
-      };
-}
+typedef MobileDeviceIdList = $MobileDeviceIdList;
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
@@ -24671,179 +19873,21 @@ class NativeContentPositionAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the native_content_position_details field when
 /// targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
-class NativeContentPositionTargetingOptionDetails {
-  /// The content position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
-  /// specified in this version. This enum is a place holder for a default value
-  /// and does not represent a real native content position.
-  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
-  /// unknown.
-  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
-  /// in-article, i.e., ads appear between the paragraphs of pages.
-  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
-  /// i.e., ads appear in a scrollable stream of content. A feed is typically
-  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
-  /// products or services).
-  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
-  /// peripheral, i.e., ads appear outside of core content on pages, such as the
-  /// right- or left-hand side of the page.
-  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
-  /// recommendation, i.e., ads appear in sections for recommended content.
-  core.String? contentPosition;
-
-  NativeContentPositionTargetingOptionDetails({
-    this.contentPosition,
-  });
-
-  NativeContentPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_.containsKey('contentPosition')
-              ? json_['contentPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentPosition != null) 'contentPosition': contentPosition!,
-      };
-}
+typedef NativeContentPositionTargetingOptionDetails
+    = $NativeContentPositionTargetingOptionDetails;
 
 /// A negatively targeted keyword that belongs to a negative keyword list.
-class NegativeKeyword {
-  /// The negatively targeted keyword, for example `car insurance`.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of
-  /// characters is 80. Maximum number of words is 10. Valid characters are
-  /// restricted to ASCII characters only. The only URL-escaping permitted is
-  /// for representing whitespace between words. Leading or trailing whitespace
-  /// is ignored.
-  ///
-  /// Required. Immutable.
-  core.String? keywordValue;
-
-  /// The resource name of the negative keyword.
-  ///
-  /// Output only.
-  core.String? name;
-
-  NegativeKeyword({
-    this.keywordValue,
-    this.name,
-  });
-
-  NegativeKeyword.fromJson(core.Map json_)
-      : this(
-          keywordValue: json_.containsKey('keywordValue')
-              ? json_['keywordValue'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keywordValue != null) 'keywordValue': keywordValue!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef NegativeKeyword = $NegativeKeyword;
 
 /// A list of negative keywords used for targeting.
-class NegativeKeywordList {
-  /// The unique ID of the advertiser the negative keyword list belongs to.
-  ///
-  /// Output only.
-  core.String? advertiserId;
-
-  /// The display name of the negative keyword list.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 255 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The resource name of the negative keyword list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The unique ID of the negative keyword list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? negativeKeywordListId;
-
-  /// Number of line items that are directly targeting this negative keyword
-  /// list.
-  ///
-  /// Output only.
-  core.String? targetedLineItemCount;
-
-  NegativeKeywordList({
-    this.advertiserId,
-    this.displayName,
-    this.name,
-    this.negativeKeywordListId,
-    this.targetedLineItemCount,
-  });
-
-  NegativeKeywordList.fromJson(core.Map json_)
-      : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          negativeKeywordListId: json_.containsKey('negativeKeywordListId')
-              ? json_['negativeKeywordListId'] as core.String
-              : null,
-          targetedLineItemCount: json_.containsKey('targetedLineItemCount')
-              ? json_['targetedLineItemCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (negativeKeywordListId != null)
-          'negativeKeywordListId': negativeKeywordListId!,
-        if (targetedLineItemCount != null)
-          'targetedLineItemCount': targetedLineItemCount!,
-      };
-}
+typedef NegativeKeywordList = $NegativeKeywordList;
 
 /// Targeting details for negative keyword list.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
-class NegativeKeywordListAssignedTargetingOptionDetails {
-  /// ID of the negative keyword list.
-  ///
-  /// Should refer to the negative_keyword_list_id field of a
-  /// NegativeKeywordList resource.
-  ///
-  /// Required.
-  core.String? negativeKeywordListId;
-
-  NegativeKeywordListAssignedTargetingOptionDetails({
-    this.negativeKeywordListId,
-  });
-
-  NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negativeKeywordListId: json_.containsKey('negativeKeywordListId')
-              ? json_['negativeKeywordListId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (negativeKeywordListId != null)
-          'negativeKeywordListId': negativeKeywordListId!,
-      };
-}
+typedef NegativeKeywordListAssignedTargetingOptionDetails
+    = $NegativeKeywordListAssignedTargetingOptionDetails;
 
 /// OBA Icon for a Creative
 class ObaIcon {
@@ -24993,204 +20037,36 @@ class OmidAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the omid_details field when targeting_type is
 /// `TARGETING_TYPE_OMID`.
-class OmidTargetingOptionDetails {
-  /// The type of Open Measurement enabled inventory.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
-  /// in this version.
-  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
-  /// inventory.
-  core.String? omid;
-
-  OmidTargetingOptionDetails({
-    this.omid,
-  });
-
-  OmidTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_.containsKey('omid') ? json_['omid'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (omid != null) 'omid': omid!,
-      };
-}
+typedef OmidTargetingOptionDetails = $OmidTargetingOptionDetails;
 
 /// On screen position targeting option details.
 ///
 /// This will be populated in the on_screen_position_details field when
 /// targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
-class OnScreenPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
-  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The on screen position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ON_SCREEN_POSITION_UNSPECIFIED" : On screen position is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real on screen position.
-  /// - "ON_SCREEN_POSITION_UNKNOWN" : The ad position is unknown on the screen.
-  /// - "ON_SCREEN_POSITION_ABOVE_THE_FOLD" : The ad is located above the fold.
-  /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
-  core.String? onScreenPosition;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_ON_SCREEN_POSITION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  OnScreenPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.onScreenPosition,
-    this.targetingOptionId,
-  });
-
-  OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
-          onScreenPosition: json_.containsKey('onScreenPosition')
-              ? json_['onScreenPosition'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef OnScreenPositionAssignedTargetingOptionDetails
+    = $OnScreenPositionAssignedTargetingOptionDetails;
 
 /// Represents a targetable on screen position, which could be used by display
 /// and video ads.
 ///
 /// This will be populated in the on_screen_position_details field when
 /// targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
-class OnScreenPositionTargetingOptionDetails {
-  /// The on screen position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ON_SCREEN_POSITION_UNSPECIFIED" : On screen position is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real on screen position.
-  /// - "ON_SCREEN_POSITION_UNKNOWN" : The ad position is unknown on the screen.
-  /// - "ON_SCREEN_POSITION_ABOVE_THE_FOLD" : The ad is located above the fold.
-  /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
-  core.String? onScreenPosition;
-
-  OnScreenPositionTargetingOptionDetails({
-    this.onScreenPosition,
-  });
-
-  OnScreenPositionTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          onScreenPosition: json_.containsKey('onScreenPosition')
-              ? json_['onScreenPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
-      };
-}
+typedef OnScreenPositionTargetingOptionDetails
+    = $OnScreenPositionTargetingOptionDetails;
 
 /// Assigned operating system targeting option details.
 ///
 /// This will be populated in the operating_system_details field when
 /// targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
-class OperatingSystemAssignedTargetingOptionDetails {
-  /// The display name of the operating system.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting option ID populated in targeting_option_id field when
-  /// targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  OperatingSystemAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (negative != null) 'negative': negative!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef OperatingSystemAssignedTargetingOptionDetails
+    = $OperatingSystemAssignedTargetingOptionDetails;
 
 /// Represents a targetable operating system.
 ///
 /// This will be populated in the operating_system_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
-class OperatingSystemTargetingOptionDetails {
-  /// The display name of the operating system.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  OperatingSystemTargetingOptionDetails({
-    this.displayName,
-  });
-
-  OperatingSystemTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef OperatingSystemTargetingOptionDetails
+    = $OperatingSystemTargetingOptionDetails;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -25269,163 +20145,11 @@ class Operation {
 }
 
 /// Settings that control the rate at which a budget is spent.
-class Pacing {
-  /// Maximum number of impressions to serve every day.
-  ///
-  /// Applicable when the budget is impression based. Must be greater than 0.
-  core.String? dailyMaxImpressions;
-
-  /// Maximum currency amount to spend every day in micros of advertiser's
-  /// currency.
-  ///
-  /// Applicable when the budget is currency based. Must be greater than 0. For
-  /// example, for 1.5 standard unit of the currency, set this field to 1500000.
-  /// The value assigned will be rounded to whole billable units for the
-  /// relevant currency by the following rules: any positive value less than a
-  /// single billable unit will be rounded up to one billable unit and any value
-  /// larger than a single billable unit will be rounded down to the nearest
-  /// billable value. For example, if the currency's billable unit is 0.01, and
-  /// this field is set to 10257770, it will round down to 10250000, a value of
-  /// 10.25. If set to 505, it will round up to 10000, a value of 0.01.
-  core.String? dailyMaxMicros;
-
-  /// The time period in which the pacing budget will be spent.
-  ///
-  /// When automatic budget allocation is enabled at the insertion order via
-  /// auto_budget_allocation, this field is output only and defaults to
-  /// `PACING_PERIOD_FLIGHT`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PACING_PERIOD_UNSPECIFIED" : Period value is not specified or is
-  /// unknown in this version.
-  /// - "PACING_PERIOD_DAILY" : The pacing setting will be applied on daily
-  /// basis.
-  /// - "PACING_PERIOD_FLIGHT" : The pacing setting will be applied to the whole
-  /// flight duration.
-  core.String? pacingPeriod;
-
-  /// The type of pacing that defines how the budget amount will be spent across
-  /// the pacing_period.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PACING_TYPE_UNSPECIFIED" : Pacing mode value is not specified or is
-  /// unknown in this version.
-  /// - "PACING_TYPE_AHEAD" : Only applicable to `PACING_PERIOD_FLIGHT` pacing
-  /// period. Ahead pacing attempts to spend faster than evenly, to make sure
-  /// the entire budget is spent by the end of the flight.
-  /// - "PACING_TYPE_ASAP" : Spend all of pacing budget amount as quick as
-  /// possible.
-  /// - "PACING_TYPE_EVEN" : Spend a consistent budget amount every period of
-  /// time.
-  core.String? pacingType;
-
-  Pacing({
-    this.dailyMaxImpressions,
-    this.dailyMaxMicros,
-    this.pacingPeriod,
-    this.pacingType,
-  });
-
-  Pacing.fromJson(core.Map json_)
-      : this(
-          dailyMaxImpressions: json_.containsKey('dailyMaxImpressions')
-              ? json_['dailyMaxImpressions'] as core.String
-              : null,
-          dailyMaxMicros: json_.containsKey('dailyMaxMicros')
-              ? json_['dailyMaxMicros'] as core.String
-              : null,
-          pacingPeriod: json_.containsKey('pacingPeriod')
-              ? json_['pacingPeriod'] as core.String
-              : null,
-          pacingType: json_.containsKey('pacingType')
-              ? json_['pacingType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyMaxImpressions != null)
-          'dailyMaxImpressions': dailyMaxImpressions!,
-        if (dailyMaxMicros != null) 'dailyMaxMicros': dailyMaxMicros!,
-        if (pacingPeriod != null) 'pacingPeriod': pacingPeriod!,
-        if (pacingType != null) 'pacingType': pacingType!,
-      };
-}
+typedef Pacing = $Pacing;
 
 /// A filtering option that filters on selected file types belonging to a chosen
 /// set of filter entities.
-class ParentEntityFilter {
-  /// File types that will be returned.
-  ///
-  /// Required.
-  core.List<core.String>? fileType;
-
-  /// The IDs of the specified filter type.
-  ///
-  /// This is used to filter entities to fetch. If filter type is not
-  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter fetched entities.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
-  /// unknown in this version.
-  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
-  /// download. Can only be used if an Advertiser is specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
-  /// must be Advertiser IDs that belong to the Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
-  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
-  /// filter IDs must be Media Product IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
-  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
-  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
-  /// `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.
-  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
-  /// must be Line Item IDs that belong to the Advertiser or Partner specified
-  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
-  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.
-  core.String? filterType;
-
-  ParentEntityFilter({
-    this.fileType,
-    this.filterIds,
-    this.filterType,
-  });
-
-  ParentEntityFilter.fromJson(core.Map json_)
-      : this(
-          fileType: json_.containsKey('fileType')
-              ? (json_['fileType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          filterIds: json_.containsKey('filterIds')
-              ? (json_['filterIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          filterType: json_.containsKey('filterType')
-              ? json_['filterType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileType != null) 'fileType': fileType!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
-      };
-}
+typedef ParentEntityFilter = $ParentEntityFilter;
 
 /// Details for assigned parental status targeting option.
 ///
@@ -25476,35 +20200,8 @@ class ParentalStatusAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the parental_status_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`.
-class ParentalStatusTargetingOptionDetails {
-  /// The parental status of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
-  /// not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real parental status option.
-  /// - "PARENTAL_STATUS_PARENT" : The audience is a parent.
-  /// - "PARENTAL_STATUS_NOT_A_PARENT" : The audience is not a parent.
-  /// - "PARENTAL_STATUS_UNKNOWN" : The parental status of the audience is
-  /// unknown.
-  core.String? parentalStatus;
-
-  ParentalStatusTargetingOptionDetails({
-    this.parentalStatus,
-  });
-
-  ParentalStatusTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_.containsKey('parentalStatus')
-              ? json_['parentalStatus'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (parentalStatus != null) 'parentalStatus': parentalStatus!,
-      };
-}
+typedef ParentalStatusTargetingOptionDetails
+    = $ParentalStatusTargetingOptionDetails;
 
 /// A single partner in Display & Video 360 (DV360).
 class Partner {
@@ -25649,139 +20346,7 @@ class PartnerAdServerConfig {
 /// and using third-party audience segment data (data fee). Some examples of
 /// partner costs include the fees for using DV360, a third-party ad server, or
 /// a third-party ad serving verification service.
-class PartnerCost {
-  /// The type of the partner cost.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_COST_TYPE_UNSPECIFIED" : Type value is not specified or is
-  /// unknown in this version.
-  /// - "PARTNER_COST_TYPE_ADLOOX" : The cost is charged for using Adloox.
-  /// - "PARTNER_COST_TYPE_ADLOOX_PREBID" : The cost is charged for using Adloox
-  /// Pre-Bid.
-  /// - "PARTNER_COST_TYPE_ADSAFE" : The cost is charged for using AdSafe.
-  /// - "PARTNER_COST_TYPE_ADXPOSE" : The cost is charged for using AdExpose.
-  /// - "PARTNER_COST_TYPE_AGGREGATE_KNOWLEDGE" : The cost is charged for using
-  /// Aggregate Knowledge.
-  /// - "PARTNER_COST_TYPE_AGENCY_TRADING_DESK" : The cost is charged for using
-  /// an Agency Trading Desk.
-  /// - "PARTNER_COST_TYPE_DV360_FEE" : The cost is charged for using DV360.
-  /// - "PARTNER_COST_TYPE_COMSCORE_VCE" : The cost is charged for using
-  /// comScore vCE.
-  /// - "PARTNER_COST_TYPE_DATA_MANAGEMENT_PLATFORM" : The cost is charged for
-  /// using a Data Management Platform.
-  /// - "PARTNER_COST_TYPE_DEFAULT" : The default cost type.
-  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY" : The cost is charged for using
-  /// DoubleVerify.
-  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY_PREBID" : The cost is charged for using
-  /// DoubleVerify Pre-Bid.
-  /// - "PARTNER_COST_TYPE_EVIDON" : The cost is charged for using Evidon.
-  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO" : The cost is charged for
-  /// using Integral Ad Science Video.
-  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_PREBID" : The cost is charged for
-  /// using Integral Ad Science Pre-Bid.
-  /// - "PARTNER_COST_TYPE_MEDIA_COST_DATA" : The cost is charged for using
-  /// media cost data.
-  /// - "PARTNER_COST_TYPE_MOAT_VIDEO" : The cost is charged for using MOAT
-  /// Video.
-  /// - "PARTNER_COST_TYPE_NIELSEN_DAR" : The cost is charged for using Nielsen
-  /// Digital Ad Ratings.
-  /// - "PARTNER_COST_TYPE_SHOP_LOCAL" : The cost is charged for using
-  /// ShopLocal.
-  /// - "PARTNER_COST_TYPE_TERACENT" : The cost is charged for using Teracent.
-  /// - "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER" : The cost is charged for
-  /// using a third-party ad server.
-  /// - "PARTNER_COST_TYPE_TRUST_METRICS" : The cost is charged for using
-  /// TrustMetrics.
-  /// - "PARTNER_COST_TYPE_VIZU" : The cost is charged for using Vizu.
-  /// - "PARTNER_COST_TYPE_ADLINGO_FEE" : The cost is charged for using AdLingo.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_1" : The cost is charged as custom fee 1.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_2" : The cost is charged as custom fee 2.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_3" : The cost is charged as custom fee 3.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_4" : The cost is charged as custom fee 4.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_5" : The cost is charged as custom fee 5.
-  core.String? costType;
-
-  /// The CPM fee amount in micros of advertiser's currency.
-  ///
-  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be
-  /// greater than or equal to 0. For example, for 1.5 standard unit of the
-  /// advertiser's currency, set this field to 1500000.
-  core.String? feeAmount;
-
-  /// The media fee percentage in millis (1/1000 of a percent).
-  ///
-  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be
-  /// greater than or equal to 0. For example: 100 represents 0.1%.
-  core.String? feePercentageMillis;
-
-  /// The fee type for this partner cost.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_COST_FEE_TYPE_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "PARTNER_COST_FEE_TYPE_CPM_FEE" : The partner cost is a fixed CPM fee.
-  /// Not applicable when the partner cost cost_type is one of: *
-  /// `PARTNER_COST_TYPE_MEDIA_COST_DATA` * `PARTNER_COST_TYPE_DV360_FEE`.
-  /// - "PARTNER_COST_FEE_TYPE_MEDIA_FEE" : The partner cost is a percentage
-  /// surcharge based on the media cost. Not applicable when the partner
-  /// cost_type is one of: * `PARTNER_COST_TYPE_SHOP_LOCAL` *
-  /// `PARTNER_COST_TYPE_TRUST_METRICS` *
-  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO` *
-  /// `PARTNER_COST_TYPE_MOAT_VIDEO`.
-  core.String? feeType;
-
-  /// The invoice type for this partner cost.
-  ///
-  /// * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` -
-  /// `PARTNER_COST_TYPE_DOUBLE_VERIFY` -
-  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.
-  /// Possible string values are:
-  /// - "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED" : Type value is not specified or
-  /// is unknown in this version.
-  /// - "PARTNER_COST_INVOICE_TYPE_DV360" : Partner cost is billed through
-  /// DV360.
-  /// - "PARTNER_COST_INVOICE_TYPE_PARTNER" : Partner cost is billed by the
-  /// partner.
-  core.String? invoiceType;
-
-  PartnerCost({
-    this.costType,
-    this.feeAmount,
-    this.feePercentageMillis,
-    this.feeType,
-    this.invoiceType,
-  });
-
-  PartnerCost.fromJson(core.Map json_)
-      : this(
-          costType: json_.containsKey('costType')
-              ? json_['costType'] as core.String
-              : null,
-          feeAmount: json_.containsKey('feeAmount')
-              ? json_['feeAmount'] as core.String
-              : null,
-          feePercentageMillis: json_.containsKey('feePercentageMillis')
-              ? json_['feePercentageMillis'] as core.String
-              : null,
-          feeType: json_.containsKey('feeType')
-              ? json_['feeType'] as core.String
-              : null,
-          invoiceType: json_.containsKey('invoiceType')
-              ? json_['invoiceType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (costType != null) 'costType': costType!,
-        if (feeAmount != null) 'feeAmount': feeAmount!,
-        if (feePercentageMillis != null)
-          'feePercentageMillis': feePercentageMillis!,
-        if (feeType != null) 'feeType': feeType!,
-        if (invoiceType != null) 'invoiceType': invoiceType!,
-      };
-}
+typedef PartnerCost = $PartnerCost;
 
 /// Settings that control how partner related data may be accessed.
 class PartnerDataAccessConfig {
@@ -25808,473 +20373,32 @@ class PartnerDataAccessConfig {
 }
 
 /// General settings of a partner.
-class PartnerGeneralConfig {
-  /// Partner's currency in ISO 4217 format.
-  ///
-  /// Immutable.
-  core.String? currencyCode;
-
-  /// The standard TZ database name of the partner's time zone.
-  ///
-  /// For example, `America/New_York`. See more at:
-  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  ///
-  /// Immutable.
-  core.String? timeZone;
-
-  PartnerGeneralConfig({
-    this.currencyCode,
-    this.timeZone,
-  });
-
-  PartnerGeneralConfig.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
-}
+typedef PartnerGeneralConfig = $PartnerGeneralConfig;
 
 /// Settings that control how partner revenue is calculated.
-class PartnerRevenueModel {
-  /// The markup amount of the partner revenue model.
-  ///
-  /// Must be greater than or equal to 0. * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM
-  /// markup in micros of advertiser's currency. For example, 1500000 represents
-  /// 1.5 standard units of the currency. * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field
-  /// represents the media cost percent markup in millis. For example, 100
-  /// represents 0.1% (decimal 0.001). * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field
-  /// represents the total media cost percent markup in millis. For example, 100
-  /// represents 0.1% (decimal 0.001).
-  ///
-  /// Required.
-  core.String? markupAmount;
-
-  /// The markup type of the partner revenue model.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM" : Calculate the partner revenue
-  /// based on a fixed CPM.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP" : Calculate the
-  /// partner revenue based on a percentage surcharge of its media cost.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP" : Calculate
-  /// the partner revenue based on a percentage surcharge of its total media
-  /// cost, which includes all partner costs and data costs.
-  core.String? markupType;
-
-  PartnerRevenueModel({
-    this.markupAmount,
-    this.markupType,
-  });
-
-  PartnerRevenueModel.fromJson(core.Map json_)
-      : this(
-          markupAmount: json_.containsKey('markupAmount')
-              ? json_['markupAmount'] as core.String
-              : null,
-          markupType: json_.containsKey('markupType')
-              ? json_['markupType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (markupAmount != null) 'markupAmount': markupAmount!,
-        if (markupType != null) 'markupType': markupType!,
-      };
-}
+typedef PartnerRevenueModel = $PartnerRevenueModel;
 
 /// Settings that control the performance goal of a campaign or insertion order.
-class PerformanceGoal {
-  /// The goal amount, in micros of the advertiser's currency.
-  ///
-  /// Applicable when performance_goal_type is one of: *
-  /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` *
-  /// `PERFORMANCE_GOAL_TYPE_VCPM` For example 1500000 represents 1.5 standard
-  /// units of the currency.
-  core.String? performanceGoalAmountMicros;
-
-  /// The decimal representation of the goal percentage in micros.
-  ///
-  /// Applicable when performance_goal_type is one of: *
-  /// `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` *
-  /// `PERFORMANCE_GOAL_TYPE_CLICK_CVR` * `PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR`
-  /// * `PERFORMANCE_GOAL_TYPE_VTR` *
-  /// `PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` *
-  /// `PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example, 70000
-  /// represents 7% (decimal 0.07).
-  core.String? performanceGoalPercentageMicros;
-
-  /// A key performance indicator (KPI) string, which can be empty.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 100 characters.
-  /// Applicable when performance_goal_type is set to
-  /// `PERFORMANCE_GOAL_TYPE_OTHER`.
-  core.String? performanceGoalString;
-
-  /// The type of the performance goal.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Performance goal type is not
-  /// specified or is unknown in this version.
-  /// - "PERFORMANCE_GOAL_TYPE_CPM" : The performance goal is set in CPM (cost
-  /// per mille).
-  /// - "PERFORMANCE_GOAL_TYPE_CPC" : The performance goal is set in CPC (cost
-  /// per click).
-  /// - "PERFORMANCE_GOAL_TYPE_CPA" : The performance goal is set in CPA (cost
-  /// per action).
-  /// - "PERFORMANCE_GOAL_TYPE_CTR" : The performance goal is set in CTR
-  /// (click-through rate) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VIEWABILITY" : The performance goal is set in
-  /// Viewability percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_CPIAVC" : The performance goal is set as CPIAVC
-  /// (cost per impression audible and visible at completion).
-  /// - "PERFORMANCE_GOAL_TYPE_CPE" : The performance goal is set in CPE (cost
-  /// per engagement).
-  /// - "PERFORMANCE_GOAL_TYPE_CLICK_CVR" : The performance goal is set in click
-  /// conversion rate (conversions per click) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR" : The performance goal is set in
-  /// impression conversion rate (conversions per impression) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VCPM" : The performance goal is set in VCPM (cost
-  /// per thousand viewable impressions).
-  /// - "PERFORMANCE_GOAL_TYPE_VTR" : The performance goal is set in YouTube
-  /// view rate (YouTube views per impression) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE" : The performance goal is
-  /// set in audio completion rate (complete audio listens per impression)
-  /// percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE" : The performance goal is
-  /// set in video completion rate (complete video views per impression)
-  /// percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_OTHER" : The performance goal is set to Other.
-  core.String? performanceGoalType;
-
-  PerformanceGoal({
-    this.performanceGoalAmountMicros,
-    this.performanceGoalPercentageMicros,
-    this.performanceGoalString,
-    this.performanceGoalType,
-  });
-
-  PerformanceGoal.fromJson(core.Map json_)
-      : this(
-          performanceGoalAmountMicros:
-              json_.containsKey('performanceGoalAmountMicros')
-                  ? json_['performanceGoalAmountMicros'] as core.String
-                  : null,
-          performanceGoalPercentageMicros:
-              json_.containsKey('performanceGoalPercentageMicros')
-                  ? json_['performanceGoalPercentageMicros'] as core.String
-                  : null,
-          performanceGoalString: json_.containsKey('performanceGoalString')
-              ? json_['performanceGoalString'] as core.String
-              : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (performanceGoalAmountMicros != null)
-          'performanceGoalAmountMicros': performanceGoalAmountMicros!,
-        if (performanceGoalPercentageMicros != null)
-          'performanceGoalPercentageMicros': performanceGoalPercentageMicros!,
-        if (performanceGoalString != null)
-          'performanceGoalString': performanceGoalString!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-      };
-}
+typedef PerformanceGoal = $PerformanceGoal;
 
 /// A strategy that automatically adjusts the bid to meet or beat a specified
 /// performance goal.
-class PerformanceGoalBidStrategy {
-  /// The ID of the Custom Bidding Algorithm used by this strategy.
-  ///
-  /// Only applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
-  core.String? customBiddingAlgorithmId;
-
-  /// The maximum average CPM that may be bid, in micros of the advertiser's
-  /// currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency.
-  /// Not applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example,
-  /// 1500000 represents 1.5 standard units of the currency.
-  core.String? maxAverageCpmBidAmountMicros;
-
-  /// The performance goal the bidding strategy will attempt to meet or beat, in
-  /// micros of the advertiser's currency or in micro of the ROAS (Return On
-  /// Advertising Spend) value which is also based on advertiser's currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency and
-  /// smaller or equal to upper bounds. Each performance_goal_type has its upper
-  /// bound: * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD.
-  /// * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD.
-  /// * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is
-  /// 1000.00 USD. * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
-  /// 1000.00 and lower bound is 0.01. Example: If set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will
-  /// be based on the probability that each available impression will be
-  /// viewable. For example, if viewable CPM target is $2 and an impression is
-  /// 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
-  /// For example, 1500000 represents 1.5 standard units of the currency or ROAS
-  /// value.
-  ///
-  /// Required.
-  core.String? performanceGoalAmountMicros;
-
-  /// The type of the performance goal that the bidding strategy will try to
-  /// meet or beat.
-  ///
-  /// For line item level usage, the value must be one of: *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
-  /// algorithm.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
-  /// audible views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
-  /// secs views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
-  /// impressions.
-  core.String? performanceGoalType;
-
-  PerformanceGoalBidStrategy({
-    this.customBiddingAlgorithmId,
-    this.maxAverageCpmBidAmountMicros,
-    this.performanceGoalAmountMicros,
-    this.performanceGoalType,
-  });
-
-  PerformanceGoalBidStrategy.fromJson(core.Map json_)
-      : this(
-          customBiddingAlgorithmId:
-              json_.containsKey('customBiddingAlgorithmId')
-                  ? json_['customBiddingAlgorithmId'] as core.String
-                  : null,
-          maxAverageCpmBidAmountMicros:
-              json_.containsKey('maxAverageCpmBidAmountMicros')
-                  ? json_['maxAverageCpmBidAmountMicros'] as core.String
-                  : null,
-          performanceGoalAmountMicros:
-              json_.containsKey('performanceGoalAmountMicros')
-                  ? json_['performanceGoalAmountMicros'] as core.String
-                  : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customBiddingAlgorithmId != null)
-          'customBiddingAlgorithmId': customBiddingAlgorithmId!,
-        if (maxAverageCpmBidAmountMicros != null)
-          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
-        if (performanceGoalAmountMicros != null)
-          'performanceGoalAmountMicros': performanceGoalAmountMicros!,
-        if (performanceGoalType != null)
-          'performanceGoalType': performanceGoalType!,
-      };
-}
+typedef PerformanceGoalBidStrategy = $PerformanceGoalBidStrategy;
 
 /// Details for assigned POI targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_POI`.
-class PoiAssignedTargetingOptionDetails {
-  /// The display name of a POI, e.g. "Times Square", "Space Needle", followed
-  /// by its full address if available.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Latitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? latitude;
-
-  /// Longitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? longitude;
-
-  /// The radius of the area around the POI that will be targeted.
-  ///
-  /// The units of the radius are specified by proximity_radius_unit. Must be 1
-  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
-  /// `DISTANCE_UNIT_MILES`.
-  ///
-  /// Required.
-  core.double? proximityRadiusAmount;
-
-  /// The unit of distance by which the targeting radius is measured.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "DISTANCE_UNIT_MILES" : Miles.
-  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
-  core.String? proximityRadiusUnit;
-
-  /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`.
-  ///
-  /// Accepted POI targeting option IDs can be retrieved using
-  /// SearchTargetingOptions. If targeting a specific latitude/longitude
-  /// coordinate removed from an address or POI name, you can generate the
-  /// necessary targeting option ID by rounding the desired coordinate values to
-  /// the 6th decimal place, removing the decimals, and concatenating the string
-  /// values separated by a semicolon. For example, you can target the
-  /// latitude/longitude pair of 40.7414691, -74.003387 using the targeting
-  /// option ID "40741469;-74003387".
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  PoiAssignedTargetingOptionDetails({
-    this.displayName,
-    this.latitude,
-    this.longitude,
-    this.proximityRadiusAmount,
-    this.proximityRadiusUnit,
-    this.targetingOptionId,
-  });
-
-  PoiAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
-          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
-              ? (json_['proximityRadiusAmount'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (proximityRadiusAmount != null)
-          'proximityRadiusAmount': proximityRadiusAmount!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef PoiAssignedTargetingOptionDetails = $PoiAssignedTargetingOptionDetails;
 
 /// Search terms for POI targeting options.
-class PoiSearchTerms {
-  /// The search query for the desired POI name, street address, or coordinate
-  /// of the desired POI.
-  ///
-  /// The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562",
-  /// "315 W 44th St", etc.
-  core.String? poiQuery;
-
-  PoiSearchTerms({
-    this.poiQuery,
-  });
-
-  PoiSearchTerms.fromJson(core.Map json_)
-      : this(
-          poiQuery: json_.containsKey('poiQuery')
-              ? json_['poiQuery'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (poiQuery != null) 'poiQuery': poiQuery!,
-      };
-}
+typedef PoiSearchTerms = $PoiSearchTerms;
 
 /// Represents a targetable point of interest(POI).
 ///
 /// This will be populated in the poi_details field when targeting_type is
 /// `TARGETING_TYPE_POI`.
-class PoiTargetingOptionDetails {
-  /// The display name of a POI(e.g. "Times Square", "Space Needle"), followed
-  /// by its full address if available.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Latitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? latitude;
-
-  /// Longitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? longitude;
-
-  PoiTargetingOptionDetails({
-    this.displayName,
-    this.latitude,
-    this.longitude,
-  });
-
-  PoiTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef PoiTargetingOptionDetails = $PoiTargetingOptionDetails;
 
 /// Settings specific to the Mediaocean Prisma tool.
 class PrismaConfig {
@@ -26332,42 +20456,7 @@ class PrismaConfig {
 
 /// Google Payments Center supports searching and filtering on the component
 /// fields of this code.
-class PrismaCpeCode {
-  /// The Prisma client code.
-  core.String? prismaClientCode;
-
-  /// The Prisma estimate code.
-  core.String? prismaEstimateCode;
-
-  /// The Prisma product code.
-  core.String? prismaProductCode;
-
-  PrismaCpeCode({
-    this.prismaClientCode,
-    this.prismaEstimateCode,
-    this.prismaProductCode,
-  });
-
-  PrismaCpeCode.fromJson(core.Map json_)
-      : this(
-          prismaClientCode: json_.containsKey('prismaClientCode')
-              ? json_['prismaClientCode'] as core.String
-              : null,
-          prismaEstimateCode: json_.containsKey('prismaEstimateCode')
-              ? json_['prismaEstimateCode'] as core.String
-              : null,
-          prismaProductCode: json_.containsKey('prismaProductCode')
-              ? json_['prismaProductCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (prismaClientCode != null) 'prismaClientCode': prismaClientCode!,
-        if (prismaEstimateCode != null)
-          'prismaEstimateCode': prismaEstimateCode!,
-        if (prismaProductCode != null) 'prismaProductCode': prismaProductCode!,
-      };
-}
+typedef PrismaCpeCode = $PrismaCpeCode;
 
 /// Targeting details for proximity location list.
 ///
@@ -26425,39 +20514,7 @@ class ProximityLocationListAssignedTargetingOptionDetails {
 }
 
 /// Publisher review status for the creative.
-class PublisherReviewStatus {
-  /// The publisher reviewing the creative.
-  core.String? publisherName;
-
-  /// Status of the publisher review.
-  /// Possible string values are:
-  /// - "REVIEW_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "REVIEW_STATUS_APPROVED" : The creative is approved.
-  /// - "REVIEW_STATUS_REJECTED" : The creative is rejected.
-  /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
-  core.String? status;
-
-  PublisherReviewStatus({
-    this.publisherName,
-    this.status,
-  });
-
-  PublisherReviewStatus.fromJson(core.Map json_)
-      : this(
-          publisherName: json_.containsKey('publisherName')
-              ? json_['publisherName'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publisherName != null) 'publisherName': publisherName!,
-        if (status != null) 'status': status!,
-      };
-}
+typedef PublisherReviewStatus = $PublisherReviewStatus;
 
 /// The rate related settings of the inventory source.
 class RateDetails {
@@ -26529,39 +20586,8 @@ class RateDetails {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
-class RegionalLocationListAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// ID of the regional location list.
-  ///
-  /// Should refer to the location_list_id field of a LocationList resource
-  /// whose type is `TARGETING_LOCATION_TYPE_REGIONAL`.
-  ///
-  /// Required.
-  core.String? regionalLocationListId;
-
-  RegionalLocationListAssignedTargetingOptionDetails({
-    this.negative,
-    this.regionalLocationListId,
-  });
-
-  RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          regionalLocationListId: json_.containsKey('regionalLocationListId')
-              ? json_['regionalLocationListId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (regionalLocationListId != null)
-          'regionalLocationListId': regionalLocationListId!,
-      };
-}
+typedef RegionalLocationListAssignedTargetingOptionDetails
+    = $RegionalLocationListAssignedTargetingOptionDetails;
 
 /// Request message for NegativeKeywordService.ReplaceNegativeKeywords.
 class ReplaceNegativeKeywordsRequest {
@@ -26773,99 +20799,10 @@ class ReviewStatusInfo {
 }
 
 /// An error message for a custom bidding script.
-class ScriptError {
-  /// The column number in the script where the error was thrown.
-  core.String? column;
-
-  /// The type of error.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : The script error is not specified or is
-  /// unknown in this version.
-  /// - "SYNTAX_ERROR" : The script has a syntax error.
-  /// - "DEPRECATED_SYNTAX" : The script uses deprecated syntax.
-  /// - "INTERNAL_ERROR" : Internal errors were thrown while processing the
-  /// script.
-  core.String? errorCode;
-
-  /// The detailed error message.
-  core.String? errorMessage;
-
-  /// The line number in the script where the error was thrown.
-  core.String? line;
-
-  ScriptError({
-    this.column,
-    this.errorCode,
-    this.errorMessage,
-    this.line,
-  });
-
-  ScriptError.fromJson(core.Map json_)
-      : this(
-          column: json_.containsKey('column')
-              ? json_['column'] as core.String
-              : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          line: json_.containsKey('line') ? json_['line'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (line != null) 'line': line!,
-      };
-}
+typedef ScriptError = $ScriptError;
 
 /// Structured Data File (SDF) related settings.
-class SdfConfig {
-  /// An administrator email address to which the SDF processing status reports
-  /// will be sent.
-  core.String? adminEmail;
-
-  /// The version of SDF being used.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SDF_VERSION_UNSPECIFIED" : SDF version value is not specified or is
-  /// unknown in this version.
-  /// - "SDF_VERSION_3_1" : SDF version 3.1
-  /// - "SDF_VERSION_4" : SDF version 4
-  /// - "SDF_VERSION_4_1" : SDF version 4.1
-  /// - "SDF_VERSION_4_2" : SDF version 4.2
-  /// - "SDF_VERSION_5" : SDF version 5.
-  /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2
-  /// - "SDF_VERSION_5_3" : SDF version 5.3
-  /// - "SDF_VERSION_5_4" : SDF version 5.4
-  /// - "SDF_VERSION_5_5" : SDF version 5.5
-  core.String? version;
-
-  SdfConfig({
-    this.adminEmail,
-    this.version,
-  });
-
-  SdfConfig.fromJson(core.Map json_)
-      : this(
-          adminEmail: json_.containsKey('adminEmail')
-              ? json_['adminEmail'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adminEmail != null) 'adminEmail': adminEmail!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef SdfConfig = $SdfConfig;
 
 /// Request message for SearchTargetingOptions.
 class SearchTargetingOptionsRequest {
@@ -26886,7 +20823,7 @@ class SearchTargetingOptionsRequest {
 
   /// Requested page size.
   ///
-  /// Must be between `1` and `100`. If unspecified will default to `100`.
+  /// Must be between `1` and `200`. If unspecified will default to `100`.
   /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
   core.int? pageSize;
 
@@ -27157,37 +21094,7 @@ class SensitiveCategoryTargetingOptionDetails {
 /// A single site.
 ///
 /// Sites are apps or websites belonging to a channel.
-class Site {
-  /// The resource name of the site.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The app ID or URL of the site.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 240 bytes.
-  ///
-  /// Required.
-  core.String? urlOrAppId;
-
-  Site({
-    this.name,
-    this.urlOrAppId,
-  });
-
-  Site.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          urlOrAppId: json_.containsKey('urlOrAppId')
-              ? json_['urlOrAppId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (urlOrAppId != null) 'urlOrAppId': urlOrAppId!,
-      };
-}
+typedef Site = $Site;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -27202,109 +21109,24 @@ typedef Status = $Status;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
-class SubExchangeAssignedTargetingOptionDetails {
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_SUB_EXCHANGE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  SubExchangeAssignedTargetingOptionDetails({
-    this.targetingOptionId,
-  });
-
-  SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-      };
-}
+typedef SubExchangeAssignedTargetingOptionDetails
+    = $SubExchangeAssignedTargetingOptionDetails;
 
 /// Represents a targetable sub-exchange.
 ///
 /// This will be populated in the sub_exchange_details field of a
 /// TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
-class SubExchangeTargetingOptionDetails {
-  /// The display name of the sub-exchange.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  SubExchangeTargetingOptionDetails({
-    this.displayName,
-  });
-
-  SubExchangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
-}
+typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 
 /// Settings that control the targeting expansion of the line item.
 ///
 /// Targeting expansion allows the line item to reach a larger audience based on
-/// the original audience list and the targeting expansion level.
-class TargetingExpansionConfig {
-  /// Whether to exclude first party audiences from targeting.
-  ///
-  /// Similar audiences of the excluded first party lists will not be excluded.
-  /// Only applicable when a first-party audience is positively targeted
-  /// (directly or included in a combined audience), otherwise this selection
-  /// will be ignored.
-  ///
-  /// Required.
-  core.bool? excludeFirstPartyAudience;
-
-  /// Magnitude of expansion for applicable targeting under this line item.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TARGETING_EXPANSION_LEVEL_UNSPECIFIED" : Targeting expansion level is
-  /// not specified or is unknown in this version.
-  /// - "NO_EXPANSION" : Targeting expansion off.
-  /// - "LEAST_EXPANSION" : Conservative targeting expansion, lowest reach.
-  /// - "SOME_EXPANSION" : Moderately conservative targeting expansion, lower
-  /// reach.
-  /// - "BALANCED_EXPANSION" : Moderate targeting expansion, medium reach.
-  /// - "MORE_EXPANSION" : Moderately aggressive targeting expansion, higher
-  /// reach.
-  /// - "MOST_EXPANSION" : Aggressive targeting expansion, highest reach.
-  core.String? targetingExpansionLevel;
-
-  TargetingExpansionConfig({
-    this.excludeFirstPartyAudience,
-    this.targetingExpansionLevel,
-  });
-
-  TargetingExpansionConfig.fromJson(core.Map json_)
-      : this(
-          excludeFirstPartyAudience:
-              json_.containsKey('excludeFirstPartyAudience')
-                  ? json_['excludeFirstPartyAudience'] as core.bool
-                  : null,
-          targetingExpansionLevel: json_.containsKey('targetingExpansionLevel')
-              ? json_['targetingExpansionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeFirstPartyAudience != null)
-          'excludeFirstPartyAudience': excludeFirstPartyAudience!,
-        if (targetingExpansionLevel != null)
-          'targetingExpansionLevel': targetingExpansionLevel!,
-      };
-}
+/// the original audience list and the targeting expansion level. Beginning
+/// November 7, 2022, these settings may represent the \[optimized targeting
+/// feature\](//support.google.com/displayvideo/answer/12060859) in place of
+/// targeting expansion. This feature will be rolled out to all partners by
+/// November 9, 2022.
+typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in
 /// DV360.
@@ -27800,93 +21622,11 @@ class TargetingOption {
 }
 
 /// Settings for advertisers that use third-party ad servers only.
-class ThirdPartyOnlyConfig {
-  /// Whether or not order ID reporting for pixels is enabled.
-  ///
-  /// This value cannot be changed once set to `true`.
-  core.bool? pixelOrderIdReportingEnabled;
-
-  ThirdPartyOnlyConfig({
-    this.pixelOrderIdReportingEnabled,
-  });
-
-  ThirdPartyOnlyConfig.fromJson(core.Map json_)
-      : this(
-          pixelOrderIdReportingEnabled:
-              json_.containsKey('pixelOrderIdReportingEnabled')
-                  ? json_['pixelOrderIdReportingEnabled'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pixelOrderIdReportingEnabled != null)
-          'pixelOrderIdReportingEnabled': pixelOrderIdReportingEnabled!,
-      };
-}
+typedef ThirdPartyOnlyConfig = $ThirdPartyOnlyConfig;
 
 /// Tracking URLs from third parties to track interactions with an audio or a
 /// video creative.
-class ThirdPartyUrl {
-  /// The type of interaction needs to be tracked by the tracking URL
-  /// Possible string values are:
-  /// - "THIRD_PARTY_URL_TYPE_UNSPECIFIED" : The type of third-party URL is
-  /// unspecified or is unknown in this version.
-  /// - "THIRD_PARTY_URL_TYPE_IMPRESSION" : Used to count impressions of the
-  /// creative after the audio or video buffering is complete.
-  /// - "THIRD_PARTY_URL_TYPE_CLICK_TRACKING" : Used to track user clicks on the
-  /// audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_START" : Used to track the number of
-  /// times a user starts the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_FIRST_QUARTILE" : Used to track the
-  /// number of times the audio or video plays to 25% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_MIDPOINT" : Used to track the number
-  /// of times the audio or video plays to 50% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_THIRD_QUARTILE" : Used to track the
-  /// number of times the audio or video plays to 75% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_COMPLETE" : Used to track the number
-  /// of times the audio or video plays to the end.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_MUTE" : Used to track the number of
-  /// times a user mutes the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PAUSE" : Used to track the number of
-  /// times a user pauses the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_REWIND" : Used to track the number of
-  /// times a user replays the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_FULLSCREEN" : Used to track the number
-  /// of times a user expands the player to full-screen size.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_STOP" : Used to track the number of
-  /// times a user stops the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_CUSTOM" : Used to track the number of
-  /// times a user performs a custom click, such as clicking on a video hot
-  /// spot.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_SKIP" : Used to track the number of
-  /// times the audio or video was skipped.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS" : Used to track the number
-  /// of times the audio or video plays to an offset determined by the
-  /// progress_offset.
-  core.String? type;
-
-  /// Tracking URL used to track the interaction.
-  ///
-  /// Provide a URL with optional path or query string, beginning with `https:`.
-  /// For example, https://www.example.com/path
-  core.String? url;
-
-  ThirdPartyUrl({
-    this.type,
-    this.url,
-  });
-
-  ThirdPartyUrl.fromJson(core.Map json_)
-      : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef ThirdPartyUrl = $ThirdPartyUrl;
 
 /// Assigned third party verifier targeting option details.
 ///
@@ -27932,122 +21672,13 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
 }
 
 /// A time range.
-class TimeRange {
-  /// The upper bound of a time range, inclusive.
-  ///
-  /// Required.
-  core.String? endTime;
-
-  /// The lower bound of a time range, inclusive.
-  ///
-  /// Required.
-  core.String? startTime;
-
-  TimeRange({
-    this.endTime,
-    this.startTime,
-  });
-
-  TimeRange.fromJson(core.Map json_)
-      : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef TimeRange = $TimeRange;
 
 /// Timer event of the creative.
-class TimerEvent {
-  /// The name of the timer event.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The name used to identify this timer event in reports.
-  ///
-  /// Required.
-  core.String? reportingName;
-
-  TimerEvent({
-    this.name,
-    this.reportingName,
-  });
-
-  TimerEvent.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (reportingName != null) 'reportingName': reportingName!,
-      };
-}
+typedef TimerEvent = $TimerEvent;
 
 /// Settings that control the behavior of a single Floodlight activity config.
-class TrackingFloodlightActivityConfig {
-  /// The ID of the Floodlight activity.
-  ///
-  /// Required.
-  core.String? floodlightActivityId;
-
-  /// The number of days after an ad has been clicked in which a conversion may
-  /// be counted.
-  ///
-  /// Must be between 0 and 90 inclusive.
-  ///
-  /// Required.
-  core.int? postClickLookbackWindowDays;
-
-  /// The number of days after an ad has been viewed in which a conversion may
-  /// be counted.
-  ///
-  /// Must be between 0 and 90 inclusive.
-  ///
-  /// Required.
-  core.int? postViewLookbackWindowDays;
-
-  TrackingFloodlightActivityConfig({
-    this.floodlightActivityId,
-    this.postClickLookbackWindowDays,
-    this.postViewLookbackWindowDays,
-  });
-
-  TrackingFloodlightActivityConfig.fromJson(core.Map json_)
-      : this(
-          floodlightActivityId: json_.containsKey('floodlightActivityId')
-              ? json_['floodlightActivityId'] as core.String
-              : null,
-          postClickLookbackWindowDays:
-              json_.containsKey('postClickLookbackWindowDays')
-                  ? json_['postClickLookbackWindowDays'] as core.int
-                  : null,
-          postViewLookbackWindowDays:
-              json_.containsKey('postViewLookbackWindowDays')
-                  ? json_['postViewLookbackWindowDays'] as core.int
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId!,
-        if (postClickLookbackWindowDays != null)
-          'postClickLookbackWindowDays': postClickLookbackWindowDays!,
-        if (postViewLookbackWindowDays != null)
-          'postViewLookbackWindowDays': postViewLookbackWindowDays!,
-      };
-}
+typedef TrackingFloodlightActivityConfig = $TrackingFloodlightActivityConfig;
 
 /// Represents information about the transcoded audio or video file.
 class Transcode {
@@ -28139,80 +21770,13 @@ class Transcode {
 /// platforms.
 ///
 /// This is part of the VAST 4.0 standard.
-class UniversalAdId {
-  /// The unique creative identifier.
-  core.String? id;
-
-  /// The registry provides unique creative identifiers.
-  /// Possible string values are:
-  /// - "UNIVERSAL_AD_REGISTRY_UNSPECIFIED" : The Universal Ad registry is
-  /// unspecified or is unknown in this version.
-  /// - "UNIVERSAL_AD_REGISTRY_OTHER" : Use a custom provider to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_AD_ID" : Use Ad-ID to provide the Universal Ad
-  /// ID.
-  /// - "UNIVERSAL_AD_REGISTRY_CLEARCAST" : Use clearcast.co.uk to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_DV360" : Use Display & Video 360 to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_CM" : Use Campaign Manager 360 to provide the
-  /// Universal Ad ID.
-  core.String? registry;
-
-  UniversalAdId({
-    this.id,
-    this.registry,
-  });
-
-  UniversalAdId.fromJson(core.Map json_)
-      : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          registry: json_.containsKey('registry')
-              ? json_['registry'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (registry != null) 'registry': registry!,
-      };
-}
+typedef UniversalAdId = $UniversalAdId01;
 
 /// Details for assigned URL targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_URL`.
-class UrlAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The URL, for example `example.com`.
-  ///
-  /// DV360 supports two levels of subdirectory targeting, for example
-  /// `www.example.com/one-subdirectory-level/second-level`, and five levels of
-  /// subdomain targeting, for example `five.four.three.two.one.example.com`.
-  ///
-  /// Required.
-  core.String? url;
-
-  UrlAssignedTargetingOptionDetails({
-    this.negative,
-    this.url,
-  });
-
-  UrlAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef UrlAssignedTargetingOptionDetails = $UrlAssignedTargetingOptionDetails;
 
 /// A single user in Display & Video 360.
 class User {
@@ -28286,80 +21850,15 @@ class User {
 ///
 /// This will be populated in the user_rewarded_content_details field when
 /// targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
-class UserRewardedContentAssignedTargetingOptionDetails {
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  /// User rewarded content status for video ads.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "USER_REWARDED_CONTENT_UNSPECIFIED" : User rewarded content is not
-  /// specified or is unknown in this version.
-  /// - "USER_REWARDED_CONTENT_USER_REWARDED" : Represents ads where the user
-  /// will see a reward after viewing.
-  /// - "USER_REWARDED_CONTENT_NOT_USER_REWARDED" : Represents all other ads
-  /// besides user-rewarded.
-  core.String? userRewardedContent;
-
-  UserRewardedContentAssignedTargetingOptionDetails({
-    this.targetingOptionId,
-    this.userRewardedContent,
-  });
-
-  UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-          userRewardedContent: json_.containsKey('userRewardedContent')
-              ? json_['userRewardedContent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
-        if (userRewardedContent != null)
-          'userRewardedContent': userRewardedContent!,
-      };
-}
+typedef UserRewardedContentAssignedTargetingOptionDetails
+    = $UserRewardedContentAssignedTargetingOptionDetails;
 
 /// Represents a targetable user rewarded content status for video ads only.
 ///
 /// This will be populated in the user_rewarded_content_details field when
 /// targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
-class UserRewardedContentTargetingOptionDetails {
-  /// User rewarded content status for video ads.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "USER_REWARDED_CONTENT_UNSPECIFIED" : User rewarded content is not
-  /// specified or is unknown in this version.
-  /// - "USER_REWARDED_CONTENT_USER_REWARDED" : Represents ads where the user
-  /// will see a reward after viewing.
-  /// - "USER_REWARDED_CONTENT_NOT_USER_REWARDED" : Represents all other ads
-  /// besides user-rewarded.
-  core.String? userRewardedContent;
-
-  UserRewardedContentTargetingOptionDetails({
-    this.userRewardedContent,
-  });
-
-  UserRewardedContentTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          userRewardedContent: json_.containsKey('userRewardedContent')
-              ? json_['userRewardedContent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (userRewardedContent != null)
-          'userRewardedContent': userRewardedContent!,
-      };
-}
+typedef UserRewardedContentTargetingOptionDetails
+    = $UserRewardedContentTargetingOptionDetails;
 
 /// Video player size targeting option details.
 ///
@@ -28417,40 +21916,8 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the video_player_size_details field when
 /// targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
-class VideoPlayerSizeTargetingOptionDetails {
-  /// The video player size.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real video player size.
-  /// - "VIDEO_PLAYER_SIZE_SMALL" : The dimensions of the video player are less
-  /// than 400×300 (desktop), or up to 20% of screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_LARGE" : The dimensions of the video player are
-  /// between 400x300 and 1280x720 pixels (desktop), or 20% to 90% of the screen
-  /// covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_HD" : The dimensions of the video player are 1280×720
-  /// or greater (desktop), or over 90% of the screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_UNKNOWN" : The dimensions of the video player are
-  /// unknown.
-  core.String? videoPlayerSize;
-
-  VideoPlayerSizeTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
-
-  VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_.containsKey('videoPlayerSize')
-              ? json_['videoPlayerSize'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
-      };
-}
+typedef VideoPlayerSizeTargetingOptionDetails
+    = $VideoPlayerSizeTargetingOptionDetails;
 
 /// Assigned viewability targeting option details.
 ///
@@ -28516,46 +21983,4 @@ class ViewabilityAssignedTargetingOptionDetails {
 ///
 /// This will be populated in the viewability_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_VIEWABILITY`.
-class ViewabilityTargetingOptionDetails {
-  /// The predicted viewability percentage.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real viewability option.
-  /// - "VIEWABILITY_10_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 10% likely to be viewable.
-  /// - "VIEWABILITY_20_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 20% likely to be viewable.
-  /// - "VIEWABILITY_30_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 30% likely to be viewable.
-  /// - "VIEWABILITY_40_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 40% likely to be viewable.
-  /// - "VIEWABILITY_50_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 50% likely to be viewable.
-  /// - "VIEWABILITY_60_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 60% likely to be viewable.
-  /// - "VIEWABILITY_70_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 70% likely to be viewable.
-  /// - "VIEWABILITY_80_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 80% likely to be viewable.
-  /// - "VIEWABILITY_90_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 90% likely to be viewable.
-  core.String? viewability;
-
-  ViewabilityTargetingOptionDetails({
-    this.viewability,
-  });
-
-  ViewabilityTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_.containsKey('viewability')
-              ? json_['viewability'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (viewability != null) 'viewability': viewability!,
-      };
-}
+typedef ViewabilityTargetingOptionDetails = $ViewabilityTargetingOptionDetails;

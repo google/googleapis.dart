@@ -565,8 +565,8 @@ class Peer {
   /// The identity of this peer.
   ///
   /// Similar to `Request.auth.principal`, but relative to the peer instead of
-  /// the request. For example, the idenity associated with a load balancer that
-  /// forwared the request.
+  /// the request. For example, the identity associated with a load balancer
+  /// that forwarded the request.
   core.String? principal;
 
   /// The CLDR country/region code associated with the above IP address.

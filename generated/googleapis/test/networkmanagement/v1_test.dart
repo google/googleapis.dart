@@ -72,6 +72,65 @@ void checkAbortInfo(api.AbortInfo o) {
   buildCounterAbortInfo--;
 }
 
+core.int buildCounterAppEngineVersionEndpoint = 0;
+api.AppEngineVersionEndpoint buildAppEngineVersionEndpoint() {
+  final o = api.AppEngineVersionEndpoint();
+  buildCounterAppEngineVersionEndpoint++;
+  if (buildCounterAppEngineVersionEndpoint < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterAppEngineVersionEndpoint--;
+  return o;
+}
+
+void checkAppEngineVersionEndpoint(api.AppEngineVersionEndpoint o) {
+  buildCounterAppEngineVersionEndpoint++;
+  if (buildCounterAppEngineVersionEndpoint < 3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppEngineVersionEndpoint--;
+}
+
+core.int buildCounterAppEngineVersionInfo = 0;
+api.AppEngineVersionInfo buildAppEngineVersionInfo() {
+  final o = api.AppEngineVersionInfo();
+  buildCounterAppEngineVersionInfo++;
+  if (buildCounterAppEngineVersionInfo < 3) {
+    o.displayName = 'foo';
+    o.environment = 'foo';
+    o.runtime = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterAppEngineVersionInfo--;
+  return o;
+}
+
+void checkAppEngineVersionInfo(api.AppEngineVersionInfo o) {
+  buildCounterAppEngineVersionInfo++;
+  if (buildCounterAppEngineVersionInfo < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.environment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.runtime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppEngineVersionInfo--;
+}
+
 core.List<api.AuditLogConfig> buildUnnamed1() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -263,6 +322,65 @@ void checkCloudFunctionInfo(api.CloudFunctionInfo o) {
     );
   }
   buildCounterCloudFunctionInfo--;
+}
+
+core.int buildCounterCloudRunRevisionEndpoint = 0;
+api.CloudRunRevisionEndpoint buildCloudRunRevisionEndpoint() {
+  final o = api.CloudRunRevisionEndpoint();
+  buildCounterCloudRunRevisionEndpoint++;
+  if (buildCounterCloudRunRevisionEndpoint < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterCloudRunRevisionEndpoint--;
+  return o;
+}
+
+void checkCloudRunRevisionEndpoint(api.CloudRunRevisionEndpoint o) {
+  buildCounterCloudRunRevisionEndpoint++;
+  if (buildCounterCloudRunRevisionEndpoint < 3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCloudRunRevisionEndpoint--;
+}
+
+core.int buildCounterCloudRunRevisionInfo = 0;
+api.CloudRunRevisionInfo buildCloudRunRevisionInfo() {
+  final o = api.CloudRunRevisionInfo();
+  buildCounterCloudRunRevisionInfo++;
+  if (buildCounterCloudRunRevisionInfo < 3) {
+    o.displayName = 'foo';
+    o.location = 'foo';
+    o.serviceUri = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterCloudRunRevisionInfo--;
+  return o;
+}
+
+void checkCloudRunRevisionInfo(api.CloudRunRevisionInfo o) {
+  buildCounterCloudRunRevisionInfo++;
+  if (buildCounterCloudRunRevisionInfo < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCloudRunRevisionInfo--;
 }
 
 core.int buildCounterCloudSQLInstanceInfo = 0;
@@ -477,7 +595,9 @@ api.Endpoint buildEndpoint() {
   final o = api.Endpoint();
   buildCounterEndpoint++;
   if (buildCounterEndpoint < 3) {
+    o.appEngineVersion = buildAppEngineVersionEndpoint();
     o.cloudFunction = buildCloudFunctionEndpoint();
+    o.cloudRunRevision = buildCloudRunRevisionEndpoint();
     o.cloudSqlInstance = 'foo';
     o.gkeMasterCluster = 'foo';
     o.instance = 'foo';
@@ -494,7 +614,9 @@ api.Endpoint buildEndpoint() {
 void checkEndpoint(api.Endpoint o) {
   buildCounterEndpoint++;
   if (buildCounterEndpoint < 3) {
+    checkAppEngineVersionEndpoint(o.appEngineVersion!);
     checkCloudFunctionEndpoint(o.cloudFunction!);
+    checkCloudRunRevisionEndpoint(o.cloudRunRevision!);
     unittest.expect(
       o.cloudSqlInstance!,
       unittest.equals('foo'),
@@ -1523,19 +1645,74 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed25() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed26() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterRouteInfo = 0;
 api.RouteInfo buildRouteInfo() {
   final o = api.RouteInfo();
   buildCounterRouteInfo++;
   if (buildCounterRouteInfo < 3) {
     o.destIpRange = 'foo';
+    o.destPortRanges = buildUnnamed23();
     o.displayName = 'foo';
-    o.instanceTags = buildUnnamed23();
+    o.instanceTags = buildUnnamed24();
     o.networkUri = 'foo';
     o.nextHop = 'foo';
     o.nextHopType = 'foo';
     o.priority = 42;
+    o.protocols = buildUnnamed25();
     o.routeType = 'foo';
+    o.srcIpRange = 'foo';
+    o.srcPortRanges = buildUnnamed26();
     o.uri = 'foo';
   }
   buildCounterRouteInfo--;
@@ -1549,11 +1726,12 @@ void checkRouteInfo(api.RouteInfo o) {
       o.destIpRange!,
       unittest.equals('foo'),
     );
+    checkUnnamed23(o.destPortRanges!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.instanceTags!);
+    checkUnnamed24(o.instanceTags!);
     unittest.expect(
       o.networkUri!,
       unittest.equals('foo'),
@@ -1570,10 +1748,16 @@ void checkRouteInfo(api.RouteInfo o) {
       o.priority!,
       unittest.equals(42),
     );
+    checkUnnamed25(o.protocols!);
     unittest.expect(
       o.routeType!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.srcIpRange!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed26(o.srcPortRanges!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -1606,7 +1790,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed24() => {
+core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1619,7 +1803,7 @@ core.Map<core.String, core.Object?> buildUnnamed24() => {
       },
     };
 
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1651,15 +1835,15 @@ void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed25() => [
-      buildUnnamed24(),
-      buildUnnamed24(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed28() => [
+      buildUnnamed27(),
+      buildUnnamed27(),
     ];
 
-void checkUnnamed25(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed28(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed24(o[0]);
-  checkUnnamed24(o[1]);
+  checkUnnamed27(o[0]);
+  checkUnnamed27(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1668,7 +1852,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed25();
+    o.details = buildUnnamed28();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1682,7 +1866,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed25(o.details!);
+    checkUnnamed28(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1697,8 +1881,10 @@ api.Step buildStep() {
   buildCounterStep++;
   if (buildCounterStep < 3) {
     o.abort = buildAbortInfo();
+    o.appEngineVersion = buildAppEngineVersionInfo();
     o.causesDrop = true;
     o.cloudFunction = buildCloudFunctionInfo();
+    o.cloudRunRevision = buildCloudRunRevisionInfo();
     o.cloudSqlInstance = buildCloudSQLInstanceInfo();
     o.deliver = buildDeliverInfo();
     o.description = 'foo';
@@ -1726,8 +1912,10 @@ void checkStep(api.Step o) {
   buildCounterStep++;
   if (buildCounterStep < 3) {
     checkAbortInfo(o.abort!);
+    checkAppEngineVersionInfo(o.appEngineVersion!);
     unittest.expect(o.causesDrop!, unittest.isTrue);
     checkCloudFunctionInfo(o.cloudFunction!);
+    checkCloudRunRevisionInfo(o.cloudRunRevision!);
     checkCloudSQLInstanceInfo(o.cloudSqlInstance!);
     checkDeliverInfo(o.deliver!);
     unittest.expect(
@@ -1759,12 +1947,12 @@ void checkStep(api.Step o) {
   buildCounterStep--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1781,7 +1969,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed26();
+    o.permissions = buildUnnamed29();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1790,17 +1978,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed26(o.permissions!);
+    checkUnnamed29(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1817,7 +2005,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed27();
+    o.permissions = buildUnnamed30();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1826,17 +2014,17 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed27(o.permissions!);
+    checkUnnamed30(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<api.Step> buildUnnamed28() => [
+core.List<api.Step> buildUnnamed31() => [
       buildStep(),
       buildStep(),
     ];
 
-void checkUnnamed28(core.List<api.Step> o) {
+void checkUnnamed31(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStep(o[0]);
   checkStep(o[1]);
@@ -1848,7 +2036,7 @@ api.Trace buildTrace() {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     o.endpointInfo = buildEndpointInfo();
-    o.steps = buildUnnamed28();
+    o.steps = buildUnnamed31();
   }
   buildCounterTrace--;
   return o;
@@ -1858,7 +2046,7 @@ void checkTrace(api.Trace o) {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     checkEndpointInfo(o.endpointInfo!);
-    checkUnnamed28(o.steps!);
+    checkUnnamed31(o.steps!);
   }
   buildCounterTrace--;
 }
@@ -2015,6 +2203,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AppEngineVersionEndpoint', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppEngineVersionEndpoint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppEngineVersionEndpoint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppEngineVersionEndpoint(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppEngineVersionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppEngineVersionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppEngineVersionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppEngineVersionInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -2072,6 +2280,26 @@ void main() {
       final od = api.CloudFunctionInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCloudFunctionInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudRunRevisionEndpoint', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudRunRevisionEndpoint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudRunRevisionEndpoint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudRunRevisionEndpoint(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudRunRevisionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudRunRevisionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudRunRevisionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudRunRevisionInfo(od);
     });
   });
 

@@ -3618,6 +3618,9 @@ class AddonsConfig {
   /// Configuration for the GCP Filestore CSI driver.
   GcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig;
 
+  /// Configuration for the Backup for GKE agent addon.
+  GkeBackupAgentConfig? gkeBackupAgentConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which increases
   /// or decreases the number of replica pods a replication controller has based
   /// on the resource usage of the existing pods.
@@ -3647,6 +3650,7 @@ class AddonsConfig {
     this.dnsCacheConfig,
     this.gcePersistentDiskCsiDriverConfig,
     this.gcpFilestoreCsiDriverConfig,
+    this.gkeBackupAgentConfig,
     this.horizontalPodAutoscaling,
     this.httpLoadBalancing,
     this.kubernetesDashboard,
@@ -3679,6 +3683,10 @@ class AddonsConfig {
                       json_['gcpFilestoreCsiDriverConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          gkeBackupAgentConfig: json_.containsKey('gkeBackupAgentConfig')
+              ? GkeBackupAgentConfig.fromJson(json_['gkeBackupAgentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           horizontalPodAutoscaling:
               json_.containsKey('horizontalPodAutoscaling')
                   ? HorizontalPodAutoscaling.fromJson(
@@ -3708,6 +3716,8 @@ class AddonsConfig {
           'gcePersistentDiskCsiDriverConfig': gcePersistentDiskCsiDriverConfig!,
         if (gcpFilestoreCsiDriverConfig != null)
           'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!,
+        if (gkeBackupAgentConfig != null)
+          'gkeBackupAgentConfig': gkeBackupAgentConfig!,
         if (horizontalPodAutoscaling != null)
           'horizontalPodAutoscaling': horizontalPodAutoscaling!,
         if (httpLoadBalancing != null) 'httpLoadBalancing': httpLoadBalancing!,
@@ -3869,7 +3879,7 @@ class AutoprovisioningNodePoolDefaults {
   /// Applicable values are the friendly names of CPU platforms, such as
   /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For
   /// more information, read
-  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   /// This field is deprecated, min_cpu_platform should be specified using
   /// https://cloud.google.com/requested-min-cpu-platform label selector on the
   /// pod. To unset the min cpu platform field pass "automatic" as field value.
@@ -3988,8 +3998,7 @@ class BinaryAuthorization {
 
   /// Mode of operation for binauthz policy evaluation.
   ///
-  /// Currently the only options are equivalent to enable/disable. If
-  /// unspecified, defaults to DISABLED.
+  /// If unspecified, defaults to DISABLED.
   /// Possible string values are:
   /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
   /// - "DISABLED" : Disable BinaryAuthorization
@@ -4305,6 +4314,9 @@ class Cluster {
   ///
   /// All the nodes in the cluster will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
+
+  /// Configuration for the fine-grained cost management feature.
+  CostManagementConfig? costManagementConfig;
 
   /// The time the cluster was created, in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -4644,6 +4656,7 @@ class Cluster {
     this.clusterIpv4Cidr,
     this.conditions,
     this.confidentialNodes,
+    this.costManagementConfig,
     this.createTime,
     this.currentMasterVersion,
     this.currentNodeCount,
@@ -4734,6 +4747,10 @@ class Cluster {
               : null,
           confidentialNodes: json_.containsKey('confidentialNodes')
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          costManagementConfig: json_.containsKey('costManagementConfig')
+              ? CostManagementConfig.fromJson(json_['costManagementConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
@@ -4943,6 +4960,8 @@ class Cluster {
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (conditions != null) 'conditions': conditions!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (costManagementConfig != null)
+          'costManagementConfig': costManagementConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (currentMasterVersion != null)
           'currentMasterVersion': currentMasterVersion!,
@@ -5108,6 +5127,9 @@ class ClusterUpdate {
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling? desiredClusterAutoscaling;
 
+  /// The desired configuration for the fine-grained cost management feature.
+  CostManagementConfig? desiredCostManagementConfig;
+
   /// Configuration of etcd encryption.
   DatabaseEncryption? desiredDatabaseEncryption;
 
@@ -5126,6 +5148,12 @@ class ClusterUpdate {
 
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
+
+  /// Enable/Disable private endpoint for the cluster's master.
+  core.bool? desiredEnablePrivateEndpoint;
+
+  /// The desired config of Gateway API on this cluster.
+  GatewayAPIConfig? desiredGatewayApiConfig;
 
   /// The desired GCFS config for the cluster
   GcfsConfig? desiredGcfsConfig;
@@ -5271,10 +5299,13 @@ class ClusterUpdate {
     this.desiredAuthenticatorGroupsConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
+    this.desiredCostManagementConfig,
     this.desiredDatabaseEncryption,
     this.desiredDatapathProvider,
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
+    this.desiredEnablePrivateEndpoint,
+    this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
     this.desiredIdentityServiceConfig,
     this.desiredImageType,
@@ -5326,6 +5357,12 @@ class ClusterUpdate {
               ? ClusterAutoscaling.fromJson(json_['desiredClusterAutoscaling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredCostManagementConfig:
+              json_.containsKey('desiredCostManagementConfig')
+                  ? CostManagementConfig.fromJson(
+                      json_['desiredCostManagementConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredDatabaseEncryption: json_
                   .containsKey('desiredDatabaseEncryption')
               ? DatabaseEncryption.fromJson(json_['desiredDatabaseEncryption']
@@ -5341,6 +5378,14 @@ class ClusterUpdate {
                   : null,
           desiredDnsConfig: json_.containsKey('desiredDnsConfig')
               ? DNSConfig.fromJson(json_['desiredDnsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredEnablePrivateEndpoint:
+              json_.containsKey('desiredEnablePrivateEndpoint')
+                  ? json_['desiredEnablePrivateEndpoint'] as core.bool
+                  : null,
+          desiredGatewayApiConfig: json_.containsKey('desiredGatewayApiConfig')
+              ? GatewayAPIConfig.fromJson(json_['desiredGatewayApiConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           desiredGcfsConfig: json_.containsKey('desiredGcfsConfig')
@@ -5482,6 +5527,8 @@ class ClusterUpdate {
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
           'desiredClusterAutoscaling': desiredClusterAutoscaling!,
+        if (desiredCostManagementConfig != null)
+          'desiredCostManagementConfig': desiredCostManagementConfig!,
         if (desiredDatabaseEncryption != null)
           'desiredDatabaseEncryption': desiredDatabaseEncryption!,
         if (desiredDatapathProvider != null)
@@ -5489,6 +5536,10 @@ class ClusterUpdate {
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
+        if (desiredEnablePrivateEndpoint != null)
+          'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
+        if (desiredGatewayApiConfig != null)
+          'desiredGatewayApiConfig': desiredGatewayApiConfig!,
         if (desiredGcfsConfig != null) 'desiredGcfsConfig': desiredGcfsConfig!,
         if (desiredIdentityServiceConfig != null)
           'desiredIdentityServiceConfig': desiredIdentityServiceConfig!,
@@ -5663,6 +5714,27 @@ class ConsumptionMeteringConfig {
   });
 
   ConsumptionMeteringConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration for fine-grained cost management feature.
+class CostManagementConfig {
+  /// Whether the feature is enabled or not.
+  core.bool? enabled;
+
+  CostManagementConfig({
+    this.enabled,
+  });
+
+  CostManagementConfig.fromJson(core.Map json_)
       : this(
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
@@ -5977,6 +6049,27 @@ class DnsCacheConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Configuration of Fast Socket feature.
+class FastSocket {
+  /// Whether Fast Socket features are enabled in the node pool.
+  core.bool? enabled;
+
+  FastSocket({
+    this.enabled,
+  });
+
+  FastSocket.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Allows filtering to one or more specific event types.
 ///
 /// If event types are present, those and only those event types will be
@@ -6036,6 +6129,34 @@ class GPUSharingConfig {
           'gpuSharingStrategy': gpuSharingStrategy!,
         if (maxSharedClientsPerGpu != null)
           'maxSharedClientsPerGpu': maxSharedClientsPerGpu!,
+      };
+}
+
+/// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+class GatewayAPIConfig {
+  /// The Gateway API release channel to use for Gateway API.
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : Default value.
+  /// - "CHANNEL_DISABLED" : Gateway API support is disabled
+  /// - "CHANNEL_EXPERIMENTAL" : Gateway API support is enabled, experimental
+  /// CRDs are installed
+  /// - "CHANNEL_STANDARD" : Gateway API support is enabled, standard CRDs are
+  /// installed
+  core.String? channel;
+
+  GatewayAPIConfig({
+    this.channel,
+  });
+
+  GatewayAPIConfig.fromJson(core.Map json_)
+      : this(
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
       };
 }
 
@@ -6234,6 +6355,27 @@ class GetOpenIDConfigResponse {
       };
 }
 
+/// Configuration for the Backup for GKE Agent.
+class GkeBackupAgentConfig {
+  /// Whether the Backup for GKE agent is enabled for this cluster.
+  core.bool? enabled;
+
+  GkeBackupAgentConfig({
+    this.enabled,
+  });
+
+  GkeBackupAgentConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Configuration options for the horizontal pod autoscaling feature, which
 /// increases or decreases the number of replica pods a replication controller
 /// has based on the resource usage of the existing pods.
@@ -6372,6 +6514,14 @@ class IPAllocationPolicy {
   /// This field is only applicable when `use_ip_aliases` is true.
   core.bool? createSubnetwork;
 
+  /// The ipv6 access type (internal or external) when create_subnetwork is true
+  /// Possible string values are:
+  /// - "IPV6_ACCESS_TYPE_UNSPECIFIED" : Default value, will be defaulted as
+  /// type external.
+  /// - "INTERNAL" : Access type internal (all v6 addresses are internal IPs)
+  /// - "EXTERNAL" : Access type external (all v6 addresses are external IPs)
+  core.String? ipv6AccessType;
+
   /// This field is deprecated, use node_ipv4_cidr_block.
   core.String? nodeIpv4Cidr;
 
@@ -6408,6 +6558,13 @@ class IPAllocationPolicy {
   /// field is only applicable with use_ip_aliases is true and create_subnetwork
   /// is false.
   core.String? servicesSecondaryRangeName;
+
+  /// The IP stack type of the cluster
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Default value, will be defaulted as IPV4 only
+  /// - "IPV4" : Cluster is IPV4 only
+  /// - "IPV4_IPV6" : Cluster can use both IPv4 and IPv6
+  core.String? stackType;
 
   /// A custom subnetwork name to be used if `create_subnetwork` is true.
   ///
@@ -6446,11 +6603,13 @@ class IPAllocationPolicy {
     this.clusterIpv4CidrBlock,
     this.clusterSecondaryRangeName,
     this.createSubnetwork,
+    this.ipv6AccessType,
     this.nodeIpv4Cidr,
     this.nodeIpv4CidrBlock,
     this.servicesIpv4Cidr,
     this.servicesIpv4CidrBlock,
     this.servicesSecondaryRangeName,
+    this.stackType,
     this.subnetworkName,
     this.tpuIpv4CidrBlock,
     this.useIpAliases,
@@ -6472,6 +6631,9 @@ class IPAllocationPolicy {
           createSubnetwork: json_.containsKey('createSubnetwork')
               ? json_['createSubnetwork'] as core.bool
               : null,
+          ipv6AccessType: json_.containsKey('ipv6AccessType')
+              ? json_['ipv6AccessType'] as core.String
+              : null,
           nodeIpv4Cidr: json_.containsKey('nodeIpv4Cidr')
               ? json_['nodeIpv4Cidr'] as core.String
               : null,
@@ -6488,6 +6650,9 @@ class IPAllocationPolicy {
               json_.containsKey('servicesSecondaryRangeName')
                   ? json_['servicesSecondaryRangeName'] as core.String
                   : null,
+          stackType: json_.containsKey('stackType')
+              ? json_['stackType'] as core.String
+              : null,
           subnetworkName: json_.containsKey('subnetworkName')
               ? json_['subnetworkName'] as core.String
               : null,
@@ -6509,6 +6674,7 @@ class IPAllocationPolicy {
         if (clusterSecondaryRangeName != null)
           'clusterSecondaryRangeName': clusterSecondaryRangeName!,
         if (createSubnetwork != null) 'createSubnetwork': createSubnetwork!,
+        if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
         if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
@@ -6516,6 +6682,7 @@ class IPAllocationPolicy {
           'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
         if (servicesSecondaryRangeName != null)
           'servicesSecondaryRangeName': servicesSecondaryRangeName!,
+        if (stackType != null) 'stackType': stackType!,
         if (subnetworkName != null) 'subnetworkName': subnetworkName!,
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (useIpAliases != null) 'useIpAliases': useIpAliases!,
@@ -6683,6 +6850,17 @@ class LegacyAbac {
 
 /// Parameters that can be configured on Linux nodes.
 class LinuxNodeConfig {
+  /// cgroup_mode specifies the cgroup mode to be used on the node.
+  /// Possible string values are:
+  /// - "CGROUP_MODE_UNSPECIFIED" : CGROUP_MODE_UNSPECIFIED is when unspecified
+  /// cgroup configuration is used. The default for the GKE node OS image will
+  /// be used.
+  /// - "CGROUP_MODE_V1" : CGROUP_MODE_V1 specifies to use cgroupv1 for the
+  /// cgroup configuration on the node image.
+  /// - "CGROUP_MODE_V2" : CGROUP_MODE_V2 specifies to use cgroupv2 for the
+  /// cgroup configuration on the node image.
+  core.String? cgroupMode;
+
   /// The Linux kernel parameters to be applied to the nodes and all pods
   /// running on the nodes.
   ///
@@ -6694,11 +6872,15 @@ class LinuxNodeConfig {
   core.Map<core.String, core.String>? sysctls;
 
   LinuxNodeConfig({
+    this.cgroupMode,
     this.sysctls,
   });
 
   LinuxNodeConfig.fromJson(core.Map json_)
       : this(
+          cgroupMode: json_.containsKey('cgroupMode')
+              ? json_['cgroupMode'] as core.String
+              : null,
           sysctls: json_.containsKey('sysctls')
               ? (json_['sysctls'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -6710,6 +6892,7 @@ class LinuxNodeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cgroupMode != null) 'cgroupMode': cgroupMode!,
         if (sysctls != null) 'sysctls': sysctls!,
       };
 }
@@ -7168,9 +7351,14 @@ class MasterAuthorizedNetworksConfig {
   /// Whether or not master authorized networks is enabled.
   core.bool? enabled;
 
+  /// Whether master is accessbile via Google Compute Engine Public IP
+  /// addresses.
+  core.bool? gcpPublicCidrsAccessEnabled;
+
   MasterAuthorizedNetworksConfig({
     this.cidrBlocks,
     this.enabled,
+    this.gcpPublicCidrsAccessEnabled,
   });
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
@@ -7184,11 +7372,17 @@ class MasterAuthorizedNetworksConfig {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          gcpPublicCidrsAccessEnabled:
+              json_.containsKey('gcpPublicCidrsAccessEnabled')
+                  ? json_['gcpPublicCidrsAccessEnabled'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
         if (enabled != null) 'enabled': enabled!,
+        if (gcpPublicCidrsAccessEnabled != null)
+          'gcpPublicCidrsAccessEnabled': gcpPublicCidrsAccessEnabled!,
       };
 }
 
@@ -7375,6 +7569,10 @@ class NetworkConfig {
   /// Whether L4ILB Subsetting is enabled for this cluster.
   core.bool? enableL4ilbSubsetting;
 
+  /// GatewayAPIConfig contains the desired config of Gateway API on this
+  /// cluster.
+  GatewayAPIConfig? gatewayApiConfig;
+
   /// The relative name of the Google Compute Engine
   /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
   /// to which the cluster is connected.
@@ -7418,6 +7616,7 @@ class NetworkConfig {
     this.dnsConfig,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
+    this.gatewayApiConfig,
     this.network,
     this.privateIpv6GoogleAccess,
     this.serviceExternalIpsConfig,
@@ -7444,6 +7643,10 @@ class NetworkConfig {
           enableL4ilbSubsetting: json_.containsKey('enableL4ilbSubsetting')
               ? json_['enableL4ilbSubsetting'] as core.bool
               : null,
+          gatewayApiConfig: json_.containsKey('gatewayApiConfig')
+              ? GatewayAPIConfig.fromJson(json_['gatewayApiConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
@@ -7469,6 +7672,7 @@ class NetworkConfig {
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
           'enableL4ilbSubsetting': enableL4ilbSubsetting!,
+        if (gatewayApiConfig != null) 'gatewayApiConfig': gatewayApiConfig!,
         if (network != null) 'network': network!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
@@ -7625,6 +7829,9 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// Enable or disable NCCL fast socket for the node pool.
+  FastSocket? fastSocket;
+
   /// Google Container File System (image streaming) configs.
   GcfsConfig? gcfsConfig;
 
@@ -7728,6 +7935,10 @@ class NodeConfig {
   /// to this node pool.
   ReservationAffinity? reservationAffinity;
 
+  /// The resource labels for the node pool to use to annotate any related
+  /// Google Compute Engine resources.
+  core.Map<core.String, core.String>? resourceLabels;
+
   /// Sandbox configuration for this node.
   SandboxConfig? sandboxConfig;
 
@@ -7767,6 +7978,7 @@ class NodeConfig {
     this.confidentialNodes,
     this.diskSizeGb,
     this.diskType,
+    this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
     this.imageType,
@@ -7782,6 +7994,7 @@ class NodeConfig {
     this.oauthScopes,
     this.preemptible,
     this.reservationAffinity,
+    this.resourceLabels,
     this.sandboxConfig,
     this.serviceAccount,
     this.shieldedInstanceConfig,
@@ -7816,6 +8029,10 @@ class NodeConfig {
               : null,
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
+              : null,
+          fastSocket: json_.containsKey('fastSocket')
+              ? FastSocket.fromJson(
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
@@ -7880,6 +8097,15 @@ class NodeConfig {
               ? ReservationAffinity.fromJson(json_['reservationAffinity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          resourceLabels: json_.containsKey('resourceLabels')
+              ? (json_['resourceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           sandboxConfig: json_.containsKey('sandboxConfig')
               ? SandboxConfig.fromJson(
                   json_['sandboxConfig'] as core.Map<core.String, core.dynamic>)
@@ -7917,6 +8143,7 @@ class NodeConfig {
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
@@ -7933,6 +8160,7 @@ class NodeConfig {
         if (preemptible != null) 'preemptible': preemptible!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
@@ -8047,30 +8275,7 @@ class NodeKubeletConfig {
 
 /// Collection of node-level
 /// [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
-class NodeLabels {
-  /// Map of node label keys and node label values.
-  core.Map<core.String, core.String>? labels;
-
-  NodeLabels({
-    this.labels,
-  });
-
-  NodeLabels.fromJson(core.Map json_)
-      : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef NodeLabels = $Labels;
 
 /// NodeManagement defines the set of node management services turned on for the
 /// node pool.
@@ -8132,6 +8337,12 @@ class NodeNetworkConfig {
   /// This field cannot be changed after the node pool has been created.
   core.bool? createPodRange;
 
+  /// Whether nodes have internal IP addresses only.
+  ///
+  /// If enable_private_nodes is not specified, then the value is derived from
+  /// cluster.privateClusterConfig.enablePrivateNodes
+  core.bool? enablePrivateNodes;
+
   /// Network bandwidth tier configuration.
   NetworkPerformanceConfig? networkPerformanceConfig;
 
@@ -8156,6 +8367,7 @@ class NodeNetworkConfig {
 
   NodeNetworkConfig({
     this.createPodRange,
+    this.enablePrivateNodes,
     this.networkPerformanceConfig,
     this.podIpv4CidrBlock,
     this.podRange,
@@ -8165,6 +8377,9 @@ class NodeNetworkConfig {
       : this(
           createPodRange: json_.containsKey('createPodRange')
               ? json_['createPodRange'] as core.bool
+              : null,
+          enablePrivateNodes: json_.containsKey('enablePrivateNodes')
+              ? json_['enablePrivateNodes'] as core.bool
               : null,
           networkPerformanceConfig:
               json_.containsKey('networkPerformanceConfig')
@@ -8182,6 +8397,8 @@ class NodeNetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createPodRange != null) 'createPodRange': createPodRange!,
+        if (enablePrivateNodes != null)
+          'enablePrivateNodes': enablePrivateNodes!,
         if (networkPerformanceConfig != null)
           'networkPerformanceConfig': networkPerformanceConfig!,
         if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
@@ -8251,6 +8468,9 @@ class NodePool {
   /// If specified, it overrides the cluster-level defaults.
   NodeNetworkConfig? networkConfig;
 
+  /// Specifies the node placement policy.
+  PlacementPolicy? placementPolicy;
+
   /// The pod CIDR block size per node in this node pool.
   ///
   /// Output only.
@@ -8313,6 +8533,7 @@ class NodePool {
     this.maxPodsConstraint,
     this.name,
     this.networkConfig,
+    this.placementPolicy,
     this.podIpv4CidrSize,
     this.selfLink,
     this.status,
@@ -8364,6 +8585,10 @@ class NodePool {
               ? NodeNetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          placementPolicy: json_.containsKey('placementPolicy')
+              ? PlacementPolicy.fromJson(json_['placementPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           podIpv4CidrSize: json_.containsKey('podIpv4CidrSize')
               ? json_['podIpv4CidrSize'] as core.int
               : null,
@@ -8400,6 +8625,7 @@ class NodePool {
         if (maxPodsConstraint != null) 'maxPodsConstraint': maxPodsConstraint!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (placementPolicy != null) 'placementPolicy': placementPolicy!,
         if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
@@ -8914,6 +9140,30 @@ class OperationProgress {
       };
 }
 
+/// PlacementPolicy defines the placement policy used by the node pool.
+class PlacementPolicy {
+  /// The type of placement.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : TYPE_UNSPECIFIED specifies no requirements on nodes
+  /// placement.
+  /// - "COMPACT" : COMPACT specifies node placement in the same availability
+  /// domain to ensure low communication latency.
+  core.String? type;
+
+  PlacementPolicy({
+    this.type,
+  });
+
+  PlacementPolicy.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
@@ -8945,6 +9195,11 @@ class PrivateClusterConfig {
   /// Output only.
   core.String? privateEndpoint;
 
+  /// Subnet to provision the master's private endpoint during cluster creation.
+  ///
+  /// Specified in projects / * /regions / * /subnetworks / *  format.
+  core.String? privateEndpointSubnetwork;
+
   /// The external IP address of this cluster's master endpoint.
   ///
   /// Output only.
@@ -8957,6 +9212,7 @@ class PrivateClusterConfig {
     this.masterIpv4CidrBlock,
     this.peeringName,
     this.privateEndpoint,
+    this.privateEndpointSubnetwork,
     this.publicEndpoint,
   });
 
@@ -8983,6 +9239,10 @@ class PrivateClusterConfig {
           privateEndpoint: json_.containsKey('privateEndpoint')
               ? json_['privateEndpoint'] as core.String
               : null,
+          privateEndpointSubnetwork:
+              json_.containsKey('privateEndpointSubnetwork')
+                  ? json_['privateEndpointSubnetwork'] as core.String
+                  : null,
           publicEndpoint: json_.containsKey('publicEndpoint')
               ? json_['publicEndpoint'] as core.String
               : null,
@@ -8999,6 +9259,8 @@ class PrivateClusterConfig {
           'masterIpv4CidrBlock': masterIpv4CidrBlock!,
         if (peeringName != null) 'peeringName': peeringName!,
         if (privateEndpoint != null) 'privateEndpoint': privateEndpoint!,
+        if (privateEndpointSubnetwork != null)
+          'privateEndpointSubnetwork': privateEndpointSubnetwork!,
         if (publicEndpoint != null) 'publicEndpoint': publicEndpoint!,
       };
 }
@@ -9215,8 +9477,8 @@ class ReservationAffinity {
   /// Corresponds to the label key of a reservation resource.
   ///
   /// To target a SPECIFIC_RESERVATION by name, specify
-  /// "googleapis.com/reservation-name" as the key and specify the name of your
-  /// reservation as its value.
+  /// "compute.googleapis.com/reservation-name" as the key and specify the name
+  /// of your reservation as its value.
   core.String? key;
 
   /// Corresponds to the label value(s) of reservation resource(s).
@@ -9248,6 +9510,10 @@ class ReservationAffinity {
         if (values != null) 'values': values!,
       };
 }
+
+/// Collection of
+/// [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+typedef ResourceLabels = $Labels;
 
 /// Contains information about amount of some resource in the cluster.
 ///
@@ -10535,7 +10801,7 @@ class StandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
   core.int? batchNodeCount;
 
-  /// Percentage of the bool pool nodes to drain in a batch.
+  /// Percentage of the blue pool nodes to drain in a batch.
   ///
   /// The range of this field should be (0.0, 1.0\].
   core.double? batchPercentage;
@@ -10653,7 +10919,7 @@ typedef Status = $Status;
 class StatusCondition {
   /// Canonical code of the condition.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -11003,6 +11269,9 @@ class UpdateNodePoolRequest {
   /// All the nodes in the node pool will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
 
+  /// Enable or disable NCCL fast socket for the node pool.
+  FastSocket? fastSocket;
+
   /// GCFS config.
   GcfsConfig? gcfsConfig;
 
@@ -11075,6 +11344,10 @@ class UpdateNodePoolRequest {
   /// Deprecated.
   core.String? projectId;
 
+  /// The resource labels for the node pool to use to annotate any related
+  /// Google Compute Engine resources.
+  ResourceLabels? resourceLabels;
+
   /// The desired network tags to be applied to all nodes in the node pool.
   ///
   /// If this field is not present, the tags will not be changed. Otherwise, the
@@ -11105,6 +11378,7 @@ class UpdateNodePoolRequest {
   UpdateNodePoolRequest({
     this.clusterId,
     this.confidentialNodes,
+    this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
     this.imageType,
@@ -11118,6 +11392,7 @@ class UpdateNodePoolRequest {
     this.nodePoolId,
     this.nodeVersion,
     this.projectId,
+    this.resourceLabels,
     this.tags,
     this.taints,
     this.upgradeSettings,
@@ -11133,6 +11408,10 @@ class UpdateNodePoolRequest {
           confidentialNodes: json_.containsKey('confidentialNodes')
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          fastSocket: json_.containsKey('fastSocket')
+              ? FastSocket.fromJson(
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
@@ -11180,6 +11459,10 @@ class UpdateNodePoolRequest {
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
+          resourceLabels: json_.containsKey('resourceLabels')
+              ? ResourceLabels.fromJson(json_['resourceLabels']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tags: json_.containsKey('tags')
               ? NetworkTags.fromJson(
                   json_['tags'] as core.Map<core.String, core.dynamic>)
@@ -11202,6 +11485,7 @@ class UpdateNodePoolRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
@@ -11215,6 +11499,7 @@ class UpdateNodePoolRequest {
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (nodeVersion != null) 'nodeVersion': nodeVersion!,
         if (projectId != null) 'projectId': projectId!,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,

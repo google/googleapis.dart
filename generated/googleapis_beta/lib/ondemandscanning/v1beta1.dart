@@ -1064,7 +1064,7 @@ class DiscoveryOccurrence {
   /// - "PENDING" : Resource is known but no action has been taken yet.
   /// - "SCANNING" : Resource is being analyzed.
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
-  /// - "COMPLETE" : Analysis has completed
+  /// - "COMPLETE" : Analysis has completed.
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
   /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported.
@@ -2298,12 +2298,11 @@ class PackageData {
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
 
-  /// The OS affected by a vulnerability This field is deprecated and the
-  /// information is in cpe_uri
+  /// The OS affected by a vulnerability Used to generate the cpe_uri for OS
+  /// packages
   core.String? os;
 
-  /// The version of the OS This field is deprecated and the information is in
-  /// cpe_uri
+  /// The version of the OS Used to generate the cpe_uri for OS packages
   core.String? osVersion;
 
   /// The package being analysed for vulnerabilities
@@ -3400,6 +3399,15 @@ class VulnerabilityOccurrence {
   /// Output only.
   core.double? cvssScore;
 
+  /// CVSS version used to populate cvss_score and severity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CVSS_VERSION_UNSPECIFIED"
+  /// - "CVSS_VERSION_2"
+  /// - "CVSS_VERSION_3"
+  core.String? cvssVersion;
+
   /// The cvss v3 score for the vulnerability.
   CVSS? cvssv3;
 
@@ -3466,6 +3474,7 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
     this.fixAvailable,
@@ -3481,6 +3490,9 @@ class VulnerabilityOccurrence {
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssVersion: json_.containsKey('cvssVersion')
+              ? json_['cvssVersion'] as core.String
               : null,
           cvssv3: json_.containsKey('cvssv3')
               ? CVSS.fromJson(
@@ -3518,6 +3530,7 @@ class VulnerabilityOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,

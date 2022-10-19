@@ -108,6 +108,107 @@ class BillingAccountsLocationsInsightTypesResource {
 
   BillingAccountsLocationsInsightTypesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested InsightTypeConfig.
+  ///
+  /// There is only one instance of the config for each InsightType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the InsightTypeConfig to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an InsightTypeConfig change.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of insight type config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> updateConfig(
+    GoogleCloudRecommenderV1InsightTypeConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BillingAccountsLocationsInsightTypesInsightsResource {
@@ -293,6 +394,107 @@ class BillingAccountsLocationsRecommendersResource {
 
   BillingAccountsLocationsRecommendersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested Recommender Config.
+  ///
+  /// There is only one instance of the config for each Recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Recommendation Config to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Recommender Config.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of recommender config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> updateConfig(
+    GoogleCloudRecommenderV1RecommenderConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BillingAccountsLocationsRecommendersRecommendationsResource {
@@ -1093,11 +1295,13 @@ class OrganizationsLocationsInsightTypesResource {
   ///
   /// [name] - Required. Name of the InsightTypeConfig to get. Acceptable
   /// formats: *
-  /// `projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// *
-  /// `projects/[PROJECT_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// *
-  /// `organizations/[ORGANIZATION_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
   ///
@@ -1381,6 +1585,8 @@ class OrganizationsLocationsRecommendersResource {
   /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
   /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
   ///
@@ -1779,11 +1985,13 @@ class ProjectsLocationsInsightTypesResource {
   ///
   /// [name] - Required. Name of the InsightTypeConfig to get. Acceptable
   /// formats: *
-  /// `projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// *
-  /// `projects/[PROJECT_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// *
-  /// `organizations/[ORGANIZATION_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
   ///
@@ -2065,6 +2273,8 @@ class ProjectsLocationsRecommendersResource {
   /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
   /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
   ///
@@ -2473,18 +2683,30 @@ class GoogleCloudRecommenderV1Impact {
   /// performance.
   /// - "MANAGEABILITY" : Indicates a potential increase or decrease in
   /// manageability.
+  /// - "SUSTAINABILITY" : Indicates a potential increase or decrease in
+  /// sustainability.
+  /// - "RELIABILITY" : Indicates a potential increase or decrease in
+  /// reliability.
   core.String? category;
 
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
+  /// Use with CategoryType.RELAIBILITY
+  GoogleCloudRecommenderV1ReliabilityProjection? reliabilityProjection;
+
   /// Use with CategoryType.SECURITY
   GoogleCloudRecommenderV1SecurityProjection? securityProjection;
+
+  /// Use with CategoryType.SUSTAINABILITY
+  GoogleCloudRecommenderV1SustainabilityProjection? sustainabilityProjection;
 
   GoogleCloudRecommenderV1Impact({
     this.category,
     this.costProjection,
+    this.reliabilityProjection,
     this.securityProjection,
+    this.sustainabilityProjection,
   });
 
   GoogleCloudRecommenderV1Impact.fromJson(core.Map json_)
@@ -2497,18 +2719,33 @@ class GoogleCloudRecommenderV1Impact {
                   json_['costProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          reliabilityProjection: json_.containsKey('reliabilityProjection')
+              ? GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
+                  json_['reliabilityProjection']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           securityProjection: json_.containsKey('securityProjection')
               ? GoogleCloudRecommenderV1SecurityProjection.fromJson(
                   json_['securityProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          sustainabilityProjection:
+              json_.containsKey('sustainabilityProjection')
+                  ? GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
+                      json_['sustainabilityProjection']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (costProjection != null) 'costProjection': costProjection!,
+        if (reliabilityProjection != null)
+          'reliabilityProjection': reliabilityProjection!,
         if (securityProjection != null)
           'securityProjection': securityProjection!,
+        if (sustainabilityProjection != null)
+          'sustainabilityProjection': sustainabilityProjection!,
       };
 }
 
@@ -2527,6 +2764,8 @@ class GoogleCloudRecommenderV1Insight {
   /// - "SECURITY" : The insight is related to security.
   /// - "PERFORMANCE" : The insight is related to performance.
   /// - "MANAGEABILITY" : This insight is related to manageability.
+  /// - "SUSTAINABILITY" : The insight is related to sustainability.
+  /// - "RELIABILITY" : This insight is related to reliability.
   core.String? category;
 
   /// A struct of custom fields to explain the insight.
@@ -3535,6 +3774,40 @@ class GoogleCloudRecommenderV1RecommenderGenerationConfig {
       };
 }
 
+/// Contains information on the impact of a reliability recommendation.
+class GoogleCloudRecommenderV1ReliabilityProjection {
+  /// Per-recommender projection.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? details;
+
+  /// Reliability risks mitigated by this recommendation.
+  core.List<core.String>? risks;
+
+  GoogleCloudRecommenderV1ReliabilityProjection({
+    this.details,
+    this.risks,
+  });
+
+  GoogleCloudRecommenderV1ReliabilityProjection.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.Map<core.String, core.dynamic>
+              : null,
+          risks: json_.containsKey('risks')
+              ? (json_['risks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (risks != null) 'risks': risks!,
+      };
+}
+
 /// Contains various ways of describing the impact on Security.
 class GoogleCloudRecommenderV1SecurityProjection {
   /// Additional security impact details that is provided by the recommender.
@@ -3556,6 +3829,38 @@ class GoogleCloudRecommenderV1SecurityProjection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
+      };
+}
+
+/// Contains metadata about how much sustainability a recommendation can save or
+/// incur.
+class GoogleCloudRecommenderV1SustainabilityProjection {
+  /// Duration for which this sustainability applies.
+  core.String? duration;
+
+  /// Carbon Footprint generated in kg of CO2 equivalent.
+  ///
+  /// Chose kg_c_o2e so that the name renders correctly in camelCase (kgCO2e).
+  core.double? kgCO2e;
+
+  GoogleCloudRecommenderV1SustainabilityProjection({
+    this.duration,
+    this.kgCO2e,
+  });
+
+  GoogleCloudRecommenderV1SustainabilityProjection.fromJson(core.Map json_)
+      : this(
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          kgCO2e: json_.containsKey('kgCO2e')
+              ? (json_['kgCO2e'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (kgCO2e != null) 'kgCO2e': kgCO2e!,
       };
 }
 

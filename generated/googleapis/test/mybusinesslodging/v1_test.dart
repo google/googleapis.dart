@@ -459,6 +459,8 @@ api.Families buildFamilies() {
     o.kidsActivitiesException = 'foo';
     o.kidsClub = true;
     o.kidsClubException = 'foo';
+    o.kidsFriendly = true;
+    o.kidsFriendlyException = 'foo';
   }
   buildCounterFamilies--;
   return o;
@@ -480,6 +482,11 @@ void checkFamilies(api.Families o) {
     unittest.expect(o.kidsClub!, unittest.isTrue);
     unittest.expect(
       o.kidsClubException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.kidsFriendly!, unittest.isTrue);
+    unittest.expect(
+      o.kidsFriendlyException!,
       unittest.equals('foo'),
     );
   }

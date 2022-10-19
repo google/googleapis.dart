@@ -591,10 +591,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -611,10 +609,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -813,10 +809,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -836,10 +830,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -1227,10 +1219,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -1247,10 +1237,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -1446,10 +1434,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -1469,10 +1455,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -2095,7 +2079,7 @@ class DataSourceParameter {
   /// Cannot be changed after initial creation.
   core.bool? immutable;
 
-  /// For integer and double values specifies maxminum allowed value.
+  /// For integer and double values specifies maximum allowed value.
   core.double? maxValue;
 
   /// For integer and double values specifies minimum allowed value.

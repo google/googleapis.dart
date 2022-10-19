@@ -32,6 +32,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -147,6 +149,50 @@ class Bin {
         if (start != null) 'start': start!,
       };
 }
+
+/// The collection period is a date range which includes the `first` and `last`
+/// day.
+class CollectionPeriod {
+  /// The first day in the collection period, inclusive.
+  Date? firstDate;
+
+  /// The last day in the collection period, inclusive.
+  Date? lastDate;
+
+  CollectionPeriod({
+    this.firstDate,
+    this.lastDate,
+  });
+
+  CollectionPeriod.fromJson(core.Map json_)
+      : this(
+          firstDate: json_.containsKey('firstDate')
+              ? Date.fromJson(
+                  json_['firstDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastDate: json_.containsKey('lastDate')
+              ? Date.fromJson(
+                  json_['lastDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstDate != null) 'firstDate': firstDate!,
+        if (lastDate != null) 'lastDate': lastDate!,
+      };
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
 
 /// Key defines all the dimensions that identify this record as unique.
 class Key {
@@ -411,6 +457,10 @@ class QueryResponse {
 /// It contains use experience statistics for a single url pattern and set of
 /// dimensions.
 class Record {
+  /// The collection period indicates when the data reflected in this record was
+  /// collected.
+  CollectionPeriod? collectionPeriod;
+
   /// Key defines all of the unique querying parameters needed to look up a user
   /// experience record.
   Key? key;
@@ -424,12 +474,17 @@ class Record {
   core.Map<core.String, Metric>? metrics;
 
   Record({
+    this.collectionPeriod,
     this.key,
     this.metrics,
   });
 
   Record.fromJson(core.Map json_)
       : this(
+          collectionPeriod: json_.containsKey('collectionPeriod')
+              ? CollectionPeriod.fromJson(json_['collectionPeriod']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           key: json_.containsKey('key')
               ? Key.fromJson(
                   json_['key'] as core.Map<core.String, core.dynamic>)
@@ -446,6 +501,7 @@ class Record {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (collectionPeriod != null) 'collectionPeriod': collectionPeriod!,
         if (key != null) 'key': key!,
         if (metrics != null) 'metrics': metrics!,
       };

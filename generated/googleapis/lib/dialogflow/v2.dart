@@ -13414,12 +13414,18 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
   /// - "FINAL" : Final reply.
   core.String? automatedAgentReplyType;
 
+  /// The unique identifier of the current Dialogflow CX conversation page.
+  ///
+  /// Format: `projects//locations//agents//flows//pages/`.
+  core.String? cxCurrentPage;
+
   /// Response of the Dialogflow Sessions.DetectIntent call.
   GoogleCloudDialogflowV2DetectIntentResponse? detectIntentResponse;
 
   GoogleCloudDialogflowV2AutomatedAgentReply({
     this.allowCancellation,
     this.automatedAgentReplyType,
+    this.cxCurrentPage,
     this.detectIntentResponse,
   });
 
@@ -13430,6 +13436,9 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
               : null,
           automatedAgentReplyType: json_.containsKey('automatedAgentReplyType')
               ? json_['automatedAgentReplyType'] as core.String
+              : null,
+          cxCurrentPage: json_.containsKey('cxCurrentPage')
+              ? json_['cxCurrentPage'] as core.String
               : null,
           detectIntentResponse: json_.containsKey('detectIntentResponse')
               ? GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
@@ -13442,6 +13451,7 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
         if (allowCancellation != null) 'allowCancellation': allowCancellation!,
         if (automatedAgentReplyType != null)
           'automatedAgentReplyType': automatedAgentReplyType!,
+        if (cxCurrentPage != null) 'cxCurrentPage': cxCurrentPage!,
         if (detectIntentResponse != null)
           'detectIntentResponse': detectIntentResponse!,
       };
@@ -14274,6 +14284,24 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
   /// Format: `projects//conversationModels//evaluations/`
   core.String? name;
 
+  /// Human eval template in csv format.
+  ///
+  /// It tooks real-world conversations provided through input dataset,
+  /// generates example suggestions for customer to verify quality of the model.
+  /// For Smart Reply, the generated csv file contains columns of Context,
+  /// (Suggestions,Q1,Q2)*3, Actual reply. Context contains at most 10 latest
+  /// messages in the conversation prior to the current suggestion. Q1: "Would
+  /// you send it as the next message of agent?" Evaluated based on whether the
+  /// suggest is appropriate to be sent by agent in current context. Q2: "Does
+  /// the suggestion move the conversation closer to resolution?" Evaluated
+  /// based on whether the suggestion provide solutions, or answers customer's
+  /// question or collect information from customer to resolve the customer's
+  /// issue. Actual reply column contains the actual agent reply sent in the
+  /// context.
+  ///
+  /// Output only.
+  core.String? rawHumanEvalTemplateCsv;
+
   /// Only available when model is for smart reply.
   ///
   /// Output only.
@@ -14284,6 +14312,7 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
     this.displayName,
     this.evaluationConfig,
     this.name,
+    this.rawHumanEvalTemplateCsv,
     this.smartReplyMetrics,
   });
 
@@ -14301,6 +14330,9 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rawHumanEvalTemplateCsv: json_.containsKey('rawHumanEvalTemplateCsv')
+              ? json_['rawHumanEvalTemplateCsv'] as core.String
+              : null,
           smartReplyMetrics: json_.containsKey('smartReplyMetrics')
               ? GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(
                   json_['smartReplyMetrics']
@@ -14313,6 +14345,8 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
         if (displayName != null) 'displayName': displayName!,
         if (evaluationConfig != null) 'evaluationConfig': evaluationConfig!,
         if (name != null) 'name': name!,
+        if (rawHumanEvalTemplateCsv != null)
+          'rawHumanEvalTemplateCsv': rawHumanEvalTemplateCsv!,
         if (smartReplyMetrics != null) 'smartReplyMetrics': smartReplyMetrics!,
       };
 }
@@ -19885,6 +19919,24 @@ class GoogleCloudDialogflowV2Participant {
   /// Optional.
   core.String? name;
 
+  /// Obfuscated user id that should be associated with the created participant.
+  ///
+  /// You can specify a user id as follows: 1. If you set this field in
+  /// CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the
+  /// obfuscated user id with the participant. 2. If you set this field in
+  /// AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update
+  /// Participant.obfuscated_external_user_id. Dialogflow returns an error if
+  /// you try to add a user id for a non-END_USER participant. Dialogflow uses
+  /// this user id for billing and measurement purposes. For example, Dialogflow
+  /// determines whether a user in one conversation returned in a later
+  /// conversation. Note: * Please never pass raw user ids to Dialogflow. Always
+  /// obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded
+  /// string, e.g., a hex digest of a hash function like SHA-512. * The length
+  /// of the user id must be \<= 256 characters.
+  ///
+  /// Optional.
+  core.String? obfuscatedExternalUserId;
+
   /// The role this participant plays in the conversation.
   ///
   /// This field must be set during participant creation and is then immutable.
@@ -19911,6 +19963,7 @@ class GoogleCloudDialogflowV2Participant {
   GoogleCloudDialogflowV2Participant({
     this.documentsMetadataFilters,
     this.name,
+    this.obfuscatedExternalUserId,
     this.role,
     this.sipRecordingMediaLabel,
   });
@@ -19929,6 +19982,10 @@ class GoogleCloudDialogflowV2Participant {
                     )
                   : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          obfuscatedExternalUserId:
+              json_.containsKey('obfuscatedExternalUserId')
+                  ? json_['obfuscatedExternalUserId'] as core.String
+                  : null,
           role: json_.containsKey('role') ? json_['role'] as core.String : null,
           sipRecordingMediaLabel: json_.containsKey('sipRecordingMediaLabel')
               ? json_['sipRecordingMediaLabel'] as core.String
@@ -19939,6 +19996,8 @@ class GoogleCloudDialogflowV2Participant {
         if (documentsMetadataFilters != null)
           'documentsMetadataFilters': documentsMetadataFilters!,
         if (name != null) 'name': name!,
+        if (obfuscatedExternalUserId != null)
+          'obfuscatedExternalUserId': obfuscatedExternalUserId!,
         if (role != null) 'role': role!,
         if (sipRecordingMediaLabel != null)
           'sipRecordingMediaLabel': sipRecordingMediaLabel!,
@@ -20473,6 +20532,10 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
+///
+/// See:
+/// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
+/// for how to interpret the result.
 typedef GoogleCloudDialogflowV2Sentiment = $Shared04;
 
 /// Configures the types of sentiment analysis to perform.
@@ -20856,6 +20919,14 @@ class GoogleCloudDialogflowV2SpeechContext {
 
 /// Configures speech transcription for ConversationProfile.
 class GoogleCloudDialogflowV2SpeechToTextConfig {
+  /// Which Speech model to select.
+  ///
+  /// Select the model best suited to your domain to get best results. If a
+  /// model is not explicitly specified, then a default model is used. Refer to
+  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
+  /// for more details.
+  core.String? model;
+
   /// The speech model used in speech to text.
   ///
   /// `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated
@@ -20885,17 +20956,21 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   core.String? speechModelVariant;
 
   GoogleCloudDialogflowV2SpeechToTextConfig({
+    this.model,
     this.speechModelVariant,
   });
 
   GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(core.Map json_)
       : this(
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
           speechModelVariant: json_.containsKey('speechModelVariant')
               ? json_['speechModelVariant'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (model != null) 'model': model!,
         if (speechModelVariant != null)
           'speechModelVariant': speechModelVariant!,
       };

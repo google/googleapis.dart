@@ -191,7 +191,7 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [parent] - Required. The backup's project and location, in the format
   /// `projects/{project_number}/locations/{location}`. In Filestore, backup
-  /// locations map to GCP regions, for example **us-west1**.
+  /// locations map to Google Cloud regions, for example **us-west1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupId] - Required. The ID to use for the backup. The ID must be unique
@@ -315,8 +315,9 @@ class ProjectsLocationsBackupsResource {
   /// [parent] - Required. The project and location for which to retrieve backup
   /// information, in the format
   /// `projects/{project_number}/locations/{location}`. In Filestore, backup
-  /// locations map to GCP regions, for example **us-west1**. To retrieve backup
-  /// information for all locations, use "-" for the `{location}` value.
+  /// locations map to Google Cloud regions, for example **us-west1**. To
+  /// retrieve backup information for all locations, use "-" for the
+  /// `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -435,7 +436,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [parent] - Required. The instance's project and location, in the format
   /// `projects/{project_id}/locations/{location}`. In Filestore, locations map
-  /// to GCP zones, for example **us-west1-b**.
+  /// to Google Cloud zones, for example **us-west1-b**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The name of the instance to create. The name must
@@ -562,9 +563,9 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - Required. The project and location for which to retrieve
   /// instance information, in the format
   /// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
-  /// locations map to GCP zones, for example **us-west1-b**. To retrieve
-  /// instance information for all locations, use "-" for the `{location}`
-  /// value.
+  /// locations map to Google Cloud zones, for example **us-west1-b**. To
+  /// retrieve instance information for all locations, use "-" for the
+  /// `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -1423,6 +1424,8 @@ class Instance {
   /// share and may be unusable during this time.
   /// - "SUSPENDED" : The instance is suspended. You can get further details
   /// from the `suspension_reasons` field of the `Instance` resource.
+  /// - "SUSPENDING" : The instance is in the process of becoming suspended.
+  /// - "RESUMING" : The instance is in the process of becoming active.
   core.String? state;
 
   /// Additional information about the instance state, if available.

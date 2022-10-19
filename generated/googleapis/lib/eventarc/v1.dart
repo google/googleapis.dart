@@ -3087,7 +3087,7 @@ class SetIamPolicyRequest {
 class StateCondition {
   /// The canonical code of the condition.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -3252,10 +3252,10 @@ class Trigger {
   /// Output only.
   core.String? etag;
 
-  /// null The list of filters that applies to event attributes.
+  /// Unordered list.
   ///
-  /// Only events that match all the provided filters are sent to the
-  /// destination.
+  /// The list of filters that applies to event attributes. Only events that
+  /// match all the provided filters are sent to the destination.
   ///
   /// Required.
   core.List<EventFilter>? eventFilters;

@@ -546,6 +546,10 @@ api.ConnectionSchemaMetadata buildConnectionSchemaMetadata() {
   if (buildCounterConnectionSchemaMetadata < 3) {
     o.actions = buildUnnamed10();
     o.entities = buildUnnamed11();
+    o.name = 'foo';
+    o.refreshTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterConnectionSchemaMetadata--;
   return o;
@@ -556,6 +560,22 @@ void checkConnectionSchemaMetadata(api.ConnectionSchemaMetadata o) {
   if (buildCounterConnectionSchemaMetadata < 3) {
     checkUnnamed10(o.actions!);
     checkUnnamed11(o.entities!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.refreshTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectionSchemaMetadata--;
 }
@@ -2339,7 +2359,6 @@ api.SshPublicKey buildSshPublicKey() {
   buildCounterSshPublicKey++;
   if (buildCounterSshPublicKey < 3) {
     o.certType = 'foo';
-    o.password = buildSecret();
     o.sshClientCert = buildSecret();
     o.sshClientCertPass = buildSecret();
     o.username = 'foo';
@@ -2355,7 +2374,6 @@ void checkSshPublicKey(api.SshPublicKey o) {
       o.certType!,
       unittest.equals('foo'),
     );
-    checkSecret(o.password!);
     checkSecret(o.sshClientCert!);
     checkSecret(o.sshClientCertPass!);
     unittest.expect(

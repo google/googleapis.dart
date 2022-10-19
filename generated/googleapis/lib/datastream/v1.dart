@@ -3522,6 +3522,8 @@ class OracleSourceConfig {
   core.int? maxConcurrentCdcTasks;
 
   /// Stream large object values.
+  ///
+  /// NOTE: This feature is currently experimental.
   StreamLargeObjects? streamLargeObjects;
 
   OracleSourceConfig({
@@ -3809,7 +3811,7 @@ class PostgresqlSourceConfig {
   /// The name of the logical replication slot that's configured with the
   /// pgoutput plugin.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? replicationSlot;
 
   PostgresqlSourceConfig({

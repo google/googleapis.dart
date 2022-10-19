@@ -15,7 +15,8 @@
 /// My Business Account Management API - v1
 ///
 /// The My Business Account Management API provides an interface for managing
-/// access to a location on Google.
+/// access to a location on Google. Note - If you have a quota of 0 after
+/// enabling the API, please request for GBP API access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -45,6 +46,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The My Business Account Management API provides an interface for managing
 /// access to a location on Google.
+///
+/// Note - If you have a quota of 0 after enabling the API, please request for
+/// GBP API access.
 class MyBusinessAccountManagementApi {
   final commons.ApiRequester _requester;
 

@@ -318,7 +318,7 @@
             }
         }
     },
-    "revision": "20220906",
+    "revision": "20221123",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {

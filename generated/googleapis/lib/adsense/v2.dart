@@ -35,6 +35,7 @@
 library adsense.v2;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -398,6 +399,55 @@ class AccountsAdclientsAdunitsResource {
   AccountsAdclientsAdunitsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates an ad unit.
+  ///
+  /// This method can only be used by projects enabled for the
+  /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+  /// product. Note that ad units can only be created for ad clients with an
+  /// "AFC" product code. For more info see the \[AdClient
+  /// resource\](/adsense/management/reference/rest/v2/accounts.adclients). For
+  /// now, this method can only be used to create `DISPLAY` ad units. See:
+  /// https://support.google.com/adsense/answer/9183566
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Ad client to create an ad unit under. Format:
+  /// accounts/{account}/adclients/{adclient}
+  /// Value must have pattern `^accounts/\[^/\]+/adclients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdUnit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdUnit> create(
+    AdUnit request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/adunits';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets an ad unit from a specified account and ad client.
   ///
   /// Request parameters:
@@ -581,6 +631,58 @@ class AccountsAdclientsAdunitsResource {
     return ListLinkedCustomChannelsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates an ad unit.
+  ///
+  /// This method can only be used by projects enabled for the
+  /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+  /// product. For now, this method can only be used to update `DISPLAY` ad
+  /// units. See: https://support.google.com/adsense/answer/9183566
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the ad unit. Format:
+  /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/adclients/\[^/\]+/adunits/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update. If empty, a full update is
+  /// performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdUnit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdUnit> patch(
+    AdUnit request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AccountsAdclientsCustomchannelsResource {
@@ -588,6 +690,93 @@ class AccountsAdclientsCustomchannelsResource {
 
   AccountsAdclientsCustomchannelsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a custom channel.
+  ///
+  /// This method can only be used by projects enabled for the
+  /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+  /// product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The ad client to create a custom channel under.
+  /// Format: accounts/{account}/adclients/{adclient}
+  /// Value must have pattern `^accounts/\[^/\]+/adclients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomChannel> create(
+    CustomChannel request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/customchannels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CustomChannel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a custom channel.
+  ///
+  /// This method can only be used by projects enabled for the
+  /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+  /// product.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom channel to delete. Format:
+  /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/adclients/\[^/\]+/customchannels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets information about the selected custom channel.
   ///
@@ -727,6 +916,58 @@ class AccountsAdclientsCustomchannelsResource {
       queryParams: queryParams_,
     );
     return ListLinkedAdUnitsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a custom channel.
+  ///
+  /// This method can only be used by projects enabled for the
+  /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+  /// product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the custom channel. Format:
+  /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/adclients/\[^/\]+/customchannels/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update. If empty, a full update is
+  /// performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomChannel> patch(
+    CustomChannel request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CustomChannel.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -971,7 +1212,9 @@ class AccountsReportsResource {
   /// [endDate_year] - Year of the date. Must be from 1 to 9999, or 0 to specify
   /// a date without a year.
   ///
-  /// [filters] - Filters to be run on the report.
+  /// [filters] - A list of \[filters\](/adsense/management/reporting/filtering)
+  /// to apply to the report. All provided filters must match in order for the
+  /// data to be included in the report.
   ///
   /// [languageCode] - The language to use for translating report output. If
   /// unspecified, this defaults to English ("en"). If the given language is not
@@ -1114,7 +1357,9 @@ class AccountsReportsResource {
   /// [endDate_year] - Year of the date. Must be from 1 to 9999, or 0 to specify
   /// a date without a year.
   ///
-  /// [filters] - Filters to be run on the report.
+  /// [filters] - A list of \[filters\](/adsense/management/reporting/filtering)
+  /// to apply to the report. All provided filters must match in order for the
+  /// data to be included in the report.
   ///
   /// [languageCode] - The language to use for translating report output. If
   /// unspecified, this defaults to English ("en"). If the given language is not
@@ -2104,6 +2349,11 @@ class ContentAdsSettings {
 
 /// Representation of a custom channel.
 class CustomChannel {
+  /// Whether the custom channel is active and collecting data.
+  ///
+  /// See https://support.google.com/adsense/answer/10077192.
+  core.bool? active;
+
   /// Display name of the custom channel.
   ///
   /// Required.
@@ -2124,6 +2374,7 @@ class CustomChannel {
   core.String? reportingDimensionId;
 
   CustomChannel({
+    this.active,
     this.displayName,
     this.name,
     this.reportingDimensionId,
@@ -2131,6 +2382,8 @@ class CustomChannel {
 
   CustomChannel.fromJson(core.Map json_)
       : this(
+          active:
+              json_.containsKey('active') ? json_['active'] as core.bool : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -2141,6 +2394,7 @@ class CustomChannel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (active != null) 'active': active!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (reportingDimensionId != null)
@@ -2159,6 +2413,14 @@ class CustomChannel {
 /// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
 /// google.protobuf.Timestamp
 typedef Date = $Date;
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// The header information of the columns requested in the report.
 class Header {
@@ -2873,12 +3135,17 @@ class Site {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "REQUIRES_REVIEW" : The site hasn't been checked yet.
-  /// - "GETTING_READY" : Running some checks on the site. This usually takes a
-  /// few days, but in some cases can take up to 2 weeks.
-  /// - "READY" : The site is ready to show ads.
+  /// - "REQUIRES_REVIEW" : Either: * The site hasn't been checked yet. * The
+  /// site is inactive and needs another review before it can show ads again.
+  /// Learn how to
+  /// [request a review for an inactive site](https://support.google.com/adsense/answer/9393996).
+  /// - "GETTING_READY" : Google is running some checks on the site. This
+  /// usually takes a few days, but in some cases it can take two to four weeks.
+  /// - "READY" : The site is ready to show ads. Learn how to
+  /// [set up ads on the site](https://support.google.com/adsense/answer/7037624).
   /// - "NEEDS_ATTENTION" : Publisher needs to fix some issues before the site
-  /// is ready to show ads.
+  /// is ready to show ads. Learn what to do
+  /// [if a new site isn't ready](https://support.google.com/adsense/answer/9061852).
   core.String? state;
 
   Site({

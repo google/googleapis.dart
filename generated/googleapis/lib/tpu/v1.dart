@@ -845,29 +845,7 @@ class ProjectsLocationsTensorflowVersionsResource {
 }
 
 /// A accelerator type that a Node can be configured with.
-class AcceleratorType {
-  /// The resource name.
-  core.String? name;
-
-  /// the accelerator type.
-  core.String? type;
-
-  AcceleratorType({
-    this.name,
-    this.type,
-  });
-
-  AcceleratorType.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef AcceleratorType = $AcceleratorType;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1459,33 +1437,7 @@ class ReimageNodeRequest {
 }
 
 /// Sets the scheduling options for this node.
-class SchedulingConfig {
-  /// Defines whether the node is preemptible.
-  core.bool? preemptible;
-
-  /// Whether the node is created under a reservation.
-  core.bool? reserved;
-
-  SchedulingConfig({
-    this.preemptible,
-    this.reserved,
-  });
-
-  SchedulingConfig.fromJson(core.Map json_)
-      : this(
-          preemptible: json_.containsKey('preemptible')
-              ? json_['preemptible'] as core.bool
-              : null,
-          reserved: json_.containsKey('reserved')
-              ? json_['reserved'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (preemptible != null) 'preemptible': preemptible!,
-        if (reserved != null) 'reserved': reserved!,
-      };
-}
+typedef SchedulingConfig = $SchedulingConfig;
 
 /// Request for StartNode.
 typedef StartNodeRequest = $Empty;
@@ -1503,59 +1455,7 @@ typedef Status = $Status;
 typedef StopNodeRequest = $Empty;
 
 /// A Symptom instance.
-class Symptom {
-  /// Timestamp when the Symptom is created.
-  core.String? createTime;
-
-  /// Detailed information of the current Symptom.
-  core.String? details;
-
-  /// Type of the Symptom.
-  /// Possible string values are:
-  /// - "SYMPTOM_TYPE_UNSPECIFIED" : Unspecified symptom.
-  /// - "LOW_MEMORY" : TPU VM memory is low.
-  /// - "OUT_OF_MEMORY" : TPU runtime is out of memory.
-  /// - "EXECUTE_TIMED_OUT" : TPU runtime execution has timed out.
-  /// - "MESH_BUILD_FAIL" : TPU runtime fails to construct a mesh that
-  /// recognizes each TPU device's neighbors.
-  /// - "HBM_OUT_OF_MEMORY" : TPU HBM is out of memory.
-  /// - "PROJECT_ABUSE" : Abusive behaviors have been identified on the current
-  /// project.
-  core.String? symptomType;
-
-  /// A string used to uniquely distinguish a worker within a TPU node.
-  core.String? workerId;
-
-  Symptom({
-    this.createTime,
-    this.details,
-    this.symptomType,
-    this.workerId,
-  });
-
-  Symptom.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          symptomType: json_.containsKey('symptomType')
-              ? json_['symptomType'] as core.String
-              : null,
-          workerId: json_.containsKey('workerId')
-              ? json_['workerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (symptomType != null) 'symptomType': symptomType!,
-        if (workerId != null) 'workerId': workerId!,
-      };
-}
+typedef Symptom = $Symptom;
 
 /// A tensorflow version that a Node can be configured with.
 class TensorFlowVersion {

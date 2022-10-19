@@ -1260,6 +1260,25 @@ void checkCsvOptions(api.CsvOptions o) {
   buildCounterCsvOptions--;
 }
 
+core.int buildCounterDataMaskingStatistics = 0;
+api.DataMaskingStatistics buildDataMaskingStatistics() {
+  final o = api.DataMaskingStatistics();
+  buildCounterDataMaskingStatistics++;
+  if (buildCounterDataMaskingStatistics < 3) {
+    o.dataMaskingApplied = true;
+  }
+  buildCounterDataMaskingStatistics--;
+  return o;
+}
+
+void checkDataMaskingStatistics(api.DataMaskingStatistics o) {
+  buildCounterDataMaskingStatistics++;
+  if (buildCounterDataMaskingStatistics < 3) {
+    unittest.expect(o.dataMaskingApplied!, unittest.isTrue);
+  }
+  buildCounterDataMaskingStatistics--;
+}
+
 core.int buildCounterDataSplitResult = 0;
 api.DataSplitResult buildDataSplitResult() {
   final o = api.DataSplitResult();
@@ -1426,6 +1445,7 @@ api.Dataset buildDataset() {
     o.maxTimeTravelHours = 'foo';
     o.satisfiesPzs = true;
     o.selfLink = 'foo';
+    o.storageBillingModel = 'foo';
     o.tags = buildUnnamed23();
   }
   buildCounterDataset--;
@@ -1491,6 +1511,10 @@ void checkDataset(api.Dataset o) {
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageBillingModel!,
       unittest.equals('foo'),
     );
     checkUnnamed23(o.tags!);
@@ -2316,6 +2340,8 @@ api.ExternalDataConfiguration buildExternalDataConfiguration() {
     o.hivePartitioningOptions = buildHivePartitioningOptions();
     o.ignoreUnknownValues = true;
     o.maxBadRecords = 42;
+    o.metadataCacheMode = 'foo';
+    o.objectMetadata = 'foo';
     o.parquetOptions = buildParquetOptions();
     o.referenceFileSchemaUri = 'foo';
     o.schema = buildTableSchema();
@@ -2348,6 +2374,14 @@ void checkExternalDataConfiguration(api.ExternalDataConfiguration o) {
     unittest.expect(
       o.maxBadRecords!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.metadataCacheMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectMetadata!,
+      unittest.equals('foo'),
     );
     checkParquetOptions(o.parquetOptions!);
     unittest.expect(
@@ -3262,6 +3296,7 @@ api.JobConfigurationLoad buildJobConfigurationLoad() {
     o.clustering = buildClustering();
     o.connectionProperties = buildUnnamed42();
     o.createDisposition = 'foo';
+    o.createSession = true;
     o.decimalTargetTypes = buildUnnamed43();
     o.destinationEncryptionConfiguration = buildEncryptionConfiguration();
     o.destinationTable = buildTableReference();
@@ -3306,6 +3341,7 @@ void checkJobConfigurationLoad(api.JobConfigurationLoad o) {
       o.createDisposition!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.createSession!, unittest.isTrue);
     checkUnnamed43(o.decimalTargetTypes!);
     checkEncryptionConfiguration(o.destinationEncryptionConfiguration!);
     checkTableReference(o.destinationTable!);
@@ -3777,6 +3813,7 @@ api.JobStatistics buildJobStatistics() {
     o.completionRatio = 42.0;
     o.copy = buildJobStatistics5();
     o.creationTime = 'foo';
+    o.dataMaskingStatistics = buildDataMaskingStatistics();
     o.endTime = 'foo';
     o.extract = buildJobStatistics4();
     o.load = buildJobStatistics3();
@@ -3810,6 +3847,7 @@ void checkJobStatistics(api.JobStatistics o) {
       o.creationTime!,
       unittest.equals('foo'),
     );
+    checkDataMaskingStatistics(o.dataMaskingStatistics!);
     unittest.expect(
       o.endTime!,
       unittest.equals('foo'),
@@ -3980,6 +4018,7 @@ api.JobStatistics2 buildJobStatistics2() {
     o.totalBytesProcessedAccuracy = 'foo';
     o.totalPartitionsProcessed = 'foo';
     o.totalSlotMs = 'foo';
+    o.transferredBytes = 'foo';
     o.undeclaredQueryParameters = buildUnnamed61();
   }
   buildCounterJobStatistics2--;
@@ -4057,6 +4096,10 @@ void checkJobStatistics2(api.JobStatistics2 o) {
     );
     unittest.expect(
       o.totalSlotMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transferredBytes!,
       unittest.equals('foo'),
     );
     checkUnnamed61(o.undeclaredQueryParameters!);
@@ -8102,6 +8145,16 @@ void main() {
       final od =
           api.CsvOptions.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCsvOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataMaskingStatistics', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataMaskingStatistics();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataMaskingStatistics.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataMaskingStatistics(od);
     });
   });
 
