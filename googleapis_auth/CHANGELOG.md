@@ -1,8 +1,3 @@
-## 1.4.1-dev
-
-- Handle the `source_credentials` from the credentials file to support 
-  usage of impersonating service account with gcloud cli.
-
 ## 1.4.0-dev
 
 - Update `README` to include a warning about Flutter application usage.
@@ -12,6 +7,11 @@
 
 - `authenticatedClient` function: added optional `bool closeUnderlyingClient`
   parameter.
+
+#### `auth_io.dart`
+
+- Handle the `source_credentials` from the credentials file to support
+  usage of impersonating service account with gcloud cli.
 
 #### `auth_browser.dart` library
 
