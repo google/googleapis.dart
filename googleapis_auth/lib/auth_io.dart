@@ -73,8 +73,12 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
           .resolve('gcloud/application_default_credentials.json'),
     );
   } else {
+    final homeVar = Platform.environment['HOME'];
+    if (homeVar == null) {
+      throw StateError('The expected environment variable HOME must be set.');
+    }
     credFile = File.fromUri(
-      Uri.directory(Platform.environment['HOME']!)
+      Uri.directory(homeVar)
           .resolve('.config/gcloud/application_default_credentials.json'),
     );
   }
