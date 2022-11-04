@@ -139,14 +139,16 @@ class ResumableMediaUploader {
     final bodyStream =
         bytes == null ? const Stream<List<int>>.empty() : Stream.value(bytes);
 
-    final request = RequestImpl(_method, _uri, bodyStream);
-    request.headers.addAll({
+    final headers = {
       ..._requestHeaders,
       'content-type': contentTypeJsonUtf8,
       'content-length': '$length',
       'x-upload-content-type': _uploadMedia.contentType,
       'x-upload-content-length': '${_uploadMedia.length}',
-    });
+    };
+
+    final request =
+        RequestImpl(_method, _uri, stream: bodyStream, headers: headers);
 
     final response = await _httpClient.send(request);
 
@@ -248,8 +250,7 @@ class ResumableMediaUploader {
     };
 
     final stream = Stream.fromIterable(chunk.byteArrays);
-    final request = RequestImpl('PUT', uri, stream);
-    request.headers.addAll(headers);
+    final request = RequestImpl('PUT', uri, stream: stream, headers: headers);
     return _httpClient.send(request);
   }
 }

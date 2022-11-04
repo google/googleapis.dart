@@ -108,14 +108,19 @@ class ApiRequester {
           'Content length of response does not match requested range length.',
         );
       }
-      final contentRange = response.headers['content-range'];
-      final expected = 'bytes ${downloadRange.start}-${downloadRange.end}/';
-      if (contentRange == null || !contentRange.startsWith(expected)) {
-        throw client_requests.ApiRequestError(
-          'Attempting partial '
-          "download but got invalid 'Content-Range' header "
-          '(was: $contentRange, expected: $expected).',
-        );
+
+      if (!isWeb) {
+        // TODO(kevmoo) on the web, should check access-control-expose-headers
+        // but this is easy for now
+        final contentRange = response.headers[_contentRangeHeader];
+        final expected = 'bytes ${downloadRange.start}-${downloadRange.end}/';
+        if (contentRange == null || !contentRange.startsWith(expected)) {
+          throw client_requests.ApiRequestError(
+            'Attempting partial '
+            "download but got invalid '$_contentRangeHeader' header "
+            '(was: $contentRange, expected: $expected).',
+          );
+        }
       }
     }
 
@@ -183,12 +188,16 @@ class ApiRequester {
 
     Future<http.StreamedResponse> simpleUpload() {
       final bodyStream = uploadMedia!.stream;
-      final request = RequestImpl(method, uri, bodyStream);
-      request.headers.addAll({
-        ..._requestHeaders,
-        'content-type': uploadMedia.contentType,
-        'content-length': '${uploadMedia.length}'
-      });
+      final request = RequestImpl(
+        method,
+        uri,
+        stream: bodyStream,
+        headers: {
+          ..._requestHeaders,
+          'content-type': uploadMedia.contentType,
+          'content-length': '${uploadMedia.length}'
+        },
+      );
       return _httpClient.send(request);
     }
 
@@ -210,13 +219,12 @@ class ApiRequester {
           'range': 'bytes=${downloadRange.start}-${downloadRange.end}',
       };
 
-      // Filter out headers forbidden in the browser (in calling in browser).
-      // If we don't do this, the browser will complain that we're attempting
-      // to set a header that we're not allowed to set.
-      headers.removeWhere((key, value) => _forbiddenHeaders.contains(key));
-
-      final request = RequestImpl(method, uri, bodyController.stream);
-      request.headers.addAll(headers);
+      final request = RequestImpl(
+        method,
+        uri,
+        stream: bodyController.stream,
+        headers: headers,
+      );
       return _httpClient.send(request);
     }
 
@@ -318,10 +326,4 @@ Stream<String>? _decodeStreamAsText(http.StreamedResponse response) {
   }
 }
 
-/// List of headers that is forbidden in current execution context.
-///
-/// In a browser context we're not allowed to set `user-agent` and
-/// `content-length` headers.
-const _forbiddenHeaders = bool.fromEnvironment('dart.library.html')
-    ? <String>{'user-agent', 'content-length'}
-    : <String>{};
+const _contentRangeHeader = 'content-range';

@@ -72,6 +72,17 @@ Future<void> _upload() async {
     );
 
     logToTextArea(jsonEncode(newFile));
+
+    logToTextArea('try to read part of the file back - asking for 11 bytes!');
+
+    // regression check for https://github.com/google/googleapis.dart/issues/462
+
+    final partialRequest = await api.get(
+      newFile.id!,
+      downloadOptions: drive.PartialDownloadOptions(drive.ByteRange(0, 10)),
+    ) as drive.Media;
+
+    logToTextArea('bytes received: ${partialRequest.length}');
   } finally {
     client.close();
   }
