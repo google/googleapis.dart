@@ -1,3 +1,9 @@
+## 1.0.4
+
+- Eliminate the invalid header warning in the browser.
+- Fix issue with range requests from the browser.
+  ([#462](https://github.com/google/googleapis.dart/issues/462))
+
 ## 1.0.3
 
 - Throw a more helpful error message when a resumable upload fails.

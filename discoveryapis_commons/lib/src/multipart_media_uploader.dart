@@ -73,8 +73,8 @@ class MultipartMediaUploader {
       'content-length': '$totalLength'
     };
     final bodyStream = bodyController.stream;
-    final request = RequestImpl(_method, _uri, bodyStream);
-    request.headers.addAll(headers);
+    final request =
+        RequestImpl(_method, _uri, stream: bodyStream, headers: headers);
     return _httpClient.send(request);
   }
 }
