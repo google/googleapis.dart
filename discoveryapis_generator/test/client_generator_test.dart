@@ -54,16 +54,19 @@ void main() {
       final libDir = Directory(p.join(outputDir.path, 'lib'))..createSync();
       final messageFile = File(p.join(libDir.path, 'messages.dart'));
       // Build import map
-      final importUri = p.toUri(messageFile.path);
+      final importUri = p.toUri(messageFile.path).toString();
+      const importItems = {
+        'ToyResponse',
+        'ToyResourceResponse',
+        'NestedResponse',
+        'ToyMapResponse',
+        'ToyRequest',
+        'ToyAgeRequest',
+        'ToyAgeRequest2',
+        'Empty',
+      };
       final importMap = {
-        'ToyResponse': importUri.toString(),
-        'ToyResourceResponse': importUri.toString(),
-        'NestedResponse': importUri.toString(),
-        'ToyMapResponse': importUri.toString(),
-        'ToyRequest': importUri.toString(),
-        'ToyAgeRequest': importUri.toString(),
-        'ToyAgeRequest2': importUri.toString(),
-        'Empty': importUri.toString(),
+        for (var item in importItems) item: importUri,
       };
       final description =
           File(p.join(dataPath, 'rest', 'toyapi.json')).readAsStringSync();
