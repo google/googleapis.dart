@@ -34,6 +34,7 @@ abstract class DartSchemaType {
       _resolved = true;
       return resolveCore(db);
     }
+    // ignore: avoid_returning_this
     return this;
   }
 
