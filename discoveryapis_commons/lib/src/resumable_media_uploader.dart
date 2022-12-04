@@ -72,17 +72,17 @@ class ResumableMediaUploader {
         ).then((_) {
           // All chunks uploaded, we can continue consuming data.
           subscription.resume();
-        }).catchError((Object? error, StackTrace stack) {
+        }).onError((Object error, StackTrace stack) {
           subscription.cancel();
           completed = true;
-          completer.completeError(error ?? NullThrownError(), stack);
+          completer.completeError(error, stack);
         });
       }
-    }, onError: (Object? error, StackTrace stack) {
+    }, onError: (Object error, StackTrace stack) {
       subscription.cancel();
       if (!completed) {
         completed = true;
-        completer.completeError(error ?? NullThrownError(), stack);
+        completer.completeError(error, stack);
       }
     }, onDone: () {
       if (!completed) {
@@ -117,9 +117,7 @@ class ResumableMediaUploader {
         // with it.
         _uploadChunkResumable(uploadUri, lastChunk, lastChunk: true)
             .then(completer.complete)
-            .catchError((Object? error, StackTrace stack) {
-          completer.completeError(error ?? NullThrownError(), stack);
-        });
+            .onError(completer.completeError);
       }
     });
 
