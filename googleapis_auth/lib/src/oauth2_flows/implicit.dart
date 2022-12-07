@@ -151,21 +151,19 @@ class ImplicitFlow {
       throw AuthenticationException('Expected to get id_token, but did not.');
     }
 
-    List<String>? scopes;
-    final scopeString = jsTokenObject['scope'];
-    if (scopeString is String) {
-      scopes = scopeString.split(' ');
-    }
+    final scopeString = jsTokenObject['scope'] as String;
+    final scopes = scopeString.split(' ');
 
     final expiresAt = jsTokenObject['expires_at'] as int;
     final expiresAtDate =
         DateTime.fromMillisecondsSinceEpoch(expiresAt).toUtc();
 
     final accessToken = AccessToken('Bearer', token, expiresAtDate);
+
     final credentials = AccessCredentials(
       accessToken,
       null,
-      scopes ?? _scopes,
+      scopes,
       idToken: idToken,
     );
 
