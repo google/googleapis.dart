@@ -642,10 +642,11 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the Access Level. The `short_name`
-  /// component must begin with a letter and only include alphanumeric and '_'.
-  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
-  /// maximum length of the `access_level` component is 50 characters.
+  /// [name] - Resource name for the `AccessLevel`. Format:
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// `access_level` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
+  /// you create an `AccessLevel`, you cannot change its `name`.
   /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
@@ -1028,10 +1029,11 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the ServicePerimeter. The
-  /// `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
+  /// [name] - Resource name for the `ServicePerimeter`. Format:
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
+  /// The `service_perimeter` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
+  /// cannot change its `name`.
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
@@ -1623,14 +1625,12 @@ class AccessLevel {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the Access Level.
+  /// Resource name for the `AccessLevel`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum
-  /// length of the `access_level` component is 50 characters.
-  ///
-  /// Required.
+  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// `access_level` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
+  /// you create an `AccessLevel`, you cannot change its `name`.
   core.String? name;
 
   /// Human readable title.
@@ -3021,13 +3021,13 @@ class ServicePerimeter {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the ServicePerimeter.
+  /// Resource name for the `ServicePerimeter`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
-  ///
-  /// Required.
+  /// Format:
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
+  /// The `service_perimeter` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
+  /// cannot change its `name`.
   core.String? name;
 
   /// Perimeter type indicator.

@@ -2006,7 +2006,7 @@ class Node {
   /// - "REIMAGING" : TPU node is undergoing reimaging.
   /// - "DELETING" : TPU node is being deleted.
   /// - "REPAIRING" : TPU node is being repaired and may be unusable. Details
-  /// can be found in the `help_description` field.
+  /// can be found in the 'help_description' field.
   /// - "STOPPED" : TPU node is stopped.
   /// - "STOPPING" : TPU node is currently stopping.
   /// - "STARTING" : TPU node is currently starting.
@@ -2393,7 +2393,7 @@ class QueuedResourceState {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State of the QueuedResource request is not
   /// known/set.
-  /// - "CREATING" : The QueuedResource request has been received. We’re still
+  /// - "CREATING" : The QueuedResource request has been received. We're still
   /// working on determining if we will be able to honor this request.
   /// - "ACCEPTED" : The QueuedResource request has passed initial
   /// validation/admission control and has been persisted in the queue.
@@ -2402,8 +2402,8 @@ class QueuedResourceState {
   /// begin provisioning).
   /// - "FAILED" : The request could not be completed. This may be due to some
   /// late-discovered problem with the request itself, or due to unavailability
-  /// of resources within the constraints of the request (e.g., the ‘valid
-  /// until’ start timing constraint expired).
+  /// of resources within the constraints of the request (e.g., the 'valid
+  /// until' start timing constraint expired).
   /// - "DELETING" : The QueuedResource is being deleted.
   /// - "ACTIVE" : The resources specified in the QueuedResource request have
   /// been provisioned and are ready for use by the end-user/consumer.

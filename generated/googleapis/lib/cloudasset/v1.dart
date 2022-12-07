@@ -1155,10 +1155,10 @@ class V1Resource {
   /// compute.vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck *
   /// gcp.resourceLocations * compute.trustedImageProjects *
   /// compute.skipDefaultNetworkCreation * compute.requireOsLogin *
-  /// compute.disableNestedVirtualization This RPC only returns either: *
-  /// resources of types supported by
+  /// compute.disableNestedVirtualization This RPC only returns either resources
+  /// of types supported by
   /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types),
-  /// or * IAM policies.
+  /// or IAM policies.
   ///
   /// Request parameters:
   ///

@@ -353,13 +353,13 @@ class FoldersBigQueryExportsResource {
   FoldersBigQueryExportsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a big query export.
+  /// Creates a BigQuery export.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// [parent] - Required. Resource name of the new BigQuery export's parent.
   /// Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -403,11 +403,11 @@ class FoldersBigQueryExportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an existing big query export.
+  /// Deletes an existing BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// [name] - Required. Name of the BigQuery export to delete. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -441,11 +441,11 @@ class FoldersBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a big query export.
+  /// Gets a BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -893,7 +893,7 @@ class FoldersNotificationConfigsResource {
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contains
+  /// parent scope. It must be between 1 and 128 characters, and contain
   /// alphanumeric characters, underscores or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1430,9 +1430,9 @@ class FoldersSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
   /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
   /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
@@ -1476,10 +1476,7 @@ class FoldersSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -1589,10 +1586,10 @@ class FoldersSourcesFindingsExternalSystemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// [name] - Full resource name of the external system, for example:
+  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -2040,13 +2037,13 @@ class OrganizationsBigQueryExportsResource {
   OrganizationsBigQueryExportsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a big query export.
+  /// Creates a BigQuery export.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// [parent] - Required. Resource name of the new BigQuery export's parent.
   /// Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -2090,11 +2087,11 @@ class OrganizationsBigQueryExportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an existing big query export.
+  /// Deletes an existing BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// [name] - Required. Name of the BigQuery export to delete. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -2128,11 +2125,11 @@ class OrganizationsBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a big query export.
+  /// Gets a BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -2582,7 +2579,7 @@ class OrganizationsNotificationConfigsResource {
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contains
+  /// parent scope. It must be between 1 and 128 characters, and contain
   /// alphanumeric characters, underscores or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3612,9 +3609,9 @@ class OrganizationsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
   /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
   /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
@@ -3658,10 +3655,7 @@ class OrganizationsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -3772,10 +3766,10 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// [name] - Full resource name of the external system, for example:
+  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -4084,13 +4078,13 @@ class ProjectsBigQueryExportsResource {
   ProjectsBigQueryExportsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a big query export.
+  /// Creates a BigQuery export.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// [parent] - Required. Resource name of the new BigQuery export's parent.
   /// Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -4134,11 +4128,11 @@ class ProjectsBigQueryExportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an existing big query export.
+  /// Deletes an existing BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// [name] - Required. Name of the BigQuery export to delete. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -4172,11 +4166,11 @@ class ProjectsBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a big query export.
+  /// Gets a BigQuery export.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
   /// organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
@@ -4625,7 +4619,7 @@ class ProjectsNotificationConfigsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contains
+  /// parent scope. It must be between 1 and 128 characters, and contain
   /// alphanumeric characters, underscores or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5162,9 +5156,9 @@ class ProjectsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
   /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
   /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
@@ -5208,10 +5202,7 @@ class ProjectsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of the finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -5321,10 +5312,10 @@ class ProjectsSourcesFindingsExternalSystemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// [name] - Full resource name of the external system, for example:
+  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -6890,7 +6881,7 @@ class Finding {
   /// otherwise addressed and is no longer active.
   core.String? state;
 
-  /// Represents vulnerability specific fields like cve, cvss scores etc.
+  /// Represents vulnerability-specific fields like CVE and CVS scores.
   ///
   /// CVE stands for Common Vulnerabilities and Exposures
   /// (https://cve.mitre.org/about/)
@@ -7375,12 +7366,10 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   /// Identifier that's used to track the given finding in the external system.
   core.String? externalUid;
 
-  /// External System Name e.g. jira, demisto, etc.
-  ///
-  /// e.g.:
-  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// Full resource name of the external system, for example:
+  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   core.String? name;
 
   /// Most recent status of the corresponding finding's ticket/tracker in the
@@ -8059,34 +8048,36 @@ class KernelRootkit {
   /// Rootkit name when available.
   core.String? name;
 
-  /// Flag indicating unexpected modifications of kernel code memory.
+  /// True when unexpected modifications of kernel read-only data memory are
+  /// present.
   core.bool? unexpectedCodeModification;
 
-  /// Flag indicating presence of ftrace points with callbacks pointing to
-  /// regions that are not in the expected kernel or module code range.
+  /// True when `ftrace` points are present with callbacks pointing to regions
+  /// that are not in the expected kernel or module code range.
   core.bool? unexpectedFtraceHandler;
 
-  /// Flag indicating presence of interrupt handlers that are are not in the
-  /// expected kernel, module code regions.
+  /// True when interrupt handlers that are are not in the expected kernel or
+  /// module code regions are present.
   core.bool? unexpectedInterruptHandler;
 
-  /// Flag indicating presence of kernel code pages that are not in the expected
-  /// kernel, module code regions.
+  /// True when kernel code pages that are not in the expected kernel or module
+  /// code regions are present.
   core.bool? unexpectedKernelCodePages;
 
-  /// Flag indicating presence of kprobe points with callbacks pointing to
-  /// regions that are not in the expected kernel or module code range.
+  /// True when `kprobe` points are present with callbacks pointing to regions
+  /// that are not in the expected kernel or module code range.
   core.bool? unexpectedKprobeHandler;
 
-  /// Flag indicating unexpected process(es) in the scheduler run-queue, those
-  /// that are in the run-queue, but not in the process task-list.
+  /// True when unexpected processes in the scheduler run queue are present.
+  ///
+  /// Such processes are in the run queue, but not in the process task list.
   core.bool? unexpectedProcessesInRunqueue;
 
   /// Flag indicating unexpected modifications of kernel read-only data memory.
   core.bool? unexpectedReadOnlyDataModification;
 
-  /// Flag indicating presence of system call handlers that are are not in the
-  /// expected kernel, module code regions.
+  /// True when system call handlers that are are not in the expected kernel or
+  /// module code regions are present.
   core.bool? unexpectedSystemCallHandler;
 
   KernelRootkit({
@@ -9663,6 +9654,13 @@ class ServiceAccountDelegationInfo {
 }
 
 /// Request message for updating a finding's state.
+///
+/// The
+/// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+/// of the finding. Example:
+/// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+/// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+/// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
 class SetFindingStateRequest {
   /// The time at which the updated state takes effect.
   ///
