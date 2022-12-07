@@ -26,7 +26,11 @@
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalHubsResource]
 ///       - [ProjectsLocationsGlobalPolicyBasedRoutesResource]
+///     - [ProjectsLocationsInternalRangesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsServiceClassesResource]
+///     - [ProjectsLocationsServiceConnectionMapsResource]
+///     - [ProjectsLocationsServiceConnectionPoliciesResource]
 ///     - [ProjectsLocationsSpokesResource]
 library networkconnectivity.v1;
 
@@ -76,8 +80,17 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsGlobalResource get global =>
       ProjectsLocationsGlobalResource(_requester);
+  ProjectsLocationsInternalRangesResource get internalRanges =>
+      ProjectsLocationsInternalRangesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsServiceClassesResource get serviceClasses =>
+      ProjectsLocationsServiceClassesResource(_requester);
+  ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
+      ProjectsLocationsServiceConnectionMapsResource(_requester);
+  ProjectsLocationsServiceConnectionPoliciesResource
+      get serviceConnectionPolicies =>
+          ProjectsLocationsServiceConnectionPoliciesResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
 
@@ -777,6 +790,282 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   }
 }
 
+class ProjectsLocationsInternalRangesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInternalRangesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new InternalRange in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the InternalRange.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [internalRangeId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/internalRanges/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    InternalRange request,
+    core.String parent, {
+    core.String? internalRangeId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (internalRangeId != null) 'internalRangeId': [internalRangeId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/internalRanges';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single InternalRange.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the InternalRange to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single InternalRange.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the InternalRange to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InternalRange].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InternalRange> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InternalRange.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists InternalRanges in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInternalRangesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInternalRangesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/internalRanges';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInternalRangesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single InternalRange.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The name of a InternalRange. Format:
+  /// projects/{project}/locations/{location}/internalRanges/{internal_range}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the InternalRange resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    InternalRange request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -967,6 +1256,493 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServiceClassesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceClassesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServiceConnectionMapsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceConnectionMapsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServiceConnectionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceConnectionPoliciesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1480,12 +2256,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -1806,6 +2584,206 @@ class Hub {
       };
 }
 
+/// The InternalRange resource for IPAM operations within a VPC network.
+///
+/// Used to represent a private address range along with behavioral
+/// characterstics of that range (it's usage and peering behavior). Networking
+/// resources can link to this range if they are created as belonging to it.
+/// Next id: 14
+class InternalRange {
+  /// Time when the InternalRange was created.
+  core.String? createTime;
+
+  /// A description of this resource.
+  core.String? description;
+
+  /// IP range that this InternalRange defines.
+  core.String? ipCidrRange;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a InternalRange.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/internalRanges/{internal_range}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The URL or resource ID of the network in which to reserve the Internal
+  /// Range.
+  ///
+  /// The network cannot be deleted if there are any reserved Internal Ranges
+  /// referring to it. Legacy network is not supported. This can only be
+  /// specified for a global internal address. Example: - URL:
+  /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID:
+  /// network123
+  core.String? network;
+
+  /// Types of resources that are allowed to overlap with the current
+  /// InternalRange.
+  ///
+  /// Optional.
+  core.List<core.String>? overlaps;
+
+  /// The type of peering set for this InternalRange.
+  /// Possible string values are:
+  /// - "PEERING_UNSPECIFIED" : If Peering is left unspecified in
+  /// CreateInternalRange or UpdateInternalRange, it will be defaulted to
+  /// FOR_SELF.
+  /// - "FOR_SELF" : This is the default behavior and represents the case that
+  /// this InternalRange is intended to be used in the VPC on which it is
+  /// created and is accessible from it’s peers. This implies that peers or
+  /// peer-of-peer’s cannot use this range.
+  /// - "FOR_PEER" : This behavior can be set when the Internal Range is being
+  /// reserved for usage by the peers. This means that no resource within the
+  /// VPC in which it is being created can use this to associate with a GCP
+  /// resource, but one of the peer’s can. This represents "donating" a range
+  /// for peers to use.
+  /// - "NOT_SHARED" : This behavior can be set when the Internal Range is being
+  /// reserved for usage by the VPC on which it is created but not shared with
+  /// the peers. In a sense it is local to the VPC. This can be used to create
+  /// Internal Ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or
+  /// for interconnect routes that are not shared with peers. This also implies
+  /// that peer’s cannot use this range in a way that is visible to this VPC,
+  /// but can re-use this range as long as it is NOT_SHARED from the peer VPC
+  /// too.
+  core.String? peering;
+
+  /// An alternate to ip_cidr_range.
+  ///
+  /// Can be set when trying to create a reservation that automatically finds a
+  /// free range of the given size. If both ip_cidr_range and prefix_length are
+  /// set, it's an error if the range sizes don't match. Can also be used during
+  /// updates to change the range size.
+  core.int? prefixLength;
+
+  /// Can be set to narrow down or pick a different address space while
+  /// searching for a free range.
+  ///
+  /// If not set, defaults to the "10.0.0.0/8" address space. This can be used
+  /// to search in other rfc-1918 address spaces like "172.16.0.0/12" and
+  /// "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+  ///
+  /// Optional.
+  core.List<core.String>? targetCidrRange;
+
+  /// Time when the InternalRange was updated.
+  core.String? updateTime;
+
+  /// The type of usage set for this InternalRange.
+  /// Possible string values are:
+  /// - "USAGE_UNSPECIFIED" : Unspecified usage is allowed in calls which
+  /// identify the resource by other fields and do not need Usage set to
+  /// complete. These are i.e.: GetInternalRange and DeleteInternalRange. Usage
+  /// needs to be specified explicitly in CreateInternalRange or
+  /// UpdateInternalRange calls.
+  /// - "FOR_VPC" : A GCP resource can use the reserved CIDR block by
+  /// associating it with the Internal Range resource if usage is set to
+  /// FOR_VPC.
+  /// - "EXTERNAL_TO_VPC" : Ranges created with EXTERNAL_TO_VPC cannot be
+  /// associated with GCP resources and are meant to block out address ranges
+  /// for various use cases, like for example, usage on-prem, with dynamic route
+  /// announcements via interconnect.
+  core.String? usage;
+
+  /// The list of resources that refer to this internal range.
+  ///
+  /// Resources that use the InternalRange for their range allocation are
+  /// referred to as users of the range. Other resources mark themselves as
+  /// users while doing so by creating a reference to this InternalRange. Having
+  /// a user, based on this reference, prevents deletion of the InternalRange
+  /// referred to. Can be empty.
+  ///
+  /// Output only.
+  core.List<core.String>? users;
+
+  InternalRange({
+    this.createTime,
+    this.description,
+    this.ipCidrRange,
+    this.labels,
+    this.name,
+    this.network,
+    this.overlaps,
+    this.peering,
+    this.prefixLength,
+    this.targetCidrRange,
+    this.updateTime,
+    this.usage,
+    this.users,
+  });
+
+  InternalRange.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          ipCidrRange: json_.containsKey('ipCidrRange')
+              ? json_['ipCidrRange'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          overlaps: json_.containsKey('overlaps')
+              ? (json_['overlaps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          peering: json_.containsKey('peering')
+              ? json_['peering'] as core.String
+              : null,
+          prefixLength: json_.containsKey('prefixLength')
+              ? json_['prefixLength'] as core.int
+              : null,
+          targetCidrRange: json_.containsKey('targetCidrRange')
+              ? (json_['targetCidrRange'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          usage:
+              json_.containsKey('usage') ? json_['usage'] as core.String : null,
+          users: json_.containsKey('users')
+              ? (json_['users'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (overlaps != null) 'overlaps': overlaps!,
+        if (peering != null) 'peering': peering!,
+        if (prefixLength != null) 'prefixLength': prefixLength!,
+        if (targetCidrRange != null) 'targetCidrRange': targetCidrRange!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (usage != null) 'usage': usage!,
+        if (users != null) 'users': users!,
+      };
+}
+
 /// A collection of VLAN attachment resources.
 ///
 /// These resources should be redundant attachments that all advertise the same
@@ -1822,9 +2800,15 @@ class LinkedInterconnectAttachments {
   /// The URIs of linked interconnect attachment resources
   core.List<core.String>? uris;
 
+  /// The VPC network where these VLAN attachments are located.
+  ///
+  /// Output only.
+  core.String? vpcNetwork;
+
   LinkedInterconnectAttachments({
     this.siteToSiteDataTransfer,
     this.uris,
+    this.vpcNetwork,
   });
 
   LinkedInterconnectAttachments.fromJson(core.Map json_)
@@ -1837,12 +2821,16 @@ class LinkedInterconnectAttachments {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
       };
 }
 
@@ -1862,9 +2850,15 @@ class LinkedRouterApplianceInstances {
   /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   core.bool? siteToSiteDataTransfer;
 
+  /// The VPC network where these router appliance instances are located.
+  ///
+  /// Output only.
+  core.String? vpcNetwork;
+
   LinkedRouterApplianceInstances({
     this.instances,
     this.siteToSiteDataTransfer,
+    this.vpcNetwork,
   });
 
   LinkedRouterApplianceInstances.fromJson(core.Map json_)
@@ -1878,12 +2872,16 @@ class LinkedRouterApplianceInstances {
           siteToSiteDataTransfer: json_.containsKey('siteToSiteDataTransfer')
               ? json_['siteToSiteDataTransfer'] as core.bool
               : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null) 'instances': instances!,
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
       };
 }
 
@@ -1904,9 +2902,15 @@ class LinkedVpnTunnels {
   /// The URIs of linked VPN tunnel resources.
   core.List<core.String>? uris;
 
+  /// The VPC network where these VPN tunnels are located.
+  ///
+  /// Output only.
+  core.String? vpcNetwork;
+
   LinkedVpnTunnels({
     this.siteToSiteDataTransfer,
     this.uris,
+    this.vpcNetwork,
   });
 
   LinkedVpnTunnels.fromJson(core.Map json_)
@@ -1919,12 +2923,16 @@ class LinkedVpnTunnels {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
       };
 }
 
@@ -1968,6 +2976,51 @@ class ListHubsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hubs != null) 'hubs': hubs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for InternalRange.ListInternalRanges
+class ListInternalRangesResponse {
+  /// InternalRanges to be returned.
+  core.List<InternalRange>? internalRanges;
+
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListInternalRangesResponse({
+    this.internalRanges,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListInternalRangesResponse.fromJson(core.Map json_)
+      : this(
+          internalRanges: json_.containsKey('internalRanges')
+              ? (json_['internalRanges'] as core.List)
+                  .map((value) => InternalRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (internalRanges != null) 'internalRanges': internalRanges!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };

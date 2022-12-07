@@ -59,10 +59,6 @@ class SasportalApi {
   /// Read, create, update, and delete your SAS Portal data.
   static const sasportalScope = 'https://www.googleapis.com/auth/sasportal';
 
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
-
   final commons.ApiRequester _requester;
 
   CustomersResource get customers => CustomersResource(_requester);

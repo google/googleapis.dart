@@ -1043,6 +1043,7 @@ api.RemoveAndroidAppRequest buildRemoveAndroidAppRequest() {
   if (buildCounterRemoveAndroidAppRequest < 3) {
     o.allowMissing = true;
     o.etag = 'foo';
+    o.immediate = true;
     o.validateOnly = true;
   }
   buildCounterRemoveAndroidAppRequest--;
@@ -1057,6 +1058,7 @@ void checkRemoveAndroidAppRequest(api.RemoveAndroidAppRequest o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.immediate!, unittest.isTrue);
     unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterRemoveAndroidAppRequest--;
@@ -1069,6 +1071,7 @@ api.RemoveIosAppRequest buildRemoveIosAppRequest() {
   if (buildCounterRemoveIosAppRequest < 3) {
     o.allowMissing = true;
     o.etag = 'foo';
+    o.immediate = true;
     o.validateOnly = true;
   }
   buildCounterRemoveIosAppRequest--;
@@ -1083,6 +1086,7 @@ void checkRemoveIosAppRequest(api.RemoveIosAppRequest o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.immediate!, unittest.isTrue);
     unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterRemoveIosAppRequest--;
@@ -1095,6 +1099,7 @@ api.RemoveWebAppRequest buildRemoveWebAppRequest() {
   if (buildCounterRemoveWebAppRequest < 3) {
     o.allowMissing = true;
     o.etag = 'foo';
+    o.immediate = true;
     o.validateOnly = true;
   }
   buildCounterRemoveWebAppRequest--;
@@ -1109,6 +1114,7 @@ void checkRemoveWebAppRequest(api.RemoveWebAppRequest o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.immediate!, unittest.isTrue);
     unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterRemoveWebAppRequest--;

@@ -314,7 +314,7 @@ class FoldersContactsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The identifier for the contact. Format:
+  /// [name] - Output only. The identifier for the contact. Format:
   /// {resource_type}/{resource_id}/contacts/{contact_id}
   /// Value must have pattern `^folders/\[^/\]+/contacts/\[^/\]+$`.
   ///
@@ -661,7 +661,7 @@ class OrganizationsContactsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The identifier for the contact. Format:
+  /// [name] - Output only. The identifier for the contact. Format:
   /// {resource_type}/{resource_id}/contacts/{contact_id}
   /// Value must have pattern `^organizations/\[^/\]+/contacts/\[^/\]+$`.
   ///
@@ -1006,7 +1006,7 @@ class ProjectsContactsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The identifier for the contact. Format:
+  /// [name] - Output only. The identifier for the contact. Format:
   /// {resource_type}/{resource_id}/contacts/{contact_id}
   /// Value must have pattern `^projects/\[^/\]+/contacts/\[^/\]+$`.
   ///
@@ -1140,7 +1140,7 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
 class GoogleCloudEssentialcontactsV1Contact {
   /// The email address to send notifications to.
   ///
-  /// This does not need to be a Google account.
+  /// The email address does not need to be a Google Account.
   ///
   /// Required.
   core.String? email;
@@ -1150,15 +1150,21 @@ class GoogleCloudEssentialcontactsV1Contact {
   /// See
   /// [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages)
   /// for a list of supported languages.
+  ///
+  /// Required.
   core.String? languageTag;
 
   /// The identifier for the contact.
   ///
   /// Format: {resource_type}/{resource_id}/contacts/{contact_id}
+  ///
+  /// Output only.
   core.String? name;
 
   /// The categories of notifications that the contact will receive
   /// communications for.
+  ///
+  /// Required.
   core.List<core.String>? notificationCategorySubscriptions;
 
   /// The last time the validation_state was updated, either manually or

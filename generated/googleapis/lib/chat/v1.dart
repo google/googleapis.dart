@@ -58,6 +58,23 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// Authentication is a prerequisite for using the Google Chat REST API.
 class HangoutsChatApi {
+  /// View, add, and remove members from conversations in Google Chat
+  static const chatMembershipsScope =
+      'https://www.googleapis.com/auth/chat.memberships';
+
+  /// View, compose, send, update, and delete messages, and add, view, and
+  /// delete reactions to messages.
+  static const chatMessagesScope =
+      'https://www.googleapis.com/auth/chat.messages';
+
+  /// Compose and send messages in Google Chat
+  static const chatMessagesCreateScope =
+      'https://www.googleapis.com/auth/chat.messages.create';
+
+  /// view messages and reactions in Google Chat
+  static const chatMessagesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.messages.readonly';
+
   final commons.ApiRequester _requester;
 
   DmsResource get dms => DmsResource(_requester);
@@ -88,19 +105,37 @@ class DmsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^dms/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -115,12 +150,17 @@ class DmsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -145,19 +185,37 @@ class DmsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^dms/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,12 +230,17 @@ class DmsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -208,19 +271,37 @@ class DmsConversationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -235,12 +316,17 @@ class DmsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -332,19 +418,37 @@ class RoomsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^rooms/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,12 +463,17 @@ class RoomsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -389,19 +498,37 @@ class RoomsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^rooms/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -416,12 +543,17 @@ class RoomsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -452,19 +584,37 @@ class RoomsConversationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,12 +629,17 @@ class RoomsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -513,7 +668,16 @@ class SpacesResource {
   /// Returns a space.
   ///
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
   ///
   /// Request parameters:
   ///
@@ -552,16 +716,30 @@ class SpacesResource {
   /// Lists spaces the caller is a member of.
   ///
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
+  /// Lists spaces visible to the caller or authenticated user. Group chats and
+  /// DMs aren't listed until the first message is sent.
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. Requested page size. The value is capped at 1000.
-  /// Server may return fewer results than requested. If unspecified, server
-  /// will default to 100.
+  /// [pageSize] - Optional. The maximum number of spaces to return. The service
+  /// may return fewer than this value. If unspecified, at most 100 spaces are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
+  /// 1000. Negative values return an INVALID_ARGUMENT error.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
+  /// [pageToken] - Optional. A page token, received from a previous list spaces
+  /// call. Provide this to retrieve the subsequent page. When paginating, the
+  /// filter value should match the call that provided the page token. Passing a
+  /// different value may lead to unexpected results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -603,19 +781,37 @@ class SpacesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -630,12 +826,17 @@ class SpacesResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -658,10 +859,21 @@ class SpacesMembersResource {
 
   SpacesMembersResource(commons.ApiRequester client) : _requester = client;
 
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Returns a membership.
   ///
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.memberships` or `chat.memberships.readonly`
+  /// authorization scope.
   ///
   /// Request parameters:
   ///
@@ -698,10 +910,21 @@ class SpacesMembersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists human memberships in a space.
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Lists memberships in a space.
   ///
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.memberships` or `chat.memberships.readonly`
+  /// authorization scope.
   ///
   /// Request parameters:
   ///
@@ -709,12 +932,16 @@ class SpacesMembersResource {
   /// membership list. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [pageSize] - Requested page size. The value is capped at 1000. Server may
-  /// return fewer results than requested. If unspecified, server will default
-  /// to 100.
+  /// [pageSize] - The maximum number of memberships to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 memberships are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
+  /// 1000. Negative values return an INVALID_ARGUMENT error.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A page token, received from a previous list memberships
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided should match the call that provided the page
+  /// token. Passing different values to the other parameters may lead to
+  /// unexpected results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -760,26 +987,56 @@ class SpacesMessagesResource {
 
   /// Creates a message.
   ///
+  /// For example usage, see
+  /// [Create a message](https://developers.google.com/chat/api/guides/crudl/messages#create_a_message).
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.messages` or `chat.messages.create` authorization
+  /// scope.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space in which to create a
+  /// message. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [messageId] - Optional. A custom name for a Chat message assigned at
+  /// creation. Must start with `client-` and contain only lowercase letters,
+  /// numbers, and hyphens up to 63 characters in length. Specify this field to
+  /// get, update, or delete the message with the specified value. For example
+  /// usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  ///
+  /// [messageReplyOption] - Optional. Specifies whether a message starts a
+  /// thread or replies to one. Only supported in named spaces.
+  /// Possible string values are:
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
+  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// message starts a new thread instead.
+  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
+  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
+  /// returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
-  /// thread, create a message and specify a `threadKey` instead of thread.name.
-  /// (Setting thread.name has no effect.) The first message with a given
-  /// `threadKey` starts a new thread. Subsequent messages with the same
-  /// `threadKey` post into the same thread.
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
+  /// thread identifier. To start or add to a thread, create a message and
+  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
+  /// or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -794,12 +1051,17 @@ class SpacesMessagesResource {
   async.Future<Message> create(
     Message request,
     core.String parent, {
+    core.String? messageId,
+    core.String? messageReplyOption,
     core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageId != null) 'messageId': [messageId],
+      if (messageReplyOption != null)
+        'messageReplyOption': [messageReplyOption],
       if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -818,8 +1080,19 @@ class SpacesMessagesResource {
 
   /// Deletes a message.
   ///
+  /// For example usage, see
+  /// [Delete a message](https://developers.google.com/chat/api/guides/crudl/messages#delete_a_message).
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.messages` authorization scope.
   ///
   /// Request parameters:
   ///
@@ -858,14 +1131,29 @@ class SpacesMessagesResource {
 
   /// Returns a message.
   ///
+  /// For example usage, see
+  /// [Read a message](https://developers.google.com/chat/api/guides/crudl/messages#read_a_message).
   /// Requires
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
+  /// [Service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.messages` or `chat.messages.readonly` authorization
+  /// scope. Note: Might return a message from a blocked member or space.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the message to be retrieved, in the
-  /// form "spaces / * /messages / * ". Example:
-  /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
+  /// [name] - Required. Resource name of the message to retrieve. Format:
+  /// spaces/{space}/messages/{message} If the message begins with `client-`,
+  /// then it has a custom name assigned by a Chat app that created it with the
+  /// Chat REST API. That Chat app (but not others) can pass the custom name to
+  /// get, update, or delete the message. To learn more, see
+  /// [create and name a message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -898,8 +1186,19 @@ class SpacesMessagesResource {
 
   /// Updates a message.
   ///
+  /// For example usage, see
+  /// [Update a message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message).
   /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.messages` authorization scope.
   ///
   /// [request] - The metadata request object.
   ///
@@ -908,6 +1207,82 @@ class SpacesMessagesResource {
   /// [name] - Resource name in the form `spaces / * /messages / * `. Example:
   /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If `true` and the message is not found, a new
+  /// message is created and `updateMask` is ignored. The specified message ID
+  /// must be
+  /// \[client-assigned\](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+  /// or the request fails.
+  ///
+  /// [updateMask] - Required. The field paths to update. Separate multiple
+  /// values with commas. Currently supported field paths: - text - cards
+  /// (Requires \[service account
+  /// authentication\](/chat/api/guides/auth/service-accounts).) - cards_v2
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> patch(
+    Message request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a message.
+  ///
+  /// For example usage, see
+  /// [Update a message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message).
+  /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// Fully supports
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Supports
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// which grants early access to certain features.
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// requires the `chat.messages` authorization scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name in the form `spaces / * /messages / * `. Example:
+  /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If `true` and the message is not found, a new
+  /// message is created and `updateMask` is ignored. The specified message ID
+  /// must be
+  /// \[client-assigned\](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+  /// or the request fails.
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
   /// values with commas. Currently supported field paths: - text - cards
@@ -927,11 +1302,13 @@ class SpacesMessagesResource {
   async.Future<Message> update(
     Message request,
     core.String name, {
+    core.bool? allowMissing,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1062,7 +1439,7 @@ class ActionResponse {
 class ActionStatus {
   /// The status code.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -1330,7 +1707,7 @@ class Attachment {
       };
 }
 
-/// A reference to the data of an attachment.
+/// [Developer Preview](https://developers.google.com/workspace/preview).
 class AttachmentDataRef {
   /// The resource name of the attachment data.
   ///
@@ -1441,7 +1818,7 @@ class Card {
 /// A card action is the action associated with the card.
 ///
 /// For an invoice card, a typical action would be: delete invoice, email
-/// invoice or open the invoice in browser.
+/// invoice or open the invoice in browser. Not supported by Google Chat apps.
 class CardAction {
   /// The label used to be displayed in the action menu item.
   core.String? actionLabel;
@@ -1743,9 +2120,38 @@ class FormAction {
 ///
 /// For example, an Apps Script can be invoked to handle the form.
 class GoogleAppsCardV1Action {
-  /// Apps Script function to invoke when the containing element is
-  /// clicked/activated.
+  /// A custom function to invoke when the containing element is clicked or
+  /// othrwise activated.
+  ///
+  /// For example usage, see
+  /// [Create interactive cards](https://developers.google.com/chat/how-tos/cards-onclick).
   core.String? function;
+
+  /// Required when opening a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
+  ///
+  /// What to do in response to an interaction with a user, such as a user
+  /// clicking button on a card message. If unspecified, the app responds by
+  /// executing an `action` - like opening a link or running a function - as
+  /// normal. By specifying an `interaction`, the app can respond in special
+  /// interactive ways. For example, by setting `interaction` to `OPEN_DIALOG`,
+  /// the app can open a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs). When
+  /// specified, a loading indicator is not shown. Supported by Chat apps, but
+  /// not Google Workspace Add-ons. If specified for an add-on, the entire card
+  /// is stripped and nothing is shown in the client.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "INTERACTION_UNSPECIFIED" : Default value. The `action` executes as
+  /// normal.
+  /// - "OPEN_DIALOG" : Opens a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs), a windowed,
+  /// card-based interface that Chat apps use to interact with users. Only
+  /// supported by Chat apps in response to button-clicks on card messages. Not
+  /// supported by Google Workspace Add-ons. If specified for an add-on, the
+  /// entire card is stripped and nothing is shown in the client.
+  core.String? interaction;
 
   /// Specifies the loading indicator that the action displays while making the
   /// call to the action.
@@ -1769,12 +2175,12 @@ class GoogleAppsCardV1Action {
   /// set to `false`, it is strongly recommended that the card use
   /// [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// for all actions, as this locks the UI to ensure no changes are made by the
-  /// user while the action is being processed. Not supported by Google Chat
-  /// apps.
+  /// user while the action is being processed. Not supported by Chat apps.
   core.bool? persistValues;
 
   GoogleAppsCardV1Action({
     this.function,
+    this.interaction,
     this.loadIndicator,
     this.parameters,
     this.persistValues,
@@ -1784,6 +2190,9 @@ class GoogleAppsCardV1Action {
       : this(
           function: json_.containsKey('function')
               ? json_['function'] as core.String
+              : null,
+          interaction: json_.containsKey('interaction')
+              ? json_['interaction'] as core.String
               : null,
           loadIndicator: json_.containsKey('loadIndicator')
               ? json_['loadIndicator'] as core.String
@@ -1801,6 +2210,7 @@ class GoogleAppsCardV1Action {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
+        if (interaction != null) 'interaction': interaction!,
         if (loadIndicator != null) 'loadIndicator': loadIndicator!,
         if (parameters != null) 'parameters': parameters!,
         if (persistValues != null) 'persistValues': persistValues!,
@@ -1811,10 +2221,11 @@ class GoogleAppsCardV1Action {
 ///
 /// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
 /// next week. You might use action method = snooze(), passing the snooze type
-/// and snooze time in the list of string parameters.
+/// and snooze time in the list of string parameters. To learn more, see
+/// [CommonEventObject](https://developers.google.com/chat/api/reference/rest/v1/Event#commoneventobject).
 typedef GoogleAppsCardV1ActionParameter = $ActionParameter;
 
-/// Represents the complete border style applied to widgets.
+/// Represents the complete border style applied to items in a widget.
 class GoogleAppsCardV1BorderStyle {
   /// The corner radius for the border.
   core.int? cornerRadius;
@@ -1825,7 +2236,7 @@ class GoogleAppsCardV1BorderStyle {
   /// The border type.
   /// Possible string values are:
   /// - "BORDER_TYPE_UNSPECIFIED" : No value specified.
-  /// - "NO_BORDER" : No border.
+  /// - "NO_BORDER" : Default value. No border.
   /// - "STROKE" : Outline.
   core.String? type;
 
@@ -1854,29 +2265,53 @@ class GoogleAppsCardV1BorderStyle {
       };
 }
 
-/// A button.
+/// A text, icon, or text + icon button that users can click.
 ///
-/// Can be a text button or an image button.
+/// To make an image a clickable button, specify an Image (not an
+/// ImageComponent) and set an `onClick` action.
 class GoogleAppsCardV1Button {
   /// The alternative text used for accessibility.
   ///
-  /// Has no effect when an icon is set; use `icon.alt_text` instead.
+  /// Set descriptive text that lets users know what the button does. For
+  /// example, if a button opens a hyperlink, you might write: "Opens a new
+  /// browser tab and navigates to the Google Chat developer documentation at
+  /// https://developers.google.com/chat". Has no effect when an icon is set;
+  /// use `icon.alt_text` instead.
   core.String? altText;
 
-  /// If set, the button is filled with a solid background.
+  /// If set, the button is filled with a solid background color and the font
+  /// color changes to maintain contrast with the background color.
+  ///
+  /// For example, setting a blue background will likely result in white text.
+  /// If unset, the image background is white and the font color is blue. For
+  /// red, green and blue, the value of each field is a `float` number that can
+  /// be expressed in either of two ways: as a number between 0 and 255 divided
+  /// by 255 (153/255) or as a value between 0 and 1 (0.6). 0 represents the
+  /// absence of a color and 1 or 255/255 represent the full presence of that
+  /// color on the RGB scale. Optionally set alpha, which sets a level of
+  /// transparency using this equation: ``` pixel color = alpha * (this color) +
+  /// (1.0 - alpha) * (background color) ``` For alpha, a value of 1 corresponds
+  /// with a solid color, and a value of 0 corresponds with a completely
+  /// transparent color. For example, the following color represents a half
+  /// transparent red: ``` "color": { "red": 1, "green": 0, "blue": 0, "alpha":
+  /// 0.5 } ```
   Color? color;
 
-  /// If `true`, the button is displayed in a disabled state and doesn't respond
-  /// to user actions.
+  /// If `true`, the button is displayed in an inactive state and doesn't
+  /// respond to user actions.
   core.bool? disabled;
 
   /// The icon image.
+  ///
+  /// If both `icon` and `text` are set, then the icon appears in place of the
+  /// text. Support for both an icon and text is coming soon.
   GoogleAppsCardV1Icon? icon;
 
-  /// The action to perform when the button is clicked.
+  /// The action to perform when the button is clicked, such as opening a
+  /// hyperlink or running a custom function.
   GoogleAppsCardV1OnClick? onClick;
 
-  /// The text of the button.
+  /// The text displayed inside the button.
   core.String? text;
 
   GoogleAppsCardV1Button({
@@ -1945,31 +2380,39 @@ class GoogleAppsCardV1ButtonList {
       };
 }
 
-/// A card is a UI element that can contain UI widgets such as text and images.
+/// Cards support a defined layout, interactive UI elements like buttons, and
+/// rich media like images.
 ///
-/// For more information, see Cards . For example, the following JSON creates a
-/// card that has a header with the name, position, icons, and link for a
-/// contact, followed by a section with contact information like email and phone
-/// number. ``` { "header": { "title": "Sasha", "subtitle": "Software Engineer",
-/// "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-/// "https://example.com/sasha.png", "imageAltText": "Avatar for Sasha" },
-/// "sections" : [ { "header": "Contact Info", "widgets": [ { "decorated_text":
-/// { "icon": { "knownIcon": "EMAIL" }, "content": "sasha@example.com" } }, {
-/// "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" }
-/// }, { "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1
-/// (555) 555-1234" } }, { "buttons": [ { "textButton": { "text": "Share", },
-/// "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
-/// "textButton": { "text": "Edit", }, "onClick": { "action": { "function":
-/// "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ],
-/// "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
-/// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send
-/// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback"
-/// } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
+/// Use cards to present detailed information, gather information from users,
+/// and guide users to take a next step. In Google Chat, cards appear in several
+/// places: - As stand-alone messages. - Accompanying a text message, just
+/// beneath the text message. - As a
+/// [dialog](https://developers.google.com/chat/how-tos/dialogs). The following
+/// example JSON creates a "contact card" that features: - A header with the
+/// contact's name, job title, avatar picture. - A section with the contact
+/// information, including formatted text. - Buttons that users can click to
+/// share the contact or see more or less info.
+/// ![Example contact card](https://developers.google.com/chat/images/card_api_reference.png)
+/// ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": {
+/// "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+/// "https://developers.google.com/chat/images/quickstart-app-avatar.png",
+/// "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", }, "sections": [
+/// { "header": "Contact Info", "collapsible": true,
+/// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": {
+/// "startIcon": { "knownIcon": "EMAIL", }, "text": "sasha@example.com", } }, {
+/// "decoratedText": { "startIcon": { "knownIcon": "PERSON", }, "text":
+/// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", },
+/// "text": "+1 (555) 555-1234", } }, { "buttonList": { "buttons": [ { "text":
+/// "Share", "onClick": { "openLink": { "url": "https://example.com/share", } }
+/// }, { "text": "Edit", "onClick": { "action": { "function": "goToView",
+/// "parameters": [ { "key": "viewType", "value": "EDIT", } ], } } }, ], } }, ],
+/// }, ], }, } ], } ```
 class GoogleAppsCardV1Card {
   /// The card's actions.
   ///
-  /// Actions are added to the card's generated toolbar menu. For example, the
-  /// following JSON constructs a card action menu with Settings and Send
+  /// Actions are added to the card's toolbar menu. Because Chat app cards have
+  /// no toolbar, `cardActions[]` is not supported by Chat apps. For example,
+  /// the following JSON constructs a card action menu with Settings and Send
   /// Feedback options: ``` "card_actions": [ { "actionLabel": "Settings",
   /// "onClick": { "action": { "functionName": "goToView", "parameters": [ {
   /// "key": "viewType", "value": "SETTING" } ], "loadIndicator":
@@ -1978,9 +2421,10 @@ class GoogleAppsCardV1Card {
   /// ```
   core.List<GoogleAppsCardV1CardAction>? cardActions;
 
-  /// The `peekCardHeader` display style for.
+  /// In Google Workspace add-ons, sets the display properties of the
+  /// `peekCardHeader`.
   ///
-  /// Not supported by Google Chat apps.
+  /// Not supported by Chat apps.
   /// Possible string values are:
   /// - "DISPLAY_STYLE_UNSPECIFIED" : Do not use.
   /// - "PEEK" : The header of the card appears at the bottom of the sidebar,
@@ -1992,26 +2436,36 @@ class GoogleAppsCardV1Card {
   core.String? displayStyle;
 
   /// The fixed footer shown at the bottom of this card.
+  ///
+  /// Setting `fixedFooter` without specifying a `primaryButton` or a
+  /// `secondaryButton` causes an error. Chat apps support `fixedFooter` in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
   GoogleAppsCardV1CardFixedFooter? fixedFooter;
 
   /// The header of the card.
   ///
-  /// A header usually contains a title and an image.
+  /// A header usually contains a leading image and a title. Headers always
+  /// appear at the top of a card.
   GoogleAppsCardV1CardHeader? header;
 
   /// Name of the card.
   ///
-  /// Used as a card identifier in card navigation.
+  /// Used as a card identifier in card navigation. Because Chat apps don't
+  /// support card navigation, they ignore this field.
   core.String? name;
 
   /// When displaying contextual content, the peek card header acts as a
   /// placeholder so that the user can navigate forward between the homepage
   /// cards and the contextual cards.
   ///
-  /// Not supported by Google Chat apps.
+  /// Not supported by Chat apps.
   GoogleAppsCardV1CardHeader? peekCardHeader;
 
-  /// Sections are separated by a line divider.
+  /// Contains a collection of widgets.
+  ///
+  /// Each section has its own, optional header. Sections are visually separated
+  /// by a line divider.
   core.List<GoogleAppsCardV1Section>? sections;
 
   GoogleAppsCardV1Card({
@@ -2070,7 +2524,7 @@ class GoogleAppsCardV1Card {
 /// A card action is the action associated with the card.
 ///
 /// For example, an invoice card might include actions such as delete invoice,
-/// email invoice, or open the invoice in a browser.
+/// email invoice, or open the invoice in a browser. Not supported by Chat apps.
 class GoogleAppsCardV1CardAction {
   /// The label that displays as the action menu item.
   core.String? actionLabel;
@@ -2100,7 +2554,12 @@ class GoogleAppsCardV1CardAction {
       };
 }
 
-/// A persistent (sticky) footer that is added to the bottom of the card.
+/// A persistent (sticky) footer that that appears at the bottom of the card.
+///
+/// Setting `fixedFooter` without specifying a `primaryButton` or a
+/// `secondaryButton` causes an error. Chat apps support `fixedFooter` in
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
 class GoogleAppsCardV1CardFixedFooter {
   /// The primary button of the fixed footer.
   ///
@@ -2141,16 +2600,20 @@ class GoogleAppsCardV1CardHeader {
   /// The alternative text of this image which is used for accessibility.
   core.String? imageAltText;
 
-  /// The image's type.
+  /// The shape used to crop the image.
   /// Possible string values are:
-  /// - "SQUARE" : Applies no cropping to the image.
-  /// - "CIRCLE" : Applies a circular mask to the image.
+  /// - "SQUARE" : Default value. Applies a square mask to the image. For
+  /// example, a 4x3 image becomes 3x3.
+  /// - "CIRCLE" : Applies a circular mask to the image. For example, a 4x3
+  /// image becomes a circle with a diameter of 3.
   core.String? imageType;
 
-  /// The URL of the image in the card header.
+  /// The HTTPS URL of the image in the card header.
   core.String? imageUrl;
 
   /// The subtitle of the card header.
+  ///
+  /// If specified, appears on its own line below the `title`.
   core.String? subtitle;
 
   /// The title of the card header.
@@ -2197,22 +2660,29 @@ class GoogleAppsCardV1CardHeader {
       };
 }
 
-/// The widget that lets users to specify a date and time.
+/// Lets users specify a date, a time, or both a date and a time.
 ///
-/// Not supported by Google Chat apps.
+/// Accepts text input from users, but features an interactive date and time
+/// selector that helps users enter correctly-formatted dates and times. If
+/// users enter a date or time incorrectly, the widget shows an error that
+/// prompts users to enter the correct format. Not supported by Chat apps.
+/// Support by Chat apps coming soon.
 class GoogleAppsCardV1DateTimePicker {
-  /// The label for the field that displays to the user.
+  /// The text that prompts users to enter a date, time, or datetime.
+  ///
+  /// Specify text that helps the user enter the information your app needs. For
+  /// example, if users are setting an appointment, then a label like
+  /// "Appointment date" or "Appointment date and time" might work well.
   core.String? label;
 
-  /// The name of the text input that's used in `formInput`, and uniquely
-  /// identifies this input.
+  /// The name by which the datetime picker is identified in a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? name;
 
-  /// Triggered when the user clicks Save or Clear from the date/time picker
-  /// dialog.
-  ///
-  /// This is only triggered if the value changed as a result of the Save/Clear
-  /// operation.
+  /// Triggered when the user clicks **Save** or **Clear** from the datetime
+  /// picker interface.
   GoogleAppsCardV1Action? onChangeAction;
 
   /// The number representing the time zone offset from UTC, in minutes.
@@ -2221,21 +2691,21 @@ class GoogleAppsCardV1DateTimePicker {
   /// not set, it uses the user's time zone setting on the client side.
   core.int? timezoneOffsetDate;
 
-  /// The type of the date/time picker.
+  /// What kind of date and time input the datetime picker supports.
   /// Possible string values are:
   /// - "DATE_AND_TIME" : The user can select a date and time.
   /// - "DATE_ONLY" : The user can only select a date.
   /// - "TIME_ONLY" : The user can only select a time.
   core.String? type;
 
-  /// The value to display as the default value before user input or previous
-  /// user input.
+  /// The value displayed as the default value before user input or previous
+  /// user input, represented in milliseconds
+  /// ([Epoch time](https://en.wikipedia.org/wiki/Unix_time)).
   ///
-  /// It is represented in milliseconds (Epoch time). For `DATE_AND_TIME` type,
-  /// the full epoch value is used. For `DATE_ONLY` type, only date of the epoch
-  /// time is used. For `TIME_ONLY` type, only time of the epoch time is used.
-  /// For example, you can set epoch time to `3 * 60 * 60 * 1000` to represent
-  /// 3am.
+  /// For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY`
+  /// type, only date of the epoch time is used. For `TIME_ONLY` type, only time
+  /// of the epoch time is used. For example, to represent 3:00 AM, set epoch
+  /// time to `3 * 60 * 60 * 1000`.
   core.String? valueMsEpoch;
 
   GoogleAppsCardV1DateTimePicker({
@@ -2280,41 +2750,59 @@ class GoogleAppsCardV1DateTimePicker {
 /// or below the text, an icon in front of the text, a selection widget or a
 /// button after the text.
 class GoogleAppsCardV1DecoratedText {
-  /// The formatted text label that shows below the main text.
+  /// The text that appears below `text`.
+  ///
+  /// Always truncates. Supports simple formatting. See Text formatting for
+  /// formatting details.
   core.String? bottomLabel;
 
   /// A button that can be clicked to trigger an action.
   GoogleAppsCardV1Button? button;
 
   /// An icon displayed after the text.
+  ///
+  /// Supports
+  /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
+  /// and
+  /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
+  /// icons.
   GoogleAppsCardV1Icon? endIcon;
 
-  /// Deprecated in favor of start_icon.
+  /// Deprecated in favor of `startIcon`.
   GoogleAppsCardV1Icon? icon;
 
-  /// Only the top and bottom label and content region are clickable.
+  /// When users click on `topLabel` or `bottomLabel`, this action triggers.
   GoogleAppsCardV1OnClick? onClick;
 
   /// The icon displayed in front of the text.
   GoogleAppsCardV1Icon? startIcon;
 
-  /// A switch widget can be clicked to change its state or trigger an action.
+  /// A switch widget can be clicked to change its state and trigger an action.
+  ///
+  /// Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon.
   GoogleAppsCardV1SwitchControl? switchControl;
 
-  /// The main widget formatted text.
+  /// The primary text.
   ///
-  /// See Text formatting for details.
+  /// Supports simple formatting. See Text formatting for formatting details.
   ///
   /// Required.
   core.String? text;
 
-  /// The formatted text label that shows above the main text.
+  /// The text that appears above `text`.
+  ///
+  /// Always truncates. Supports simple formatting. See Text formatting for
+  /// formatting details.
   core.String? topLabel;
 
   /// The wrap text setting.
   ///
-  /// If `true`, the text is wrapped and displayed in multiline. Otherwise, the
-  /// text is truncated.
+  /// If `true`, the text wraps and displays on multiple lines. Otherwise, the
+  /// text is truncated. Only applies to `text`, not `topLabel` and
+  /// `bottomLabel`.
   core.bool? wrapText;
 
   GoogleAppsCardV1DecoratedText({
@@ -2382,10 +2870,26 @@ class GoogleAppsCardV1DecoratedText {
       };
 }
 
-/// A divider that appears in between widgets.
+/// Displays a divider between widgets, a horizontal line.
+///
+/// For example, the following JSON creates a divider: ``` "divider": { } ```
 typedef GoogleAppsCardV1Divider = $Empty;
 
-/// Represents a Grid widget that displays items in a configurable grid layout.
+/// Displays a grid with a collection of items.
+///
+/// A grid supports any number of columns and items. The number of rows is
+/// determined by items divided by columns. A grid with 10 items and 2 columns
+/// has 5 rows. A grid with 11 items and 2 columns has 6 rows. Currently
+/// supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+/// Support for
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// is coming soon. For example, the following JSON creates a 2 column grid with
+/// a single item: ``` "grid": { "title": "A fine collection of items",
+/// "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 },
+/// "items": [ "image": { "imageUri": "https://www.example.com/image.png",
+/// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } },
+/// "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink": {
+/// "url":"https://www.example.com" } } } ```
 class GoogleAppsCardV1Grid {
   /// The border style to apply to each grid item.
   GoogleAppsCardV1BorderStyle? borderStyle;
@@ -2470,14 +2974,6 @@ class GoogleAppsCardV1GridItem {
   /// The grid item's subtitle.
   core.String? subtitle;
 
-  /// The horizontal alignment of the grid item's text.
-  /// Possible string values are:
-  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Unspecified alignment.
-  /// - "START" : Alignment to the start position.
-  /// - "CENTER" : Alignment to the center position.
-  /// - "END" : Alignment to the end position.
-  core.String? textAlignment;
-
   /// The grid item's title.
   core.String? title;
 
@@ -2486,7 +2982,6 @@ class GoogleAppsCardV1GridItem {
     this.image,
     this.layout,
     this.subtitle,
-    this.textAlignment,
     this.title,
   });
 
@@ -2503,9 +2998,6 @@ class GoogleAppsCardV1GridItem {
           subtitle: json_.containsKey('subtitle')
               ? json_['subtitle'] as core.String
               : null,
-          textAlignment: json_.containsKey('textAlignment')
-              ? json_['textAlignment'] as core.String
-              : null,
           title:
               json_.containsKey('title') ? json_['title'] as core.String : null,
         );
@@ -2515,18 +3007,38 @@ class GoogleAppsCardV1GridItem {
         if (image != null) 'image': image!,
         if (layout != null) 'layout': layout!,
         if (subtitle != null) 'subtitle': subtitle!,
-        if (textAlignment != null) 'textAlignment': textAlignment!,
         if (title != null) 'title': title!,
       };
 }
 
+/// An icon displayed in a widget on a card.
+///
+/// Supports
+/// [standard](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// and
+/// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
+/// icons.
 class GoogleAppsCardV1Icon {
-  /// The description of the icon, used for accessibility.
+  /// A description of the icon used for accessibility.
   ///
-  /// The default value is provided if you don't specify one.
+  /// If unspecified, a default value is provided. As a best practice, you
+  /// should set a helpful description. For example, if an icon displays a
+  /// user's account portrait, you could describe it as "A user's account
+  /// portrait." If the icon displays in a Button, this alt text takes
+  /// precedence and overwrites the button's alt text, so you should write alt
+  /// text for the button: Set descriptive text that lets users know what the
+  /// button does. For example, if a button opens a hyperlink, you might write:
+  /// "Opens a new browser tab and navigates to the Google Chat developer
+  /// documentation at https://developers.google.com/chat".
+  ///
+  /// Optional.
   core.String? altText;
 
-  /// The icon specified by a URL.
+  /// Display a custom icon hosted at an HTTPS URL.
+  ///
+  /// For example: ``` "iconUrl":
+  /// "https://developers.google.com/chat/images/quickstart-app-avatar.png" ```
+  /// Supported file types include `.png` and `.jpg`.
   core.String? iconUrl;
 
   /// The crop style applied to the image.
@@ -2534,11 +3046,17 @@ class GoogleAppsCardV1Icon {
   /// In some cases, applying a `CIRCLE` crop causes the image to be drawn
   /// larger than a standard icon.
   /// Possible string values are:
-  /// - "SQUARE" : Applies no cropping to the image.
-  /// - "CIRCLE" : Applies a circular mask to the image.
+  /// - "SQUARE" : Default value. Applies a square mask to the image. For
+  /// example, a 4x3 image becomes 3x3.
+  /// - "CIRCLE" : Applies a circular mask to the image. For example, a 4x3
+  /// image becomes a circle with a diameter of 3.
   core.String? imageType;
 
-  /// The icon specified by the string name of a list of known icons.
+  /// Display one of the standard icons provided by Google Workspace.
+  ///
+  /// For example, to display an airplane icon, specify `AIRPLANE`. For a bus,
+  /// specify `BUS`. For a full list of supported icons, see
+  /// [standard icons](https://developers.google.com/chat/api/guides/message-formats/cards).
   core.String? knownIcon;
 
   GoogleAppsCardV1Icon({
@@ -2577,10 +3095,13 @@ class GoogleAppsCardV1Image {
   /// The alternative text of this image, used for accessibility.
   core.String? altText;
 
-  /// An image URL.
+  /// The `https` URL that hosts the image.
+  ///
+  /// For example: ```
+  /// https://developers.google.com/chat/images/quickstart-app-avatar.png ```
   core.String? imageUrl;
 
-  /// The action triggered by an `onClick` event.
+  /// When a user clicks on the image, the click triggers this action.
   GoogleAppsCardV1OnClick? onClick;
 
   GoogleAppsCardV1Image({
@@ -2658,17 +3179,23 @@ class GoogleAppsCardV1ImageComponent {
 }
 
 /// Represents the crop style applied to an image.
+///
+/// For example, here's how to apply a 16 by 9 aspect ratio: ``` cropStyle {
+/// "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
 class GoogleAppsCardV1ImageCropStyle {
   /// The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.
+  ///
+  /// For example, here's how to apply a 16 by 9 aspect ratio: ``` cropStyle {
+  /// "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
   core.double? aspectRatio;
 
   /// The crop type.
   /// Possible string values are:
-  /// - "IMAGE_CROP_TYPE_UNSPECIFIED" : No value specified.
-  /// - "SQUARE" : Applies a square crop.
+  /// - "IMAGE_CROP_TYPE_UNSPECIFIED" : No value specified. Do not use.
+  /// - "SQUARE" : Default value. Applies a square crop.
   /// - "CIRCLE" : Applies a circular crop.
   /// - "RECTANGLE_CUSTOM" : Applies a rectangular crop with a custom aspect
-  /// ratio.
+  /// ratio. Set the custom aspect ratio with `aspectRatio`.
   /// - "RECTANGLE_4_3" : Applies a rectangular crop with a 4:3 aspect ratio.
   core.String? type;
 
@@ -2691,12 +3218,15 @@ class GoogleAppsCardV1ImageCropStyle {
       };
 }
 
-/// Represents the response to an `onClick` event.
+/// Represents how to respond when users click an interactive element on a card,
+/// such as a button.
 class GoogleAppsCardV1OnClick {
   /// If specified, an action is triggered by this `onClick`.
   GoogleAppsCardV1Action? action;
 
   /// A new card is pushed to the card stack after clicking if specified.
+  ///
+  /// Supported by Google Workspace Add-ons, but not Chat apps.
   GoogleAppsCardV1Card? card;
 
   /// An add-on triggers this action when the action needs to open a link.
@@ -2798,30 +3328,34 @@ class GoogleAppsCardV1OpenLink {
 
 /// A section contains a collection of widgets that are rendered vertically in
 /// the order that they are specified.
-///
-/// Across all platforms, cards have a narrow fixed width, so there is currently
-/// no need for layout properties, for example, float.
 class GoogleAppsCardV1Section {
   /// Indicates whether this section is collapsible.
   ///
-  /// If a section is collapsible, the description must be given.
+  /// Collapsible sections hide some or all widgets, but users can expand the
+  /// section to reveal the hidden widgets by clicking **Show more**. Users can
+  /// hide the widgets again by clicking **Show less**. To determine which
+  /// widgets are hidden, specify `uncollapsibleWidgetsCount`.
   core.bool? collapsible;
 
-  /// The header of the section.
+  /// Text that appears at the top of a section.
   ///
-  /// Formatted text is supported.
+  /// Supports
+  /// [simple HTML formatted text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
 
-  /// The number of uncollapsible widgets.
+  /// The number of uncollapsible widgets which remain visible even when a
+  /// section is collapsed.
   ///
   /// For example, when a section contains five widgets and the
   /// `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are
-  /// always shown and the last three are collapsed as default. The
+  /// always shown and the last three are collapsed by default. The
   /// `uncollapsibleWidgetsCount` is taken into account only when `collapsible`
   /// is `true`.
   core.int? uncollapsibleWidgetsCount;
 
-  /// A section must contain at least 1 widget.
+  /// All the widgets in the section.
+  ///
+  /// Must contain at least 1 widget.
   core.List<GoogleAppsCardV1Widget>? widgets;
 
   GoogleAppsCardV1Section({
@@ -2862,28 +3396,70 @@ class GoogleAppsCardV1Section {
 
 /// A widget that creates a UI item with options for users to select.
 ///
-/// For example, a dropdown menu.
+/// For example, a dropdown menu or check list. Chat apps receive and can
+/// process the value of entered text during form input events. For details
+/// about working with form inputs, see
+/// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+/// When you need to collect data from users that matches options you set, use a
+/// selection input. To collect abstract data from users, use the text input
+/// widget instead. Only supported in
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// coming soon.
 class GoogleAppsCardV1SelectionInput {
   /// An array of the selected items.
+  ///
+  /// For example, all the selected check boxes.
   core.List<GoogleAppsCardV1SelectionItem>? items;
 
-  /// The label displayed ahead of the switch control.
+  /// The text that appears above the selection input field in the user
+  /// interface.
+  ///
+  /// Specify text that helps the user enter the information your app needs. For
+  /// example, if users are selecting the urgency of a work ticket from a
+  /// drop-down menu, the label might be "Urgency" or "Select urgency".
   core.String? label;
 
-  /// The name of the text input which is used in `formInput`.
+  /// The name by which the selection input is identified in a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? name;
 
   /// If specified, the form is submitted when the selection changes.
   ///
-  /// If not specified, you must specify a separate button.
+  /// If not specified, you must specify a separate button that submits the
+  /// form. For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// The type of the selection.
+  /// The way that an option appears to users.
+  ///
+  /// Different options support different types of interactions. For example,
+  /// users can enable multiple check boxes, but can only select one value from
+  /// a dropdown menu. Each selection input supports one type of selection.
+  /// Mixing check boxes and switches, for example, is not supported.
   /// Possible string values are:
-  /// - "CHECK_BOX" : A checkbox.
-  /// - "RADIO_BUTTON" : A radio button.
-  /// - "SWITCH" : A switch.
-  /// - "DROPDOWN" : A dropdown menu.
+  /// - "CHECK_BOX" : A set of checkboxes. Users can select multiple check boxes
+  /// per selection input. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon.
+  /// - "RADIO_BUTTON" : A set of radio buttons. Users can select one radio
+  /// button per selection input. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon.
+  /// - "SWITCH" : A set of switches. Users can turn on multiple switches at
+  /// once per selection input. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon.
+  /// - "DROPDOWN" : A dropdown menu. Users can select one dropdown menu item
+  /// per selection input. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon.
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -2921,18 +3497,22 @@ class GoogleAppsCardV1SelectionInput {
       };
 }
 
-/// A selectable item in the switch control.
+/// A selectable item in a selection input, such as a check box or a switch.
 class GoogleAppsCardV1SelectionItem {
-  /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the
-  /// first selected item is treated as selected and the ones after are ignored.
+  /// When `true`, more than one item is selected.
+  ///
+  /// If more than one item is selected for radio buttons and dropdown menus,
+  /// the first selected item is received and the ones after are ignored.
   core.bool? selected;
 
-  /// The text to be displayed.
+  /// The text displayed to users.
   core.String? text;
 
   /// The value associated with this item.
   ///
-  /// The client should use this as a form input value.
+  /// The client should use this as a form input value. For details about
+  /// working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? value;
 
   GoogleAppsCardV1SelectionItem({
@@ -2958,9 +3538,11 @@ class GoogleAppsCardV1SelectionItem {
       };
 }
 
-/// A suggestion item.
+/// One suggested value that users can enter in a text input field.
 class GoogleAppsCardV1SuggestionItem {
-  /// The suggested autocomplete result.
+  /// The value of a suggested input to a text input field.
+  ///
+  /// This is equivalent to what users would enter themselves.
   core.String? text;
 
   GoogleAppsCardV1SuggestionItem({
@@ -2977,10 +3559,21 @@ class GoogleAppsCardV1SuggestionItem {
       };
 }
 
-/// A container wrapping elements necessary for showing suggestion items used in
-/// text input autocomplete.
+/// Suggested values that users can enter.
+///
+/// These values appear when users click inside the text input field. As users
+/// type, the suggested values dynamically filter to match what the users have
+/// typed. For example, a text input field for programming language might
+/// suggest Java, JavaScript, Python, and C++. When users start typing "Jav",
+/// the list of suggestions filters to show just Java and JavaScript. Suggested
+/// values help guide users to enter values that your app can make sense of.
+/// When referring to JavaScript, some users might enter "javascript" and others
+/// "java script". Suggesting "JavaScript" can standardize how users interact
+/// with your app. When specified, `TextInput.type` is always `SINGLE_LINE`,
+/// even if it is set to `MULTIPLE_LINE`.
 class GoogleAppsCardV1Suggestions {
-  /// A list of suggestions used for autocomplete recommendations.
+  /// A list of suggestions used for autocomplete recommendations in text input
+  /// fields.
   core.List<GoogleAppsCardV1SuggestionItem>? items;
 
   GoogleAppsCardV1Suggestions({
@@ -3002,25 +3595,37 @@ class GoogleAppsCardV1Suggestions {
       };
 }
 
-/// Either a toggle-style switch or a checkbox.
+/// Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
+///
+/// Only supported on the `decoratedText` widget. Currently supported in
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// is coming soon.
 class GoogleAppsCardV1SwitchControl {
-  /// The control type, either switch or checkbox.
+  /// How the switch appears in the user interface.
   /// Possible string values are:
   /// - "SWITCH" : A toggle-style switch.
   /// - "CHECKBOX" : Deprecated in favor of `CHECK_BOX`.
   /// - "CHECK_BOX" : A checkbox.
   core.String? controlType;
 
-  /// The name of the switch widget that's used in `formInput`.
+  /// The name by which the switch widget is identified in a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? name;
 
-  /// The action when the switch state is changed.
+  /// The action to perform when the switch state is changed, such as what
+  /// function to run.
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// If the switch is selected.
+  /// When `true`, the switch is selected.
   core.bool? selected;
 
-  /// The value is what is passed back in the callback.
+  /// The value entered by a user, returned as part of a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? value;
 
   GoogleAppsCardV1SwitchControl({
@@ -3057,39 +3662,87 @@ class GoogleAppsCardV1SwitchControl {
       };
 }
 
-/// A text input is a UI item where users can input text.
+/// A field in which users can enter text.
 ///
-/// A text input can also have an onChange action and suggestions.
+/// Supports suggestions and on-change actions. Chat apps receive and can
+/// process the value of entered text during form input events. For details
+/// about working with form inputs, see
+/// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+/// When you need to collect abstract data from users, use a text input. To
+/// collect defined data from users, use the selection input widget instead.
+/// Only supported in
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// coming soon.
 class GoogleAppsCardV1TextInput {
-  /// The refresh function that returns suggestions based on the user's input
-  /// text.
+  /// Specify what action to take when the text input field provides suggestions
+  /// to users who interact with it.
   ///
-  /// If the callback is not specified, autocomplete is done in client side
-  /// based on the initial suggestion items.
+  /// If unspecified, the suggestions are set by `initialSuggestions` and are
+  /// processed by the client. If specified, the app takes the action specified
+  /// here, such as running a custom function. Supported by Google Workspace
+  /// Add-ons, but not Chat apps. Support by Chat apps coming soon.
+  ///
+  /// Optional.
   GoogleAppsCardV1Action? autoCompleteAction;
 
-  /// The hint text.
+  /// Text that appears inside the text input field meant to assist users by
+  /// prompting them to enter a certain value.
+  ///
+  /// This text is not visible after users begin typing. Required if `label` is
+  /// unspecified. Otherwise, optional.
   core.String? hintText;
 
-  /// The initial suggestions made before any user input.
+  /// Suggested values that users can enter.
+  ///
+  /// These values appear when users click inside the text input field. As users
+  /// type, the suggested values dynamically filter to match what the users have
+  /// typed. For example, a text input field for programming language might
+  /// suggest Java, JavaScript, Python, and C++. When users start typing "Jav",
+  /// the list of suggestions filters to show just Java and JavaScript.
+  /// Suggested values help guide users to enter values that your app can make
+  /// sense of. When referring to JavaScript, some users might enter
+  /// "javascript" and others "java script". Suggesting "JavaScript" can
+  /// standardize how users interact with your app. When specified,
+  /// `TextInput.type` is always `SINGLE_LINE`, even if it is set to
+  /// `MULTIPLE_LINE`.
   GoogleAppsCardV1Suggestions? initialSuggestions;
 
-  /// At least one of label and hintText must be specified.
+  /// The text that appears above the text input field in the user interface.
+  ///
+  /// Specify text that helps the user enter the information your app needs. For
+  /// example, if you are asking someone's name, but specifically need their
+  /// surname, write "surname" instead of "name". Required if `hintText` is
+  /// unspecified. Otherwise, optional.
   core.String? label;
 
-  /// The name of the text input which is used in `formInput`.
+  /// The name by which the text input is identified in a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? name;
 
-  /// The onChange action, for example, invoke a function.
+  /// What to do when a change occurs in the text input field.
+  ///
+  /// Examples of changes include a user adding to the field, or deleting text.
+  /// Examples of actions to take include running a custom function or opening a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs) in Google
+  /// Chat.
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// The style of the text, for example, a single line or multiple lines.
+  /// How a text input field appears in the user interface.
+  ///
+  /// For example, whether the field is single or multi-line.
   /// Possible string values are:
-  /// - "SINGLE_LINE" : The text is put into a single line.
-  /// - "MULTIPLE_LINE" : The text is put into multiple lines.
+  /// - "SINGLE_LINE" : The text input field has a fixed height of one line.
+  /// - "MULTIPLE_LINE" : The text input field has a fixed height of multiple
+  /// lines.
   core.String? type;
 
-  /// The default value when there is no input from the user.
+  /// The value entered by a user, returned as part of a form input event.
+  ///
+  /// For details about working with form inputs, see
+  /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? value;
 
   GoogleAppsCardV1TextInput({
@@ -3165,90 +3818,104 @@ class GoogleAppsCardV1TextParagraph {
       };
 }
 
-/// A widget is a UI element that presents texts, images, etc.
+/// Each card is made up of widgets.
+///
+/// A widget is a composite object that can represent one of text, images,
+/// buttons, and other object types.
 class GoogleAppsCardV1Widget {
   /// A list of buttons.
   ///
-  /// For example, the following JSON creates two buttons. The first is a filled
+  /// For example, the following JSON creates two buttons. The first is a blue
   /// text button and the second is an image button that opens a link: ```
-  /// "buttonList": { "buttons": [ "button": { "text": "Edit", "Color": { "Red":
-  /// 255 "Green": 255 "Blue": 255 } "disabled": true }, "button": { "icon": {
-  /// "knownIcon": "INVITE" "altText": "check calendar" }, "onClick": {
-  /// "openLink": { "url": "https://example.com/calendar" } } }, ] } ```
+  /// "buttonList": { "buttons": [ "button": { "text": "Edit", "color": { "red":
+  /// 0, "green": 0, "blue": 1, "alpha": 1 } "disabled": true }, "button": {
+  /// "icon": { "knownIcon": "INVITE" "altText": "check calendar" }, "onClick":
+  /// { "openLink": { "url": "https://example.com/calendar" } } }, ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
 
-  /// Displays a selection/input widget for date/time.
+  /// Displays a selection/input widget for date, time, or date and time.
   ///
-  /// For example, the following JSON creates a date/time picker for an
-  /// appointment time: ``` "date_time_picker": { "name": "appointment_time",
+  /// Not supported by Chat apps. Support by Chat apps is coming soon. For
+  /// example, the following JSON creates a datetime picker to schedule an
+  /// appointment: ``` "date_time_picker": { "name": "appointment_time",
   /// "label": "Book your appointment at:", "type":
   /// "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
   GoogleAppsCardV1DateTimePicker? dateTimePicker;
 
-  /// Displays a decorated text item in this widget.
+  /// Displays a decorated text item.
   ///
   /// For example, the following JSON creates a decorated text widget showing
   /// email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" },
-  /// "topLabel": "Email Address", "content": "sasha@example.com",
-  /// "bottomLabel": "This is a new Email address!", "switchWidget": { "name":
+  /// "topLabel": "Email Address", "text": "sasha@example.com", "bottomLabel":
+  /// "This is a new Email address!", "switchWidget": { "name":
   /// "has_send_welcome_email_to_sasha", "selected": false, "controlType":
   /// "ControlType.CHECKBOX" } } ```
   GoogleAppsCardV1DecoratedText? decoratedText;
 
-  /// Displays a divider.
+  /// Displays a horizontal line divider between widgets.
   ///
   /// For example, the following JSON creates a divider: ``` "divider": { } ```
   GoogleAppsCardV1Divider? divider;
 
   /// Displays a grid with a collection of items.
   ///
-  /// For example, the following JSON creates a 2 column grid with a single
-  /// item: ``` "grid": { "title": "A fine collection of items", "numColumns":
-  /// 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 }, "items": [
-  /// "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": {
-  /// "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An
-  /// item", "textAlignment": "CENTER" ], "onClick": { "openLink": {
-  /// "url":"https://www.example.com" } } } ```
+  /// A grid supports any number of columns and items. The number of rows is
+  /// determined by the upper bounds of the number items divided by the number
+  /// of columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11
+  /// items and 2 columns has 6 rows. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon. For example, the following JSON creates a 2 column grid
+  /// with a single item: ``` "grid": { "title": "A fine collection of items",
+  /// "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 },
+  /// "items": [ "image": { "imageUri": "https://www.example.com/image.png",
+  /// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } },
+  /// "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink":
+  /// { "url":"https://www.example.com" } } } ```
   GoogleAppsCardV1Grid? grid;
 
-  /// The horizontal alignment of this widget.
-  /// Possible string values are:
-  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Unspecified alignment.
-  /// - "START" : Alignment to the start position.
-  /// - "CENTER" : Alignment to the center position.
-  /// - "END" : Alignment to the end position.
-  core.String? horizontalAlignment;
-
-  /// Displays an image in this widget.
+  /// Displays an image.
   ///
   /// For example, the following JSON creates an image with alternative text:
-  /// ``` "image": { "imageUrl": "https://example.com/sasha.png" "altText":
-  /// "Avatar for Sasha" } ```
+  /// ``` "image": { "imageUrl":
+  /// "https://developers.google.com/chat/images/quickstart-app-avatar.png"
+  /// "altText": "Chat app avatar" } ```
   GoogleAppsCardV1Image? image;
 
-  /// Displays a switch control in this widget.
+  /// Displays a selection control that lets users select items.
   ///
-  /// For example, the following JSON creates a dropdown selection for size: ```
-  /// "switchControl": { "name": "size", "label": "Size" "type":
-  /// "SelectionType.DROPDOWN", "items": [ { "text": "S", "value": "small",
-  /// "selected": false }, { "text": "M", "value": "medium", "selected": true },
-  /// { "text": "L", "value": "large", "selected": false }, { "text": "XL",
-  /// "value": "extra_large", "selected": false } ] } ```
+  /// Selection controls can be check boxes, radio buttons, switches, or
+  /// dropdown menus. Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon. For example, the following JSON creates a dropdown menu
+  /// that lets users choose a size: ``` "selectionInput": { "name": "size",
+  /// "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ { "text":
+  /// "S", "value": "small", "selected": false }, { "text": "M", "value":
+  /// "medium", "selected": true }, { "text": "L", "value": "large", "selected":
+  /// false }, { "text": "XL", "value": "extra_large", "selected": false } ] }
+  /// ```
   GoogleAppsCardV1SelectionInput? selectionInput;
 
-  /// Displays a text input in this widget.
+  /// Displays a text box that users can type into.
   ///
-  /// For example, the following JSON creates a text input for mail address: ```
-  /// "textInput": { "name": "mailing_address", "label": "Mailing Address" } ```
-  /// As another example, the following JSON creates a text input for
-  /// programming language with static suggestions: ``` "textInput": { "name":
-  /// "preferred_programing_language", "label": "Preferred Language",
-  /// "initialSuggestions": { "items": [ { "text": "C++" }, { "text": "Java" },
-  /// { "text": "JavaScript" }, { "text": "Python" } ] } } ```
+  /// Currently supported in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// is coming soon. For example, the following JSON creates a text input for
+  /// an email address: ``` "textInput": { "name": "mailing_address", "label":
+  /// "Mailing Address" } ``` As another example, the following JSON creates a
+  /// text input for a programming language with static suggestions: ```
+  /// "textInput": { "name": "preferred_programing_language", "label":
+  /// "Preferred Language", "initialSuggestions": { "items": [ { "text": "C++"
+  /// }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] }
+  /// } ```
   GoogleAppsCardV1TextInput? textInput;
 
-  /// Displays a text paragraph in this widget.
+  /// Displays a text paragraph.
   ///
+  /// Supports
+  /// [simple HTML formatted text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   /// For example, the following JSON creates a bolded text: ```
   /// "textParagraph": { "text": " *bold text*" } ```
   GoogleAppsCardV1TextParagraph? textParagraph;
@@ -3259,7 +3926,6 @@ class GoogleAppsCardV1Widget {
     this.decoratedText,
     this.divider,
     this.grid,
-    this.horizontalAlignment,
     this.image,
     this.selectionInput,
     this.textInput,
@@ -3288,9 +3954,6 @@ class GoogleAppsCardV1Widget {
               ? GoogleAppsCardV1Grid.fromJson(
                   json_['grid'] as core.Map<core.String, core.dynamic>)
               : null,
-          horizontalAlignment: json_.containsKey('horizontalAlignment')
-              ? json_['horizontalAlignment'] as core.String
-              : null,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
@@ -3315,8 +3978,6 @@ class GoogleAppsCardV1Widget {
         if (decoratedText != null) 'decoratedText': decoratedText!,
         if (divider != null) 'divider': divider!,
         if (grid != null) 'grid': grid!,
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
         if (image != null) 'image': image!,
         if (selectionInput != null) 'selectionInput': selectionInput!,
         if (textInput != null) 'textInput': textInput!,
@@ -3567,9 +4228,10 @@ class ListMembershipsResponse {
   /// List of memberships in the requested (or first) page.
   core.List<Membership>? memberships;
 
-  /// Continuation token to retrieve the next page of results.
+  /// A token that can be sent as `pageToken` to retrieve the next page of
+  /// results.
   ///
-  /// It will be empty for the last page of results.
+  /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListMembershipsResponse({
@@ -3597,10 +4259,10 @@ class ListMembershipsResponse {
 }
 
 class ListSpacesResponse {
-  /// Continuation token to retrieve the next page of results.
+  /// A token that can be sent as `pageToken` to retrieve the next page of
+  /// results.
   ///
-  /// It will be empty for the last page of results. Tokens expire in an hour.
-  /// An error is thrown if an expired token is passed.
+  /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// List of spaces in the requested (or first) page.
@@ -3759,10 +4421,11 @@ class Message {
   /// User uploaded attachment.
   core.List<Attachment>? attachment;
 
-  /// Rich, formatted and interactive cards that can be used to display UI
-  /// elements such as: formatted texts, buttons, clickable images.
+  /// Deprecated: Use `cards_v2` instead.
   ///
-  /// Cards are normally displayed below the plain-text body of the message.
+  /// Rich, formatted and interactive cards that can be used to display UI
+  /// elements such as: formatted texts, buttons, clickable images. Cards are
+  /// normally displayed below the plain-text body of the message.
   core.List<Card>? cards;
 
   /// Richly formatted and interactive cards that display UI elements and
@@ -3774,8 +4437,16 @@ class Message {
   /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The
   /// `cardId` is a unique identifier among cards in the same message and for
   /// identifying user input values. Currently supported widgets include: -
-  /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList`
+  /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` - `Divider`
   core.List<CardWithId>? cardsV2;
+
+  /// A custom name for a Chat message assigned at creation.
+  ///
+  /// Must start with `client-` and contain only lowercase letters, numbers, and
+  /// hyphens up to 63 characters in length. Specify this field to get, update,
+  /// or delete the message with the specified value. For example usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  core.String? clientAssignedMessageId;
 
   /// The time at which the message was created in Google Chat server.
   ///
@@ -3817,6 +4488,10 @@ class Message {
   SlashCommand? slashCommand;
 
   /// The space the message belongs to.
+  ///
+  /// When accessed with
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users),
+  /// only the name of the Space is populated.
   Space? space;
 
   /// Plain-text body of the message.
@@ -3826,7 +4501,20 @@ class Message {
   core.String? text;
 
   /// The thread the message belongs to.
+  ///
+  /// For example usage, see \[Start or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   Thread? thread;
+
+  /// When `true`, the message is a response in a reply thread.
+  ///
+  /// When `false`, the message is visible in the space's top-level conversation
+  /// as either the first message of a thread or a message with no threaded
+  /// replies. If the space doesn't support reply in threads, this field is
+  /// always `false`.
+  ///
+  /// Output only.
+  core.bool? threadReply;
 
   Message({
     this.actionResponse,
@@ -3835,6 +4523,7 @@ class Message {
     this.attachment,
     this.cards,
     this.cardsV2,
+    this.clientAssignedMessageId,
     this.createTime,
     this.fallbackText,
     this.lastUpdateTime,
@@ -3845,6 +4534,7 @@ class Message {
     this.space,
     this.text,
     this.thread,
+    this.threadReply,
   });
 
   Message.fromJson(core.Map json_)
@@ -3880,6 +4570,9 @@ class Message {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          clientAssignedMessageId: json_.containsKey('clientAssignedMessageId')
+              ? json_['clientAssignedMessageId'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3911,6 +4604,9 @@ class Message {
               ? Thread.fromJson(
                   json_['thread'] as core.Map<core.String, core.dynamic>)
               : null,
+          threadReply: json_.containsKey('threadReply')
+              ? json_['threadReply'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3920,6 +4616,8 @@ class Message {
         if (attachment != null) 'attachment': attachment!,
         if (cards != null) 'cards': cards!,
         if (cardsV2 != null) 'cardsV2': cardsV2!,
+        if (clientAssignedMessageId != null)
+          'clientAssignedMessageId': clientAssignedMessageId!,
         if (createTime != null) 'createTime': createTime!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
@@ -3930,6 +4628,7 @@ class Message {
         if (space != null) 'space': space!,
         if (text != null) 'text': text!,
         if (thread != null) 'thread': thread!,
+        if (threadReply != null) 'threadReply': threadReply!,
       };
 }
 
@@ -4120,6 +4819,22 @@ class Space {
   /// Details about the space including description and rules.
   SpaceDetails? spaceDetails;
 
+  /// The threading state in the Chat space.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SPACE_THREADING_STATE_UNSPECIFIED" : Reserved.
+  /// - "THREADED_MESSAGES" : Named spaces that support message threads. When
+  /// users respond to a message, they can reply in-thread, which keeps their
+  /// response in the context of the original message.
+  /// - "GROUPED_MESSAGES" : Named spaces where the conversation is organized by
+  /// topic. Topics and their replies are grouped together.
+  /// - "UNTHREADED_MESSAGES" : Direct messages (DMs) between two people and
+  /// group conversations between 3 or more people.
+  core.String? spaceThreadingState;
+
+  /// Deprecated: Use `spaceThreadingState` instead.
+  ///
   /// Whether messages are threaded in this space.
   ///
   /// Output only.
@@ -4144,6 +4859,7 @@ class Space {
     this.name,
     this.singleUserBotDm,
     this.spaceDetails,
+    this.spaceThreadingState,
     this.threaded,
     this.type,
   });
@@ -4161,6 +4877,9 @@ class Space {
               ? SpaceDetails.fromJson(
                   json_['spaceDetails'] as core.Map<core.String, core.dynamic>)
               : null,
+          spaceThreadingState: json_.containsKey('spaceThreadingState')
+              ? json_['spaceThreadingState'] as core.String
+              : null,
           threaded: json_.containsKey('threaded')
               ? json_['threaded'] as core.bool
               : null,
@@ -4172,6 +4891,8 @@ class Space {
         if (name != null) 'name': name!,
         if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
         if (spaceDetails != null) 'spaceDetails': spaceDetails!,
+        if (spaceThreadingState != null)
+          'spaceThreadingState': spaceThreadingState!,
         if (threaded != null) 'threaded': threaded!,
         if (type != null) 'type': type!,
       };
@@ -4263,22 +4984,37 @@ class TextParagraph {
 
 /// A thread in Google Chat.
 class Thread {
-  /// Resource name, in the form "spaces / * /threads / * ".
+  /// Resource name of the thread.
   ///
-  /// Example: spaces/AAAAAAAAAAA/threads/TTTTTTTTTTT
+  /// Example: spaces/{space}/threads/{thread}
   core.String? name;
+
+  /// Opaque thread identifier.
+  ///
+  /// To start or add to a thread, create a message and specify a `threadKey` or
+  /// the thread.name. For example usage, see \[Start or reply to a message
+  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// For other requests, this is an output only field.
+  ///
+  /// Optional.
+  core.String? threadKey;
 
   Thread({
     this.name,
+    this.threadKey,
   });
 
   Thread.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          threadKey: json_.containsKey('threadKey')
+              ? json_['threadKey'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (threadKey != null) 'threadKey': threadKey!,
       };
 }
 
@@ -4299,11 +5035,8 @@ class User {
 
   /// Resource name for a Google Chat user.
   ///
-  /// Represents a
-  /// [person](https://developers.google.com/people/api/rest/v1/people#Person)
-  /// in the People API or a
-  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
-  /// in the Admin SDK Directory API. Formatted as: `users/{user}`
+  /// For human users, represents a person in the People API or a user in the
+  /// Admin SDK Directory API. Format: `users/{user}`
   core.String? name;
 
   /// User type.

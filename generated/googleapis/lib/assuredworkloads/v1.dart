@@ -14,7 +14,7 @@
 
 /// Assured Workloads API - v1
 ///
-/// For more information, see <https://cloud.google.com>
+/// For more information, see <https://cloud.google.com/learnmoreurl>
 ///
 /// Create an instance of [AssuredworkloadsApi] to access these resources:
 ///
@@ -22,6 +22,7 @@
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///     - [OrganizationsLocationsWorkloadsResource]
+///       - [OrganizationsLocationsWorkloadsViolationsResource]
 library assuredworkloads.v1;
 
 import 'dart:async' as async;
@@ -183,6 +184,9 @@ class OrganizationsLocationsOperationsResource {
 class OrganizationsLocationsWorkloadsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsWorkloadsViolationsResource get violations =>
+      OrganizationsLocationsWorkloadsViolationsResource(_requester);
+
   OrganizationsLocationsWorkloadsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -287,7 +291,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Workload to fetch. This is the
-  /// workloads's relative path in the API, formatted as
+  /// workload's relative path in the API, formatted as
   /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
   /// For example,
   /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -372,6 +376,54 @@ class OrganizationsLocationsWorkloadsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the permissions settings for an existing partner workload.
+  ///
+  /// For force updates don't set etag field in the Workload. Only one update
+  /// operation per workload can be in progress.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the workload.
+  /// Format:
+  /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAssuredworkloadsV1Workload].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1Workload> mutatePartnerPermissions(
+    GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':mutatePartnerPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1Workload.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -483,6 +535,247 @@ class OrganizationsLocationsWorkloadsResource {
   }
 }
 
+class OrganizationsLocationsWorkloadsViolationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadsViolationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Acknowledges an existing violation.
+  ///
+  /// By acknowledging a violation, users acknowledge the existence of a
+  /// compliance violation in their workload and decide to ignore it due to a
+  /// valid business justification. Acknowledgement is a permanent operation and
+  /// it cannot be reverted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Violation to acknowledge.
+  /// Format:
+  /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+/violations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse>
+      acknowledge(
+    GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':acknowledge';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves Assured Workload Violation based on ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Violation to fetch (ie.
+  /// Violation.name). Format:
+  /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+/violations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAssuredworkloadsV1Violation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1Violation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1Violation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the Violations in the AssuredWorkload Environment.
+  ///
+  /// Callers may also choose to read across multiple Workloads as per
+  /// \[AIP-159\](https://google.aip.dev/159) by using '-' (the hyphen or dash
+  /// character) as a wildcard character instead of workload-id in the parent.
+  /// Format `organizations/{org_id}/locations/{location}/workloads/-`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Workload name. Format
+  /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A custom filter for filtering by the Violations
+  /// properties.
+  ///
+  /// [interval_endTime] - The end of the time window.
+  ///
+  /// [interval_startTime] - The start of the time window.
+  ///
+  /// [pageSize] - Optional. Page size.
+  ///
+  /// [pageToken] - Optional. Page token returned from previous request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAssuredworkloadsV1ListViolationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ListViolationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
+      if (interval_startTime != null)
+        'interval.startTime': [interval_startTime],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/violations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Request for acknowledging the violation Next Id: 4
+class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
+  /// Business justification explaining the need for violation acknowledgement
+  ///
+  /// Required.
+  core.String? comment;
+
+  /// This field is deprecated and will be removed in future version of the API.
+  ///
+  /// Name of the OrgPolicy which was modified with non-compliant change and
+  /// resulted in this violation. Format:
+  /// projects/{project_number}/policies/{constraint_name}
+  /// folders/{folder_id}/policies/{constraint_name}
+  /// organizations/{organization_id}/policies/{constraint_name}
+  ///
+  /// Optional.
+  core.String? nonCompliantOrgPolicy;
+
+  GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest({
+    this.comment,
+    this.nonCompliantOrgPolicy,
+  });
+
+  GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
+      core.Map json_)
+      : this(
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
+              ? json_['nonCompliantOrgPolicy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (nonCompliantOrgPolicy != null)
+          'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
+      };
+}
+
+/// Response for violation acknowledgement
+typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse = $Empty;
+
+/// Response of ListViolations endpoint.
+class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
+  /// The next page token.
+  ///
+  /// Returns empty if reached the last page.
+  core.String? nextPageToken;
+
+  /// List of Violations under a Workload.
+  core.List<GoogleCloudAssuredworkloadsV1Violation>? violations;
+
+  GoogleCloudAssuredworkloadsV1ListViolationsResponse({
+    this.nextPageToken,
+    this.violations,
+  });
+
+  GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          violations: json_.containsKey('violations')
+              ? (json_['violations'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1Violation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (violations != null) 'violations': violations!,
+      };
+}
+
 /// Response of ListWorkloads endpoint.
 class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   /// The next page token.
@@ -518,6 +811,55 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
       };
 }
 
+/// Request of updating permission settings for a partner workload.
+class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
+  /// The etag of the workload.
+  ///
+  /// If this is provided, it must match the server's etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The partner permissions to be updated.
+  ///
+  /// Required.
+  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions? partnerPermissions;
+
+  /// The list of fields to be updated.
+  ///
+  /// E.g. update_mask { paths: "partner_permissions.data_logs_viewer"}
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest({
+    this.etag,
+    this.partnerPermissions,
+    this.updateMask,
+  });
+
+  GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
+      core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          partnerPermissions: json_.containsKey('partnerPermissions')
+              ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
+                  .fromJson(json_['partnerPermissions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (partnerPermissions != null)
+          'partnerPermissions': partnerPermissions!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
 /// Request for restricting list of available resources in Workload environment.
 class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   /// The type of restriction for using gcp products in the Workload
@@ -533,6 +875,10 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   /// allowed list changes. See -
   /// https://cloud.google.com/assured-workloads/docs/supported-products for the
   /// list of supported resources.
+  /// - "APPEND_COMPLIANT_RESOURCES" : Similar to ALLOW_COMPLIANT_RESOURCES but
+  /// adds the list of compliant resources to the existing list of resources.
+  /// Effective org-policy of the Folder is considered to ensure there is no
+  /// disruption to the existing customer workflows.
   core.String? restrictionType;
 
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest({
@@ -555,7 +901,370 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 /// Response for restricting the list of allowed resources.
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
 
-/// An Workload object for managing highly regulated workloads of cloud
+/// Workload monitoring Violation.
+class GoogleCloudAssuredworkloadsV1Violation {
+  /// A boolean that indicates if the violation is acknowledged
+  core.bool? acknowledged;
+
+  /// Timestamp when this violation was acknowledged last.
+  ///
+  /// This will be absent when acknowledged field is marked as false.
+  ///
+  /// Optional.
+  core.String? acknowledgementTime;
+
+  /// Audit Log Link for violated resource Format:
+  /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
+  ///
+  /// Output only. Immutable.
+  core.String? auditLogLink;
+
+  /// Time of the event which triggered the Violation.
+  ///
+  /// Output only.
+  core.String? beginTime;
+
+  /// Category under which this violation is mapped.
+  ///
+  /// e.g. Location, Service Usage, Access, Encryption, etc.
+  ///
+  /// Output only.
+  core.String? category;
+
+  /// Description for the Violation.
+  ///
+  /// e.g. OrgPolicy gcp.resourceLocations has non compliant value.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Audit Log link to find business justification provided for violation
+  /// exception.
+  ///
+  /// Format:
+  /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}
+  ///
+  /// Output only. Immutable.
+  core.String? exceptionAuditLogLink;
+
+  /// Name of the Violation.
+  ///
+  /// Format:
+  /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
+  ///
+  /// Output only. Immutable.
+  core.String? name;
+
+  /// Name of the OrgPolicy which was modified with non-compliant change and
+  /// resulted this violation.
+  ///
+  /// Format: projects/{project_number}/policies/{constraint_name}
+  /// folders/{folder_id}/policies/{constraint_name}
+  /// organizations/{organization_id}/policies/{constraint_name}
+  ///
+  /// Output only. Immutable.
+  core.String? nonCompliantOrgPolicy;
+
+  /// The org-policy-constraint that was incorrectly changed, which resulted in
+  /// this violation.
+  ///
+  /// Output only. Immutable.
+  core.String? orgPolicyConstraint;
+
+  /// Compliance violation remediation
+  ///
+  /// Output only.
+  GoogleCloudAssuredworkloadsV1ViolationRemediation? remediation;
+
+  /// Time of the event which fixed the Violation.
+  ///
+  /// If the violation is ACTIVE this will be empty.
+  ///
+  /// Output only.
+  core.String? resolveTime;
+
+  /// State of the violation
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RESOLVED" : Violation is resolved.
+  /// - "UNRESOLVED" : Violation is Unresolved
+  /// - "EXCEPTION" : Violation is Exception
+  core.String? state;
+
+  /// The last time when the Violation record was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAssuredworkloadsV1Violation({
+    this.acknowledged,
+    this.acknowledgementTime,
+    this.auditLogLink,
+    this.beginTime,
+    this.category,
+    this.description,
+    this.exceptionAuditLogLink,
+    this.name,
+    this.nonCompliantOrgPolicy,
+    this.orgPolicyConstraint,
+    this.remediation,
+    this.resolveTime,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1Violation.fromJson(core.Map json_)
+      : this(
+          acknowledged: json_.containsKey('acknowledged')
+              ? json_['acknowledged'] as core.bool
+              : null,
+          acknowledgementTime: json_.containsKey('acknowledgementTime')
+              ? json_['acknowledgementTime'] as core.String
+              : null,
+          auditLogLink: json_.containsKey('auditLogLink')
+              ? json_['auditLogLink'] as core.String
+              : null,
+          beginTime: json_.containsKey('beginTime')
+              ? json_['beginTime'] as core.String
+              : null,
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          exceptionAuditLogLink: json_.containsKey('exceptionAuditLogLink')
+              ? json_['exceptionAuditLogLink'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
+              ? json_['nonCompliantOrgPolicy'] as core.String
+              : null,
+          orgPolicyConstraint: json_.containsKey('orgPolicyConstraint')
+              ? json_['orgPolicyConstraint'] as core.String
+              : null,
+          remediation: json_.containsKey('remediation')
+              ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
+                  json_['remediation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resolveTime: json_.containsKey('resolveTime')
+              ? json_['resolveTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledged != null) 'acknowledged': acknowledged!,
+        if (acknowledgementTime != null)
+          'acknowledgementTime': acknowledgementTime!,
+        if (auditLogLink != null) 'auditLogLink': auditLogLink!,
+        if (beginTime != null) 'beginTime': beginTime!,
+        if (category != null) 'category': category!,
+        if (description != null) 'description': description!,
+        if (exceptionAuditLogLink != null)
+          'exceptionAuditLogLink': exceptionAuditLogLink!,
+        if (name != null) 'name': name!,
+        if (nonCompliantOrgPolicy != null)
+          'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
+        if (orgPolicyConstraint != null)
+          'orgPolicyConstraint': orgPolicyConstraint!,
+        if (remediation != null) 'remediation': remediation!,
+        if (resolveTime != null) 'resolveTime': resolveTime!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents remediation guidance to resolve compliance violation for
+/// AssuredWorkload
+class GoogleCloudAssuredworkloadsV1ViolationRemediation {
+  /// Values that can resolve the violation For example: for list org policy
+  /// violations, this will either be the list of allowed or denied values
+  core.List<core.String>? compliantValues;
+
+  /// Remediation instructions to resolve violations
+  ///
+  /// Required.
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions? instructions;
+
+  /// Reemediation type based on the type of org policy values violated
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REMEDIATION_TYPE_UNSPECIFIED" : Unspecified remediation type
+  /// - "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION" : Remediation type for
+  /// boolean org policy
+  /// - "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION" : Remediation
+  /// type for list org policy which have allowed values in the monitoring rule
+  /// - "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION" : Remediation type
+  /// for list org policy which have denied values in the monitoring rule
+  /// - "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" :
+  /// Remediation type for gcp.restrictCmekCryptoKeyProjects
+  core.String? remediationType;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediation({
+    this.compliantValues,
+    this.instructions,
+    this.remediationType,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(core.Map json_)
+      : this(
+          compliantValues: json_.containsKey('compliantValues')
+              ? (json_['compliantValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          instructions: json_.containsKey('instructions')
+              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions
+                  .fromJson(json_['instructions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          remediationType: json_.containsKey('remediationType')
+              ? json_['remediationType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compliantValues != null) 'compliantValues': compliantValues!,
+        if (instructions != null) 'instructions': instructions!,
+        if (remediationType != null) 'remediationType': remediationType!,
+      };
+}
+
+/// Instructions to remediate violation
+class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
+  /// Remediation instructions to resolve violation via cloud console
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole?
+      consoleInstructions;
+
+  /// Remediation instructions to resolve violation via gcloud cli
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud?
+      gcloudInstructions;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions({
+    this.consoleInstructions,
+    this.gcloudInstructions,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions.fromJson(
+      core.Map json_)
+      : this(
+          consoleInstructions: json_.containsKey('consoleInstructions')
+              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
+                  .fromJson(json_['consoleInstructions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcloudInstructions: json_.containsKey('gcloudInstructions')
+              ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
+                  .fromJson(json_['gcloudInstructions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consoleInstructions != null)
+          'consoleInstructions': consoleInstructions!,
+        if (gcloudInstructions != null)
+          'gcloudInstructions': gcloudInstructions!,
+      };
+}
+
+/// Remediation instructions to resolve violation via cloud console
+class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole {
+  /// Additional urls for more information about steps
+  core.List<core.String>? additionalLinks;
+
+  /// Link to console page where violations can be resolved
+  core.List<core.String>? consoleUris;
+
+  /// Steps to resolve violation via cloud console
+  core.List<core.String>? steps;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole({
+    this.additionalLinks,
+    this.consoleUris,
+    this.steps,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
+      core.Map json_)
+      : this(
+          additionalLinks: json_.containsKey('additionalLinks')
+              ? (json_['additionalLinks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          consoleUris: json_.containsKey('consoleUris')
+              ? (json_['consoleUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
+        if (consoleUris != null) 'consoleUris': consoleUris!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// Remediation instructions to resolve violation via gcloud cli
+class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud {
+  /// Additional urls for more information about steps
+  core.List<core.String>? additionalLinks;
+
+  /// Gcloud command to resolve violation
+  core.List<core.String>? gcloudCommands;
+
+  /// Steps to resolve violation via gcloud cli
+  core.List<core.String>? steps;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud({
+    this.additionalLinks,
+    this.gcloudCommands,
+    this.steps,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
+      core.Map json_)
+      : this(
+          additionalLinks: json_.containsKey('additionalLinks')
+              ? (json_['additionalLinks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          gcloudCommands: json_.containsKey('gcloudCommands')
+              ? (json_['gcloudCommands'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
+        if (gcloudCommands != null) 'gcloudCommands': gcloudCommands!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// A Workload object for managing highly regulated workloads of cloud
 /// customers.
 class GoogleCloudAssuredworkloadsV1Workload {
   /// The billing account used for the resources which are direct children of
@@ -588,7 +1297,17 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
   /// Support controls
   /// - "ITAR" : International Traffic in Arms Regulations
+  /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
+  /// and Support controls Available for public preview consumption. Don't
+  /// create production workloads.
+  /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners
+  /// - "ISR_REGIONS" : Assured Workloads for Israel Regions
   core.String? complianceRegime;
+
+  /// Count of active Violations in the Workload.
+  ///
+  /// Output only.
+  GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus? complianceStatus;
 
   /// Urls for services which are compliant for this Assured Workload, but which
   /// are currently disallowed by the ResourceUsageRestriction org policy.
@@ -659,6 +1378,15 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Optional.
   core.String? name;
 
+  /// Partner regime associated with this workload.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTNER_UNSPECIFIED"
+  /// - "LOCAL_CONTROLS_BY_S3NS" : Enum representing S3NS partner.
+  /// - "SOVEREIGN_CONTROLS_BY_T_SYSTEMS" : Enum representing T_SYSTEM partner.
+  core.String? partner;
+
   /// Input only.
   ///
   /// The parent resource for the resources managed by this Assured Workload.
@@ -695,6 +1423,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   GoogleCloudAssuredworkloadsV1Workload({
     this.billingAccount,
     this.complianceRegime,
+    this.complianceStatus,
     this.compliantButDisallowedServices,
     this.createTime,
     this.displayName,
@@ -704,6 +1433,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.kmsSettings,
     this.labels,
     this.name,
+    this.partner,
     this.provisionedResourcesParent,
     this.resourceSettings,
     this.resources,
@@ -717,6 +1447,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
               : null,
           complianceRegime: json_.containsKey('complianceRegime')
               ? json_['complianceRegime'] as core.String
+              : null,
+          complianceStatus: json_.containsKey('complianceStatus')
+              ? GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
+                  json_['complianceStatus']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           compliantButDisallowedServices:
               json_.containsKey('compliantButDisallowedServices')
@@ -750,6 +1485,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          partner: json_.containsKey('partner')
+              ? json_['partner'] as core.String
+              : null,
           provisionedResourcesParent:
               json_.containsKey('provisionedResourcesParent')
                   ? json_['provisionedResourcesParent'] as core.String
@@ -780,6 +1518,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
+        if (complianceStatus != null) 'complianceStatus': complianceStatus!,
         if (compliantButDisallowedServices != null)
           'compliantButDisallowedServices': compliantButDisallowedServices!,
         if (createTime != null) 'createTime': createTime!,
@@ -792,6 +1531,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (partner != null) 'partner': partner!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
         if (resourceSettings != null) 'resourceSettings': resourceSettings!,
@@ -801,7 +1541,43 @@ class GoogleCloudAssuredworkloadsV1Workload {
       };
 }
 
+/// Represents the Compliance Status of this workload
+class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
+  /// Count of active Violations which are acknowledged in the Workload.
+  core.int? acknowledgedViolationCount;
+
+  /// Count of active Violations which haven't been acknowledged.
+  core.int? activeViolationCount;
+
+  GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus({
+    this.acknowledgedViolationCount,
+    this.activeViolationCount,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(core.Map json_)
+      : this(
+          acknowledgedViolationCount:
+              json_.containsKey('acknowledgedViolationCount')
+                  ? json_['acknowledgedViolationCount'] as core.int
+                  : null,
+          activeViolationCount: json_.containsKey('activeViolationCount')
+              ? json_['activeViolationCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgedViolationCount != null)
+          'acknowledgedViolationCount': acknowledgedViolationCount!,
+        if (activeViolationCount != null)
+          'activeViolationCount': activeViolationCount!,
+      };
+}
+
 /// Settings specific to the Key Management Service.
+///
+/// This message is deprecated. In order to create a Keyring, callers should
+/// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in
+/// ResourceSettings.resource_type field.
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   /// Input only.
   ///
@@ -838,6 +1614,47 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
         if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
+      };
+}
+
+/// Permissions granted to the AW Partner SA account for the customer workload
+class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
+  /// Allow partner to view data and logs
+  core.bool? dataLogsViewer;
+
+  /// Allow partner to monitor folder and remediate violations
+  core.bool? remediateFolderViolations;
+
+  /// Allow partner to approve or reject Service Access requests
+  core.bool? serviceAccessApprover;
+
+  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({
+    this.dataLogsViewer,
+    this.remediateFolderViolations,
+    this.serviceAccessApprover,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
+      core.Map json_)
+      : this(
+          dataLogsViewer: json_.containsKey('dataLogsViewer')
+              ? json_['dataLogsViewer'] as core.bool
+              : null,
+          remediateFolderViolations:
+              json_.containsKey('remediateFolderViolations')
+                  ? json_['remediateFolderViolations'] as core.bool
+                  : null,
+          serviceAccessApprover: json_.containsKey('serviceAccessApprover')
+              ? json_['serviceAccessApprover'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
+        if (remediateFolderViolations != null)
+          'remediateFolderViolations': remediateFolderViolations!,
+        if (serviceAccessApprover != null)
+          'serviceAccessApprover': serviceAccessApprover!,
       };
 }
 
@@ -898,8 +1715,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
 
   /// Indicates the type of resource.
   ///
-  /// This field should be specified to correspond the id to the right project
-  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+  /// This field should be specified to correspond the id to the right resource
+  /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
   /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no

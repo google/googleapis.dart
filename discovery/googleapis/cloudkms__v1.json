@@ -209,6 +209,100 @@
                         }
                     },
                     "resources": {
+                        "ekmConfig": {
+                            "methods": {
+                                "getIamPolicy": {
+                                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:getIamPolicy",
+                                    "httpMethod": "GET",
+                                    "id": "cloudkms.projects.locations.ekmConfig.getIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "options.requestedPolicyVersion": {
+                                            "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/ekmConfig$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:getIamPolicy",
+                                    "response": {
+                                        "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudkms"
+                                    ]
+                                },
+                                "setIamPolicy": {
+                                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:setIamPolicy",
+                                    "httpMethod": "POST",
+                                    "id": "cloudkms.projects.locations.ekmConfig.setIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/ekmConfig$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:setIamPolicy",
+                                    "request": {
+                                        "$ref": "SetIamPolicyRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudkms"
+                                    ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:testIamPermissions",
+                                    "httpMethod": "POST",
+                                    "id": "cloudkms.projects.locations.ekmConfig.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/ekmConfig$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:testIamPermissions",
+                                    "request": {
+                                        "$ref": "TestIamPermissionsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "TestIamPermissionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudkms"
+                                    ]
+                                }
+                            }
+                        },
                         "ekmConnections": {
                             "methods": {
                                 "create": {
@@ -1580,7 +1674,7 @@
             }
         }
     },
-    "revision": "20220902",
+    "revision": "20221111",
     "rootUrl": "https://cloudkms.googleapis.com/",
     "schemas": {
         "AsymmetricDecryptRequest": {
@@ -1973,6 +2067,10 @@
                         "EC_SIGN_P384_SHA384",
                         "EC_SIGN_SECP256K1_SHA256",
                         "HMAC_SHA256",
+                        "HMAC_SHA1",
+                        "HMAC_SHA384",
+                        "HMAC_SHA512",
+                        "HMAC_SHA224",
                         "EXTERNAL_SYMMETRIC_ENCRYPTION"
                     ],
                     "enumDescriptions": [
@@ -2000,6 +2098,10 @@
                         "ECDSA on the NIST P-384 curve with a SHA384 digest.",
                         "ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.",
                         "HMAC-SHA256 signing with a 256 bit key.",
+                        "HMAC-SHA1 signing with a 160 bit key.",
+                        "HMAC-SHA384 signing with a 384 bit key.",
+                        "HMAC-SHA512 signing with a 512 bit key.",
+                        "HMAC-SHA224 signing with a 224 bit key.",
                         "Algorithm representing symmetric encryption by an external key manager."
                     ],
                     "readOnly": true,
@@ -2141,6 +2243,10 @@
                         "EC_SIGN_P384_SHA384",
                         "EC_SIGN_SECP256K1_SHA256",
                         "HMAC_SHA256",
+                        "HMAC_SHA1",
+                        "HMAC_SHA384",
+                        "HMAC_SHA512",
+                        "HMAC_SHA224",
                         "EXTERNAL_SYMMETRIC_ENCRYPTION"
                     ],
                     "enumDescriptions": [
@@ -2168,6 +2274,10 @@
                         "ECDSA on the NIST P-384 curve with a SHA384 digest.",
                         "ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.",
                         "HMAC-SHA256 signing with a 256 bit key.",
+                        "HMAC-SHA1 signing with a 160 bit key.",
+                        "HMAC-SHA384 signing with a 384 bit key.",
+                        "HMAC-SHA512 signing with a 512 bit key.",
+                        "HMAC-SHA224 signing with a 224 bit key.",
                         "Algorithm representing symmetric encryption by an external key manager."
                     ],
                     "type": "string"
@@ -2298,7 +2408,7 @@
                     "type": "string"
                 },
                 "etag": {
-                    "description": "Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.",
+                    "description": "Optional. Etag of the currently stored EkmConnection.",
                     "type": "string"
                 },
                 "name": {
@@ -2506,6 +2616,10 @@
                         "EC_SIGN_P384_SHA384",
                         "EC_SIGN_SECP256K1_SHA256",
                         "HMAC_SHA256",
+                        "HMAC_SHA1",
+                        "HMAC_SHA384",
+                        "HMAC_SHA512",
+                        "HMAC_SHA224",
                         "EXTERNAL_SYMMETRIC_ENCRYPTION"
                     ],
                     "enumDescriptions": [
@@ -2533,6 +2647,10 @@
                         "ECDSA on the NIST P-384 curve with a SHA384 digest.",
                         "ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.",
                         "HMAC-SHA256 signing with a 256 bit key.",
+                        "HMAC-SHA1 signing with a 160 bit key.",
+                        "HMAC-SHA384 signing with a 384 bit key.",
+                        "HMAC-SHA512 signing with a 512 bit key.",
+                        "HMAC-SHA224 signing with a 224 bit key.",
                         "Algorithm representing symmetric encryption by an external key manager."
                     ],
                     "type": "string"
@@ -3088,6 +3206,10 @@
                         "EC_SIGN_P384_SHA384",
                         "EC_SIGN_SECP256K1_SHA256",
                         "HMAC_SHA256",
+                        "HMAC_SHA1",
+                        "HMAC_SHA384",
+                        "HMAC_SHA512",
+                        "HMAC_SHA224",
                         "EXTERNAL_SYMMETRIC_ENCRYPTION"
                     ],
                     "enumDescriptions": [
@@ -3115,6 +3237,10 @@
                         "ECDSA on the NIST P-384 curve with a SHA384 digest.",
                         "ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.",
                         "HMAC-SHA256 signing with a 256 bit key.",
+                        "HMAC-SHA1 signing with a 160 bit key.",
+                        "HMAC-SHA384 signing with a 384 bit key.",
+                        "HMAC-SHA512 signing with a 512 bit key.",
+                        "HMAC-SHA224 signing with a 224 bit key.",
                         "Algorithm representing symmetric encryption by an external key manager."
                     ],
                     "type": "string"

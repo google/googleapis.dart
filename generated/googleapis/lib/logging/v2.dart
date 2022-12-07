@@ -925,7 +925,9 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
-  /// [viewId] - Required. The id to use for this view.
+  /// [viewId] - Required. A client-assigned identifier such as "my-view".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3108,7 +3110,9 @@ class FoldersLocationsBucketsViewsResource {
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
-  /// [viewId] - Required. The id to use for this view.
+  /// [viewId] - Required. A client-assigned identifier such as "my-view".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4455,7 +4459,9 @@ class LocationsBucketsViewsResource {
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
-  /// [viewId] - Required. The id to use for this view.
+  /// [viewId] - Required. A client-assigned identifier such as "my-view".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5927,7 +5933,9 @@ class OrganizationsLocationsBucketsViewsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
-  /// [viewId] - Required. The id to use for this view.
+  /// [viewId] - Required. A client-assigned identifier such as "my-view".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7638,7 +7646,9 @@ class ProjectsLocationsBucketsViewsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
-  /// [viewId] - Required. The id to use for this view.
+  /// [viewId] - Required. A client-assigned identifier such as "my-view".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

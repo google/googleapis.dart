@@ -23,6 +23,7 @@
 ///
 /// - [AccountsResource]
 ///   - [AccountsContainersResource]
+///     - [AccountsContainersDestinationsResource]
 ///     - [AccountsContainersEnvironmentsResource]
 ///     - [AccountsContainersVersionHeadersResource]
 ///     - [AccountsContainersVersionsResource]
@@ -30,6 +31,7 @@
 ///       - [AccountsContainersWorkspacesBuiltInVariablesResource]
 ///       - [AccountsContainersWorkspacesClientsResource]
 ///       - [AccountsContainersWorkspacesFoldersResource]
+///       - [AccountsContainersWorkspacesGtagConfigResource]
 ///       - [AccountsContainersWorkspacesTagsResource]
 ///       - [AccountsContainersWorkspacesTemplatesResource]
 ///       - [AccountsContainersWorkspacesTriggersResource]
@@ -144,6 +146,9 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
+  /// [includeGoogleTags] - Also retrieve accounts associated with Google Tag
+  /// when true.
+  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -157,10 +162,13 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({
+    core.bool? includeGoogleTags,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeGoogleTags != null)
+        'includeGoogleTags': ['${includeGoogleTags}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
@@ -182,7 +190,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
+  /// [path] - GTM Account's API relative path. Example: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
@@ -225,6 +233,8 @@ class AccountsResource {
 class AccountsContainersResource {
   final commons.ApiRequester _requester;
 
+  AccountsContainersDestinationsResource get destinations =>
+      AccountsContainersDestinationsResource(_requester);
   AccountsContainersEnvironmentsResource get environments =>
       AccountsContainersEnvironmentsResource(_requester);
   AccountsContainersVersionHeadersResource get versionHeaders =>
@@ -235,6 +245,64 @@ class AccountsContainersResource {
       AccountsContainersWorkspacesResource(_requester);
 
   AccountsContainersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Combines Containers.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
+  ///
+  /// [allowUserPermissionFeatureUpdate] - Must be set to true to allow
+  /// features.user_permissions to change from false to true. If this operation
+  /// causes an update but this bit is false, the operation will fail.
+  ///
+  /// [containerId] - ID of container that will be merged into the current
+  /// container.
+  ///
+  /// [settingSource] - Specify the source of config setting after combine
+  /// Possible string values are:
+  /// - "settingSourceUnspecified"
+  /// - "current" : Keep the current container config setting after combine
+  /// - "other" : Use config setting from the other tag after combine
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Container].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Container> combine(
+    core.String path, {
+    core.bool? allowUserPermissionFeatureUpdate,
+    core.String? containerId,
+    core.String? settingSource,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowUserPermissionFeatureUpdate != null)
+        'allowUserPermissionFeatureUpdate': [
+          '${allowUserPermissionFeatureUpdate}'
+        ],
+      if (containerId != null) 'containerId': [containerId],
+      if (settingSource != null) 'settingSource': [settingSource],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':combine';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a Container.
   ///
@@ -352,7 +420,7 @@ class AccountsContainersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Accounts's API relative path. Example:
+  /// [parent] - GTM Account's API relative path. Example:
   /// accounts/{account_id}.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
@@ -387,6 +455,150 @@ class AccountsContainersResource {
       queryParams: queryParams_,
     );
     return ListContainersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Looks up a Container by destination ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [destinationId] - Destination ID linked to a GTM Container, e.g.
+  /// AW-123456789. Example:
+  /// accounts/containers:lookup?destination_id={destination_id}.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Container].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Container> lookup({
+    core.String? destinationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (destinationId != null) 'destinationId': [destinationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'tagmanager/v2/accounts/containers:lookup';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Move Tag ID out of a Container.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
+  ///
+  /// [allowUserPermissionFeatureUpdate] - Must be set to true to allow
+  /// features.user_permissions to change from false to true. If this operation
+  /// causes an update but this bit is false, the operation will fail.
+  ///
+  /// [copySettings] - Whether or not to copy tag settings from this tag to the
+  /// new tag.
+  ///
+  /// [copyTermsOfService] - Must be set to true to accept all terms of service
+  /// agreements copied from the current tag to the newly created tag. If this
+  /// bit is false, the operation will fail.
+  ///
+  /// [copyUsers] - Whether or not to copy users from this tag to the new tag.
+  ///
+  /// [tagId] - Tag ID to be removed from the current Container.
+  ///
+  /// [tagName] - The name for the newly created tag.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Container].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Container> moveTagId(
+    core.String path, {
+    core.bool? allowUserPermissionFeatureUpdate,
+    core.bool? copySettings,
+    core.bool? copyTermsOfService,
+    core.bool? copyUsers,
+    core.String? tagId,
+    core.String? tagName,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowUserPermissionFeatureUpdate != null)
+        'allowUserPermissionFeatureUpdate': [
+          '${allowUserPermissionFeatureUpdate}'
+        ],
+      if (copySettings != null) 'copySettings': ['${copySettings}'],
+      if (copyTermsOfService != null)
+        'copyTermsOfService': ['${copyTermsOfService}'],
+      if (copyUsers != null) 'copyUsers': ['${copyUsers}'],
+      if (tagId != null) 'tagId': [tagId],
+      if (tagName != null) 'tagName': [tagName],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':move_tag_id';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the tagging snippet for a Container.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - Container snippet's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}:snippet
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetContainerSnippetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetContainerSnippetResponse> snippet(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':snippet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetContainerSnippetResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -434,6 +646,142 @@ class AccountsContainersResource {
       queryParams: queryParams_,
     );
     return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsContainersDestinationsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersDestinationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a Destination.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - Google Tag Destination's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/destinations/{destination_link_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/destinations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Destination].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Destination> get(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Destination.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Adds a Destination to this Container and removes it from the Container to
+  /// which it is currently linked.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM parent Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
+  ///
+  /// [allowUserPermissionFeatureUpdate] - Must be set to true to allow
+  /// features.user_permissions to change from false to true. If this operation
+  /// causes an update but this bit is false, the operation will fail.
+  ///
+  /// [destinationId] - Destination ID to be linked to the current container.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Destination].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Destination> link(
+    core.String parent, {
+    core.bool? allowUserPermissionFeatureUpdate,
+    core.String? destinationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowUserPermissionFeatureUpdate != null)
+        'allowUserPermissionFeatureUpdate': [
+          '${allowUserPermissionFeatureUpdate}'
+        ],
+      if (destinationId != null) 'destinationId': [destinationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/destinations:link';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Destination.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Destinations linked to a GTM Container.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM parent Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDestinationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDestinationsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/destinations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDestinationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1088,6 +1436,8 @@ class AccountsContainersWorkspacesResource {
       AccountsContainersWorkspacesClientsResource(_requester);
   AccountsContainersWorkspacesFoldersResource get folders =>
       AccountsContainersWorkspacesFoldersResource(_requester);
+  AccountsContainersWorkspacesGtagConfigResource get gtagConfig =>
+      AccountsContainersWorkspacesGtagConfigResource(_requester);
   AccountsContainersWorkspacesTagsResource get tags =>
       AccountsContainersWorkspacesTagsResource(_requester);
   AccountsContainersWorkspacesTemplatesResource get templates =>
@@ -2409,6 +2759,221 @@ class AccountsContainersWorkspacesFoldersResource {
       queryParams: queryParams_,
     );
     return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsContainersWorkspacesGtagConfigResource {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersWorkspacesGtagConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Google tag config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GtagConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GtagConfig> create(
+    GtagConfig request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/gtag_config';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GtagConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Google tag config.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - Google tag config's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/gtag_config/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets a Google tag config.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - Google tag config's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/gtag_config/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GtagConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GtagConfig> get(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GtagConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Google tag configs in a Container.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGtagConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGtagConfigResponse> list(
+    core.String parent, {
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/gtag_config';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGtagConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Google tag config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - Google tag config's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/gtag_config/\[^/\]+$`.
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the config in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GtagConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GtagConfig> update(
+    GtagConfig request,
+    core.String path, {
+    core.String? fingerprint,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GtagConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3811,8 +4376,7 @@ class AccountsUserPermissionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Accounts's API relative path. Example:
-  /// accounts/{account_id}
+  /// [parent] - GTM Account's API relative path. Example: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
@@ -3897,6 +4461,9 @@ class Account {
   /// The Account ID uniquely identifies the GTM Account.
   core.String? accountId;
 
+  /// Read-only Account feature set
+  AccountFeatures? features;
+
   /// The fingerprint of the GTM Account as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
@@ -3924,6 +4491,7 @@ class Account {
 
   Account({
     this.accountId,
+    this.features,
     this.fingerprint,
     this.name,
     this.path,
@@ -3935,6 +4503,10 @@ class Account {
       : this(
           accountId: json_.containsKey('accountId')
               ? json_['accountId'] as core.String
+              : null,
+          features: json_.containsKey('features')
+              ? AccountFeatures.fromJson(
+                  json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
           fingerprint: json_.containsKey('fingerprint')
               ? json_['fingerprint'] as core.String
@@ -3951,6 +4523,7 @@ class Account {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
+        if (features != null) 'features': features!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (path != null) 'path': path!,
@@ -3986,6 +4559,37 @@ class AccountAccess {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
+      };
+}
+
+class AccountFeatures {
+  /// Whether this Account supports multiple Containers.
+  core.bool? supportMultipleContainers;
+
+  /// Whether this Account supports user permissions managed by GTM.
+  core.bool? supportUserPermissions;
+
+  AccountFeatures({
+    this.supportMultipleContainers,
+    this.supportUserPermissions,
+  });
+
+  AccountFeatures.fromJson(core.Map json_)
+      : this(
+          supportMultipleContainers:
+              json_.containsKey('supportMultipleContainers')
+                  ? json_['supportMultipleContainers'] as core.bool
+                  : null,
+          supportUserPermissions: json_.containsKey('supportUserPermissions')
+              ? json_['supportUserPermissions'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (supportMultipleContainers != null)
+          'supportMultipleContainers': supportMultipleContainers!,
+        if (supportUserPermissions != null)
+          'supportUserPermissions': supportUserPermissions!,
       };
 }
 
@@ -4368,6 +4972,9 @@ class Container {
   /// tagmanager.accounts.containers.update
   core.List<core.String>? domainName;
 
+  /// Read-only Container feature set.
+  ContainerFeatures? features;
+
   /// The fingerprint of the GTM Container as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
@@ -4391,8 +4998,18 @@ class Container {
   /// Container Public ID.
   core.String? publicId;
 
+  /// All Tag IDs that refer to this Container.
+  core.List<core.String>? tagIds;
+
   /// Auto generated link to the tag manager UI
   core.String? tagManagerUrl;
+
+  /// List of server-side container URLs for the Container.
+  ///
+  /// If multiple URLs are provided, all URL paths must match. @mutable
+  /// tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
+  core.List<core.String>? taggingServerUrls;
 
   /// List of Usage Contexts for the Container.
   ///
@@ -4405,12 +5022,15 @@ class Container {
     this.accountId,
     this.containerId,
     this.domainName,
+    this.features,
     this.fingerprint,
     this.name,
     this.notes,
     this.path,
     this.publicId,
+    this.tagIds,
     this.tagManagerUrl,
+    this.taggingServerUrls,
     this.usageContext,
   });
 
@@ -4427,6 +5047,10 @@ class Container {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          features: json_.containsKey('features')
+              ? ContainerFeatures.fromJson(
+                  json_['features'] as core.Map<core.String, core.dynamic>)
+              : null,
           fingerprint: json_.containsKey('fingerprint')
               ? json_['fingerprint'] as core.String
               : null,
@@ -4437,8 +5061,18 @@ class Container {
           publicId: json_.containsKey('publicId')
               ? json_['publicId'] as core.String
               : null,
+          tagIds: json_.containsKey('tagIds')
+              ? (json_['tagIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           tagManagerUrl: json_.containsKey('tagManagerUrl')
               ? json_['tagManagerUrl'] as core.String
+              : null,
+          taggingServerUrls: json_.containsKey('taggingServerUrls')
+              ? (json_['taggingServerUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           usageContext: json_.containsKey('usageContext')
               ? (json_['usageContext'] as core.List)
@@ -4451,12 +5085,15 @@ class Container {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (domainName != null) 'domainName': domainName!,
+        if (features != null) 'features': features!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (path != null) 'path': path!,
         if (publicId != null) 'publicId': publicId!,
+        if (tagIds != null) 'tagIds': tagIds!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (taggingServerUrls != null) 'taggingServerUrls': taggingServerUrls!,
         if (usageContext != null) 'usageContext': usageContext!,
       };
 }
@@ -4503,6 +5140,126 @@ class ContainerAccess {
       };
 }
 
+class ContainerFeatures {
+  /// Whether this Container supports built-in variables
+  core.bool? supportBuiltInVariables;
+
+  /// Whether this Container supports clients.
+  core.bool? supportClients;
+
+  /// Whether this Container supports environments.
+  core.bool? supportEnvironments;
+
+  /// Whether this Container supports folders.
+  core.bool? supportFolders;
+
+  /// Whether this Container supports Google tag config.
+  core.bool? supportGtagConfigs;
+
+  /// Whether this Container supports tags.
+  core.bool? supportTags;
+
+  /// Whether this Container supports templates.
+  core.bool? supportTemplates;
+
+  /// Whether this Container supports triggers.
+  core.bool? supportTriggers;
+
+  /// Whether this Container supports user permissions managed by GTM.
+  core.bool? supportUserPermissions;
+
+  /// Whether this Container supports variables.
+  core.bool? supportVariables;
+
+  /// Whether this Container supports Container versions.
+  core.bool? supportVersions;
+
+  /// Whether this Container supports workspaces.
+  core.bool? supportWorkspaces;
+
+  /// Whether this Container supports zones.
+  core.bool? supportZones;
+
+  ContainerFeatures({
+    this.supportBuiltInVariables,
+    this.supportClients,
+    this.supportEnvironments,
+    this.supportFolders,
+    this.supportGtagConfigs,
+    this.supportTags,
+    this.supportTemplates,
+    this.supportTriggers,
+    this.supportUserPermissions,
+    this.supportVariables,
+    this.supportVersions,
+    this.supportWorkspaces,
+    this.supportZones,
+  });
+
+  ContainerFeatures.fromJson(core.Map json_)
+      : this(
+          supportBuiltInVariables: json_.containsKey('supportBuiltInVariables')
+              ? json_['supportBuiltInVariables'] as core.bool
+              : null,
+          supportClients: json_.containsKey('supportClients')
+              ? json_['supportClients'] as core.bool
+              : null,
+          supportEnvironments: json_.containsKey('supportEnvironments')
+              ? json_['supportEnvironments'] as core.bool
+              : null,
+          supportFolders: json_.containsKey('supportFolders')
+              ? json_['supportFolders'] as core.bool
+              : null,
+          supportGtagConfigs: json_.containsKey('supportGtagConfigs')
+              ? json_['supportGtagConfigs'] as core.bool
+              : null,
+          supportTags: json_.containsKey('supportTags')
+              ? json_['supportTags'] as core.bool
+              : null,
+          supportTemplates: json_.containsKey('supportTemplates')
+              ? json_['supportTemplates'] as core.bool
+              : null,
+          supportTriggers: json_.containsKey('supportTriggers')
+              ? json_['supportTriggers'] as core.bool
+              : null,
+          supportUserPermissions: json_.containsKey('supportUserPermissions')
+              ? json_['supportUserPermissions'] as core.bool
+              : null,
+          supportVariables: json_.containsKey('supportVariables')
+              ? json_['supportVariables'] as core.bool
+              : null,
+          supportVersions: json_.containsKey('supportVersions')
+              ? json_['supportVersions'] as core.bool
+              : null,
+          supportWorkspaces: json_.containsKey('supportWorkspaces')
+              ? json_['supportWorkspaces'] as core.bool
+              : null,
+          supportZones: json_.containsKey('supportZones')
+              ? json_['supportZones'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (supportBuiltInVariables != null)
+          'supportBuiltInVariables': supportBuiltInVariables!,
+        if (supportClients != null) 'supportClients': supportClients!,
+        if (supportEnvironments != null)
+          'supportEnvironments': supportEnvironments!,
+        if (supportFolders != null) 'supportFolders': supportFolders!,
+        if (supportGtagConfigs != null)
+          'supportGtagConfigs': supportGtagConfigs!,
+        if (supportTags != null) 'supportTags': supportTags!,
+        if (supportTemplates != null) 'supportTemplates': supportTemplates!,
+        if (supportTriggers != null) 'supportTriggers': supportTriggers!,
+        if (supportUserPermissions != null)
+          'supportUserPermissions': supportUserPermissions!,
+        if (supportVariables != null) 'supportVariables': supportVariables!,
+        if (supportVersions != null) 'supportVersions': supportVersions!,
+        if (supportWorkspaces != null) 'supportWorkspaces': supportWorkspaces!,
+        if (supportZones != null) 'supportZones': supportZones!,
+      };
+}
+
 /// Represents a Google Tag Manager Container Version.
 class ContainerVersion {
   /// GTM Account ID.
@@ -4542,6 +5299,9 @@ class ContainerVersion {
   /// The folders in the container that this version was taken from.
   core.List<Folder>? folder;
 
+  /// The Google tag configs in the container that this version was taken from.
+  core.List<GtagConfig>? gtagConfig;
+
   /// Container version display name.
   ///
   /// @mutable tagmanager.accounts.containers.versions.update
@@ -4577,6 +5337,7 @@ class ContainerVersion {
     this.description,
     this.fingerprint,
     this.folder,
+    this.gtagConfig,
     this.name,
     this.path,
     this.tag,
@@ -4634,6 +5395,12 @@ class ContainerVersion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          gtagConfig: json_.containsKey('gtagConfig')
+              ? (json_['gtagConfig'] as core.List)
+                  .map((value) => GtagConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           tag: json_.containsKey('tag')
@@ -4678,6 +5445,7 @@ class ContainerVersion {
         if (description != null) 'description': description!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (folder != null) 'folder': folder!,
+        if (gtagConfig != null) 'gtagConfig': gtagConfig!,
         if (name != null) 'name': name!,
         if (path != null) 'path': path!,
         if (tag != null) 'tag': tag!,
@@ -4711,6 +5479,9 @@ class ContainerVersionHeader {
   /// Number of custom templates in the container version.
   core.String? numCustomTemplates;
 
+  /// Number of Google tag configs in the container version.
+  core.String? numGtagConfigs;
+
   /// Number of macros in the container version.
   core.String? numMacros;
 
@@ -4740,6 +5511,7 @@ class ContainerVersionHeader {
     this.name,
     this.numClients,
     this.numCustomTemplates,
+    this.numGtagConfigs,
     this.numMacros,
     this.numRules,
     this.numTags,
@@ -4769,6 +5541,9 @@ class ContainerVersionHeader {
               : null,
           numCustomTemplates: json_.containsKey('numCustomTemplates')
               ? json_['numCustomTemplates'] as core.String
+              : null,
+          numGtagConfigs: json_.containsKey('numGtagConfigs')
+              ? json_['numGtagConfigs'] as core.String
               : null,
           numMacros: json_.containsKey('numMacros')
               ? json_['numMacros'] as core.String
@@ -4801,6 +5576,7 @@ class ContainerVersionHeader {
         if (numClients != null) 'numClients': numClients!,
         if (numCustomTemplates != null)
           'numCustomTemplates': numCustomTemplates!,
+        if (numGtagConfigs != null) 'numGtagConfigs': numGtagConfigs!,
         if (numMacros != null) 'numMacros': numMacros!,
         if (numRules != null) 'numRules': numRules!,
         if (numTags != null) 'numTags': numTags!,
@@ -5000,6 +5776,81 @@ class CustomTemplate {
         if (templateData != null) 'templateData': templateData!,
         if (templateId != null) 'templateId': templateId!,
         if (workspaceId != null) 'workspaceId': workspaceId!,
+      };
+}
+
+/// Represents a Google Tag Destination.
+class Destination {
+  /// GTM Account ID.
+  core.String? accountId;
+
+  /// GTM Container ID.
+  core.String? containerId;
+
+  /// Destination ID.
+  core.String? destinationId;
+
+  /// The Destination link ID uniquely identifies the Destination.
+  core.String? destinationLinkId;
+
+  /// The fingerprint of the Google Tag Destination as computed at storage time.
+  ///
+  /// This value is recomputed whenever the destination is modified.
+  core.String? fingerprint;
+
+  /// Destination display name.
+  core.String? name;
+
+  /// Destination's API relative path.
+  core.String? path;
+
+  /// Auto generated link to the tag manager UI.
+  core.String? tagManagerUrl;
+
+  Destination({
+    this.accountId,
+    this.containerId,
+    this.destinationId,
+    this.destinationLinkId,
+    this.fingerprint,
+    this.name,
+    this.path,
+    this.tagManagerUrl,
+  });
+
+  Destination.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
+              : null,
+          destinationId: json_.containsKey('destinationId')
+              ? json_['destinationId'] as core.String
+              : null,
+          destinationLinkId: json_.containsKey('destinationLinkId')
+              ? json_['destinationLinkId'] as core.String
+              : null,
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          tagManagerUrl: json_.containsKey('tagManagerUrl')
+              ? json_['tagManagerUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (destinationId != null) 'destinationId': destinationId!,
+        if (destinationLinkId != null) 'destinationLinkId': destinationLinkId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
       };
 }
 
@@ -5434,6 +6285,26 @@ class GalleryReference {
       };
 }
 
+class GetContainerSnippetResponse {
+  /// Tagging snippet for a Container.
+  core.String? snippet;
+
+  GetContainerSnippetResponse({
+    this.snippet,
+  });
+
+  GetContainerSnippetResponse.fromJson(core.Map json_)
+      : this(
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snippet != null) 'snippet': snippet!,
+      };
+}
+
 /// The changes that have occurred in the workspace since the base container
 /// version.
 class GetWorkspaceStatusResponse {
@@ -5467,6 +6338,102 @@ class GetWorkspaceStatusResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null) 'mergeConflict': mergeConflict!,
         if (workspaceChange != null) 'workspaceChange': workspaceChange!,
+      };
+}
+
+/// Represents a Google tag configuration.
+class GtagConfig {
+  /// Google tag account ID.
+  core.String? accountId;
+
+  /// Google tag container ID.
+  core.String? containerId;
+
+  /// The fingerprint of the Google tag config as computed at storage time.
+  ///
+  /// This value is recomputed whenever the config is modified.
+  core.String? fingerprint;
+
+  /// The ID uniquely identifies the Google tag config.
+  core.String? gtagConfigId;
+
+  /// The Google tag config's parameters.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.gtag_config.create
+  /// @mutable tagmanager.accounts.containers.workspaces.gtag_config.update
+  core.List<Parameter>? parameter;
+
+  /// Google tag config's API relative path.
+  core.String? path;
+
+  /// Auto generated link to the tag manager UI
+  core.String? tagManagerUrl;
+
+  /// Google tag config type.
+  ///
+  /// @required tagmanager.accounts.containers.workspaces.gtag_config.create
+  /// @required tagmanager.accounts.containers.workspaces.gtag_config.update
+  /// @mutable tagmanager.accounts.containers.workspaces.gtag_config.create
+  /// @mutable tagmanager.accounts.containers.workspaces.gtag_config.update
+  core.String? type;
+
+  /// Google tag workspace ID.
+  ///
+  /// Only used by GTM containers. Set to 0 otherwise.
+  core.String? workspaceId;
+
+  GtagConfig({
+    this.accountId,
+    this.containerId,
+    this.fingerprint,
+    this.gtagConfigId,
+    this.parameter,
+    this.path,
+    this.tagManagerUrl,
+    this.type,
+    this.workspaceId,
+  });
+
+  GtagConfig.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
+              : null,
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
+              : null,
+          gtagConfigId: json_.containsKey('gtagConfigId')
+              ? json_['gtagConfigId'] as core.String
+              : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
+                  .map((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          tagManagerUrl: json_.containsKey('tagManagerUrl')
+              ? json_['tagManagerUrl'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          workspaceId: json_.containsKey('workspaceId')
+              ? json_['workspaceId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (gtagConfigId != null) 'gtagConfigId': gtagConfigId!,
+        if (parameter != null) 'parameter': parameter!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (type != null) 'type': type!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -5598,6 +6565,37 @@ class ListContainersResponse {
       };
 }
 
+class ListDestinationsResponse {
+  /// All Destinations linked to a GTM Container.
+  core.List<Destination>? destination;
+
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  ListDestinationsResponse({
+    this.destination,
+    this.nextPageToken,
+  });
+
+  ListDestinationsResponse.fromJson(core.Map json_)
+      : this(
+          destination: json_.containsKey('destination')
+              ? (json_['destination'] as core.List)
+                  .map((value) => Destination.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// A list of enabled built-in variables.
 class ListEnabledBuiltInVariablesResponse {
   /// All GTM BuiltInVariables of a GTM container.
@@ -5690,6 +6688,37 @@ class ListFoldersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (folder != null) 'folder': folder!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+class ListGtagConfigResponse {
+  /// All Google tag configs in a Container.
+  core.List<GtagConfig>? gtagConfig;
+
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  ListGtagConfigResponse({
+    this.gtagConfig,
+    this.nextPageToken,
+  });
+
+  ListGtagConfigResponse.fromJson(core.Map json_)
+      : this(
+          gtagConfig: json_.containsKey('gtagConfig')
+              ? (json_['gtagConfig'] as core.List)
+                  .map((value) => GtagConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gtagConfig != null) 'gtagConfig': gtagConfig!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

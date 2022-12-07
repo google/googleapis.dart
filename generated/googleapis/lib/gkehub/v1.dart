@@ -1325,169 +1325,6 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
-/// AnthosVMMembershipSpec contains the AnthosVM feature configuration for a
-/// membership/cluster.
-class AnthosVMMembershipSpec {
-  /// List of configurations of the Anthos For VM subfeatures that are to be
-  /// enabled
-  core.List<AnthosVMSubFeatureSpec>? subfeaturesSpec;
-
-  AnthosVMMembershipSpec({
-    this.subfeaturesSpec,
-  });
-
-  AnthosVMMembershipSpec.fromJson(core.Map json_)
-      : this(
-          subfeaturesSpec: json_.containsKey('subfeaturesSpec')
-              ? (json_['subfeaturesSpec'] as core.List)
-                  .map((value) => AnthosVMSubFeatureSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (subfeaturesSpec != null) 'subfeaturesSpec': subfeaturesSpec!,
-      };
-}
-
-/// AnthosVMFeatureState contains the state of the AnthosVM feature.
-///
-/// It represents the actual state in the cluster, while the
-/// AnthosVMMembershipSpec represents the desired state.
-class AnthosVMMembershipState {
-  /// State of the local PE-controller inside the cluster
-  LocalControllerState? localControllerState;
-
-  /// List of AnthosVM subfeature states
-  core.List<AnthosVMSubFeatureState>? subfeatureState;
-
-  AnthosVMMembershipState({
-    this.localControllerState,
-    this.subfeatureState,
-  });
-
-  AnthosVMMembershipState.fromJson(core.Map json_)
-      : this(
-          localControllerState: json_.containsKey('localControllerState')
-              ? LocalControllerState.fromJson(json_['localControllerState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          subfeatureState: json_.containsKey('subfeatureState')
-              ? (json_['subfeatureState'] as core.List)
-                  .map((value) => AnthosVMSubFeatureState.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (localControllerState != null)
-          'localControllerState': localControllerState!,
-        if (subfeatureState != null) 'subfeatureState': subfeatureState!,
-      };
-}
-
-/// AnthosVMSubFeatureSpec contains the subfeature configuration for a
-/// membership/cluster.
-class AnthosVMSubFeatureSpec {
-  /// Indicates whether the subfeature should be enabled on the cluster or not.
-  ///
-  /// If set to true, the subfeature's control plane and resources will be
-  /// installed in the cluster. If set to false, the oneof spec if present will
-  /// be ignored and nothing will be installed in the cluster.
-  core.bool? enabled;
-
-  /// MigrateSpec repsents the configuration for Migrate subfeature.
-  MigrateSpec? migrateSpec;
-
-  /// ServiceMeshSpec repsents the configuration for Service Mesh subfeature.
-  ServiceMeshSpec? serviceMeshSpec;
-
-  AnthosVMSubFeatureSpec({
-    this.enabled,
-    this.migrateSpec,
-    this.serviceMeshSpec,
-  });
-
-  AnthosVMSubFeatureSpec.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          migrateSpec: json_.containsKey('migrateSpec')
-              ? MigrateSpec.fromJson(
-                  json_['migrateSpec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceMeshSpec: json_.containsKey('serviceMeshSpec')
-              ? ServiceMeshSpec.fromJson(json_['serviceMeshSpec']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (migrateSpec != null) 'migrateSpec': migrateSpec!,
-        if (serviceMeshSpec != null) 'serviceMeshSpec': serviceMeshSpec!,
-      };
-}
-
-/// AnthosVMSubFeatureState contains the state of the AnthosVM subfeatures.
-class AnthosVMSubFeatureState {
-  /// Description represents human readable description of the subfeature state.
-  ///
-  /// If the deployment failed, this should also contain the reason for the
-  /// failure.
-  core.String? description;
-
-  /// InstallationState represents the state of installation of the subfeature
-  /// in the cluster.
-  /// Possible string values are:
-  /// - "INSTALLATION_STATE_UNSPECIFIED" : state of installation is unknown
-  /// - "INSTALLATION_STATE_NOT_INSTALLED" : component is not installed
-  /// - "INSTALLATION_STATE_INSTALLED" : component is successfully installed
-  /// - "INSTALLATION_STATE_FAILED" : installation failed
-  core.String? installationState;
-
-  /// MigrateState represents the state of the Migrate subfeature.
-  MigrateState? migrateState;
-
-  /// ServiceMeshState represents the state of the Service Mesh subfeature.
-  ServiceMeshState? serviceMeshState;
-
-  AnthosVMSubFeatureState({
-    this.description,
-    this.installationState,
-    this.migrateState,
-    this.serviceMeshState,
-  });
-
-  AnthosVMSubFeatureState.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          installationState: json_.containsKey('installationState')
-              ? json_['installationState'] as core.String
-              : null,
-          migrateState: json_.containsKey('migrateState')
-              ? MigrateState.fromJson(
-                  json_['migrateState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceMeshState: json_.containsKey('serviceMeshState')
-              ? ServiceMeshState.fromJson(json_['serviceMeshState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (installationState != null) 'installationState': installationState!,
-        if (migrateState != null) 'migrateState': migrateState!,
-        if (serviceMeshState != null) 'serviceMeshState': serviceMeshState!,
-      };
-}
-
 /// Spec for App Dev Experience Feature.
 typedef AppDevExperienceFeatureSpec = $Empty;
 
@@ -1773,11 +1610,15 @@ class CommonFeatureSpec {
   /// Appdevexperience specific spec.
   AppDevExperienceFeatureSpec? appdevexperience;
 
+  /// FleetObservability feature spec.
+  FleetObservabilityFeatureSpec? fleetobservability;
+
   /// Multicluster Ingress-specific spec.
   MultiClusterIngressFeatureSpec? multiclusteringress;
 
   CommonFeatureSpec({
     this.appdevexperience,
+    this.fleetobservability,
     this.multiclusteringress,
   });
 
@@ -1786,6 +1627,11 @@ class CommonFeatureSpec {
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureSpec.fromJson(json_['appdevexperience']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          fleetobservability: json_.containsKey('fleetobservability')
+              ? FleetObservabilityFeatureSpec.fromJson(
+                  json_['fleetobservability']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           multiclusteringress: json_.containsKey('multiclusteringress')
               ? MultiClusterIngressFeatureSpec.fromJson(
@@ -1796,6 +1642,8 @@ class CommonFeatureSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (fleetobservability != null)
+          'fleetobservability': fleetobservability!,
         if (multiclusteringress != null)
           'multiclusteringress': multiclusteringress!,
       };
@@ -1806,6 +1654,9 @@ class CommonFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
+  /// FleetObservability feature state.
+  FleetObservabilityFeatureState? fleetobservability;
+
   /// The "running state" of the Feature in this Hub.
   ///
   /// Output only.
@@ -1813,6 +1664,7 @@ class CommonFeatureState {
 
   CommonFeatureState({
     this.appdevexperience,
+    this.fleetobservability,
     this.state,
   });
 
@@ -1822,6 +1674,11 @@ class CommonFeatureState {
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          fleetobservability: json_.containsKey('fleetobservability')
+              ? FleetObservabilityFeatureState.fromJson(
+                  json_['fleetobservability']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           state: json_.containsKey('state')
               ? FeatureState.fromJson(
                   json_['state'] as core.Map<core.String, core.dynamic>)
@@ -1830,6 +1687,8 @@ class CommonFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (fleetobservability != null)
+          'fleetobservability': fleetobservability!,
         if (state != null) 'state': state!,
       };
 }
@@ -3188,6 +3047,32 @@ class Feature {
   /// Output only.
   FeatureResourceState? resourceState;
 
+  /// Scope-specific configuration for this Feature.
+  ///
+  /// If this Feature does not support any per-Scope configuration, this field
+  /// may be unused. The keys indicate which Scope the configuration is for, in
+  /// the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the
+  /// project, {s} is a valid Scope in this project. {p} WILL match the
+  /// Feature's project. {p} will always be returned as the project number, but
+  /// the project ID is also accepted during input. If the same Scope is
+  /// specified in the map twice (using the project ID form, and the project
+  /// number form), exactly ONE of the entries will be saved, with no guarantees
+  /// as to which. For this reason, it is recommended the same format be used
+  /// for all entries when mutating a Feature.
+  ///
+  /// Optional.
+  core.Map<core.String, ScopeFeatureSpec>? scopeSpecs;
+
+  /// Scope-specific Feature status.
+  ///
+  /// If this Feature does report any per-Scope status, this field may be
+  /// unused. The keys indicate which Scope the state is for, in the form:
+  /// `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s}
+  /// is a valid Scope in this project. {p} WILL match the Feature's project.
+  ///
+  /// Output only.
+  core.Map<core.String, ScopeFeatureState>? scopeStates;
+
   /// Hub-wide Feature configuration.
   ///
   /// If this Feature does not support any Hub-wide configuration, this field
@@ -3214,6 +3099,8 @@ class Feature {
     this.membershipStates,
     this.name,
     this.resourceState,
+    this.scopeSpecs,
+    this.scopeStates,
     this.spec,
     this.state,
     this.updateTime,
@@ -3262,6 +3149,26 @@ class Feature {
               ? FeatureResourceState.fromJson(
                   json_['resourceState'] as core.Map<core.String, core.dynamic>)
               : null,
+          scopeSpecs: json_.containsKey('scopeSpecs')
+              ? (json_['scopeSpecs'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ScopeFeatureSpec.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          scopeStates: json_.containsKey('scopeStates')
+              ? (json_['scopeStates'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ScopeFeatureState.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           spec: json_.containsKey('spec')
               ? CommonFeatureSpec.fromJson(
                   json_['spec'] as core.Map<core.String, core.dynamic>)
@@ -3283,6 +3190,8 @@ class Feature {
         if (membershipStates != null) 'membershipStates': membershipStates!,
         if (name != null) 'name': name!,
         if (resourceState != null) 'resourceState': resourceState!,
+        if (scopeSpecs != null) 'scopeSpecs': scopeSpecs!,
+        if (scopeStates != null) 'scopeStates': scopeStates!,
         if (spec != null) 'spec': spec!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3375,6 +3284,22 @@ class FeatureState {
       };
 }
 
+/// **Fleet Observability**: The Hub-wide input for the FleetObservability
+/// feature.
+typedef FleetObservabilityFeatureSpec = $Empty;
+
+/// **FleetObservability**: An empty state left as an example Hub-wide Feature
+/// state.
+typedef FleetObservabilityFeatureState = $Empty;
+
+/// **FleetObservability**: The membership-specific input for FleetObservability
+/// feature.
+typedef FleetObservabilityMembershipSpec = $Empty;
+
+/// **FleetObservability**: An empty state left as an example
+/// membership-specific Feature state.
+typedef FleetObservabilityMembershipState = $Empty;
+
 /// GenerateConnectManifestResponse contains manifest information for
 /// installing/upgrading a Connect agent.
 class GenerateConnectManifestResponse {
@@ -3453,6 +3378,9 @@ typedef GoogleRpcStatus = $Status;
 /// Only one authentication method (e.g., OIDC and LDAP) can be set per
 /// AuthMethod.
 class IdentityServiceAuthMethod {
+  /// AzureAD specific Configuration.
+  IdentityServiceAzureADConfig? azureadConfig;
+
   /// GoogleConfig specific configuration
   IdentityServiceGoogleConfig? googleConfig;
 
@@ -3466,6 +3394,7 @@ class IdentityServiceAuthMethod {
   core.String? proxy;
 
   IdentityServiceAuthMethod({
+    this.azureadConfig,
     this.googleConfig,
     this.name,
     this.oidcConfig,
@@ -3474,6 +3403,10 @@ class IdentityServiceAuthMethod {
 
   IdentityServiceAuthMethod.fromJson(core.Map json_)
       : this(
+          azureadConfig: json_.containsKey('azureadConfig')
+              ? IdentityServiceAzureADConfig.fromJson(
+                  json_['azureadConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           googleConfig: json_.containsKey('googleConfig')
               ? IdentityServiceGoogleConfig.fromJson(
                   json_['googleConfig'] as core.Map<core.String, core.dynamic>)
@@ -3488,10 +3421,80 @@ class IdentityServiceAuthMethod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (azureadConfig != null) 'azureadConfig': azureadConfig!,
         if (googleConfig != null) 'googleConfig': googleConfig!,
         if (name != null) 'name': name!,
         if (oidcConfig != null) 'oidcConfig': oidcConfig!,
         if (proxy != null) 'proxy': proxy!,
+      };
+}
+
+/// Configuration for the AzureAD Auth flow.
+class IdentityServiceAzureADConfig {
+  /// ID for the registered client application that makes authentication
+  /// requests to the Azure AD identity provider.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+  core.String? clientSecret;
+
+  /// Encrypted AzureAD client secret.
+  ///
+  /// Output only.
+  core.String? encryptedClientSecret;
+  core.List<core.int> get encryptedClientSecretAsBytes =>
+      convert.base64.decode(encryptedClientSecret!);
+
+  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
+    encryptedClientSecret =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The redirect URL that kubectl uses for authorization.
+  core.String? kubectlRedirectUri;
+
+  /// Kind of Azure AD account to be authenticated.
+  ///
+  /// Supported values are or for accounts belonging to a specific tenant.
+  core.String? tenant;
+
+  IdentityServiceAzureADConfig({
+    this.clientId,
+    this.clientSecret,
+    this.encryptedClientSecret,
+    this.kubectlRedirectUri,
+    this.tenant,
+  });
+
+  IdentityServiceAzureADConfig.fromJson(core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? json_['clientSecret'] as core.String
+              : null,
+          encryptedClientSecret: json_.containsKey('encryptedClientSecret')
+              ? json_['encryptedClientSecret'] as core.String
+              : null,
+          kubectlRedirectUri: json_.containsKey('kubectlRedirectUri')
+              ? json_['kubectlRedirectUri'] as core.String
+              : null,
+          tenant: json_.containsKey('tenant')
+              ? json_['tenant'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (encryptedClientSecret != null)
+          'encryptedClientSecret': encryptedClientSecret!,
+        if (kubectlRedirectUri != null)
+          'kubectlRedirectUri': kubectlRedirectUri!,
+        if (tenant != null) 'tenant': tenant!,
       };
 }
 
@@ -4053,43 +4056,6 @@ class ListOperationsResponse {
       };
 }
 
-/// LocalControllerState contains the state of the local controller deployed in
-/// the cluster.
-class LocalControllerState {
-  /// Description represents the human readable description of the current state
-  /// of the local PE controller
-  core.String? description;
-
-  /// InstallationState represents the state of deployment of the local PE
-  /// controller in the cluster.
-  /// Possible string values are:
-  /// - "INSTALLATION_STATE_UNSPECIFIED" : state of installation is unknown
-  /// - "INSTALLATION_STATE_NOT_INSTALLED" : component is not installed
-  /// - "INSTALLATION_STATE_INSTALLED" : component is successfully installed
-  /// - "INSTALLATION_STATE_FAILED" : installation failed
-  core.String? installationState;
-
-  LocalControllerState({
-    this.description,
-    this.installationState,
-  });
-
-  LocalControllerState.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          installationState: json_.containsKey('installationState')
-              ? json_['installationState'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (installationState != null) 'installationState': installationState!,
-      };
-}
-
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
@@ -4365,11 +4331,11 @@ class MembershipEndpoint {
 /// MembershipFeatureSpec contains configuration information for a single
 /// Membership.
 class MembershipFeatureSpec {
-  /// AnthosVM spec.
-  AnthosVMMembershipSpec? anthosvm;
-
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
+
+  /// Fleet observability membership spec
+  FleetObservabilityMembershipSpec? fleetobservability;
 
   /// Identity Service-specific spec.
   IdentityServiceMembershipSpec? identityservice;
@@ -4378,21 +4344,22 @@ class MembershipFeatureSpec {
   ServiceMeshMembershipSpec? mesh;
 
   MembershipFeatureSpec({
-    this.anthosvm,
     this.configmanagement,
+    this.fleetobservability,
     this.identityservice,
     this.mesh,
   });
 
   MembershipFeatureSpec.fromJson(core.Map json_)
       : this(
-          anthosvm: json_.containsKey('anthosvm')
-              ? AnthosVMMembershipSpec.fromJson(
-                  json_['anthosvm'] as core.Map<core.String, core.dynamic>)
-              : null,
           configmanagement: json_.containsKey('configmanagement')
               ? ConfigManagementMembershipSpec.fromJson(
                   json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fleetobservability: json_.containsKey('fleetobservability')
+              ? FleetObservabilityMembershipSpec.fromJson(
+                  json_['fleetobservability']
                       as core.Map<core.String, core.dynamic>)
               : null,
           identityservice: json_.containsKey('identityservice')
@@ -4406,8 +4373,9 @@ class MembershipFeatureSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (anthosvm != null) 'anthosvm': anthosvm!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (fleetobservability != null)
+          'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,
         if (mesh != null) 'mesh': mesh!,
       };
@@ -4416,14 +4384,14 @@ class MembershipFeatureSpec {
 /// MembershipFeatureState contains Feature status information for a single
 /// Membership.
 class MembershipFeatureState {
-  /// AnthosVM state.
-  AnthosVMMembershipState? anthosvm;
-
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
   /// Config Management-specific state.
   ConfigManagementMembershipState? configmanagement;
+
+  /// Fleet observability membership state.
+  FleetObservabilityMembershipState? fleetobservability;
 
   /// Identity Service-specific state.
   IdentityServiceMembershipState? identityservice;
@@ -4435,9 +4403,9 @@ class MembershipFeatureState {
   FeatureState? state;
 
   MembershipFeatureState({
-    this.anthosvm,
     this.appdevexperience,
     this.configmanagement,
+    this.fleetobservability,
     this.identityservice,
     this.servicemesh,
     this.state,
@@ -4445,10 +4413,6 @@ class MembershipFeatureState {
 
   MembershipFeatureState.fromJson(core.Map json_)
       : this(
-          anthosvm: json_.containsKey('anthosvm')
-              ? AnthosVMMembershipState.fromJson(
-                  json_['anthosvm'] as core.Map<core.String, core.dynamic>)
-              : null,
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
                   as core.Map<core.String, core.dynamic>)
@@ -4456,6 +4420,11 @@ class MembershipFeatureState {
           configmanagement: json_.containsKey('configmanagement')
               ? ConfigManagementMembershipState.fromJson(
                   json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fleetobservability: json_.containsKey('fleetobservability')
+              ? FleetObservabilityMembershipState.fromJson(
+                  json_['fleetobservability']
                       as core.Map<core.String, core.dynamic>)
               : null,
           identityservice: json_.containsKey('identityservice')
@@ -4473,9 +4442,10 @@ class MembershipFeatureState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (anthosvm != null) 'anthosvm': anthosvm!,
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (fleetobservability != null)
+          'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,
         if (servicemesh != null) 'servicemesh': servicemesh!,
         if (state != null) 'state': state!,
@@ -4509,12 +4479,6 @@ class MembershipState {
         if (code != null) 'code': code!,
       };
 }
-
-/// MigrateSpec contains the migrate subfeature configuration.
-typedef MigrateSpec = $Empty;
-
-/// MigrateState contains the state of Migrate subfeature
-typedef MigrateState = $Empty;
 
 /// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 class MultiCloudCluster {
@@ -4929,6 +4893,33 @@ class ResourceOptions {
       };
 }
 
+/// ScopeFeatureSpec contains feature specs for a fleet scope.
+typedef ScopeFeatureSpec = $Empty;
+
+/// ScopeFeatureState contains Scope-wide Feature status information.
+class ScopeFeatureState {
+  /// The "running state" of the Feature in this Scope.
+  ///
+  /// Output only.
+  FeatureState? state;
+
+  ScopeFeatureState({
+    this.state,
+  });
+
+  ScopeFeatureState.fromJson(core.Map json_)
+      : this(
+          state: json_.containsKey('state')
+              ? FeatureState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Status of control plane management.
 class ServiceMeshControlPlaneManagement {
   /// Explanation of state.
@@ -5101,12 +5092,6 @@ class ServiceMeshMembershipState {
           'dataPlaneManagement': dataPlaneManagement!,
       };
 }
-
-/// ServiceMeshSpec contains the serviceMesh subfeature configuration.
-typedef ServiceMeshSpec = $Empty;
-
-/// ServiceMeshState contains the state of Service Mesh subfeature
-typedef ServiceMeshState = $Empty;
 
 /// Structured and human-readable details for a status.
 class ServiceMeshStatusDetails {

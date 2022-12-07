@@ -3507,8 +3507,12 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// Optional.
   core.String? description;
 
-  /// Looker specific column info of this column.
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec? lookerColumnSpec;
+  /// Garbage collection policy for the column or column family.
+  ///
+  /// Applies to systems like Cloud Bigtable.
+  ///
+  /// Optional.
+  core.String? gcRule;
 
   /// A column's mode indicates whether values in this column are required,
   /// nullable, or repeated.
@@ -3536,7 +3540,7 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   GoogleCloudDatacatalogV1ColumnSchema({
     this.column,
     this.description,
-    this.lookerColumnSpec,
+    this.gcRule,
     this.mode,
     this.subcolumns,
     this.type,
@@ -3550,10 +3554,8 @@ class GoogleCloudDatacatalogV1ColumnSchema {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
-          lookerColumnSpec: json_.containsKey('lookerColumnSpec')
-              ? GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
-                  json_['lookerColumnSpec']
-                      as core.Map<core.String, core.dynamic>)
+          gcRule: json_.containsKey('gcRule')
+              ? json_['gcRule'] as core.String
               : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           subcolumns: json_.containsKey('subcolumns')
@@ -3568,35 +3570,9 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (description != null) 'description': description!,
-        if (lookerColumnSpec != null) 'lookerColumnSpec': lookerColumnSpec!,
+        if (gcRule != null) 'gcRule': gcRule!,
         if (mode != null) 'mode': mode!,
         if (subcolumns != null) 'subcolumns': subcolumns!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Column info specific to Looker System.
-class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
-  /// Looker specific column type of this column.
-  /// Possible string values are:
-  /// - "LOOKER_COLUMN_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "DIMENSION" : Dimension.
-  /// - "DIMENSION_GROUP" : Dimension group - parent for Dimension.
-  /// - "FILTER" : Filter.
-  /// - "MEASURE" : Measure.
-  /// - "PAREMETER" : Parameter.
-  core.String? type;
-
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
-    this.type,
-  });
-
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(core.Map json_)
-      : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -4121,9 +4097,9 @@ class GoogleCloudDatacatalogV1Entry {
 
   /// Timestamps from the underlying resource, not from the Data Catalog entry.
   ///
-  /// Output only when the entry has a type listed in the `EntryType` enum. For
-  /// entries with `user_specified_type`, this field is optional and defaults to
-  /// an empty timestamp.
+  /// Output only when the entry has a system listed in the `IntegratedSystem`
+  /// enum. For entries with `user_specified_system`, this field is optional and
+  /// defaults to an empty timestamp.
   GoogleCloudDatacatalogV1SystemTimestamps? sourceSystemTimestamps;
 
   /// The type of the entry.
@@ -6517,9 +6493,6 @@ typedef GoogleCloudDatacatalogV1UnstarEntryResponse = $Empty;
 /// Note: Usually, these signals are updated daily. In rare cases, an update may
 /// fail but will be performed again on the next day.
 class GoogleCloudDatacatalogV1UsageSignal {
-  /// Favorite count in the source system.
-  core.String? favoriteCount;
-
   /// The end timestamp of the duration of usage statistics.
   core.String? updateTime;
 
@@ -6532,16 +6505,12 @@ class GoogleCloudDatacatalogV1UsageSignal {
       usageWithinTimeRange;
 
   GoogleCloudDatacatalogV1UsageSignal({
-    this.favoriteCount,
     this.updateTime,
     this.usageWithinTimeRange,
   });
 
   GoogleCloudDatacatalogV1UsageSignal.fromJson(core.Map json_)
       : this(
-          favoriteCount: json_.containsKey('favoriteCount')
-              ? json_['favoriteCount'] as core.String
-              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -6559,7 +6528,6 @@ class GoogleCloudDatacatalogV1UsageSignal {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (favoriteCount != null) 'favoriteCount': favoriteCount!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (usageWithinTimeRange != null)
           'usageWithinTimeRange': usageWithinTimeRange!,

@@ -31,6 +31,7 @@
 ///       - [CustomerDevicesChromeosCommandsResource]
 /// - [CustomersResource]
 ///   - [CustomersChromeResource]
+///     - [CustomersChromePrintServersResource]
 ///     - [CustomersChromePrintersResource]
 /// - [DomainAliasesResource]
 /// - [DomainsResource]
@@ -524,7 +525,7 @@ class ChromeosdevicesResource {
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
   /// [includeChildOrgunits] - Return devices from all child orgunits, as well
-  /// as the specified org unit. If this is set to true 'orgUnitPath' must be
+  /// as the specified org unit. If this is set to true, 'orgUnitPath' must be
   /// provided.
   ///
   /// [maxResults] - Maximum number of results to return.
@@ -1038,10 +1039,349 @@ class CustomersResource {
 class CustomersChromeResource {
   final commons.ApiRequester _requester;
 
+  CustomersChromePrintServersResource get printServers =>
+      CustomersChromePrintServersResource(_requester);
   CustomersChromePrintersResource get printers =>
       CustomersChromePrintersResource(_requester);
 
   CustomersChromeResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersChromePrintServersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersChromePrintServersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates multiple print servers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account. Format: `customers/{id}`
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchCreatePrintServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchCreatePrintServersResponse> batchCreatePrintServers(
+    BatchCreatePrintServersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printServers:batchCreatePrintServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchCreatePrintServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes multiple print servers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account. Format:
+  /// `customers/{customer.id}`
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchDeletePrintServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchDeletePrintServersResponse> batchDeletePrintServers(
+    BatchDeletePrintServersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printServers:batchDeletePrintServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchDeletePrintServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a print server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account. Format: `customers/{id}`
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PrintServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PrintServer> create(
+    PrintServer request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PrintServer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a print server.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the print server to be deleted. Format:
+  /// `customers/{customer.id}/chrome/printServers/{print_server.id}`
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printServers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a print server's configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account. Format: `customers/{id}`
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printServers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PrintServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PrintServer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PrintServer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists print server configurations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account. Format: `customers/{id}`
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Search query in
+  /// [Common Expression Language syntax](https://github.com/google/cel-spec).
+  /// Supported filters are `display_name`, `description`, and `uri`. Example:
+  /// `printServer.displayName=='marketing-queue'`.
+  ///
+  /// [orderBy] - Sort order for results. Supported values are `display_name`,
+  /// `description`, or `create_time`. Default order is ascending, but
+  /// descending order can be returned by appending "desc" to the `order_by`
+  /// field. For instance, `orderBy=='description desc'` returns the print
+  /// servers sorted by description in descending order.
+  ///
+  /// [orgUnitId] - If `org_unit_id` is present in the request, only print
+  /// servers owned or inherited by the organizational unit (OU) are returned.
+  /// If the `PrintServer` resource's `org_unit_id` matches the one in the
+  /// request, the OU owns the server. If `org_unit_id` is not specified in the
+  /// request, all print servers are returned or filtered against.
+  ///
+  /// [pageSize] - The maximum number of objects to return (default `100`, max
+  /// `100`). The service might return fewer than this value.
+  ///
+  /// [pageToken] - A generated token to paginate results (the `next_page_token`
+  /// from a previous call).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPrintServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPrintServersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPrintServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a print server's configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Resource name of the print server. Leave empty when
+  /// creating. Format: `customers/{customer.id}/printServers/{print_server.id}`
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printServers/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update. Some fields are read-only and
+  /// cannot be updated. Values for unspecified fields are patched.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PrintServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PrintServer> patch(
+    PrintServer request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PrintServer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CustomersChromePrintersResource {
@@ -1479,7 +1819,13 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [domainAliasName] - Name of domain alias to be retrieved.
   ///
@@ -1562,7 +1908,13 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [parentDomainName] - Name of the parent domain for which domain aliases
   /// are to be fetched.
@@ -1648,7 +2000,13 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [domainName] - Name of domain to be retrieved
   ///
@@ -1729,7 +2087,13 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1880,12 +2244,12 @@ class GroupsResource {
   /// Request parameters:
   ///
   /// [customer] - The unique ID for the customer's Google Workspace account. In
-  /// case of a multi-domain account, to fetch all groups for a customer, fill
-  /// in this field instead of `domain`. You can also use the `my_customer`
-  /// alias to represent your account's `customerId`. The `customerId` is also
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
   /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
-  /// resource. Either the `customer` or the `domain` parameter must be
-  /// provided.
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [domain] - The domain name. Use this field to get groups from only one
   /// domain. To return all domains for a customer account, use the `customer`
@@ -2350,6 +2714,9 @@ class MembersResource {
 
   /// Retrieves a paginated list of all members in a group.
   ///
+  /// This method times out after 60 minutes. For more information, see
+  /// [Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+  ///
   /// Request parameters:
   ///
   /// [groupKey] - Identifies the group in the API request. The value can be the
@@ -2664,7 +3031,8 @@ class MobiledevicesResource {
   /// To retrieve a list that includes company-owned devices, use the Cloud
   /// Identity
   /// [Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
-  /// instead.
+  /// instead. This method times out after 60 minutes. For more information, see
+  /// [Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
   ///
   /// Request parameters:
   ///
@@ -3059,7 +3427,13 @@ class PrivilegesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4083,7 +4457,13 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [roleAssignmentId] - Immutable ID of the role assignment.
   ///
@@ -4166,7 +4546,13 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "200".
@@ -4267,7 +4653,13 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [roleId] - Immutable ID of the role.
   ///
@@ -4348,7 +4740,13 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the Google Workspace account.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "100".
@@ -4527,7 +4925,13 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Workspace account.
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// In case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [schemaKey] - Name or immutable ID of the schema.
   ///
@@ -4608,7 +5012,13 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Workspace account.
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// In case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5047,12 +5457,12 @@ class UsersResource {
   /// `projection=custom`.
   ///
   /// [customer] - The unique ID for the customer's Google Workspace account. In
-  /// case of a multi-domain account, to fetch all groups for a customer, fill
-  /// this field instead of domain. You can also use the `my_customer` alias to
-  /// represent your account's `customerId`. The `customerId` is also returned
-  /// as part of the \[Users
-  /// resource\](/admin-sdk/directory/v1/reference/users). Either the `customer`
-  /// or the `domain` parameter must be provided.
+  /// case of a multi-domain account, to fetch all groups for a customer, use
+  /// this field instead of `domain`. You can also use the `my_customer` alias
+  /// to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. You must provide either the `customer` or the `domain`
+  /// parameter.
   ///
   /// [domain] - The domain name. Use this field to get groups from only one
   /// domain. To return all domains for a customer account, use the `customer`
@@ -5324,9 +5734,14 @@ class UsersResource {
 
   /// Updates a user.
   ///
-  /// This method supports patch semantics, meaning you only need to include the
-  /// fields you wish to update. Fields that are not present in the request will
-  /// be preserved, and fields set to `null` will be cleared.
+  /// This method supports patch semantics, meaning that you only need to
+  /// include the fields you wish to update. Fields that are not present in the
+  /// request will be preserved, and fields set to `null` will be cleared. For
+  /// repeating fields that contain arrays, individual items in the array can't
+  /// be patched piecemeal; they must be supplied in the request body with the
+  /// desired values for all items. See the
+  /// [user accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6172,6 +6587,68 @@ class AuxiliaryMessage {
       };
 }
 
+/// Request to add multiple new print servers in a batch.
+class BatchCreatePrintServersRequest {
+  /// A list of `PrintServer` resources to be created (max `50` per batch).
+  ///
+  /// Required.
+  core.List<CreatePrintServerRequest>? requests;
+
+  BatchCreatePrintServersRequest({
+    this.requests,
+  });
+
+  BatchCreatePrintServersRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => CreatePrintServerRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+class BatchCreatePrintServersResponse {
+  /// A list of create failures.
+  ///
+  /// `PrintServer` IDs are not populated, as print servers were not created.
+  core.List<PrintServerFailureInfo>? failures;
+
+  /// A list of successfully created print servers with their IDs populated.
+  core.List<PrintServer>? printServers;
+
+  BatchCreatePrintServersResponse({
+    this.failures,
+    this.printServers,
+  });
+
+  BatchCreatePrintServersResponse.fromJson(core.Map json_)
+      : this(
+          failures: json_.containsKey('failures')
+              ? (json_['failures'] as core.List)
+                  .map((value) => PrintServerFailureInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          printServers: json_.containsKey('printServers')
+              ? (json_['printServers'] as core.List)
+                  .map((value) => PrintServer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failures != null) 'failures': failures!,
+        if (printServers != null) 'printServers': printServers!,
+      };
+}
+
 /// Request for adding new printers in batch.
 class BatchCreatePrintersRequest {
   /// A list of Printers to be created.
@@ -6232,6 +6709,63 @@ class BatchCreatePrintersResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (failures != null) 'failures': failures!,
         if (printers != null) 'printers': printers!,
+      };
+}
+
+/// Request to delete multiple existing print servers in a batch.
+class BatchDeletePrintServersRequest {
+  /// A list of print server IDs that should be deleted (max `100` per batch).
+  core.List<core.String>? printServerIds;
+
+  BatchDeletePrintServersRequest({
+    this.printServerIds,
+  });
+
+  BatchDeletePrintServersRequest.fromJson(core.Map json_)
+      : this(
+          printServerIds: json_.containsKey('printServerIds')
+              ? (json_['printServerIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (printServerIds != null) 'printServerIds': printServerIds!,
+      };
+}
+
+class BatchDeletePrintServersResponse {
+  /// A list of update failures.
+  core.List<PrintServerFailureInfo>? failedPrintServers;
+
+  /// A list of print server IDs that were successfully deleted.
+  core.List<core.String>? printServerIds;
+
+  BatchDeletePrintServersResponse({
+    this.failedPrintServers,
+    this.printServerIds,
+  });
+
+  BatchDeletePrintServersResponse.fromJson(core.Map json_)
+      : this(
+          failedPrintServers: json_.containsKey('failedPrintServers')
+              ? (json_['failedPrintServers'] as core.List)
+                  .map((value) => PrintServerFailureInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          printServerIds: json_.containsKey('printServerIds')
+              ? (json_['printServerIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failedPrintServers != null)
+          'failedPrintServers': failedPrintServers!,
+        if (printServerIds != null) 'printServerIds': printServerIds!,
       };
 }
 
@@ -7048,7 +7582,7 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
 }
 
 class ChromeOsDeviceCpuStatusReports {
-  /// List of CPU temperature samples.
+  /// A list of CPU temperature samples.
   core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>?
       cpuTemperatureInfo;
   core.List<core.int>? cpuUtilizationPercentageInfo;
@@ -7222,7 +7756,7 @@ class ChromeOsDeviceLastKnownNetwork {
       };
 }
 
-/// List of recent device users, in descending order, by last login time.
+/// A list of recent device users, in descending order, by last login time.
 class ChromeOsDeviceRecentUsers {
   /// The user's email address.
   ///
@@ -7392,7 +7926,7 @@ class ChromeOsDeviceTpmVersionInfo {
 /// For more information about common API tasks, see the \[Developer's
 /// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices).
 class ChromeOsDevice {
-  /// List of active time ranges (Read-only).
+  /// A list of active time ranges (Read-only).
   core.List<ChromeOsDeviceActiveTimeRanges>? activeTimeRanges;
 
   /// The asset identifier as noted by an administrator or specified during
@@ -7428,7 +7962,7 @@ class ChromeOsDevice {
   /// Reports of CPU utilization and temperature (Read-only)
   core.List<ChromeOsDeviceCpuStatusReports>? cpuStatusReports;
 
-  /// List of device files to download (Read-only)
+  /// A list of device files to download (Read-only)
   core.List<ChromeOsDeviceDeviceFiles>? deviceFiles;
 
   /// The unique ID of the Chrome device.
@@ -7552,10 +8086,10 @@ class ChromeOsDevice {
   /// The Chrome device's platform version.
   core.String? platformVersion;
 
-  /// List of recent device users, in descending order, by last login time.
+  /// A list of recent device users, in descending order, by last login time.
   core.List<ChromeOsDeviceRecentUsers>? recentUsers;
 
-  /// List of screenshot files to download.
+  /// A list of screenshot files to download.
   ///
   /// Type is always "SCREENSHOT_FILE". (Read-only)
   core.List<ChromeOsDeviceScreenshotFiles>? screenshotFiles;
@@ -7831,7 +8365,7 @@ class ChromeOsDevice {
       };
 }
 
-/// The data regarding an action to update the status of a Chrome OS device.
+/// Data about an update to the status of a Chrome OS device.
 class ChromeOsDeviceAction {
   /// Action to be taken on the Chrome OS device.
   core.String? action;
@@ -7865,7 +8399,7 @@ class ChromeOsDeviceAction {
 }
 
 class ChromeOsDevices {
-  /// List of Chrome OS Device objects.
+  /// A list of Chrome OS Device objects.
   core.List<ChromeOsDevice>? chromeosdevices;
 
   /// ETag of the resource.
@@ -7929,6 +8463,49 @@ class ChromeOsMoveDevicesToOu {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceIds != null) 'deviceIds': deviceIds!,
+      };
+}
+
+/// Request for adding a new print server.
+class CreatePrintServerRequest {
+  /// The
+  /// [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers)
+  /// of the customer's Google Workspace account.
+  ///
+  /// Format: `customers/{id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// A print server to create.
+  ///
+  /// If you want to place the print server under a specific organizational unit
+  /// (OU), then populate the `org_unit_id`. Otherwise the print server is
+  /// created under the root OU. The `org_unit_id` can be retrieved using the
+  /// [Directory API](https://developers.google.com/admin-sdk/directory/v1/guides/manage-org-units).
+  ///
+  /// Required.
+  PrintServer? printServer;
+
+  CreatePrintServerRequest({
+    this.parent,
+    this.printServer,
+  });
+
+  CreatePrintServerRequest.fromJson(core.Map json_)
+      : this(
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          printServer: json_.containsKey('printServer')
+              ? PrintServer.fromJson(
+                  json_['printServer'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (printServer != null) 'printServer': printServer!,
       };
 }
 
@@ -8441,7 +9018,7 @@ class DomainAlias {
 }
 
 class DomainAliases {
-  /// List of domain alias objects.
+  /// A list of domain alias objects.
   core.List<DomainAlias>? domainAliases;
 
   /// ETag of the resource.
@@ -8482,7 +9059,7 @@ class Domains {
   /// (Read-only).
   core.String? creationTime;
 
-  /// List of domain alias objects.
+  /// A list of domain alias objects.
   ///
   /// (Read-only)
   core.List<DomainAlias>? domainAliases;
@@ -8550,7 +9127,7 @@ class Domains {
 }
 
 class Domains2 {
-  /// List of domain objects.
+  /// A list of domain objects.
   core.List<Domains>? domains;
 
   /// ETag of the resource.
@@ -8596,7 +9173,7 @@ typedef Empty = $Empty;
 class FailureInfo {
   /// Canonical code for why the update failed to apply.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -8831,7 +9408,7 @@ class Group {
 
   /// Read-only.
   ///
-  /// A list of a group's alias email addresses. To add, update, or remove a
+  /// The list of a group's alias email addresses. To add, update, or remove a
   /// group's aliases, use the `groups.aliases` methods. If edited in a group's
   /// POST or PUT request, the edit is ignored.
   core.List<core.String>? aliases;
@@ -8878,11 +9455,11 @@ class Group {
 
   /// Read-only.
   ///
-  /// A list of the group's non-editable alias email addresses that are outside
-  /// of the account's primary domain or subdomains. These are functioning email
-  /// addresses used by the group. This is a read-only property returned in the
-  /// API's response for a group. If edited in a group's POST or PUT request,
-  /// the edit is ignored.
+  /// The list of the group's non-editable alias email addresses that are
+  /// outside of the account's primary domain or subdomains. These are
+  /// functioning email addresses used by the group. This is a read-only
+  /// property returned in the API's response for a group. If edited in a
+  /// group's POST or PUT request, the edit is ignored.
   core.List<core.String>? nonEditableAliases;
 
   Group({
@@ -8947,7 +9524,7 @@ class Groups {
   /// ETag of the resource.
   core.String? etag;
 
-  /// List of group objects.
+  /// A list of group objects.
   core.List<Group>? groups;
 
   /// Kind of resource this is.
@@ -8983,6 +9560,40 @@ class Groups {
         if (groups != null) 'groups': groups!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+class ListPrintServersResponse {
+  /// A token that can be sent as `page_token` in a request to retrieve the next
+  /// page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of print servers.
+  core.List<PrintServer>? printServers;
+
+  ListPrintServersResponse({
+    this.nextPageToken,
+    this.printServers,
+  });
+
+  ListPrintServersResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          printServers: json_.containsKey('printServers')
+              ? (json_['printServers'] as core.List)
+                  .map((value) => PrintServer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printServers != null) 'printServers': printServers!,
       };
 }
 
@@ -9153,7 +9764,7 @@ class Members {
   /// Kind of resource this is.
   core.String? kind;
 
-  /// List of member objects.
+  /// A list of member objects.
   core.List<Member>? members;
 
   /// Token used to access next page of this result.
@@ -9332,7 +9943,7 @@ class MobileDevice {
   /// DevicePasswordStatus (Read-only)
   core.String? devicePasswordStatus;
 
-  /// List of owner's email addresses.
+  /// The list of the owner's email addresses.
   ///
   /// If your application needs the current list of user emails, use the
   /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
@@ -9392,7 +10003,7 @@ class MobileDevice {
   /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile=devices#update_mobile_device).
   core.String? model;
 
-  /// List of the owner's user names.
+  /// The list of the owner's user names.
   ///
   /// If your application needs the current list of device owner names, use the
   /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
@@ -9413,7 +10024,7 @@ class MobileDevice {
   /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
   core.String? os;
 
-  /// List of accounts added on device (Read-only)
+  /// The list of accounts added on device (Read-only)
   core.List<core.String>? otherAccountsInfo;
 
   /// DMAgentPermission (Read-only)
@@ -9696,7 +10307,7 @@ class MobileDevices {
   /// Kind of resource this is.
   core.String? kind;
 
-  /// List of Mobile Device objects.
+  /// A list of Mobile Device objects.
   core.List<MobileDevice>? mobiledevices;
 
   /// Token used to access next page of this result.
@@ -9856,7 +10467,7 @@ class OrgUnits {
   /// For Org Unit resources, the type is `admin#directory#orgUnits`.
   core.String? kind;
 
-  /// List of organizational unit objects.
+  /// A list of organizational unit objects.
   core.List<OrgUnit>? organizationUnits;
 
   OrgUnits({
@@ -9897,7 +10508,7 @@ class OsUpdateStatus {
   /// - "updateStateDownloadInProgress" : The pending update is being
   /// downloaded.
   /// - "updateStateNeedReboot" : The device is ready to install the update, but
-  /// it just needs to reboot.
+  /// must reboot.
   core.String? state;
 
   /// New required platform version from the pending updated kiosk app.
@@ -9955,6 +10566,217 @@ class OsUpdateStatus {
         if (targetOsVersion != null) 'targetOsVersion': targetOsVersion!,
         if (updateCheckTime != null) 'updateCheckTime': updateCheckTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Configuration for a print server.
+class PrintServer {
+  /// Time when the print server was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Editable.
+  ///
+  /// Description of the print server (as shown in the Admin console).
+  core.String? description;
+
+  /// Editable.
+  ///
+  /// Display name of the print server (as shown in the Admin console).
+  core.String? displayName;
+
+  /// ID of the print server.
+  ///
+  /// Leave empty when creating.
+  ///
+  /// Immutable.
+  core.String? id;
+
+  /// Resource name of the print server.
+  ///
+  /// Leave empty when creating. Format:
+  /// `customers/{customer.id}/printServers/{print_server.id}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// ID of the organization unit (OU) that owns this print server.
+  ///
+  /// This value can only be set when the print server is initially created. If
+  /// it's not populated, the print server is placed under the root OU. The
+  /// `org_unit_id` can be retrieved using the \[Directory
+  /// API\](/admin-sdk/directory/reference/rest/v1/orgunits).
+  core.String? orgUnitId;
+
+  /// Editable.
+  ///
+  /// Print server URI.
+  core.String? uri;
+
+  PrintServer({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.id,
+    this.name,
+    this.orgUnitId,
+    this.uri,
+  });
+
+  PrintServer.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Info about failures
+class PrintServerFailureInfo {
+  /// Canonical code for why the update failed to apply.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String? errorCode;
+
+  /// Failure reason message.
+  core.String? errorMessage;
+
+  /// Failed print server.
+  PrintServer? printServer;
+
+  /// ID of a failed print server.
+  core.String? printServerId;
+
+  PrintServerFailureInfo({
+    this.errorCode,
+    this.errorMessage,
+    this.printServer,
+    this.printServerId,
+  });
+
+  PrintServerFailureInfo.fromJson(core.Map json_)
+      : this(
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+          printServer: json_.containsKey('printServer')
+              ? PrintServer.fromJson(
+                  json_['printServer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          printServerId: json_.containsKey('printServerId')
+              ? json_['printServerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (printServer != null) 'printServer': printServer!,
+        if (printServerId != null) 'printServerId': printServerId!,
       };
 }
 
@@ -10712,7 +11534,7 @@ class Schemas {
   /// Kind of resource this is.
   core.String? kind;
 
-  /// List of UserSchema objects.
+  /// A list of UserSchema objects.
   core.List<Schema>? schemas;
 
   Schemas({
@@ -10868,9 +11690,9 @@ class Tokens {
 /// Aliases Developer's
 /// Guide\](/admin-sdk/directory/v1/guides/manage-user-aliases.html).
 class User {
-  /// A list of the user's addresses.
+  /// The list of the user's addresses.
   ///
-  /// The maximum allowed data size for this field is 10Kb.
+  /// The maximum allowed data size for this field is 10KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10882,7 +11704,7 @@ class User {
   /// Output only.
   core.bool? agreedToTerms;
 
-  /// A list of the user's alias email addresses.
+  /// The list of the user's alias email addresses.
   ///
   /// Output only.
   core.List<core.String>? aliases;
@@ -10920,9 +11742,9 @@ class User {
   core.String? customerId;
   core.DateTime? deletionTime;
 
-  /// A list of the user's email addresses.
+  /// The list of the user's email addresses.
   ///
-  /// The maximum allowed data size for this field is 10Kb.
+  /// The maximum allowed data size for this field is 10KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10933,9 +11755,9 @@ class User {
   /// Output only.
   core.String? etag;
 
-  /// A list of external IDs for the user, such as an employee or network ID.
+  /// The list of external IDs for the user, such as an employee or network ID.
   ///
-  /// The maximum allowed data size for this field is 2Kb.
+  /// The maximum allowed data size for this field is 2KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10943,7 +11765,7 @@ class User {
 
   /// The user's gender.
   ///
-  /// The maximum allowed data size for this field is 1Kb.
+  /// The maximum allowed data size for this field is 1KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10965,11 +11787,11 @@ class User {
   /// A user `id` can be used as a user request URI's `userKey`.
   core.String? id;
 
-  /// The user's Instant Messenger (IM) accounts.
+  /// The list of the user's Instant Messenger (IM) accounts.
   ///
   /// A user account can have multiple ims properties. But, only one of these
   /// ims properties can be the primary IM contact. The maximum allowed data
-  /// size for this field is 2Kb.
+  /// size for this field is 2KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10982,8 +11804,8 @@ class User {
   /// [administration help center](https://support.google.com/a/answer/1285988).
   core.bool? includeInGlobalAddressList;
 
-  /// If `true`, the user's IP address is
-  /// [whitelisted](https://support.google.com/a/answer/60752).
+  /// If `true`, the user's IP address is subject to a deprecated IP address
+  /// \[`allowlist`\](https://support.google.com/a/answer/60752) configuration.
   core.bool? ipWhitelisted;
 
   /// Indicates a user with super admininistrator privileges.
@@ -11028,9 +11850,9 @@ class User {
   /// Output only.
   core.bool? isMailboxSetup;
 
-  /// The user's keywords.
+  /// The list of the user's keywords.
   ///
-  /// The maximum allowed data size for this field is 1Kb.
+  /// The maximum allowed data size for this field is 1KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11045,7 +11867,7 @@ class User {
 
   /// The user's languages.
   ///
-  /// The maximum allowed data size for this field is 1Kb.
+  /// The maximum allowed data size for this field is 1KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11058,7 +11880,7 @@ class User {
 
   /// The user's locations.
   ///
-  /// The maximum allowed data size for this field is 10Kb.
+  /// The maximum allowed data size for this field is 10KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11073,10 +11895,10 @@ class User {
   /// (-), forward slashes (/), and periods (.). For more information about
   /// character usage rules, see the
   /// [administration help center](https://support.google.com/a/answer/9193374).
-  /// Maximum allowed data size for this field is 1Kb.
+  /// Maximum allowed data size for this field is 1KB.
   UserName? name;
 
-  /// List of the user's non-editable alias email addresses.
+  /// The list of the user's non-editable alias email addresses.
   ///
   /// These are typically outside the account's primary domain or sub-domain.
   ///
@@ -11095,9 +11917,9 @@ class User {
   /// forward slash (`/`).
   core.String? orgUnitPath;
 
-  /// A list of organizations the user belongs to.
+  /// The list of organizations the user belongs to.
   ///
-  /// The maximum allowed data size for this field is 10Kb.
+  /// The maximum allowed data size for this field is 10KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11106,16 +11928,17 @@ class User {
   /// User's password
   core.String? password;
 
-  /// A list of the user's phone numbers.
+  /// The list of the user's phone numbers.
   ///
-  /// The maximum allowed data size for this field is 1Kb.
+  /// The maximum allowed data size for this field is 1KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? phones;
 
-  /// A list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
-  /// account information for the user.
+  /// The list of
+  /// [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html) account
+  /// information for the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11136,9 +11959,9 @@ class User {
   /// (+). Example: *+16506661212*.
   core.String? recoveryPhone;
 
-  /// A list of the user's relationships to other users.
+  /// The list of the user's relationships to other users.
   ///
-  /// The maximum allowed data size for this field is 2Kb.
+  /// The maximum allowed data size for this field is 2KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11173,7 +11996,7 @@ class User {
 
   /// The user's websites.
   ///
-  /// The maximum allowed data size for this field is 2Kb.
+  /// The maximum allowed data size for this field is 2KB.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11466,6 +12289,11 @@ class UserMakeAdmin {
 }
 
 class UserName {
+  /// The user's display name.
+  ///
+  /// Limit: 256 characters.
+  core.String? displayName;
+
   /// The user's last name.
   ///
   /// Required when creating a user account.
@@ -11481,6 +12309,7 @@ class UserName {
   core.String? givenName;
 
   UserName({
+    this.displayName,
     this.familyName,
     this.fullName,
     this.givenName,
@@ -11488,6 +12317,9 @@ class UserName {
 
   UserName.fromJson(core.Map json_)
       : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           familyName: json_.containsKey('familyName')
               ? json_['familyName'] as core.String
               : null,
@@ -11500,6 +12332,7 @@ class UserName {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (familyName != null) 'familyName': familyName!,
         if (fullName != null) 'fullName': fullName!,
         if (givenName != null) 'givenName': givenName!,
@@ -11627,7 +12460,7 @@ class Users {
   /// Event that triggered this response (only used in case of Push Response)
   core.String? triggerEvent;
 
-  /// List of user objects.
+  /// A list of user objects.
   core.List<User>? users;
 
   Users({
@@ -11712,7 +12545,7 @@ class VerificationCode {
       };
 }
 
-/// JSON response template for List verification codes operation in Directory
+/// JSON response template for list verification codes operation in Directory
 /// API.
 class VerificationCodes {
   /// ETag of the resource.

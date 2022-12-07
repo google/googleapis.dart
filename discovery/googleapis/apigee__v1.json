@@ -1350,7 +1350,7 @@
                                 "entries": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy.",
+                                            "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.apis.keyvaluemaps.entries.create",
@@ -1378,7 +1378,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Note:** After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.",
+                                            "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.apis.keyvaluemaps.entries.delete",
@@ -1403,7 +1403,7 @@
                                             ]
                                         },
                                         "get": {
-                                            "description": "Get the Key value entry value for org, env or apis scoped Key value map.",
+                                            "description": "Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.apis.keyvaluemaps.entries.get",
@@ -1428,7 +1428,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy.",
+                                            "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.apis.keyvaluemaps.entries.list",
@@ -3064,7 +3064,7 @@
                             ],
                             "parameters": {
                                 "endpointAttachmentId": {
-                                    "description": "ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.",
+                                    "description": "ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -3532,6 +3532,31 @@
                             "path": "v1/{+name}",
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1Environment"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "getApiSecurityRuntimeConfig": {
+                            "description": "Gets the API Security runtime configuration for an environment. This named ApiSecurityRuntimeConfig to prevent conflicts with ApiSecurityConfig from addon config.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apiSecurityRuntimeConfig",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.environments.getApiSecurityRuntimeConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the environment API Security Runtime configuration resource. Use the following structure in your request: `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/environments/[^/]+/apiSecurityRuntimeConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ApiSecurityRuntimeConfig"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -5092,7 +5117,7 @@
                                 "entries": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy.",
+                                            "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.keyvaluemaps.entries.create",
@@ -5120,7 +5145,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Note:** After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.",
+                                            "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.environments.keyvaluemaps.entries.delete",
@@ -5145,7 +5170,7 @@
                                             ]
                                         },
                                         "get": {
-                                            "description": "Get the Key value entry value for org, env or apis scoped Key value map.",
+                                            "description": "Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.keyvaluemaps.entries.get",
@@ -5170,7 +5195,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy.",
+                                            "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.keyvaluemaps.entries.list",
@@ -7538,7 +7563,7 @@
                         "entries": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy.",
+                                    "description": "Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                     "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.keyvaluemaps.entries.create",
@@ -7566,7 +7591,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Note:** After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.",
+                                    "description": "Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher.",
                                     "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.keyvaluemaps.entries.delete",
@@ -7591,7 +7616,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Get the Key value entry value for org, env or apis scoped Key value map.",
+                                    "description": "Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                     "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.keyvaluemaps.entries.get",
@@ -7616,7 +7641,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy.",
+                                    "description": "Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
                                     "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}/entries",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.keyvaluemaps.entries.list",
@@ -8607,7 +8632,7 @@
             }
         }
     },
-    "revision": "20220901",
+    "revision": "20221121",
     "rootUrl": "https://apigee.googleapis.com/",
     "schemas": {
         "EdgeConfigstoreBundleBadBundle": {
@@ -9233,6 +9258,38 @@
                     "description": "Output only. Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.",
                     "format": "int64",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiSecurityRuntimeConfig": {
+            "description": "Response for GetApiSecurityRuntimeConfig[EnvironmentService.GetApiSecurityRuntimeConfig].",
+            "id": "GoogleCloudApigeeV1ApiSecurityRuntimeConfig",
+            "properties": {
+                "location": {
+                    "description": "A list of up to 5 Cloud Storage Blobs that contain SecurityActions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Name of the environment API Security Runtime configuration resource. Format: `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig`",
+                    "type": "string"
+                },
+                "revisionId": {
+                    "description": "Revision ID of the API Security Runtime configuration. The higher the value, the more recently the configuration was deployed.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "Unique ID for the API Security Runtime configuration. The ID will only change if the environment is deleted and recreated.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Time that the API Security Runtime configuration was updated.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -11683,7 +11740,7 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1KeyValueEntry": {
-            "description": "Key value map pair where the value represents the data associated with the corresponding key.",
+            "description": "Key value map pair where the value represents the data associated with the corresponding key. **Note**: Supported for Apigee hybrid 1.8.x and higher.",
             "id": "GoogleCloudApigeeV1KeyValueEntry",
             "properties": {
                 "name": {
@@ -12086,7 +12143,7 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1ListKeyValueEntriesResponse": {
-            "description": "The request structure for listing Key value map keys and its corrresponding values.",
+            "description": "The request structure for listing key value map keys and its corresponding values.",
             "id": "GoogleCloudApigeeV1ListKeyValueEntriesResponse",
             "properties": {
                 "keyValueEntries": {
@@ -14184,7 +14241,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "Query state could be \"enqueued\", \"running\", \"completed\", \"failed\".",
+                    "description": "Query state could be \"enqueued\", \"running\", \"completed\", \"expired\" and \"failed\".",
                     "type": "string"
                 },
                 "updated": {
@@ -14932,7 +14989,7 @@
                         "DATA_LOSS"
                     ],
                     "enumDescriptions": [
-                        "Not an error; returned on success HTTP Mapping: 200 OK",
+                        "Not an error; returned on success. HTTP Mapping: 200 OK",
                         "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
                         "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
                         "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",

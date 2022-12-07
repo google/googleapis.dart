@@ -11672,14 +11672,12 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// be persisted.
   core.String? redactionStrategy;
 
-  /// Retains data in interaction logging for the specified number of days.
+  /// Retains the data for the specified number of days.
   ///
-  /// This does not apply to Cloud logging, which is owned by the user - not
-  /// Dialogflow. User must set a value lower than Dialogflow's default 365d
-  /// TTL. Setting a value higher than that has no effect. A missing value or
-  /// setting to 0 also means we use Dialogflow's default TTL. Note: Interaction
-  /// logging is a limited access feature. Talk to your Google representative to
-  /// check availability for you.
+  /// User must set a value lower than Dialogflow's default 365d TTL (30 days
+  /// for Agent Assist traffic), higher value will be ignored and use default.
+  /// Setting a value higher than that has no effect. A missing value or setting
+  /// to 0 also means we use default TTL.
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({
@@ -11771,7 +11769,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
 
   /// Cloud Storage bucket to export audio record to.
   ///
-  /// Settings this field would grant the Storage Object Creator role to the
+  /// Setting this field would grant the Storage Object Creator role to the
   /// Dialogflow Service Agent. API caller that tries to modify this field
   /// should have the permission of storage.buckets.setIamPolicy.
   core.String? gcsBucket;

@@ -20,6 +20,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCertificateIssuanceConfigsResource]
 ///     - [ProjectsLocationsCertificateMapsResource]
 ///       - [ProjectsLocationsCertificateMapsCertificateMapEntriesResource]
 ///     - [ProjectsLocationsCertificatesResource]
@@ -70,6 +71,9 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsCertificateIssuanceConfigsResource
+      get certificateIssuanceConfigs =>
+          ProjectsLocationsCertificateIssuanceConfigsResource(_requester);
   ProjectsLocationsCertificateMapsResource get certificateMaps =>
       ProjectsLocationsCertificateMapsResource(_requester);
   ProjectsLocationsCertificatesResource get certificates =>
@@ -165,6 +169,199 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCertificateIssuanceConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCertificateIssuanceConfigsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new CertificateIssuanceConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the certificate issuance
+  /// config. Must be in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [certificateIssuanceConfigId] - Required. A user-provided name of the
+  /// certificate config.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CertificateIssuanceConfig request,
+    core.String parent, {
+    core.String? certificateIssuanceConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (certificateIssuanceConfigId != null)
+        'certificateIssuanceConfigId': [certificateIssuanceConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/certificateIssuanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single CertificateIssuanceConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the certificate issuance config to delete.
+  /// Must be in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/certificateIssuanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single CertificateIssuanceConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the certificate issuance config to describe.
+  /// Must be in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/certificateIssuanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CertificateIssuanceConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CertificateIssuanceConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CertificateIssuanceConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists CertificateIssuanceConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the certificate
+  /// should be listed, specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the Certificates Configs
+  /// returned.
+  ///
+  /// [orderBy] - A list of Certificate Config field names used to specify the
+  /// order of the returned results. The default sorting order is ascending. To
+  /// specify descending order for a field, add a suffix " desc".
+  ///
+  /// [pageSize] - Maximum number of certificate configs to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListCertificateIssuanceConfigsResponse`. Indicates that this is a
+  /// continuation of a prior `ListCertificateIssuanceConfigs` call, and that
+  /// the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCertificateIssuanceConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCertificateIssuanceConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/certificateIssuanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCertificateIssuanceConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1528,6 +1725,178 @@ class Certificate {
       };
 }
 
+/// The CA that issues the workload certificate.
+///
+/// It includes CA address, type, authentication to CA service, etc.
+class CertificateAuthorityConfig {
+  /// Defines a CertificateAuthorityServiceConfig.
+  CertificateAuthorityServiceConfig? certificateAuthorityServiceConfig;
+
+  CertificateAuthorityConfig({
+    this.certificateAuthorityServiceConfig,
+  });
+
+  CertificateAuthorityConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityServiceConfig:
+              json_.containsKey('certificateAuthorityServiceConfig')
+                  ? CertificateAuthorityServiceConfig.fromJson(
+                      json_['certificateAuthorityServiceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityServiceConfig != null)
+          'certificateAuthorityServiceConfig':
+              certificateAuthorityServiceConfig!,
+      };
+}
+
+/// Contains information required to contact CA service.
+class CertificateAuthorityServiceConfig {
+  /// A CA pool resource used to issue a certificate.
+  ///
+  /// The CA pool string has a relative resource path following the form
+  /// "projects/{project}/locations/{location}/caPools/{ca_pool}".
+  ///
+  /// Required.
+  core.String? caPool;
+
+  CertificateAuthorityServiceConfig({
+    this.caPool,
+  });
+
+  CertificateAuthorityServiceConfig.fromJson(core.Map json_)
+      : this(
+          caPool: json_.containsKey('caPool')
+              ? json_['caPool'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caPool != null) 'caPool': caPool!,
+      };
+}
+
+/// CertificateIssuanceConfig specifies how to issue and manage a certificate.
+class CertificateIssuanceConfig {
+  /// The CA that issues the workload certificate.
+  ///
+  /// It includes the CA address, type, authentication to CA service, etc.
+  ///
+  /// Required.
+  CertificateAuthorityConfig? certificateAuthorityConfig;
+
+  /// The creation timestamp of a CertificateIssuanceConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// One or more paragraphs of text description of a CertificateIssuanceConfig.
+  core.String? description;
+
+  /// The key algorithm to use when generating the private key.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "KEY_ALGORITHM_UNSPECIFIED" : Unspecified key algorithm.
+  /// - "RSA_2048" : Specifies RSA with a 2048-bit modulus.
+  /// - "ECDSA_P256" : Specifies ECDSA with curve P256.
+  core.String? keyAlgorithm;
+
+  /// Set of labels associated with a CertificateIssuanceConfig.
+  core.Map<core.String, core.String>? labels;
+
+  /// Workload certificate lifetime requested.
+  ///
+  /// Required.
+  core.String? lifetime;
+
+  /// A user-defined name of the certificate issuance config.
+  ///
+  /// CertificateIssuanceConfig names must be unique globally and match pattern
+  /// `projects / * /locations / * /certificateIssuanceConfigs / * `.
+  core.String? name;
+
+  /// Specifies the percentage of elapsed time of the certificate lifetime to
+  /// wait before renewing the certificate.
+  ///
+  /// Must be a number between 1-99, inclusive.
+  ///
+  /// Required.
+  core.int? rotationWindowPercentage;
+
+  /// The last update timestamp of a CertificateIssuanceConfig.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CertificateIssuanceConfig({
+    this.certificateAuthorityConfig,
+    this.createTime,
+    this.description,
+    this.keyAlgorithm,
+    this.labels,
+    this.lifetime,
+    this.name,
+    this.rotationWindowPercentage,
+    this.updateTime,
+  });
+
+  CertificateIssuanceConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityConfig:
+              json_.containsKey('certificateAuthorityConfig')
+                  ? CertificateAuthorityConfig.fromJson(
+                      json_['certificateAuthorityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          keyAlgorithm: json_.containsKey('keyAlgorithm')
+              ? json_['keyAlgorithm'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lifetime: json_.containsKey('lifetime')
+              ? json_['lifetime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rotationWindowPercentage:
+              json_.containsKey('rotationWindowPercentage')
+                  ? json_['rotationWindowPercentage'] as core.int
+                  : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityConfig != null)
+          'certificateAuthorityConfig': certificateAuthorityConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
+        if (labels != null) 'labels': labels!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (name != null) 'name': name!,
+        if (rotationWindowPercentage != null)
+          'rotationWindowPercentage': rotationWindowPercentage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Defines a collection of certificate configurations.
 class CertificateMap {
   /// The creation timestamp of a Certificate Map.
@@ -1538,7 +1907,10 @@ class CertificateMap {
   /// One or more paragraphs of text description of a certificate map.
   core.String? description;
 
-  /// A list of GCLB targets which use this Certificate Map.
+  /// A list of GCLB targets that use this Certificate Map.
+  ///
+  /// A Target Proxy is only present on this list if it's attached to a
+  /// Forwarding Rule.
   ///
   /// Output only.
   core.List<GclbTarget>? gclbTargets;
@@ -1735,7 +2107,7 @@ class DnsAuthorization {
   /// Output only.
   DnsResourceRecord? dnsResourceRecord;
 
-  /// A domain which is being authorized.
+  /// A domain that is being authorized.
   ///
   /// A DnsAuthorization resource covers a single domain and its wildcard, e.g.
   /// authorization for `example.com` can be used to issue certificates for
@@ -1858,7 +2230,7 @@ class DnsResourceRecord {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Describes a Target Proxy which uses this Certificate Map.
+/// Describes a Target Proxy that uses this Certificate Map.
 class GclbTarget {
   /// IP configurations for this Target Proxy where the Certificate Map is
   /// serving.
@@ -1939,6 +2311,54 @@ class IpConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (ports != null) 'ports': ports!,
+      };
+}
+
+/// Response for the `ListCertificateIssuanceConfigs` method.
+class ListCertificateIssuanceConfigsResponse {
+  /// A list of certificate configs for the parent resource.
+  core.List<CertificateIssuanceConfig>? certificateIssuanceConfigs;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListCertificateIssuanceConfigsResponse({
+    this.certificateIssuanceConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCertificateIssuanceConfigsResponse.fromJson(core.Map json_)
+      : this(
+          certificateIssuanceConfigs:
+              json_.containsKey('certificateIssuanceConfigs')
+                  ? (json_['certificateIssuanceConfigs'] as core.List)
+                      .map((value) => CertificateIssuanceConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateIssuanceConfigs != null)
+          'certificateIssuanceConfigs': certificateIssuanceConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2217,6 +2637,17 @@ class ManagedCertificate {
   /// Immutable.
   core.List<core.String>? domains;
 
+  /// The resource name for a CertificateIssuanceConfig used to configure
+  /// private PKI certificates in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  ///
+  /// If this field is not set, the certificates will instead be publicly signed
+  /// as documented at
+  /// https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+  ///
+  /// Immutable.
+  core.String? issuanceConfig;
+
   /// Information about issues with provisioning a Managed Certificate.
   ///
   /// Output only.
@@ -2241,6 +2672,7 @@ class ManagedCertificate {
     this.authorizationAttemptInfo,
     this.dnsAuthorizations,
     this.domains,
+    this.issuanceConfig,
     this.provisioningIssue,
     this.state,
   });
@@ -2264,6 +2696,9 @@ class ManagedCertificate {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          issuanceConfig: json_.containsKey('issuanceConfig')
+              ? json_['issuanceConfig'] as core.String
+              : null,
           provisioningIssue: json_.containsKey('provisioningIssue')
               ? ProvisioningIssue.fromJson(json_['provisioningIssue']
                   as core.Map<core.String, core.dynamic>)
@@ -2277,6 +2712,7 @@ class ManagedCertificate {
           'authorizationAttemptInfo': authorizationAttemptInfo!,
         if (dnsAuthorizations != null) 'dnsAuthorizations': dnsAuthorizations!,
         if (domains != null) 'domains': domains!,
+        if (issuanceConfig != null) 'issuanceConfig': issuanceConfig!,
         if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
         if (state != null) 'state': state!,
       };

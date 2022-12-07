@@ -46,9 +46,7 @@ api.Bucket buildBucket() {
   final o = api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    o.location = 'foo';
     o.name = 'foo';
-    o.reconciling = true;
   }
   buildCounterBucket--;
   return o;
@@ -58,14 +56,9 @@ void checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
     unittest.expect(
-      o.location!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.reconciling!, unittest.isTrue);
   }
   buildCounterBucket--;
 }

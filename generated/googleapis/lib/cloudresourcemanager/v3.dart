@@ -84,8 +84,8 @@ class EffectiveTagsResource {
 
   EffectiveTagsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Return a list of effective tags for the given cloud resource, as specified
-  /// in `parent`.
+  /// Return a list of effective tags for the given Google Cloud resource, as
+  /// specified in `parent`.
   ///
   /// Request parameters:
   ///
@@ -1789,8 +1789,7 @@ class TagBindingsResource {
 
   TagBindingsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a TagBinding between a TagValue and a cloud resource (currently
-  /// project, folder, or organization).
+  /// Creates a TagBinding between a TagValue and a Google Cloud resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1868,8 +1867,8 @@ class TagBindingsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the TagBindings for the given cloud resource, as specified with
-  /// `parent`.
+  /// Lists the TagBindings for the given Google Cloud resource, as specified
+  /// with `parent`.
   ///
   /// NOTE: The `parent` field is expected to be a full resource name:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
@@ -1878,13 +1877,11 @@ class TagBindingsResource {
   ///
   /// [pageSize] - Optional. The maximum number of TagBindings to return in the
   /// response. The server allows a maximum of 300 TagBindings to return. If
-  /// unspecified, the server will use 100 as the default. Currently this api
-  /// returns unpaginated response and `page_size` is ignored.
+  /// unspecified, the server will use 100 as the default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagBindings` that indicates where this listing should continue
-  /// from. Currently this api returns unpaginated response and `page_token` is
-  /// ignored.
+  /// from.
   ///
   /// [parent] - Required. The full resource name of a resource for which you
   /// want to list existing TagBindings. E.g.
@@ -4205,10 +4202,8 @@ class SetIamPolicyRequest {
 typedef Status = $Status;
 
 /// A TagBinding represents a connection between a TagValue and a cloud resource
-/// (currently project, folder, or organization).
-///
 /// Once a TagBinding is created, the TagValue is applied to all the descendants
-/// of the cloud resource.
+/// of the Google Cloud resource.
 class TagBinding {
   /// The name of the TagBinding.
   ///
@@ -4388,9 +4383,12 @@ class TagKey {
   /// - "PURPOSE_UNSPECIFIED" : Unspecified purpose.
   /// - "GCE_FIREWALL" : Purpose for Compute Engine firewalls. A corresponding
   /// purpose_data should be set for the network the tag is intended for. The
-  /// key should be 'network' and the value should be in the format of the
-  /// network url id string:
-  /// https://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+  /// key should be 'network' and the value should be in either of these two
+  /// formats:
+  /// -https://www.googleapis.com/compute/{compute_version}/projects/{project_id}/global/networks/{network_id}
+  /// -{project_id}/{network_name} Examples:
+  /// -https://www.googleapis.com/compute/staging_v1/projects/fail-closed-load-testing/global/networks/6992953698831725600
+  /// -fail-closed-load-testing/load-testing-network
   core.String? purpose;
 
   /// Purpose data corresponds to the policy system that the tag is intended

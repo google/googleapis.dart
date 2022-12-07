@@ -888,6 +888,7 @@ api.ManagedZoneForwardingConfigNameServerTarget
   if (buildCounterManagedZoneForwardingConfigNameServerTarget < 3) {
     o.forwardingPath = 'foo';
     o.ipv4Address = 'foo';
+    o.ipv6Address = 'foo';
     o.kind = 'foo';
   }
   buildCounterManagedZoneForwardingConfigNameServerTarget--;
@@ -904,6 +905,10 @@ void checkManagedZoneForwardingConfigNameServerTarget(
     );
     unittest.expect(
       o.ipv4Address!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipv6Address!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1528,6 +1533,7 @@ api.PolicyAlternativeNameServerConfigTargetNameServer
   if (buildCounterPolicyAlternativeNameServerConfigTargetNameServer < 3) {
     o.forwardingPath = 'foo';
     o.ipv4Address = 'foo';
+    o.ipv6Address = 'foo';
     o.kind = 'foo';
   }
   buildCounterPolicyAlternativeNameServerConfigTargetNameServer--;
@@ -1544,6 +1550,10 @@ void checkPolicyAlternativeNameServerConfigTargetNameServer(
     );
     unittest.expect(
       o.ipv4Address!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipv6Address!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2369,12 +2379,29 @@ void checkUnnamed35(core.List<api.ResponsePolicyGKECluster> o) {
   checkResponsePolicyGKECluster(o[1]);
 }
 
-core.List<api.ResponsePolicyNetwork> buildUnnamed36() => [
+core.Map<core.String, core.String> buildUnnamed36() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed36(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.ResponsePolicyNetwork> buildUnnamed37() => [
       buildResponsePolicyNetwork(),
       buildResponsePolicyNetwork(),
     ];
 
-void checkUnnamed36(core.List<api.ResponsePolicyNetwork> o) {
+void checkUnnamed37(core.List<api.ResponsePolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicyNetwork(o[0]);
   checkResponsePolicyNetwork(o[1]);
@@ -2389,7 +2416,8 @@ api.ResponsePolicy buildResponsePolicy() {
     o.gkeClusters = buildUnnamed35();
     o.id = 'foo';
     o.kind = 'foo';
-    o.networks = buildUnnamed36();
+    o.labels = buildUnnamed36();
+    o.networks = buildUnnamed37();
     o.responsePolicyName = 'foo';
   }
   buildCounterResponsePolicy--;
@@ -2412,7 +2440,8 @@ void checkResponsePolicy(api.ResponsePolicy o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.networks!);
+    checkUnnamed36(o.labels!);
+    checkUnnamed37(o.networks!);
     unittest.expect(
       o.responsePolicyName!,
       unittest.equals('foo'),
@@ -2514,12 +2543,12 @@ void checkResponsePolicyRule(api.ResponsePolicyRule o) {
   buildCounterResponsePolicyRule--;
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed37() => [
+core.List<api.ResourceRecordSet> buildUnnamed38() => [
       buildResourceRecordSet(),
       buildResourceRecordSet(),
     ];
 
-void checkUnnamed37(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed38(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -2530,7 +2559,7 @@ api.ResponsePolicyRuleLocalData buildResponsePolicyRuleLocalData() {
   final o = api.ResponsePolicyRuleLocalData();
   buildCounterResponsePolicyRuleLocalData++;
   if (buildCounterResponsePolicyRuleLocalData < 3) {
-    o.localDatas = buildUnnamed37();
+    o.localDatas = buildUnnamed38();
   }
   buildCounterResponsePolicyRuleLocalData--;
   return o;
@@ -2539,17 +2568,17 @@ api.ResponsePolicyRuleLocalData buildResponsePolicyRuleLocalData() {
 void checkResponsePolicyRuleLocalData(api.ResponsePolicyRuleLocalData o) {
   buildCounterResponsePolicyRuleLocalData++;
   if (buildCounterResponsePolicyRuleLocalData < 3) {
-    checkUnnamed37(o.localDatas!);
+    checkUnnamed38(o.localDatas!);
   }
   buildCounterResponsePolicyRuleLocalData--;
 }
 
-core.List<api.ResponsePolicyRule> buildUnnamed38() => [
+core.List<api.ResponsePolicyRule> buildUnnamed39() => [
       buildResponsePolicyRule(),
       buildResponsePolicyRule(),
     ];
 
-void checkUnnamed38(core.List<api.ResponsePolicyRule> o) {
+void checkUnnamed39(core.List<api.ResponsePolicyRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicyRule(o[0]);
   checkResponsePolicyRule(o[1]);
@@ -2562,7 +2591,7 @@ api.ResponsePolicyRulesListResponse buildResponsePolicyRulesListResponse() {
   if (buildCounterResponsePolicyRulesListResponse < 3) {
     o.header = buildResponseHeader();
     o.nextPageToken = 'foo';
-    o.responsePolicyRules = buildUnnamed38();
+    o.responsePolicyRules = buildUnnamed39();
   }
   buildCounterResponsePolicyRulesListResponse--;
   return o;
@@ -2577,7 +2606,7 @@ void checkResponsePolicyRulesListResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.responsePolicyRules!);
+    checkUnnamed39(o.responsePolicyRules!);
   }
   buildCounterResponsePolicyRulesListResponse--;
 }

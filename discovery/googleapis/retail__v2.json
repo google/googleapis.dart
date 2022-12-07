@@ -131,7 +131,7 @@
                                             "type": "string"
                                         },
                                         "deviceType": {
-                                            "description": "The device type context for completion suggestions. It is useful to apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.",
+                                            "description": "The device type context for completion suggestions. We recommend that you leave this field empty. It can apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1488,6 +1488,16 @@
                                                     "required": true,
                                                     "type": "string"
                                                 },
+                                                "prebuiltRule": {
+                                                    "description": "The prebuilt rule name that can convert a specific type of raw_json. For example: \"default_schema/v1.0\"",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "rawJson": {
+                                                    "description": "An arbitrary serialized JSON string that contains necessary information that can comprise a user event. When this field is specified, the user_event field will be ignored. Note: line-delimited JSON is not supported, a single JSON only.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "uri": {
                                                     "description": "The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for 3rd party requests.",
                                                     "location": "query",
@@ -1768,7 +1778,7 @@
             }
         }
     },
-    "revision": "20220909",
+    "revision": "20221130",
     "rootUrl": "https://retail.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
@@ -1869,7 +1879,7 @@
             "type": "object"
         },
         "GoogleCloudRetailLoggingImportErrorContext": {
-            "description": "The error payload that is populated on LRO import APIs. Including: \"google.cloud.retail.v2.ProductService.ImportProducts\" \"google.cloud.retail.v2.EventService.ImportUserEvents\"",
+            "description": "The error payload that is populated on LRO import APIs, including \"google.cloud.retail.v2.ProductService.ImportProducts\" and \"google.cloud.retail.v2.EventService.ImportUserEvents\".",
             "id": "GoogleCloudRetailLoggingImportErrorContext",
             "properties": {
                 "catalogItem": {
@@ -2131,16 +2141,30 @@
             "id": "GoogleCloudRetailV2CatalogAttribute",
             "properties": {
                 "dynamicFacetableOption": {
-                    "description": "If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an INVALID_ARGUMENT error is returned.",
+                    "description": "If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an INVALID_ARGUMENT error is returned. Must be specified, otherwise throws INVALID_FORMAT error.",
                     "enum": [
                         "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED",
                         "DYNAMIC_FACETABLE_ENABLED",
                         "DYNAMIC_FACETABLE_DISABLED"
                     ],
                     "enumDescriptions": [
-                        "Value used when unset. Defaults to DYNAMIC_FACETABLE_ENABLED.",
+                        "Value used when unset.",
                         "Dynamic facetable option enabled for an attribute.",
                         "Dynamic facetable option disabled for an attribute."
+                    ],
+                    "type": "string"
+                },
+                "exactSearchableOption": {
+                    "description": "If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This property only applies to textual custom attributes and requires indexable set to enabled to enable exact-searchable.",
+                    "enum": [
+                        "EXACT_SEARCHABLE_OPTION_UNSPECIFIED",
+                        "EXACT_SEARCHABLE_ENABLED",
+                        "EXACT_SEARCHABLE_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Value used when unset. Defaults to EXACT_SEARCHABLE_DISABLED.",
+                        "Exact searchable option enabled for an attribute.",
+                        "Exact searchable option disabled for an attribute."
                     ],
                     "type": "string"
                 },
@@ -2150,14 +2174,14 @@
                     "type": "boolean"
                 },
                 "indexableOption": {
-                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search.",
+                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must be specified, otherwise throws INVALID_FORMAT error.",
                     "enum": [
                         "INDEXABLE_OPTION_UNSPECIFIED",
                         "INDEXABLE_ENABLED",
                         "INDEXABLE_DISABLED"
                     ],
                     "enumDescriptions": [
-                        "Value used when unset. Defaults to INDEXABLE_ENABLED.",
+                        "Value used when unset.",
                         "Indexable option enabled for an attribute.",
                         "Indexable option disabled for an attribute."
                     ],
@@ -2167,15 +2191,29 @@
                     "description": "Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed.",
                     "type": "string"
                 },
+                "retrievableOption": {
+                    "description": "If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.",
+                    "enum": [
+                        "RETRIEVABLE_OPTION_UNSPECIFIED",
+                        "RETRIEVABLE_ENABLED",
+                        "RETRIEVABLE_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Value used when unset. Defaults to RETRIEVABLE_DISABLED.",
+                        "Retrievable option enabled for an attribute.",
+                        "Retrievable option disabled for an attribute."
+                    ],
+                    "type": "string"
+                },
                 "searchableOption": {
-                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical attributes.",
+                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical attributes. Must be specified, otherwise throws INVALID_FORMAT error.",
                     "enum": [
                         "SEARCHABLE_OPTION_UNSPECIFIED",
                         "SEARCHABLE_ENABLED",
                         "SEARCHABLE_DISABLED"
                     ],
                     "enumDescriptions": [
-                        "Value used when unset. Defaults to SEARCHABLE_DISABLED.",
+                        "Value used when unset.",
                         "Searchable option enabled for an attribute.",
                         "Searchable option disabled for an attribute."
                     ],
@@ -2890,7 +2928,7 @@
             "id": "GoogleCloudRetailV2PredictRequest",
             "properties": {
                 "filter": {
-                    "description": "Filter for restricting prediction results with a length limit of 5,000 characters. Accepts values for tags and the `filterOutOfStockItems` flag. * Tag expressions. Restricts predictions to products that match all of the specified tags. Boolean operators `OR` and `NOT` are supported if the expression is enclosed in parentheses, and must be separated from the tag values by a space. `-\"tagA\"` is also supported and is equivalent to `NOT \"tagA\"`. Tag values must be double quoted UTF-8 encoded strings with a size limit of 1,000 characters. Note: \"Recently viewed\" models don't support tag filtering at the moment. * filterOutOfStockItems. Restricts predictions to products that do not have a stockState value of OUT_OF_STOCK. Examples: * tag=(\"Red\" OR \"Blue\") tag=\"New-Arrival\" tag=(NOT \"promotional\") * filterOutOfStockItems tag=(-\"promotional\") * filterOutOfStockItems If your filter blocks all prediction results, the API will return generic (unfiltered) popular products. If you only want results strictly matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results instead. Note that the API will never return items with storageStatus of \"EXPIRED\" or \"DELETED\" regardless of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY(\"Red\", \"Blue\")) AND NOT (categories: ANY(\"Phones\")) * (availability: ANY(\"IN_STOCK\")) AND (colors: ANY(\"Red\") OR categories: ANY(\"Phones\"))",
+                    "description": "Filter for restricting prediction results with a length limit of 5,000 characters. Accepts values for tags and the `filterOutOfStockItems` flag. * Tag expressions. Restricts predictions to products that match all of the specified tags. Boolean operators `OR` and `NOT` are supported if the expression is enclosed in parentheses, and must be separated from the tag values by a space. `-\"tagA\"` is also supported and is equivalent to `NOT \"tagA\"`. Tag values must be double quoted UTF-8 encoded strings with a size limit of 1,000 characters. Note: \"Recently viewed\" models don't support tag filtering at the moment. * filterOutOfStockItems. Restricts predictions to products that do not have a stockState value of OUT_OF_STOCK. Examples: * tag=(\"Red\" OR \"Blue\") tag=\"New-Arrival\" tag=(NOT \"promotional\") * filterOutOfStockItems tag=(-\"promotional\") * filterOutOfStockItems If your filter blocks all prediction results, the API will return *no* results. If instead you want empty result sets to return generic (unfiltered) popular products, set `strictFiltering` to False in `PredictRequest.params`. Note that the API will never return items with storageStatus of \"EXPIRED\" or \"DELETED\" regardless of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY(\"Red\", \"Blue\")) AND NOT (categories: ANY(\"Phones\")) * (availability: ANY(\"IN_STOCK\")) AND (colors: ANY(\"Red\") OR categories: ANY(\"Phones\"))",
                     "type": "string"
                 },
                 "labels": {
@@ -2913,7 +2951,7 @@
                     "additionalProperties": {
                         "type": "any"
                     },
-                    "description": "Additional domain specific parameters for the predictions. Allowed values: * `returnProduct`: Boolean. If set to true, the associated product object will be returned in the `results.metadata` field in the prediction response. * `returnScore`: Boolean. If set to true, the prediction 'score' corresponding to each returned product will be set in the `results.metadata` field in the prediction response. The given 'score' indicates the probability of an product being clicked/purchased given the user's context and history. * `strictFiltering`: Boolean. True by default. If set to false, the service will return generic (unfiltered) popular products instead of empty if your filter blocks all prediction results. * `priceRerankLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-price-reranking', 'low-price-reranking', 'medium-price-reranking', 'high-price-reranking'}. This gives request-level control and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity', 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field is interpreteted according to the new, attribute-based syntax.",
+                    "description": "Additional domain specific parameters for the predictions. Allowed values: * `returnProduct`: Boolean. If set to true, the associated product object will be returned in the `results.metadata` field in the prediction response. * `returnScore`: Boolean. If set to true, the prediction 'score' corresponding to each returned product will be set in the `results.metadata` field in the prediction response. The given 'score' indicates the probability of a product being clicked/purchased given the user's context and history. * `strictFiltering`: Boolean. True by default. If set to false, the service will return generic (unfiltered) popular products instead of empty if your filter blocks all prediction results. * `priceRerankLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-price-reranking', 'low-price-reranking', 'medium-price-reranking', 'high-price-reranking'}. This gives request-level control and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity', 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field is interpreteted according to the new, attribute-based syntax.",
                     "type": "object"
                 },
                 "userEvent": {
@@ -3191,7 +3229,7 @@
                     "description": "The rating of this product."
                 },
                 "retrievableFields": {
-                    "description": "Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency.",
+                    "description": "Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.",
                     "format": "google-fieldmask",
                     "type": "string"
                 },
@@ -3737,7 +3775,7 @@
             "type": "object"
         },
         "GoogleCloudRetailV2RuleTwowaySynonymsAction": {
-            "description": "Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of \"sneakers\" and \"shoes\". * \"sneakers\" will use a synonym of \"shoes\". * \"shoes\" will use a synonym of \"sneakers\".",
+            "description": "Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of \"sneakers\" and \"shoes\": * \"sneakers\" will use a synonym of \"shoes\". * \"shoes\" will use a synonym of \"sneakers\".",
             "id": "GoogleCloudRetailV2RuleTwowaySynonymsAction",
             "properties": {
                 "synonyms": {
@@ -3936,7 +3974,7 @@
                     "description": "Required. The facet key specification."
                 },
                 "limit": {
-                    "description": "Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.",
+                    "description": "Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -4720,6 +4758,17 @@
             },
             "type": "object"
         },
+        "GoogleCloudRetailV2alphaGcsOutputResult": {
+            "description": "A Gcs output result.",
+            "id": "GoogleCloudRetailV2alphaGcsOutputResult",
+            "properties": {
+                "outputUri": {
+                    "description": "The uri of Gcs output",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRetailV2alphaImportCompletionDataResponse": {
             "description": "Response of the ImportCompletionDataRequest. If the long running operation is done, this message is returned by the google.longrunning.Operations.response field if the operation is successful.",
             "id": "GoogleCloudRetailV2alphaImportCompletionDataResponse",
@@ -4946,7 +4995,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.",
+                    "description": "Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.",
                     "type": "string"
                 },
                 "updateTime": {
@@ -5010,7 +5059,7 @@
             "id": "GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel",
             "properties": {
                 "candidates": {
-                    "description": "Required. The candidates to consider on the panel. Limit = 10.",
+                    "description": "Required. The candidates to consider on the panel.",
                     "items": {
                         "$ref": "GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate"
                     },
@@ -5042,13 +5091,20 @@
             "type": "object"
         },
         "GoogleCloudRetailV2alphaOutputResult": {
-            "description": "Output result.",
+            "description": "Output result that stores the information about where the exported data is stored.",
             "id": "GoogleCloudRetailV2alphaOutputResult",
             "properties": {
                 "bigqueryResult": {
-                    "description": "Export result in BigQuery.",
+                    "description": "The BigQuery location where the result is stored.",
                     "items": {
                         "$ref": "GoogleCloudRetailV2alphaBigQueryOutputResult"
+                    },
+                    "type": "array"
+                },
+                "gcsResult": {
+                    "description": "The Google Cloud Storage location where the result is stored.",
+                    "items": {
+                        "$ref": "GoogleCloudRetailV2alphaGcsOutputResult"
                     },
                     "type": "array"
                 }
@@ -5263,6 +5319,17 @@
             },
             "type": "object"
         },
+        "GoogleCloudRetailV2betaCreateModelMetadata": {
+            "description": "Metadata associated with a create operation.",
+            "id": "GoogleCloudRetailV2betaCreateModelMetadata",
+            "properties": {
+                "model": {
+                    "description": "The resource name of the model that this create applies to. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRetailV2betaExportErrorsConfig": {
             "description": "Configuration of destination for Export related errors.",
             "id": "GoogleCloudRetailV2betaExportErrorsConfig",
@@ -5331,6 +5398,17 @@
                 "outputResult": {
                     "$ref": "GoogleCloudRetailV2betaOutputResult",
                     "description": "Output result indicating where the data were exported to."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2betaGcsOutputResult": {
+            "description": "A Gcs output result.",
+            "id": "GoogleCloudRetailV2betaGcsOutputResult",
+            "properties": {
+                "outputUri": {
+                    "description": "The uri of Gcs output",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5435,14 +5513,165 @@
             },
             "type": "object"
         },
+        "GoogleCloudRetailV2betaModel": {
+            "description": "Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API.",
+            "id": "GoogleCloudRetailV2betaModel",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. Timestamp the Recommendation Model was created at.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "dataState": {
+                    "description": "Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because model no longer has sufficient data for training.",
+                    "enum": [
+                        "DATA_STATE_UNSPECIFIED",
+                        "DATA_OK",
+                        "DATA_ERROR"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified default value, should never be explicitly set.",
+                        "The model has sufficient training data.",
+                        "The model does not have sufficient training data. Error messages can be queried via Stackdriver."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Required. The display name of the model. Should be human readable, used to display Recommendation Models in the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.",
+                    "type": "string"
+                },
+                "filteringOption": {
+                    "description": "Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.",
+                    "enum": [
+                        "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED",
+                        "RECOMMENDATIONS_FILTERING_DISABLED",
+                        "RECOMMENDATIONS_FILTERING_ENABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.",
+                        "Recommendation filtering is disabled.",
+                        "Recommendation filtering is enabled."
+                    ],
+                    "type": "string"
+                },
+                "lastTuneTime": {
+                    "description": "Output only. The timestamp when the latest successful tune finished.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.",
+                    "type": "string"
+                },
+                "optimizationObjective": {
+                    "description": "Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.",
+                    "type": "string"
+                },
+                "periodicTuningState": {
+                    "description": "Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.",
+                    "enum": [
+                        "PERIODIC_TUNING_STATE_UNSPECIFIED",
+                        "PERIODIC_TUNING_DISABLED",
+                        "ALL_TUNING_DISABLED",
+                        "PERIODIC_TUNING_ENABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified default value, should never be explicitly set.",
+                        "The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.",
+                        "The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.",
+                        "The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method."
+                    ],
+                    "type": "string"
+                },
+                "servingConfigLists": {
+                    "description": "Output only. The list of valid serving configs associated with the PageOptimizationConfig.",
+                    "items": {
+                        "$ref": "GoogleCloudRetailV2betaModelServingConfigList"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "servingState": {
+                    "description": "Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.",
+                    "enum": [
+                        "SERVING_STATE_UNSPECIFIED",
+                        "INACTIVE",
+                        "ACTIVE",
+                        "TUNED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified serving state.",
+                        "The model is not serving.",
+                        "The model is serving and can be queried.",
+                        "The model is trained on tuned hyperparameters and can be queried."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "trainingState": {
+                    "description": "Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.",
+                    "enum": [
+                        "TRAINING_STATE_UNSPECIFIED",
+                        "PAUSED",
+                        "TRAINING"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified training state.",
+                        "The model training is paused.",
+                        "The model is training."
+                    ],
+                    "type": "string"
+                },
+                "tuningOperation": {
+                    "description": "Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing tune for this recommendation. Empty field implies no tune is goig on.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused - this would be the time the pause was initiated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2betaModelServingConfigList": {
+            "description": "Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.",
+            "id": "GoogleCloudRetailV2betaModelServingConfigList",
+            "properties": {
+                "servingConfigIds": {
+                    "description": "Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRetailV2betaOutputResult": {
-            "description": "Output result.",
+            "description": "Output result that stores the information about where the exported data is stored.",
             "id": "GoogleCloudRetailV2betaOutputResult",
             "properties": {
                 "bigqueryResult": {
-                    "description": "Export result in BigQuery.",
+                    "description": "The BigQuery location where the result is stored.",
                     "items": {
                         "$ref": "GoogleCloudRetailV2betaBigQueryOutputResult"
+                    },
+                    "type": "array"
+                },
+                "gcsResult": {
+                    "description": "The Google Cloud Storage location where the result is stored.",
+                    "items": {
+                        "$ref": "GoogleCloudRetailV2betaGcsOutputResult"
                     },
                     "type": "array"
                 }
@@ -5518,6 +5747,23 @@
         "GoogleCloudRetailV2betaSetInventoryResponse": {
             "description": "Response of the SetInventoryRequest. Currently empty because there is no meaningful response populated from the ProductService.SetInventory method.",
             "id": "GoogleCloudRetailV2betaSetInventoryResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudRetailV2betaTuneModelMetadata": {
+            "description": "Metadata associated with a tune operation.",
+            "id": "GoogleCloudRetailV2betaTuneModelMetadata",
+            "properties": {
+                "model": {
+                    "description": "The resource name of the model that this tune applies to. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2betaTuneModelResponse": {
+            "description": "Response associated with a tune operation.",
+            "id": "GoogleCloudRetailV2betaTuneModelResponse",
             "properties": {},
             "type": "object"
         },

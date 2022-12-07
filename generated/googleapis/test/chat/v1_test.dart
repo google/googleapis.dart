@@ -540,6 +540,7 @@ api.GoogleAppsCardV1Action buildGoogleAppsCardV1Action() {
   buildCounterGoogleAppsCardV1Action++;
   if (buildCounterGoogleAppsCardV1Action < 3) {
     o.function = 'foo';
+    o.interaction = 'foo';
     o.loadIndicator = 'foo';
     o.parameters = buildUnnamed3();
     o.persistValues = true;
@@ -553,6 +554,10 @@ void checkGoogleAppsCardV1Action(api.GoogleAppsCardV1Action o) {
   if (buildCounterGoogleAppsCardV1Action < 3) {
     unittest.expect(
       o.function!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interaction!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -992,7 +997,6 @@ api.GoogleAppsCardV1GridItem buildGoogleAppsCardV1GridItem() {
     o.image = buildGoogleAppsCardV1ImageComponent();
     o.layout = 'foo';
     o.subtitle = 'foo';
-    o.textAlignment = 'foo';
     o.title = 'foo';
   }
   buildCounterGoogleAppsCardV1GridItem--;
@@ -1013,10 +1017,6 @@ void checkGoogleAppsCardV1GridItem(api.GoogleAppsCardV1GridItem o) {
     );
     unittest.expect(
       o.subtitle!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.textAlignment!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1494,7 +1494,6 @@ api.GoogleAppsCardV1Widget buildGoogleAppsCardV1Widget() {
     o.decoratedText = buildGoogleAppsCardV1DecoratedText();
     o.divider = buildGoogleAppsCardV1Divider();
     o.grid = buildGoogleAppsCardV1Grid();
-    o.horizontalAlignment = 'foo';
     o.image = buildGoogleAppsCardV1Image();
     o.selectionInput = buildGoogleAppsCardV1SelectionInput();
     o.textInput = buildGoogleAppsCardV1TextInput();
@@ -1512,10 +1511,6 @@ void checkGoogleAppsCardV1Widget(api.GoogleAppsCardV1Widget o) {
     checkGoogleAppsCardV1DecoratedText(o.decoratedText!);
     checkGoogleAppsCardV1Divider(o.divider!);
     checkGoogleAppsCardV1Grid(o.grid!);
-    unittest.expect(
-      o.horizontalAlignment!,
-      unittest.equals('foo'),
-    );
     checkGoogleAppsCardV1Image(o.image!);
     checkGoogleAppsCardV1SelectionInput(o.selectionInput!);
     checkGoogleAppsCardV1TextInput(o.textInput!);
@@ -1843,6 +1838,7 @@ api.Message buildMessage() {
     o.attachment = buildUnnamed14();
     o.cards = buildUnnamed15();
     o.cardsV2 = buildUnnamed16();
+    o.clientAssignedMessageId = 'foo';
     o.createTime = 'foo';
     o.fallbackText = 'foo';
     o.lastUpdateTime = 'foo';
@@ -1853,6 +1849,7 @@ api.Message buildMessage() {
     o.space = buildSpace();
     o.text = 'foo';
     o.thread = buildThread();
+    o.threadReply = true;
   }
   buildCounterMessage--;
   return o;
@@ -1870,6 +1867,10 @@ void checkMessage(api.Message o) {
     checkUnnamed14(o.attachment!);
     checkUnnamed15(o.cards!);
     checkUnnamed16(o.cardsV2!);
+    unittest.expect(
+      o.clientAssignedMessageId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1895,6 +1896,7 @@ void checkMessage(api.Message o) {
       unittest.equals('foo'),
     );
     checkThread(o.thread!);
+    unittest.expect(o.threadReply!, unittest.isTrue);
   }
   buildCounterMessage--;
 }
@@ -2044,6 +2046,7 @@ api.Space buildSpace() {
     o.name = 'foo';
     o.singleUserBotDm = true;
     o.spaceDetails = buildSpaceDetails();
+    o.spaceThreadingState = 'foo';
     o.threaded = true;
     o.type = 'foo';
   }
@@ -2064,6 +2067,10 @@ void checkSpace(api.Space o) {
     );
     unittest.expect(o.singleUserBotDm!, unittest.isTrue);
     checkSpaceDetails(o.spaceDetails!);
+    unittest.expect(
+      o.spaceThreadingState!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.threaded!, unittest.isTrue);
     unittest.expect(
       o.type!,
@@ -2152,6 +2159,7 @@ api.Thread buildThread() {
   buildCounterThread++;
   if (buildCounterThread < 3) {
     o.name = 'foo';
+    o.threadKey = 'foo';
   }
   buildCounterThread--;
   return o;
@@ -2162,6 +2170,10 @@ void checkThread(api.Thread o) {
   if (buildCounterThread < 3) {
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threadKey!,
       unittest.equals('foo'),
     );
   }
@@ -2954,6 +2966,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -2993,6 +3007,14 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
         unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
@@ -3013,6 +3035,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3024,6 +3048,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3063,6 +3089,14 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
         unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
@@ -3083,6 +3117,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3096,6 +3132,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms.conversations;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3136,6 +3174,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -3155,6 +3201,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3226,6 +3274,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3265,6 +3315,14 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
         unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
@@ -3285,6 +3343,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3296,6 +3356,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3335,6 +3397,14 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
         unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
@@ -3355,6 +3425,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3368,6 +3440,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms.conversations;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3408,6 +3482,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -3427,6 +3509,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3555,6 +3639,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).spaces;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3595,6 +3681,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -3614,6 +3708,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3746,6 +3842,8 @@ void main() {
       final res = api.HangoutsChatApi(mock).spaces.messages;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_messageId = 'foo';
+      final arg_messageReplyOption = 'foo';
       final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
@@ -3786,6 +3884,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['messageId']!.first,
+          unittest.equals(arg_messageId),
+        );
+        unittest.expect(
+          queryMap['messageReplyOption']!.first,
+          unittest.equals(arg_messageReplyOption),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -3805,6 +3911,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
+          messageId: arg_messageId,
+          messageReplyOption: arg_messageReplyOption,
           requestId: arg_requestId,
           threadKey: arg_threadKey,
           $fields: arg_$fields);
@@ -3915,11 +4023,12 @@ void main() {
       checkMessage(response as api.Message);
     });
 
-    unittest.test('method--update', () async {
+    unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces.messages;
       final arg_request = buildMessage();
       final arg_name = 'foo';
+      final arg_allowMissing = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3959,6 +4068,80 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['allowMissing']!.first,
+          unittest.equals('$arg_allowMissing'),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          allowMissing: arg_allowMissing,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkMessage(response as api.Message);
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_request = buildMessage();
+      final arg_name = 'foo';
+      final arg_allowMissing = true;
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['allowMissing']!.first,
+          unittest.equals('$arg_allowMissing'),
+        );
+        unittest.expect(
           queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
@@ -3974,7 +4157,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          allowMissing: arg_allowMissing,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });

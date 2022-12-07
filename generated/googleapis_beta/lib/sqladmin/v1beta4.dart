@@ -2290,8 +2290,9 @@ class UsersResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [name] - User of the instance. If the database user has a host, this is
-  /// specified as {username}@{host} else as {username}.
+  /// [name] - User of the instance.
+  ///
+  /// [host] - Host of a user of the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2307,9 +2308,11 @@ class UsersResource {
     core.String project,
     core.String instance,
     core.String name, {
+    core.String? host,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (host != null) 'host': [host],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2986,7 +2989,7 @@ class BinLogCoordinates {
 
 /// Database instance clone context.
 class CloneContext {
-  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  /// The name of the allocated ip range for the private ip Cloud SQL instance.
   ///
   /// For example: "google-managed-services-default". If set, the cloned
   /// instance ip will be created in the allocated range. The range name must
@@ -3102,8 +3105,6 @@ class ConnectSettings {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -3111,8 +3112,12 @@ class ConnectSettings {
   /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
   /// Express.
   /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3126,8 +3131,6 @@ class ConnectSettings {
   /// version is 29.
   /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
   /// version is 30.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3405,8 +3408,6 @@ class DatabaseInstance {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -3414,8 +3415,12 @@ class DatabaseInstance {
   /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
   /// Express.
   /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3429,8 +3434,6 @@ class DatabaseInstance {
   /// version is 29.
   /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
   /// version is 30.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4101,6 +4104,38 @@ class DiskEncryptionStatus {
       };
 }
 
+/// Options for exporting BAK files (SQL Server-only)
+class ExportContextBakExportOptions {
+  /// Option for specifying how many stripes to use for the export.
+  ///
+  /// If blank, and the value of the striped field is true, the number of
+  /// stripes is automatically chosen.
+  core.int? stripeCount;
+
+  /// Whether or not the export should be striped.
+  core.bool? striped;
+
+  ExportContextBakExportOptions({
+    this.stripeCount,
+    this.striped,
+  });
+
+  ExportContextBakExportOptions.fromJson(core.Map json_)
+      : this(
+          stripeCount: json_.containsKey('stripeCount')
+              ? json_['stripeCount'] as core.int
+              : null,
+          striped: json_.containsKey('striped')
+              ? json_['striped'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stripeCount != null) 'stripeCount': stripeCount!,
+        if (striped != null) 'striped': striped!,
+      };
+}
+
 /// Options for exporting data as CSV.
 ///
 /// `MySQL` and `PostgreSQL` instances only.
@@ -4236,6 +4271,9 @@ class ExportContextSqlExportOptions {
 
 /// Database instance export context.
 class ExportContext {
+  /// Options for exporting BAK files (SQL Server-only)
+  ExportContextBakExportOptions? bakExportOptions;
+
   /// Options for exporting data as CSV.
   ///
   /// `MySQL` and `PostgreSQL` instances only.
@@ -4280,6 +4318,7 @@ class ExportContext {
   core.String? uri;
 
   ExportContext({
+    this.bakExportOptions,
     this.csvExportOptions,
     this.databases,
     this.fileType,
@@ -4291,6 +4330,10 @@ class ExportContext {
 
   ExportContext.fromJson(core.Map json_)
       : this(
+          bakExportOptions: json_.containsKey('bakExportOptions')
+              ? ExportContextBakExportOptions.fromJson(json_['bakExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           csvExportOptions: json_.containsKey('csvExportOptions')
               ? ExportContextCsvExportOptions.fromJson(json_['csvExportOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -4315,6 +4358,7 @@ class ExportContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bakExportOptions != null) 'bakExportOptions': bakExportOptions!,
         if (csvExportOptions != null) 'csvExportOptions': csvExportOptions!,
         if (databases != null) 'databases': databases!,
         if (fileType != null) 'fileType': fileType!,
@@ -4629,8 +4673,14 @@ class ImportContextBakImportOptionsEncryptionOptions {
 class ImportContextBakImportOptions {
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
+  /// Whether or not the backup set being restored is striped.
+  ///
+  /// Applies only to Cloud SQL for SQL Server.
+  core.bool? striped;
+
   ImportContextBakImportOptions({
     this.encryptionOptions,
+    this.striped,
   });
 
   ImportContextBakImportOptions.fromJson(core.Map json_)
@@ -4640,10 +4690,14 @@ class ImportContextBakImportOptions {
                   json_['encryptionOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          striped: json_.containsKey('striped')
+              ? json_['striped'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
+        if (striped != null) 'striped': striped!,
       };
 }
 
@@ -5184,7 +5238,7 @@ class InstancesTruncateLogRequest {
 
 /// IP Management configuration.
 class IpConfiguration {
-  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  /// The name of the allocated ip range for the private ip Cloud SQL instance.
   ///
   /// For example: "google-managed-services-default". If set, the instance ip
   /// will be created in the allocated range. The range name must comply with
@@ -5199,6 +5253,10 @@ class IpConfiguration {
   /// In 'CIDR' notation, also known as 'slash' notation (for example:
   /// `157.197.200.0/24`).
   core.List<AclEntry>? authorizedNetworks;
+
+  /// Controls connectivity to private IP instances from Google services, such
+  /// as BigQuery.
+  core.bool? enablePrivatePathForGoogleCloudServices;
 
   /// Whether the instance is assigned a public IP address or not.
   core.bool? ipv4Enabled;
@@ -5216,6 +5274,7 @@ class IpConfiguration {
   IpConfiguration({
     this.allocatedIpRange,
     this.authorizedNetworks,
+    this.enablePrivatePathForGoogleCloudServices,
     this.ipv4Enabled,
     this.privateNetwork,
     this.requireSsl,
@@ -5232,6 +5291,10 @@ class IpConfiguration {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          enablePrivatePathForGoogleCloudServices: json_
+                  .containsKey('enablePrivatePathForGoogleCloudServices')
+              ? json_['enablePrivatePathForGoogleCloudServices'] as core.bool
+              : null,
           ipv4Enabled: json_.containsKey('ipv4Enabled')
               ? json_['ipv4Enabled'] as core.bool
               : null,
@@ -5247,6 +5310,9 @@ class IpConfiguration {
         if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
           'authorizedNetworks': authorizedNetworks!,
+        if (enablePrivatePathForGoogleCloudServices != null)
+          'enablePrivatePathForGoogleCloudServices':
+              enablePrivatePathForGoogleCloudServices!,
         if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
@@ -5998,7 +6064,7 @@ class PasswordValidationPolicy {
 
   /// Minimum interval after which the password can be changed.
   ///
-  /// This flag is only supported for PostgresSQL.
+  /// This flag is only supported for PostgreSQL.
   core.String? passwordChangeInterval;
 
   /// Number of previous passwords that cannot be reused.

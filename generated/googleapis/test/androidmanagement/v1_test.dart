@@ -573,6 +573,7 @@ api.ApplicationPolicy buildApplicationPolicy() {
     o.minimumVersionCode = 42;
     o.packageName = 'foo';
     o.permissionGrants = buildUnnamed12();
+    o.workProfileWidgets = 'foo';
   }
   buildCounterApplicationPolicy--;
   return o;
@@ -617,6 +618,10 @@ void checkApplicationPolicy(api.ApplicationPolicy o) {
       unittest.equals('foo'),
     );
     checkUnnamed12(o.permissionGrants!);
+    unittest.expect(
+      o.workProfileWidgets!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterApplicationPolicy--;
 }
@@ -1121,6 +1126,7 @@ api.CrossProfilePolicies buildCrossProfilePolicies() {
     o.crossProfileCopyPaste = 'foo';
     o.crossProfileDataSharing = 'foo';
     o.showWorkContactsInPersonalProfile = 'foo';
+    o.workProfileWidgetsDefault = 'foo';
   }
   buildCounterCrossProfilePolicies--;
   return o;
@@ -1139,6 +1145,10 @@ void checkCrossProfilePolicies(api.CrossProfilePolicies o) {
     );
     unittest.expect(
       o.showWorkContactsInPersonalProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workProfileWidgetsDefault!,
       unittest.equals('foo'),
     );
   }

@@ -827,6 +827,7 @@ api.CryptoHashConfig buildCryptoHashConfig() {
   buildCounterCryptoHashConfig++;
   if (buildCounterCryptoHashConfig < 3) {
     o.cryptoKey = 'foo';
+    o.kmsWrapped = buildKmsWrappedCryptoKey();
   }
   buildCounterCryptoHashConfig--;
   return o;
@@ -839,6 +840,7 @@ void checkCryptoHashConfig(api.CryptoHashConfig o) {
       o.cryptoKey!,
       unittest.equals('foo'),
     );
+    checkKmsWrappedCryptoKey(o.kmsWrapped!);
   }
   buildCounterCryptoHashConfig--;
 }
@@ -876,6 +878,7 @@ api.DateShiftConfig buildDateShiftConfig() {
   buildCounterDateShiftConfig++;
   if (buildCounterDateShiftConfig < 3) {
     o.cryptoKey = 'foo';
+    o.kmsWrapped = buildKmsWrappedCryptoKey();
   }
   buildCounterDateShiftConfig--;
   return o;
@@ -888,8 +891,33 @@ void checkDateShiftConfig(api.DateShiftConfig o) {
       o.cryptoKey!,
       unittest.equals('foo'),
     );
+    checkKmsWrappedCryptoKey(o.kmsWrapped!);
   }
   buildCounterDateShiftConfig--;
+}
+
+core.int buildCounterDeidentifiedStoreDestination = 0;
+api.DeidentifiedStoreDestination buildDeidentifiedStoreDestination() {
+  final o = api.DeidentifiedStoreDestination();
+  buildCounterDeidentifiedStoreDestination++;
+  if (buildCounterDeidentifiedStoreDestination < 3) {
+    o.config = buildDeidentifyConfig();
+    o.store = 'foo';
+  }
+  buildCounterDeidentifiedStoreDestination--;
+  return o;
+}
+
+void checkDeidentifiedStoreDestination(api.DeidentifiedStoreDestination o) {
+  buildCounterDeidentifiedStoreDestination++;
+  if (buildCounterDeidentifiedStoreDestination < 3) {
+    checkDeidentifyConfig(o.config!);
+    unittest.expect(
+      o.store!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDeidentifiedStoreDestination--;
 }
 
 core.int buildCounterDeidentifyConfig = 0;
@@ -986,6 +1014,7 @@ api.DeidentifyFhirStoreRequest buildDeidentifyFhirStoreRequest() {
     o.destinationStore = 'foo';
     o.gcsConfigUri = 'foo';
     o.resourceFilter = buildFhirFilter();
+    o.skipModifiedResources = true;
   }
   buildCounterDeidentifyFhirStoreRequest--;
   return o;
@@ -1004,6 +1033,7 @@ void checkDeidentifyFhirStoreRequest(api.DeidentifyFhirStoreRequest o) {
       unittest.equals('foo'),
     );
     checkFhirFilter(o.resourceFilter!);
+    unittest.expect(o.skipModifiedResources!, unittest.isTrue);
   }
   buildCounterDeidentifyFhirStoreRequest--;
 }
@@ -2469,6 +2499,33 @@ void checkIngestMessageResponse(api.IngestMessageResponse o) {
     checkMessage(o.message!);
   }
   buildCounterIngestMessageResponse--;
+}
+
+core.int buildCounterKmsWrappedCryptoKey = 0;
+api.KmsWrappedCryptoKey buildKmsWrappedCryptoKey() {
+  final o = api.KmsWrappedCryptoKey();
+  buildCounterKmsWrappedCryptoKey++;
+  if (buildCounterKmsWrappedCryptoKey < 3) {
+    o.cryptoKey = 'foo';
+    o.wrappedKey = 'foo';
+  }
+  buildCounterKmsWrappedCryptoKey--;
+  return o;
+}
+
+void checkKmsWrappedCryptoKey(api.KmsWrappedCryptoKey o) {
+  buildCounterKmsWrappedCryptoKey++;
+  if (buildCounterKmsWrappedCryptoKey < 3) {
+    unittest.expect(
+      o.cryptoKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wrappedKey!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterKmsWrappedCryptoKey--;
 }
 
 core.int buildCounterLinkedEntity = 0;
@@ -4054,6 +4111,7 @@ api.StreamConfig buildStreamConfig() {
   if (buildCounterStreamConfig < 3) {
     o.bigqueryDestination =
         buildGoogleCloudHealthcareV1FhirBigQueryDestination();
+    o.deidentifiedStoreDestination = buildDeidentifiedStoreDestination();
     o.resourceTypes = buildUnnamed71();
   }
   buildCounterStreamConfig--;
@@ -4064,6 +4122,7 @@ void checkStreamConfig(api.StreamConfig o) {
   buildCounterStreamConfig++;
   if (buildCounterStreamConfig < 3) {
     checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination!);
+    checkDeidentifiedStoreDestination(o.deidentifiedStoreDestination!);
     checkUnnamed71(o.resourceTypes!);
   }
   buildCounterStreamConfig--;
@@ -4628,6 +4687,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeidentifiedStoreDestination', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeidentifiedStoreDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeidentifiedStoreDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeidentifiedStoreDestination(od);
+    });
+  });
+
   unittest.group('obj-schema-DeidentifyConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDeidentifyConfig();
@@ -5097,6 +5166,16 @@ void main() {
       final od = api.IngestMessageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIngestMessageResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-KmsWrappedCryptoKey', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildKmsWrappedCryptoKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.KmsWrappedCryptoKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkKmsWrappedCryptoKey(od);
     });
   });
 

@@ -97,6 +97,13 @@ Views and manages your Google Analytics data.
 - [Documentation](https://developers.google.com/analytics/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/analytics.v3/analytics.v3-library.html)
 
+#### Analytics Hub API - `analyticshub.v1`
+
+Exchange data and analytics assets securely and efficiently.
+
+- [Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/analyticshub.v1/analyticshub.v1-library.html)
+
 #### Analytics Reporting API - `analyticsreporting.v4`
 
 Accesses Analytics report data.
@@ -127,7 +134,7 @@ The Android Management API provides remote enterprise management of Android devi
 
 #### Google Play Android Developer API - `androidpublisher.v3`
 
-Lets Android application developers access their Google Play accounts.
+Lets Android application developers access their Google Play accounts. At a high level, the expected workflow is to "insert" an Edit, make changes as necessary, and then "commit" it. 
 
 - [Documentation](https://developers.google.com/android-publisher)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/androidpublisher.v3/androidpublisher.v3-library.html)
@@ -172,7 +179,7 @@ Store and manage build artifacts in a scalable and integrated service built on G
 
 #### Assured Workloads API - `assuredworkloads.v1`
 
-- [Documentation](https://cloud.google.com)
+- [Documentation](https://cloud.google.com/learnmoreurl)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/assuredworkloads.v1/assuredworkloads.v1-library.html)
 
 #### Authorized Buyers Marketplace API - `authorizedbuyersmarketplace.v1`
@@ -195,6 +202,13 @@ Provides ways to manage Bare Metal Solution hardware installed in a regional ext
 
 - [Documentation](https://cloud.google.com/bare-metal)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/baremetalsolution.v2/baremetalsolution.v2-library.html)
+
+#### Batch API - `batch.v1`
+
+An API to manage the running of batch jobs on Google Cloud Platform.
+
+- [Documentation](https://cloud.google.com/batch/)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/batch.v1/batch.v1-library.html)
 
 #### BeyondCorp API - `beyondcorp.v1`
 
@@ -261,7 +275,7 @@ The Google Books API allows clients to access the Google Books repository.
 
 #### Business Profile Performance API - `businessprofileperformance.v1`
 
-The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google.
+The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/businessprofileperformance.v1/businessprofileperformance.v1-library.html)
@@ -512,6 +526,11 @@ Manage your product listings and accounts for Google Shopping
 - [Documentation](https://developers.google.com/shopping-content/v2/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/content.v2_1/content.v2_1-library.html)
 
+#### contentwarehouse API - `contentwarehouse.v1`
+
+- [Documentation](https://cloud.google.com/document-warehouse)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/contentwarehouse.v1/contentwarehouse.v1-library.html)
+
 #### Custom Search API - `customsearch.v1`
 
 Searches over a website or collection of websites
@@ -628,6 +647,13 @@ Display & Video 360 API allows users to automate complex Display & Video 360 wor
 
 - [Documentation](https://developers.google.com/display-video/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/displayvideo.v1/displayvideo.v1-library.html)
+
+#### Display & Video 360 API - `displayvideo.v2`
+
+Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.
+
+- [Documentation](https://developers.google.com/display-video/)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/displayvideo.v2/displayvideo.v2-library.html)
 
 #### Cloud Data Loss Prevention (DLP) API - `dlp.v2`
 
@@ -1011,6 +1037,13 @@ Google Cloud Memorystore for Memcached API is used for creating and managing Mem
 - [Documentation](https://cloud.google.com/memorystore/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/memcache.v1/memcache.v1-library.html)
 
+#### Dataproc Metastore API - `metastore.v1`
+
+The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.
+
+- [Documentation](https://cloud.google.com/dataproc-metastore/docs)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/metastore.v1/metastore.v1-library.html)
+
 #### AI Platform Training & Prediction API - `ml.v1`
 
 An API to enable creating and using machine learning models.
@@ -1027,49 +1060,49 @@ Manages your Cloud Monitoring data and configurations.
 
 #### My Business Account Management API - `mybusinessaccountmanagement.v1`
 
-The My Business Account Management API provides an interface for managing access to a location on Google.
+The My Business Account Management API provides an interface for managing access to a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessaccountmanagement.v1/mybusinessaccountmanagement.v1-library.html)
 
 #### My Business Business Calls API - `mybusinessbusinesscalls.v1`
 
-The My Business Business Calls API manages business calls information of a location on Google and collect insights like the number of missed calls to their location. Additional information about Business calls can be found at https://support.google.com/business/answer/9688285?p=call_history. If the Google Business Profile links to a Google Ads account and call history is turned on, calls that last longer than a specific time, and that can be attributed to an ad interaction, will show in the linked Google Ads account under the "Calls from Ads" conversion. If smart bidding and call conversions are used in the optimization strategy, there could be a change in ad spend. Learn more about smart bidding. To view and perform actions on a location's calls, you need to be a `OWNER`, `CO_OWNER` or `MANAGER` of the location.
+The My Business Business Calls API manages business calls information of a location on Google and collect insights like the number of missed calls to their location. Additional information about Business calls can be found at https://support.google.com/business/answer/9688285?p=call_history. If the Google Business Profile links to a Google Ads account and call history is turned on, calls that last longer than a specific time, and that can be attributed to an ad interaction, will show in the linked Google Ads account under the "Calls from Ads" conversion. If smart bidding and call conversions are used in the optimization strategy, there could be a change in ad spend. Learn more about smart bidding. To view and perform actions on a location's calls, you need to be a `OWNER`, `CO_OWNER` or `MANAGER` of the location. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessbusinesscalls.v1/mybusinessbusinesscalls.v1-library.html)
 
 #### My Business Business Information API - `mybusinessbusinessinformation.v1`
 
-The My Business Business Information API provides an interface for managing business information on Google.
+The My Business Business Information API provides an interface for managing business information. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessbusinessinformation.v1/mybusinessbusinessinformation.v1-library.html)
 
 #### My Business Lodging API - `mybusinesslodging.v1`
 
-The My Business Lodging API enables managing lodging business information on Google.
+The My Business Lodging API enables managing lodging business information on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinesslodging.v1/mybusinesslodging.v1-library.html)
 
 #### My Business Notifications API - `mybusinessnotifications.v1`
 
-The My Business Notification Settings API enables managing notification settings for business accounts.
+The My Business Notification Settings API enables managing notification settings for business accounts. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessnotifications.v1/mybusinessnotifications.v1-library.html)
 
 #### My Business Place Actions API - `mybusinessplaceactions.v1`
 
-The My Business Place Actions API provides an interface for managing place action links of a location on Google.
+The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessplaceactions.v1/mybusinessplaceactions.v1-library.html)
 
 #### My Business Q&A API - `mybusinessqanda.v1`
 
-The My Business Q&A API allows questions and answers to be posted for specific listings.
+The My Business Q&A API allows questions and answers to be posted for specific listings. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/mybusinessqanda.v1/mybusinessqanda.v1-library.html)
@@ -1492,6 +1525,13 @@ TPU API provides customers with access to Google TPU technology.
 - [Documentation](https://cloud.google.com/tpu/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/tpu.v1/tpu.v1-library.html)
 
+#### Cloud TPU API - `tpu.v2`
+
+TPU API provides customers with access to Google TPU technology.
+
+- [Documentation](https://cloud.google.com/tpu/)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/tpu.v2/tpu.v2-library.html)
+
 #### Traffic Director API - `trafficdirector.v2`
 
 - [Documentation](https://cloud.google.com/traffic-director)
@@ -1499,7 +1539,7 @@ TPU API provides customers with access to Google TPU technology.
 
 #### Transcoder API - `transcoder.v1`
 
-This API converts video files into formats suitable for consumer distribution. 
+This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. 
 
 - [Documentation](https://cloud.google.com/transcoder/docs/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/transcoder.v1/transcoder.v1-library.html)
@@ -1510,6 +1550,13 @@ Integrates text translation into your website or application.
 
 - [Documentation](https://cloud.google.com/translate/docs/quickstarts)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/translate.v3/translate.v3-library.html)
+
+#### Travel Impact Model API - `travelimpactmodel.v1`
+
+Travel Impact Model API lets you query travel carbon emission estimates.
+
+- [Documentation](https://developers.google.com/travel/impact-model)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0/travelimpactmodel.v1/travelimpactmodel.v1-library.html)
 
 #### Google Vault API - `vault.v1`
 
@@ -1553,7 +1600,7 @@ Integrates Google Vision features, including image labeling, face, logo, and lan
 - [Documentation](https://cloud.google.com/vision/)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0/vision.v1/vision.v1-library.html)
 
-#### VM Migration API - `vmmigration.v1`
+#### Migrate to Virtual Machines API - `vmmigration.v1`
 
 Use the Migrate to Virtual Machines API to programmatically migrate workloads. 
 

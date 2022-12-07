@@ -26,12 +26,34 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccountActivity = 0;
+api.AccountActivity buildAccountActivity() {
+  final o = api.AccountActivity();
+  buildCounterAccountActivity++;
+  if (buildCounterAccountActivity < 3) {
+    o.activityLevel = 'foo';
+  }
+  buildCounterAccountActivity--;
+  return o;
+}
+
+void checkAccountActivity(api.AccountActivity o) {
+  buildCounterAccountActivity++;
+  if (buildCounterAccountActivity < 3) {
+    unittest.expect(
+      o.activityLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAccountActivity--;
+}
+
 core.int buildCounterAccountDetails = 0;
 api.AccountDetails buildAccountDetails() {
   final o = api.AccountDetails();
   buildCounterAccountDetails++;
   if (buildCounterAccountDetails < 3) {
-    o.accountRiskVerdict = buildAccountRiskVerdict();
+    o.accountActivity = buildAccountActivity();
     o.appLicensingVerdict = 'foo';
   }
   buildCounterAccountDetails--;
@@ -41,40 +63,13 @@ api.AccountDetails buildAccountDetails() {
 void checkAccountDetails(api.AccountDetails o) {
   buildCounterAccountDetails++;
   if (buildCounterAccountDetails < 3) {
-    checkAccountRiskVerdict(o.accountRiskVerdict!);
+    checkAccountActivity(o.accountActivity!);
     unittest.expect(
       o.appLicensingVerdict!,
       unittest.equals('foo'),
     );
   }
   buildCounterAccountDetails--;
-}
-
-core.int buildCounterAccountRiskVerdict = 0;
-api.AccountRiskVerdict buildAccountRiskVerdict() {
-  final o = api.AccountRiskVerdict();
-  buildCounterAccountRiskVerdict++;
-  if (buildCounterAccountRiskVerdict < 3) {
-    o.risk = 'foo';
-    o.riskLevel = 'foo';
-  }
-  buildCounterAccountRiskVerdict--;
-  return o;
-}
-
-void checkAccountRiskVerdict(api.AccountRiskVerdict o) {
-  buildCounterAccountRiskVerdict++;
-  if (buildCounterAccountRiskVerdict < 3) {
-    unittest.expect(
-      o.risk!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.riskLevel!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAccountRiskVerdict--;
 }
 
 core.List<core.String> buildUnnamed0() => [
@@ -284,6 +279,16 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AccountActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccountActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccountActivity(od);
+    });
+  });
+
   unittest.group('obj-schema-AccountDetails', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAccountDetails();
@@ -291,16 +296,6 @@ void main() {
       final od = api.AccountDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAccountDetails(od);
-    });
-  });
-
-  unittest.group('obj-schema-AccountRiskVerdict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAccountRiskVerdict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AccountRiskVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAccountRiskVerdict(od);
     });
   });
 

@@ -978,10 +978,10 @@ class SpreadsheetsValuesResource {
   /// spreadsheet locale).
   ///
   /// [majorDimension] - The major dimension that results should use. For
-  /// example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then
-  /// requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns
-  /// `[[1,3],[2,4]]`.
+  /// example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then
+  /// requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns
+  /// `[[1,2],[3,4]]`, whereas requesting
+  /// `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.

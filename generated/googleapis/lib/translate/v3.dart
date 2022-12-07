@@ -2857,6 +2857,14 @@ class TranslateDocumentRequest {
   /// Optional.
   TranslateTextGlossaryConfig? glossaryConfig;
 
+  /// is_translate_native_pdf_only field for external customers.
+  ///
+  /// If true, the page limit of online native pdf translation is 300 and only
+  /// native pdf pages will be translated.
+  ///
+  /// Optional.
+  core.bool? isTranslateNativePdfOnly;
+
   /// The labels with user-defined metadata for the request.
   ///
   /// Label keys and values can be no longer than 63 characters (Unicode
@@ -2904,6 +2912,7 @@ class TranslateDocumentRequest {
     this.documentInputConfig,
     this.documentOutputConfig,
     this.glossaryConfig,
+    this.isTranslateNativePdfOnly,
     this.labels,
     this.model,
     this.sourceLanguageCode,
@@ -2927,6 +2936,10 @@ class TranslateDocumentRequest {
               ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          isTranslateNativePdfOnly:
+              json_.containsKey('isTranslateNativePdfOnly')
+                  ? json_['isTranslateNativePdfOnly'] as core.bool
+                  : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -2953,6 +2966,8 @@ class TranslateDocumentRequest {
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
         if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+        if (isTranslateNativePdfOnly != null)
+          'isTranslateNativePdfOnly': isTranslateNativePdfOnly!,
         if (labels != null) 'labels': labels!,
         if (model != null) 'model': model!,
         if (sourceLanguageCode != null)

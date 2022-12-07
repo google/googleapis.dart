@@ -371,8 +371,7 @@ api.GoogleCloudDatacatalogV1ColumnSchema
   if (buildCounterGoogleCloudDatacatalogV1ColumnSchema < 3) {
     o.column = 'foo';
     o.description = 'foo';
-    o.lookerColumnSpec =
-        buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
+    o.gcRule = 'foo';
     o.mode = 'foo';
     o.subcolumns = buildUnnamed2();
     o.type = 'foo';
@@ -393,8 +392,10 @@ void checkGoogleCloudDatacatalogV1ColumnSchema(
       o.description!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(
-        o.lookerColumnSpec!);
+    unittest.expect(
+      o.gcRule!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.mode!,
       unittest.equals('foo'),
@@ -406,30 +407,6 @@ void checkGoogleCloudDatacatalogV1ColumnSchema(
     );
   }
   buildCounterGoogleCloudDatacatalogV1ColumnSchema--;
-}
-
-core.int buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec = 0;
-api.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
-    buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec() {
-  final o = api.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
-  buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec++;
-  if (buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec < 3) {
-    o.type = 'foo';
-  }
-  buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec--;
-  return o;
-}
-
-void checkGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(
-    api.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec o) {
-  buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec++;
-  if (buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec--;
 }
 
 core.List<api.GoogleCloudDatacatalogV1ContactsPerson> buildUnnamed3() => [
@@ -2692,7 +2669,6 @@ api.GoogleCloudDatacatalogV1UsageSignal
   final o = api.GoogleCloudDatacatalogV1UsageSignal();
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
-    o.favoriteCount = 'foo';
     o.updateTime = 'foo';
     o.usageWithinTimeRange = buildUnnamed32();
   }
@@ -2704,10 +2680,6 @@ void checkGoogleCloudDatacatalogV1UsageSignal(
     api.GoogleCloudDatacatalogV1UsageSignal o) {
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
-    unittest.expect(
-      o.favoriteCount!,
-      unittest.equals('foo'),
-    );
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -3049,18 +3021,6 @@ void main() {
       final od = api.GoogleCloudDatacatalogV1ColumnSchema.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1ColumnSchema(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(od);
     });
   });
 

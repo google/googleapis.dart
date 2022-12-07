@@ -28,6 +28,7 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesKfpArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesMavenArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesNpmPackagesResource]
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
@@ -328,6 +329,8 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesKfpArtifactsResource get kfpArtifacts =>
+      ProjectsLocationsRepositoriesKfpArtifactsResource(_requester);
   ProjectsLocationsRepositoriesMavenArtifactsResource get mavenArtifacts =>
       ProjectsLocationsRepositoriesMavenArtifactsResource(_requester);
   ProjectsLocationsRepositoriesNpmPackagesResource get npmPackages =>
@@ -1019,6 +1022,73 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesKfpArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesKfpArtifactsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Directly uploads a KFP artifact.
+  ///
+  /// The returned Operation will complete once the resource is uploaded.
+  /// Package, Version, and File resources will be created based on the uploaded
+  /// artifact. Uploaded artifacts that conflict with existing resources will be
+  /// overwritten.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the repository where the KFP artifact will
+  /// be uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadKfpArtifactMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadKfpArtifactMediaResponse> upload(
+    UploadKfpArtifactRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/kfpArtifacts:create';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/kfpArtifacts:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadKfpArtifactMediaResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3225,6 +3295,11 @@ class Repository {
   /// "projects/p1/locations/us-central1/repositories/repo1".
   core.String? name;
 
+  /// If set, the repository satisfies physical zone separation.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The size, in bytes, of all artifact storage in this repository.
   ///
   /// Repositories that are generally available or in public preview use this to
@@ -3244,6 +3319,7 @@ class Repository {
     this.labels,
     this.mavenConfig,
     this.name,
+    this.satisfiesPzs,
     this.sizeBytes,
     this.updateTime,
   });
@@ -3275,6 +3351,9 @@ class Repository {
                   json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
@@ -3291,6 +3370,7 @@ class Repository {
         if (labels != null) 'labels': labels!,
         if (mavenConfig != null) 'mavenConfig': mavenConfig!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3399,6 +3479,59 @@ class UploadAptArtifactMediaResponse {
 typedef UploadAptArtifactRequest = $Empty;
 
 /// The response to upload an artifact.
+class UploadKfpArtifactMediaResponse {
+  /// Operation that will be returned to the user.
+  Operation? operation;
+
+  UploadKfpArtifactMediaResponse({
+    this.operation,
+  });
+
+  UploadKfpArtifactMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload an artifact.
+class UploadKfpArtifactRequest {
+  /// Description of the package version.
+  core.String? description;
+
+  /// Tags to be created with the version.
+  core.List<core.String>? tags;
+
+  UploadKfpArtifactRequest({
+    this.description,
+    this.tags,
+  });
+
+  UploadKfpArtifactRequest.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+/// The response to upload an artifact.
 class UploadYumArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
@@ -3440,7 +3573,7 @@ class Version {
   /// Repository-specific Metadata stored against this version.
   ///
   /// The fields returned are defined by the underlying repository-specific
-  /// resource. Currently, the only resource in use is DockerImage
+  /// resource. Currently, the resources could be: DockerImage MavenArtifact
   ///
   /// Output only.
   ///

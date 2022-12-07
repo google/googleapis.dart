@@ -531,7 +531,7 @@
             }
         }
     },
-    "revision": "20220913",
+    "revision": "20221205",
     "rootUrl": "https://streetviewpublish.googleapis.com/",
     "schemas": {
         "BatchDeletePhotosRequest": {
@@ -1029,7 +1029,8 @@
                         "IMU_DATA_GAP",
                         "UNSUPPORTED_CAMERA",
                         "NOT_OUTDOORS",
-                        "INSUFFICIENT_VIDEO_FRAMES"
+                        "INSUFFICIENT_VIDEO_FRAMES",
+                        "INSUFFICIENT_MOVEMENT"
                     ],
                     "enumDescriptions": [
                         "The failure reason is unspecified, this is the default value.",
@@ -1053,7 +1054,8 @@
                         "IMU (Accelerometer, Gyroscope, etc.) data contain gaps greater than 0.1 seconds in duration.",
                         "The camera is not supported.",
                         "Some frames were indoors, which is unsupported.",
-                        "Not enough video frames."
+                        "Not enough video frames.",
+                        "Not enough moving data."
                     ],
                     "readOnly": true,
                     "type": "string"

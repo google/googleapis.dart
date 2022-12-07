@@ -234,6 +234,7 @@ api.CloudSqlConnectionProfile buildCloudSqlConnectionProfile() {
   final o = api.CloudSqlConnectionProfile();
   buildCounterCloudSqlConnectionProfile++;
   if (buildCounterCloudSqlConnectionProfile < 3) {
+    o.additionalPublicIp = 'foo';
     o.cloudSqlId = 'foo';
     o.privateIp = 'foo';
     o.publicIp = 'foo';
@@ -246,6 +247,10 @@ api.CloudSqlConnectionProfile buildCloudSqlConnectionProfile() {
 void checkCloudSqlConnectionProfile(api.CloudSqlConnectionProfile o) {
   buildCounterCloudSqlConnectionProfile++;
   if (buildCounterCloudSqlConnectionProfile < 3) {
+    unittest.expect(
+      o.additionalPublicIp!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cloudSqlId!,
       unittest.equals('foo'),
@@ -304,6 +309,7 @@ api.CloudSqlSettings buildCloudSqlSettings() {
   if (buildCounterCloudSqlSettings < 3) {
     o.activationPolicy = 'foo';
     o.autoStorageIncrease = true;
+    o.availabilityType = 'foo';
     o.cmekKeyName = 'foo';
     o.collation = 'foo';
     o.dataDiskSizeGb = 'foo';
@@ -313,6 +319,7 @@ api.CloudSqlSettings buildCloudSqlSettings() {
     o.ipConfig = buildSqlIpConfig();
     o.rootPassword = 'foo';
     o.rootPasswordSet = true;
+    o.secondaryZone = 'foo';
     o.sourceId = 'foo';
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
@@ -331,6 +338,10 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.autoStorageIncrease!, unittest.isTrue);
+    unittest.expect(
+      o.availabilityType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cmekKeyName!,
       unittest.equals('foo'),
@@ -358,6 +369,10 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.rootPasswordSet!, unittest.isTrue);
+    unittest.expect(
+      o.secondaryZone!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.sourceId!,
       unittest.equals('foo'),

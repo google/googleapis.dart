@@ -476,7 +476,7 @@
             }
         }
     },
-    "revision": "20220823",
+    "revision": "20221110",
     "rootUrl": "https://connectors.googleapis.com/",
     "schemas": {
         "Action": {

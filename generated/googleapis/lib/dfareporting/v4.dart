@@ -9529,7 +9529,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -9796,8 +9796,8 @@ class ReportsFilesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17804,7 +17804,29 @@ class DeliverySchedule {
 typedef DfpSettings = $DfpSettings;
 
 /// Represents a dimension.
-typedef Dimension = $Dimension;
+class Dimension {
+  /// The kind of resource this is, in this case dfareporting#dimension.
+  core.String? kind;
+
+  /// The dimension name, e.g. advertiser
+  core.String? name;
+
+  Dimension({
+    this.kind,
+    this.name,
+  });
+
+  Dimension.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Represents a dimension filter.
 typedef DimensionFilter = $DimensionFilter;
@@ -18183,9 +18205,13 @@ class EventFilter {
   /// The kind of resource this is, in this case dfareporting#eventFilter.
   core.String? kind;
 
+  /// Filter on a custom variable.
+  UvarFilter? uvarFilter;
+
   EventFilter({
     this.dimensionFilter,
     this.kind,
+    this.uvarFilter,
   });
 
   EventFilter.fromJson(core.Map json_)
@@ -18195,11 +18221,16 @@ class EventFilter {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          uvarFilter: json_.containsKey('uvarFilter')
+              ? UvarFilter.fromJson(
+                  json_['uvarFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
         if (kind != null) 'kind': kind!,
+        if (uvarFilter != null) 'uvarFilter': uvarFilter!,
       };
 }
 
@@ -20473,7 +20504,7 @@ class MetrosListResponse {
 /// Contains information about a mobile app.
 ///
 /// Used as a landing page deep link.
-typedef MobileApp = $MobileApp;
+typedef MobileApp = $MobileApp00;
 
 /// Mobile app List Response
 class MobileAppsListResponse {
@@ -25948,7 +25979,7 @@ typedef TranscodeSetting = $TranscodeSetting;
 ///
 /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
 /// and VPAID.
-typedef UniversalAdId = $UniversalAdId;
+typedef UniversalAdId = $UniversalAdId00;
 
 /// User Defined Variable configuration.
 typedef UserDefinedVariableConfiguration = $UserDefinedVariableConfiguration;
@@ -26202,6 +26233,61 @@ class UserRolesListResponse {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userRoles != null) 'userRoles': userRoles!,
+      };
+}
+
+/// Defines the filtering on a single uvar.
+class UvarFilter {
+  /// Return rows which don't match this filter.
+  core.bool? complement;
+
+  /// Custom variable index the filter is applied to.
+  core.String? index;
+
+  /// The kind of resource this is, in this case dfareporting#uvarFilter.
+  core.String? kind;
+
+  /// Indicates how the filter should be matched to the values.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "EXACT"
+  /// - "CONTAINS"
+  core.String? match;
+
+  /// Values to filter on.
+  core.List<core.String>? values;
+
+  UvarFilter({
+    this.complement,
+    this.index,
+    this.kind,
+    this.match,
+    this.values,
+  });
+
+  UvarFilter.fromJson(core.Map json_)
+      : this(
+          complement: json_.containsKey('complement')
+              ? json_['complement'] as core.bool
+              : null,
+          index:
+              json_.containsKey('index') ? json_['index'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          match:
+              json_.containsKey('match') ? json_['match'] as core.String : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complement != null) 'complement': complement!,
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (match != null) 'match': match!,
+        if (values != null) 'values': values!,
       };
 }
 

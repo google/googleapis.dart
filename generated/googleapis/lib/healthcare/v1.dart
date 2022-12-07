@@ -2557,8 +2557,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// de-identification fails for some DICOM instances. The output DICOM store
   /// will not contain these failed resources. Failed resource totals are
   /// tracked in Operation.metadata. Error details are also logged to Cloud
-  /// Logging (see \[Viewing error logs in Cloud
-  /// Logging\](/healthcare/docs/how-tos/logging)).
+  /// Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4835,9 +4835,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
   /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
   /// details the eligible resource types and referencing search parameters. For
-  /// samples that show how to call `Patient-everything`, see \[Getting all
-  /// patient compartment
-  /// resources\](/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
+  /// samples that show how to call `Patient-everything`, see
+  /// [Getting all patient compartment resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
   ///
   /// Request parameters:
   ///
@@ -4916,9 +4915,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// To remove all versions of a resource, first delete the current version and
   /// then call this method. This is not a FHIR standard operation. For samples
-  /// that show how to call `Resource-purge`, see \[Deleting historical versions
-  /// of a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
+  /// that show how to call `Resource-purge`, see
+  /// [Deleting historical versions of a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5098,8 +5096,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `create`, see \[Creating a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
+  /// `create`, see
+  /// [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5162,8 +5160,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// disable_resource_versioning flag on the FHIR store, the deleted resources
   /// will be moved to a history repository that can still be retrieved through
   /// vread and related methods, unless they are removed by the purge method.
-  /// For samples that show how to call `delete`, see \[Deleting a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
+  /// For samples that show how to call `delete`, see
+  /// [Deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5233,8 +5231,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// permission. You can use audit logs to view the permissions for
   /// `executeBundle` and each request in the bundle. For more information, see
   /// [Viewing Cloud Audit logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging).
-  /// For samples that show how to call `executeBundle`, see \[Managing FHIR
-  /// resources using FHIR bundles\](/healthcare/docs/how-tos/fhir-bundles).
+  /// For samples that show how to call `executeBundle`, see
+  /// [Managing FHIR resources using FHIR bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-bundles).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5288,8 +5286,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// contain a JSON-encoded `OperationOutcome` resource describing the reason
   /// for the error. If the request cannot be mapped to a valid API method on a
   /// FHIR store, a generic GCP error might be returned instead. For samples
-  /// that show how to call `history`, see \[Listing FHIR resource
-  /// versions\](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
+  /// that show how to call `history`, see
+  /// [Listing FHIR resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
   ///
   /// Request parameters:
   ///
@@ -5371,8 +5369,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
   /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `patch`, see \[Patching a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
+  /// show how to call `patch`, see
+  /// [Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5430,8 +5428,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `read`, see \[Getting a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
+  /// `read`, see
+  /// [Getting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5513,9 +5511,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// generated search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
   /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see \[Searching for FHIR
-  /// resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
-  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
+  /// results. For samples and detailed information, see
+  /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
+  /// and
+  /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5602,9 +5601,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// generated search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
   /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see \[Searching for FHIR
-  /// resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
-  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
+  /// results. For samples and detailed information, see
+  /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
+  /// and
+  /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5677,8 +5677,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
   /// describing the reason for the error. If the request cannot be mapped to a
   /// valid API method on a FHIR store, a generic GCP error might be returned
-  /// instead. For samples that show how to call `update`, see \[Updating a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+  /// instead. For samples that show how to call `update`, see
+  /// [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5731,8 +5731,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `vread`, see \[Retrieving a FHIR resource
-  /// version\](/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
+  /// `vread`, see
+  /// [Retrieving a FHIR resource version](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
   ///
   /// Request parameters:
   ///
@@ -7233,12 +7233,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -7868,8 +7870,14 @@ class CryptoHashConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// KMS wrapped key.
+  ///
+  /// Must not be set if `crypto_key` is set.
+  KmsWrappedCryptoKey? kmsWrapped;
+
   CryptoHashConfig({
     this.cryptoKey,
+    this.kmsWrapped,
   });
 
   CryptoHashConfig.fromJson(core.Map json_)
@@ -7877,10 +7885,15 @@ class CryptoHashConfig {
           cryptoKey: json_.containsKey('cryptoKey')
               ? json_['cryptoKey'] as core.String
               : null,
+          kmsWrapped: json_.containsKey('kmsWrapped')
+              ? KmsWrappedCryptoKey.fromJson(
+                  json_['kmsWrapped'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (kmsWrapped != null) 'kmsWrapped': kmsWrapped!,
       };
 }
 
@@ -7937,8 +7950,14 @@ class DateShiftConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// KMS wrapped key.
+  ///
+  /// Must not be set if `crypto_key` is set.
+  KmsWrappedCryptoKey? kmsWrapped;
+
   DateShiftConfig({
     this.cryptoKey,
+    this.kmsWrapped,
   });
 
   DateShiftConfig.fromJson(core.Map json_)
@@ -7946,10 +7965,46 @@ class DateShiftConfig {
           cryptoKey: json_.containsKey('cryptoKey')
               ? json_['cryptoKey'] as core.String
               : null,
+          kmsWrapped: json_.containsKey('kmsWrapped')
+              ? KmsWrappedCryptoKey.fromJson(
+                  json_['kmsWrapped'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (kmsWrapped != null) 'kmsWrapped': kmsWrapped!,
+      };
+}
+
+/// Contains configuration for streaming de-identified FHIR export.
+class DeidentifiedStoreDestination {
+  /// The configuration to use when de-identifying resources that are added to
+  /// this store.
+  DeidentifyConfig? config;
+
+  /// The full resource name of a Cloud Healthcare FHIR store, for example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  core.String? store;
+
+  DeidentifiedStoreDestination({
+    this.config,
+    this.store,
+  });
+
+  DeidentifiedStoreDestination.fromJson(core.Map json_)
+      : this(
+          config: json_.containsKey('config')
+              ? DeidentifyConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          store:
+              json_.containsKey('store') ? json_['store'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (store != null) 'store': store!,
       };
 }
 
@@ -8157,11 +8212,16 @@ class DeidentifyFhirStoreRequest {
   /// If not specified, all resources are included in the output.
   FhirFilter? resourceFilter;
 
+  /// If true, skips resources that are created or modified after the
+  /// de-identify operation is created.
+  core.bool? skipModifiedResources;
+
   DeidentifyFhirStoreRequest({
     this.config,
     this.destinationStore,
     this.gcsConfigUri,
     this.resourceFilter,
+    this.skipModifiedResources,
   });
 
   DeidentifyFhirStoreRequest.fromJson(core.Map json_)
@@ -8180,6 +8240,9 @@ class DeidentifyFhirStoreRequest {
               ? FhirFilter.fromJson(json_['resourceFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          skipModifiedResources: json_.containsKey('skipModifiedResources')
+              ? json_['skipModifiedResources'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8187,6 +8250,8 @@ class DeidentifyFhirStoreRequest {
         if (destinationStore != null) 'destinationStore': destinationStore!,
         if (gcsConfigUri != null) 'gcsConfigUri': gcsConfigUri!,
         if (resourceFilter != null) 'resourceFilter': resourceFilter!,
+        if (skipModifiedResources != null)
+          'skipModifiedResources': skipModifiedResources!,
       };
 }
 
@@ -10295,6 +10360,55 @@ class IngestMessageResponse {
       };
 }
 
+/// Include to use an existing data crypto key wrapped by KMS.
+///
+/// The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the
+/// Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the
+/// project's Cloud Healthcare Service Agent service account. For more
+/// information, see
+/// [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+class KmsWrappedCryptoKey {
+  /// The resource name of the KMS CryptoKey to use for unwrapping.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+  ///
+  /// Required.
+  core.String? cryptoKey;
+
+  /// The wrapped data crypto key.
+  ///
+  /// Required.
+  core.String? wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey!);
+
+  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
+    wrappedKey =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  KmsWrappedCryptoKey({
+    this.cryptoKey,
+    this.wrappedKey,
+  });
+
+  KmsWrappedCryptoKey.fromJson(core.Map json_)
+      : this(
+          cryptoKey: json_.containsKey('cryptoKey')
+              ? json_['cryptoKey'] as core.String
+              : null,
+          wrappedKey: json_.containsKey('wrappedKey')
+              ? json_['wrappedKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (wrappedKey != null) 'wrappedKey': wrappedKey!,
+      };
+}
+
 /// EntityMentions can be linked to multiple entities using a LinkedEntity
 /// message lets us add other fields, e.g. confidence.
 class LinkedEntity {
@@ -11085,6 +11199,12 @@ class ParserConfig {
   /// segment starts with the MSH-2 field and the field numbers are off-by-one
   /// with respect to the HL7 standard.
   /// - "V2" : The `parsed_data` includes every given non-empty message field.
+  /// - "V3" : This version is the same as V2, with the following change. The
+  /// `parsed_data` contains unescaped escaped field separators, component
+  /// separators, sub-component separators, repetition separators, escape
+  /// characters, and truncation characters. If `schema` is specified, the
+  /// schematized parser uses improved parsing heuristics compared to previous
+  /// versions.
   core.String? version;
 
   ParserConfig({
@@ -11509,7 +11629,8 @@ class SchemaConfig {
   /// `Bundle.entry.response.outcome`.
   /// - "ANALYTICS_V2" : Analytics V2, similar to schema defined by the FHIR
   /// community, with added support for extensions with one or more occurrences
-  /// and contained resources in stringified JSON.
+  /// and contained resources in stringified JSON. Analytics V2 uses more space
+  /// in the destination table than Analytics V1.
   core.String? schemaType;
 
   SchemaConfig({
@@ -11973,6 +12094,25 @@ class StreamConfig {
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
+  /// The destination FHIR store for de-identified resources.
+  ///
+  /// After this field is added, all subsequent creates/updates/patches to the
+  /// source store will be de-identified using the provided configuration and
+  /// applied to the destination store. Importing resources to the source store
+  /// will not trigger the streaming. If the source store already contains
+  /// resources when this option is enabled, those resources will not be copied
+  /// to the destination store unless they are subsequently updated. This may
+  /// result in invalid references in the destination store. Before adding this
+  /// config, you must grant the healthcare.fhirResources.update permission on
+  /// the destination store to your project's **Cloud Healthcare Service Agent**
+  /// [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
+  /// The destination store must set enable_update_create to true. The
+  /// destination store must have disable_referential_integrity set to true. If
+  /// a resource cannot be de-identified, errors will be logged to Cloud Logging
+  /// (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  DeidentifiedStoreDestination? deidentifiedStoreDestination;
+
   /// Supply a FHIR resource type (such as "Patient" or "Observation").
   ///
   /// See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
@@ -11982,6 +12122,7 @@ class StreamConfig {
 
   StreamConfig({
     this.bigqueryDestination,
+    this.deidentifiedStoreDestination,
     this.resourceTypes,
   });
 
@@ -11992,6 +12133,12 @@ class StreamConfig {
                   json_['bigqueryDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          deidentifiedStoreDestination:
+              json_.containsKey('deidentifiedStoreDestination')
+                  ? DeidentifiedStoreDestination.fromJson(
+                      json_['deidentifiedStoreDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           resourceTypes: json_.containsKey('resourceTypes')
               ? (json_['resourceTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -12002,6 +12149,8 @@ class StreamConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
           'bigqueryDestination': bigqueryDestination!,
+        if (deidentifiedStoreDestination != null)
+          'deidentifiedStoreDestination': deidentifiedStoreDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
       };
 }

@@ -1206,7 +1206,11 @@ class ProjectsAlertPoliciesResource {
   ProjectsAlertPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new alerting policy.
+  /// Creates a new alerting policy.Design your application to single-thread API
+  /// calls that modify the state of alerting policies in a single project.
+  ///
+  /// This includes calls to CreateAlertPolicy, DeleteAlertPolicy and
+  /// UpdateAlertPolicy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1257,7 +1261,11 @@ class ProjectsAlertPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an alerting policy.
+  /// Deletes an alerting policy.Design your application to single-thread API
+  /// calls that modify the state of alerting policies in a single project.
+  ///
+  /// This includes calls to CreateAlertPolicy, DeleteAlertPolicy and
+  /// UpdateAlertPolicy.
   ///
   /// Request parameters:
   ///
@@ -1403,7 +1411,10 @@ class ProjectsAlertPoliciesResource {
   ///
   /// You can either replace the entire policy with a new one or replace only
   /// certain fields in the current alerting policy by specifying the fields to
-  /// be updated via updateMask. Returns the updated alerting policy.
+  /// be updated via updateMask. Returns the updated alerting policy.Design your
+  /// application to single-thread API calls that modify the state of alerting
+  /// policies in a single project. This includes calls to CreateAlertPolicy,
+  /// DeleteAlertPolicy and UpdateAlertPolicy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2278,7 +2289,12 @@ class ProjectsNotificationChannelsResource {
       : _requester = client;
 
   /// Creates a new notification channel, representing a single notification
-  /// endpoint such as an email address, SMS number, or PagerDuty service.
+  /// endpoint such as an email address, SMS number, or PagerDuty service.Design
+  /// your application to single-thread API calls that modify the state of
+  /// notification channels in a single project.
+  ///
+  /// This includes calls to CreateNotificationChannel,
+  /// DeleteNotificationChannel and UpdateNotificationChannel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2325,7 +2341,12 @@ class ProjectsNotificationChannelsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a notification channel.
+  /// Deletes a notification channel.Design your application to single-thread
+  /// API calls that modify the state of notification channels in a single
+  /// project.
+  ///
+  /// This includes calls to CreateNotificationChannel,
+  /// DeleteNotificationChannel and UpdateNotificationChannel.
   ///
   /// Request parameters:
   ///
@@ -2547,7 +2568,11 @@ class ProjectsNotificationChannelsResource {
 
   /// Updates a notification channel.
   ///
-  /// Fields not specified in the field mask remain unchanged.
+  /// Fields not specified in the field mask remain unchanged.Design your
+  /// application to single-thread API calls that modify the state of
+  /// notification channels in a single project. This includes calls to
+  /// CreateNotificationChannel, DeleteNotificationChannel and
+  /// UpdateNotificationChannel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4724,6 +4749,52 @@ class BasicAuthentication {
       };
 }
 
+/// A well-known service type, defined by its service type and service labels.
+///
+/// Documentation and examples here
+/// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+class BasicService {
+  /// Labels that specify the resource that emits the monitoring data which is
+  /// used for SLO reporting of this Service.
+  ///
+  /// Documentation and valid values for given service types here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  core.Map<core.String, core.String>? serviceLabels;
+
+  /// The type of service that this basic service defines, e.g. APP_ENGINE
+  /// service type.
+  ///
+  /// Documentation and valid values here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  core.String? serviceType;
+
+  BasicService({
+    this.serviceLabels,
+    this.serviceType,
+  });
+
+  BasicService.fromJson(core.Map json_)
+      : this(
+          serviceLabels: json_.containsKey('serviceLabels')
+              ? (json_['serviceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          serviceType: json_.containsKey('serviceType')
+              ? json_['serviceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceLabels != null) 'serviceLabels': serviceLabels!,
+        if (serviceType != null) 'serviceType': serviceType!,
+      };
+}
+
 /// An SLI measuring performance on a well-known service type.
 ///
 /// Performance will be computed on the basis of pre-defined metrics. The type
@@ -5534,9 +5605,9 @@ class CreateTimeSeriesSummary {
       };
 }
 
-/// Custom view of service telemetry.
-///
-/// Currently a place-holder pending final design.
+/// Use a custom service to designate a service that you want to monitor when
+/// none of the other service types (like App Engine, Cloud Run, or a GKE type)
+/// matches your intended service.
 typedef Custom = $Empty;
 
 /// Distribution contains summary statistics for a population of values.
@@ -5695,7 +5766,7 @@ class DistributionCut {
 
 /// A content string and a MIME type that describes the content string's format.
 class Documentation {
-  /// The text of the documentation, interpreted according to mime_type.
+  /// The body of the documentation, interpreted according to mime_type.
   ///
   /// The content may not exceed 8,192 Unicode characters and may not exceed
   /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
@@ -8892,6 +8963,13 @@ class Service {
   /// Type used for App Engine services.
   AppEngine? appEngine;
 
+  /// Message that contains the service type and service labels of this service
+  /// if it is a basic service.
+  ///
+  /// Documentation and examples here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  BasicService? basicService;
+
   /// Type used for Cloud Endpoints services.
   CloudEndpoints? cloudEndpoints;
 
@@ -8944,6 +9022,7 @@ class Service {
 
   Service({
     this.appEngine,
+    this.basicService,
     this.cloudEndpoints,
     this.cloudRun,
     this.clusterIstio,
@@ -8964,6 +9043,10 @@ class Service {
           appEngine: json_.containsKey('appEngine')
               ? AppEngine.fromJson(
                   json_['appEngine'] as core.Map<core.String, core.dynamic>)
+              : null,
+          basicService: json_.containsKey('basicService')
+              ? BasicService.fromJson(
+                  json_['basicService'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudEndpoints: json_.containsKey('cloudEndpoints')
               ? CloudEndpoints.fromJson(json_['cloudEndpoints']
@@ -9022,6 +9105,7 @@ class Service {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngine != null) 'appEngine': appEngine!,
+        if (basicService != null) 'basicService': basicService!,
         if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
         if (clusterIstio != null) 'clusterIstio': clusterIstio!,

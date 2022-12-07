@@ -217,6 +217,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -251,6 +253,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -259,6 +262,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -505,6 +509,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -539,6 +545,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -547,6 +554,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -1420,6 +1428,8 @@ class ProjectsLocationsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -1454,6 +1464,7 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location, {
     core.String? filter,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -1461,6 +1472,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -7569,6 +7581,7 @@ class ParameterMetadata {
   /// write to.
   /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
+  /// - "BIGQUERY_TABLE" : The parameter specifies a BigQuery table.
   core.String? paramType;
 
   /// Regexes that the parameter must match.
@@ -7724,10 +7737,15 @@ class PipelineDescription {
   /// them.
   core.List<TransformSummary>? originalPipelineTransform;
 
+  /// A hash value of the submitted pipeline portable graph step names if
+  /// exists.
+  core.String? stepNamesHash;
+
   PipelineDescription({
     this.displayData,
     this.executionPipelineStage,
     this.originalPipelineTransform,
+    this.stepNamesHash,
   });
 
   PipelineDescription.fromJson(core.Map json_)
@@ -7751,6 +7769,9 @@ class PipelineDescription {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          stepNamesHash: json_.containsKey('stepNamesHash')
+              ? json_['stepNamesHash'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7759,6 +7780,7 @@ class PipelineDescription {
           'executionPipelineStage': executionPipelineStage!,
         if (originalPipelineTransform != null)
           'originalPipelineTransform': originalPipelineTransform!,
+        if (stepNamesHash != null) 'stepNamesHash': stepNamesHash!,
       };
 }
 
@@ -9911,15 +9933,16 @@ typedef Status = $Status;
 ///
 /// A job consists of multiple steps, each of which performs some specific
 /// operation as part of the overall job. Data is typically passed from one step
-/// to another as part of the job. Here's an example of a sequence of steps
-/// which together implement a Map-Reduce job: * Read a collection of data from
-/// some source, parsing the collection's elements. * Validate the elements. *
-/// Apply a user-defined function to map each element to some value and extract
-/// an element-specific key value. * Group elements with the same key into a
-/// single element with that key, transforming a multiply-keyed collection into
-/// a uniquely-keyed collection. * Write the elements out to some data sink.
-/// Note that the Cloud Dataflow service may be used to run many different types
-/// of jobs, not just Map-Reduce.
+/// to another as part of the job. **Note:** The properties of this object are
+/// not stable and might change. Here's an example of a sequence of steps which
+/// together implement a Map-Reduce job: * Read a collection of data from some
+/// source, parsing the collection's elements. * Validate the elements. * Apply
+/// a user-defined function to map each element to some value and extract an
+/// element-specific key value. * Group elements with the same key into a single
+/// element with that key, transforming a multiply-keyed collection into a
+/// uniquely-keyed collection. * Write the elements out to some data sink. Note
+/// that the Cloud Dataflow service may be used to run many different types of
+/// jobs, not just Map-Reduce.
 class Step {
   /// The kind of step in the Cloud Dataflow job.
   core.String? kind;

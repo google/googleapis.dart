@@ -1762,6 +1762,14 @@ typedef CancelOperationRequest = $Empty;
 /// Specifies required connection parameters, and, optionally, the parameters
 /// required to create a Cloud SQL destination database instance.
 class CloudSqlConnectionProfile {
+  /// The Cloud SQL database instance's additional (outgoing) public IP.
+  ///
+  /// Used when the Cloud SQL database availability type is REGIONAL (i.e.
+  /// multiple zones / highly available).
+  ///
+  /// Output only.
+  core.String? additionalPublicIp;
+
   /// The Cloud SQL instance ID that this connection profile is associated with.
   ///
   /// Output only.
@@ -1783,6 +1791,7 @@ class CloudSqlConnectionProfile {
   CloudSqlSettings? settings;
 
   CloudSqlConnectionProfile({
+    this.additionalPublicIp,
     this.cloudSqlId,
     this.privateIp,
     this.publicIp,
@@ -1791,6 +1800,9 @@ class CloudSqlConnectionProfile {
 
   CloudSqlConnectionProfile.fromJson(core.Map json_)
       : this(
+          additionalPublicIp: json_.containsKey('additionalPublicIp')
+              ? json_['additionalPublicIp'] as core.String
+              : null,
           cloudSqlId: json_.containsKey('cloudSqlId')
               ? json_['cloudSqlId'] as core.String
               : null,
@@ -1807,6 +1819,8 @@ class CloudSqlConnectionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalPublicIp != null)
+          'additionalPublicIp': additionalPublicIp!,
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (privateIp != null) 'privateIp': privateIp!,
         if (publicIp != null) 'publicIp': publicIp!,
@@ -1836,6 +1850,21 @@ class CloudSqlSettings {
   /// repeatedly falls below the threshold size, Cloud SQL continues to add
   /// storage until it reaches the maximum of 30 TB.
   core.bool? autoStorageIncrease;
+
+  /// Availability type.
+  ///
+  /// Potential values: * `ZONAL`: The instance serves data from only one zone.
+  /// Outages in that zone affect data availability. * `REGIONAL`: The instance
+  /// can serve data from more than one zone in a region (it is highly
+  /// available).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SQL_AVAILABILITY_TYPE_UNSPECIFIED" : This is an unknown Availability
+  /// type.
+  /// - "ZONAL" : Zonal availablility instance.
+  /// - "REGIONAL" : Regional availability instance.
+  core.String? availabilityType;
 
   /// The KMS key name used for the csql instance.
   core.String? cmekKeyName;
@@ -1891,6 +1920,15 @@ class CloudSqlSettings {
   /// Output only.
   core.bool? rootPasswordSet;
 
+  /// The Google Cloud Platform zone where the failover Cloud SQL database
+  /// instance is located.
+  ///
+  /// Used when the Cloud SQL database availability type is REGIONAL (i.e.
+  /// multiple zones / highly available).
+  ///
+  /// Optional.
+  core.String? secondaryZone;
+
   /// The Database Migration Service source connection profile ID, in the
   /// format:
   /// `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
@@ -1916,13 +1954,14 @@ class CloudSqlSettings {
   /// "wrench", "mass": "18kg", "count": "3" }`.
   core.Map<core.String, core.String>? userLabels;
 
-  /// The Google Cloud Platform zone where your Cloud SQL datdabse instance is
+  /// The Google Cloud Platform zone where your Cloud SQL database instance is
   /// located.
   core.String? zone;
 
   CloudSqlSettings({
     this.activationPolicy,
     this.autoStorageIncrease,
+    this.availabilityType,
     this.cmekKeyName,
     this.collation,
     this.dataDiskSizeGb,
@@ -1932,6 +1971,7 @@ class CloudSqlSettings {
     this.ipConfig,
     this.rootPassword,
     this.rootPasswordSet,
+    this.secondaryZone,
     this.sourceId,
     this.storageAutoResizeLimit,
     this.tier,
@@ -1946,6 +1986,9 @@ class CloudSqlSettings {
               : null,
           autoStorageIncrease: json_.containsKey('autoStorageIncrease')
               ? json_['autoStorageIncrease'] as core.bool
+              : null,
+          availabilityType: json_.containsKey('availabilityType')
+              ? json_['availabilityType'] as core.String
               : null,
           cmekKeyName: json_.containsKey('cmekKeyName')
               ? json_['cmekKeyName'] as core.String
@@ -1981,6 +2024,9 @@ class CloudSqlSettings {
           rootPasswordSet: json_.containsKey('rootPasswordSet')
               ? json_['rootPasswordSet'] as core.bool
               : null,
+          secondaryZone: json_.containsKey('secondaryZone')
+              ? json_['secondaryZone'] as core.String
+              : null,
           sourceId: json_.containsKey('sourceId')
               ? json_['sourceId'] as core.String
               : null,
@@ -2004,6 +2050,7 @@ class CloudSqlSettings {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (autoStorageIncrease != null)
           'autoStorageIncrease': autoStorageIncrease!,
+        if (availabilityType != null) 'availabilityType': availabilityType!,
         if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (collation != null) 'collation': collation!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
@@ -2013,6 +2060,7 @@ class CloudSqlSettings {
         if (ipConfig != null) 'ipConfig': ipConfig!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
         if (rootPasswordSet != null) 'rootPasswordSet': rootPasswordSet!,
+        if (secondaryZone != null) 'secondaryZone': secondaryZone!,
         if (sourceId != null) 'sourceId': sourceId!,
         if (storageAutoResizeLimit != null)
           'storageAutoResizeLimit': storageAutoResizeLimit!,

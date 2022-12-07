@@ -32,6 +32,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -805,19 +807,69 @@ class ClassificationCategory {
       };
 }
 
+/// Model options available for classification requests.
+class ClassificationModelOptions {
+  /// Setting this field will use the V1 model and V1 content categories
+  /// version.
+  ///
+  /// The V1 model is a legacy model; support for this will be discontinued in
+  /// the future.
+  V1Model? v1Model;
+
+  /// Setting this field will use the V2 model with the appropriate content
+  /// categories version.
+  ///
+  /// The V2 model is a better performing model.
+  V2Model? v2Model;
+
+  ClassificationModelOptions({
+    this.v1Model,
+    this.v2Model,
+  });
+
+  ClassificationModelOptions.fromJson(core.Map json_)
+      : this(
+          v1Model: json_.containsKey('v1Model')
+              ? V1Model.fromJson(
+                  json_['v1Model'] as core.Map<core.String, core.dynamic>)
+              : null,
+          v2Model: json_.containsKey('v2Model')
+              ? V2Model.fromJson(
+                  json_['v2Model'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (v1Model != null) 'v1Model': v1Model!,
+        if (v2Model != null) 'v2Model': v2Model!,
+      };
+}
+
 /// The document classification request message.
 class ClassifyTextRequest {
+  /// Model options to use for classification.
+  ///
+  /// Defaults to v1 options if not specified.
+  ClassificationModelOptions? classificationModelOptions;
+
   /// Input document.
   ///
   /// Required.
   Document? document;
 
   ClassifyTextRequest({
+    this.classificationModelOptions,
     this.document,
   });
 
   ClassifyTextRequest.fromJson(core.Map json_)
       : this(
+          classificationModelOptions:
+              json_.containsKey('classificationModelOptions')
+                  ? ClassificationModelOptions.fromJson(
+                      json_['classificationModelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           document: json_.containsKey('document')
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
@@ -825,6 +877,8 @@ class ClassifyTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (classificationModelOptions != null)
+          'classificationModelOptions': classificationModelOptions!,
         if (document != null) 'document': document!,
       };
 }
@@ -974,7 +1028,6 @@ class DependencyEdge {
       };
 }
 
-/// ################################################################ #
 /// Represents the input to API methods.
 class Document {
   /// The content of the input in string format.
@@ -1200,6 +1253,12 @@ class EntityMention {
 ///
 /// Setting each one to true will enable that specific analysis for the input.
 class Features {
+  /// The model options to use for classification.
+  ///
+  /// Defaults to v1 options if not specified. Only used if `classify_text` is
+  /// set to true.
+  ClassificationModelOptions? classificationModelOptions;
+
   /// Classify the full document into categories.
   core.bool? classifyText;
 
@@ -1216,6 +1275,7 @@ class Features {
   core.bool? extractSyntax;
 
   Features({
+    this.classificationModelOptions,
     this.classifyText,
     this.extractDocumentSentiment,
     this.extractEntities,
@@ -1225,6 +1285,12 @@ class Features {
 
   Features.fromJson(core.Map json_)
       : this(
+          classificationModelOptions:
+              json_.containsKey('classificationModelOptions')
+                  ? ClassificationModelOptions.fromJson(
+                      json_['classificationModelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           classifyText: json_.containsKey('classifyText')
               ? json_['classifyText'] as core.bool
               : null,
@@ -1244,6 +1310,8 @@ class Features {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (classificationModelOptions != null)
+          'classificationModelOptions': classificationModelOptions!,
         if (classifyText != null) 'classifyText': classifyText!,
         if (extractDocumentSentiment != null)
           'extractDocumentSentiment': extractDocumentSentiment!,
@@ -1603,5 +1671,36 @@ class Token {
         if (lemma != null) 'lemma': lemma!,
         if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Options for the V1 model.
+typedef V1Model = $Empty;
+
+/// Options for the V2 model.
+class V2Model {
+  /// The content categories used for classification.
+  /// Possible string values are:
+  /// - "CONTENT_CATEGORIES_VERSION_UNSPECIFIED" : If `ContentCategoriesVersion`
+  /// is not specified, this option will default to `V1`.
+  /// - "V1" : Legacy content categories of our initial launch in 2017.
+  /// - "V2" : Updated content categories in 2022.
+  core.String? contentCategoriesVersion;
+
+  V2Model({
+    this.contentCategoriesVersion,
+  });
+
+  V2Model.fromJson(core.Map json_)
+      : this(
+          contentCategoriesVersion:
+              json_.containsKey('contentCategoriesVersion')
+                  ? json_['contentCategoriesVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentCategoriesVersion != null)
+          'contentCategoriesVersion': contentCategoriesVersion!,
       };
 }

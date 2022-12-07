@@ -136,7 +136,7 @@ class ChallengeResource {
   }
 }
 
-/// Result message for VerifiedAccess.CreateChallenge.
+/// Result message for VerifiedAccess.GenerateChallenge.
 class Challenge {
   /// Challenge generated with the old signing key, the bytes representation of
   /// SignedData (this will only be present during key rotation).
@@ -236,6 +236,11 @@ class VerifyChallengeResponseRequest {
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
 class VerifyChallengeResponseResult {
+  /// Unique customer id that this device belongs to, as defined by the Google
+  /// Admin SDK at
+  /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+  core.String? customerId;
+
   /// Device permanent id is returned in this field (for the machine response
   /// only).
   core.String? devicePermanentId;
@@ -248,7 +253,8 @@ class VerifyChallengeResponseResult {
   /// - "KEY_TRUST_LEVEL_UNSPECIFIED" : UNSPECIFIED.
   /// - "CHROME_OS_VERIFIED_MODE" : ChromeOS device in verified mode.
   /// - "CHROME_OS_DEVELOPER_MODE" : ChromeOS device in developer mode.
-  /// - "CHROME_BROWSER_TPM_KEY" : Chrome Browser with the key stored in TPM.
+  /// - "CHROME_BROWSER_HW_KEY" : Chrome Browser with the key stored in the
+  /// device hardware.
   /// - "CHROME_BROWSER_OS_KEY" : Chrome Browser with the key stored at OS
   /// level.
   core.String? keyTrustLevel;
@@ -261,15 +267,25 @@ class VerifyChallengeResponseResult {
   /// machine responses)
   core.String? signedPublicKeyAndChallenge;
 
+  /// Virtual device id of the device.
+  ///
+  /// The definition of virtual device id is platform-specific.
+  core.String? virtualDeviceId;
+
   VerifyChallengeResponseResult({
+    this.customerId,
     this.devicePermanentId,
     this.deviceSignal,
     this.keyTrustLevel,
     this.signedPublicKeyAndChallenge,
+    this.virtualDeviceId,
   });
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
           devicePermanentId: json_.containsKey('devicePermanentId')
               ? json_['devicePermanentId'] as core.String
               : null,
@@ -283,13 +299,18 @@ class VerifyChallengeResponseResult {
               json_.containsKey('signedPublicKeyAndChallenge')
                   ? json_['signedPublicKeyAndChallenge'] as core.String
                   : null,
+          virtualDeviceId: json_.containsKey('virtualDeviceId')
+              ? json_['virtualDeviceId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
         if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
         if (deviceSignal != null) 'deviceSignal': deviceSignal!,
         if (keyTrustLevel != null) 'keyTrustLevel': keyTrustLevel!,
         if (signedPublicKeyAndChallenge != null)
           'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
+        if (virtualDeviceId != null) 'virtualDeviceId': virtualDeviceId!,
       };
 }

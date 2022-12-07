@@ -528,11 +528,11 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Connection resource by the update. The fields specified
-  /// in the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten.
+  /// [updateMask] - Required. You can modify only the fields listed below. To
+  /// lock/unlock a connection: * `lock_config` To suspend/resume a connection:
+  /// * `suspended` To update the connection details: * `description` * `labels`
+  /// * `connector_version` * `config_variables` * `auth_config` *
+  /// `destination_configs` * `node_config`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1687,12 +1687,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -2140,7 +2142,10 @@ class Connection {
       };
 }
 
-/// Metadata of connection schema.
+/// ConnectionSchemaMetadata is the singleton resource of each connection.
+///
+/// It includes the entity and action names of runtime resources exposed by a
+/// connection backend.
 class ConnectionSchemaMetadata {
   /// List of actions.
   ///
@@ -2152,9 +2157,40 @@ class ConnectionSchemaMetadata {
   /// Output only.
   core.List<core.String>? entities;
 
+  /// Resource name.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Timestamp when the connection runtime schema refresh was triggered.
+  ///
+  /// Output only.
+  core.String? refreshTime;
+
+  /// The current state of runtime schema.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "REFRESHING" : Schema refresh is in progress.
+  /// - "UPDATED" : Schema has been updated.
+  core.String? state;
+
+  /// Timestamp when the connection runtime schema was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   ConnectionSchemaMetadata({
     this.actions,
     this.entities,
+    this.name,
+    this.refreshTime,
+    this.state,
+    this.updateTime,
   });
 
   ConnectionSchemaMetadata.fromJson(core.Map json_)
@@ -2169,11 +2205,24 @@ class ConnectionSchemaMetadata {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          refreshTime: json_.containsKey('refreshTime')
+              ? json_['refreshTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null) 'actions': actions!,
         if (entities != null) 'entities': entities!,
+        if (name != null) 'name': name!,
+        if (refreshTime != null) 'refreshTime': refreshTime!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4271,10 +4320,6 @@ class SshPublicKey {
   /// Format of SSH Client cert.
   core.String? certType;
 
-  /// This is an optional field used in case client has enabled multi-factor
-  /// authentication
-  Secret? password;
-
   /// SSH Client Cert.
   ///
   /// It should contain both public and private key.
@@ -4288,7 +4333,6 @@ class SshPublicKey {
 
   SshPublicKey({
     this.certType,
-    this.password,
     this.sshClientCert,
     this.sshClientCertPass,
     this.username,
@@ -4298,10 +4342,6 @@ class SshPublicKey {
       : this(
           certType: json_.containsKey('certType')
               ? json_['certType'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? Secret.fromJson(
-                  json_['password'] as core.Map<core.String, core.dynamic>)
               : null,
           sshClientCert: json_.containsKey('sshClientCert')
               ? Secret.fromJson(
@@ -4318,7 +4358,6 @@ class SshPublicKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certType != null) 'certType': certType!,
-        if (password != null) 'password': password!,
         if (sshClientCert != null) 'sshClientCert': sshClientCert!,
         if (sshClientCertPass != null) 'sshClientCertPass': sshClientCertPass!,
         if (username != null) 'username': username!,

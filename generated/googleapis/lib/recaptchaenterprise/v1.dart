@@ -1615,7 +1615,7 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   /// Action-based metrics.
   ///
   /// The map key is the action name which specified by the site owners at time
-  /// of the "execute" client-side call. Populated only for SCORE keys.
+  /// of the "execute" client-side call.
   core.Map<core.String, GoogleCloudRecaptchaenterpriseV1ScoreDistribution>?
       actionMetrics;
 
@@ -1801,10 +1801,14 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Action name provided at token generation.
   core.String? action;
 
+  /// The name of the Android package with which the token was generated
+  /// (Android keys only).
+  core.String? androidPackageName;
+
   /// The timestamp corresponding to the generation of the token.
   core.String? createTime;
 
-  /// The hostname of the page on which the token was generated.
+  /// The hostname of the page on which the token was generated (Web keys only).
   core.String? hostname;
 
   /// Reason associated with the response when valid = false.
@@ -1819,6 +1823,10 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// on the browser. Could easily be simulated by an attacker.
   core.String? invalidReason;
 
+  /// The ID of the iOS bundle with which the token was generated (iOS keys
+  /// only).
+  core.String? iosBundleId;
+
   /// Whether the provided user response token is valid.
   ///
   /// When valid = false, the reason could be specified in invalid_reason or it
@@ -1829,9 +1837,11 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
 
   GoogleCloudRecaptchaenterpriseV1TokenProperties({
     this.action,
+    this.androidPackageName,
     this.createTime,
     this.hostname,
     this.invalidReason,
+    this.iosBundleId,
     this.valid,
   });
 
@@ -1839,6 +1849,9 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
       : this(
           action: json_.containsKey('action')
               ? json_['action'] as core.String
+              : null,
+          androidPackageName: json_.containsKey('androidPackageName')
+              ? json_['androidPackageName'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -1849,15 +1862,21 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
           invalidReason: json_.containsKey('invalidReason')
               ? json_['invalidReason'] as core.String
               : null,
+          iosBundleId: json_.containsKey('iosBundleId')
+              ? json_['iosBundleId'] as core.String
+              : null,
           valid:
               json_.containsKey('valid') ? json_['valid'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
+        if (androidPackageName != null)
+          'androidPackageName': androidPackageName!,
         if (createTime != null) 'createTime': createTime!,
         if (hostname != null) 'hostname': hostname!,
         if (invalidReason != null) 'invalidReason': invalidReason!,
+        if (iosBundleId != null) 'iosBundleId': iosBundleId!,
         if (valid != null) 'valid': valid!,
       };
 }

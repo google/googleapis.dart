@@ -81,12 +81,14 @@ class AttachmentsResource {
 
   /// Create a file attachment on a case or Cloud resource.
   ///
+  /// The attachment object must have the following fields set: filename.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the case to which attachment
-  /// should be attached.
+  /// [parent] - Required. The resource name of the case (or case parent) to
+  /// which the attachment should be attached.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -231,6 +233,9 @@ class CasesResource {
   }
 
   /// Create a new case and associate it with the given Cloud resource.
+  ///
+  /// The case object must have the following fields set: display_name,
+  /// description, classification, and severity.
   ///
   /// [request] - The metadata request object.
   ///
@@ -493,7 +498,8 @@ class CasesResource {
   /// `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
   /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. -
   /// \[DEPRECATED\] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`,
-  /// or `S4`. - `creator.email`: The email address of the case creator. You
+  /// or `S4`. - `creator.email`: The email address of the case creator. -
+  /// `billingAccount`: A billing account in the form `billingAccounts/` You
   /// must specify eitehr `organization` or `project`. To search across
   /// `displayName`, `description`, and comments, use a global restriction with
   /// no keyword or operator. For example, `"my search"`. To search only cases
@@ -503,6 +509,7 @@ class CasesResource {
   /// greater than operator (`>`). Examples: -
   /// `organization="organizations/123456789"` -
   /// `project="projects/my-project-id"` - `project="projects/123456789"` -
+  /// `billing_account="billingAccounts/123456-A0B0C0-CUZ789"` -
   /// `organization="organizations/123456789" AND state=CLOSED` -
   /// `project="projects/my-project-id" AND creator.email="tester@example.com"`
   /// - `project="projects/my-project-id" AND (priority=P0 OR priority=P1)`
@@ -602,6 +609,8 @@ class CasesCommentsResource {
   CasesCommentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Add a new comment to the specified Case.
+  ///
+  /// The comment object must have the following fields set: body.
   ///
   /// [request] - The metadata request object.
   ///
@@ -749,12 +758,14 @@ class MediaResource {
 
   /// Create a file attachment on a case or Cloud resource.
   ///
+  /// The attachment object must have the following fields set: filename.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the case to which attachment
-  /// should be attached.
+  /// [parent] - Required. The resource name of the case (or case parent) to
+  /// which the attachment should be attached.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1016,6 +1027,16 @@ class Case {
   /// Whether the case is currently escalated.
   core.bool? escalated;
 
+  /// The language the user has requested to receive support in.
+  ///
+  /// This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`,
+  /// `"ja"`, `"ko"`). If no language or an unsupported language is specified,
+  /// this field defaults to English (en). Language selection during case
+  /// creation may affect your available support options. For a list of
+  /// supported languages and their support working hours, see:
+  /// https://cloud.google.com/support/docs/language-working-hours
+  core.String? languageCode;
+
   /// The resource name for the case.
   core.String? name;
 
@@ -1091,6 +1112,7 @@ class Case {
     this.description,
     this.displayName,
     this.escalated,
+    this.languageCode,
     this.name,
     this.priority,
     this.severity,
@@ -1122,6 +1144,9 @@ class Case {
               : null,
           escalated: json_.containsKey('escalated')
               ? json_['escalated'] as core.bool
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           priority: json_.containsKey('priority')
@@ -1156,6 +1181,7 @@ class Case {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (escalated != null) 'escalated': escalated!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (priority != null) 'priority': priority!,
         if (severity != null) 'severity': severity!,

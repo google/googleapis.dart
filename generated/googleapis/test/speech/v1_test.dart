@@ -690,6 +690,7 @@ api.RecognizeResponse buildRecognizeResponse() {
   if (buildCounterRecognizeResponse < 3) {
     o.requestId = 'foo';
     o.results = buildUnnamed9();
+    o.speechAdaptationInfo = buildSpeechAdaptationInfo();
     o.totalBilledTime = 'foo';
   }
   buildCounterRecognizeResponse--;
@@ -704,6 +705,7 @@ void checkRecognizeResponse(api.RecognizeResponse o) {
       unittest.equals('foo'),
     );
     checkUnnamed9(o.results!);
+    checkSpeechAdaptationInfo(o.speechAdaptationInfo!);
     unittest.expect(
       o.totalBilledTime!,
       unittest.equals('foo'),
@@ -806,6 +808,30 @@ void checkSpeechAdaptation(api.SpeechAdaptation o) {
     checkUnnamed12(o.phraseSets!);
   }
   buildCounterSpeechAdaptation--;
+}
+
+core.int buildCounterSpeechAdaptationInfo = 0;
+api.SpeechAdaptationInfo buildSpeechAdaptationInfo() {
+  final o = api.SpeechAdaptationInfo();
+  buildCounterSpeechAdaptationInfo++;
+  if (buildCounterSpeechAdaptationInfo < 3) {
+    o.adaptationTimeout = true;
+    o.timeoutMessage = 'foo';
+  }
+  buildCounterSpeechAdaptationInfo--;
+  return o;
+}
+
+void checkSpeechAdaptationInfo(api.SpeechAdaptationInfo o) {
+  buildCounterSpeechAdaptationInfo++;
+  if (buildCounterSpeechAdaptationInfo < 3) {
+    unittest.expect(o.adaptationTimeout!, unittest.isTrue);
+    unittest.expect(
+      o.timeoutMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSpeechAdaptationInfo--;
 }
 
 core.List<core.String> buildUnnamed13() => [
@@ -1271,6 +1297,16 @@ void main() {
       final od = api.SpeechAdaptation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSpeechAdaptation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpeechAdaptationInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpeechAdaptationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeechAdaptationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpeechAdaptationInfo(od);
     });
   });
 

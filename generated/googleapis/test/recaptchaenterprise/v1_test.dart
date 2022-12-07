@@ -994,9 +994,11 @@ api.GoogleCloudRecaptchaenterpriseV1TokenProperties
   buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties < 3) {
     o.action = 'foo';
+    o.androidPackageName = 'foo';
     o.createTime = 'foo';
     o.hostname = 'foo';
     o.invalidReason = 'foo';
+    o.iosBundleId = 'foo';
     o.valid = true;
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties--;
@@ -1012,6 +1014,10 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.androidPackageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
@@ -1021,6 +1027,10 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
     );
     unittest.expect(
       o.invalidReason!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosBundleId!,
       unittest.equals('foo'),
     );
     unittest.expect(o.valid!, unittest.isTrue);

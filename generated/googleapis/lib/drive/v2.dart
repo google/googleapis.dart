@@ -5550,7 +5550,7 @@ class ChangeList {
 }
 
 /// An notification channel used to watch for resource changes.
-typedef Channel = $Channel;
+typedef Channel = $Channel00;
 
 /// A list of children of a file.
 class ChildList {
@@ -6754,7 +6754,7 @@ class FileCapabilities {
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
-  /// this item, or this item itself if it is not a folder, can be read.
+  /// this item, or this item itself if it isn't a folder, can be read.
   core.bool? canReadRevisions;
 
   /// Deprecated - use canReadDrive instead.
@@ -7239,7 +7239,9 @@ class FileImageMediaMetadata {
       };
 }
 
-/// Indexable text attributes for the file (can only be written)
+/// Indexable text attributes for the file (can only be written).
+///
+/// For more information, see Manage file metadata.
 class FileIndexableText {
   /// The text to be indexed for this file.
   core.String? text;
@@ -7547,7 +7549,7 @@ class File {
   /// Short lived download URL for the file.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? downloadUrl;
 
   /// ID of the shared drive the file resides in.
@@ -7575,13 +7577,13 @@ class File {
   /// appear to be part of the extension removed.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? fileExtension;
 
   /// The size of the file in bytes.
   ///
   /// This field is populated for files with content stored in Google Drive and
-  /// for files in Docs Editors; it is not populated for shortcut files.
+  /// for files in Docs Editors; it isn't populated for shortcut files.
   core.String? fileSize;
 
   /// Folder color as an RGB hex string if the file is a folder or a shortcut to
@@ -7597,7 +7599,7 @@ class File {
   /// May contain multiple concatenated extensions, such as "tar.gz". Removing
   /// an extension from the title does not clear this field; however, changing
   /// the extension on the title does update this field. This field is only
-  /// populated for files with content stored in Google Drive; it is not
+  /// populated for files with content stored in Google Drive; it isn't
   /// populated for Docs Editors or shortcut files.
   core.String? fullFileExtension;
 
@@ -7616,7 +7618,7 @@ class File {
   /// The ID of the file's head revision.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? headRevisionId;
 
   /// A link to the file's icon.
@@ -7631,7 +7633,9 @@ class File {
   /// what can be parsed from the image content.
   FileImageMediaMetadata? imageMediaMetadata;
 
-  /// Indexable text attributes for the file (can only be written)
+  /// Indexable text attributes for the file (can only be written).
+  ///
+  /// For more information, see Manage file metadata.
   FileIndexableText? indexableText;
 
   /// Whether the file was created or opened by the requesting app.
@@ -7667,7 +7671,7 @@ class File {
   /// An MD5 checksum for the content of this file.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? md5Checksum;
 
   /// The MIME type of the file.
@@ -7749,13 +7753,13 @@ class File {
   /// The SHA1 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? sha1Checksum;
 
   /// The SHA256 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? sha256Checksum;
 
   /// Deprecated: use capabilities/canShare.
@@ -9059,8 +9063,6 @@ class Permission {
   /// - They can only be set on user and group permissions
   /// - The date must be in the future
   /// - The date cannot be more than a year in the future
-  /// - The date can only be set on drive.permissions.update or
-  /// drive.permissions.patch requests
   core.DateTime? expirationDate;
 
   /// The ID of the user this permission refers to, and identical to the

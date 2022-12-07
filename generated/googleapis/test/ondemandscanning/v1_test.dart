@@ -3223,6 +3223,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
   buildCounterVulnerabilityOccurrence++;
   if (buildCounterVulnerabilityOccurrence < 3) {
     o.cvssScore = 42.0;
+    o.cvssVersion = 'foo';
     o.cvssv3 = buildCVSS();
     o.effectiveSeverity = 'foo';
     o.fixAvailable = true;
@@ -3243,6 +3244,10 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
     unittest.expect(
       o.cvssScore!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.cvssVersion!,
+      unittest.equals('foo'),
     );
     checkCVSS(o.cvssv3!);
     unittest.expect(

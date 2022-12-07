@@ -1308,11 +1308,11 @@ class RecognitionConfig {
 
   /// The number of channels in the input audio data.
   ///
-  /// ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and
-  /// FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for
-  /// MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or
-  /// omitted, defaults to one channel (mono). Note: We only recognize the first
-  /// channel by default. To perform independent recognition on each channel set
+  /// ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16,
+  /// OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and
+  /// SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one
+  /// channel (mono). Note: We only recognize the first channel by default. To
+  /// perform independent recognition on each channel set
   /// `enable_separate_recognition_per_channel` to 'true'.
   core.int? audioChannelCount;
 
@@ -1799,12 +1799,16 @@ class RecognizeResponse {
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
 
+  /// Provides information on adaptation behavior in response
+  SpeechAdaptationInfo? speechAdaptationInfo;
+
   /// When available, billed audio seconds for the corresponding request.
   core.String? totalBilledTime;
 
   RecognizeResponse({
     this.requestId,
     this.results,
+    this.speechAdaptationInfo,
     this.totalBilledTime,
   });
 
@@ -1819,6 +1823,10 @@ class RecognizeResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          speechAdaptationInfo: json_.containsKey('speechAdaptationInfo')
+              ? SpeechAdaptationInfo.fromJson(json_['speechAdaptationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           totalBilledTime: json_.containsKey('totalBilledTime')
               ? json_['totalBilledTime'] as core.String
               : null,
@@ -1827,6 +1835,8 @@ class RecognizeResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
         if (results != null) 'results': results!,
+        if (speechAdaptationInfo != null)
+          'speechAdaptationInfo': speechAdaptationInfo!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
@@ -1940,6 +1950,38 @@ class SpeechAdaptation {
         if (phraseSetReferences != null)
           'phraseSetReferences': phraseSetReferences!,
         if (phraseSets != null) 'phraseSets': phraseSets!,
+      };
+}
+
+/// Information on speech adaptation use in results
+class SpeechAdaptationInfo {
+  /// Whether there was a timeout when applying speech adaptation.
+  ///
+  /// If true, adaptation had no effect in the response transcript.
+  core.bool? adaptationTimeout;
+
+  /// If set, returns a message specifying which part of the speech adaptation
+  /// request timed out.
+  core.String? timeoutMessage;
+
+  SpeechAdaptationInfo({
+    this.adaptationTimeout,
+    this.timeoutMessage,
+  });
+
+  SpeechAdaptationInfo.fromJson(core.Map json_)
+      : this(
+          adaptationTimeout: json_.containsKey('adaptationTimeout')
+              ? json_['adaptationTimeout'] as core.bool
+              : null,
+          timeoutMessage: json_.containsKey('timeoutMessage')
+              ? json_['timeoutMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptationTimeout != null) 'adaptationTimeout': adaptationTimeout!,
+        if (timeoutMessage != null) 'timeoutMessage': timeoutMessage!,
       };
 }
 

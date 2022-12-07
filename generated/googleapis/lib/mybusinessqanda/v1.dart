@@ -15,7 +15,8 @@
 /// My Business Q&A API - v1
 ///
 /// The My Business Q&A API allows questions and answers to be posted for
-/// specific listings.
+/// specific listings. Note - If you have a quota of 0 after enabling the API,
+/// please request for GBP API access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -42,6 +43,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The My Business Q&A API allows questions and answers to be posted for
 /// specific listings.
+///
+/// Note - If you have a quota of 0 after enabling the API, please request for
+/// GBP API access.
 class MyBusinessQ_AApi {
   final commons.ApiRequester _requester;
 

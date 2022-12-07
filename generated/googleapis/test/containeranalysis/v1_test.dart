@@ -4132,6 +4132,7 @@ api.VulnerabilityNote buildVulnerabilityNote() {
   if (buildCounterVulnerabilityNote < 3) {
     o.cvssScore = 42.0;
     o.cvssV3 = buildCVSSv3();
+    o.cvssVersion = 'foo';
     o.details = buildUnnamed60();
     o.severity = 'foo';
     o.sourceUpdateTime = 'foo';
@@ -4149,6 +4150,10 @@ void checkVulnerabilityNote(api.VulnerabilityNote o) {
       unittest.equals(42.0),
     );
     checkCVSSv3(o.cvssV3!);
+    unittest.expect(
+      o.cvssVersion!,
+      unittest.equals('foo'),
+    );
     checkUnnamed60(o.details!);
     unittest.expect(
       o.severity!,
@@ -4191,6 +4196,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
   buildCounterVulnerabilityOccurrence++;
   if (buildCounterVulnerabilityOccurrence < 3) {
     o.cvssScore = 42.0;
+    o.cvssVersion = 'foo';
     o.cvssv3 = buildCVSS();
     o.effectiveSeverity = 'foo';
     o.fixAvailable = true;
@@ -4211,6 +4217,10 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
     unittest.expect(
       o.cvssScore!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.cvssVersion!,
+      unittest.equals('foo'),
     );
     checkCVSS(o.cvssv3!);
     unittest.expect(

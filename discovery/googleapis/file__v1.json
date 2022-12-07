@@ -197,7 +197,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The backup's project and location, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP regions, for example **us-west1**.",
+                                            "description": "Required. The backup's project and location, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -296,7 +296,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The project and location for which to retrieve backup information, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP regions, for example **us-west1**. To retrieve backup information for all locations, use \"-\" for the `{location}` value.",
+                                            "description": "Required. The project and location for which to retrieve backup information, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. To retrieve backup information for all locations, use \"-\" for the `{location}` value.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -364,7 +364,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The instance's project and location, in the format `projects/{project_id}/locations/{location}`. In Filestore, locations map to GCP zones, for example **us-west1-b**.",
+                                            "description": "Required. The instance's project and location, in the format `projects/{project_id}/locations/{location}`. In Filestore, locations map to Google Cloud zones, for example **us-west1-b**.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -468,7 +468,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**. To retrieve instance information for all locations, use \"-\" for the `{location}` value.",
+                                            "description": "Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud zones, for example **us-west1-b**. To retrieve instance information for all locations, use \"-\" for the `{location}` value.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -844,7 +844,7 @@
             }
         }
     },
-    "revision": "20220906",
+    "revision": "20221111",
     "rootUrl": "https://file.googleapis.com/",
     "schemas": {
         "Backup": {
@@ -1381,7 +1381,9 @@
                         "DELETING",
                         "ERROR",
                         "RESTORING",
-                        "SUSPENDED"
+                        "SUSPENDED",
+                        "SUSPENDING",
+                        "RESUMING"
                     ],
                     "enumDescriptions": [
                         "State not set.",
@@ -1391,7 +1393,9 @@
                         "The instance is shutting down.",
                         "The instance is experiencing an issue and might be unusable. You can get further details from the `statusMessage` field of the `Instance` resource.",
                         "The instance is restoring a backup to an existing file share and may be unusable during this time.",
-                        "The instance is suspended. You can get further details from the `suspension_reasons` field of the `Instance` resource."
+                        "The instance is suspended. You can get further details from the `suspension_reasons` field of the `Instance` resource.",
+                        "The instance is in the process of becoming suspended.",
+                        "The instance is in the process of becoming active."
                     ],
                     "readOnly": true,
                     "type": "string"

@@ -430,9 +430,11 @@ api.GoogleCloudRetailV2CatalogAttribute
   buildCounterGoogleCloudRetailV2CatalogAttribute++;
   if (buildCounterGoogleCloudRetailV2CatalogAttribute < 3) {
     o.dynamicFacetableOption = 'foo';
+    o.exactSearchableOption = 'foo';
     o.inUse = true;
     o.indexableOption = 'foo';
     o.key = 'foo';
+    o.retrievableOption = 'foo';
     o.searchableOption = 'foo';
     o.type = 'foo';
   }
@@ -448,6 +450,10 @@ void checkGoogleCloudRetailV2CatalogAttribute(
       o.dynamicFacetableOption!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.exactSearchableOption!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.inUse!, unittest.isTrue);
     unittest.expect(
       o.indexableOption!,
@@ -455,6 +461,10 @@ void checkGoogleCloudRetailV2CatalogAttribute(
     );
     unittest.expect(
       o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.retrievableOption!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -8373,6 +8383,8 @@ void main() {
           api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       final arg_parent = 'foo';
       final arg_ets = 'foo';
+      final arg_prebuiltRule = 'foo';
+      final arg_rawJson = 'foo';
       final arg_uri = 'foo';
       final arg_userEvent = 'foo';
       final arg_$fields = 'foo';
@@ -8413,6 +8425,14 @@ void main() {
           unittest.equals(arg_ets),
         );
         unittest.expect(
+          queryMap['prebuiltRule']!.first,
+          unittest.equals(arg_prebuiltRule),
+        );
+        unittest.expect(
+          queryMap['rawJson']!.first,
+          unittest.equals(arg_rawJson),
+        );
+        unittest.expect(
           queryMap['uri']!.first,
           unittest.equals(arg_uri),
         );
@@ -8433,6 +8453,8 @@ void main() {
       }), true);
       final response = await res.collect(arg_parent,
           ets: arg_ets,
+          prebuiltRule: arg_prebuiltRule,
+          rawJson: arg_rawJson,
           uri: arg_uri,
           userEvent: arg_userEvent,
           $fields: arg_$fields);

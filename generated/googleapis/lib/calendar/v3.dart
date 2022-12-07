@@ -2990,7 +2990,7 @@ class CalendarNotification {
       };
 }
 
-typedef Channel = $Channel;
+typedef Channel = $Channel00;
 
 class ColorDefinition {
   /// The background color associated with this color definition.

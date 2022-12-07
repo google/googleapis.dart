@@ -15,7 +15,7 @@
 /// Transcoder API - v1
 ///
 /// This API converts video files into formats suitable for consumer
-/// distribution.
+/// distribution. For more information, see the Transcoder API overview.
 ///
 /// For more information, see <https://cloud.google.com/transcoder/docs/>
 ///
@@ -43,6 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// This API converts video files into formats suitable for consumer
 /// distribution.
+///
+/// For more information, see the Transcoder API overview.
 class TranscoderApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

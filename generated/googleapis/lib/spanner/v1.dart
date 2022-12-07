@@ -22,6 +22,7 @@
 /// Create an instance of [SpannerApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsInstanceConfigOperationsResource]
 ///   - [ProjectsInstanceConfigsResource]
 ///     - [ProjectsInstanceConfigsOperationsResource]
 ///   - [ProjectsInstancesResource]
@@ -82,12 +83,108 @@ class SpannerApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsInstanceConfigOperationsResource get instanceConfigOperations =>
+      ProjectsInstanceConfigOperationsResource(_requester);
   ProjectsInstanceConfigsResource get instanceConfigs =>
       ProjectsInstanceConfigsResource(_requester);
   ProjectsInstancesResource get instances =>
       ProjectsInstancesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsInstanceConfigOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the user-managed instance config long-running operations in the
+  /// given project.
+  ///
+  /// An instance config operation has a name of the form
+  /// `projects//instanceConfigs//operations/`. The long-running operation
+  /// metadata field type `metadata.type_url` describes the type of the
+  /// metadata. Operations returned include those that have
+  /// completed/failed/canceled within the last 7 days, and pending operations.
+  /// Operations returned are ordered by `operation.metadata.value.start_time`
+  /// in descending order starting from the most recently started operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project of the instance config operations. Values
+  /// are of the form `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of returned operations. A
+  /// filter expression consists of a field name, a comparison operator, and a
+  /// value for filtering. The value must be a string, a number, or a boolean.
+  /// The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`,
+  /// or `:`. Colon `:` is the contains operator. Filter rules are not case
+  /// sensitive. The following fields in the Operation are eligible for
+  /// filtering: * `name` - The name of the long-running operation * `done` -
+  /// False if the operation is in progress, else true. * `metadata.@type` - the
+  /// type of metadata. For example, the type string for
+  /// CreateInstanceConfigMetadata is
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata`.
+  /// * `metadata.` - any field in metadata.value. `metadata.@type` must be
+  /// specified first, if filtering on metadata fields. * `error` - Error
+  /// associated with the long-running operation. * `response.@type` - the type
+  /// of response. * `response.` - any field in response.value. You can combine
+  /// multiple expressions by enclosing each expression in parentheses. By
+  /// default, expressions are combined with AND logic. However, you can specify
+  /// AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true`
+  /// - The operation is complete. * `(metadata.@type=` \
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata)
+  /// AND` \ `(metadata.instance_config.name:custom-config) AND` \
+  /// `(metadata.progress.start_time < \"2021-03-28T14:50:00Z\") AND` \
+  /// `(error:*)` - Return operations where: * The operation's metadata type is
+  /// CreateInstanceConfigMetadata. * The instance config name contains
+  /// "custom-config". * The operation started before 2021-03-28T14:50:00Z. *
+  /// The operation resulted in an error.
+  ///
+  /// [pageSize] - Number of operations to be returned in the response. If 0 or
+  /// less, defaults to the server's maximum allowed page size.
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListInstanceConfigOperationsResponse to the same `parent`
+  /// and with the same `filter`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstanceConfigOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstanceConfigOperationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/instanceConfigOperations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstanceConfigOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsInstanceConfigsResource {
@@ -98,6 +195,121 @@ class ProjectsInstanceConfigsResource {
 
   ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates an instance config and begins preparing it to be used.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// preparing the new instance config. The instance config name is assigned by
+  /// the caller. If the named instance config already exists,
+  /// `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the
+  /// request returns: * The instance config is readable via the API, with all
+  /// requested attributes. The instance config's reconciling field is set to
+  /// true. Its state is `CREATING`. While the operation is pending: *
+  /// Cancelling the operation renders the instance config immediately
+  /// unreadable via the API. * Except for deleting the creating resource, all
+  /// other attempts to modify the instance config are rejected. Upon completion
+  /// of the returned operation: * Instances can be created using the instance
+  /// configuration. * The instance config's reconciling field becomes false.
+  /// Its state becomes `READY`. The returned long-running operation will have a
+  /// name of the format `/operations/` and can be used to track creation of the
+  /// instance config. The metadata field type is CreateInstanceConfigMetadata.
+  /// The response field type is InstanceConfig, if successful. Authorization
+  /// requires `spanner.instanceConfigs.create` permission on the resource
+  /// parent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to create the
+  /// instance config. Values are of the form `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CreateInstanceConfigRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/instanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the instance config.
+  ///
+  /// Deletion is only allowed when no instances are using the configuration. If
+  /// any instances are using the config, returns `FAILED_PRECONDITION`. Only
+  /// user managed configurations can be deleted. Authorization requires
+  /// `spanner.instanceConfigs.delete` permission on the resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the instance configuration to be deleted.
+  /// Values are of the form `projects//instanceConfigs/`
+  /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - Used for optimistic concurrency control as a way to help prevent
+  /// simultaneous deletes of an instance config from overwriting each other. If
+  /// not empty, the API only deletes the instance config when the etag provided
+  /// matches the current status of the requested instance config. Otherwise,
+  /// deletes the instance config without checking the current status of the
+  /// requested instance config.
+  ///
+  /// [validateOnly] - An option to validate, but not actually execute, a
+  /// request, and provide the same response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets information about a particular instance configuration.
   ///
@@ -182,6 +394,66 @@ class ProjectsInstanceConfigsResource {
     );
     return ListInstanceConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an instance config.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// updating the instance. If the named instance config does not exist,
+  /// returns `NOT_FOUND`. Only user managed configurations can be updated.
+  /// Immediately after the request returns: * The instance config's reconciling
+  /// field is set to true. While the operation is pending: * Cancelling the
+  /// operation sets its metadata's cancel_time. The operation is guaranteed to
+  /// succeed at undoing all changes, after which point it terminates with a
+  /// `CANCELLED` status. * All other attempts to modify the instance config are
+  /// rejected. * Reading the instance config via the API continues to give the
+  /// pre-request values. Upon completion of the returned operation: * Creating
+  /// instances using the instance configuration uses the new values. * The
+  /// instance config's new values are readable via the API. * The instance
+  /// config's reconciling field becomes false. The returned long-running
+  /// operation will have a name of the format `/operations/` and can be used to
+  /// track the instance config modification. The metadata field type is
+  /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig,
+  /// if successful. Authorization requires `spanner.instanceConfigs.update`
+  /// permission on the resource name.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A unique identifier for the instance configuration. Values are of
+  /// the form `projects//instanceConfigs/a-z*`.
+  /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    UpdateInstanceConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -933,8 +1205,8 @@ class ProjectsInstancesBackupsResource {
   /// copying of the backup. The operation is associated with the destination
   /// backup. The metadata field type is CopyBackupMetadata. The response field
   /// type is Backup, if successful. Cancelling the returned operation will stop
-  /// the copying and delete the backup. Concurrent CopyBackup requests can run
-  /// on the same source backup.
+  /// the copying and delete the destination backup. Concurrent CopyBackup
+  /// requests can run on the same source backup.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3556,8 +3828,6 @@ class Backup {
 
   /// The encryption information for the backup.
   ///
-  /// .
-  ///
   /// Output only.
   EncryptionInfo? encryptionInfo;
 
@@ -3878,12 +4148,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -4194,7 +4466,8 @@ class CopyBackupEncryptionConfig {
   /// be using the same Cloud KMS key as the source backup.
   /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
   /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
-  /// specified, `kms_key_name` must contain a valid Cloud KMS key.
+  /// specified, either `kms_key_name` or `kms_key_names` must contain valid
+  /// Cloud KMS key(s).
   core.String? encryptionType;
 
   /// The Cloud KMS key that will be used to protect the backup.
@@ -4338,11 +4611,35 @@ class CreateDatabaseRequest {
   /// Optional.
   core.List<core.String>? extraStatements;
 
+  /// Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in
+  /// 'extra_statements' above.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
+  /// run `protoc` with --include_imports and --descriptor_set_out. For example,
+  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  ///
+  /// Optional.
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   CreateDatabaseRequest({
     this.createStatement,
     this.databaseDialect,
     this.encryptionConfig,
     this.extraStatements,
+    this.protoDescriptors,
   });
 
   CreateDatabaseRequest.fromJson(core.Map json_)
@@ -4362,6 +4659,9 @@ class CreateDatabaseRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4369,6 +4669,58 @@ class CreateDatabaseRequest {
         if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (extraStatements != null) 'extraStatements': extraStatements!,
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
+      };
+}
+
+/// The request for CreateInstanceConfigRequest.
+class CreateInstanceConfigRequest {
+  /// The InstanceConfig proto of the configuration to create.
+  ///
+  /// instance_config.name must be `/instanceConfigs/`.
+  /// instance_config.base_config must be a Google managed configuration name,
+  /// e.g. /instanceConfigs/us-east1, /instanceConfigs/nam3.
+  ///
+  /// Required.
+  InstanceConfig? instanceConfig;
+
+  /// The ID of the instance config to create.
+  ///
+  /// Valid identifiers are of the form `custom-[-a-z0-9]*[a-z0-9]` and must be
+  /// between 2 and 64 characters in length. The `custom-` prefix is required to
+  /// avoid name conflicts with Google managed configurations.
+  ///
+  /// Required.
+  core.String? instanceConfigId;
+
+  /// An option to validate, but not actually execute, a request, and provide
+  /// the same response.
+  core.bool? validateOnly;
+
+  CreateInstanceConfigRequest({
+    this.instanceConfig,
+    this.instanceConfigId,
+    this.validateOnly,
+  });
+
+  CreateInstanceConfigRequest.fromJson(core.Map json_)
+      : this(
+          instanceConfig: json_.containsKey('instanceConfig')
+              ? InstanceConfig.fromJson(json_['instanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instanceConfigId: json_.containsKey('instanceConfigId')
+              ? json_['instanceConfigId'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceConfig != null) 'instanceConfig': instanceConfig!,
+        if (instanceConfigId != null) 'instanceConfigId': instanceConfigId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -5264,16 +5616,35 @@ class FreeInstanceMetadata {
 
 /// The response for GetDatabaseDdl.
 class GetDatabaseDdlResponse {
+  /// Proto descriptors stored in the database.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// For more details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// A list of formatted DDL statements defining the schema of the database
   /// specified in the request.
   core.List<core.String>? statements;
 
   GetDatabaseDdlResponse({
+    this.protoDescriptors,
     this.statements,
   });
 
   GetDatabaseDdlResponse.fromJson(core.Map json_)
       : this(
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
+              : null,
           statements: json_.containsKey('statements')
               ? (json_['statements'] as core.List)
                   .map((value) => value as core.String)
@@ -5282,6 +5653,7 @@ class GetDatabaseDdlResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
         if (statements != null) 'statements': statements!,
       };
 }
@@ -5564,8 +5936,38 @@ class Instance {
 /// Configurations define the geographic placement of nodes and their
 /// replication.
 class InstanceConfig {
+  /// Base configuration name, e.g. projects//instanceConfigs/nam3, based on
+  /// which this configuration is created.
+  ///
+  /// Only set for user managed configurations. `base_config` must refer to a
+  /// configuration of type GOOGLE_MANAGED in the same project as this
+  /// configuration.
+  core.String? baseConfig;
+
+  /// Whether this instance config is a Google or User Managed Configuration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified.
+  /// - "GOOGLE_MANAGED" : Google managed configuration.
+  /// - "USER_MANAGED" : User managed configuration.
+  core.String? configType;
+
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
+
+  /// etag is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a instance config from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the etag in the
+  /// read-modify-write cycle to perform instance config updates in order to
+  /// avoid race conditions: An etag is returned in the response which contains
+  /// instance configs, and systems are expected to put that etag in the request
+  /// to update instance config to ensure that their change will be applied to
+  /// the same version of the instance config. If no etag is provided in the
+  /// call to update instance config, then the existing instance config is
+  /// overwritten blindly.
+  core.String? etag;
 
   /// Describes whether free instances are available to be created in this
   /// instance config.
@@ -5584,6 +5986,27 @@ class InstanceConfig {
   /// of free instances.
   core.String? freeInstanceAvailability;
 
+  /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
+  /// resources into groups that reflect a customer's organizational needs and
+  /// deployment strategies.
+  ///
+  /// Cloud Labels can be used to filter collections of resources. They can be
+  /// used to control how resource metrics are aggregated. And they can be used
+  /// as arguments to policy management rules (e.g. route, firewall, load
+  /// balancing, etc.). * Label keys must be between 1 and 63 characters long
+  /// and must conform to the following regular expression: `a-z{0,62}`. * Label
+  /// values must be between 0 and 63 characters long and must conform to the
+  /// regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be
+  /// associated with a given resource. See https://goo.gl/xmQnxf for more
+  /// information on and examples of labels. If you plan to use labels in your
+  /// own code, please note that additional characters may be allowed in the
+  /// future. Therefore, you are advised to use an internal label
+  /// representation, such as JSON, which doesn't rely upon specific characters
+  /// being disallowed. For example, representing labels as the string: name +
+  /// "_" + value would prove problematic if we were to allow "_" in a future
+  /// release.
+  core.Map<core.String, core.String>? labels;
+
   /// Allowed values of the "default_leader" schema option for databases in
   /// instances that use this instance configuration.
   core.List<core.String>? leaderOptions;
@@ -5593,48 +6016,113 @@ class InstanceConfig {
   /// Values are of the form `projects//instanceConfigs/a-z*`.
   core.String? name;
 
+  /// The available optional replicas to choose from for user managed
+  /// configurations.
+  ///
+  /// Populated for Google managed configurations.
+  ///
+  /// Output only.
+  core.List<ReplicaInfo>? optionalReplicas;
+
+  /// If true, the instance config is being created or updated.
+  ///
+  /// If false, there are no ongoing operations for the instance config.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
   /// The geographic placement of nodes in this instance configuration and their
   /// replication properties.
   core.List<ReplicaInfo>? replicas;
 
+  /// The current instance config state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The instance config is still being created.
+  /// - "READY" : The instance config is fully created and ready to be used to
+  /// create instances.
+  core.String? state;
+
   InstanceConfig({
+    this.baseConfig,
+    this.configType,
     this.displayName,
+    this.etag,
     this.freeInstanceAvailability,
+    this.labels,
     this.leaderOptions,
     this.name,
+    this.optionalReplicas,
+    this.reconciling,
     this.replicas,
+    this.state,
   });
 
   InstanceConfig.fromJson(core.Map json_)
       : this(
+          baseConfig: json_.containsKey('baseConfig')
+              ? json_['baseConfig'] as core.String
+              : null,
+          configType: json_.containsKey('configType')
+              ? json_['configType'] as core.String
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           freeInstanceAvailability:
               json_.containsKey('freeInstanceAvailability')
                   ? json_['freeInstanceAvailability'] as core.String
                   : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           leaderOptions: json_.containsKey('leaderOptions')
               ? (json_['leaderOptions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          optionalReplicas: json_.containsKey('optionalReplicas')
+              ? (json_['optionalReplicas'] as core.List)
+                  .map((value) => ReplicaInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
           replicas: json_.containsKey('replicas')
               ? (json_['replicas'] as core.List)
                   .map((value) => ReplicaInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (baseConfig != null) 'baseConfig': baseConfig!,
+        if (configType != null) 'configType': configType!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
         if (freeInstanceAvailability != null)
           'freeInstanceAvailability': freeInstanceAvailability!,
+        if (labels != null) 'labels': labels!,
         if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
+        if (optionalReplicas != null) 'optionalReplicas': optionalReplicas!,
+        if (reconciling != null) 'reconciling': reconciling!,
         if (replicas != null) 'replicas': replicas!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -6101,6 +6589,43 @@ class ListDatabasesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (databases != null) 'databases': databases!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response for ListInstanceConfigOperations.
+class ListInstanceConfigOperationsResponse {
+  /// `next_page_token` can be sent in a subsequent ListInstanceConfigOperations
+  /// call to fetch more of the matching metadata.
+  core.String? nextPageToken;
+
+  /// The list of matching instance config long-running operations.
+  ///
+  /// Each operation's name will be prefixed by the instance config's name. The
+  /// operation's metadata field type `metadata.type_url` describes the type of
+  /// the metadata.
+  core.List<Operation>? operations;
+
+  ListInstanceConfigOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  ListInstanceConfigOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -7652,7 +8177,34 @@ class ReadRequest {
 /// Message type to initiate a read-write transaction.
 ///
 /// Currently this transaction type has no options.
-typedef ReadWrite = $Empty;
+class ReadWrite {
+  /// Read lock mode for the transaction.
+  /// Possible string values are:
+  /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. If the value is not
+  /// specified, the pessimistic read lock is used.
+  /// - "PESSIMISTIC" : Pessimistic lock mode. Read locks are acquired
+  /// immediately on read.
+  /// - "OPTIMISTIC" : Optimistic lock mode. Locks for reads within the
+  /// transaction are not acquired on read. Instead the locks are acquired on a
+  /// commit to validate that read/queried data has not changed since the
+  /// transaction started.
+  core.String? readLockMode;
+
+  ReadWrite({
+    this.readLockMode,
+  });
+
+  ReadWrite.fromJson(core.Map json_)
+      : this(
+          readLockMode: json_.containsKey('readLockMode')
+              ? json_['readLockMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readLockMode != null) 'readLockMode': readLockMode!,
+      };
+}
 
 class ReplicaInfo {
   /// If true, this location is designated as the default leader location where
@@ -7972,9 +8524,20 @@ class ResultSetMetadata {
   /// information about the new transaction is yielded here.
   Transaction? transaction;
 
+  /// A SQL query can be parameterized.
+  ///
+  /// In PLAN mode, these parameters can be undeclared. This indicates the field
+  /// names and types for those undeclared parameters in the SQL query. For
+  /// example, a SQL query like `"SELECT * FROM Users where UserId = @userId and
+  /// UserName = @userName "` could return a `undeclared_parameters` value like:
+  /// "fields": \[ { "name": "UserId", "type": { "code": "INT64" } }, { "name":
+  /// "UserName", "type": { "code": "STRING" } }, \]
+  StructType? undeclaredParameters;
+
   ResultSetMetadata({
     this.rowType,
     this.transaction,
+    this.undeclaredParameters,
   });
 
   ResultSetMetadata.fromJson(core.Map json_)
@@ -7987,11 +8550,17 @@ class ResultSetMetadata {
               ? Transaction.fromJson(
                   json_['transaction'] as core.Map<core.String, core.dynamic>)
               : null,
+          undeclaredParameters: json_.containsKey('undeclaredParameters')
+              ? StructType.fromJson(json_['undeclaredParameters']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rowType != null) 'rowType': rowType!,
         if (transaction != null) 'transaction': transaction!,
+        if (undeclaredParameters != null)
+          'undeclaredParameters': undeclaredParameters!,
       };
 }
 
@@ -8838,7 +9407,14 @@ class Type {
   /// the first key is preserved. - Members of a JSON object are not guaranteed
   /// to have their order preserved. - JSON array elements will have their order
   /// preserved.
+  /// - "PROTO" : Encoded as a base64-encoded `string`, as described in RFC
+  /// 4648, section 4.
+  /// - "ENUM" : Encoded as `string`, in decimal format.
   core.String? code;
+
+  /// If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully
+  /// qualified name of the proto type representing the proto/enum definition.
+  core.String? protoTypeFqn;
 
   /// If code == STRUCT, then `struct_type` provides type information for the
   /// struct's fields.
@@ -8859,11 +9435,17 @@ class Type {
   /// values of this type should be treated as PostgreSQL NUMERIC values.
   /// Currently this annotation is always needed for NUMERIC when a client
   /// interacts with PostgreSQL-enabled Spanner databases.
+  /// - "PG_JSONB" : PostgreSQL compatible JSONB type. This annotation needs to
+  /// be applied to Type instances having JSON type code to specify that values
+  /// of this type should be treated as PostgreSQL JSONB values. Currently this
+  /// annotation is always needed for JSON when a client interacts with
+  /// PostgreSQL-enabled Spanner databases.
   core.String? typeAnnotation;
 
   Type({
     this.arrayElementType,
     this.code,
+    this.protoTypeFqn,
     this.structType,
     this.typeAnnotation,
   });
@@ -8875,6 +9457,9 @@ class Type {
                   as core.Map<core.String, core.dynamic>)
               : null,
           code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          protoTypeFqn: json_.containsKey('protoTypeFqn')
+              ? json_['protoTypeFqn'] as core.String
+              : null,
           structType: json_.containsKey('structType')
               ? StructType.fromJson(
                   json_['structType'] as core.Map<core.String, core.dynamic>)
@@ -8887,6 +9472,7 @@ class Type {
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayElementType != null) 'arrayElementType': arrayElementType!,
         if (code != null) 'code': code!,
+        if (protoTypeFqn != null) 'protoTypeFqn': protoTypeFqn!,
         if (structType != null) 'structType': structType!,
         if (typeAnnotation != null) 'typeAnnotation': typeAnnotation!,
       };
@@ -8921,6 +9507,28 @@ class UpdateDatabaseDdlRequest {
   /// returns `ALREADY_EXISTS`.
   core.String? operationId;
 
+  /// Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
+  /// run `protoc` with --include_imports and --descriptor_set_out. For example,
+  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  ///
+  /// Optional.
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// DDL statements to be applied to the database.
   ///
   /// Required.
@@ -8928,6 +9536,7 @@ class UpdateDatabaseDdlRequest {
 
   UpdateDatabaseDdlRequest({
     this.operationId,
+    this.protoDescriptors,
     this.statements,
   });
 
@@ -8935,6 +9544,9 @@ class UpdateDatabaseDdlRequest {
       : this(
           operationId: json_.containsKey('operationId')
               ? json_['operationId'] as core.String
+              : null,
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
               : null,
           statements: json_.containsKey('statements')
               ? (json_['statements'] as core.List)
@@ -8945,7 +9557,59 @@ class UpdateDatabaseDdlRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
         if (statements != null) 'statements': statements!,
+      };
+}
+
+/// The request for UpdateInstanceConfigRequest.
+class UpdateInstanceConfigRequest {
+  /// The user instance config to update, which must always include the instance
+  /// config name.
+  ///
+  /// Otherwise, only fields mentioned in update_mask need be included. To
+  /// prevent conflicts of concurrent updates, etag can be used.
+  ///
+  /// Required.
+  InstanceConfig? instanceConfig;
+
+  /// A mask specifying which fields in InstanceConfig should be updated.
+  ///
+  /// The field mask must always be specified; this prevents any future fields
+  /// in InstanceConfig from being erased accidentally by clients that do not
+  /// know about them. Only display_name and labels can be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  /// An option to validate, but not actually execute, a request, and provide
+  /// the same response.
+  core.bool? validateOnly;
+
+  UpdateInstanceConfigRequest({
+    this.instanceConfig,
+    this.updateMask,
+    this.validateOnly,
+  });
+
+  UpdateInstanceConfigRequest.fromJson(core.Map json_)
+      : this(
+          instanceConfig: json_.containsKey('instanceConfig')
+              ? InstanceConfig.fromJson(json_['instanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceConfig != null) 'instanceConfig': instanceConfig!,
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 

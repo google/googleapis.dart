@@ -1530,6 +1530,7 @@ api.ResourceInfo buildResourceInfo() {
   final o = api.ResourceInfo();
   buildCounterResourceInfo++;
   if (buildCounterResourceInfo < 3) {
+    o.permission = 'foo';
     o.resourceContainer = 'foo';
     o.resourceLocation = 'foo';
     o.resourceName = 'foo';
@@ -1541,6 +1542,10 @@ api.ResourceInfo buildResourceInfo() {
 void checkResourceInfo(api.ResourceInfo o) {
   buildCounterResourceInfo++;
   if (buildCounterResourceInfo < 3) {
+    unittest.expect(
+      o.permission!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.resourceContainer!,
       unittest.equals('foo'),

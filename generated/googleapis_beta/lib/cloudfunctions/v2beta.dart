@@ -948,6 +948,29 @@ class BuildConfig {
   /// Output only.
   core.String? build;
 
+  /// Specifies one of the Google provided buildpack stacks.
+  core.String? buildpackStack;
+
+  /// Docker Registry to use for this deployment.
+  ///
+  /// This configuration is only applicable to 1st Gen functions, 2nd Gen
+  /// functions can only use Artifact Registry. If `docker_repository` field is
+  /// specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If
+  /// unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may
+  /// be overridden by the backend for eligible deployments.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
+  /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
+  /// Container Registry repositories named `gcf`.
+  /// - "ARTIFACT_REGISTRY" : Docker images will be stored in regional Artifact
+  /// Registry repositories. By default, GCF will create and use repositories
+  /// named `gcf-artifacts` in every region in which a function is deployed. But
+  /// the repository to use can also be specified by the user using the
+  /// `docker_repository` field.
+  core.String? dockerRegistry;
+
   /// User managed repository created in Artifact Registry optionally with a
   /// customer managed encryption key.
   ///
@@ -958,8 +981,6 @@ class BuildConfig {
   /// `projects/{project}/locations/{location}/repositories/{repository}`.
   /// Cross-project repositories are not supported. Cross-location repositories
   /// are not supported. Repository format must be 'DOCKER'.
-  ///
-  /// Optional.
   core.String? dockerRepository;
 
   /// The name of the function (as defined in source code) that will be
@@ -1006,6 +1027,8 @@ class BuildConfig {
 
   BuildConfig({
     this.build,
+    this.buildpackStack,
+    this.dockerRegistry,
     this.dockerRepository,
     this.entryPoint,
     this.environmentVariables,
@@ -1019,6 +1042,12 @@ class BuildConfig {
       : this(
           build:
               json_.containsKey('build') ? json_['build'] as core.String : null,
+          buildpackStack: json_.containsKey('buildpackStack')
+              ? json_['buildpackStack'] as core.String
+              : null,
+          dockerRegistry: json_.containsKey('dockerRegistry')
+              ? json_['dockerRegistry'] as core.String
+              : null,
           dockerRepository: json_.containsKey('dockerRepository')
               ? json_['dockerRepository'] as core.String
               : null,
@@ -1053,6 +1082,8 @@ class BuildConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (build != null) 'build': build!,
+        if (buildpackStack != null) 'buildpackStack': buildpackStack!,
+        if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
@@ -2123,7 +2154,7 @@ class SecretVolume {
 
 /// Describes the Service being deployed.
 ///
-/// Currently Supported : Cloud Run (fully managed).
+/// Currently Supported : Cloud Run (fully managed). Next tag: 23
 class ServiceConfig {
   /// Whether 100% of traffic is routed to the latest revision.
   ///
@@ -2132,6 +2163,14 @@ class ServiceConfig {
   /// if any. On GetFunction, true will be returned if the latest revision is
   /// serving 100% of traffic.
   core.bool? allTrafficOnLatestRevision;
+
+  /// The number of CPUs used in a single container instance.
+  ///
+  /// Default value is calculated from available memory. Supports the same
+  /// values as Cloud Run, see
+  /// https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements
+  /// Example: "1" indicates 1 vCPU
+  core.String? availableCpu;
 
   /// The amount of memory available for a function.
   ///
@@ -2167,6 +2206,12 @@ class ServiceConfig {
   /// Guide for more details.
   core.int? maxInstanceCount;
 
+  /// Sets the maximum number of concurrent requests that each instance can
+  /// receive.
+  ///
+  /// Defaults to 1.
+  core.int? maxInstanceRequestConcurrency;
+
   /// The limit on the minimum number of function instances that may coexist at
   /// a given time.
   ///
@@ -2188,6 +2233,21 @@ class ServiceConfig {
 
   /// Secret volumes configuration.
   core.List<SecretVolume>? secretVolumes;
+
+  /// Security level configure whether the function only accepts https.
+  ///
+  /// This configuration is only applicable to 1st Gen functions with Http
+  /// trigger. By default https is optional for 1st Gen functions; 2nd Gen
+  /// functions are https ONLY.
+  /// Possible string values are:
+  /// - "SECURITY_LEVEL_UNSPECIFIED" : Unspecified.
+  /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
+  /// use HTTPS are automatically redirected to the HTTPS URL with the same
+  /// path. Query parameters are reserved for the redirect.
+  /// - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match
+  /// the handler succeed without redirects. The application can examine the
+  /// request to determine which protocol was used and respond accordingly.
+  core.String? securityLevel;
 
   /// Name of the service associated with a Function.
   ///
@@ -2233,14 +2293,17 @@ class ServiceConfig {
 
   ServiceConfig({
     this.allTrafficOnLatestRevision,
+    this.availableCpu,
     this.availableMemory,
     this.environmentVariables,
     this.ingressSettings,
     this.maxInstanceCount,
+    this.maxInstanceRequestConcurrency,
     this.minInstanceCount,
     this.revision,
     this.secretEnvironmentVariables,
     this.secretVolumes,
+    this.securityLevel,
     this.service,
     this.serviceAccountEmail,
     this.timeoutSeconds,
@@ -2255,6 +2318,9 @@ class ServiceConfig {
               json_.containsKey('allTrafficOnLatestRevision')
                   ? json_['allTrafficOnLatestRevision'] as core.bool
                   : null,
+          availableCpu: json_.containsKey('availableCpu')
+              ? json_['availableCpu'] as core.String
+              : null,
           availableMemory: json_.containsKey('availableMemory')
               ? json_['availableMemory'] as core.String
               : null,
@@ -2274,6 +2340,10 @@ class ServiceConfig {
           maxInstanceCount: json_.containsKey('maxInstanceCount')
               ? json_['maxInstanceCount'] as core.int
               : null,
+          maxInstanceRequestConcurrency:
+              json_.containsKey('maxInstanceRequestConcurrency')
+                  ? json_['maxInstanceRequestConcurrency'] as core.int
+                  : null,
           minInstanceCount: json_.containsKey('minInstanceCount')
               ? json_['minInstanceCount'] as core.int
               : null,
@@ -2292,6 +2362,9 @@ class ServiceConfig {
                   .map((value) => SecretVolume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          securityLevel: json_.containsKey('securityLevel')
+              ? json_['securityLevel'] as core.String
               : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
@@ -2315,16 +2388,20 @@ class ServiceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allTrafficOnLatestRevision != null)
           'allTrafficOnLatestRevision': allTrafficOnLatestRevision!,
+        if (availableCpu != null) 'availableCpu': availableCpu!,
         if (availableMemory != null) 'availableMemory': availableMemory!,
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
         if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
         if (revision != null) 'revision': revision!,
         if (secretEnvironmentVariables != null)
           'secretEnvironmentVariables': secretEnvironmentVariables!,
         if (secretVolumes != null) 'secretVolumes': secretVolumes!,
+        if (securityLevel != null) 'securityLevel': securityLevel!,
         if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,

@@ -1186,7 +1186,7 @@ class Assignment {
   /// for model training. These jobs will not utilize idle slots from other
   /// reservations.
   /// - "BACKGROUND" : Background jobs that BigQuery runs for the customers in
-  /// the background. This is a preview feature.
+  /// the background.
   core.String? jobType;
 
   /// Name of the resource.
@@ -1609,12 +1609,14 @@ class MoveAssignmentRequest {
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
-  /// Maximum number of queries that are allowed to run concurrently in this
-  /// reservation.
+  /// Job concurrency target which sets a soft upper bound on the number of jobs
+  /// that can run concurrently in this reservation.
   ///
-  /// This is a soft limit due to asynchronous nature of the system and various
+  /// This is a soft target due to asynchronous nature of the system and various
   /// optimizations for small queries. Default value is 0 which means that
-  /// concurrency will be automatically set based on the reservation size.
+  /// concurrency target will be automatically computed by the system. NOTE:
+  /// this field is exposed as `target_job_concurrency` in the Information
+  /// Schema, DDL and BQ CLI.
   core.String? concurrency;
 
   /// Creation time of the reservation.

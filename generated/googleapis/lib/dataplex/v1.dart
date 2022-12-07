@@ -22,6 +22,11 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDataAttributeBindingsResource]
+///     - [ProjectsLocationsDataScansResource]
+///       - [ProjectsLocationsDataScansJobsResource]
+///     - [ProjectsLocationsDataTaxonomiesResource]
+///       - [ProjectsLocationsDataTaxonomiesAttributesResource]
 ///     - [ProjectsLocationsLakesResource]
 ///       - [ProjectsLocationsLakesActionsResource]
 ///       - [ProjectsLocationsLakesContentResource]
@@ -83,6 +88,12 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDataAttributeBindingsResource get dataAttributeBindings =>
+      ProjectsLocationsDataAttributeBindingsResource(_requester);
+  ProjectsLocationsDataScansResource get dataScans =>
+      ProjectsLocationsDataScansResource(_requester);
+  ProjectsLocationsDataTaxonomiesResource get dataTaxonomies =>
+      ProjectsLocationsDataTaxonomiesResource(_requester);
   ProjectsLocationsLakesResource get lakes =>
       ProjectsLocationsLakesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -175,6 +186,1073 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataAttributeBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataAttributeBindingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataScansResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataScansJobsResource get jobs =>
+      ProjectsLocationsDataScansJobsResource(_requester);
+
+  ProjectsLocationsDataScansResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a dataScan resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent location:
+  /// projects/{project}/locations/{location_id} where {project} refers to a
+  /// project_id or project_number and location_id refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dataScanId] - Required. DataScan identifier. * Must contain only
+  /// lowercase letters, numbers and hyphens. * Must start with a letter. * Must
+  /// end with a number or a letter. * Must be between 1-63 characters. * Must
+  /// be unique within the customer project / location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataScan request,
+    core.String parent, {
+    core.String? dataScanId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dataScanId != null) 'dataScanId': [dataScanId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataScans';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete the dataScan resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the dataScan:
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get dataScan resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the dataScan:
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [view] - Optional. Used to select the subset of DataScan information to
+  /// return. Defaults to BASIC.
+  /// Possible string values are:
+  /// - "DATA_SCAN_VIEW_UNSPECIFIED" : The API will default to the BASIC view.
+  /// - "BASIC" : Basic view that does not include spec and result.
+  /// - "FULL" : Include everything.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataScan].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataScan> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataScan.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists dataScans.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. projects/{project}/locations/{location_id} where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request.
+  ///
+  /// [orderBy] - Optional. Order by fields (name or create_time) for the
+  /// result. If not specified, the ordering is undefined.
+  ///
+  /// [pageSize] - Optional. Maximum number of dataScans to return. The service
+  /// may return fewer than this value. If unspecified, at most 10 scans will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous ListDataScans
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to ListDataScans must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataScansResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataScansResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataScans';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataScansResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the dataScan resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The relative resource name of the scan, of the form:
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}. where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDataplexV1DataScan request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Run an on demand execution of a DataScan.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataScan:
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region. Only on-demand DataScans are allowed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1RunDataScanResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1RunDataScanResponse> run(
+    GoogleCloudDataplexV1RunDataScanRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1RunDataScanResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataScansJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataScansJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get DataScanJob resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataScanJob:
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
+  /// where {project} refers to a project_id or project_number and location_id
+  /// refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [view] - Optional. Used to select the subset of DataScan information to
+  /// return. Defaults to BASIC.
+  /// Possible string values are:
+  /// - "DATA_SCAN_JOB_VIEW_UNSPECIFIED" : The API will default to the BASIC
+  /// view.
+  /// - "BASIC" : Basic view that does not include spec and result.
+  /// - "FULL" : Include everything.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataScanJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataScanJob> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataScanJob.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DataScanJobs under the given dataScan.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent environment:
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
+  /// {project} refers to a project_id or project_number and location_id refers
+  /// to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataScanJobs to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// DataScanJobs will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataScanJobs call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to ListDataScanJobs must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataScanJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataScanJobsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataScanJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataTaxonomiesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataTaxonomiesAttributesResource get attributes =>
+      ProjectsLocationsDataTaxonomiesAttributesResource(_requester);
+
+  ProjectsLocationsDataTaxonomiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataTaxonomiesAttributesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataTaxonomiesAttributesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5225,6 +6303,1408 @@ class GoogleCloudDataplexV1ContentSqlScript {
       };
 }
 
+/// DataProfileResult defines the output of DataProfileScan.
+///
+/// Each field of the table will have field type specific profile result.
+class GoogleCloudDataplexV1DataProfileResult {
+  /// This represents the profile information per field.
+  GoogleCloudDataplexV1DataProfileResultProfile? profile;
+
+  /// The count of all rows in the sampled data.
+  ///
+  /// Return 0, if zero rows.
+  core.String? rowCount;
+
+  /// The data scanned for this profile.
+  GoogleCloudDataplexV1ScannedData? scannedData;
+
+  GoogleCloudDataplexV1DataProfileResult({
+    this.profile,
+    this.rowCount,
+    this.scannedData,
+  });
+
+  GoogleCloudDataplexV1DataProfileResult.fromJson(core.Map json_)
+      : this(
+          profile: json_.containsKey('profile')
+              ? GoogleCloudDataplexV1DataProfileResultProfile.fromJson(
+                  json_['profile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.String
+              : null,
+          scannedData: json_.containsKey('scannedData')
+              ? GoogleCloudDataplexV1ScannedData.fromJson(
+                  json_['scannedData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (profile != null) 'profile': profile!,
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (scannedData != null) 'scannedData': scannedData!,
+      };
+}
+
+/// Profile information describing the structure and layout of the data and
+/// contains the profile info.
+class GoogleCloudDataplexV1DataProfileResultProfile {
+  /// The sequence of fields describing data in table entities.
+  core.List<GoogleCloudDataplexV1DataProfileResultProfileField>? fields;
+
+  GoogleCloudDataplexV1DataProfileResultProfile({
+    this.fields,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfile.fromJson(core.Map json_)
+      : this(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataProfileResultProfileField
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+      };
+}
+
+/// Represents a column field within a table schema.
+class GoogleCloudDataplexV1DataProfileResultProfileField {
+  /// The mode of the field.
+  ///
+  /// Its value will be: REQUIRED, if it is a required field. NULLABLE, if it is
+  /// an optional field. REPEATED, if it is a repeated field.
+  core.String? mode;
+
+  /// The name of the field.
+  core.String? name;
+
+  /// The profile information for the corresponding field.
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo? profile;
+
+  /// The field data type.
+  ///
+  /// Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT
+  /// DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+  core.String? type;
+
+  GoogleCloudDataplexV1DataProfileResultProfileField({
+    this.mode,
+    this.name,
+    this.profile,
+    this.type,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileField.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          profile: json_.containsKey('profile')
+              ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
+                  .fromJson(
+                      json_['profile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (name != null) 'name': name!,
+        if (profile != null) 'profile': profile!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// ProfileInfo defines the profile information for each schema field type.
+class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
+  /// The ratio of rows that are distinct against the rows in the sampled data.
+  core.double? distinctRatio;
+
+  /// The corresponding double field profile.
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo?
+      doubleProfile;
+
+  /// The corresponding integer field profile.
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo?
+      integerProfile;
+
+  /// The ratio of null rows against the rows in the sampled data.
+  core.double? nullRatio;
+
+  /// The corresponding string field profile.
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo?
+      stringProfile;
+
+  /// The array of top N values of the field in the sampled data.
+  ///
+  /// Currently N is set as 10 or equal to distinct values in the field,
+  /// whichever is smaller. This will be optional for complex non-groupable
+  /// data-types such as JSON, ARRAY, JSON, STRUCT.
+  core.List<
+          GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>?
+      topNValues;
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo({
+    this.distinctRatio,
+    this.doubleProfile,
+    this.integerProfile,
+    this.nullRatio,
+    this.stringProfile,
+    this.topNValues,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo.fromJson(
+      core.Map json_)
+      : this(
+          distinctRatio: json_.containsKey('distinctRatio')
+              ? (json_['distinctRatio'] as core.num).toDouble()
+              : null,
+          doubleProfile: json_.containsKey('doubleProfile')
+              ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
+                  .fromJson(json_['doubleProfile']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          integerProfile: json_.containsKey('integerProfile')
+              ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
+                  .fromJson(json_['integerProfile']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          nullRatio: json_.containsKey('nullRatio')
+              ? (json_['nullRatio'] as core.num).toDouble()
+              : null,
+          stringProfile: json_.containsKey('stringProfile')
+              ? GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
+                  .fromJson(json_['stringProfile']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          topNValues: json_.containsKey('topNValues')
+              ? (json_['topNValues'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (distinctRatio != null) 'distinctRatio': distinctRatio!,
+        if (doubleProfile != null) 'doubleProfile': doubleProfile!,
+        if (integerProfile != null) 'integerProfile': integerProfile!,
+        if (nullRatio != null) 'nullRatio': nullRatio!,
+        if (stringProfile != null) 'stringProfile': stringProfile!,
+        if (topNValues != null) 'topNValues': topNValues!,
+      };
+}
+
+/// DoubleFieldInfo defines output for any double type field.
+class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo {
+  /// The average of non-null values of double field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? average;
+
+  /// The maximum value of a double field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? max;
+
+  /// The minimum value of a double field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? min;
+
+  /// A quartile divide the numebr of data points into four parts, or quarters,
+  /// of more-or-less equal size.
+  ///
+  /// Three main quartiles used are: The first quartile (Q1) splits off the
+  /// lowest 25% of data from the highest 75%. It is also known as the lower or
+  /// 25th empirical quartile, as 25% of the data is below this point. The
+  /// second quartile (Q2) is the median of a data set. So, 50% of the data lies
+  /// below this point. The third quartile (Q3) splits off the highest 25% of
+  /// data from the lowest 75%. It is known as the upper or 75th empirical
+  /// quartile, as 75% of the data lies below this point. So, here the quartiles
+  /// is provided as an ordered list of quartile values, occurring in order Q1,
+  /// median, Q3.
+  core.List<core.double>? quartiles;
+
+  /// The standard deviation of non-null of double field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? standardDeviation;
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo({
+    this.average,
+    this.max,
+    this.min,
+    this.quartiles,
+    this.standardDeviation,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo.fromJson(
+      core.Map json_)
+      : this(
+          average: json_.containsKey('average')
+              ? (json_['average'] as core.num).toDouble()
+              : null,
+          max: json_.containsKey('max')
+              ? (json_['max'] as core.num).toDouble()
+              : null,
+          min: json_.containsKey('min')
+              ? (json_['min'] as core.num).toDouble()
+              : null,
+          quartiles: json_.containsKey('quartiles')
+              ? (json_['quartiles'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+          standardDeviation: json_.containsKey('standardDeviation')
+              ? (json_['standardDeviation'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (average != null) 'average': average!,
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
+        if (quartiles != null) 'quartiles': quartiles!,
+        if (standardDeviation != null) 'standardDeviation': standardDeviation!,
+      };
+}
+
+/// IntegerFieldInfo defines output for any integer type field.
+class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo {
+  /// The average of non-null values of integer field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? average;
+
+  /// The maximum value of an integer field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.String? max;
+
+  /// The minimum value of an integer field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.String? min;
+
+  /// A quartile divide the number of data points into four parts, or quarters,
+  /// of more-or-less equal size.
+  ///
+  /// Three main quartiles used are: The first quartile (Q1) splits off the
+  /// lowest 25% of data from the highest 75%. It is also known as the lower or
+  /// 25th empirical quartile, as 25% of the data is below this point. The
+  /// second quartile (Q2) is the median of a data set. So, 50% of the data lies
+  /// below this point. The third quartile (Q3) splits off the highest 25% of
+  /// data from the lowest 75%. It is known as the upper or 75th empirical
+  /// quartile, as 75% of the data lies below this point. So, here the quartiles
+  /// is provided as an ordered list of quartile values, occurring in order Q1,
+  /// median, Q3.
+  core.List<core.String>? quartiles;
+
+  /// The standard deviation of non-null of integer field in the sampled data.
+  ///
+  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  core.double? standardDeviation;
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo({
+    this.average,
+    this.max,
+    this.min,
+    this.quartiles,
+    this.standardDeviation,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo.fromJson(
+      core.Map json_)
+      : this(
+          average: json_.containsKey('average')
+              ? (json_['average'] as core.num).toDouble()
+              : null,
+          max: json_.containsKey('max') ? json_['max'] as core.String : null,
+          min: json_.containsKey('min') ? json_['min'] as core.String : null,
+          quartiles: json_.containsKey('quartiles')
+              ? (json_['quartiles'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          standardDeviation: json_.containsKey('standardDeviation')
+              ? (json_['standardDeviation'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (average != null) 'average': average!,
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
+        if (quartiles != null) 'quartiles': quartiles!,
+        if (standardDeviation != null) 'standardDeviation': standardDeviation!,
+      };
+}
+
+/// StringFieldInfo defines output info for any string type field.
+class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo {
+  /// The average length of a string field in the sampled data.
+  ///
+  /// Optional if zero non-null rows.
+  core.double? averageLength;
+
+  /// The maximum length of a string field in the sampled data.
+  ///
+  /// Optional if zero non-null rows.
+  core.String? maxLength;
+
+  /// The minimum length of the string field in the sampled data.
+  ///
+  /// Optional if zero non-null rows.
+  core.String? minLength;
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo({
+    this.averageLength,
+    this.maxLength,
+    this.minLength,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo.fromJson(
+      core.Map json_)
+      : this(
+          averageLength: json_.containsKey('averageLength')
+              ? (json_['averageLength'] as core.num).toDouble()
+              : null,
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.String
+              : null,
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (averageLength != null) 'averageLength': averageLength!,
+        if (maxLength != null) 'maxLength': maxLength!,
+        if (minLength != null) 'minLength': minLength!,
+      };
+}
+
+/// The TopNValue defines the structure of output of top N values of a field.
+class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
+  /// The frequency count of the corresponding value in the field.
+  core.String? count;
+
+  /// The value is the string value of the actual value from the field.
+  core.String? value;
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue({
+    this.count,
+    this.value,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue.fromJson(
+      core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// DataProfileScan related setting.
+typedef GoogleCloudDataplexV1DataProfileSpec = $Empty;
+
+/// DataQualityDimensionResult provides a more detailed, per-dimension level
+/// view of the results.
+class GoogleCloudDataplexV1DataQualityDimensionResult {
+  /// Whether the dimension passed or failed.
+  core.bool? passed;
+
+  GoogleCloudDataplexV1DataQualityDimensionResult({
+    this.passed,
+  });
+
+  GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(core.Map json_)
+      : this(
+          passed:
+              json_.containsKey('passed') ? json_['passed'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (passed != null) 'passed': passed!,
+      };
+}
+
+/// The output of a DataQualityScan.
+class GoogleCloudDataplexV1DataQualityResult {
+  /// A list of results at the dimension-level.
+  core.List<GoogleCloudDataplexV1DataQualityDimensionResult>? dimensions;
+
+  /// Overall data quality result -- true if all rules passed.
+  core.bool? passed;
+
+  /// The count of rows processed.
+  core.String? rowCount;
+
+  /// A list of all the rules in a job, and their results.
+  core.List<GoogleCloudDataplexV1DataQualityRuleResult>? rules;
+
+  /// The data scanned for this result.
+  GoogleCloudDataplexV1ScannedData? scannedData;
+
+  GoogleCloudDataplexV1DataQualityResult({
+    this.dimensions,
+    this.passed,
+    this.rowCount,
+    this.rules,
+    this.scannedData,
+  });
+
+  GoogleCloudDataplexV1DataQualityResult.fromJson(core.Map json_)
+      : this(
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          passed:
+              json_.containsKey('passed') ? json_['passed'] as core.bool : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.String
+              : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataQualityRuleResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scannedData: json_.containsKey('scannedData')
+              ? GoogleCloudDataplexV1ScannedData.fromJson(
+                  json_['scannedData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (passed != null) 'passed': passed!,
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rules != null) 'rules': rules!,
+        if (scannedData != null) 'scannedData': scannedData!,
+      };
+}
+
+/// A rule captures data quality intent about a data source.
+class GoogleCloudDataplexV1DataQualityRule {
+  /// The unnested column which this rule is evaluated against.
+  ///
+  /// Optional.
+  core.String? column;
+
+  /// The dimension a rule belongs to.
+  ///
+  /// Results are also aggregated at the dimension-level. Supported dimensions
+  /// are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS",
+  /// "INTEGRITY"
+  ///
+  /// Required.
+  core.String? dimension;
+
+  /// Rows with null values will automatically fail a rule, unless ignore_null
+  /// is true.
+  ///
+  /// In that case, such null rows are trivially considered passing. Only
+  /// applicable to ColumnMap rules.
+  ///
+  /// Optional.
+  core.bool? ignoreNull;
+
+  /// ColumnMap rule which evaluates whether each column value is null.
+  GoogleCloudDataplexV1DataQualityRuleNonNullExpectation? nonNullExpectation;
+
+  /// ColumnMap rule which evaluates whether each column value lies between a
+  /// specified range.
+  GoogleCloudDataplexV1DataQualityRuleRangeExpectation? rangeExpectation;
+
+  /// ColumnMap rule which evaluates whether each column value matches a
+  /// specified regex.
+  GoogleCloudDataplexV1DataQualityRuleRegexExpectation? regexExpectation;
+
+  /// Table rule which evaluates whether each row passes the specified
+  /// condition.
+  GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation?
+      rowConditionExpectation;
+
+  /// ColumnMap rule which evaluates whether each column value is contained by a
+  /// specified set.
+  GoogleCloudDataplexV1DataQualityRuleSetExpectation? setExpectation;
+
+  /// ColumnAggregate rule which evaluates whether the column aggregate
+  /// statistic lies between a specified range.
+  GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation?
+      statisticRangeExpectation;
+
+  /// Table rule which evaluates whether the provided expression is true.
+  GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation?
+      tableConditionExpectation;
+
+  /// The minimum ratio of passing_rows / total_rows required to pass this rule,
+  /// with a range of 0.0, 1.00 indicates default value (i.e. 1.0)
+  ///
+  /// Optional.
+  core.double? threshold;
+
+  /// ColumnAggregate rule which evaluates whether the column has duplicates.
+  GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation?
+      uniquenessExpectation;
+
+  GoogleCloudDataplexV1DataQualityRule({
+    this.column,
+    this.dimension,
+    this.ignoreNull,
+    this.nonNullExpectation,
+    this.rangeExpectation,
+    this.regexExpectation,
+    this.rowConditionExpectation,
+    this.setExpectation,
+    this.statisticRangeExpectation,
+    this.tableConditionExpectation,
+    this.threshold,
+    this.uniquenessExpectation,
+  });
+
+  GoogleCloudDataplexV1DataQualityRule.fromJson(core.Map json_)
+      : this(
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
+              : null,
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.String
+              : null,
+          ignoreNull: json_.containsKey('ignoreNull')
+              ? json_['ignoreNull'] as core.bool
+              : null,
+          nonNullExpectation: json_.containsKey('nonNullExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleNonNullExpectation.fromJson(
+                  json_['nonNullExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rangeExpectation: json_.containsKey('rangeExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromJson(
+                  json_['rangeExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          regexExpectation: json_.containsKey('regexExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(
+                  json_['regexExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rowConditionExpectation: json_.containsKey('rowConditionExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+                  .fromJson(json_['rowConditionExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          setExpectation: json_.containsKey('setExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(
+                  json_['setExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          statisticRangeExpectation: json_
+                  .containsKey('statisticRangeExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
+                  .fromJson(json_['statisticRangeExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          tableConditionExpectation: json_
+                  .containsKey('tableConditionExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+                  .fromJson(json_['tableConditionExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          threshold: json_.containsKey('threshold')
+              ? (json_['threshold'] as core.num).toDouble()
+              : null,
+          uniquenessExpectation: json_.containsKey('uniquenessExpectation')
+              ? GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
+                  .fromJson(json_['uniquenessExpectation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (dimension != null) 'dimension': dimension!,
+        if (ignoreNull != null) 'ignoreNull': ignoreNull!,
+        if (nonNullExpectation != null)
+          'nonNullExpectation': nonNullExpectation!,
+        if (rangeExpectation != null) 'rangeExpectation': rangeExpectation!,
+        if (regexExpectation != null) 'regexExpectation': regexExpectation!,
+        if (rowConditionExpectation != null)
+          'rowConditionExpectation': rowConditionExpectation!,
+        if (setExpectation != null) 'setExpectation': setExpectation!,
+        if (statisticRangeExpectation != null)
+          'statisticRangeExpectation': statisticRangeExpectation!,
+        if (tableConditionExpectation != null)
+          'tableConditionExpectation': tableConditionExpectation!,
+        if (threshold != null) 'threshold': threshold!,
+        if (uniquenessExpectation != null)
+          'uniquenessExpectation': uniquenessExpectation!,
+      };
+}
+
+/// Evaluates whether each column value is null.
+typedef GoogleCloudDataplexV1DataQualityRuleNonNullExpectation = $Empty;
+
+/// Evaluates whether each column value lies between a specified range.
+class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
+  /// The maximum column value allowed for a row to pass this validation.
+  ///
+  /// At least one of min_value and max_value need to be provided.
+  ///
+  /// Optional.
+  core.String? maxValue;
+
+  /// The minimum column value allowed for a row to pass this validation.
+  ///
+  /// At least one of min_value and max_value need to be provided.
+  ///
+  /// Optional.
+  core.String? minValue;
+
+  /// Whether each value needs to be strictly lesser than ('\<') the maximum, or
+  /// if equality is allowed.
+  ///
+  /// Only relevant if a max_value has been defined. Default = false.
+  ///
+  /// Optional.
+  core.bool? strictMaxEnabled;
+
+  /// Whether each value needs to be strictly greater than ('\>') the minimum,
+  /// or if equality is allowed.
+  ///
+  /// Only relevant if a min_value has been defined. Default = false.
+  ///
+  /// Optional.
+  core.bool? strictMinEnabled;
+
+  GoogleCloudDataplexV1DataQualityRuleRangeExpectation({
+    this.maxValue,
+    this.minValue,
+    this.strictMaxEnabled,
+    this.strictMinEnabled,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromJson(core.Map json_)
+      : this(
+          maxValue: json_.containsKey('maxValue')
+              ? json_['maxValue'] as core.String
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? json_['minValue'] as core.String
+              : null,
+          strictMaxEnabled: json_.containsKey('strictMaxEnabled')
+              ? json_['strictMaxEnabled'] as core.bool
+              : null,
+          strictMinEnabled: json_.containsKey('strictMinEnabled')
+              ? json_['strictMinEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (strictMaxEnabled != null) 'strictMaxEnabled': strictMaxEnabled!,
+        if (strictMinEnabled != null) 'strictMinEnabled': strictMinEnabled!,
+      };
+}
+
+/// Evaluates whether each column value matches a specified regex.
+class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
+  core.String? regex;
+
+  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
+    this.regex,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(core.Map json_)
+      : this(
+          regex:
+              json_.containsKey('regex') ? json_['regex'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regex != null) 'regex': regex!,
+      };
+}
+
+/// DataQualityRuleResult provides a more detailed, per-rule level view of the
+/// results.
+class GoogleCloudDataplexV1DataQualityRuleResult {
+  /// The number of rows a rule was evaluated against.
+  ///
+  /// This field is only valid for ColumnMap type rules. Evaluated count can be
+  /// configured to either (1) include all rows (default) - with null rows
+  /// automatically failing rule evaluation OR (2) exclude null rows from the
+  /// evaluated_count, by setting ignore_nulls = true
+  core.String? evaluatedCount;
+
+  /// The query to find rows that did not pass this rule.
+  ///
+  /// Only applies to ColumnMap and RowCondition rules.
+  core.String? failingRowsQuery;
+
+  /// The number of rows with null values in the specified column.
+  core.String? nullCount;
+
+  /// The ratio of passed_count / evaluated_count.
+  ///
+  /// This field is only valid for ColumnMap type rules.
+  core.double? passRatio;
+
+  /// Whether the rule passed or failed.
+  core.bool? passed;
+
+  /// The number of rows which passed a rule evaluation.
+  ///
+  /// This field is only valid for ColumnMap type rules.
+  core.String? passedCount;
+
+  /// The rule specified in the DataQualitySpec, as is.
+  GoogleCloudDataplexV1DataQualityRule? rule;
+
+  GoogleCloudDataplexV1DataQualityRuleResult({
+    this.evaluatedCount,
+    this.failingRowsQuery,
+    this.nullCount,
+    this.passRatio,
+    this.passed,
+    this.passedCount,
+    this.rule,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleResult.fromJson(core.Map json_)
+      : this(
+          evaluatedCount: json_.containsKey('evaluatedCount')
+              ? json_['evaluatedCount'] as core.String
+              : null,
+          failingRowsQuery: json_.containsKey('failingRowsQuery')
+              ? json_['failingRowsQuery'] as core.String
+              : null,
+          nullCount: json_.containsKey('nullCount')
+              ? json_['nullCount'] as core.String
+              : null,
+          passRatio: json_.containsKey('passRatio')
+              ? (json_['passRatio'] as core.num).toDouble()
+              : null,
+          passed:
+              json_.containsKey('passed') ? json_['passed'] as core.bool : null,
+          passedCount: json_.containsKey('passedCount')
+              ? json_['passedCount'] as core.String
+              : null,
+          rule: json_.containsKey('rule')
+              ? GoogleCloudDataplexV1DataQualityRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluatedCount != null) 'evaluatedCount': evaluatedCount!,
+        if (failingRowsQuery != null) 'failingRowsQuery': failingRowsQuery!,
+        if (nullCount != null) 'nullCount': nullCount!,
+        if (passRatio != null) 'passRatio': passRatio!,
+        if (passed != null) 'passed': passed!,
+        if (passedCount != null) 'passedCount': passedCount!,
+        if (rule != null) 'rule': rule!,
+      };
+}
+
+/// Evaluates whether each row passes the specified condition.
+///
+/// The SQL expression needs to use BigQuery standard SQL syntax and should
+/// produce a boolean per row as the result. Example: col1 \>= 0 AND col2 \< 10
+typedef GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+    = $ConditionExpectation;
+
+/// Evaluates whether each column value is contained by a specified set.
+class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
+  core.List<core.String>? values;
+
+  GoogleCloudDataplexV1DataQualityRuleSetExpectation({
+    this.values,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Evaluates whether the column aggregate statistic lies between a specified
+/// range.
+class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
+  /// The maximum column statistic value allowed for a row to pass this
+  /// validation.
+  ///
+  /// At least one of min_value and max_value need to be provided.
+  core.String? maxValue;
+
+  /// The minimum column statistic value allowed for a row to pass this
+  /// validation.
+  ///
+  /// At least one of min_value and max_value need to be provided.
+  core.String? minValue;
+
+  ///
+  /// Possible string values are:
+  /// - "STATISTIC_UNDEFINED" : Unspecified statistic type
+  /// - "MEAN" : Evaluate the column mean
+  /// - "MIN" : Evaluate the column min
+  /// - "MAX" : Evaluate the column max
+  core.String? statistic;
+
+  /// Whether column statistic needs to be strictly lesser than ('\<') the
+  /// maximum, or if equality is allowed.
+  ///
+  /// Only relevant if a max_value has been defined. Default = false.
+  core.bool? strictMaxEnabled;
+
+  /// Whether column statistic needs to be strictly greater than ('\>') the
+  /// minimum, or if equality is allowed.
+  ///
+  /// Only relevant if a min_value has been defined. Default = false.
+  core.bool? strictMinEnabled;
+
+  GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation({
+    this.maxValue,
+    this.minValue,
+    this.statistic,
+    this.strictMaxEnabled,
+    this.strictMinEnabled,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromJson(
+      core.Map json_)
+      : this(
+          maxValue: json_.containsKey('maxValue')
+              ? json_['maxValue'] as core.String
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? json_['minValue'] as core.String
+              : null,
+          statistic: json_.containsKey('statistic')
+              ? json_['statistic'] as core.String
+              : null,
+          strictMaxEnabled: json_.containsKey('strictMaxEnabled')
+              ? json_['strictMaxEnabled'] as core.bool
+              : null,
+          strictMinEnabled: json_.containsKey('strictMinEnabled')
+              ? json_['strictMinEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (statistic != null) 'statistic': statistic!,
+        if (strictMaxEnabled != null) 'strictMaxEnabled': strictMaxEnabled!,
+        if (strictMinEnabled != null) 'strictMinEnabled': strictMinEnabled!,
+      };
+}
+
+/// Evaluates whether the provided expression is true.
+///
+/// The SQL expression needs to use BigQuery standard SQL syntax and should
+/// produce a scalar boolean result. Example: MIN(col1) \>= 0
+typedef GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+    = $ConditionExpectation;
+
+/// Evaluates whether the column has duplicates.
+typedef GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation = $Empty;
+
+/// DataQualityScan related setting.
+class GoogleCloudDataplexV1DataQualitySpec {
+  /// The list of rules to evaluate against a data source.
+  ///
+  /// At least one rule is required.
+  core.List<GoogleCloudDataplexV1DataQualityRule>? rules;
+
+  GoogleCloudDataplexV1DataQualitySpec({
+    this.rules,
+  });
+
+  GoogleCloudDataplexV1DataQualitySpec.fromJson(core.Map json_)
+      : this(
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rules != null) 'rules': rules!,
+      };
+}
+
+/// Represents a user-visible job which provides the insights for the related
+/// data source.
+///
+/// For examples: - Data Quality: generates queries based on the rules and run
+/// against the data to get data quality check results. - Data Profile: analyzes
+/// the data in table(s) and generates insights about the structure, content and
+/// relationships (such as null percent, cardinality, min/max/mean, etc).
+class GoogleCloudDataplexV1DataScan {
+  /// The time when the scan was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The data source for DataScan.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1DataSource? data;
+
+  /// The result of the data profile scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataProfileResult? dataProfileResult;
+
+  /// DataProfileScan related setting.
+  GoogleCloudDataplexV1DataProfileSpec? dataProfileSpec;
+
+  /// The result of the data quality scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityResult? dataQualityResult;
+
+  /// DataQualityScan related setting.
+  GoogleCloudDataplexV1DataQualitySpec? dataQualitySpec;
+
+  /// Description of the scan.
+  ///
+  /// * Must be between 1-1024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// * Must be between 1-256 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// DataScan execution settings.
+  ///
+  /// If not specified, the fields under it will use their default values.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataScanExecutionSpec? executionSpec;
+
+  /// Status of the data scan execution.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataScanExecutionStatus? executionStatus;
+
+  /// User-defined labels for the scan.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The relative resource name of the scan, of the form:
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}.
+  ///
+  /// where {project} refers to a project_id or project_number and location_id
+  /// refers to a GCP region.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Current state of the DataScan.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not specified.
+  /// - "ACTIVE" : Resource is active, i.e., ready to use.
+  /// - "CREATING" : Resource is under creation.
+  /// - "DELETING" : Resource is under deletion.
+  /// - "ACTION_REQUIRED" : Resource is active but has unresolved actions.
+  core.String? state;
+
+  /// The type of DataScan.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan Type is unspecified.
+  /// - "DATA_QUALITY" : Data Quality Scan.
+  /// - "DATA_PROFILE" : Data Profile Scan.
+  core.String? type;
+
+  /// System generated globally unique ID for the scan.
+  ///
+  /// This ID will be different if the scan is deleted and re-created with the
+  /// same name.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the scan was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1DataScan({
+    this.createTime,
+    this.data,
+    this.dataProfileResult,
+    this.dataProfileSpec,
+    this.dataQualityResult,
+    this.dataQualitySpec,
+    this.description,
+    this.displayName,
+    this.executionSpec,
+    this.executionStatus,
+    this.labels,
+    this.name,
+    this.state,
+    this.type,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1DataScan.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          data: json_.containsKey('data')
+              ? GoogleCloudDataplexV1DataSource.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataProfileResult: json_.containsKey('dataProfileResult')
+              ? GoogleCloudDataplexV1DataProfileResult.fromJson(
+                  json_['dataProfileResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataProfileSpec: json_.containsKey('dataProfileSpec')
+              ? GoogleCloudDataplexV1DataProfileSpec.fromJson(
+                  json_['dataProfileSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataQualityResult: json_.containsKey('dataQualityResult')
+              ? GoogleCloudDataplexV1DataQualityResult.fromJson(
+                  json_['dataQualityResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataQualitySpec: json_.containsKey('dataQualitySpec')
+              ? GoogleCloudDataplexV1DataQualitySpec.fromJson(
+                  json_['dataQualitySpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          executionSpec: json_.containsKey('executionSpec')
+              ? GoogleCloudDataplexV1DataScanExecutionSpec.fromJson(
+                  json_['executionSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          executionStatus: json_.containsKey('executionStatus')
+              ? GoogleCloudDataplexV1DataScanExecutionStatus.fromJson(
+                  json_['executionStatus']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (data != null) 'data': data!,
+        if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
+        if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
+        if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
+        if (dataQualitySpec != null) 'dataQualitySpec': dataQualitySpec!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (executionSpec != null) 'executionSpec': executionSpec!,
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// DataScan execution settings.
+class GoogleCloudDataplexV1DataScanExecutionSpec {
+  /// The unnested field (Date or Timestamp) that contains values that
+  /// monotonically increase over time.
+  ///
+  /// Immutable.
+  core.String? field;
+
+  /// Spec related to how often and when a scan should be triggered.
+  ///
+  /// If not specified, the default is OnDemand, which means the scan will not
+  /// run until the user calls RunDataScan API.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1Trigger? trigger;
+
+  GoogleCloudDataplexV1DataScanExecutionSpec({
+    this.field,
+    this.trigger,
+  });
+
+  GoogleCloudDataplexV1DataScanExecutionSpec.fromJson(core.Map json_)
+      : this(
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+          trigger: json_.containsKey('trigger')
+              ? GoogleCloudDataplexV1Trigger.fromJson(
+                  json_['trigger'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+        if (trigger != null) 'trigger': trigger!,
+      };
+}
+
+/// Status of the data scan execution.
+class GoogleCloudDataplexV1DataScanExecutionStatus {
+  /// The time when the latest DataScanJob ended.
+  core.String? latestJobEndTime;
+
+  /// The time when the latest DataScanJob started.
+  core.String? latestJobStartTime;
+
+  GoogleCloudDataplexV1DataScanExecutionStatus({
+    this.latestJobEndTime,
+    this.latestJobStartTime,
+  });
+
+  GoogleCloudDataplexV1DataScanExecutionStatus.fromJson(core.Map json_)
+      : this(
+          latestJobEndTime: json_.containsKey('latestJobEndTime')
+              ? json_['latestJobEndTime'] as core.String
+              : null,
+          latestJobStartTime: json_.containsKey('latestJobStartTime')
+              ? json_['latestJobStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latestJobEndTime != null) 'latestJobEndTime': latestJobEndTime!,
+        if (latestJobStartTime != null)
+          'latestJobStartTime': latestJobStartTime!,
+      };
+}
+
+/// A DataScanJob represents an instance of a data scan.
+class GoogleCloudDataplexV1DataScanJob {
+  /// The result of the data profile scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataProfileResult? dataProfileResult;
+
+  /// DataProfileScan related setting.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataProfileSpec? dataProfileSpec;
+
+  /// The result of the data quality scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityResult? dataQualityResult;
+
+  /// DataQualityScan related setting.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualitySpec? dataQualitySpec;
+
+  /// The time when the DataScanJob ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Additional information about the current state.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The relative resource name of the DataScanJob, of the form:
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}.
+  ///
+  /// where {project} refers to a project_id or project_number and location_id
+  /// refers to a GCP region.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The time when the DataScanJob was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Execution state for the DataScanJob.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The DataScanJob state is unspecified.
+  /// - "RUNNING" : The DataScanJob is running.
+  /// - "CANCELING" : The DataScanJob is canceling.
+  /// - "CANCELLED" : The DataScanJob cancellation was successful.
+  /// - "SUCCEEDED" : The DataScanJob completed successfully.
+  /// - "FAILED" : The DataScanJob is no longer running due to an error.
+  /// - "PENDING" : The DataScanJob has been created but not started to run yet.
+  core.String? state;
+
+  /// The type of the parent DataScan.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan Type is unspecified.
+  /// - "DATA_QUALITY" : Data Quality Scan.
+  /// - "DATA_PROFILE" : Data Profile Scan.
+  core.String? type;
+
+  /// System generated globally unique ID for the DataScanJob.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  GoogleCloudDataplexV1DataScanJob({
+    this.dataProfileResult,
+    this.dataProfileSpec,
+    this.dataQualityResult,
+    this.dataQualitySpec,
+    this.endTime,
+    this.message,
+    this.name,
+    this.startTime,
+    this.state,
+    this.type,
+    this.uid,
+  });
+
+  GoogleCloudDataplexV1DataScanJob.fromJson(core.Map json_)
+      : this(
+          dataProfileResult: json_.containsKey('dataProfileResult')
+              ? GoogleCloudDataplexV1DataProfileResult.fromJson(
+                  json_['dataProfileResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataProfileSpec: json_.containsKey('dataProfileSpec')
+              ? GoogleCloudDataplexV1DataProfileSpec.fromJson(
+                  json_['dataProfileSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataQualityResult: json_.containsKey('dataQualityResult')
+              ? GoogleCloudDataplexV1DataQualityResult.fromJson(
+                  json_['dataQualityResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataQualitySpec: json_.containsKey('dataQualitySpec')
+              ? GoogleCloudDataplexV1DataQualitySpec.fromJson(
+                  json_['dataQualitySpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
+        if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
+        if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
+        if (dataQualitySpec != null) 'dataQualitySpec': dataQualitySpec!,
+        if (endTime != null) 'endTime': endTime!,
+        if (message != null) 'message': message!,
+        if (name != null) 'name': name!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// The data source for DataScan.
+class GoogleCloudDataplexV1DataSource {
+  /// The dataplex entity that contains the data for DataScan, of the form:
+  /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+  ///
+  /// Immutable.
+  core.String? entity;
+
+  GoogleCloudDataplexV1DataSource({
+    this.entity,
+  });
+
+  GoogleCloudDataplexV1DataSource.fromJson(core.Map json_)
+      : this(
+          entity: json_.containsKey('entity')
+              ? json_['entity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entity != null) 'entity': entity!,
+      };
+}
+
 /// Represents tables and fileset metadata contained within a zone.
 class GoogleCloudDataplexV1Entity {
   /// The ID of the asset associated with the storage location containing the
@@ -6347,6 +8827,82 @@ class GoogleCloudDataplexV1ListContentResponse {
       };
 }
 
+/// List DataScanJobs response.
+class GoogleCloudDataplexV1ListDataScanJobsResponse {
+  /// DataScanJobs (metadata only) under a given dataScan.
+  core.List<GoogleCloudDataplexV1DataScanJob>? dataScanJobs;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDataplexV1ListDataScanJobsResponse({
+    this.dataScanJobs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDataplexV1ListDataScanJobsResponse.fromJson(core.Map json_)
+      : this(
+          dataScanJobs: json_.containsKey('dataScanJobs')
+              ? (json_['dataScanJobs'] as core.List)
+                  .map((value) => GoogleCloudDataplexV1DataScanJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataScanJobs != null) 'dataScanJobs': dataScanJobs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// List dataScans response.
+class GoogleCloudDataplexV1ListDataScansResponse {
+  /// DataScans (metadata only) under the given parent location.
+  core.List<GoogleCloudDataplexV1DataScan>? dataScans;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  GoogleCloudDataplexV1ListDataScansResponse({
+    this.dataScans,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  GoogleCloudDataplexV1ListDataScansResponse.fromJson(core.Map json_)
+      : this(
+          dataScans: json_.containsKey('dataScans')
+              ? (json_['dataScans'] as core.List)
+                  .map((value) => GoogleCloudDataplexV1DataScan.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataScans != null) 'dataScans': dataScans!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// List metadata entities response.
 class GoogleCloudDataplexV1ListEntitiesResponse {
   /// Entities in the specified parent zone.
@@ -6693,6 +9249,88 @@ class GoogleCloudDataplexV1Partition {
       };
 }
 
+/// Run DataScan Request
+typedef GoogleCloudDataplexV1RunDataScanRequest = $Empty;
+
+/// Run DataScan Response.
+class GoogleCloudDataplexV1RunDataScanResponse {
+  /// DataScanJob created by RunDataScan API.
+  GoogleCloudDataplexV1DataScanJob? job;
+
+  GoogleCloudDataplexV1RunDataScanResponse({
+    this.job,
+  });
+
+  GoogleCloudDataplexV1RunDataScanResponse.fromJson(core.Map json_)
+      : this(
+          job: json_.containsKey('job')
+              ? GoogleCloudDataplexV1DataScanJob.fromJson(
+                  json_['job'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (job != null) 'job': job!,
+      };
+}
+
+/// The data scanned during processing (e.g. in incremental DataScan)
+class GoogleCloudDataplexV1ScannedData {
+  /// The range denoted by values of an incremental field
+  GoogleCloudDataplexV1ScannedDataIncrementalField? incrementalField;
+
+  GoogleCloudDataplexV1ScannedData({
+    this.incrementalField,
+  });
+
+  GoogleCloudDataplexV1ScannedData.fromJson(core.Map json_)
+      : this(
+          incrementalField: json_.containsKey('incrementalField')
+              ? GoogleCloudDataplexV1ScannedDataIncrementalField.fromJson(
+                  json_['incrementalField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (incrementalField != null) 'incrementalField': incrementalField!,
+      };
+}
+
+/// A data range denoted by a pair of start/end values of a field.
+class GoogleCloudDataplexV1ScannedDataIncrementalField {
+  /// Value that marks the end of the range
+  core.String? end;
+
+  /// The field that contains values which monotonically increases over time
+  /// (e.g. timestamp).
+  core.String? field;
+
+  /// Value that marks the start of the range
+  core.String? start;
+
+  GoogleCloudDataplexV1ScannedDataIncrementalField({
+    this.end,
+    this.field,
+    this.start,
+  });
+
+  GoogleCloudDataplexV1ScannedDataIncrementalField.fromJson(core.Map json_)
+      : this(
+          end: json_.containsKey('end') ? json_['end'] as core.String : null,
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+          start:
+              json_.containsKey('start') ? json_['start'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (end != null) 'end': end!,
+        if (field != null) 'field': field!,
+        if (start != null) 'start': start!,
+      };
+}
+
 /// Schema information describing the structure and layout of the data.
 class GoogleCloudDataplexV1Schema {
   /// The sequence of fields describing data in table entities.
@@ -7011,6 +9649,11 @@ class GoogleCloudDataplexV1StorageFormat {
   /// - "UNKNOWN" : Data of an unknown format.
   core.String? format;
 
+  /// Additional information about iceberg tables.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1StorageFormatIcebergOptions? iceberg;
+
   /// Additional information about CSV formatted data.
   ///
   /// Optional.
@@ -7020,8 +9663,10 @@ class GoogleCloudDataplexV1StorageFormat {
   ///
   /// Must match the pattern {type}/{subtype}. Supported values:
   /// application/x-parquet application/x-avro application/x-orc
-  /// application/x-tfrecord application/json application/{subtypes} text/csv
-  /// text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+  /// application/x-tfrecord application/x-parquet+iceberg
+  /// application/x-avro+iceberg application/x-orc+iceberg application/json
+  /// application/{subtypes} text/csv text/ image/{image subtype} video/{video
+  /// subtype} audio/{audio subtype}
   ///
   /// Required.
   core.String? mimeType;
@@ -7030,6 +9675,7 @@ class GoogleCloudDataplexV1StorageFormat {
     this.compressionFormat,
     this.csv,
     this.format,
+    this.iceberg,
     this.json,
     this.mimeType,
   });
@@ -7046,6 +9692,10 @@ class GoogleCloudDataplexV1StorageFormat {
           format: json_.containsKey('format')
               ? json_['format'] as core.String
               : null,
+          iceberg: json_.containsKey('iceberg')
+              ? GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(
+                  json_['iceberg'] as core.Map<core.String, core.dynamic>)
+              : null,
           json: json_.containsKey('json')
               ? GoogleCloudDataplexV1StorageFormatJsonOptions.fromJson(
                   json_['json'] as core.Map<core.String, core.dynamic>)
@@ -7059,6 +9709,7 @@ class GoogleCloudDataplexV1StorageFormat {
         if (compressionFormat != null) 'compressionFormat': compressionFormat!,
         if (csv != null) 'csv': csv!,
         if (format != null) 'format': format!,
+        if (iceberg != null) 'iceberg': iceberg!,
         if (json != null) 'json': json!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -7127,6 +9778,30 @@ class GoogleCloudDataplexV1StorageFormatCsvOptions {
       };
 }
 
+/// Describes Iceberg data format.
+class GoogleCloudDataplexV1StorageFormatIcebergOptions {
+  /// The location of where the iceberg metadata is present, must be within the
+  /// table path
+  ///
+  /// Optional.
+  core.String? metadataLocation;
+
+  GoogleCloudDataplexV1StorageFormatIcebergOptions({
+    this.metadataLocation,
+  });
+
+  GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(core.Map json_)
+      : this(
+          metadataLocation: json_.containsKey('metadataLocation')
+              ? json_['metadataLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadataLocation != null) 'metadataLocation': metadataLocation!,
+      };
+}
+
 /// Describes JSON data format.
 class GoogleCloudDataplexV1StorageFormatJsonOptions {
   /// The character encoding of the data.
@@ -7192,6 +9867,9 @@ class GoogleCloudDataplexV1Task {
   /// Output only.
   core.String? name;
 
+  /// Config related to running scheduled Notebooks.
+  GoogleCloudDataplexV1TaskNotebookTaskConfig? notebook;
+
   /// Config related to running custom Spark tasks.
   GoogleCloudDataplexV1TaskSparkTaskConfig? spark;
 
@@ -7232,6 +9910,7 @@ class GoogleCloudDataplexV1Task {
     this.executionStatus,
     this.labels,
     this.name,
+    this.notebook,
     this.spark,
     this.state,
     this.triggerSpec,
@@ -7268,6 +9947,10 @@ class GoogleCloudDataplexV1Task {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notebook: json_.containsKey('notebook')
+              ? GoogleCloudDataplexV1TaskNotebookTaskConfig.fromJson(
+                  json_['notebook'] as core.Map<core.String, core.dynamic>)
+              : null,
           spark: json_.containsKey('spark')
               ? GoogleCloudDataplexV1TaskSparkTaskConfig.fromJson(
                   json_['spark'] as core.Map<core.String, core.dynamic>)
@@ -7292,6 +9975,7 @@ class GoogleCloudDataplexV1Task {
         if (executionStatus != null) 'executionStatus': executionStatus!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (notebook != null) 'notebook': notebook!,
         if (spark != null) 'spark': spark!,
         if (state != null) 'state': state!,
         if (triggerSpec != null) 'triggerSpec': triggerSpec!,
@@ -7625,6 +10309,74 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
       };
 }
 
+/// Config for running scheduled notebooks.
+class GoogleCloudDataplexV1TaskNotebookTaskConfig {
+  /// Cloud Storage URIs of archives to be extracted into the working directory
+  /// of each executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? archiveUris;
+
+  /// Cloud Storage URIs of files to be placed in the working directory of each
+  /// executor.
+  ///
+  /// Optional.
+  core.List<core.String>? fileUris;
+
+  /// Infrastructure specification for the execution.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1TaskInfrastructureSpec? infrastructureSpec;
+
+  /// Path to input notebook.
+  ///
+  /// This can be the Cloud Storage URI of the notebook file or the path to a
+  /// Notebook Content. The execution args are accessible as environment
+  /// variables (TASK_key=value).
+  ///
+  /// Required.
+  core.String? notebook;
+
+  GoogleCloudDataplexV1TaskNotebookTaskConfig({
+    this.archiveUris,
+    this.fileUris,
+    this.infrastructureSpec,
+    this.notebook,
+  });
+
+  GoogleCloudDataplexV1TaskNotebookTaskConfig.fromJson(core.Map json_)
+      : this(
+          archiveUris: json_.containsKey('archiveUris')
+              ? (json_['archiveUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fileUris: json_.containsKey('fileUris')
+              ? (json_['fileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          infrastructureSpec: json_.containsKey('infrastructureSpec')
+              ? GoogleCloudDataplexV1TaskInfrastructureSpec.fromJson(
+                  json_['infrastructureSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          notebook: json_.containsKey('notebook')
+              ? json_['notebook'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (infrastructureSpec != null)
+          'infrastructureSpec': infrastructureSpec!,
+        if (notebook != null) 'notebook': notebook!,
+      };
+}
+
 /// User-specified config for running a Spark task.
 class GoogleCloudDataplexV1TaskSparkTaskConfig {
   /// Cloud Storage URIs of archives to be extracted into the working directory
@@ -7813,6 +10565,68 @@ class GoogleCloudDataplexV1TaskTriggerSpec {
         if (schedule != null) 'schedule': schedule!,
         if (startTime != null) 'startTime': startTime!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// DataScan scheduling and trigger settings.
+class GoogleCloudDataplexV1Trigger {
+  /// The scan runs one-time shortly after DataScan Creation.
+  GoogleCloudDataplexV1TriggerOnDemand? onDemand;
+
+  /// The scan is scheduled to run periodically.
+  GoogleCloudDataplexV1TriggerSchedule? schedule;
+
+  GoogleCloudDataplexV1Trigger({
+    this.onDemand,
+    this.schedule,
+  });
+
+  GoogleCloudDataplexV1Trigger.fromJson(core.Map json_)
+      : this(
+          onDemand: json_.containsKey('onDemand')
+              ? GoogleCloudDataplexV1TriggerOnDemand.fromJson(
+                  json_['onDemand'] as core.Map<core.String, core.dynamic>)
+              : null,
+          schedule: json_.containsKey('schedule')
+              ? GoogleCloudDataplexV1TriggerSchedule.fromJson(
+                  json_['schedule'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (onDemand != null) 'onDemand': onDemand!,
+        if (schedule != null) 'schedule': schedule!,
+      };
+}
+
+/// The scan runs one-time via RunDataScan API.
+typedef GoogleCloudDataplexV1TriggerOnDemand = $Empty;
+
+/// The scan is scheduled to run periodically.
+class GoogleCloudDataplexV1TriggerSchedule {
+  /// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running scans
+  /// periodically.
+  ///
+  /// To explicitly set a timezone to the cron tab, apply a prefix in the cron
+  /// tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
+  /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
+  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
+  /// 1 * * * *". This field is required for Schedule scans.
+  ///
+  /// Required.
+  core.String? cron;
+
+  GoogleCloudDataplexV1TriggerSchedule({
+    this.cron,
+  });
+
+  GoogleCloudDataplexV1TriggerSchedule.fromJson(core.Map json_)
+      : this(
+          cron: json_.containsKey('cron') ? json_['cron'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cron != null) 'cron': cron!,
       };
 }
 
@@ -8221,10 +11035,11 @@ class GoogleIamV1Binding {
   /// represents anyone who is on the internet; with or without a Google
   /// account. allAuthenticatedUsers: A special identifier that represents
   /// anyone who is authenticated with a Google account or a service account.
-  /// user:{emailid}: An email address that represents a specific Google
-  /// account. For example, alice@example.com . serviceAccount:{emailid}: An
-  /// email address that represents a Google service account. For example,
-  /// my-other-app@appspot.gserviceaccount.com.
+  /// Does not include identities that come from external identity providers
+  /// (IdPs) through identity federation. user:{emailid}: An email address that
+  /// represents a specific Google account. For example, alice@example.com .
+  /// serviceAccount:{emailid}: An email address that represents a Google
+  /// service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// serviceAccount:{projectid}.svc.id.goog\[{namespace}/{kubernetes-sa}\]: An
   /// identifier for a Kubernetes service account
   /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).

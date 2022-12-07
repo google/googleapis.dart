@@ -16825,7 +16825,29 @@ class DeliverySchedule {
 typedef DfpSettings = $DfpSettings;
 
 /// Represents a dimension.
-typedef Dimension = $Dimension;
+class Dimension {
+  /// The kind of resource this is, in this case dfareporting#dimension.
+  core.String? kind;
+
+  /// The dimension name, e.g. dfa:advertiser
+  core.String? name;
+
+  Dimension({
+    this.kind,
+    this.name,
+  });
+
+  Dimension.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Represents a dimension filter.
 typedef DimensionFilter = $DimensionFilter;
@@ -19307,7 +19329,7 @@ class MetrosListResponse {
 /// Contains information about a mobile app.
 ///
 /// Used as a landing page deep link.
-typedef MobileApp = $MobileApp;
+typedef MobileApp = $MobileApp00;
 
 /// Mobile app List Response
 class MobileAppsListResponse {
@@ -24754,7 +24776,7 @@ typedef TranscodeSetting = $TranscodeSetting;
 ///
 /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
 /// and VPAID.
-typedef UniversalAdId = $UniversalAdId;
+typedef UniversalAdId = $UniversalAdId00;
 
 /// User Defined Variable configuration.
 typedef UserDefinedVariableConfiguration = $UserDefinedVariableConfiguration;

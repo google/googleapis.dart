@@ -223,43 +223,6 @@ void checkGamesNumberFormatConfiguration(api.GamesNumberFormatConfiguration o) {
   buildCounterGamesNumberFormatConfiguration--;
 }
 
-core.int buildCounterImageConfiguration = 0;
-api.ImageConfiguration buildImageConfiguration() {
-  final o = api.ImageConfiguration();
-  buildCounterImageConfiguration++;
-  if (buildCounterImageConfiguration < 3) {
-    o.imageType = 'foo';
-    o.kind = 'foo';
-    o.resourceId = 'foo';
-    o.url = 'foo';
-  }
-  buildCounterImageConfiguration--;
-  return o;
-}
-
-void checkImageConfiguration(api.ImageConfiguration o) {
-  buildCounterImageConfiguration++;
-  if (buildCounterImageConfiguration < 3) {
-    unittest.expect(
-      o.imageType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterImageConfiguration--;
-}
-
 core.int buildCounterLeaderboardConfiguration = 0;
 api.LeaderboardConfiguration buildLeaderboardConfiguration() {
   final o = api.LeaderboardConfiguration();
@@ -504,16 +467,6 @@ void main() {
       final od = api.GamesNumberFormatConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGamesNumberFormatConfiguration(od);
-    });
-  });
-
-  unittest.group('obj-schema-ImageConfiguration', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildImageConfiguration();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ImageConfiguration.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkImageConfiguration(od);
     });
   });
 
@@ -893,84 +846,6 @@ void main() {
       final response = await res.update(arg_request, arg_achievementId,
           $fields: arg_$fields);
       checkAchievementConfiguration(response as api.AchievementConfiguration);
-    });
-  });
-
-  unittest.group('resource-ImageConfigurationsResource', () {
-    unittest.test('method--upload', () async {
-      // TODO: Implement tests for media upload;
-      // TODO: Implement tests for media download;
-
-      final mock = HttpServerMock();
-      final res = api.GamesConfigurationApi(mock).imageConfigurations;
-      final arg_resourceId = 'foo';
-      final arg_imageType = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('games/v1configuration/images/'),
-        );
-        pathOffset += 29;
-        index = path.indexOf('/imageType/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_resourceId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/imageType/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_imageType'),
-        );
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildImageConfiguration());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.upload(arg_resourceId, arg_imageType, $fields: arg_$fields);
-      checkImageConfiguration(response as api.ImageConfiguration);
     });
   });
 

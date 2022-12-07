@@ -2658,6 +2658,14 @@ class Creative {
   /// A native creative.
   NativeContent? native;
 
+  /// Experimental field that can be used during the \[FLEDGE Origin
+  /// Trial\](/authorized-buyers/rtb/fledge-origin-trial).
+  ///
+  /// The URL to fetch an interest group ad used in \[TURTLEDOVE on-device
+  /// auction\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups").
+  /// This should be unique among all creatives for a given `accountId`.
+  core.String? renderUrl;
+
   /// All restricted categories for the ads that may be shown from this
   /// creative.
   core.List<core.String>? restrictedCategories;
@@ -2691,6 +2699,7 @@ class Creative {
     this.impressionTrackingUrls,
     this.name,
     this.native,
+    this.renderUrl,
     this.restrictedCategories,
     this.version,
     this.video,
@@ -2765,6 +2774,9 @@ class Creative {
               ? NativeContent.fromJson(
                   json_['native'] as core.Map<core.String, core.dynamic>)
               : null,
+          renderUrl: json_.containsKey('renderUrl')
+              ? json_['renderUrl'] as core.String
+              : null,
           restrictedCategories: json_.containsKey('restrictedCategories')
               ? (json_['restrictedCategories'] as core.List)
                   .map((value) => value as core.String)
@@ -2803,6 +2815,7 @@ class Creative {
           'impressionTrackingUrls': impressionTrackingUrls!,
         if (name != null) 'name': name!,
         if (native != null) 'native': native!,
+        if (renderUrl != null) 'renderUrl': renderUrl!,
         if (restrictedCategories != null)
           'restrictedCategories': restrictedCategories!,
         if (version != null) 'version': version!,
@@ -3358,16 +3371,15 @@ class Endpoint {
   /// - "BID_PROTOCOL_UNSPECIFIED" : Placeholder for undefined bid protocol.
   /// This value should not be used.
   /// - "GOOGLE_RTB" : Google RTB protocol / Protobuf encoding.
-  /// - "OPENRTB_2_2" : OpenRTB / JSON encoding, specification version 2.2.
-  /// - "OPENRTB_2_3" : OpenRTB / JSON encoding, specification version 2.3.
-  /// - "OPENRTB_PROTOBUF_2_3" : OpenRTB / Protobuf encoding, specification
-  /// version 2.3.
-  /// - "OPENRTB_2_4" : OpenRTB / JSON encoding, specification version 2.4.
-  /// - "OPENRTB_PROTOBUF_2_4" : OpenRTB / Protobuf encoding, specification
-  /// version 2.4.
-  /// - "OPENRTB_2_5" : OpenRTB / JSON encoding, specification version 2.5.
-  /// - "OPENRTB_PROTOBUF_2_5" : OpenRTB / Protobuf encoding, specification
-  /// version 2.5.
+  /// - "OPENRTB_JSON" : OpenRTB / JSON encoding (unversioned/latest).
+  /// - "OPENRTB_PROTOBUF" : OpenRTB / Protobuf encoding (unversioned/latest).
+  /// - "OPENRTB_2_2" : Deprecated: Use OPENRTB_JSON.
+  /// - "OPENRTB_2_3" : Deprecated: Use OPENRTB_JSON.
+  /// - "OPENRTB_PROTOBUF_2_3" : Deprecated: Use OPENRTB_PROTOBUF.
+  /// - "OPENRTB_2_4" : Deprecated: Use OPENRTB_JSON.
+  /// - "OPENRTB_PROTOBUF_2_4" : Deprecated: Use OPENRTB_PROTOBUF.
+  /// - "OPENRTB_2_5" : Deprecated: Use OPENRTB_JSON.
+  /// - "OPENRTB_PROTOBUF_2_5" : Deprecated: Use OPENRTB_PROTOBUF.
   core.String? bidProtocol;
 
   /// The maximum number of queries per second allowed to be sent to this

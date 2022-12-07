@@ -15,7 +15,8 @@
 /// My Business Place Actions API - v1
 ///
 /// The My Business Place Actions API provides an interface for managing place
-/// action links of a location on Google.
+/// action links of a location on Google. Note - If you have a quota of 0 after
+/// enabling the API, please request for GBP API access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -42,6 +43,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The My Business Place Actions API provides an interface for managing place
 /// action links of a location on Google.
+///
+/// Note - If you have a quota of 0 after enabling the API, please request for
+/// GBP API access.
 class MyBusinessPlaceActionsApi {
   final commons.ApiRequester _requester;
 
@@ -492,6 +496,8 @@ class PlaceActionLink {
   /// takeout.
   /// - "FOOD_DELIVERY" : The action type is ordering food for delivery.
   /// - "FOOD_TAKEOUT" : The action type is ordering food for takeout.
+  /// - "SHOP_ONLINE" : The action type is shopping, that can be delivery and/or
+  /// pickup.
   core.String? placeActionType;
 
   /// Specifies the provider type.
@@ -582,6 +588,8 @@ class PlaceActionTypeMetadata {
   /// takeout.
   /// - "FOOD_DELIVERY" : The action type is ordering food for delivery.
   /// - "FOOD_TAKEOUT" : The action type is ordering food for takeout.
+  /// - "SHOP_ONLINE" : The action type is shopping, that can be delivery and/or
+  /// pickup.
   core.String? placeActionType;
 
   PlaceActionTypeMetadata({

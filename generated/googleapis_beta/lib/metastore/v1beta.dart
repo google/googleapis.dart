@@ -769,6 +769,54 @@ class ProjectsLocationsServicesResource {
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Alter metadata resource location.
+  ///
+  /// The metadata resource can be a database, table, or partition. This
+  /// functionality only updates the parent directory for the respective
+  /// metadata resource and does not transfer any existing data to the new
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to mutate metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> alterLocation(
+    AlterMetadataResourceLocationRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$service') + ':alterLocation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a metastore service in a project and location.
   ///
   /// [request] - The metadata request object.
@@ -1085,6 +1133,50 @@ class ProjectsLocationsServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Move a table to another database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to mutate metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> moveTableToDatabase(
+    MoveTableToDatabaseRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$service') + ':moveTableToDatabase';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the parameters of a single service.
   ///
   /// [request] - The metadata request object.
@@ -1141,6 +1233,49 @@ class ProjectsLocationsServicesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Query DPMS metadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to query metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> queryMetadata(
+    QueryMetadataRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$service') + ':queryMetadata';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -2282,6 +2417,42 @@ class ProjectsLocationsServicesMetadataImportsResource {
   }
 }
 
+/// Request message for DataprocMetastore.AlterMetadataResourceLocation.
+class AlterMetadataResourceLocationRequest {
+  /// The new location URI for the metadata resource.
+  ///
+  /// Required.
+  core.String? locationUri;
+
+  /// The relative metadata resource name in the following
+  /// format.databases/{database_id} or
+  /// databases/{database_id}/tables/{table_id} or
+  /// databases/{database_id}/tables/{table_id}/partitions/{partition_id}
+  ///
+  /// Required.
+  core.String? resourceName;
+
+  AlterMetadataResourceLocationRequest({
+    this.locationUri,
+    this.resourceName,
+  });
+
+  AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
+      : this(
+          locationUri: json_.containsKey('locationUri')
+              ? json_['locationUri'] as core.String
+              : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locationUri != null) 'locationUri': locationUri!,
+        if (resourceName != null) 'resourceName': resourceName!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2402,15 +2573,16 @@ class BackendMetastore {
   /// The type of the backend metastore.
   /// Possible string values are:
   /// - "METASTORE_TYPE_UNSPECIFIED" : The metastore type is not set.
+  /// - "BIGQUERY" : The backend metastore is BigQuery.
   /// - "DATAPROC_METASTORE" : The backend metastore is Dataproc Metastore.
   core.String? metastoreType;
 
   /// The relative resource name of the metastore that is being federated.
   ///
   /// The formats of the relative resource names for the currently supported
-  /// metastores are listed below: Dataplex:
-  /// projects/{project_id}/locations/{location}/lakes/{lake_id} BigQuery:
-  /// projects/{project_id} Dataproc Metastore:
+  /// metastores are listed below: Dataplex
+  /// projects/{project_id}/locations/{location}/lakes/{lake_id} BigQuery
+  /// projects/{project_id} Dataproc Metastore
   /// projects/{project_id}/locations/{location}/services/{service_id}
   core.String? name;
 
@@ -2619,6 +2791,8 @@ class Consumer {
   /// available in the subnet's primary range. The subnet is specified in the
   /// following
   /// form:\`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+  ///
+  /// Immutable.
   core.String? subnetwork;
 
   Consumer({
@@ -3756,6 +3930,49 @@ class MetadataManagementActivity {
       };
 }
 
+/// Request message for DataprocMetastore.MoveTableToDatabase.
+class MoveTableToDatabaseRequest {
+  /// The name of the database where the table resides.
+  ///
+  /// Required.
+  core.String? dbName;
+
+  /// The name of the database where the table should be moved.
+  ///
+  /// Required.
+  core.String? destinationDbName;
+
+  /// The name of the table to be moved.
+  ///
+  /// Required.
+  core.String? tableName;
+
+  MoveTableToDatabaseRequest({
+    this.dbName,
+    this.destinationDbName,
+    this.tableName,
+  });
+
+  MoveTableToDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          dbName: json_.containsKey('dbName')
+              ? json_['dbName'] as core.String
+              : null,
+          destinationDbName: json_.containsKey('destinationDbName')
+              ? json_['destinationDbName'] as core.String
+              : null,
+          tableName: json_.containsKey('tableName')
+              ? json_['tableName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dbName != null) 'dbName': dbName!,
+        if (destinationDbName != null) 'destinationDbName': destinationDbName!,
+        if (tableName != null) 'tableName': tableName!,
+      };
+}
+
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore
@@ -3978,12 +4195,36 @@ class Policy {
       };
 }
 
+/// Request message for DataprocMetastore.QueryMetadata.
+class QueryMetadataRequest {
+  /// A read-only SQL query to execute against the metadata database.
+  ///
+  /// The query cannot change or mutate the data.
+  ///
+  /// Required.
+  core.String? query;
+
+  QueryMetadataRequest({
+    this.query,
+  });
+
+  QueryMetadataRequest.fromJson(core.Map json_)
+      : this(
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (query != null) 'query': query!,
+      };
+}
+
 /// Request message for DataprocMetastore.RemoveIamPolicy.
 typedef RemoveIamPolicyRequest = $Empty;
 
 /// Response message for DataprocMetastore.RemoveIamPolicy.
 class RemoveIamPolicyResponse {
-  /// whether related policies are removed
+  /// True if the policy is successfully removed.
   core.bool? success;
 
   RemoveIamPolicyResponse({
@@ -4243,8 +4484,6 @@ class Service {
 
   /// The configuration specifying the network settings for the Dataproc
   /// Metastore service.
-  ///
-  /// Immutable.
   NetworkConfig? networkConfig;
 
   /// The TCP port at which the metastore service is reached.
@@ -4292,6 +4531,12 @@ class Service {
   /// Output only.
   core.String? stateMessage;
 
+  /// The configuration specifying telemetry settings for the Dataproc Metastore
+  /// service.
+  ///
+  /// If unspecified defaults to JSON.
+  TelemetryConfig? telemetryConfig;
+
   /// The tier of the service.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : The tier is not set.
@@ -4330,6 +4575,7 @@ class Service {
     this.releaseChannel,
     this.state,
     this.stateMessage,
+    this.telemetryConfig,
     this.tier,
     this.uid,
     this.updateTime,
@@ -4396,6 +4642,10 @@ class Service {
           stateMessage: json_.containsKey('stateMessage')
               ? json_['stateMessage'] as core.String
               : null,
+          telemetryConfig: json_.containsKey('telemetryConfig')
+              ? TelemetryConfig.fromJson(json_['telemetryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tier: json_.containsKey('tier') ? json_['tier'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -4424,6 +4674,7 @@ class Service {
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,
         if (tier != null) 'tier': tier!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4475,6 +4726,31 @@ class SetIamPolicyRequest {
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Telemetry Configuration for the Dataproc Metastore service.
+class TelemetryConfig {
+  /// The output format of the Dataproc Metastore service's logs.
+  /// Possible string values are:
+  /// - "LOG_FORMAT_UNSPECIFIED" : The LOG_FORMAT is not set.
+  /// - "LEGACY" : Logging output uses the legacy textPayload format.
+  /// - "JSON" : Logging output uses the jsonPayload format.
+  core.String? logFormat;
+
+  TelemetryConfig({
+    this.logFormat,
+  });
+
+  TelemetryConfig.fromJson(core.Map json_)
+      : this(
+          logFormat: json_.containsKey('logFormat')
+              ? json_['logFormat'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logFormat != null) 'logFormat': logFormat!,
+      };
+}
 
 /// Request message for TestIamPermissions method.
 class TestIamPermissionsRequest {

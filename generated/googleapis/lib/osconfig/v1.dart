@@ -505,7 +505,8 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name in the form:
-  /// projects/{project}/locations/{location}
+  /// projects/{project}/locations/{location}. Note: Specify the zone of your
+  /// VMs as the location.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [osPolicyAssignmentId] - Required. The logical name of the OS policy
@@ -2815,7 +2816,8 @@ class OSPolicy {
 /// An OS policy is used to define the desired state configuration for a Compute
 /// Engine VM instance through a set of configuration resources that provide
 /// capabilities such as installing or removing software packages, or executing
-/// a script. For more information, see
+/// a script. For more information about the OS policy resource definitions and
+/// examples, see
 /// [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
 class OSPolicyAssignment {
   /// Indicates that this revision has been successfully rolled out in this zone

@@ -86,6 +86,59 @@ void checkBin(api.Bin o) {
   buildCounterBin--;
 }
 
+core.int buildCounterCollectionPeriod = 0;
+api.CollectionPeriod buildCollectionPeriod() {
+  final o = api.CollectionPeriod();
+  buildCounterCollectionPeriod++;
+  if (buildCounterCollectionPeriod < 3) {
+    o.firstDate = buildDate();
+    o.lastDate = buildDate();
+  }
+  buildCounterCollectionPeriod--;
+  return o;
+}
+
+void checkCollectionPeriod(api.CollectionPeriod o) {
+  buildCounterCollectionPeriod++;
+  if (buildCounterCollectionPeriod < 3) {
+    checkDate(o.firstDate!);
+    checkDate(o.lastDate!);
+  }
+  buildCounterCollectionPeriod--;
+}
+
+core.int buildCounterDate = 0;
+api.Date buildDate() {
+  final o = api.Date();
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    o.day = 42;
+    o.month = 42;
+    o.year = 42;
+  }
+  buildCounterDate--;
+  return o;
+}
+
+void checkDate(api.Date o) {
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterDate--;
+}
+
 core.int buildCounterKey = 0;
 api.Key buildKey() {
   final o = api.Key();
@@ -284,6 +337,7 @@ api.Record buildRecord() {
   final o = api.Record();
   buildCounterRecord++;
   if (buildCounterRecord < 3) {
+    o.collectionPeriod = buildCollectionPeriod();
     o.key = buildKey();
     o.metrics = buildUnnamed2();
   }
@@ -294,6 +348,7 @@ api.Record buildRecord() {
 void checkRecord(api.Record o) {
   buildCounterRecord++;
   if (buildCounterRecord < 3) {
+    checkCollectionPeriod(o.collectionPeriod!);
     checkKey(o.key!);
     checkUnnamed2(o.metrics!);
   }
@@ -334,6 +389,26 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Bin.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBin(od);
+    });
+  });
+
+  unittest.group('obj-schema-CollectionPeriod', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCollectionPeriod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CollectionPeriod.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCollectionPeriod(od);
+    });
+  });
+
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDate(od);
     });
   });
 

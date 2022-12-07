@@ -3867,6 +3867,33 @@ class CsvOptions {
       };
 }
 
+class DataMaskingStatistics {
+  /// \[Output-only\] \[Preview\] Whether any accessed data was protected by
+  /// data masking.
+  ///
+  /// The actual evaluation is done by accessStats.masked_field_count \> 0.
+  /// Since this is only used for the discovery_doc generation purpose, as long
+  /// as the type (boolean) matches, client library can leverage this. The
+  /// actual evaluation of the variable is done else-where.
+  core.bool? dataMaskingApplied;
+
+  DataMaskingStatistics({
+    this.dataMaskingApplied,
+  });
+
+  DataMaskingStatistics.fromJson(core.Map json_)
+      : this(
+          dataMaskingApplied: json_.containsKey('dataMaskingApplied')
+              ? json_['dataMaskingApplied'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataMaskingApplied != null)
+          'dataMaskingApplied': dataMaskingApplied!,
+      };
+}
+
 /// Data split result.
 ///
 /// This contains references to the training and evaluation data tables that
@@ -4187,6 +4214,13 @@ class Dataset {
   /// You can use this URL in Get or Update requests to the resource.
   core.String? selfLink;
 
+  /// Storage billing model to be used for all tables in the dataset.
+  ///
+  /// Can be set to PHYSICAL. Default is LOGICAL.
+  ///
+  /// Optional.
+  core.String? storageBillingModel;
+
   /// \[Optional\]The tags associated with this dataset.
   ///
   /// Tag keys are globally unique.
@@ -4212,6 +4246,7 @@ class Dataset {
     this.maxTimeTravelHours,
     this.satisfiesPzs,
     this.selfLink,
+    this.storageBillingModel,
     this.tags,
   });
 
@@ -4282,6 +4317,9 @@ class Dataset {
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
+          storageBillingModel: json_.containsKey('storageBillingModel')
+              ? json_['storageBillingModel'] as core.String
+              : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => DatasetTags.fromJson(
@@ -4314,6 +4352,8 @@ class Dataset {
           'maxTimeTravelHours': maxTimeTravelHours!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (storageBillingModel != null)
+          'storageBillingModel': storageBillingModel!,
         if (tags != null) 'tags': tags!,
       };
 }
@@ -5348,6 +5388,20 @@ class ExternalDataConfiguration {
   /// Optional.
   core.int? maxBadRecords;
 
+  /// Metadata Cache Mode for the table.
+  ///
+  /// Set this to enable caching of metadata from external data source.
+  ///
+  /// Optional.
+  core.String? metadataCacheMode;
+
+  /// ObjectMetadata is used to create Object Tables.
+  ///
+  /// Object Tables contain a listing of objects (with their metadata) found at
+  /// the source_uris. If ObjectMetadata is set, source_format should be
+  /// omitted. Currently SIMPLE is the only supported Object Metadata type.
+  core.String? objectMetadata;
+
   /// Additional properties to set if sourceFormat is set to Parquet.
   ParquetOptions? parquetOptions;
 
@@ -5402,6 +5456,8 @@ class ExternalDataConfiguration {
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
     this.maxBadRecords,
+    this.metadataCacheMode,
+    this.objectMetadata,
     this.parquetOptions,
     this.referenceFileSchemaUri,
     this.schema,
@@ -5452,6 +5508,12 @@ class ExternalDataConfiguration {
           maxBadRecords: json_.containsKey('maxBadRecords')
               ? json_['maxBadRecords'] as core.int
               : null,
+          metadataCacheMode: json_.containsKey('metadataCacheMode')
+              ? json_['metadataCacheMode'] as core.String
+              : null,
+          objectMetadata: json_.containsKey('objectMetadata')
+              ? json_['objectMetadata'] as core.String
+              : null,
           parquetOptions: json_.containsKey('parquetOptions')
               ? ParquetOptions.fromJson(json_['parquetOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -5489,6 +5551,8 @@ class ExternalDataConfiguration {
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
+        if (metadataCacheMode != null) 'metadataCacheMode': metadataCacheMode!,
+        if (objectMetadata != null) 'objectMetadata': objectMetadata!,
         if (parquetOptions != null) 'parquetOptions': parquetOptions!,
         if (referenceFileSchemaUri != null)
           'referenceFileSchemaUri': referenceFileSchemaUri!,
@@ -6816,6 +6880,13 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? createDisposition;
 
+  /// If true, creates a new session, where session id will be a server
+  /// generated random id.
+  ///
+  /// If false, runs query with an existing session_id passed in
+  /// ConnectionProperty, otherwise runs the load job in non-session mode.
+  core.bool? createSession;
+
   /// Defines the list of possible SQL data types to which the source decimal
   /// values are converted.
   ///
@@ -7065,6 +7136,7 @@ class JobConfigurationLoad {
     this.clustering,
     this.connectionProperties,
     this.createDisposition,
+    this.createSession,
     this.decimalTargetTypes,
     this.destinationEncryptionConfiguration,
     this.destinationTable,
@@ -7117,6 +7189,9 @@ class JobConfigurationLoad {
               : null,
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
+              : null,
+          createSession: json_.containsKey('createSession')
+              ? json_['createSession'] as core.bool
               : null,
           decimalTargetTypes: json_.containsKey('decimalTargetTypes')
               ? (json_['decimalTargetTypes'] as core.List)
@@ -7231,6 +7306,7 @@ class JobConfigurationLoad {
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
+        if (createSession != null) 'createSession': createSession!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (destinationEncryptionConfiguration != null)
@@ -7954,6 +8030,11 @@ class JobStatistics {
   /// This field will be present on all jobs.
   core.String? creationTime;
 
+  /// \[Output-only\] Statistics for data masking.
+  ///
+  /// Present only for query and extract jobs.
+  DataMaskingStatistics? dataMaskingStatistics;
+
   /// \[Output-only\] End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
@@ -8020,6 +8101,7 @@ class JobStatistics {
     this.completionRatio,
     this.copy,
     this.creationTime,
+    this.dataMaskingStatistics,
     this.endTime,
     this.extract,
     this.load,
@@ -8049,6 +8131,10 @@ class JobStatistics {
               : null,
           creationTime: json_.containsKey('creationTime')
               ? json_['creationTime'] as core.String
+              : null,
+          dataMaskingStatistics: json_.containsKey('dataMaskingStatistics')
+              ? DataMaskingStatistics.fromJson(json_['dataMaskingStatistics']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
@@ -8118,6 +8204,8 @@ class JobStatistics {
         if (completionRatio != null) 'completionRatio': completionRatio!,
         if (copy != null) 'copy': copy!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (dataMaskingStatistics != null)
+          'dataMaskingStatistics': dataMaskingStatistics!,
         if (endTime != null) 'endTime': endTime!,
         if (extract != null) 'extract': extract!,
         if (load != null) 'load': load!,
@@ -8140,11 +8228,14 @@ class JobStatistics {
 }
 
 class JobStatistics2ReservationUsage {
-  /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
-  /// usage.
+  /// Reservation name or "unreserved" for on-demand resources usage.
+  ///
+  /// Output only.
   core.String? name;
 
-  /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
+  /// Slot-milliseconds the job spent in the given reservation.
+  ///
+  /// Output only.
   core.String? slotMs;
 
   JobStatistics2ReservationUsage({
@@ -8169,25 +8260,32 @@ class JobStatistics2ReservationUsage {
 class JobStatistics2 {
   /// BI Engine specific Statistics.
   ///
-  /// \[Output-only\] BI Engine specific Statistics.
+  /// \[Output only\] BI Engine specific Statistics.
   BiEngineStatistics? biEngineStatistics;
 
-  /// \[Output-only\] Billing tier for the job.
+  /// Billing tier for the job.
+  ///
+  /// Output only.
   core.int? billingTier;
 
-  /// \[Output-only\] Whether the query result was fetched from the query cache.
+  /// Whether the query result was fetched from the query cache.
+  ///
+  /// Output only.
   core.bool? cacheHit;
 
-  /// \[Output-only\] \[Preview\] The number of row access policies affected by
-  /// a DDL statement.
+  /// \[Preview\] The number of row access policies affected by a DDL statement.
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
+  ///
+  /// Output only.
   core.String? ddlAffectedRowAccessPolicyCount;
 
-  /// \[Output-only\] The DDL destination table.
+  /// The DDL destination table.
   ///
   /// Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table
   /// is used just for its type information.
+  ///
+  /// Output only.
   TableReference? ddlDestinationTable;
 
   /// The DDL operation performed, possibly dependent on the pre-existence of
@@ -8202,9 +8300,11 @@ class JobStatistics2 {
   /// target.
   core.String? ddlOperationPerformed;
 
-  /// \[Output-only\] The DDL target dataset.
+  /// The DDL target dataset.
   ///
   /// Present only for CREATE/ALTER/DROP SCHEMA queries.
+  ///
+  /// Output only.
   DatasetReference? ddlTargetDataset;
 
   /// The DDL target routine.
@@ -8212,65 +8312,91 @@ class JobStatistics2 {
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
   RoutineReference? ddlTargetRoutine;
 
-  /// \[Output-only\] \[Preview\] The DDL target row access policy.
+  /// \[Preview\] The DDL target row access policy.
   ///
   /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
+  ///
+  /// Output only.
   RowAccessPolicyReference? ddlTargetRowAccessPolicy;
 
-  /// \[Output-only\] The DDL target table.
+  /// The DDL target table.
   ///
   /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
   /// queries.
+  ///
+  /// Output only.
   TableReference? ddlTargetTable;
 
-  /// \[Output-only\] Detailed statistics for DML statements Present only for
-  /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+  /// Detailed statistics for DML statements Present only for DML statements
+  /// INSERT, UPDATE, DELETE or TRUNCATE.
+  ///
+  /// Output only.
   DmlStatistics? dmlStats;
 
-  /// \[Output-only\] The original estimate of bytes processed for the job.
+  /// The original estimate of bytes processed for the job.
+  ///
+  /// Output only.
   core.String? estimatedBytesProcessed;
 
-  /// \[Output-only\] Statistics of a BigQuery ML training job.
+  /// Statistics of a BigQuery ML training job.
+  ///
+  /// Output only.
   MlStatistics? mlStatistics;
 
-  /// \[Output-only, Beta\] Information about create model query job progress.
+  /// \[Output only, Beta\] Information about create model query job progress.
   BigQueryModelTraining? modelTraining;
 
-  /// \[Output-only, Beta\] Deprecated; do not use.
+  /// \[Output only, Beta\] Deprecated; do not use.
   core.int? modelTrainingCurrentIteration;
 
-  /// \[Output-only, Beta\] Deprecated; do not use.
+  /// \[Output only, Beta\] Deprecated; do not use.
   core.String? modelTrainingExpectedTotalIteration;
 
-  /// \[Output-only\] The number of rows affected by a DML statement.
+  /// The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
+  ///
+  /// Output only.
   core.String? numDmlAffectedRows;
 
-  /// \[Output-only\] Describes execution plan for the query.
+  /// Describes execution plan for the query.
+  ///
+  /// Output only.
   core.List<ExplainQueryStage>? queryPlan;
 
-  /// \[Output-only\] Referenced routines (persistent user-defined functions and
-  /// stored procedures) for the job.
+  /// Referenced routines (persistent user-defined functions and stored
+  /// procedures) for the job.
+  ///
+  /// Output only.
   core.List<RoutineReference>? referencedRoutines;
 
-  /// \[Output-only\] Referenced tables for the job.
+  /// Referenced tables for the job.
   ///
   /// Queries that reference more than 50 tables will not have a complete list.
+  ///
+  /// Output only.
   core.List<TableReference>? referencedTables;
 
-  /// \[Output-only\] Job resource usage breakdown by reservation.
+  /// Job resource usage breakdown by reservation.
+  ///
+  /// Output only.
   core.List<JobStatistics2ReservationUsage>? reservationUsage;
 
-  /// \[Output-only\] The schema of the results.
+  /// The schema of the results.
   ///
   /// Present only for successful dry run of non-legacy SQL queries.
+  ///
+  /// Output only.
   TableSchema? schema;
 
-  /// \[Output-only\] Search query specific statistics.
+  /// Search query specific statistics.
+  ///
+  /// Output only.
   SearchStatistics? searchStatistics;
 
-  /// \[Output-only\] Statistics of a Spark procedure job.
+  /// Statistics of a Spark procedure job.
+  ///
+  /// Output only.
   SparkStatistics? sparkStatistics;
 
   /// The type of query statement, if valid.
@@ -8295,30 +8421,46 @@ class JobStatistics2 {
   /// "DROP_VIEW": DROP VIEW query.
   core.String? statementType;
 
-  /// \[Output-only\] \[Beta\] Describes a timeline of job execution.
+  /// \[Beta\] Describes a timeline of job execution.
+  ///
+  /// Output only.
   core.List<QueryTimelineSample>? timeline;
 
-  /// \[Output-only\] Total bytes billed for the job.
+  /// Total bytes billed for the job.
+  ///
+  /// Output only.
   core.String? totalBytesBilled;
 
-  /// \[Output-only\] Total bytes processed for the job.
+  /// Total bytes processed for the job.
+  ///
+  /// Output only.
   core.String? totalBytesProcessed;
 
-  /// \[Output-only\] For dry-run jobs, totalBytesProcessed is an estimate and
-  /// this field specifies the accuracy of the estimate.
+  /// For dry-run jobs, totalBytesProcessed is an estimate and this field
+  /// specifies the accuracy of the estimate.
   ///
   /// Possible values can be: UNKNOWN: accuracy of the estimate is unknown.
   /// PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what
   /// the query would cost. UPPER_BOUND: estimate is upper bound of what the
   /// query would cost.
+  ///
+  /// Output only.
   core.String? totalBytesProcessedAccuracy;
 
-  /// \[Output-only\] Total number of partitions processed from all partitioned
-  /// tables referenced in the job.
+  /// Total number of partitions processed from all partitioned tables
+  /// referenced in the job.
+  ///
+  /// Output only.
   core.String? totalPartitionsProcessed;
 
-  /// \[Output-only\] Slot-milliseconds for the job.
+  /// Slot-milliseconds for the job.
+  ///
+  /// Output only.
   core.String? totalSlotMs;
+
+  /// \[Output-only\] Total bytes transferred for cross-cloud queries such as
+  /// Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+  core.String? transferredBytes;
 
   /// Standard SQL only: list of undeclared query parameters detected during a
   /// dry run validation.
@@ -8356,6 +8498,7 @@ class JobStatistics2 {
     this.totalBytesProcessedAccuracy,
     this.totalPartitionsProcessed,
     this.totalSlotMs,
+    this.transferredBytes,
     this.undeclaredQueryParameters,
   });
 
@@ -8488,6 +8631,9 @@ class JobStatistics2 {
           totalSlotMs: json_.containsKey('totalSlotMs')
               ? json_['totalSlotMs'] as core.String
               : null,
+          transferredBytes: json_.containsKey('transferredBytes')
+              ? json_['transferredBytes'] as core.String
+              : null,
           undeclaredQueryParameters:
               json_.containsKey('undeclaredQueryParameters')
                   ? (json_['undeclaredQueryParameters'] as core.List)
@@ -8543,6 +8689,7 @@ class JobStatistics2 {
         if (totalPartitionsProcessed != null)
           'totalPartitionsProcessed': totalPartitionsProcessed!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
+        if (transferredBytes != null) 'transferredBytes': transferredBytes!,
         if (undeclaredQueryParameters != null)
           'undeclaredQueryParameters': undeclaredQueryParameters!,
       };
@@ -9089,6 +9236,8 @@ class Model {
   /// - "DNN_LINEAR_COMBINED_REGRESSOR" : Wide-and-deep regressor model.
   /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
+  /// - "RANDOM_FOREST_REGRESSOR" : Random Forest regressor model.
+  /// - "RANDOM_FOREST_CLASSIFIER" : Random Forest classifier model.
   core.String? modelType;
 
   /// For single-objective \[hyperparameter
@@ -9103,8 +9252,6 @@ class Model {
   core.List<core.String>? optimalTrialIds;
 
   /// Information for all training runs in increasing order of start_time.
-  ///
-  /// Output only.
   core.List<TrainingRun>? trainingRuns;
 
   Model({
@@ -13738,40 +13885,62 @@ class TrainingRun {
   /// level.
   ///
   /// Applies to classification models only.
+  ///
+  /// Output only.
   core.List<GlobalExplanation>? classLevelGlobalExplanations;
 
   /// Data split result of the training run.
   ///
   /// Only set when the input data is actually split.
+  ///
+  /// Output only.
   DataSplitResult? dataSplitResult;
 
   /// The evaluation metrics over training/eval data that were computed at the
   /// end of training.
+  ///
+  /// Output only.
   EvaluationMetrics? evaluationMetrics;
 
   /// Global explanation contains the explanation of top features on the model
   /// level.
   ///
   /// Applies to both regression and classification models.
+  ///
+  /// Output only.
   GlobalExplanation? modelLevelGlobalExplanation;
 
   /// Output of each iteration run, results.size() \<= max_iterations.
+  ///
+  /// Output only.
   core.List<IterationResult>? results;
 
   /// The start time of this training run.
+  ///
+  /// Output only.
   core.String? startTime;
 
   /// Options that were used for this training run, includes user specified and
   /// default options that were used.
+  ///
+  /// Output only.
   TrainingOptions? trainingOptions;
 
   /// The start time of this training run, in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String? trainingStartTime;
 
-  /// The model id in Vertex AI Model Registry for this training run
+  /// The model id in the
+  /// [Vertex AI Model Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction)
+  /// for this training run.
   core.String? vertexAiModelId;
 
-  /// The model version in Vertex AI Model Registry for this training run
+  /// The model version in the
+  /// [Vertex AI Model Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction)
+  /// for this training run.
+  ///
+  /// Output only.
   core.String? vertexAiModelVersion;
 
   TrainingRun({

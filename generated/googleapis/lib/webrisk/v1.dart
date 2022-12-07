@@ -471,8 +471,8 @@ class ThreatListsResource {
   /// - "MALWARE" : Malware targeting any platform.
   /// - "SOCIAL_ENGINEERING" : Social engineering targeting any platform.
   /// - "UNWANTED_SOFTWARE" : Unwanted software targeting any platform.
-  /// - "SOCIAL_ENGINEERING_EXTENDED_COVERAGE" : Extended Coverage Social
-  /// Engineering list targeting any platform.
+  /// - "SOCIAL_ENGINEERING_EXTENDED_COVERAGE" : A list of extended coverage
+  /// social engineering URIs targeting any platform.
   ///
   /// [versionToken] - The current version token of the client for the requested
   /// list (the client version that was received from the last successful diff).
@@ -877,7 +877,7 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
 class GoogleCloudWebriskV1SearchUrisResponse {
   /// The threat list matches.
   ///
-  /// This may be empty if the URI is on no list.
+  /// This might be empty if the URI is on no list.
   GoogleCloudWebriskV1SearchUrisResponseThreatUri? threat;
 
   GoogleCloudWebriskV1SearchUrisResponse({
@@ -936,7 +936,7 @@ class GoogleCloudWebriskV1Submission {
   /// ThreatTypes found to be associated with the submitted URI after reviewing
   /// it.
   ///
-  /// This may be empty if the URI was not added to any list.
+  /// This might be empty if the URI was not added to any list.
   core.List<core.String>? threatTypes;
 
   /// The URI that is being reported for malicious content to be analyzed.
@@ -1113,14 +1113,13 @@ class GoogleLongrunningOperation {
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus? error;
 
-  /// This field will contain a `SubmitUriMetadata` object.
+  /// Contains a `SubmitUriMetadata` object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
 
-  /// This will match the pattern
-  /// `/v1/{project-name}/operations/{operation-id}`.
+  /// Matches the `/v1/{project-name}/operations/{operation-id}` pattern.
   core.String? name;
 
   /// The normal response of the operation in case of success.

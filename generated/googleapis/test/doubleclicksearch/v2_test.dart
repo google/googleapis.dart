@@ -34,6 +34,7 @@ api.Availability buildAvailability() {
     o.advertiserId = 'foo';
     o.agencyId = 'foo';
     o.availabilityTimestamp = 'foo';
+    o.customerId = 'foo';
     o.segmentationId = 'foo';
     o.segmentationName = 'foo';
     o.segmentationType = 'foo';
@@ -55,6 +56,10 @@ void checkAvailability(api.Availability o) {
     );
     unittest.expect(
       o.availabilityTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customerId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -116,6 +121,7 @@ api.Conversion buildConversion() {
     o.currencyCode = 'foo';
     o.customDimension = buildUnnamed0();
     o.customMetric = buildUnnamed1();
+    o.customerId = 'foo';
     o.deviceType = 'foo';
     o.dsConversionId = 'foo';
     o.engineAccountId = 'foo';
@@ -199,6 +205,10 @@ void checkConversion(api.Conversion o) {
     );
     checkUnnamed0(o.customDimension!);
     checkUnnamed1(o.customMetric!);
+    unittest.expect(
+      o.customerId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.deviceType!,
       unittest.equals('foo'),
@@ -1198,6 +1208,7 @@ void main() {
       final arg_adId = 'foo';
       final arg_campaignId = 'foo';
       final arg_criterionId = 'foo';
+      final arg_customerId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1305,6 +1316,10 @@ void main() {
           unittest.equals(arg_criterionId),
         );
         unittest.expect(
+          queryMap['customerId']!.first,
+          unittest.equals(arg_customerId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1327,6 +1342,136 @@ void main() {
           adId: arg_adId,
           campaignId: arg_campaignId,
           criterionId: arg_criterionId,
+          customerId: arg_customerId,
+          $fields: arg_$fields);
+      checkConversionList(response as api.ConversionList);
+    });
+
+    unittest.test('method--getByCustomerId', () async {
+      final mock = HttpServerMock();
+      final res = api.DoubleclicksearchApi(mock).conversion;
+      final arg_customerId = 'foo';
+      final arg_endDate = 42;
+      final arg_rowCount = 42;
+      final arg_startDate = 42;
+      final arg_startRow = 42;
+      final arg_adGroupId = 'foo';
+      final arg_adId = 'foo';
+      final arg_advertiserId = 'foo';
+      final arg_agencyId = 'foo';
+      final arg_campaignId = 'foo';
+      final arg_criterionId = 'foo';
+      final arg_engineAccountId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals('doubleclicksearch/v2/customer/'),
+        );
+        pathOffset += 30;
+        index = path.indexOf('/conversion', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_customerId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/conversion'),
+        );
+        pathOffset += 11;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['endDate']!.first),
+          unittest.equals(arg_endDate),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['rowCount']!.first),
+          unittest.equals(arg_rowCount),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['startDate']!.first),
+          unittest.equals(arg_startDate),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['startRow']!.first),
+          unittest.equals(arg_startRow),
+        );
+        unittest.expect(
+          queryMap['adGroupId']!.first,
+          unittest.equals(arg_adGroupId),
+        );
+        unittest.expect(
+          queryMap['adId']!.first,
+          unittest.equals(arg_adId),
+        );
+        unittest.expect(
+          queryMap['advertiserId']!.first,
+          unittest.equals(arg_advertiserId),
+        );
+        unittest.expect(
+          queryMap['agencyId']!.first,
+          unittest.equals(arg_agencyId),
+        );
+        unittest.expect(
+          queryMap['campaignId']!.first,
+          unittest.equals(arg_campaignId),
+        );
+        unittest.expect(
+          queryMap['criterionId']!.first,
+          unittest.equals(arg_criterionId),
+        );
+        unittest.expect(
+          queryMap['engineAccountId']!.first,
+          unittest.equals(arg_engineAccountId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildConversionList());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getByCustomerId(arg_customerId, arg_endDate,
+          arg_rowCount, arg_startDate, arg_startRow,
+          adGroupId: arg_adGroupId,
+          adId: arg_adId,
+          advertiserId: arg_advertiserId,
+          agencyId: arg_agencyId,
+          campaignId: arg_campaignId,
+          criterionId: arg_criterionId,
+          engineAccountId: arg_engineAccountId,
           $fields: arg_$fields);
       checkConversionList(response as api.ConversionList);
     });

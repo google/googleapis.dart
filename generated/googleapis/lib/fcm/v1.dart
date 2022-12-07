@@ -615,7 +615,9 @@ class ApnsConfig {
   ///
   /// Refer to
   /// [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
-  /// for supported headers such as `apns-expiration` and `apns-priority`.
+  /// for supported headers such as `apns-expiration` and `apns-priority`. The
+  /// backend sets a default value for `apns-expiration` of 30 days and a
+  /// default value for `apns-priority` of 10 if not explicitly set.
   core.Map<core.String, core.String>? headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
@@ -624,9 +626,7 @@ class ApnsConfig {
   /// See
   /// [Payload Key Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
   /// If present, it overrides google.firebase.fcm.v1.Notification.title and
-  /// google.firebase.fcm.v1.Notification.body. The backend sets a default value
-  /// for `apns-expiration` of 30 days and a default value for `apns-priority`
-  /// of 10 if not explicitly set.
+  /// google.firebase.fcm.v1.Notification.body.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

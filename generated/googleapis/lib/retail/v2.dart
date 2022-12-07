@@ -140,11 +140,12 @@ class ProjectsLocationsCatalogsResource {
   /// See
   /// [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
   ///
-  /// [deviceType] - The device type context for completion suggestions. It is
-  /// useful to apply different suggestions on different device types, e.g.
-  /// `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device
-  /// types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` *
-  /// A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
+  /// [deviceType] - The device type context for completion suggestions. We
+  /// recommend that you leave this field empty. It can apply different
+  /// suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is
+  /// empty, the suggestions are across all device types. Supported formats: *
+  /// `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts
+  /// with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
   /// [languageCodes] - Note that this field applies for `user-data` dataset
   /// only. For requests with `cloud-retail` dataset, setting this field has no
@@ -2441,6 +2442,14 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// of otherwise identical get requests. The name is abbreviated to reduce the
   /// payload bytes.
   ///
+  /// [prebuiltRule] - The prebuilt rule name that can convert a specific type
+  /// of raw_json. For example: "default_schema/v1.0"
+  ///
+  /// [rawJson] - An arbitrary serialized JSON string that contains necessary
+  /// information that can comprise a user event. When this field is specified,
+  /// the user_event field will be ignored. Note: line-delimited JSON is not
+  /// supported, a single JSON only.
+  ///
   /// [uri] - The URL including cgi-parameters but excluding the hash fragment
   /// with a length limit of 5,000 characters. This is often more useful than
   /// the referer URL, because many browsers only send the domain for 3rd party
@@ -2462,12 +2471,16 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleApiHttpBody> collect(
     core.String parent, {
     core.String? ets,
+    core.String? prebuiltRule,
+    core.String? rawJson,
     core.String? uri,
     core.String? userEvent,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (ets != null) 'ets': [ets],
+      if (prebuiltRule != null) 'prebuiltRule': [prebuiltRule],
+      if (rawJson != null) 'rawJson': [rawJson],
       if (uri != null) 'uri': [uri],
       if (userEvent != null) 'userEvent': [userEvent],
       if ($fields != null) 'fields': [$fields],
@@ -3357,15 +3370,28 @@ class GoogleCloudRetailV2CatalogAttribute {
   ///
   /// Could only be DYNAMIC_FACETABLE_DISABLED if
   /// CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an
-  /// INVALID_ARGUMENT error is returned.
+  /// INVALID_ARGUMENT error is returned. Must be specified, otherwise throws
+  /// INVALID_FORMAT error.
   /// Possible string values are:
-  /// - "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults
-  /// to DYNAMIC_FACETABLE_ENABLED.
+  /// - "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "DYNAMIC_FACETABLE_ENABLED" : Dynamic facetable option enabled for an
   /// attribute.
   /// - "DYNAMIC_FACETABLE_DISABLED" : Dynamic facetable option disabled for an
   /// attribute.
   core.String? dynamicFacetableOption;
+
+  /// If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable.
+  ///
+  /// This property only applies to textual custom attributes and requires
+  /// indexable set to enabled to enable exact-searchable.
+  /// Possible string values are:
+  /// - "EXACT_SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults
+  /// to EXACT_SEARCHABLE_DISABLED.
+  /// - "EXACT_SEARCHABLE_ENABLED" : Exact searchable option enabled for an
+  /// attribute.
+  /// - "EXACT_SEARCHABLE_DISABLED" : Exact searchable option disabled for an
+  /// attribute.
+  core.String? exactSearchableOption;
 
   /// Indicates whether this attribute has been used by any products.
   ///
@@ -3388,9 +3414,10 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are
   /// indexed so that it can be filtered, faceted, or boosted in
   /// SearchService.Search.
+  ///
+  /// Must be specified, otherwise throws INVALID_FORMAT error.
   /// Possible string values are:
-  /// - "INDEXABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
-  /// INDEXABLE_ENABLED.
+  /// - "INDEXABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "INDEXABLE_ENABLED" : Indexable option enabled for an attribute.
   /// - "INDEXABLE_DISABLED" : Indexable option disabled for an attribute.
   core.String? indexableOption;
@@ -3406,16 +3433,25 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// Required.
   core.String? key;
 
+  /// If RETRIEVABLE_ENABLED, attribute values are retrievable in the search
+  /// results.
+  /// Possible string values are:
+  /// - "RETRIEVABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
+  /// RETRIEVABLE_DISABLED.
+  /// - "RETRIEVABLE_ENABLED" : Retrievable option enabled for an attribute.
+  /// - "RETRIEVABLE_DISABLED" : Retrievable option disabled for an attribute.
+  core.String? retrievableOption;
+
   /// When AttributesConfig.attribute_config_level is
   /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values
   /// are searchable by text queries in SearchService.Search.
   ///
   /// If SEARCHABLE_ENABLED but attribute type is numerical, attribute values
   /// will not be searchable by text queries in SearchService.Search, as there
-  /// are no text values associated to numerical attributes.
+  /// are no text values associated to numerical attributes. Must be specified,
+  /// otherwise throws INVALID_FORMAT error.
   /// Possible string values are:
-  /// - "SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
-  /// SEARCHABLE_DISABLED.
+  /// - "SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "SEARCHABLE_ENABLED" : Searchable option enabled for an attribute.
   /// - "SEARCHABLE_DISABLED" : Searchable option disabled for an attribute.
   core.String? searchableOption;
@@ -3434,9 +3470,11 @@ class GoogleCloudRetailV2CatalogAttribute {
 
   GoogleCloudRetailV2CatalogAttribute({
     this.dynamicFacetableOption,
+    this.exactSearchableOption,
     this.inUse,
     this.indexableOption,
     this.key,
+    this.retrievableOption,
     this.searchableOption,
     this.type,
   });
@@ -3446,12 +3484,18 @@ class GoogleCloudRetailV2CatalogAttribute {
           dynamicFacetableOption: json_.containsKey('dynamicFacetableOption')
               ? json_['dynamicFacetableOption'] as core.String
               : null,
+          exactSearchableOption: json_.containsKey('exactSearchableOption')
+              ? json_['exactSearchableOption'] as core.String
+              : null,
           inUse:
               json_.containsKey('inUse') ? json_['inUse'] as core.bool : null,
           indexableOption: json_.containsKey('indexableOption')
               ? json_['indexableOption'] as core.String
               : null,
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          retrievableOption: json_.containsKey('retrievableOption')
+              ? json_['retrievableOption'] as core.String
+              : null,
           searchableOption: json_.containsKey('searchableOption')
               ? json_['searchableOption'] as core.String
               : null,
@@ -3461,9 +3505,12 @@ class GoogleCloudRetailV2CatalogAttribute {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicFacetableOption != null)
           'dynamicFacetableOption': dynamicFacetableOption!,
+        if (exactSearchableOption != null)
+          'exactSearchableOption': exactSearchableOption!,
         if (inUse != null) 'inUse': inUse!,
         if (indexableOption != null) 'indexableOption': indexableOption!,
         if (key != null) 'key': key!,
+        if (retrievableOption != null) 'retrievableOption': retrievableOption!,
         if (searchableOption != null) 'searchableOption': searchableOption!,
         if (type != null) 'type': type!,
       };
@@ -4816,15 +4863,15 @@ class GoogleCloudRetailV2PredictRequest {
   /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT
   /// "promotional") * filterOutOfStockItems tag=(-"promotional") *
   /// filterOutOfStockItems If your filter blocks all prediction results, the
-  /// API will return generic (unfiltered) popular products. If you only want
-  /// results strictly matching the filters, set `strictFiltering` to True in
-  /// `PredictRequest.params` to receive empty results instead. Note that the
-  /// API will never return items with storageStatus of "EXPIRED" or "DELETED"
-  /// regardless of filter choices. If `filterSyntaxV2` is set to true under the
-  /// `params` field, then attribute-based expressions are expected instead of
-  /// the above described tag-based syntax. Examples: * (colors: ANY("Red",
-  /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability:
-  /// ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
+  /// API will return *no* results. If instead you want empty result sets to
+  /// return generic (unfiltered) popular products, set `strictFiltering` to
+  /// False in `PredictRequest.params`. Note that the API will never return
+  /// items with storageStatus of "EXPIRED" or "DELETED" regardless of filter
+  /// choices. If `filterSyntaxV2` is set to true under the `params` field, then
+  /// attribute-based expressions are expected instead of the above described
+  /// tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
+  /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors:
+  /// ANY("Red") OR categories: ANY("Phones"))
   core.String? filter;
 
   /// The labels applied to a resource must meet the following requirements: *
@@ -4859,7 +4906,7 @@ class GoogleCloudRetailV2PredictRequest {
   /// prediction response. * `returnScore`: Boolean. If set to true, the
   /// prediction 'score' corresponding to each returned product will be set in
   /// the `results.metadata` field in the prediction response. The given 'score'
-  /// indicates the probability of an product being clicked/purchased given the
+  /// indicates the probability of a product being clicked/purchased given the
   /// user's context and history. * `strictFiltering`: Boolean. True by default.
   /// If set to false, the service will return generic (unfiltered) popular
   /// products instead of empty if your filter blocks all prediction results. *
@@ -5463,7 +5510,8 @@ class GoogleCloudRetailV2Product {
   /// are always returned in by default: * name * color_info The maximum number
   /// of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note:
   /// Returning more fields in SearchResponse can increase response payload size
-  /// and serving latency.
+  /// and serving latency. This field is deprecated. Use the retrievable
+  /// site-wide control instead.
   core.String? retrievableFields;
 
   /// The size of the product.
@@ -6762,7 +6810,7 @@ class GoogleCloudRetailV2RuleReplacementAction {
 
 /// Creates a set of terms that will be treated as synonyms of each other.
 ///
-/// Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym
+/// Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym
 /// of "shoes". * "shoes" will use a synonym of "sneakers".
 class GoogleCloudRetailV2RuleTwowaySynonymsAction {
   /// Defines a set of synonyms.
@@ -7296,7 +7344,7 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
 
   /// Maximum of facet values that should be returned for this facet.
   ///
-  /// If unspecified, defaults to 20. The maximum allowed value is 300. Values
+  /// If unspecified, defaults to 50. The maximum allowed value is 300. Values
   /// above 300 will be coerced to 300. If this field is negative, an
   /// INVALID_ARGUMENT is returned.
   core.int? limit;

@@ -27,10 +27,10 @@ Manages alerts on issues affecting your domain. Note: The current version of thi
 - [Documentation](https://developers.google.com/admin-sdk/alertcenter/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/alertcenter.v1beta1/alertcenter.v1beta1-library.html)
 
-#### Google Analytics Admin API - `analyticsadmin.v1alpha`
+#### Google Analytics Admin API - `analyticsadmin.v1beta`
 
-- [Documentation](https://developers.google.com/analytics/devguides/config/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/analyticsadmin.v1alpha/analyticsadmin.v1alpha-library.html)
+- [Documentation](http://code.google.com/apis/analytics/docs/mgmt/home.html)
+- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/analyticsadmin.v1beta/analyticsadmin.v1beta-library.html)
 
 #### Google Analytics Data API - `analyticsdata.v1beta`
 

@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// VM Migration API - v1
+/// Migrate to Virtual Machines API - v1
 ///
 /// Use the Migrate to Virtual Machines API to programmatically migrate
 /// workloads.
@@ -31,6 +31,7 @@
 ///       - [ProjectsLocationsSourcesMigratingVmsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCloneJobsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCutoverJobsResource]
+///         - [ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource]
 ///       - [ProjectsLocationsSourcesUtilizationReportsResource]
 ///     - [ProjectsLocationsTargetProjectsResource]
 library vmmigration.v1;
@@ -1340,6 +1341,10 @@ class ProjectsLocationsSourcesMigratingVmsResource {
       ProjectsLocationsSourcesMigratingVmsCloneJobsResource(_requester);
   ProjectsLocationsSourcesMigratingVmsCutoverJobsResource get cutoverJobs =>
       ProjectsLocationsSourcesMigratingVmsCutoverJobsResource(_requester);
+  ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource
+      get replicationCycles =>
+          ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource(
+              _requester);
 
   ProjectsLocationsSourcesMigratingVmsResource(commons.ApiRequester client)
       : _requester = client;
@@ -2216,6 +2221,111 @@ class ProjectsLocationsSourcesMigratingVmsCutoverJobsResource {
   }
 }
 
+class ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single ReplicationCycle.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReplicationCycle.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+/replicationCycles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplicationCycle].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplicationCycle> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ReplicationCycle.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ReplicationCycles in a given MigratingVM.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// ReplicationCycles.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter request.
+  ///
+  /// [orderBy] - Optional. the order by fields for the result.
+  ///
+  /// [pageSize] - Optional. The maximum number of replication cycles to return.
+  /// The service may return fewer than this value. If unspecified, at most 100
+  /// migrating VMs will be returned. The maximum value is 100; values above 100
+  /// will be coerced to 100.
+  ///
+  /// [pageToken] - Required. A page token, received from a previous
+  /// `ListReplicationCycles` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListReplicationCycles` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReplicationCyclesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReplicationCyclesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/replicationCycles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListReplicationCyclesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsSourcesUtilizationReportsResource {
   final commons.ApiRequester _requester;
 
@@ -2743,6 +2853,9 @@ class ProjectsLocationsTargetProjectsResource {
   }
 }
 
+/// AdaptingOSStep contains specific step details.
+typedef AdaptingOSStep = $Empty;
+
 /// Request message for 'AddGroupMigration' request.
 class AddGroupMigrationRequest {
   /// The full path name of the MigratingVm to add.
@@ -2817,7 +2930,7 @@ class AppliedLicense {
   /// - "TYPE_UNSPECIFIED" : Unspecified license for the OS.
   /// - "NONE" : No license available for the OS.
   /// - "PAYG" : The license type is Pay As You Go license type.
-  /// - "BYOL" : The license type is is Bring Your Own License type.
+  /// - "BYOL" : The license type is Bring Your Own License type.
   core.String? type;
 
   AppliedLicense({
@@ -2944,6 +3057,11 @@ class CloneJob {
   /// Output only.
   core.String? stateTime;
 
+  /// The clone steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<CloneStep>? steps;
+
   CloneJob({
     this.computeEngineTargetDetails,
     this.createTime,
@@ -2952,6 +3070,7 @@ class CloneJob {
     this.name,
     this.state,
     this.stateTime,
+    this.steps,
   });
 
   CloneJob.fromJson(core.Map json_)
@@ -2978,6 +3097,12 @@ class CloneJob {
           stateTime: json_.containsKey('stateTime')
               ? json_['stateTime'] as core.String
               : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CloneStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2989,6 +3114,65 @@ class CloneJob {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// CloneStep holds information about the clone step progress.
+class CloneStep {
+  /// Adapting OS step.
+  AdaptingOSStep? adaptingOs;
+
+  /// The time the step has ended.
+  core.String? endTime;
+
+  /// Instantiating migrated VM step.
+  InstantiatingMigratedVMStep? instantiatingMigratedVm;
+
+  /// Preparing VM disks step.
+  PreparingVMDisksStep? preparingVmDisks;
+
+  /// The time the step has started.
+  core.String? startTime;
+
+  CloneStep({
+    this.adaptingOs,
+    this.endTime,
+    this.instantiatingMigratedVm,
+    this.preparingVmDisks,
+    this.startTime,
+  });
+
+  CloneStep.fromJson(core.Map json_)
+      : this(
+          adaptingOs: json_.containsKey('adaptingOs')
+              ? AdaptingOSStep.fromJson(
+                  json_['adaptingOs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          instantiatingMigratedVm: json_.containsKey('instantiatingMigratedVm')
+              ? InstantiatingMigratedVMStep.fromJson(
+                  json_['instantiatingMigratedVm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          preparingVmDisks: json_.containsKey('preparingVmDisks')
+              ? PreparingVMDisksStep.fromJson(json_['preparingVmDisks']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptingOs != null) 'adaptingOs': adaptingOs!,
+        if (endTime != null) 'endTime': endTime!,
+        if (instantiatingMigratedVm != null)
+          'instantiatingMigratedVm': instantiatingMigratedVm!,
+        if (preparingVmDisks != null) 'preparingVmDisks': preparingVmDisks!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3524,6 +3708,11 @@ class CutoverJob {
   /// Output only.
   core.String? stateTime;
 
+  /// The cutover steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<CutoverStep>? steps;
+
   CutoverJob({
     this.computeEngineTargetDetails,
     this.createTime,
@@ -3534,6 +3723,7 @@ class CutoverJob {
     this.state,
     this.stateMessage,
     this.stateTime,
+    this.steps,
   });
 
   CutoverJob.fromJson(core.Map json_)
@@ -3566,6 +3756,12 @@ class CutoverJob {
           stateTime: json_.containsKey('stateTime')
               ? json_['stateTime'] as core.String
               : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CutoverStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3579,6 +3775,144 @@ class CutoverJob {
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (stateTime != null) 'stateTime': stateTime!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// CutoverStep holds information about the cutover step progress.
+class CutoverStep {
+  /// The time the step has ended.
+  core.String? endTime;
+
+  /// Final sync step.
+  ReplicationCycle? finalSync;
+
+  /// Instantiating migrated VM step.
+  InstantiatingMigratedVMStep? instantiatingMigratedVm;
+
+  /// Preparing VM disks step.
+  PreparingVMDisksStep? preparingVmDisks;
+
+  /// A replication cycle prior cutover step.
+  ReplicationCycle? previousReplicationCycle;
+
+  /// Shutting down VM step.
+  ShuttingDownSourceVMStep? shuttingDownSourceVm;
+
+  /// The time the step has started.
+  core.String? startTime;
+
+  CutoverStep({
+    this.endTime,
+    this.finalSync,
+    this.instantiatingMigratedVm,
+    this.preparingVmDisks,
+    this.previousReplicationCycle,
+    this.shuttingDownSourceVm,
+    this.startTime,
+  });
+
+  CutoverStep.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          finalSync: json_.containsKey('finalSync')
+              ? ReplicationCycle.fromJson(
+                  json_['finalSync'] as core.Map<core.String, core.dynamic>)
+              : null,
+          instantiatingMigratedVm: json_.containsKey('instantiatingMigratedVm')
+              ? InstantiatingMigratedVMStep.fromJson(
+                  json_['instantiatingMigratedVm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          preparingVmDisks: json_.containsKey('preparingVmDisks')
+              ? PreparingVMDisksStep.fromJson(json_['preparingVmDisks']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          previousReplicationCycle:
+              json_.containsKey('previousReplicationCycle')
+                  ? ReplicationCycle.fromJson(json_['previousReplicationCycle']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          shuttingDownSourceVm: json_.containsKey('shuttingDownSourceVm')
+              ? ShuttingDownSourceVMStep.fromJson(json_['shuttingDownSourceVm']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (finalSync != null) 'finalSync': finalSync!,
+        if (instantiatingMigratedVm != null)
+          'instantiatingMigratedVm': instantiatingMigratedVm!,
+        if (preparingVmDisks != null) 'preparingVmDisks': preparingVmDisks!,
+        if (previousReplicationCycle != null)
+          'previousReplicationCycle': previousReplicationCycle!,
+        if (shuttingDownSourceVm != null)
+          'shuttingDownSourceVm': shuttingDownSourceVm!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// CycleStep holds information about a step progress.
+class CycleStep {
+  /// The time the cycle step has ended.
+  core.String? endTime;
+
+  /// Initializing replication step.
+  InitializingReplicationStep? initializingReplication;
+
+  /// Post processing step.
+  PostProcessingStep? postProcessing;
+
+  /// Replicating step.
+  ReplicatingStep? replicating;
+
+  /// The time the cycle step has started.
+  core.String? startTime;
+
+  CycleStep({
+    this.endTime,
+    this.initializingReplication,
+    this.postProcessing,
+    this.replicating,
+    this.startTime,
+  });
+
+  CycleStep.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          initializingReplication: json_.containsKey('initializingReplication')
+              ? InitializingReplicationStep.fromJson(
+                  json_['initializingReplication']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          postProcessing: json_.containsKey('postProcessing')
+              ? PostProcessingStep.fromJson(json_['postProcessing']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          replicating: json_.containsKey('replicating')
+              ? ReplicatingStep.fromJson(
+                  json_['replicating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (initializingReplication != null)
+          'initializingReplication': initializingReplication!,
+        if (postProcessing != null) 'postProcessing': postProcessing!,
+        if (replicating != null) 'replicating': replicating!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3878,6 +4212,12 @@ class Group {
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
+
+/// InitializingReplicationStep contains specific step details.
+typedef InitializingReplicationStep = $Empty;
+
+/// InstantiatingMigratedVMStep contains specific step details.
+typedef InstantiatingMigratedVMStep = $Empty;
 
 /// Response message for 'ListCloneJobs' request.
 class ListCloneJobsResponse {
@@ -4191,6 +4531,56 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response message for 'ListReplicationCycles' request.
+class ListReplicationCyclesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The list of replication cycles response.
+  ///
+  /// Output only.
+  core.List<ReplicationCycle>? replicationCycles;
+
+  /// Locations that could not be reached.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
+  ListReplicationCyclesResponse({
+    this.nextPageToken,
+    this.replicationCycles,
+    this.unreachable,
+  });
+
+  ListReplicationCyclesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          replicationCycles: json_.containsKey('replicationCycles')
+              ? (json_['replicationCycles'] as core.List)
+                  .map((value) => ReplicationCycle.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (replicationCycles != null) 'replicationCycles': replicationCycles!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4702,6 +5092,12 @@ class Operation {
 /// Request message for 'PauseMigration' request.
 typedef PauseMigrationRequest = $Empty;
 
+/// PostProcessingStep contains specific step details.
+typedef PostProcessingStep = $Empty;
+
+/// PreparingVMDisksStep contains specific step details.
+typedef PreparingVMDisksStep = $Empty;
+
 /// Request message for 'RemoveMigration' request.
 class RemoveGroupMigrationRequest {
   /// The MigratingVm to remove.
@@ -4723,33 +5119,154 @@ class RemoveGroupMigrationRequest {
       };
 }
 
+/// ReplicatingStep contains specific step details.
+class ReplicatingStep {
+  /// The source disks replication rate for the last 30 minutes in bytes per
+  /// second.
+  core.String? lastThirtyMinutesAverageBytesPerSecond;
+
+  /// The source disks replication rate for the last 2 minutes in bytes per
+  /// second.
+  core.String? lastTwoMinutesAverageBytesPerSecond;
+
+  /// Replicated bytes in the step.
+  core.String? replicatedBytes;
+
+  /// Total bytes to be handled in the step.
+  core.String? totalBytes;
+
+  ReplicatingStep({
+    this.lastThirtyMinutesAverageBytesPerSecond,
+    this.lastTwoMinutesAverageBytesPerSecond,
+    this.replicatedBytes,
+    this.totalBytes,
+  });
+
+  ReplicatingStep.fromJson(core.Map json_)
+      : this(
+          lastThirtyMinutesAverageBytesPerSecond: json_
+                  .containsKey('lastThirtyMinutesAverageBytesPerSecond')
+              ? json_['lastThirtyMinutesAverageBytesPerSecond'] as core.String
+              : null,
+          lastTwoMinutesAverageBytesPerSecond:
+              json_.containsKey('lastTwoMinutesAverageBytesPerSecond')
+                  ? json_['lastTwoMinutesAverageBytesPerSecond'] as core.String
+                  : null,
+          replicatedBytes: json_.containsKey('replicatedBytes')
+              ? json_['replicatedBytes'] as core.String
+              : null,
+          totalBytes: json_.containsKey('totalBytes')
+              ? json_['totalBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastThirtyMinutesAverageBytesPerSecond != null)
+          'lastThirtyMinutesAverageBytesPerSecond':
+              lastThirtyMinutesAverageBytesPerSecond!,
+        if (lastTwoMinutesAverageBytesPerSecond != null)
+          'lastTwoMinutesAverageBytesPerSecond':
+              lastTwoMinutesAverageBytesPerSecond!,
+        if (replicatedBytes != null) 'replicatedBytes': replicatedBytes!,
+        if (totalBytes != null) 'totalBytes': totalBytes!,
+      };
+}
+
 /// ReplicationCycle contains information about the current replication cycle
 /// status.
 class ReplicationCycle {
+  /// The cycle's ordinal number.
+  core.int? cycleNumber;
+
+  /// The time the replication cycle has ended.
+  core.String? endTime;
+
+  /// Provides details on the state of the cycle in case of an error.
+  Status? error;
+
+  /// The identifier of the ReplicationCycle.
+  core.String? name;
+
   /// The current progress in percentage of this cycle.
+  ///
+  /// Was replaced by 'steps' field, which breaks down the cycle progression
+  /// more accurately.
   core.int? progressPercent;
 
   /// The time the replication cycle has started.
   core.String? startTime;
 
+  /// State of the ReplicationCycle.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown. This is used for API
+  /// compatibility only and is not used by the system.
+  /// - "RUNNING" : The replication cycle is running.
+  /// - "PAUSED" : The replication cycle is paused.
+  /// - "FAILED" : The replication cycle finished with errors.
+  /// - "SUCCEEDED" : The replication cycle finished successfully.
+  core.String? state;
+
+  /// The cycle's steps list representing its progress.
+  core.List<CycleStep>? steps;
+
+  /// The accumulated duration the replication cycle was paused.
+  core.String? totalPauseDuration;
+
   ReplicationCycle({
+    this.cycleNumber,
+    this.endTime,
+    this.error,
+    this.name,
     this.progressPercent,
     this.startTime,
+    this.state,
+    this.steps,
+    this.totalPauseDuration,
   });
 
   ReplicationCycle.fromJson(core.Map json_)
       : this(
+          cycleNumber: json_.containsKey('cycleNumber')
+              ? json_['cycleNumber'] as core.int
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           progressPercent: json_.containsKey('progressPercent')
               ? json_['progressPercent'] as core.int
               : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CycleStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalPauseDuration: json_.containsKey('totalPauseDuration')
+              ? json_['totalPauseDuration'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cycleNumber != null) 'cycleNumber': cycleNumber!,
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!,
+        if (name != null) 'name': name!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
         if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (steps != null) 'steps': steps!,
+        if (totalPauseDuration != null)
+          'totalPauseDuration': totalPauseDuration!,
       };
 }
 
@@ -4858,6 +5375,9 @@ class SchedulingNodeAffinity {
         if (values != null) 'values': values!,
       };
 }
+
+/// ShuttingDownSourceVMStep contains specific step details.
+typedef ShuttingDownSourceVMStep = $Empty;
 
 /// Source message describes a specific vm migration Source resource.
 ///
