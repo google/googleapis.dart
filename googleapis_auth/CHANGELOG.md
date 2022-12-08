@@ -16,6 +16,11 @@
   and `CodeResponse` to support the new
   [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview).
 
+#### `auth_io.dart` library
+
+- Added an optional `listenPort` parameter to `clientViaUserConsent`
+  and `obtainAccessCredentialsViaUserConsent`. 
+
 ## 1.3.1
 
 - Include `plugin_name` during browser authorization.
