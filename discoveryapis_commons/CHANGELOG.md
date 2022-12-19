@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Drop use of `NullThrownError`.
+
 ## 1.0.4
 
 - Eliminate the invalid header warning in the browser.
