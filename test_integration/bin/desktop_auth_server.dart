@@ -23,8 +23,7 @@ class _Server {
 
   _Server(this._server);
 
-  late final serverUri =
-      Uri.http('${_server.address.host}:${_server.port}', '');
+  late final serverUri = Uri.http('${_server.address.host}:${_server.port}');
 
   late final serverRedirectUri =
       serverUri.replace(pathSegments: [_redirectPath]).toString();

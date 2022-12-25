@@ -96,7 +96,7 @@ void main() {
       final flow = MetadataServerAuthorizationFlow(mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             } else {
               return successfulScopes(request);
             }
@@ -112,7 +112,7 @@ void main() {
             if (requestNr++ == 0) {
               return successfulAccessToken(request);
             } else {
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             }
           }, count: 2),
           expectClose: false));
