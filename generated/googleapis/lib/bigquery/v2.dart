@@ -8944,7 +8944,7 @@ class ListRoutinesResponse {
   ///
   /// Unless read_mask is set in the request, only the following fields are
   /// populated: etag, project_id, dataset_id, routine_id, routine_type,
-  /// creation_time, last_modified_time, and language.
+  /// creation_time, last_modified_time, language, and remote_function_options.
   core.List<Routine>? routines;
 
   ListRoutinesResponse({
@@ -9004,6 +9004,13 @@ class ListRowAccessPoliciesResponse {
 }
 
 class MaterializedViewDefinition {
+  /// Allow non incremental materialized view definition.
+  ///
+  /// The default value is "false".
+  ///
+  /// Optional.
+  core.bool? allowNonIncrementalDefinition;
+
   /// \[TrustedTester\] Enable automatic refresh of the materialized view when
   /// the base table is updated.
   ///
@@ -9043,6 +9050,7 @@ class MaterializedViewDefinition {
   core.String? refreshIntervalMs;
 
   MaterializedViewDefinition({
+    this.allowNonIncrementalDefinition,
     this.enableRefresh,
     this.lastRefreshTime,
     this.maxStaleness,
@@ -9052,6 +9060,10 @@ class MaterializedViewDefinition {
 
   MaterializedViewDefinition.fromJson(core.Map json_)
       : this(
+          allowNonIncrementalDefinition:
+              json_.containsKey('allow_non_incremental_definition')
+                  ? json_['allow_non_incremental_definition'] as core.bool
+                  : null,
           enableRefresh: json_.containsKey('enableRefresh')
               ? json_['enableRefresh'] as core.bool
               : null,
@@ -9069,6 +9081,8 @@ class MaterializedViewDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowNonIncrementalDefinition != null)
+          'allow_non_incremental_definition': allowNonIncrementalDefinition!,
         if (enableRefresh != null) 'enableRefresh': enableRefresh!,
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
@@ -10769,7 +10783,8 @@ class Routine {
   /// Optional.
   core.List<core.String>? importedLibraries;
 
-  /// Defaults to "SQL".
+  /// Defaults to "SQL" if remote_function_options field is absent, not set
+  /// otherwise.
   ///
   /// Optional.
   /// Possible string values are:
@@ -10795,7 +10810,7 @@ class Routine {
   /// If absent, the return table type is inferred from definition_body at query
   /// time in each query that references this routine. If present, then the
   /// columns in the evaluated table result will be cast to match the column
-  /// types specificed in return table type, at query time.
+  /// types specified in return table type, at query time.
   ///
   /// Optional.
   StandardSqlTableType? returnTableType;
@@ -11455,10 +11470,11 @@ class SparkOptions {
   /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
   core.List<core.String>? jarUris;
 
-  /// The main file URI of the Spark application.
+  /// The main file/jar URI of the Spark application.
   ///
   /// Exactly one of the definition_body field and the main_file_uri field must
-  /// be set.
+  /// be set for Python. Exactly one of main_class and main_file_uri field
+  /// should be set for Java/Scala language type.
   core.String? mainFileUri;
 
   /// Configuration properties as a set of key/value pairs, which will be passed

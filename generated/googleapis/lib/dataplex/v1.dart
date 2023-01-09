@@ -363,21 +363,21 @@ class ProjectsLocationsDataScansResource {
   ProjectsLocationsDataScansResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a dataScan resource.
+  /// Creates a DataScan resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the parent location:
-  /// projects/{project}/locations/{location_id} where {project} refers to a
+  /// projects/{project}/locations/{location_id} where project refers to a
   /// project_id or project_number and location_id refers to a GCP region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [dataScanId] - Required. DataScan identifier. * Must contain only
-  /// lowercase letters, numbers and hyphens. * Must start with a letter. * Must
-  /// end with a number or a letter. * Must be between 1-63 characters. * Must
-  /// be unique within the customer project / location.
+  /// [dataScanId] - Required. DataScan identifier. Must contain only lowercase
+  /// letters, numbers and hyphens. Must start with a letter. Must end with a
+  /// number or a letter. Must be between 1-63 characters. Must be unique within
+  /// the customer project / location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -413,14 +413,14 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete the dataScan resource.
+  /// Deletes a DataScan resource.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the dataScan:
   /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region.
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
@@ -453,19 +453,18 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get dataScan resource.
+  /// Gets a DataScan resource.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the dataScan:
   /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region.
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
-  /// [view] - Optional. Used to select the subset of DataScan information to
-  /// return. Defaults to BASIC.
+  /// [view] - Optional. Select the DataScan view to return. Defaults to BASIC.
   /// Possible string values are:
   /// - "DATA_SCAN_VIEW_UNSPECIFIED" : The API will default to the BASIC view.
   /// - "BASIC" : Basic view that does not include spec and result.
@@ -560,13 +559,13 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists dataScans.
+  /// Lists DataScans.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. projects/{project}/locations/{location_id} where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region.
+  /// [parent] - Required. The resource name of the parent location:
+  /// projects/{project}/locations/{location_id} where project refers to a
+  /// project_id or project_number and location_id refers to a GCP region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter request.
@@ -621,16 +620,16 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update the dataScan resource.
+  /// Updates a DataScan resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Output only. The relative resource name of the scan, of the form:
-  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}. where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region.
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
@@ -670,7 +669,7 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Run an on demand execution of a DataScan.
+  /// Runs an on-demand execution of a DataScan
   ///
   /// [request] - The metadata request object.
   ///
@@ -678,8 +677,8 @@ class ProjectsLocationsDataScansResource {
   ///
   /// [name] - Required. The resource name of the DataScan:
   /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region. Only on-demand DataScans are allowed.
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.Only OnDemand data scans are allowed.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
@@ -821,19 +820,19 @@ class ProjectsLocationsDataScansJobsResource {
   ProjectsLocationsDataScansJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get DataScanJob resource.
+  /// Gets a DataScanJob resource.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the DataScanJob:
   /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
-  /// where {project} refers to a project_id or project_number and location_id
+  /// where project refers to a project_id or project_number and location_id
   /// refers to a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+/jobs/\[^/\]+$`.
   ///
-  /// [view] - Optional. Used to select the subset of DataScan information to
-  /// return. Defaults to BASIC.
+  /// [view] - Optional. Select the DataScanJob view to return. Defaults to
+  /// BASIC.
   /// Possible string values are:
   /// - "DATA_SCAN_JOB_VIEW_UNSPECIFIED" : The API will default to the BASIC
   /// view.
@@ -871,14 +870,14 @@ class ProjectsLocationsDataScansJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists DataScanJobs under the given dataScan.
+  /// Lists DataScanJobs under the given DataScan.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the parent environment:
   /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where
-  /// {project} refers to a project_id or project_number and location_id refers
-  /// to a GCP region.
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
@@ -3358,6 +3357,49 @@ class ProjectsLocationsLakesTasksResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Run an on demand execution of a Task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the task:
+  /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/tasks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1RunTaskResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1RunTaskResponse> run(
+    GoogleCloudDataplexV1RunTaskRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1RunTaskResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
@@ -5793,8 +5835,8 @@ class GoogleCloudDataplexV1AssetDiscoverySpec {
   /// timezone to the cron tab, apply a prefix in the cron tab:
   /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The
   /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
-  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
-  /// 1 * * * *".
+  /// For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1
+  /// * * * *.
   ///
   /// Optional.
   core.String? schedule;
@@ -5978,6 +6020,19 @@ class GoogleCloudDataplexV1AssetResourceSpec {
   /// Immutable.
   core.String? name;
 
+  /// Determines how read permissions are handled for each asset and their
+  /// associated tables.
+  ///
+  /// Only available to storage buckets assets.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACCESS_MODE_UNSPECIFIED" : Access mode unspecified.
+  /// - "DIRECT" : Default. Data is accessed directly using storage APIs.
+  /// - "MANAGED" : Data is accessed through a managed interface using BigQuery
+  /// APIs.
+  core.String? readAccessMode;
+
   /// Type of resource.
   ///
   /// Required. Immutable.
@@ -5989,17 +6044,22 @@ class GoogleCloudDataplexV1AssetResourceSpec {
 
   GoogleCloudDataplexV1AssetResourceSpec({
     this.name,
+    this.readAccessMode,
     this.type,
   });
 
   GoogleCloudDataplexV1AssetResourceSpec.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          readAccessMode: json_.containsKey('readAccessMode')
+              ? json_['readAccessMode'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (readAccessMode != null) 'readAccessMode': readAccessMode!,
         if (type != null) 'type': type!,
       };
 }
@@ -6307,15 +6367,13 @@ class GoogleCloudDataplexV1ContentSqlScript {
 ///
 /// Each field of the table will have field type specific profile result.
 class GoogleCloudDataplexV1DataProfileResult {
-  /// This represents the profile information per field.
+  /// The profile information per field.
   GoogleCloudDataplexV1DataProfileResultProfile? profile;
 
-  /// The count of all rows in the sampled data.
-  ///
-  /// Return 0, if zero rows.
+  /// The count of rows scanned.
   core.String? rowCount;
 
-  /// The data scanned for this profile.
+  /// The data scanned for this result.
   GoogleCloudDataplexV1ScannedData? scannedData;
 
   GoogleCloudDataplexV1DataProfileResult({
@@ -6346,10 +6404,9 @@ class GoogleCloudDataplexV1DataProfileResult {
       };
 }
 
-/// Profile information describing the structure and layout of the data and
-/// contains the profile info.
+/// Contains name, type, mode and field type specific profile information.
 class GoogleCloudDataplexV1DataProfileResultProfile {
-  /// The sequence of fields describing data in table entities.
+  /// List of fields with structural and profile information for each field.
   core.List<GoogleCloudDataplexV1DataProfileResultProfileField>? fields;
 
   GoogleCloudDataplexV1DataProfileResultProfile({
@@ -6373,18 +6430,18 @@ class GoogleCloudDataplexV1DataProfileResultProfile {
       };
 }
 
-/// Represents a column field within a table schema.
+/// A field within a table.
 class GoogleCloudDataplexV1DataProfileResultProfileField {
   /// The mode of the field.
   ///
-  /// Its value will be: REQUIRED, if it is a required field. NULLABLE, if it is
-  /// an optional field. REPEATED, if it is a repeated field.
+  /// Possible values include: REQUIRED, if it is a required field. NULLABLE, if
+  /// it is an optional field. REPEATED, if it is a repeated field.
   core.String? mode;
 
   /// The name of the field.
   core.String? name;
 
-  /// The profile information for the corresponding field.
+  /// Profile information for the corresponding field.
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo? profile;
 
   /// The field data type.
@@ -6420,31 +6477,35 @@ class GoogleCloudDataplexV1DataProfileResultProfileField {
       };
 }
 
-/// ProfileInfo defines the profile information for each schema field type.
+/// The profile information for each field type.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
-  /// The ratio of rows that are distinct against the rows in the sampled data.
+  /// Ratio of rows with distinct values against total scanned rows.
+  ///
+  /// Not available for complex non-groupable field type RECORD and fields with
+  /// REPEATABLE mode.
   core.double? distinctRatio;
 
-  /// The corresponding double field profile.
+  /// Double type field information.
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo?
       doubleProfile;
 
-  /// The corresponding integer field profile.
+  /// Integer type field information.
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo?
       integerProfile;
 
-  /// The ratio of null rows against the rows in the sampled data.
+  /// Ratio of rows with null value against total scanned rows.
   core.double? nullRatio;
 
-  /// The corresponding string field profile.
+  /// String type field information.
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo?
       stringProfile;
 
-  /// The array of top N values of the field in the sampled data.
+  /// The list of top N non-null values and number of times they occur in the
+  /// scanned data.
   ///
-  /// Currently N is set as 10 or equal to distinct values in the field,
-  /// whichever is smaller. This will be optional for complex non-groupable
-  /// data-types such as JSON, ARRAY, JSON, STRUCT.
+  /// N is 10 or equal to the number of distinct values in the field, whichever
+  /// is smaller. Not available for complex non-groupable field type RECORD and
+  /// fields with REPEATABLE mode.
   core.List<
           GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>?
       topNValues;
@@ -6502,24 +6563,24 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
       };
 }
 
-/// DoubleFieldInfo defines output for any double type field.
+/// The profile information for a double type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo {
-  /// The average of non-null values of double field in the sampled data.
+  /// Average of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? average;
 
-  /// The maximum value of a double field in the sampled data.
+  /// Maximum of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? max;
 
-  /// The minimum value of a double field in the sampled data.
+  /// Minimum of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? min;
 
-  /// A quartile divide the numebr of data points into four parts, or quarters,
+  /// A quartile divides the number of data points into four parts, or quarters,
   /// of more-or-less equal size.
   ///
   /// Three main quartiles used are: The first quartile (Q1) splits off the
@@ -6528,14 +6589,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
   /// second quartile (Q2) is the median of a data set. So, 50% of the data lies
   /// below this point. The third quartile (Q3) splits off the highest 25% of
   /// data from the lowest 75%. It is known as the upper or 75th empirical
-  /// quartile, as 75% of the data lies below this point. So, here the quartiles
-  /// is provided as an ordered list of quartile values, occurring in order Q1,
-  /// median, Q3.
+  /// quartile, as 75% of the data lies below this point. Here, the quartiles is
+  /// provided as an ordered list of quartile values for the scanned data,
+  /// occurring in order Q1, median, Q3.
   core.List<core.double>? quartiles;
 
-  /// The standard deviation of non-null of double field in the sampled data.
+  /// Standard deviation of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? standardDeviation;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo({
@@ -6577,24 +6638,24 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
       };
 }
 
-/// IntegerFieldInfo defines output for any integer type field.
+/// The profile information for an integer type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo {
-  /// The average of non-null values of integer field in the sampled data.
+  /// Average of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? average;
 
-  /// The maximum value of an integer field in the sampled data.
+  /// Maximum of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.String? max;
 
-  /// The minimum value of an integer field in the sampled data.
+  /// Minimum of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.String? min;
 
-  /// A quartile divide the number of data points into four parts, or quarters,
+  /// A quartile divides the number of data points into four parts, or quarters,
   /// of more-or-less equal size.
   ///
   /// Three main quartiles used are: The first quartile (Q1) splits off the
@@ -6603,14 +6664,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   /// second quartile (Q2) is the median of a data set. So, 50% of the data lies
   /// below this point. The third quartile (Q3) splits off the highest 25% of
   /// data from the lowest 75%. It is known as the upper or 75th empirical
-  /// quartile, as 75% of the data lies below this point. So, here the quartiles
-  /// is provided as an ordered list of quartile values, occurring in order Q1,
-  /// median, Q3.
+  /// quartile, as 75% of the data lies below this point. Here, the quartiles is
+  /// provided as an ordered list of quartile values for the scanned data,
+  /// occurring in order Q1, median, Q3.
   core.List<core.String>? quartiles;
 
-  /// The standard deviation of non-null of integer field in the sampled data.
+  /// Standard deviation of non-null values in the scanned data.
   ///
-  /// Return NaN, if the field has a NaN. Optional if zero non-null rows.
+  /// NaN, if the field has a NaN.
   core.double? standardDeviation;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo({
@@ -6648,21 +6709,15 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
       };
 }
 
-/// StringFieldInfo defines output info for any string type field.
+/// The profile information for a string type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo {
-  /// The average length of a string field in the sampled data.
-  ///
-  /// Optional if zero non-null rows.
+  /// Average length of non-null values in the scanned data.
   core.double? averageLength;
 
-  /// The maximum length of a string field in the sampled data.
-  ///
-  /// Optional if zero non-null rows.
+  /// Maximum length of non-null values in the scanned data.
   core.String? maxLength;
 
-  /// The minimum length of the string field in the sampled data.
-  ///
-  /// Optional if zero non-null rows.
+  /// Minimum length of non-null values in the scanned data.
   core.String? minLength;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo({
@@ -6692,12 +6747,12 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
       };
 }
 
-/// The TopNValue defines the structure of output of top N values of a field.
+/// Top N non-null values in the scanned data.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
-  /// The frequency count of the corresponding value in the field.
+  /// Count of the corresponding value in the scanned data.
   core.String? count;
 
-  /// The value is the string value of the actual value from the field.
+  /// String value of a top N non-null value.
   core.String? value;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue({
@@ -6723,8 +6778,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
 /// DataProfileScan related setting.
 typedef GoogleCloudDataplexV1DataProfileSpec = $Empty;
 
-/// DataQualityDimensionResult provides a more detailed, per-dimension level
-/// view of the results.
+/// DataQualityDimensionResult provides a more detailed, per-dimension view of
+/// the results.
 class GoogleCloudDataplexV1DataQualityDimensionResult {
   /// Whether the dimension passed or failed.
   core.bool? passed;
@@ -6746,7 +6801,7 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
 
 /// The output of a DataQualityScan.
 class GoogleCloudDataplexV1DataQualityResult {
-  /// A list of results at the dimension-level.
+  /// A list of results at the dimension level.
   core.List<GoogleCloudDataplexV1DataQualityDimensionResult>? dimensions;
 
   /// Overall data quality result -- true if all rules passed.
@@ -6814,7 +6869,7 @@ class GoogleCloudDataplexV1DataQualityRule {
 
   /// The dimension a rule belongs to.
   ///
-  /// Results are also aggregated at the dimension-level. Supported dimensions
+  /// Results are also aggregated at the dimension level. Supported dimensions
   /// are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS",
   /// "INTEGRITY"
   ///
@@ -6824,7 +6879,7 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// Rows with null values will automatically fail a rule, unless ignore_null
   /// is true.
   ///
-  /// In that case, such null rows are trivially considered passing. Only
+  /// In that case, such null rows are trivially considered passing.Only
   /// applicable to ColumnMap rules.
   ///
   /// Optional.
@@ -6860,7 +6915,7 @@ class GoogleCloudDataplexV1DataQualityRule {
       tableConditionExpectation;
 
   /// The minimum ratio of passing_rows / total_rows required to pass this rule,
-  /// with a range of 0.0, 1.00 indicates default value (i.e. 1.0)
+  /// with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
   ///
   /// Optional.
   core.double? threshold;
@@ -6983,17 +7038,17 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   core.String? minValue;
 
   /// Whether each value needs to be strictly lesser than ('\<') the maximum, or
-  /// if equality is allowed.
+  /// if equality is allowed.Only relevant if a max_value has been defined.
   ///
-  /// Only relevant if a max_value has been defined. Default = false.
+  /// Default = false.
   ///
   /// Optional.
   core.bool? strictMaxEnabled;
 
   /// Whether each value needs to be strictly greater than ('\>') the minimum,
-  /// or if equality is allowed.
+  /// or if equality is allowed.Only relevant if a min_value has been defined.
   ///
-  /// Only relevant if a min_value has been defined. Default = false.
+  /// Default = false.
   ///
   /// Optional.
   core.bool? strictMinEnabled;
@@ -7031,6 +7086,7 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 
 /// Evaluates whether each column value matches a specified regex.
 class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
+  /// A regular expression the column value is expected to match.
   core.String? regex;
 
   GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
@@ -7048,15 +7104,15 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
       };
 }
 
-/// DataQualityRuleResult provides a more detailed, per-rule level view of the
+/// DataQualityRuleResult provides a more detailed, per-rule view of the
 /// results.
 class GoogleCloudDataplexV1DataQualityRuleResult {
   /// The number of rows a rule was evaluated against.
   ///
-  /// This field is only valid for ColumnMap type rules. Evaluated count can be
-  /// configured to either (1) include all rows (default) - with null rows
-  /// automatically failing rule evaluation OR (2) exclude null rows from the
-  /// evaluated_count, by setting ignore_nulls = true
+  /// This field is only valid for ColumnMap type rules.Evaluated count can be
+  /// configured to either include all rows (default) - with null rows
+  /// automatically failing rule evaluation, or exclude null rows from the
+  /// evaluated_count, by setting ignore_nulls = true.
   core.String? evaluatedCount;
 
   /// The query to find rows that did not pass this rule.
@@ -7129,15 +7185,15 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
       };
 }
 
-/// Evaluates whether each row passes the specified condition.
-///
-/// The SQL expression needs to use BigQuery standard SQL syntax and should
-/// produce a boolean per row as the result. Example: col1 \>= 0 AND col2 \< 10
+/// Evaluates whether each row passes the specified condition.The SQL expression
+/// needs to use BigQuery standard SQL syntax and should produce a boolean value
+/// per row as the result.Example: col1 \>= 0 AND col2 \< 10
 typedef GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
     = $ConditionExpectation;
 
 /// Evaluates whether each column value is contained by a specified set.
 class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
+  /// Expected values for the column value.
   core.List<core.String>? values;
 
   GoogleCloudDataplexV1DataQualityRuleSetExpectation({
@@ -7162,15 +7218,11 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 /// range.
 class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// The maximum column statistic value allowed for a row to pass this
-  /// validation.
-  ///
-  /// At least one of min_value and max_value need to be provided.
+  /// validation.At least one of min_value and max_value need to be provided.
   core.String? maxValue;
 
   /// The minimum column statistic value allowed for a row to pass this
-  /// validation.
-  ///
-  /// At least one of min_value and max_value need to be provided.
+  /// validation.At least one of min_value and max_value need to be provided.
   core.String? minValue;
 
   ///
@@ -7182,15 +7234,17 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   core.String? statistic;
 
   /// Whether column statistic needs to be strictly lesser than ('\<') the
-  /// maximum, or if equality is allowed.
+  /// maximum, or if equality is allowed.Only relevant if a max_value has been
+  /// defined.
   ///
-  /// Only relevant if a max_value has been defined. Default = false.
+  /// Default = false.
   core.bool? strictMaxEnabled;
 
   /// Whether column statistic needs to be strictly greater than ('\>') the
-  /// minimum, or if equality is allowed.
+  /// minimum, or if equality is allowed.Only relevant if a min_value has been
+  /// defined.
   ///
-  /// Only relevant if a min_value has been defined. Default = false.
+  /// Default = false.
   core.bool? strictMinEnabled;
 
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation({
@@ -7230,10 +7284,9 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
       };
 }
 
-/// Evaluates whether the provided expression is true.
-///
-/// The SQL expression needs to use BigQuery standard SQL syntax and should
-/// produce a scalar boolean result. Example: MIN(col1) \>= 0
+/// Evaluates whether the provided expression is true.The SQL expression needs
+/// to use BigQuery standard SQL syntax and should produce a scalar boolean
+/// result.Example: MIN(col1) \>= 0
 typedef GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
     = $ConditionExpectation;
 
@@ -7267,12 +7320,12 @@ class GoogleCloudDataplexV1DataQualitySpec {
 }
 
 /// Represents a user-visible job which provides the insights for the related
-/// data source.
+/// data source.For example: Data Quality: generates queries based on the rules
+/// and runs against the data to get data quality check results.
 ///
-/// For examples: - Data Quality: generates queries based on the rules and run
-/// against the data to get data quality check results. - Data Profile: analyzes
-/// the data in table(s) and generates insights about the structure, content and
-/// relationships (such as null percent, cardinality, min/max/mean, etc).
+/// Data Profile: analyzes the data in table(s) and generates insights about the
+/// structure, content and relationships (such as null percent, cardinality,
+/// min/max/mean, etc).
 class GoogleCloudDataplexV1DataScan {
   /// The time when the scan was created.
   ///
@@ -7302,21 +7355,20 @@ class GoogleCloudDataplexV1DataScan {
 
   /// Description of the scan.
   ///
-  /// * Must be between 1-1024 characters.
+  /// Must be between 1-1024 characters.
   ///
   /// Optional.
   core.String? description;
 
   /// User friendly display name.
   ///
-  /// * Must be between 1-256 characters.
+  /// Must be between 1-256 characters.
   ///
   /// Optional.
   core.String? displayName;
 
-  /// DataScan execution settings.
-  ///
-  /// If not specified, the fields under it will use their default values.
+  /// DataScan execution settings.If not specified, the fields in it will use
+  /// their default values.
   ///
   /// Optional.
   GoogleCloudDataplexV1DataScanExecutionSpec? executionSpec;
@@ -7332,10 +7384,9 @@ class GoogleCloudDataplexV1DataScan {
   core.Map<core.String, core.String>? labels;
 
   /// The relative resource name of the scan, of the form:
-  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}.
-  ///
-  /// where {project} refers to a project_id or project_number and location_id
-  /// refers to a GCP region.
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
+  /// project refers to a project_id or project_number and location_id refers to
+  /// a GCP region.
   ///
   /// Output only.
   core.String? name;
@@ -7355,9 +7406,9 @@ class GoogleCloudDataplexV1DataScan {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan Type is unspecified.
-  /// - "DATA_QUALITY" : Data Quality Scan.
-  /// - "DATA_PROFILE" : Data Profile Scan.
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan type is unspecified.
+  /// - "DATA_QUALITY" : Data Quality scan.
+  /// - "DATA_PROFILE" : Data Profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the scan.
@@ -7476,16 +7527,16 @@ class GoogleCloudDataplexV1DataScan {
 
 /// DataScan execution settings.
 class GoogleCloudDataplexV1DataScanExecutionSpec {
-  /// The unnested field (Date or Timestamp) that contains values that
-  /// monotonically increase over time.
+  /// The unnested field (of type Date or Timestamp) that contains values which
+  /// monotonically increase over time.If not specified, a data scan will run
+  /// for all data in the table.
   ///
   /// Immutable.
   core.String? field;
 
-  /// Spec related to how often and when a scan should be triggered.
-  ///
-  /// If not specified, the default is OnDemand, which means the scan will not
-  /// run until the user calls RunDataScan API.
+  /// Spec related to how often and when a scan should be triggered.If not
+  /// specified, the default is OnDemand, which means the scan will not run
+  /// until the user calls RunDataScan API.
   ///
   /// Optional.
   GoogleCloudDataplexV1Trigger? trigger;
@@ -7541,7 +7592,7 @@ class GoogleCloudDataplexV1DataScanExecutionStatus {
       };
 }
 
-/// A DataScanJob represents an instance of a data scan.
+/// A DataScanJob represents an instance of DataScan execution.
 class GoogleCloudDataplexV1DataScanJob {
   /// The result of the data profile scan.
   ///
@@ -7574,9 +7625,8 @@ class GoogleCloudDataplexV1DataScanJob {
   core.String? message;
 
   /// The relative resource name of the DataScanJob, of the form:
-  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}.
-  ///
-  /// where {project} refers to a project_id or project_number and location_id
+  /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id},
+  /// where project refers to a project_id or project_number and location_id
   /// refers to a GCP region.
   ///
   /// Output only.
@@ -7604,9 +7654,9 @@ class GoogleCloudDataplexV1DataScanJob {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan Type is unspecified.
-  /// - "DATA_QUALITY" : Data Quality Scan.
-  /// - "DATA_PROFILE" : Data Profile Scan.
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan type is unspecified.
+  /// - "DATA_QUALITY" : Data Quality scan.
+  /// - "DATA_PROFILE" : Data Profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the DataScanJob.
@@ -7683,7 +7733,8 @@ class GoogleCloudDataplexV1DataScanJob {
 
 /// The data source for DataScan.
 class GoogleCloudDataplexV1DataSource {
-  /// The dataplex entity that contains the data for DataScan, of the form:
+  /// The Dataplex entity that represents the data source (e.g. BigQuery table)
+  /// for DataScan, of the form:
   /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
   ///
   /// Immutable.
@@ -7707,6 +7758,13 @@ class GoogleCloudDataplexV1DataSource {
 
 /// Represents tables and fileset metadata contained within a zone.
 class GoogleCloudDataplexV1Entity {
+  /// Identifies the access mechanism to the entity.
+  ///
+  /// Not user settable.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1StorageAccess? access;
+
   /// The ID of the asset associated with the storage location containing the
   /// entity data.
   ///
@@ -7818,12 +7876,21 @@ class GoogleCloudDataplexV1Entity {
   /// - "FILESET" : Unstructured data.
   core.String? type;
 
+  /// System generated unique ID for the Entity.
+  ///
+  /// This ID will be different if the Entity is deleted and re-created with the
+  /// same name.
+  ///
+  /// Output only.
+  core.String? uid;
+
   /// The time when the entity was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
   GoogleCloudDataplexV1Entity({
+    this.access,
     this.asset,
     this.catalogEntry,
     this.compatibility,
@@ -7839,11 +7906,16 @@ class GoogleCloudDataplexV1Entity {
     this.schema,
     this.system,
     this.type,
+    this.uid,
     this.updateTime,
   });
 
   GoogleCloudDataplexV1Entity.fromJson(core.Map json_)
       : this(
+          access: json_.containsKey('access')
+              ? GoogleCloudDataplexV1StorageAccess.fromJson(
+                  json_['access'] as core.Map<core.String, core.dynamic>)
+              : null,
           asset:
               json_.containsKey('asset') ? json_['asset'] as core.String : null,
           catalogEntry: json_.containsKey('catalogEntry')
@@ -7883,12 +7955,14 @@ class GoogleCloudDataplexV1Entity {
               ? json_['system'] as core.String
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (access != null) 'access': access!,
         if (asset != null) 'asset': asset!,
         if (catalogEntry != null) 'catalogEntry': catalogEntry!,
         if (compatibility != null) 'compatibility': compatibility!,
@@ -7904,6 +7978,7 @@ class GoogleCloudDataplexV1Entity {
         if (schema != null) 'schema': schema!,
         if (system != null) 'system': system!,
         if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -8829,7 +8904,7 @@ class GoogleCloudDataplexV1ListContentResponse {
 
 /// List DataScanJobs response.
 class GoogleCloudDataplexV1ListDataScanJobsResponse {
-  /// DataScanJobs (metadata only) under a given dataScan.
+  /// DataScanJobs (BASIC view only) under a given dataScan.
   core.List<GoogleCloudDataplexV1DataScanJob>? dataScanJobs;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -8862,7 +8937,7 @@ class GoogleCloudDataplexV1ListDataScanJobsResponse {
 
 /// List dataScans response.
 class GoogleCloudDataplexV1ListDataScansResponse {
-  /// DataScans (metadata only) under the given parent location.
+  /// DataScans (BASIC view only) under the given parent location.
   core.List<GoogleCloudDataplexV1DataScan>? dataScans;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -9254,7 +9329,7 @@ typedef GoogleCloudDataplexV1RunDataScanRequest = $Empty;
 
 /// Run DataScan Response.
 class GoogleCloudDataplexV1RunDataScanResponse {
-  /// DataScanJob created by RunDataScan API.
+  /// DataScanJob created by RunDataScan request.
   GoogleCloudDataplexV1DataScanJob? job;
 
   GoogleCloudDataplexV1RunDataScanResponse({
@@ -9265,6 +9340,29 @@ class GoogleCloudDataplexV1RunDataScanResponse {
       : this(
           job: json_.containsKey('job')
               ? GoogleCloudDataplexV1DataScanJob.fromJson(
+                  json_['job'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (job != null) 'job': job!,
+      };
+}
+
+typedef GoogleCloudDataplexV1RunTaskRequest = $Empty;
+
+class GoogleCloudDataplexV1RunTaskResponse {
+  /// Jobs created by RunTask API.
+  GoogleCloudDataplexV1Job? job;
+
+  GoogleCloudDataplexV1RunTaskResponse({
+    this.job,
+  });
+
+  GoogleCloudDataplexV1RunTaskResponse.fromJson(core.Map json_)
+      : this(
+          job: json_.containsKey('job')
+              ? GoogleCloudDataplexV1Job.fromJson(
                   json_['job'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -9299,14 +9397,14 @@ class GoogleCloudDataplexV1ScannedData {
 
 /// A data range denoted by a pair of start/end values of a field.
 class GoogleCloudDataplexV1ScannedDataIncrementalField {
-  /// Value that marks the end of the range
+  /// Value that marks the end of the range.
   core.String? end;
 
   /// The field that contains values which monotonically increases over time
-  /// (e.g. timestamp).
+  /// (e.g. a timestamp column).
   core.String? field;
 
-  /// Value that marks the start of the range
+  /// Value that marks the start of the range.
   core.String? start;
 
   GoogleCloudDataplexV1ScannedDataIncrementalField({
@@ -9605,6 +9703,34 @@ class GoogleCloudDataplexV1Session {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Describes the access mechanism of the data within its storage location.
+class GoogleCloudDataplexV1StorageAccess {
+  /// Describes the read access mechanism of the data.
+  ///
+  /// Not user settable.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACCESS_MODE_UNSPECIFIED" : Access mode unspecified.
+  /// - "DIRECT" : Default. Data is accessed directly using storage APIs.
+  /// - "MANAGED" : Data is accessed through a managed interface using BigQuery
+  /// APIs.
+  core.String? read;
+
+  GoogleCloudDataplexV1StorageAccess({
+    this.read,
+  });
+
+  GoogleCloudDataplexV1StorageAccess.fromJson(core.Map json_)
+      : this(
+          read: json_.containsKey('read') ? json_['read'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (read != null) 'read': read!,
       };
 }
 
@@ -10511,8 +10637,8 @@ class GoogleCloudDataplexV1TaskTriggerSpec {
   /// To explicitly set a timezone to the cron tab, apply a prefix in the cron
   /// tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
   /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
-  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
-  /// 1 * * * *". This field is required for RECURRING tasks.
+  /// For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1
+  /// * * * *. This field is required for RECURRING tasks.
   ///
   /// Optional.
   core.String? schedule;
@@ -10570,7 +10696,7 @@ class GoogleCloudDataplexV1TaskTriggerSpec {
 
 /// DataScan scheduling and trigger settings.
 class GoogleCloudDataplexV1Trigger {
-  /// The scan runs one-time shortly after DataScan Creation.
+  /// The scan runs once via RunDataScan API.
   GoogleCloudDataplexV1TriggerOnDemand? onDemand;
 
   /// The scan is scheduled to run periodically.
@@ -10599,19 +10725,20 @@ class GoogleCloudDataplexV1Trigger {
       };
 }
 
-/// The scan runs one-time via RunDataScan API.
+/// The scan runs once via RunDataScan API.
 typedef GoogleCloudDataplexV1TriggerOnDemand = $Empty;
 
 /// The scan is scheduled to run periodically.
 class GoogleCloudDataplexV1TriggerSchedule {
-  /// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running scans
-  /// periodically.
+  /// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans
+  /// periodically.To explicitly set a timezone in the cron tab, apply a prefix
+  /// in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
   ///
-  /// To explicitly set a timezone to the cron tab, apply a prefix in the cron
-  /// tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
-  /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
-  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
-  /// 1 * * * *". This field is required for Schedule scans.
+  /// The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone
+  /// database (wikipedia
+  /// (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For
+  /// example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * *
+  /// * *.This field is required for Schedule scans.
   ///
   /// Required.
   core.String? cron;
@@ -10832,8 +10959,8 @@ class GoogleCloudDataplexV1ZoneDiscoverySpec {
   /// timezone to the cron tab, apply a prefix in the cron tab:
   /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The
   /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
-  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
-  /// 1 * * * *".
+  /// For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1
+  /// * * * *.
   ///
   /// Optional.
   core.String? schedule;

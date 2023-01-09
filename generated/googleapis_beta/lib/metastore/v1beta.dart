@@ -2790,7 +2790,7 @@ class Consumer {
   /// the same region and same network. There must be at least one IP address
   /// available in the subnet's primary range. The subnet is specified in the
   /// following
-  /// form:\`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+  /// form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
   ///
   /// Immutable.
   core.String? subnetwork;
@@ -4220,7 +4220,30 @@ class QueryMetadataRequest {
 }
 
 /// Request message for DataprocMetastore.RemoveIamPolicy.
-typedef RemoveIamPolicyRequest = $Empty;
+class RemoveIamPolicyRequest {
+  /// Removes IAM policy attached to database or table asynchronously when it is
+  /// set.
+  ///
+  /// The default is false.
+  ///
+  /// Optional.
+  core.bool? asynchronous;
+
+  RemoveIamPolicyRequest({
+    this.asynchronous,
+  });
+
+  RemoveIamPolicyRequest.fromJson(core.Map json_)
+      : this(
+          asynchronous: json_.containsKey('asynchronous')
+              ? json_['asynchronous'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asynchronous != null) 'asynchronous': asynchronous!,
+      };
+}
 
 /// Response message for DataprocMetastore.RemoveIamPolicy.
 class RemoveIamPolicyResponse {

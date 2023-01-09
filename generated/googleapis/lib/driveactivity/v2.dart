@@ -544,10 +544,10 @@ class Comment {
 
 /// How the individual activities are consolidated.
 ///
-/// A set of activities may be consolidated into one combined activity if they
-/// are related in some way, such as one actor performing the same action on
-/// multiple targets, or multiple actors performing the same action on a single
-/// target. The strategy defines the rules for which activities are related.
+/// If a set of activities is related they can be consolidated into one combined
+/// activity, such as one actor performing the same action on multiple targets,
+/// or multiple actors performing the same action on a single target. The
+/// strategy defines the rules for which activities are related.
 class ConsolidationStrategy {
   /// The individual activities are consolidated using the legacy strategy.
   Legacy? legacy;
@@ -1407,7 +1407,7 @@ class KnownUser {
       };
 }
 
-/// A strategy which consolidates activities using the grouping rules from the
+/// A strategy that consolidates activities using the grouping rules from the
 /// legacy V1 Activity API.
 ///
 /// Similar actions occurring within a window of time can be grouped across
@@ -1454,7 +1454,7 @@ class Move {
 /// An object was created from scratch.
 typedef New = $Empty;
 
-/// A strategy which does no consolidation of individual activities.
+/// A strategy that does no consolidation of individual activities.
 typedef NoConsolidation = $Empty;
 
 /// Information about the owner of a Drive item.
@@ -1656,14 +1656,15 @@ class Post {
 
 /// The request message for querying Drive activity.
 class QueryDriveActivityRequest {
-  /// Return activities for this Drive folder and all children and descendants.
+  /// Return activities for this Drive folder, plus all children and
+  /// descendants.
   ///
   /// The format is `items/ITEM_ID`.
   core.String? ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
   ///
-  /// If not set, then related actions are not consolidated.
+  /// If not set, then related actions aren't consolidated.
   ConsolidationStrategy? consolidationStrategy;
 
   /// The filtering for items returned from this query request.
@@ -1675,9 +1676,11 @@ class QueryDriveActivityRequest {
   /// format. Examples: - `time > 1452409200000 AND time <= 1492812924310` -
   /// `time >= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses
   /// the "has" operator (:) and either a singular value or a list of allowed
-  /// action types enclosed in parentheses. Examples: -
-  /// `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE
-  /// EDIT)` - `-detail.action_detail_case:MOVE`
+  /// action types enclosed in parentheses, separated by a space. To exclude a
+  /// result from the response, prepend a hyphen (`-`) to the beginning of the
+  /// filter string. Examples: - `detail.action_detail_case:RENAME` -
+  /// `detail.action_detail_case:(CREATE RESTORE)` -
+  /// `-detail.action_detail_case:MOVE`
   core.String? filter;
 
   /// Return activities for this Drive item.
@@ -1685,18 +1688,18 @@ class QueryDriveActivityRequest {
   /// The format is `items/ITEM_ID`.
   core.String? itemName;
 
-  /// The miminum number of activities desired in the response; the server will
-  /// attempt to return at least this quanitity.
+  /// The minimum number of activities desired in the response; the server
+  /// attempts to return at least this quantity.
   ///
   /// The server may also return fewer activities if it has a partial response
   /// ready before the request times out. If not set, a default value is used.
   core.int? pageSize;
 
-  /// The token identifying which page of results to return.
+  /// The token identifies which page of results to return.
   ///
   /// Set this to the next_page_token value returned from a previous query to
   /// obtain the following page of results. If not set, the first page of
-  /// results will be returned.
+  /// results is returned.
   core.String? pageToken;
 
   QueryDriveActivityRequest({
@@ -2025,6 +2028,9 @@ class SystemEvent {
 }
 
 /// Information about the target of activity.
+///
+/// For more information on how activity history is shared with users, see
+/// [Activity history visibility](https://developers.google.com/drive/activity/v2#activityhistory).
 class Target {
   /// The target is a shared drive.
   Drive? drive;

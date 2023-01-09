@@ -1952,6 +1952,8 @@ class PackageData {
   /// - "MAVEN" : Java packages from Maven.
   /// - "GO" : Go third-party packages.
   /// - "GO_STDLIB" : Go toolchain + standard library packages.
+  /// - "PYPI" : Python packages.
+  /// - "NPM" : NPM packages.
   core.String? packageType;
 
   /// CVEs that this package is no longer vulnerable to

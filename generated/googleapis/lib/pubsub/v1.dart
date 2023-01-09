@@ -2170,7 +2170,11 @@ class BigQueryConfig {
   /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "ACTIVE" : The subscription can actively send messages to BigQuery
   /// - "PERMISSION_DENIED" : Cannot write to the BigQuery table because of
-  /// permission denied errors.
+  /// permission denied errors. This can happen if - Pub/Sub SA has not been
+  /// granted the
+  /// [appropriate BigQuery IAM permissions](https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account)
+  /// - bigquery.googleapis.com API is not enabled for the project
+  /// ([instructions](https://cloud.google.com/service-usage/docs/enable-disable))
   /// - "NOT_FOUND" : Cannot write to the BigQuery table because it does not
   /// exist.
   /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema

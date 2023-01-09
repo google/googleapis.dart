@@ -1888,7 +1888,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// The ID of the Recommendations AI serving config or placement. Before you
   /// can request predictions from your model, you must create at least one
   /// serving config or placement for it. For more information, see
-  /// [Managing serving configurations](https://cloud.google.com/retail/docs/manage-configs).
+  /// [Manage serving configs](https://cloud.google.com/retail/docs/manage-configs).
   /// The full list of available serving configs can be seen at
   /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
   /// Value must have pattern
@@ -1940,8 +1940,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
   /// or the name of the legacy placement resource, such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
-  /// This field is used to identify the serving configuration name and the set
-  /// of models that will be used to make the search.
+  /// This field is used to identify the serving config name and the set of
+  /// models that will be used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
   ///
@@ -2281,7 +2281,7 @@ class ProjectsLocationsCatalogsServingConfigsResource {
   /// The ID of the Recommendations AI serving config or placement. Before you
   /// can request predictions from your model, you must create at least one
   /// serving config or placement for it. For more information, see
-  /// [Managing serving configurations](https://cloud.google.com/retail/docs/manage-configs).
+  /// [Manage serving configs](https://cloud.google.com/retail/docs/manage-configs).
   /// The full list of available serving configs can be seen at
   /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
   /// Value must have pattern
@@ -2381,8 +2381,8 @@ class ProjectsLocationsCatalogsServingConfigsResource {
   /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
   /// or the name of the legacy placement resource, such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
-  /// This field is used to identify the serving configuration name and the set
-  /// of models that will be used to make the search.
+  /// This field is used to identify the serving config name and the set of
+  /// models that will be used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
   ///
@@ -2443,7 +2443,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// payload bytes.
   ///
   /// [prebuiltRule] - The prebuilt rule name that can convert a specific type
-  /// of raw_json. For example: "default_schema/v1.0"
+  /// of raw_json. For example: "ga4_bq" rule for the GA4 user event schema.
   ///
   /// [rawJson] - An arbitrary serialized JSON string that contains necessary
   /// information that can comprise a user event. When this field is specified,
@@ -2656,6 +2656,12 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
+  /// [writeAsync] - If set to true, the user event will be written
+  /// asynchronously after validation, and the API will respond without waiting
+  /// for the write. Therefore, silent failures can occur even if the API
+  /// returns success. In case of silent failures, error messages can be found
+  /// in Stackdriver logs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2669,10 +2675,12 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleCloudRetailV2UserEvent> write(
     GoogleCloudRetailV2UserEvent request,
     core.String parent, {
+    core.bool? writeAsync,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (writeAsync != null) 'writeAsync': ['${writeAsync}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3383,10 +3391,10 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable.
   ///
   /// This property only applies to textual custom attributes and requires
-  /// indexable set to enabled to enable exact-searchable.
+  /// indexable set to enabled to enable exact-searchable. If unset, the server
+  /// behavior defaults to EXACT_SEARCHABLE_DISABLED.
   /// Possible string values are:
-  /// - "EXACT_SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults
-  /// to EXACT_SEARCHABLE_DISABLED.
+  /// - "EXACT_SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "EXACT_SEARCHABLE_ENABLED" : Exact searchable option enabled for an
   /// attribute.
   /// - "EXACT_SEARCHABLE_DISABLED" : Exact searchable option disabled for an
@@ -3428,16 +3436,19 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// `attributes.xyz`. To be indexable, the attribute name can contain only
   /// alpha-numeric characters and underscores. For example, an attribute named
   /// `attributes.abc_xyz` can be indexed, but an attribute named
-  /// `attributes.abc-xyz` cannot be indexed.
+  /// `attributes.abc-xyz` cannot be indexed. For attributes whoes key start
+  /// with `attributes.`, we refer them as custom attributes. Otherwise they are
+  /// built-in attributes such as `color` and `brands`.
   ///
   /// Required.
   core.String? key;
 
   /// If RETRIEVABLE_ENABLED, attribute values are retrievable in the search
   /// results.
+  ///
+  /// If unset, the server behavior defaults to RETRIEVABLE_DISABLED.
   /// Possible string values are:
-  /// - "RETRIEVABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
-  /// RETRIEVABLE_DISABLED.
+  /// - "RETRIEVABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "RETRIEVABLE_ENABLED" : Retrievable option enabled for an attribute.
   /// - "RETRIEVABLE_DISABLED" : Retrievable option disabled for an attribute.
   core.String? retrievableOption;
@@ -3535,7 +3546,7 @@ class GoogleCloudRetailV2ColorInfo {
   /// names, such as the color aliases used in the website frontend.
   ///
   /// Normally it is expected to have only 1 color. May consider using single
-  /// "Mixed" instead of multiple values. A maximum of 25 colors are allowed.
+  /// "Mixed" instead of multiple values. A maximum of 75 colors are allowed.
   /// Each value must be a UTF-8 encoded string with a length limit of 128
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
   /// Merchant Center property
@@ -4048,8 +4059,8 @@ class GoogleCloudRetailV2ConditionTimeRange {
 /// Configures dynamic metadata that can be linked to a ServingConfig and affect
 /// search or recommendation results at serving time.
 class GoogleCloudRetailV2Control {
-  /// List of serving configuration ids that are associated with this control in
-  /// the same Catalog.
+  /// List of serving config ids that are associated with this control in the
+  /// same Catalog.
   ///
   /// Note the association is managed via the ServingConfig, this is an output
   /// only denormalized view.
@@ -8040,6 +8051,8 @@ class GoogleCloudRetailV2ServingConfig {
   core.String? diversityLevel;
 
   /// What kind of diversity to use - data driven or rule based.
+  ///
+  /// If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
   /// Possible string values are:
   /// - "DIVERSITY_TYPE_UNSPECIFIED" : Default value.
   /// - "RULE_BASED_DIVERSITY" : Rule based diversity.
@@ -8134,7 +8147,7 @@ class GoogleCloudRetailV2ServingConfig {
   /// Price reranking causes product items with a similar recommendation
   /// probability to be ordered by price, with the highest-priced items first.
   /// This setting could result in a decrease in click-through and conversion
-  /// rates. Allowed values are: * `no-price-reranking` * `low-price-raranking`
+  /// rates. Allowed values are: * `no-price-reranking` * `low-price-reranking`
   /// * `medium-price-reranking` * `high-price-reranking` If not specified, we
   /// choose default based on model type. Default value: `no-price-reranking`.
   /// Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.

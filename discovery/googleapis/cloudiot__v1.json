@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20221018",
+    "revision": "20230102",
     "rootUrl": "https://cloudiot.googleapis.com/",
     "schemas": {
         "BindDeviceToGatewayRequest": {

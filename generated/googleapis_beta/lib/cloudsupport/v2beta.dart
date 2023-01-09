@@ -427,9 +427,7 @@ class CasesResource {
 
   /// Update the specified case.
   ///
-  /// Only a subset of fields (display_name, description, time_zone,
-  /// subscriber_email_addresses, related_resources, severity, priority,
-  /// primary_contact, and labels) can be updated.
+  /// Only a subset of fields can be updated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -438,14 +436,14 @@ class CasesResource {
   /// [name] - The resource name for the case.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
-  /// [updateMask] - A field that represents attributes of a case object that
-  /// should be updated as part of this request. Supported values are severity,
+  /// [updateMask] - A list of attributes of the case object that should be
+  /// updated as part of this request. Supported values are severity,
   /// display_name, and subscriber_email_addresses. If no fields are specified,
-  /// all supported fields will be updated. WARNING: If you do not provide a
-  /// field mask then you may accidentally clear some fields. For example, if
-  /// you leave field mask empty and do not provide a value for
-  /// subscriber_email_addresses then subscriber_email_addresses will be updated
-  /// to empty.
+  /// all supported fields are updated. WARNING: If you do not provide a field
+  /// mask, then you may accidentally clear some fields. For example, if you
+  /// leave field mask empty and do not provide a value for
+  /// subscriber_email_addresses, then subscriber_email_addresses is updated to
+  /// empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

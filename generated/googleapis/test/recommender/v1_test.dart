@@ -590,6 +590,33 @@ void checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(
   buildCounterGoogleCloudRecommenderV1MarkRecommendationClaimedRequest--;
 }
 
+core.int
+    buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest = 0;
+api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+    buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest() {
+  final o = api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+  buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest++;
+  if (buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest <
+      3) {
+    o.etag = 'foo';
+  }
+  buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest--;
+  return o;
+}
+
+void checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(
+    api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest o) {
+  buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest++;
+  if (buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest <
+      3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecommenderV1MarkRecommendationDismissedRequest--;
+}
+
 core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
@@ -1569,6 +1596,19 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudRecommenderV1MarkRecommendationDismissedRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudRecommenderV1MarkRecommendationFailedRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
@@ -2398,6 +2438,72 @@ void main() {
           response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
+    unittest.test('method--markDismissed', () async {
+      final mock = HttpServerMock();
+      final res = api.RecommenderApi(mock)
+          .billingAccounts
+          .locations
+          .recommenders
+          .recommendations;
+      final arg_request =
+          buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.markDismissed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
+    });
+
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
       final res = api.RecommenderApi(mock)
@@ -2922,6 +3028,72 @@ void main() {
       }), true);
       final response =
           await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
+    });
+
+    unittest.test('method--markDismissed', () async {
+      final mock = HttpServerMock();
+      final res = api.RecommenderApi(mock)
+          .folders
+          .locations
+          .recommenders
+          .recommendations;
+      final arg_request =
+          buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.markDismissed(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleCloudRecommenderV1Recommendation(
           response as api.GoogleCloudRecommenderV1Recommendation);
     });
@@ -3720,6 +3892,72 @@ void main() {
           response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
+    unittest.test('method--markDismissed', () async {
+      final mock = HttpServerMock();
+      final res = api.RecommenderApi(mock)
+          .organizations
+          .locations
+          .recommenders
+          .recommendations;
+      final arg_request =
+          buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.markDismissed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
+    });
+
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
       final res = api.RecommenderApi(mock)
@@ -4500,6 +4738,72 @@ void main() {
       }), true);
       final response =
           await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
+    });
+
+    unittest.test('method--markDismissed', () async {
+      final mock = HttpServerMock();
+      final res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
+      final arg_request =
+          buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.markDismissed(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleCloudRecommenderV1Recommendation(
           response as api.GoogleCloudRecommenderV1Recommendation);
     });

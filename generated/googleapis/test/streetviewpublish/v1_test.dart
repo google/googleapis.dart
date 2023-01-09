@@ -530,6 +530,43 @@ void checkMeasurement3d(api.Measurement3d o) {
   buildCounterMeasurement3d--;
 }
 
+core.int buildCounterNoOverlapGpsFailureDetails = 0;
+api.NoOverlapGpsFailureDetails buildNoOverlapGpsFailureDetails() {
+  final o = api.NoOverlapGpsFailureDetails();
+  buildCounterNoOverlapGpsFailureDetails++;
+  if (buildCounterNoOverlapGpsFailureDetails < 3) {
+    o.gpsEndTime = 'foo';
+    o.gpsStartTime = 'foo';
+    o.videoEndTime = 'foo';
+    o.videoStartTime = 'foo';
+  }
+  buildCounterNoOverlapGpsFailureDetails--;
+  return o;
+}
+
+void checkNoOverlapGpsFailureDetails(api.NoOverlapGpsFailureDetails o) {
+  buildCounterNoOverlapGpsFailureDetails++;
+  if (buildCounterNoOverlapGpsFailureDetails < 3) {
+    unittest.expect(
+      o.gpsEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gpsStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.videoEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.videoStartTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNoOverlapGpsFailureDetails--;
+}
+
 core.int buildCounterNotOutdoorsFailureDetails = 0;
 api.NotOutdoorsFailureDetails buildNotOutdoorsFailureDetails() {
   final o = api.NotOutdoorsFailureDetails();
@@ -991,6 +1028,7 @@ api.ProcessingFailureDetails buildProcessingFailureDetails() {
     o.gpsDataGapDetails = buildGpsDataGapFailureDetails();
     o.imuDataGapDetails = buildImuDataGapFailureDetails();
     o.insufficientGpsDetails = buildInsufficientGpsFailureDetails();
+    o.noOverlapGpsDetails = buildNoOverlapGpsFailureDetails();
     o.notOutdoorsDetails = buildNotOutdoorsFailureDetails();
   }
   buildCounterProcessingFailureDetails--;
@@ -1003,6 +1041,7 @@ void checkProcessingFailureDetails(api.ProcessingFailureDetails o) {
     checkGpsDataGapFailureDetails(o.gpsDataGapDetails!);
     checkImuDataGapFailureDetails(o.imuDataGapDetails!);
     checkInsufficientGpsFailureDetails(o.insufficientGpsDetails!);
+    checkNoOverlapGpsFailureDetails(o.noOverlapGpsDetails!);
     checkNotOutdoorsFailureDetails(o.notOutdoorsDetails!);
   }
   buildCounterProcessingFailureDetails--;
@@ -1323,6 +1362,16 @@ void main() {
       final od = api.Measurement3d.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMeasurement3d(od);
+    });
+  });
+
+  unittest.group('obj-schema-NoOverlapGpsFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNoOverlapGpsFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NoOverlapGpsFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNoOverlapGpsFailureDetails(od);
     });
   });
 

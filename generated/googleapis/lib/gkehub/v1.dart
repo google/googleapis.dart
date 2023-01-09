@@ -1697,7 +1697,8 @@ class CommonFeatureState {
 class ConfigManagementConfigSync {
   /// Set to true to allow the vertical scaling.
   ///
-  /// Defaults to false which disallows vertical scaling.
+  /// Defaults to false which disallows vertical scaling. This field is
+  /// deprecated.
   core.bool? allowVerticalScale;
 
   /// Enables the installation of ConfigSync.
@@ -4334,6 +4335,9 @@ class MembershipFeatureSpec {
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
 
+  /// True if value of `feature_spec` was inherited from a fleet-level default.
+  core.bool? fleetInherited;
+
   /// Fleet observability membership spec
   FleetObservabilityMembershipSpec? fleetobservability;
 
@@ -4345,6 +4349,7 @@ class MembershipFeatureSpec {
 
   MembershipFeatureSpec({
     this.configmanagement,
+    this.fleetInherited,
     this.fleetobservability,
     this.identityservice,
     this.mesh,
@@ -4356,6 +4361,9 @@ class MembershipFeatureSpec {
               ? ConfigManagementMembershipSpec.fromJson(
                   json_['configmanagement']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          fleetInherited: json_.containsKey('fleetInherited')
+              ? json_['fleetInherited'] as core.bool
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
               ? FleetObservabilityMembershipSpec.fromJson(
@@ -4374,6 +4382,7 @@ class MembershipFeatureSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (fleetInherited != null) 'fleetInherited': fleetInherited!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,

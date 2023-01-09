@@ -529,6 +529,7 @@ api.GoogleChromeManagementV1ChromeAppInfo
     o.permissions = buildUnnamed2();
     o.siteAccess = buildUnnamed3();
     o.supportEnabled = true;
+    o.type = 'foo';
   }
   buildCounterGoogleChromeManagementV1ChromeAppInfo--;
   return o;
@@ -551,6 +552,10 @@ void checkGoogleChromeManagementV1ChromeAppInfo(
     checkUnnamed2(o.permissions!);
     checkUnnamed3(o.siteAccess!);
     unittest.expect(o.supportEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleChromeManagementV1ChromeAppInfo--;
 }
@@ -2354,9 +2359,9 @@ api.GoogleChromeManagementV1TelemetryEvent
     o.httpsLatencyChangeEvent =
         buildGoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent();
     o.name = 'foo';
-    o.networkConnectionStateChangeEvent =
-        buildGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent();
     o.reportTime = 'foo';
+    o.usbPeripheralsEvent =
+        buildGoogleChromeManagementV1TelemetryUsbPeripheralsEvent();
     o.user = buildGoogleChromeManagementV1TelemetryUserInfo();
   }
   buildCounterGoogleChromeManagementV1TelemetryEvent--;
@@ -2380,12 +2385,12 @@ void checkGoogleChromeManagementV1TelemetryEvent(
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent(
-        o.networkConnectionStateChangeEvent!);
     unittest.expect(
       o.reportTime!,
       unittest.equals('foo'),
     );
+    checkGoogleChromeManagementV1TelemetryUsbPeripheralsEvent(
+        o.usbPeripheralsEvent!);
     checkGoogleChromeManagementV1TelemetryUserInfo(o.user!);
   }
   buildCounterGoogleChromeManagementV1TelemetryEvent--;
@@ -2422,38 +2427,37 @@ void checkGoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent(
   buildCounterGoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent--;
 }
 
-core.int
-    buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent =
-    0;
-api.GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
-    buildGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent() {
-  final o =
-      api.GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent();
-  buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent++;
-  if (buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent <
-      3) {
-    o.connectionState = 'foo';
-    o.guid = 'foo';
+core.List<api.GoogleChromeManagementV1UsbPeripheralReport> buildUnnamed35() => [
+      buildGoogleChromeManagementV1UsbPeripheralReport(),
+      buildGoogleChromeManagementV1UsbPeripheralReport(),
+    ];
+
+void checkUnnamed35(
+    core.List<api.GoogleChromeManagementV1UsbPeripheralReport> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1UsbPeripheralReport(o[0]);
+  checkGoogleChromeManagementV1UsbPeripheralReport(o[1]);
+}
+
+core.int buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent = 0;
+api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
+    buildGoogleChromeManagementV1TelemetryUsbPeripheralsEvent() {
+  final o = api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent();
+  buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent < 3) {
+    o.usbPeripheralReport = buildUnnamed35();
   }
-  buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent--;
+  buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent--;
   return o;
 }
 
-void checkGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent(
-    api.GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent o) {
-  buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent++;
-  if (buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent <
-      3) {
-    unittest.expect(
-      o.connectionState!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.guid!,
-      unittest.equals('foo'),
-    );
+void checkGoogleChromeManagementV1TelemetryUsbPeripheralsEvent(
+    api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent o) {
+  buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent < 3) {
+    checkUnnamed35(o.usbPeripheralReport!);
   }
-  buildCounterGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent--;
+  buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent--;
 }
 
 core.int buildCounterGoogleChromeManagementV1TelemetryUserInfo = 0;
@@ -2548,7 +2552,80 @@ void checkGoogleChromeManagementV1TotalMemoryEncryptionInfo(
   buildCounterGoogleChromeManagementV1TotalMemoryEncryptionInfo--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed35() => {
+core.List<core.String> buildUnnamed36() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed36(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleChromeManagementV1UsbPeripheralReport = 0;
+api.GoogleChromeManagementV1UsbPeripheralReport
+    buildGoogleChromeManagementV1UsbPeripheralReport() {
+  final o = api.GoogleChromeManagementV1UsbPeripheralReport();
+  buildCounterGoogleChromeManagementV1UsbPeripheralReport++;
+  if (buildCounterGoogleChromeManagementV1UsbPeripheralReport < 3) {
+    o.categories = buildUnnamed36();
+    o.classId = 42;
+    o.firmwareVersion = 'foo';
+    o.name = 'foo';
+    o.pid = 42;
+    o.subclassId = 42;
+    o.vendor = 'foo';
+    o.vid = 42;
+  }
+  buildCounterGoogleChromeManagementV1UsbPeripheralReport--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1UsbPeripheralReport(
+    api.GoogleChromeManagementV1UsbPeripheralReport o) {
+  buildCounterGoogleChromeManagementV1UsbPeripheralReport++;
+  if (buildCounterGoogleChromeManagementV1UsbPeripheralReport < 3) {
+    checkUnnamed36(o.categories!);
+    unittest.expect(
+      o.classId!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.firmwareVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pid!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.subclassId!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.vendor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vid!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleChromeManagementV1UsbPeripheralReport--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed37() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2561,7 +2638,7 @@ core.Map<core.String, core.Object?> buildUnnamed35() => {
       },
     };
 
-void checkUnnamed35(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2593,15 +2670,15 @@ void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
-      buildUnnamed35(),
-      buildUnnamed35(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed38() => [
+      buildUnnamed37(),
+      buildUnnamed37(),
     ];
 
-void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed38(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed35(o[0]);
-  checkUnnamed35(o[1]);
+  checkUnnamed37(o[0]);
+  checkUnnamed37(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2610,7 +2687,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed36();
+    o.details = buildUnnamed38();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2624,7 +2701,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed36(o.details!);
+    checkUnnamed38(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -3204,17 +3281,14 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent',
-      () {
+      'obj-schema-GoogleChromeManagementV1TelemetryUsbPeripheralsEvent', () {
     unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent();
+      final o = buildGoogleChromeManagementV1TelemetryUsbPeripheralsEvent();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od =
-          api.GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent(
-          od);
+          api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1TelemetryUsbPeripheralsEvent(od);
     });
   });
 
@@ -3246,6 +3320,16 @@ void main() {
       final od = api.GoogleChromeManagementV1TotalMemoryEncryptionInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1TotalMemoryEncryptionInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1UsbPeripheralReport', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1UsbPeripheralReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1UsbPeripheralReport(od);
     });
   });
 

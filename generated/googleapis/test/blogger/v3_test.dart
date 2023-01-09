@@ -2930,6 +2930,7 @@ void main() {
       final res = api.BloggerApi(mock).pages;
       final arg_blogId = 'foo';
       final arg_pageId = 'foo';
+      final arg_useTrash = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -2983,6 +2984,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useTrash']!.first,
+          unittest.equals('$arg_useTrash'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2993,7 +2998,8 @@ void main() {
         final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      await res.delete(arg_blogId, arg_pageId, $fields: arg_$fields);
+      await res.delete(arg_blogId, arg_pageId,
+          useTrash: arg_useTrash, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
@@ -3825,6 +3831,7 @@ void main() {
       final res = api.BloggerApi(mock).posts;
       final arg_blogId = 'foo';
       final arg_postId = 'foo';
+      final arg_useTrash = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -3878,6 +3885,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useTrash']!.first,
+          unittest.equals('$arg_useTrash'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -3888,7 +3899,8 @@ void main() {
         final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      await res.delete(arg_blogId, arg_postId, $fields: arg_$fields);
+      await res.delete(arg_blogId, arg_postId,
+          useTrash: arg_useTrash, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
@@ -4169,6 +4181,7 @@ void main() {
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
+      final arg_sortOption = 'foo';
       final arg_startDate = 'foo';
       final arg_status = buildUnnamed17();
       final arg_view = 'foo';
@@ -4247,6 +4260,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['sortOption']!.first,
+          unittest.equals(arg_sortOption),
+        );
+        unittest.expect(
           queryMap['startDate']!.first,
           unittest.equals(arg_startDate),
         );
@@ -4277,6 +4294,7 @@ void main() {
           maxResults: arg_maxResults,
           orderBy: arg_orderBy,
           pageToken: arg_pageToken,
+          sortOption: arg_sortOption,
           startDate: arg_startDate,
           status: arg_status,
           view: arg_view,

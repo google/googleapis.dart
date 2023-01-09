@@ -47,6 +47,7 @@
 ///     - [ProjectsConversationsMessagesResource]
 ///     - [ProjectsConversationsParticipantsResource]
 ///       - [ProjectsConversationsParticipantsSuggestionsResource]
+///     - [ProjectsConversationsSuggestionsResource]
 ///   - [ProjectsKnowledgeBasesResource]
 ///     - [ProjectsKnowledgeBasesDocumentsResource]
 ///   - [ProjectsLocationsResource]
@@ -73,6 +74,7 @@
 ///       - [ProjectsLocationsConversationsMessagesResource]
 ///       - [ProjectsLocationsConversationsParticipantsResource]
 ///         - [ProjectsLocationsConversationsParticipantsSuggestionsResource]
+///       - [ProjectsLocationsConversationsSuggestionsResource]
 ///     - [ProjectsLocationsKnowledgeBasesResource]
 ///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -4999,6 +5001,8 @@ class ProjectsConversationsResource {
       ProjectsConversationsMessagesResource(_requester);
   ProjectsConversationsParticipantsResource get participants =>
       ProjectsConversationsParticipantsResource(_requester);
+  ProjectsConversationsSuggestionsResource get suggestions =>
+      ProjectsConversationsSuggestionsResource(_requester);
 
   ProjectsConversationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -5654,6 +5658,62 @@ class ProjectsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationsSuggestionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Suggests summary for a conversation based on specific historical messages.
+  ///
+  /// The range of the messages to be used for summary can be specified in the
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversation] - Required. The conversation to fetch suggestion for.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2SuggestConversationSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestConversationSummaryResponse>
+      suggestConversationSummary(
+    GoogleCloudDialogflowV2SuggestConversationSummaryRequest request,
+    core.String conversation, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$conversation') +
+        '/suggestions:suggestConversationSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10907,6 +10967,8 @@ class ProjectsLocationsConversationsResource {
       ProjectsLocationsConversationsMessagesResource(_requester);
   ProjectsLocationsConversationsParticipantsResource get participants =>
       ProjectsLocationsConversationsParticipantsResource(_requester);
+  ProjectsLocationsConversationsSuggestionsResource get suggestions =>
+      ProjectsLocationsConversationsSuggestionsResource(_requester);
 
   ProjectsLocationsConversationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -11570,6 +11632,63 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsSuggestionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Suggests summary for a conversation based on specific historical messages.
+  ///
+  /// The range of the messages to be used for summary can be specified in the
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversation] - Required. The conversation to fetch suggestion for.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2SuggestConversationSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestConversationSummaryResponse>
+      suggestConversationSummary(
+    GoogleCloudDialogflowV2SuggestConversationSummaryRequest request,
+    core.String conversation, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$conversation') +
+        '/suggestions:suggestConversationSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -12759,10 +12878,17 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   /// - "EFFICIENT" : Document is efficient.
   core.String? documentEfficiency;
 
+  /// Feedback for conversation summarization.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback?
+      summarizationFeedback;
+
   GoogleCloudDialogflowV2AgentAssistantFeedback({
     this.answerRelevance,
     this.documentCorrectness,
     this.documentEfficiency,
+    this.summarizationFeedback,
   });
 
   GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(core.Map json_)
@@ -12776,6 +12902,11 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
           documentEfficiency: json_.containsKey('documentEfficiency')
               ? json_['documentEfficiency'] as core.String
               : null,
+          summarizationFeedback: json_.containsKey('summarizationFeedback')
+              ? GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
+                  .fromJson(json_['summarizationFeedback']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12784,6 +12915,46 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
           'documentCorrectness': documentCorrectness!,
         if (documentEfficiency != null)
           'documentEfficiency': documentEfficiency!,
+        if (summarizationFeedback != null)
+          'summarizationFeedback': summarizationFeedback!,
+      };
+}
+
+/// Feedback for conversation summarization.
+class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
+  /// Timestamp when composing of the summary starts.
+  core.String? startTime;
+
+  /// Timestamp when the summary was submitted.
+  core.String? submitTime;
+
+  /// Text of actual submitted summary.
+  core.String? summaryText;
+
+  GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback({
+    this.startTime,
+    this.submitTime,
+    this.summaryText,
+  });
+
+  GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
+      core.Map json_)
+      : this(
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          submitTime: json_.containsKey('submitTime')
+              ? json_['submitTime'] as core.String
+              : null,
+          summaryText: json_.containsKey('summaryText')
+              ? json_['summaryText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+        if (submitTime != null) 'submitTime': submitTime!,
+        if (summaryText != null) 'summaryText': summaryText!,
       };
 }
 
@@ -21069,6 +21240,137 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
         if (articleAnswers != null) 'articleAnswers': articleAnswers!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Conversations.SuggestConversationSummary.
+class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
+  /// Max number of messages prior to and including \[latest_message\] to use as
+  /// context when compiling the suggestion.
+  ///
+  /// By default 500 and at most 1000.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used as context for compiling
+  /// suggestion.
+  ///
+  /// If empty, the latest message of the conversation will be used. Format:
+  /// `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryRequest({
+    this.contextSize,
+    this.latestMessage,
+  });
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
+      core.Map json_)
+      : this(
+          contextSize: json_.containsKey('contextSize')
+              ? json_['contextSize'] as core.int
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The response message for Conversations.SuggestConversationSummary.
+class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
+  /// Number of messages prior to and including last_conversation_message used
+  /// to compile the suggestion.
+  ///
+  /// It may be smaller than the SuggestSummaryRequest.context_size field in the
+  /// request if there weren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used as context for compiling
+  /// suggestion.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  /// Generated summary.
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary? summary;
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponse({
+    this.contextSize,
+    this.latestMessage,
+    this.summary,
+  });
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
+      core.Map json_)
+      : this(
+          contextSize: json_.containsKey('contextSize')
+              ? json_['contextSize'] as core.int
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+          summary: json_.containsKey('summary')
+              ? GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary
+                  .fromJson(
+                      json_['summary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (summary != null) 'summary': summary!,
+      };
+}
+
+/// Generated summary for a conversation.
+class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
+  /// The name of the answer record.
+  ///
+  /// Format: "projects//answerRecords/"
+  core.String? answerRecord;
+
+  /// The summary content that is concatenated into one string.
+  core.String? text;
+
+  /// The summary content that is divided into sections.
+  ///
+  /// The key is the section's name and the value is the section's content.
+  /// There is no specific format for the key or value.
+  core.Map<core.String, core.String>? textSections;
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary({
+    this.answerRecord,
+    this.text,
+    this.textSections,
+  });
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
+      core.Map json_)
+      : this(
+          answerRecord: json_.containsKey('answerRecord')
+              ? json_['answerRecord'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          textSections: json_.containsKey('textSections')
+              ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (text != null) 'text': text!,
+        if (textSections != null) 'textSections': textSections!,
       };
 }
 

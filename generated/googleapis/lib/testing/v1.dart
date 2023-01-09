@@ -2500,7 +2500,7 @@ class ManualSharding {
   /// You must specify at least one shard if this field is present. When you
   /// select one or more physical devices, the number of repeated
   /// test_targets_for_shard must be \<= 50. When you select one or more ARM
-  /// virtual devices, it must be \<= 50. When you select only x86 virtual
+  /// virtual devices, it must be \<= 100. When you select only x86 virtual
   /// devices, it must be \<= 500.
   ///
   /// Required.
@@ -3423,8 +3423,6 @@ class TestMatrix {
   /// - "INVALID_APK_PREVIEW_SDK" : APK is built for a preview SDK which is
   /// unsupported
   /// - "MATRIX_TOO_LARGE" : The matrix expanded to contain too many executions.
-  /// - "DEVICE_QUOTA_EXCEEDED" : Deprecated: Not enough device quota to run the
-  /// executions in this matrix.
   /// - "TEST_QUOTA_EXCEEDED" : Not enough test quota to run the executions in
   /// this matrix.
   /// - "SERVICE_NOT_ACTIVATED" : A required cloud service api is not activated.
@@ -4050,7 +4048,7 @@ class UniformSharding {
   /// This must always be a positive number that is no greater than the total
   /// number of test cases. When you select one or more physical devices, the
   /// number of shards must be \<= 50. When you select one or more ARM virtual
-  /// devices, it must be \<= 50. When you select only x86 virtual devices, it
+  /// devices, it must be \<= 100. When you select only x86 virtual devices, it
   /// must be \<= 500.
   ///
   /// Required.

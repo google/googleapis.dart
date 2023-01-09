@@ -494,6 +494,58 @@ class EnterprisesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns a token for device enrollment.
+  ///
+  /// The DPC can encode this token within the QR/NFC/zero-touch enrollment
+  /// payload or fetch it before calling the on-device API to authenticate the
+  /// user. The token can be generated for each device or reused across multiple
+  /// devices.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [deviceType] - Whether it’s a dedicated device or a knowledge worker
+  /// device.
+  /// Possible string values are:
+  /// - "unknown" : This value is unused
+  /// - "dedicatedDevice" : This device is a dedicated device.
+  /// - "knowledgeWorker" : This device is required to have an authenticated
+  /// user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CreateEnrollmentTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CreateEnrollmentTokenResponse> createEnrollmentToken(
+    core.String enterpriseId, {
+    core.String? deviceType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (deviceType != null) 'deviceType': [deviceType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidenterprise/v1/enterprises/' +
+        commons.escapeVariable('$enterpriseId') +
+        '/createEnrollmentToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return CreateEnrollmentTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a unique token to access an embeddable UI.
   ///
   /// To generate a web UI, pass the generated token into the managed Google
@@ -824,7 +876,7 @@ class EnterprisesResource {
   /// [requestMode] - The request mode for pulling notifications. Specifying
   /// waitForNotifications will cause the request to block and wait until one or
   /// more notifications are present, or return an empty notification list if no
-  /// notifications are present after some time. Speciying returnImmediately
+  /// notifications are present after some time. Specifying returnImmediately
   /// will cause the request to immediately return the pending notifications, or
   /// an empty list if no notifications are present. If omitted, defaults to
   /// waitForNotifications.
@@ -4536,6 +4588,27 @@ class ConfigurationVariables {
       };
 }
 
+/// Response message for create enrollment token.
+class CreateEnrollmentTokenResponse {
+  /// Enrollment token.
+  core.String? enrollmentToken;
+
+  CreateEnrollmentTokenResponse({
+    this.enrollmentToken,
+  });
+
+  CreateEnrollmentTokenResponse.fromJson(core.Map json_)
+      : this(
+          enrollmentToken: json_.containsKey('enrollmentToken')
+              ? json_['enrollmentToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enrollmentToken != null) 'enrollmentToken': enrollmentToken!,
+      };
+}
+
 /// A Devices resource represents a mobile device managed by the EMM and
 /// belonging to a specific enterprise user.
 class Device {
@@ -4758,6 +4831,11 @@ class Enterprise {
   /// This is only supported for enterprises created via the EMM-initiated flow.
   core.List<Administrator>? administrator;
 
+  /// Settings for Google-provided user authentication.
+  ///
+  /// Output only.
+  GoogleAuthenticationSettings? googleAuthenticationSettings;
+
   /// The unique ID for the enterprise.
   core.String? id;
 
@@ -4769,6 +4847,7 @@ class Enterprise {
 
   Enterprise({
     this.administrator,
+    this.googleAuthenticationSettings,
     this.id,
     this.name,
     this.primaryDomain,
@@ -4782,6 +4861,12 @@ class Enterprise {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          googleAuthenticationSettings:
+              json_.containsKey('googleAuthenticationSettings')
+                  ? GoogleAuthenticationSettings.fromJson(
+                      json_['googleAuthenticationSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           primaryDomain: json_.containsKey('primaryDomain')
@@ -4791,6 +4876,8 @@ class Enterprise {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (administrator != null) 'administrator': administrator!,
+        if (googleAuthenticationSettings != null)
+          'googleAuthenticationSettings': googleAuthenticationSettings!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (primaryDomain != null) 'primaryDomain': primaryDomain!,
@@ -4971,6 +5058,47 @@ class EntitlementsListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
+      };
+}
+
+/// Contains settings for Google-provided user authentication.
+class GoogleAuthenticationSettings {
+  /// Whether dedicated devices are allowed.
+  /// Possible string values are:
+  /// - "dedicatedDevicesAllowedUnspecified" : This value is unused.
+  /// - "disallowed" : Dedicated devices are not allowed.
+  /// - "allowed" : Dedicated devices are allowed.
+  core.String? dedicatedDevicesAllowed;
+
+  /// Whether Google authentication is required.
+  /// Possible string values are:
+  /// - "googleAuthenticationRequiredUnspecified" : This value is unused.
+  /// - "notRequired" : Google authentication is not required.
+  /// - "required" : User is required to be successfully authenticated by
+  /// Google.
+  core.String? googleAuthenticationRequired;
+
+  GoogleAuthenticationSettings({
+    this.dedicatedDevicesAllowed,
+    this.googleAuthenticationRequired,
+  });
+
+  GoogleAuthenticationSettings.fromJson(core.Map json_)
+      : this(
+          dedicatedDevicesAllowed: json_.containsKey('dedicatedDevicesAllowed')
+              ? json_['dedicatedDevicesAllowed'] as core.String
+              : null,
+          googleAuthenticationRequired:
+              json_.containsKey('googleAuthenticationRequired')
+                  ? json_['googleAuthenticationRequired'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dedicatedDevicesAllowed != null)
+          'dedicatedDevicesAllowed': dedicatedDevicesAllowed!,
+        if (googleAuthenticationRequired != null)
+          'googleAuthenticationRequired': googleAuthenticationRequired!,
       };
 }
 

@@ -1644,6 +1644,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.bootMode = 'foo';
     o.cpuInfo = buildUnnamed22();
     o.cpuStatusReports = buildUnnamed25();
+    o.deprovisionReason = 'foo';
     o.deviceFiles = buildUnnamed26();
     o.deviceId = 'foo';
     o.diskVolumeReports = buildUnnamed28();
@@ -1654,6 +1655,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.firmwareVersion = 'foo';
     o.firstEnrollmentTime = 'foo';
     o.kind = 'foo';
+    o.lastDeprovisionTimestamp = 'foo';
     o.lastEnrollmentTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.lastKnownNetwork = buildUnnamed29();
     o.lastSync = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -1708,6 +1710,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     checkUnnamed22(o.cpuInfo!);
     checkUnnamed25(o.cpuStatusReports!);
+    unittest.expect(
+      o.deprovisionReason!,
+      unittest.equals('foo'),
+    );
     checkUnnamed26(o.deviceFiles!);
     unittest.expect(
       o.deviceId!,
@@ -1740,6 +1746,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastDeprovisionTimestamp!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2150,6 +2160,7 @@ api.DirectoryChromeosdevicesCommandResult
   final o = api.DirectoryChromeosdevicesCommandResult();
   buildCounterDirectoryChromeosdevicesCommandResult++;
   if (buildCounterDirectoryChromeosdevicesCommandResult < 3) {
+    o.commandResultPayload = 'foo';
     o.errorMessage = 'foo';
     o.executeTime = 'foo';
     o.result = 'foo';
@@ -2162,6 +2173,10 @@ void checkDirectoryChromeosdevicesCommandResult(
     api.DirectoryChromeosdevicesCommandResult o) {
   buildCounterDirectoryChromeosdevicesCommandResult++;
   if (buildCounterDirectoryChromeosdevicesCommandResult < 3) {
+    unittest.expect(
+      o.commandResultPayload!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.errorMessage!,
       unittest.equals('foo'),

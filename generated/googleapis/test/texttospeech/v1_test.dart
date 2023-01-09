@@ -850,10 +850,72 @@ void main() {
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
+  });
 
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--synthesizeLongAudio', () async {
+      final mock = HttpServerMock();
+      final res = api.TexttospeechApi(mock).projects.locations;
+      final arg_request = buildSynthesizeLongAudioRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SynthesizeLongAudioRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSynthesizeLongAudioRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.synthesizeLongAudio(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.TexttospeechApi(mock).operations;
+      final res = api.TexttospeechApi(mock).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -905,7 +967,7 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res = api.TexttospeechApi(mock).operations;
+      final res = api.TexttospeechApi(mock).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -972,66 +1034,6 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListOperationsResponse(response as api.ListOperationsResponse);
-    });
-  });
-
-  unittest.group('resource-ProjectsLocationsVoicesResource', () {
-    unittest.test('method--synthesizeLongAudio', () async {
-      final mock = HttpServerMock();
-      final res = api.TexttospeechApi(mock).projects.locations.voices;
-      final arg_request = buildSynthesizeLongAudioRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.SynthesizeLongAudioRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkSynthesizeLongAudioRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.synthesizeLongAudio(arg_request, arg_parent,
-          $fields: arg_$fields);
-      checkOperation(response as api.Operation);
     });
   });
 

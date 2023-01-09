@@ -902,6 +902,8 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
 
 /// Workload monitoring Violation.
+///
+/// Next Id: 22
 class GoogleCloudAssuredworkloadsV1Violation {
   /// A boolean that indicates if the violation is acknowledged
   core.bool? acknowledged;

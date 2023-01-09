@@ -440,6 +440,29 @@ void checkGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest(
   buildCounterGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest--;
 }
 
+core.int buildCounterGoogleChromePolicyVersionsV1FieldConstraints = 0;
+api.GoogleChromePolicyVersionsV1FieldConstraints
+    buildGoogleChromePolicyVersionsV1FieldConstraints() {
+  final o = api.GoogleChromePolicyVersionsV1FieldConstraints();
+  buildCounterGoogleChromePolicyVersionsV1FieldConstraints++;
+  if (buildCounterGoogleChromePolicyVersionsV1FieldConstraints < 3) {
+    o.numericRangeConstraint =
+        buildGoogleChromePolicyVersionsV1NumericRangeConstraint();
+  }
+  buildCounterGoogleChromePolicyVersionsV1FieldConstraints--;
+  return o;
+}
+
+void checkGoogleChromePolicyVersionsV1FieldConstraints(
+    api.GoogleChromePolicyVersionsV1FieldConstraints o) {
+  buildCounterGoogleChromePolicyVersionsV1FieldConstraints++;
+  if (buildCounterGoogleChromePolicyVersionsV1FieldConstraints < 3) {
+    checkGoogleChromePolicyVersionsV1NumericRangeConstraint(
+        o.numericRangeConstraint!);
+  }
+  buildCounterGoogleChromePolicyVersionsV1FieldConstraints--;
+}
+
 core.int buildCounterGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest =
     0;
 api.GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
@@ -710,6 +733,35 @@ void checkGoogleChromePolicyVersionsV1NetworkSetting(
   buildCounterGoogleChromePolicyVersionsV1NetworkSetting--;
 }
 
+core.int buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint = 0;
+api.GoogleChromePolicyVersionsV1NumericRangeConstraint
+    buildGoogleChromePolicyVersionsV1NumericRangeConstraint() {
+  final o = api.GoogleChromePolicyVersionsV1NumericRangeConstraint();
+  buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint++;
+  if (buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint < 3) {
+    o.maximum = 'foo';
+    o.minimum = 'foo';
+  }
+  buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint--;
+  return o;
+}
+
+void checkGoogleChromePolicyVersionsV1NumericRangeConstraint(
+    api.GoogleChromePolicyVersionsV1NumericRangeConstraint o) {
+  buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint++;
+  if (buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint < 3) {
+    unittest.expect(
+      o.maximum!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minimum!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint--;
+}
+
 core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
@@ -951,6 +1003,7 @@ api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription
     };
     o.description = 'foo';
     o.field = 'foo';
+    o.fieldConstraints = buildGoogleChromePolicyVersionsV1FieldConstraints();
     o.fieldDependencies = buildUnnamed16();
     o.fieldDescription = 'foo';
     o.inputConstraint = 'foo';
@@ -990,6 +1043,7 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(
       o.field!,
       unittest.equals('foo'),
     );
+    checkGoogleChromePolicyVersionsV1FieldConstraints(o.fieldConstraints!);
     checkUnnamed16(o.fieldDependencies!);
     unittest.expect(
       o.fieldDescription!,
@@ -2004,6 +2058,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleChromePolicyVersionsV1FieldConstraints', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromePolicyVersionsV1FieldConstraints();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyVersionsV1FieldConstraints.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromePolicyVersionsV1FieldConstraints(od);
+    });
+  });
+
   unittest.group(
       'obj-schema-GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -2087,6 +2151,18 @@ void main() {
       final od = api.GoogleChromePolicyVersionsV1NetworkSetting.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromePolicyVersionsV1NetworkSetting(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleChromePolicyVersionsV1NumericRangeConstraint', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromePolicyVersionsV1NumericRangeConstraint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromePolicyVersionsV1NumericRangeConstraint(od);
     });
   });
 

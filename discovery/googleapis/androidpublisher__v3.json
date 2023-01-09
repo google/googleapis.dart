@@ -631,7 +631,7 @@
                                 "accept": [
                                     "application/octet-stream"
                                 ],
-                                "maxSize": "629145600",
+                                "maxSize": "838860800",
                                 "protocols": {
                                     "resumable": {
                                         "multipart": true,
@@ -3919,7 +3919,7 @@
             }
         }
     },
-    "revision": "20221206",
+    "revision": "20230117",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "AcquisitionTargetingRule": {

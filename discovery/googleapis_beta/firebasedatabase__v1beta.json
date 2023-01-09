@@ -21,7 +21,7 @@
     "baseUrl": "https://firebasedatabase.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Firebase Realtime Database",
-    "description": "The Firebase Realtime Database Management API enables programmatic provisioning and management of Realtime Database instances.",
+    "description": "The Firebase Realtime Database API enables programmatic provisioning and management of Realtime Database instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/reference/rest/database/database-management/rest/",
     "icons": {
@@ -349,7 +349,7 @@
             }
         }
     },
-    "revision": "20221122",
+    "revision": "20230116",
     "rootUrl": "https://firebasedatabase.googleapis.com/",
     "schemas": {
         "DatabaseInstance": {

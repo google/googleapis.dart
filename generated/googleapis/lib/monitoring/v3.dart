@@ -33,6 +33,7 @@
 ///   - [ProjectsMonitoredResourceDescriptorsResource]
 ///   - [ProjectsNotificationChannelDescriptorsResource]
 ///   - [ProjectsNotificationChannelsResource]
+///   - [ProjectsSnoozesResource]
 ///   - [ProjectsTimeSeriesResource]
 ///   - [ProjectsUptimeCheckConfigsResource]
 /// - [ServicesResource]
@@ -1192,6 +1193,7 @@ class ProjectsResource {
           ProjectsNotificationChannelDescriptorsResource(_requester);
   ProjectsNotificationChannelsResource get notificationChannels =>
       ProjectsNotificationChannelsResource(_requester);
+  ProjectsSnoozesResource get snoozes => ProjectsSnoozesResource(_requester);
   ProjectsTimeSeriesResource get timeSeries =>
       ProjectsTimeSeriesResource(_requester);
   ProjectsUptimeCheckConfigsResource get uptimeCheckConfigs =>
@@ -2704,6 +2706,213 @@ class ProjectsNotificationChannelsResource {
     );
     return NotificationChannel.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsSnoozesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSnoozesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a Snooze that will prevent alerts, which match the provided
+  /// criteria, from being opened.
+  ///
+  /// The Snooze applies for a specific time interval.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which a
+  /// Snooze should be created. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> create(
+    Snooze request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/snoozes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a Snooze by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ID of the Snooze to retrieve. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/snoozes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the Snoozes associated with a project.
+  ///
+  /// Can optionally pass in filter, which specifies predicates to match
+  /// Snoozes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) whose Snoozes
+  /// should be listed. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filter to restrict results to the given
+  /// criteria. The following fields are supported. interval.start_time
+  /// interval.end_timeFor example: ``` interval.start_time >
+  /// "2022-03-11T00:00:00-08:00" AND interval.end_time <
+  /// "2022-03-12T00:00:00-08:00" ```
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return for a
+  /// single query. The server may further constrain the maximum number of
+  /// results returned in a single page. The value should be in the range 1,
+  /// 1000. If the value given is outside this range, the server will decide the
+  /// number of results to be returned.
+  ///
+  /// [pageToken] - Optional. The next_page_token from a previous call to
+  /// ListSnoozesRequest to get the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnoozesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnoozesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/snoozes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSnoozesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Snooze, identified by its name, with the parameters in the given
+  /// Snooze object.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Snooze. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\] The ID of the
+  /// Snooze will be generated by the system.
+  /// Value must have pattern `^projects/\[^/\]+/snoozes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to update.For each field listed in
+  /// update_mask: If the Snooze object supplied in the UpdateSnoozeRequest has
+  /// a value for that field, the value of the field in the existing Snooze will
+  /// be set to the value of the field in the supplied Snooze. If the field does
+  /// not have a value in the supplied Snooze, the field in the existing Snooze
+  /// is set to its default value.Fields not listed retain their existing
+  /// value.The following are the field names that are accepted in update_mask:
+  /// display_name interval.start_time interval.end_timeThat said, the start
+  /// time and end time of the Snooze determines which fields can legally be
+  /// updated. Before attempting an update, users should consult the
+  /// documentation for UpdateSnoozeRequest, which talks about which fields can
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> patch(
+    Snooze request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5605,6 +5814,37 @@ class CreateTimeSeriesSummary {
       };
 }
 
+/// Criteria specific to the AlertPolicys that this Snooze applies to.
+///
+/// The Snooze will suppress alerts that come from one of the AlertPolicys whose
+/// names are supplied.
+class Criteria {
+  /// The specific AlertPolicy names for the alert that should be snoozed.
+  ///
+  /// The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\] There is a
+  /// limit of 10 policies per snooze. This limit is checked during snooze
+  /// creation.
+  core.List<core.String>? policies;
+
+  Criteria({
+    this.policies,
+  });
+
+  Criteria.fromJson(core.Map json_)
+      : this(
+          policies: json_.containsKey('policies')
+              ? (json_['policies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policies != null) 'policies': policies!,
+      };
+}
+
 /// Use a custom service to designate a service that you want to monitor when
 /// none of the other service types (like App Engine, Cloud Run, or a GKE type)
 /// matches your intended service.
@@ -5915,6 +6155,35 @@ typedef Explicit = $Explicit;
 /// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
 /// - 1)).
 typedef Exponential = $Exponential;
+
+/// Options used when forecasting the time series and testing the predicted
+/// value against the threshold.
+class ForecastOptions {
+  /// The length of time into the future to forecast whether a time series will
+  /// violate the threshold.
+  ///
+  /// If the predicted value is found to violate the threshold, and the
+  /// violation is observed in all forecasts made for the configured duration,
+  /// then the time series is considered to be failing.
+  ///
+  /// Required.
+  core.String? forecastHorizon;
+
+  ForecastOptions({
+    this.forecastHorizon,
+  });
+
+  ForecastOptions.fromJson(core.Map json_)
+      : this(
+          forecastHorizon: json_.containsKey('forecastHorizon')
+              ? json_['forecastHorizon'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forecastHorizon != null) 'forecastHorizon': forecastHorizon!,
+      };
+}
 
 /// The GetNotificationChannelVerificationCode request.
 class GetNotificationChannelVerificationCodeRequest {
@@ -7123,6 +7392,42 @@ class ListServicesResponse {
       };
 }
 
+/// The results of a successful ListSnoozes call, containing the matching
+/// Snoozes.
+class ListSnoozesResponse {
+  /// Page token for repeated calls to ListSnoozes, to fetch additional pages of
+  /// results.
+  ///
+  /// If this is empty or missing, there are no more pages.
+  core.String? nextPageToken;
+
+  /// Snoozes matching this list call.
+  core.List<Snooze>? snoozes;
+
+  ListSnoozesResponse({
+    this.nextPageToken,
+    this.snoozes,
+  });
+
+  ListSnoozesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          snoozes: json_.containsKey('snoozes')
+              ? (json_['snoozes'] as core.List)
+                  .map((value) => Snooze.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (snoozes != null) 'snoozes': snoozes!,
+      };
+}
+
 /// The ListTimeSeries response.
 class ListTimeSeriesResponse {
   /// Query execution errors that may have caused the time series data returned
@@ -7868,6 +8173,14 @@ class MetricThreshold {
   /// Required.
   core.String? filter;
 
+  /// When this field is present, the MetricThreshold condition forecasts
+  /// whether the time series is predicted to violate the threshold within the
+  /// forecast_horizion.
+  ///
+  /// When this field is not set, the MetricThreshold tests the current value of
+  /// the timeseries against the threshold.
+  ForecastOptions? forecastOptions;
+
   /// A value against which to compare the time series.
   core.double? thresholdValue;
 
@@ -7888,6 +8201,7 @@ class MetricThreshold {
     this.duration,
     this.evaluationMissingData,
     this.filter,
+    this.forecastOptions,
     this.thresholdValue,
     this.trigger,
   });
@@ -7921,6 +8235,10 @@ class MetricThreshold {
           filter: json_.containsKey('filter')
               ? json_['filter'] as core.String
               : null,
+          forecastOptions: json_.containsKey('forecastOptions')
+              ? ForecastOptions.fromJson(json_['forecastOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           thresholdValue: json_.containsKey('thresholdValue')
               ? (json_['thresholdValue'] as core.num).toDouble()
               : null,
@@ -7940,6 +8258,7 @@ class MetricThreshold {
         if (evaluationMissingData != null)
           'evaluationMissingData': evaluationMissingData!,
         if (filter != null) 'filter': filter!,
+        if (forecastOptions != null) 'forecastOptions': forecastOptions!,
         if (thresholdValue != null) 'thresholdValue': thresholdValue!,
         if (trigger != null) 'trigger': trigger!,
       };
@@ -9286,6 +9605,76 @@ class ServiceLevelObjective {
         if (serviceLevelIndicator != null)
           'serviceLevelIndicator': serviceLevelIndicator!,
         if (userLabels != null) 'userLabels': userLabels!,
+      };
+}
+
+/// A Snooze will prevent any alerts from being opened, and close any that are
+/// already open.
+///
+/// The Snooze will work on alerts that match the criteria defined in the
+/// Snooze. The Snooze will be active from interval.start_time through
+/// interval.end_time.
+class Snooze {
+  /// This defines the criteria for applying the Snooze.
+  ///
+  /// See Criteria for more information.
+  ///
+  /// Required.
+  Criteria? criteria;
+
+  /// A display name for the Snooze.
+  ///
+  /// This can be, at most, 512 unicode characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The Snooze will be active from interval.start_time through
+  /// interval.end_time.
+  ///
+  /// interval.start_time cannot be in the past. There is a 15 second clock skew
+  /// to account for the time it takes for a request to reach the API from the
+  /// UI.
+  ///
+  /// Required.
+  TimeInterval? interval;
+
+  /// The name of the Snooze.
+  ///
+  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\] The
+  /// ID of the Snooze will be generated by the system.
+  ///
+  /// Required.
+  core.String? name;
+
+  Snooze({
+    this.criteria,
+    this.displayName,
+    this.interval,
+    this.name,
+  });
+
+  Snooze.fromJson(core.Map json_)
+      : this(
+          criteria: json_.containsKey('criteria')
+              ? Criteria.fromJson(
+                  json_['criteria'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          interval: json_.containsKey('interval')
+              ? TimeInterval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criteria != null) 'criteria': criteria!,
+        if (displayName != null) 'displayName': displayName!,
+        if (interval != null) 'interval': interval!,
+        if (name != null) 'name': name!,
       };
 }
 

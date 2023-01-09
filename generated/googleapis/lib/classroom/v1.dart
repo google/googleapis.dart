@@ -378,7 +378,8 @@ class CoursesResource {
   /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
   /// `INVALID_ARGUMENT` if invalid fields are specified in the update mask or
   /// if no update mask is supplied. * `FAILED_PRECONDITION` for the following
-  /// request errors: * CourseNotModifiable * InactiveCourseOwner
+  /// request errors: * CourseNotModifiable * InactiveCourseOwner *
+  /// IneligibleOwner
   ///
   /// [request] - The metadata request object.
   ///
@@ -2884,10 +2885,11 @@ class InvitationsResource {
   /// re-create an invitation to make changes. This method returns the following
   /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
   /// to create invitations for this course or for access errors. * `NOT_FOUND`
-  /// if the course or the user does not exist. * `FAILED_PRECONDITION` if the
-  /// requested user's account is disabled or if the user already has this role
-  /// or a role with greater permissions. * `ALREADY_EXISTS` if an invitation
-  /// for the specified user and course already exists.
+  /// if the course or the user does not exist. * `FAILED_PRECONDITION`: * if
+  /// the requested user's account is disabled. * if the user already has this
+  /// role or a role with greater permissions. * for the following request
+  /// errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the
+  /// specified user and course already exists.
   ///
   /// [request] - The metadata request object.
   ///

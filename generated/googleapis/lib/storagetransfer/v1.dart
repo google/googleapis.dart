@@ -1234,6 +1234,58 @@ typedef Date = $Date;
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Specifies the Event-driven transfer options.
+///
+/// Event-driven transfers listen to an event stream to transfer updated files.
+class EventStream {
+  /// Specifies the data and time at which Storage Transfer Service stops
+  /// listening for events from this stream.
+  ///
+  /// After this time, any transfers in progress will complete, but no new
+  /// transfers are initiated.
+  core.String? eventStreamExpirationTime;
+
+  /// Specifies the date and time that Storage Transfer Service starts listening
+  /// for events from this stream.
+  ///
+  /// If no start time is specified or start time is in the past, Storage
+  /// Transfer Service starts listening immediately.
+  core.String? eventStreamStartTime;
+
+  /// Specifies a unique name of the resource such as AWS SQS ARN in the form
+  /// 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription
+  /// resource name in the form 'projects/{project}/subscriptions/{sub}'.
+  ///
+  /// Required.
+  core.String? name;
+
+  EventStream({
+    this.eventStreamExpirationTime,
+    this.eventStreamStartTime,
+    this.name,
+  });
+
+  EventStream.fromJson(core.Map json_)
+      : this(
+          eventStreamExpirationTime:
+              json_.containsKey('eventStreamExpirationTime')
+                  ? json_['eventStreamExpirationTime'] as core.String
+                  : null,
+          eventStreamStartTime: json_.containsKey('eventStreamStartTime')
+              ? json_['eventStreamStartTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventStreamExpirationTime != null)
+          'eventStreamExpirationTime': eventStreamExpirationTime!,
+        if (eventStreamStartTime != null)
+          'eventStreamStartTime': eventStreamStartTime!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// In a GcsData resource, an object's name is the Cloud Storage object's name
 /// and its "last modification time" refers to the object's `updated` property
 /// of Cloud Storage objects, which changes when the content or the metadata of
@@ -2212,6 +2264,12 @@ class TransferJob {
   /// Its max length is 1024 bytes when Unicode-encoded.
   core.String? description;
 
+  /// Specifies the event stream for the transfer job for event-driven
+  /// transfers.
+  ///
+  /// When EventStream is specified, the Schedule fields are ignored.
+  EventStream? eventStream;
+
   /// The time that the transfer job was last modified.
   ///
   /// Output only.
@@ -2282,6 +2340,7 @@ class TransferJob {
     this.creationTime,
     this.deletionTime,
     this.description,
+    this.eventStream,
     this.lastModificationTime,
     this.latestOperationName,
     this.loggingConfig,
@@ -2303,6 +2362,10 @@ class TransferJob {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          eventStream: json_.containsKey('eventStream')
+              ? EventStream.fromJson(
+                  json_['eventStream'] as core.Map<core.String, core.dynamic>)
               : null,
           lastModificationTime: json_.containsKey('lastModificationTime')
               ? json_['lastModificationTime'] as core.String
@@ -2339,6 +2402,7 @@ class TransferJob {
         if (creationTime != null) 'creationTime': creationTime!,
         if (deletionTime != null) 'deletionTime': deletionTime!,
         if (description != null) 'description': description!,
+        if (eventStream != null) 'eventStream': eventStream!,
         if (lastModificationTime != null)
           'lastModificationTime': lastModificationTime!,
         if (latestOperationName != null)

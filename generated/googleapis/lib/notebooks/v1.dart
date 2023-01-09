@@ -2999,15 +2999,15 @@ class DiagnosticConfig {
   /// Optional.
   core.bool? copyHomeFilesFlagEnabled;
 
-  /// User Cloud Storage bucket location (REQUIRED) ## Must be formatted with
-  /// path prefix (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: -
-  /// storage.buckets.writer: Must be given to the project's service account
-  /// attached to VM.
+  /// User Cloud Storage bucket location (REQUIRED).
   ///
-  /// Google Managed Notebooks: - storage.buckets.writer: Must be given to the
-  /// project's service account or ## user credentials attached to VM depending
-  /// on authentication mode. Cloud Storage bucket Log file will be written to
-  /// gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+  /// Must be formatted with path prefix (`gs://$GCS_BUCKET`). Permissions: User
+  /// Managed Notebooks: - storage.buckets.writer: Must be given to the
+  /// project's service account attached to VM. Google Managed Notebooks: -
+  /// storage.buckets.writer: Must be given to the project's service account or
+  /// user credentials attached to VM depending on authentication mode. Cloud
+  /// Storage bucket Log file will be written to
+  /// `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
   ///
   /// Required.
   core.String? gcsBucket;
@@ -3019,9 +3019,9 @@ class DiagnosticConfig {
 
   /// Defines the relative storage path in the Cloud Storage bucket where the
   /// diagnostic logs will be written: Default path will be the root directory
-  /// of the Cloud Storage bucket (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example
-  /// of full path where Log file will be written:
-  /// gs://$GCS_BUCKET/$RELATIVE_PATH/
+  /// of the Cloud Storage bucket (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`)
+  /// Example of full path where Log file will be written:
+  /// `gs://$GCS_BUCKET/$RELATIVE_PATH/`
   ///
   /// Optional.
   core.String? relativePath;
@@ -5687,6 +5687,11 @@ class RuntimeSoftwareConfig {
   /// Output only.
   core.bool? upgradeable;
 
+  /// version of boot image such as M100, from release label of the image.
+  ///
+  /// Output only.
+  core.String? version;
+
   RuntimeSoftwareConfig({
     this.customGpuDriverPath,
     this.disableTerminal,
@@ -5699,6 +5704,7 @@ class RuntimeSoftwareConfig {
     this.postStartupScript,
     this.postStartupScriptBehavior,
     this.upgradeable,
+    this.version,
   });
 
   RuntimeSoftwareConfig.fromJson(core.Map json_)
@@ -5740,6 +5746,9 @@ class RuntimeSoftwareConfig {
           upgradeable: json_.containsKey('upgradeable')
               ? json_['upgradeable'] as core.bool
               : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5759,6 +5768,7 @@ class RuntimeSoftwareConfig {
         if (postStartupScriptBehavior != null)
           'postStartupScriptBehavior': postStartupScriptBehavior!,
         if (upgradeable != null) 'upgradeable': upgradeable!,
+        if (version != null) 'version': version!,
       };
 }
 

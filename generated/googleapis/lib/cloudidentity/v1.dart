@@ -1523,8 +1523,9 @@ class GroupsResource {
   ///
   /// [parent] - Required. The parent resource under which to list all `Group`
   /// resources. Must be of the form `identitysources/{identity_source}` for
-  /// external- identity-mapped groups or `customers/{customer}` for Google
-  /// Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
+  /// external- identity-mapped groups or `customers/{customer_id}` for Google
+  /// Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -1685,9 +1686,10 @@ class GroupsResource {
   /// [query] - Required. The search query. Must be specified in
   /// [Common Expression Language](https://opensource.google/projects/cel). May
   /// only contain equality operators on the parent and inclusion operators on
-  /// labels (e.g., `parent == 'customers/{customer}' &&
+  /// labels (e.g., `parent == 'customers/{customer_id}' &&
   /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The
-  /// `customer` must begin with "C" (for example, 'C046psxkn').
+  /// `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -3398,7 +3400,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
 /// Response containing resource names of the DeviceUsers associated with the
 /// caller's credentials.
 class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
-  /// The obfuscated customer Id that may be passed back to other Devices API
+  /// The customer resource name that may be passed back to other Devices API
   /// methods such as List, Get, etc.
   core.String? customer;
 
@@ -3544,9 +3546,11 @@ class Group {
   /// The resource name of the entity under which this `Group` resides in the
   /// Cloud Identity resource hierarchy.
   ///
-  /// Must be of the form `identitysources/{identity_source}` for external-
-  /// identity-mapped groups or `customers/{customer}` for Google Groups. The
-  /// `customer` must begin with "C" (for example, 'C046psxkn').
+  /// Must be of the form `identitysources/{identity_source}` for external
+  /// \[identity-mapped groups\](https://support.google.com/a/answer/9039510) or
+  /// `customers/{customer_id}` for Google Groups. The `customer_id` must begin
+  /// with "C" (for example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   ///
   /// Required. Immutable.
   core.String? parent;

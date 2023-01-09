@@ -147,7 +147,7 @@ Firebase App Check works alongside other Firebase services to help protect your 
 
 #### Firebase Realtime Database API - `firebasedatabase.v1beta`
 
-The Firebase Realtime Database Management API enables programmatic provisioning and management of Realtime Database instances.
+The Firebase Realtime Database API enables programmatic provisioning and management of Realtime Database instances.
 
 - [Documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/firebasedatabase.v1beta/firebasedatabase.v1beta-library.html)
@@ -163,13 +163,6 @@ The Cloud Storage for Firebase API enables programmatic management of Cloud Stor
 
 - [Documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/gkehub.v2alpha/gkehub.v2alpha-library.html)
-
-#### Idea Hub API - `ideahub.v1beta`
-
-This is an invitation-only API.
-
-- [Documentation](https://console.cloud.google.com/apis/library/ideahub.googleapis.com)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/ideahub.v1beta/ideahub.v1beta-library.html)
 
 #### Cloud Life Sciences API - `lifesciences.v2beta`
 

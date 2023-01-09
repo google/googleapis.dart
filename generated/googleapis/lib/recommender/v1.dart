@@ -670,6 +670,54 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Mark the Recommendation State as Dismissed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that an
+  /// ACTIVE recommendation has to be marked back as DISMISSED.
+  /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the recommendation.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markDismissed(
+    GoogleCloudRecommenderV1MarkRecommendationDismissedRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markDismissed';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Marks the Recommendation State as Failed.
   ///
   /// Users can use this method to indicate to the Recommender API that they
@@ -1145,6 +1193,54 @@ class FoldersLocationsRecommendersRecommendationsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Mark the Recommendation State as Dismissed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that an
+  /// ACTIVE recommendation has to be marked back as DISMISSED.
+  /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the recommendation.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markDismissed(
+    GoogleCloudRecommenderV1MarkRecommendationDismissedRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markDismissed';
 
     final response_ = await _requester.request(
       url_,
@@ -1847,6 +1943,54 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Mark the Recommendation State as Dismissed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that an
+  /// ACTIVE recommendation has to be marked back as DISMISSED.
+  /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the recommendation.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markDismissed(
+    GoogleCloudRecommenderV1MarkRecommendationDismissedRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markDismissed';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Marks the Recommendation State as Failed.
   ///
   /// Users can use this method to indicate to the Recommender API that they
@@ -2535,6 +2679,54 @@ class ProjectsLocationsRecommendersRecommendationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Mark the Recommendation State as Dismissed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that an
+  /// ACTIVE recommendation has to be marked back as DISMISSED.
+  /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the recommendation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markDismissed(
+    GoogleCloudRecommenderV1MarkRecommendationDismissedRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markDismissed';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Marks the Recommendation State as Failed.
   ///
   /// Users can use this method to indicate to the Recommender API that they
@@ -3198,6 +3390,28 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 
 /// Request for the `MarkRecommendationClaimed` Method.
 typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
+
+/// Request for the `MarkRecommendationDismissed` Method.
+class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
+  /// Fingerprint of the Recommendation.
+  ///
+  /// Provides optimistic locking.
+  core.String? etag;
+
+  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest({
+    this.etag,
+  });
+
+  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+      core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+      };
+}
 
 /// Request for the `MarkRecommendationFailed` Method.
 typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;

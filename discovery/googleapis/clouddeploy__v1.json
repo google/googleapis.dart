@@ -1332,7 +1332,7 @@
             }
         }
     },
-    "revision": "20221110",
+    "revision": "20230105",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
         "AbandonReleaseRequest": {
@@ -1507,8 +1507,7 @@
             "id": "Config",
             "properties": {
                 "defaultSkaffoldVersion": {
-                    "description": "Output only. Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.",
-                    "readOnly": true,
+                    "description": "Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.",
                     "type": "string"
                 },
                 "name": {
@@ -1516,11 +1515,10 @@
                     "type": "string"
                 },
                 "supportedVersions": {
-                    "description": "Output only. All supported versions of Skaffold.",
+                    "description": "All supported versions of Skaffold.",
                     "items": {
                         "$ref": "SkaffoldVersion"
                     },
-                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -1676,13 +1674,15 @@
                         "FAILURE_CAUSE_UNSPECIFIED",
                         "CLOUD_BUILD_UNAVAILABLE",
                         "EXECUTION_FAILED",
-                        "DEADLINE_EXCEEDED"
+                        "DEADLINE_EXCEEDED",
+                        "CLOUD_BUILD_REQUEST_FAILED"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
                         "Cloud Build is not available, either because it is not enabled or because Google Cloud Deploy has insufficient permissions. See [Required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
                         "The deploy operation did not complete successfully; check Cloud Build logs.",
-                        "The deploy build did not complete within the alloted time."
+                        "The deploy build did not complete within the alloted time.",
+                        "Cloud Build failed to fulfill Google Cloud Deploy's request. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2329,7 +2329,11 @@
                 },
                 "targetsPresentCondition": {
                     "$ref": "TargetsPresentCondition",
-                    "description": "Detalis around targets enumerated in the pipeline."
+                    "description": "Details around targets enumerated in the pipeline."
+                },
+                "targetsTypeCondition": {
+                    "$ref": "TargetsTypeCondition",
+                    "description": "Details on the whether the targets enumerated in the pipeline are of the same type."
                 }
             },
             "type": "object"
@@ -2648,7 +2652,8 @@
                         "DEADLINE_EXCEEDED",
                         "RELEASE_FAILED",
                         "RELEASE_ABANDONED",
-                        "VERIFICATION_CONFIG_NOT_FOUND"
+                        "VERIFICATION_CONFIG_NOT_FOUND",
+                        "CLOUD_BUILD_REQUEST_FAILED"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
@@ -2657,7 +2662,8 @@
                         "Deployment did not complete within the alloted time.",
                         "Release is in a failed state.",
                         "Release is abandoned.",
-                        "No skaffold verify configuration was found."
+                        "No skaffold verify configuration was found.",
+                        "Cloud Build failed to fulfill Google Cloud Deploy's request. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3048,12 +3054,14 @@
                     "enum": [
                         "FAILURE_CAUSE_UNSPECIFIED",
                         "CLOUD_BUILD_UNAVAILABLE",
-                        "EXECUTION_FAILED"
+                        "EXECUTION_FAILED",
+                        "CLOUD_BUILD_REQUEST_FAILED"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
                         "Cloud Build is not available, either because it is not enabled or because Google Cloud Deploy has insufficient permissions. See [required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
-                        "The render operation did not complete successfully; check Cloud Build logs."
+                        "The render operation did not complete successfully; check Cloud Build logs.",
+                        "Cloud Build failed to fulfill Google Cloud Deploy's request. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3093,7 +3101,7 @@
             "id": "TargetsPresentCondition",
             "properties": {
                 "missingTargets": {
-                    "description": "The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.",
+                    "description": "The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.",
                     "items": {
                         "type": "string"
                     },
@@ -3107,6 +3115,21 @@
                     "description": "Last time the condition was updated.",
                     "format": "google-datetime",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TargetsTypeCondition": {
+            "description": "TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.",
+            "id": "TargetsTypeCondition",
+            "properties": {
+                "errorDetails": {
+                    "description": "Human readable error message.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -3171,14 +3194,16 @@
                         "CLOUD_BUILD_UNAVAILABLE",
                         "EXECUTION_FAILED",
                         "DEADLINE_EXCEEDED",
-                        "VERIFICATION_CONFIG_NOT_FOUND"
+                        "VERIFICATION_CONFIG_NOT_FOUND",
+                        "CLOUD_BUILD_REQUEST_FAILED"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
                         "Cloud Build is not available, either because it is not enabled or because Google Cloud Deploy has insufficient permissions. See [required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
                         "The verify operation did not complete successfully; check Cloud Build logs.",
                         "The verify build did not complete within the alloted time.",
-                        "No Skaffold verify configuration was found."
+                        "No Skaffold verify configuration was found.",
+                        "Cloud Build failed to fulfill Google Cloud Deploy's request. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"

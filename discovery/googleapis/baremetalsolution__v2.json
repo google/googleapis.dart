@@ -1435,7 +1435,7 @@
             }
         }
     },
-    "revision": "20221031",
+    "revision": "20230104",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "AllowedClient": {
@@ -1703,6 +1703,20 @@
                         "$ref": "Volume"
                     },
                     "type": "array"
+                },
+                "workloadProfile": {
+                    "description": "The workload profile for the instance.",
+                    "enum": [
+                        "WORKLOAD_PROFILE_UNSPECIFIED",
+                        "WORKLOAD_PROFILE_GENERIC",
+                        "WORKLOAD_PROFILE_HANA"
+                    ],
+                    "enumDescriptions": [
+                        "The workload profile is in an unknown state.",
+                        "The workload profile is generic.",
+                        "The workload profile is hana."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2681,50 +2695,6 @@
             },
             "type": "object"
         },
-        "OperationMetadata": {
-            "description": "Represents the metadata from a long-running operation.",
-            "id": "OperationMetadata",
-            "properties": {
-                "apiVersion": {
-                    "description": "Output only. API version used with the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "Output only. The time the operation was created.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "Output only. The time the operation finished running.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user requested the cancellation of the operation. Operations that have been successfully cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                    "readOnly": true,
-                    "type": "boolean"
-                },
-                "statusMessage": {
-                    "description": "Output only. Human-readable status of the operation, if any.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "target": {
-                    "description": "Output only. Server-defined resource path for the target of the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "verb": {
-                    "description": "Output only. Name of the action executed by the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ProvisioningConfig": {
             "description": "A provisioning configuration.",
             "id": "ProvisioningConfig",
@@ -3276,6 +3246,20 @@
                         "The storage type for this volume is unknown.",
                         "The storage type for this volume is SSD.",
                         "This storage type for this volume is HDD."
+                    ],
+                    "type": "string"
+                },
+                "workloadProfile": {
+                    "description": "The workload profile for the volume.",
+                    "enum": [
+                        "WORKLOAD_PROFILE_UNSPECIFIED",
+                        "GENERIC",
+                        "HANA"
+                    ],
+                    "enumDescriptions": [
+                        "The workload profile is in an unknown state.",
+                        "The workload profile is generic.",
+                        "The workload profile is hana."
                     ],
                     "type": "string"
                 }

@@ -255,9 +255,9 @@ class OrganizationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the GCP project in which to associate the
-  /// Apigee organization. Pass the information as a query parameter using the
-  /// following structure in your request: `projects/`
+  /// [parent] - Required. Name of the Google Cloud project in which to
+  /// associate the Apigee organization. Pass the information as a query
+  /// parameter using the following structure in your request: `projects/`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -565,8 +565,8 @@ class OrganizationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the Apigee organizations and associated GCP projects that you have
-  /// permission to access.
+  /// Lists the Apigee organizations and associated Google Cloud projects that
+  /// you have permission to access.
   ///
   /// See
   /// [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
@@ -5268,6 +5268,61 @@ class OrganizationsEnvgroupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the deployed ingress configuration for an environment group.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the deployed configuration for the environment
+  /// group in the following format:
+  /// 'organizations/{org}/envgroups/{envgroup}/deployedIngressConfig'.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/envgroups/\[^/\]+/deployedIngressConfig$`.
+  ///
+  /// [view] - When set to FULL, additional details about the specific
+  /// deployments receiving traffic will be included in the IngressConfig
+  /// response's RoutingRules.
+  /// Possible string values are:
+  /// - "INGRESS_CONFIG_VIEW_UNSPECIFIED" : The default/unset value. The API
+  /// will default to the BASIC view.
+  /// - "BASIC" : Include all ingress config data necessary for the runtime to
+  /// configure ingress, but no more. Routing rules will include only basepath
+  /// and destination environment. This the default value.
+  /// - "FULL" : Include all ingress config data, including internal debug info
+  /// for each routing rule such as the proxy claiming a particular basepath and
+  /// when the routing rule first appeared in the env group.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1EnvironmentGroupConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1EnvironmentGroupConfig>
+      getDeployedIngressConfig(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -17117,7 +17172,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
       };
 }
 
-/// NEXT ID: 9
+/// NEXT ID: 11
 class GoogleCloudApigeeV1DeploymentConfig {
   /// Additional key-value metadata for the deployment.
   core.Map<core.String, core.String>? attributes;
@@ -17126,6 +17181,16 @@ class GoogleCloudApigeeV1DeploymentConfig {
   ///
   /// Defaults to "/".
   core.String? basePath;
+
+  /// The list of deployment groups in which this proxy should be deployed.
+  ///
+  /// Not currently populated for shared flows.
+  core.List<core.String>? deploymentGroups;
+
+  /// A mapping from basepaths to proxy endpoint names in this proxy.
+  ///
+  /// Not populated for shared flows.
+  core.Map<core.String, core.String>? endpoints;
 
   /// Location of the API proxy bundle as a URI.
   core.String? location;
@@ -17152,6 +17217,8 @@ class GoogleCloudApigeeV1DeploymentConfig {
   GoogleCloudApigeeV1DeploymentConfig({
     this.attributes,
     this.basePath,
+    this.deploymentGroups,
+    this.endpoints,
     this.location,
     this.name,
     this.proxyUid,
@@ -17173,6 +17240,19 @@ class GoogleCloudApigeeV1DeploymentConfig {
           basePath: json_.containsKey('basePath')
               ? json_['basePath'] as core.String
               : null,
+          deploymentGroups: json_.containsKey('deploymentGroups')
+              ? (json_['deploymentGroups'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           location: json_.containsKey('location')
               ? json_['location'] as core.String
               : null,
@@ -17189,10 +17269,50 @@ class GoogleCloudApigeeV1DeploymentConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (basePath != null) 'basePath': basePath!,
+        if (deploymentGroups != null) 'deploymentGroups': deploymentGroups!,
+        if (endpoints != null) 'endpoints': endpoints!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (proxyUid != null) 'proxyUid': proxyUid!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// DeploymentGroupConfig represents a deployment group that should be present
+/// in a particular environment.
+class GoogleCloudApigeeV1DeploymentGroupConfig {
+  /// Name of the deployment group in the following format:
+  /// `organizations/{org}/environments/{env}/deploymentGroups/{group}`.
+  core.String? name;
+
+  /// Revision number which can be used by the runtime to detect if the
+  /// deployment group has changed between two versions.
+  core.String? revisionId;
+
+  /// Unique ID.
+  ///
+  /// The ID will only change if the deployment group is deleted and recreated.
+  core.String? uid;
+
+  GoogleCloudApigeeV1DeploymentGroupConfig({
+    this.name,
+    this.revisionId,
+    this.uid,
+  });
+
+  GoogleCloudApigeeV1DeploymentGroupConfig.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -17883,6 +18003,40 @@ class GoogleCloudApigeeV1EndpointAttachment {
       };
 }
 
+/// EndpointChainingRule specifies the proxies contained in a particular
+/// deployment group, so that other deployment groups can find them in chaining
+/// calls.
+class GoogleCloudApigeeV1EndpointChainingRule {
+  /// The deployment group to target for cross-shard chaining calls to these
+  /// proxies.
+  core.String? deploymentGroup;
+
+  /// List of proxy ids which may be found in the given deployment group.
+  core.List<core.String>? proxyIds;
+
+  GoogleCloudApigeeV1EndpointChainingRule({
+    this.deploymentGroup,
+    this.proxyIds,
+  });
+
+  GoogleCloudApigeeV1EndpointChainingRule.fromJson(core.Map json_)
+      : this(
+          deploymentGroup: json_.containsKey('deploymentGroup')
+              ? json_['deploymentGroup'] as core.String
+              : null,
+          proxyIds: json_.containsKey('proxyIds')
+              ? (json_['proxyIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentGroup != null) 'deploymentGroup': deploymentGroup!,
+        if (proxyIds != null) 'proxyIds': proxyIds!,
+      };
+}
+
 /// Metadata common to many entities in this API.
 class GoogleCloudApigeeV1EntityMetadata {
   /// Time at which the API proxy was created, in milliseconds since epoch.
@@ -18103,8 +18257,18 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   /// Debug mask that applies to all deployments in the environment.
   GoogleCloudApigeeV1DebugMask? debugMask;
 
+  /// List of deployment groups in the environment.
+  core.List<GoogleCloudApigeeV1DeploymentGroupConfig>? deploymentGroups;
+
   /// List of deployments in the environment.
   core.List<GoogleCloudApigeeV1DeploymentConfig>? deployments;
+
+  /// Revision ID for environment-scoped resources (e.g. target servers,
+  /// keystores) in this config.
+  ///
+  /// This ID will increment any time a resource not scoped to a deployment
+  /// group changes.
+  core.String? envScopedRevisionId;
 
   /// Feature flags inherited from the organization and environment.
   core.Map<core.String, core.String>? featureFlags;
@@ -18173,7 +18337,9 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     this.createTime,
     this.dataCollectors,
     this.debugMask,
+    this.deploymentGroups,
     this.deployments,
+    this.envScopedRevisionId,
     this.featureFlags,
     this.flowhooks,
     this.forwardProxyUri,
@@ -18210,11 +18376,21 @@ class GoogleCloudApigeeV1EnvironmentConfig {
               ? GoogleCloudApigeeV1DebugMask.fromJson(
                   json_['debugMask'] as core.Map<core.String, core.dynamic>)
               : null,
+          deploymentGroups: json_.containsKey('deploymentGroups')
+              ? (json_['deploymentGroups'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1DeploymentGroupConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           deployments: json_.containsKey('deployments')
               ? (json_['deployments'] as core.List)
                   .map((value) => GoogleCloudApigeeV1DeploymentConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          envScopedRevisionId: json_.containsKey('envScopedRevisionId')
+              ? json_['envScopedRevisionId'] as core.String
               : null,
           featureFlags: json_.containsKey('featureFlags')
               ? (json_['featureFlags'] as core.Map<core.String, core.dynamic>)
@@ -18287,7 +18463,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
         if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null) 'dataCollectors': dataCollectors!,
         if (debugMask != null) 'debugMask': debugMask!,
+        if (deploymentGroups != null) 'deploymentGroups': deploymentGroups!,
         if (deployments != null) 'deployments': deployments!,
+        if (envScopedRevisionId != null)
+          'envScopedRevisionId': envScopedRevisionId!,
         if (featureFlags != null) 'featureFlags': featureFlags!,
         if (flowhooks != null) 'flowhooks': flowhooks!,
         if (forwardProxyUri != null) 'forwardProxyUri': forwardProxyUri!,
@@ -18436,8 +18615,17 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
 /// EnvironmentGroupConfig is a revisioned snapshot of an EnvironmentGroup and
 /// its associated routing rules.
 class GoogleCloudApigeeV1EnvironmentGroupConfig {
+  /// A list of proxies in each deployment group for proxy chaining calls.
+  core.List<GoogleCloudApigeeV1EndpointChainingRule>? endpointChainingRules;
+
   /// Host names for the environment group.
   core.List<core.String>? hostnames;
+
+  /// When this message appears in the top-level IngressConfig, this field will
+  /// be populated in lieu of the inlined routing_rules and hostnames fields.
+  ///
+  /// Some URL for downloading the full EnvironmentGroupConfig for this group.
+  core.String? location;
 
   /// Name of the environment group in the following format:
   /// `organizations/{org}/envgroups/{envgroup}`.
@@ -18458,7 +18646,9 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
   core.String? uid;
 
   GoogleCloudApigeeV1EnvironmentGroupConfig({
+    this.endpointChainingRules,
     this.hostnames,
+    this.location,
     this.name,
     this.revisionId,
     this.routingRules,
@@ -18467,10 +18657,20 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
 
   GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(core.Map json_)
       : this(
+          endpointChainingRules: json_.containsKey('endpointChainingRules')
+              ? (json_['endpointChainingRules'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1EndpointChainingRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           hostnames: json_.containsKey('hostnames')
               ? (json_['hostnames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           revisionId: json_.containsKey('revisionId')
@@ -18486,7 +18686,10 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointChainingRules != null)
+          'endpointChainingRules': endpointChainingRules!,
         if (hostnames != null) 'hostnames': hostnames!,
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (revisionId != null) 'revisionId': revisionId!,
         if (routingRules != null) 'routingRules': routingRules!,
@@ -20403,7 +20606,7 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
 }
 
 class GoogleCloudApigeeV1ListOrganizationsResponse {
-  /// List of Apigee organizations and associated GCP projects.
+  /// List of Apigee organizations and associated Google Cloud projects.
   core.List<GoogleCloudApigeeV1OrganizationProjectMapping>? organizations;
 
   GoogleCloudApigeeV1ListOrganizationsResponse({
@@ -21142,7 +21345,8 @@ class GoogleCloudApigeeV1Organization {
 
   /// DEPRECATED: This field will be deprecated once Apigee supports DRZ.
   ///
-  /// Primary GCP region for analytics data storage. For valid values, see
+  /// Primary Google Cloud region for analytics data storage. For valid values,
+  /// see
   /// [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// Required.
@@ -21449,7 +21653,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   /// Name of the Apigee organization.
   core.String? organization;
 
-  /// GCP project associated with the Apigee organization
+  /// Google Cloud project associated with the Apigee organization
   core.String? projectId;
 
   /// DEPRECATED: Use `project_id`.
@@ -23157,6 +23361,12 @@ class GoogleCloudApigeeV1RoutingRule {
   /// of a single `*` character will match any string.
   core.String? basepath;
 
+  /// Name of a deployment group in an environment bound to the environment
+  /// group in the following format:
+  /// `organizations/{org}/environment/{env}/deploymentGroups/{group}` Only one
+  /// of environment or deployment_group will be set.
+  core.String? deploymentGroup;
+
   /// The env group config revision_id when this rule was added or last updated.
   ///
   /// This value is set when the rule is created and will only update if the the
@@ -23168,7 +23378,13 @@ class GoogleCloudApigeeV1RoutingRule {
 
   /// Name of an environment bound to the environment group in the following
   /// format: `organizations/{org}/environments/{env}`.
+  ///
+  /// Only one of environment or deployment_group will be set.
   core.String? environment;
+
+  /// Conflicting targets, which will be resource names specifying either
+  /// deployment groups or environments.
+  core.List<core.String>? otherTargets;
 
   /// The resource name of the proxy revision that is receiving this basepath in
   /// the following format: `organizations/{org}/apis/{api}/revisions/{rev}`.
@@ -23186,8 +23402,10 @@ class GoogleCloudApigeeV1RoutingRule {
 
   GoogleCloudApigeeV1RoutingRule({
     this.basepath,
+    this.deploymentGroup,
     this.envGroupRevision,
     this.environment,
+    this.otherTargets,
     this.receiver,
     this.updateTime,
   });
@@ -23197,11 +23415,19 @@ class GoogleCloudApigeeV1RoutingRule {
           basepath: json_.containsKey('basepath')
               ? json_['basepath'] as core.String
               : null,
+          deploymentGroup: json_.containsKey('deploymentGroup')
+              ? json_['deploymentGroup'] as core.String
+              : null,
           envGroupRevision: json_.containsKey('envGroupRevision')
               ? json_['envGroupRevision'] as core.String
               : null,
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.String
+              : null,
+          otherTargets: json_.containsKey('otherTargets')
+              ? (json_['otherTargets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           receiver: json_.containsKey('receiver')
               ? json_['receiver'] as core.String
@@ -23213,8 +23439,10 @@ class GoogleCloudApigeeV1RoutingRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basepath != null) 'basepath': basepath!,
+        if (deploymentGroup != null) 'deploymentGroup': deploymentGroup!,
         if (envGroupRevision != null) 'envGroupRevision': envGroupRevision!,
         if (environment != null) 'environment': environment!,
+        if (otherTargets != null) 'otherTargets': otherTargets!,
         if (receiver != null) 'receiver': receiver!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -24993,7 +25221,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
 
 /// TargetServer configuration.
 ///
-/// TargetServers are used to decouple a proxy's TargetEndpoint
+/// TargetServers are used to decouple a proxy TargetEndpoint
 /// HTTPTargetConnections from concrete URLs for backend services.
 class GoogleCloudApigeeV1TargetServer {
   /// A human-readable description of this TargetServer.

@@ -1147,7 +1147,7 @@
                                             ],
                                             "parameters": {
                                                 "placement": {
-                                                    "description": "Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs",
+                                                    "description": "Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
                                                     "required": true,
@@ -1175,7 +1175,7 @@
                                             ],
                                             "parameters": {
                                                 "placement": {
-                                                    "description": "Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving configuration name and the set of models that will be used to make the search.",
+                                                    "description": "Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that will be used to make the search.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
                                                     "required": true,
@@ -1388,7 +1388,7 @@
                                             ],
                                             "parameters": {
                                                 "placement": {
-                                                    "description": "Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs",
+                                                    "description": "Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
                                                     "required": true,
@@ -1444,7 +1444,7 @@
                                             ],
                                             "parameters": {
                                                 "placement": {
-                                                    "description": "Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving configuration name and the set of models that will be used to make the search.",
+                                                    "description": "Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that will be used to make the search.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
                                                     "required": true,
@@ -1489,7 +1489,7 @@
                                                     "type": "string"
                                                 },
                                                 "prebuiltRule": {
-                                                    "description": "The prebuilt rule name that can convert a specific type of raw_json. For example: \"default_schema/v1.0\"",
+                                                    "description": "The prebuilt rule name that can convert a specific type of raw_json. For example: \"ga4_bq\" rule for the GA4 user event schema.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -1616,6 +1616,11 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "writeAsync": {
+                                                    "description": "If set to true, the user event will be written asynchronously after validation, and the API will respond without waiting for the write. Therefore, silent failures can occur even if the API returns success. In case of silent failures, error messages can be found in Stackdriver logs.",
+                                                    "location": "query",
+                                                    "type": "boolean"
                                                 }
                                             },
                                             "path": "v2/{+parent}/userEvents:write",
@@ -1778,7 +1783,7 @@
             }
         }
     },
-    "revision": "20221130",
+    "revision": "20230105",
     "rootUrl": "https://retail.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
@@ -2155,14 +2160,14 @@
                     "type": "string"
                 },
                 "exactSearchableOption": {
-                    "description": "If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This property only applies to textual custom attributes and requires indexable set to enabled to enable exact-searchable.",
+                    "description": "If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This property only applies to textual custom attributes and requires indexable set to enabled to enable exact-searchable. If unset, the server behavior defaults to EXACT_SEARCHABLE_DISABLED.",
                     "enum": [
                         "EXACT_SEARCHABLE_OPTION_UNSPECIFIED",
                         "EXACT_SEARCHABLE_ENABLED",
                         "EXACT_SEARCHABLE_DISABLED"
                     ],
                     "enumDescriptions": [
-                        "Value used when unset. Defaults to EXACT_SEARCHABLE_DISABLED.",
+                        "Value used when unset.",
                         "Exact searchable option enabled for an attribute.",
                         "Exact searchable option disabled for an attribute."
                     ],
@@ -2188,18 +2193,18 @@
                     "type": "string"
                 },
                 "key": {
-                    "description": "Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed.",
+                    "description": "Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed. For attributes whoes key start with `attributes.`, we refer them as custom attributes. Otherwise they are built-in attributes such as `color` and `brands`.",
                     "type": "string"
                 },
                 "retrievableOption": {
-                    "description": "If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.",
+                    "description": "If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results. If unset, the server behavior defaults to RETRIEVABLE_DISABLED.",
                     "enum": [
                         "RETRIEVABLE_OPTION_UNSPECIFIED",
                         "RETRIEVABLE_ENABLED",
                         "RETRIEVABLE_DISABLED"
                     ],
                     "enumDescriptions": [
-                        "Value used when unset. Defaults to RETRIEVABLE_DISABLED.",
+                        "Value used when unset.",
                         "Retrievable option enabled for an attribute.",
                         "Retrievable option disabled for an attribute."
                     ],
@@ -2249,7 +2254,7 @@
                     "type": "array"
                 },
                 "colors": {
-                    "description": "The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single \"Mixed\" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).",
+                    "description": "The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single \"Mixed\" instead of multiple values. A maximum of 75 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).",
                     "items": {
                         "type": "string"
                     },
@@ -2460,7 +2465,7 @@
             "id": "GoogleCloudRetailV2Control",
             "properties": {
                 "associatedServingConfigIds": {
-                    "description": "Output only. List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.",
+                    "description": "Output only. List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.",
                     "items": {
                         "type": "string"
                     },
@@ -4293,7 +4298,7 @@
                     "type": "string"
                 },
                 "diversityType": {
-                    "description": "What kind of diversity to use - data driven or rule based.",
+                    "description": "What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.",
                     "enum": [
                         "DIVERSITY_TYPE_UNSPECIFIED",
                         "RULE_BASED_DIVERSITY",
@@ -4362,7 +4367,7 @@
                     "description": "The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec."
                 },
                 "priceRerankingLevel": {
-                    "description": "How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.",
+                    "description": "How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.",
                     "type": "string"
                 },
                 "redirectControlIds": {
@@ -5008,7 +5013,7 @@
             "type": "object"
         },
         "GoogleCloudRetailV2alphaModelPageOptimizationConfig": {
-            "description": "The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configurations to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.",
+            "description": "The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.",
             "id": "GoogleCloudRetailV2alphaModelPageOptimizationConfig",
             "properties": {
                 "pageOptimizationEventType": {

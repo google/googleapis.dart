@@ -313,6 +313,40 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterExportConfig = 0;
+api.ExportConfig buildExportConfig() {
+  final o = api.ExportConfig();
+  buildCounterExportConfig++;
+  if (buildCounterExportConfig < 3) {
+    o.currentState = 'foo';
+    o.deadLetterTopic = 'foo';
+    o.desiredState = 'foo';
+    o.pubsubConfig = buildPubSubConfig();
+  }
+  buildCounterExportConfig--;
+  return o;
+}
+
+void checkExportConfig(api.ExportConfig o) {
+  buildCounterExportConfig++;
+  if (buildCounterExportConfig < 3) {
+    unittest.expect(
+      o.currentState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deadLetterTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.desiredState!,
+      unittest.equals('foo'),
+    );
+    checkPubSubConfig(o.pubsubConfig!);
+  }
+  buildCounterExportConfig--;
+}
+
 core.List<api.Operation> buildUnnamed0() => [
       buildOperation(),
       buildOperation(),
@@ -743,6 +777,28 @@ void checkPartitionCursor(api.PartitionCursor o) {
   buildCounterPartitionCursor--;
 }
 
+core.int buildCounterPubSubConfig = 0;
+api.PubSubConfig buildPubSubConfig() {
+  final o = api.PubSubConfig();
+  buildCounterPubSubConfig++;
+  if (buildCounterPubSubConfig < 3) {
+    o.topic = 'foo';
+  }
+  buildCounterPubSubConfig--;
+  return o;
+}
+
+void checkPubSubConfig(api.PubSubConfig o) {
+  buildCounterPubSubConfig++;
+  if (buildCounterPubSubConfig < 3) {
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPubSubConfig--;
+}
+
 core.int buildCounterReservation = 0;
 api.Reservation buildReservation() {
   final o = api.Reservation();
@@ -934,6 +990,7 @@ api.Subscription buildSubscription() {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     o.deliveryConfig = buildDeliveryConfig();
+    o.exportConfig = buildExportConfig();
     o.name = 'foo';
     o.topic = 'foo';
   }
@@ -945,6 +1002,7 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     checkDeliveryConfig(o.deliveryConfig!);
+    checkExportConfig(o.exportConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1165,6 +1223,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ExportConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExportConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListOperationsResponse();
@@ -1262,6 +1330,16 @@ void main() {
       final od = api.PartitionCursor.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPartitionCursor(od);
+    });
+  });
+
+  unittest.group('obj-schema-PubSubConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPubSubConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PubSubConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPubSubConfig(od);
     });
   });
 

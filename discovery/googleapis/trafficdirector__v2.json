@@ -126,7 +126,7 @@
             }
         }
     },
-    "revision": "20221106",
+    "revision": "20221216",
     "rootUrl": "https://trafficdirector.googleapis.com/",
     "schemas": {
         "Address": {

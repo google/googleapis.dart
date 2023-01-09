@@ -14,6 +14,9 @@
 
 /// reCAPTCHA Enterprise API - v1
 ///
+/// Help protect your website from fraudulent activity, spam, and abuse without
+/// creating friction.
+///
 /// For more information, see <https://cloud.google.com/recaptcha-enterprise/>
 ///
 /// Create an instance of [RecaptchaEnterpriseApi] to access these resources:
@@ -40,6 +43,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Help protect your website from fraudulent activity, spam, and abuse without
+/// creating friction.
 class RecaptchaEnterpriseApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -718,6 +723,89 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
       };
 }
 
+/// Information about account verification, used for identity verification.
+class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
+  /// Endpoints that can be used for identity verification.
+  core.List<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>?
+      endpoints;
+
+  /// Language code preference for the verification message, set as a IETF BCP
+  /// 47 language code.
+  core.String? languageCode;
+
+  /// Result of the latest account verification challenge.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESULT_UNSPECIFIED" : No information about the latest account
+  /// verification.
+  /// - "SUCCESS_USER_VERIFIED" : The user was successfully verified. This means
+  /// the account verification challenge was successfully completed.
+  /// - "ERROR_USER_NOT_VERIFIED" : The user failed the verification challenge.
+  /// - "ERROR_SITE_ONBOARDING_INCOMPLETE" : The site is not properly onboarded
+  /// to use the account verification feature.
+  /// - "ERROR_RECIPIENT_NOT_ALLOWED" : The recipient is not allowed for account
+  /// verification. This can occur during integration but should not occur in
+  /// production.
+  /// - "ERROR_RECIPIENT_ABUSE_LIMIT_EXHAUSTED" : The recipient has already been
+  /// sent too many verification codes in a short amount of time.
+  /// - "ERROR_CRITICAL_INTERNAL" : The verification flow could not be completed
+  /// due to a critical internal error.
+  /// - "ERROR_CUSTOMER_QUOTA_EXHAUSTED" : The client has exceeded their two
+  /// factor request quota for this period of time.
+  /// - "ERROR_VERIFICATION_BYPASSED" : The request cannot be processed at the
+  /// time because of an incident. This bypass can be restricted to a
+  /// problematic destination email domain, a customer, or could affect the
+  /// entire service.
+  /// - "ERROR_VERDICT_MISMATCH" : The request parameters do not match with the
+  /// token provided and cannot be processed.
+  core.String? latestVerificationResult;
+
+  /// Username of the account that is being verified.
+  ///
+  /// Deprecated. Customers should now provide the hashed account ID field in
+  /// Event.
+  core.String? username;
+
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo({
+    this.endpoints,
+    this.languageCode,
+    this.latestVerificationResult,
+    this.username,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo.fromJson(
+      core.Map json_)
+      : this(
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          latestVerificationResult:
+              json_.containsKey('latestVerificationResult')
+                  ? json_['latestVerificationResult'] as core.String
+                  : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoints != null) 'endpoints': endpoints!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (latestVerificationResult != null)
+          'latestVerificationResult': latestVerificationResult!,
+        if (username != null) 'username': username!,
+      };
+}
+
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// If set to true, allowed_package_names are not enforced.
@@ -837,6 +925,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment?
       accountDefenderAssessment;
 
+  /// Account verification information for identity verification.
+  ///
+  /// The assessment event must include a token and site key to use this
+  /// feature.
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo? accountVerification;
+
   /// The event being assessed.
   GoogleCloudRecaptchaenterpriseV1Event? event;
 
@@ -863,6 +957,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
 
   GoogleCloudRecaptchaenterpriseV1Assessment({
     this.accountDefenderAssessment,
+    this.accountVerification,
     this.event,
     this.name,
     this.privatePasswordLeakVerification,
@@ -878,6 +973,11 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                       .fromJson(json_['accountDefenderAssessment']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          accountVerification: json_.containsKey('accountVerification')
+              ? GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
+                  .fromJson(json_['accountVerification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           event: json_.containsKey('event')
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
                   json_['event'] as core.Map<core.String, core.dynamic>)
@@ -903,6 +1003,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountDefenderAssessment != null)
           'accountDefenderAssessment': accountDefenderAssessment!,
+        if (accountVerification != null)
+          'accountVerification': accountVerification!,
         if (event != null) 'event': event!,
         if (name != null) 'name': name!,
         if (privatePasswordLeakVerification != null)
@@ -960,6 +1062,61 @@ class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
         if (nocaptchaCount != null) 'nocaptchaCount': nocaptchaCount!,
         if (pageloadCount != null) 'pageloadCount': pageloadCount!,
         if (passedCount != null) 'passedCount': passedCount!,
+      };
+}
+
+/// Information about a verification endpoint that can be used for 2FA.
+class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
+  /// Email address for which to trigger a verification request.
+  core.String? emailAddress;
+
+  /// Timestamp of the last successful verification for the endpoint, if any.
+  ///
+  /// Output only.
+  core.String? lastVerificationTime;
+
+  /// Phone number for which to trigger a verification request.
+  ///
+  /// Should be given in E.164 format.
+  core.String? phoneNumber;
+
+  /// Token to provide to the client to trigger endpoint verification.
+  ///
+  /// It must be used within 15 minutes.
+  ///
+  /// Output only.
+  core.String? requestToken;
+
+  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo({
+    this.emailAddress,
+    this.lastVerificationTime,
+    this.phoneNumber,
+    this.requestToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo.fromJson(
+      core.Map json_)
+      : this(
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
+              : null,
+          lastVerificationTime: json_.containsKey('lastVerificationTime')
+              ? json_['lastVerificationTime'] as core.String
+              : null,
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
+              : null,
+          requestToken: json_.containsKey('requestToken')
+              ? json_['requestToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (lastVerificationTime != null)
+          'lastVerificationTime': lastVerificationTime!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (requestToken != null) 'requestToken': requestToken!,
       };
 }
 
@@ -1357,7 +1514,35 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 }
 
 /// The migrate key request message.
-typedef GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = $Empty;
+class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
+  /// If true, skips the billing check.
+  ///
+  /// A reCAPTCHA Enterprise key or migrated key behaves differently than a
+  /// reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
+  /// https://cloud.google.com/recaptcha-enterprise/quotas#quota_limit). To
+  /// avoid any disruption of your usage, we check that a billing account is
+  /// present. If your usage of reCAPTCHA is under the free quota, you can
+  /// safely skip the billing check and proceed with the migration. See
+  /// https://cloud.google.com/recaptcha-enterprise/docs/billing-information.
+  ///
+  /// Optional.
+  core.bool? skipBillingCheck;
+
+  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest({
+    this.skipBillingCheck,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(core.Map json_)
+      : this(
+          skipBillingCheck: json_.containsKey('skipBillingCheck')
+              ? json_['skipBillingCheck'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipBillingCheck != null) 'skipBillingCheck': skipBillingCheck!,
+      };
+}
 
 /// Private password leak verification info.
 class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {

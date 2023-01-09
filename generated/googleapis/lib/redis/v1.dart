@@ -2013,7 +2013,7 @@ class PersistenceConfig {
   /// - "ONE_HOUR" : Snapshot every 1 hour.
   /// - "SIX_HOURS" : Snapshot every 6 hours.
   /// - "TWELVE_HOURS" : Snapshot every 12 hours.
-  /// - "TWENTY_FOUR_HOURS" : Snapshot every 24 horus.
+  /// - "TWENTY_FOUR_HOURS" : Snapshot every 24 hours.
   core.String? rdbSnapshotPeriod;
 
   /// Date and time that the first snapshot was/will be attempted, and to which

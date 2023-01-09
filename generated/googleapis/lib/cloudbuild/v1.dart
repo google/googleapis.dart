@@ -672,7 +672,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -718,7 +718,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -809,7 +809,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -2065,7 +2066,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -2111,7 +2112,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -2202,7 +2203,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -2599,9 +2601,10 @@ class ProjectsLocationsTriggersResource {
   /// Runs a `BuildTrigger` at a particular source revision.
   ///
   /// To run a regional or global trigger, use the POST request that includes
-  /// the location endpoint in the path. The POST request that does not include
-  /// the location endpoint in the path can only be used when running global
-  /// triggers.
+  /// the location endpoint in the path (ex.
+  /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The
+  /// POST request that does not include the location endpoint in the path can
+  /// only be used when running global triggers.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3204,9 +3207,10 @@ class ProjectsTriggersResource {
   /// Runs a `BuildTrigger` at a particular source revision.
   ///
   /// To run a regional or global trigger, use the POST request that includes
-  /// the location endpoint in the path. The POST request that does not include
-  /// the location endpoint in the path can only be used when running global
-  /// triggers.
+  /// the location endpoint in the path (ex.
+  /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The
+  /// POST request that does not include the location endpoint in the path can
+  /// only be used when running global triggers.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4508,7 +4512,7 @@ class BuildOptions {
   /// Note that this is *NOT* "disk free"; some of the space will be used by the
   /// operating system and build utilities. Also note that this is the minimum
   /// disk size that will be allocated for the build -- the build may run with a
-  /// larger disk than requested. At present, the maximum disk size is 1000GB;
+  /// larger disk than requested. At present, the maximum disk size is 2000GB;
   /// builds that request more than the maximum are rejected with an error.
   core.String? diskSizeGb;
 
@@ -5605,7 +5609,7 @@ class GitHubEnterpriseConfig {
   core.String? hostUrl;
 
   /// The full resource name for the GitHubEnterpriseConfig For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   ///
   /// Optional.
   core.String? name;
@@ -5782,7 +5786,8 @@ class GitHubEventsConfig {
   /// The resource name of the github enterprise config that should be applied
   /// to this installation.
   ///
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   ///
   /// Optional.
   core.String? enterpriseConfigResourceName;
@@ -6751,9 +6756,22 @@ class NetworkConfig {
   /// Required. Immutable.
   core.String? peeredNetwork;
 
+  /// Subnet IP range within the peered network.
+  ///
+  /// This is specified in CIDR notation with a slash and the subnet prefix
+  /// size. You can optionally specify an IP address before the subnet prefix
+  /// value. e.g. `192.168.0.0/29` would specify an IP range starting at
+  /// 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix
+  /// size of 16 bits, with an automatically determined IP within the peered
+  /// VPC. If unspecified, a value of `/24` will be used.
+  ///
+  /// Immutable.
+  core.String? peeredNetworkIpRange;
+
   NetworkConfig({
     this.egressOption,
     this.peeredNetwork,
+    this.peeredNetworkIpRange,
   });
 
   NetworkConfig.fromJson(core.Map json_)
@@ -6764,11 +6782,16 @@ class NetworkConfig {
           peeredNetwork: json_.containsKey('peeredNetwork')
               ? json_['peeredNetwork'] as core.String
               : null,
+          peeredNetworkIpRange: json_.containsKey('peeredNetworkIpRange')
+              ? json_['peeredNetworkIpRange'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (egressOption != null) 'egressOption': egressOption!,
         if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+        if (peeredNetworkIpRange != null)
+          'peeredNetworkIpRange': peeredNetworkIpRange!,
       };
 }
 

@@ -10519,6 +10519,14 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// If not provided, sentiment analysis is not performed.
   core.bool? analyzeQueryTextSentiment;
 
+  /// The channel which this query is for.
+  ///
+  /// If specified, only the ResponseMessage associated with the channel will be
+  /// returned. If no ResponseMessage is associated with the channel, it falls
+  /// back to the ResponseMessage with unspecified channel. If unspecified, the
+  /// ResponseMessage with unspecified channel will be returned.
+  core.String? channel;
+
   /// The unique identifier of the page to override the current page in the
   /// session.
   ///
@@ -10601,6 +10609,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
 
   GoogleCloudDialogflowCxV3QueryParameters({
     this.analyzeQueryTextSentiment,
+    this.channel,
     this.currentPage,
     this.disableWebhook,
     this.flowVersions,
@@ -10618,6 +10627,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               json_.containsKey('analyzeQueryTextSentiment')
                   ? json_['analyzeQueryTextSentiment'] as core.bool
                   : null,
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
           currentPage: json_.containsKey('currentPage')
               ? json_['currentPage'] as core.String
               : null,
@@ -10663,6 +10675,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzeQueryTextSentiment != null)
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
+        if (channel != null) 'channel': channel!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
         if (flowVersions != null) 'flowVersions': flowVersions!,
@@ -10940,6 +10953,12 @@ class GoogleCloudDialogflowCxV3ResourceName {
 /// approach allows for more sophisticated user experience scenarios, where the
 /// text displayed to the user may differ from what is heard.
 class GoogleCloudDialogflowCxV3ResponseMessage {
+  /// The channel which the response is associated with.
+  ///
+  /// Clients can specify the channel via QueryParameters.channel, and only
+  /// associated channel response will be returned.
+  core.String? channel;
+
   /// Indicates that the conversation succeeded.
   GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess?
       conversationSuccess;
@@ -10992,6 +11011,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   GoogleCloudDialogflowCxV3ResponseMessageText? text;
 
   GoogleCloudDialogflowCxV3ResponseMessage({
+    this.channel,
     this.conversationSuccess,
     this.endInteraction,
     this.liveAgentHandoff,
@@ -11005,6 +11025,9 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
 
   GoogleCloudDialogflowCxV3ResponseMessage.fromJson(core.Map json_)
       : this(
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
           conversationSuccess: json_.containsKey('conversationSuccess')
               ? GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
                   .fromJson(json_['conversationSuccess']
@@ -11048,6 +11071,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (conversationSuccess != null)
           'conversationSuccess': conversationSuccess!,
         if (endInteraction != null) 'endInteraction': endInteraction!,

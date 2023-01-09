@@ -8108,7 +8108,7 @@ class Account {
   ///
   /// To create a new link request, add a new link with status `active` to the
   /// list. It will remain in a `pending` state until approved or rejected
-  /// either in the Ads interface or through the AdWords API. To delete an
+  /// either in the Ads interface or through the Google Ads API. To delete an
   /// active link, or to cancel a link request, remove it from the list.
   core.List<AccountAdsLink>? adsLinks;
 
@@ -22262,10 +22262,10 @@ class PriceInsights {
       };
 }
 
-/// Required product attributes are primarily defined by the products data
+/// Required product attributes are primarily defined by the product data
 /// specification.
 ///
-/// See the Products Data Specification Help Center article for information.
+/// See the Product Data Specification Help Center article for information.
 /// Product data. After inserting, updating, or deleting a product, it may take
 /// several minutes before changes take effect.
 class Product {
@@ -22459,6 +22459,12 @@ class Product {
   /// Value: the fixed string "`content#product`"
   core.String? kind;
 
+  /// Additional URLs of lifestyle images of the item, used to explicitly
+  /// identify images that showcase your item in a real-world context.
+  ///
+  /// See the Help Center article for more information.
+  core.List<core.String>? lifestyleImageLinks;
+
   /// URL directly linking to your item's page on your website.
   core.String? link;
 
@@ -22548,7 +22554,7 @@ class Product {
   /// The value must be between 0 (exclusive) and 3000 (inclusive).
   ProductDimension? productLength;
 
-  /// Categories of the item (formatted as in products data specification).
+  /// Categories of the item (formatted as in product data specification).
   core.List<core.String>? productTypes;
 
   /// The weight of the product in the units provided.
@@ -22567,7 +22573,7 @@ class Product {
   /// Advertised sale price of the item.
   Price? salePrice;
 
-  /// Date range during which the item is on sale (see products data
+  /// Date range during which the item is on sale (see product data
   /// specification ).
   core.String? salePriceEffectiveDate;
 
@@ -22698,6 +22704,7 @@ class Product {
     this.isBundle,
     this.itemGroupId,
     this.kind,
+    this.lifestyleImageLinks,
     this.link,
     this.linkTemplate,
     this.loyaltyPoints,
@@ -22888,6 +22895,11 @@ class Product {
               ? json_['itemGroupId'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lifestyleImageLinks: json_.containsKey('lifestyleImageLinks')
+              ? (json_['lifestyleImageLinks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           link: json_.containsKey('link') ? json_['link'] as core.String : null,
           linkTemplate: json_.containsKey('linkTemplate')
               ? json_['linkTemplate'] as core.String
@@ -23117,6 +23129,8 @@ class Product {
         if (isBundle != null) 'isBundle': isBundle!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (kind != null) 'kind': kind!,
+        if (lifestyleImageLinks != null)
+          'lifestyleImageLinks': lifestyleImageLinks!,
         if (link != null) 'link': link!,
         if (linkTemplate != null) 'linkTemplate': linkTemplate!,
         if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
@@ -23590,7 +23604,7 @@ class ProductShipping {
   core.String? locationGroupName;
 
   /// The numeric ID of a location that the shipping rate applies to as defined
-  /// in the AdWords API.
+  /// in the Google Ads API.
   core.String? locationId;
 
   /// Maximum handling time (inclusive) between when the order is received and
@@ -24040,7 +24054,7 @@ class ProductTax {
   core.String? country;
 
   /// The numeric ID of a location that the tax rate applies to as defined in
-  /// the AdWords API.
+  /// the Google Ads API.
   core.String? locationId;
 
   /// The postal code range that the tax rate applies to, represented by a ZIP
@@ -25224,6 +25238,11 @@ class Promotion {
   /// Required.
   core.String? promotionId;
 
+  /// The current status of the promotion.
+  ///
+  /// Output only.
+  PromotionPromotionStatus? promotionStatus;
+
   /// URL to the page on the merchant's site where the promotion shows.
   ///
   /// Local Inventory ads promotions throw an error if no promo url is included.
@@ -25300,6 +25319,7 @@ class Promotion {
     this.promotionEffectiveDates,
     this.promotionEffectiveTimePeriod,
     this.promotionId,
+    this.promotionStatus,
     this.promotionUrl,
     this.redemptionChannel,
     this.shippingServiceNames,
@@ -25436,6 +25456,10 @@ class Promotion {
           promotionId: json_.containsKey('promotionId')
               ? json_['promotionId'] as core.String
               : null,
+          promotionStatus: json_.containsKey('promotionStatus')
+              ? PromotionPromotionStatus.fromJson(json_['promotionStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           promotionUrl: json_.containsKey('promotionUrl')
               ? json_['promotionUrl'] as core.String
               : null,
@@ -25514,6 +25538,7 @@ class Promotion {
         if (promotionEffectiveTimePeriod != null)
           'promotionEffectiveTimePeriod': promotionEffectiveTimePeriod!,
         if (promotionId != null) 'promotionId': promotionId!,
+        if (promotionStatus != null) 'promotionStatus': promotionStatus!,
         if (promotionUrl != null) 'promotionUrl': promotionUrl!,
         if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
         if (shippingServiceNames != null)
@@ -25524,6 +25549,129 @@ class Promotion {
         if (storeCodeExclusion != null)
           'storeCodeExclusion': storeCodeExclusion!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
+      };
+}
+
+/// The status of the promotion.
+class PromotionPromotionStatus {
+  /// Date on which the promotion has been created in
+  /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
+  /// offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+  core.String? creationDate;
+
+  /// The intended destinations for the promotion.
+  core.List<PromotionPromotionStatusDestinationStatus>? destinationStatuses;
+
+  /// Date on which the promotion status has been last updated in
+  /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
+  /// offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+  core.String? lastUpdateDate;
+
+  /// A list of issues associated with the promotion.
+  core.List<PromotionPromotionStatusPromotionIssue>? promotionIssue;
+
+  PromotionPromotionStatus({
+    this.creationDate,
+    this.destinationStatuses,
+    this.lastUpdateDate,
+    this.promotionIssue,
+  });
+
+  PromotionPromotionStatus.fromJson(core.Map json_)
+      : this(
+          creationDate: json_.containsKey('creationDate')
+              ? json_['creationDate'] as core.String
+              : null,
+          destinationStatuses: json_.containsKey('destinationStatuses')
+              ? (json_['destinationStatuses'] as core.List)
+                  .map((value) =>
+                      PromotionPromotionStatusDestinationStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          lastUpdateDate: json_.containsKey('lastUpdateDate')
+              ? json_['lastUpdateDate'] as core.String
+              : null,
+          promotionIssue: json_.containsKey('promotionIssue')
+              ? (json_['promotionIssue'] as core.List)
+                  .map((value) =>
+                      PromotionPromotionStatusPromotionIssue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (destinationStatuses != null)
+          'destinationStatuses': destinationStatuses!,
+        if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
+        if (promotionIssue != null) 'promotionIssue': promotionIssue!,
+      };
+}
+
+/// The destination status of the promotion.
+class PromotionPromotionStatusDestinationStatus {
+  /// The name of the destination.
+  core.String? destination;
+
+  /// The status for the specified destination.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unknown promotion state.
+  /// - "IN_REVIEW" : The promotion is under review.
+  /// - "REJECTED" : The promotion is disapproved
+  /// - "LIVE" : The promotion is approved and active.
+  /// - "STOPPED" : The promotion is stopped by merchant.
+  /// - "EXPIRED" : The promotion is no longer active.
+  /// - "PENDING" : The promotion is not stopped, and all reviews are approved,
+  /// but the active date is in the future.
+  core.String? status;
+
+  PromotionPromotionStatusDestinationStatus({
+    this.destination,
+    this.status,
+  });
+
+  PromotionPromotionStatusDestinationStatus.fromJson(core.Map json_)
+      : this(
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// The issue associated with the promotion.
+class PromotionPromotionStatusPromotionIssue {
+  /// Code of the issue.
+  core.String? code;
+
+  /// Explanation of the issue.
+  core.String? detail;
+
+  PromotionPromotionStatusPromotionIssue({
+    this.code,
+    this.detail,
+  });
+
+  PromotionPromotionStatusPromotionIssue.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (detail != null) 'detail': detail!,
       };
 }
 
@@ -26423,7 +26571,7 @@ class RepricingProductReportBuyboxWinningProductStats {
 /// Represents a repricing rule.
 ///
 /// A repricing rule is used by shopping serving to adjust transactable offer
-/// prices if conditions are met. Next ID: 24
+/// prices if conditions are met.
 class RepricingRule {
   /// The rule definition for TYPE_COGS_BASED.
   ///

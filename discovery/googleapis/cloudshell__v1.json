@@ -372,7 +372,7 @@
             }
         }
     },
-    "revision": "20221205",
+    "revision": "20230109",
     "rootUrl": "https://cloudshell.googleapis.com/",
     "schemas": {
         "AddPublicKeyMetadata": {

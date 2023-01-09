@@ -1324,6 +1324,51 @@ class Measurement3d {
       };
 }
 
+/// Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.
+class NoOverlapGpsFailureDetails {
+  /// Time of last recorded GPS point.
+  core.String? gpsEndTime;
+
+  /// Time of first recorded GPS point.
+  core.String? gpsStartTime;
+
+  /// End time of video.
+  core.String? videoEndTime;
+
+  /// Start time of video.
+  core.String? videoStartTime;
+
+  NoOverlapGpsFailureDetails({
+    this.gpsEndTime,
+    this.gpsStartTime,
+    this.videoEndTime,
+    this.videoStartTime,
+  });
+
+  NoOverlapGpsFailureDetails.fromJson(core.Map json_)
+      : this(
+          gpsEndTime: json_.containsKey('gpsEndTime')
+              ? json_['gpsEndTime'] as core.String
+              : null,
+          gpsStartTime: json_.containsKey('gpsStartTime')
+              ? json_['gpsStartTime'] as core.String
+              : null,
+          videoEndTime: json_.containsKey('videoEndTime')
+              ? json_['videoEndTime'] as core.String
+              : null,
+          videoStartTime: json_.containsKey('videoStartTime')
+              ? json_['videoStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gpsEndTime != null) 'gpsEndTime': gpsEndTime!,
+        if (gpsStartTime != null) 'gpsStartTime': gpsStartTime!,
+        if (videoEndTime != null) 'videoEndTime': videoEndTime!,
+        if (videoStartTime != null) 'videoStartTime': videoStartTime!,
+      };
+}
+
 /// Details related to ProcessingFailureReason#NOT_OUTDOORS.
 ///
 /// If there are multiple indoor frames found, the first frame is recorded here.
@@ -2068,6 +2113,9 @@ class ProcessingFailureDetails {
   /// See InsufficientGpsFailureDetails.
   InsufficientGpsFailureDetails? insufficientGpsDetails;
 
+  /// See NoOverlapGpsFailureDetails.
+  NoOverlapGpsFailureDetails? noOverlapGpsDetails;
+
   /// See NotOutdoorsFailureDetails.
   NotOutdoorsFailureDetails? notOutdoorsDetails;
 
@@ -2075,6 +2123,7 @@ class ProcessingFailureDetails {
     this.gpsDataGapDetails,
     this.imuDataGapDetails,
     this.insufficientGpsDetails,
+    this.noOverlapGpsDetails,
     this.notOutdoorsDetails,
   });
 
@@ -2093,6 +2142,10 @@ class ProcessingFailureDetails {
                   json_['insufficientGpsDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          noOverlapGpsDetails: json_.containsKey('noOverlapGpsDetails')
+              ? NoOverlapGpsFailureDetails.fromJson(json_['noOverlapGpsDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           notOutdoorsDetails: json_.containsKey('notOutdoorsDetails')
               ? NotOutdoorsFailureDetails.fromJson(json_['notOutdoorsDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -2104,6 +2157,8 @@ class ProcessingFailureDetails {
         if (imuDataGapDetails != null) 'imuDataGapDetails': imuDataGapDetails!,
         if (insufficientGpsDetails != null)
           'insufficientGpsDetails': insufficientGpsDetails!,
+        if (noOverlapGpsDetails != null)
+          'noOverlapGpsDetails': noOverlapGpsDetails!,
         if (notOutdoorsDetails != null)
           'notOutdoorsDetails': notOutdoorsDetails!,
       };

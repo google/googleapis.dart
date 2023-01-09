@@ -1554,14 +1554,18 @@ core.int buildCounterRemoveIamPolicyRequest = 0;
 api.RemoveIamPolicyRequest buildRemoveIamPolicyRequest() {
   final o = api.RemoveIamPolicyRequest();
   buildCounterRemoveIamPolicyRequest++;
-  if (buildCounterRemoveIamPolicyRequest < 3) {}
+  if (buildCounterRemoveIamPolicyRequest < 3) {
+    o.asynchronous = true;
+  }
   buildCounterRemoveIamPolicyRequest--;
   return o;
 }
 
 void checkRemoveIamPolicyRequest(api.RemoveIamPolicyRequest o) {
   buildCounterRemoveIamPolicyRequest++;
-  if (buildCounterRemoveIamPolicyRequest < 3) {}
+  if (buildCounterRemoveIamPolicyRequest < 3) {
+    unittest.expect(o.asynchronous!, unittest.isTrue);
+  }
   buildCounterRemoveIamPolicyRequest--;
 }
 

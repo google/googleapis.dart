@@ -1293,7 +1293,7 @@ class Function_ {
   /// User-provided description of a function.
   core.String? description;
 
-  /// Describe whether the function is gen1 or gen2.
+  /// Describe whether the function is 1st Gen or 2nd Gen.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Unspecified
   /// - "GEN_1" : Gen 1

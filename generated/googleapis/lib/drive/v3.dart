@@ -245,8 +245,8 @@ class ChangesResource {
   /// Application Data folder or shared files which have not been added to My
   /// Drive.
   ///
-  /// [spaces] - A comma-separated list of spaces to query within the user
-  /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
+  /// [spaces] - A comma-separated list of spaces to query within the corpora.
+  /// Supported values are 'drive' and 'appDataFolder'.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -361,8 +361,8 @@ class ChangesResource {
   /// Application Data folder or shared files which have not been added to My
   /// Drive.
   ///
-  /// [spaces] - A comma-separated list of spaces to query within the user
-  /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
+  /// [spaces] - A comma-separated list of spaces to query within the corpora.
+  /// Supported values are 'drive' and 'appDataFolder'.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -482,7 +482,7 @@ class CommentsResource {
 
   CommentsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new comment on a file.
+  /// Creates a comment on a file.
   ///
   /// [request] - The metadata request object.
   ///
@@ -711,7 +711,7 @@ class DrivesResource {
 
   DrivesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new shared drive.
+  /// Creates a shared drive.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1107,7 +1107,7 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a new file.
+  /// Creates a file.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1535,7 +1535,7 @@ class FilesResource {
   /// [q] - A query for filtering the file results. See the "Search for Files"
   /// guide for supported syntax.
   ///
-  /// [spaces] - A comma-separated list of spaces to query within the corpus.
+  /// [spaces] - A comma-separated list of spaces to query within the corpora.
   /// Supported values are 'drive' and 'appDataFolder'.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -2275,7 +2275,7 @@ class RepliesResource {
 
   RepliesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new reply to a comment.
+  /// Creates a reply to a comment.
   ///
   /// [request] - The metadata request object.
   ///

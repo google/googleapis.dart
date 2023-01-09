@@ -1292,7 +1292,10 @@ class H264CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -1352,7 +1355,11 @@ class H264CodecSettings {
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   H264CodecSettings({
@@ -1536,7 +1543,10 @@ class H265CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -1600,7 +1610,11 @@ class H265CodecSettings {
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   H265CodecSettings({
@@ -2659,7 +2673,11 @@ class SpriteSheet {
   /// Must be an even integer. To preserve the source aspect ratio, set the
   /// SpriteSheet.sprite_height_pixels field or the
   /// SpriteSheet.sprite_width_pixels field, but not both (the API will
-  /// automatically calculate the missing field).
+  /// automatically calculate the missing field). For portrait videos that
+  /// contain horizontal ASR and rotation metadata, provide the height, in
+  /// pixels, per the horizontal ASR. The API calculates the width per the
+  /// horizontal ASR. The API detects any rotation metadata and swaps the
+  /// requested height and width for the output.
   ///
   /// Required.
   core.int? spriteHeightPixels;
@@ -2669,7 +2687,11 @@ class SpriteSheet {
   /// Must be an even integer. To preserve the source aspect ratio, set the
   /// SpriteSheet.sprite_width_pixels field or the
   /// SpriteSheet.sprite_height_pixels field, but not both (the API will
-  /// automatically calculate the missing field).
+  /// automatically calculate the missing field). For portrait videos that
+  /// contain horizontal ASR and rotation metadata, provide the width, in
+  /// pixels, per the horizontal ASR. The API calculates the height per the
+  /// horizontal ASR. The API detects any rotation metadata and swaps the
+  /// requested height and width for the output.
   ///
   /// Required.
   core.int? spriteWidthPixels;
@@ -2925,7 +2947,10 @@ class Vp9CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -2957,7 +2982,11 @@ class Vp9CodecSettings {
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   Vp9CodecSettings({

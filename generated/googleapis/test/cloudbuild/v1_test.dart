@@ -2400,6 +2400,7 @@ api.NetworkConfig buildNetworkConfig() {
   if (buildCounterNetworkConfig < 3) {
     o.egressOption = 'foo';
     o.peeredNetwork = 'foo';
+    o.peeredNetworkIpRange = 'foo';
   }
   buildCounterNetworkConfig--;
   return o;
@@ -2414,6 +2415,10 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
     unittest.expect(
       o.peeredNetwork!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.peeredNetworkIpRange!,
       unittest.equals('foo'),
     );
   }

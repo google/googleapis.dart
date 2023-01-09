@@ -489,7 +489,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                    "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                     "required": true,
@@ -524,7 +524,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                    "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                     "required": true,
@@ -584,7 +584,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                    "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                     "required": true,
@@ -1387,7 +1387,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                            "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                             "required": true,
@@ -1422,7 +1422,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                            "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                             "required": true,
@@ -1482,7 +1482,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                                            "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                                             "required": true,
@@ -1750,7 +1750,7 @@
                                     ]
                                 },
                                 "run": {
-                                    "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
+                                    "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
                                     "httpMethod": "POST",
                                     "id": "cloudbuild.projects.locations.triggers.run",
@@ -2184,7 +2184,7 @@
                             ]
                         },
                         "run": {
-                            "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
+                            "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
                             "flatPath": "v1/projects/{projectId}/triggers/{triggerId}:run",
                             "httpMethod": "POST",
                             "id": "cloudbuild.projects.triggers.run",
@@ -2293,7 +2293,7 @@
             }
         }
     },
-    "revision": "20221103",
+    "revision": "20230102",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ApprovalConfig": {
@@ -2942,7 +2942,7 @@
             "id": "BuildOptions",
             "properties": {
                 "diskSizeGb": {
-                    "description": "Requested disk size for the VM that runs the build. Note that this is *NOT* \"disk free\"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.",
+                    "description": "Requested disk size for the VM that runs the build. Note that this is *NOT* \"disk free\"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3714,7 +3714,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                    "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                     "type": "string"
                 },
                 "peeredNetwork": {
@@ -3780,7 +3780,7 @@
             "id": "GitHubEventsConfig",
             "properties": {
                 "enterpriseConfigResourceName": {
-                    "description": "Optional. The resource name of the github enterprise config that should be applied to this installation. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                    "description": "Optional. The resource name of the github enterprise config that should be applied to this installation. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                     "type": "string"
                 },
                 "installationId": {
@@ -4291,6 +4291,10 @@
                 },
                 "peeredNetwork": {
                     "description": "Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)",
+                    "type": "string"
+                },
+                "peeredNetworkIpRange": {
+                    "description": "Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.",
                     "type": "string"
                 }
             },

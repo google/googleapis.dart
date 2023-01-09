@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Migrate to Virtual Machines API - v1
+/// VM Migration API - v1
 ///
 /// Use the Migrate to Virtual Machines API to programmatically migrate
 /// workloads.
@@ -2853,6 +2853,37 @@ class ProjectsLocationsTargetProjectsResource {
   }
 }
 
+/// Message describing AWS Credentials using access key id and secret.
+class AccessKeyCredentials {
+  /// AWS access key ID.
+  core.String? accessKeyId;
+
+  /// Input only.
+  ///
+  /// AWS secret access key.
+  core.String? secretAccessKey;
+
+  AccessKeyCredentials({
+    this.accessKeyId,
+    this.secretAccessKey,
+  });
+
+  AccessKeyCredentials.fromJson(core.Map json_)
+      : this(
+          accessKeyId: json_.containsKey('accessKeyId')
+              ? json_['accessKeyId'] as core.String
+              : null,
+          secretAccessKey: json_.containsKey('secretAccessKey')
+              ? json_['secretAccessKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessKeyId != null) 'accessKeyId': accessKeyId!,
+        if (secretAccessKey != null) 'secretAccessKey': secretAccessKey!,
+      };
+}
+
 /// AdaptingOSStep contains specific step details.
 typedef AdaptingOSStep = $Empty;
 
@@ -2987,6 +3018,394 @@ class AvailableUpdates {
         if (inPlaceUpdate != null) 'inPlaceUpdate': inPlaceUpdate!,
         if (newDeployableAppliance != null)
           'newDeployableAppliance': newDeployableAppliance!,
+      };
+}
+
+/// AwsSecurityGroup describes a security group of an AWS VM.
+class AwsSecurityGroup {
+  /// The AWS security group id.
+  core.String? id;
+
+  /// The AWS security group name.
+  core.String? name;
+
+  AwsSecurityGroup({
+    this.id,
+    this.name,
+  });
+
+  AwsSecurityGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// AwsSourceDetails message describes a specific source details for the AWS
+/// source type.
+class AwsSourceDetails {
+  /// AWS Credentials using access key id and secret.
+  AccessKeyCredentials? accessKeyCreds;
+
+  /// The AWS region that the source VMs will be migrated from.
+  ///
+  /// Immutable.
+  core.String? awsRegion;
+
+  /// Provides details on the state of the Source in case of an error.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// AWS security group names to limit the scope of the source inventory.
+  core.List<core.String>? inventorySecurityGroupNames;
+
+  /// AWS resource tags to limit the scope of the source inventory.
+  core.List<Tag>? inventoryTagList;
+
+  /// User specified tags to add to every M2VM generated resource in AWS.
+  ///
+  /// These tags will be set in addition to the default tags that are set as
+  /// part of the migration process. The tags must not begin with the reserved
+  /// prefix `m2vm`.
+  core.Map<core.String, core.String>? migrationResourcesUserTags;
+
+  /// The source's public IP.
+  ///
+  /// All communication initiated by this source will originate from this IP.
+  ///
+  /// Output only.
+  core.String? publicIp;
+
+  /// State of the source as determined by the health check.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown. This is used for API
+  /// compatibility only and is not used by the system.
+  /// - "PENDING" : The state was not sampled by the health checks yet.
+  /// - "FAILED" : The source is available but might not be usable yet due to
+  /// invalid credentials or another reason. The error message will contain
+  /// further details.
+  /// - "ACTIVE" : The source exists and its credentials were verified.
+  core.String? state;
+
+  AwsSourceDetails({
+    this.accessKeyCreds,
+    this.awsRegion,
+    this.error,
+    this.inventorySecurityGroupNames,
+    this.inventoryTagList,
+    this.migrationResourcesUserTags,
+    this.publicIp,
+    this.state,
+  });
+
+  AwsSourceDetails.fromJson(core.Map json_)
+      : this(
+          accessKeyCreds: json_.containsKey('accessKeyCreds')
+              ? AccessKeyCredentials.fromJson(json_['accessKeyCreds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          awsRegion: json_.containsKey('awsRegion')
+              ? json_['awsRegion'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inventorySecurityGroupNames:
+              json_.containsKey('inventorySecurityGroupNames')
+                  ? (json_['inventorySecurityGroupNames'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          inventoryTagList: json_.containsKey('inventoryTagList')
+              ? (json_['inventoryTagList'] as core.List)
+                  .map((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          migrationResourcesUserTags:
+              json_.containsKey('migrationResourcesUserTags')
+                  ? (json_['migrationResourcesUserTags']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.String,
+                      ),
+                    )
+                  : null,
+          publicIp: json_.containsKey('publicIp')
+              ? json_['publicIp'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessKeyCreds != null) 'accessKeyCreds': accessKeyCreds!,
+        if (awsRegion != null) 'awsRegion': awsRegion!,
+        if (error != null) 'error': error!,
+        if (inventorySecurityGroupNames != null)
+          'inventorySecurityGroupNames': inventorySecurityGroupNames!,
+        if (inventoryTagList != null) 'inventoryTagList': inventoryTagList!,
+        if (migrationResourcesUserTags != null)
+          'migrationResourcesUserTags': migrationResourcesUserTags!,
+        if (publicIp != null) 'publicIp': publicIp!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represent the source AWS VM details.
+class AwsSourceVmDetails {
+  /// The total size of the disks being migrated in bytes.
+  core.String? committedStorageBytes;
+
+  /// The firmware type of the source VM.
+  /// Possible string values are:
+  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
+  /// - "EFI" : The firmware is EFI.
+  /// - "BIOS" : The firmware is BIOS.
+  core.String? firmware;
+
+  AwsSourceVmDetails({
+    this.committedStorageBytes,
+    this.firmware,
+  });
+
+  AwsSourceVmDetails.fromJson(core.Map json_)
+      : this(
+          committedStorageBytes: json_.containsKey('committedStorageBytes')
+              ? json_['committedStorageBytes'] as core.String
+              : null,
+          firmware: json_.containsKey('firmware')
+              ? json_['firmware'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (committedStorageBytes != null)
+          'committedStorageBytes': committedStorageBytes!,
+        if (firmware != null) 'firmware': firmware!,
+      };
+}
+
+/// AwsVmDetails describes a VM in AWS.
+class AwsVmDetails {
+  /// The CPU architecture.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "I386" : The architecture is I386.
+  /// - "X86_64" : The architecture is X86_64.
+  /// - "ARM64" : The architecture is ARM64.
+  /// - "X86_64_MAC" : The architecture is X86_64_MAC.
+  core.String? architecture;
+
+  /// The VM Boot Option.
+  /// Possible string values are:
+  /// - "BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
+  /// - "EFI" : The boot option is UEFI.
+  /// - "BIOS" : The boot option is LEGACY-BIOS.
+  core.String? bootOption;
+
+  /// The total size of the storage allocated to the VM in MB.
+  core.String? committedStorageMb;
+
+  /// The number of cpus the VM has.
+  core.int? cpuCount;
+
+  /// The number of disks the VM has.
+  core.int? diskCount;
+
+  /// The display name of the VM.
+  ///
+  /// Note that this value is not necessarily unique.
+  core.String? displayName;
+
+  /// The instance type of the VM.
+  core.String? instanceType;
+
+  /// The memory size of the VM in MB.
+  core.int? memoryMb;
+
+  /// The VM's OS.
+  core.String? osDescription;
+
+  /// The power state of the VM at the moment list was taken.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "POWER_STATE_UNSPECIFIED" : Power state is not specified.
+  /// - "ON" : The VM is turned on.
+  /// - "OFF" : The VM is turned off.
+  /// - "SUSPENDED" : The VM is suspended. This is similar to hibernation or
+  /// sleep mode.
+  /// - "PENDING" : The VM is starting.
+  core.String? powerState;
+
+  /// The security groups the VM belongs to.
+  core.List<AwsSecurityGroup>? securityGroups;
+
+  /// The descriptive name of the AWS's source this VM is connected to.
+  core.String? sourceDescription;
+
+  /// The id of the AWS's source this VM is connected to.
+  core.String? sourceId;
+
+  /// The tags of the VM.
+  core.Map<core.String, core.String>? tags;
+
+  /// The virtualization type.
+  /// Possible string values are:
+  /// - "VM_VIRTUALIZATION_TYPE_UNSPECIFIED" : The virtualization type is
+  /// unknown.
+  /// - "HVM" : The virtualziation type is HVM.
+  /// - "PARAVIRTUAL" : The virtualziation type is PARAVIRTUAL.
+  core.String? virtualizationType;
+
+  /// The VM ID in AWS.
+  core.String? vmId;
+
+  /// The VPC ID the VM belongs to.
+  core.String? vpcId;
+
+  /// The AWS zone of the VM.
+  core.String? zone;
+
+  AwsVmDetails({
+    this.architecture,
+    this.bootOption,
+    this.committedStorageMb,
+    this.cpuCount,
+    this.diskCount,
+    this.displayName,
+    this.instanceType,
+    this.memoryMb,
+    this.osDescription,
+    this.powerState,
+    this.securityGroups,
+    this.sourceDescription,
+    this.sourceId,
+    this.tags,
+    this.virtualizationType,
+    this.vmId,
+    this.vpcId,
+    this.zone,
+  });
+
+  AwsVmDetails.fromJson(core.Map json_)
+      : this(
+          architecture: json_.containsKey('architecture')
+              ? json_['architecture'] as core.String
+              : null,
+          bootOption: json_.containsKey('bootOption')
+              ? json_['bootOption'] as core.String
+              : null,
+          committedStorageMb: json_.containsKey('committedStorageMb')
+              ? json_['committedStorageMb'] as core.String
+              : null,
+          cpuCount: json_.containsKey('cpuCount')
+              ? json_['cpuCount'] as core.int
+              : null,
+          diskCount: json_.containsKey('diskCount')
+              ? json_['diskCount'] as core.int
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          instanceType: json_.containsKey('instanceType')
+              ? json_['instanceType'] as core.String
+              : null,
+          memoryMb: json_.containsKey('memoryMb')
+              ? json_['memoryMb'] as core.int
+              : null,
+          osDescription: json_.containsKey('osDescription')
+              ? json_['osDescription'] as core.String
+              : null,
+          powerState: json_.containsKey('powerState')
+              ? json_['powerState'] as core.String
+              : null,
+          securityGroups: json_.containsKey('securityGroups')
+              ? (json_['securityGroups'] as core.List)
+                  .map((value) => AwsSecurityGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourceDescription: json_.containsKey('sourceDescription')
+              ? json_['sourceDescription'] as core.String
+              : null,
+          sourceId: json_.containsKey('sourceId')
+              ? json_['sourceId'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          virtualizationType: json_.containsKey('virtualizationType')
+              ? json_['virtualizationType'] as core.String
+              : null,
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+          vpcId:
+              json_.containsKey('vpcId') ? json_['vpcId'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (bootOption != null) 'bootOption': bootOption!,
+        if (committedStorageMb != null)
+          'committedStorageMb': committedStorageMb!,
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+        if (diskCount != null) 'diskCount': diskCount!,
+        if (displayName != null) 'displayName': displayName!,
+        if (instanceType != null) 'instanceType': instanceType!,
+        if (memoryMb != null) 'memoryMb': memoryMb!,
+        if (osDescription != null) 'osDescription': osDescription!,
+        if (powerState != null) 'powerState': powerState!,
+        if (securityGroups != null) 'securityGroups': securityGroups!,
+        if (sourceDescription != null) 'sourceDescription': sourceDescription!,
+        if (sourceId != null) 'sourceId': sourceId!,
+        if (tags != null) 'tags': tags!,
+        if (virtualizationType != null)
+          'virtualizationType': virtualizationType!,
+        if (vmId != null) 'vmId': vmId!,
+        if (vpcId != null) 'vpcId': vpcId!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// AWSVmsDetails describes VMs in AWS.
+class AwsVmsDetails {
+  /// The details of the AWS VMs.
+  core.List<AwsVmDetails>? details;
+
+  AwsVmsDetails({
+    this.details,
+  });
+
+  AwsVmsDetails.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => AwsVmDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
       };
 }
 
@@ -3437,7 +3856,7 @@ class ComputeEngineTargetDetails {
   /// A map of network tags to associate with the VM.
   core.List<core.String>? networkTags;
 
-  /// The GCP target project ID or project name.
+  /// The Google Cloud target project ID or project name.
   core.String? project;
 
   /// Defines whether the instance has Secure Boot enabled.
@@ -3917,9 +4336,9 @@ class CycleStep {
 }
 
 /// DatacenterConnector message describes a connector between the Source and
-/// GCP, which is installed on a vmware datacenter (an OVA vm installed by the
-/// user) to connect the Datacenter to GCP and support vm migration data
-/// transfer.
+/// Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
+/// by the user) to connect the Datacenter to Google Cloud and support vm
+/// migration data transfer.
 class DatacenterConnector {
   /// Appliance OVA version.
   ///
@@ -3943,7 +4362,8 @@ class DatacenterConnector {
   /// Output only.
   AvailableUpdates? availableVersions;
 
-  /// The communication channel between the datacenter connector and GCP.
+  /// The communication channel between the datacenter connector and Google
+  /// Cloud.
   ///
   /// Output only.
   core.String? bucket;
@@ -4108,6 +4528,9 @@ typedef Empty = $Empty;
 
 /// Response message for fetchInventory.
 class FetchInventoryResponse {
+  /// The description of the VMs in a Source of type AWS.
+  AwsVmsDetails? awsVms;
+
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
@@ -4125,6 +4548,7 @@ class FetchInventoryResponse {
   VmwareVmsDetails? vmwareVms;
 
   FetchInventoryResponse({
+    this.awsVms,
     this.nextPageToken,
     this.updateTime,
     this.vmwareVms,
@@ -4132,6 +4556,10 @@ class FetchInventoryResponse {
 
   FetchInventoryResponse.fromJson(core.Map json_)
       : this(
+          awsVms: json_.containsKey('awsVms')
+              ? AwsVmsDetails.fromJson(
+                  json_['awsVms'] as core.Map<core.String, core.dynamic>)
+              : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
@@ -4145,6 +4573,7 @@ class FetchInventoryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsVms != null) 'awsVms': awsVms!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vmwareVms != null) 'vmwareVms': vmwareVms!,
@@ -4741,6 +5170,11 @@ typedef Location = $Location00;
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 class MigratingVm {
+  /// Details of the VM from an AWS source.
+  ///
+  /// Output only.
+  AwsSourceVmDetails? awsSourceVmDetails;
+
   /// Details of the target VM in Compute Engine.
   ComputeEngineTargetDefaults? computeEngineTargetDefaults;
 
@@ -4855,6 +5289,7 @@ class MigratingVm {
   core.String? updateTime;
 
   MigratingVm({
+    this.awsSourceVmDetails,
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
@@ -4876,6 +5311,10 @@ class MigratingVm {
 
   MigratingVm.fromJson(core.Map json_)
       : this(
+          awsSourceVmDetails: json_.containsKey('awsSourceVmDetails')
+              ? AwsSourceVmDetails.fromJson(json_['awsSourceVmDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           computeEngineTargetDefaults:
               json_.containsKey('computeEngineTargetDefaults')
                   ? ComputeEngineTargetDefaults.fromJson(
@@ -4944,6 +5383,8 @@ class MigratingVm {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsSourceVmDetails != null)
+          'awsSourceVmDetails': awsSourceVmDetails!,
         if (computeEngineTargetDefaults != null)
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,
@@ -5383,6 +5824,9 @@ typedef ShuttingDownSourceVMStep = $Empty;
 ///
 /// It contains the source environment information.
 class Source {
+  /// AWS type source details.
+  AwsSourceDetails? aws;
+
   /// The create time timestamp.
   ///
   /// Output only.
@@ -5408,6 +5852,7 @@ class Source {
   VmwareSourceDetails? vmware;
 
   Source({
+    this.aws,
     this.createTime,
     this.description,
     this.labels,
@@ -5418,6 +5863,10 @@ class Source {
 
   Source.fromJson(core.Map json_)
       : this(
+          aws: json_.containsKey('aws')
+              ? AwsSourceDetails.fromJson(
+                  json_['aws'] as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -5443,6 +5892,7 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (aws != null) 'aws': aws!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
@@ -5463,6 +5913,32 @@ typedef StartMigrationRequest = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Tag is an AWS tag representation.
+class Tag {
+  /// Key of tag.
+  core.String? key;
+
+  /// Value of tag.
+  core.String? value;
+
+  Tag({
+    this.key,
+    this.value,
+  });
+
+  Tag.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// TargetProject message represents a target Compute Engine project for a
 /// migration or a clone.

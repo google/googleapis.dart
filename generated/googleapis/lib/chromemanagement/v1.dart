@@ -1727,6 +1727,15 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? supportEnabled;
 
+  /// Types of an item in the Chrome Web Store
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ITEM_TYPE_UNSPECIFIED" : Unspecified ItemType.
+  /// - "EXTENSION" : Chrome Extensions.
+  /// - "OTHERS" : Any other type than extension.
+  core.String? type;
+
   GoogleChromeManagementV1ChromeAppInfo({
     this.googleOwned,
     this.isCwsHosted,
@@ -1738,6 +1747,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
     this.permissions,
     this.siteAccess,
     this.supportEnabled,
+    this.type,
   });
 
   GoogleChromeManagementV1ChromeAppInfo.fromJson(core.Map json_)
@@ -1781,6 +1791,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
           supportEnabled: json_.containsKey('supportEnabled')
               ? json_['supportEnabled'] as core.bool
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1795,6 +1806,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
         if (permissions != null) 'permissions': permissions!,
         if (siteAccess != null) 'siteAccess': siteAccess!,
         if (supportEnabled != null) 'supportEnabled': supportEnabled!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4275,16 +4287,16 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// Output only.
   core.String? name;
 
-  /// Payload for network connection state change event.
-  ///
-  /// Present only when `event_type` is `NETWORK_CONNECTION_STATE_CHANGE`.
-  ///
-  /// Output only.
-  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent?
-      networkConnectionStateChangeEvent;
-
   /// Timestamp that represents when the event was reported.
   core.String? reportTime;
+
+  /// Payload for usb peripherals event.
+  ///
+  /// Present only when the `event_type` field is either `USB_ADDED` or
+  /// `USB_REMOVED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent? usbPeripheralsEvent;
 
   /// Information about the user associated with the event.
   ///
@@ -4297,8 +4309,8 @@ class GoogleChromeManagementV1TelemetryEvent {
     this.eventType,
     this.httpsLatencyChangeEvent,
     this.name,
-    this.networkConnectionStateChangeEvent,
     this.reportTime,
+    this.usbPeripheralsEvent,
     this.user,
   });
 
@@ -4323,14 +4335,13 @@ class GoogleChromeManagementV1TelemetryEvent {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          networkConnectionStateChangeEvent: json_
-                  .containsKey('networkConnectionStateChangeEvent')
-              ? GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
-                  .fromJson(json_['networkConnectionStateChangeEvent']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           reportTime: json_.containsKey('reportTime')
               ? json_['reportTime'] as core.String
+              : null,
+          usbPeripheralsEvent: json_.containsKey('usbPeripheralsEvent')
+              ? GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
+                  json_['usbPeripheralsEvent']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           user: json_.containsKey('user')
               ? GoogleChromeManagementV1TelemetryUserInfo.fromJson(
@@ -4346,10 +4357,9 @@ class GoogleChromeManagementV1TelemetryEvent {
         if (httpsLatencyChangeEvent != null)
           'httpsLatencyChangeEvent': httpsLatencyChangeEvent!,
         if (name != null) 'name': name!,
-        if (networkConnectionStateChangeEvent != null)
-          'networkConnectionStateChangeEvent':
-              networkConnectionStateChangeEvent!,
         if (reportTime != null) 'reportTime': reportTime!,
+        if (usbPeripheralsEvent != null)
+          'usbPeripheralsEvent': usbPeripheralsEvent!,
         if (user != null) 'user': user!,
       };
 }
@@ -4393,43 +4403,30 @@ class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
       };
 }
 
-/// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
-/// connection state changes.
-class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent {
-  /// Current connection state of the network.
-  /// Possible string values are:
-  /// - "NETWORK_CONNECTION_STATE_UNSPECIFIED" : Network connection state
-  /// unspecified.
-  /// - "ONLINE" : The network is connected and internet connectivity is
-  /// available.
-  /// - "CONNECTED" : The network is connected and not in a detected portal
-  /// state, but internet connectivity may not be available.
-  /// - "PORTAL" : The network is connected but a portal state was detected.
-  /// Internet connectivity may be limited.
-  /// - "CONNECTING" : The network is in the process of connecting.
-  /// - "NOT_CONNECTED" : The network is not connected.
-  core.String? connectionState;
+/// `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
+/// removed.
+class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
+  /// List of usb devices that were either added or removed.
+  core.List<GoogleChromeManagementV1UsbPeripheralReport>? usbPeripheralReport;
 
-  /// Unique identifier of the network.
-  core.String? guid;
-
-  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent({
-    this.connectionState,
-    this.guid,
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent({
+    this.usbPeripheralReport,
   });
 
-  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent.fromJson(
-      core.Map json_)
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(core.Map json_)
       : this(
-          connectionState: json_.containsKey('connectionState')
-              ? json_['connectionState'] as core.String
+          usbPeripheralReport: json_.containsKey('usbPeripheralReport')
+              ? (json_['usbPeripheralReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
-          guid: json_.containsKey('guid') ? json_['guid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectionState != null) 'connectionState': connectionState!,
-        if (guid != null) 'guid': guid!,
+        if (usbPeripheralReport != null)
+          'usbPeripheralReport': usbPeripheralReport!,
       };
 }
 
@@ -4584,6 +4581,95 @@ class GoogleChromeManagementV1TotalMemoryEncryptionInfo {
         if (encryptionState != null) 'encryptionState': encryptionState!,
         if (keyLength != null) 'keyLength': keyLength!,
         if (maxKeys != null) 'maxKeys': maxKeys!,
+      };
+}
+
+/// USB connected peripheral report.
+class GoogleChromeManagementV1UsbPeripheralReport {
+  /// Categories the device belongs to https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.List<core.String>? categories;
+
+  /// Class ID https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.int? classId;
+
+  /// Firmware version
+  ///
+  /// Output only.
+  core.String? firmwareVersion;
+
+  /// Device name, model name, or product name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Product ID
+  ///
+  /// Output only.
+  core.int? pid;
+
+  /// Subclass ID https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.int? subclassId;
+
+  /// Vendor name
+  ///
+  /// Output only.
+  core.String? vendor;
+
+  /// Vendor ID
+  ///
+  /// Output only.
+  core.int? vid;
+
+  GoogleChromeManagementV1UsbPeripheralReport({
+    this.categories,
+    this.classId,
+    this.firmwareVersion,
+    this.name,
+    this.pid,
+    this.subclassId,
+    this.vendor,
+    this.vid,
+  });
+
+  GoogleChromeManagementV1UsbPeripheralReport.fromJson(core.Map json_)
+      : this(
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          classId: json_.containsKey('classId')
+              ? json_['classId'] as core.int
+              : null,
+          firmwareVersion: json_.containsKey('firmwareVersion')
+              ? json_['firmwareVersion'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pid: json_.containsKey('pid') ? json_['pid'] as core.int : null,
+          subclassId: json_.containsKey('subclassId')
+              ? json_['subclassId'] as core.int
+              : null,
+          vendor: json_.containsKey('vendor')
+              ? json_['vendor'] as core.String
+              : null,
+          vid: json_.containsKey('vid') ? json_['vid'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (categories != null) 'categories': categories!,
+        if (classId != null) 'classId': classId!,
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (name != null) 'name': name!,
+        if (pid != null) 'pid': pid!,
+        if (subclassId != null) 'subclassId': subclassId!,
+        if (vendor != null) 'vendor': vendor!,
+        if (vid != null) 'vid': vid!,
       };
 }
 

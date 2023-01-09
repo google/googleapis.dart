@@ -1674,7 +1674,7 @@
             }
         }
     },
-    "revision": "20221111",
+    "revision": "20230106",
     "rootUrl": "https://cloudkms.googleapis.com/",
     "schemas": {
         "AsymmetricDecryptRequest": {

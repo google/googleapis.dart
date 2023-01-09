@@ -487,6 +487,7 @@ api.EntityResult buildEntityResult() {
   final o = api.EntityResult();
   buildCounterEntityResult++;
   if (buildCounterEntityResult < 3) {
+    o.createTime = 'foo';
     o.cursor = 'foo';
     o.entity = buildEntity();
     o.updateTime = 'foo';
@@ -499,6 +500,10 @@ api.EntityResult buildEntityResult() {
 void checkEntityResult(api.EntityResult o) {
   buildCounterEntityResult++;
   if (buildCounterEntityResult < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cursor!,
       unittest.equals('foo'),
@@ -1256,6 +1261,7 @@ api.MutationResult buildMutationResult() {
   buildCounterMutationResult++;
   if (buildCounterMutationResult < 3) {
     o.conflictDetected = true;
+    o.createTime = 'foo';
     o.key = buildKey();
     o.updateTime = 'foo';
     o.version = 'foo';
@@ -1268,6 +1274,10 @@ void checkMutationResult(api.MutationResult o) {
   buildCounterMutationResult++;
   if (buildCounterMutationResult < 3) {
     unittest.expect(o.conflictDetected!, unittest.isTrue);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkKey(o.key!);
     unittest.expect(
       o.updateTime!,

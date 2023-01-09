@@ -425,6 +425,43 @@ class ProjectsLocationsProcessorTypesResource {
   ProjectsLocationsProcessorTypesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets a processor type detail.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor type resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processorTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1ProcessorType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1ProcessorType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1ProcessorType.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the processor types that exist.
   ///
   /// Request parameters:
@@ -1473,8 +1510,6 @@ class GoogleCloudDocumentaiV1Document {
   /// may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1DocumentTextChange>? textChanges;
 
-  /// Placeholder.
-  ///
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1DocumentStyle>? textStyles;
 
@@ -1764,11 +1799,11 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   ///
   /// For some entity types, one of respective `structured_value` fields may
   /// also be populated. Also not all the types of `structured_value` will be
-  /// normalized. For example, some processors may not generate float or int
-  /// normalized text by default. Below are sample formats mapped to structured
-  /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-  /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
-  /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
+  /// normalized. For example, some processors may not generate `float` or
+  /// `integer` normalized text by default. Below are sample formats mapped to
+  /// structured values. - Money/Currency type (`money_value`) is in the ISO
+  /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text
+  /// format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
   /// Optional.
   core.String? text;
@@ -1866,9 +1901,14 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
   /// The Cloud Storage uri (a directory) of the output.
   core.String? gcsUri;
 
+  /// Specifies the sharding config for the output document.
+  GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig?
+      shardingConfig;
+
   GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig({
     this.fieldMask,
     this.gcsUri,
+    this.shardingConfig,
   });
 
   GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig.fromJson(
@@ -1880,11 +1920,47 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
           gcsUri: json_.containsKey('gcsUri')
               ? json_['gcsUri'] as core.String
               : null,
+          shardingConfig: json_.containsKey('shardingConfig')
+              ? GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig
+                  .fromJson(json_['shardingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (gcsUri != null) 'gcsUri': gcsUri!,
+        if (shardingConfig != null) 'shardingConfig': shardingConfig!,
+      };
+}
+
+/// The sharding config for the output document.
+class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig {
+  /// The number of overlapping pages between consecutive shards.
+  core.int? pagesOverlap;
+
+  /// The number of pages per shard.
+  core.int? pagesPerShard;
+
+  GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig({
+    this.pagesOverlap,
+    this.pagesPerShard,
+  });
+
+  GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig.fromJson(
+      core.Map json_)
+      : this(
+          pagesOverlap: json_.containsKey('pagesOverlap')
+              ? json_['pagesOverlap'] as core.int
+              : null,
+          pagesPerShard: json_.containsKey('pagesPerShard')
+              ? json_['pagesPerShard'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pagesOverlap != null) 'pagesOverlap': pagesOverlap!,
+        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
 }
 
@@ -2168,10 +2244,10 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String? layoutType;
 
-  /// Index into the Document.pages element, for example using Document.pages to
-  /// locate the related page element.
+  /// Index into the Document.pages element, for example using `Document.pages`
+  /// to locate the related page element.
   ///
-  /// This field is skipped when its value is the default 0. See
+  /// This field is skipped when its value is the default `0`. See
   /// https://developers.google.com/protocol-buffers/docs/proto3#json.
   ///
   /// Required.
@@ -2332,8 +2408,8 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 
   /// If the value is non-textual, this field represents the type.
   ///
-  /// Current valid values are: - blank (this indicates the field_value is
-  /// normal text) - "unfilled_checkbox" - "filled_checkbox"
+  /// Current valid values are: - blank (this indicates the `field_value` is
+  /// normal text) - `unfilled_checkbox` - `filled_checkbox`
   core.String? valueType;
 
   GoogleCloudDocumentaiV1DocumentPageFormField({
@@ -3115,10 +3191,10 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   ///
   /// It must be unique within the schema file and cannot be a 'Common Type'.
   /// Besides that we use the following naming conventions: - *use
-  /// `snake_casing`* - name matching is case-insensitive - Maximum 64
-  /// characters. - Must start with a letter. - Allowed characters: ASCII
-  /// letters `[a-z0-9_-]`. (For backward compatibility internal infrastructure
-  /// and tooling can handle any ascii character) - The `/` is sometimes used to
+  /// `snake_casing`* - name matching is case-sensitive - Maximum 64 characters.
+  /// - Must start with a letter. - Allowed characters: ASCII letters
+  /// `[a-z0-9_-]`. (For backward compatibility internal infrastructure and
+  /// tooling can handle any ascii character) - The `/` is sometimes used to
   /// denote a property of a type. For example `line_item/amount`. This
   /// convention is deprecated, but will still be honored for backward
   /// compatibility.
@@ -4007,6 +4083,9 @@ class GoogleCloudDocumentaiV1ProcessorType {
   /// Format: `projects/{project}/processorTypes/{processor_type}`
   core.String? name;
 
+  /// A set of Cloud Storage URIs of sample documents for this processor.
+  core.List<core.String>? sampleDocumentUris;
+
   /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.
   core.String? type;
 
@@ -4016,6 +4095,7 @@ class GoogleCloudDocumentaiV1ProcessorType {
     this.category,
     this.launchStage,
     this.name,
+    this.sampleDocumentUris,
     this.type,
   });
 
@@ -4038,6 +4118,11 @@ class GoogleCloudDocumentaiV1ProcessorType {
               ? json_['launchStage'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sampleDocumentUris: json_.containsKey('sampleDocumentUris')
+              ? (json_['sampleDocumentUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
@@ -4048,6 +4133,8 @@ class GoogleCloudDocumentaiV1ProcessorType {
         if (category != null) 'category': category!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
+        if (sampleDocumentUris != null)
+          'sampleDocumentUris': sampleDocumentUris!,
         if (type != null) 'type': type!,
       };
 }

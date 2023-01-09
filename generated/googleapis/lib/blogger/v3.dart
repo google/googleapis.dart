@@ -712,6 +712,8 @@ class PagesResource {
   ///
   /// [pageId] - null
   ///
+  /// [useTrash] - Move to Trash if possible
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -723,9 +725,11 @@ class PagesResource {
   async.Future<void> delete(
     core.String blogId,
     core.String pageId, {
+    core.bool? useTrash,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (useTrash != null) 'useTrash': ['${useTrash}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1238,6 +1242,8 @@ class PostsResource {
   ///
   /// [postId] - null
   ///
+  /// [useTrash] - Move to Trash if possible
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1249,9 +1255,11 @@ class PostsResource {
   async.Future<void> delete(
     core.String blogId,
     core.String postId, {
+    core.bool? useTrash,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (useTrash != null) 'useTrash': ['${useTrash}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1456,6 +1464,12 @@ class PostsResource {
   ///
   /// [pageToken] - null
   ///
+  /// [sortOption] - Sort direction applied to post list.
+  /// Possible string values are:
+  /// - "SORT_OPTION_UNSPECIFIED" : The unspecified sort option.
+  /// - "DESCENDING" : The option to sort posts in descending order in time.
+  /// - "ASCENDING" : The option to sort posts in ascending order in time.
+  ///
   /// [startDate] - null
   ///
   /// [status] - null
@@ -1486,6 +1500,7 @@ class PostsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
+    core.String? sortOption,
     core.String? startDate,
     core.List<core.String>? status,
     core.String? view,
@@ -1499,6 +1514,7 @@ class PostsResource {
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (sortOption != null) 'sortOption': [sortOption],
       if (startDate != null) 'startDate': [startDate],
       if (status != null) 'status': status,
       if (view != null) 'view': [view],

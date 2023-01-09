@@ -10703,6 +10703,78 @@ void checkUserRewardedContentTargetingOptionDetails(
   buildCounterUserRewardedContentTargetingOptionDetails--;
 }
 
+core.List<api.VideoAdSequenceStep> buildUnnamed141() => [
+      buildVideoAdSequenceStep(),
+      buildVideoAdSequenceStep(),
+    ];
+
+void checkUnnamed141(core.List<api.VideoAdSequenceStep> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVideoAdSequenceStep(o[0]);
+  checkVideoAdSequenceStep(o[1]);
+}
+
+core.int buildCounterVideoAdSequenceSettings = 0;
+api.VideoAdSequenceSettings buildVideoAdSequenceSettings() {
+  final o = api.VideoAdSequenceSettings();
+  buildCounterVideoAdSequenceSettings++;
+  if (buildCounterVideoAdSequenceSettings < 3) {
+    o.minimumDuration = 'foo';
+    o.steps = buildUnnamed141();
+  }
+  buildCounterVideoAdSequenceSettings--;
+  return o;
+}
+
+void checkVideoAdSequenceSettings(api.VideoAdSequenceSettings o) {
+  buildCounterVideoAdSequenceSettings++;
+  if (buildCounterVideoAdSequenceSettings < 3) {
+    unittest.expect(
+      o.minimumDuration!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed141(o.steps!);
+  }
+  buildCounterVideoAdSequenceSettings--;
+}
+
+core.int buildCounterVideoAdSequenceStep = 0;
+api.VideoAdSequenceStep buildVideoAdSequenceStep() {
+  final o = api.VideoAdSequenceStep();
+  buildCounterVideoAdSequenceStep++;
+  if (buildCounterVideoAdSequenceStep < 3) {
+    o.adGroupId = 'foo';
+    o.interactionType = 'foo';
+    o.previousStepId = 'foo';
+    o.stepId = 'foo';
+  }
+  buildCounterVideoAdSequenceStep--;
+  return o;
+}
+
+void checkVideoAdSequenceStep(api.VideoAdSequenceStep o) {
+  buildCounterVideoAdSequenceStep++;
+  if (buildCounterVideoAdSequenceStep < 3) {
+    unittest.expect(
+      o.adGroupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interactionType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousStepId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stepId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVideoAdSequenceStep--;
+}
+
 core.int buildCounterVideoPlayerSizeAssignedTargetingOptionDetails = 0;
 api.VideoPlayerSizeAssignedTargetingOptionDetails
     buildVideoPlayerSizeAssignedTargetingOptionDetails() {
@@ -10861,6 +10933,7 @@ api.YoutubeAndPartnersSettings buildYoutubeAndPartnersSettings() {
     o.inventorySourceSettings = buildYoutubeAndPartnersInventorySourceConfig();
     o.thirdPartyMeasurementSettings =
         buildYoutubeAndPartnersThirdPartyMeasurementSettings();
+    o.videoAdSequenceSettings = buildVideoAdSequenceSettings();
     o.viewFrequencyCap = buildFrequencyCap();
   }
   buildCounterYoutubeAndPartnersSettings--;
@@ -10878,20 +10951,10 @@ void checkYoutubeAndPartnersSettings(api.YoutubeAndPartnersSettings o) {
     checkYoutubeAndPartnersInventorySourceConfig(o.inventorySourceSettings!);
     checkYoutubeAndPartnersThirdPartyMeasurementSettings(
         o.thirdPartyMeasurementSettings!);
+    checkVideoAdSequenceSettings(o.videoAdSequenceSettings!);
     checkFrequencyCap(o.viewFrequencyCap!);
   }
   buildCounterYoutubeAndPartnersSettings--;
-}
-
-core.List<api.ThirdPartyVendorConfig> buildUnnamed141() => [
-      buildThirdPartyVendorConfig(),
-      buildThirdPartyVendorConfig(),
-    ];
-
-void checkUnnamed141(core.List<api.ThirdPartyVendorConfig> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkThirdPartyVendorConfig(o[0]);
-  checkThirdPartyVendorConfig(o[1]);
 }
 
 core.List<api.ThirdPartyVendorConfig> buildUnnamed142() => [
@@ -10927,16 +10990,27 @@ void checkUnnamed144(core.List<api.ThirdPartyVendorConfig> o) {
   checkThirdPartyVendorConfig(o[1]);
 }
 
+core.List<api.ThirdPartyVendorConfig> buildUnnamed145() => [
+      buildThirdPartyVendorConfig(),
+      buildThirdPartyVendorConfig(),
+    ];
+
+void checkUnnamed145(core.List<api.ThirdPartyVendorConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkThirdPartyVendorConfig(o[0]);
+  checkThirdPartyVendorConfig(o[1]);
+}
+
 core.int buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings = 0;
 api.YoutubeAndPartnersThirdPartyMeasurementSettings
     buildYoutubeAndPartnersThirdPartyMeasurementSettings() {
   final o = api.YoutubeAndPartnersThirdPartyMeasurementSettings();
   buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings++;
   if (buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings < 3) {
-    o.brandLiftVendorConfigs = buildUnnamed141();
-    o.brandSafetyVendorConfigs = buildUnnamed142();
-    o.reachVendorConfigs = buildUnnamed143();
-    o.viewabilityVendorConfigs = buildUnnamed144();
+    o.brandLiftVendorConfigs = buildUnnamed142();
+    o.brandSafetyVendorConfigs = buildUnnamed143();
+    o.reachVendorConfigs = buildUnnamed144();
+    o.viewabilityVendorConfigs = buildUnnamed145();
   }
   buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings--;
   return o;
@@ -10946,20 +11020,20 @@ void checkYoutubeAndPartnersThirdPartyMeasurementSettings(
     api.YoutubeAndPartnersThirdPartyMeasurementSettings o) {
   buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings++;
   if (buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings < 3) {
-    checkUnnamed141(o.brandLiftVendorConfigs!);
-    checkUnnamed142(o.brandSafetyVendorConfigs!);
-    checkUnnamed143(o.reachVendorConfigs!);
-    checkUnnamed144(o.viewabilityVendorConfigs!);
+    checkUnnamed142(o.brandLiftVendorConfigs!);
+    checkUnnamed143(o.brandSafetyVendorConfigs!);
+    checkUnnamed144(o.reachVendorConfigs!);
+    checkUnnamed145(o.viewabilityVendorConfigs!);
   }
   buildCounterYoutubeAndPartnersThirdPartyMeasurementSettings--;
 }
 
-core.List<core.String> buildUnnamed145() => [
+core.List<core.String> buildUnnamed146() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed145(core.List<core.String> o) {
+void checkUnnamed146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -13855,6 +13929,26 @@ void main() {
       final od = api.UserRewardedContentTargetingOptionDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUserRewardedContentTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-VideoAdSequenceSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVideoAdSequenceSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VideoAdSequenceSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVideoAdSequenceSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-VideoAdSequenceStep', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVideoAdSequenceStep();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VideoAdSequenceStep.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVideoAdSequenceStep(od);
     });
   });
 
@@ -16901,7 +16995,7 @@ void main() {
       final res = api.DisplayVideoApi(mock).advertisers.lineItems;
       final arg_advertiserId = 'foo';
       final arg_filter = 'foo';
-      final arg_lineItemIds = buildUnnamed145();
+      final arg_lineItemIds = buildUnnamed146();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

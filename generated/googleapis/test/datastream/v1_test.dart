@@ -4127,6 +4127,7 @@ void main() {
       final res = api.DatastreamApi(mock).projects.locations.privateConnections;
       final arg_request = buildPrivateConnection();
       final arg_parent = 'foo';
+      final arg_force = true;
       final arg_privateConnectionId = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -4167,6 +4168,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
+        );
+        unittest.expect(
           queryMap['privateConnectionId']!.first,
           unittest.equals(arg_privateConnectionId),
         );
@@ -4186,6 +4191,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
+          force: arg_force,
           privateConnectionId: arg_privateConnectionId,
           requestId: arg_requestId,
           $fields: arg_$fields);

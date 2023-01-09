@@ -14,7 +14,10 @@
 
 /// Google Play Integrity API - v1
 ///
-/// Play Integrity
+/// The Play Integrity API helps you check that you're interacting with your
+/// genuine app on a genuine Android device powered by Google Play services. The
+/// Play Integrity API has replaced SafetyNet Attestation and Android Device
+/// Verification.
 ///
 /// For more information, see
 /// <https://developer.android.com/google/play/integrity>
@@ -36,7 +39,11 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Play Integrity
+/// The Play Integrity API helps you check that you're interacting with your
+/// genuine app on a genuine Android device powered by Google Play services.
+///
+/// The Play Integrity API has replaced SafetyNet Attestation and Android Device
+/// Verification.
 class PlayIntegrityApi {
   /// Private Service: https://www.googleapis.com/auth/playintegrity
   static const playintegrityScope =
@@ -327,9 +334,10 @@ class DeviceIntegrity {
 /// Contains the integrity request information.
 class RequestDetails {
   /// Nonce that was provided in the request (which is base64 web-safe no-wrap).
-  ///
-  /// Required.
   core.String? nonce;
+
+  /// Request hash that was provided in the request.
+  core.String? requestHash;
 
   /// Application package name this attestation was requested for.
   ///
@@ -346,6 +354,7 @@ class RequestDetails {
 
   RequestDetails({
     this.nonce,
+    this.requestHash,
     this.requestPackageName,
     this.timestampMillis,
   });
@@ -354,6 +363,9 @@ class RequestDetails {
       : this(
           nonce:
               json_.containsKey('nonce') ? json_['nonce'] as core.String : null,
+          requestHash: json_.containsKey('requestHash')
+              ? json_['requestHash'] as core.String
+              : null,
           requestPackageName: json_.containsKey('requestPackageName')
               ? json_['requestPackageName'] as core.String
               : null,
@@ -364,6 +376,7 @@ class RequestDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nonce != null) 'nonce': nonce!,
+        if (requestHash != null) 'requestHash': requestHash!,
         if (requestPackageName != null)
           'requestPackageName': requestPackageName!,
         if (timestampMillis != null) 'timestampMillis': timestampMillis!,

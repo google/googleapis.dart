@@ -3977,7 +3977,7 @@ class HotTablet {
 ///
 /// All tables in an instance are served from all Clusters in the instance.
 class Instance {
-  /// A server-assigned timestamp representing when this Instance was created.
+  /// A commit timestamp representing when this Instance was created.
   ///
   /// For instances created before this field was added (August 2021), this
   /// value is `seconds: 0, nanos: 1`.
@@ -4935,8 +4935,8 @@ class Table {
 
   /// Set to true to make the table protected against data loss.
   ///
-  /// i.e. deleting the following resources through Admin APIs are prohibited: -
-  /// The table. - The column families in the table. - The instance containing
+  /// i.e. deleting the following resources through Admin APIs are prohibited: *
+  /// The table. * The column families in the table. * The instance containing
   /// the table. Note one can still delete the data stored in the table through
   /// Data APIs.
   core.bool? deletionProtection;

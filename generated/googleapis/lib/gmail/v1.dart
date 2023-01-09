@@ -28,6 +28,9 @@
 ///   - [UsersMessagesResource]
 ///     - [UsersMessagesAttachmentsResource]
 ///   - [UsersSettingsResource]
+///     - [UsersSettingsCseResource]
+///       - [UsersSettingsCseIdentitiesResource]
+///       - [UsersSettingsCseKeypairsResource]
 ///     - [UsersSettingsDelegatesResource]
 ///     - [UsersSettingsFiltersResource]
 ///     - [UsersSettingsForwardingAddressesResource]
@@ -43,6 +46,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1629,6 +1634,7 @@ class UsersMessagesAttachmentsResource {
 class UsersSettingsResource {
   final commons.ApiRequester _requester;
 
+  UsersSettingsCseResource get cse => UsersSettingsCseResource(_requester);
   UsersSettingsDelegatesResource get delegates =>
       UsersSettingsDelegatesResource(_requester);
   UsersSettingsFiltersResource get filters =>
@@ -2051,6 +2057,574 @@ class UsersSettingsResource {
     );
     return VacationSettings.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersSettingsCseResource {
+  final commons.ApiRequester _requester;
+
+  UsersSettingsCseIdentitiesResource get identities =>
+      UsersSettingsCseIdentitiesResource(_requester);
+  UsersSettingsCseKeypairsResource get keypairs =>
+      UsersSettingsCseKeypairsResource(_requester);
+
+  UsersSettingsCseResource(commons.ApiRequester client) : _requester = client;
+}
+
+class UsersSettingsCseIdentitiesResource {
+  final commons.ApiRequester _requester;
+
+  UsersSettingsCseIdentitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates and configures a client-side encryption identity that's authorized
+  /// to send mail from the user account.
+  ///
+  /// Google publishes the S/MIME certificate to a shared domain-wide directory
+  /// so that people within a Google Workspace organization can encrypt and send
+  /// mail to the identity.
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseIdentity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseIdentity> create(
+    CseIdentity request,
+    core.String userId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/identities';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CseIdentity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a client-side encryption identity.
+  ///
+  /// The authenticated user can no longer use the identity to send encrypted
+  /// messages. You cannot restore the identity after you delete it. Instead,
+  /// use the CreateCseIdentity method to create another identity with the same
+  /// configuration.
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [cseEmailAddress] - The primary email address associated with the
+  /// client-side encryption identity configuration that's removed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String userId,
+    core.String cseEmailAddress, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/identities/' +
+        commons.escapeVariable('$cseEmailAddress');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Retrieves a client-side encryption identity configuration.
+  ///
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [cseEmailAddress] - The primary email address associated with the
+  /// client-side encryption identity configuration that's retrieved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseIdentity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseIdentity> get(
+    core.String userId,
+    core.String cseEmailAddress, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/identities/' +
+        commons.escapeVariable('$cseEmailAddress');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CseIdentity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the client-side encrypted identities for an authenticated user.
+  ///
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [pageSize] - The number of identities to return. If not provided, the page
+  /// size will default to 20 entries.
+  ///
+  /// [pageToken] - Pagination token indicating which page of identities to
+  /// return. If the token is not supplied, then the API will return the first
+  /// page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCseIdentitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCseIdentitiesResponse> list(
+    core.String userId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/identities';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCseIdentitiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Associates a different key pair with an existing client-side encryption
+  /// identity.
+  ///
+  /// The updated key pair must validate against Google's
+  /// [S/MIME certificate profiles](https://support.google.com/a/answer/7300887).
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [emailAddress] - The email address of the client-side encryption identity
+  /// to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseIdentity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseIdentity> patch(
+    CseIdentity request,
+    core.String userId,
+    core.String emailAddress, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/identities/' +
+        commons.escapeVariable('$emailAddress');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CseIdentity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersSettingsCseKeypairsResource {
+  final commons.ApiRequester _requester;
+
+  UsersSettingsCseKeypairsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates and uploads a client-side encryption S/MIME public key certificate
+  /// chain and private key metadata for the authenticated user.
+  ///
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseKeyPair].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseKeyPair> create(
+    CseKeyPair request,
+    core.String userId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CseKeyPair.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Turns off a client-side encryption key pair.
+  ///
+  /// The authenticated user can no longer use the key pair to decrypt incoming
+  /// CSE message texts or sign outgoing CSE mail. To regain access, use the
+  /// EnableCseKeyPair to turn on the key pair. After 30 days, you can
+  /// permanently delete the key pair by using the ObliterateCseKeyPair method.
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [keyPairId] - The identifier of the key pair to turn off.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseKeyPair].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseKeyPair> disable(
+    DisableCseKeyPairRequest request,
+    core.String userId,
+    core.String keyPairId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs/' +
+        commons.escapeVariable('$keyPairId') +
+        ':disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CseKeyPair.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Turns on a client-side encryption key pair that was turned off.
+  ///
+  /// The key pair becomes active again for any associated client-side
+  /// encryption identities.
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [keyPairId] - The identifier of the key pair to turn on.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseKeyPair].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseKeyPair> enable(
+    EnableCseKeyPairRequest request,
+    core.String userId,
+    core.String keyPairId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs/' +
+        commons.escapeVariable('$keyPairId') +
+        ':enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CseKeyPair.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves an existing client-side encryption key pair.
+  ///
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [keyPairId] - The identifier of the key pair to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CseKeyPair].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CseKeyPair> get(
+    core.String userId,
+    core.String keyPairId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs/' +
+        commons.escapeVariable('$keyPairId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CseKeyPair.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists client-side encryption key pairs for an authenticated user.
+  ///
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [pageSize] - The number of key pairs to return. If not provided, the page
+  /// size will default to 20 entries.
+  ///
+  /// [pageToken] - Pagination token indicating which page of key pairs to
+  /// return. If the token is not supplied, then the API will return the first
+  /// page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCseKeyPairsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCseKeyPairsResponse> list(
+    core.String userId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCseKeyPairsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a client-side encryption key pair permanently and immediately.
+  ///
+  /// You can only permanently delete key pairs that have been turned off for
+  /// more than 30 days. To turn off a key pair, use the DisableCseKeyPair
+  /// method. Gmail can't restore or decrypt any messages that were encrypted by
+  /// an obliterated key. Authenticated users and Google Workspace
+  /// administrators lose access to reading the encrypted messages.
+  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The requester's primary email address. To indicate the
+  /// authenticated user, you can use the special value `me`.
+  ///
+  /// [keyPairId] - The identifier of the key pair to obliterate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> obliterate(
+    ObliterateCseKeyPairRequest request,
+    core.String userId,
+    core.String keyPairId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'gmail/v1/users/' +
+        commons.escapeVariable('$userId') +
+        '/settings/cse/keypairs/' +
+        commons.escapeVariable('$keyPairId') +
+        ':obliterate';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
   }
 }
 
@@ -3580,6 +4154,186 @@ class BatchModifyMessagesRequest {
       };
 }
 
+/// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+///
+/// The client-side encryption (CSE) configuration for the email address of an
+/// authenticated user. Gmail uses CSE configurations to save drafts of
+/// client-side encrypted email messages, and to sign and send encrypted email
+/// messages.
+class CseIdentity {
+  /// The email address for the sending identity.
+  ///
+  /// The email address must be the primary email address of the authenticated
+  /// user.
+  core.String? emailAddress;
+
+  /// If a key pair is associated, the identifier of the key pair, CseKeyPair.
+  core.String? primaryKeyPairId;
+
+  CseIdentity({
+    this.emailAddress,
+    this.primaryKeyPairId,
+  });
+
+  CseIdentity.fromJson(core.Map json_)
+      : this(
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
+              : null,
+          primaryKeyPairId: json_.containsKey('primaryKeyPairId')
+              ? json_['primaryKeyPairId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (primaryKeyPairId != null) 'primaryKeyPairId': primaryKeyPairId!,
+      };
+}
+
+/// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+///
+/// A client-side encryption S/MIME key pair, which is comprised of a public
+/// key, its certificate chain, and metadata for its paired private key. Gmail
+/// uses the key pair to complete the following tasks: - Sign outgoing
+/// client-side encrypted messages. - Save and reopen drafts of client-side
+/// encrypted messages. - Save and reopen sent messages. - Decrypt incoming or
+/// archived S/MIME messages.
+class CseKeyPair {
+  /// If a key pair is set to `DISABLED`, the time that the key pair's state
+  /// changed from `ENABLED` to `DISABLED`.
+  ///
+  /// This field is present only when the key pair is in state `DISABLED`.
+  ///
+  /// Output only.
+  core.String? disableTime;
+
+  /// The current state of the key pair.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "stateUnspecified" : The current state of the key pair is not set. The
+  /// key pair is neither turned on nor turned off.
+  /// - "enabled" : The key pair is turned on. For any email messages that this
+  /// key pair encrypts, Gmail decrypts the messages and signs any outgoing mail
+  /// with the private key. To turn on a key pair, use the EnableCseKeyPair
+  /// method.
+  /// - "disabled" : The key pair is turned off. Authenticated users cannot
+  /// decrypt email messages nor sign outgoing messages. If a key pair is turned
+  /// off for more than 30 days, you can permanently delete it. To turn off a
+  /// key pair, use the DisableCseKeyPair method.
+  core.String? enablementState;
+
+  /// The immutable ID for the client-side encryption S/MIME key pair.
+  ///
+  /// Output only.
+  core.String? keyPairId;
+
+  /// The public key and its certificate chain, in
+  /// [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format.
+  ///
+  /// Output only.
+  core.String? pem;
+
+  /// Input only.
+  ///
+  /// The public key and its certificate chain. The chain must be in
+  /// \[PKCS#7\](https://en.wikipedia.org/wiki/PKCS_7) format and use PEM
+  /// encoding and ASCII armor.
+  core.String? pkcs7;
+
+  /// Metadata for instances of this key pair's private key.
+  core.List<CsePrivateKeyMetadata>? privateKeyMetadata;
+
+  /// The email address identities that are specified on the leaf certificate.
+  ///
+  /// Output only.
+  core.List<core.String>? subjectEmailAddresses;
+
+  CseKeyPair({
+    this.disableTime,
+    this.enablementState,
+    this.keyPairId,
+    this.pem,
+    this.pkcs7,
+    this.privateKeyMetadata,
+    this.subjectEmailAddresses,
+  });
+
+  CseKeyPair.fromJson(core.Map json_)
+      : this(
+          disableTime: json_.containsKey('disableTime')
+              ? json_['disableTime'] as core.String
+              : null,
+          enablementState: json_.containsKey('enablementState')
+              ? json_['enablementState'] as core.String
+              : null,
+          keyPairId: json_.containsKey('keyPairId')
+              ? json_['keyPairId'] as core.String
+              : null,
+          pem: json_.containsKey('pem') ? json_['pem'] as core.String : null,
+          pkcs7:
+              json_.containsKey('pkcs7') ? json_['pkcs7'] as core.String : null,
+          privateKeyMetadata: json_.containsKey('privateKeyMetadata')
+              ? (json_['privateKeyMetadata'] as core.List)
+                  .map((value) => CsePrivateKeyMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          subjectEmailAddresses: json_.containsKey('subjectEmailAddresses')
+              ? (json_['subjectEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableTime != null) 'disableTime': disableTime!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (keyPairId != null) 'keyPairId': keyPairId!,
+        if (pem != null) 'pem': pem!,
+        if (pkcs7 != null) 'pkcs7': pkcs7!,
+        if (privateKeyMetadata != null)
+          'privateKeyMetadata': privateKeyMetadata!,
+        if (subjectEmailAddresses != null)
+          'subjectEmailAddresses': subjectEmailAddresses!,
+      };
+}
+
+/// Metadata for a private key instance.
+class CsePrivateKeyMetadata {
+  /// Metadata for a private key instance managed by an external key access
+  /// control list service.
+  KaclsKeyMetadata? kaclsKeyMetadata;
+
+  /// The immutable ID for the private key metadata instance.
+  ///
+  /// Output only.
+  core.String? privateKeyMetadataId;
+
+  CsePrivateKeyMetadata({
+    this.kaclsKeyMetadata,
+    this.privateKeyMetadataId,
+  });
+
+  CsePrivateKeyMetadata.fromJson(core.Map json_)
+      : this(
+          kaclsKeyMetadata: json_.containsKey('kaclsKeyMetadata')
+              ? KaclsKeyMetadata.fromJson(json_['kaclsKeyMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          privateKeyMetadataId: json_.containsKey('privateKeyMetadataId')
+              ? json_['privateKeyMetadataId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kaclsKeyMetadata != null) 'kaclsKeyMetadata': kaclsKeyMetadata!,
+        if (privateKeyMetadataId != null)
+          'privateKeyMetadataId': privateKeyMetadataId!,
+      };
+}
+
 /// Settings for a delegate.
 ///
 /// Delegates can read, send, and delete messages, as well as view and add
@@ -3626,6 +4380,9 @@ class Delegate {
       };
 }
 
+/// Requests to turn off a client-side encryption key pair.
+typedef DisableCseKeyPairRequest = $Empty;
+
 /// A draft email in the user's mailbox.
 class Draft {
   /// The immutable ID of the draft.
@@ -3653,6 +4410,9 @@ class Draft {
         if (message != null) 'message': message!,
       };
 }
+
+/// Requests to turn on a client-side encryption key pair.
+typedef EnableCseKeyPairRequest = $Empty;
 
 /// Resource definition for Gmail filters.
 ///
@@ -4105,6 +4865,42 @@ class ImapSettings {
       };
 }
 
+/// Metadata for private keys managed by an external key access control list
+/// service.
+///
+/// For details about managing key access, see
+/// [Google Workspace CSE API Reference](https://developers.google.com/workspace/cse/reference).
+class KaclsKeyMetadata {
+  /// Opaque data generated and used by the key access control list service.
+  ///
+  /// Maximum size: 8 KiB.
+  core.String? kaclsData;
+
+  /// The URI of the key access control list service that manages the private
+  /// key.
+  core.String? kaclsUri;
+
+  KaclsKeyMetadata({
+    this.kaclsData,
+    this.kaclsUri,
+  });
+
+  KaclsKeyMetadata.fromJson(core.Map json_)
+      : this(
+          kaclsData: json_.containsKey('kaclsData')
+              ? json_['kaclsData'] as core.String
+              : null,
+          kaclsUri: json_.containsKey('kaclsUri')
+              ? json_['kaclsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kaclsData != null) 'kaclsData': kaclsData!,
+        if (kaclsUri != null) 'kaclsUri': kaclsUri!,
+      };
+}
+
 /// Labels are used to categorize messages and threads within the user's
 /// mailbox.
 ///
@@ -4313,6 +5109,75 @@ class LanguageSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayLanguage != null) 'displayLanguage': displayLanguage!,
+      };
+}
+
+class ListCseIdentitiesResponse {
+  /// One page of the list of CSE identities configured for the user.
+  core.List<CseIdentity>? cseIdentities;
+
+  /// Pagination token to be passed to a subsequent ListCseIdentities call in
+  /// order to retrieve the next page of identities.
+  ///
+  /// If this value is not returned or is the empty string, then no further
+  /// pages remain.
+  core.String? nextPageToken;
+
+  ListCseIdentitiesResponse({
+    this.cseIdentities,
+    this.nextPageToken,
+  });
+
+  ListCseIdentitiesResponse.fromJson(core.Map json_)
+      : this(
+          cseIdentities: json_.containsKey('cseIdentities')
+              ? (json_['cseIdentities'] as core.List)
+                  .map((value) => CseIdentity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cseIdentities != null) 'cseIdentities': cseIdentities!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+class ListCseKeyPairsResponse {
+  /// One page of the list of CSE key pairs installed for the user.
+  core.List<CseKeyPair>? cseKeyPairs;
+
+  /// Pagination token to be passed to a subsequent ListCseKeyPairs call in
+  /// order to retrieve the next page of key pairs.
+  ///
+  /// If this value is not returned, then no further pages remain.
+  core.String? nextPageToken;
+
+  ListCseKeyPairsResponse({
+    this.cseKeyPairs,
+    this.nextPageToken,
+  });
+
+  ListCseKeyPairsResponse.fromJson(core.Map json_)
+      : this(
+          cseKeyPairs: json_.containsKey('cseKeyPairs')
+              ? (json_['cseKeyPairs'] as core.List)
+                  .map((value) => CseKeyPair.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cseKeyPairs != null) 'cseKeyPairs': cseKeyPairs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4971,6 +5836,9 @@ class ModifyThreadRequest {
         if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
 }
+
+/// Request to obliterate a CSE key pair.
+typedef ObliterateCseKeyPairRequest = $Empty;
 
 /// POP settings for an account.
 class PopSettings {

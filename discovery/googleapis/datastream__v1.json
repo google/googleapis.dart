@@ -575,6 +575,11 @@
                                         "parent"
                                     ],
                                     "parameters": {
+                                        "force": {
+                                            "description": "Optional. If set to true, will skip validations.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
                                         "parent": {
                                             "description": "Required. The parent that owns the collection of PrivateConnections.",
                                             "location": "path",
@@ -1215,7 +1220,7 @@
             }
         }
     },
-    "revision": "20221106",
+    "revision": "20230103",
     "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
@@ -2599,6 +2604,7 @@
             "id": "SingleTargetDataset",
             "properties": {
                 "datasetId": {
+                    "description": "The dataset ID of the target dataset.",
                     "type": "string"
                 }
             },

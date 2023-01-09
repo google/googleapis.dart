@@ -639,7 +639,7 @@
             }
         }
     },
-    "revision": "20221206",
+    "revision": "20230115",
     "rootUrl": "https://photoslibrary.googleapis.com/",
     "schemas": {
         "AddEnrichmentToAlbumRequest": {
@@ -1422,7 +1422,7 @@
                     "description": "If an error occurred during the creation of this media item, this field is populated with information related to the error. For details regarding this field, see Status."
                 },
                 "uploadToken": {
-                    "description": "The upload token used to create this new media item.",
+                    "description": "The upload token used to create this new (simple) media item. Only populated if the media item is simple and required a single upload token.",
                     "type": "string"
                 }
             },

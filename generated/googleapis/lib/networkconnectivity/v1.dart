@@ -796,13 +796,13 @@ class ProjectsLocationsInternalRangesResource {
   ProjectsLocationsInternalRangesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new InternalRange in a given project and location.
+  /// Creates a new internal range in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource's name of the InternalRange.
+  /// [parent] - Required. The parent resource's name of the internal range.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [internalRangeId] - Optional. Resource ID (i.e. 'foo' in
@@ -857,11 +857,11 @@ class ProjectsLocationsInternalRangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single InternalRange.
+  /// Deletes a single internal range.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the InternalRange to delete.
+  /// [name] - Required. The name of the internal range to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/internalRanges/\[^/\]+$`.
   ///
@@ -908,7 +908,7 @@ class ProjectsLocationsInternalRangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single InternalRange.
+  /// Gets details of a single internal range.
   ///
   /// Request parameters:
   ///
@@ -945,7 +945,7 @@ class ProjectsLocationsInternalRangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists InternalRanges in a given project and location.
+  /// Lists internal ranges in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -999,13 +999,13 @@ class ProjectsLocationsInternalRangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the parameters of a single InternalRange.
+  /// Updates the parameters of a single internal range.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The name of a InternalRange. Format:
+  /// [name] - Immutable. The name of an internal range. Format:
   /// projects/{project}/locations/{location}/internalRanges/{internal_range}
   /// See: https://google.aip.dev/122#fields-representing-resource-names
   /// Value must have pattern
@@ -2468,12 +2468,14 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
-/// A Network Connectivity Center hub is a collection of spokes.
+/// A Network Connectivity Center hub is a global management resource to which
+/// you attach spokes.
 ///
 /// A single hub can contain spokes from multiple regions. However, if any of a
-/// hub's spokes use the data transfer feature, the resources associated with
-/// those spokes must all reside in the same VPC network. Spokes that do not use
-/// data transfer can be associated with any VPC network in your project.
+/// hub's spokes use the site-to-site data transfer feature, the resources
+/// associated with those spokes must all be in the same VPC network. Spokes
+/// that do not use site-to-site data transfer can be associated with any VPC
+/// network in your project.
 class Hub {
   /// The time the hub was created.
   ///
@@ -2584,26 +2586,25 @@ class Hub {
       };
 }
 
-/// The InternalRange resource for IPAM operations within a VPC network.
+/// The internal range resource for IPAM operations within a VPC network.
 ///
 /// Used to represent a private address range along with behavioral
-/// characterstics of that range (it's usage and peering behavior). Networking
+/// characterstics of that range (its usage and peering behavior). Networking
 /// resources can link to this range if they are created as belonging to it.
-/// Next id: 14
 class InternalRange {
-  /// Time when the InternalRange was created.
+  /// Time when the internal range was created.
   core.String? createTime;
 
   /// A description of this resource.
   core.String? description;
 
-  /// IP range that this InternalRange defines.
+  /// The IP range that this internal range defines.
   core.String? ipCidrRange;
 
   /// User-defined labels.
   core.Map<core.String, core.String>? labels;
 
-  /// The name of a InternalRange.
+  /// The name of an internal range.
   ///
   /// Format:
   /// projects/{project}/locations/{location}/internalRanges/{internal_range}
@@ -2612,52 +2613,51 @@ class InternalRange {
   /// Immutable.
   core.String? name;
 
-  /// The URL or resource ID of the network in which to reserve the Internal
-  /// Range.
+  /// The URL or resource ID of the network in which to reserve the internal
+  /// range.
   ///
-  /// The network cannot be deleted if there are any reserved Internal Ranges
-  /// referring to it. Legacy network is not supported. This can only be
+  /// The network cannot be deleted if there are any reserved internal ranges
+  /// referring to it. Legacy networks are not supported. This can only be
   /// specified for a global internal address. Example: - URL:
   /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID:
   /// network123
   core.String? network;
 
-  /// Types of resources that are allowed to overlap with the current
-  /// InternalRange.
+  /// Types of resources that are allowed to overlap with the current internal
+  /// range.
   ///
   /// Optional.
   core.List<core.String>? overlaps;
 
-  /// The type of peering set for this InternalRange.
+  /// The type of peering set for this internal range.
   /// Possible string values are:
   /// - "PEERING_UNSPECIFIED" : If Peering is left unspecified in
   /// CreateInternalRange or UpdateInternalRange, it will be defaulted to
   /// FOR_SELF.
   /// - "FOR_SELF" : This is the default behavior and represents the case that
-  /// this InternalRange is intended to be used in the VPC on which it is
-  /// created and is accessible from it’s peers. This implies that peers or
-  /// peer-of-peer’s cannot use this range.
-  /// - "FOR_PEER" : This behavior can be set when the Internal Range is being
-  /// reserved for usage by the peers. This means that no resource within the
-  /// VPC in which it is being created can use this to associate with a GCP
-  /// resource, but one of the peer’s can. This represents "donating" a range
-  /// for peers to use.
-  /// - "NOT_SHARED" : This behavior can be set when the Internal Range is being
-  /// reserved for usage by the VPC on which it is created but not shared with
-  /// the peers. In a sense it is local to the VPC. This can be used to create
-  /// Internal Ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or
-  /// for interconnect routes that are not shared with peers. This also implies
-  /// that peer’s cannot use this range in a way that is visible to this VPC,
-  /// but can re-use this range as long as it is NOT_SHARED from the peer VPC
-  /// too.
+  /// this internal range is intended to be used in the VPC in which it is
+  /// created and is accessible from its peers. This implies that peers or
+  /// peers-of-peers cannot use this range.
+  /// - "FOR_PEER" : This behavior can be set when the internal range is being
+  /// reserved for usage by peers. This means that no resource within the VPC in
+  /// which it is being created can use this to associate with a VPC resource,
+  /// but one of the peers can. This represents donating a range for peers to
+  /// use.
+  /// - "NOT_SHARED" : This behavior can be set when the internal range is being
+  /// reserved for usage by the VPC in which it is created, but not shared with
+  /// peers. In a sense, it is local to the VPC. This can be used to create
+  /// internal ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or
+  /// for Interconnect routes that are not shared with peers. This also implies
+  /// that peers cannot use this range in a way that is visible to this VPC, but
+  /// can re-use this range as long as it is NOT_SHARED from the peer VPC, too.
   core.String? peering;
 
   /// An alternate to ip_cidr_range.
   ///
   /// Can be set when trying to create a reservation that automatically finds a
   /// free range of the given size. If both ip_cidr_range and prefix_length are
-  /// set, it's an error if the range sizes don't match. Can also be used during
-  /// updates to change the range size.
+  /// set, there is an error if the range sizes do not match. Can also be used
+  /// during updates to change the range size.
   core.int? prefixLength;
 
   /// Can be set to narrow down or pick a different address space while
@@ -2670,32 +2670,32 @@ class InternalRange {
   /// Optional.
   core.List<core.String>? targetCidrRange;
 
-  /// Time when the InternalRange was updated.
+  /// Time when the internal range was updated.
   core.String? updateTime;
 
   /// The type of usage set for this InternalRange.
   /// Possible string values are:
   /// - "USAGE_UNSPECIFIED" : Unspecified usage is allowed in calls which
   /// identify the resource by other fields and do not need Usage set to
-  /// complete. These are i.e.: GetInternalRange and DeleteInternalRange. Usage
+  /// complete. These are, i.e.: GetInternalRange and DeleteInternalRange. Usage
   /// needs to be specified explicitly in CreateInternalRange or
   /// UpdateInternalRange calls.
-  /// - "FOR_VPC" : A GCP resource can use the reserved CIDR block by
-  /// associating it with the Internal Range resource if usage is set to
+  /// - "FOR_VPC" : A VPC resource can use the reserved CIDR block by
+  /// associating it with the internal range resource if usage is set to
   /// FOR_VPC.
   /// - "EXTERNAL_TO_VPC" : Ranges created with EXTERNAL_TO_VPC cannot be
-  /// associated with GCP resources and are meant to block out address ranges
+  /// associated with VPC resources and are meant to block out address ranges
   /// for various use cases, like for example, usage on-prem, with dynamic route
   /// announcements via interconnect.
   core.String? usage;
 
   /// The list of resources that refer to this internal range.
   ///
-  /// Resources that use the InternalRange for their range allocation are
+  /// Resources that use the internal range for their range allocation are
   /// referred to as users of the range. Other resources mark themselves as
-  /// users while doing so by creating a reference to this InternalRange. Having
-  /// a user, based on this reference, prevents deletion of the InternalRange
-  /// referred to. Can be empty.
+  /// users while doing so by creating a reference to this internal range.
+  /// Having a user, based on this reference, prevents deletion of the internal
+  /// range referred to. Can be empty.
   ///
   /// Output only.
   core.List<core.String>? users;
@@ -2983,7 +2983,7 @@ class ListHubsResponse {
 
 /// Response for InternalRange.ListInternalRanges
 class ListInternalRangesResponse {
-  /// InternalRanges to be returned.
+  /// Internal ranges to be returned.
   core.List<InternalRange>? internalRanges;
 
   /// The next pagination token in the List response.
@@ -3336,8 +3336,8 @@ class SetIamPolicyRequest {
       };
 }
 
-/// A Network Connectivity Center spoke represents a connection between your
-/// Google Cloud network resources and a non-Google-Cloud network.
+/// A Network Connectivity Center spoke represents one or more network
+/// connectivity resources.
 ///
 /// When you create a spoke, you associate it with a hub. You must also identify
 /// a value for exactly one of the following fields: * linked_vpn_tunnels *

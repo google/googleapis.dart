@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 9.2.0
+    version: 10.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -39,7 +39,6 @@ packages:
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
-    - baremetalsolution:v1
     - baremetalsolution:v2
     - batch:v1
     - beyondcorp:v1
@@ -252,6 +251,7 @@ packages:
     - websecurityscanner:v1
     - workflowexecutions:v1
     - workflows:v1
+    - workloadmanager:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
@@ -289,7 +289,6 @@ packages:
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
     - gkehub:v2alpha
-    - ideahub:v1beta
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
@@ -345,8 +344,10 @@ skipped_apis:
 - composer:v1beta1 # v1 included
 - compute:alpha # v1 included
 - compute:beta # v1 included
+- contactcenteraiplatform:v1alpha1
 - container:v1beta1 # v1 included
 - containeranalysis:v1alpha1 # v1beta1 included
+- dataform:v1beta1
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
 - datastore:v1beta1 # v1 included
@@ -355,6 +356,8 @@ skipped_apis:
 - deploymentmanager:v2beta # v1 included
 - dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
+- discoveryengine:v1alpha
+- discoveryengine:v1beta
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
 - domains:v1alpha2 # v1beta1 included
@@ -375,7 +378,6 @@ skipped_apis:
 - healthcare:v1beta1 # v1 included
 - iam:v2beta
 - iap:v1beta1 # v1 included
-- ideahub:v1alpha
 - identitytoolkit:v1
 - identitytoolkit:v2
 - integrations:v1alpha
@@ -431,5 +433,4 @@ skipped_apis:
 - websecurityscanner:v1beta # v1 included
 - workflowexecutions:v1beta # v1 included
 - workflows:v1beta # v1 included
-- discoveryengine:v1alpha
-- discoveryengine:v1beta
+- workstations:v1beta

@@ -2247,16 +2247,12 @@ class CloudRunMetadata {
 class Config {
   /// Default Skaffold version that is assigned when a Release is created
   /// without specifying a Skaffold version.
-  ///
-  /// Output only.
   core.String? defaultSkaffoldVersion;
 
   /// Name of the configuration.
   core.String? name;
 
   /// All supported versions of Skaffold.
-  ///
-  /// Output only.
   core.List<SkaffoldVersion>? supportedVersions;
 
   Config({
@@ -2509,6 +2505,8 @@ class DeployJobRun {
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The deploy build did not complete within the
   /// alloted time.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
+  /// Cloud Deploy's request. See failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the deploy failure, if available.
@@ -3430,12 +3428,17 @@ class PipelineCondition {
   /// Details around the Pipeline's overall status.
   PipelineReadyCondition? pipelineReadyCondition;
 
-  /// Detalis around targets enumerated in the pipeline.
+  /// Details around targets enumerated in the pipeline.
   TargetsPresentCondition? targetsPresentCondition;
+
+  /// Details on the whether the targets enumerated in the pipeline are of the
+  /// same type.
+  TargetsTypeCondition? targetsTypeCondition;
 
   PipelineCondition({
     this.pipelineReadyCondition,
     this.targetsPresentCondition,
+    this.targetsTypeCondition,
   });
 
   PipelineCondition.fromJson(core.Map json_)
@@ -3449,6 +3452,10 @@ class PipelineCondition {
                   json_['targetsPresentCondition']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          targetsTypeCondition: json_.containsKey('targetsTypeCondition')
+              ? TargetsTypeCondition.fromJson(json_['targetsTypeCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3456,6 +3463,8 @@ class PipelineCondition {
           'pipelineReadyCondition': pipelineReadyCondition!,
         if (targetsPresentCondition != null)
           'targetsPresentCondition': targetsPresentCondition!,
+        if (targetsTypeCondition != null)
+          'targetsTypeCondition': targetsTypeCondition!,
       };
 }
 
@@ -4010,6 +4019,8 @@ class Rollout {
   /// - "RELEASE_ABANDONED" : Release is abandoned.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No skaffold verify configuration was
   /// found.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
+  /// Cloud Deploy's request. See failure_message for additional details.
   core.String? deployFailureCause;
 
   /// Time at which the `Rollout` started deploying.
@@ -4657,6 +4668,8 @@ class TargetRender {
   /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The render operation did not complete successfully;
   /// check Cloud Build logs.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
+  /// Cloud Deploy's request. See failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the render failure, if available.
@@ -4717,7 +4730,7 @@ class TargetRender {
 /// TargetsPresentCondition contains information on any Targets defined in the
 /// Delivery Pipeline that do not actually exist.
 class TargetsPresentCondition {
-  /// The list of Target names that are missing.
+  /// The list of Target names that do not exist.
   ///
   /// For example,
   /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
@@ -4753,6 +4766,38 @@ class TargetsPresentCondition {
         if (missingTargets != null) 'missingTargets': missingTargets!,
         if (status != null) 'status': status!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// TargetsTypeCondition contains information on whether the Targets defined in
+/// the Delivery Pipeline are of the same type.
+class TargetsTypeCondition {
+  /// Human readable error message.
+  core.String? errorDetails;
+
+  /// True if the targets are all a comparable type.
+  ///
+  /// For example this is true if all targets are GKE clusters. This is false if
+  /// some targets are Cloud Run targets and others are GKE clusters.
+  core.bool? status;
+
+  TargetsTypeCondition({
+    this.errorDetails,
+    this.status,
+  });
+
+  TargetsTypeCondition.fromJson(core.Map json_)
+      : this(
+          errorDetails: json_.containsKey('errorDetails')
+              ? json_['errorDetails'] as core.String
+              : null,
+          status:
+              json_.containsKey('status') ? json_['status'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorDetails != null) 'errorDetails': errorDetails!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4805,6 +4850,8 @@ class VerifyJobRun {
   /// alloted time.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
+  /// Cloud Deploy's request. See failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the verify failure, if available.

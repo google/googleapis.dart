@@ -206,6 +206,7 @@ api.RequestDetails buildRequestDetails() {
   buildCounterRequestDetails++;
   if (buildCounterRequestDetails < 3) {
     o.nonce = 'foo';
+    o.requestHash = 'foo';
     o.requestPackageName = 'foo';
     o.timestampMillis = 'foo';
   }
@@ -218,6 +219,10 @@ void checkRequestDetails(api.RequestDetails o) {
   if (buildCounterRequestDetails < 3) {
     unittest.expect(
       o.nonce!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestHash!,
       unittest.equals('foo'),
     );
     unittest.expect(

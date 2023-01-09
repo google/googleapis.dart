@@ -5415,7 +5415,7 @@ class GoogleCloudContactcenterinsightsV1View {
   /// Output only.
   core.String? updateTime;
 
-  /// String with specific view properties.
+  /// String with specific view properties, must be non-empty.
   core.String? value;
 
   GoogleCloudContactcenterinsightsV1View({

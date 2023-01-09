@@ -7962,6 +7962,25 @@ class ChromeOsDevice {
   /// Reports of CPU utilization and temperature (Read-only)
   core.List<ChromeOsDeviceCpuStatusReports>? cpuStatusReports;
 
+  /// (Read-only) Deprovision reason.
+  /// Possible string values are:
+  /// - "deprovisionReasonUnspecified" : The deprovision reason is unknown.
+  /// - "deprovisionReasonSameModelReplacement" : Same model replacement.
+  /// - "deprovisionReasonUpgrade" : Device upgrade.
+  /// - "deprovisionReasonDomainMove" : Domain move.
+  /// - "deprovisionReasonServiceExpiration" : Service expiration.
+  /// - "deprovisionReasonOther" : Other.
+  /// - "deprovisionReasonDifferentModelReplacement" : Different model
+  /// replacement.
+  /// - "deprovisionReasonRetiringDevice" : Retiring device.
+  /// - "deprovisionReasonUpgradeTransfer" : Transferring perpetual upgrade to a
+  /// new device.
+  /// - "deprovisionReasonNotRequired" : No reason required, i.e. licenses
+  /// returned to customer's license pool.
+  /// - "deprovisionReasonRepairCenter" : Deprovisioned by a RMA (service
+  /// center) caller.
+  core.String? deprovisionReason;
+
   /// A list of device files to download (Read-only)
   core.List<ChromeOsDeviceDeviceFiles>? deviceFiles;
 
@@ -8004,6 +8023,9 @@ class ChromeOsDevice {
   /// For the Chromeosdevices resource, the value is
   /// `admin#directory#chromeosdevice`.
   core.String? kind;
+
+  /// (Read-only) Date and time for the last deprovision of the device.
+  core.String? lastDeprovisionTimestamp;
 
   /// Date and time the device was last enrolled (Read-only)
   core.DateTime? lastEnrollmentTime;
@@ -8130,6 +8152,7 @@ class ChromeOsDevice {
     this.bootMode,
     this.cpuInfo,
     this.cpuStatusReports,
+    this.deprovisionReason,
     this.deviceFiles,
     this.deviceId,
     this.diskVolumeReports,
@@ -8140,6 +8163,7 @@ class ChromeOsDevice {
     this.firmwareVersion,
     this.firstEnrollmentTime,
     this.kind,
+    this.lastDeprovisionTimestamp,
     this.lastEnrollmentTime,
     this.lastKnownNetwork,
     this.lastSync,
@@ -8200,6 +8224,9 @@ class ChromeOsDevice {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          deprovisionReason: json_.containsKey('deprovisionReason')
+              ? json_['deprovisionReason'] as core.String
+              : null,
           deviceFiles: json_.containsKey('deviceFiles')
               ? (json_['deviceFiles'] as core.List)
                   .map((value) => ChromeOsDeviceDeviceFiles.fromJson(
@@ -8232,6 +8259,10 @@ class ChromeOsDevice {
               ? json_['firstEnrollmentTime'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lastDeprovisionTimestamp:
+              json_.containsKey('lastDeprovisionTimestamp')
+                  ? json_['lastDeprovisionTimestamp'] as core.String
+                  : null,
           lastEnrollmentTime: json_.containsKey('lastEnrollmentTime')
               ? core.DateTime.parse(json_['lastEnrollmentTime'] as core.String)
               : null,
@@ -8323,6 +8354,7 @@ class ChromeOsDevice {
         if (bootMode != null) 'bootMode': bootMode!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
+        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
         if (deviceFiles != null) 'deviceFiles': deviceFiles!,
         if (deviceId != null) 'deviceId': deviceId!,
         if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
@@ -8336,6 +8368,8 @@ class ChromeOsDevice {
         if (firstEnrollmentTime != null)
           'firstEnrollmentTime': firstEnrollmentTime!,
         if (kind != null) 'kind': kind!,
+        if (lastDeprovisionTimestamp != null)
+          'lastDeprovisionTimestamp': lastDeprovisionTimestamp!,
         if (lastEnrollmentTime != null)
           'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
         if (lastKnownNetwork != null) 'lastKnownNetwork': lastKnownNetwork!,
@@ -8794,6 +8828,7 @@ class DirectoryChromeosdevicesCommand {
   /// revert the device back to a factory state with no enrollment unless the
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
+  /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
   core.String? type;
 
   DirectoryChromeosdevicesCommand({
@@ -8842,6 +8877,13 @@ class DirectoryChromeosdevicesCommand {
 
 /// The result of executing a command.
 class DirectoryChromeosdevicesCommandResult {
+  /// The payload for the command result.
+  ///
+  /// The following commands respond with a payload: - DEVICE_START_CRD_SESSION:
+  /// Payload is a stringified JSON object in the form: { "url": url }. The URL
+  /// provides a link to the CRD session.
+  core.String? commandResultPayload;
+
   /// The error message with a short explanation as to why the command failed.
   ///
   /// Only present if the command failed.
@@ -8859,6 +8901,7 @@ class DirectoryChromeosdevicesCommandResult {
   core.String? result;
 
   DirectoryChromeosdevicesCommandResult({
+    this.commandResultPayload,
     this.errorMessage,
     this.executeTime,
     this.result,
@@ -8866,6 +8909,9 @@ class DirectoryChromeosdevicesCommandResult {
 
   DirectoryChromeosdevicesCommandResult.fromJson(core.Map json_)
       : this(
+          commandResultPayload: json_.containsKey('commandResultPayload')
+              ? json_['commandResultPayload'] as core.String
+              : null,
           errorMessage: json_.containsKey('errorMessage')
               ? json_['errorMessage'] as core.String
               : null,
@@ -8878,6 +8924,8 @@ class DirectoryChromeosdevicesCommandResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (commandResultPayload != null)
+          'commandResultPayload': commandResultPayload!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (executeTime != null) 'executeTime': executeTime!,
         if (result != null) 'result': result!,
@@ -8904,13 +8952,19 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// revert the device back to a factory state with no enrollment unless the
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
+  /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
   core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
   ///
   /// The following commands support adding payload: - SET_VOLUME: Payload is a
   /// stringified JSON object in the form: { "volume": 50 }. The volume has to
-  /// be an integer in the range \[0,100\].
+  /// be an integer in the range \[0,100\]. - DEVICE_START_CRD_SESSION: Payload
+  /// is optionally a stringified JSON object in the form: {
+  /// "ackedUserPresence": true }. ackedUserPresence is a boolean. If a device
+  /// is being used, ackedUserPresence must be set to true to acknowledge that
+  /// you want to start a CRD session anyways. It is false by default, so a CRD
+  /// command will fail if used on an active device without this field.
   core.String? payload;
 
   DirectoryChromeosdevicesIssueCommandRequest({
@@ -9397,8 +9451,15 @@ class Features {
 /// Google Groups provide your users the ability to send messages to groups of
 /// people using the group's email address.
 ///
-/// For more information about common tasks, see the \[Developer's
-/// Guide\](/admin-sdk/directory/v1/guides/manage-groups).
+/// For more information about common tasks, see the
+/// [Developer's Guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-groups).
+/// For information about other types of groups, see the
+/// [Cloud Identity Groups API documentation](https://cloud.google.com/identity/docs/groups).
+/// Note: The user calling the API (or being impersonated by a service account)
+/// must have an assigned
+/// [role](https://developers.google.com/admin-sdk/directory/v1/guides/manage-roles)
+/// that includes Admin API Groups permissions, such as Super Admin or Groups
+/// Admin.
 class Group {
   /// Read-only.
   ///

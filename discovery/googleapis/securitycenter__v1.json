@@ -117,7 +117,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent to group the assets by. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -178,7 +178,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent that the listed assets belong to. Its format is \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -258,7 +258,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the new BigQuery export's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent resource of the new BigQuery export. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -286,7 +286,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
+                                    "description": "Required. The name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+/bigQueryExports/[^/]+$",
                                     "required": true,
@@ -599,7 +599,7 @@
                             ],
                             "parameters": {
                                 "configId": {
-                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contain alphanumeric characters, underscores or hyphens only.",
+                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -693,7 +693,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent in which to list the notification configurations. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -767,7 +767,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -950,6 +950,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
+                                            "description": "Required. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -1128,7 +1129,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent to group the assets by. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1189,7 +1190,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent that the listed assets belong to. Its format is \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1297,7 +1298,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the new BigQuery export's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent resource of the new BigQuery export. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -1325,7 +1326,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
+                                    "description": "Required. The name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/bigQueryExports/[^/]+$",
                                     "required": true,
@@ -1638,7 +1639,7 @@
                             ],
                             "parameters": {
                                 "configId": {
-                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contain alphanumeric characters, underscores or hyphens only.",
+                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1732,7 +1733,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent in which to list the notification configurations. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -2007,7 +2008,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -2313,6 +2314,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
+                                            "description": "Required. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -2430,7 +2432,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the parent to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent to group the assets by. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -2491,7 +2493,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. The name of the parent that the listed assets belong to. Its format is \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -2571,7 +2573,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the new BigQuery export's parent. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent resource of the new BigQuery export. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -2599,7 +2601,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
+                                    "description": "Required. The name of the BigQuery export to delete. Its format is organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/bigQueryExports/[^/]+$",
                                     "required": true,
@@ -2912,7 +2914,7 @@
                             ],
                             "parameters": {
                                 "configId": {
-                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contain alphanumeric characters, underscores or hyphens only.",
+                                    "description": "Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -3006,7 +3008,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the parent to list notification configs. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
+                                    "description": "Required. The name of the parent in which to list the notification configurations. Its format is \"organizations/[organization_id]\", \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -3080,7 +3082,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], \"folders/[folder_id]\", or \"projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -3263,6 +3265,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
+                                            "description": "Required. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
                                             "required": true,
@@ -3367,7 +3370,7 @@
             }
         }
     },
-    "revision": "20221205",
+    "revision": "20230105",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
@@ -3706,11 +3709,11 @@
             "type": "object"
         },
         "Contact": {
-            "description": "Representa a single contact's email address",
+            "description": "The email address of a contact.",
             "id": "Contact",
             "properties": {
                 "email": {
-                    "description": "An email address e.g. \"person123@company.com\"",
+                    "description": "An email address. For example, \"`person123@company.com`\".",
                     "type": "string"
                 }
             },
@@ -4324,7 +4327,7 @@
                 },
                 "vulnerability": {
                     "$ref": "Vulnerability",
-                    "description": "Represents vulnerability-specific fields like CVE and CVS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/)"
+                    "description": "Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/)"
                 }
             },
             "type": "object"
@@ -4383,7 +4386,7 @@
             "id": "GoogleCloudSecuritycenterV1BigQueryExport",
             "properties": {
                 "createTime": {
-                    "description": "Output only. The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.",
+                    "description": "Output only. The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -4401,7 +4404,7 @@
                     "type": "string"
                 },
                 "mostRecentEditor": {
-                    "description": "Output only. Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.",
+                    "description": "Output only. Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4410,12 +4413,12 @@
                     "type": "string"
                 },
                 "principal": {
-                    "description": "Output only. The service account that needs permission to create table, upload data to the big query dataset.",
+                    "description": "Output only. The service account that needs permission to create table and upload data to the BigQuery dataset.",
                     "readOnly": true,
                     "type": "string"
                 },
                 "updateTime": {
-                    "description": "Output only. The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.",
+                    "description": "Output only. The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -4440,7 +4443,7 @@
                     "description": "The Role or ClusterRole referenced by the binding."
                 },
                 "subjects": {
-                    "description": "Represents the subjects(s) bound to the role. Not always available for PATCH requests.",
+                    "description": "Represents one or more subjects that are bound to the role. Not always available for PATCH requests.",
                     "items": {
                         "$ref": "Subject"
                     },
@@ -5151,7 +5154,7 @@
             "type": "object"
         },
         "Indicator": {
-            "description": "Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise",
+            "description": "Represents what's commonly known as an _indicator of compromise_ (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. For more information, see [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).",
             "id": "Indicator",
             "properties": {
                 "domains": {
@@ -5162,7 +5165,7 @@
                     "type": "array"
                 },
                 "ipAddresses": {
-                    "description": "List of ip addresses associated to the Finding.",
+                    "description": "The list of IP addresses that are associated with the finding.",
                     "items": {
                         "type": "string"
                     },
@@ -5194,7 +5197,7 @@
                     "type": "string"
                 },
                 "unexpectedCodeModification": {
-                    "description": "True when unexpected modifications of kernel read-only data memory are present.",
+                    "description": "True when unexpected modifications of kernel code memory are present.",
                     "type": "boolean"
                 },
                 "unexpectedFtraceHandler": {
@@ -5218,7 +5221,7 @@
                     "type": "boolean"
                 },
                 "unexpectedReadOnlyDataModification": {
-                    "description": "Flag indicating unexpected modifications of kernel read-only data memory.",
+                    "description": "True when unexpected modifications of kernel read-only data memory are present.",
                     "type": "boolean"
                 },
                 "unexpectedSystemCallHandler": {
@@ -5229,7 +5232,7 @@
             "type": "object"
         },
         "Kubernetes": {
-            "description": "Kubernetes related attributes.",
+            "description": "Kubernetes-related attributes.",
             "id": "Kubernetes",
             "properties": {
                 "accessReviews": {
@@ -6222,7 +6225,7 @@
             "type": "object"
         },
         "SetFindingStateRequest": {
-            "description": "Request message for updating a finding's state. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\", \"projects/{project_id}/sources/{source_id}/findings/{finding_id}\".",
+            "description": "Request message for updating a finding's state.",
             "id": "SetFindingStateRequest",
             "properties": {
                 "startTime": {

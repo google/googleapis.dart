@@ -3066,6 +3066,40 @@ void checkUnnamed57(core.Map<core.String, core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed58() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed58(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed59() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed59(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudApigeeV1DeploymentConfig = 0;
 api.GoogleCloudApigeeV1DeploymentConfig
     buildGoogleCloudApigeeV1DeploymentConfig() {
@@ -3074,6 +3108,8 @@ api.GoogleCloudApigeeV1DeploymentConfig
   if (buildCounterGoogleCloudApigeeV1DeploymentConfig < 3) {
     o.attributes = buildUnnamed57();
     o.basePath = 'foo';
+    o.deploymentGroups = buildUnnamed58();
+    o.endpoints = buildUnnamed59();
     o.location = 'foo';
     o.name = 'foo';
     o.proxyUid = 'foo';
@@ -3093,6 +3129,8 @@ void checkGoogleCloudApigeeV1DeploymentConfig(
       o.basePath!,
       unittest.equals('foo'),
     );
+    checkUnnamed58(o.deploymentGroups!);
+    checkUnnamed59(o.endpoints!);
     unittest.expect(
       o.location!,
       unittest.equals('foo'),
@@ -3117,32 +3155,38 @@ void checkGoogleCloudApigeeV1DeploymentConfig(
   buildCounterGoogleCloudApigeeV1DeploymentConfig--;
 }
 
-core.List<core.String> buildUnnamed58() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed58(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+core.int buildCounterGoogleCloudApigeeV1DeploymentGroupConfig = 0;
+api.GoogleCloudApigeeV1DeploymentGroupConfig
+    buildGoogleCloudApigeeV1DeploymentGroupConfig() {
+  final o = api.GoogleCloudApigeeV1DeploymentGroupConfig();
+  buildCounterGoogleCloudApigeeV1DeploymentGroupConfig++;
+  if (buildCounterGoogleCloudApigeeV1DeploymentGroupConfig < 3) {
+    o.name = 'foo';
+    o.revisionId = 'foo';
+    o.uid = 'foo';
+  }
+  buildCounterGoogleCloudApigeeV1DeploymentGroupConfig--;
+  return o;
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed59() => [
-      buildGoogleCloudApigeeV1Attribute(),
-      buildGoogleCloudApigeeV1Attribute(),
-    ];
-
-void checkUnnamed59(core.List<api.GoogleCloudApigeeV1Attribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0]);
-  checkGoogleCloudApigeeV1Attribute(o[1]);
+void checkGoogleCloudApigeeV1DeploymentGroupConfig(
+    api.GoogleCloudApigeeV1DeploymentGroupConfig o) {
+  buildCounterGoogleCloudApigeeV1DeploymentGroupConfig++;
+  if (buildCounterGoogleCloudApigeeV1DeploymentGroupConfig < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revisionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudApigeeV1DeploymentGroupConfig--;
 }
 
 core.List<core.String> buildUnnamed60() => [
@@ -3162,6 +3206,34 @@ void checkUnnamed60(core.List<core.String> o) {
   );
 }
 
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed61() => [
+      buildGoogleCloudApigeeV1Attribute(),
+      buildGoogleCloudApigeeV1Attribute(),
+    ];
+
+void checkUnnamed61(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
+}
+
+core.List<core.String> buildUnnamed62() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed62(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudApigeeV1Developer = 0;
 api.GoogleCloudApigeeV1Developer buildGoogleCloudApigeeV1Developer() {
   final o = api.GoogleCloudApigeeV1Developer();
@@ -3169,9 +3241,9 @@ api.GoogleCloudApigeeV1Developer buildGoogleCloudApigeeV1Developer() {
   if (buildCounterGoogleCloudApigeeV1Developer < 3) {
     o.accessType = 'foo';
     o.appFamily = 'foo';
-    o.apps = buildUnnamed58();
-    o.attributes = buildUnnamed59();
-    o.companies = buildUnnamed60();
+    o.apps = buildUnnamed60();
+    o.attributes = buildUnnamed61();
+    o.companies = buildUnnamed62();
     o.createdAt = 'foo';
     o.developerId = 'foo';
     o.email = 'foo';
@@ -3197,9 +3269,9 @@ void checkGoogleCloudApigeeV1Developer(api.GoogleCloudApigeeV1Developer o) {
       o.appFamily!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.apps!);
-    checkUnnamed59(o.attributes!);
-    checkUnnamed60(o.companies!);
+    checkUnnamed60(o.apps!);
+    checkUnnamed61(o.attributes!);
+    checkUnnamed62(o.companies!);
     unittest.expect(
       o.createdAt!,
       unittest.equals('foo'),
@@ -3240,12 +3312,12 @@ void checkGoogleCloudApigeeV1Developer(api.GoogleCloudApigeeV1Developer o) {
   buildCounterGoogleCloudApigeeV1Developer--;
 }
 
-core.List<core.String> buildUnnamed61() => [
+core.List<core.String> buildUnnamed63() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed63(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3257,34 +3329,34 @@ void checkUnnamed61(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed62() => [
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed64() => [
       buildGoogleCloudApigeeV1Attribute(),
       buildGoogleCloudApigeeV1Attribute(),
     ];
 
-void checkUnnamed62(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+void checkUnnamed64(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Attribute(o[0]);
   checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed63() => [
+core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed65() => [
       buildGoogleCloudApigeeV1Credential(),
       buildGoogleCloudApigeeV1Credential(),
     ];
 
-void checkUnnamed63(core.List<api.GoogleCloudApigeeV1Credential> o) {
+void checkUnnamed65(core.List<api.GoogleCloudApigeeV1Credential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Credential(o[0]);
   checkGoogleCloudApigeeV1Credential(o[1]);
 }
 
-core.List<core.String> buildUnnamed64() => [
+core.List<core.String> buildUnnamed66() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed64(core.List<core.String> o) {
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3301,18 +3373,18 @@ api.GoogleCloudApigeeV1DeveloperApp buildGoogleCloudApigeeV1DeveloperApp() {
   final o = api.GoogleCloudApigeeV1DeveloperApp();
   buildCounterGoogleCloudApigeeV1DeveloperApp++;
   if (buildCounterGoogleCloudApigeeV1DeveloperApp < 3) {
-    o.apiProducts = buildUnnamed61();
+    o.apiProducts = buildUnnamed63();
     o.appFamily = 'foo';
     o.appId = 'foo';
-    o.attributes = buildUnnamed62();
+    o.attributes = buildUnnamed64();
     o.callbackUrl = 'foo';
     o.createdAt = 'foo';
-    o.credentials = buildUnnamed63();
+    o.credentials = buildUnnamed65();
     o.developerId = 'foo';
     o.keyExpiresIn = 'foo';
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
-    o.scopes = buildUnnamed64();
+    o.scopes = buildUnnamed66();
     o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeveloperApp--;
@@ -3323,7 +3395,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
     api.GoogleCloudApigeeV1DeveloperApp o) {
   buildCounterGoogleCloudApigeeV1DeveloperApp++;
   if (buildCounterGoogleCloudApigeeV1DeveloperApp < 3) {
-    checkUnnamed61(o.apiProducts!);
+    checkUnnamed63(o.apiProducts!);
     unittest.expect(
       o.appFamily!,
       unittest.equals('foo'),
@@ -3332,7 +3404,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
       o.appId!,
       unittest.equals('foo'),
     );
-    checkUnnamed62(o.attributes!);
+    checkUnnamed64(o.attributes!);
     unittest.expect(
       o.callbackUrl!,
       unittest.equals('foo'),
@@ -3341,7 +3413,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
       o.createdAt!,
       unittest.equals('foo'),
     );
-    checkUnnamed63(o.credentials!);
+    checkUnnamed65(o.credentials!);
     unittest.expect(
       o.developerId!,
       unittest.equals('foo'),
@@ -3358,7 +3430,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed64(o.scopes!);
+    checkUnnamed66(o.scopes!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -3367,7 +3439,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
   buildCounterGoogleCloudApigeeV1DeveloperApp--;
 }
 
-core.List<core.Object?> buildUnnamed65() => [
+core.List<core.Object?> buildUnnamed67() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -3380,7 +3452,7 @@ core.List<core.Object?> buildUnnamed65() => [
       },
     ];
 
-void checkUnnamed65(core.List<core.Object?> o) {
+void checkUnnamed67(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3412,23 +3484,23 @@ void checkUnnamed65(core.List<core.Object?> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed66() => [
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed68() => [
       buildGoogleCloudApigeeV1Attribute(),
       buildGoogleCloudApigeeV1Attribute(),
     ];
 
-void checkUnnamed66(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+void checkUnnamed68(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Attribute(o[0]);
   checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
-core.List<core.String> buildUnnamed67() => [
+core.List<core.String> buildUnnamed69() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed67(core.List<core.String> o) {
+void checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3446,14 +3518,14 @@ api.GoogleCloudApigeeV1DeveloperAppKey
   final o = api.GoogleCloudApigeeV1DeveloperAppKey();
   buildCounterGoogleCloudApigeeV1DeveloperAppKey++;
   if (buildCounterGoogleCloudApigeeV1DeveloperAppKey < 3) {
-    o.apiProducts = buildUnnamed65();
-    o.attributes = buildUnnamed66();
+    o.apiProducts = buildUnnamed67();
+    o.attributes = buildUnnamed68();
     o.consumerKey = 'foo';
     o.consumerSecret = 'foo';
     o.expiresAt = 'foo';
     o.expiresInSeconds = 'foo';
     o.issuedAt = 'foo';
-    o.scopes = buildUnnamed67();
+    o.scopes = buildUnnamed69();
     o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeveloperAppKey--;
@@ -3464,8 +3536,8 @@ void checkGoogleCloudApigeeV1DeveloperAppKey(
     api.GoogleCloudApigeeV1DeveloperAppKey o) {
   buildCounterGoogleCloudApigeeV1DeveloperAppKey++;
   if (buildCounterGoogleCloudApigeeV1DeveloperAppKey < 3) {
-    checkUnnamed65(o.apiProducts!);
-    checkUnnamed66(o.attributes!);
+    checkUnnamed67(o.apiProducts!);
+    checkUnnamed68(o.attributes!);
     unittest.expect(
       o.consumerKey!,
       unittest.equals('foo'),
@@ -3486,7 +3558,7 @@ void checkGoogleCloudApigeeV1DeveloperAppKey(
       o.issuedAt!,
       unittest.equals('foo'),
     );
-    checkUnnamed67(o.scopes!);
+    checkUnnamed69(o.scopes!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -3495,12 +3567,12 @@ void checkGoogleCloudApigeeV1DeveloperAppKey(
   buildCounterGoogleCloudApigeeV1DeveloperAppKey--;
 }
 
-core.List<api.GoogleCloudApigeeV1DeveloperBalanceWallet> buildUnnamed68() => [
+core.List<api.GoogleCloudApigeeV1DeveloperBalanceWallet> buildUnnamed70() => [
       buildGoogleCloudApigeeV1DeveloperBalanceWallet(),
       buildGoogleCloudApigeeV1DeveloperBalanceWallet(),
     ];
 
-void checkUnnamed68(
+void checkUnnamed70(
     core.List<api.GoogleCloudApigeeV1DeveloperBalanceWallet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DeveloperBalanceWallet(o[0]);
@@ -3513,7 +3585,7 @@ api.GoogleCloudApigeeV1DeveloperBalance
   final o = api.GoogleCloudApigeeV1DeveloperBalance();
   buildCounterGoogleCloudApigeeV1DeveloperBalance++;
   if (buildCounterGoogleCloudApigeeV1DeveloperBalance < 3) {
-    o.wallets = buildUnnamed68();
+    o.wallets = buildUnnamed70();
   }
   buildCounterGoogleCloudApigeeV1DeveloperBalance--;
   return o;
@@ -3523,7 +3595,7 @@ void checkGoogleCloudApigeeV1DeveloperBalance(
     api.GoogleCloudApigeeV1DeveloperBalance o) {
   buildCounterGoogleCloudApigeeV1DeveloperBalance++;
   if (buildCounterGoogleCloudApigeeV1DeveloperBalance < 3) {
-    checkUnnamed68(o.wallets!);
+    checkUnnamed70(o.wallets!);
   }
   buildCounterGoogleCloudApigeeV1DeveloperBalance--;
 }
@@ -3627,12 +3699,12 @@ void checkGoogleCloudApigeeV1DeveloperSubscription(
   buildCounterGoogleCloudApigeeV1DeveloperSubscription--;
 }
 
-core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed69() => [
+core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed71() => [
       buildGoogleCloudApigeeV1Metric(),
       buildGoogleCloudApigeeV1Metric(),
     ];
 
-void checkUnnamed69(core.List<api.GoogleCloudApigeeV1Metric> o) {
+void checkUnnamed71(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Metric(o[0]);
   checkGoogleCloudApigeeV1Metric(o[1]);
@@ -3644,7 +3716,7 @@ api.GoogleCloudApigeeV1DimensionMetric
   final o = api.GoogleCloudApigeeV1DimensionMetric();
   buildCounterGoogleCloudApigeeV1DimensionMetric++;
   if (buildCounterGoogleCloudApigeeV1DimensionMetric < 3) {
-    o.metrics = buildUnnamed69();
+    o.metrics = buildUnnamed71();
     o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DimensionMetric--;
@@ -3655,7 +3727,7 @@ void checkGoogleCloudApigeeV1DimensionMetric(
     api.GoogleCloudApigeeV1DimensionMetric o) {
   buildCounterGoogleCloudApigeeV1DimensionMetric++;
   if (buildCounterGoogleCloudApigeeV1DimensionMetric < 3) {
-    checkUnnamed69(o.metrics!);
+    checkUnnamed71(o.metrics!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3711,6 +3783,49 @@ void checkGoogleCloudApigeeV1EndpointAttachment(
     );
   }
   buildCounterGoogleCloudApigeeV1EndpointAttachment--;
+}
+
+core.List<core.String> buildUnnamed72() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed72(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudApigeeV1EndpointChainingRule = 0;
+api.GoogleCloudApigeeV1EndpointChainingRule
+    buildGoogleCloudApigeeV1EndpointChainingRule() {
+  final o = api.GoogleCloudApigeeV1EndpointChainingRule();
+  buildCounterGoogleCloudApigeeV1EndpointChainingRule++;
+  if (buildCounterGoogleCloudApigeeV1EndpointChainingRule < 3) {
+    o.deploymentGroup = 'foo';
+    o.proxyIds = buildUnnamed72();
+  }
+  buildCounterGoogleCloudApigeeV1EndpointChainingRule--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1EndpointChainingRule(
+    api.GoogleCloudApigeeV1EndpointChainingRule o) {
+  buildCounterGoogleCloudApigeeV1EndpointChainingRule++;
+  if (buildCounterGoogleCloudApigeeV1EndpointChainingRule < 3) {
+    unittest.expect(
+      o.deploymentGroup!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed72(o.proxyIds!);
+  }
+  buildCounterGoogleCloudApigeeV1EndpointChainingRule--;
 }
 
 core.int buildCounterGoogleCloudApigeeV1EntityMetadata = 0;
@@ -3812,34 +3927,45 @@ void checkGoogleCloudApigeeV1Environment(api.GoogleCloudApigeeV1Environment o) {
   buildCounterGoogleCloudApigeeV1Environment--;
 }
 
-core.List<api.GoogleCloudApigeeV1DataCollectorConfig> buildUnnamed70() => [
+core.List<api.GoogleCloudApigeeV1DataCollectorConfig> buildUnnamed73() => [
       buildGoogleCloudApigeeV1DataCollectorConfig(),
       buildGoogleCloudApigeeV1DataCollectorConfig(),
     ];
 
-void checkUnnamed70(core.List<api.GoogleCloudApigeeV1DataCollectorConfig> o) {
+void checkUnnamed73(core.List<api.GoogleCloudApigeeV1DataCollectorConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DataCollectorConfig(o[0]);
   checkGoogleCloudApigeeV1DataCollectorConfig(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1DeploymentConfig> buildUnnamed71() => [
+core.List<api.GoogleCloudApigeeV1DeploymentGroupConfig> buildUnnamed74() => [
+      buildGoogleCloudApigeeV1DeploymentGroupConfig(),
+      buildGoogleCloudApigeeV1DeploymentGroupConfig(),
+    ];
+
+void checkUnnamed74(core.List<api.GoogleCloudApigeeV1DeploymentGroupConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudApigeeV1DeploymentGroupConfig(o[0]);
+  checkGoogleCloudApigeeV1DeploymentGroupConfig(o[1]);
+}
+
+core.List<api.GoogleCloudApigeeV1DeploymentConfig> buildUnnamed75() => [
       buildGoogleCloudApigeeV1DeploymentConfig(),
       buildGoogleCloudApigeeV1DeploymentConfig(),
     ];
 
-void checkUnnamed71(core.List<api.GoogleCloudApigeeV1DeploymentConfig> o) {
+void checkUnnamed75(core.List<api.GoogleCloudApigeeV1DeploymentConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DeploymentConfig(o[0]);
   checkGoogleCloudApigeeV1DeploymentConfig(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed72() => {
+core.Map<core.String, core.String> buildUnnamed76() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed72(core.Map<core.String, core.String> o) {
+void checkUnnamed76(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3851,56 +3977,56 @@ void checkUnnamed72(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1FlowHookConfig> buildUnnamed73() => [
+core.List<api.GoogleCloudApigeeV1FlowHookConfig> buildUnnamed77() => [
       buildGoogleCloudApigeeV1FlowHookConfig(),
       buildGoogleCloudApigeeV1FlowHookConfig(),
     ];
 
-void checkUnnamed73(core.List<api.GoogleCloudApigeeV1FlowHookConfig> o) {
+void checkUnnamed77(core.List<api.GoogleCloudApigeeV1FlowHookConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1FlowHookConfig(o[0]);
   checkGoogleCloudApigeeV1FlowHookConfig(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1KeystoreConfig> buildUnnamed74() => [
+core.List<api.GoogleCloudApigeeV1KeystoreConfig> buildUnnamed78() => [
       buildGoogleCloudApigeeV1KeystoreConfig(),
       buildGoogleCloudApigeeV1KeystoreConfig(),
     ];
 
-void checkUnnamed74(core.List<api.GoogleCloudApigeeV1KeystoreConfig> o) {
+void checkUnnamed78(core.List<api.GoogleCloudApigeeV1KeystoreConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1KeystoreConfig(o[0]);
   checkGoogleCloudApigeeV1KeystoreConfig(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1ReferenceConfig> buildUnnamed75() => [
+core.List<api.GoogleCloudApigeeV1ReferenceConfig> buildUnnamed79() => [
       buildGoogleCloudApigeeV1ReferenceConfig(),
       buildGoogleCloudApigeeV1ReferenceConfig(),
     ];
 
-void checkUnnamed75(core.List<api.GoogleCloudApigeeV1ReferenceConfig> o) {
+void checkUnnamed79(core.List<api.GoogleCloudApigeeV1ReferenceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ReferenceConfig(o[0]);
   checkGoogleCloudApigeeV1ReferenceConfig(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1ResourceConfig> buildUnnamed76() => [
+core.List<api.GoogleCloudApigeeV1ResourceConfig> buildUnnamed80() => [
       buildGoogleCloudApigeeV1ResourceConfig(),
       buildGoogleCloudApigeeV1ResourceConfig(),
     ];
 
-void checkUnnamed76(core.List<api.GoogleCloudApigeeV1ResourceConfig> o) {
+void checkUnnamed80(core.List<api.GoogleCloudApigeeV1ResourceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ResourceConfig(o[0]);
   checkGoogleCloudApigeeV1ResourceConfig(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1TargetServerConfig> buildUnnamed77() => [
+core.List<api.GoogleCloudApigeeV1TargetServerConfig> buildUnnamed81() => [
       buildGoogleCloudApigeeV1TargetServerConfig(),
       buildGoogleCloudApigeeV1TargetServerConfig(),
     ];
 
-void checkUnnamed77(core.List<api.GoogleCloudApigeeV1TargetServerConfig> o) {
+void checkUnnamed81(core.List<api.GoogleCloudApigeeV1TargetServerConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1TargetServerConfig(o[0]);
   checkGoogleCloudApigeeV1TargetServerConfig(o[1]);
@@ -3914,22 +4040,24 @@ api.GoogleCloudApigeeV1EnvironmentConfig
   if (buildCounterGoogleCloudApigeeV1EnvironmentConfig < 3) {
     o.arcConfigLocation = 'foo';
     o.createTime = 'foo';
-    o.dataCollectors = buildUnnamed70();
+    o.dataCollectors = buildUnnamed73();
     o.debugMask = buildGoogleCloudApigeeV1DebugMask();
-    o.deployments = buildUnnamed71();
-    o.featureFlags = buildUnnamed72();
-    o.flowhooks = buildUnnamed73();
+    o.deploymentGroups = buildUnnamed74();
+    o.deployments = buildUnnamed75();
+    o.envScopedRevisionId = 'foo';
+    o.featureFlags = buildUnnamed76();
+    o.flowhooks = buildUnnamed77();
     o.forwardProxyUri = 'foo';
     o.gatewayConfigLocation = 'foo';
-    o.keystores = buildUnnamed74();
+    o.keystores = buildUnnamed78();
     o.name = 'foo';
     o.provider = 'foo';
     o.pubsubTopic = 'foo';
-    o.resourceReferences = buildUnnamed75();
-    o.resources = buildUnnamed76();
+    o.resourceReferences = buildUnnamed79();
+    o.resources = buildUnnamed80();
     o.revisionId = 'foo';
     o.sequenceNumber = 'foo';
-    o.targets = buildUnnamed77();
+    o.targets = buildUnnamed81();
     o.traceConfig = buildGoogleCloudApigeeV1RuntimeTraceConfig();
     o.uid = 'foo';
   }
@@ -3949,11 +4077,16 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed70(o.dataCollectors!);
+    checkUnnamed73(o.dataCollectors!);
     checkGoogleCloudApigeeV1DebugMask(o.debugMask!);
-    checkUnnamed71(o.deployments!);
-    checkUnnamed72(o.featureFlags!);
-    checkUnnamed73(o.flowhooks!);
+    checkUnnamed74(o.deploymentGroups!);
+    checkUnnamed75(o.deployments!);
+    unittest.expect(
+      o.envScopedRevisionId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed76(o.featureFlags!);
+    checkUnnamed77(o.flowhooks!);
     unittest.expect(
       o.forwardProxyUri!,
       unittest.equals('foo'),
@@ -3962,7 +4095,7 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       o.gatewayConfigLocation!,
       unittest.equals('foo'),
     );
-    checkUnnamed74(o.keystores!);
+    checkUnnamed78(o.keystores!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3975,8 +4108,8 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       o.pubsubTopic!,
       unittest.equals('foo'),
     );
-    checkUnnamed75(o.resourceReferences!);
-    checkUnnamed76(o.resources!);
+    checkUnnamed79(o.resourceReferences!);
+    checkUnnamed80(o.resources!);
     unittest.expect(
       o.revisionId!,
       unittest.equals('foo'),
@@ -3985,7 +4118,7 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       o.sequenceNumber!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.targets!);
+    checkUnnamed81(o.targets!);
     checkGoogleCloudApigeeV1RuntimeTraceConfig(o.traceConfig!);
     unittest.expect(
       o.uid!,
@@ -3995,12 +4128,12 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
   buildCounterGoogleCloudApigeeV1EnvironmentConfig--;
 }
 
-core.List<core.String> buildUnnamed78() => [
+core.List<core.String> buildUnnamed82() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed78(core.List<core.String> o) {
+void checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4019,7 +4152,7 @@ api.GoogleCloudApigeeV1EnvironmentGroup
   buildCounterGoogleCloudApigeeV1EnvironmentGroup++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroup < 3) {
     o.createdAt = 'foo';
-    o.hostnames = buildUnnamed78();
+    o.hostnames = buildUnnamed82();
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
     o.state = 'foo';
@@ -4036,7 +4169,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroup(
       o.createdAt!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.hostnames!);
+    checkUnnamed82(o.hostnames!);
     unittest.expect(
       o.lastModifiedAt!,
       unittest.equals('foo'),
@@ -4092,12 +4225,23 @@ void checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
   buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment--;
 }
 
-core.List<core.String> buildUnnamed79() => [
+core.List<api.GoogleCloudApigeeV1EndpointChainingRule> buildUnnamed83() => [
+      buildGoogleCloudApigeeV1EndpointChainingRule(),
+      buildGoogleCloudApigeeV1EndpointChainingRule(),
+    ];
+
+void checkUnnamed83(core.List<api.GoogleCloudApigeeV1EndpointChainingRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudApigeeV1EndpointChainingRule(o[0]);
+  checkGoogleCloudApigeeV1EndpointChainingRule(o[1]);
+}
+
+core.List<core.String> buildUnnamed84() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed79(core.List<core.String> o) {
+void checkUnnamed84(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4109,12 +4253,12 @@ void checkUnnamed79(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1RoutingRule> buildUnnamed80() => [
+core.List<api.GoogleCloudApigeeV1RoutingRule> buildUnnamed85() => [
       buildGoogleCloudApigeeV1RoutingRule(),
       buildGoogleCloudApigeeV1RoutingRule(),
     ];
 
-void checkUnnamed80(core.List<api.GoogleCloudApigeeV1RoutingRule> o) {
+void checkUnnamed85(core.List<api.GoogleCloudApigeeV1RoutingRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RoutingRule(o[0]);
   checkGoogleCloudApigeeV1RoutingRule(o[1]);
@@ -4126,10 +4270,12 @@ api.GoogleCloudApigeeV1EnvironmentGroupConfig
   final o = api.GoogleCloudApigeeV1EnvironmentGroupConfig();
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig < 3) {
-    o.hostnames = buildUnnamed79();
+    o.endpointChainingRules = buildUnnamed83();
+    o.hostnames = buildUnnamed84();
+    o.location = 'foo';
     o.name = 'foo';
     o.revisionId = 'foo';
-    o.routingRules = buildUnnamed80();
+    o.routingRules = buildUnnamed85();
     o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig--;
@@ -4140,7 +4286,12 @@ void checkGoogleCloudApigeeV1EnvironmentGroupConfig(
     api.GoogleCloudApigeeV1EnvironmentGroupConfig o) {
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig < 3) {
-    checkUnnamed79(o.hostnames!);
+    checkUnnamed83(o.endpointChainingRules!);
+    checkUnnamed84(o.hostnames!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4149,7 +4300,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroupConfig(
       o.revisionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed80(o.routingRules!);
+    checkUnnamed85(o.routingRules!);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -4429,12 +4580,12 @@ void checkGoogleCloudApigeeV1GenerateUploadUrlResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>
-    buildUnnamed81() => [
+    buildUnnamed86() => [
           buildGoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo(),
           buildGoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo(),
         ];
 
-void checkUnnamed81(
+void checkUnnamed86(
     core.List<api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo(o[0]);
@@ -4447,7 +4598,7 @@ api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse
   final o = api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse();
   buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse++;
   if (buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse < 3) {
-    o.urls = buildUnnamed81();
+    o.urls = buildUnnamed86();
   }
   buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse--;
   return o;
@@ -4457,7 +4608,7 @@ void checkGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse(
     api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse o) {
   buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse++;
   if (buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse < 3) {
-    checkUnnamed81(o.urls!);
+    checkUnnamed86(o.urls!);
   }
   buildCounterGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse--;
 }
@@ -4516,12 +4667,12 @@ void checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(
   buildCounterGoogleCloudApigeeV1GetSyncAuthorizationRequest--;
 }
 
-core.List<core.String> buildUnnamed82() => [
+core.List<core.String> buildUnnamed87() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed82(core.List<core.String> o) {
+void checkUnnamed87(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4540,7 +4691,7 @@ api.GoogleCloudApigeeV1GraphQLOperation
   buildCounterGoogleCloudApigeeV1GraphQLOperation++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperation < 3) {
     o.operation = 'foo';
-    o.operationTypes = buildUnnamed82();
+    o.operationTypes = buildUnnamed87();
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperation--;
   return o;
@@ -4554,28 +4705,28 @@ void checkGoogleCloudApigeeV1GraphQLOperation(
       o.operation!,
       unittest.equals('foo'),
     );
-    checkUnnamed82(o.operationTypes!);
+    checkUnnamed87(o.operationTypes!);
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperation--;
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed83() => [
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed88() => [
       buildGoogleCloudApigeeV1Attribute(),
       buildGoogleCloudApigeeV1Attribute(),
     ];
 
-void checkUnnamed83(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+void checkUnnamed88(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Attribute(o[0]);
   checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1GraphQLOperation> buildUnnamed84() => [
+core.List<api.GoogleCloudApigeeV1GraphQLOperation> buildUnnamed89() => [
       buildGoogleCloudApigeeV1GraphQLOperation(),
       buildGoogleCloudApigeeV1GraphQLOperation(),
     ];
 
-void checkUnnamed84(core.List<api.GoogleCloudApigeeV1GraphQLOperation> o) {
+void checkUnnamed89(core.List<api.GoogleCloudApigeeV1GraphQLOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1GraphQLOperation(o[0]);
   checkGoogleCloudApigeeV1GraphQLOperation(o[1]);
@@ -4588,8 +4739,8 @@ api.GoogleCloudApigeeV1GraphQLOperationConfig
   buildCounterGoogleCloudApigeeV1GraphQLOperationConfig++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperationConfig < 3) {
     o.apiSource = 'foo';
-    o.attributes = buildUnnamed83();
-    o.operations = buildUnnamed84();
+    o.attributes = buildUnnamed88();
+    o.operations = buildUnnamed89();
     o.quota = buildGoogleCloudApigeeV1Quota();
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperationConfig--;
@@ -4604,19 +4755,19 @@ void checkGoogleCloudApigeeV1GraphQLOperationConfig(
       o.apiSource!,
       unittest.equals('foo'),
     );
-    checkUnnamed83(o.attributes!);
-    checkUnnamed84(o.operations!);
+    checkUnnamed88(o.attributes!);
+    checkUnnamed89(o.operations!);
     checkGoogleCloudApigeeV1Quota(o.quota!);
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperationConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> buildUnnamed85() => [
+core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> buildUnnamed90() => [
       buildGoogleCloudApigeeV1GraphQLOperationConfig(),
       buildGoogleCloudApigeeV1GraphQLOperationConfig(),
     ];
 
-void checkUnnamed85(
+void checkUnnamed90(
     core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1GraphQLOperationConfig(o[0]);
@@ -4630,7 +4781,7 @@ api.GoogleCloudApigeeV1GraphQLOperationGroup
   buildCounterGoogleCloudApigeeV1GraphQLOperationGroup++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperationGroup < 3) {
     o.operationConfigType = 'foo';
-    o.operationConfigs = buildUnnamed85();
+    o.operationConfigs = buildUnnamed90();
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperationGroup--;
   return o;
@@ -4644,17 +4795,17 @@ void checkGoogleCloudApigeeV1GraphQLOperationGroup(
       o.operationConfigType!,
       unittest.equals('foo'),
     );
-    checkUnnamed85(o.operationConfigs!);
+    checkUnnamed90(o.operationConfigs!);
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperationGroup--;
 }
 
-core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> buildUnnamed86() => [
+core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> buildUnnamed91() => [
       buildGoogleCloudApigeeV1EnvironmentGroupConfig(),
       buildGoogleCloudApigeeV1EnvironmentGroupConfig(),
     ];
 
-void checkUnnamed86(
+void checkUnnamed91(
     core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1EnvironmentGroupConfig(o[0]);
@@ -4666,7 +4817,7 @@ api.GoogleCloudApigeeV1IngressConfig buildGoogleCloudApigeeV1IngressConfig() {
   final o = api.GoogleCloudApigeeV1IngressConfig();
   buildCounterGoogleCloudApigeeV1IngressConfig++;
   if (buildCounterGoogleCloudApigeeV1IngressConfig < 3) {
-    o.environmentGroups = buildUnnamed86();
+    o.environmentGroups = buildUnnamed91();
     o.name = 'foo';
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
@@ -4680,7 +4831,7 @@ void checkGoogleCloudApigeeV1IngressConfig(
     api.GoogleCloudApigeeV1IngressConfig o) {
   buildCounterGoogleCloudApigeeV1IngressConfig++;
   if (buildCounterGoogleCloudApigeeV1IngressConfig < 3) {
-    checkUnnamed86(o.environmentGroups!);
+    checkUnnamed91(o.environmentGroups!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4701,12 +4852,12 @@ void checkGoogleCloudApigeeV1IngressConfig(
   buildCounterGoogleCloudApigeeV1IngressConfig--;
 }
 
-core.List<core.String> buildUnnamed87() => [
+core.List<core.String> buildUnnamed92() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed87(core.List<core.String> o) {
+void checkUnnamed92(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4723,7 +4874,7 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
   final o = api.GoogleCloudApigeeV1Instance();
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
-    o.consumerAcceptList = buildUnnamed87();
+    o.consumerAcceptList = buildUnnamed92();
     o.createdAt = 'foo';
     o.description = 'foo';
     o.diskEncryptionKeyName = 'foo';
@@ -4746,7 +4897,7 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
 void checkGoogleCloudApigeeV1Instance(api.GoogleCloudApigeeV1Instance o) {
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
-    checkUnnamed87(o.consumerAcceptList!);
+    checkUnnamed92(o.consumerAcceptList!);
     unittest.expect(
       o.createdAt!,
       unittest.equals('foo'),
@@ -4842,12 +4993,12 @@ void checkGoogleCloudApigeeV1InstanceAttachment(
 }
 
 core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
-    buildUnnamed88() => [
+    buildUnnamed93() => [
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(),
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(),
         ];
 
-void checkUnnamed88(
+void checkUnnamed93(
     core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4856,12 +5007,12 @@ void checkUnnamed88(
 }
 
 core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
-    buildUnnamed89() => [
+    buildUnnamed94() => [
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(),
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(),
         ];
 
-void checkUnnamed89(
+void checkUnnamed94(
     core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(o[0]);
@@ -4874,8 +5025,8 @@ api.GoogleCloudApigeeV1InstanceDeploymentStatus
   final o = api.GoogleCloudApigeeV1InstanceDeploymentStatus();
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus < 3) {
-    o.deployedRevisions = buildUnnamed88();
-    o.deployedRoutes = buildUnnamed89();
+    o.deployedRevisions = buildUnnamed93();
+    o.deployedRoutes = buildUnnamed94();
     o.instance = 'foo';
   }
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus--;
@@ -4886,8 +5037,8 @@ void checkGoogleCloudApigeeV1InstanceDeploymentStatus(
     api.GoogleCloudApigeeV1InstanceDeploymentStatus o) {
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus < 3) {
-    checkUnnamed88(o.deployedRevisions!);
-    checkUnnamed89(o.deployedRoutes!);
+    checkUnnamed93(o.deployedRevisions!);
+    checkUnnamed94(o.deployedRoutes!);
     unittest.expect(
       o.instance!,
       unittest.equals('foo'),
@@ -5072,12 +5223,12 @@ void checkGoogleCloudApigeeV1KeyValueMap(api.GoogleCloudApigeeV1KeyValueMap o) {
   buildCounterGoogleCloudApigeeV1KeyValueMap--;
 }
 
-core.List<core.String> buildUnnamed90() => [
+core.List<core.String> buildUnnamed95() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed90(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5094,7 +5245,7 @@ api.GoogleCloudApigeeV1Keystore buildGoogleCloudApigeeV1Keystore() {
   final o = api.GoogleCloudApigeeV1Keystore();
   buildCounterGoogleCloudApigeeV1Keystore++;
   if (buildCounterGoogleCloudApigeeV1Keystore < 3) {
-    o.aliases = buildUnnamed90();
+    o.aliases = buildUnnamed95();
     o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Keystore--;
@@ -5104,7 +5255,7 @@ api.GoogleCloudApigeeV1Keystore buildGoogleCloudApigeeV1Keystore() {
 void checkGoogleCloudApigeeV1Keystore(api.GoogleCloudApigeeV1Keystore o) {
   buildCounterGoogleCloudApigeeV1Keystore++;
   if (buildCounterGoogleCloudApigeeV1Keystore < 3) {
-    checkUnnamed90(o.aliases!);
+    checkUnnamed95(o.aliases!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -5113,12 +5264,12 @@ void checkGoogleCloudApigeeV1Keystore(api.GoogleCloudApigeeV1Keystore o) {
   buildCounterGoogleCloudApigeeV1Keystore--;
 }
 
-core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> buildUnnamed91() => [
+core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> buildUnnamed96() => [
       buildGoogleCloudApigeeV1AliasRevisionConfig(),
       buildGoogleCloudApigeeV1AliasRevisionConfig(),
     ];
 
-void checkUnnamed91(core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> o) {
+void checkUnnamed96(core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1AliasRevisionConfig(o[0]);
   checkGoogleCloudApigeeV1AliasRevisionConfig(o[1]);
@@ -5129,7 +5280,7 @@ api.GoogleCloudApigeeV1KeystoreConfig buildGoogleCloudApigeeV1KeystoreConfig() {
   final o = api.GoogleCloudApigeeV1KeystoreConfig();
   buildCounterGoogleCloudApigeeV1KeystoreConfig++;
   if (buildCounterGoogleCloudApigeeV1KeystoreConfig < 3) {
-    o.aliases = buildUnnamed91();
+    o.aliases = buildUnnamed96();
     o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1KeystoreConfig--;
@@ -5140,7 +5291,7 @@ void checkGoogleCloudApigeeV1KeystoreConfig(
     api.GoogleCloudApigeeV1KeystoreConfig o) {
   buildCounterGoogleCloudApigeeV1KeystoreConfig++;
   if (buildCounterGoogleCloudApigeeV1KeystoreConfig < 3) {
-    checkUnnamed91(o.aliases!);
+    checkUnnamed96(o.aliases!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -5149,12 +5300,12 @@ void checkGoogleCloudApigeeV1KeystoreConfig(
   buildCounterGoogleCloudApigeeV1KeystoreConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1ApiCategoryData> buildUnnamed92() => [
+core.List<api.GoogleCloudApigeeV1ApiCategoryData> buildUnnamed97() => [
       buildGoogleCloudApigeeV1ApiCategoryData(),
       buildGoogleCloudApigeeV1ApiCategoryData(),
     ];
 
-void checkUnnamed92(core.List<api.GoogleCloudApigeeV1ApiCategoryData> o) {
+void checkUnnamed97(core.List<api.GoogleCloudApigeeV1ApiCategoryData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ApiCategoryData(o[0]);
   checkGoogleCloudApigeeV1ApiCategoryData(o[1]);
@@ -5166,7 +5317,7 @@ api.GoogleCloudApigeeV1ListApiCategoriesResponse
   final o = api.GoogleCloudApigeeV1ListApiCategoriesResponse();
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse < 3) {
-    o.data = buildUnnamed92();
+    o.data = buildUnnamed97();
     o.errorCode = 'foo';
     o.message = 'foo';
     o.requestId = 'foo';
@@ -5180,7 +5331,7 @@ void checkGoogleCloudApigeeV1ListApiCategoriesResponse(
     api.GoogleCloudApigeeV1ListApiCategoriesResponse o) {
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse < 3) {
-    checkUnnamed92(o.data!);
+    checkUnnamed97(o.data!);
     unittest.expect(
       o.errorCode!,
       unittest.equals('foo'),
@@ -5201,12 +5352,12 @@ void checkGoogleCloudApigeeV1ListApiCategoriesResponse(
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1ApiProduct> buildUnnamed93() => [
+core.List<api.GoogleCloudApigeeV1ApiProduct> buildUnnamed98() => [
       buildGoogleCloudApigeeV1ApiProduct(),
       buildGoogleCloudApigeeV1ApiProduct(),
     ];
 
-void checkUnnamed93(core.List<api.GoogleCloudApigeeV1ApiProduct> o) {
+void checkUnnamed98(core.List<api.GoogleCloudApigeeV1ApiProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ApiProduct(o[0]);
   checkGoogleCloudApigeeV1ApiProduct(o[1]);
@@ -5218,7 +5369,7 @@ api.GoogleCloudApigeeV1ListApiProductsResponse
   final o = api.GoogleCloudApigeeV1ListApiProductsResponse();
   buildCounterGoogleCloudApigeeV1ListApiProductsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProductsResponse < 3) {
-    o.apiProduct = buildUnnamed93();
+    o.apiProduct = buildUnnamed98();
   }
   buildCounterGoogleCloudApigeeV1ListApiProductsResponse--;
   return o;
@@ -5228,17 +5379,17 @@ void checkGoogleCloudApigeeV1ListApiProductsResponse(
     api.GoogleCloudApigeeV1ListApiProductsResponse o) {
   buildCounterGoogleCloudApigeeV1ListApiProductsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProductsResponse < 3) {
-    checkUnnamed93(o.apiProduct!);
+    checkUnnamed98(o.apiProduct!);
   }
   buildCounterGoogleCloudApigeeV1ListApiProductsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1ApiProxy> buildUnnamed94() => [
+core.List<api.GoogleCloudApigeeV1ApiProxy> buildUnnamed99() => [
       buildGoogleCloudApigeeV1ApiProxy(),
       buildGoogleCloudApigeeV1ApiProxy(),
     ];
 
-void checkUnnamed94(core.List<api.GoogleCloudApigeeV1ApiProxy> o) {
+void checkUnnamed99(core.List<api.GoogleCloudApigeeV1ApiProxy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ApiProxy(o[0]);
   checkGoogleCloudApigeeV1ApiProxy(o[1]);
@@ -5250,7 +5401,7 @@ api.GoogleCloudApigeeV1ListApiProxiesResponse
   final o = api.GoogleCloudApigeeV1ListApiProxiesResponse();
   buildCounterGoogleCloudApigeeV1ListApiProxiesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProxiesResponse < 3) {
-    o.proxies = buildUnnamed94();
+    o.proxies = buildUnnamed99();
   }
   buildCounterGoogleCloudApigeeV1ListApiProxiesResponse--;
   return o;
@@ -5260,17 +5411,17 @@ void checkGoogleCloudApigeeV1ListApiProxiesResponse(
     api.GoogleCloudApigeeV1ListApiProxiesResponse o) {
   buildCounterGoogleCloudApigeeV1ListApiProxiesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProxiesResponse < 3) {
-    checkUnnamed94(o.proxies!);
+    checkUnnamed99(o.proxies!);
   }
   buildCounterGoogleCloudApigeeV1ListApiProxiesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1App> buildUnnamed95() => [
+core.List<api.GoogleCloudApigeeV1App> buildUnnamed100() => [
       buildGoogleCloudApigeeV1App(),
       buildGoogleCloudApigeeV1App(),
     ];
 
-void checkUnnamed95(core.List<api.GoogleCloudApigeeV1App> o) {
+void checkUnnamed100(core.List<api.GoogleCloudApigeeV1App> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1App(o[0]);
   checkGoogleCloudApigeeV1App(o[1]);
@@ -5282,7 +5433,7 @@ api.GoogleCloudApigeeV1ListAppsResponse
   final o = api.GoogleCloudApigeeV1ListAppsResponse();
   buildCounterGoogleCloudApigeeV1ListAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAppsResponse < 3) {
-    o.app = buildUnnamed95();
+    o.app = buildUnnamed100();
   }
   buildCounterGoogleCloudApigeeV1ListAppsResponse--;
   return o;
@@ -5292,17 +5443,17 @@ void checkGoogleCloudApigeeV1ListAppsResponse(
     api.GoogleCloudApigeeV1ListAppsResponse o) {
   buildCounterGoogleCloudApigeeV1ListAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAppsResponse < 3) {
-    checkUnnamed95(o.app!);
+    checkUnnamed100(o.app!);
   }
   buildCounterGoogleCloudApigeeV1ListAppsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1ArchiveDeployment> buildUnnamed96() => [
+core.List<api.GoogleCloudApigeeV1ArchiveDeployment> buildUnnamed101() => [
       buildGoogleCloudApigeeV1ArchiveDeployment(),
       buildGoogleCloudApigeeV1ArchiveDeployment(),
     ];
 
-void checkUnnamed96(core.List<api.GoogleCloudApigeeV1ArchiveDeployment> o) {
+void checkUnnamed101(core.List<api.GoogleCloudApigeeV1ArchiveDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ArchiveDeployment(o[0]);
   checkGoogleCloudApigeeV1ArchiveDeployment(o[1]);
@@ -5314,7 +5465,7 @@ api.GoogleCloudApigeeV1ListArchiveDeploymentsResponse
   final o = api.GoogleCloudApigeeV1ListArchiveDeploymentsResponse();
   buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse < 3) {
-    o.archiveDeployments = buildUnnamed96();
+    o.archiveDeployments = buildUnnamed101();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse--;
@@ -5325,7 +5476,7 @@ void checkGoogleCloudApigeeV1ListArchiveDeploymentsResponse(
     api.GoogleCloudApigeeV1ListArchiveDeploymentsResponse o) {
   buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse < 3) {
-    checkUnnamed96(o.archiveDeployments!);
+    checkUnnamed101(o.archiveDeployments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5334,12 +5485,12 @@ void checkGoogleCloudApigeeV1ListArchiveDeploymentsResponse(
   buildCounterGoogleCloudApigeeV1ListArchiveDeploymentsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1AsyncQuery> buildUnnamed97() => [
+core.List<api.GoogleCloudApigeeV1AsyncQuery> buildUnnamed102() => [
       buildGoogleCloudApigeeV1AsyncQuery(),
       buildGoogleCloudApigeeV1AsyncQuery(),
     ];
 
-void checkUnnamed97(core.List<api.GoogleCloudApigeeV1AsyncQuery> o) {
+void checkUnnamed102(core.List<api.GoogleCloudApigeeV1AsyncQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1AsyncQuery(o[0]);
   checkGoogleCloudApigeeV1AsyncQuery(o[1]);
@@ -5351,7 +5502,7 @@ api.GoogleCloudApigeeV1ListAsyncQueriesResponse
   final o = api.GoogleCloudApigeeV1ListAsyncQueriesResponse();
   buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse < 3) {
-    o.queries = buildUnnamed97();
+    o.queries = buildUnnamed102();
   }
   buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse--;
   return o;
@@ -5361,17 +5512,17 @@ void checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
     api.GoogleCloudApigeeV1ListAsyncQueriesResponse o) {
   buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse < 3) {
-    checkUnnamed97(o.queries!);
+    checkUnnamed102(o.queries!);
   }
   buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1CustomReport> buildUnnamed98() => [
+core.List<api.GoogleCloudApigeeV1CustomReport> buildUnnamed103() => [
       buildGoogleCloudApigeeV1CustomReport(),
       buildGoogleCloudApigeeV1CustomReport(),
     ];
 
-void checkUnnamed98(core.List<api.GoogleCloudApigeeV1CustomReport> o) {
+void checkUnnamed103(core.List<api.GoogleCloudApigeeV1CustomReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1CustomReport(o[0]);
   checkGoogleCloudApigeeV1CustomReport(o[1]);
@@ -5383,7 +5534,7 @@ api.GoogleCloudApigeeV1ListCustomReportsResponse
   final o = api.GoogleCloudApigeeV1ListCustomReportsResponse();
   buildCounterGoogleCloudApigeeV1ListCustomReportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListCustomReportsResponse < 3) {
-    o.qualifier = buildUnnamed98();
+    o.qualifier = buildUnnamed103();
   }
   buildCounterGoogleCloudApigeeV1ListCustomReportsResponse--;
   return o;
@@ -5393,17 +5544,17 @@ void checkGoogleCloudApigeeV1ListCustomReportsResponse(
     api.GoogleCloudApigeeV1ListCustomReportsResponse o) {
   buildCounterGoogleCloudApigeeV1ListCustomReportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListCustomReportsResponse < 3) {
-    checkUnnamed98(o.qualifier!);
+    checkUnnamed103(o.qualifier!);
   }
   buildCounterGoogleCloudApigeeV1ListCustomReportsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1DataCollector> buildUnnamed99() => [
+core.List<api.GoogleCloudApigeeV1DataCollector> buildUnnamed104() => [
       buildGoogleCloudApigeeV1DataCollector(),
       buildGoogleCloudApigeeV1DataCollector(),
     ];
 
-void checkUnnamed99(core.List<api.GoogleCloudApigeeV1DataCollector> o) {
+void checkUnnamed104(core.List<api.GoogleCloudApigeeV1DataCollector> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DataCollector(o[0]);
   checkGoogleCloudApigeeV1DataCollector(o[1]);
@@ -5415,7 +5566,7 @@ api.GoogleCloudApigeeV1ListDataCollectorsResponse
   final o = api.GoogleCloudApigeeV1ListDataCollectorsResponse();
   buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse < 3) {
-    o.dataCollectors = buildUnnamed99();
+    o.dataCollectors = buildUnnamed104();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse--;
@@ -5426,7 +5577,7 @@ void checkGoogleCloudApigeeV1ListDataCollectorsResponse(
     api.GoogleCloudApigeeV1ListDataCollectorsResponse o) {
   buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse < 3) {
-    checkUnnamed99(o.dataCollectors!);
+    checkUnnamed104(o.dataCollectors!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5435,12 +5586,12 @@ void checkGoogleCloudApigeeV1ListDataCollectorsResponse(
   buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Datastore> buildUnnamed100() => [
+core.List<api.GoogleCloudApigeeV1Datastore> buildUnnamed105() => [
       buildGoogleCloudApigeeV1Datastore(),
       buildGoogleCloudApigeeV1Datastore(),
     ];
 
-void checkUnnamed100(core.List<api.GoogleCloudApigeeV1Datastore> o) {
+void checkUnnamed105(core.List<api.GoogleCloudApigeeV1Datastore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Datastore(o[0]);
   checkGoogleCloudApigeeV1Datastore(o[1]);
@@ -5452,7 +5603,7 @@ api.GoogleCloudApigeeV1ListDatastoresResponse
   final o = api.GoogleCloudApigeeV1ListDatastoresResponse();
   buildCounterGoogleCloudApigeeV1ListDatastoresResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDatastoresResponse < 3) {
-    o.datastores = buildUnnamed100();
+    o.datastores = buildUnnamed105();
   }
   buildCounterGoogleCloudApigeeV1ListDatastoresResponse--;
   return o;
@@ -5462,17 +5613,17 @@ void checkGoogleCloudApigeeV1ListDatastoresResponse(
     api.GoogleCloudApigeeV1ListDatastoresResponse o) {
   buildCounterGoogleCloudApigeeV1ListDatastoresResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDatastoresResponse < 3) {
-    checkUnnamed100(o.datastores!);
+    checkUnnamed105(o.datastores!);
   }
   buildCounterGoogleCloudApigeeV1ListDatastoresResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Session> buildUnnamed101() => [
+core.List<api.GoogleCloudApigeeV1Session> buildUnnamed106() => [
       buildGoogleCloudApigeeV1Session(),
       buildGoogleCloudApigeeV1Session(),
     ];
 
-void checkUnnamed101(core.List<api.GoogleCloudApigeeV1Session> o) {
+void checkUnnamed106(core.List<api.GoogleCloudApigeeV1Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Session(o[0]);
   checkGoogleCloudApigeeV1Session(o[1]);
@@ -5485,7 +5636,7 @@ api.GoogleCloudApigeeV1ListDebugSessionsResponse
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sessions = buildUnnamed101();
+    o.sessions = buildUnnamed106();
   }
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse--;
   return o;
@@ -5499,17 +5650,17 @@ void checkGoogleCloudApigeeV1ListDebugSessionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.sessions!);
+    checkUnnamed106(o.sessions!);
   }
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Deployment> buildUnnamed102() => [
+core.List<api.GoogleCloudApigeeV1Deployment> buildUnnamed107() => [
       buildGoogleCloudApigeeV1Deployment(),
       buildGoogleCloudApigeeV1Deployment(),
     ];
 
-void checkUnnamed102(core.List<api.GoogleCloudApigeeV1Deployment> o) {
+void checkUnnamed107(core.List<api.GoogleCloudApigeeV1Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Deployment(o[0]);
   checkGoogleCloudApigeeV1Deployment(o[1]);
@@ -5521,7 +5672,7 @@ api.GoogleCloudApigeeV1ListDeploymentsResponse
   final o = api.GoogleCloudApigeeV1ListDeploymentsResponse();
   buildCounterGoogleCloudApigeeV1ListDeploymentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeploymentsResponse < 3) {
-    o.deployments = buildUnnamed102();
+    o.deployments = buildUnnamed107();
   }
   buildCounterGoogleCloudApigeeV1ListDeploymentsResponse--;
   return o;
@@ -5531,17 +5682,17 @@ void checkGoogleCloudApigeeV1ListDeploymentsResponse(
     api.GoogleCloudApigeeV1ListDeploymentsResponse o) {
   buildCounterGoogleCloudApigeeV1ListDeploymentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeploymentsResponse < 3) {
-    checkUnnamed102(o.deployments!);
+    checkUnnamed107(o.deployments!);
   }
   buildCounterGoogleCloudApigeeV1ListDeploymentsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1DeveloperApp> buildUnnamed103() => [
+core.List<api.GoogleCloudApigeeV1DeveloperApp> buildUnnamed108() => [
       buildGoogleCloudApigeeV1DeveloperApp(),
       buildGoogleCloudApigeeV1DeveloperApp(),
     ];
 
-void checkUnnamed103(core.List<api.GoogleCloudApigeeV1DeveloperApp> o) {
+void checkUnnamed108(core.List<api.GoogleCloudApigeeV1DeveloperApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DeveloperApp(o[0]);
   checkGoogleCloudApigeeV1DeveloperApp(o[1]);
@@ -5553,7 +5704,7 @@ api.GoogleCloudApigeeV1ListDeveloperAppsResponse
   final o = api.GoogleCloudApigeeV1ListDeveloperAppsResponse();
   buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse < 3) {
-    o.app = buildUnnamed103();
+    o.app = buildUnnamed108();
   }
   buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse--;
   return o;
@@ -5563,17 +5714,17 @@ void checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
     api.GoogleCloudApigeeV1ListDeveloperAppsResponse o) {
   buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse < 3) {
-    checkUnnamed103(o.app!);
+    checkUnnamed108(o.app!);
   }
   buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1DeveloperSubscription> buildUnnamed104() => [
+core.List<api.GoogleCloudApigeeV1DeveloperSubscription> buildUnnamed109() => [
       buildGoogleCloudApigeeV1DeveloperSubscription(),
       buildGoogleCloudApigeeV1DeveloperSubscription(),
     ];
 
-void checkUnnamed104(
+void checkUnnamed109(
     core.List<api.GoogleCloudApigeeV1DeveloperSubscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DeveloperSubscription(o[0]);
@@ -5586,7 +5737,7 @@ api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
   final o = api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
   buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse < 3) {
-    o.developerSubscriptions = buildUnnamed104();
+    o.developerSubscriptions = buildUnnamed109();
     o.nextStartKey = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse--;
@@ -5597,7 +5748,7 @@ void checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(
     api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse o) {
   buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse < 3) {
-    checkUnnamed104(o.developerSubscriptions!);
+    checkUnnamed109(o.developerSubscriptions!);
     unittest.expect(
       o.nextStartKey!,
       unittest.equals('foo'),
@@ -5606,12 +5757,12 @@ void checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(
   buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1EndpointAttachment> buildUnnamed105() => [
+core.List<api.GoogleCloudApigeeV1EndpointAttachment> buildUnnamed110() => [
       buildGoogleCloudApigeeV1EndpointAttachment(),
       buildGoogleCloudApigeeV1EndpointAttachment(),
     ];
 
-void checkUnnamed105(core.List<api.GoogleCloudApigeeV1EndpointAttachment> o) {
+void checkUnnamed110(core.List<api.GoogleCloudApigeeV1EndpointAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1EndpointAttachment(o[0]);
   checkGoogleCloudApigeeV1EndpointAttachment(o[1]);
@@ -5623,7 +5774,7 @@ api.GoogleCloudApigeeV1ListEndpointAttachmentsResponse
   final o = api.GoogleCloudApigeeV1ListEndpointAttachmentsResponse();
   buildCounterGoogleCloudApigeeV1ListEndpointAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEndpointAttachmentsResponse < 3) {
-    o.endpointAttachments = buildUnnamed105();
+    o.endpointAttachments = buildUnnamed110();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListEndpointAttachmentsResponse--;
@@ -5634,7 +5785,7 @@ void checkGoogleCloudApigeeV1ListEndpointAttachmentsResponse(
     api.GoogleCloudApigeeV1ListEndpointAttachmentsResponse o) {
   buildCounterGoogleCloudApigeeV1ListEndpointAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEndpointAttachmentsResponse < 3) {
-    checkUnnamed105(o.endpointAttachments!);
+    checkUnnamed110(o.endpointAttachments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5644,12 +5795,12 @@ void checkGoogleCloudApigeeV1ListEndpointAttachmentsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1EnvironmentGroupAttachment>
-    buildUnnamed106() => [
+    buildUnnamed111() => [
           buildGoogleCloudApigeeV1EnvironmentGroupAttachment(),
           buildGoogleCloudApigeeV1EnvironmentGroupAttachment(),
         ];
 
-void checkUnnamed106(
+void checkUnnamed111(
     core.List<api.GoogleCloudApigeeV1EnvironmentGroupAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1EnvironmentGroupAttachment(o[0]);
@@ -5664,7 +5815,7 @@ api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse <
       3) {
-    o.environmentGroupAttachments = buildUnnamed106();
+    o.environmentGroupAttachments = buildUnnamed111();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse--;
@@ -5676,7 +5827,7 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse <
       3) {
-    checkUnnamed106(o.environmentGroupAttachments!);
+    checkUnnamed111(o.environmentGroupAttachments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5685,12 +5836,12 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1EnvironmentGroup> buildUnnamed107() => [
+core.List<api.GoogleCloudApigeeV1EnvironmentGroup> buildUnnamed112() => [
       buildGoogleCloudApigeeV1EnvironmentGroup(),
       buildGoogleCloudApigeeV1EnvironmentGroup(),
     ];
 
-void checkUnnamed107(core.List<api.GoogleCloudApigeeV1EnvironmentGroup> o) {
+void checkUnnamed112(core.List<api.GoogleCloudApigeeV1EnvironmentGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1EnvironmentGroup(o[0]);
   checkGoogleCloudApigeeV1EnvironmentGroup(o[1]);
@@ -5702,7 +5853,7 @@ api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse
   final o = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse < 3) {
-    o.environmentGroups = buildUnnamed107();
+    o.environmentGroups = buildUnnamed112();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse--;
@@ -5713,7 +5864,7 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
     api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse o) {
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse < 3) {
-    checkUnnamed107(o.environmentGroups!);
+    checkUnnamed112(o.environmentGroups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5722,12 +5873,12 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed108() => [
+core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed113() => [
       buildGoogleCloudApigeeV1ResourceFile(),
       buildGoogleCloudApigeeV1ResourceFile(),
     ];
 
-void checkUnnamed108(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
+void checkUnnamed113(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ResourceFile(o[0]);
   checkGoogleCloudApigeeV1ResourceFile(o[1]);
@@ -5739,7 +5890,7 @@ api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse
   final o = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse();
   buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse < 3) {
-    o.resourceFile = buildUnnamed108();
+    o.resourceFile = buildUnnamed113();
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse--;
   return o;
@@ -5749,17 +5900,17 @@ void checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
     api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse o) {
   buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse < 3) {
-    checkUnnamed108(o.resourceFile!);
+    checkUnnamed113(o.resourceFile!);
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Export> buildUnnamed109() => [
+core.List<api.GoogleCloudApigeeV1Export> buildUnnamed114() => [
       buildGoogleCloudApigeeV1Export(),
       buildGoogleCloudApigeeV1Export(),
     ];
 
-void checkUnnamed109(core.List<api.GoogleCloudApigeeV1Export> o) {
+void checkUnnamed114(core.List<api.GoogleCloudApigeeV1Export> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Export(o[0]);
   checkGoogleCloudApigeeV1Export(o[1]);
@@ -5771,7 +5922,7 @@ api.GoogleCloudApigeeV1ListExportsResponse
   final o = api.GoogleCloudApigeeV1ListExportsResponse();
   buildCounterGoogleCloudApigeeV1ListExportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListExportsResponse < 3) {
-    o.exports = buildUnnamed109();
+    o.exports = buildUnnamed114();
   }
   buildCounterGoogleCloudApigeeV1ListExportsResponse--;
   return o;
@@ -5781,17 +5932,17 @@ void checkGoogleCloudApigeeV1ListExportsResponse(
     api.GoogleCloudApigeeV1ListExportsResponse o) {
   buildCounterGoogleCloudApigeeV1ListExportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListExportsResponse < 3) {
-    checkUnnamed109(o.exports!);
+    checkUnnamed114(o.exports!);
   }
   buildCounterGoogleCloudApigeeV1ListExportsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> buildUnnamed110() => [
+core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> buildUnnamed115() => [
       buildGoogleCloudApigeeV1ServiceIssuersMapping(),
       buildGoogleCloudApigeeV1ServiceIssuersMapping(),
     ];
 
-void checkUnnamed110(
+void checkUnnamed115(
     core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ServiceIssuersMapping(o[0]);
@@ -5804,7 +5955,7 @@ api.GoogleCloudApigeeV1ListHybridIssuersResponse
   final o = api.GoogleCloudApigeeV1ListHybridIssuersResponse();
   buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse < 3) {
-    o.issuers = buildUnnamed110();
+    o.issuers = buildUnnamed115();
   }
   buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse--;
   return o;
@@ -5814,17 +5965,17 @@ void checkGoogleCloudApigeeV1ListHybridIssuersResponse(
     api.GoogleCloudApigeeV1ListHybridIssuersResponse o) {
   buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse < 3) {
-    checkUnnamed110(o.issuers!);
+    checkUnnamed115(o.issuers!);
   }
   buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1InstanceAttachment> buildUnnamed111() => [
+core.List<api.GoogleCloudApigeeV1InstanceAttachment> buildUnnamed116() => [
       buildGoogleCloudApigeeV1InstanceAttachment(),
       buildGoogleCloudApigeeV1InstanceAttachment(),
     ];
 
-void checkUnnamed111(core.List<api.GoogleCloudApigeeV1InstanceAttachment> o) {
+void checkUnnamed116(core.List<api.GoogleCloudApigeeV1InstanceAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1InstanceAttachment(o[0]);
   checkGoogleCloudApigeeV1InstanceAttachment(o[1]);
@@ -5836,7 +5987,7 @@ api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse
   final o = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse < 3) {
-    o.attachments = buildUnnamed111();
+    o.attachments = buildUnnamed116();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse--;
@@ -5847,7 +5998,7 @@ void checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
     api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse o) {
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse < 3) {
-    checkUnnamed111(o.attachments!);
+    checkUnnamed116(o.attachments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5856,12 +6007,12 @@ void checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Instance> buildUnnamed112() => [
+core.List<api.GoogleCloudApigeeV1Instance> buildUnnamed117() => [
       buildGoogleCloudApigeeV1Instance(),
       buildGoogleCloudApigeeV1Instance(),
     ];
 
-void checkUnnamed112(core.List<api.GoogleCloudApigeeV1Instance> o) {
+void checkUnnamed117(core.List<api.GoogleCloudApigeeV1Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Instance(o[0]);
   checkGoogleCloudApigeeV1Instance(o[1]);
@@ -5873,7 +6024,7 @@ api.GoogleCloudApigeeV1ListInstancesResponse
   final o = api.GoogleCloudApigeeV1ListInstancesResponse();
   buildCounterGoogleCloudApigeeV1ListInstancesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstancesResponse < 3) {
-    o.instances = buildUnnamed112();
+    o.instances = buildUnnamed117();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListInstancesResponse--;
@@ -5884,7 +6035,7 @@ void checkGoogleCloudApigeeV1ListInstancesResponse(
     api.GoogleCloudApigeeV1ListInstancesResponse o) {
   buildCounterGoogleCloudApigeeV1ListInstancesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstancesResponse < 3) {
-    checkUnnamed112(o.instances!);
+    checkUnnamed117(o.instances!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5893,12 +6044,12 @@ void checkGoogleCloudApigeeV1ListInstancesResponse(
   buildCounterGoogleCloudApigeeV1ListInstancesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1KeyValueEntry> buildUnnamed113() => [
+core.List<api.GoogleCloudApigeeV1KeyValueEntry> buildUnnamed118() => [
       buildGoogleCloudApigeeV1KeyValueEntry(),
       buildGoogleCloudApigeeV1KeyValueEntry(),
     ];
 
-void checkUnnamed113(core.List<api.GoogleCloudApigeeV1KeyValueEntry> o) {
+void checkUnnamed118(core.List<api.GoogleCloudApigeeV1KeyValueEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1KeyValueEntry(o[0]);
   checkGoogleCloudApigeeV1KeyValueEntry(o[1]);
@@ -5910,7 +6061,7 @@ api.GoogleCloudApigeeV1ListKeyValueEntriesResponse
   final o = api.GoogleCloudApigeeV1ListKeyValueEntriesResponse();
   buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse < 3) {
-    o.keyValueEntries = buildUnnamed113();
+    o.keyValueEntries = buildUnnamed118();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse--;
@@ -5921,7 +6072,7 @@ void checkGoogleCloudApigeeV1ListKeyValueEntriesResponse(
     api.GoogleCloudApigeeV1ListKeyValueEntriesResponse o) {
   buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse < 3) {
-    checkUnnamed113(o.keyValueEntries!);
+    checkUnnamed118(o.keyValueEntries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5930,12 +6081,12 @@ void checkGoogleCloudApigeeV1ListKeyValueEntriesResponse(
   buildCounterGoogleCloudApigeeV1ListKeyValueEntriesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1NatAddress> buildUnnamed114() => [
+core.List<api.GoogleCloudApigeeV1NatAddress> buildUnnamed119() => [
       buildGoogleCloudApigeeV1NatAddress(),
       buildGoogleCloudApigeeV1NatAddress(),
     ];
 
-void checkUnnamed114(core.List<api.GoogleCloudApigeeV1NatAddress> o) {
+void checkUnnamed119(core.List<api.GoogleCloudApigeeV1NatAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1NatAddress(o[0]);
   checkGoogleCloudApigeeV1NatAddress(o[1]);
@@ -5947,7 +6098,7 @@ api.GoogleCloudApigeeV1ListNatAddressesResponse
   final o = api.GoogleCloudApigeeV1ListNatAddressesResponse();
   buildCounterGoogleCloudApigeeV1ListNatAddressesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListNatAddressesResponse < 3) {
-    o.natAddresses = buildUnnamed114();
+    o.natAddresses = buildUnnamed119();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListNatAddressesResponse--;
@@ -5958,7 +6109,7 @@ void checkGoogleCloudApigeeV1ListNatAddressesResponse(
     api.GoogleCloudApigeeV1ListNatAddressesResponse o) {
   buildCounterGoogleCloudApigeeV1ListNatAddressesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListNatAddressesResponse < 3) {
-    checkUnnamed114(o.natAddresses!);
+    checkUnnamed119(o.natAddresses!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5967,12 +6118,12 @@ void checkGoogleCloudApigeeV1ListNatAddressesResponse(
   buildCounterGoogleCloudApigeeV1ListNatAddressesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Developer> buildUnnamed115() => [
+core.List<api.GoogleCloudApigeeV1Developer> buildUnnamed120() => [
       buildGoogleCloudApigeeV1Developer(),
       buildGoogleCloudApigeeV1Developer(),
     ];
 
-void checkUnnamed115(core.List<api.GoogleCloudApigeeV1Developer> o) {
+void checkUnnamed120(core.List<api.GoogleCloudApigeeV1Developer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Developer(o[0]);
   checkGoogleCloudApigeeV1Developer(o[1]);
@@ -5984,7 +6135,7 @@ api.GoogleCloudApigeeV1ListOfDevelopersResponse
   final o = api.GoogleCloudApigeeV1ListOfDevelopersResponse();
   buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse < 3) {
-    o.developer = buildUnnamed115();
+    o.developer = buildUnnamed120();
   }
   buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse--;
   return o;
@@ -5994,18 +6145,18 @@ void checkGoogleCloudApigeeV1ListOfDevelopersResponse(
     api.GoogleCloudApigeeV1ListOfDevelopersResponse o) {
   buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse < 3) {
-    checkUnnamed115(o.developer!);
+    checkUnnamed120(o.developer!);
   }
   buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse--;
 }
 
 core.List<api.GoogleCloudApigeeV1OrganizationProjectMapping>
-    buildUnnamed116() => [
+    buildUnnamed121() => [
           buildGoogleCloudApigeeV1OrganizationProjectMapping(),
           buildGoogleCloudApigeeV1OrganizationProjectMapping(),
         ];
 
-void checkUnnamed116(
+void checkUnnamed121(
     core.List<api.GoogleCloudApigeeV1OrganizationProjectMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1OrganizationProjectMapping(o[0]);
@@ -6018,7 +6169,7 @@ api.GoogleCloudApigeeV1ListOrganizationsResponse
   final o = api.GoogleCloudApigeeV1ListOrganizationsResponse();
   buildCounterGoogleCloudApigeeV1ListOrganizationsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOrganizationsResponse < 3) {
-    o.organizations = buildUnnamed116();
+    o.organizations = buildUnnamed121();
   }
   buildCounterGoogleCloudApigeeV1ListOrganizationsResponse--;
   return o;
@@ -6028,17 +6179,17 @@ void checkGoogleCloudApigeeV1ListOrganizationsResponse(
     api.GoogleCloudApigeeV1ListOrganizationsResponse o) {
   buildCounterGoogleCloudApigeeV1ListOrganizationsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOrganizationsResponse < 3) {
-    checkUnnamed116(o.organizations!);
+    checkUnnamed121(o.organizations!);
   }
   buildCounterGoogleCloudApigeeV1ListOrganizationsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1RatePlan> buildUnnamed117() => [
+core.List<api.GoogleCloudApigeeV1RatePlan> buildUnnamed122() => [
       buildGoogleCloudApigeeV1RatePlan(),
       buildGoogleCloudApigeeV1RatePlan(),
     ];
 
-void checkUnnamed117(core.List<api.GoogleCloudApigeeV1RatePlan> o) {
+void checkUnnamed122(core.List<api.GoogleCloudApigeeV1RatePlan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RatePlan(o[0]);
   checkGoogleCloudApigeeV1RatePlan(o[1]);
@@ -6051,7 +6202,7 @@ api.GoogleCloudApigeeV1ListRatePlansResponse
   buildCounterGoogleCloudApigeeV1ListRatePlansResponse++;
   if (buildCounterGoogleCloudApigeeV1ListRatePlansResponse < 3) {
     o.nextStartKey = 'foo';
-    o.ratePlans = buildUnnamed117();
+    o.ratePlans = buildUnnamed122();
   }
   buildCounterGoogleCloudApigeeV1ListRatePlansResponse--;
   return o;
@@ -6065,17 +6216,17 @@ void checkGoogleCloudApigeeV1ListRatePlansResponse(
       o.nextStartKey!,
       unittest.equals('foo'),
     );
-    checkUnnamed117(o.ratePlans!);
+    checkUnnamed122(o.ratePlans!);
   }
   buildCounterGoogleCloudApigeeV1ListRatePlansResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1SecurityProfile> buildUnnamed118() => [
+core.List<api.GoogleCloudApigeeV1SecurityProfile> buildUnnamed123() => [
       buildGoogleCloudApigeeV1SecurityProfile(),
       buildGoogleCloudApigeeV1SecurityProfile(),
     ];
 
-void checkUnnamed118(core.List<api.GoogleCloudApigeeV1SecurityProfile> o) {
+void checkUnnamed123(core.List<api.GoogleCloudApigeeV1SecurityProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityProfile(o[0]);
   checkGoogleCloudApigeeV1SecurityProfile(o[1]);
@@ -6089,7 +6240,7 @@ api.GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
   buildCounterGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securityProfiles = buildUnnamed118();
+    o.securityProfiles = buildUnnamed123();
   }
   buildCounterGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse--;
   return o;
@@ -6103,17 +6254,17 @@ void checkGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed118(o.securityProfiles!);
+    checkUnnamed123(o.securityProfiles!);
   }
   buildCounterGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1SecurityProfile> buildUnnamed119() => [
+core.List<api.GoogleCloudApigeeV1SecurityProfile> buildUnnamed124() => [
       buildGoogleCloudApigeeV1SecurityProfile(),
       buildGoogleCloudApigeeV1SecurityProfile(),
     ];
 
-void checkUnnamed119(core.List<api.GoogleCloudApigeeV1SecurityProfile> o) {
+void checkUnnamed124(core.List<api.GoogleCloudApigeeV1SecurityProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityProfile(o[0]);
   checkGoogleCloudApigeeV1SecurityProfile(o[1]);
@@ -6126,7 +6277,7 @@ api.GoogleCloudApigeeV1ListSecurityProfilesResponse
   buildCounterGoogleCloudApigeeV1ListSecurityProfilesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSecurityProfilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securityProfiles = buildUnnamed119();
+    o.securityProfiles = buildUnnamed124();
   }
   buildCounterGoogleCloudApigeeV1ListSecurityProfilesResponse--;
   return o;
@@ -6140,17 +6291,17 @@ void checkGoogleCloudApigeeV1ListSecurityProfilesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed119(o.securityProfiles!);
+    checkUnnamed124(o.securityProfiles!);
   }
   buildCounterGoogleCloudApigeeV1ListSecurityProfilesResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1SecurityReport> buildUnnamed120() => [
+core.List<api.GoogleCloudApigeeV1SecurityReport> buildUnnamed125() => [
       buildGoogleCloudApigeeV1SecurityReport(),
       buildGoogleCloudApigeeV1SecurityReport(),
     ];
 
-void checkUnnamed120(core.List<api.GoogleCloudApigeeV1SecurityReport> o) {
+void checkUnnamed125(core.List<api.GoogleCloudApigeeV1SecurityReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityReport(o[0]);
   checkGoogleCloudApigeeV1SecurityReport(o[1]);
@@ -6163,7 +6314,7 @@ api.GoogleCloudApigeeV1ListSecurityReportsResponse
   buildCounterGoogleCloudApigeeV1ListSecurityReportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSecurityReportsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securityReports = buildUnnamed120();
+    o.securityReports = buildUnnamed125();
   }
   buildCounterGoogleCloudApigeeV1ListSecurityReportsResponse--;
   return o;
@@ -6177,17 +6328,17 @@ void checkGoogleCloudApigeeV1ListSecurityReportsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed120(o.securityReports!);
+    checkUnnamed125(o.securityReports!);
   }
   buildCounterGoogleCloudApigeeV1ListSecurityReportsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1SharedFlow> buildUnnamed121() => [
+core.List<api.GoogleCloudApigeeV1SharedFlow> buildUnnamed126() => [
       buildGoogleCloudApigeeV1SharedFlow(),
       buildGoogleCloudApigeeV1SharedFlow(),
     ];
 
-void checkUnnamed121(core.List<api.GoogleCloudApigeeV1SharedFlow> o) {
+void checkUnnamed126(core.List<api.GoogleCloudApigeeV1SharedFlow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SharedFlow(o[0]);
   checkGoogleCloudApigeeV1SharedFlow(o[1]);
@@ -6199,7 +6350,7 @@ api.GoogleCloudApigeeV1ListSharedFlowsResponse
   final o = api.GoogleCloudApigeeV1ListSharedFlowsResponse();
   buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse < 3) {
-    o.sharedFlows = buildUnnamed121();
+    o.sharedFlows = buildUnnamed126();
   }
   buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse--;
   return o;
@@ -6209,17 +6360,17 @@ void checkGoogleCloudApigeeV1ListSharedFlowsResponse(
     api.GoogleCloudApigeeV1ListSharedFlowsResponse o) {
   buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse < 3) {
-    checkUnnamed121(o.sharedFlows!);
+    checkUnnamed126(o.sharedFlows!);
   }
   buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1TraceConfigOverride> buildUnnamed122() => [
+core.List<api.GoogleCloudApigeeV1TraceConfigOverride> buildUnnamed127() => [
       buildGoogleCloudApigeeV1TraceConfigOverride(),
       buildGoogleCloudApigeeV1TraceConfigOverride(),
     ];
 
-void checkUnnamed122(core.List<api.GoogleCloudApigeeV1TraceConfigOverride> o) {
+void checkUnnamed127(core.List<api.GoogleCloudApigeeV1TraceConfigOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1TraceConfigOverride(o[0]);
   checkGoogleCloudApigeeV1TraceConfigOverride(o[1]);
@@ -6232,7 +6383,7 @@ api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse
   buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.traceConfigOverrides = buildUnnamed122();
+    o.traceConfigOverrides = buildUnnamed127();
   }
   buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse--;
   return o;
@@ -6246,17 +6397,17 @@ void checkGoogleCloudApigeeV1ListTraceConfigOverridesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed122(o.traceConfigOverrides!);
+    checkUnnamed127(o.traceConfigOverrides!);
   }
   buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse--;
 }
 
-core.List<core.String> buildUnnamed123() => [
+core.List<core.String> buildUnnamed128() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed123(core.List<core.String> o) {
+void checkUnnamed128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6268,12 +6419,12 @@ void checkUnnamed123(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed124() => [
+core.List<core.String> buildUnnamed129() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed124(core.List<core.String> o) {
+void checkUnnamed129(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6290,8 +6441,8 @@ api.GoogleCloudApigeeV1Metadata buildGoogleCloudApigeeV1Metadata() {
   final o = api.GoogleCloudApigeeV1Metadata();
   buildCounterGoogleCloudApigeeV1Metadata++;
   if (buildCounterGoogleCloudApigeeV1Metadata < 3) {
-    o.errors = buildUnnamed123();
-    o.notices = buildUnnamed124();
+    o.errors = buildUnnamed128();
+    o.notices = buildUnnamed129();
   }
   buildCounterGoogleCloudApigeeV1Metadata--;
   return o;
@@ -6300,13 +6451,13 @@ api.GoogleCloudApigeeV1Metadata buildGoogleCloudApigeeV1Metadata() {
 void checkGoogleCloudApigeeV1Metadata(api.GoogleCloudApigeeV1Metadata o) {
   buildCounterGoogleCloudApigeeV1Metadata++;
   if (buildCounterGoogleCloudApigeeV1Metadata < 3) {
-    checkUnnamed123(o.errors!);
-    checkUnnamed124(o.notices!);
+    checkUnnamed128(o.errors!);
+    checkUnnamed129(o.notices!);
   }
   buildCounterGoogleCloudApigeeV1Metadata--;
 }
 
-core.List<core.Object?> buildUnnamed125() => [
+core.List<core.Object?> buildUnnamed130() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6319,7 +6470,7 @@ core.List<core.Object?> buildUnnamed125() => [
       },
     ];
 
-void checkUnnamed125(core.List<core.Object?> o) {
+void checkUnnamed130(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -6357,7 +6508,7 @@ api.GoogleCloudApigeeV1Metric buildGoogleCloudApigeeV1Metric() {
   buildCounterGoogleCloudApigeeV1Metric++;
   if (buildCounterGoogleCloudApigeeV1Metric < 3) {
     o.name = 'foo';
-    o.values = buildUnnamed125();
+    o.values = buildUnnamed130();
   }
   buildCounterGoogleCloudApigeeV1Metric--;
   return o;
@@ -6370,7 +6521,7 @@ void checkGoogleCloudApigeeV1Metric(api.GoogleCloudApigeeV1Metric o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed125(o.values!);
+    checkUnnamed130(o.values!);
   }
   buildCounterGoogleCloudApigeeV1Metric--;
 }
@@ -6494,12 +6645,12 @@ void checkGoogleCloudApigeeV1NodeConfig(api.GoogleCloudApigeeV1NodeConfig o) {
   buildCounterGoogleCloudApigeeV1NodeConfig--;
 }
 
-core.List<core.String> buildUnnamed126() => [
+core.List<core.String> buildUnnamed131() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed126(core.List<core.String> o) {
+void checkUnnamed131(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6516,7 +6667,7 @@ api.GoogleCloudApigeeV1Operation buildGoogleCloudApigeeV1Operation() {
   final o = api.GoogleCloudApigeeV1Operation();
   buildCounterGoogleCloudApigeeV1Operation++;
   if (buildCounterGoogleCloudApigeeV1Operation < 3) {
-    o.methods = buildUnnamed126();
+    o.methods = buildUnnamed131();
     o.resource = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Operation--;
@@ -6526,7 +6677,7 @@ api.GoogleCloudApigeeV1Operation buildGoogleCloudApigeeV1Operation() {
 void checkGoogleCloudApigeeV1Operation(api.GoogleCloudApigeeV1Operation o) {
   buildCounterGoogleCloudApigeeV1Operation++;
   if (buildCounterGoogleCloudApigeeV1Operation < 3) {
-    checkUnnamed126(o.methods!);
+    checkUnnamed131(o.methods!);
     unittest.expect(
       o.resource!,
       unittest.equals('foo'),
@@ -6535,23 +6686,23 @@ void checkGoogleCloudApigeeV1Operation(api.GoogleCloudApigeeV1Operation o) {
   buildCounterGoogleCloudApigeeV1Operation--;
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed127() => [
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed132() => [
       buildGoogleCloudApigeeV1Attribute(),
       buildGoogleCloudApigeeV1Attribute(),
     ];
 
-void checkUnnamed127(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+void checkUnnamed132(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Attribute(o[0]);
   checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1Operation> buildUnnamed128() => [
+core.List<api.GoogleCloudApigeeV1Operation> buildUnnamed133() => [
       buildGoogleCloudApigeeV1Operation(),
       buildGoogleCloudApigeeV1Operation(),
     ];
 
-void checkUnnamed128(core.List<api.GoogleCloudApigeeV1Operation> o) {
+void checkUnnamed133(core.List<api.GoogleCloudApigeeV1Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Operation(o[0]);
   checkGoogleCloudApigeeV1Operation(o[1]);
@@ -6564,8 +6715,8 @@ api.GoogleCloudApigeeV1OperationConfig
   buildCounterGoogleCloudApigeeV1OperationConfig++;
   if (buildCounterGoogleCloudApigeeV1OperationConfig < 3) {
     o.apiSource = 'foo';
-    o.attributes = buildUnnamed127();
-    o.operations = buildUnnamed128();
+    o.attributes = buildUnnamed132();
+    o.operations = buildUnnamed133();
     o.quota = buildGoogleCloudApigeeV1Quota();
   }
   buildCounterGoogleCloudApigeeV1OperationConfig--;
@@ -6580,19 +6731,19 @@ void checkGoogleCloudApigeeV1OperationConfig(
       o.apiSource!,
       unittest.equals('foo'),
     );
-    checkUnnamed127(o.attributes!);
-    checkUnnamed128(o.operations!);
+    checkUnnamed132(o.attributes!);
+    checkUnnamed133(o.operations!);
     checkGoogleCloudApigeeV1Quota(o.quota!);
   }
   buildCounterGoogleCloudApigeeV1OperationConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1OperationConfig> buildUnnamed129() => [
+core.List<api.GoogleCloudApigeeV1OperationConfig> buildUnnamed134() => [
       buildGoogleCloudApigeeV1OperationConfig(),
       buildGoogleCloudApigeeV1OperationConfig(),
     ];
 
-void checkUnnamed129(core.List<api.GoogleCloudApigeeV1OperationConfig> o) {
+void checkUnnamed134(core.List<api.GoogleCloudApigeeV1OperationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1OperationConfig(o[0]);
   checkGoogleCloudApigeeV1OperationConfig(o[1]);
@@ -6604,7 +6755,7 @@ api.GoogleCloudApigeeV1OperationGroup buildGoogleCloudApigeeV1OperationGroup() {
   buildCounterGoogleCloudApigeeV1OperationGroup++;
   if (buildCounterGoogleCloudApigeeV1OperationGroup < 3) {
     o.operationConfigType = 'foo';
-    o.operationConfigs = buildUnnamed129();
+    o.operationConfigs = buildUnnamed134();
   }
   buildCounterGoogleCloudApigeeV1OperationGroup--;
   return o;
@@ -6618,7 +6769,7 @@ void checkGoogleCloudApigeeV1OperationGroup(
       o.operationConfigType!,
       unittest.equals('foo'),
     );
-    checkUnnamed129(o.operationConfigs!);
+    checkUnnamed134(o.operationConfigs!);
   }
   buildCounterGoogleCloudApigeeV1OperationGroup--;
 }
@@ -6643,7 +6794,7 @@ void checkGoogleCloudApigeeV1OptimizedStats(
   buildCounterGoogleCloudApigeeV1OptimizedStats--;
 }
 
-core.List<core.Object?> buildUnnamed130() => [
+core.List<core.Object?> buildUnnamed135() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -6656,7 +6807,7 @@ core.List<core.Object?> buildUnnamed130() => [
       },
     ];
 
-void checkUnnamed130(core.List<core.Object?> o) {
+void checkUnnamed135(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o[0]) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -6694,7 +6845,7 @@ api.GoogleCloudApigeeV1OptimizedStatsNode
   final o = api.GoogleCloudApigeeV1OptimizedStatsNode();
   buildCounterGoogleCloudApigeeV1OptimizedStatsNode++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsNode < 3) {
-    o.data = buildUnnamed130();
+    o.data = buildUnnamed135();
   }
   buildCounterGoogleCloudApigeeV1OptimizedStatsNode--;
   return o;
@@ -6704,17 +6855,17 @@ void checkGoogleCloudApigeeV1OptimizedStatsNode(
     api.GoogleCloudApigeeV1OptimizedStatsNode o) {
   buildCounterGoogleCloudApigeeV1OptimizedStatsNode++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsNode < 3) {
-    checkUnnamed130(o.data!);
+    checkUnnamed135(o.data!);
   }
   buildCounterGoogleCloudApigeeV1OptimizedStatsNode--;
 }
 
-core.List<core.String> buildUnnamed131() => [
+core.List<core.String> buildUnnamed136() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed131(core.List<core.String> o) {
+void checkUnnamed136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6732,7 +6883,7 @@ api.GoogleCloudApigeeV1OptimizedStatsResponse
   final o = api.GoogleCloudApigeeV1OptimizedStatsResponse();
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsResponse < 3) {
-    o.TimeUnit = buildUnnamed131();
+    o.TimeUnit = buildUnnamed136();
     o.metaData = buildGoogleCloudApigeeV1Metadata();
     o.resultTruncated = true;
     o.stats = buildGoogleCloudApigeeV1OptimizedStatsNode();
@@ -6745,7 +6896,7 @@ void checkGoogleCloudApigeeV1OptimizedStatsResponse(
     api.GoogleCloudApigeeV1OptimizedStatsResponse o) {
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsResponse < 3) {
-    checkUnnamed131(o.TimeUnit!);
+    checkUnnamed136(o.TimeUnit!);
     checkGoogleCloudApigeeV1Metadata(o.metaData!);
     unittest.expect(o.resultTruncated!, unittest.isTrue);
     checkGoogleCloudApigeeV1OptimizedStatsNode(o.stats!);
@@ -6753,12 +6904,12 @@ void checkGoogleCloudApigeeV1OptimizedStatsResponse(
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse--;
 }
 
-core.List<core.String> buildUnnamed132() => [
+core.List<core.String> buildUnnamed137() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed132(core.List<core.String> o) {
+void checkUnnamed137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6770,12 +6921,12 @@ void checkUnnamed132(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed133() => [
+core.List<core.String> buildUnnamed138() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed133(core.List<core.String> o) {
+void checkUnnamed138(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6795,7 +6946,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.addonsConfig = buildGoogleCloudApigeeV1AddonsConfig();
     o.analyticsRegion = 'foo';
     o.apigeeProjectId = 'foo';
-    o.attributes = buildUnnamed132();
+    o.attributes = buildUnnamed137();
     o.authorizedNetwork = 'foo';
     o.billingType = 'foo';
     o.caCertificate = 'foo';
@@ -6803,7 +6954,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.customerName = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.environments = buildUnnamed133();
+    o.environments = buildUnnamed138();
     o.expiresAt = 'foo';
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
@@ -6833,7 +6984,7 @@ void checkGoogleCloudApigeeV1Organization(
       o.apigeeProjectId!,
       unittest.equals('foo'),
     );
-    checkUnnamed132(o.attributes!);
+    checkUnnamed137(o.attributes!);
     unittest.expect(
       o.authorizedNetwork!,
       unittest.equals('foo'),
@@ -6862,7 +7013,7 @@ void checkGoogleCloudApigeeV1Organization(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed133(o.environments!);
+    checkUnnamed138(o.environments!);
     unittest.expect(
       o.expiresAt!,
       unittest.equals('foo'),
@@ -6905,12 +7056,12 @@ void checkGoogleCloudApigeeV1Organization(
   buildCounterGoogleCloudApigeeV1Organization--;
 }
 
-core.List<core.String> buildUnnamed134() => [
+core.List<core.String> buildUnnamed139() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed134(core.List<core.String> o) {
+void checkUnnamed139(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6931,7 +7082,7 @@ api.GoogleCloudApigeeV1OrganizationProjectMapping
     o.location = 'foo';
     o.organization = 'foo';
     o.projectId = 'foo';
-    o.projectIds = buildUnnamed134();
+    o.projectIds = buildUnnamed139();
   }
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping--;
   return o;
@@ -6953,7 +7104,7 @@ void checkGoogleCloudApigeeV1OrganizationProjectMapping(
       o.projectId!,
       unittest.equals('foo'),
     );
-    checkUnnamed134(o.projectIds!);
+    checkUnnamed139(o.projectIds!);
   }
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping--;
 }
@@ -7020,12 +7171,12 @@ void checkGoogleCloudApigeeV1PodStatus(api.GoogleCloudApigeeV1PodStatus o) {
   buildCounterGoogleCloudApigeeV1PodStatus--;
 }
 
-core.List<api.GoogleCloudApigeeV1Result> buildUnnamed135() => [
+core.List<api.GoogleCloudApigeeV1Result> buildUnnamed140() => [
       buildGoogleCloudApigeeV1Result(),
       buildGoogleCloudApigeeV1Result(),
     ];
 
-void checkUnnamed135(core.List<api.GoogleCloudApigeeV1Result> o) {
+void checkUnnamed140(core.List<api.GoogleCloudApigeeV1Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Result(o[0]);
   checkGoogleCloudApigeeV1Result(o[1]);
@@ -7037,7 +7188,7 @@ api.GoogleCloudApigeeV1Point buildGoogleCloudApigeeV1Point() {
   buildCounterGoogleCloudApigeeV1Point++;
   if (buildCounterGoogleCloudApigeeV1Point < 3) {
     o.id = 'foo';
-    o.results = buildUnnamed135();
+    o.results = buildUnnamed140();
   }
   buildCounterGoogleCloudApigeeV1Point--;
   return o;
@@ -7050,17 +7201,17 @@ void checkGoogleCloudApigeeV1Point(api.GoogleCloudApigeeV1Point o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed135(o.results!);
+    checkUnnamed140(o.results!);
   }
   buildCounterGoogleCloudApigeeV1Point--;
 }
 
-core.List<api.GoogleCloudApigeeV1Property> buildUnnamed136() => [
+core.List<api.GoogleCloudApigeeV1Property> buildUnnamed141() => [
       buildGoogleCloudApigeeV1Property(),
       buildGoogleCloudApigeeV1Property(),
     ];
 
-void checkUnnamed136(core.List<api.GoogleCloudApigeeV1Property> o) {
+void checkUnnamed141(core.List<api.GoogleCloudApigeeV1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Property(o[0]);
   checkGoogleCloudApigeeV1Property(o[1]);
@@ -7071,7 +7222,7 @@ api.GoogleCloudApigeeV1Properties buildGoogleCloudApigeeV1Properties() {
   final o = api.GoogleCloudApigeeV1Properties();
   buildCounterGoogleCloudApigeeV1Properties++;
   if (buildCounterGoogleCloudApigeeV1Properties < 3) {
-    o.property = buildUnnamed136();
+    o.property = buildUnnamed141();
   }
   buildCounterGoogleCloudApigeeV1Properties--;
   return o;
@@ -7080,7 +7231,7 @@ api.GoogleCloudApigeeV1Properties buildGoogleCloudApigeeV1Properties() {
 void checkGoogleCloudApigeeV1Properties(api.GoogleCloudApigeeV1Properties o) {
   buildCounterGoogleCloudApigeeV1Properties++;
   if (buildCounterGoogleCloudApigeeV1Properties < 3) {
-    checkUnnamed136(o.property!);
+    checkUnnamed141(o.property!);
   }
   buildCounterGoogleCloudApigeeV1Properties--;
 }
@@ -7146,12 +7297,12 @@ void checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
   buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest--;
 }
 
-core.List<core.String> buildUnnamed137() => [
+core.List<core.String> buildUnnamed142() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed137(core.List<core.String> o) {
+void checkUnnamed142(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7163,12 +7314,12 @@ void checkUnnamed137(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1QueryMetric> buildUnnamed138() => [
+core.List<api.GoogleCloudApigeeV1QueryMetric> buildUnnamed143() => [
       buildGoogleCloudApigeeV1QueryMetric(),
       buildGoogleCloudApigeeV1QueryMetric(),
     ];
 
-void checkUnnamed138(core.List<api.GoogleCloudApigeeV1QueryMetric> o) {
+void checkUnnamed143(core.List<api.GoogleCloudApigeeV1QueryMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1QueryMetric(o[0]);
   checkGoogleCloudApigeeV1QueryMetric(o[1]);
@@ -7180,12 +7331,12 @@ api.GoogleCloudApigeeV1Query buildGoogleCloudApigeeV1Query() {
   buildCounterGoogleCloudApigeeV1Query++;
   if (buildCounterGoogleCloudApigeeV1Query < 3) {
     o.csvDelimiter = 'foo';
-    o.dimensions = buildUnnamed137();
+    o.dimensions = buildUnnamed142();
     o.envgroupHostname = 'foo';
     o.filter = 'foo';
     o.groupByTimeUnit = 'foo';
     o.limit = 42;
-    o.metrics = buildUnnamed138();
+    o.metrics = buildUnnamed143();
     o.name = 'foo';
     o.outputFormat = 'foo';
     o.reportDefinitionId = 'foo';
@@ -7206,7 +7357,7 @@ void checkGoogleCloudApigeeV1Query(api.GoogleCloudApigeeV1Query o) {
       o.csvDelimiter!,
       unittest.equals('foo'),
     );
-    checkUnnamed137(o.dimensions!);
+    checkUnnamed142(o.dimensions!);
     unittest.expect(
       o.envgroupHostname!,
       unittest.equals('foo'),
@@ -7223,7 +7374,7 @@ void checkGoogleCloudApigeeV1Query(api.GoogleCloudApigeeV1Query o) {
       o.limit!,
       unittest.equals(42),
     );
-    checkUnnamed138(o.metrics!);
+    checkUnnamed143(o.metrics!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7254,12 +7405,12 @@ void checkGoogleCloudApigeeV1Query(api.GoogleCloudApigeeV1Query o) {
   buildCounterGoogleCloudApigeeV1Query--;
 }
 
-core.List<core.String> buildUnnamed139() => [
+core.List<core.String> buildUnnamed144() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed139(core.List<core.String> o) {
+void checkUnnamed144(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7271,12 +7422,12 @@ void checkUnnamed139(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed140() => [
+core.List<core.String> buildUnnamed145() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed140(core.List<core.String> o) {
+void checkUnnamed145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7293,9 +7444,9 @@ api.GoogleCloudApigeeV1QueryMetadata buildGoogleCloudApigeeV1QueryMetadata() {
   final o = api.GoogleCloudApigeeV1QueryMetadata();
   buildCounterGoogleCloudApigeeV1QueryMetadata++;
   if (buildCounterGoogleCloudApigeeV1QueryMetadata < 3) {
-    o.dimensions = buildUnnamed139();
+    o.dimensions = buildUnnamed144();
     o.endTimestamp = 'foo';
-    o.metrics = buildUnnamed140();
+    o.metrics = buildUnnamed145();
     o.outputFormat = 'foo';
     o.startTimestamp = 'foo';
     o.timeUnit = 'foo';
@@ -7308,12 +7459,12 @@ void checkGoogleCloudApigeeV1QueryMetadata(
     api.GoogleCloudApigeeV1QueryMetadata o) {
   buildCounterGoogleCloudApigeeV1QueryMetadata++;
   if (buildCounterGoogleCloudApigeeV1QueryMetadata < 3) {
-    checkUnnamed139(o.dimensions!);
+    checkUnnamed144(o.dimensions!);
     unittest.expect(
       o.endTimestamp!,
       unittest.equals('foo'),
     );
-    checkUnnamed140(o.metrics!);
+    checkUnnamed145(o.metrics!);
     unittest.expect(
       o.outputFormat!,
       unittest.equals('foo'),
@@ -7372,12 +7523,12 @@ void checkGoogleCloudApigeeV1QueryMetric(api.GoogleCloudApigeeV1QueryMetric o) {
   buildCounterGoogleCloudApigeeV1QueryMetric--;
 }
 
-core.List<core.String> buildUnnamed141() => [
+core.List<core.String> buildUnnamed146() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed141(core.List<core.String> o) {
+void checkUnnamed146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7389,12 +7540,12 @@ void checkUnnamed141(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1MetricAggregation> buildUnnamed142() => [
+core.List<api.GoogleCloudApigeeV1MetricAggregation> buildUnnamed147() => [
       buildGoogleCloudApigeeV1MetricAggregation(),
       buildGoogleCloudApigeeV1MetricAggregation(),
     ];
 
-void checkUnnamed142(core.List<api.GoogleCloudApigeeV1MetricAggregation> o) {
+void checkUnnamed147(core.List<api.GoogleCloudApigeeV1MetricAggregation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1MetricAggregation(o[0]);
   checkGoogleCloudApigeeV1MetricAggregation(o[1]);
@@ -7406,9 +7557,9 @@ api.GoogleCloudApigeeV1QueryTabularStatsRequest
   final o = api.GoogleCloudApigeeV1QueryTabularStatsRequest();
   buildCounterGoogleCloudApigeeV1QueryTabularStatsRequest++;
   if (buildCounterGoogleCloudApigeeV1QueryTabularStatsRequest < 3) {
-    o.dimensions = buildUnnamed141();
+    o.dimensions = buildUnnamed146();
     o.filter = 'foo';
-    o.metrics = buildUnnamed142();
+    o.metrics = buildUnnamed147();
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.timeRange = buildGoogleTypeInterval();
@@ -7421,12 +7572,12 @@ void checkGoogleCloudApigeeV1QueryTabularStatsRequest(
     api.GoogleCloudApigeeV1QueryTabularStatsRequest o) {
   buildCounterGoogleCloudApigeeV1QueryTabularStatsRequest++;
   if (buildCounterGoogleCloudApigeeV1QueryTabularStatsRequest < 3) {
-    checkUnnamed141(o.dimensions!);
+    checkUnnamed146(o.dimensions!);
     unittest.expect(
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed142(o.metrics!);
+    checkUnnamed147(o.metrics!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -7440,12 +7591,12 @@ void checkGoogleCloudApigeeV1QueryTabularStatsRequest(
   buildCounterGoogleCloudApigeeV1QueryTabularStatsRequest--;
 }
 
-core.List<core.String> buildUnnamed143() => [
+core.List<core.String> buildUnnamed148() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed143(core.List<core.String> o) {
+void checkUnnamed148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7457,7 +7608,7 @@ void checkUnnamed143(core.List<core.String> o) {
   );
 }
 
-core.List<core.Object?> buildUnnamed144() => [
+core.List<core.Object?> buildUnnamed149() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7470,7 +7621,7 @@ core.List<core.Object?> buildUnnamed144() => [
       },
     ];
 
-void checkUnnamed144(core.List<core.Object?> o) {
+void checkUnnamed149(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted12 = (o[0]) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
@@ -7502,15 +7653,15 @@ void checkUnnamed144(core.List<core.Object?> o) {
   );
 }
 
-core.List<core.List<core.Object?>> buildUnnamed145() => [
-      buildUnnamed144(),
-      buildUnnamed144(),
+core.List<core.List<core.Object?>> buildUnnamed150() => [
+      buildUnnamed149(),
+      buildUnnamed149(),
     ];
 
-void checkUnnamed145(core.List<core.List<core.Object?>> o) {
+void checkUnnamed150(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed144(o[0]);
-  checkUnnamed144(o[1]);
+  checkUnnamed149(o[0]);
+  checkUnnamed149(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse = 0;
@@ -7519,9 +7670,9 @@ api.GoogleCloudApigeeV1QueryTabularStatsResponse
   final o = api.GoogleCloudApigeeV1QueryTabularStatsResponse();
   buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse < 3) {
-    o.columns = buildUnnamed143();
+    o.columns = buildUnnamed148();
     o.nextPageToken = 'foo';
-    o.values = buildUnnamed145();
+    o.values = buildUnnamed150();
   }
   buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse--;
   return o;
@@ -7531,22 +7682,22 @@ void checkGoogleCloudApigeeV1QueryTabularStatsResponse(
     api.GoogleCloudApigeeV1QueryTabularStatsResponse o) {
   buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse < 3) {
-    checkUnnamed143(o.columns!);
+    checkUnnamed148(o.columns!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed145(o.values!);
+    checkUnnamed150(o.values!);
   }
   buildCounterGoogleCloudApigeeV1QueryTabularStatsResponse--;
 }
 
-core.List<core.String> buildUnnamed146() => [
+core.List<core.String> buildUnnamed151() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed146(core.List<core.String> o) {
+void checkUnnamed151(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7558,12 +7709,12 @@ void checkUnnamed146(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1MetricAggregation> buildUnnamed147() => [
+core.List<api.GoogleCloudApigeeV1MetricAggregation> buildUnnamed152() => [
       buildGoogleCloudApigeeV1MetricAggregation(),
       buildGoogleCloudApigeeV1MetricAggregation(),
     ];
 
-void checkUnnamed147(core.List<api.GoogleCloudApigeeV1MetricAggregation> o) {
+void checkUnnamed152(core.List<api.GoogleCloudApigeeV1MetricAggregation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1MetricAggregation(o[0]);
   checkGoogleCloudApigeeV1MetricAggregation(o[1]);
@@ -7575,9 +7726,9 @@ api.GoogleCloudApigeeV1QueryTimeSeriesStatsRequest
   final o = api.GoogleCloudApigeeV1QueryTimeSeriesStatsRequest();
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsRequest++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsRequest < 3) {
-    o.dimensions = buildUnnamed146();
+    o.dimensions = buildUnnamed151();
     o.filter = 'foo';
-    o.metrics = buildUnnamed147();
+    o.metrics = buildUnnamed152();
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.timeRange = buildGoogleTypeInterval();
@@ -7592,12 +7743,12 @@ void checkGoogleCloudApigeeV1QueryTimeSeriesStatsRequest(
     api.GoogleCloudApigeeV1QueryTimeSeriesStatsRequest o) {
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsRequest++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsRequest < 3) {
-    checkUnnamed146(o.dimensions!);
+    checkUnnamed151(o.dimensions!);
     unittest.expect(
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed147(o.metrics!);
+    checkUnnamed152(o.metrics!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -7619,12 +7770,12 @@ void checkGoogleCloudApigeeV1QueryTimeSeriesStatsRequest(
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsRequest--;
 }
 
-core.List<core.String> buildUnnamed148() => [
+core.List<core.String> buildUnnamed153() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed148(core.List<core.String> o) {
+void checkUnnamed153(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7637,12 +7788,12 @@ void checkUnnamed148(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>
-    buildUnnamed149() => [
+    buildUnnamed154() => [
           buildGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence(),
           buildGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence(),
         ];
 
-void checkUnnamed149(
+void checkUnnamed154(
     core.List<api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence(o[0]);
@@ -7655,9 +7806,9 @@ api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponse
   final o = api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponse();
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse < 3) {
-    o.columns = buildUnnamed148();
+    o.columns = buildUnnamed153();
     o.nextPageToken = 'foo';
-    o.values = buildUnnamed149();
+    o.values = buildUnnamed154();
   }
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse--;
   return o;
@@ -7667,22 +7818,22 @@ void checkGoogleCloudApigeeV1QueryTimeSeriesStatsResponse(
     api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponse o) {
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse < 3) {
-    checkUnnamed148(o.columns!);
+    checkUnnamed153(o.columns!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed149(o.values!);
+    checkUnnamed154(o.values!);
   }
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed150() => {
+core.Map<core.String, core.String> buildUnnamed155() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed150(core.Map<core.String, core.String> o) {
+void checkUnnamed155(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -7694,7 +7845,7 @@ void checkUnnamed150(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.Object?> buildUnnamed151() => [
+core.List<core.Object?> buildUnnamed156() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7707,7 +7858,7 @@ core.List<core.Object?> buildUnnamed151() => [
       },
     ];
 
-void checkUnnamed151(core.List<core.Object?> o) {
+void checkUnnamed156(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted14 = (o[0]) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
@@ -7739,15 +7890,15 @@ void checkUnnamed151(core.List<core.Object?> o) {
   );
 }
 
-core.List<core.List<core.Object?>> buildUnnamed152() => [
-      buildUnnamed151(),
-      buildUnnamed151(),
+core.List<core.List<core.Object?>> buildUnnamed157() => [
+      buildUnnamed156(),
+      buildUnnamed156(),
     ];
 
-void checkUnnamed152(core.List<core.List<core.Object?>> o) {
+void checkUnnamed157(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed151(o[0]);
-  checkUnnamed151(o[1]);
+  checkUnnamed156(o[0]);
+  checkUnnamed156(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence =
@@ -7757,8 +7908,8 @@ api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence
   final o = api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence();
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence < 3) {
-    o.dimensions = buildUnnamed150();
-    o.points = buildUnnamed152();
+    o.dimensions = buildUnnamed155();
+    o.points = buildUnnamed157();
   }
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence--;
   return o;
@@ -7768,8 +7919,8 @@ void checkGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence(
     api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence o) {
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence++;
   if (buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence < 3) {
-    checkUnnamed150(o.dimensions!);
-    checkUnnamed152(o.points!);
+    checkUnnamed155(o.dimensions!);
+    checkUnnamed157(o.points!);
   }
   buildCounterGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence--;
 }
@@ -7806,23 +7957,23 @@ void checkGoogleCloudApigeeV1Quota(api.GoogleCloudApigeeV1Quota o) {
   buildCounterGoogleCloudApigeeV1Quota--;
 }
 
-core.List<api.GoogleCloudApigeeV1RateRange> buildUnnamed153() => [
+core.List<api.GoogleCloudApigeeV1RateRange> buildUnnamed158() => [
       buildGoogleCloudApigeeV1RateRange(),
       buildGoogleCloudApigeeV1RateRange(),
     ];
 
-void checkUnnamed153(core.List<api.GoogleCloudApigeeV1RateRange> o) {
+void checkUnnamed158(core.List<api.GoogleCloudApigeeV1RateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RateRange(o[0]);
   checkGoogleCloudApigeeV1RateRange(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1RevenueShareRange> buildUnnamed154() => [
+core.List<api.GoogleCloudApigeeV1RevenueShareRange> buildUnnamed159() => [
       buildGoogleCloudApigeeV1RevenueShareRange(),
       buildGoogleCloudApigeeV1RevenueShareRange(),
     ];
 
-void checkUnnamed154(core.List<api.GoogleCloudApigeeV1RevenueShareRange> o) {
+void checkUnnamed159(core.List<api.GoogleCloudApigeeV1RevenueShareRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RevenueShareRange(o[0]);
   checkGoogleCloudApigeeV1RevenueShareRange(o[1]);
@@ -7835,7 +7986,7 @@ api.GoogleCloudApigeeV1RatePlan buildGoogleCloudApigeeV1RatePlan() {
   if (buildCounterGoogleCloudApigeeV1RatePlan < 3) {
     o.apiproduct = 'foo';
     o.billingPeriod = 'foo';
-    o.consumptionPricingRates = buildUnnamed153();
+    o.consumptionPricingRates = buildUnnamed158();
     o.consumptionPricingType = 'foo';
     o.createdAt = 'foo';
     o.currencyCode = 'foo';
@@ -7847,7 +7998,7 @@ api.GoogleCloudApigeeV1RatePlan buildGoogleCloudApigeeV1RatePlan() {
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
     o.paymentFundingModel = 'foo';
-    o.revenueShareRates = buildUnnamed154();
+    o.revenueShareRates = buildUnnamed159();
     o.revenueShareType = 'foo';
     o.setupFee = buildGoogleTypeMoney();
     o.startTime = 'foo';
@@ -7868,7 +8019,7 @@ void checkGoogleCloudApigeeV1RatePlan(api.GoogleCloudApigeeV1RatePlan o) {
       o.billingPeriod!,
       unittest.equals('foo'),
     );
-    checkUnnamed153(o.consumptionPricingRates!);
+    checkUnnamed158(o.consumptionPricingRates!);
     unittest.expect(
       o.consumptionPricingType!,
       unittest.equals('foo'),
@@ -7910,7 +8061,7 @@ void checkGoogleCloudApigeeV1RatePlan(api.GoogleCloudApigeeV1RatePlan o) {
       o.paymentFundingModel!,
       unittest.equals('foo'),
     );
-    checkUnnamed154(o.revenueShareRates!);
+    checkUnnamed159(o.revenueShareRates!);
     unittest.expect(
       o.revenueShareType!,
       unittest.equals('foo'),
@@ -8023,12 +8174,12 @@ void checkGoogleCloudApigeeV1ReferenceConfig(
   buildCounterGoogleCloudApigeeV1ReferenceConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1ResourceStatus> buildUnnamed155() => [
+core.List<api.GoogleCloudApigeeV1ResourceStatus> buildUnnamed160() => [
       buildGoogleCloudApigeeV1ResourceStatus(),
       buildGoogleCloudApigeeV1ResourceStatus(),
     ];
 
-void checkUnnamed155(core.List<api.GoogleCloudApigeeV1ResourceStatus> o) {
+void checkUnnamed160(core.List<api.GoogleCloudApigeeV1ResourceStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ResourceStatus(o[0]);
   checkGoogleCloudApigeeV1ResourceStatus(o[1]);
@@ -8042,7 +8193,7 @@ api.GoogleCloudApigeeV1ReportInstanceStatusRequest
   if (buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest < 3) {
     o.instanceUid = 'foo';
     o.reportTime = 'foo';
-    o.resources = buildUnnamed155();
+    o.resources = buildUnnamed160();
   }
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest--;
   return o;
@@ -8060,7 +8211,7 @@ void checkGoogleCloudApigeeV1ReportInstanceStatusRequest(
       o.reportTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed155(o.resources!);
+    checkUnnamed160(o.resources!);
   }
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest--;
 }
@@ -8082,12 +8233,12 @@ void checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusResponse--;
 }
 
-core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed156() => [
+core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed161() => [
       buildGoogleCloudApigeeV1Attribute(),
       buildGoogleCloudApigeeV1Attribute(),
     ];
 
-void checkUnnamed156(core.List<api.GoogleCloudApigeeV1Attribute> o) {
+void checkUnnamed161(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Attribute(o[0]);
   checkGoogleCloudApigeeV1Attribute(o[1]);
@@ -8099,7 +8250,7 @@ api.GoogleCloudApigeeV1ReportProperty buildGoogleCloudApigeeV1ReportProperty() {
   buildCounterGoogleCloudApigeeV1ReportProperty++;
   if (buildCounterGoogleCloudApigeeV1ReportProperty < 3) {
     o.property = 'foo';
-    o.value = buildUnnamed156();
+    o.value = buildUnnamed161();
   }
   buildCounterGoogleCloudApigeeV1ReportProperty--;
   return o;
@@ -8113,7 +8264,7 @@ void checkGoogleCloudApigeeV1ReportProperty(
       o.property!,
       unittest.equals('foo'),
     );
-    checkUnnamed156(o.value!);
+    checkUnnamed161(o.value!);
   }
   buildCounterGoogleCloudApigeeV1ReportProperty--;
 }
@@ -8174,12 +8325,12 @@ void checkGoogleCloudApigeeV1ResourceFile(
   buildCounterGoogleCloudApigeeV1ResourceFile--;
 }
 
-core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed157() => [
+core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed162() => [
       buildGoogleCloudApigeeV1ResourceFile(),
       buildGoogleCloudApigeeV1ResourceFile(),
     ];
 
-void checkUnnamed157(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
+void checkUnnamed162(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ResourceFile(o[0]);
   checkGoogleCloudApigeeV1ResourceFile(o[1]);
@@ -8190,7 +8341,7 @@ api.GoogleCloudApigeeV1ResourceFiles buildGoogleCloudApigeeV1ResourceFiles() {
   final o = api.GoogleCloudApigeeV1ResourceFiles();
   buildCounterGoogleCloudApigeeV1ResourceFiles++;
   if (buildCounterGoogleCloudApigeeV1ResourceFiles < 3) {
-    o.resourceFile = buildUnnamed157();
+    o.resourceFile = buildUnnamed162();
   }
   buildCounterGoogleCloudApigeeV1ResourceFiles--;
   return o;
@@ -8200,17 +8351,17 @@ void checkGoogleCloudApigeeV1ResourceFiles(
     api.GoogleCloudApigeeV1ResourceFiles o) {
   buildCounterGoogleCloudApigeeV1ResourceFiles++;
   if (buildCounterGoogleCloudApigeeV1ResourceFiles < 3) {
-    checkUnnamed157(o.resourceFile!);
+    checkUnnamed162(o.resourceFile!);
   }
   buildCounterGoogleCloudApigeeV1ResourceFiles--;
 }
 
-core.List<api.GoogleCloudApigeeV1RevisionStatus> buildUnnamed158() => [
+core.List<api.GoogleCloudApigeeV1RevisionStatus> buildUnnamed163() => [
       buildGoogleCloudApigeeV1RevisionStatus(),
       buildGoogleCloudApigeeV1RevisionStatus(),
     ];
 
-void checkUnnamed158(core.List<api.GoogleCloudApigeeV1RevisionStatus> o) {
+void checkUnnamed163(core.List<api.GoogleCloudApigeeV1RevisionStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RevisionStatus(o[0]);
   checkGoogleCloudApigeeV1RevisionStatus(o[1]);
@@ -8222,7 +8373,7 @@ api.GoogleCloudApigeeV1ResourceStatus buildGoogleCloudApigeeV1ResourceStatus() {
   buildCounterGoogleCloudApigeeV1ResourceStatus++;
   if (buildCounterGoogleCloudApigeeV1ResourceStatus < 3) {
     o.resource = 'foo';
-    o.revisions = buildUnnamed158();
+    o.revisions = buildUnnamed163();
     o.totalReplicas = 42;
     o.uid = 'foo';
   }
@@ -8238,7 +8389,7 @@ void checkGoogleCloudApigeeV1ResourceStatus(
       o.resource!,
       unittest.equals('foo'),
     );
-    checkUnnamed158(o.revisions!);
+    checkUnnamed163(o.revisions!);
     unittest.expect(
       o.totalReplicas!,
       unittest.equals(42),
@@ -8251,23 +8402,23 @@ void checkGoogleCloudApigeeV1ResourceStatus(
   buildCounterGoogleCloudApigeeV1ResourceStatus--;
 }
 
-core.List<api.GoogleCloudApigeeV1Access> buildUnnamed159() => [
+core.List<api.GoogleCloudApigeeV1Access> buildUnnamed164() => [
       buildGoogleCloudApigeeV1Access(),
       buildGoogleCloudApigeeV1Access(),
     ];
 
-void checkUnnamed159(core.List<api.GoogleCloudApigeeV1Access> o) {
+void checkUnnamed164(core.List<api.GoogleCloudApigeeV1Access> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Access(o[0]);
   checkGoogleCloudApigeeV1Access(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1Property> buildUnnamed160() => [
+core.List<api.GoogleCloudApigeeV1Property> buildUnnamed165() => [
       buildGoogleCloudApigeeV1Property(),
       buildGoogleCloudApigeeV1Property(),
     ];
 
-void checkUnnamed160(core.List<api.GoogleCloudApigeeV1Property> o) {
+void checkUnnamed165(core.List<api.GoogleCloudApigeeV1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Property(o[0]);
   checkGoogleCloudApigeeV1Property(o[1]);
@@ -8279,9 +8430,9 @@ api.GoogleCloudApigeeV1Result buildGoogleCloudApigeeV1Result() {
   buildCounterGoogleCloudApigeeV1Result++;
   if (buildCounterGoogleCloudApigeeV1Result < 3) {
     o.ActionResult = 'foo';
-    o.accessList = buildUnnamed159();
+    o.accessList = buildUnnamed164();
     o.content = 'foo';
-    o.headers = buildUnnamed160();
+    o.headers = buildUnnamed165();
     o.properties = buildGoogleCloudApigeeV1Properties();
     o.reasonPhrase = 'foo';
     o.statusCode = 'foo';
@@ -8300,12 +8451,12 @@ void checkGoogleCloudApigeeV1Result(api.GoogleCloudApigeeV1Result o) {
       o.ActionResult!,
       unittest.equals('foo'),
     );
-    checkUnnamed159(o.accessList!);
+    checkUnnamed164(o.accessList!);
     unittest.expect(
       o.content!,
       unittest.equals('foo'),
     );
-    checkUnnamed160(o.headers!);
+    checkUnnamed165(o.headers!);
     checkGoogleCloudApigeeV1Properties(o.properties!);
     unittest.expect(
       o.reasonPhrase!,
@@ -8365,12 +8516,12 @@ void checkGoogleCloudApigeeV1RevenueShareRange(
   buildCounterGoogleCloudApigeeV1RevenueShareRange--;
 }
 
-core.List<api.GoogleCloudApigeeV1UpdateError> buildUnnamed161() => [
+core.List<api.GoogleCloudApigeeV1UpdateError> buildUnnamed166() => [
       buildGoogleCloudApigeeV1UpdateError(),
       buildGoogleCloudApigeeV1UpdateError(),
     ];
 
-void checkUnnamed161(core.List<api.GoogleCloudApigeeV1UpdateError> o) {
+void checkUnnamed166(core.List<api.GoogleCloudApigeeV1UpdateError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1UpdateError(o[0]);
   checkGoogleCloudApigeeV1UpdateError(o[1]);
@@ -8381,7 +8532,7 @@ api.GoogleCloudApigeeV1RevisionStatus buildGoogleCloudApigeeV1RevisionStatus() {
   final o = api.GoogleCloudApigeeV1RevisionStatus();
   buildCounterGoogleCloudApigeeV1RevisionStatus++;
   if (buildCounterGoogleCloudApigeeV1RevisionStatus < 3) {
-    o.errors = buildUnnamed161();
+    o.errors = buildUnnamed166();
     o.jsonSpec = 'foo';
     o.replicas = 42;
     o.revisionId = 'foo';
@@ -8394,7 +8545,7 @@ void checkGoogleCloudApigeeV1RevisionStatus(
     api.GoogleCloudApigeeV1RevisionStatus o) {
   buildCounterGoogleCloudApigeeV1RevisionStatus++;
   if (buildCounterGoogleCloudApigeeV1RevisionStatus < 3) {
-    checkUnnamed161(o.errors!);
+    checkUnnamed166(o.errors!);
     unittest.expect(
       o.jsonSpec!,
       unittest.equals('foo'),
@@ -8411,14 +8562,33 @@ void checkGoogleCloudApigeeV1RevisionStatus(
   buildCounterGoogleCloudApigeeV1RevisionStatus--;
 }
 
+core.List<core.String> buildUnnamed167() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed167(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudApigeeV1RoutingRule = 0;
 api.GoogleCloudApigeeV1RoutingRule buildGoogleCloudApigeeV1RoutingRule() {
   final o = api.GoogleCloudApigeeV1RoutingRule();
   buildCounterGoogleCloudApigeeV1RoutingRule++;
   if (buildCounterGoogleCloudApigeeV1RoutingRule < 3) {
     o.basepath = 'foo';
+    o.deploymentGroup = 'foo';
     o.envGroupRevision = 'foo';
     o.environment = 'foo';
+    o.otherTargets = buildUnnamed167();
     o.receiver = 'foo';
     o.updateTime = 'foo';
   }
@@ -8434,6 +8604,10 @@ void checkGoogleCloudApigeeV1RoutingRule(api.GoogleCloudApigeeV1RoutingRule o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.deploymentGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.envGroupRevision!,
       unittest.equals('foo'),
     );
@@ -8441,6 +8615,7 @@ void checkGoogleCloudApigeeV1RoutingRule(api.GoogleCloudApigeeV1RoutingRule o) {
       o.environment!,
       unittest.equals('foo'),
     );
+    checkUnnamed167(o.otherTargets!);
     unittest.expect(
       o.receiver!,
       unittest.equals('foo'),
@@ -8492,12 +8667,12 @@ void checkGoogleCloudApigeeV1RuntimeConfig(
 }
 
 core.List<api.GoogleCloudApigeeV1RuntimeTraceConfigOverride>
-    buildUnnamed162() => [
+    buildUnnamed168() => [
           buildGoogleCloudApigeeV1RuntimeTraceConfigOverride(),
           buildGoogleCloudApigeeV1RuntimeTraceConfigOverride(),
         ];
 
-void checkUnnamed162(
+void checkUnnamed168(
     core.List<api.GoogleCloudApigeeV1RuntimeTraceConfigOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(o[0]);
@@ -8513,7 +8688,7 @@ api.GoogleCloudApigeeV1RuntimeTraceConfig
     o.endpoint = 'foo';
     o.exporter = 'foo';
     o.name = 'foo';
-    o.overrides = buildUnnamed162();
+    o.overrides = buildUnnamed168();
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
     o.samplingConfig = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
@@ -8538,7 +8713,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfig(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed162(o.overrides!);
+    checkUnnamed168(o.overrides!);
     unittest.expect(
       o.revisionCreateTime!,
       unittest.equals('foo'),
@@ -8627,23 +8802,23 @@ void checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
   buildCounterGoogleCloudApigeeV1RuntimeTraceSamplingConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed163() => [
+core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed169() => [
       buildGoogleCloudApigeeV1SchemaSchemaElement(),
       buildGoogleCloudApigeeV1SchemaSchemaElement(),
     ];
 
-void checkUnnamed163(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
+void checkUnnamed169(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SchemaSchemaElement(o[0]);
   checkGoogleCloudApigeeV1SchemaSchemaElement(o[1]);
 }
 
-core.List<core.String> buildUnnamed164() => [
+core.List<core.String> buildUnnamed170() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed164(core.List<core.String> o) {
+void checkUnnamed170(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8655,12 +8830,12 @@ void checkUnnamed164(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed165() => [
+core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed171() => [
       buildGoogleCloudApigeeV1SchemaSchemaElement(),
       buildGoogleCloudApigeeV1SchemaSchemaElement(),
     ];
 
-void checkUnnamed165(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
+void checkUnnamed171(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SchemaSchemaElement(o[0]);
   checkGoogleCloudApigeeV1SchemaSchemaElement(o[1]);
@@ -8671,9 +8846,9 @@ api.GoogleCloudApigeeV1Schema buildGoogleCloudApigeeV1Schema() {
   final o = api.GoogleCloudApigeeV1Schema();
   buildCounterGoogleCloudApigeeV1Schema++;
   if (buildCounterGoogleCloudApigeeV1Schema < 3) {
-    o.dimensions = buildUnnamed163();
-    o.meta = buildUnnamed164();
-    o.metrics = buildUnnamed165();
+    o.dimensions = buildUnnamed169();
+    o.meta = buildUnnamed170();
+    o.metrics = buildUnnamed171();
   }
   buildCounterGoogleCloudApigeeV1Schema--;
   return o;
@@ -8682,9 +8857,9 @@ api.GoogleCloudApigeeV1Schema buildGoogleCloudApigeeV1Schema() {
 void checkGoogleCloudApigeeV1Schema(api.GoogleCloudApigeeV1Schema o) {
   buildCounterGoogleCloudApigeeV1Schema++;
   if (buildCounterGoogleCloudApigeeV1Schema < 3) {
-    checkUnnamed163(o.dimensions!);
-    checkUnnamed164(o.meta!);
-    checkUnnamed165(o.metrics!);
+    checkUnnamed169(o.dimensions!);
+    checkUnnamed170(o.meta!);
+    checkUnnamed171(o.metrics!);
   }
   buildCounterGoogleCloudApigeeV1Schema--;
 }
@@ -8749,12 +8924,12 @@ void checkGoogleCloudApigeeV1SchemaSchemaProperty(
   buildCounterGoogleCloudApigeeV1SchemaSchemaProperty--;
 }
 
-core.List<api.GoogleCloudApigeeV1ScoreComponent> buildUnnamed166() => [
+core.List<api.GoogleCloudApigeeV1ScoreComponent> buildUnnamed172() => [
       buildGoogleCloudApigeeV1ScoreComponent(),
       buildGoogleCloudApigeeV1ScoreComponent(),
     ];
 
-void checkUnnamed166(core.List<api.GoogleCloudApigeeV1ScoreComponent> o) {
+void checkUnnamed172(core.List<api.GoogleCloudApigeeV1ScoreComponent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ScoreComponent(o[0]);
   checkGoogleCloudApigeeV1ScoreComponent(o[1]);
@@ -8766,7 +8941,7 @@ api.GoogleCloudApigeeV1Score buildGoogleCloudApigeeV1Score() {
   buildCounterGoogleCloudApigeeV1Score++;
   if (buildCounterGoogleCloudApigeeV1Score < 3) {
     o.component = buildGoogleCloudApigeeV1ScoreComponent();
-    o.subcomponents = buildUnnamed166();
+    o.subcomponents = buildUnnamed172();
     o.timeRange = buildGoogleTypeInterval();
   }
   buildCounterGoogleCloudApigeeV1Score--;
@@ -8777,18 +8952,18 @@ void checkGoogleCloudApigeeV1Score(api.GoogleCloudApigeeV1Score o) {
   buildCounterGoogleCloudApigeeV1Score++;
   if (buildCounterGoogleCloudApigeeV1Score < 3) {
     checkGoogleCloudApigeeV1ScoreComponent(o.component!);
-    checkUnnamed166(o.subcomponents!);
+    checkUnnamed172(o.subcomponents!);
     checkGoogleTypeInterval(o.timeRange!);
   }
   buildCounterGoogleCloudApigeeV1Score--;
 }
 
-core.List<core.String> buildUnnamed167() => [
+core.List<core.String> buildUnnamed173() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed167(core.List<core.String> o) {
+void checkUnnamed173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8801,12 +8976,12 @@ void checkUnnamed167(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1ScoreComponentRecommendation>
-    buildUnnamed168() => [
+    buildUnnamed174() => [
           buildGoogleCloudApigeeV1ScoreComponentRecommendation(),
           buildGoogleCloudApigeeV1ScoreComponentRecommendation(),
         ];
 
-void checkUnnamed168(
+void checkUnnamed174(
     core.List<api.GoogleCloudApigeeV1ScoreComponentRecommendation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ScoreComponentRecommendation(o[0]);
@@ -8820,8 +8995,8 @@ api.GoogleCloudApigeeV1ScoreComponent buildGoogleCloudApigeeV1ScoreComponent() {
   if (buildCounterGoogleCloudApigeeV1ScoreComponent < 3) {
     o.calculateTime = 'foo';
     o.dataCaptureTime = 'foo';
-    o.drilldownPaths = buildUnnamed167();
-    o.recommendations = buildUnnamed168();
+    o.drilldownPaths = buildUnnamed173();
+    o.recommendations = buildUnnamed174();
     o.score = 42;
     o.scorePath = 'foo';
   }
@@ -8841,8 +9016,8 @@ void checkGoogleCloudApigeeV1ScoreComponent(
       o.dataCaptureTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed167(o.drilldownPaths!);
-    checkUnnamed168(o.recommendations!);
+    checkUnnamed173(o.drilldownPaths!);
+    checkUnnamed174(o.recommendations!);
     unittest.expect(
       o.score!,
       unittest.equals(42),
@@ -8856,12 +9031,12 @@ void checkGoogleCloudApigeeV1ScoreComponent(
 }
 
 core.List<api.GoogleCloudApigeeV1ScoreComponentRecommendationAction>
-    buildUnnamed169() => [
+    buildUnnamed175() => [
           buildGoogleCloudApigeeV1ScoreComponentRecommendationAction(),
           buildGoogleCloudApigeeV1ScoreComponentRecommendationAction(),
         ];
 
-void checkUnnamed169(
+void checkUnnamed175(
     core.List<api.GoogleCloudApigeeV1ScoreComponentRecommendationAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1ScoreComponentRecommendationAction(o[0]);
@@ -8874,7 +9049,7 @@ api.GoogleCloudApigeeV1ScoreComponentRecommendation
   final o = api.GoogleCloudApigeeV1ScoreComponentRecommendation();
   buildCounterGoogleCloudApigeeV1ScoreComponentRecommendation++;
   if (buildCounterGoogleCloudApigeeV1ScoreComponentRecommendation < 3) {
-    o.actions = buildUnnamed169();
+    o.actions = buildUnnamed175();
     o.description = 'foo';
     o.impact = 42;
     o.title = 'foo';
@@ -8887,7 +9062,7 @@ void checkGoogleCloudApigeeV1ScoreComponentRecommendation(
     api.GoogleCloudApigeeV1ScoreComponentRecommendation o) {
   buildCounterGoogleCloudApigeeV1ScoreComponentRecommendation++;
   if (buildCounterGoogleCloudApigeeV1ScoreComponentRecommendation < 3) {
-    checkUnnamed169(o.actions!);
+    checkUnnamed175(o.actions!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -8962,12 +9137,12 @@ void checkGoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext(
 }
 
 core.List<api.GoogleCloudApigeeV1SecurityProfileEnvironment>
-    buildUnnamed170() => [
+    buildUnnamed176() => [
           buildGoogleCloudApigeeV1SecurityProfileEnvironment(),
           buildGoogleCloudApigeeV1SecurityProfileEnvironment(),
         ];
 
-void checkUnnamed170(
+void checkUnnamed176(
     core.List<api.GoogleCloudApigeeV1SecurityProfileEnvironment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityProfileEnvironment(o[0]);
@@ -8975,12 +9150,12 @@ void checkUnnamed170(
 }
 
 core.List<api.GoogleCloudApigeeV1SecurityProfileScoringConfig>
-    buildUnnamed171() => [
+    buildUnnamed177() => [
           buildGoogleCloudApigeeV1SecurityProfileScoringConfig(),
           buildGoogleCloudApigeeV1SecurityProfileScoringConfig(),
         ];
 
-void checkUnnamed171(
+void checkUnnamed177(
     core.List<api.GoogleCloudApigeeV1SecurityProfileScoringConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityProfileScoringConfig(o[0]);
@@ -8994,7 +9169,7 @@ api.GoogleCloudApigeeV1SecurityProfile
   buildCounterGoogleCloudApigeeV1SecurityProfile++;
   if (buildCounterGoogleCloudApigeeV1SecurityProfile < 3) {
     o.displayName = 'foo';
-    o.environments = buildUnnamed170();
+    o.environments = buildUnnamed176();
     o.maxScore = 42;
     o.minScore = 42;
     o.name = 'foo';
@@ -9002,7 +9177,7 @@ api.GoogleCloudApigeeV1SecurityProfile
     o.revisionId = 'foo';
     o.revisionPublishTime = 'foo';
     o.revisionUpdateTime = 'foo';
-    o.scoringConfigs = buildUnnamed171();
+    o.scoringConfigs = buildUnnamed177();
   }
   buildCounterGoogleCloudApigeeV1SecurityProfile--;
   return o;
@@ -9016,7 +9191,7 @@ void checkGoogleCloudApigeeV1SecurityProfile(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed170(o.environments!);
+    checkUnnamed176(o.environments!);
     unittest.expect(
       o.maxScore!,
       unittest.equals(42),
@@ -9045,7 +9220,7 @@ void checkGoogleCloudApigeeV1SecurityProfile(
       o.revisionUpdateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed171(o.scoringConfigs!);
+    checkUnnamed177(o.scoringConfigs!);
   }
   buildCounterGoogleCloudApigeeV1SecurityProfile--;
 }
@@ -9227,12 +9402,12 @@ void checkGoogleCloudApigeeV1SecurityReport(
   buildCounterGoogleCloudApigeeV1SecurityReport--;
 }
 
-core.List<core.String> buildUnnamed172() => [
+core.List<core.String> buildUnnamed178() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed172(core.List<core.String> o) {
+void checkUnnamed178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9244,12 +9419,12 @@ void checkUnnamed172(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed173() => [
+core.List<core.String> buildUnnamed179() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed173(core.List<core.String> o) {
+void checkUnnamed179(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9267,9 +9442,9 @@ api.GoogleCloudApigeeV1SecurityReportMetadata
   final o = api.GoogleCloudApigeeV1SecurityReportMetadata();
   buildCounterGoogleCloudApigeeV1SecurityReportMetadata++;
   if (buildCounterGoogleCloudApigeeV1SecurityReportMetadata < 3) {
-    o.dimensions = buildUnnamed172();
+    o.dimensions = buildUnnamed178();
     o.endTimestamp = 'foo';
-    o.metrics = buildUnnamed173();
+    o.metrics = buildUnnamed179();
     o.mimeType = 'foo';
     o.startTimestamp = 'foo';
     o.timeUnit = 'foo';
@@ -9282,12 +9457,12 @@ void checkGoogleCloudApigeeV1SecurityReportMetadata(
     api.GoogleCloudApigeeV1SecurityReportMetadata o) {
   buildCounterGoogleCloudApigeeV1SecurityReportMetadata++;
   if (buildCounterGoogleCloudApigeeV1SecurityReportMetadata < 3) {
-    checkUnnamed172(o.dimensions!);
+    checkUnnamed178(o.dimensions!);
     unittest.expect(
       o.endTimestamp!,
       unittest.equals('foo'),
     );
-    checkUnnamed173(o.metrics!);
+    checkUnnamed179(o.metrics!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -9304,12 +9479,12 @@ void checkGoogleCloudApigeeV1SecurityReportMetadata(
   buildCounterGoogleCloudApigeeV1SecurityReportMetadata--;
 }
 
-core.List<core.String> buildUnnamed174() => [
+core.List<core.String> buildUnnamed180() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed174(core.List<core.String> o) {
+void checkUnnamed180(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9321,13 +9496,13 @@ void checkUnnamed174(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudApigeeV1SecurityReportQueryMetric> buildUnnamed175() =>
+core.List<api.GoogleCloudApigeeV1SecurityReportQueryMetric> buildUnnamed181() =>
     [
       buildGoogleCloudApigeeV1SecurityReportQueryMetric(),
       buildGoogleCloudApigeeV1SecurityReportQueryMetric(),
     ];
 
-void checkUnnamed175(
+void checkUnnamed181(
     core.List<api.GoogleCloudApigeeV1SecurityReportQueryMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1SecurityReportQueryMetric(o[0]);
@@ -9341,13 +9516,13 @@ api.GoogleCloudApigeeV1SecurityReportQuery
   buildCounterGoogleCloudApigeeV1SecurityReportQuery++;
   if (buildCounterGoogleCloudApigeeV1SecurityReportQuery < 3) {
     o.csvDelimiter = 'foo';
-    o.dimensions = buildUnnamed174();
+    o.dimensions = buildUnnamed180();
     o.displayName = 'foo';
     o.envgroupHostname = 'foo';
     o.filter = 'foo';
     o.groupByTimeUnit = 'foo';
     o.limit = 42;
-    o.metrics = buildUnnamed175();
+    o.metrics = buildUnnamed181();
     o.mimeType = 'foo';
     o.reportDefinitionId = 'foo';
     o.timeRange = {
@@ -9368,7 +9543,7 @@ void checkGoogleCloudApigeeV1SecurityReportQuery(
       o.csvDelimiter!,
       unittest.equals('foo'),
     );
-    checkUnnamed174(o.dimensions!);
+    checkUnnamed180(o.dimensions!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -9389,7 +9564,7 @@ void checkGoogleCloudApigeeV1SecurityReportQuery(
       o.limit!,
       unittest.equals(42),
     );
-    checkUnnamed175(o.metrics!);
+    checkUnnamed181(o.metrics!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -9489,7 +9664,7 @@ void checkGoogleCloudApigeeV1SecurityReportResultMetadata(
   buildCounterGoogleCloudApigeeV1SecurityReportResultMetadata--;
 }
 
-core.List<core.Object?> buildUnnamed176() => [
+core.List<core.Object?> buildUnnamed182() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -9502,7 +9677,7 @@ core.List<core.Object?> buildUnnamed176() => [
       },
     ];
 
-void checkUnnamed176(core.List<core.Object?> o) {
+void checkUnnamed182(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o[0]) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
@@ -9543,7 +9718,7 @@ api.GoogleCloudApigeeV1SecurityReportResultView
     o.code = 42;
     o.error = 'foo';
     o.metadata = buildGoogleCloudApigeeV1SecurityReportMetadata();
-    o.rows = buildUnnamed176();
+    o.rows = buildUnnamed182();
     o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1SecurityReportResultView--;
@@ -9563,7 +9738,7 @@ void checkGoogleCloudApigeeV1SecurityReportResultView(
       unittest.equals('foo'),
     );
     checkGoogleCloudApigeeV1SecurityReportMetadata(o.metadata!);
-    checkUnnamed176(o.rows!);
+    checkUnnamed182(o.rows!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -9572,12 +9747,12 @@ void checkGoogleCloudApigeeV1SecurityReportResultView(
   buildCounterGoogleCloudApigeeV1SecurityReportResultView--;
 }
 
-core.List<core.String> buildUnnamed177() => [
+core.List<core.String> buildUnnamed183() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed177(core.List<core.String> o) {
+void checkUnnamed183(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9595,7 +9770,7 @@ api.GoogleCloudApigeeV1ServiceIssuersMapping
   final o = api.GoogleCloudApigeeV1ServiceIssuersMapping();
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping++;
   if (buildCounterGoogleCloudApigeeV1ServiceIssuersMapping < 3) {
-    o.emailIds = buildUnnamed177();
+    o.emailIds = buildUnnamed183();
     o.service = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping--;
@@ -9606,7 +9781,7 @@ void checkGoogleCloudApigeeV1ServiceIssuersMapping(
     api.GoogleCloudApigeeV1ServiceIssuersMapping o) {
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping++;
   if (buildCounterGoogleCloudApigeeV1ServiceIssuersMapping < 3) {
-    checkUnnamed177(o.emailIds!);
+    checkUnnamed183(o.emailIds!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -9663,12 +9838,12 @@ void checkGoogleCloudApigeeV1SetAddonsRequest(
   buildCounterGoogleCloudApigeeV1SetAddonsRequest--;
 }
 
-core.List<core.String> buildUnnamed178() => [
+core.List<core.String> buildUnnamed184() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed178(core.List<core.String> o) {
+void checkUnnamed184(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9688,7 +9863,7 @@ api.GoogleCloudApigeeV1SharedFlow buildGoogleCloudApigeeV1SharedFlow() {
     o.latestRevisionId = 'foo';
     o.metaData = buildGoogleCloudApigeeV1EntityMetadata();
     o.name = 'foo';
-    o.revision = buildUnnamed178();
+    o.revision = buildUnnamed184();
   }
   buildCounterGoogleCloudApigeeV1SharedFlow--;
   return o;
@@ -9706,17 +9881,17 @@ void checkGoogleCloudApigeeV1SharedFlow(api.GoogleCloudApigeeV1SharedFlow o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed178(o.revision!);
+    checkUnnamed184(o.revision!);
   }
   buildCounterGoogleCloudApigeeV1SharedFlow--;
 }
 
-core.Map<core.String, core.String> buildUnnamed179() => {
+core.Map<core.String, core.String> buildUnnamed185() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed179(core.Map<core.String, core.String> o) {
+void checkUnnamed185(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -9728,12 +9903,12 @@ void checkUnnamed179(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed180() => [
+core.List<core.String> buildUnnamed186() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed180(core.List<core.String> o) {
+void checkUnnamed186(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9745,12 +9920,12 @@ void checkUnnamed180(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed181() => [
+core.List<core.String> buildUnnamed187() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed181(core.List<core.String> o) {
+void checkUnnamed187(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9762,12 +9937,12 @@ void checkUnnamed181(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed182() => [
+core.List<core.String> buildUnnamed188() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed182(core.List<core.String> o) {
+void checkUnnamed188(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9790,14 +9965,14 @@ api.GoogleCloudApigeeV1SharedFlowRevision
     o.createdAt = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.entityMetaDataAsProperties = buildUnnamed179();
+    o.entityMetaDataAsProperties = buildUnnamed185();
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
-    o.policies = buildUnnamed180();
+    o.policies = buildUnnamed186();
     o.resourceFiles = buildGoogleCloudApigeeV1ResourceFiles();
-    o.resources = buildUnnamed181();
+    o.resources = buildUnnamed187();
     o.revision = 'foo';
-    o.sharedFlows = buildUnnamed182();
+    o.sharedFlows = buildUnnamed188();
     o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1SharedFlowRevision--;
@@ -9825,7 +10000,7 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed179(o.entityMetaDataAsProperties!);
+    checkUnnamed185(o.entityMetaDataAsProperties!);
     unittest.expect(
       o.lastModifiedAt!,
       unittest.equals('foo'),
@@ -9834,14 +10009,14 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed180(o.policies!);
+    checkUnnamed186(o.policies!);
     checkGoogleCloudApigeeV1ResourceFiles(o.resourceFiles!);
-    checkUnnamed181(o.resources!);
+    checkUnnamed187(o.resources!);
     unittest.expect(
       o.revision!,
       unittest.equals('foo'),
     );
-    checkUnnamed182(o.sharedFlows!);
+    checkUnnamed188(o.sharedFlows!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -9850,24 +10025,24 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
   buildCounterGoogleCloudApigeeV1SharedFlowRevision--;
 }
 
-core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> buildUnnamed183() => [
+core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> buildUnnamed189() => [
       buildGoogleCloudApigeeV1StatsEnvironmentStats(),
       buildGoogleCloudApigeeV1StatsEnvironmentStats(),
     ];
 
-void checkUnnamed183(
+void checkUnnamed189(
     core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1StatsEnvironmentStats(o[0]);
   checkGoogleCloudApigeeV1StatsEnvironmentStats(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1StatsHostStats> buildUnnamed184() => [
+core.List<api.GoogleCloudApigeeV1StatsHostStats> buildUnnamed190() => [
       buildGoogleCloudApigeeV1StatsHostStats(),
       buildGoogleCloudApigeeV1StatsHostStats(),
     ];
 
-void checkUnnamed184(core.List<api.GoogleCloudApigeeV1StatsHostStats> o) {
+void checkUnnamed190(core.List<api.GoogleCloudApigeeV1StatsHostStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1StatsHostStats(o[0]);
   checkGoogleCloudApigeeV1StatsHostStats(o[1]);
@@ -9878,8 +10053,8 @@ api.GoogleCloudApigeeV1Stats buildGoogleCloudApigeeV1Stats() {
   final o = api.GoogleCloudApigeeV1Stats();
   buildCounterGoogleCloudApigeeV1Stats++;
   if (buildCounterGoogleCloudApigeeV1Stats < 3) {
-    o.environments = buildUnnamed183();
-    o.hosts = buildUnnamed184();
+    o.environments = buildUnnamed189();
+    o.hosts = buildUnnamed190();
     o.metaData = buildGoogleCloudApigeeV1Metadata();
   }
   buildCounterGoogleCloudApigeeV1Stats--;
@@ -9889,30 +10064,30 @@ api.GoogleCloudApigeeV1Stats buildGoogleCloudApigeeV1Stats() {
 void checkGoogleCloudApigeeV1Stats(api.GoogleCloudApigeeV1Stats o) {
   buildCounterGoogleCloudApigeeV1Stats++;
   if (buildCounterGoogleCloudApigeeV1Stats < 3) {
-    checkUnnamed183(o.environments!);
-    checkUnnamed184(o.hosts!);
+    checkUnnamed189(o.environments!);
+    checkUnnamed190(o.hosts!);
     checkGoogleCloudApigeeV1Metadata(o.metaData!);
   }
   buildCounterGoogleCloudApigeeV1Stats--;
 }
 
-core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed185() => [
+core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed191() => [
       buildGoogleCloudApigeeV1DimensionMetric(),
       buildGoogleCloudApigeeV1DimensionMetric(),
     ];
 
-void checkUnnamed185(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
+void checkUnnamed191(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DimensionMetric(o[0]);
   checkGoogleCloudApigeeV1DimensionMetric(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed186() => [
+core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed192() => [
       buildGoogleCloudApigeeV1Metric(),
       buildGoogleCloudApigeeV1Metric(),
     ];
 
-void checkUnnamed186(core.List<api.GoogleCloudApigeeV1Metric> o) {
+void checkUnnamed192(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Metric(o[0]);
   checkGoogleCloudApigeeV1Metric(o[1]);
@@ -9924,8 +10099,8 @@ api.GoogleCloudApigeeV1StatsEnvironmentStats
   final o = api.GoogleCloudApigeeV1StatsEnvironmentStats();
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats++;
   if (buildCounterGoogleCloudApigeeV1StatsEnvironmentStats < 3) {
-    o.dimensions = buildUnnamed185();
-    o.metrics = buildUnnamed186();
+    o.dimensions = buildUnnamed191();
+    o.metrics = buildUnnamed192();
     o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats--;
@@ -9936,8 +10111,8 @@ void checkGoogleCloudApigeeV1StatsEnvironmentStats(
     api.GoogleCloudApigeeV1StatsEnvironmentStats o) {
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats++;
   if (buildCounterGoogleCloudApigeeV1StatsEnvironmentStats < 3) {
-    checkUnnamed185(o.dimensions!);
-    checkUnnamed186(o.metrics!);
+    checkUnnamed191(o.dimensions!);
+    checkUnnamed192(o.metrics!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -9946,23 +10121,23 @@ void checkGoogleCloudApigeeV1StatsEnvironmentStats(
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats--;
 }
 
-core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed187() => [
+core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed193() => [
       buildGoogleCloudApigeeV1DimensionMetric(),
       buildGoogleCloudApigeeV1DimensionMetric(),
     ];
 
-void checkUnnamed187(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
+void checkUnnamed193(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1DimensionMetric(o[0]);
   checkGoogleCloudApigeeV1DimensionMetric(o[1]);
 }
 
-core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed188() => [
+core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed194() => [
       buildGoogleCloudApigeeV1Metric(),
       buildGoogleCloudApigeeV1Metric(),
     ];
 
-void checkUnnamed188(core.List<api.GoogleCloudApigeeV1Metric> o) {
+void checkUnnamed194(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudApigeeV1Metric(o[0]);
   checkGoogleCloudApigeeV1Metric(o[1]);
@@ -9973,8 +10148,8 @@ api.GoogleCloudApigeeV1StatsHostStats buildGoogleCloudApigeeV1StatsHostStats() {
   final o = api.GoogleCloudApigeeV1StatsHostStats();
   buildCounterGoogleCloudApigeeV1StatsHostStats++;
   if (buildCounterGoogleCloudApigeeV1StatsHostStats < 3) {
-    o.dimensions = buildUnnamed187();
-    o.metrics = buildUnnamed188();
+    o.dimensions = buildUnnamed193();
+    o.metrics = buildUnnamed194();
     o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1StatsHostStats--;
@@ -9985,8 +10160,8 @@ void checkGoogleCloudApigeeV1StatsHostStats(
     api.GoogleCloudApigeeV1StatsHostStats o) {
   buildCounterGoogleCloudApigeeV1StatsHostStats++;
   if (buildCounterGoogleCloudApigeeV1StatsHostStats < 3) {
-    checkUnnamed187(o.dimensions!);
-    checkUnnamed188(o.metrics!);
+    checkUnnamed193(o.dimensions!);
+    checkUnnamed194(o.metrics!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -10018,12 +10193,12 @@ void checkGoogleCloudApigeeV1Subscription(
   buildCounterGoogleCloudApigeeV1Subscription--;
 }
 
-core.List<core.String> buildUnnamed189() => [
+core.List<core.String> buildUnnamed195() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed189(core.List<core.String> o) {
+void checkUnnamed195(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10042,7 +10217,7 @@ api.GoogleCloudApigeeV1SyncAuthorization
   buildCounterGoogleCloudApigeeV1SyncAuthorization++;
   if (buildCounterGoogleCloudApigeeV1SyncAuthorization < 3) {
     o.etag = 'foo';
-    o.identities = buildUnnamed189();
+    o.identities = buildUnnamed195();
   }
   buildCounterGoogleCloudApigeeV1SyncAuthorization--;
   return o;
@@ -10056,7 +10231,7 @@ void checkGoogleCloudApigeeV1SyncAuthorization(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed189(o.identities!);
+    checkUnnamed195(o.identities!);
   }
   buildCounterGoogleCloudApigeeV1SyncAuthorization--;
 }
@@ -10180,12 +10355,12 @@ void checkGoogleCloudApigeeV1TestDatastoreResponse(
   buildCounterGoogleCloudApigeeV1TestDatastoreResponse--;
 }
 
-core.List<core.String> buildUnnamed190() => [
+core.List<core.String> buildUnnamed196() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed190(core.List<core.String> o) {
+void checkUnnamed196(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10197,12 +10372,12 @@ void checkUnnamed190(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed191() => [
+core.List<core.String> buildUnnamed197() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed191(core.List<core.String> o) {
+void checkUnnamed197(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10219,14 +10394,14 @@ api.GoogleCloudApigeeV1TlsInfo buildGoogleCloudApigeeV1TlsInfo() {
   final o = api.GoogleCloudApigeeV1TlsInfo();
   buildCounterGoogleCloudApigeeV1TlsInfo++;
   if (buildCounterGoogleCloudApigeeV1TlsInfo < 3) {
-    o.ciphers = buildUnnamed190();
+    o.ciphers = buildUnnamed196();
     o.clientAuthEnabled = true;
     o.commonName = buildGoogleCloudApigeeV1TlsInfoCommonName();
     o.enabled = true;
     o.ignoreValidationErrors = true;
     o.keyAlias = 'foo';
     o.keyStore = 'foo';
-    o.protocols = buildUnnamed191();
+    o.protocols = buildUnnamed197();
     o.trustStore = 'foo';
   }
   buildCounterGoogleCloudApigeeV1TlsInfo--;
@@ -10236,7 +10411,7 @@ api.GoogleCloudApigeeV1TlsInfo buildGoogleCloudApigeeV1TlsInfo() {
 void checkGoogleCloudApigeeV1TlsInfo(api.GoogleCloudApigeeV1TlsInfo o) {
   buildCounterGoogleCloudApigeeV1TlsInfo++;
   if (buildCounterGoogleCloudApigeeV1TlsInfo < 3) {
-    checkUnnamed190(o.ciphers!);
+    checkUnnamed196(o.ciphers!);
     unittest.expect(o.clientAuthEnabled!, unittest.isTrue);
     checkGoogleCloudApigeeV1TlsInfoCommonName(o.commonName!);
     unittest.expect(o.enabled!, unittest.isTrue);
@@ -10249,7 +10424,7 @@ void checkGoogleCloudApigeeV1TlsInfo(api.GoogleCloudApigeeV1TlsInfo o) {
       o.keyStore!,
       unittest.equals('foo'),
     );
-    checkUnnamed191(o.protocols!);
+    checkUnnamed197(o.protocols!);
     unittest.expect(
       o.trustStore!,
       unittest.equals('foo'),
@@ -10284,12 +10459,12 @@ void checkGoogleCloudApigeeV1TlsInfoCommonName(
   buildCounterGoogleCloudApigeeV1TlsInfoCommonName--;
 }
 
-core.List<core.String> buildUnnamed192() => [
+core.List<core.String> buildUnnamed198() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed192(core.List<core.String> o) {
+void checkUnnamed198(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10301,12 +10476,12 @@ void checkUnnamed192(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed193() => [
+core.List<core.String> buildUnnamed199() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed193(core.List<core.String> o) {
+void checkUnnamed199(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10323,14 +10498,14 @@ api.GoogleCloudApigeeV1TlsInfoConfig buildGoogleCloudApigeeV1TlsInfoConfig() {
   final o = api.GoogleCloudApigeeV1TlsInfoConfig();
   buildCounterGoogleCloudApigeeV1TlsInfoConfig++;
   if (buildCounterGoogleCloudApigeeV1TlsInfoConfig < 3) {
-    o.ciphers = buildUnnamed192();
+    o.ciphers = buildUnnamed198();
     o.clientAuthEnabled = true;
     o.commonName = buildGoogleCloudApigeeV1CommonNameConfig();
     o.enabled = true;
     o.ignoreValidationErrors = true;
     o.keyAlias = 'foo';
     o.keyAliasReference = buildGoogleCloudApigeeV1KeyAliasReference();
-    o.protocols = buildUnnamed193();
+    o.protocols = buildUnnamed199();
     o.trustStore = 'foo';
   }
   buildCounterGoogleCloudApigeeV1TlsInfoConfig--;
@@ -10341,7 +10516,7 @@ void checkGoogleCloudApigeeV1TlsInfoConfig(
     api.GoogleCloudApigeeV1TlsInfoConfig o) {
   buildCounterGoogleCloudApigeeV1TlsInfoConfig++;
   if (buildCounterGoogleCloudApigeeV1TlsInfoConfig < 3) {
-    checkUnnamed192(o.ciphers!);
+    checkUnnamed198(o.ciphers!);
     unittest.expect(o.clientAuthEnabled!, unittest.isTrue);
     checkGoogleCloudApigeeV1CommonNameConfig(o.commonName!);
     unittest.expect(o.enabled!, unittest.isTrue);
@@ -10351,7 +10526,7 @@ void checkGoogleCloudApigeeV1TlsInfoConfig(
       unittest.equals('foo'),
     );
     checkGoogleCloudApigeeV1KeyAliasReference(o.keyAliasReference!);
-    checkUnnamed193(o.protocols!);
+    checkUnnamed199(o.protocols!);
     unittest.expect(
       o.trustStore!,
       unittest.equals('foo'),
@@ -10486,12 +10661,12 @@ void checkGoogleCloudApigeeV1UpdateError(api.GoogleCloudApigeeV1UpdateError o) {
   buildCounterGoogleCloudApigeeV1UpdateError--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed194() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed200() => [
       buildGoogleIamV1AuditLogConfig(),
       buildGoogleIamV1AuditLogConfig(),
     ];
 
-void checkUnnamed194(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed200(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -10502,7 +10677,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed194();
+    o.auditLogConfigs = buildUnnamed200();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -10512,7 +10687,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed194(o.auditLogConfigs!);
+    checkUnnamed200(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -10521,12 +10696,12 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed195() => [
+core.List<core.String> buildUnnamed201() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed195(core.List<core.String> o) {
+void checkUnnamed201(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10543,7 +10718,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed195();
+    o.exemptedMembers = buildUnnamed201();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -10553,7 +10728,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed195(o.exemptedMembers!);
+    checkUnnamed201(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -10562,12 +10737,12 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed196() => [
+core.List<core.String> buildUnnamed202() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed196(core.List<core.String> o) {
+void checkUnnamed202(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10585,7 +10760,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed196();
+    o.members = buildUnnamed202();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -10596,7 +10771,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed196(o.members!);
+    checkUnnamed202(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -10605,23 +10780,23 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed197() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed203() => [
       buildGoogleIamV1AuditConfig(),
       buildGoogleIamV1AuditConfig(),
     ];
 
-void checkUnnamed197(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed203(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed198() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed204() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed198(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed204(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -10632,8 +10807,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed197();
-    o.bindings = buildUnnamed198();
+    o.auditConfigs = buildUnnamed203();
+    o.bindings = buildUnnamed204();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -10644,8 +10819,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed197(o.auditConfigs!);
-    checkUnnamed198(o.bindings!);
+    checkUnnamed203(o.auditConfigs!);
+    checkUnnamed204(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -10682,12 +10857,12 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed199() => [
+core.List<core.String> buildUnnamed205() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed199(core.List<core.String> o) {
+void checkUnnamed205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10705,7 +10880,7 @@ api.GoogleIamV1TestIamPermissionsRequest
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed199();
+    o.permissions = buildUnnamed205();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -10715,17 +10890,17 @@ void checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed199(o.permissions!);
+    checkUnnamed205(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed200() => [
+core.List<core.String> buildUnnamed206() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed200(core.List<core.String> o) {
+void checkUnnamed206(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10743,7 +10918,7 @@ api.GoogleIamV1TestIamPermissionsResponse
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed200();
+    o.permissions = buildUnnamed206();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -10753,17 +10928,17 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed200(o.permissions!);
+    checkUnnamed206(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed201() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed207() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed201(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed207(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -10776,7 +10951,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed201();
+    o.operations = buildUnnamed207();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -10790,12 +10965,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed201(o.operations!);
+    checkUnnamed207(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed202() => {
+core.Map<core.String, core.Object?> buildUnnamed208() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10808,7 +10983,7 @@ core.Map<core.String, core.Object?> buildUnnamed202() => {
       },
     };
 
-void checkUnnamed202(core.Map<core.String, core.Object?> o) {
+void checkUnnamed208(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
@@ -10840,7 +11015,7 @@ void checkUnnamed202(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed203() => {
+core.Map<core.String, core.Object?> buildUnnamed209() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10853,7 +11028,7 @@ core.Map<core.String, core.Object?> buildUnnamed203() => {
       },
     };
 
-void checkUnnamed203(core.Map<core.String, core.Object?> o) {
+void checkUnnamed209(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
@@ -10892,9 +11067,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed202();
+    o.metadata = buildUnnamed208();
     o.name = 'foo';
-    o.response = buildUnnamed203();
+    o.response = buildUnnamed209();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -10905,12 +11080,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed202(o.metadata!);
+    checkUnnamed208(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed203(o.response!);
+    checkUnnamed209(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -10930,12 +11105,12 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<api.GoogleRpcPreconditionFailureViolation> buildUnnamed204() => [
+core.List<api.GoogleRpcPreconditionFailureViolation> buildUnnamed210() => [
       buildGoogleRpcPreconditionFailureViolation(),
       buildGoogleRpcPreconditionFailureViolation(),
     ];
 
-void checkUnnamed204(core.List<api.GoogleRpcPreconditionFailureViolation> o) {
+void checkUnnamed210(core.List<api.GoogleRpcPreconditionFailureViolation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcPreconditionFailureViolation(o[0]);
   checkGoogleRpcPreconditionFailureViolation(o[1]);
@@ -10946,7 +11121,7 @@ api.GoogleRpcPreconditionFailure buildGoogleRpcPreconditionFailure() {
   final o = api.GoogleRpcPreconditionFailure();
   buildCounterGoogleRpcPreconditionFailure++;
   if (buildCounterGoogleRpcPreconditionFailure < 3) {
-    o.violations = buildUnnamed204();
+    o.violations = buildUnnamed210();
   }
   buildCounterGoogleRpcPreconditionFailure--;
   return o;
@@ -10955,7 +11130,7 @@ api.GoogleRpcPreconditionFailure buildGoogleRpcPreconditionFailure() {
 void checkGoogleRpcPreconditionFailure(api.GoogleRpcPreconditionFailure o) {
   buildCounterGoogleRpcPreconditionFailure++;
   if (buildCounterGoogleRpcPreconditionFailure < 3) {
-    checkUnnamed204(o.violations!);
+    checkUnnamed210(o.violations!);
   }
   buildCounterGoogleRpcPreconditionFailure--;
 }
@@ -10994,7 +11169,7 @@ void checkGoogleRpcPreconditionFailureViolation(
   buildCounterGoogleRpcPreconditionFailureViolation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed205() => {
+core.Map<core.String, core.Object?> buildUnnamed211() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -11007,7 +11182,7 @@ core.Map<core.String, core.Object?> buildUnnamed205() => {
       },
     };
 
-void checkUnnamed205(core.Map<core.String, core.Object?> o) {
+void checkUnnamed211(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted23 = (o['x']!) as core.Map;
   unittest.expect(casted23, unittest.hasLength(3));
@@ -11039,15 +11214,15 @@ void checkUnnamed205(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed206() => [
-      buildUnnamed205(),
-      buildUnnamed205(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed212() => [
+      buildUnnamed211(),
+      buildUnnamed211(),
     ];
 
-void checkUnnamed206(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed212(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed205(o[0]);
-  checkUnnamed205(o[1]);
+  checkUnnamed211(o[0]);
+  checkUnnamed211(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -11056,7 +11231,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed206();
+    o.details = buildUnnamed212();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -11070,7 +11245,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed206(o.details!);
+    checkUnnamed212(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -11755,6 +11930,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentGroupConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApigeeV1DeploymentGroupConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeploymentGroupConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1DeploymentGroupConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudApigeeV1Developer', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudApigeeV1Developer();
@@ -11843,6 +12028,16 @@ void main() {
       final od = api.GoogleCloudApigeeV1EndpointAttachment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EndpointAttachment(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudApigeeV1EndpointChainingRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApigeeV1EndpointChainingRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EndpointChainingRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1EndpointChainingRule(od);
     });
   });
 
@@ -19743,6 +19938,66 @@ void main() {
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudApigeeV1EnvironmentGroup(
           response as api.GoogleCloudApigeeV1EnvironmentGroup);
+    });
+
+    unittest.test('method--getDeployedIngressConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_name = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudApigeeV1EnvironmentGroupConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getDeployedIngressConfig(arg_name,
+          view: arg_view, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1EnvironmentGroupConfig(
+          response as api.GoogleCloudApigeeV1EnvironmentGroupConfig);
     });
 
     unittest.test('method--list', () async {

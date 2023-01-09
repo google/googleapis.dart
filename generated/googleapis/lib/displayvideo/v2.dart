@@ -11544,6 +11544,9 @@ class AdvertiserAdServerConfig {
 /// Billing related settings of an advertiser.
 class AdvertiserBillingConfig {
   /// The ID of a billing profile assigned to the advertiser.
+  ///
+  /// This field will default to the default billing profile ID of the
+  /// advertiser's parent partner if a value is not provided.
   core.String? billingProfileId;
 
   AdvertiserBillingConfig({
@@ -11931,16 +11934,12 @@ class AssignedTargetingOption {
   /// Output only.
   core.String? assignedTargetingOptionId;
 
-  /// An alias for the assigned targeting option id field.
+  /// An alias for the assigned_targeting_option_id.
   ///
-  /// This field is only supported for targeting types with enum targeting
-  /// enabled. This value can be used in place of the assignedTargetingOptionId
-  /// required for GET and DELETE targeting methods. An alias for the
-  /// assignedTargetingOptionId. This value can be used in place of
-  /// `assignedTargetingOptionId` when retrieving or deleting existing
-  /// targeting. This field will only be supported for all assigned targeting
-  /// options of the following targeting types: * `TARGETING_TYPE_AGE_RANGE` *
-  /// `TARGETING_TYPE_DEVICE_TYPE` *
+  /// This value can be used in place of `assignedTargetingOptionId` when
+  /// retrieving or deleting existing targeting. This field will only be
+  /// supported for all assigned targeting options of the following targeting
+  /// types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_DEVICE_TYPE` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
@@ -16802,6 +16801,10 @@ class ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   ExchangeAssignedTargetingOptionDetails({
@@ -17691,6 +17694,10 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -18397,6 +18404,10 @@ class InventorySource {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -22708,6 +22719,101 @@ typedef UserRewardedContentAssignedTargetingOptionDetails
 typedef UserRewardedContentTargetingOptionDetails
     = $UserRewardedContentTargetingOptionDetails;
 
+/// Settings related to VideoAdSequence.
+class VideoAdSequenceSettings {
+  /// The minimum time interval before the same user sees this sequence again.
+  /// Possible string values are:
+  /// - "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED" : Unspecified or
+  /// unknown.
+  /// - "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK" : 7 days.
+  /// - "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH" : 30 days.
+  core.String? minimumDuration;
+
+  /// The steps of which the sequence consists.
+  core.List<VideoAdSequenceStep>? steps;
+
+  VideoAdSequenceSettings({
+    this.minimumDuration,
+    this.steps,
+  });
+
+  VideoAdSequenceSettings.fromJson(core.Map json_)
+      : this(
+          minimumDuration: json_.containsKey('minimumDuration')
+              ? json_['minimumDuration'] as core.String
+              : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => VideoAdSequenceStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minimumDuration != null) 'minimumDuration': minimumDuration!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// The detail of a single step in a VideoAdSequence.
+class VideoAdSequenceStep {
+  /// The ID of the corresponding ad group of the step.
+  core.String? adGroupId;
+
+  /// The interaction on the previous step that will lead the viewer to this
+  /// step.
+  ///
+  /// The first step does not have interaction_type.
+  /// Possible string values are:
+  /// - "INTERACTION_TYPE_UNSPECIFIED" : Unspecified or unknown
+  /// - "INTERACTION_TYPE_PAID_VIEW" : A paid view.
+  /// - "INTERACTION_TYPE_SKIP" : Skipped by the viewer.
+  /// - "INTERACTION_TYPE_IMPRESSION" : A (viewed) ad impression.
+  /// - "INTERACTION_TYPE_ENGAGED_IMPRESSION" : An ad impression that was not
+  /// immediately skipped by the viewer, but didn't reach the billable event
+  /// either.
+  core.String? interactionType;
+
+  /// The ID of the previous step.
+  ///
+  /// The first step does not have previous step.
+  core.String? previousStepId;
+
+  /// The ID of the step.
+  core.String? stepId;
+
+  VideoAdSequenceStep({
+    this.adGroupId,
+    this.interactionType,
+    this.previousStepId,
+    this.stepId,
+  });
+
+  VideoAdSequenceStep.fromJson(core.Map json_)
+      : this(
+          adGroupId: json_.containsKey('adGroupId')
+              ? json_['adGroupId'] as core.String
+              : null,
+          interactionType: json_.containsKey('interactionType')
+              ? json_['interactionType'] as core.String
+              : null,
+          previousStepId: json_.containsKey('previousStepId')
+              ? json_['previousStepId'] as core.String
+              : null,
+          stepId: json_.containsKey('stepId')
+              ? json_['stepId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adGroupId != null) 'adGroupId': adGroupId!,
+        if (interactionType != null) 'interactionType': interactionType!,
+        if (previousStepId != null) 'previousStepId': previousStepId!,
+        if (stepId != null) 'stepId': stepId!,
+      };
+}
+
 /// Video player size targeting option details.
 ///
 /// This will be populated in the video_player_size_details field when
@@ -22936,6 +23042,9 @@ class YoutubeAndPartnersSettings {
   YoutubeAndPartnersThirdPartyMeasurementSettings?
       thirdPartyMeasurementSettings;
 
+  /// The settings related to VideoAdSequence.
+  VideoAdSequenceSettings? videoAdSequenceSettings;
+
   /// The view frequency cap settings of the line item.
   ///
   /// The max_views field in this settings object must be used if assigning a
@@ -22947,6 +23056,7 @@ class YoutubeAndPartnersSettings {
     this.contentCategory,
     this.inventorySourceSettings,
     this.thirdPartyMeasurementSettings,
+    this.videoAdSequenceSettings,
     this.viewFrequencyCap,
   });
 
@@ -22971,6 +23081,11 @@ class YoutubeAndPartnersSettings {
                       json_['thirdPartyMeasurementSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          videoAdSequenceSettings: json_.containsKey('videoAdSequenceSettings')
+              ? VideoAdSequenceSettings.fromJson(
+                  json_['videoAdSequenceSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           viewFrequencyCap: json_.containsKey('viewFrequencyCap')
               ? FrequencyCap.fromJson(json_['viewFrequencyCap']
                   as core.Map<core.String, core.dynamic>)
@@ -22984,6 +23099,8 @@ class YoutubeAndPartnersSettings {
           'inventorySourceSettings': inventorySourceSettings!,
         if (thirdPartyMeasurementSettings != null)
           'thirdPartyMeasurementSettings': thirdPartyMeasurementSettings!,
+        if (videoAdSequenceSettings != null)
+          'videoAdSequenceSettings': videoAdSequenceSettings!,
         if (viewFrequencyCap != null) 'viewFrequencyCap': viewFrequencyCap!,
       };
 }

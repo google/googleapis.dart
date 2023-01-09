@@ -342,6 +342,7 @@ api.Instance buildInstance() {
     o.state = 'foo';
     o.updateTime = 'foo';
     o.volumes = buildUnnamed6();
+    o.workloadProfile = 'foo';
   }
   buildCounterInstance--;
   return o;
@@ -397,6 +398,10 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.volumes!);
+    unittest.expect(
+      o.workloadProfile!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInstance--;
 }
@@ -2540,6 +2545,7 @@ api.Volume buildVolume() {
     o.snapshotSchedulePolicy = 'foo';
     o.state = 'foo';
     o.storageType = 'foo';
+    o.workloadProfile = 'foo';
   }
   buildCounterVolume--;
   return o;
@@ -2618,6 +2624,10 @@ void checkVolume(api.Volume o) {
     );
     unittest.expect(
       o.storageType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workloadProfile!,
       unittest.equals('foo'),
     );
   }

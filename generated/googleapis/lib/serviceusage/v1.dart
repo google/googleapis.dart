@@ -1115,66 +1115,7 @@ typedef EnableServiceRequest = $Empty;
 /// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
 /// to be passed to the API frontend, for it # to decide whether the subsequent
 /// cross-origin request is allowed # to proceed. allow_cors: true
-class Endpoint {
-  /// Dot not use.
-  ///
-  /// DEPRECATED: This field is no longer supported. Instead of using aliases,
-  /// please specify multiple google.api.Endpoint for each of the intended
-  /// aliases. Additional names that this endpoint will be hosted on.
-  ///
-  /// Unimplemented.
-  core.List<core.String>? aliases;
-
-  /// Allowing
-  /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
-  /// cross-domain traffic, would allow the backends served from this endpoint
-  /// to receive and respond to HTTP OPTIONS requests.
-  ///
-  /// The response will be used by the browser to determine whether the
-  /// subsequent cross-origin request is allowed to proceed.
-  core.bool? allowCors;
-
-  /// The canonical name of this endpoint.
-  core.String? name;
-
-  /// The specification of an Internet routable address of API frontend that
-  /// will handle requests to this
-  /// [API Endpoint](https://cloud.google.com/apis/design/glossary).
-  ///
-  /// It should be either a valid IPv4 address or a fully-qualified domain name.
-  /// For example, "8.8.8.8" or "myservice.appspot.com".
-  core.String? target;
-
-  Endpoint({
-    this.aliases,
-    this.allowCors,
-    this.name,
-    this.target,
-  });
-
-  Endpoint.fromJson(core.Map json_)
-      : this(
-          aliases: json_.containsKey('aliases')
-              ? (json_['aliases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowCors: json_.containsKey('allowCors')
-              ? json_['allowCors'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          target: json_.containsKey('target')
-              ? json_['target'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
-        if (allowCors != null) 'allowCors': allowCors!,
-        if (name != null) 'name': name!,
-        if (target != null) 'target': target!,
-      };
-}
+typedef Endpoint = $Endpoint;
 
 /// A service that is available for use by the consumer.
 class GoogleApiServiceusageV1Service {

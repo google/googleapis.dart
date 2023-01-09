@@ -607,6 +607,7 @@ api.Cluster buildCluster() {
     o.enableKubernetesAlpha = true;
     o.enableTpu = true;
     o.endpoint = 'foo';
+    o.etag = 'foo';
     o.expireTime = 'foo';
     o.id = 'foo';
     o.identityServiceConfig = buildIdentityServiceConfig();
@@ -696,6 +697,10 @@ void checkCluster(api.Cluster o) {
     unittest.expect(o.enableTpu!, unittest.isTrue);
     unittest.expect(
       o.endpoint!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -917,8 +922,10 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredResourceUsageExportConfig = buildResourceUsageExportConfig();
     o.desiredServiceExternalIpsConfig = buildServiceExternalIPsConfig();
     o.desiredShieldedNodes = buildShieldedNodes();
+    o.desiredStackType = 'foo';
     o.desiredVerticalPodAutoscaling = buildVerticalPodAutoscaling();
     o.desiredWorkloadIdentityConfig = buildWorkloadIdentityConfig();
+    o.etag = 'foo';
   }
   buildCounterClusterUpdate--;
   return o;
@@ -988,8 +995,16 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkResourceUsageExportConfig(o.desiredResourceUsageExportConfig!);
     checkServiceExternalIPsConfig(o.desiredServiceExternalIpsConfig!);
     checkShieldedNodes(o.desiredShieldedNodes!);
+    unittest.expect(
+      o.desiredStackType!,
+      unittest.equals('foo'),
+    );
     checkVerticalPodAutoscaling(o.desiredVerticalPodAutoscaling!);
     checkWorkloadIdentityConfig(o.desiredWorkloadIdentityConfig!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterClusterUpdate--;
 }
@@ -1332,6 +1347,28 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
+}
+
+core.int buildCounterEphemeralStorageLocalSsdConfig = 0;
+api.EphemeralStorageLocalSsdConfig buildEphemeralStorageLocalSsdConfig() {
+  final o = api.EphemeralStorageLocalSsdConfig();
+  buildCounterEphemeralStorageLocalSsdConfig++;
+  if (buildCounterEphemeralStorageLocalSsdConfig < 3) {
+    o.localSsdCount = 42;
+  }
+  buildCounterEphemeralStorageLocalSsdConfig--;
+  return o;
+}
+
+void checkEphemeralStorageLocalSsdConfig(api.EphemeralStorageLocalSsdConfig o) {
+  buildCounterEphemeralStorageLocalSsdConfig++;
+  if (buildCounterEphemeralStorageLocalSsdConfig < 3) {
+    unittest.expect(
+      o.localSsdCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterEphemeralStorageLocalSsdConfig--;
 }
 
 core.int buildCounterFastSocket = 0;
@@ -2185,6 +2222,28 @@ void checkListUsableSubnetworksResponse(api.ListUsableSubnetworksResponse o) {
   buildCounterListUsableSubnetworksResponse--;
 }
 
+core.int buildCounterLocalNvmeSsdBlockConfig = 0;
+api.LocalNvmeSsdBlockConfig buildLocalNvmeSsdBlockConfig() {
+  final o = api.LocalNvmeSsdBlockConfig();
+  buildCounterLocalNvmeSsdBlockConfig++;
+  if (buildCounterLocalNvmeSsdBlockConfig < 3) {
+    o.localSsdCount = 42;
+  }
+  buildCounterLocalNvmeSsdBlockConfig--;
+  return o;
+}
+
+void checkLocalNvmeSsdBlockConfig(api.LocalNvmeSsdBlockConfig o) {
+  buildCounterLocalNvmeSsdBlockConfig++;
+  if (buildCounterLocalNvmeSsdBlockConfig < 3) {
+    unittest.expect(
+      o.localSsdCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterLocalNvmeSsdBlockConfig--;
+}
+
 core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
@@ -2842,6 +2901,7 @@ api.NodeConfig buildNodeConfig() {
     o.confidentialNodes = buildConfidentialNodes();
     o.diskSizeGb = 42;
     o.diskType = 'foo';
+    o.ephemeralStorageLocalSsdConfig = buildEphemeralStorageLocalSsdConfig();
     o.fastSocket = buildFastSocket();
     o.gcfsConfig = buildGcfsConfig();
     o.gvnic = buildVirtualNIC();
@@ -2849,6 +2909,7 @@ api.NodeConfig buildNodeConfig() {
     o.kubeletConfig = buildNodeKubeletConfig();
     o.labels = buildUnnamed31();
     o.linuxNodeConfig = buildLinuxNodeConfig();
+    o.localNvmeSsdBlockConfig = buildLocalNvmeSsdBlockConfig();
     o.localSsdCount = 42;
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
@@ -2865,6 +2926,7 @@ api.NodeConfig buildNodeConfig() {
     o.spot = true;
     o.tags = buildUnnamed35();
     o.taints = buildUnnamed36();
+    o.windowsNodeConfig = buildWindowsNodeConfig();
     o.workloadMetadataConfig = buildWorkloadMetadataConfig();
   }
   buildCounterNodeConfig--;
@@ -2889,6 +2951,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.diskType!,
       unittest.equals('foo'),
     );
+    checkEphemeralStorageLocalSsdConfig(o.ephemeralStorageLocalSsdConfig!);
     checkFastSocket(o.fastSocket!);
     checkGcfsConfig(o.gcfsConfig!);
     checkVirtualNIC(o.gvnic!);
@@ -2899,6 +2962,7 @@ void checkNodeConfig(api.NodeConfig o) {
     checkNodeKubeletConfig(o.kubeletConfig!);
     checkUnnamed31(o.labels!);
     checkLinuxNodeConfig(o.linuxNodeConfig!);
+    checkLocalNvmeSsdBlockConfig(o.localNvmeSsdBlockConfig!);
     unittest.expect(
       o.localSsdCount!,
       unittest.equals(42),
@@ -2930,6 +2994,7 @@ void checkNodeConfig(api.NodeConfig o) {
     unittest.expect(o.spot!, unittest.isTrue);
     checkUnnamed35(o.tags!);
     checkUnnamed36(o.taints!);
+    checkWindowsNodeConfig(o.windowsNodeConfig!);
     checkWorkloadMetadataConfig(o.workloadMetadataConfig!);
   }
   buildCounterNodeConfig--;
@@ -3135,6 +3200,7 @@ api.NodePool buildNodePool() {
     o.autoscaling = buildNodePoolAutoscaling();
     o.conditions = buildUnnamed38();
     o.config = buildNodeConfig();
+    o.etag = 'foo';
     o.initialNodeCount = 42;
     o.instanceGroupUrls = buildUnnamed39();
     o.locations = buildUnnamed40();
@@ -3161,6 +3227,10 @@ void checkNodePool(api.NodePool o) {
     checkNodePoolAutoscaling(o.autoscaling!);
     checkUnnamed38(o.conditions!);
     checkNodeConfig(o.config!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.initialNodeCount!,
       unittest.equals(42),
@@ -4985,6 +5055,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
   if (buildCounterUpdateNodePoolRequest < 3) {
     o.clusterId = 'foo';
     o.confidentialNodes = buildConfidentialNodes();
+    o.etag = 'foo';
     o.fastSocket = buildFastSocket();
     o.gcfsConfig = buildGcfsConfig();
     o.gvnic = buildVirtualNIC();
@@ -5003,6 +5074,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
     o.tags = buildNetworkTags();
     o.taints = buildNodeTaints();
     o.upgradeSettings = buildUpgradeSettings();
+    o.windowsNodeConfig = buildWindowsNodeConfig();
     o.workloadMetadataConfig = buildWorkloadMetadataConfig();
     o.zone = 'foo';
   }
@@ -5018,6 +5090,10 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
       unittest.equals('foo'),
     );
     checkConfidentialNodes(o.confidentialNodes!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     checkFastSocket(o.fastSocket!);
     checkGcfsConfig(o.gcfsConfig!);
     checkVirtualNIC(o.gvnic!);
@@ -5051,6 +5127,7 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
     checkNetworkTags(o.tags!);
     checkNodeTaints(o.taints!);
     checkUpgradeSettings(o.upgradeSettings!);
+    checkWindowsNodeConfig(o.windowsNodeConfig!);
     checkWorkloadMetadataConfig(o.workloadMetadataConfig!);
     unittest.expect(
       o.zone!,
@@ -5212,6 +5289,28 @@ void checkVirtualNIC(api.VirtualNIC o) {
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterVirtualNIC--;
+}
+
+core.int buildCounterWindowsNodeConfig = 0;
+api.WindowsNodeConfig buildWindowsNodeConfig() {
+  final o = api.WindowsNodeConfig();
+  buildCounterWindowsNodeConfig++;
+  if (buildCounterWindowsNodeConfig < 3) {
+    o.osVersion = 'foo';
+  }
+  buildCounterWindowsNodeConfig--;
+  return o;
+}
+
+void checkWindowsNodeConfig(api.WindowsNodeConfig o) {
+  buildCounterWindowsNodeConfig++;
+  if (buildCounterWindowsNodeConfig < 3) {
+    unittest.expect(
+      o.osVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWindowsNodeConfig--;
 }
 
 core.int buildCounterWorkloadIdentityConfig = 0;
@@ -5579,6 +5678,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EphemeralStorageLocalSsdConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEphemeralStorageLocalSsdConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EphemeralStorageLocalSsdConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEphemeralStorageLocalSsdConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-FastSocket', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFastSocket();
@@ -5825,6 +5934,16 @@ void main() {
       final od = api.ListUsableSubnetworksResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListUsableSubnetworksResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-LocalNvmeSsdBlockConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLocalNvmeSsdBlockConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalNvmeSsdBlockConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLocalNvmeSsdBlockConfig(od);
     });
   });
 
@@ -6605,6 +6724,16 @@ void main() {
       final od =
           api.VirtualNIC.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVirtualNIC(od);
+    });
+  });
+
+  unittest.group('obj-schema-WindowsNodeConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWindowsNodeConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WindowsNodeConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWindowsNodeConfig(od);
     });
   });
 

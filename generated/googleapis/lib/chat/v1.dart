@@ -21,11 +21,7 @@
 ///
 /// Create an instance of [HangoutsChatApi] to access these resources:
 ///
-/// - [DmsResource]
-///   - [DmsConversationsResource]
 /// - [MediaResource]
-/// - [RoomsResource]
-///   - [RoomsConversationsResource]
 /// - [SpacesResource]
 ///   - [SpacesMembersResource]
 ///   - [SpacesMessagesResource]
@@ -62,6 +58,10 @@ class HangoutsChatApi {
   static const chatMembershipsScope =
       'https://www.googleapis.com/auth/chat.memberships';
 
+  /// View members in Google Chat conversations.
+  static const chatMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.memberships.readonly';
+
   /// View, compose, send, update, and delete messages, and add, view, and
   /// delete reactions to messages.
   static const chatMessagesScope =
@@ -71,15 +71,21 @@ class HangoutsChatApi {
   static const chatMessagesCreateScope =
       'https://www.googleapis.com/auth/chat.messages.create';
 
-  /// view messages and reactions in Google Chat
+  /// View messages and reactions in Google Chat
   static const chatMessagesReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.readonly';
 
+  /// Create conversations and spaces and view or update metadata (including
+  /// history settings) in Google Chat
+  static const chatSpacesScope = 'https://www.googleapis.com/auth/chat.spaces';
+
+  /// View chat and spaces in Google Chat
+  static const chatSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.spaces.readonly';
+
   final commons.ApiRequester _requester;
 
-  DmsResource get dms => DmsResource(_requester);
   MediaResource get media => MediaResource(_requester);
-  RoomsResource get rooms => RoomsResource(_requester);
   SpacesResource get spaces => SpacesResource(_requester);
 
   HangoutsChatApi(http.Client client,
@@ -87,261 +93,6 @@ class HangoutsChatApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class DmsResource {
-  final commons.ApiRequester _requester;
-
-  DmsConversationsResource get conversations =>
-      DmsConversationsResource(_requester);
-
-  DmsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^dms/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> messages(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^dms/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> webhooks(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class DmsConversationsResource {
-  final commons.ApiRequester _requester;
-
-  DmsConversationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> messages(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class MediaResource {
@@ -399,261 +150,6 @@ class MediaResource {
     } else {
       return response_ as commons.Media;
     }
-  }
-}
-
-class RoomsResource {
-  final commons.ApiRequester _requester;
-
-  RoomsConversationsResource get conversations =>
-      RoomsConversationsResource(_requester);
-
-  RoomsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^rooms/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> messages(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^rooms/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> webhooks(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class RoomsConversationsResource {
-  final commons.ApiRequester _requester;
-
-  RoomsConversationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> messages(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -771,86 +267,6 @@ class SpacesResource {
     );
     return ListSpacesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Legacy path for creating message.
-  ///
-  /// Calling these will result in a BadRequest response.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
-  /// Value must have pattern `^spaces/\[^/\]+$`.
-  ///
-  /// [messageId] - Optional. A custom name for a Chat message assigned at
-  /// creation. Must start with `client-` and contain only lowercase letters,
-  /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
-  ///
-  /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
-  /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
-  /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
-  /// message starts a new thread instead.
-  /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
-  ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
-  ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Message].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Message> webhooks(
-    Message request,
-    core.String parent, {
-    core.String? messageId,
-    core.String? messageReplyOption,
-    core.String? requestId,
-    core.String? threadKey,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (messageId != null) 'messageId': [messageId],
-      if (messageReplyOption != null)
-        'messageReplyOption': [messageReplyOption],
-      if (requestId != null) 'requestId': [requestId],
-      if (threadKey != null) 'threadKey': [threadKey],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1000,7 +416,10 @@ class SpacesMessagesResource {
   /// which grants early access to certain features.
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` or `chat.messages.create` authorization
-  /// scope.
+  /// scope. Because Chat provides authentication for
+  /// [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of
+  /// the URL that's generated when a webhook is registered, webhooks can create
+  /// messages without a service account or user authentication.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1707,7 +1126,6 @@ class Attachment {
       };
 }
 
-/// [Developer Preview](https://developers.google.com/workspace/preview).
 class AttachmentDataRef {
   /// The resource name of the attachment data.
   ///
@@ -4803,7 +4221,9 @@ class SlashCommandMetadata {
 class Space {
   /// The space's display name.
   ///
-  /// For direct messages between humans, this field might be empty.
+  /// Required when
+  /// [creating a space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create).
+  /// For direct messages, this field may be empty.
   core.String? displayName;
 
   /// Resource name of the space.

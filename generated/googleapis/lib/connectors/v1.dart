@@ -25,6 +25,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectionsResource]
+///       - [ProjectsLocationsConnectionsConnectionSchemaMetadataResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -218,6 +219,10 @@ class ProjectsLocationsResource {
 class ProjectsLocationsConnectionsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsConnectionsConnectionSchemaMetadataResource
+      get connectionSchemaMetadata =>
+          ProjectsLocationsConnectionsConnectionSchemaMetadataResource(
+              _requester);
   ProjectsLocationsConnectionsRuntimeActionSchemasResource
       get runtimeActionSchemas =>
           ProjectsLocationsConnectionsRuntimeActionSchemasResource(_requester);
@@ -663,6 +668,56 @@ class ProjectsLocationsConnectionsResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsConnectionSchemaMetadataResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Refresh runtime schema of a connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/connectionSchemaMetadata$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> refresh(
+    RefreshConnectionSchemaMetadataRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':refresh';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1998,7 +2053,7 @@ class Connection {
   /// Output only.
   core.String? name;
 
-  /// Configuration for the connection.
+  /// Node configuration for the connection.
   ///
   /// Optional.
   NodeConfig? nodeConfig;
@@ -2313,6 +2368,7 @@ class Connector {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
   /// Resource name of the Connector.
@@ -2441,6 +2497,7 @@ class ConnectorVersion {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
   /// Resource name of the Version.
@@ -3397,7 +3454,7 @@ class LockConfig {
       };
 }
 
-/// Configuration for the connection.
+/// Node configuration for the connection.
 class NodeConfig {
   /// Maximum number of nodes in the runtime nodes.
   core.int? maxNodeCount;
@@ -3737,6 +3794,7 @@ class Provider {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
   /// Resource name of the Provider.
@@ -3820,6 +3878,9 @@ class Provider {
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,
       };
 }
+
+/// Request message for ConnectorsService.RefreshConnectionSchemaMetadata.
+typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
 /// Resource definition
 class Resource {

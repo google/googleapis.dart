@@ -7582,6 +7582,8 @@ class ParameterMetadata {
   /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
   /// - "BIGQUERY_TABLE" : The parameter specifies a BigQuery table.
+  /// - "JAVASCRIPT_UDF_FILE" : The parameter specifies a JavaScript UDF in
+  /// Cloud Storage.
   core.String? paramType;
 
   /// Regexes that the parameter must match.
@@ -9984,6 +9986,38 @@ class Step {
       };
 }
 
+/// Information for a straggler.
+class Straggler {
+  /// Batch straggler identification and debugging information.
+  StragglerInfo? batchStraggler;
+
+  /// Streaming straggler identification and debugging information.
+  StreamingStragglerInfo? streamingStraggler;
+
+  Straggler({
+    this.batchStraggler,
+    this.streamingStraggler,
+  });
+
+  Straggler.fromJson(core.Map json_)
+      : this(
+          batchStraggler: json_.containsKey('batchStraggler')
+              ? StragglerInfo.fromJson(json_['batchStraggler']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          streamingStraggler: json_.containsKey('streamingStraggler')
+              ? StreamingStragglerInfo.fromJson(json_['streamingStraggler']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchStraggler != null) 'batchStraggler': batchStraggler!,
+        if (streamingStraggler != null)
+          'streamingStraggler': streamingStraggler!,
+      };
+}
+
 /// Information useful for debugging a straggler.
 ///
 /// Each type will provide specialized debugging information relevant for a
@@ -10049,6 +10083,9 @@ class StragglerInfo {
 
 /// Summarized straggler identification details.
 class StragglerSummary {
+  /// The most recent stragglers.
+  core.List<Straggler>? recentStragglers;
+
   /// Aggregated counts of straggler causes, keyed by the string representation
   /// of the StragglerCause enum.
   core.Map<core.String, core.String>? stragglerCauseCount;
@@ -10057,12 +10094,19 @@ class StragglerSummary {
   core.String? totalStragglerCount;
 
   StragglerSummary({
+    this.recentStragglers,
     this.stragglerCauseCount,
     this.totalStragglerCount,
   });
 
   StragglerSummary.fromJson(core.Map json_)
       : this(
+          recentStragglers: json_.containsKey('recentStragglers')
+              ? (json_['recentStragglers'] as core.List)
+                  .map((value) => Straggler.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           stragglerCauseCount: json_.containsKey('stragglerCauseCount')
               ? (json_['stragglerCauseCount']
                       as core.Map<core.String, core.dynamic>)
@@ -10079,6 +10123,7 @@ class StragglerSummary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (recentStragglers != null) 'recentStragglers': recentStragglers!,
         if (stragglerCauseCount != null)
           'stragglerCauseCount': stragglerCauseCount!,
         if (totalStragglerCount != null)
@@ -10519,6 +10564,60 @@ class StreamingStageLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (streamId != null) 'streamId': streamId!,
+      };
+}
+
+/// Information useful for streaming straggler identification and debugging.
+class StreamingStragglerInfo {
+  /// The event-time watermark lag at the time of the straggler detection.
+  core.String? dataWatermarkLag;
+
+  /// End time of this straggler.
+  core.String? endTime;
+
+  /// Start time of this straggler.
+  core.String? startTime;
+
+  /// The system watermark lag at the time of the straggler detection.
+  core.String? systemWatermarkLag;
+
+  /// Name of the worker where the straggler was detected.
+  core.String? workerName;
+
+  StreamingStragglerInfo({
+    this.dataWatermarkLag,
+    this.endTime,
+    this.startTime,
+    this.systemWatermarkLag,
+    this.workerName,
+  });
+
+  StreamingStragglerInfo.fromJson(core.Map json_)
+      : this(
+          dataWatermarkLag: json_.containsKey('dataWatermarkLag')
+              ? json_['dataWatermarkLag'] as core.String
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          systemWatermarkLag: json_.containsKey('systemWatermarkLag')
+              ? json_['systemWatermarkLag'] as core.String
+              : null,
+          workerName: json_.containsKey('workerName')
+              ? json_['workerName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataWatermarkLag != null) 'dataWatermarkLag': dataWatermarkLag!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (systemWatermarkLag != null)
+          'systemWatermarkLag': systemWatermarkLag!,
+        if (workerName != null) 'workerName': workerName!,
       };
 }
 
@@ -11795,6 +11894,9 @@ class WorkerMessage {
   /// Shutdown notice by workers.
   WorkerShutdownNotice? workerShutdownNotice;
 
+  /// Thread scaling information reported by workers.
+  WorkerThreadScalingReport? workerThreadScalingReport;
+
   WorkerMessage({
     this.labels,
     this.time,
@@ -11803,6 +11905,7 @@ class WorkerMessage {
     this.workerMessageCode,
     this.workerMetrics,
     this.workerShutdownNotice,
+    this.workerThreadScalingReport,
   });
 
   WorkerMessage.fromJson(core.Map json_)
@@ -11836,6 +11939,12 @@ class WorkerMessage {
               ? WorkerShutdownNotice.fromJson(json_['workerShutdownNotice']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          workerThreadScalingReport:
+              json_.containsKey('workerThreadScalingReport')
+                  ? WorkerThreadScalingReport.fromJson(
+                      json_['workerThreadScalingReport']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11849,6 +11958,8 @@ class WorkerMessage {
         if (workerMetrics != null) 'workerMetrics': workerMetrics!,
         if (workerShutdownNotice != null)
           'workerShutdownNotice': workerShutdownNotice!,
+        if (workerThreadScalingReport != null)
+          'workerThreadScalingReport': workerThreadScalingReport!,
       };
 }
 
@@ -11919,10 +12030,14 @@ class WorkerMessageResponse {
   /// Service's response to shutdown notice (currently empty).
   WorkerShutdownNoticeResponse? workerShutdownNoticeResponse;
 
+  /// Service's thread scaling recommendation for workers.
+  WorkerThreadScalingReportResponse? workerThreadScalingReportResponse;
+
   WorkerMessageResponse({
     this.workerHealthReportResponse,
     this.workerMetricsResponse,
     this.workerShutdownNoticeResponse,
+    this.workerThreadScalingReportResponse,
   });
 
   WorkerMessageResponse.fromJson(core.Map json_)
@@ -11944,6 +12059,12 @@ class WorkerMessageResponse {
                       json_['workerShutdownNoticeResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          workerThreadScalingReportResponse:
+              json_.containsKey('workerThreadScalingReportResponse')
+                  ? WorkerThreadScalingReportResponse.fromJson(
+                      json_['workerThreadScalingReportResponse']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11953,6 +12074,9 @@ class WorkerMessageResponse {
           'workerMetricsResponse': workerMetricsResponse!,
         if (workerShutdownNoticeResponse != null)
           'workerShutdownNoticeResponse': workerShutdownNoticeResponse!,
+        if (workerThreadScalingReportResponse != null)
+          'workerThreadScalingReportResponse':
+              workerThreadScalingReportResponse!,
       };
 }
 
@@ -12349,6 +12473,50 @@ class WorkerShutdownNotice {
 
 /// Service-side response to WorkerMessage issuing shutdown notice.
 typedef WorkerShutdownNoticeResponse = $Empty;
+
+/// Contains information about the thread scaling information of a worker.
+class WorkerThreadScalingReport {
+  /// Current number of active threads in a worker.
+  core.int? currentThreadCount;
+
+  WorkerThreadScalingReport({
+    this.currentThreadCount,
+  });
+
+  WorkerThreadScalingReport.fromJson(core.Map json_)
+      : this(
+          currentThreadCount: json_.containsKey('currentThreadCount')
+              ? json_['currentThreadCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentThreadCount != null)
+          'currentThreadCount': currentThreadCount!,
+      };
+}
+
+/// Contains the thread scaling recommendation for a worker from the backend.
+class WorkerThreadScalingReportResponse {
+  /// Recommended number of threads for a worker.
+  core.int? recommendedThreadCount;
+
+  WorkerThreadScalingReportResponse({
+    this.recommendedThreadCount,
+  });
+
+  WorkerThreadScalingReportResponse.fromJson(core.Map json_)
+      : this(
+          recommendedThreadCount: json_.containsKey('recommendedThreadCount')
+              ? json_['recommendedThreadCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recommendedThreadCount != null)
+          'recommendedThreadCount': recommendedThreadCount!,
+      };
+}
 
 /// An instruction that writes records.
 ///

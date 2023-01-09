@@ -771,6 +771,8 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// PrivateConnections.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, will skip validations.
+  ///
   /// [privateConnectionId] - Required. The private connectivity identifier.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -798,12 +800,14 @@ class ProjectsLocationsPrivateConnectionsResource {
   async.Future<Operation> create(
     PrivateConnection request,
     core.String parent, {
+    core.bool? force,
     core.String? privateConnectionId,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (privateConnectionId != null)
         'privateConnectionId': [privateConnectionId],
       if (requestId != null) 'requestId': [requestId],
@@ -2353,63 +2357,7 @@ class FetchStaticIpsResponse {
 }
 
 /// Forward SSH Tunnel connectivity.
-class ForwardSshTunnelConnectivity {
-  /// Hostname for the SSH tunnel.
-  ///
-  /// Required.
-  core.String? hostname;
-
-  /// Input only.
-  ///
-  /// SSH password.
-  core.String? password;
-
-  /// Port for the SSH tunnel, default value is 22.
-  core.int? port;
-
-  /// Input only.
-  ///
-  /// SSH private key.
-  core.String? privateKey;
-
-  /// Username for the SSH tunnel.
-  ///
-  /// Required.
-  core.String? username;
-
-  ForwardSshTunnelConnectivity({
-    this.hostname,
-    this.password,
-    this.port,
-    this.privateKey,
-    this.username,
-  });
-
-  ForwardSshTunnelConnectivity.fromJson(core.Map json_)
-      : this(
-          hostname: json_.containsKey('hostname')
-              ? json_['hostname'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          privateKey: json_.containsKey('privateKey')
-              ? json_['privateKey'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (privateKey != null) 'privateKey': privateKey!,
-        if (username != null) 'username': username!,
-      };
-}
+typedef ForwardSshTunnelConnectivity = $ForwardSshTunnelConnectivity;
 
 /// Google Cloud Storage destination configuration
 class GcsDestinationConfig {
@@ -4097,6 +4045,7 @@ class Route {
 
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
+  /// The dataset ID of the target dataset.
   core.String? datasetId;
 
   SingleTargetDataset({
