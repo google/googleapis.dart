@@ -12,7 +12,7 @@
     "baseUrl": "https://playintegrity.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Play Integrity",
-    "description": "Play Integrity",
+    "description": "The Play Integrity API helps you check that you're interacting with your genuine app on a genuine Android device powered by Google Play services. The Play Integrity API has replaced SafetyNet Attestation and Android Device Verification.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developer.android.com/google/play/integrity",
     "icons": {
@@ -136,7 +136,7 @@
             }
         }
     },
-    "revision": "20221203",
+    "revision": "20230116",
     "rootUrl": "https://playintegrity.googleapis.com/",
     "schemas": {
         "AccountActivity": {
@@ -287,7 +287,11 @@
             "id": "RequestDetails",
             "properties": {
                 "nonce": {
-                    "description": "Required. Nonce that was provided in the request (which is base64 web-safe no-wrap).",
+                    "description": "Nonce that was provided in the request (which is base64 web-safe no-wrap).",
+                    "type": "string"
+                },
+                "requestHash": {
+                    "description": "Request hash that was provided in the request.",
                     "type": "string"
                 },
                 "requestPackageName": {

@@ -849,7 +849,7 @@ class Account {
   /// Input only.
   ///
   /// The resource name of the account which will be the primary owner of the
-  /// account being created. It should be of the form `accounts/{account_id}/`.
+  /// account being created. It should be of the form `accounts/{account_id}`.
   ///
   /// Required.
   core.String? primaryOwner;

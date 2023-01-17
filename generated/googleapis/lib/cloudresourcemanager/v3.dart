@@ -343,8 +343,10 @@ class FoldersResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListFolders` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. The resource name of the organization or folder whose
-  /// folders are being listed. Must be of the form `folders/{folder_id}` or
+  /// [parent] - Required. The name of the parent resource whose folders are
+  /// being listed. Only children of this parent resource are listed;
+  /// descendants are not listed. If the parent is a folder, use the value
+  /// `folders/{folder_id}`. If the parent is an organization, use the value
   /// `organizations/{org_id}`. Access to this method is controlled by checking
   /// the `resourcemanager.folders.list` permission on the `parent`.
   ///
@@ -1397,9 +1399,11 @@ class ProjectsResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to ListProjects that indicates from where listing should continue.
   ///
-  /// [parent] - Required. The name of the parent resource to list projects
-  /// under. For example, setting this field to 'folders/1234' would list all
-  /// projects directly under that folder.
+  /// [parent] - Required. The name of the parent resource whose projects are
+  /// being listed. Only children of this parent resource are listed;
+  /// descendants are not listed. If the parent is a folder, use the value
+  /// `folders/{folder_id}`. If the parent is an organization, use the value
+  /// `organizations/{org_id}`.
   ///
   /// [showDeleted] - Optional. Indicate that projects in the `DELETE_REQUESTED`
   /// state should also be returned. Normally only `ACTIVE` projects are
@@ -2508,8 +2512,7 @@ class TagValuesResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagValues` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. Resource name for TagKey, parent of the TagValues to
-  /// be listed, in the format `tagKeys/123`.
+  /// [parent] - Required.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3926,7 +3929,7 @@ class Project {
   /// Label keys must be between 1 and 63 characters long and must conform to
   /// the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label
   /// values must be between 0 and 63 characters long and must conform to the
-  /// regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256
+  /// regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 64
   /// labels can be associated with a given resource. Clients should store
   /// labels in a representation such as JSON that does not depend on specific
   /// characters being disallowed. Example: `"myBusinessDimension" :

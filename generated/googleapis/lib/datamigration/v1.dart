@@ -24,12 +24,15 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectionProfilesResource]
+///     - [ProjectsLocationsConversionWorkspacesResource]
+///       - [ProjectsLocationsConversionWorkspacesMappingRulesResource]
 ///     - [ProjectsLocationsMigrationJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPrivateConnectionsResource]
 library datamigration.v1;
 
 import 'dart:async' as async;
-import 'dart:convert' as convert;
+import 'dart:convert' as convert_1;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -74,10 +77,14 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsConnectionProfilesResource get connectionProfiles =>
       ProjectsLocationsConnectionProfilesResource(_requester);
+  ProjectsLocationsConversionWorkspacesResource get conversionWorkspaces =>
+      ProjectsLocationsConversionWorkspacesResource(_requester);
   ProjectsLocationsMigrationJobsResource get migrationJobs =>
       ProjectsLocationsMigrationJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPrivateConnectionsResource get privateConnections =>
+      ProjectsLocationsPrivateConnectionsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -187,11 +194,19 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// [connectionProfileId] - Required. The connection profile identifier.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
-  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
-  /// hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two requests with the same id, then the second request
+  /// will be ignored. It is recommended to always set this value to a UUID. The
+  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+  /// and hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [skipValidation] - Optional. Create the connection profile without
+  /// validating it. The default is false. Only supported for Oracle connection
+  /// profiles.
+  ///
+  /// [validateOnly] - Optional. Only validate the connection profile, but don't
+  /// create any resources. The default is false. Only supported for Oracle
+  /// connection profiles.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -208,13 +223,17 @@ class ProjectsLocationsConnectionProfilesResource {
     core.String parent, {
     core.String? connectionProfileId,
     core.String? requestId,
+    core.bool? skipValidation,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (connectionProfileId != null)
         'connectionProfileId': [connectionProfileId],
       if (requestId != null) 'requestId': [requestId],
+      if (skipValidation != null) 'skipValidation': ['${skipValidation}'],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -456,14 +475,22 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
-  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
-  /// hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two requests with the same id, then the second request
+  /// will be ignored. It is recommended to always set this value to a UUID. The
+  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+  /// and hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [skipValidation] - Optional. Update the connection profile without
+  /// validating it. The default is false. Only supported for Oracle connection
+  /// profiles.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the connection profile resource by the update.
+  ///
+  /// [validateOnly] - Optional. Only validate the connection profile, but don't
+  /// update any resources. The default is false. Only supported for Oracle
+  /// connection profiles.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,13 +506,17 @@ class ProjectsLocationsConnectionProfilesResource {
     ConnectionProfile request,
     core.String name, {
     core.String? requestId,
+    core.bool? skipValidation,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
+      if (skipValidation != null) 'skipValidation': ['${skipValidation}'],
       if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -531,7 +562,7 @@ class ProjectsLocationsConnectionProfilesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -580,7 +611,7 @@ class ProjectsLocationsConnectionProfilesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -596,6 +627,735 @@ class ProjectsLocationsConnectionProfilesResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversionWorkspacesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversionWorkspacesMappingRulesResource get mappingRules =>
+      ProjectsLocationsConversionWorkspacesMappingRulesResource(_requester);
+
+  ProjectsLocationsConversionWorkspacesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Apply draft tree onto a specific destination database
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the conversion workspace resource to apply
+  /// draft to destination for. in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> apply(
+    ApplyConversionWorkspaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':apply';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Marks all the data in the conversion workspace as committed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the conversion workspace resource to commit.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> commit(
+    CommitConversionWorkspaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':commit';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a draft tree schema for the destination database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the conversion workspace resource to convert in the form
+  /// of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> convert(
+    ConvertConversionWorkspaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':convert';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new conversion workspace in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of conversion
+  /// workspaces.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [conversionWorkspaceId] - Required. The ID of the conversion workspace to
+  /// create.
+  ///
+  /// [requestId] - A unique id used to identify the request. If the server
+  /// receives two requests with the same id, then the second request will be
+  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ConversionWorkspace request,
+    core.String parent, {
+    core.String? conversionWorkspaceId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (conversionWorkspaceId != null)
+        'conversionWorkspaceId': [conversionWorkspaceId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversionWorkspaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single conversion workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the conversion workspace resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [requestId] - A unique id used to identify the request. If the server
+  /// receives two requests with the same id, then the second request will be
+  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of committed revisions of a specific conversion
+  /// workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Name of the conversion workspace
+  /// resource whose revisions are listed. in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [commitId] - Optional. Optional filter to request a specific commit id
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DescribeConversionWorkspaceRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DescribeConversionWorkspaceRevisionsResponse>
+      describeConversionWorkspaceRevisions(
+    core.String conversionWorkspace, {
+    core.String? commitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (commitId != null) 'commitId': [commitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$conversionWorkspace') +
+        ':describeConversionWorkspaceRevisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DescribeConversionWorkspaceRevisionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to describe the database entities tree for a specific
+  /// conversion workspace and a specific tree type.
+  ///
+  /// The DB Entities are not a resource like conversion workspace or mapping
+  /// rule, and they can not be created, updated or deleted like one. Instead
+  /// they are simple data objects describing the structure of the client
+  /// database.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Name of the conversion workspace
+  /// resource whose DB entities are described in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [commitId] - Request a specific commit id. If not specified, the entities
+  /// from the latest commit are returned.
+  ///
+  /// [filter] - Filter the returned entities based on AIP-160 standard
+  ///
+  /// [pageSize] - The maximum number of entities to return. The service may
+  /// return fewer than this value.
+  ///
+  /// [pageToken] - The nextPageToken value received in the previous call to
+  /// conversionWorkspace.describeDatabaseEntities, used in the subsequent
+  /// request to retrieve the next page of results. On first call this should be
+  /// left blank. When paginating, all other parameters provided to
+  /// conversionWorkspace.describeDatabaseEntities must match the call that
+  /// provided the page token.
+  ///
+  /// [tree] - The tree to fetch
+  /// Possible string values are:
+  /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type
+  /// - "SOURCE_TREE" : The source database tree
+  /// - "DRAFT_TREE" : The draft database tree
+  /// - "DESTINATION_TREE" : The destination database tree
+  ///
+  /// [uncommitted] - Whether to retrieve the latest committed version of the
+  /// entities or the latest version. This field is ignored if a specific
+  /// commit_id is specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DescribeDatabaseEntitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DescribeDatabaseEntitiesResponse> describeDatabaseEntities(
+    core.String conversionWorkspace, {
+    core.String? commitId,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? tree,
+    core.bool? uncommitted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (commitId != null) 'commitId': [commitId],
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (tree != null) 'tree': [tree],
+      if (uncommitted != null) 'uncommitted': ['${uncommitted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$conversionWorkspace') +
+        ':describeDatabaseEntities';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DescribeDatabaseEntitiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single conversion workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the conversion workspace resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionWorkspace].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionWorkspace> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConversionWorkspace.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists conversion workspaces in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of conversion
+  /// workspaces.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters conversion workspaces listed
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, \>, or \<. For example, list conversion workspaces created
+  /// this year by specifying **createTime %gt;
+  /// 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
+  /// example, you could specify **source.version = "12.c.1"** to select all
+  /// conversion workspaces with source database version equal to 12.c.1
+  ///
+  /// [pageSize] - The maximum number of conversion workspaces to return. The
+  /// service may return fewer than this value. If unspecified, at most 50 sets
+  /// will be returned.
+  ///
+  /// [pageToken] - The nextPageToken value received in the previous call to
+  /// conversionWorkspaces.list, used in the subsequent request to retrieve the
+  /// next page of results. On first call this should be left blank. When
+  /// paginating, all other parameters provided to conversionWorkspaces.list
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConversionWorkspacesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConversionWorkspacesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversionWorkspaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConversionWorkspacesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single conversion workspace.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Full name of the workspace resource, in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [requestId] - A unique id used to identify the request. If the server
+  /// receives two requests with the same id, then the second request will be
+  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the conversion workspace resource by the update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ConversionWorkspace request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Rollbacks a conversion workspace to the last committed spanshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the conversion workspace resource to rollback
+  /// to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollback(
+    RollbackConversionWorkspaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to search/list the background jobs for a specific
+  /// conversion workspace.
+  ///
+  /// The background jobs are not a resource like conversion workspace or
+  /// mapping rule, and they can not be created, updated or deleted like one.
+  /// Instead they are a way to expose the data plane jobs log.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Name of the conversion workspace
+  /// resource whos jobs are listed. in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [completedUntilTime] - Optional. If supplied, will only return jobs that
+  /// completed until (not including) the given timestamp.
+  ///
+  /// [maxSize] - Optional. The maximum number of jobs to return. The service
+  /// may return fewer than this value. If unspecified, at most 100 jobs will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
+  ///
+  /// [returnMostRecentPerJobType] - Optional. Whether or not to return just the
+  /// most recent job per job type
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchBackgroundJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchBackgroundJobsResponse> searchBackgroundJobs(
+    core.String conversionWorkspace, {
+    core.String? completedUntilTime,
+    core.int? maxSize,
+    core.bool? returnMostRecentPerJobType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (completedUntilTime != null)
+        'completedUntilTime': [completedUntilTime],
+      if (maxSize != null) 'maxSize': ['${maxSize}'],
+      if (returnMostRecentPerJobType != null)
+        'returnMostRecentPerJobType': ['${returnMostRecentPerJobType}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$conversionWorkspace') +
+        ':searchBackgroundJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchBackgroundJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports a snapshot of the source database into the conversion workspace.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the conversion workspace resource to seed with new
+  /// database structure. in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> seed(
+    SeedConversionWorkspaceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':seed';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversionWorkspacesMappingRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversionWorkspacesMappingRulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Imports the mapping rules for a given conversion workspace.
+  ///
+  /// Supports various formats of external rules files.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the conversion workspace resource to import
+  /// the rules to in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportMappingRulesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mappingRules:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -640,7 +1400,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (migrationJobId != null) 'migrationJobId': [migrationJobId],
       if (requestId != null) 'requestId': [requestId],
@@ -735,7 +1495,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String migrationJob, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -952,7 +1712,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -996,7 +1756,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,7 +1799,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1081,7 +1841,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1128,7 +1888,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1169,7 +1929,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1210,7 +1970,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1259,7 +2019,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1303,7 +2063,7 @@ class ProjectsLocationsMigrationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1360,7 +2120,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
+    final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1513,6 +2273,216 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsPrivateConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateConnectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new private connection in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns the collection of
+  /// PrivateConnections.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [privateConnectionId] - Required. The private connection identifier.
+  ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two requests with the same id, then the second request
+  /// will be ignored. It is recommended to always set this value to a UUID. The
+  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+  /// and hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [skipValidation] - Optional. If set to true, will skip validations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    PrivateConnection request,
+    core.String parent, {
+    core.String? privateConnectionId,
+    core.String? requestId,
+    core.bool? skipValidation,
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (privateConnectionId != null)
+        'privateConnectionId': [privateConnectionId],
+      if (requestId != null) 'requestId': [requestId],
+      if (skipValidation != null) 'skipValidation': ['${skipValidation}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/privateConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Database Migration Service private connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the private connection to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two requests with the same id, then the second request
+  /// will be ignored. It is recommended to always set this value to a UUID. The
+  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+  /// and hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single private connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the private connection to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PrivateConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PrivateConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PrivateConnection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of private connections in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns the collection of private
+  /// connections.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters private connections listed in
+  /// the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, \>, or \<. For example, list private connections created
+  /// this year by specifying **createTime %gt;
+  /// 2021-01-01T00:00:00.000000000Z**.
+  ///
+  /// [orderBy] - Order by fields for the result.
+  ///
+  /// [pageSize] - Maximum number of private connections to return. If
+  /// unspecified, at most 50 private connections that will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Page token received from a previous `ListPrivateConnections`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListPrivateConnections` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPrivateConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPrivateConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/privateConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPrivateConnectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Specifies required connection parameters, and the parameters required to
 /// create an AlloyDB destination cluster.
 class AlloyDbConnectionProfile {
@@ -1614,6 +2584,38 @@ class AlloyDbSettings {
       };
 }
 
+/// Request message for 'ApplyConversionWorkspace' request.
+class ApplyConversionWorkspaceRequest {
+  /// Fully qualified (Uri) name of the destination connection profile.
+  core.String? connectionProfile;
+
+  /// Filter which entities to apply.
+  ///
+  /// Leaving this field empty will apply all of the entities. Supports Google
+  /// AIP 160 based filtering.
+  core.String? filter;
+
+  ApplyConversionWorkspaceRequest({
+    this.connectionProfile,
+    this.filter,
+  });
+
+  ApplyConversionWorkspaceRequest.fromJson(core.Map json_)
+      : this(
+          connectionProfile: json_.containsKey('connectionProfile')
+              ? json_['connectionProfile'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionProfile != null) 'connectionProfile': connectionProfile!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1672,6 +2674,108 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Execution log of a background job.
+class BackgroundJobLogEntry {
+  /// Job completion comment, such as how many entities were seeded, how many
+  /// warnings were found during conversion and similar information.
+  core.String? completionComment;
+
+  /// Job completion state, i.e. the final state after the job completed.
+  /// Possible string values are:
+  /// - "JOB_COMPLETION_STATE_UNSPECIFIED" : The status is not specified. This
+  /// state will be used when job is not yet finished.
+  /// - "SUCCEEDED" : Success.
+  /// - "FAILED" : Error.
+  core.String? completionState;
+
+  /// The timestamp when the background job was finished.
+  core.String? finishTime;
+
+  /// The background job log entry id
+  core.String? id;
+
+  /// Import rules job details
+  ImportRulesJobDetails? importRulesJobDetails;
+
+  /// The type of job that was executed.
+  /// Possible string values are:
+  /// - "BACKGROUND_JOB_TYPE_UNSPECIFIED" : Unspecified background job type
+  /// - "BACKGROUND_JOB_TYPE_SOURCE_SEED" : Job to seed from the source database
+  /// - "BACKGROUND_JOB_TYPE_CONVERT" : Job to convert the source database into
+  /// a draft of the destination database
+  /// - "BACKGROUND_JOB_TYPE_APPLY_DESTINATION" : Job to apply the draft tree
+  /// onto the destination
+  /// - "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE" : Job to import and convert
+  /// mapping rules from an external source such as an ora2pg config file
+  core.String? jobType;
+
+  /// Whether the client requested the conversion workspace to be committed
+  /// after a successful completion of the job.
+  core.bool? requestAutocommit;
+
+  /// Seed job details
+  SeedJobDetails? seedJobDetails;
+
+  /// The timestamp when the background job was started.
+  core.String? startTime;
+
+  BackgroundJobLogEntry({
+    this.completionComment,
+    this.completionState,
+    this.finishTime,
+    this.id,
+    this.importRulesJobDetails,
+    this.jobType,
+    this.requestAutocommit,
+    this.seedJobDetails,
+    this.startTime,
+  });
+
+  BackgroundJobLogEntry.fromJson(core.Map json_)
+      : this(
+          completionComment: json_.containsKey('completionComment')
+              ? json_['completionComment'] as core.String
+              : null,
+          completionState: json_.containsKey('completionState')
+              ? json_['completionState'] as core.String
+              : null,
+          finishTime: json_.containsKey('finishTime')
+              ? json_['finishTime'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          importRulesJobDetails: json_.containsKey('importRulesJobDetails')
+              ? ImportRulesJobDetails.fromJson(json_['importRulesJobDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          jobType: json_.containsKey('jobType')
+              ? json_['jobType'] as core.String
+              : null,
+          requestAutocommit: json_.containsKey('requestAutocommit')
+              ? json_['requestAutocommit'] as core.bool
+              : null,
+          seedJobDetails: json_.containsKey('seedJobDetails')
+              ? SeedJobDetails.fromJson(json_['seedJobDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionComment != null) 'completionComment': completionComment!,
+        if (completionState != null) 'completionState': completionState!,
+        if (finishTime != null) 'finishTime': finishTime!,
+        if (id != null) 'id': id!,
+        if (importRulesJobDetails != null)
+          'importRulesJobDetails': importRulesJobDetails!,
+        if (jobType != null) 'jobType': jobType!,
+        if (requestAutocommit != null) 'requestAutocommit': requestAutocommit!,
+        if (seedJobDetails != null) 'seedJobDetails': seedJobDetails!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -2070,6 +3174,189 @@ class CloudSqlSettings {
       };
 }
 
+/// Column is not used as an independent entity, it is retrieved as part of a
+/// Table entity.
+class ColumnEntity {
+  /// Is the column of array type
+  core.bool? array;
+
+  /// If the column is array, of which length
+  core.int? arrayLength;
+
+  /// Is the column auto-generated/identity
+  core.bool? autoGenerated;
+
+  /// Charset override - instead of table level charset
+  core.String? charset;
+
+  /// Collation override - instead of table level collation
+  core.String? collation;
+
+  /// Comment associated with the column
+  core.String? comment;
+
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// Column data type
+  core.String? dataType;
+
+  /// Default value of the column
+  core.String? defaultValue;
+
+  /// Column fractional second precision - used for timestamp based datatypes
+  core.int? fractionalSecondsPrecision;
+
+  /// Column length - e.g. varchar (50)
+  core.String? length;
+
+  /// Column name
+  core.String? name;
+
+  /// Is the column nullable
+  core.bool? nullable;
+
+  /// Column order in the table
+  core.int? ordinalPosition;
+
+  /// Column precision - when relevant
+  core.int? precision;
+
+  /// Column scale - when relevant
+  core.int? scale;
+
+  /// Specifies the list of values allowed in the column.
+  ///
+  /// List is empty if set values is not required
+  core.List<core.String>? setValues;
+
+  /// Is the column a UDT
+  core.bool? udt;
+
+  ColumnEntity({
+    this.array,
+    this.arrayLength,
+    this.autoGenerated,
+    this.charset,
+    this.collation,
+    this.comment,
+    this.customFeatures,
+    this.dataType,
+    this.defaultValue,
+    this.fractionalSecondsPrecision,
+    this.length,
+    this.name,
+    this.nullable,
+    this.ordinalPosition,
+    this.precision,
+    this.scale,
+    this.setValues,
+    this.udt,
+  });
+
+  ColumnEntity.fromJson(core.Map json_)
+      : this(
+          array:
+              json_.containsKey('array') ? json_['array'] as core.bool : null,
+          arrayLength: json_.containsKey('arrayLength')
+              ? json_['arrayLength'] as core.int
+              : null,
+          autoGenerated: json_.containsKey('autoGenerated')
+              ? json_['autoGenerated'] as core.bool
+              : null,
+          charset: json_.containsKey('charset')
+              ? json_['charset'] as core.String
+              : null,
+          collation: json_.containsKey('collation')
+              ? json_['collation'] as core.String
+              : null,
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          defaultValue: json_.containsKey('defaultValue')
+              ? json_['defaultValue'] as core.String
+              : null,
+          fractionalSecondsPrecision:
+              json_.containsKey('fractionalSecondsPrecision')
+                  ? json_['fractionalSecondsPrecision'] as core.int
+                  : null,
+          length: json_.containsKey('length')
+              ? json_['length'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nullable: json_.containsKey('nullable')
+              ? json_['nullable'] as core.bool
+              : null,
+          ordinalPosition: json_.containsKey('ordinalPosition')
+              ? json_['ordinalPosition'] as core.int
+              : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+          setValues: json_.containsKey('setValues')
+              ? (json_['setValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          udt: json_.containsKey('udt') ? json_['udt'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (array != null) 'array': array!,
+        if (arrayLength != null) 'arrayLength': arrayLength!,
+        if (autoGenerated != null) 'autoGenerated': autoGenerated!,
+        if (charset != null) 'charset': charset!,
+        if (collation != null) 'collation': collation!,
+        if (comment != null) 'comment': comment!,
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (dataType != null) 'dataType': dataType!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (fractionalSecondsPrecision != null)
+          'fractionalSecondsPrecision': fractionalSecondsPrecision!,
+        if (length != null) 'length': length!,
+        if (name != null) 'name': name!,
+        if (nullable != null) 'nullable': nullable!,
+        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+        if (precision != null) 'precision': precision!,
+        if (scale != null) 'scale': scale!,
+        if (setValues != null) 'setValues': setValues!,
+        if (udt != null) 'udt': udt!,
+      };
+}
+
+/// Request message for 'CommitConversionWorkspace' request.
+class CommitConversionWorkspaceRequest {
+  /// Optional name of the commit.
+  ///
+  /// Optional.
+  core.String? commitName;
+
+  CommitConversionWorkspaceRequest({
+    this.commitName,
+  });
+
+  CommitConversionWorkspaceRequest.fromJson(core.Map json_)
+      : this(
+          commitName: json_.containsKey('commitName')
+              ? json_['commitName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitName != null) 'commitName': commitName!,
+      };
+}
+
 /// A connection profile definition.
 class ConnectionProfile {
   /// An AlloyDB cluster connection profile.
@@ -2107,6 +3394,9 @@ class ConnectionProfile {
   /// The name of this connection profile resource in the form of
   /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
   core.String? name;
+
+  /// An Oracle database connection profile.
+  OracleConnectionProfile? oracle;
 
   /// A PostgreSQL database connection profile.
   PostgreSqlConnectionProfile? postgresql;
@@ -2149,6 +3439,7 @@ class ConnectionProfile {
     this.labels,
     this.mysql,
     this.name,
+    this.oracle,
     this.postgresql,
     this.provider,
     this.state,
@@ -2188,6 +3479,10 @@ class ConnectionProfile {
                   json_['mysql'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          oracle: json_.containsKey('oracle')
+              ? OracleConnectionProfile.fromJson(
+                  json_['oracle'] as core.Map<core.String, core.dynamic>)
+              : null,
           postgresql: json_.containsKey('postgresql')
               ? PostgreSqlConnectionProfile.fromJson(
                   json_['postgresql'] as core.Map<core.String, core.dynamic>)
@@ -2211,10 +3506,471 @@ class ConnectionProfile {
         if (labels != null) 'labels': labels!,
         if (mysql != null) 'mysql': mysql!,
         if (name != null) 'name': name!,
+        if (oracle != null) 'oracle': oracle!,
         if (postgresql != null) 'postgresql': postgresql!,
         if (provider != null) 'provider': provider!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Constraint is not used as an independent entity, it is retrieved as part of
+/// another entity such as Table or View.
+class ConstraintEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The name of the table constraint
+  core.String? name;
+
+  /// Reference Columns which may be associated with the constraint.
+  ///
+  /// eg: if the constraint is a FOREIGN_KEY, this represents the list of full
+  /// names of referenced columns by the foreign key.
+  core.List<core.String>? referenceColumns;
+
+  /// Reference table which may be associated with the constraint.
+  ///
+  /// eg: if the constraint is a FOREIGN_KEY, this represents the list of full
+  /// name of the referenced table by the foreign key.
+  core.String? referenceTable;
+
+  /// Table columns used as part of the Constraint for e.g. primary key
+  /// constraint should list the columns which constitutes the key
+  core.List<core.String>? tableColumns;
+
+  /// Table which is associated with the constraint.
+  ///
+  /// In case the constraint is defined on a table, this field is left empty as
+  /// this information is stored in parent_name. However, if constraint is
+  /// defined on a view, this field stores the table name on which the view is
+  /// defined.
+  core.String? tableName;
+
+  /// Type of constraint - e.g. unique, primary key, foreign key (currently only
+  /// primary key is supported)
+  core.String? type;
+
+  ConstraintEntity({
+    this.customFeatures,
+    this.name,
+    this.referenceColumns,
+    this.referenceTable,
+    this.tableColumns,
+    this.tableName,
+    this.type,
+  });
+
+  ConstraintEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          referenceColumns: json_.containsKey('referenceColumns')
+              ? (json_['referenceColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          referenceTable: json_.containsKey('referenceTable')
+              ? json_['referenceTable'] as core.String
+              : null,
+          tableColumns: json_.containsKey('tableColumns')
+              ? (json_['tableColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tableName: json_.containsKey('tableName')
+              ? json_['tableName'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (name != null) 'name': name!,
+        if (referenceColumns != null) 'referenceColumns': referenceColumns!,
+        if (referenceTable != null) 'referenceTable': referenceTable!,
+        if (tableColumns != null) 'tableColumns': tableColumns!,
+        if (tableName != null) 'tableName': tableName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// The main conversion workspace resource entity.
+class ConversionWorkspace {
+  /// The timestamp when the workspace resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The destination engine details.
+  ///
+  /// Required.
+  DatabaseEngineInfo? destination;
+
+  /// The display name for the workspace
+  core.String? displayName;
+
+  /// A generic list of settings for the workspace.
+  ///
+  /// The settings are database pair dependant and can indicate default behavior
+  /// for the mapping rules engine or turn on or off specific features. Such
+  /// examples can be: convert_foreign_key_to_interleave=true,
+  /// skip_triggers=false, ignore_non_table_synonyms=true
+  core.Map<core.String, core.String>? globalSettings;
+
+  /// Whether the workspace has uncommitted changes (changes which were made
+  /// after the workspace was committed)
+  ///
+  /// Output only.
+  core.bool? hasUncommittedChanges;
+
+  /// The latest commit id
+  ///
+  /// Output only.
+  core.String? latestCommitId;
+
+  /// The timestamp when the workspace was committed.
+  ///
+  /// Output only.
+  core.String? latestCommitTime;
+
+  /// Full name of the workspace resource, in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  core.String? name;
+
+  /// The source engine details.
+  ///
+  /// Required.
+  DatabaseEngineInfo? source;
+
+  /// The timestamp when the workspace resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ConversionWorkspace({
+    this.createTime,
+    this.destination,
+    this.displayName,
+    this.globalSettings,
+    this.hasUncommittedChanges,
+    this.latestCommitId,
+    this.latestCommitTime,
+    this.name,
+    this.source,
+    this.updateTime,
+  });
+
+  ConversionWorkspace.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          destination: json_.containsKey('destination')
+              ? DatabaseEngineInfo.fromJson(
+                  json_['destination'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          globalSettings: json_.containsKey('globalSettings')
+              ? (json_['globalSettings'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          hasUncommittedChanges: json_.containsKey('hasUncommittedChanges')
+              ? json_['hasUncommittedChanges'] as core.bool
+              : null,
+          latestCommitId: json_.containsKey('latestCommitId')
+              ? json_['latestCommitId'] as core.String
+              : null,
+          latestCommitTime: json_.containsKey('latestCommitTime')
+              ? json_['latestCommitTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          source: json_.containsKey('source')
+              ? DatabaseEngineInfo.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (destination != null) 'destination': destination!,
+        if (displayName != null) 'displayName': displayName!,
+        if (globalSettings != null) 'globalSettings': globalSettings!,
+        if (hasUncommittedChanges != null)
+          'hasUncommittedChanges': hasUncommittedChanges!,
+        if (latestCommitId != null) 'latestCommitId': latestCommitId!,
+        if (latestCommitTime != null) 'latestCommitTime': latestCommitTime!,
+        if (name != null) 'name': name!,
+        if (source != null) 'source': source!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A conversion workspace's version.
+class ConversionWorkspaceInfo {
+  /// The commit ID of the conversion workspace.
+  core.String? commitId;
+
+  /// The resource name (URI) of the conversion workspace.
+  core.String? name;
+
+  ConversionWorkspaceInfo({
+    this.commitId,
+    this.name,
+  });
+
+  ConversionWorkspaceInfo.fromJson(core.Map json_)
+      : this(
+          commitId: json_.containsKey('commitId')
+              ? json_['commitId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitId != null) 'commitId': commitId!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Request message for 'ConvertConversionWorkspace' request.
+class ConvertConversionWorkspaceRequest {
+  /// Should the conversion workspace be committed automatically after the
+  /// conversion.
+  core.bool? autoCommit;
+
+  /// Filter the entities to convert.
+  ///
+  /// Leaving this field empty will convert all of the entities. Supports Google
+  /// AIP-160 style filtering.
+  core.String? filter;
+
+  ConvertConversionWorkspaceRequest({
+    this.autoCommit,
+    this.filter,
+  });
+
+  ConvertConversionWorkspaceRequest.fromJson(core.Map json_)
+      : this(
+          autoCommit: json_.containsKey('autoCommit')
+              ? json_['autoCommit'] as core.bool
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoCommit != null) 'autoCommit': autoCommit!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
+/// The type and version of a source or destination DB.
+class DatabaseEngineInfo {
+  /// Engine Type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_ENGINE_UNSPECIFIED" : The source database engine of the
+  /// migration job is unknown.
+  /// - "MYSQL" : The source engine is MySQL.
+  /// - "POSTGRESQL" : The source engine is PostgreSQL.
+  /// - "ORACLE" : The source engine is Oracle
+  core.String? engine;
+
+  /// Engine named version, for e.g. 12.c.1
+  ///
+  /// Required.
+  core.String? version;
+
+  DatabaseEngineInfo({
+    this.engine,
+    this.version,
+  });
+
+  DatabaseEngineInfo.fromJson(core.Map json_)
+      : this(
+          engine: json_.containsKey('engine')
+              ? json_['engine'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (engine != null) 'engine': engine!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// The base entity type for all the database related entities The message
+/// contains the entity name, the name of its parent, its type and the specific
+/// details per its type
+class DatabaseEntity {
+  /// Function
+  FunctionEntity? databaseFunction;
+
+  /// Package
+  PackageEntity? databasePackage;
+
+  /// The type of the database entity (table, view, index, ...).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT
+  core.String? entityType;
+
+  /// Details about entity mappings.
+  ///
+  /// For source tree entities, this holds the draft entities which were
+  /// generated by the mapping rules. For draft tree entities, this holds the
+  /// source entities which were converted to form the draft entity. Destination
+  /// entities will have no mapping details.
+  core.List<EntityMapping>? mappings;
+
+  /// The full name of the parent entity (e.g. schema name).
+  core.String? parentEntity;
+
+  /// Schema.
+  SchemaEntity? schema;
+
+  /// Sequence
+  SequenceEntity? sequence;
+
+  /// The short name (e.g. table name) of the entity.
+  core.String? shortName;
+
+  /// Stored Procedure
+  StoredProcedureEntity? storedProcedure;
+
+  /// Synonym
+  SynonymEntity? synonym;
+
+  /// Table.
+  TableEntity? table;
+
+  /// The type of tree the entity belongs to.
+  /// Possible string values are:
+  /// - "TREE_TYPE_UNSPECIFIED" : Tree Type Unspecified.
+  /// - "SOURCE" : Tree of entities loaded from a source database.
+  /// - "DRAFT" : Tree of entities converted from the source tree using the
+  /// mapping rules.
+  /// - "DESTINATION" : Tree of entities observed on the destination database.
+  core.String? tree;
+
+  /// View
+  ViewEntity? view;
+
+  DatabaseEntity({
+    this.databaseFunction,
+    this.databasePackage,
+    this.entityType,
+    this.mappings,
+    this.parentEntity,
+    this.schema,
+    this.sequence,
+    this.shortName,
+    this.storedProcedure,
+    this.synonym,
+    this.table,
+    this.tree,
+    this.view,
+  });
+
+  DatabaseEntity.fromJson(core.Map json_)
+      : this(
+          databaseFunction: json_.containsKey('databaseFunction')
+              ? FunctionEntity.fromJson(json_['databaseFunction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          databasePackage: json_.containsKey('databasePackage')
+              ? PackageEntity.fromJson(json_['databasePackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
+              : null,
+          mappings: json_.containsKey('mappings')
+              ? (json_['mappings'] as core.List)
+                  .map((value) => EntityMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentEntity: json_.containsKey('parentEntity')
+              ? json_['parentEntity'] as core.String
+              : null,
+          schema: json_.containsKey('schema')
+              ? SchemaEntity.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sequence: json_.containsKey('sequence')
+              ? SequenceEntity.fromJson(
+                  json_['sequence'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shortName: json_.containsKey('shortName')
+              ? json_['shortName'] as core.String
+              : null,
+          storedProcedure: json_.containsKey('storedProcedure')
+              ? StoredProcedureEntity.fromJson(json_['storedProcedure']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          synonym: json_.containsKey('synonym')
+              ? SynonymEntity.fromJson(
+                  json_['synonym'] as core.Map<core.String, core.dynamic>)
+              : null,
+          table: json_.containsKey('table')
+              ? TableEntity.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tree: json_.containsKey('tree') ? json_['tree'] as core.String : null,
+          view: json_.containsKey('view')
+              ? ViewEntity.fromJson(
+                  json_['view'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseFunction != null) 'databaseFunction': databaseFunction!,
+        if (databasePackage != null) 'databasePackage': databasePackage!,
+        if (entityType != null) 'entityType': entityType!,
+        if (mappings != null) 'mappings': mappings!,
+        if (parentEntity != null) 'parentEntity': parentEntity!,
+        if (schema != null) 'schema': schema!,
+        if (sequence != null) 'sequence': sequence!,
+        if (shortName != null) 'shortName': shortName!,
+        if (storedProcedure != null) 'storedProcedure': storedProcedure!,
+        if (synonym != null) 'synonym': synonym!,
+        if (table != null) 'table': table!,
+        if (tree != null) 'tree': tree!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -2226,6 +3982,7 @@ class DatabaseType {
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
   /// - "POSTGRESQL" : The source engine is PostgreSQL.
+  /// - "ORACLE" : The source engine is Oracle
   core.String? engine;
 
   /// The database provider.
@@ -2255,6 +4012,64 @@ class DatabaseType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (engine != null) 'engine': engine!,
         if (provider != null) 'provider': provider!,
+      };
+}
+
+/// Response message for 'DescribeConversionWorkspaceRevisions' request.
+class DescribeConversionWorkspaceRevisionsResponse {
+  /// The list of conversion workspace revisions.
+  core.List<ConversionWorkspace>? revisions;
+
+  DescribeConversionWorkspaceRevisionsResponse({
+    this.revisions,
+  });
+
+  DescribeConversionWorkspaceRevisionsResponse.fromJson(core.Map json_)
+      : this(
+          revisions: json_.containsKey('revisions')
+              ? (json_['revisions'] as core.List)
+                  .map((value) => ConversionWorkspace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revisions != null) 'revisions': revisions!,
+      };
+}
+
+/// Response message for 'DescribeDatabaseEntities' request.
+class DescribeDatabaseEntitiesResponse {
+  /// The list of database entities for the conversion workspace.
+  core.List<DatabaseEntity>? databaseEntities;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  DescribeDatabaseEntitiesResponse({
+    this.databaseEntities,
+    this.nextPageToken,
+  });
+
+  DescribeDatabaseEntitiesResponse.fromJson(core.Map json_)
+      : this(
+          databaseEntities: json_.containsKey('databaseEntities')
+              ? (json_['databaseEntities'] as core.List)
+                  .map((value) => DatabaseEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseEntities != null) 'databaseEntities': databaseEntities!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2316,6 +4131,94 @@ class DumpFlags {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Details of the mappings of a database entity.
+class EntityMapping {
+  /// Target entity full name.
+  ///
+  /// The draft entity can also include a column, index or constraint using the
+  /// same naming notation schema.table.column
+  core.String? draftEntity;
+
+  /// Entity mapping log entries.
+  ///
+  /// Multiple rules can be effective and contribute changes to a converted
+  /// entity such as, a rule can handle the entity name, another rule can handle
+  /// an entity type. In addition, rules which did not change the entity are
+  /// also logged along the with the reason preventing them to do so.
+  core.List<EntityMappingLogEntry>? mappingLog;
+
+  /// Source entity full name.
+  ///
+  /// The source entity can also be a column, index or constraint using the same
+  /// naming notation schema.table.column
+  core.String? sourceEntity;
+
+  EntityMapping({
+    this.draftEntity,
+    this.mappingLog,
+    this.sourceEntity,
+  });
+
+  EntityMapping.fromJson(core.Map json_)
+      : this(
+          draftEntity: json_.containsKey('draftEntity')
+              ? json_['draftEntity'] as core.String
+              : null,
+          mappingLog: json_.containsKey('mappingLog')
+              ? (json_['mappingLog'] as core.List)
+                  .map((value) => EntityMappingLogEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourceEntity: json_.containsKey('sourceEntity')
+              ? json_['sourceEntity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (draftEntity != null) 'draftEntity': draftEntity!,
+        if (mappingLog != null) 'mappingLog': mappingLog!,
+        if (sourceEntity != null) 'sourceEntity': sourceEntity!,
+      };
+}
+
+/// A single record of a rule which was used for a mapping.
+class EntityMappingLogEntry {
+  /// Comment.
+  core.String? mappingComment;
+
+  /// Which rule caused it.
+  core.String? ruleId;
+
+  /// Rule revision id
+  core.String? ruleRevisionId;
+
+  EntityMappingLogEntry({
+    this.mappingComment,
+    this.ruleId,
+    this.ruleRevisionId,
+  });
+
+  EntityMappingLogEntry.fromJson(core.Map json_)
+      : this(
+          mappingComment: json_.containsKey('mappingComment')
+              ? json_['mappingComment'] as core.String
+              : null,
+          ruleId: json_.containsKey('ruleId')
+              ? json_['ruleId'] as core.String
+              : null,
+          ruleRevisionId: json_.containsKey('ruleRevisionId')
+              ? json_['ruleRevisionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mappingComment != null) 'mappingComment': mappingComment!,
+        if (ruleId != null) 'ruleId': ruleId!,
+        if (ruleRevisionId != null) 'ruleRevisionId': ruleRevisionId!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -2335,6 +4238,41 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Forward SSH Tunnel connectivity.
+typedef ForwardSshTunnelConnectivity = $ForwardSshTunnelConnectivity;
+
+/// Function's parent is a schema.
+class FunctionEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the function
+  core.String? sqlCode;
+
+  FunctionEntity({
+    this.customFeatures,
+    this.sqlCode,
+  });
+
+  FunctionEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sqlCode != null) 'sqlCode': sqlCode!,
+      };
+}
 
 /// Request message for 'GenerateSshScript' request.
 class GenerateSshScriptRequest {
@@ -2382,6 +4320,143 @@ class GenerateSshScriptRequest {
       };
 }
 
+/// Request message for 'ImportMappingRules' request.
+class ImportMappingRulesRequest {
+  /// Should the conversion workspace be committed automatically after the
+  /// import operation.
+  core.bool? autoCommit;
+
+  /// One or more rules files
+  core.List<RulesFile>? rulesFiles;
+
+  /// The format of the rules content file.
+  /// Possible string values are:
+  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified Rules Format
+  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : Harbour Bridge
+  /// Session file
+  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : ORA2PG config file
+  core.String? rulesFormat;
+
+  ImportMappingRulesRequest({
+    this.autoCommit,
+    this.rulesFiles,
+    this.rulesFormat,
+  });
+
+  ImportMappingRulesRequest.fromJson(core.Map json_)
+      : this(
+          autoCommit: json_.containsKey('autoCommit')
+              ? json_['autoCommit'] as core.bool
+              : null,
+          rulesFiles: json_.containsKey('rulesFiles')
+              ? (json_['rulesFiles'] as core.List)
+                  .map((value) => RulesFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rulesFormat: json_.containsKey('rulesFormat')
+              ? json_['rulesFormat'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoCommit != null) 'autoCommit': autoCommit!,
+        if (rulesFiles != null) 'rulesFiles': rulesFiles!,
+        if (rulesFormat != null) 'rulesFormat': rulesFormat!,
+      };
+}
+
+/// Details regarding an Import Rules background job
+class ImportRulesJobDetails {
+  /// The requested file format
+  /// Possible string values are:
+  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified Rules Format
+  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : Harbour Bridge
+  /// Session file
+  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : ORA2PG config file
+  core.String? fileFormat;
+
+  /// File names used for the import rules job
+  core.List<core.String>? files;
+
+  ImportRulesJobDetails({
+    this.fileFormat,
+    this.files,
+  });
+
+  ImportRulesJobDetails.fromJson(core.Map json_)
+      : this(
+          fileFormat: json_.containsKey('fileFormat')
+              ? json_['fileFormat'] as core.String
+              : null,
+          files: json_.containsKey('files')
+              ? (json_['files'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+        if (files != null) 'files': files!,
+      };
+}
+
+/// Index is not used as an independent entity, it is retrieved as part of a
+/// Table entity.
+class IndexEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The name of the index
+  core.String? name;
+
+  /// Table columns used as part of the Index for e.g. B-TREE index should list
+  /// the columns which constitutes the index.
+  core.List<core.String>? tableColumns;
+
+  /// Type of index - e.g. B-TREE
+  core.String? type;
+
+  /// boolean value indicating whether the index is unique
+  core.bool? unique;
+
+  IndexEntity({
+    this.customFeatures,
+    this.name,
+    this.tableColumns,
+    this.type,
+    this.unique,
+  });
+
+  IndexEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tableColumns: json_.containsKey('tableColumns')
+              ? (json_['tableColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          unique:
+              json_.containsKey('unique') ? json_['unique'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (name != null) 'name': name!,
+        if (tableColumns != null) 'tableColumns': tableColumns!,
+        if (type != null) 'type': type!,
+        if (unique != null) 'unique': unique!,
+      };
+}
+
 /// Response message for 'ListConnectionProfiles' request.
 class ListConnectionProfilesResponse {
   /// The response list of connection profiles.
@@ -2422,6 +4497,51 @@ class ListConnectionProfilesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProfiles != null)
           'connectionProfiles': connectionProfiles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for 'ListConversionWorkspaces' request.
+class ListConversionWorkspacesResponse {
+  /// The list of conversion workspace objects.
+  core.List<ConversionWorkspace>? conversionWorkspaces;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListConversionWorkspacesResponse({
+    this.conversionWorkspaces,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListConversionWorkspacesResponse.fromJson(core.Map json_)
+      : this(
+          conversionWorkspaces: json_.containsKey('conversionWorkspaces')
+              ? (json_['conversionWorkspaces'] as core.List)
+                  .map((value) => ConversionWorkspace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionWorkspaces != null)
+          'conversionWorkspaces': conversionWorkspaces!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2535,6 +4655,51 @@ class ListOperationsResponse {
       };
 }
 
+/// Response message for 'ListPrivateConnections' request.
+class ListPrivateConnectionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of private connections.
+  core.List<PrivateConnection>? privateConnections;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListPrivateConnectionsResponse({
+    this.nextPageToken,
+    this.privateConnections,
+    this.unreachable,
+  });
+
+  ListPrivateConnectionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          privateConnections: json_.containsKey('privateConnections')
+              ? (json_['privateConnections'] as core.List)
+                  .map((value) => PrivateConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (privateConnections != null)
+          'privateConnections': privateConnections!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
@@ -2561,6 +4726,9 @@ class MachineConfig {
 
 /// Represents a Database Migration Service migration job object.
 class MigrationJob {
+  /// The conversion workspace used by the migration.
+  ConversionWorkspaceInfo? conversionWorkspace;
+
   /// The timestamp when the migration job resource was created.
   ///
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -2608,6 +4776,14 @@ class MigrationJob {
   ///
   /// Output only.
   Status? error;
+
+  /// This field can be used to select the entities to migrate as part of the
+  /// migration job.
+  ///
+  /// It uses AIP-160 notation to select a subset of the entities configured on
+  /// the associated conversion-workspace. This field should not be set on
+  /// migration-jobs that are not associated with a conversion workspace.
+  core.String? filter;
 
   /// The resource labels for migration job to use to annotate any related
   /// underlying resources such as Compute Engine VMs.
@@ -2691,6 +4867,7 @@ class MigrationJob {
   VpcPeeringConnectivity? vpcPeeringConnectivity;
 
   MigrationJob({
+    this.conversionWorkspace,
     this.createTime,
     this.destination,
     this.destinationDatabase,
@@ -2700,6 +4877,7 @@ class MigrationJob {
     this.duration,
     this.endTime,
     this.error,
+    this.filter,
     this.labels,
     this.name,
     this.phase,
@@ -2715,6 +4893,10 @@ class MigrationJob {
 
   MigrationJob.fromJson(core.Map json_)
       : this(
+          conversionWorkspace: json_.containsKey('conversionWorkspace')
+              ? ConversionWorkspaceInfo.fromJson(json_['conversionWorkspace']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -2744,6 +4926,9 @@ class MigrationJob {
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -2784,6 +4969,8 @@ class MigrationJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionWorkspace != null)
+          'conversionWorkspace': conversionWorkspace!,
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (destinationDatabase != null)
@@ -2794,6 +4981,7 @@ class MigrationJob {
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
+        if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (phase != null) 'phase': phase!,
@@ -2971,6 +5159,158 @@ class Operation {
       };
 }
 
+/// Specifies connection parameters required specifically for Oracle databases.
+class OracleConnectionProfile {
+  /// Database service for the Oracle connection.
+  ///
+  /// Required.
+  core.String? databaseService;
+
+  /// Forward SSH tunnel connectivity.
+  ForwardSshTunnelConnectivity? forwardSshConnectivity;
+
+  /// The IP or hostname of the source Oracle database.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password for the user that Database Migration Service will be using to
+  /// connect to the database. This field is not returned on request, and the
+  /// value is encrypted when stored in Database Migration Service.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// Indicates whether a new password is included in the request.
+  ///
+  /// Output only.
+  core.bool? passwordSet;
+
+  /// The network port of the source Oracle database.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// Private connectivity.
+  PrivateConnectivity? privateConnectivity;
+
+  /// Static Service IP connectivity.
+  StaticServiceIpConnectivity? staticServiceIpConnectivity;
+
+  /// The username that Database Migration Service will use to connect to the
+  /// database.
+  ///
+  /// The value is encrypted when stored in Database Migration Service.
+  ///
+  /// Required.
+  core.String? username;
+
+  OracleConnectionProfile({
+    this.databaseService,
+    this.forwardSshConnectivity,
+    this.host,
+    this.password,
+    this.passwordSet,
+    this.port,
+    this.privateConnectivity,
+    this.staticServiceIpConnectivity,
+    this.username,
+  });
+
+  OracleConnectionProfile.fromJson(core.Map json_)
+      : this(
+          databaseService: json_.containsKey('databaseService')
+              ? json_['databaseService'] as core.String
+              : null,
+          forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
+              ? ForwardSshTunnelConnectivity.fromJson(
+                  json_['forwardSshConnectivity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          passwordSet: json_.containsKey('passwordSet')
+              ? json_['passwordSet'] as core.bool
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          privateConnectivity: json_.containsKey('privateConnectivity')
+              ? PrivateConnectivity.fromJson(json_['privateConnectivity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          staticServiceIpConnectivity:
+              json_.containsKey('staticServiceIpConnectivity')
+                  ? StaticServiceIpConnectivity.fromJson(
+                      json_['staticServiceIpConnectivity']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseService != null) 'databaseService': databaseService!,
+        if (forwardSshConnectivity != null)
+          'forwardSshConnectivity': forwardSshConnectivity!,
+        if (host != null) 'host': host!,
+        if (password != null) 'password': password!,
+        if (passwordSet != null) 'passwordSet': passwordSet!,
+        if (port != null) 'port': port!,
+        if (privateConnectivity != null)
+          'privateConnectivity': privateConnectivity!,
+        if (staticServiceIpConnectivity != null)
+          'staticServiceIpConnectivity': staticServiceIpConnectivity!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Package's parent is a schema.
+class PackageEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the package body.
+  ///
+  /// If the package specification has cursors or subprograms, then the package
+  /// body is mandatory.
+  core.String? packageBody;
+
+  /// The SQL code which creates the package
+  core.String? packageSqlCode;
+
+  PackageEntity({
+    this.customFeatures,
+    this.packageBody,
+    this.packageSqlCode,
+  });
+
+  PackageEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          packageBody: json_.containsKey('packageBody')
+              ? json_['packageBody'] as core.String
+              : null,
+          packageSqlCode: json_.containsKey('packageSqlCode')
+              ? json_['packageSqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (packageBody != null) 'packageBody': packageBody!,
+        if (packageSqlCode != null) 'packageSqlCode': packageSqlCode!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -3031,11 +5371,13 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String? etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
+  core.List<core.int> get etagAsBytes => convert_1.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert_1.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -3135,8 +5477,14 @@ class PostgreSqlConnectionProfile {
   /// Required.
   core.int? port;
 
+  /// Private service connect connectivity.
+  PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
+
   /// SSL configuration for the destination to connect to the source database.
   SslConfig? ssl;
+
+  /// Static ip connectivity data (default, no additional details needed).
+  StaticIpConnectivity? staticIpConnectivity;
 
   /// The username that Database Migration Service will use to connect to the
   /// database.
@@ -3153,7 +5501,9 @@ class PostgreSqlConnectionProfile {
     this.password,
     this.passwordSet,
     this.port,
+    this.privateServiceConnectConnectivity,
     this.ssl,
+    this.staticIpConnectivity,
     this.username,
   });
 
@@ -3173,9 +5523,19 @@ class PostgreSqlConnectionProfile {
               ? json_['passwordSet'] as core.bool
               : null,
           port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          privateServiceConnectConnectivity:
+              json_.containsKey('privateServiceConnectConnectivity')
+                  ? PrivateServiceConnectConnectivity.fromJson(
+                      json_['privateServiceConnectConnectivity']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           ssl: json_.containsKey('ssl')
               ? SslConfig.fromJson(
                   json_['ssl'] as core.Map<core.String, core.dynamic>)
+              : null,
+          staticIpConnectivity: json_.containsKey('staticIpConnectivity')
+              ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           username: json_.containsKey('username')
               ? json_['username'] as core.String
@@ -3190,7 +5550,12 @@ class PostgreSqlConnectionProfile {
         if (password != null) 'password': password!,
         if (passwordSet != null) 'passwordSet': passwordSet!,
         if (port != null) 'port': port!,
+        if (privateServiceConnectConnectivity != null)
+          'privateServiceConnectConnectivity':
+              privateServiceConnectConnectivity!,
         if (ssl != null) 'ssl': ssl!,
+        if (staticIpConnectivity != null)
+          'staticIpConnectivity': staticIpConnectivity!,
         if (username != null) 'username': username!,
       };
 }
@@ -3271,6 +5636,160 @@ class PrimaryInstanceSettings {
       };
 }
 
+/// The PrivateConnection resource is used to establish private connectivity
+/// with the customer's network.
+class PrivateConnection {
+  /// The create time of the resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The private connection display name.
+  core.String? displayName;
+
+  /// The error details in case of state FAILED.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The resource labels for private connections to use to annotate any related
+  /// underlying resources such as Compute Engine VMs.
+  ///
+  /// An object containing a list of "key": "value" pairs. Example: `{ "name":
+  /// "wrench", "mass": "1.3kg", "count": "3" }`.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource's name.
+  core.String? name;
+
+  /// The state of the Private Connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED"
+  /// - "CREATING" : The private connection is in creation state - creating
+  /// resources.
+  /// - "CREATED" : The private connection has been created with all of its
+  /// resources.
+  /// - "FAILED" : The private connection creation has failed.
+  /// - "DELETING" : The private connection is being deleted.
+  /// - "FAILED_TO_DELETE" : Delete request has failed, resource is in invalid
+  /// state.
+  /// - "DELETED" : The private connection has been deleted.
+  core.String? state;
+
+  /// The last update time of the resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// VPC Peering Config.
+  VpcPeeringConfig? vpcPeeringConfig;
+
+  PrivateConnection({
+    this.createTime,
+    this.displayName,
+    this.error,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
+    this.vpcPeeringConfig,
+  });
+
+  PrivateConnection.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          vpcPeeringConfig: json_.containsKey('vpcPeeringConfig')
+              ? VpcPeeringConfig.fromJson(json_['vpcPeeringConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (error != null) 'error': error!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (vpcPeeringConfig != null) 'vpcPeeringConfig': vpcPeeringConfig!,
+      };
+}
+
+/// Private Connectivity.
+class PrivateConnectivity {
+  /// The resource name (URI) of the private connection.
+  ///
+  /// Required.
+  core.String? privateConnection;
+
+  PrivateConnectivity({
+    this.privateConnection,
+  });
+
+  PrivateConnectivity.fromJson(core.Map json_)
+      : this(
+          privateConnection: json_.containsKey('privateConnection')
+              ? json_['privateConnection'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privateConnection != null) 'privateConnection': privateConnection!,
+      };
+}
+
+/// Private Service Connect connectivity
+/// (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+class PrivateServiceConnectConnectivity {
+  /// A service attachment that exposes a database, and has the following
+  /// format:
+  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+  ///
+  /// Required.
+  core.String? serviceAttachment;
+
+  PrivateServiceConnectConnectivity({
+    this.serviceAttachment,
+  });
+
+  PrivateServiceConnectConnectivity.fromJson(core.Map json_)
+      : this(
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+      };
+}
+
 /// Request message for 'PromoteMigrationJob' request.
 typedef PromoteMigrationJobRequest = $Empty;
 
@@ -3328,6 +5847,256 @@ class ReverseSshConnectivity {
         if (vmIp != null) 'vmIp': vmIp!,
         if (vmPort != null) 'vmPort': vmPort!,
         if (vpc != null) 'vpc': vpc!,
+      };
+}
+
+/// Request message for 'RollbackConversionWorkspace' request.
+typedef RollbackConversionWorkspaceRequest = $Empty;
+
+/// Details of a single rules file
+class RulesFile {
+  /// The text content of the rules that needs to be converted
+  core.String? rulesContent;
+
+  /// The filename of the rules that needs to be converted.
+  ///
+  /// This is used mainly so future logs of the import rules job will contain
+  /// this detail and can therefore be searched by it later
+  core.String? rulesSourceFilename;
+
+  RulesFile({
+    this.rulesContent,
+    this.rulesSourceFilename,
+  });
+
+  RulesFile.fromJson(core.Map json_)
+      : this(
+          rulesContent: json_.containsKey('rulesContent')
+              ? json_['rulesContent'] as core.String
+              : null,
+          rulesSourceFilename: json_.containsKey('rulesSourceFilename')
+              ? json_['rulesSourceFilename'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rulesContent != null) 'rulesContent': rulesContent!,
+        if (rulesSourceFilename != null)
+          'rulesSourceFilename': rulesSourceFilename!,
+      };
+}
+
+/// Schema typically has no parent entity, but can have a parent entity
+/// DatabaseInstance (for database engines which supports it).
+///
+/// For some database engines the term schema and user can be used
+/// interchangeably when they refer to a namespace or a collection of other
+/// database entities. Can store additional information which is schema
+/// specific.
+class SchemaEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  SchemaEntity({
+    this.customFeatures,
+  });
+
+  SchemaEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+      };
+}
+
+/// Response message for 'SearchBackgroundJobs' request.
+class SearchBackgroundJobsResponse {
+  /// The list of conversion workspace mapping rules.
+  core.List<BackgroundJobLogEntry>? jobs;
+
+  SearchBackgroundJobsResponse({
+    this.jobs,
+  });
+
+  SearchBackgroundJobsResponse.fromJson(core.Map json_)
+      : this(
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
+                  .map((value) => BackgroundJobLogEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobs != null) 'jobs': jobs!,
+      };
+}
+
+/// Request message for 'SeedConversionWorkspace' request.
+class SeedConversionWorkspaceRequest {
+  /// Should the conversion workspace be committed automatically after the seed
+  /// operation.
+  core.bool? autoCommit;
+
+  /// Fully qualified (Uri) name of the destination connection profile.
+  core.String? destinationConnectionProfile;
+
+  /// Fully qualified (Uri) name of the source connection profile.
+  core.String? sourceConnectionProfile;
+
+  SeedConversionWorkspaceRequest({
+    this.autoCommit,
+    this.destinationConnectionProfile,
+    this.sourceConnectionProfile,
+  });
+
+  SeedConversionWorkspaceRequest.fromJson(core.Map json_)
+      : this(
+          autoCommit: json_.containsKey('autoCommit')
+              ? json_['autoCommit'] as core.bool
+              : null,
+          destinationConnectionProfile:
+              json_.containsKey('destinationConnectionProfile')
+                  ? json_['destinationConnectionProfile'] as core.String
+                  : null,
+          sourceConnectionProfile: json_.containsKey('sourceConnectionProfile')
+              ? json_['sourceConnectionProfile'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoCommit != null) 'autoCommit': autoCommit!,
+        if (destinationConnectionProfile != null)
+          'destinationConnectionProfile': destinationConnectionProfile!,
+        if (sourceConnectionProfile != null)
+          'sourceConnectionProfile': sourceConnectionProfile!,
+      };
+}
+
+/// Details regarding a Seed background job
+class SeedJobDetails {
+  /// The connection profile which was used for the seed job
+  core.String? connectionProfile;
+
+  SeedJobDetails({
+    this.connectionProfile,
+  });
+
+  SeedJobDetails.fromJson(core.Map json_)
+      : this(
+          connectionProfile: json_.containsKey('connectionProfile')
+              ? json_['connectionProfile'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionProfile != null) 'connectionProfile': connectionProfile!,
+      };
+}
+
+/// Sequence's parent is a schema.
+class SequenceEntity {
+  /// Indicates number of entries to cache / precreate
+  core.String? cache;
+
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// Indicates whether the sequence value should cycle through
+  core.bool? cycle;
+
+  /// Increment value for the sequence
+  core.String? increment;
+
+  /// Maximum number for the sequence represented as bytes to accommodate large
+  /// numbers
+  core.String? maxValue;
+  core.List<core.int> get maxValueAsBytes => convert_1.base64.decode(maxValue!);
+
+  set maxValueAsBytes(core.List<core.int> bytes_) {
+    maxValue = convert_1.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Minimum number for the sequence represented as bytes to accommodate large
+  /// numbers
+  core.String? minValue;
+  core.List<core.int> get minValueAsBytes => convert_1.base64.decode(minValue!);
+
+  set minValueAsBytes(core.List<core.int> bytes_) {
+    minValue = convert_1.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Start number for the sequence represented as bytes to accommodate large
+  /// numbers
+  core.String? startValue;
+  core.List<core.int> get startValueAsBytes =>
+      convert_1.base64.decode(startValue!);
+
+  set startValueAsBytes(core.List<core.int> bytes_) {
+    startValue = convert_1.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  SequenceEntity({
+    this.cache,
+    this.customFeatures,
+    this.cycle,
+    this.increment,
+    this.maxValue,
+    this.minValue,
+    this.startValue,
+  });
+
+  SequenceEntity.fromJson(core.Map json_)
+      : this(
+          cache:
+              json_.containsKey('cache') ? json_['cache'] as core.String : null,
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          cycle:
+              json_.containsKey('cycle') ? json_['cycle'] as core.bool : null,
+          increment: json_.containsKey('increment')
+              ? json_['increment'] as core.String
+              : null,
+          maxValue: json_.containsKey('maxValue')
+              ? json_['maxValue'] as core.String
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? json_['minValue'] as core.String
+              : null,
+          startValue: json_.containsKey('startValue')
+              ? json_['startValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cache != null) 'cache': cache!,
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (cycle != null) 'cycle': cycle!,
+        if (increment != null) 'increment': increment!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (startValue != null) 'startValue': startValue!,
       };
 }
 
@@ -3566,6 +6335,9 @@ typedef StartMigrationJobRequest = $Empty;
 /// console or using Cloud SQL APIs. No additional configuration is required.
 typedef StaticIpConnectivity = $Empty;
 
+/// Static IP address connectivity configured on service project.
+typedef StaticServiceIpConnectivity = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -3578,11 +6350,233 @@ typedef Status = $Status;
 /// Request message for 'StopMigrationJob' request.
 typedef StopMigrationJobRequest = $Empty;
 
+/// Stored procedure's parent is a schema.
+class StoredProcedureEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the stored procedure
+  core.String? sqlCode;
+
+  StoredProcedureEntity({
+    this.customFeatures,
+    this.sqlCode,
+  });
+
+  StoredProcedureEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sqlCode != null) 'sqlCode': sqlCode!,
+      };
+}
+
+/// Synonym's parent is a schema.
+class SynonymEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The name of the entity for which the synonym is being created (the source)
+  core.String? sourceEntity;
+
+  /// The type of the entity for which the synonym is being created (usually a
+  /// table or a sequence)
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT
+  core.String? sourceType;
+
+  SynonymEntity({
+    this.customFeatures,
+    this.sourceEntity,
+    this.sourceType,
+  });
+
+  SynonymEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sourceEntity: json_.containsKey('sourceEntity')
+              ? json_['sourceEntity'] as core.String
+              : null,
+          sourceType: json_.containsKey('sourceType')
+              ? json_['sourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sourceEntity != null) 'sourceEntity': sourceEntity!,
+        if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// Table's parent is a schema.
+class TableEntity {
+  /// Table Columns.
+  core.List<ColumnEntity>? columns;
+
+  /// Comment associated with the table
+  core.String? comment;
+
+  /// Table Constraints.
+  core.List<ConstraintEntity>? constraints;
+
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// Table Indices.
+  core.List<IndexEntity>? indices;
+
+  /// Table triggers.
+  core.List<TriggerEntity>? triggers;
+
+  TableEntity({
+    this.columns,
+    this.comment,
+    this.constraints,
+    this.customFeatures,
+    this.indices,
+    this.triggers,
+  });
+
+  TableEntity.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => ColumnEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          constraints: json_.containsKey('constraints')
+              ? (json_['constraints'] as core.List)
+                  .map((value) => ConstraintEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          indices: json_.containsKey('indices')
+              ? (json_['indices'] as core.List)
+                  .map((value) => IndexEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          triggers: json_.containsKey('triggers')
+              ? (json_['triggers'] as core.List)
+                  .map((value) => TriggerEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (comment != null) 'comment': comment!,
+        if (constraints != null) 'constraints': constraints!,
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (indices != null) 'indices': indices!,
+        if (triggers != null) 'triggers': triggers!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Trigger is not used as an independent entity, it is retrieved as part of a
+/// Table entity.
+class TriggerEntity {
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The name of the trigger
+  core.String? name;
+
+  /// The SQL code which creates the trigger
+  core.String? sqlCode;
+
+  /// Indicates when the trigger fires, e.g. BEFORE STATEMENT, AFTER EACH ROW
+  core.String? triggerType;
+
+  /// The DML, DDL, or database events that fires the trigger, e.g. INSERT,
+  /// UPDATE
+  core.List<core.String>? triggeringEvents;
+
+  TriggerEntity({
+    this.customFeatures,
+    this.name,
+    this.sqlCode,
+    this.triggerType,
+    this.triggeringEvents,
+  });
+
+  TriggerEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+          triggerType: json_.containsKey('triggerType')
+              ? json_['triggerType'] as core.String
+              : null,
+          triggeringEvents: json_.containsKey('triggeringEvents')
+              ? (json_['triggeringEvents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (name != null) 'name': name!,
+        if (sqlCode != null) 'sqlCode': sqlCode!,
+        if (triggerType != null) 'triggerType': triggerType!,
+        if (triggeringEvents != null) 'triggeringEvents': triggeringEvents!,
+      };
+}
 
 /// The username/password for a database user.
 ///
@@ -3625,6 +6619,49 @@ class UserPassword {
 
 /// Request message for 'VerifyMigrationJob' request.
 typedef VerifyMigrationJobRequest = $Empty;
+
+/// View's parent is a schema.
+class ViewEntity {
+  /// View Constraints.
+  core.List<ConstraintEntity>? constraints;
+
+  /// Custom engine specific features
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the view.
+  core.String? sqlCode;
+
+  ViewEntity({
+    this.constraints,
+    this.customFeatures,
+    this.sqlCode,
+  });
+
+  ViewEntity.fromJson(core.Map json_)
+      : this(
+          constraints: json_.containsKey('constraints')
+              ? (json_['constraints'] as core.List)
+                  .map((value) => ConstraintEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraints != null) 'constraints': constraints!,
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sqlCode != null) 'sqlCode': sqlCode!,
+      };
+}
 
 /// VM creation configuration message
 class VmCreationConfig {
@@ -3685,6 +6722,42 @@ class VmSelectionConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vmZone != null) 'vmZone': vmZone!,
+      };
+}
+
+/// The VPC Peering configuration is used to create VPC peering with the
+/// consumer's VPC.
+class VpcPeeringConfig {
+  /// A free subnet for peering.
+  ///
+  /// (CIDR of /29)
+  ///
+  /// Required.
+  core.String? subnet;
+
+  /// Fully qualified name of the VPC DMS will peer to.
+  ///
+  /// Required.
+  core.String? vpcName;
+
+  VpcPeeringConfig({
+    this.subnet,
+    this.vpcName,
+  });
+
+  VpcPeeringConfig.fromJson(core.Map json_)
+      : this(
+          subnet: json_.containsKey('subnet')
+              ? json_['subnet'] as core.String
+              : null,
+          vpcName: json_.containsKey('vpcName')
+              ? json_['vpcName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subnet != null) 'subnet': subnet!,
+        if (vpcName != null) 'vpcName': vpcName!,
       };
 }
 

@@ -629,7 +629,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
@@ -672,7 +672,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
@@ -2183,7 +2183,7 @@ class NodeSpec {
 
   /// The unqualified resource name.
   ///
-  /// Should follow the ^\[A-Za-z0-9_.~+%-\]+$ regex format. This is only
+  /// Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only
   /// specified when requesting a single node. In case of multi-node requests,
   /// multi_node_params must be populated instead. It's an error to specify both
   /// node_id and multi_node_params.

@@ -92,6 +92,7 @@ api.App buildApp() {
   final o = api.App();
   buildCounterApp++;
   if (buildCounterApp < 3) {
+    o.appApprovalState = 'foo';
     o.appId = 'foo';
     o.linkedAppInfo = buildAppLinkedAppInfo();
     o.manualAppInfo = buildAppManualAppInfo();
@@ -105,6 +106,10 @@ api.App buildApp() {
 void checkApp(api.App o) {
   buildCounterApp++;
   if (buildCounterApp < 3) {
+    unittest.expect(
+      o.appApprovalState!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.appId!,
       unittest.equals('foo'),

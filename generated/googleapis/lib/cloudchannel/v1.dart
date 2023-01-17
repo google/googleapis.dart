@@ -4136,6 +4136,62 @@ class GoogleCloudChannelV1CommitmentSettings {
       };
 }
 
+/// Specifies the override to conditionally apply.
+class GoogleCloudChannelV1ConditionalOverride {
+  /// Information about the applied override's adjustment.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingAdjustment? adjustment;
+
+  /// The RebillingBasis to use for the applied override.
+  ///
+  /// Shows the relative cost based on your repricing costs.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REBILLING_BASIS_UNSPECIFIED" : Not used.
+  /// - "COST_AT_LIST" : Use the list cost, also known as the MSRP.
+  /// - "DIRECT_CUSTOMER_COST" : Pass through all discounts except the Reseller
+  /// Program Discount. If this is the default cost base and no adjustments are
+  /// specified, the output cost will be exactly what the customer would see if
+  /// they viewed the bill in the Google Cloud Console.
+  core.String? rebillingBasis;
+
+  /// Specifies the condition which, if met, will apply the override.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingCondition? repricingCondition;
+
+  GoogleCloudChannelV1ConditionalOverride({
+    this.adjustment,
+    this.rebillingBasis,
+    this.repricingCondition,
+  });
+
+  GoogleCloudChannelV1ConditionalOverride.fromJson(core.Map json_)
+      : this(
+          adjustment: json_.containsKey('adjustment')
+              ? GoogleCloudChannelV1RepricingAdjustment.fromJson(
+                  json_['adjustment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rebillingBasis: json_.containsKey('rebillingBasis')
+              ? json_['rebillingBasis'] as core.String
+              : null,
+          repricingCondition: json_.containsKey('repricingCondition')
+              ? GoogleCloudChannelV1RepricingCondition.fromJson(
+                  json_['repricingCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adjustment != null) 'adjustment': adjustment!,
+        if (rebillingBasis != null) 'rebillingBasis': rebillingBasis!,
+        if (repricingCondition != null)
+          'repricingCondition': repricingCondition!,
+      };
+}
+
 /// Represents the constraints for buying the Offer.
 class GoogleCloudChannelV1Constraints {
   /// Represents constraints required to purchase the Offer for a customer.
@@ -6754,6 +6810,30 @@ class GoogleCloudChannelV1RepricingAdjustment {
       };
 }
 
+/// Represents the various repricing conditions you can use for a conditional
+/// override.
+class GoogleCloudChannelV1RepricingCondition {
+  /// SKU Group condition for override.
+  GoogleCloudChannelV1SkuGroupCondition? skuGroupCondition;
+
+  GoogleCloudChannelV1RepricingCondition({
+    this.skuGroupCondition,
+  });
+
+  GoogleCloudChannelV1RepricingCondition.fromJson(core.Map json_)
+      : this(
+          skuGroupCondition: json_.containsKey('skuGroupCondition')
+              ? GoogleCloudChannelV1SkuGroupCondition.fromJson(
+                  json_['skuGroupCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuGroupCondition != null) 'skuGroupCondition': skuGroupCondition!,
+      };
+}
+
 /// Configuration for repricing a Google bill over a period of time.
 class GoogleCloudChannelV1RepricingConfig {
   /// Information about the adjustment.
@@ -6766,6 +6846,13 @@ class GoogleCloudChannelV1RepricingConfig {
   /// This is the only supported value for ChannelPartnerRepricingConfig.
   GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity?
       channelPartnerGranularity;
+
+  /// The conditional overrides to apply for this configuration.
+  ///
+  /// If you list multiple overrides, only the first valid override is used. If
+  /// you don't list any overrides, the API uses the normal adjustment and
+  /// rebilling basis.
+  core.List<GoogleCloudChannelV1ConditionalOverride>? conditionalOverrides;
 
   /// The YearMonth when these adjustments activate.
   ///
@@ -6798,6 +6885,7 @@ class GoogleCloudChannelV1RepricingConfig {
   GoogleCloudChannelV1RepricingConfig({
     this.adjustment,
     this.channelPartnerGranularity,
+    this.conditionalOverrides,
     this.effectiveInvoiceMonth,
     this.entitlementGranularity,
     this.rebillingBasis,
@@ -6815,6 +6903,13 @@ class GoogleCloudChannelV1RepricingConfig {
                       .fromJson(json_['channelPartnerGranularity']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          conditionalOverrides: json_.containsKey('conditionalOverrides')
+              ? (json_['conditionalOverrides'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1ConditionalOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           effectiveInvoiceMonth: json_.containsKey('effectiveInvoiceMonth')
               ? GoogleTypeDate.fromJson(json_['effectiveInvoiceMonth']
                   as core.Map<core.String, core.dynamic>)
@@ -6833,6 +6928,8 @@ class GoogleCloudChannelV1RepricingConfig {
         if (adjustment != null) 'adjustment': adjustment!,
         if (channelPartnerGranularity != null)
           'channelPartnerGranularity': channelPartnerGranularity!,
+        if (conditionalOverrides != null)
+          'conditionalOverrides': conditionalOverrides!,
         if (effectiveInvoiceMonth != null)
           'effectiveInvoiceMonth': effectiveInvoiceMonth!,
         if (entitlementGranularity != null)
@@ -6990,6 +7087,32 @@ class GoogleCloudChannelV1Sku {
         if (marketingInfo != null) 'marketingInfo': marketingInfo!,
         if (name != null) 'name': name!,
         if (product != null) 'product': product!,
+      };
+}
+
+/// A condition that applies the override if a line item SKU is found in the SKU
+/// group.
+class GoogleCloudChannelV1SkuGroupCondition {
+  /// Specifies a SKU group (https://cloud.google.com/skus/sku-groups).
+  ///
+  /// Resource name of SKU group. Format:
+  /// accounts/{account}/skuGroups/{sku_group}. Example:
+  /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+  core.String? skuGroup;
+
+  GoogleCloudChannelV1SkuGroupCondition({
+    this.skuGroup,
+  });
+
+  GoogleCloudChannelV1SkuGroupCondition.fromJson(core.Map json_)
+      : this(
+          skuGroup: json_.containsKey('skuGroup')
+              ? json_['skuGroup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuGroup != null) 'skuGroup': skuGroup!,
       };
 }
 
@@ -7661,7 +7784,62 @@ class GoogleTypeDateTime {
 /// Java's BigDecimal or Python's decimal.Decimal. \[BigDecimal\]:
 /// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
 /// \[decimal.Decimal\]: https://docs.python.org/3/library/decimal.html
-typedef GoogleTypeDecimal = $GoogleTypeDecimal;
+class GoogleTypeDecimal {
+  /// The decimal value, as a string.
+  ///
+  /// The string representation consists of an optional sign, `+` (`U+002B`) or
+  /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits
+  /// ("the integer"), optionally followed by a fraction, optionally followed by
+  /// an exponent. An empty string **should** be interpreted as `0`. The
+  /// fraction consists of a decimal point followed by zero or more decimal
+  /// digits. The string must contain at least one digit in either the integer
+  /// or the fraction. The number formed by the sign, the integer and the
+  /// fraction is referred to as the significand. The exponent consists of the
+  /// character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
+  /// digits. Services **should** normalize decimal values before storing them
+  /// by: - Removing an explicitly-provided `+` sign (`+2.5` -\> `2.5`). -
+  /// Replacing a zero-length integer value with `0` (`.5` -\> `0.5`). -
+  /// Coercing the exponent character to upper-case, with explicit sign (`2.5e8`
+  /// -\> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
+  /// -\> `2.5`). Services **may** perform additional normalization based on its
+  /// own needs and the internal decimal implementation selected, such as
+  /// shifting the decimal point and exponent value together (example: `2.5E-1`
+  /// \<-\> `0.25`). Additionally, services **may** preserve trailing zeroes in
+  /// the fraction to indicate increased precision, but are not required to do
+  /// so. Note that only the `.` character is supported to divide the integer
+  /// and the fraction; `,` **should not** be supported regardless of locale.
+  /// Additionally, thousand separators **should not** be supported. If a
+  /// service does support them, values **must** be normalized. The ENBF grammar
+  /// is: DecimalString = '' | \[Sign\] Significand \[Exponent\]; Sign = '+' |
+  /// '-'; Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' |
+  /// 'E') \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' |
+  /// '7' | '8' | '9' }; Services **should** clearly document the range of
+  /// supported values, the maximum supported precision (total number of
+  /// digits), and, if applicable, the scale (number of digits after the decimal
+  /// point), as well as how it behaves when receiving out-of-bounds values.
+  /// Services **may** choose to accept values passed as input even when the
+  /// value has a higher precision or scale than the service supports, and
+  /// **should** round the value to fit the supported scale. Alternatively, the
+  /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC)
+  /// if precision would be lost. Services **should** error with `400 Bad
+  /// Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value
+  /// outside of the supported range.
+  core.String? value;
+
+  GoogleTypeDecimal({
+    this.value,
+  });
+
+  GoogleTypeDecimal.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

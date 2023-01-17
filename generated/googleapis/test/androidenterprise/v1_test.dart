@@ -722,6 +722,28 @@ void checkConfigurationVariables(api.ConfigurationVariables o) {
   buildCounterConfigurationVariables--;
 }
 
+core.int buildCounterCreateEnrollmentTokenResponse = 0;
+api.CreateEnrollmentTokenResponse buildCreateEnrollmentTokenResponse() {
+  final o = api.CreateEnrollmentTokenResponse();
+  buildCounterCreateEnrollmentTokenResponse++;
+  if (buildCounterCreateEnrollmentTokenResponse < 3) {
+    o.enrollmentToken = 'foo';
+  }
+  buildCounterCreateEnrollmentTokenResponse--;
+  return o;
+}
+
+void checkCreateEnrollmentTokenResponse(api.CreateEnrollmentTokenResponse o) {
+  buildCounterCreateEnrollmentTokenResponse++;
+  if (buildCounterCreateEnrollmentTokenResponse < 3) {
+    unittest.expect(
+      o.enrollmentToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCreateEnrollmentTokenResponse--;
+}
+
 core.int buildCounterDevice = 0;
 api.Device buildDevice() {
   final o = api.Device();
@@ -886,6 +908,7 @@ api.Enterprise buildEnterprise() {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
     o.administrator = buildUnnamed12();
+    o.googleAuthenticationSettings = buildGoogleAuthenticationSettings();
     o.id = 'foo';
     o.name = 'foo';
     o.primaryDomain = 'foo';
@@ -898,6 +921,7 @@ void checkEnterprise(api.Enterprise o) {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
     checkUnnamed12(o.administrator!);
+    checkGoogleAuthenticationSettings(o.googleAuthenticationSettings!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1074,6 +1098,33 @@ void checkEntitlementsListResponse(api.EntitlementsListResponse o) {
     checkUnnamed14(o.entitlement!);
   }
   buildCounterEntitlementsListResponse--;
+}
+
+core.int buildCounterGoogleAuthenticationSettings = 0;
+api.GoogleAuthenticationSettings buildGoogleAuthenticationSettings() {
+  final o = api.GoogleAuthenticationSettings();
+  buildCounterGoogleAuthenticationSettings++;
+  if (buildCounterGoogleAuthenticationSettings < 3) {
+    o.dedicatedDevicesAllowed = 'foo';
+    o.googleAuthenticationRequired = 'foo';
+  }
+  buildCounterGoogleAuthenticationSettings--;
+  return o;
+}
+
+void checkGoogleAuthenticationSettings(api.GoogleAuthenticationSettings o) {
+  buildCounterGoogleAuthenticationSettings++;
+  if (buildCounterGoogleAuthenticationSettings < 3) {
+    unittest.expect(
+      o.dedicatedDevicesAllowed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleAuthenticationRequired!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAuthenticationSettings--;
 }
 
 core.int buildCounterGroupLicense = 0;
@@ -3381,6 +3432,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CreateEnrollmentTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCreateEnrollmentTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateEnrollmentTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCreateEnrollmentTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Device', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDevice();
@@ -3498,6 +3559,16 @@ void main() {
       final od = api.EntitlementsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEntitlementsListResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAuthenticationSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAuthenticationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAuthenticationSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAuthenticationSettings(od);
     });
   });
 
@@ -4703,6 +4774,78 @@ void main() {
           enterpriseToken: arg_enterpriseToken,
           $fields: arg_$fields);
       checkEnterprise(response as api.Enterprise);
+    });
+
+    unittest.test('method--createEnrollmentToken', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidEnterpriseApi(mock).enterprises;
+      final arg_enterpriseId = 'foo';
+      final arg_deviceType = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('androidenterprise/v1/enterprises/'),
+        );
+        pathOffset += 33;
+        index = path.indexOf('/createEnrollmentToken', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_enterpriseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/createEnrollmentToken'),
+        );
+        pathOffset += 22;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['deviceType']!.first,
+          unittest.equals(arg_deviceType),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCreateEnrollmentTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.createEnrollmentToken(arg_enterpriseId,
+          deviceType: arg_deviceType, $fields: arg_$fields);
+      checkCreateEnrollmentTokenResponse(
+          response as api.CreateEnrollmentTokenResponse);
     });
 
     unittest.test('method--createWebToken', () async {

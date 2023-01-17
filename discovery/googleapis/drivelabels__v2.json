@@ -215,7 +215,7 @@
             }
         }
     },
-    "revision": "20221130",
+    "revision": "20230111",
     "rootUrl": "https://drivelabels.googleapis.com/",
     "schemas": {
         "GoogleAppsDriveLabelsV2BadgeColors": {

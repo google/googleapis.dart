@@ -32,6 +32,9 @@
 ///   - [AppsServicesResource]
 ///     - [AppsServicesVersionsResource]
 ///       - [AppsServicesVersionsInstancesResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsApplicationsResource]
 library appengine.v1;
 
 import 'dart:async' as async;
@@ -67,6 +70,7 @@ class AppengineApi {
   final commons.ApiRequester _requester;
 
   AppsResource get apps => AppsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AppengineApi(http.Client client,
       {core.String rootUrl = 'https://appengine.googleapis.com/',
@@ -2084,6 +2088,78 @@ class AppsServicesVersionsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsResource get applications =>
+      ProjectsLocationsApplicationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets information about an application.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the Application resource to get.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Application].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Application> get(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Application.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }

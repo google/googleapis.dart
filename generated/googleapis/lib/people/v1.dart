@@ -1344,8 +1344,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - The resource name for the person, assigned by the server.
-  /// An ASCII string with a max length of 27 characters, in the form of
-  /// `people/{person_id}`.
+  /// An ASCII string in the form of `people/{person_id}`.
   /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on each
@@ -4135,8 +4134,7 @@ class Person {
 
   /// The resource name for the person, assigned by the server.
   ///
-  /// An ASCII string with a max length of 27 characters, in the form of
-  /// `people/{person_id}`.
+  /// An ASCII string in the form of `people/{person_id}`.
   core.String? resourceName;
 
   /// The person's SIP addresses.

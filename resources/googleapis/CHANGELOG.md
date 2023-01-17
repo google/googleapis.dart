@@ -1,3 +1,17 @@
+## 10.0.0
+
+### API changes
+
+- `analyticshub` - new!
+- `baremetalsolution` - dropped v1. (Still have v2)
+- `batch` - new!
+- `contentwarehouse` - new!
+- `displayvideo` - added `v2`
+- `metastore` - new!
+- `tpu` - added `v2`
+- `travelimpactmodel` - new!
+- `workloadmanager` - new!
+
 ## 9.2.0
 
 - Require Dart 2.17 or later.

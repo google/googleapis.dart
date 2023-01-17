@@ -1427,6 +1427,13 @@ class AddRolesRequest {
 
 /// Request to create a subnetwork in a previously peered service network.
 class AddSubnetworkRequest {
+  /// Defines the allowSubnetCidrRoutesOverlap field of the subnet, e.g.
+  /// Available in alpha and beta according to
+  /// [Compute API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks/insert)
+  ///
+  /// Optional.
+  core.bool? allowSubnetCidrRoutesOverlap;
+
   /// The IAM permission check determines whether the consumer project has
   /// 'servicenetworking.services.use' permission or not.
   ///
@@ -1477,9 +1484,10 @@ class AddSubnetworkRequest {
 
   /// The prefix length of the subnet's IP address range.
   ///
-  /// Use CIDR range notation, such as `30` to provision a subnet with an
-  /// `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of
-  /// available ranges in the service consumer's allocated range.
+  /// Use CIDR range notation, such as `29` to provision a subnet with an
+  /// `x.x.x.x/29` CIDR range. The IP address range is drawn from a pool of
+  /// available ranges in the service consumer's allocated range. GCE disallows
+  /// subnets with prefix_length \> 29
   ///
   /// Required.
   core.int? ipPrefixLength;
@@ -1537,6 +1545,15 @@ class AddSubnetworkRequest {
   /// Optional.
   core.List<core.String>? requestedRanges;
 
+  /// Defines the role field of the subnet, e.g. 'ACTIVE'.
+  ///
+  /// For information about the roles that can be set using this field, see
+  /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+  /// in the Compute API documentation.
+  ///
+  /// Optional.
+  core.String? role;
+
   /// A list of secondary IP ranges to be created within the new subnetwork.
   ///
   /// Optional.
@@ -1567,6 +1584,7 @@ class AddSubnetworkRequest {
   core.bool? useCustomComputeIdempotencyWindow;
 
   AddSubnetworkRequest({
+    this.allowSubnetCidrRoutesOverlap,
     this.checkServiceNetworkingUsePermission,
     this.computeIdempotencyWindow,
     this.consumer,
@@ -1579,6 +1597,7 @@ class AddSubnetworkRequest {
     this.region,
     this.requestedAddress,
     this.requestedRanges,
+    this.role,
     this.secondaryIpRangeSpecs,
     this.subnetwork,
     this.subnetworkUsers,
@@ -1587,6 +1606,10 @@ class AddSubnetworkRequest {
 
   AddSubnetworkRequest.fromJson(core.Map json_)
       : this(
+          allowSubnetCidrRoutesOverlap:
+              json_.containsKey('allowSubnetCidrRoutesOverlap')
+                  ? json_['allowSubnetCidrRoutesOverlap'] as core.bool
+                  : null,
           checkServiceNetworkingUsePermission:
               json_.containsKey('checkServiceNetworkingUsePermission')
                   ? json_['checkServiceNetworkingUsePermission'] as core.bool
@@ -1628,6 +1651,7 @@ class AddSubnetworkRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
           secondaryIpRangeSpecs: json_.containsKey('secondaryIpRangeSpecs')
               ? (json_['secondaryIpRangeSpecs'] as core.List)
                   .map((value) => SecondaryIpRangeSpec.fromJson(
@@ -1649,6 +1673,8 @@ class AddSubnetworkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowSubnetCidrRoutesOverlap != null)
+          'allowSubnetCidrRoutesOverlap': allowSubnetCidrRoutesOverlap!,
         if (checkServiceNetworkingUsePermission != null)
           'checkServiceNetworkingUsePermission':
               checkServiceNetworkingUsePermission!,
@@ -1666,6 +1692,7 @@ class AddSubnetworkRequest {
         if (region != null) 'region': region!,
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
         if (requestedRanges != null) 'requestedRanges': requestedRanges!,
+        if (role != null) 'role': role!,
         if (secondaryIpRangeSpecs != null)
           'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
@@ -2353,9 +2380,10 @@ class PolicyBinding {
 class RangeReservation {
   /// The size of the desired subnet.
   ///
-  /// Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30
+  /// Use usual CIDR range notation. For example, '29' to find unused x.x.x.x/29
   /// CIDR range. The goal is to determine if one of the allocated ranges has
-  /// enough free space for a subnet of the requested size.
+  /// enough free space for a subnet of the requested size. GCE disallows
+  /// subnets with prefix_length \> 29
   ///
   /// Required.
   core.int? ipPrefixLength;
@@ -2372,9 +2400,10 @@ class RangeReservation {
 
   /// The size of the desired secondary ranges for the subnet.
   ///
-  /// Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30
+  /// Use usual CIDR range notation. For example, '29' to find unused x.x.x.x/29
   /// CIDR range. The goal is to determine that the allocated ranges have enough
-  /// free space for all the requested secondary ranges.
+  /// free space for all the requested secondary ranges. GCE disallows subnets
+  /// with prefix_length \> 29
   ///
   /// Optional.
   core.List<core.int>? secondaryRangeIpPrefixLengths;

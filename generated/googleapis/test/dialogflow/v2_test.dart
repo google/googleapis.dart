@@ -123,6 +123,8 @@ api.GoogleCloudDialogflowV2AgentAssistantFeedback
     o.answerRelevance = 'foo';
     o.documentCorrectness = 'foo';
     o.documentEfficiency = 'foo';
+    o.summarizationFeedback =
+        buildGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback();
   }
   buildCounterGoogleCloudDialogflowV2AgentAssistantFeedback--;
   return o;
@@ -144,8 +146,49 @@ void checkGoogleCloudDialogflowV2AgentAssistantFeedback(
       o.documentEfficiency!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback(
+        o.summarizationFeedback!);
   }
   buildCounterGoogleCloudDialogflowV2AgentAssistantFeedback--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback =
+    0;
+api.GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
+    buildGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback() {
+  final o =
+      api.GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback();
+  buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback++;
+  if (buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback <
+      3) {
+    o.startTime = 'foo';
+    o.submitTime = 'foo';
+    o.summaryText = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback(
+    api.GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback o) {
+  buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback++;
+  if (buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback <
+      3) {
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.submitTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summaryText!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback--;
 }
 
 core.int buildCounterGoogleCloudDialogflowV2AgentAssistantRecord = 0;
@@ -6441,6 +6484,127 @@ void checkGoogleCloudDialogflowV2SuggestArticlesResponse(
   buildCounterGoogleCloudDialogflowV2SuggestArticlesResponse--;
 }
 
+core.int buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest =
+    0;
+api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest
+    buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest() {
+  final o = api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest();
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest <
+      3) {
+    o.contextSize = 42;
+    o.latestMessage = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(
+    api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest o) {
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest <
+      3) {
+    unittest.expect(
+      o.contextSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.latestMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse =
+    0;
+api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse
+    buildGoogleCloudDialogflowV2SuggestConversationSummaryResponse() {
+  final o = api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse();
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse <
+      3) {
+    o.contextSize = 42;
+    o.latestMessage = 'foo';
+    o.summary =
+        buildGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary();
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(
+    api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse o) {
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse <
+      3) {
+    unittest.expect(
+      o.contextSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.latestMessage!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary(
+        o.summary!);
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed92() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed92(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary =
+    0;
+api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary
+    buildGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary() {
+  final o =
+      api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary();
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary <
+      3) {
+    o.answerRecord = 'foo';
+    o.text = 'foo';
+    o.textSections = buildUnnamed92();
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary(
+    api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary o) {
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary++;
+  if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary <
+      3) {
+    unittest.expect(
+      o.answerRecord!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed92(o.textSections!);
+  }
+  buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary--;
+}
+
 core.int buildCounterGoogleCloudDialogflowV2SuggestFaqAnswersRequest = 0;
 api.GoogleCloudDialogflowV2SuggestFaqAnswersRequest
     buildGoogleCloudDialogflowV2SuggestFaqAnswersRequest() {
@@ -6472,12 +6636,12 @@ void checkGoogleCloudDialogflowV2SuggestFaqAnswersRequest(
   buildCounterGoogleCloudDialogflowV2SuggestFaqAnswersRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowV2FaqAnswer> buildUnnamed92() => [
+core.List<api.GoogleCloudDialogflowV2FaqAnswer> buildUnnamed93() => [
       buildGoogleCloudDialogflowV2FaqAnswer(),
       buildGoogleCloudDialogflowV2FaqAnswer(),
     ];
 
-void checkUnnamed92(core.List<api.GoogleCloudDialogflowV2FaqAnswer> o) {
+void checkUnnamed93(core.List<api.GoogleCloudDialogflowV2FaqAnswer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2FaqAnswer(o[0]);
   checkGoogleCloudDialogflowV2FaqAnswer(o[1]);
@@ -6490,7 +6654,7 @@ api.GoogleCloudDialogflowV2SuggestFaqAnswersResponse
   buildCounterGoogleCloudDialogflowV2SuggestFaqAnswersResponse++;
   if (buildCounterGoogleCloudDialogflowV2SuggestFaqAnswersResponse < 3) {
     o.contextSize = 42;
-    o.faqAnswers = buildUnnamed92();
+    o.faqAnswers = buildUnnamed93();
     o.latestMessage = 'foo';
   }
   buildCounterGoogleCloudDialogflowV2SuggestFaqAnswersResponse--;
@@ -6505,7 +6669,7 @@ void checkGoogleCloudDialogflowV2SuggestFaqAnswersResponse(
       o.contextSize!,
       unittest.equals(42),
     );
-    checkUnnamed92(o.faqAnswers!);
+    checkUnnamed93(o.faqAnswers!);
     unittest.expect(
       o.latestMessage!,
       unittest.equals('foo'),
@@ -6545,12 +6709,12 @@ void checkGoogleCloudDialogflowV2SuggestSmartRepliesRequest(
   buildCounterGoogleCloudDialogflowV2SuggestSmartRepliesRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowV2SmartReplyAnswer> buildUnnamed93() => [
+core.List<api.GoogleCloudDialogflowV2SmartReplyAnswer> buildUnnamed94() => [
       buildGoogleCloudDialogflowV2SmartReplyAnswer(),
       buildGoogleCloudDialogflowV2SmartReplyAnswer(),
     ];
 
-void checkUnnamed93(core.List<api.GoogleCloudDialogflowV2SmartReplyAnswer> o) {
+void checkUnnamed94(core.List<api.GoogleCloudDialogflowV2SmartReplyAnswer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2SmartReplyAnswer(o[0]);
   checkGoogleCloudDialogflowV2SmartReplyAnswer(o[1]);
@@ -6564,7 +6728,7 @@ api.GoogleCloudDialogflowV2SuggestSmartRepliesResponse
   if (buildCounterGoogleCloudDialogflowV2SuggestSmartRepliesResponse < 3) {
     o.contextSize = 42;
     o.latestMessage = 'foo';
-    o.smartReplyAnswers = buildUnnamed93();
+    o.smartReplyAnswers = buildUnnamed94();
   }
   buildCounterGoogleCloudDialogflowV2SuggestSmartRepliesResponse--;
   return o;
@@ -6582,7 +6746,7 @@ void checkGoogleCloudDialogflowV2SuggestSmartRepliesResponse(
       o.latestMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed93(o.smartReplyAnswers!);
+    checkUnnamed94(o.smartReplyAnswers!);
   }
   buildCounterGoogleCloudDialogflowV2SuggestSmartRepliesResponse--;
 }
@@ -6644,12 +6808,12 @@ void checkGoogleCloudDialogflowV2SuggestionResult(
   buildCounterGoogleCloudDialogflowV2SuggestionResult--;
 }
 
-core.List<core.String> buildUnnamed94() => [
+core.List<core.String> buildUnnamed95() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed94(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6667,7 +6831,7 @@ api.GoogleCloudDialogflowV2SynthesizeSpeechConfig
   final o = api.GoogleCloudDialogflowV2SynthesizeSpeechConfig();
   buildCounterGoogleCloudDialogflowV2SynthesizeSpeechConfig++;
   if (buildCounterGoogleCloudDialogflowV2SynthesizeSpeechConfig < 3) {
-    o.effectsProfileId = buildUnnamed94();
+    o.effectsProfileId = buildUnnamed95();
     o.pitch = 42.0;
     o.speakingRate = 42.0;
     o.voice = buildGoogleCloudDialogflowV2VoiceSelectionParams();
@@ -6681,7 +6845,7 @@ void checkGoogleCloudDialogflowV2SynthesizeSpeechConfig(
     api.GoogleCloudDialogflowV2SynthesizeSpeechConfig o) {
   buildCounterGoogleCloudDialogflowV2SynthesizeSpeechConfig++;
   if (buildCounterGoogleCloudDialogflowV2SynthesizeSpeechConfig < 3) {
-    checkUnnamed94(o.effectsProfileId!);
+    checkUnnamed95(o.effectsProfileId!);
     unittest.expect(
       o.pitch!,
       unittest.equals(42.0),
@@ -6728,12 +6892,12 @@ void checkGoogleCloudDialogflowV2TextInput(
 }
 
 core.Map<core.String, api.GoogleCloudDialogflowV2SynthesizeSpeechConfig>
-    buildUnnamed95() => {
+    buildUnnamed96() => {
           'x': buildGoogleCloudDialogflowV2SynthesizeSpeechConfig(),
           'y': buildGoogleCloudDialogflowV2SynthesizeSpeechConfig(),
         };
 
-void checkUnnamed95(
+void checkUnnamed96(
     core.Map<core.String, api.GoogleCloudDialogflowV2SynthesizeSpeechConfig>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6750,7 +6914,7 @@ api.GoogleCloudDialogflowV2TextToSpeechSettings
     o.enableTextToSpeech = true;
     o.outputAudioEncoding = 'foo';
     o.sampleRateHertz = 42;
-    o.synthesizeSpeechConfigs = buildUnnamed95();
+    o.synthesizeSpeechConfigs = buildUnnamed96();
   }
   buildCounterGoogleCloudDialogflowV2TextToSpeechSettings--;
   return o;
@@ -6769,7 +6933,7 @@ void checkGoogleCloudDialogflowV2TextToSpeechSettings(
       o.sampleRateHertz!,
       unittest.equals(42),
     );
-    checkUnnamed95(o.synthesizeSpeechConfigs!);
+    checkUnnamed96(o.synthesizeSpeechConfigs!);
   }
   buildCounterGoogleCloudDialogflowV2TextToSpeechSettings--;
 }
@@ -6811,12 +6975,12 @@ void checkGoogleCloudDialogflowV2UndeployConversationModelRequest(
   buildCounterGoogleCloudDialogflowV2UndeployConversationModelRequest--;
 }
 
-core.List<core.String> buildUnnamed96() => [
+core.List<core.String> buildUnnamed97() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed96(core.List<core.String> o) {
+void checkUnnamed97(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6834,7 +6998,7 @@ api.GoogleCloudDialogflowV2ValidationError
   final o = api.GoogleCloudDialogflowV2ValidationError();
   buildCounterGoogleCloudDialogflowV2ValidationError++;
   if (buildCounterGoogleCloudDialogflowV2ValidationError < 3) {
-    o.entries = buildUnnamed96();
+    o.entries = buildUnnamed97();
     o.errorMessage = 'foo';
     o.severity = 'foo';
   }
@@ -6846,7 +7010,7 @@ void checkGoogleCloudDialogflowV2ValidationError(
     api.GoogleCloudDialogflowV2ValidationError o) {
   buildCounterGoogleCloudDialogflowV2ValidationError++;
   if (buildCounterGoogleCloudDialogflowV2ValidationError < 3) {
-    checkUnnamed96(o.entries!);
+    checkUnnamed97(o.entries!);
     unittest.expect(
       o.errorMessage!,
       unittest.equals('foo'),
@@ -6859,12 +7023,12 @@ void checkGoogleCloudDialogflowV2ValidationError(
   buildCounterGoogleCloudDialogflowV2ValidationError--;
 }
 
-core.List<api.GoogleCloudDialogflowV2ValidationError> buildUnnamed97() => [
+core.List<api.GoogleCloudDialogflowV2ValidationError> buildUnnamed98() => [
       buildGoogleCloudDialogflowV2ValidationError(),
       buildGoogleCloudDialogflowV2ValidationError(),
     ];
 
-void checkUnnamed97(core.List<api.GoogleCloudDialogflowV2ValidationError> o) {
+void checkUnnamed98(core.List<api.GoogleCloudDialogflowV2ValidationError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2ValidationError(o[0]);
   checkGoogleCloudDialogflowV2ValidationError(o[1]);
@@ -6876,7 +7040,7 @@ api.GoogleCloudDialogflowV2ValidationResult
   final o = api.GoogleCloudDialogflowV2ValidationResult();
   buildCounterGoogleCloudDialogflowV2ValidationResult++;
   if (buildCounterGoogleCloudDialogflowV2ValidationResult < 3) {
-    o.validationErrors = buildUnnamed97();
+    o.validationErrors = buildUnnamed98();
   }
   buildCounterGoogleCloudDialogflowV2ValidationResult--;
   return o;
@@ -6886,7 +7050,7 @@ void checkGoogleCloudDialogflowV2ValidationResult(
     api.GoogleCloudDialogflowV2ValidationResult o) {
   buildCounterGoogleCloudDialogflowV2ValidationResult++;
   if (buildCounterGoogleCloudDialogflowV2ValidationResult < 3) {
-    checkUnnamed97(o.validationErrors!);
+    checkUnnamed98(o.validationErrors!);
   }
   buildCounterGoogleCloudDialogflowV2ValidationResult--;
 }
@@ -6962,12 +7126,12 @@ void checkGoogleCloudDialogflowV2VoiceSelectionParams(
   buildCounterGoogleCloudDialogflowV2VoiceSelectionParams--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed98() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed99() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed98(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed99(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -6979,7 +7143,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed98();
+    o.locations = buildUnnamed99();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -6990,7 +7154,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed98(o.locations!);
+    checkUnnamed99(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6999,12 +7163,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed99() => {
+core.Map<core.String, core.String> buildUnnamed100() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed99(core.Map<core.String, core.String> o) {
+void checkUnnamed100(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -7016,7 +7180,7 @@ void checkUnnamed99(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed100() => {
+core.Map<core.String, core.Object?> buildUnnamed101() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7029,7 +7193,7 @@ core.Map<core.String, core.Object?> buildUnnamed100() => {
       },
     };
 
-void checkUnnamed100(core.Map<core.String, core.Object?> o) {
+void checkUnnamed101(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted18 = (o['x']!) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
@@ -7067,9 +7231,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed99();
+    o.labels = buildUnnamed100();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed100();
+    o.metadata = buildUnnamed101();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -7083,12 +7247,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed99(o.labels!);
+    checkUnnamed100(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed100(o.metadata!);
+    checkUnnamed101(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7097,12 +7261,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed101() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed102() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed101(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed102(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -7115,7 +7279,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed101();
+    o.operations = buildUnnamed102();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -7129,12 +7293,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.operations!);
+    checkUnnamed102(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed102() => {
+core.Map<core.String, core.Object?> buildUnnamed103() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7147,7 +7311,7 @@ core.Map<core.String, core.Object?> buildUnnamed102() => {
       },
     };
 
-void checkUnnamed102(core.Map<core.String, core.Object?> o) {
+void checkUnnamed103(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted20 = (o['x']!) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
@@ -7179,7 +7343,7 @@ void checkUnnamed102(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed103() => {
+core.Map<core.String, core.Object?> buildUnnamed104() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7192,7 +7356,7 @@ core.Map<core.String, core.Object?> buildUnnamed103() => {
       },
     };
 
-void checkUnnamed103(core.Map<core.String, core.Object?> o) {
+void checkUnnamed104(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted22 = (o['x']!) as core.Map;
   unittest.expect(casted22, unittest.hasLength(3));
@@ -7231,9 +7395,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed102();
+    o.metadata = buildUnnamed103();
     o.name = 'foo';
-    o.response = buildUnnamed103();
+    o.response = buildUnnamed104();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -7244,12 +7408,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed102(o.metadata!);
+    checkUnnamed103(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed103(o.response!);
+    checkUnnamed104(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -7269,7 +7433,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed104() => {
+core.Map<core.String, core.Object?> buildUnnamed105() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7282,7 +7446,7 @@ core.Map<core.String, core.Object?> buildUnnamed104() => {
       },
     };
 
-void checkUnnamed104(core.Map<core.String, core.Object?> o) {
+void checkUnnamed105(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted24 = (o['x']!) as core.Map;
   unittest.expect(casted24, unittest.hasLength(3));
@@ -7314,15 +7478,15 @@ void checkUnnamed104(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed105() => [
-      buildUnnamed104(),
-      buildUnnamed104(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed106() => [
+      buildUnnamed105(),
+      buildUnnamed105(),
     ];
 
-void checkUnnamed105(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed106(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed104(o[0]);
-  checkUnnamed104(o[1]);
+  checkUnnamed105(o[0]);
+  checkUnnamed105(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -7331,7 +7495,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed105();
+    o.details = buildUnnamed106();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -7345,7 +7509,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed105(o.details!);
+    checkUnnamed106(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -7400,6 +7564,21 @@ void main() {
       final od = api.GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowV2AgentAssistantFeedback(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback(
+          od);
     });
   });
 
@@ -9103,6 +9282,46 @@ void main() {
       final od = api.GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowV2SuggestArticlesResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowV2SuggestConversationSummaryRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowV2SuggestConversationSummaryResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowV2SuggestConversationSummaryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary(od);
     });
   });
 
@@ -16081,6 +16300,70 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudDialogflowV2SuggestSmartRepliesResponse(
           response as api.GoogleCloudDialogflowV2SuggestSmartRepliesResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsConversationsSuggestionsResource', () {
+    unittest.test('method--suggestConversationSummary', () async {
+      final mock = HttpServerMock();
+      final res = api.DialogflowApi(mock).projects.conversations.suggestions;
+      final arg_request =
+          buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest();
+      final arg_conversation = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest
+            .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2SuggestConversationSummaryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.suggestConversationSummary(
+          arg_request, arg_conversation,
+          $fields: arg_$fields);
+      checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(response
+          as api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse);
     });
   });
 
@@ -23317,6 +23600,72 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudDialogflowV2SuggestSmartRepliesResponse(
           response as api.GoogleCloudDialogflowV2SuggestSmartRepliesResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsConversationsSuggestionsResource',
+      () {
+    unittest.test('method--suggestConversationSummary', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.DialogflowApi(mock).projects.locations.conversations.suggestions;
+      final arg_request =
+          buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest();
+      final arg_conversation = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest
+            .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2SuggestConversationSummaryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.suggestConversationSummary(
+          arg_request, arg_conversation,
+          $fields: arg_$fields);
+      checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(response
+          as api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse);
     });
   });
 

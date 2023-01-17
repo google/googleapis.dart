@@ -15,7 +15,7 @@
 /// HomeGraph API - v1
 ///
 /// For more information, see
-/// <https://developers.google.com/actions/smarthome/create-app#request-sync>
+/// <https://developers.home.google.com/cloud-to-cloud/get-started>
 ///
 /// Create an instance of [HomeGraphServiceApi] to access these resources:
 ///
@@ -62,7 +62,7 @@ class AgentUsersResource {
   ///
   /// All data related to this user will be deleted. For more details on how
   /// users link their accounts, see
-  /// [fulfillment and authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
+  /// [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment).
   /// The third-party user's identity is passed in via the `agent_user_id` (see
   /// DeleteAgentUserRequest). This request must be authorized using service
   /// account credentials from your Actions console project.
@@ -156,10 +156,10 @@ class DevicesResource {
   ///
   /// Called by your smart home Action when the state of a third-party device
   /// changes or you need to send a notification about the device. See
-  /// [Implement Report State](https://developers.google.com/assistant/smarthome/develop/report-state)
+  /// [Implement Report State](https://developers.home.google.com/cloud-to-cloud/integration/report-state)
   /// for more information. This method updates the device state according to
   /// its declared
-  /// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).
+  /// [traits](https://developers.home.google.com/cloud-to-cloud/primer/device-types-and-traits).
   /// Publishing a new state value outside of these traits will result in an
   /// `INVALID_ARGUMENT` error response. The third-party user's identity is
   /// passed in via the `agent_user_id` (see ReportStateAndNotificationRequest).
@@ -202,7 +202,7 @@ class DevicesResource {
   }
 
   /// Requests Google to send an `action.devices.SYNC`
-  /// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)
+  /// [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync)
   /// to your smart home Action to update device metadata for the given user.
   ///
   /// The third-party user's identity is passed via the `agent_user_id` (see
@@ -346,9 +346,9 @@ class Device {
 
   /// Custom device attributes stored in Home Graph and provided to your smart
   /// home Action in each
-  /// [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query)
+  /// [QUERY](https://developers.home.google.com/cloud-to-cloud/intents/query)
   /// and
-  /// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute)
+  /// [EXECUTE](https://developers.home.google.com/cloud-to-cloud/intents/execute)
   /// intent.
   ///
   /// Data in this object has a few constraints: No sensitive information,
@@ -377,7 +377,7 @@ class Device {
   /// Alternate IDs associated with this device.
   ///
   /// This is used to identify cloud synced devices enabled for
-  /// [local fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
+  /// [local fulfillment](https://developers.home.google.com/local-home/overview).
   core.List<AgentOtherDeviceId>? otherDeviceIds;
 
   /// Suggested name for the room where this device is installed.
@@ -393,13 +393,13 @@ class Device {
   /// Traits supported by the device.
   ///
   /// See
-  /// [device traits](https://developers.google.com/assistant/smarthome/traits).
+  /// [device traits](https://developers.home.google.com/cloud-to-cloud/traits).
   core.List<core.String>? traits;
 
   /// Hardware type of the device.
   ///
   /// See
-  /// [device types](https://developers.google.com/assistant/smarthome/guides).
+  /// [device types](https://developers.home.google.com/cloud-to-cloud/guides).
   core.String? type;
 
   /// Indicates whether your smart home Action will report state of this device
@@ -671,8 +671,8 @@ class QueryRequestPayload {
 ///
 /// This should follow the same format as the Google smart home
 /// `action.devices.QUERY`
-/// [response](https://developers.google.com/assistant/smarthome/reference/intent/query).
-/// # Example ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+/// [response](https://developers.home.google.com/cloud-to-cloud/intents/query).
+/// Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
 /// "payload": { "devices": { "123": { "on": true, "online": true }, "456": {
 /// "on": true, "online": true, "brightness": 80, "color": { "name": "cerulean",
 /// "spectrumRGB": 31655 } } } } } ```
@@ -743,7 +743,7 @@ class ReportStateAndNotificationDevice {
   /// Notifications metadata for devices.
   ///
   /// See the **Device NOTIFICATIONS** section of the individual trait
-  /// [reference guides](https://developers.google.com/assistant/smarthome/traits).
+  /// [reference guides](https://developers.home.google.com/cloud-to-cloud/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -752,7 +752,7 @@ class ReportStateAndNotificationDevice {
   /// States of devices to update.
   ///
   /// See the **Device STATES** section of the individual trait
-  /// [reference guides](https://developers.google.com/assistant/smarthome/traits).
+  /// [reference guides](https://developers.home.google.com/cloud-to-cloud/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -785,7 +785,7 @@ class ReportStateAndNotificationDevice {
 ///
 /// It may include states, notifications, or both. States and notifications are
 /// defined per `device_id` (for example, "123" and "456" in the following
-/// example). # Example ```json { "requestId":
+/// example). Example: ```json { "requestId":
 /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": {
 /// "devices": { "states": { "123": { "on": true }, "456": { "on": true,
 /// "brightness": 10 } }, } } } ```
@@ -974,8 +974,8 @@ class SyncRequest {
 ///
 /// This should follow the same format as the Google smart home
 /// `action.devices.SYNC`
-/// [response](https://developers.google.com/assistant/smarthome/reference/intent/sync).
-/// # Example ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+/// [response](https://developers.home.google.com/cloud-to-cloud/intents/sync).
+/// Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
 /// "payload": { "agentUserId": "1836.15267389", "devices": [{ "id": "123",
 /// "type": "action.devices.types.OUTLET", "traits": [
 /// "action.devices.traits.OnOff" ], "name": { "defaultNames": ["My Outlet

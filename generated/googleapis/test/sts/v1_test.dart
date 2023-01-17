@@ -26,6 +26,104 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest = 0;
+api.GoogleIdentityStsV1ExchangeOauthTokenRequest
+    buildGoogleIdentityStsV1ExchangeOauthTokenRequest() {
+  final o = api.GoogleIdentityStsV1ExchangeOauthTokenRequest();
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest++;
+  if (buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest < 3) {
+    o.clientId = 'foo';
+    o.code = 'foo';
+    o.codeVerifier = 'foo';
+    o.grantType = 'foo';
+    o.redirectUri = 'foo';
+    o.refreshToken = 'foo';
+    o.scope = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1ExchangeOauthTokenRequest(
+    api.GoogleIdentityStsV1ExchangeOauthTokenRequest o) {
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest++;
+  if (buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest < 3) {
+    unittest.expect(
+      o.clientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.codeVerifier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.grantType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.redirectUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.refreshToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scope!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenRequest--;
+}
+
+core.int buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse = 0;
+api.GoogleIdentityStsV1ExchangeOauthTokenResponse
+    buildGoogleIdentityStsV1ExchangeOauthTokenResponse() {
+  final o = api.GoogleIdentityStsV1ExchangeOauthTokenResponse();
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse++;
+  if (buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse < 3) {
+    o.accessToken = 'foo';
+    o.expiresIn = 42;
+    o.refreshToken = 'foo';
+    o.scope = 'foo';
+    o.tokenType = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1ExchangeOauthTokenResponse(
+    api.GoogleIdentityStsV1ExchangeOauthTokenResponse o) {
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse++;
+  if (buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse < 3) {
+    unittest.expect(
+      o.accessToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiresIn!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.refreshToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scope!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tokenType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse--;
+}
+
 core.int buildCounterGoogleIdentityStsV1ExchangeTokenRequest = 0;
 api.GoogleIdentityStsV1ExchangeTokenRequest
     buildGoogleIdentityStsV1ExchangeTokenRequest() {
@@ -205,6 +303,27 @@ void checkGoogleIdentityStsV1IntrospectTokenResponse(
 }
 
 void main() {
+  unittest.group('obj-schema-GoogleIdentityStsV1ExchangeOauthTokenRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1ExchangeOauthTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1ExchangeOauthTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1ExchangeOauthTokenRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1ExchangeOauthTokenResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1ExchangeOauthTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1ExchangeOauthTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1ExchangeOauthTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleIdentityStsV1ExchangeTokenRequest();
@@ -301,6 +420,63 @@ void main() {
       final response = await res.introspect(arg_request, $fields: arg_$fields);
       checkGoogleIdentityStsV1IntrospectTokenResponse(
           response as api.GoogleIdentityStsV1IntrospectTokenResponse);
+    });
+
+    unittest.test('method--oauthtoken', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSecurityTokenApi(mock).v1;
+      final arg_request = buildGoogleIdentityStsV1ExchangeOauthTokenRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleIdentityStsV1ExchangeOauthTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIdentityStsV1ExchangeOauthTokenRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('v1/oauthtoken'),
+        );
+        pathOffset += 13;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleIdentityStsV1ExchangeOauthTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.oauthtoken(arg_request, $fields: arg_$fields);
+      checkGoogleIdentityStsV1ExchangeOauthTokenResponse(
+          response as api.GoogleIdentityStsV1ExchangeOauthTokenResponse);
     });
 
     unittest.test('method--token', () async {

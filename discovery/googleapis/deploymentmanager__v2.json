@@ -987,7 +987,7 @@
             }
         }
     },
-    "revision": "20221117",
+    "revision": "20221208",
     "rootUrl": "https://deploymentmanager.googleapis.com/",
     "schemas": {
         "AuditConfig": {

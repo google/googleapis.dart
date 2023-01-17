@@ -77,6 +77,7 @@ api.Execution buildExecution() {
   if (buildCounterExecution < 3) {
     o.argument = 'foo';
     o.callLogLevel = 'foo';
+    o.duration = 'foo';
     o.endTime = 'foo';
     o.error = buildError();
     o.name = 'foo';
@@ -99,6 +100,10 @@ void checkExecution(api.Execution o) {
     );
     unittest.expect(
       o.callLogLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.duration!,
       unittest.equals('foo'),
     );
     unittest.expect(

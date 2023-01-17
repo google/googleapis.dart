@@ -1471,6 +1471,7 @@ api.PipelineCondition buildPipelineCondition() {
   if (buildCounterPipelineCondition < 3) {
     o.pipelineReadyCondition = buildPipelineReadyCondition();
     o.targetsPresentCondition = buildTargetsPresentCondition();
+    o.targetsTypeCondition = buildTargetsTypeCondition();
   }
   buildCounterPipelineCondition--;
   return o;
@@ -1481,6 +1482,7 @@ void checkPipelineCondition(api.PipelineCondition o) {
   if (buildCounterPipelineCondition < 3) {
     checkPipelineReadyCondition(o.pipelineReadyCondition!);
     checkTargetsPresentCondition(o.targetsPresentCondition!);
+    checkTargetsTypeCondition(o.targetsTypeCondition!);
   }
   buildCounterPipelineCondition--;
 }
@@ -2414,6 +2416,30 @@ void checkTargetsPresentCondition(api.TargetsPresentCondition o) {
   buildCounterTargetsPresentCondition--;
 }
 
+core.int buildCounterTargetsTypeCondition = 0;
+api.TargetsTypeCondition buildTargetsTypeCondition() {
+  final o = api.TargetsTypeCondition();
+  buildCounterTargetsTypeCondition++;
+  if (buildCounterTargetsTypeCondition < 3) {
+    o.errorDetails = 'foo';
+    o.status = true;
+  }
+  buildCounterTargetsTypeCondition--;
+  return o;
+}
+
+void checkTargetsTypeCondition(api.TargetsTypeCondition o) {
+  buildCounterTargetsTypeCondition++;
+  if (buildCounterTargetsTypeCondition < 3) {
+    unittest.expect(
+      o.errorDetails!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.status!, unittest.isTrue);
+  }
+  buildCounterTargetsTypeCondition--;
+}
+
 core.List<core.String> buildUnnamed43() => [
       'foo',
       'foo',
@@ -3100,6 +3126,16 @@ void main() {
       final od = api.TargetsPresentCondition.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTargetsPresentCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-TargetsTypeCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargetsTypeCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetsTypeCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTargetsTypeCondition(od);
     });
   });
 

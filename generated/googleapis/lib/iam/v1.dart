@@ -2086,11 +2086,18 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account in the
-  /// following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using
-  /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
-  /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
-  /// of the service account.
+  /// [name] - Required. The resource name of the service account. Use one of
+  /// the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2139,11 +2146,18 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard
-  /// for the `PROJECT_ID` will infer the project from the account. The
-  /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - The resource name of the service account. Use one of the
+  /// following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2188,11 +2202,18 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard
-  /// for the `PROJECT_ID` will infer the project from the account. The
-  /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - The resource name of the service account. Use one of the
+  /// following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2230,11 +2251,18 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account in the
-  /// following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using
-  /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
-  /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
-  /// of the service account.
+  /// [name] - Required. The resource name of the service account. Use one of
+  /// the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2391,10 +2419,10 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
   /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
   /// `-` wildcard character, because it can cause response messages to contain
-  /// misleading error codes. For example, if you try to get the service account
-  /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
-  /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
-  /// Found` error.
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2501,11 +2529,17 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. Deprecated.
   /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
-  /// The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard
-  /// for the `PROJECT_ID` will infer the project from the account. The
-  /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// The resource name of the service account. Use one of the following
+  /// formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2556,11 +2590,17 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. Deprecated.
   /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
-  /// The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard
-  /// for the `PROJECT_ID` will infer the project from the account. The
-  /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// The resource name of the service account. Use one of the following
+  /// formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2653,9 +2693,18 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}`. Using `-` as
-  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
+  /// [name] - The resource name of the service account. Use one of the
+  /// following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2707,10 +2756,10 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
   /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
   /// `-` wildcard character, because it can cause response messages to contain
-  /// misleading error codes. For example, if you try to get the service account
-  /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
-  /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
-  /// Found` error.
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2758,11 +2807,18 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account in the
-  /// following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using
-  /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
-  /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
-  /// of the service account.
+  /// [name] - Required. The resource name of the service account. Use one of
+  /// the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2804,12 +2860,19 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account key in the
-  /// following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
-  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - Required. The resource name of the service account key. Use one
+  /// of the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` As an
+  /// alternative, you can use the `-` wildcard character instead of the project
+  /// ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` When possible,
+  /// avoid using the `-` wildcard character, because it can cause response
+  /// messages to contain misleading error codes. For example, if you try to
+  /// access the service account key
+  /// `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which does
+  /// not exist, the response contains an HTTP `403 Forbidden` error instead of
+  /// a `404 Not Found` error.
   /// Value must have pattern
   /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
@@ -2850,12 +2913,19 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account key in the
-  /// following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
-  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - Required. The resource name of the service account key. Use one
+  /// of the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` As an
+  /// alternative, you can use the `-` wildcard character instead of the project
+  /// ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` When possible,
+  /// avoid using the `-` wildcard character, because it can cause response
+  /// messages to contain misleading error codes. For example, if you try to
+  /// access the service account key
+  /// `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which does
+  /// not exist, the response contains an HTTP `403 Forbidden` error instead of
+  /// a `404 Not Found` error.
   /// Value must have pattern
   /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
@@ -2896,12 +2966,19 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account key in the
-  /// following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
-  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - Required. The resource name of the service account key. Use one
+  /// of the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` As an
+  /// alternative, you can use the `-` wildcard character instead of the project
+  /// ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` When possible,
+  /// avoid using the `-` wildcard character, because it can cause response
+  /// messages to contain misleading error codes. For example, if you try to
+  /// access the service account key
+  /// `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which does
+  /// not exist, the response contains an HTTP `403 Forbidden` error instead of
+  /// a `404 Not Found` error.
   /// Value must have pattern
   /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
@@ -2940,12 +3017,19 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account key in the
-  /// following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
-  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - Required. The resource name of the service account key. Use one
+  /// of the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` As an
+  /// alternative, you can use the `-` wildcard character instead of the project
+  /// ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}/keys/{KEY_ID}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}/keys/{KEY_ID}` When possible,
+  /// avoid using the `-` wildcard character, because it can cause response
+  /// messages to contain misleading error codes. For example, if you try to
+  /// access the service account key
+  /// `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which does
+  /// not exist, the response contains an HTTP `403 Forbidden` error instead of
+  /// a `404 Not Found` error.
   /// Value must have pattern
   /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
@@ -2991,11 +3075,18 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the service account in the
-  /// following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using
-  /// `-` as a wildcard for the `PROJECT_ID`, will infer the project from the
-  /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
-  /// of the service account.
+  /// [name] - Required. The resource name of the service account. Use one of
+  /// the following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [keyTypes] - Filters the types of keys the user wants to include in the
@@ -3043,11 +3134,18 @@ class ProjectsServiceAccountsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard
-  /// for the `PROJECT_ID` will infer the project from the account. The
-  /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
-  /// service account.
+  /// [name] - The resource name of the service account key. Use one of the
+  /// following formats: *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you
+  /// can use the `-` wildcard character instead of the project ID: *
+  /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
+  /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
+  /// `-` wildcard character, because it can cause response messages to contain
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3627,12 +3725,11 @@ class LintPolicyRequest {
 
   /// The full resource name of the policy this lint request is about.
   ///
-  /// The name follows the Google Cloud Platform (GCP) resource format. For
-  /// example, a GCP project with ID `my-project` will be named
+  /// The name follows the Google Cloud format for full resource names. For
+  /// example, a Cloud project with ID `my-project` will be named
   /// `//cloudresourcemanager.googleapis.com/projects/my-project`. The resource
-  /// name is not used to read the policy instance from the Cloud IAM database.
-  /// The candidate policy for lint has to be provided in the same request
-  /// object.
+  /// name is not used to read a policy from IAM. Only the data in the request
+  /// object is linted.
   core.String? fullResourceName;
 
   LintPolicyRequest({
@@ -4713,10 +4810,10 @@ class ServiceAccount {
   /// `projects/-/serviceAccounts/{EMAIL_ADDRESS}` *
   /// `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the
   /// `-` wildcard character, because it can cause response messages to contain
-  /// misleading error codes. For example, if you try to get the service account
-  /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
-  /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
-  /// Found` error.
+  /// misleading error codes. For example, if you try to access the service
+  /// account `projects/-/serviceAccounts/fake@example.com`, which does not
+  /// exist, the response contains an HTTP `403 Forbidden` error instead of a
+  /// `404 Not Found` error.
   core.String? name;
 
   /// The OAuth 2.0 client ID for the service account.

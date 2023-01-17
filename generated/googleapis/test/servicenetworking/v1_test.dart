@@ -172,6 +172,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
   final o = api.AddSubnetworkRequest();
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    o.allowSubnetCidrRoutesOverlap = true;
     o.checkServiceNetworkingUsePermission = true;
     o.computeIdempotencyWindow = 'foo';
     o.consumer = 'foo';
@@ -184,6 +185,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.region = 'foo';
     o.requestedAddress = 'foo';
     o.requestedRanges = buildUnnamed1();
+    o.role = 'foo';
     o.secondaryIpRangeSpecs = buildUnnamed2();
     o.subnetwork = 'foo';
     o.subnetworkUsers = buildUnnamed3();
@@ -196,6 +198,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
 void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    unittest.expect(o.allowSubnetCidrRoutesOverlap!, unittest.isTrue);
     unittest.expect(o.checkServiceNetworkingUsePermission!, unittest.isTrue);
     unittest.expect(
       o.computeIdempotencyWindow!,
@@ -238,6 +241,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.requestedRanges!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.secondaryIpRangeSpecs!);
     unittest.expect(
       o.subnetwork!,

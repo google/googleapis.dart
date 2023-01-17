@@ -8489,7 +8489,7 @@
             }
         }
     },
-    "revision": "20221205",
+    "revision": "20230111",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -8754,7 +8754,7 @@
             "id": "AdvertiserBillingConfig",
             "properties": {
                 "billingProfileId": {
-                    "description": "The ID of a billing profile assigned to the advertiser.",
+                    "description": "The ID of a billing profile assigned to the advertiser. This field will default to the default billing profile ID of the advertiser's parent partner if a value is not provided.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -9162,7 +9162,7 @@
                     "type": "string"
                 },
                 "assignedTargetingOptionIdAlias": {
-                    "description": "Output only. An alias for the assigned targeting option id field. This field is only supported for targeting types with enum targeting enabled. This value can be used in place of the assignedTargetingOptionId required for GET and DELETE targeting methods. An alias for the assignedTargetingOptionId. This value can be used in place of `assignedTargetingOptionId` when retrieving or deleting existing targeting. This field will only be supported for all assigned targeting options of the following targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` This field is also supported for line item assigned targeting options of the following targeting types: * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`",
+                    "description": "Output only. An alias for the assigned_targeting_option_id. This value can be used in place of `assignedTargetingOptionId` when retrieving or deleting existing targeting. This field will only be supported for all assigned targeting options of the following targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` This field is also supported for line item assigned targeting options of the following targeting types: * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -13047,7 +13047,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -13118,7 +13122,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "type": "string"
                 }
@@ -13214,7 +13222,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -13285,7 +13297,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "type": "string"
                 },
@@ -13382,7 +13398,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -13453,7 +13473,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "type": "string"
                 },
@@ -13551,7 +13575,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -13622,7 +13650,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -14480,7 +14512,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14551,7 +14587,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "type": "string"
                 },
@@ -15321,7 +15361,11 @@
                         "EXCHANGE_MEDIANET",
                         "EXCHANGE_TAPJOY",
                         "EXCHANGE_VISTAR",
-                        "EXCHANGE_DAX"
+                        "EXCHANGE_DAX",
+                        "EXCHANGE_JCD",
+                        "EXCHANGE_PLACE_EXCHANGE",
+                        "EXCHANGE_APPLOVIN",
+                        "EXCHANGE_CONNATIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15392,7 +15436,11 @@
                         "Media.net.",
                         "Tapjoy.",
                         "Vistar.",
-                        "DAX."
+                        "DAX.",
+                        "JCD.",
+                        "Place Exchange.",
+                        "AppLovin.",
+                        "Connatix."
                     ],
                     "type": "string"
                 },
@@ -19195,6 +19243,74 @@
             },
             "type": "object"
         },
+        "VideoAdSequenceSettings": {
+            "description": "Settings related to VideoAdSequence.",
+            "id": "VideoAdSequenceSettings",
+            "properties": {
+                "minimumDuration": {
+                    "description": "The minimum time interval before the same user sees this sequence again.",
+                    "enum": [
+                        "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED",
+                        "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK",
+                        "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified or unknown.",
+                        "7 days.",
+                        "30 days."
+                    ],
+                    "type": "string"
+                },
+                "steps": {
+                    "description": "The steps of which the sequence consists.",
+                    "items": {
+                        "$ref": "VideoAdSequenceStep"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VideoAdSequenceStep": {
+            "description": "The detail of a single step in a VideoAdSequence.",
+            "id": "VideoAdSequenceStep",
+            "properties": {
+                "adGroupId": {
+                    "description": "The ID of the corresponding ad group of the step.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "interactionType": {
+                    "description": "The interaction on the previous step that will lead the viewer to this step. The first step does not have interaction_type.",
+                    "enum": [
+                        "INTERACTION_TYPE_UNSPECIFIED",
+                        "INTERACTION_TYPE_PAID_VIEW",
+                        "INTERACTION_TYPE_SKIP",
+                        "INTERACTION_TYPE_IMPRESSION",
+                        "INTERACTION_TYPE_ENGAGED_IMPRESSION"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified or unknown",
+                        "A paid view.",
+                        "Skipped by the viewer.",
+                        "A (viewed) ad impression.",
+                        "An ad impression that was not immediately skipped by the viewer, but didn't reach the billable event either."
+                    ],
+                    "type": "string"
+                },
+                "previousStepId": {
+                    "description": "The ID of the previous step. The first step does not have previous step.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "stepId": {
+                    "description": "The ID of the step.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "VideoPlayerSizeAssignedTargetingOptionDetails": {
             "description": "Video player size targeting option details. This will be populated in the video_player_size_details field when targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not supported. Remove all video player size targeting options to achieve this effect.",
             "id": "VideoPlayerSizeAssignedTargetingOptionDetails",
@@ -19401,6 +19517,10 @@
                 "thirdPartyMeasurementSettings": {
                     "$ref": "YoutubeAndPartnersThirdPartyMeasurementSettings",
                     "description": "The third-party measurement settings of the line item."
+                },
+                "videoAdSequenceSettings": {
+                    "$ref": "VideoAdSequenceSettings",
+                    "description": "The settings related to VideoAdSequence."
                 },
                 "viewFrequencyCap": {
                     "$ref": "FrequencyCap",

@@ -748,6 +748,29 @@ class SpeechResource {
   }
 }
 
+class ABNFGrammar {
+  /// All declarations and rules of an ABNF grammar broken up into multiple
+  /// strings that will end up concatenated.
+  core.List<core.String>? abnfStrings;
+
+  ABNFGrammar({
+    this.abnfStrings,
+  });
+
+  ABNFGrammar.fromJson(core.Map json_)
+      : this(
+          abnfStrings: json_.containsKey('abnfStrings')
+              ? (json_['abnfStrings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abnfStrings != null) 'abnfStrings': abnfStrings!,
+      };
+}
+
 /// An item of the class.
 class ClassItem {
   /// The class item's value.
@@ -1902,6 +1925,12 @@ class SpeakerDiarizationConfig {
 
 /// Speech adaptation configuration.
 class SpeechAdaptation {
+  /// Augmented Backus-Naur form (ABNF) is a standardized grammar notation
+  /// comprised by a set of derivation rules.
+  ///
+  /// See specifications: https://www.w3.org/TR/speech-grammar
+  ABNFGrammar? abnfGrammar;
+
   /// A collection of custom classes.
   ///
   /// To specify the classes inline, leave the class' `name` blank and fill in
@@ -1919,6 +1948,7 @@ class SpeechAdaptation {
   core.List<PhraseSet>? phraseSets;
 
   SpeechAdaptation({
+    this.abnfGrammar,
     this.customClasses,
     this.phraseSetReferences,
     this.phraseSets,
@@ -1926,6 +1956,10 @@ class SpeechAdaptation {
 
   SpeechAdaptation.fromJson(core.Map json_)
       : this(
+          abnfGrammar: json_.containsKey('abnfGrammar')
+              ? ABNFGrammar.fromJson(
+                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>)
+              : null,
           customClasses: json_.containsKey('customClasses')
               ? (json_['customClasses'] as core.List)
                   .map((value) => CustomClass.fromJson(
@@ -1946,6 +1980,7 @@ class SpeechAdaptation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (abnfGrammar != null) 'abnfGrammar': abnfGrammar!,
         if (customClasses != null) 'customClasses': customClasses!,
         if (phraseSetReferences != null)
           'phraseSetReferences': phraseSetReferences!,

@@ -572,7 +572,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
@@ -615,7 +615,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///

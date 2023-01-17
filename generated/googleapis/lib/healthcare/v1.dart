@@ -5499,19 +5499,20 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// FHIR search parameters for DSTU2 can be found on each resource's
   /// definition page. Supported search modifiers: `:missing`, `:exact`,
   /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
-  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
-  /// `_elements`. The maximum number of search results returned defaults to
-  /// 100, which can be overridden by the `_count` parameter up to a maximum
-  /// limit of 1000. If there are additional results, the returned `Bundle`
-  /// contains a link of `relation` "next", which has a `_page_token` parameter
-  /// for an opaque pagination token that can be used to retrieve the next page.
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated search index in those cases. Note: FHIR resources are indexed
-  /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
+  /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`,
+  /// `_summary=text`, `_summary=data`, and `_elements`. The maximum number of
+  /// search results returned defaults to 100, which can be overridden by the
+  /// `_count` parameter up to a maximum limit of 1000. If there are additional
+  /// results, the returned `Bundle` contains a link of `relation` "next", which
+  /// has a `_page_token` parameter for an opaque pagination token that can be
+  /// used to retrieve the next page. Resources with a total size larger than
+  /// 5MB or a field count larger than 50,000 might not be fully searchable as
+  /// the server might trim its generated search index in those cases. Note:
+  /// FHIR resources are indexed asynchronously, so there might be a slight
+  /// delay between the time a resource is created or changes and when the
+  /// change is reflected in search results. For samples and detailed
+  /// information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -5589,19 +5590,20 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// FHIR search parameters for DSTU2 can be found on each resource's
   /// definition page. Supported search modifiers: `:missing`, `:exact`,
   /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
-  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
-  /// `_elements`. The maximum number of search results returned defaults to
-  /// 100, which can be overridden by the `_count` parameter up to a maximum
-  /// limit of 1000. If there are additional results, the returned `Bundle`
-  /// contains a link of `relation` "next", which has a `_page_token` parameter
-  /// for an opaque pagination token that can be used to retrieve the next page.
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated search index in those cases. Note: FHIR resources are indexed
-  /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
+  /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`,
+  /// `_summary=text`, `_summary=data`, and `_elements`. The maximum number of
+  /// search results returned defaults to 100, which can be overridden by the
+  /// `_count` parameter up to a maximum limit of 1000. If there are additional
+  /// results, the returned `Bundle` contains a link of `relation` "next", which
+  /// has a `_page_token` parameter for an opaque pagination token that can be
+  /// used to retrieve the next page. Resources with a total size larger than
+  /// 5MB or a field count larger than 50,000 might not be fully searchable as
+  /// the server might trim its generated search index in those cases. Note:
+  /// FHIR resources are indexed asynchronously, so there might be a slight
+  /// delay between the time a resource is created or changes and when the
+  /// change is reflected in search results. For samples and detailed
+  /// information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -7938,9 +7940,11 @@ class Dataset {
 class DateShiftConfig {
   /// An AES 128/192/256 bit key.
   ///
-  /// Causes the shift to be computed based on this key and the patient ID. A
-  /// default key is generated for each de-identification operation and is used
-  /// when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set
+  /// The date shift is computed based on this key and the patient ID. If the
+  /// patient ID is empty for a DICOM resource, the date shift is computed based
+  /// on this key and the study instance UID. If `crypto_key` is not set, then
+  /// `kms_wrapped` is used to calculate the date shift. If neither is set, a
+  /// default key is generated for each de-identify operation. Must not be set
   /// if `kms_wrapped` is set.
   core.String? cryptoKey;
   core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
@@ -7952,7 +7956,9 @@ class DateShiftConfig {
 
   /// KMS wrapped key.
   ///
-  /// Must not be set if `crypto_key` is set.
+  /// If `kms_wrapped` is not set, then `crypto_key` is used to calculate the
+  /// date shift. If neither is set, a default key is generated for each
+  /// de-identify operation. Must not be set if `crypto_key` is set.
   KmsWrappedCryptoKey? kmsWrapped;
 
   DateShiftConfig({
@@ -8487,7 +8493,7 @@ class EntityMention {
   /// linked_entities are candidate ontological concepts that this entity
   /// mention may refer to.
   ///
-  /// They are sorted by decreasing confidence.it
+  /// They are sorted by decreasing confidence.
   core.List<LinkedEntity>? linkedEntities;
 
   /// mention_id uniquely identifies each entity mention in a single response.

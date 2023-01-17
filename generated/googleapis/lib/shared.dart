@@ -3633,6 +3633,7 @@ class $Completeness {
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
 class $ConditionExpectation {
+  /// The SQL expression.
   core.String? sqlExpression;
 
   $ConditionExpectation({
@@ -6455,8 +6456,6 @@ class $EgressFrom {
 /// - authorizedbuyersmarketplace:v1 : SetReadyToServeRequest
 /// - authorizedbuyersmarketplace:v1 : SubscribeAuctionPackageRequest
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
-/// - baremetalsolution:v1 : CancelOperationRequest
-/// - baremetalsolution:v1 : Empty
 /// - baremetalsolution:v2 : DisableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : Empty
 /// - baremetalsolution:v2 : EnableInteractiveSerialConsoleRequest
@@ -6546,6 +6545,7 @@ class $EgressFrom {
 /// - composer:v1 : Empty
 /// - connectors:v1 : CancelOperationRequest
 /// - connectors:v1 : Empty
+/// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
 /// - connectors:v2 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
@@ -6581,8 +6581,10 @@ class $EgressFrom {
 /// - datamigration:v1 : PromoteMigrationJobRequest
 /// - datamigration:v1 : RestartMigrationJobRequest
 /// - datamigration:v1 : ResumeMigrationJobRequest
+/// - datamigration:v1 : RollbackConversionWorkspaceRequest
 /// - datamigration:v1 : StartMigrationJobRequest
 /// - datamigration:v1 : StaticIpConnectivity
+/// - datamigration:v1 : StaticServiceIpConnectivity
 /// - datamigration:v1 : StopMigrationJobRequest
 /// - datamigration:v1 : VerifyMigrationJobRequest
 /// - datapipelines:v1 : GoogleCloudDatapipelinesV1RunPipelineRequest
@@ -6598,6 +6600,7 @@ class $EgressFrom {
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1RunDataScanRequest
+/// - dataplex:v1 : GoogleCloudDataplexV1RunTaskRequest
 /// - dataplex:v1 : GoogleCloudDataplexV1TriggerOnDemand
 /// - dataplex:v1 : GoogleLongrunningCancelOperationRequest
 /// - dataproc:v1 : CancelJobRequest
@@ -6704,6 +6707,9 @@ class $EgressFrom {
 /// - gkehub:v1 : FleetObservabilityMembershipSpec
 /// - gkehub:v1 : FleetObservabilityMembershipState
 /// - gkehub:v1 : ScopeFeatureSpec
+/// - gmail:v1 : DisableCseKeyPairRequest
+/// - gmail:v1 : EnableCseKeyPairRequest
+/// - gmail:v1 : ObliterateCseKeyPairRequest
 /// - healthcare:v1 : ArchiveUserDataMappingRequest
 /// - healthcare:v1 : ArchiveUserDataMappingResponse
 /// - healthcare:v1 : CancelOperationRequest
@@ -6812,7 +6818,6 @@ class $EgressFrom {
 /// - realtimebidding:v1 : SuspendPretargetingConfigRequest
 /// - realtimebidding:v1 : WatchCreativesRequest
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
-/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleProtobufEmpty
@@ -6894,6 +6899,9 @@ class $EgressFrom {
 /// - websecurityscanner:v1 : StopScanRunRequest
 /// - workflowexecutions:v1 : CancelExecutionRequest
 /// - workflows:v1 : Empty
+/// - workloadmanager:v1 : CancelOperationRequest
+/// - workloadmanager:v1 : Empty
+/// - workloadmanager:v1 : WriteInsightResponse
 /// - youtube:v3 : TestItemTestItemSnippet
 /// - youtube:v3 : TokenPagination
 /// - youtube:v3 : VideoProjectDetails
@@ -6974,6 +6982,71 @@ class $EncryptionInfo {
           'encryptionEntityType': encryptionEntityType!,
         if (encryptionSource != null) 'encryptionSource': encryptionSource!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Used by:
+///
+/// - servicemanagement:v1 : Endpoint
+/// - serviceusage:v1 : Endpoint
+class $Endpoint {
+  /// Dot not use.
+  ///
+  /// DEPRECATED: This field is no longer supported. Instead of using aliases,
+  /// please specify multiple google.api.Endpoint for each of the intended
+  /// aliases. Additional names that this endpoint will be hosted on.
+  ///
+  /// Unimplemented.
+  core.List<core.String>? aliases;
+
+  /// Allowing
+  /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
+  /// cross-domain traffic, would allow the backends served from this endpoint
+  /// to receive and respond to HTTP OPTIONS requests.
+  ///
+  /// The response will be used by the browser to determine whether the
+  /// subsequent cross-origin request is allowed to proceed.
+  core.bool? allowCors;
+
+  /// The canonical name of this endpoint.
+  core.String? name;
+
+  /// The specification of an Internet routable address of API frontend that
+  /// will handle requests to this
+  /// [API Endpoint](https://cloud.google.com/apis/design/glossary).
+  ///
+  /// It should be either a valid IPv4 address or a fully-qualified domain name.
+  /// For example, "8.8.8.8" or "myservice.appspot.com".
+  core.String? target;
+
+  $Endpoint({
+    this.aliases,
+    this.allowCors,
+    this.name,
+    this.target,
+  });
+
+  $Endpoint.fromJson(core.Map json_)
+      : this(
+          aliases: json_.containsKey('aliases')
+              ? (json_['aliases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          allowCors: json_.containsKey('allowCors')
+              ? json_['allowCors'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          target: json_.containsKey('target')
+              ? json_['target'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aliases != null) 'aliases': aliases!,
+        if (allowCors != null) 'allowCors': allowCors!,
+        if (name != null) 'name': name!,
+        if (target != null) 'target': target!,
       };
 }
 
@@ -7160,6 +7233,10 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -7293,6 +7370,10 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -7405,6 +7486,10 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   $ExchangeTargetingOptionDetails({
@@ -8036,6 +8121,68 @@ class $FloodlightActivityDynamicTag {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (tag != null) 'tag': tag!,
+      };
+}
+
+/// Used by:
+///
+/// - datamigration:v1 : ForwardSshTunnelConnectivity
+/// - datastream:v1 : ForwardSshTunnelConnectivity
+class $ForwardSshTunnelConnectivity {
+  /// Hostname for the SSH tunnel.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Input only.
+  ///
+  /// SSH password.
+  core.String? password;
+
+  /// Port for the SSH tunnel, default value is 22.
+  core.int? port;
+
+  /// Input only.
+  ///
+  /// SSH private key.
+  core.String? privateKey;
+
+  /// Username for the SSH tunnel.
+  ///
+  /// Required.
+  core.String? username;
+
+  $ForwardSshTunnelConnectivity({
+    this.hostname,
+    this.password,
+    this.port,
+    this.privateKey,
+    this.username,
+  });
+
+  $ForwardSshTunnelConnectivity.fromJson(core.Map json_)
+      : this(
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
+              : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          privateKey: json_.containsKey('privateKey')
+              ? json_['privateKey'] as core.String
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostname != null) 'hostname': hostname!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (privateKey != null) 'privateKey': privateKey!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -9186,67 +9333,6 @@ class $GoogleCloudDocumentaiV1Vertex {
 
 /// Used by:
 ///
-/// - cloudchannel:v1 : GoogleTypeDecimal
-/// - datapipelines:v1 : GoogleTypeDecimal
-class $GoogleTypeDecimal {
-  /// The decimal value, as a string.
-  ///
-  /// The string representation consists of an optional sign, `+` (`U+002B`) or
-  /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits
-  /// ("the integer"), optionally followed by a fraction, optionally followed by
-  /// an exponent. An empty string **should** be interpreted as `0`. The
-  /// fraction consists of a decimal point followed by zero or more decimal
-  /// digits. The string must contain at least one digit in either the integer
-  /// or the fraction. The number formed by the sign, the integer and the
-  /// fraction is referred to as the significand. The exponent consists of the
-  /// character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
-  /// digits. Services **should** normalize decimal values before storing them
-  /// by: - Removing an explicitly-provided `+` sign (`+2.5` -\> `2.5`). -
-  /// Replacing a zero-length integer value with `0` (`.5` -\> `0.5`). -
-  /// Coercing the exponent character to upper-case, with explicit sign (`2.5e8`
-  /// -\> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
-  /// -\> `2.5`). Services **may** perform additional normalization based on its
-  /// own needs and the internal decimal implementation selected, such as
-  /// shifting the decimal point and exponent value together (example: `2.5E-1`
-  /// \<-\> `0.25`). Additionally, services **may** preserve trailing zeroes in
-  /// the fraction to indicate increased precision, but are not required to do
-  /// so. Note that only the `.` character is supported to divide the integer
-  /// and the fraction; `,` **should not** be supported regardless of locale.
-  /// Additionally, thousand separators **should not** be supported. If a
-  /// service does support them, values **must** be normalized. The ENBF grammar
-  /// is: DecimalString = '' | \[Sign\] Significand \[Exponent\]; Sign = '+' |
-  /// '-'; Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' |
-  /// 'E') \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' |
-  /// '7' | '8' | '9' }; Services **should** clearly document the range of
-  /// supported values, the maximum supported precision (total number of
-  /// digits), and, if applicable, the scale (number of digits after the decimal
-  /// point), as well as how it behaves when receiving out-of-bounds values.
-  /// Services **may** choose to accept values passed as input even when the
-  /// value has a higher precision or scale than the service supports, and
-  /// **should** round the value to fit the supported scale. Alternatively, the
-  /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC)
-  /// if precision would be lost. Services **should** error with `400 Bad
-  /// Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value
-  /// outside of the supported range.
-  core.String? value;
-
-  $GoogleTypeDecimal({
-    this.value,
-  });
-
-  $GoogleTypeDecimal.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
 /// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
 class $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
@@ -9798,7 +9884,9 @@ class $IngressSource {
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   ///
   /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   /// The project may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the
   /// case of allowing all Google Cloud resources only is not supported.
@@ -11697,6 +11785,7 @@ class $ListTargetingExpression {
 /// - translate:v3 : Location
 /// - vmmigration:v1 : Location
 /// - workflows:v1 : Location
+/// - workloadmanager:v1 : Location
 class $Location00 {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -17735,6 +17824,34 @@ class $SortedDimension {
 
 /// Used by:
 ///
+/// - translate:v3 : GcsInputSource
+/// - translate:v3 : GcsSource
+class $Source {
+  /// Source data URI.
+  ///
+  /// For example, `gs://my_bucket/my_object`.
+  ///
+  /// Required.
+  core.String? inputUri;
+
+  $Source({
+    this.inputUri,
+  });
+
+  $Source.fromJson(core.Map json_)
+      : this(
+          inputUri: json_.containsKey('inputUri')
+              ? json_['inputUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputUri != null) 'inputUri': inputUri!,
+      };
+}
+
+/// Used by:
+///
 /// - servicemanagement:v1 : SourceContext
 /// - serviceusage:v1 : SourceContext
 class $SourceContext {
@@ -17804,7 +17921,6 @@ class $StartPageToken {
 /// - appengine:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
-/// - baremetalsolution:v1 : Status
 /// - baremetalsolution:v2 : Status
 /// - batch:v1 : Status
 /// - beyondcorp:v1 : GoogleRpcStatus
@@ -17835,6 +17951,7 @@ class $StartPageToken {
 /// - container:v1 : Status
 /// - containeranalysis:v1 : Status
 /// - contentwarehouse:v1 : GoogleRpcStatus
+/// - datacatalog:v1 : Status
 /// - datafusion:v1 : Status
 /// - datamigration:v1 : Status
 /// - datapipelines:v1 : GoogleRpcStatus
@@ -17908,6 +18025,7 @@ class $StartPageToken {
 /// - vmmigration:v1 : Status
 /// - webrisk:v1 : GoogleRpcStatus
 /// - workflows:v1 : Status
+/// - workloadmanager:v1 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -18986,7 +19104,6 @@ class $TimeRange {
 /// - cloudchannel:v1 : GoogleTypeTimeZone
 /// - content:v2.1 : TimeZone
 /// - contentwarehouse:v1 : GoogleTypeTimeZone
-/// - datapipelines:v1 : GoogleTypeTimeZone
 /// - documentai:v1 : GoogleTypeTimeZone
 /// - localservices:v1 : GoogleTypeTimeZone
 /// - osconfig:v1 : TimeZone

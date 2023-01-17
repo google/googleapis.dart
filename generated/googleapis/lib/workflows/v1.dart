@@ -321,8 +321,8 @@ class ProjectsLocationsWorkflowsResource {
   /// Creates a new workflow.
   ///
   /// If a workflow with the specified name already exists in the specified
-  /// project and location, the long running operation will return
-  /// ALREADY_EXISTS error.
+  /// project and location, the long running operation returns a ALREADY_EXISTS
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -411,11 +411,11 @@ class ProjectsLocationsWorkflowsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single Workflow.
+  /// Gets details of a single workflow.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the workflow which information should be
+  /// [name] - Required. Name of the workflow for which information should be
   /// retrieved. Format:
   /// projects/{project}/locations/{location}/workflows/{workflow}
   /// Value must have pattern
@@ -449,7 +449,7 @@ class ProjectsLocationsWorkflowsResource {
     return Workflow.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Workflows in a given project and location.
+  /// Lists workflows in a given project and location.
   ///
   /// The default order is not specified.
   ///
@@ -461,15 +461,16 @@ class ProjectsLocationsWorkflowsResource {
   ///
   /// [filter] - Filter to restrict results to specific workflows.
   ///
-  /// [orderBy] - Comma-separated list of fields that that specify the order of
-  /// the results. Default sorting order for a field is ascending. To specify
-  /// descending order for a field, append a " desc" suffix. If not specified,
-  /// the results will be returned in an unspecified order.
+  /// [orderBy] - Comma-separated list of fields that specify the order of the
+  /// results. Default sorting order for a field is ascending. To specify
+  /// descending order for a field, append a "desc" suffix. If not specified,
+  /// the results are returned in an unspecified order.
   ///
   /// [pageSize] - Maximum number of workflows to return per call. The service
-  /// may return fewer than this value. If the value is not specified, a default
-  /// value of 500 will be used. The maximum permitted value is 1000 and values
-  /// greater than 1000 will be coerced down to 1000.
+  /// might return fewer than this value even if not at the end of the
+  /// collection. If a value is not specified, a default value of 500 is used.
+  /// The maximum permitted value is 1000 and values greater than 1000 are
+  /// coerced down to 1000.
   ///
   /// [pageToken] - A page token, received from a previous `ListWorkflows` call.
   /// Provide this to retrieve the subsequent page. When paginating, all other
@@ -516,9 +517,9 @@ class ProjectsLocationsWorkflowsResource {
   /// Updates an existing workflow.
   ///
   /// Running this method has no impact on already running executions of the
-  /// workflow. A new revision of the workflow may be created as a result of a
-  /// successful update operation. In that case, such revision will be used in
-  /// new workflow executions.
+  /// workflow. A new revision of the workflow might be created as a result of a
+  /// successful update operation. In that case, the new revision is used in new
+  /// workflow executions.
   ///
   /// [request] - The metadata request object.
   ///
@@ -648,7 +649,7 @@ class ListWorkflowsResponse {
   /// Unreachable resources.
   core.List<core.String>? unreachable;
 
-  /// The workflows which match the request.
+  /// The workflows that match the request.
   core.List<Workflow>? workflows;
 
   ListWorkflowsResponse({
@@ -772,7 +773,7 @@ typedef Status = $Status;
 
 /// Workflow program to be executed by Workflows.
 class Workflow {
-  /// The timestamp of when the workflow was created.
+  /// The timestamp for when the workflow was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -786,7 +787,7 @@ class Workflow {
   ///
   /// Labels can contain at most 64 entries. Keys and values can be no longer
   /// than 63 characters and can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. Label keys must start with a letter.
+  /// characters, underscores, and dashes. Label keys must start with a letter.
   /// International characters are allowed.
   core.Map<core.String, core.String>? labels;
 
@@ -795,7 +796,7 @@ class Workflow {
   /// Format: projects/{project}/locations/{location}/workflows/{workflow}
   core.String? name;
 
-  /// The timestamp that the latest revision of the workflow was created.
+  /// The timestamp for the latest revision of the workflow's creation.
   ///
   /// Output only.
   core.String? revisionCreateTime;
@@ -836,7 +837,7 @@ class Workflow {
   /// - "ACTIVE" : The workflow has been deployed successfully and is serving.
   core.String? state;
 
-  /// The last update timestamp of the workflow.
+  /// The timestamp for when the workflow was last updated.
   ///
   /// Output only.
   core.String? updateTime;

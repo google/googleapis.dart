@@ -24,6 +24,7 @@
 ///
 /// - [AccessPoliciesResource]
 ///   - [AccessPoliciesAccessLevelsResource]
+///   - [AccessPoliciesAuthorizedOrgsDescsResource]
 ///   - [AccessPoliciesServicePerimetersResource]
 /// - [OperationsResource]
 /// - [OrganizationsResource]
@@ -71,6 +72,8 @@ class AccessPoliciesResource {
 
   AccessPoliciesAccessLevelsResource get accessLevels =>
       AccessPoliciesAccessLevelsResource(_requester);
+  AccessPoliciesAuthorizedOrgsDescsResource get authorizedOrgsDescs =>
+      AccessPoliciesAuthorizedOrgsDescsResource(_requester);
   AccessPoliciesServicePerimetersResource get servicePerimeters =>
       AccessPoliciesServicePerimetersResource(_requester);
 
@@ -783,6 +786,244 @@ class AccessPoliciesAccessLevelsResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccessPoliciesAuthorizedOrgsDescsResource {
+  final commons.ApiRequester _requester;
+
+  AccessPoliciesAuthorizedOrgsDescsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a authorized orgs desc.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// orgs desc contains errors, an error response is returned for the first
+  /// error encountered. The name of this `AuthorizedOrgsDesc` will be assigned
+  /// during creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy which owns this
+  /// Authorized Orgs Desc. Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AuthorizedOrgsDesc request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/authorizedOrgsDescs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a authorized orgs desc based on the resource name.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc is removed from long-lasting storage.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
+  /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a authorized orgs desc based on the resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
+  /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedOrgsDesc].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedOrgsDesc> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthorizedOrgsDesc.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all authorized orgs descs for an access policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy to list
+  /// Authorized Orgs Desc from. Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - Number of Authorized Orgs Descs to include in the list.
+  /// Default 100.
+  ///
+  /// [pageToken] - Next page token for the next batch of Authorized Orgs Desc
+  /// instances. Defaults to the first page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedOrgsDescsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedOrgsDescsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/authorizedOrgsDescs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedOrgsDescsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a authorized orgs desc.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// orgs desc contains errors, an error response is returned for the first
+  /// error encountered. Only the organization list in `AuthorizedOrgsDesc` can
+  /// be updated. The name, authorization_type, asset_type and
+  /// authorization_direction cannot be updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Assigned by the server during creation. The last segment has an
+  /// arbitrary length and has only URI unreserved characters (as defined by
+  /// [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)).
+  /// Should not be specified by the client during creation. Example:
+  /// "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask to control which fields get updated. Must be
+  /// non-empty.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AuthorizedOrgsDesc request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1781,6 +2022,94 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// `AuthorizedOrgsDesc` is a resource that contains a list of organizations for
+/// a authorization type and asset type and its authorization direction.
+class AuthorizedOrgsDesc {
+  /// The asset type of this authorized orgs desc.
+  ///
+  /// e.g. device, credential strength.
+  /// Possible string values are:
+  /// - "ASSET_TYPE_UNSPECIFIED" : No asset type specified.
+  /// - "ASSET_TYPE_DEVICE" : Device asset type.
+  /// - "ASSET_TYPE_CREDENTIAL_STRENGTH" : credential strength asset type.
+  core.String? assetType;
+
+  /// Authorization direction of this authorization relationship.
+  ///
+  /// i.e. Whether to allow specified orgs to evaluate this org's traffic, or
+  /// allow specified orgs' traffic to be evaluated by this org. Orgs specified
+  /// as `AUTHORIZATION_DIRECTION_TO` in this
+  /// AuthorizedOrgsDesc\[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc\]
+  /// must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their
+  /// own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs
+  /// specified as `AUTHORIZATION_DIRECTION_FROM` in this
+  /// AuthorizedOrgsDesc\[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc\]
+  /// must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their
+  /// own AuthorizedOrgsDesc in order for this relationship to take effect.
+  /// Possible string values are:
+  /// - "AUTHORIZATION_DIRECTION_UNSPECIFIED" : No direction specified.
+  /// - "AUTHORIZATION_DIRECTION_TO" : Specified orgs will evaluate traffic.
+  /// - "AUTHORIZATION_DIRECTION_FROM" : Specified orgs' traffic will be
+  /// evaluated.
+  core.String? authorizationDirection;
+
+  /// The authorization type of this authorized orgs desc.
+  ///
+  /// e.g.authorization, troubleshooting or logging.
+  /// Possible string values are:
+  /// - "AUTHORIZATION_TYPE_UNSPECIFIED" : No authorization type specified.
+  /// - "AUTHORIZATION_TYPE_TRUST" : This authorization relationship is "trust".
+  core.String? authorizationType;
+
+  /// Assigned by the server during creation.
+  ///
+  /// The last segment has an arbitrary length and has only URI unreserved
+  /// characters (as defined by
+  /// [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)).
+  /// Should not be specified by the client during creation. Example:
+  /// "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+  core.String? name;
+
+  /// The list of organization ids in this AuthorizedOrgsDesc.
+  core.List<core.String>? orgs;
+
+  AuthorizedOrgsDesc({
+    this.assetType,
+    this.authorizationDirection,
+    this.authorizationType,
+    this.name,
+    this.orgs,
+  });
+
+  AuthorizedOrgsDesc.fromJson(core.Map json_)
+      : this(
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
+          authorizationDirection: json_.containsKey('authorizationDirection')
+              ? json_['authorizationDirection'] as core.String
+              : null,
+          authorizationType: json_.containsKey('authorizationType')
+              ? json_['authorizationType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgs: json_.containsKey('orgs')
+              ? (json_['orgs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
+        if (authorizationDirection != null)
+          'authorizationDirection': authorizationDirection!,
+        if (authorizationType != null) 'authorizationType': authorizationType!,
+        if (name != null) 'name': name!,
+        if (orgs != null) 'orgs': orgs!,
+      };
+}
+
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
@@ -2609,6 +2938,41 @@ class ListAccessPoliciesResponse {
       };
 }
 
+/// A response to `ListAuthorizedOrgsDescsRequest`.
+class ListAuthorizedOrgsDescsResponse {
+  /// List of the Authorized Orgs Desc instances.
+  core.List<AuthorizedOrgsDesc>? authorizedOrgsDescs;
+
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
+  core.String? nextPageToken;
+
+  ListAuthorizedOrgsDescsResponse({
+    this.authorizedOrgsDescs,
+    this.nextPageToken,
+  });
+
+  ListAuthorizedOrgsDescsResponse.fromJson(core.Map json_)
+      : this(
+          authorizedOrgsDescs: json_.containsKey('authorizedOrgsDescs')
+              ? (json_['authorizedOrgsDescs'] as core.List)
+                  .map((value) => AuthorizedOrgsDesc.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedOrgsDescs != null)
+          'authorizedOrgsDescs': authorizedOrgsDescs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response of ListGcpUserAccessBindings.
 class ListGcpUserAccessBindingsResponse {
   /// GcpUserAccessBinding
@@ -3152,7 +3516,9 @@ class ServicePerimeterConfig {
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   core.List<core.String>? resources;
 
   /// Google Cloud services that are subject to the Service Perimeter

@@ -8647,6 +8647,7 @@ void main() {
           api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2UserEvent();
       final arg_parent = 'foo';
+      final arg_writeAsync = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudRetailV2UserEvent.fromJson(
@@ -8685,6 +8686,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['writeAsync']!.first,
+          unittest.equals('$arg_writeAsync'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8695,8 +8700,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudRetailV2UserEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.write(arg_request, arg_parent, $fields: arg_$fields);
+      final response = await res.write(arg_request, arg_parent,
+          writeAsync: arg_writeAsync, $fields: arg_$fields);
       checkGoogleCloudRetailV2UserEvent(
           response as api.GoogleCloudRetailV2UserEvent);
     });

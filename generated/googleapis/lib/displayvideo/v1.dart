@@ -16910,6 +16910,10 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -17623,6 +17627,10 @@ class InventorySource {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   /// - "EXCHANGE_VISTAR" : Vistar.
   /// - "EXCHANGE_DAX" : DAX.
+  /// - "EXCHANGE_JCD" : JCD.
+  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
+  /// - "EXCHANGE_APPLOVIN" : AppLovin.
+  /// - "EXCHANGE_CONNATIX" : Connatix.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.

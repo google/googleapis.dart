@@ -387,6 +387,7 @@ api.GoogleCloudRunV2Execution buildGoogleCloudRunV2Execution() {
   buildCounterGoogleCloudRunV2Execution++;
   if (buildCounterGoogleCloudRunV2Execution < 3) {
     o.annotations = buildUnnamed6();
+    o.cancelledCount = 42;
     o.completionTime = 'foo';
     o.conditions = buildUnnamed7();
     o.createTime = 'foo';
@@ -398,10 +399,12 @@ api.GoogleCloudRunV2Execution buildGoogleCloudRunV2Execution() {
     o.job = 'foo';
     o.labels = buildUnnamed8();
     o.launchStage = 'foo';
+    o.logUri = 'foo';
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.parallelism = 42;
     o.reconciling = true;
+    o.retriedCount = 42;
     o.runningCount = 42;
     o.startTime = 'foo';
     o.succeededCount = 42;
@@ -418,6 +421,10 @@ void checkGoogleCloudRunV2Execution(api.GoogleCloudRunV2Execution o) {
   buildCounterGoogleCloudRunV2Execution++;
   if (buildCounterGoogleCloudRunV2Execution < 3) {
     checkUnnamed6(o.annotations!);
+    unittest.expect(
+      o.cancelledCount!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.completionTime!,
       unittest.equals('foo'),
@@ -457,6 +464,10 @@ void checkGoogleCloudRunV2Execution(api.GoogleCloudRunV2Execution o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.logUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
@@ -469,6 +480,10 @@ void checkGoogleCloudRunV2Execution(api.GoogleCloudRunV2Execution o) {
       unittest.equals(42),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(
+      o.retriedCount!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.runningCount!,
       unittest.equals(42),
@@ -1186,6 +1201,8 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.encryptionKey = 'foo';
+    o.encryptionKeyRevocationAction = 'foo';
+    o.encryptionKeyShutdownDuration = 'foo';
     o.etag = 'foo';
     o.executionEnvironment = 'foo';
     o.expireTime = 'foo';
@@ -1226,6 +1243,14 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
     );
     unittest.expect(
       o.encryptionKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.encryptionKeyRevocationAction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.encryptionKeyShutdownDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1839,6 +1864,7 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
     o.job = 'foo';
     o.labels = buildUnnamed39();
     o.lastAttemptResult = buildGoogleCloudRunV2TaskAttemptResult();
+    o.logUri = 'foo';
     o.maxRetries = 42;
     o.name = 'foo';
     o.observedGeneration = 'foo';
@@ -1908,6 +1934,10 @@ void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
     );
     checkUnnamed39(o.labels!);
     checkGoogleCloudRunV2TaskAttemptResult(o.lastAttemptResult!);
+    unittest.expect(
+      o.logUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.maxRetries!,
       unittest.equals(42),

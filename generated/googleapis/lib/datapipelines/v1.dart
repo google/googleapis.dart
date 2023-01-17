@@ -26,7 +26,6 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsPipelinesResource]
 ///       - [ProjectsLocationsPipelinesJobsResource]
-///     - [ProjectsLocationsTransformDescriptionsResource]
 library datapipelines.v1;
 
 import 'dart:async' as async;
@@ -76,132 +75,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsPipelinesResource get pipelines =>
       ProjectsLocationsPipelinesResource(_requester);
-  ProjectsLocationsTransformDescriptionsResource get transformDescriptions =>
-      ProjectsLocationsTransformDescriptionsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Computes the schema for the transform.
-  ///
-  /// Computation from `raw_schema` will always occur if it is set. This
-  /// requires that the transform supports that encoding. If no raw schema is
-  /// provided and if the transform is for an IO, then this will attempt to
-  /// connect to the resource using the details provided in `config` and infer
-  /// the schema from that. If the transform is not an IO, is a sink that
-  /// doesn't exist yet, or is a sink with no schema requirement, then this will
-  /// fall back to basing the schema off the one provided in `input_schemas`.
-  /// The computed schema will be validated.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [location] - Required. The full location formatted as
-  /// "projects/{your-project}/locations/{google-cloud-region}". If attempting
-  /// to infer the schema from an existing Google Cloud resource, the default
-  /// Data Pipelines service account for this project will be used in making
-  /// requests for the resource. If the region given for "{google-cloud-region}"
-  /// is different than the region where the resource is stored, then the data
-  /// will be transferred to and processed in the region specified here, but it
-  /// will not be persistently stored in this region.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDatapipelinesV1Schema].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDatapipelinesV1Schema> computeSchema(
-    GoogleCloudDatapipelinesV1ComputeSchemaRequest request,
-    core.String location, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':computeSchema';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDatapipelinesV1Schema.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists pipelines.
-  ///
-  /// Returns a "FORBIDDEN" error if the caller doesn't have permission to
-  /// access it.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The location name. For example:
-  /// `projects/PROJECT_ID/locations/LOCATION_ID`.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - An expression for filtering the results of the request. If
-  /// unspecified, all pipelines will be returned. Multiple filters can be
-  /// applied and must be comma separated. Fields eligible for filtering are: +
-  /// `type`: The type of the pipeline (streaming or batch). Allowed values are
-  /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the
-  /// pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`.
-  /// For example, to limit results to active batch processing pipelines:
-  /// type:BATCH,status:ACTIVE
-  ///
-  /// [pageSize] - The maximum number of entities to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, the max limit is yet to be determined by the backend
-  /// implementation.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListPipelines` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListPipelines` must match the call that provided
-  /// the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDatapipelinesV1ListPipelinesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDatapipelinesV1ListPipelinesResponse> listPipelines(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsLocationsPipelinesResource {
@@ -338,6 +213,71 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists pipelines.
+  ///
+  /// Returns a "FORBIDDEN" error if the caller doesn't have permission to
+  /// access it.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location name. For example:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - An expression for filtering the results of the request. If
+  /// unspecified, all pipelines will be returned. Multiple filters can be
+  /// applied and must be comma separated. Fields eligible for filtering are: +
+  /// `type`: The type of the pipeline (streaming or batch). Allowed values are
+  /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the
+  /// pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`.
+  /// For example, to limit results to active batch processing pipelines:
+  /// type:BATCH,status:ACTIVE
+  ///
+  /// [pageSize] - The maximum number of entities to return. The service may
+  /// return fewer than this value, even if there are additional pages. If
+  /// unspecified, the max limit is yet to be determined by the backend
+  /// implementation.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPipelines` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListPipelines` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatapipelinesV1ListPipelinesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatapipelinesV1ListPipelinesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -562,362 +502,6 @@ class ProjectsLocationsPipelinesJobsResource {
   }
 }
 
-class ProjectsLocationsTransformDescriptionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsTransformDescriptionsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets transform descriptions in a batch, associated with a list of provided
-  /// uniform resource names.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The project and location shared by all transform
-  /// descriptions being retrieved, formatted as
-  /// "projects/{project}/locations/{location}".
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [names] - Optional. The names of the transform descriptions being
-  /// retrieved, formatted as
-  /// "projects/{project}/locations/{location}/transformdescriptions/{transform_description}".
-  /// If no name is provided, all of the transform descriptions will be
-  /// returned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse>
-      batchGet(
-    core.String parent, {
-    core.List<core.String>? names,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' +
-        core.Uri.encodeFull('$parent') +
-        '/transformDescriptions:batchGet';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets the transform description associated with the provided uniform
-  /// resource name.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The full name formatted as
-  /// "projects/{your-project}/locations/{google-cloud-region}/transformdescriptions/{uniform-resource-name}".
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/transformDescriptions/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDatapipelinesV1TransformDescription].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDatapipelinesV1TransformDescription> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDatapipelinesV1TransformDescription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-/// Represents an array of values.
-///
-/// The elements can be of any type.
-class GoogleCloudDatapipelinesV1ArrayValue {
-  /// The elements of the array.
-  core.List<GoogleCloudDatapipelinesV1FieldValue>? elements;
-
-  GoogleCloudDatapipelinesV1ArrayValue({
-    this.elements,
-  });
-
-  GoogleCloudDatapipelinesV1ArrayValue.fromJson(core.Map json_)
-      : this(
-          elements: json_.containsKey('elements')
-              ? (json_['elements'] as core.List)
-                  .map((value) => GoogleCloudDatapipelinesV1FieldValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (elements != null) 'elements': elements!,
-      };
-}
-
-/// Represents a non-dividable value.
-class GoogleCloudDatapipelinesV1AtomicValue {
-  /// A boolean value.
-  core.bool? booleanValue;
-
-  /// An 8-bit signed value.
-  core.int? byteValue;
-
-  /// An array of raw bytes.
-  core.String? bytesValue;
-  core.List<core.int> get bytesValueAsBytes =>
-      convert.base64.decode(bytesValue!);
-
-  set bytesValueAsBytes(core.List<core.int> bytes_) {
-    bytesValue =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// A datetime value.
-  GoogleTypeDateTime? datetimeValue;
-
-  /// A large decimal value, equivalent to Java BigDecimal.
-  GoogleTypeDecimal? decimalValue;
-
-  /// A 64-bit floating point value.
-  core.double? doubleValue;
-
-  /// A 32-bit floating point value.
-  core.double? floatValue;
-
-  /// A 16-bit signed value.
-  core.int? int16Value;
-
-  /// A 32-bit signed value.
-  core.int? int32Value;
-
-  /// A 64-bit signed value.
-  core.String? int64Value;
-
-  /// A string value.
-  core.String? stringValue;
-
-  GoogleCloudDatapipelinesV1AtomicValue({
-    this.booleanValue,
-    this.byteValue,
-    this.bytesValue,
-    this.datetimeValue,
-    this.decimalValue,
-    this.doubleValue,
-    this.floatValue,
-    this.int16Value,
-    this.int32Value,
-    this.int64Value,
-    this.stringValue,
-  });
-
-  GoogleCloudDatapipelinesV1AtomicValue.fromJson(core.Map json_)
-      : this(
-          booleanValue: json_.containsKey('booleanValue')
-              ? json_['booleanValue'] as core.bool
-              : null,
-          byteValue: json_.containsKey('byteValue')
-              ? json_['byteValue'] as core.int
-              : null,
-          bytesValue: json_.containsKey('bytesValue')
-              ? json_['bytesValue'] as core.String
-              : null,
-          datetimeValue: json_.containsKey('datetimeValue')
-              ? GoogleTypeDateTime.fromJson(
-                  json_['datetimeValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          decimalValue: json_.containsKey('decimalValue')
-              ? GoogleTypeDecimal.fromJson(
-                  json_['decimalValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
-          floatValue: json_.containsKey('floatValue')
-              ? (json_['floatValue'] as core.num).toDouble()
-              : null,
-          int16Value: json_.containsKey('int16Value')
-              ? json_['int16Value'] as core.int
-              : null,
-          int32Value: json_.containsKey('int32Value')
-              ? json_['int32Value'] as core.int
-              : null,
-          int64Value: json_.containsKey('int64Value')
-              ? json_['int64Value'] as core.String
-              : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanValue != null) 'booleanValue': booleanValue!,
-        if (byteValue != null) 'byteValue': byteValue!,
-        if (bytesValue != null) 'bytesValue': bytesValue!,
-        if (datetimeValue != null) 'datetimeValue': datetimeValue!,
-        if (decimalValue != null) 'decimalValue': decimalValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (floatValue != null) 'floatValue': floatValue!,
-        if (int16Value != null) 'int16Value': int16Value!,
-        if (int32Value != null) 'int32Value': int32Value!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
-}
-
-/// Response message for BatchGetTransformDescriptions
-class GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse {
-  /// List of requested transform descriptions.
-  core.List<GoogleCloudDatapipelinesV1TransformDescription>?
-      transformDescriptions;
-
-  GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse({
-    this.transformDescriptions,
-  });
-
-  GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse.fromJson(
-      core.Map json_)
-      : this(
-          transformDescriptions: json_.containsKey('transformDescriptions')
-              ? (json_['transformDescriptions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatapipelinesV1TransformDescription.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (transformDescriptions != null)
-          'transformDescriptions': transformDescriptions!,
-      };
-}
-
-/// Request message for ComputeSchema
-class GoogleCloudDatapipelinesV1ComputeSchemaRequest {
-  /// The configuration for the transform.
-  ///
-  /// If this is not a source, then each input with its schema must be set. It
-  /// is not required to have any outputs set.
-  ///
-  /// Required.
-  GoogleCloudDatapipelinesV1ConfiguredTransform? config;
-
-  /// In relation to the full pipeline graph, the schemas of the transforms that
-  /// are used as inputs to the one for `config`.
-  ///
-  /// If `config` represents a transform for reading from some resource, then
-  /// this should be empty. For all other transforms, at least one value must be
-  /// provided.
-  ///
-  /// Optional.
-  core.List<GoogleCloudDatapipelinesV1Schema>? inputSchemas;
-
-  /// If set, this will use the provided raw schema to compute the schema rather
-  /// than connecting to any resources.
-  ///
-  /// Validation will still occur to make sure it is compatible with all input
-  /// schemas. If the transform is an IO, the IO must support that schema type.
-  ///
-  /// Optional.
-  GoogleCloudDatapipelinesV1RawSchemaInfo? rawSchema;
-
-  GoogleCloudDatapipelinesV1ComputeSchemaRequest({
-    this.config,
-    this.inputSchemas,
-    this.rawSchema,
-  });
-
-  GoogleCloudDatapipelinesV1ComputeSchemaRequest.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? GoogleCloudDatapipelinesV1ConfiguredTransform.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inputSchemas: json_.containsKey('inputSchemas')
-              ? (json_['inputSchemas'] as core.List)
-                  .map((value) => GoogleCloudDatapipelinesV1Schema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          rawSchema: json_.containsKey('rawSchema')
-              ? GoogleCloudDatapipelinesV1RawSchemaInfo.fromJson(
-                  json_['rawSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (inputSchemas != null) 'inputSchemas': inputSchemas!,
-        if (rawSchema != null) 'rawSchema': rawSchema!,
-      };
-}
-
-/// A fully configured transform that can be validated.
-class GoogleCloudDatapipelinesV1ConfiguredTransform {
-  /// Configuration values provided.
-  ///
-  /// These must match the schema provided in the row's schema.
-  GoogleCloudDatapipelinesV1Row? config;
-
-  /// Unique resource name of the transform.
-  ///
-  /// This should be the same as the equivalent `TransformDescription` value.
-  core.String? uniformResourceName;
-
-  GoogleCloudDatapipelinesV1ConfiguredTransform({
-    this.config,
-    this.uniformResourceName,
-  });
-
-  GoogleCloudDatapipelinesV1ConfiguredTransform.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? GoogleCloudDatapipelinesV1Row.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uniformResourceName: json_.containsKey('uniformResourceName')
-              ? json_['uniformResourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (uniformResourceName != null)
-          'uniformResourceName': uniformResourceName!,
-      };
-}
-
 /// Pipeline job details specific to the Dataflow API.
 ///
 /// This is encapsulated here to allow for more executors to store their
@@ -971,266 +555,6 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
         if (currentWorkers != null) 'currentWorkers': currentWorkers!,
         if (resourceInfo != null) 'resourceInfo': resourceInfo!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-      };
-}
-
-/// Represents a selected value from an EnumerationType.
-class GoogleCloudDatapipelinesV1EnumerationValue {
-  /// Name of the enum option.
-  core.String? name;
-
-  GoogleCloudDatapipelinesV1EnumerationValue({
-    this.name,
-  });
-
-  GoogleCloudDatapipelinesV1EnumerationValue.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Info for a single field in the schema.
-class GoogleCloudDatapipelinesV1Field {
-  /// Name of the field.
-  core.String? name;
-
-  /// Type info for the field.
-  GoogleCloudDatapipelinesV1FieldType? type;
-
-  GoogleCloudDatapipelinesV1Field({
-    this.name,
-    this.type,
-  });
-
-  GoogleCloudDatapipelinesV1Field.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type')
-              ? GoogleCloudDatapipelinesV1FieldType.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Type info about a field.
-class GoogleCloudDatapipelinesV1FieldType {
-  /// If `type` is an array or iterable, this is the type contained in that
-  /// array or iterable.
-  GoogleCloudDatapipelinesV1FieldType? collectionElementType;
-
-  /// If `type` is a logical type, this is the info for the specific logical
-  /// type.
-  GoogleCloudDatapipelinesV1LogicalType? logicalType;
-
-  /// If `type` is a map, this is the key and value types for that map.
-  GoogleCloudDatapipelinesV1MapType? mapType;
-
-  /// Whether or not this field is nullable.
-  core.bool? nullable;
-
-  /// If `type` is a row, this is the schema of that row.
-  GoogleCloudDatapipelinesV1Schema? rowSchema;
-
-  /// Specific type of the field.
-  ///
-  /// For non-atomic types, the corresponding type info for that non-atomic must
-  /// be set.
-  /// Possible string values are:
-  /// - "TYPE_NAME_UNSPECIFIED" : Type name is not set (generally an error)
-  /// - "TYPE_NAME_BYTE" : 8-bit signed integer
-  /// - "TYPE_NAME_INT16" : 16-bit signed integer
-  /// - "TYPE_NAME_INT32" : 32-bit signed integer
-  /// - "TYPE_NAME_INT64" : 64-bit signed integer
-  /// - "TYPE_NAME_DECIMAL" : Large decimal type (equivalent to Java BigDecimal)
-  /// - "TYPE_NAME_FLOAT" : 32-bit floating point integer
-  /// - "TYPE_NAME_DOUBLE" : 64-bit floating point integer
-  /// - "TYPE_NAME_STRING" : String
-  /// - "TYPE_NAME_DATETIME" : Datetime
-  /// - "TYPE_NAME_BOOLEAN" : Bool
-  /// - "TYPE_NAME_BYTES" : Convenience for an ARRAY of BYTE values
-  /// - "TYPE_NAME_ARRAY" : Array of some other values.
-  /// - "TYPE_NAME_ITERABLE" : Iterable of some other values.
-  /// - "TYPE_NAME_MAP" : Key/Value mapping between values.
-  /// - "TYPE_NAME_ROW" : Struct that follows a particular schema
-  /// - "TYPE_NAME_LOGICAL_TYPE" : Beam logical type
-  core.String? type;
-
-  GoogleCloudDatapipelinesV1FieldType({
-    this.collectionElementType,
-    this.logicalType,
-    this.mapType,
-    this.nullable,
-    this.rowSchema,
-    this.type,
-  });
-
-  GoogleCloudDatapipelinesV1FieldType.fromJson(core.Map json_)
-      : this(
-          collectionElementType: json_.containsKey('collectionElementType')
-              ? GoogleCloudDatapipelinesV1FieldType.fromJson(
-                  json_['collectionElementType']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          logicalType: json_.containsKey('logicalType')
-              ? GoogleCloudDatapipelinesV1LogicalType.fromJson(
-                  json_['logicalType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mapType: json_.containsKey('mapType')
-              ? GoogleCloudDatapipelinesV1MapType.fromJson(
-                  json_['mapType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nullable: json_.containsKey('nullable')
-              ? json_['nullable'] as core.bool
-              : null,
-          rowSchema: json_.containsKey('rowSchema')
-              ? GoogleCloudDatapipelinesV1Schema.fromJson(
-                  json_['rowSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (collectionElementType != null)
-          'collectionElementType': collectionElementType!,
-        if (logicalType != null) 'logicalType': logicalType!,
-        if (mapType != null) 'mapType': mapType!,
-        if (nullable != null) 'nullable': nullable!,
-        if (rowSchema != null) 'rowSchema': rowSchema!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// A single value in a row.
-///
-/// The value set must correspond to the correct type from the row's schema.
-class GoogleCloudDatapipelinesV1FieldValue {
-  /// The array value of this field.
-  ///
-  /// Corresponds to TYPE_NAME_ARRAY in the schema.
-  GoogleCloudDatapipelinesV1ArrayValue? arrayValue;
-
-  /// The atomic value of this field.
-  ///
-  /// Must correspond to the correct atomic type in the schema.
-  GoogleCloudDatapipelinesV1AtomicValue? atomicValue;
-
-  /// The enum value of this field.
-  ///
-  /// Corresponds to TYPE_NAME_LOGICAL_TYPE in the schema if that logical type
-  /// represents an `EnumerationType` type.
-  GoogleCloudDatapipelinesV1EnumerationValue? enumValue;
-
-  /// The fixed-length byte collection of this field.
-  ///
-  /// Corresponds to TYPE_NAME_LOGICAL_TYPE in the schema if that logical type
-  /// represents a `FixedBytes` type.
-  GoogleCloudDatapipelinesV1FixedBytesValue? fixedBytesValue;
-
-  /// The iterable value of this field.
-  ///
-  /// Corresponds to TYPE_NAME_ITERABLE in the schema.
-  GoogleCloudDatapipelinesV1IterableValue? iterableValue;
-
-  /// The map value of this field.
-  ///
-  /// Corresponds to TYPE_NAME_MAP in the schema.
-  GoogleCloudDatapipelinesV1MapValue? mapValue;
-
-  /// The row value of this field.
-  ///
-  /// Corresponds to TYPE_NAME_ROW in the schema. This row also holds to its own
-  /// schema.
-  GoogleCloudDatapipelinesV1Row? rowValue;
-
-  GoogleCloudDatapipelinesV1FieldValue({
-    this.arrayValue,
-    this.atomicValue,
-    this.enumValue,
-    this.fixedBytesValue,
-    this.iterableValue,
-    this.mapValue,
-    this.rowValue,
-  });
-
-  GoogleCloudDatapipelinesV1FieldValue.fromJson(core.Map json_)
-      : this(
-          arrayValue: json_.containsKey('arrayValue')
-              ? GoogleCloudDatapipelinesV1ArrayValue.fromJson(
-                  json_['arrayValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          atomicValue: json_.containsKey('atomicValue')
-              ? GoogleCloudDatapipelinesV1AtomicValue.fromJson(
-                  json_['atomicValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enumValue: json_.containsKey('enumValue')
-              ? GoogleCloudDatapipelinesV1EnumerationValue.fromJson(
-                  json_['enumValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fixedBytesValue: json_.containsKey('fixedBytesValue')
-              ? GoogleCloudDatapipelinesV1FixedBytesValue.fromJson(
-                  json_['fixedBytesValue']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          iterableValue: json_.containsKey('iterableValue')
-              ? GoogleCloudDatapipelinesV1IterableValue.fromJson(
-                  json_['iterableValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mapValue: json_.containsKey('mapValue')
-              ? GoogleCloudDatapipelinesV1MapValue.fromJson(
-                  json_['mapValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowValue: json_.containsKey('rowValue')
-              ? GoogleCloudDatapipelinesV1Row.fromJson(
-                  json_['rowValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayValue != null) 'arrayValue': arrayValue!,
-        if (atomicValue != null) 'atomicValue': atomicValue!,
-        if (enumValue != null) 'enumValue': enumValue!,
-        if (fixedBytesValue != null) 'fixedBytesValue': fixedBytesValue!,
-        if (iterableValue != null) 'iterableValue': iterableValue!,
-        if (mapValue != null) 'mapValue': mapValue!,
-        if (rowValue != null) 'rowValue': rowValue!,
-      };
-}
-
-/// Represents a collection of bytes whose size is the same as the associated
-/// FixedBytes size value.
-class GoogleCloudDatapipelinesV1FixedBytesValue {
-  /// The raw bytes.
-  ///
-  /// It must be exactly the size specified in the schema.
-  core.String? value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
-
-  set valueAsBytes(core.List<core.int> bytes_) {
-    value =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  GoogleCloudDatapipelinesV1FixedBytesValue({
-    this.value,
-  });
-
-  GoogleCloudDatapipelinesV1FixedBytesValue.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
       };
 }
 
@@ -1430,32 +754,6 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
         if (workerRegion != null) 'workerRegion': workerRegion!,
         if (workerZone != null) 'workerZone': workerZone!,
         if (zone != null) 'zone': zone!,
-      };
-}
-
-/// Represents an iterable of values.
-///
-/// The elements can be of any type.
-class GoogleCloudDatapipelinesV1IterableValue {
-  /// The elements of the iterable.
-  core.List<GoogleCloudDatapipelinesV1FieldValue>? elements;
-
-  GoogleCloudDatapipelinesV1IterableValue({
-    this.elements,
-  });
-
-  GoogleCloudDatapipelinesV1IterableValue.fromJson(core.Map json_)
-      : this(
-          elements: json_.containsKey('elements')
-              ? (json_['elements'] as core.List)
-                  .map((value) => GoogleCloudDatapipelinesV1FieldValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (elements != null) 'elements': elements!,
       };
 }
 
@@ -1925,179 +1223,6 @@ class GoogleCloudDatapipelinesV1ListPipelinesResponse {
       };
 }
 
-/// Represents the input for creating a specified logical type.
-class GoogleCloudDatapipelinesV1LogicalType {
-  /// The enum represented by this logical type.
-  GoogleCloudDatapipelinesV1LogicalTypeEnumerationType? enumerationType;
-
-  /// The fixed-size byte collection represented by this logical type.
-  GoogleCloudDatapipelinesV1LogicalTypeFixedBytes? fixedBytes;
-
-  GoogleCloudDatapipelinesV1LogicalType({
-    this.enumerationType,
-    this.fixedBytes,
-  });
-
-  GoogleCloudDatapipelinesV1LogicalType.fromJson(core.Map json_)
-      : this(
-          enumerationType: json_.containsKey('enumerationType')
-              ? GoogleCloudDatapipelinesV1LogicalTypeEnumerationType.fromJson(
-                  json_['enumerationType']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          fixedBytes: json_.containsKey('fixedBytes')
-              ? GoogleCloudDatapipelinesV1LogicalTypeFixedBytes.fromJson(
-                  json_['fixedBytes'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enumerationType != null) 'enumerationType': enumerationType!,
-        if (fixedBytes != null) 'fixedBytes': fixedBytes!,
-      };
-}
-
-/// Represents the Beam EnumerationType logical type.
-class GoogleCloudDatapipelinesV1LogicalTypeEnumerationType {
-  /// Names of the values.
-  ///
-  /// The numeric value is the same as the index.
-  core.List<core.String>? values;
-
-  GoogleCloudDatapipelinesV1LogicalTypeEnumerationType({
-    this.values,
-  });
-
-  GoogleCloudDatapipelinesV1LogicalTypeEnumerationType.fromJson(core.Map json_)
-      : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
-}
-
-/// Represents the Beam FixedBytes logical type.
-class GoogleCloudDatapipelinesV1LogicalTypeFixedBytes {
-  /// Number of bytes to allocate.
-  core.int? sizeBytes;
-
-  GoogleCloudDatapipelinesV1LogicalTypeFixedBytes({
-    this.sizeBytes,
-  });
-
-  GoogleCloudDatapipelinesV1LogicalTypeFixedBytes.fromJson(core.Map json_)
-      : this(
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-      };
-}
-
-/// Represents a map in a schema.
-class GoogleCloudDatapipelinesV1MapType {
-  /// Key type of the map.
-  ///
-  /// Only atomic types are supported.
-  GoogleCloudDatapipelinesV1FieldType? mapKeyType;
-
-  /// Value type of the map.
-  GoogleCloudDatapipelinesV1FieldType? mapValueType;
-
-  GoogleCloudDatapipelinesV1MapType({
-    this.mapKeyType,
-    this.mapValueType,
-  });
-
-  GoogleCloudDatapipelinesV1MapType.fromJson(core.Map json_)
-      : this(
-          mapKeyType: json_.containsKey('mapKeyType')
-              ? GoogleCloudDatapipelinesV1FieldType.fromJson(
-                  json_['mapKeyType'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mapValueType: json_.containsKey('mapValueType')
-              ? GoogleCloudDatapipelinesV1FieldType.fromJson(
-                  json_['mapValueType'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mapKeyType != null) 'mapKeyType': mapKeyType!,
-        if (mapValueType != null) 'mapValueType': mapValueType!,
-      };
-}
-
-/// Represents a key/value pairing.
-class GoogleCloudDatapipelinesV1MapValue {
-  /// The entries in the map.
-  core.List<GoogleCloudDatapipelinesV1MapValueEntry>? entries;
-
-  GoogleCloudDatapipelinesV1MapValue({
-    this.entries,
-  });
-
-  GoogleCloudDatapipelinesV1MapValue.fromJson(core.Map json_)
-      : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatapipelinesV1MapValueEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null) 'entries': entries!,
-      };
-}
-
-/// A single entry in the map.
-///
-/// Each entry must have a unique key.
-class GoogleCloudDatapipelinesV1MapValueEntry {
-  /// The key value.
-  ///
-  /// Only atomic values are supported.
-  GoogleCloudDatapipelinesV1FieldValue? key;
-
-  /// The value associated with the key.
-  ///
-  /// It may be of any type.
-  GoogleCloudDatapipelinesV1FieldValue? value;
-
-  GoogleCloudDatapipelinesV1MapValueEntry({
-    this.key,
-    this.value,
-  });
-
-  GoogleCloudDatapipelinesV1MapValueEntry.fromJson(core.Map json_)
-      : this(
-          key: json_.containsKey('key')
-              ? GoogleCloudDatapipelinesV1FieldValue.fromJson(
-                  json_['key'] as core.Map<core.String, core.dynamic>)
-              : null,
-          value: json_.containsKey('value')
-              ? GoogleCloudDatapipelinesV1FieldValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
-
 /// The main pipeline entity and all the necessary metadata for launching and
 /// managing linked jobs.
 class GoogleCloudDatapipelinesV1Pipeline {
@@ -2279,76 +1404,6 @@ class GoogleCloudDatapipelinesV1Pipeline {
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (workload != null) 'workload': workload!,
-      };
-}
-
-/// The raw schema and its type.
-class GoogleCloudDatapipelinesV1RawSchemaInfo {
-  /// The schema.
-  core.String? rawSchema;
-
-  /// The type of the schema.
-  /// Possible string values are:
-  /// - "RAW_SCHEMA_TYPE_UNSPECIFIED" : The schema type is unknown.
-  /// - "RAW_SCHEMA_TYPE_AVRO" : The schema is an Avro schema.
-  core.String? type;
-
-  GoogleCloudDatapipelinesV1RawSchemaInfo({
-    this.rawSchema,
-    this.type,
-  });
-
-  GoogleCloudDatapipelinesV1RawSchemaInfo.fromJson(core.Map json_)
-      : this(
-          rawSchema: json_.containsKey('rawSchema')
-              ? json_['rawSchema'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rawSchema != null) 'rawSchema': rawSchema!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Represents an Apache Beam row, though the `Any` nature of values is replaced
-/// with more concrete representations of valid values.
-class GoogleCloudDatapipelinesV1Row {
-  /// The schema of the row's data.
-  ///
-  /// Required.
-  GoogleCloudDatapipelinesV1SchemaSource? schema;
-
-  /// The values of this Row.
-  ///
-  /// A fully built row is required to hold to the schema specified by `schema`.
-  ///
-  /// Required.
-  core.List<GoogleCloudDatapipelinesV1FieldValue>? values;
-
-  GoogleCloudDatapipelinesV1Row({
-    this.schema,
-    this.values,
-  });
-
-  GoogleCloudDatapipelinesV1Row.fromJson(core.Map json_)
-      : this(
-          schema: json_.containsKey('schema')
-              ? GoogleCloudDatapipelinesV1SchemaSource.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => GoogleCloudDatapipelinesV1FieldValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-        if (values != null) 'values': values!,
       };
 }
 
@@ -2616,72 +1671,6 @@ class GoogleCloudDatapipelinesV1ScheduleSpec {
       };
 }
 
-/// Represents a simplified Apache Beam schema.
-class GoogleCloudDatapipelinesV1Schema {
-  /// Fields in the schema.
-  ///
-  /// Every field within a schema must have a unique name.
-  core.List<GoogleCloudDatapipelinesV1Field>? fields;
-
-  /// An identifier of the schema for looking it up in a repository.
-  ///
-  /// This only needs to be set if the schema is stored in a repository.
-  core.String? referenceId;
-
-  GoogleCloudDatapipelinesV1Schema({
-    this.fields,
-    this.referenceId,
-  });
-
-  GoogleCloudDatapipelinesV1Schema.fromJson(core.Map json_)
-      : this(
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.List)
-                  .map((value) => GoogleCloudDatapipelinesV1Field.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          referenceId: json_.containsKey('referenceId')
-              ? json_['referenceId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (referenceId != null) 'referenceId': referenceId!,
-      };
-}
-
-/// Holds a schema or a reference to a schema in some repository.
-class GoogleCloudDatapipelinesV1SchemaSource {
-  /// Schema located locally with the message.
-  GoogleCloudDatapipelinesV1Schema? localSchema;
-
-  /// The `reference_id` value of a schema in a repository.
-  core.String? referenceId;
-
-  GoogleCloudDatapipelinesV1SchemaSource({
-    this.localSchema,
-    this.referenceId,
-  });
-
-  GoogleCloudDatapipelinesV1SchemaSource.fromJson(core.Map json_)
-      : this(
-          localSchema: json_.containsKey('localSchema')
-              ? GoogleCloudDatapipelinesV1Schema.fromJson(
-                  json_['localSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          referenceId: json_.containsKey('referenceId')
-              ? json_['referenceId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (localSchema != null) 'localSchema': localSchema!,
-        if (referenceId != null) 'referenceId': referenceId!,
-      };
-}
-
 /// The version of the SDK used to run the job.
 class GoogleCloudDatapipelinesV1SdkVersion {
   /// The support status for this SDK version.
@@ -2731,48 +1720,6 @@ class GoogleCloudDatapipelinesV1SdkVersion {
 
 /// Request message for StopPipeline.
 typedef GoogleCloudDatapipelinesV1StopPipelineRequest = $Empty;
-
-/// Description of a schema-aware transform, which provides info on how it can
-/// be configured.
-class GoogleCloudDatapipelinesV1TransformDescription {
-  /// The full name of this resource formatted as:
-  /// projects/{project}/locations/{location}/transformDescriptions/{transform_description}
-  /// `transform_description` is the same as the `uniform_resource_name` field.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Available options for configuring the transform.
-  GoogleCloudDatapipelinesV1Schema? options;
-
-  /// Unique resource name of the transform.
-  core.String? uniformResourceName;
-
-  GoogleCloudDatapipelinesV1TransformDescription({
-    this.name,
-    this.options,
-    this.uniformResourceName,
-  });
-
-  GoogleCloudDatapipelinesV1TransformDescription.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          options: json_.containsKey('options')
-              ? GoogleCloudDatapipelinesV1Schema.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uniformResourceName: json_.containsKey('uniformResourceName')
-              ? json_['uniformResourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (options != null) 'options': options!,
-        if (uniformResourceName != null)
-          'uniformResourceName': uniformResourceName!,
-      };
-}
 
 /// Workload details for creating the pipeline jobs.
 class GoogleCloudDatapipelinesV1Workload {
@@ -2831,140 +1778,3 @@ typedef GoogleProtobufEmpty = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
-
-/// Represents civil time (or occasionally physical time).
-///
-/// This type can represent a civil time in one of a few possible ways: * When
-/// utc_offset is set and time_zone is unset: a civil time on a calendar day
-/// with a particular offset from UTC. * When time_zone is set and utc_offset is
-/// unset: a civil time on a calendar day in a particular time zone. * When
-/// neither time_zone nor utc_offset is set: a civil time on a calendar day in
-/// local time. The date is relative to the Proleptic Gregorian Calendar. If
-/// year, month, or day are 0, the DateTime is considered not to have a specific
-/// year, month, or day respectively. This type may also be used to represent a
-/// physical time if all the date and time fields are set and either case of the
-/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
-/// time instead. If your use case also would like to store the user's timezone,
-/// that can be done in another field. This type is more flexible than some
-/// applications may want. Make sure to document and validate your application's
-/// limitations.
-class GoogleTypeDateTime {
-  /// Day of month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a datetime without a day.
-  ///
-  /// Optional.
-  core.int? day;
-
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23, defaults to 0 (midnight). An API may choose to
-  /// allow the value "24:00:00" for scenarios like business closing time.
-  ///
-  /// Optional.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59, defaults to 0.
-  ///
-  /// Optional.
-  core.int? minutes;
-
-  /// Month of year.
-  ///
-  /// Must be from 1 to 12, or 0 if specifying a datetime without a month.
-  ///
-  /// Optional.
-  core.int? month;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999, defaults to 0.
-  ///
-  /// Optional.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59, defaults to 0. An API may allow the value
-  /// 60 if it allows leap-seconds.
-  ///
-  /// Optional.
-  core.int? seconds;
-
-  /// Time zone.
-  GoogleTypeTimeZone? timeZone;
-
-  /// UTC offset.
-  ///
-  /// Must be whole seconds, between -18 hours and +18 hours. For example, a UTC
-  /// offset of -4:00 would be represented as { seconds: -14400 }.
-  core.String? utcOffset;
-
-  /// Year of date.
-  ///
-  /// Must be from 1 to 9999, or 0 if specifying a datetime without a year.
-  ///
-  /// Optional.
-  core.int? year;
-
-  GoogleTypeDateTime({
-    this.day,
-    this.hours,
-    this.minutes,
-    this.month,
-    this.nanos,
-    this.seconds,
-    this.timeZone,
-    this.utcOffset,
-    this.year,
-  });
-
-  GoogleTypeDateTime.fromJson(core.Map json_)
-      : this(
-          day: json_.containsKey('day') ? json_['day'] as core.int : null,
-          hours: json_.containsKey('hours') ? json_['hours'] as core.int : null,
-          minutes: json_.containsKey('minutes')
-              ? json_['minutes'] as core.int
-              : null,
-          month: json_.containsKey('month') ? json_['month'] as core.int : null,
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.int
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? GoogleTypeTimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
-              : null,
-          utcOffset: json_.containsKey('utcOffset')
-              ? json_['utcOffset'] as core.String
-              : null,
-          year: json_.containsKey('year') ? json_['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (month != null) 'month': month!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (utcOffset != null) 'utcOffset': utcOffset!,
-        if (year != null) 'year': year!,
-      };
-}
-
-/// A representation of a decimal value, such as 2.5.
-///
-/// Clients may convert values into language-native decimal formats, such as
-/// Java's BigDecimal or Python's decimal.Decimal. \[BigDecimal\]:
-/// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
-/// \[decimal.Decimal\]: https://docs.python.org/3/library/decimal.html
-typedef GoogleTypeDecimal = $GoogleTypeDecimal;
-
-/// Represents a time zone from the
-/// [IANA Time Zone Database](https://www.iana.org/time-zones).
-typedef GoogleTypeTimeZone = $TimeZone;

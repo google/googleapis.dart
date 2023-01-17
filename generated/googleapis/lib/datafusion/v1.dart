@@ -1037,15 +1037,15 @@ class Accelerator {
   /// Insights processing.
   core.String? acceleratorType;
 
-  /// The state of the accelerator
+  /// The state of the accelerator.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value, do not use
+  /// - "STATE_UNSPECIFIED" : Default value, do not use.
   /// - "ENABLED" : Indicates that the accelerator is enabled and available to
-  /// use
+  /// use.
   /// - "DISABLED" : Indicates that the accelerator is disabled and not
-  /// available to use
+  /// available to use.
   /// - "UNKNOWN" : Indicates that accelerator state is currently unknown.
-  /// Requests for enable, disable could be retried while in this state
+  /// Requests for enable, disable could be retried while in this state.
   core.String? state;
 
   Accelerator({
@@ -1419,6 +1419,9 @@ class Instance {
   /// Option to enable Stackdriver Monitoring.
   core.bool? enableStackdriverMonitoring;
 
+  /// Option to enable granular zone separation.
+  core.bool? enableZoneSeparation;
+
   /// Option to enable and pass metadata for event publishing.
   EventPublishConfig? eventPublishConfig;
 
@@ -1544,6 +1547,7 @@ class Instance {
     this.enableRbac,
     this.enableStackdriverLogging,
     this.enableStackdriverMonitoring,
+    this.enableZoneSeparation,
     this.eventPublishConfig,
     this.gcsBucket,
     this.labels,
@@ -1612,6 +1616,9 @@ class Instance {
               json_.containsKey('enableStackdriverMonitoring')
                   ? json_['enableStackdriverMonitoring'] as core.bool
                   : null,
+          enableZoneSeparation: json_.containsKey('enableZoneSeparation')
+              ? json_['enableZoneSeparation'] as core.bool
+              : null,
           eventPublishConfig: json_.containsKey('eventPublishConfig')
               ? EventPublishConfig.fromJson(json_['eventPublishConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1686,6 +1693,8 @@ class Instance {
           'enableStackdriverLogging': enableStackdriverLogging!,
         if (enableStackdriverMonitoring != null)
           'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+        if (enableZoneSeparation != null)
+          'enableZoneSeparation': enableZoneSeparation!,
         if (eventPublishConfig != null)
           'eventPublishConfig': eventPublishConfig!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,

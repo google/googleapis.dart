@@ -1253,6 +1253,30 @@ class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
       };
 }
 
+/// Information about any range constraints.
+class GoogleChromePolicyVersionsV1FieldConstraints {
+  /// The allowed range for numeric fields.
+  GoogleChromePolicyVersionsV1NumericRangeConstraint? numericRangeConstraint;
+
+  GoogleChromePolicyVersionsV1FieldConstraints({
+    this.numericRangeConstraint,
+  });
+
+  GoogleChromePolicyVersionsV1FieldConstraints.fromJson(core.Map json_)
+      : this(
+          numericRangeConstraint: json_.containsKey('numericRangeConstraint')
+              ? GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(
+                  json_['numericRangeConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numericRangeConstraint != null)
+          'numericRangeConstraint': numericRangeConstraint!,
+      };
+}
+
 /// Request parameters for inheriting policy value of a specific org unit target
 /// from the policy value of its parent org unit.
 class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
@@ -1545,6 +1569,35 @@ class GoogleChromePolicyVersionsV1NetworkSetting {
       };
 }
 
+/// A constraint on upper and/or lower bounds, with at least one being set.
+class GoogleChromePolicyVersionsV1NumericRangeConstraint {
+  /// Maximum value.
+  core.String? maximum;
+
+  /// Minimum value.
+  core.String? minimum;
+
+  GoogleChromePolicyVersionsV1NumericRangeConstraint({
+    this.maximum,
+    this.minimum,
+  });
+
+  GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(core.Map json_)
+      : this(
+          maximum: json_.containsKey('maximum')
+              ? json_['maximum'] as core.String
+              : null,
+          minimum: json_.containsKey('minimum')
+              ? json_['minimum'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
+      };
+}
+
 /// Resource representing a policy schema.
 class GoogleChromePolicyVersionsV1PolicySchema {
   /// Specific access restrictions related to this policy.
@@ -1773,6 +1826,12 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
   /// Output only.
   core.String? field;
 
+  /// Information on any input constraints associated on the values for the
+  /// field.
+  ///
+  /// Output only.
+  GoogleChromePolicyVersionsV1FieldConstraints? fieldConstraints;
+
   /// Provides a list of fields and values.
   ///
   /// At least one of the fields must have the corresponding value in order for
@@ -1822,6 +1881,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
     this.defaultValue,
     this.description,
     this.field,
+    this.fieldConstraints,
     this.fieldDependencies,
     this.fieldDescription,
     this.inputConstraint,
@@ -1841,6 +1901,11 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
               : null,
           field:
               json_.containsKey('field') ? json_['field'] as core.String : null,
+          fieldConstraints: json_.containsKey('fieldConstraints')
+              ? GoogleChromePolicyVersionsV1FieldConstraints.fromJson(
+                  json_['fieldConstraints']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           fieldDependencies: json_.containsKey('fieldDependencies')
               ? (json_['fieldDependencies'] as core.List)
                   .map((value) =>
@@ -1886,6 +1951,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
+        if (fieldConstraints != null) 'fieldConstraints': fieldConstraints!,
         if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
         if (fieldDescription != null) 'fieldDescription': fieldDescription!,
         if (inputConstraint != null) 'inputConstraint': inputConstraint!,

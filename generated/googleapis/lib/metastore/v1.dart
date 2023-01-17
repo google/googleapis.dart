@@ -2190,7 +2190,7 @@ class Consumer {
   /// the same region and same network. There must be at least one IP address
   /// available in the subnet's primary range. The subnet is specified in the
   /// following
-  /// form:\`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+  /// form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
   ///
   /// Immutable.
   core.String? subnetwork;

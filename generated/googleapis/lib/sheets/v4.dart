@@ -180,12 +180,13 @@ class SpreadsheetsResource {
   ///
   /// The caller must specify the spreadsheet ID. By default, data within grids
   /// is not returned. You can include grid data in one of 2 ways: * Specify a
-  /// field mask listing your desired fields using the `fields` URL parameter in
-  /// HTTP * Set the includeGridData URL parameter to true. If a field mask is
-  /// set, the `includeGridData` parameter is ignored For large spreadsheets, as
-  /// a best practice, retrieve only the specific spreadsheet fields that you
-  /// want. To retrieve only subsets of spreadsheet data, use the ranges URL
-  /// parameter. Ranges are specified using \[A1
+  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// listing your desired fields using the `fields` URL parameter in HTTP * Set
+  /// the includeGridData URL parameter to true. If a field mask is set, the
+  /// `includeGridData` parameter is ignored For large spreadsheets, as a best
+  /// practice, retrieve only the specific spreadsheet fields that you want. To
+  /// retrieve only subsets of spreadsheet data, use the ranges URL parameter.
+  /// Ranges are specified using \[A1
   /// notation\](/sheets/api/guides/concepts#cell). You can define a single cell
   /// (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also
   /// get cells from other sheets within the same spreadsheet (for example,
@@ -243,11 +244,12 @@ class SpreadsheetsResource {
   /// can be specified. Specifying one or more data filters returns the portions
   /// of the spreadsheet that intersect ranges matched by any of the filters. By
   /// default, data within grids is not returned. You can include grid data one
-  /// of 2 ways: * Specify a field mask listing your desired fields using the
-  /// `fields` URL parameter in HTTP * Set the includeGridData parameter to
-  /// true. If a field mask is set, the `includeGridData` parameter is ignored
-  /// For large spreadsheets, as a best practice, retrieve only the specific
-  /// spreadsheet fields that you want.
+  /// of 2 ways: * Specify a
+  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// listing your desired fields using the `fields` URL parameter in HTTP * Set
+  /// the includeGridData parameter to true. If a field mask is set, the
+  /// `includeGridData` parameter is ignored For large spreadsheets, as a best
+  /// practice, retrieve only the specific spreadsheet fields that you want.
   ///
   /// [request] - The metadata request object.
   ///

@@ -24,7 +24,7 @@
 /// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsVoicesResource]
+///     - [ProjectsLocationsOperationsResource]
 /// - [TextResource]
 /// - [VoicesResource]
 library texttospeech.v1;
@@ -157,6 +157,73 @@ class OperationsResource {
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Synthesizes long form text asynchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource states of the request in the form of `projects / *
+  /// /locations / * /voices / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> synthesizeLongAudio(
+    SynthesizeLongAudioRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':synthesizeLongAudio';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -166,7 +233,8 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern `^operations/.*$`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -210,7 +278,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -242,7 +310,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final response_ = await _requester.request(
       url_,
@@ -251,74 +319,6 @@ class OperationsResource {
     );
     return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsResource get locations =>
-      ProjectsLocationsResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsVoicesResource get voices =>
-      ProjectsLocationsVoicesResource(_requester);
-
-  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsVoicesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsVoicesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Synthesizes long form text asynchronously.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The resource states of the request in the form of projects / *
-  /// /locations / * /voices / * .
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/voices/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> synthesizeLongAudio(
-    SynthesizeLongAudioRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + ':SynthesizeLongAudio';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 

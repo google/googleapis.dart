@@ -417,6 +417,7 @@ api.Instance buildInstance() {
     o.enableRbac = true;
     o.enableStackdriverLogging = true;
     o.enableStackdriverMonitoring = true;
+    o.enableZoneSeparation = true;
     o.eventPublishConfig = buildEventPublishConfig();
     o.gcsBucket = 'foo';
     o.labels = buildUnnamed6();
@@ -469,6 +470,7 @@ void checkInstance(api.Instance o) {
     unittest.expect(o.enableRbac!, unittest.isTrue);
     unittest.expect(o.enableStackdriverLogging!, unittest.isTrue);
     unittest.expect(o.enableStackdriverMonitoring!, unittest.isTrue);
+    unittest.expect(o.enableZoneSeparation!, unittest.isTrue);
     checkEventPublishConfig(o.eventPublishConfig!);
     unittest.expect(
       o.gcsBucket!,

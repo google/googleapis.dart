@@ -281,7 +281,7 @@
             }
         }
     },
-    "revision": "20221129",
+    "revision": "20230110",
     "rootUrl": "https://testing.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1424,7 +1424,7 @@
             "id": "ManualSharding",
             "properties": {
                 "testTargetsForShard": {
-                    "description": "Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.",
+                    "description": "Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.",
                     "items": {
                         "$ref": "TestTargetsForShard"
                     },
@@ -1867,7 +1867,6 @@
                         "INVALID_INPUT_APK",
                         "INVALID_APK_PREVIEW_SDK",
                         "MATRIX_TOO_LARGE",
-                        "DEVICE_QUOTA_EXCEEDED",
                         "TEST_QUOTA_EXCEEDED",
                         "SERVICE_NOT_ACTIVATED",
                         "UNKNOWN_PERMISSION_ERROR"
@@ -1909,7 +1908,6 @@
                         "Either the provided input APK path was malformed, the APK file does not exist, or the user does not have permission to access the APK file.",
                         "APK is built for a preview SDK which is unsupported",
                         "The matrix expanded to contain too many executions.",
-                        "Deprecated: Not enough device quota to run the executions in this matrix.",
                         "Not enough test quota to run the executions in this matrix.",
                         "A required cloud service api is not activated. See: https://firebase.google.com/docs/test-lab/android/continuous#requirements",
                         "There was an unknown permission issue running this test."
@@ -2202,7 +2200,7 @@
             "id": "UniformSharding",
             "properties": {
                 "numShards": {
-                    "description": "Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.",
+                    "description": "Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.",
                     "format": "int32",
                     "type": "integer"
                 }

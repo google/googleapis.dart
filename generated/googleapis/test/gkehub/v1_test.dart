@@ -2311,6 +2311,7 @@ api.MembershipFeatureSpec buildMembershipFeatureSpec() {
   buildCounterMembershipFeatureSpec++;
   if (buildCounterMembershipFeatureSpec < 3) {
     o.configmanagement = buildConfigManagementMembershipSpec();
+    o.fleetInherited = true;
     o.fleetobservability = buildFleetObservabilityMembershipSpec();
     o.identityservice = buildIdentityServiceMembershipSpec();
     o.mesh = buildServiceMeshMembershipSpec();
@@ -2323,6 +2324,7 @@ void checkMembershipFeatureSpec(api.MembershipFeatureSpec o) {
   buildCounterMembershipFeatureSpec++;
   if (buildCounterMembershipFeatureSpec < 3) {
     checkConfigManagementMembershipSpec(o.configmanagement!);
+    unittest.expect(o.fleetInherited!, unittest.isTrue);
     checkFleetObservabilityMembershipSpec(o.fleetobservability!);
     checkIdentityServiceMembershipSpec(o.identityservice!);
     checkServiceMeshMembershipSpec(o.mesh!);

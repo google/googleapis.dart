@@ -29,6 +29,7 @@
 ///   - [ProjectsRegionsResource]
 ///     - [ProjectsRegionsAutoscalingPoliciesResource]
 ///     - [ProjectsRegionsClustersResource]
+///       - [ProjectsRegionsClustersNodeGroupsResource]
 ///     - [ProjectsRegionsJobsResource]
 ///     - [ProjectsRegionsOperationsResource]
 ///     - [ProjectsRegionsWorkflowTemplatesResource]
@@ -1810,6 +1811,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
 class ProjectsRegionsClustersResource {
   final commons.ApiRequester _requester;
 
+  ProjectsRegionsClustersNodeGroupsResource get nodeGroups =>
+      ProjectsRegionsClustersNodeGroupsResource(_requester);
+
   ProjectsRegionsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2578,6 +2582,159 @@ class ProjectsRegionsClustersResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsRegionsClustersNodeGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRegionsClustersNodeGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a node group in a cluster.
+  ///
+  /// The returned Operation.metadata is NodeGroupOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this node group will be
+  /// created. Format: projects/{project}/regions/{region}/clusters/{cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [nodeGroupId] - Optional. An optional node group ID. Generated if not
+  /// specified.The ID must contain only letters (a-z, A-Z), numbers (0-9),
+  /// underscores (_), and hyphens (-). Cannot begin or end with underscore or
+  /// hyphen. Must consist of from 3 to 33 characters.
+  ///
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two CreateNodeGroupRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
+  /// with the same ID, the second request is ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    NodeGroup request,
+    core.String parent, {
+    core.String? nodeGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (nodeGroupId != null) 'nodeGroupId': [nodeGroupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/nodeGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the resource representation for a node group in a cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the node group to retrieve. Format:
+  /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+/nodeGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return NodeGroup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resizes a node group in a cluster.
+  ///
+  /// The returned Operation.metadata is NodeGroupOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the node group to resize. Format:
+  /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+/nodeGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resize(
+    ResizeNodeGroupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resize';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4150,6 +4307,44 @@ class AutoscalingPolicy {
       };
 }
 
+/// Node group identification and configuration information.
+class AuxiliaryNodeGroup {
+  /// Node group configuration.
+  ///
+  /// Required.
+  NodeGroup? nodeGroup;
+
+  /// A node group ID.
+  ///
+  /// Generated if not specified.The ID must contain only letters (a-z, A-Z),
+  /// numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with
+  /// underscore or hyphen. Must consist of from 3 to 33 characters.
+  ///
+  /// Optional.
+  core.String? nodeGroupId;
+
+  AuxiliaryNodeGroup({
+    this.nodeGroup,
+    this.nodeGroupId,
+  });
+
+  AuxiliaryNodeGroup.fromJson(core.Map json_)
+      : this(
+          nodeGroup: json_.containsKey('nodeGroup')
+              ? NodeGroup.fromJson(
+                  json_['nodeGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeGroupId: json_.containsKey('nodeGroupId')
+              ? json_['nodeGroupId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeGroup != null) 'nodeGroup': nodeGroup!,
+        if (nodeGroupId != null) 'nodeGroupId': nodeGroupId!,
+      };
+}
+
 /// Auxiliary services configuration for a Cluster.
 class AuxiliaryServicesConfig {
   /// The Hive Metastore configuration for this workload.
@@ -4785,6 +4980,11 @@ class ClusterConfig {
   /// Optional.
   AutoscalingConfig? autoscalingConfig;
 
+  /// The node group settings.
+  ///
+  /// Optional.
+  core.List<AuxiliaryNodeGroup>? auxiliaryNodeGroups;
+
   /// A Cloud Storage bucket used to stage job dependencies, config files, and
   /// job driver console output.
   ///
@@ -4898,6 +5098,7 @@ class ClusterConfig {
 
   ClusterConfig({
     this.autoscalingConfig,
+    this.auxiliaryNodeGroups,
     this.configBucket,
     this.dataprocMetricConfig,
     this.encryptionConfig,
@@ -4920,6 +5121,12 @@ class ClusterConfig {
           autoscalingConfig: json_.containsKey('autoscalingConfig')
               ? AutoscalingConfig.fromJson(json_['autoscalingConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          auxiliaryNodeGroups: json_.containsKey('auxiliaryNodeGroups')
+              ? (json_['auxiliaryNodeGroups'] as core.List)
+                  .map((value) => AuxiliaryNodeGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           configBucket: json_.containsKey('configBucket')
               ? json_['configBucket'] as core.String
@@ -4985,6 +5192,8 @@ class ClusterConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
+        if (auxiliaryNodeGroups != null)
+          'auxiliaryNodeGroups': auxiliaryNodeGroups!,
         if (configBucket != null) 'configBucket': configBucket!,
         if (dataprocMetricConfig != null)
           'dataprocMetricConfig': dataprocMetricConfig!,
@@ -5295,6 +5504,38 @@ class DiskConfig {
       };
 }
 
+/// Driver scheduling configuration.
+class DriverSchedulingConfig {
+  /// The amount of memory in MB the driver is requesting.
+  ///
+  /// Required.
+  core.int? memoryMb;
+
+  /// The number of vCPUs the driver is requesting.
+  ///
+  /// Required.
+  core.int? vcores;
+
+  DriverSchedulingConfig({
+    this.memoryMb,
+    this.vcores,
+  });
+
+  DriverSchedulingConfig.fromJson(core.Map json_)
+      : this(
+          memoryMb: json_.containsKey('memoryMb')
+              ? json_['memoryMb'] as core.int
+              : null,
+          vcores:
+              json_.containsKey('vcores') ? json_['vcores'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memoryMb != null) 'memoryMb': memoryMb!,
+        if (vcores != null) 'vcores': vcores!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5414,7 +5655,7 @@ class ExecutionConfig {
   /// value is 10 minutes; maximum value is 14 days (see JSON representation of
   /// Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-  /// Defaults to 10 minutes if not set.
+  /// Defaults to 4 hours if not set.
   ///
   /// Optional.
   core.String? idleTtl;
@@ -6832,6 +7073,11 @@ class Job {
   /// Output only.
   core.String? driverOutputResourceUri;
 
+  /// Driver scheduling configuration.
+  ///
+  /// Optional.
+  DriverSchedulingConfig? driverSchedulingConfig;
+
   /// Job is a Hadoop job.
   ///
   /// Optional.
@@ -6940,6 +7186,7 @@ class Job {
     this.done,
     this.driverControlFilesUri,
     this.driverOutputResourceUri,
+    this.driverSchedulingConfig,
     this.hadoopJob,
     this.hiveJob,
     this.jobUuid,
@@ -6967,6 +7214,10 @@ class Job {
               : null,
           driverOutputResourceUri: json_.containsKey('driverOutputResourceUri')
               ? json_['driverOutputResourceUri'] as core.String
+              : null,
+          driverSchedulingConfig: json_.containsKey('driverSchedulingConfig')
+              ? DriverSchedulingConfig.fromJson(json_['driverSchedulingConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           hadoopJob: json_.containsKey('hadoopJob')
               ? HadoopJob.fromJson(
@@ -7051,6 +7302,8 @@ class Job {
           'driverControlFilesUri': driverControlFilesUri!,
         if (driverOutputResourceUri != null)
           'driverOutputResourceUri': driverOutputResourceUri!,
+        if (driverSchedulingConfig != null)
+          'driverSchedulingConfig': driverSchedulingConfig!,
         if (hadoopJob != null) 'hadoopJob': hadoopJob!,
         if (hiveJob != null) 'hiveJob': hiveJob!,
         if (jobUuid != null) 'jobUuid': jobUuid!,
@@ -7163,22 +7416,21 @@ class JobReference {
 class JobScheduling {
   /// Maximum number of times per hour a driver may be restarted as a result of
   /// driver exiting with non-zero code before job is reported failed.A job may
-  /// be reported as thrashing if driver exits with non-zero code 4 times within
-  /// 10 minute window.Maximum value is 10.Note: Currently, this restartable job
-  /// option is not supported in Dataproc workflow template
-  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
-  /// jobs.
+  /// be reported as thrashing if the driver exits with a non-zero code four
+  /// times within a 10-minute window.Maximum value is 10.Note: This restartable
+  /// job option is not supported in Dataproc workflow templates
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
   ///
   /// Optional.
   core.int? maxFailuresPerHour;
 
-  /// Maximum number of times in total a driver may be restarted as a result of
-  /// driver exiting with non-zero code before job is reported failed.
+  /// Maximum total number of times a driver may be restarted as a result of the
+  /// driver exiting with a non-zero code.
   ///
-  /// Maximum value is 240.Note: Currently, this restartable job option is not
-  /// supported in Dataproc workflow template
-  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
-  /// jobs.
+  /// After the maximum number is reached, the job will be reported as
+  /// failed.Maximum value is 240.Note: Currently, this restartable job option
+  /// is not supported in Dataproc workflow templates
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
   ///
   /// Optional.
   core.int? maxFailuresTotal;
@@ -8133,7 +8385,76 @@ class NamespacedGkeDeploymentTarget {
       };
 }
 
+/// Dataproc Node Group.
+///
+/// The Dataproc NodeGroup resource is not related to the Dataproc
+/// NodeGroupAffinity resource.
+class NodeGroup {
+  /// Node group labels.
+  ///
+  /// Label keys must consist of from 1 to 63 characters and conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If
+  /// specified, they must consist of from 1 to 63 characters and conform to RFC
+  /// 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no
+  /// more than 32 labelsn.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The Node group resource name (https://aip.dev/122).
+  core.String? name;
+
+  /// The node group instance group configuration.
+  ///
+  /// Optional.
+  InstanceGroupConfig? nodeGroupConfig;
+
+  /// Node group roles.
+  ///
+  /// Required.
+  core.List<core.String>? roles;
+
+  NodeGroup({
+    this.labels,
+    this.name,
+    this.nodeGroupConfig,
+    this.roles,
+  });
+
+  NodeGroup.fromJson(core.Map json_)
+      : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeGroupConfig: json_.containsKey('nodeGroupConfig')
+              ? InstanceGroupConfig.fromJson(json_['nodeGroupConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          roles: json_.containsKey('roles')
+              ? (json_['roles'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nodeGroupConfig != null) 'nodeGroupConfig': nodeGroupConfig!,
+        if (roles != null) 'roles': roles!,
+      };
+}
+
 /// Node Group Affinity for clusters using sole-tenant node groups.
+///
+/// The Dataproc NodeGroupAffinity resource is not related to the Dataproc
+/// NodeGroup resource.
 class NodeGroupAffinity {
   /// The URI of a sole-tenant node group resource
   /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that
@@ -9316,6 +9637,72 @@ class ReservationAffinity {
       };
 }
 
+/// A request to resize a node group.
+class ResizeNodeGroupRequest {
+  /// Timeout for graceful YARN decomissioning.
+  ///
+  /// Graceful decommissioning
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning)
+  /// allows the removal of nodes from the Compute Engine node group without
+  /// interrupting jobs in progress. This timeout specifies how long to wait for
+  /// jobs in progress to finish before forcefully removing nodes (and
+  /// potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
+  /// supported on Dataproc image versions 1.2 and higher.
+  ///
+  /// Optional.
+  core.String? gracefulDecommissionTimeout;
+
+  /// A unique ID used to identify the request.
+  ///
+  /// If the server receives two ResizeNodeGroupRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.ResizeNodeGroupRequests)
+  /// with the same ID, the second request is ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The number of running instances for the node group to maintain.
+  ///
+  /// The group adds or removes instances to maintain the number of instances
+  /// specified by this parameter.
+  ///
+  /// Required.
+  core.int? size;
+
+  ResizeNodeGroupRequest({
+    this.gracefulDecommissionTimeout,
+    this.requestId,
+    this.size,
+  });
+
+  ResizeNodeGroupRequest.fromJson(core.Map json_)
+      : this(
+          gracefulDecommissionTimeout:
+              json_.containsKey('gracefulDecommissionTimeout')
+                  ? json_['gracefulDecommissionTimeout'] as core.String
+                  : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          size: json_.containsKey('size') ? json_['size'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gracefulDecommissionTimeout != null)
+          'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
+        if (requestId != null) 'requestId': requestId!,
+        if (size != null) 'size': size!,
+      };
+}
+
 /// Runtime configuration for a workload.
 class RuntimeConfig {
   /// Optional custom container image for the job runtime environment.
@@ -9377,6 +9764,11 @@ class RuntimeInfo {
   /// Output only.
   UsageMetrics? approximateUsage;
 
+  /// Snapshot of current workload resource usage.
+  ///
+  /// Output only.
+  UsageSnapshot? currentUsage;
+
   /// A URI pointing to the location of the diagnostics tarball.
   ///
   /// Output only.
@@ -9395,6 +9787,7 @@ class RuntimeInfo {
 
   RuntimeInfo({
     this.approximateUsage,
+    this.currentUsage,
     this.diagnosticOutputUri,
     this.endpoints,
     this.outputUri,
@@ -9405,6 +9798,10 @@ class RuntimeInfo {
           approximateUsage: json_.containsKey('approximateUsage')
               ? UsageMetrics.fromJson(json_['approximateUsage']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          currentUsage: json_.containsKey('currentUsage')
+              ? UsageSnapshot.fromJson(
+                  json_['currentUsage'] as core.Map<core.String, core.dynamic>)
               : null,
           diagnosticOutputUri: json_.containsKey('diagnosticOutputUri')
               ? json_['diagnosticOutputUri'] as core.String
@@ -9424,6 +9821,7 @@ class RuntimeInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approximateUsage != null) 'approximateUsage': approximateUsage!,
+        if (currentUsage != null) 'currentUsage': currentUsage!,
         if (diagnosticOutputUri != null)
           'diagnosticOutputUri': diagnosticOutputUri!,
         if (endpoints != null) 'endpoints': endpoints!,
@@ -10678,6 +11076,55 @@ class UsageMetrics {
         if (milliDcuSeconds != null) 'milliDcuSeconds': milliDcuSeconds!,
         if (shuffleStorageGbSeconds != null)
           'shuffleStorageGbSeconds': shuffleStorageGbSeconds!,
+      };
+}
+
+/// The usage snaphot represents the resources consumed by a workload at a
+/// specified time.
+class UsageSnapshot {
+  /// Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
+  /// Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliDcu;
+
+  /// Shuffle Storage in gigabytes (GB).
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? shuffleStorageGb;
+
+  /// The timestamp of the usage snapshot.
+  ///
+  /// Optional.
+  core.String? snapshotTime;
+
+  UsageSnapshot({
+    this.milliDcu,
+    this.shuffleStorageGb,
+    this.snapshotTime,
+  });
+
+  UsageSnapshot.fromJson(core.Map json_)
+      : this(
+          milliDcu: json_.containsKey('milliDcu')
+              ? json_['milliDcu'] as core.String
+              : null,
+          shuffleStorageGb: json_.containsKey('shuffleStorageGb')
+              ? json_['shuffleStorageGb'] as core.String
+              : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (milliDcu != null) 'milliDcu': milliDcu!,
+        if (shuffleStorageGb != null) 'shuffleStorageGb': shuffleStorageGb!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
       };
 }
 

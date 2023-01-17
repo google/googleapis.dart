@@ -237,7 +237,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
   /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, state and
+  /// fields are returned: name, start_time, end_time, duration, state and
   /// workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
@@ -301,7 +301,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
   /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, state and
+  /// fields are returned: name, start_time, end_time, duration, state and
   /// workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
@@ -395,12 +395,17 @@ class Execution {
 
   /// The call logging level associated to this execution.
   /// Possible string values are:
-  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging specified.
+  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging level specified.
   /// - "LOG_ALL_CALLS" : Log all call steps within workflows, all call returns,
   /// and all exceptions raised.
   /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
   /// within workflows.
   core.String? callLogLevel;
+
+  /// Measures the duration of the execution.
+  ///
+  /// Output only.
+  core.String? duration;
 
   /// Marks the end of execution, successful or not.
   ///
@@ -459,6 +464,7 @@ class Execution {
   Execution({
     this.argument,
     this.callLogLevel,
+    this.duration,
     this.endTime,
     this.error,
     this.name,
@@ -476,6 +482,9 @@ class Execution {
               : null,
           callLogLevel: json_.containsKey('callLogLevel')
               ? json_['callLogLevel'] as core.String
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
               : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
@@ -505,6 +514,7 @@ class Execution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
+        if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (name != null) 'name': name!,

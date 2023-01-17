@@ -1989,7 +1989,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// to be charged. If a free trial applies to the line item, the line item is
   /// pending a prorated charge at the end of the free trial period, as
   /// indicated by `line_item_free_trial_end_time`.
-  /// - "LINE_ITEM_STATE_DEACTIVATING" : The line item is being deactivated.
+  /// - "LINE_ITEM_STATE_DEACTIVATING" : The line item is being deactivated, and
+  /// a prorated refund in being processed.
+  /// - "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE" : The line item is scheduled to
+  /// be deactivated at the end of the current cycle.
   core.String? state;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({

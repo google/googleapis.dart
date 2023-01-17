@@ -2241,6 +2241,7 @@ api.RuntimeSoftwareConfig buildRuntimeSoftwareConfig() {
     o.postStartupScript = 'foo';
     o.postStartupScriptBehavior = 'foo';
     o.upgradeable = true;
+    o.version = 'foo';
   }
   buildCounterRuntimeSoftwareConfig--;
   return o;
@@ -2275,6 +2276,10 @@ void checkRuntimeSoftwareConfig(api.RuntimeSoftwareConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.upgradeable!, unittest.isTrue);
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRuntimeSoftwareConfig--;
 }

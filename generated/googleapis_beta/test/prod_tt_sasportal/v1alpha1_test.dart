@@ -708,9 +708,11 @@ api.SasPortalInstallationParams buildSasPortalInstallationParams() {
     o.antennaBeamwidth = 42;
     o.antennaDowntilt = 42;
     o.antennaGain = 42;
+    o.antennaGainNewField = 42.0;
     o.antennaModel = 'foo';
     o.cpeCbsdIndication = true;
     o.eirpCapability = 42;
+    o.eirpCapabilityNewField = 42.0;
     o.height = 42.0;
     o.heightType = 'foo';
     o.horizontalAccuracy = 42.0;
@@ -743,6 +745,10 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
       unittest.equals(42),
     );
     unittest.expect(
+      o.antennaGainNewField!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.antennaModel!,
       unittest.equals('foo'),
     );
@@ -750,6 +756,10 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
     unittest.expect(
       o.eirpCapability!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.eirpCapabilityNewField!,
+      unittest.equals(42.0),
     );
     unittest.expect(
       o.height!,

@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// contentwarehouse API - v1
+/// Document AI Warehouse API - v1
 ///
 /// For more information, see <https://cloud.google.com/document-warehouse>
 ///
@@ -24,6 +24,7 @@
 ///     - [ProjectsLocationsDocumentsResource]
 ///       - [ProjectsLocationsDocumentsDocumentLinksResource]
 ///       - [ProjectsLocationsDocumentsReferenceIdResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRuleSetsResource]
 ///     - [ProjectsLocationsSynonymSetsResource]
 library contentwarehouse.v1;
@@ -116,7 +117,16 @@ class ProjectsResource {
 
   /// Sets the access control policy for a resource.
   ///
-  /// Replaces any existing policy.
+  /// Replaces any existing policy. You can set ACL with condition for projects
+  /// only. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where
+  /// the left of the operator is `DocumentSchemaId` or property name and the
+  /// right of the operator is a number or a quoted string. You must escape
+  /// backslash (\\) and quote (\") characters. Boolean expressions (AND/OR) are
+  /// supported up to 3 levels of nesting (for example, "((A AND B AND C) OR D)
+  /// AND E"), a maximum of 10 comparisons are allowed in the expression. The
+  /// expression must be \< 6000 bytes in length. Sample condition:
+  /// `"DocumentSchemaId = \"some schema id\" " OR SchemaId.floatPropertyName >=
+  /// 10`
   ///
   /// [request] - The metadata request object.
   ///
@@ -168,6 +178,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDocumentSchemasResource(_requester);
   ProjectsLocationsDocumentsResource get documents =>
       ProjectsLocationsDocumentsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRuleSetsResource get ruleSets =>
       ProjectsLocationsRuleSetsResource(_requester);
   ProjectsLocationsSynonymSetsResource get synonymSets =>
@@ -825,7 +837,16 @@ class ProjectsLocationsDocumentsResource {
 
   /// Sets the access control policy for a resource.
   ///
-  /// Replaces any existing policy.
+  /// Replaces any existing policy. You can set ACL with condition for projects
+  /// only. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where
+  /// the left of the operator is `DocumentSchemaId` or property name and the
+  /// right of the operator is a number or a quoted string. You must escape
+  /// backslash (\\) and quote (\") characters. Boolean expressions (AND/OR) are
+  /// supported up to 3 levels of nesting (for example, "((A AND B AND C) OR D)
+  /// AND E"), a maximum of 10 comparisons are allowed in the expression. The
+  /// expression must be \< 6000 bytes in length. Sample condition:
+  /// `"DocumentSchemaId = \"some schema id\" " OR SchemaId.floatPropertyName >=
+  /// 10`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1107,6 +1128,53 @@ class ProjectsLocationsDocumentsReferenceIdResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContentwarehouseV1UpdateDocumentResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1571,7 +1639,7 @@ class ProjectsLocationsSynonymSetsResource {
 class GoogleCloudContentwarehouseV1AccessControlAction {
   /// Identifies the type of operation.
   /// Possible string values are:
-  /// - "UNKNOWN"
+  /// - "UNKNOWN" : The unknown operation type.
   /// - "ADD_POLICY_BINDING" : Adds newly given policy bindings in the existing
   /// bindings list.
   /// - "REMOVE_POLICY_BINDING" : Removes newly given policy bindings from the
@@ -1732,7 +1800,7 @@ class GoogleCloudContentwarehouseV1ActionOutput {
 
   /// State of an action.
   /// Possible string values are:
-  /// - "UNKNOWN"
+  /// - "UNKNOWN" : The unknown state.
   /// - "ACTION_SUCCEEDED" : State indicating action executed successfully.
   /// - "ACTION_FAILED" : State indicating action failed.
   /// - "ACTION_TIMED_OUT" : State indicating action timed out.
@@ -1873,14 +1941,18 @@ class GoogleCloudContentwarehouseV1CreateDocumentLinkRequest {
 
 /// Request message for DocumentService.CreateDocument.
 class GoogleCloudContentwarehouseV1CreateDocumentRequest {
-  /// Request Option for processing Cloud AI Document in CW Document.
+  /// Request Option for processing Cloud AI Document in Document Warehouse.
+  ///
+  /// This field offers limited support for mapping entities from Cloud AI
+  /// Document to Warehouse Document. Please consult with product team before
+  /// using this field and other available options.
   GoogleCloudContentwarehouseV1CloudAIDocumentOption? cloudAiDocumentOption;
 
   /// Field mask for creating Document fields.
   ///
   /// If mask path is empty, it means all fields are masked. For the `FieldMask`
   /// definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
   core.String? createMask;
 
   /// The document to create.
@@ -1890,7 +1962,9 @@ class GoogleCloudContentwarehouseV1CreateDocumentRequest {
 
   /// Default document policy during creation.
   ///
-  /// Conditions defined in the policy will be ignored.
+  /// This refers to an Identity and Access (IAM) policy, which specifies access
+  /// controls for the Document. Conditions defined in the policy will be
+  /// ignored.
   GoogleIamV1Policy? policy;
 
   /// The meta information collected about the end user, used to enforce access
@@ -1982,6 +2056,37 @@ class GoogleCloudContentwarehouseV1CreateDocumentResponse {
         if (document != null) 'document': document!,
         if (metadata != null) 'metadata': metadata!,
         if (ruleEngineOutput != null) 'ruleEngineOutput': ruleEngineOutput!,
+      };
+}
+
+/// To support the custom weighting across document schemas.
+class GoogleCloudContentwarehouseV1CustomWeightsMetadata {
+  /// List of schema and property name.
+  ///
+  /// Allows a maximum of 10 schemas to be specified for relevance boosting.
+  core.List<GoogleCloudContentwarehouseV1WeightedSchemaProperty>?
+      weightedSchemaProperties;
+
+  GoogleCloudContentwarehouseV1CustomWeightsMetadata({
+    this.weightedSchemaProperties,
+  });
+
+  GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(core.Map json_)
+      : this(
+          weightedSchemaProperties: json_
+                  .containsKey('weightedSchemaProperties')
+              ? (json_['weightedSchemaProperties'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContentwarehouseV1WeightedSchemaProperty
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (weightedSchemaProperties != null)
+          'weightedSchemaProperties': weightedSchemaProperties!,
       };
 }
 
@@ -2149,9 +2254,6 @@ class GoogleCloudContentwarehouseV1DeleteDocumentRequest {
 
 /// Defines the structure for content warehouse document proto.
 class GoogleCloudContentwarehouseV1Document {
-  /// If true, makes the document visible to asynchronous policies and rules.
-  core.bool? asyncEnabled;
-
   /// Document AI format to save the structured content, including OCR.
   GoogleCloudDocumentaiV1Document? cloudAiDocument;
 
@@ -2235,16 +2337,15 @@ class GoogleCloudContentwarehouseV1Document {
   /// Must be unique per project and location.
   core.String? referenceId;
 
-  /// A path linked to structured content file.
-  core.String? structuredContentUri;
-
   /// If true, text extraction will not be performed.
   core.bool? textExtractionDisabled;
 
+  /// If true, text extraction will be performed.
+  core.bool? textExtractionEnabled;
+
   /// Title that describes the document.
   ///
-  /// This is usually present in the top section of the document, and is a
-  /// mandatory field for the question-answering feature.
+  /// This can be the top heading or text that describes the document.
   core.String? title;
 
   /// The time when the document is last updated.
@@ -2256,7 +2357,6 @@ class GoogleCloudContentwarehouseV1Document {
   core.String? updater;
 
   GoogleCloudContentwarehouseV1Document({
-    this.asyncEnabled,
     this.cloudAiDocument,
     this.contentCategory,
     this.createTime,
@@ -2271,8 +2371,8 @@ class GoogleCloudContentwarehouseV1Document {
     this.rawDocumentFileType,
     this.rawDocumentPath,
     this.referenceId,
-    this.structuredContentUri,
     this.textExtractionDisabled,
+    this.textExtractionEnabled,
     this.title,
     this.updateTime,
     this.updater,
@@ -2280,9 +2380,6 @@ class GoogleCloudContentwarehouseV1Document {
 
   GoogleCloudContentwarehouseV1Document.fromJson(core.Map json_)
       : this(
-          asyncEnabled: json_.containsKey('asyncEnabled')
-              ? json_['asyncEnabled'] as core.bool
-              : null,
           cloudAiDocument: json_.containsKey('cloudAiDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(
                   json_['cloudAiDocument']
@@ -2329,11 +2426,11 @@ class GoogleCloudContentwarehouseV1Document {
           referenceId: json_.containsKey('referenceId')
               ? json_['referenceId'] as core.String
               : null,
-          structuredContentUri: json_.containsKey('structuredContentUri')
-              ? json_['structuredContentUri'] as core.String
-              : null,
           textExtractionDisabled: json_.containsKey('textExtractionDisabled')
               ? json_['textExtractionDisabled'] as core.bool
+              : null,
+          textExtractionEnabled: json_.containsKey('textExtractionEnabled')
+              ? json_['textExtractionEnabled'] as core.bool
               : null,
           title:
               json_.containsKey('title') ? json_['title'] as core.String : null,
@@ -2346,7 +2443,6 @@ class GoogleCloudContentwarehouseV1Document {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asyncEnabled != null) 'asyncEnabled': asyncEnabled!,
         if (cloudAiDocument != null) 'cloudAiDocument': cloudAiDocument!,
         if (contentCategory != null) 'contentCategory': contentCategory!,
         if (createTime != null) 'createTime': createTime!,
@@ -2363,10 +2459,10 @@ class GoogleCloudContentwarehouseV1Document {
           'rawDocumentFileType': rawDocumentFileType!,
         if (rawDocumentPath != null) 'rawDocumentPath': rawDocumentPath!,
         if (referenceId != null) 'referenceId': referenceId!,
-        if (structuredContentUri != null)
-          'structuredContentUri': structuredContentUri!,
         if (textExtractionDisabled != null)
           'textExtractionDisabled': textExtractionDisabled!,
+        if (textExtractionEnabled != null)
+          'textExtractionEnabled': textExtractionEnabled!,
         if (title != null) 'title': title!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (updater != null) 'updater': updater!,
@@ -2481,6 +2577,15 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
   /// driving_years > 10`
   core.String? customPropertyFilter;
 
+  /// To support the custom weighting across document schemas, customers need to
+  /// provide the properties to be used to boost the ranking in the search
+  /// request.
+  ///
+  /// For a search query with CustomWeightsMetadata specified, only the
+  /// RetrievalImportance for the properties in the CustomWeightsMetadata will
+  /// be honored.
+  GoogleCloudContentwarehouseV1CustomWeightsMetadata? customWeightsMetadata;
+
   /// The exact creator(s) of the documents to search against.
   ///
   /// If a value isn't specified, documents within the search results are
@@ -2529,7 +2634,33 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
   /// The query string that matches against the full text of the document and
   /// the searchable properties.
   ///
-  /// The maximum number of allowed characters is 255.
+  /// The query partially supports
+  /// [Google AIP style syntax](https://google.aip.dev/160). Specifically, the
+  /// query supports literals, logical operators, negation operators, comparison
+  /// operators, and functions. Literals: A bare literal value (examples: "42",
+  /// "Hugo") is a value to be matched against. It searches over the full text
+  /// of the document and the searchable properties. Logical operators: "AND",
+  /// "and", "OR", and "or" are binary logical operators (example: "engineer OR
+  /// developer"). Negation operators: "NOT" and "!" are negation operators
+  /// (example: "NOT software"). Comparison operators: support the binary
+  /// comparison operators =, !=, \<, \>, \<= and \>= for string, numeric, enum,
+  /// boolean. Also support like operator `~~` for string. It provides semantic
+  /// search functionality by parsing, stemming and doing synonyms expansion
+  /// against the input query. To specify a property in the query, the left hand
+  /// side expression in the comparison must be the property ID including the
+  /// parent. The right hand side must be literals. For example:
+  /// "\"projects/123/locations/us\".property_a \< 1" matches results whose
+  /// "property_a" is less than 1 in project 123 and us location. The literals
+  /// and comparison expression can be connected in a single query (example:
+  /// "software engineer \"projects/123/locations/us\".salary \> 100").
+  /// Functions: supported functions are `LOWER([property_name])` to perform a
+  /// case insensitive match and `EMPTY([property_name])` to filter on the
+  /// existence of a key. Support nested expressions connected using parenthesis
+  /// and logical operators. The default logical operators is `AND` if there is
+  /// no operators between expressions. The query can be used with other filters
+  /// e.g. `time_filters` and `folder_name_filter`. They are connected with
+  /// `AND` operator under the hood. The maximum number of allowed characters is
+  /// 255.
   core.String? query;
 
   /// For custom synonyms.
@@ -2547,6 +2678,7 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
 
   GoogleCloudContentwarehouseV1DocumentQuery({
     this.customPropertyFilter,
+    this.customWeightsMetadata,
     this.documentCreatorFilter,
     this.documentSchemaNames,
     this.fileTypeFilter,
@@ -2562,6 +2694,11 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
       : this(
           customPropertyFilter: json_.containsKey('customPropertyFilter')
               ? json_['customPropertyFilter'] as core.String
+              : null,
+          customWeightsMetadata: json_.containsKey('customWeightsMetadata')
+              ? GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(
+                  json_['customWeightsMetadata']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           documentCreatorFilter: json_.containsKey('documentCreatorFilter')
               ? (json_['documentCreatorFilter'] as core.List)
@@ -2610,6 +2747,8 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customPropertyFilter != null)
           'customPropertyFilter': customPropertyFilter!,
+        if (customWeightsMetadata != null)
+          'customWeightsMetadata': customWeightsMetadata!,
         if (documentCreatorFilter != null)
           'documentCreatorFilter': documentCreatorFilter!,
         if (documentSchemaNames != null)
@@ -2718,7 +2857,7 @@ class GoogleCloudContentwarehouseV1DocumentSchema {
 
   /// Name of the schema given by the user.
   ///
-  /// Must be unique per customer.
+  /// Must be unique per project.
   ///
   /// Required.
   core.String? displayName;
@@ -3189,6 +3328,20 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
   /// - "DB_CLOUD_SQL_POSTGRES" : Cloud Sql with a Postgres Sql instance
   core.String? databaseType;
 
+  /// The default role for the person who create a document.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DOCUMENT_CREATOR_DEFAULT_ROLE_UNSPECIFIED" : Unspecified, will be
+  /// default to document admin role.
+  /// - "DOCUMENT_ADMIN" : Document Admin, same as
+  /// contentwarehouse.googleapis.com/documentAdmin.
+  /// - "DOCUMENT_EDITOR" : Document Editor, same as
+  /// contentwarehouse.googleapis.com/documentEditor.
+  /// - "DOCUMENT_VIEWER" : Document Viewer, same as
+  /// contentwarehouse.googleapis.com/documentViewer.
+  core.String? documentCreatorDefaultRole;
+
   /// The KMS key used for CMEK encryption.
   ///
   /// It is required that the kms key is in the same region as the endpoint. The
@@ -3201,6 +3354,7 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
   GoogleCloudContentwarehouseV1InitializeProjectRequest({
     this.accessControlMode,
     this.databaseType,
+    this.documentCreatorDefaultRole,
     this.kmsKey,
   });
 
@@ -3212,6 +3366,10 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
           databaseType: json_.containsKey('databaseType')
               ? json_['databaseType'] as core.String
               : null,
+          documentCreatorDefaultRole:
+              json_.containsKey('documentCreatorDefaultRole')
+                  ? json_['documentCreatorDefaultRole'] as core.String
+                  : null,
           kmsKey: json_.containsKey('kmsKey')
               ? json_['kmsKey'] as core.String
               : null,
@@ -3220,6 +3378,8 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessControlMode != null) 'accessControlMode': accessControlMode!,
         if (databaseType != null) 'databaseType': databaseType!,
+        if (documentCreatorDefaultRole != null)
+          'documentCreatorDefaultRole': documentCreatorDefaultRole!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
       };
 }
@@ -3756,6 +3916,10 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
   core.bool? isFilterable;
 
   /// Whether the property is user supplied metadata.
+  ///
+  /// This out-of-the box placeholder setting can be used to tag derived
+  /// properties. Its value and interpretation logic should be implemented by
+  /// API user.
   core.bool? isMetadata;
 
   /// Whether the property can have multiple values.
@@ -3785,6 +3949,18 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
   /// Nested structured data property.
   GoogleCloudContentwarehouseV1PropertyTypeOptions? propertyTypeOptions;
 
+  /// The retrieval importance of the property during search.
+  /// Possible string values are:
+  /// - "RETRIEVAL_IMPORTANCE_UNSPECIFIED" : No importance specified. Default
+  /// medium importance.
+  /// - "HIGHEST" : Highest importance.
+  /// - "HIGHER" : Higher importance.
+  /// - "HIGH" : High importance.
+  /// - "MEDIUM" : Medium importance.
+  /// - "LOW" : Low importance (negative).
+  /// - "LOWEST" : Lowest importance (negative).
+  core.String? retrievalImportance;
+
   /// Text/string property.
   GoogleCloudContentwarehouseV1TextTypeOptions? textTypeOptions;
 
@@ -3807,6 +3983,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
     this.mapTypeOptions,
     this.name,
     this.propertyTypeOptions,
+    this.retrievalImportance,
     this.textTypeOptions,
     this.timestampTypeOptions,
   });
@@ -3862,6 +4039,9 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
                   json_['propertyTypeOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          retrievalImportance: json_.containsKey('retrievalImportance')
+              ? json_['retrievalImportance'] as core.String
+              : null,
           textTypeOptions: json_.containsKey('textTypeOptions')
               ? GoogleCloudContentwarehouseV1TextTypeOptions.fromJson(
                   json_['textTypeOptions']
@@ -3891,6 +4071,8 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
         if (name != null) 'name': name!,
         if (propertyTypeOptions != null)
           'propertyTypeOptions': propertyTypeOptions!,
+        if (retrievalImportance != null)
+          'retrievalImportance': retrievalImportance!,
         if (textTypeOptions != null) 'textTypeOptions': textTypeOptions!,
         if (timestampTypeOptions != null)
           'timestampTypeOptions': timestampTypeOptions!,
@@ -4184,7 +4366,7 @@ class GoogleCloudContentwarehouseV1Rule {
 
   /// Identifies the trigger type for running the policy.
   /// Possible string values are:
-  /// - "UNKNOWN"
+  /// - "UNKNOWN" : Trigger for unknown action.
   /// - "ON_CREATE" : Trigger for create document action.
   /// - "ON_UPDATE" : Trigger for update document action.
   core.String? triggerType;
@@ -4450,7 +4632,10 @@ class GoogleCloudContentwarehouseV1SearchDocumentsRequest {
   /// desc"`: By relevance descending, as determined by the API algorithms. *
   /// `"upload_date desc"`: By upload date descending. * `"upload_date"`: By
   /// upload date ascending. * `"update_date desc"`: By last updated date
-  /// descending. * `"update_date"`: By last updated date ascending.
+  /// descending. * `"update_date"`: By last updated date ascending. *
+  /// `"retrieval_importance desc"`: By retrieval importance of properties
+  /// descending. This feature is still under development, please do not use
+  /// unless otherwise instructed to do so.
   core.String? orderBy;
 
   /// A limit on the number of documents returned in the search results.
@@ -4483,16 +4668,12 @@ class GoogleCloudContentwarehouseV1SearchDocumentsRequest {
   /// impact performance. Hint: If this is used with pagination, set this flag
   /// on the initial query but set this to false on subsequent page calls (keep
   /// the total count locally). Defaults to false.
-  ///
-  /// Optional.
   core.bool? requireTotalSize;
 
   /// Controls if the search document request requires the return of a total
   /// size of matched documents.
   ///
   /// See SearchDocumentsResponse.total_size.
-  ///
-  /// Optional.
   /// Possible string values are:
   /// - "TOTAL_RESULT_SIZE_UNSPECIFIED" : Total number calculation will be
   /// skipped.
@@ -4705,7 +4886,9 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
 class GoogleCloudContentwarehouseV1SetAclRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
-  /// The size of the policy is limited to a few 10s of KB.
+  /// The size of the policy is limited to a few 10s of KB. This refers to an
+  /// Identity and Access (IAM) policy, which specifies access controls for the
+  /// Document.
   ///
   /// Required.
   GoogleIamV1Policy? policy;
@@ -4976,7 +5159,11 @@ class GoogleCloudContentwarehouseV1TimestampValue {
 
 /// Request message for DocumentService.UpdateDocument.
 class GoogleCloudContentwarehouseV1UpdateDocumentRequest {
-  /// Request Option for processing Cloud AI Document in CW Document.
+  /// Request Option for processing Cloud AI Document in Document Warehouse.
+  ///
+  /// This field offers limited support for mapping entities from Cloud AI
+  /// Document to Warehouse Document. Please consult with product team before
+  /// using this field and other available options.
   GoogleCloudContentwarehouseV1CloudAIDocumentOption? cloudAiDocumentOption;
 
   /// The document to update.
@@ -5179,6 +5366,7 @@ class GoogleCloudContentwarehouseV1UpdateRuleSetRequest {
       };
 }
 
+/// The user information.
 class GoogleCloudContentwarehouseV1UserInfo {
   /// The unique group identifications which the user is belong to.
   ///
@@ -5290,6 +5478,38 @@ class GoogleCloudContentwarehouseV1Value {
       };
 }
 
+/// Specifies the schema property name.
+class GoogleCloudContentwarehouseV1WeightedSchemaProperty {
+  /// The document schema name.
+  core.String? documentSchemaName;
+
+  /// The property definition names in the schema.
+  core.List<core.String>? propertyNames;
+
+  GoogleCloudContentwarehouseV1WeightedSchemaProperty({
+    this.documentSchemaName,
+    this.propertyNames,
+  });
+
+  GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(core.Map json_)
+      : this(
+          documentSchemaName: json_.containsKey('documentSchemaName')
+              ? json_['documentSchemaName'] as core.String
+              : null,
+          propertyNames: json_.containsKey('propertyNames')
+              ? (json_['propertyNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentSchemaName != null)
+          'documentSchemaName': documentSchemaName!,
+        if (propertyNames != null) 'propertyNames': propertyNames!,
+      };
+}
+
 /// Encodes the detailed information of a barcode.
 typedef GoogleCloudDocumentaiV1Barcode = $GoogleCloudDocumentaiV1Barcode;
 
@@ -5395,8 +5615,6 @@ class GoogleCloudDocumentaiV1Document {
   /// may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1DocumentTextChange>? textChanges;
 
-  /// Placeholder.
-  ///
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1DocumentStyle>? textStyles;
 
@@ -5686,11 +5904,11 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   ///
   /// For some entity types, one of respective `structured_value` fields may
   /// also be populated. Also not all the types of `structured_value` will be
-  /// normalized. For example, some processors may not generate float or int
-  /// normalized text by default. Below are sample formats mapped to structured
-  /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-  /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
-  /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
+  /// normalized. For example, some processors may not generate `float` or
+  /// `integer` normalized text by default. Below are sample formats mapped to
+  /// structured values. - Money/Currency type (`money_value`) is in the ISO
+  /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text
+  /// format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
   /// Optional.
   core.String? text;
@@ -6032,10 +6250,10 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String? layoutType;
 
-  /// Index into the Document.pages element, for example using Document.pages to
-  /// locate the related page element.
+  /// Index into the Document.pages element, for example using `Document.pages`
+  /// to locate the related page element.
   ///
-  /// This field is skipped when its value is the default 0. See
+  /// This field is skipped when its value is the default `0`. See
   /// https://developers.google.com/protocol-buffers/docs/proto3#json.
   ///
   /// Required.
@@ -6196,8 +6414,8 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 
   /// If the value is non-textual, this field represents the type.
   ///
-  /// Current valid values are: - blank (this indicates the field_value is
-  /// normal text) - "unfilled_checkbox" - "filled_checkbox"
+  /// Current valid values are: - blank (this indicates the `field_value` is
+  /// normal text) - `unfilled_checkbox` - `filled_checkbox`
   core.String? valueType;
 
   GoogleCloudDocumentaiV1DocumentPageFormField({

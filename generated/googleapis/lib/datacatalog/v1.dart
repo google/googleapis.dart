@@ -29,6 +29,7 @@
 ///       - [ProjectsLocationsEntryGroupsEntriesResource]
 ///         - [ProjectsLocationsEntryGroupsEntriesTagsResource]
 ///       - [ProjectsLocationsEntryGroupsTagsResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTagTemplatesResource]
 ///       - [ProjectsLocationsTagTemplatesFieldsResource]
 ///         - [ProjectsLocationsTagTemplatesFieldsEnumValuesResource]
@@ -210,6 +211,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsEntryGroupsResource get entryGroups =>
       ProjectsLocationsEntryGroupsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTagTemplatesResource get tagTemplates =>
       ProjectsLocationsTagTemplatesResource(_requester);
   ProjectsLocationsTaxonomiesResource get taxonomies =>
@@ -840,6 +843,55 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to
+  /// the Data Catalog.
+  ///
+  /// Dump here is a snapshot of the third-party system state, that needs to be
+  /// ingested in the Data Catalog. Import of entries is a sync operation that
+  /// reconciles state of the third-party system and Data Catalog. ImportEntries
+  /// is a long-running operation done in the background, so this method returns
+  /// long-running operation resource. The resource can be queried with
+  /// Operations.GetOperation which contains metadata and response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Target entry group for ingested entries.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    GoogleCloudDatacatalogV1ImportEntriesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entries:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists entries.
@@ -1591,6 +1643,194 @@ class ProjectsLocationsEntryGroupsTagsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1Tag.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3499,6 +3739,11 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// Required.
   core.String? column;
 
+  /// Default value for the column.
+  ///
+  /// Optional.
+  core.String? defaultValue;
+
   /// Description of the column.
   ///
   /// Default value is an empty string. The description must be a UTF-8 string
@@ -3514,6 +3759,20 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// Optional.
   core.String? gcRule;
 
+  /// Most important inclusion of this column.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "INDEXING_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "INDEXING_TYPE_NONE" : Column not a part of an index.
+  /// - "INDEXING_TYPE_NON_UNIQUE" : Column Part of non unique index.
+  /// - "INDEXING_TYPE_UNIQUE" : Column part of unique index.
+  /// - "INDEXING_TYPE_PRIMARY_KEY" : Column part of the primary key.
+  core.String? highestIndexingType;
+
+  /// Looker specific column info of this column.
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec? lookerColumnSpec;
+
   /// A column's mode indicates whether values in this column are required,
   /// nullable, or repeated.
   ///
@@ -3522,6 +3781,11 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   ///
   /// Optional.
   core.String? mode;
+
+  /// Ordinal position
+  ///
+  /// Optional.
+  core.int? ordinalPosition;
 
   /// Schema of sub-columns.
   ///
@@ -3539,9 +3803,13 @@ class GoogleCloudDatacatalogV1ColumnSchema {
 
   GoogleCloudDatacatalogV1ColumnSchema({
     this.column,
+    this.defaultValue,
     this.description,
     this.gcRule,
+    this.highestIndexingType,
+    this.lookerColumnSpec,
     this.mode,
+    this.ordinalPosition,
     this.subcolumns,
     this.type,
   });
@@ -3551,13 +3819,27 @@ class GoogleCloudDatacatalogV1ColumnSchema {
           column: json_.containsKey('column')
               ? json_['column'] as core.String
               : null,
+          defaultValue: json_.containsKey('defaultValue')
+              ? json_['defaultValue'] as core.String
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
           gcRule: json_.containsKey('gcRule')
               ? json_['gcRule'] as core.String
               : null,
+          highestIndexingType: json_.containsKey('highestIndexingType')
+              ? json_['highestIndexingType'] as core.String
+              : null,
+          lookerColumnSpec: json_.containsKey('lookerColumnSpec')
+              ? GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
+                  json_['lookerColumnSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          ordinalPosition: json_.containsKey('ordinalPosition')
+              ? json_['ordinalPosition'] as core.int
+              : null,
           subcolumns: json_.containsKey('subcolumns')
               ? (json_['subcolumns'] as core.List)
                   .map((value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
@@ -3569,11 +3851,65 @@ class GoogleCloudDatacatalogV1ColumnSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (gcRule != null) 'gcRule': gcRule!,
+        if (highestIndexingType != null)
+          'highestIndexingType': highestIndexingType!,
+        if (lookerColumnSpec != null) 'lookerColumnSpec': lookerColumnSpec!,
         if (mode != null) 'mode': mode!,
+        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
         if (subcolumns != null) 'subcolumns': subcolumns!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Column info specific to Looker System.
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
+  /// Looker specific column type of this column.
+  /// Possible string values are:
+  /// - "LOOKER_COLUMN_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "DIMENSION" : Dimension.
+  /// - "DIMENSION_GROUP" : Dimension group - parent for Dimension.
+  /// - "FILTER" : Filter.
+  /// - "MEASURE" : Measure.
+  /// - "PAREMETER" : Parameter.
+  core.String? type;
+
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
+    this.type,
+  });
+
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Common statistics on the entry's usage.
+///
+/// They can be set on any system.
+class GoogleCloudDatacatalogV1CommonUsageStats {
+  /// View count in source system.
+  core.String? viewCount;
+
+  GoogleCloudDatacatalogV1CommonUsageStats({
+    this.viewCount,
+  });
+
+  GoogleCloudDatacatalogV1CommonUsageStats.fromJson(core.Map json_)
+      : this(
+          viewCount: json_.containsKey('viewCount')
+              ? json_['viewCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (viewCount != null) 'viewCount': viewCount!,
       };
 }
 
@@ -3743,6 +4079,11 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 ///
 /// Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
+  /// Spec what aplies to tables that are actually views.
+  ///
+  /// Not set for "real" tables.
+  GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec? databaseViewSpec;
+
   /// Fields specific to a Dataplex table and present only in the Dataplex table
   /// entries.
   ///
@@ -3757,12 +4098,18 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
   core.String? type;
 
   GoogleCloudDatacatalogV1DatabaseTableSpec({
+    this.databaseViewSpec,
     this.dataplexTable,
     this.type,
   });
 
   GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(core.Map json_)
       : this(
+          databaseViewSpec: json_.containsKey('databaseViewSpec')
+              ? GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec
+                  .fromJson(json_['databaseViewSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           dataplexTable: json_.containsKey('dataplexTable')
               ? GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(
                   json_['dataplexTable'] as core.Map<core.String, core.dynamic>)
@@ -3771,8 +4118,51 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseViewSpec != null) 'databaseViewSpec': databaseViewSpec!,
         if (dataplexTable != null) 'dataplexTable': dataplexTable!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Specification that applies to database view.
+class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
+  /// Name of a singular table this view reflects one to one.
+  core.String? baseTable;
+
+  /// SQL query used to generate this view.
+  core.String? sqlQuery;
+
+  /// Type of this view.
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED" : Default unknown view type.
+  /// - "STANDARD_VIEW" : Standard view.
+  /// - "MATERIALIZED_VIEW" : Materialized view.
+  core.String? viewType;
+
+  GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec({
+    this.baseTable,
+    this.sqlQuery,
+    this.viewType,
+  });
+
+  GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromJson(
+      core.Map json_)
+      : this(
+          baseTable: json_.containsKey('baseTable')
+              ? json_['baseTable'] as core.String
+              : null,
+          sqlQuery: json_.containsKey('sqlQuery')
+              ? json_['sqlQuery'] as core.String
+              : null,
+          viewType: json_.containsKey('viewType')
+              ? json_['viewType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseTable != null) 'baseTable': baseTable!,
+        if (sqlQuery != null) 'sqlQuery': sqlQuery!,
+        if (viewType != null) 'viewType': viewType!,
       };
 }
 
@@ -3800,6 +4190,8 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SQL" : Cloud Sql
+  /// - "LOOKER" : Looker
   core.String? system;
 
   GoogleCloudDatacatalogV1DataplexExternalTable({
@@ -3994,7 +4386,7 @@ class GoogleCloudDatacatalogV1Entry {
 
   /// Specification that applies to a table resource.
   ///
-  /// Valid only for entries with the `TABLE` type.
+  /// Valid only for entries with the `TABLE` or `EXPLORE` type.
   GoogleCloudDatacatalogV1DatabaseTableSpec? databaseTableSpec;
 
   /// Entry description that can consist of several sentences or paragraphs that
@@ -4008,10 +4400,8 @@ class GoogleCloudDatacatalogV1Entry {
 
   /// Display name of an entry.
   ///
-  /// The name must contain only Unicode letters, numbers (0-9), underscores
-  /// (_), dashes (-), spaces ( ), and can't start or end with spaces. The
-  /// maximum size is 200 bytes when encoded in UTF-8. Default value is an empty
-  /// string.
+  /// The maximum size is 500 bytes when encoded in UTF-8. Default value is an
+  /// empty string.
   core.String? displayName;
 
   /// Specification that applies to a fileset resource.
@@ -4047,6 +4437,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SQL" : Cloud Sql
+  /// - "LOOKER" : Looker
   core.String? integratedSystem;
 
   /// Cloud labels attached to the entry.
@@ -4069,6 +4461,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes
   /// when encoded in UTF-8.
   core.String? linkedResource;
+
+  /// Specification that applies to Looker sysstem.
+  ///
+  /// Only settable when `user_specified_system` is equal to `LOOKER`
+  GoogleCloudDatacatalogV1LookerSystemSpec? lookerSystemSpec;
 
   /// The resource name of an entry in URL format.
   ///
@@ -4102,6 +4499,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// defaults to an empty timestamp.
   GoogleCloudDatacatalogV1SystemTimestamps? sourceSystemTimestamps;
 
+  /// Specification that applies to a relational database system.
+  ///
+  /// Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+  GoogleCloudDatacatalogV1SqlDatabaseSystemSpec? sqlDatabaseSystemSpec;
+
   /// The type of the entry.
   ///
   /// Only used for entries with types listed in the `EntryType` enum.
@@ -4126,6 +4528,12 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "LAKE" : A Dataplex lake.
   /// - "ZONE" : A Dataplex zone.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
+  /// - "DATABASE_SCHEMA" : Schema within a relational database.
+  /// - "DASHBOARD" : A Dashboard, for example from Looker.
+  /// - "EXPLORE" : A Looker Explore. For more information, see
+  /// [Looker Explore API](https://developers.looker.com/api/explorer/4.0/methods/LookmlModel/lookml_model_explore).
+  /// - "LOOK" : A Looker Look. For more information, see
+  /// [Looker Look API](https://developers.looker.com/api/explorer/4.0/methods/Look).
   core.String? type;
 
   /// Resource usage statistics.
@@ -4166,11 +4574,13 @@ class GoogleCloudDatacatalogV1Entry {
     this.integratedSystem,
     this.labels,
     this.linkedResource,
+    this.lookerSystemSpec,
     this.name,
     this.personalDetails,
     this.routineSpec,
     this.schema,
     this.sourceSystemTimestamps,
+    this.sqlDatabaseSystemSpec,
     this.type,
     this.usageSignal,
     this.userSpecifiedSystem,
@@ -4241,6 +4651,11 @@ class GoogleCloudDatacatalogV1Entry {
           linkedResource: json_.containsKey('linkedResource')
               ? json_['linkedResource'] as core.String
               : null,
+          lookerSystemSpec: json_.containsKey('lookerSystemSpec')
+              ? GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(
+                  json_['lookerSystemSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           personalDetails: json_.containsKey('personalDetails')
               ? GoogleCloudDatacatalogV1PersonalDetails.fromJson(
@@ -4258,6 +4673,11 @@ class GoogleCloudDatacatalogV1Entry {
           sourceSystemTimestamps: json_.containsKey('sourceSystemTimestamps')
               ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
                   json_['sourceSystemTimestamps']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlDatabaseSystemSpec: json_.containsKey('sqlDatabaseSystemSpec')
+              ? GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromJson(
+                  json_['sqlDatabaseSystemSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -4291,12 +4711,15 @@ class GoogleCloudDatacatalogV1Entry {
         if (integratedSystem != null) 'integratedSystem': integratedSystem!,
         if (labels != null) 'labels': labels!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
+        if (lookerSystemSpec != null) 'lookerSystemSpec': lookerSystemSpec!,
         if (name != null) 'name': name!,
         if (personalDetails != null) 'personalDetails': personalDetails!,
         if (routineSpec != null) 'routineSpec': routineSpec!,
         if (schema != null) 'schema': schema!,
         if (sourceSystemTimestamps != null)
           'sourceSystemTimestamps': sourceSystemTimestamps!,
+        if (sqlDatabaseSystemSpec != null)
+          'sqlDatabaseSystemSpec': sqlDatabaseSystemSpec!,
         if (type != null) 'type': type!,
         if (usageSignal != null) 'usageSignal': usageSignal!,
         if (userSpecifiedSystem != null)
@@ -4642,6 +5065,27 @@ class GoogleCloudDatacatalogV1GcsFilesetSpec {
       };
 }
 
+/// Request message for ImportEntries method.
+class GoogleCloudDatacatalogV1ImportEntriesRequest {
+  /// Path to a Cloud Storage bucket that contains a dump ready for ingestion.
+  core.String? gcsBucketPath;
+
+  GoogleCloudDatacatalogV1ImportEntriesRequest({
+    this.gcsBucketPath,
+  });
+
+  GoogleCloudDatacatalogV1ImportEntriesRequest.fromJson(core.Map json_)
+      : this(
+          gcsBucketPath: json_.containsKey('gcsBucketPath')
+              ? json_['gcsBucketPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsBucketPath != null) 'gcsBucketPath': gcsBucketPath!,
+      };
+}
+
 /// Request message for ImportTaxonomies.
 class GoogleCloudDatacatalogV1ImportTaxonomiesRequest {
   /// Cross-regional source taxonomy to import.
@@ -4894,6 +5338,84 @@ class GoogleCloudDatacatalogV1ListTaxonomiesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (taxonomies != null) 'taxonomies': taxonomies!,
+      };
+}
+
+/// Specification that applies to entries that are part `LOOKER` system
+/// (user_specified_type)
+class GoogleCloudDatacatalogV1LookerSystemSpec {
+  /// Name of the parent Looker Instance.
+  ///
+  /// Empty if it does not exist.
+  core.String? parentInstanceDisplayName;
+
+  /// ID of the parent Looker Instance.
+  ///
+  /// Empty if it does not exist. Example value: `someinstance.looker.com`
+  core.String? parentInstanceId;
+
+  /// Name of the parent Model.
+  ///
+  /// Empty if it does not exist.
+  core.String? parentModelDisplayName;
+
+  /// ID of the parent Model.
+  ///
+  /// Empty if it does not exist.
+  core.String? parentModelId;
+
+  /// Name of the parent View.
+  ///
+  /// Empty if it does not exist.
+  core.String? parentViewDisplayName;
+
+  /// ID of the parent View.
+  ///
+  /// Empty if it does not exist.
+  core.String? parentViewId;
+
+  GoogleCloudDatacatalogV1LookerSystemSpec({
+    this.parentInstanceDisplayName,
+    this.parentInstanceId,
+    this.parentModelDisplayName,
+    this.parentModelId,
+    this.parentViewDisplayName,
+    this.parentViewId,
+  });
+
+  GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(core.Map json_)
+      : this(
+          parentInstanceDisplayName:
+              json_.containsKey('parentInstanceDisplayName')
+                  ? json_['parentInstanceDisplayName'] as core.String
+                  : null,
+          parentInstanceId: json_.containsKey('parentInstanceId')
+              ? json_['parentInstanceId'] as core.String
+              : null,
+          parentModelDisplayName: json_.containsKey('parentModelDisplayName')
+              ? json_['parentModelDisplayName'] as core.String
+              : null,
+          parentModelId: json_.containsKey('parentModelId')
+              ? json_['parentModelId'] as core.String
+              : null,
+          parentViewDisplayName: json_.containsKey('parentViewDisplayName')
+              ? json_['parentViewDisplayName'] as core.String
+              : null,
+          parentViewId: json_.containsKey('parentViewId')
+              ? json_['parentViewId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parentInstanceDisplayName != null)
+          'parentInstanceDisplayName': parentInstanceDisplayName!,
+        if (parentInstanceId != null) 'parentInstanceId': parentInstanceId!,
+        if (parentModelDisplayName != null)
+          'parentModelDisplayName': parentModelDisplayName!,
+        if (parentModelId != null) 'parentModelId': parentModelId!,
+        if (parentViewDisplayName != null)
+          'parentViewDisplayName': parentViewDisplayName!,
+        if (parentViewId != null) 'parentViewId': parentViewId!,
       };
 }
 
@@ -5675,6 +6197,8 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SQL" : Cloud Sql
+  /// - "LOOKER" : Looker
   core.String? integratedSystem;
 
   /// The full name of the Google Cloud resource the entry belongs to.
@@ -5898,6 +6422,49 @@ class GoogleCloudDatacatalogV1SerializedTaxonomy {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (policyTags != null) 'policyTags': policyTags!,
+      };
+}
+
+/// Specification that applies to entries that are part `SQL_DATABASE` system
+/// (user_specified_type)
+class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
+  /// Version of the database engine.
+  core.String? databaseVersion;
+
+  /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED =
+  /// 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing
+  /// database instance.
+  core.String? instanceHost;
+
+  /// SQL Database Engine.
+  ///
+  /// enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER =
+  /// 3; } Engine of the enclosing database instance.
+  core.String? sqlEngine;
+
+  GoogleCloudDatacatalogV1SqlDatabaseSystemSpec({
+    this.databaseVersion,
+    this.instanceHost,
+    this.sqlEngine,
+  });
+
+  GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromJson(core.Map json_)
+      : this(
+          databaseVersion: json_.containsKey('databaseVersion')
+              ? json_['databaseVersion'] as core.String
+              : null,
+          instanceHost: json_.containsKey('instanceHost')
+              ? json_['instanceHost'] as core.String
+              : null,
+          sqlEngine: json_.containsKey('sqlEngine')
+              ? json_['sqlEngine'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (instanceHost != null) 'instanceHost': instanceHost!,
+        if (sqlEngine != null) 'sqlEngine': sqlEngine!,
       };
 }
 
@@ -6493,6 +7060,15 @@ typedef GoogleCloudDatacatalogV1UnstarEntryResponse = $Empty;
 /// Note: Usually, these signals are updated daily. In rare cases, an update may
 /// fail but will be performed again on the next day.
 class GoogleCloudDatacatalogV1UsageSignal {
+  /// Common usage statistics over each of the predefined time ranges.
+  ///
+  /// Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+  core.Map<core.String, GoogleCloudDatacatalogV1CommonUsageStats>?
+      commonUsageWithinTimeRange;
+
+  /// Favorite count in the source system.
+  core.String? favoriteCount;
+
   /// The end timestamp of the duration of usage statistics.
   core.String? updateTime;
 
@@ -6505,12 +7081,29 @@ class GoogleCloudDatacatalogV1UsageSignal {
       usageWithinTimeRange;
 
   GoogleCloudDatacatalogV1UsageSignal({
+    this.commonUsageWithinTimeRange,
+    this.favoriteCount,
     this.updateTime,
     this.usageWithinTimeRange,
   });
 
   GoogleCloudDatacatalogV1UsageSignal.fromJson(core.Map json_)
       : this(
+          commonUsageWithinTimeRange:
+              json_.containsKey('commonUsageWithinTimeRange')
+                  ? (json_['commonUsageWithinTimeRange']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        GoogleCloudDatacatalogV1CommonUsageStats.fromJson(
+                            item as core.Map<core.String, core.dynamic>),
+                      ),
+                    )
+                  : null,
+          favoriteCount: json_.containsKey('favoriteCount')
+              ? json_['favoriteCount'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -6528,6 +7121,9 @@ class GoogleCloudDatacatalogV1UsageSignal {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (commonUsageWithinTimeRange != null)
+          'commonUsageWithinTimeRange': commonUsageWithinTimeRange!,
+        if (favoriteCount != null) 'favoriteCount': favoriteCount!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (usageWithinTimeRange != null)
           'usageWithinTimeRange': usageWithinTimeRange!,
@@ -6610,6 +7206,114 @@ class GoogleCloudDatacatalogV1ViewSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (viewQuery != null) 'viewQuery': viewQuery!,
+      };
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  ListOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -6748,6 +7452,15 @@ class SetIamPolicyRequest {
         if (policy != null) 'policy': policy!,
       };
 }
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

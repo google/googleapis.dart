@@ -4379,6 +4379,11 @@ class Cluster {
   /// Output only.
   core.String? endpoint;
 
+  /// This checksum is computed by the server based on the value of cluster
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
+
   /// The time the cluster will be automatically deleted in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   ///
@@ -4667,6 +4672,7 @@ class Cluster {
     this.enableKubernetesAlpha,
     this.enableTpu,
     this.endpoint,
+    this.etag,
     this.expireTime,
     this.id,
     this.identityServiceConfig,
@@ -4786,6 +4792,7 @@ class Cluster {
           endpoint: json_.containsKey('endpoint')
               ? json_['endpoint'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
               : null,
@@ -4977,6 +4984,7 @@ class Cluster {
           'enableKubernetesAlpha': enableKubernetesAlpha!,
         if (enableTpu != null) 'enableTpu': enableTpu!,
         if (endpoint != null) 'endpoint': endpoint!,
+        if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
         if (identityServiceConfig != null)
@@ -5288,11 +5296,27 @@ class ClusterUpdate {
   /// Configuration for Shielded Nodes.
   ShieldedNodes? desiredShieldedNodes;
 
+  /// The desired stack type of the cluster.
+  ///
+  /// If a stack type is provided and does not match the current stack type of
+  /// the cluster, update will attempt to change the stack type to the new type.
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Default value, will be defaulted as IPV4 only
+  /// - "IPV4" : Cluster is IPV4 only
+  /// - "IPV4_IPV6" : Cluster can use both IPv4 and IPv6
+  core.String? desiredStackType;
+
   /// Cluster-level Vertical Pod Autoscaling configuration.
   VerticalPodAutoscaling? desiredVerticalPodAutoscaling;
 
   /// Configuration for Workload Identity.
   WorkloadIdentityConfig? desiredWorkloadIdentityConfig;
+
+  /// The current etag of the cluster.
+  ///
+  /// If an etag is provided and does not match the current etag of the cluster,
+  /// update will be blocked and an ABORTED error will be returned.
+  core.String? etag;
 
   ClusterUpdate({
     this.desiredAddonsConfig,
@@ -5331,8 +5355,10 @@ class ClusterUpdate {
     this.desiredResourceUsageExportConfig,
     this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
+    this.desiredStackType,
     this.desiredVerticalPodAutoscaling,
     this.desiredWorkloadIdentityConfig,
+    this.etag,
   });
 
   ClusterUpdate.fromJson(core.Map json_)
@@ -5504,6 +5530,9 @@ class ClusterUpdate {
               ? ShieldedNodes.fromJson(json_['desiredShieldedNodes']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredStackType: json_.containsKey('desiredStackType')
+              ? json_['desiredStackType'] as core.String
+              : null,
           desiredVerticalPodAutoscaling:
               json_.containsKey('desiredVerticalPodAutoscaling')
                   ? VerticalPodAutoscaling.fromJson(
@@ -5516,6 +5545,7 @@ class ClusterUpdate {
                       json_['desiredWorkloadIdentityConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5588,10 +5618,12 @@ class ClusterUpdate {
           'desiredServiceExternalIpsConfig': desiredServiceExternalIpsConfig!,
         if (desiredShieldedNodes != null)
           'desiredShieldedNodes': desiredShieldedNodes!,
+        if (desiredStackType != null) 'desiredStackType': desiredStackType!,
         if (desiredVerticalPodAutoscaling != null)
           'desiredVerticalPodAutoscaling': desiredVerticalPodAutoscaling!,
         if (desiredWorkloadIdentityConfig != null)
           'desiredWorkloadIdentityConfig': desiredWorkloadIdentityConfig!,
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -5895,6 +5927,7 @@ class DNSConfig {
   /// Possible string values are:
   /// - "DNS_SCOPE_UNSPECIFIED" : Default value, will be inferred as cluster
   /// scope.
+  /// - "CLUSTER_SCOPE" : DNS records are accessible from within the cluster.
   /// - "VPC_SCOPE" : DNS records are accessible from within the VPC.
   core.String? clusterDnsScope;
 
@@ -6048,6 +6081,34 @@ class DnsCacheConfig {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
+/// storage using Local SSD.
+class EphemeralStorageLocalSsdConfig {
+  /// Number of local SSDs to use to back ephemeral storage.
+  ///
+  /// Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means
+  /// to disable using local SSDs as ephemeral storage. The limit for this value
+  /// is dependent upon the maximum number of disks available on a machine per
+  /// zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
+  /// information.
+  core.int? localSsdCount;
+
+  EphemeralStorageLocalSsdConfig({
+    this.localSsdCount,
+  });
+
+  EphemeralStorageLocalSsdConfig.fromJson(core.Map json_)
+      : this(
+          localSsdCount: json_.containsKey('localSsdCount')
+              ? json_['localSsdCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+      };
+}
 
 /// Configuration of Fast Socket feature.
 class FastSocket {
@@ -7029,6 +7090,34 @@ class ListUsableSubnetworksResponse {
       };
 }
 
+/// LocalNvmeSsdBlockConfig contains configuration for using raw-block local
+/// NVMe SSD.
+class LocalNvmeSsdBlockConfig {
+  /// The number of raw-block local NVMe SSD disks to be attached to the node.
+  ///
+  /// Each local SSD is 375 GB in size. If zero, it means no raw-block local
+  /// NVMe SSD disks to be attached to the node. The limit for this value is
+  /// dependent upon the maximum number of disks available on a machine per
+  /// zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
+  /// information.
+  core.int? localSsdCount;
+
+  LocalNvmeSsdBlockConfig({
+    this.localSsdCount,
+  });
+
+  LocalNvmeSsdBlockConfig.fromJson(core.Map json_)
+      : this(
+          localSsdCount: json_.containsKey('localSsdCount')
+              ? json_['localSsdCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+      };
+}
+
 /// LoggingComponentConfig is cluster logging component configuration.
 class LoggingComponentConfig {
   /// Select components to collect logs.
@@ -7829,6 +7918,11 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// Parameters for the node ephemeral storage using Local SSDs.
+  ///
+  /// If unspecified, ephemeral storage is backed by the boot disk.
+  EphemeralStorageLocalSsdConfig? ephemeralStorageLocalSsdConfig;
+
   /// Enable or disable NCCL fast socket for the node pool.
   FastSocket? fastSocket;
 
@@ -7858,6 +7952,9 @@ class NodeConfig {
 
   /// Parameters that can be configured on Linux nodes.
   LinuxNodeConfig? linuxNodeConfig;
+
+  /// Parameters for using raw-block Local NVMe SSDs.
+  LocalNvmeSsdBlockConfig? localNvmeSsdBlockConfig;
 
   /// The number of local SSD disks to be attached to the node.
   ///
@@ -7968,6 +8065,9 @@ class NodeConfig {
   /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   core.List<NodeTaint>? taints;
 
+  /// Parameters that can be configured on Windows nodes.
+  WindowsNodeConfig? windowsNodeConfig;
+
   /// The workload metadata configuration for this node.
   WorkloadMetadataConfig? workloadMetadataConfig;
 
@@ -7978,6 +8078,7 @@ class NodeConfig {
     this.confidentialNodes,
     this.diskSizeGb,
     this.diskType,
+    this.ephemeralStorageLocalSsdConfig,
     this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
@@ -7985,6 +8086,7 @@ class NodeConfig {
     this.kubeletConfig,
     this.labels,
     this.linuxNodeConfig,
+    this.localNvmeSsdBlockConfig,
     this.localSsdCount,
     this.loggingConfig,
     this.machineType,
@@ -8001,6 +8103,7 @@ class NodeConfig {
     this.spot,
     this.tags,
     this.taints,
+    this.windowsNodeConfig,
     this.workloadMetadataConfig,
   });
 
@@ -8030,6 +8133,12 @@ class NodeConfig {
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
               : null,
+          ephemeralStorageLocalSsdConfig:
+              json_.containsKey('ephemeralStorageLocalSsdConfig')
+                  ? EphemeralStorageLocalSsdConfig.fromJson(
+                      json_['ephemeralStorageLocalSsdConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           fastSocket: json_.containsKey('fastSocket')
               ? FastSocket.fromJson(
                   json_['fastSocket'] as core.Map<core.String, core.dynamic>)
@@ -8060,6 +8169,11 @@ class NodeConfig {
           linuxNodeConfig: json_.containsKey('linuxNodeConfig')
               ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          localNvmeSsdBlockConfig: json_.containsKey('localNvmeSsdBlockConfig')
+              ? LocalNvmeSsdBlockConfig.fromJson(
+                  json_['localNvmeSsdBlockConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           localSsdCount: json_.containsKey('localSsdCount')
               ? json_['localSsdCount'] as core.int
@@ -8129,6 +8243,10 @@ class NodeConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          windowsNodeConfig: json_.containsKey('windowsNodeConfig')
+              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
               ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -8143,6 +8261,8 @@ class NodeConfig {
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (ephemeralStorageLocalSsdConfig != null)
+          'ephemeralStorageLocalSsdConfig': ephemeralStorageLocalSsdConfig!,
         if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
@@ -8150,6 +8270,8 @@ class NodeConfig {
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
         if (labels != null) 'labels': labels!,
         if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
+        if (localNvmeSsdBlockConfig != null)
+          'localNvmeSsdBlockConfig': localNvmeSsdBlockConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
@@ -8168,6 +8290,7 @@ class NodeConfig {
         if (spot != null) 'spot': spot!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
+        if (windowsNodeConfig != null) 'windowsNodeConfig': windowsNodeConfig!,
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!,
       };
@@ -8425,6 +8548,11 @@ class NodePool {
   /// The node configuration of the pool.
   NodeConfig? config;
 
+  /// This checksum is computed by the server based on the value of node pool
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
+
   /// The initial node count for the pool.
   ///
   /// You must ensure that your Compute Engine
@@ -8526,6 +8654,7 @@ class NodePool {
     this.autoscaling,
     this.conditions,
     this.config,
+    this.etag,
     this.initialNodeCount,
     this.instanceGroupUrls,
     this.locations,
@@ -8559,6 +8688,7 @@ class NodePool {
               ? NodeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           initialNodeCount: json_.containsKey('initialNodeCount')
               ? json_['initialNodeCount'] as core.int
               : null,
@@ -8618,6 +8748,7 @@ class NodePool {
         if (autoscaling != null) 'autoscaling': autoscaling!,
         if (conditions != null) 'conditions': conditions!,
         if (config != null) 'config': config!,
+        if (etag != null) 'etag': etag!,
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
         if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls!,
         if (locations != null) 'locations': locations!,
@@ -11269,6 +11400,12 @@ class UpdateNodePoolRequest {
   /// All the nodes in the node pool will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
 
+  /// The current etag of the node pool.
+  ///
+  /// If an etag is provided and does not match the current etag of the node
+  /// pool, update will be blocked and an ABORTED error will be returned.
+  core.String? etag;
+
   /// Enable or disable NCCL fast socket for the node pool.
   FastSocket? fastSocket;
 
@@ -11363,6 +11500,9 @@ class UpdateNodePoolRequest {
   /// Upgrade settings control disruption and speed of the upgrade.
   UpgradeSettings? upgradeSettings;
 
+  /// Parameters that can be configured on Windows nodes.
+  WindowsNodeConfig? windowsNodeConfig;
+
   /// The desired workload metadata config for the node pool.
   WorkloadMetadataConfig? workloadMetadataConfig;
 
@@ -11378,6 +11518,7 @@ class UpdateNodePoolRequest {
   UpdateNodePoolRequest({
     this.clusterId,
     this.confidentialNodes,
+    this.etag,
     this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
@@ -11396,6 +11537,7 @@ class UpdateNodePoolRequest {
     this.tags,
     this.taints,
     this.upgradeSettings,
+    this.windowsNodeConfig,
     this.workloadMetadataConfig,
     this.zone,
   });
@@ -11409,6 +11551,7 @@ class UpdateNodePoolRequest {
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           fastSocket: json_.containsKey('fastSocket')
               ? FastSocket.fromJson(
                   json_['fastSocket'] as core.Map<core.String, core.dynamic>)
@@ -11475,6 +11618,10 @@ class UpdateNodePoolRequest {
               ? UpgradeSettings.fromJson(json_['upgradeSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          windowsNodeConfig: json_.containsKey('windowsNodeConfig')
+              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
               ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -11485,6 +11632,7 @@ class UpdateNodePoolRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (etag != null) 'etag': etag!,
         if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
@@ -11503,6 +11651,7 @@ class UpdateNodePoolRequest {
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
+        if (windowsNodeConfig != null) 'windowsNodeConfig': windowsNodeConfig!,
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!,
         if (zone != null) 'zone': zone!,
@@ -11751,6 +11900,36 @@ class VirtualNIC {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Parameters that can be configured on Windows nodes.
+///
+/// Windows Node Config that define the parameters that will be used to
+/// configure the Windows node pool settings
+class WindowsNodeConfig {
+  /// OSVersion specifies the Windows node config to be used on the node
+  /// Possible string values are:
+  /// - "OS_VERSION_UNSPECIFIED" : When OSVersion is not specified
+  /// - "OS_VERSION_LTSC2019" : LTSC2019 specifies to use LTSC2019 as the
+  /// Windows Servercore Base Image
+  /// - "OS_VERSION_LTSC2022" : LTSC2022 specifies to use LTSC2022 as the
+  /// Windows Servercore Base Image
+  core.String? osVersion;
+
+  WindowsNodeConfig({
+    this.osVersion,
+  });
+
+  WindowsNodeConfig.fromJson(core.Map json_)
+      : this(
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osVersion != null) 'osVersion': osVersion!,
       };
 }
 

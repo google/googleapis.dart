@@ -2296,7 +2296,10 @@ class NewMediaItemResult {
   /// For details regarding this field, see Status.
   Status? status;
 
-  /// The upload token used to create this new media item.
+  /// The upload token used to create this new (simple) media item.
+  ///
+  /// Only populated if the media item is simple and required a single upload
+  /// token.
   core.String? uploadToken;
 
   NewMediaItemResult({

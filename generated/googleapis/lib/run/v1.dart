@@ -3683,6 +3683,10 @@ class Container {
   core.List<core.String>? command;
 
   /// List of environment variables to set in the container.
+  ///
+  /// EnvVar with duplicate names are generally allowed; if referencing a
+  /// secret, the name must be unique for the container. For non-secret EnvVar
+  /// names, the Container will only get the last-declared one.
   core.List<EnvVar>? env;
 
   /// Not supported by Cloud Run.
@@ -3709,9 +3713,9 @@ class Container {
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe? livenessProbe;
 
-  /// Name of the container specified as a DNS_LABEL.
+  /// Name of the container specified as a DNS_LABEL (RFC 1123).
   ///
-  /// Currently unused in Cloud Run. More info:
+  /// More info:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
   core.String? name;
 

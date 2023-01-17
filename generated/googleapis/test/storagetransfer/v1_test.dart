@@ -300,6 +300,38 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterEventStream = 0;
+api.EventStream buildEventStream() {
+  final o = api.EventStream();
+  buildCounterEventStream++;
+  if (buildCounterEventStream < 3) {
+    o.eventStreamExpirationTime = 'foo';
+    o.eventStreamStartTime = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterEventStream--;
+  return o;
+}
+
+void checkEventStream(api.EventStream o) {
+  buildCounterEventStream++;
+  if (buildCounterEventStream < 3) {
+    unittest.expect(
+      o.eventStreamExpirationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventStreamStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventStream--;
+}
+
 core.int buildCounterGcsData = 0;
 api.GcsData buildGcsData() {
   final o = api.GcsData();
@@ -1112,6 +1144,7 @@ api.TransferJob buildTransferJob() {
     o.creationTime = 'foo';
     o.deletionTime = 'foo';
     o.description = 'foo';
+    o.eventStream = buildEventStream();
     o.lastModificationTime = 'foo';
     o.latestOperationName = 'foo';
     o.loggingConfig = buildLoggingConfig();
@@ -1141,6 +1174,7 @@ void checkTransferJob(api.TransferJob o) {
       o.description!,
       unittest.equals('foo'),
     );
+    checkEventStream(o.eventStream!);
     unittest.expect(
       o.lastModificationTime!,
       unittest.equals('foo'),
@@ -1399,6 +1433,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventStream', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventStream();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventStream.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventStream(od);
     });
   });
 

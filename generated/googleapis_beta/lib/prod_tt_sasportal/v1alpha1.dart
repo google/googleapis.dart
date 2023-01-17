@@ -3499,7 +3499,7 @@ class SasPortalChannelWithScore {
   /// The frequency range of the channel.
   SasPortalFrequencyRange? frequencyRange;
 
-  /// The channel score, normalized to be in \[0,100\].
+  /// The channel score, normalized to be in the range \[0,100\].
   core.double? score;
 
   SasPortalChannelWithScore({
@@ -3555,7 +3555,7 @@ class SasPortalDevice {
   /// The FCC identifier of the device.
   core.String? fccId;
 
-  /// Only ranges within the allowlists are available for new grants.
+  /// Only ranges that are within the allowlists are available for new grants.
   core.List<SasPortalFrequencyRange>? grantRangeAllowlists;
 
   /// Grants held by the device.
@@ -3891,23 +3891,25 @@ class SasPortalDeviceGrant {
 class SasPortalDeviceMetadata {
   /// If populated, the Antenna Model Pattern to use.
   ///
-  /// Format is: RecordCreatorId:PatternId
+  /// Format is: `RecordCreatorId:PatternId`
   core.String? antennaModel;
 
-  /// CCG.
+  /// Common Channel Group (CCG).
   ///
   /// A group of CBSDs in the same ICG requesting a common primary channel
-  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+  /// assignment. For more details, see \[CBRSA-TS-2001
+  /// V3.0.0\](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).
   core.String? commonChannelGroup;
 
-  /// ICG.
+  /// Interference Coordination Group (ICG).
   ///
-  /// A group of CBSDs that manage their own interference with the group. See
-  /// CBRSA-TS-2001 V3.0.0 for more details.
+  /// A group of CBSDs that manage their own interference with the group. For
+  /// more details, see \[CBRSA-TS-2001
+  /// V3.0.0\](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).
   core.String? interferenceCoordinationGroup;
 
-  /// Whether a CPI has validated to have coordinated with the National Quiet
-  /// Zone office.
+  /// Set to `true` if a CPI has validated that they have coordinated with the
+  /// National Quiet Zone office.
   ///
   /// Output only.
   core.bool? nrqzValidated;
@@ -4290,8 +4292,7 @@ class SasPortalPolicy {
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
-  /// Set the field as true when we would like to disable the onboarding
-  /// notification.
+  /// Set the field as `true` to disable the onboarding notification.
   ///
   /// Optional.
   core.bool? disableNotification;

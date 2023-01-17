@@ -693,7 +693,7 @@
             }
         }
     },
-    "revision": "20221130",
+    "revision": "20230108",
     "rootUrl": "https://analyticshub.googleapis.com/",
     "schemas": {
         "AuditConfig": {

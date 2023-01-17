@@ -1625,6 +1625,9 @@ class BackendRule {
   /// to the backend.
   core.String? jwtAudience;
 
+  /// Deprecated, do not use.
+  core.double? minDeadline;
+
   /// The number of seconds to wait for the completion of a long running
   /// operation.
   ///
@@ -1681,6 +1684,7 @@ class BackendRule {
     this.deadline,
     this.disableAuth,
     this.jwtAudience,
+    this.minDeadline,
     this.operationDeadline,
     this.pathTranslation,
     this.protocol,
@@ -1701,6 +1705,9 @@ class BackendRule {
           jwtAudience: json_.containsKey('jwtAudience')
               ? json_['jwtAudience'] as core.String
               : null,
+          minDeadline: json_.containsKey('minDeadline')
+              ? (json_['minDeadline'] as core.num).toDouble()
+              : null,
           operationDeadline: json_.containsKey('operationDeadline')
               ? (json_['operationDeadline'] as core.num).toDouble()
               : null,
@@ -1720,6 +1727,7 @@ class BackendRule {
         if (deadline != null) 'deadline': deadline!,
         if (disableAuth != null) 'disableAuth': disableAuth!,
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
+        if (minDeadline != null) 'minDeadline': minDeadline!,
         if (operationDeadline != null) 'operationDeadline': operationDeadline!,
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
         if (protocol != null) 'protocol': protocol!,
@@ -1920,6 +1928,181 @@ class ChangeReport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configChanges != null) 'configChanges': configChanges!,
+      };
+}
+
+/// Details about how and where to publish client libraries.
+class ClientLibrarySettings {
+  /// Settings for C++ client libraries.
+  CppSettings? cppSettings;
+
+  /// Settings for .NET client libraries.
+  DotnetSettings? dotnetSettings;
+
+  /// Settings for Go client libraries.
+  GoSettings? goSettings;
+
+  /// Settings for legacy Java features, supported in the Service YAML.
+  JavaSettings? javaSettings;
+
+  /// Launch stage of this version of the API.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// Settings for Node client libraries.
+  NodeSettings? nodeSettings;
+
+  /// Settings for PHP client libraries.
+  PhpSettings? phpSettings;
+
+  /// Settings for Python client libraries.
+  PythonSettings? pythonSettings;
+
+  /// When using transport=rest, the client request will encode enums as numbers
+  /// rather than strings.
+  core.bool? restNumericEnums;
+
+  /// Settings for Ruby client libraries.
+  RubySettings? rubySettings;
+
+  /// Version of the API to apply these settings to.
+  core.String? version;
+
+  ClientLibrarySettings({
+    this.cppSettings,
+    this.dotnetSettings,
+    this.goSettings,
+    this.javaSettings,
+    this.launchStage,
+    this.nodeSettings,
+    this.phpSettings,
+    this.pythonSettings,
+    this.restNumericEnums,
+    this.rubySettings,
+    this.version,
+  });
+
+  ClientLibrarySettings.fromJson(core.Map json_)
+      : this(
+          cppSettings: json_.containsKey('cppSettings')
+              ? CppSettings.fromJson(
+                  json_['cppSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dotnetSettings: json_.containsKey('dotnetSettings')
+              ? DotnetSettings.fromJson(json_['dotnetSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          goSettings: json_.containsKey('goSettings')
+              ? GoSettings.fromJson(
+                  json_['goSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          javaSettings: json_.containsKey('javaSettings')
+              ? JavaSettings.fromJson(
+                  json_['javaSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          launchStage: json_.containsKey('launchStage')
+              ? json_['launchStage'] as core.String
+              : null,
+          nodeSettings: json_.containsKey('nodeSettings')
+              ? NodeSettings.fromJson(
+                  json_['nodeSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          phpSettings: json_.containsKey('phpSettings')
+              ? PhpSettings.fromJson(
+                  json_['phpSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pythonSettings: json_.containsKey('pythonSettings')
+              ? PythonSettings.fromJson(json_['pythonSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          restNumericEnums: json_.containsKey('restNumericEnums')
+              ? json_['restNumericEnums'] as core.bool
+              : null,
+          rubySettings: json_.containsKey('rubySettings')
+              ? RubySettings.fromJson(
+                  json_['rubySettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cppSettings != null) 'cppSettings': cppSettings!,
+        if (dotnetSettings != null) 'dotnetSettings': dotnetSettings!,
+        if (goSettings != null) 'goSettings': goSettings!,
+        if (javaSettings != null) 'javaSettings': javaSettings!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (nodeSettings != null) 'nodeSettings': nodeSettings!,
+        if (phpSettings != null) 'phpSettings': phpSettings!,
+        if (pythonSettings != null) 'pythonSettings': pythonSettings!,
+        if (restNumericEnums != null) 'restNumericEnums': restNumericEnums!,
+        if (rubySettings != null) 'rubySettings': rubySettings!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Required information for every language.
+class CommonLanguageSettings {
+  /// The destination where API teams want this client library to be published.
+  core.List<core.String>? destinations;
+
+  /// Link to automatically generated reference documentation.
+  ///
+  /// Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+  core.String? referenceDocsUri;
+
+  CommonLanguageSettings({
+    this.destinations,
+    this.referenceDocsUri,
+  });
+
+  CommonLanguageSettings.fromJson(core.Map json_)
+      : this(
+          destinations: json_.containsKey('destinations')
+              ? (json_['destinations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          referenceDocsUri: json_.containsKey('referenceDocsUri')
+              ? json_['referenceDocsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinations != null) 'destinations': destinations!,
+        if (referenceDocsUri != null) 'referenceDocsUri': referenceDocsUri!,
       };
 }
 
@@ -2215,14 +2398,7 @@ class ContextRule {
 
 /// Selects and configures the service controller used by the service.
 ///
-/// The service controller handles two things: - **What is allowed:** for each
-/// API request, Chemist checks the project status, activation status, abuse
-/// status, billing status, service status, location restrictions, VPC Service
-/// Controls, SuperQuota, and other policies. - **What has happened:** for each
-/// API response, Chemist reports the telemetry data to analytics, auditing,
-/// billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also
-/// accepts telemetry data not associated with API traffic, such as billing
-/// metrics. Example: control: environment: servicecontrol.googleapis.com
+/// Example: control: environment: servicecontrol.googleapis.com
 class Control {
   /// The service controller environment to use.
   ///
@@ -2244,6 +2420,28 @@ class Control {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
+      };
+}
+
+/// Settings for C++ client libraries.
+class CppSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  CppSettings({
+    this.common,
+  });
+
+  CppSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
       };
 }
 
@@ -2505,6 +2703,28 @@ class Documentation {
 /// A documentation rule provides information about individual API elements.
 typedef DocumentationRule = $DocumentationRule;
 
+/// Settings for Dotnet client libraries.
+class DotnetSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  DotnetSettings({
+    this.common,
+  });
+
+  DotnetSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+      };
+}
+
 /// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
 ///
@@ -2519,50 +2739,7 @@ typedef DocumentationRule = $DocumentationRule;
 /// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
 /// to be passed to the API frontend, for it # to decide whether the subsequent
 /// cross-origin request is allowed # to proceed. allow_cors: true
-class Endpoint {
-  /// Allowing
-  /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
-  /// cross-domain traffic, would allow the backends served from this endpoint
-  /// to receive and respond to HTTP OPTIONS requests.
-  ///
-  /// The response will be used by the browser to determine whether the
-  /// subsequent cross-origin request is allowed to proceed.
-  core.bool? allowCors;
-
-  /// The canonical name of this endpoint.
-  core.String? name;
-
-  /// The specification of an Internet routable address of API frontend that
-  /// will handle requests to this
-  /// [API Endpoint](https://cloud.google.com/apis/design/glossary).
-  ///
-  /// It should be either a valid IPv4 address or a fully-qualified domain name.
-  /// For example, "8.8.8.8" or "myservice.appspot.com".
-  core.String? target;
-
-  Endpoint({
-    this.allowCors,
-    this.name,
-    this.target,
-  });
-
-  Endpoint.fromJson(core.Map json_)
-      : this(
-          allowCors: json_.containsKey('allowCors')
-              ? json_['allowCors'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          target: json_.containsKey('target')
-              ? json_['target'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowCors != null) 'allowCors': allowCors!,
-        if (name != null) 'name': name!,
-        if (target != null) 'target': target!,
-      };
-}
+typedef Endpoint = $Endpoint;
 
 /// Enum type definition.
 class Enum {
@@ -2928,6 +3105,28 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Settings for Go client libraries.
+class GoSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  GoSettings({
+    this.common,
+  });
+
+  GoSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+      };
+}
+
 /// Defines the HTTP configuration for an API service.
 ///
 /// It contains a list of HttpRule, each specifying the mapping of an RPC method
@@ -3230,6 +3429,66 @@ class HttpRule {
       };
 }
 
+/// Settings for Java client libraries.
+class JavaSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  /// The package name to use in Java.
+  ///
+  /// Clobbers the java_package option set in the protobuf. This should be used
+  /// **only** by APIs who have already set the
+  /// language_settings.java.package_name" field in gapic.yaml. API teams should
+  /// use the protobuf java_package option where possible. Example of a YAML
+  /// configuration:: publishing: java_settings: library_package:
+  /// com.google.cloud.pubsub.v1
+  core.String? libraryPackage;
+
+  /// Configure the Java class name to use instead of the service's for its
+  /// corresponding generated GAPIC client.
+  ///
+  /// Keys are fully-qualified service names as they appear in the protobuf
+  /// (including the full the language_settings.java.interface_names" field in
+  /// gapic.yaml. API teams should otherwise use the service name as it appears
+  /// in the protobuf. Example of a YAML configuration:: publishing:
+  /// java_settings: service_class_names: - google.pubsub.v1.Publisher:
+  /// TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+  core.Map<core.String, core.String>? serviceClassNames;
+
+  JavaSettings({
+    this.common,
+    this.libraryPackage,
+    this.serviceClassNames,
+  });
+
+  JavaSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+          libraryPackage: json_.containsKey('libraryPackage')
+              ? json_['libraryPackage'] as core.String
+              : null,
+          serviceClassNames: json_.containsKey('serviceClassNames')
+              ? (json_['serviceClassNames']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+        if (libraryPackage != null) 'libraryPackage': libraryPackage!,
+        if (serviceClassNames != null) 'serviceClassNames': serviceClassNames!,
+      };
+}
+
 /// Specifies a location to extract JWT from an API request.
 typedef JwtLocation = $JwtLocation;
 
@@ -3522,6 +3781,66 @@ class LoggingDestination {
       };
 }
 
+/// Describes settings to use when generating API methods that use the
+/// long-running operation pattern.
+///
+/// All default values below are from those used in the client library
+/// generators (e.g.
+/// [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+class LongRunning {
+  /// Initial delay after which the first poll request will be made.
+  ///
+  /// Default value: 5 seconds.
+  core.String? initialPollDelay;
+
+  /// Maximum time between two subsequent poll requests.
+  ///
+  /// Default value: 45 seconds.
+  core.String? maxPollDelay;
+
+  /// Multiplier to gradually increase delay between subsequent polls until it
+  /// reaches max_poll_delay.
+  ///
+  /// Default value: 1.5.
+  core.double? pollDelayMultiplier;
+
+  /// Total polling timeout.
+  ///
+  /// Default value: 5 minutes.
+  core.String? totalPollTimeout;
+
+  LongRunning({
+    this.initialPollDelay,
+    this.maxPollDelay,
+    this.pollDelayMultiplier,
+    this.totalPollTimeout,
+  });
+
+  LongRunning.fromJson(core.Map json_)
+      : this(
+          initialPollDelay: json_.containsKey('initialPollDelay')
+              ? json_['initialPollDelay'] as core.String
+              : null,
+          maxPollDelay: json_.containsKey('maxPollDelay')
+              ? json_['maxPollDelay'] as core.String
+              : null,
+          pollDelayMultiplier: json_.containsKey('pollDelayMultiplier')
+              ? (json_['pollDelayMultiplier'] as core.num).toDouble()
+              : null,
+          totalPollTimeout: json_.containsKey('totalPollTimeout')
+              ? json_['totalPollTimeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (initialPollDelay != null) 'initialPollDelay': initialPollDelay!,
+        if (maxPollDelay != null) 'maxPollDelay': maxPollDelay!,
+        if (pollDelayMultiplier != null)
+          'pollDelayMultiplier': pollDelayMultiplier!,
+        if (totalPollTimeout != null) 'totalPollTimeout': totalPollTimeout!,
+      };
+}
+
 /// The full representation of a Service that is managed by Google Service
 /// Management.
 class ManagedService {
@@ -3626,6 +3945,46 @@ class Method {
         if (responseStreaming != null) 'responseStreaming': responseStreaming!,
         if (responseTypeUrl != null) 'responseTypeUrl': responseTypeUrl!,
         if (syntax != null) 'syntax': syntax!,
+      };
+}
+
+/// Describes the generator configuration for a method.
+class MethodSettings {
+  /// Describes settings to use for long-running operations when generating API
+  /// methods for RPCs.
+  ///
+  /// Complements RPCs that use the annotations in
+  /// google/longrunning/operations.proto. Example of a YAML configuration::
+  /// publishing: method_behavior: - selector: CreateAdDomain long_running:
+  /// initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5
+  /// max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds:
+  /// 54000 # 90 minutes
+  LongRunning? longRunning;
+
+  /// The fully qualified name of the method, for which the options below apply.
+  ///
+  /// This is used to find the method to apply the options.
+  core.String? selector;
+
+  MethodSettings({
+    this.longRunning,
+    this.selector,
+  });
+
+  MethodSettings.fromJson(core.Map json_)
+      : this(
+          longRunning: json_.containsKey('longRunning')
+              ? LongRunning.fromJson(
+                  json_['longRunning'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selector: json_.containsKey('selector')
+              ? json_['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (longRunning != null) 'longRunning': longRunning!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -4194,6 +4553,28 @@ class Monitoring {
 /// the consumer project).
 typedef MonitoringDestination = $MonitoringDestination;
 
+/// Settings for Node client libraries.
+class NodeSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  NodeSettings({
+    this.common,
+  });
+
+  NodeSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+      };
+}
+
 /// OAuth scopes are a way to define data and permissions on data.
 ///
 /// For example, there are scopes defined for "Read-only access to Google
@@ -4346,6 +4727,28 @@ class Page {
       };
 }
 
+/// Settings for Php client libraries.
+class PhpSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  PhpSettings({
+    this.common,
+  });
+
+  PhpSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4464,6 +4867,146 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// This message configures the settings for publishing
+/// [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries)
+/// generated from the service config.
+class Publishing {
+  /// Used as a tracking tag when collecting data about the APIs developer
+  /// relations artifacts like docs, packages delivered to package managers,
+  /// etc.
+  ///
+  /// Example: "speech".
+  core.String? apiShortName;
+
+  /// GitHub teams to be added to CODEOWNERS in the directory in GitHub
+  /// containing source code for the client libraries for this API.
+  core.List<core.String>? codeownerGithubTeams;
+
+  /// A prefix used in sample code when demarking regions to be included in
+  /// documentation.
+  core.String? docTagPrefix;
+
+  /// Link to product home page.
+  ///
+  /// Example: https://cloud.google.com/asset-inventory/docs/overview
+  core.String? documentationUri;
+
+  /// GitHub label to apply to issues and pull requests opened for this API.
+  core.String? githubLabel;
+
+  /// Client library settings.
+  ///
+  /// If the same version string appears multiple times in this list, then the
+  /// last one wins. Settings from earlier settings with the same version string
+  /// are discarded.
+  core.List<ClientLibrarySettings>? librarySettings;
+
+  /// A list of API method settings, e.g. the behavior for methods that use the
+  /// long-running operation pattern.
+  core.List<MethodSettings>? methodSettings;
+
+  /// Link to a place that API users can report issues.
+  ///
+  /// Example:
+  /// https://issuetracker.google.com/issues/new?component=190865&template=1161103
+  core.String? newIssueUri;
+
+  /// For whom the client library is being published.
+  /// Possible string values are:
+  /// - "CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED" : Not useful.
+  /// - "CLOUD" : Google Cloud Platform Org.
+  /// - "ADS" : Ads (Advertising) Org.
+  /// - "PHOTOS" : Photos Org.
+  /// - "STREET_VIEW" : Street View Org.
+  core.String? organization;
+
+  Publishing({
+    this.apiShortName,
+    this.codeownerGithubTeams,
+    this.docTagPrefix,
+    this.documentationUri,
+    this.githubLabel,
+    this.librarySettings,
+    this.methodSettings,
+    this.newIssueUri,
+    this.organization,
+  });
+
+  Publishing.fromJson(core.Map json_)
+      : this(
+          apiShortName: json_.containsKey('apiShortName')
+              ? json_['apiShortName'] as core.String
+              : null,
+          codeownerGithubTeams: json_.containsKey('codeownerGithubTeams')
+              ? (json_['codeownerGithubTeams'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          docTagPrefix: json_.containsKey('docTagPrefix')
+              ? json_['docTagPrefix'] as core.String
+              : null,
+          documentationUri: json_.containsKey('documentationUri')
+              ? json_['documentationUri'] as core.String
+              : null,
+          githubLabel: json_.containsKey('githubLabel')
+              ? json_['githubLabel'] as core.String
+              : null,
+          librarySettings: json_.containsKey('librarySettings')
+              ? (json_['librarySettings'] as core.List)
+                  .map((value) => ClientLibrarySettings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          methodSettings: json_.containsKey('methodSettings')
+              ? (json_['methodSettings'] as core.List)
+                  .map((value) => MethodSettings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          newIssueUri: json_.containsKey('newIssueUri')
+              ? json_['newIssueUri'] as core.String
+              : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiShortName != null) 'apiShortName': apiShortName!,
+        if (codeownerGithubTeams != null)
+          'codeownerGithubTeams': codeownerGithubTeams!,
+        if (docTagPrefix != null) 'docTagPrefix': docTagPrefix!,
+        if (documentationUri != null) 'documentationUri': documentationUri!,
+        if (githubLabel != null) 'githubLabel': githubLabel!,
+        if (librarySettings != null) 'librarySettings': librarySettings!,
+        if (methodSettings != null) 'methodSettings': methodSettings!,
+        if (newIssueUri != null) 'newIssueUri': newIssueUri!,
+        if (organization != null) 'organization': organization!,
+      };
+}
+
+/// Settings for Python client libraries.
+class PythonSettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  PythonSettings({
+    this.common,
+  });
+
+  PythonSettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
       };
 }
 
@@ -4640,6 +5183,28 @@ class Rollout {
       };
 }
 
+/// Settings for Ruby client libraries.
+class RubySettings {
+  /// Some settings.
+  CommonLanguageSettings? common;
+
+  RubySettings({
+    this.common,
+  });
+
+  RubySettings.fromJson(core.Map json_)
+      : this(
+          common: json_.containsKey('common')
+              ? CommonLanguageSettings.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (common != null) 'common': common!,
+      };
+}
+
 /// `Service` is the root object of Google API service configuration (service
 /// config).
 ///
@@ -4745,6 +5310,11 @@ class Service {
   /// The Google project that owns this service.
   core.String? producerProjectId;
 
+  /// Settings for
+  /// [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries)
+  /// generated from APIs defined as protocol buffers.
+  Publishing? publishing;
+
   /// Quota configuration.
   Quota? quota;
 
@@ -4801,6 +5371,7 @@ class Service {
     this.monitoring,
     this.name,
     this.producerProjectId,
+    this.publishing,
     this.quota,
     this.sourceInfo,
     this.systemParameters,
@@ -4896,6 +5467,10 @@ class Service {
           producerProjectId: json_.containsKey('producerProjectId')
               ? json_['producerProjectId'] as core.String
               : null,
+          publishing: json_.containsKey('publishing')
+              ? Publishing.fromJson(
+                  json_['publishing'] as core.Map<core.String, core.dynamic>)
+              : null,
           quota: json_.containsKey('quota')
               ? Quota.fromJson(
                   json_['quota'] as core.Map<core.String, core.dynamic>)
@@ -4950,6 +5525,7 @@ class Service {
         if (monitoring != null) 'monitoring': monitoring!,
         if (name != null) 'name': name!,
         if (producerProjectId != null) 'producerProjectId': producerProjectId!,
+        if (publishing != null) 'publishing': publishing!,
         if (quota != null) 'quota': quota!,
         if (sourceInfo != null) 'sourceInfo': sourceInfo!,
         if (systemParameters != null) 'systemParameters': systemParameters!,

@@ -2125,7 +2125,10 @@ class Destination {
   /// The Cloud Function resource name.
   ///
   /// Only Cloud Functions V2 is supported. Format:
-  /// `projects/{project}/locations/{location}/functions/{function}`
+  /// `projects/{project}/locations/{location}/functions/{function}` This is a
+  /// read-only field. Creating Cloud Functions V2 triggers is only supported
+  /// via the Cloud Functions product. An error will be returned if the user
+  /// sets this value.
   core.String? cloudFunction;
 
   /// Cloud Run fully-managed resource that receives the events.

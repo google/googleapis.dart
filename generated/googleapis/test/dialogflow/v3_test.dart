@@ -3826,6 +3826,7 @@ api.GoogleCloudDialogflowCxV3QueryParameters
   buildCounterGoogleCloudDialogflowCxV3QueryParameters++;
   if (buildCounterGoogleCloudDialogflowCxV3QueryParameters < 3) {
     o.analyzeQueryTextSentiment = true;
+    o.channel = 'foo';
     o.currentPage = 'foo';
     o.disableWebhook = true;
     o.flowVersions = buildUnnamed60();
@@ -3845,6 +3846,10 @@ void checkGoogleCloudDialogflowCxV3QueryParameters(
   buildCounterGoogleCloudDialogflowCxV3QueryParameters++;
   if (buildCounterGoogleCloudDialogflowCxV3QueryParameters < 3) {
     unittest.expect(o.analyzeQueryTextSentiment!, unittest.isTrue);
+    unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.currentPage!,
       unittest.equals('foo'),
@@ -4183,6 +4188,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessage
   final o = api.GoogleCloudDialogflowCxV3ResponseMessage();
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessage < 3) {
+    o.channel = 'foo';
     o.conversationSuccess =
         buildGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess();
     o.endInteraction =
@@ -4206,6 +4212,10 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
     api.GoogleCloudDialogflowCxV3ResponseMessage o) {
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessage < 3) {
+    unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess(
         o.conversationSuccess!);
     checkGoogleCloudDialogflowCxV3ResponseMessageEndInteraction(

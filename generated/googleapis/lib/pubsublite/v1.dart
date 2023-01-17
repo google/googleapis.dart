@@ -1856,6 +1856,90 @@ class DeliveryConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Configuration for a Pub/Sub Lite subscription that writes messages to a
+/// destination.
+///
+/// User subscriber clients must not connect to this subscription.
+class ExportConfig {
+  /// The current state of the export, which may be different to the desired
+  /// state due to errors.
+  ///
+  /// This field is output only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Messages are being exported.
+  /// - "PAUSED" : Exporting messages is suspended.
+  /// - "PERMISSION_DENIED" : Messages cannot be exported due to permission
+  /// denied errors. Output only.
+  /// - "NOT_FOUND" : Messages cannot be exported due to missing resources.
+  /// Output only.
+  core.String? currentState;
+
+  /// The name of an optional Pub/Sub Lite topic to publish messages that can
+  /// not be exported to the destination.
+  ///
+  /// For example, the message can not be published to the Pub/Sub service
+  /// because it does not satisfy the constraints documented at
+  /// https://cloud.google.com/pubsub/docs/publisher. Structured like:
+  /// projects/{project_number}/locations/{location}/topics/{topic_id}. Must be
+  /// within the same project and location as the subscription. The topic may be
+  /// changed or removed.
+  ///
+  /// Optional.
+  core.String? deadLetterTopic;
+
+  /// The desired state of this export.
+  ///
+  /// Setting this to values other than `ACTIVE` and `PAUSED` will result in an
+  /// error.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Messages are being exported.
+  /// - "PAUSED" : Exporting messages is suspended.
+  /// - "PERMISSION_DENIED" : Messages cannot be exported due to permission
+  /// denied errors. Output only.
+  /// - "NOT_FOUND" : Messages cannot be exported due to missing resources.
+  /// Output only.
+  core.String? desiredState;
+
+  /// Messages are automatically written from the Pub/Sub Lite topic associated
+  /// with this subscription to a Pub/Sub topic.
+  PubSubConfig? pubsubConfig;
+
+  ExportConfig({
+    this.currentState,
+    this.deadLetterTopic,
+    this.desiredState,
+    this.pubsubConfig,
+  });
+
+  ExportConfig.fromJson(core.Map json_)
+      : this(
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
+              : null,
+          deadLetterTopic: json_.containsKey('deadLetterTopic')
+              ? json_['deadLetterTopic'] as core.String
+              : null,
+          desiredState: json_.containsKey('desiredState')
+              ? json_['desiredState'] as core.String
+              : null,
+          pubsubConfig: json_.containsKey('pubsubConfig')
+              ? PubSubConfig.fromJson(
+                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentState != null) 'currentState': currentState!,
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+        if (desiredState != null) 'desiredState': desiredState!,
+        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -2257,6 +2341,29 @@ class PartitionCursor {
       };
 }
 
+/// Configuration for exporting to a Pub/Sub topic.
+class PubSubConfig {
+  /// The name of the Pub/Sub topic.
+  ///
+  /// Structured like: projects/{project_number}/topics/{topic_id}. The topic
+  /// may be changed.
+  core.String? topic;
+
+  PubSubConfig({
+    this.topic,
+  });
+
+  PubSubConfig.fromJson(core.Map json_)
+      : this(
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (topic != null) 'topic': topic!,
+      };
+}
+
 /// Metadata about a reservation resource.
 class Reservation {
   /// The name of the reservation.
@@ -2407,6 +2514,10 @@ class Subscription {
   /// The settings for this subscription's message delivery.
   DeliveryConfig? deliveryConfig;
 
+  /// If present, messages are automatically written from the Pub/Sub Lite topic
+  /// associated with this subscription to a destination.
+  ExportConfig? exportConfig;
+
   /// The name of the subscription.
   ///
   /// Structured like:
@@ -2421,6 +2532,7 @@ class Subscription {
 
   Subscription({
     this.deliveryConfig,
+    this.exportConfig,
     this.name,
     this.topic,
   });
@@ -2431,6 +2543,10 @@ class Subscription {
               ? DeliveryConfig.fromJson(json_['deliveryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          exportConfig: json_.containsKey('exportConfig')
+              ? ExportConfig.fromJson(
+                  json_['exportConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           topic:
               json_.containsKey('topic') ? json_['topic'] as core.String : null,
@@ -2438,6 +2554,7 @@ class Subscription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!,
+        if (exportConfig != null) 'exportConfig': exportConfig!,
         if (name != null) 'name': name!,
         if (topic != null) 'topic': topic!,
       };

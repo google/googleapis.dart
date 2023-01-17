@@ -1931,7 +1931,7 @@
             }
         }
     },
-    "revision": "20221130",
+    "revision": "20230113",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {

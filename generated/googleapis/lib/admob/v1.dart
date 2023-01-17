@@ -467,6 +467,19 @@ class AdUnit {
 /// Describes an AdMob app for a specific platform (For example: Android or
 /// iOS).
 class App {
+  /// The approval state for the app.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "APP_APPROVAL_STATE_UNSPECIFIED" : Default value for an unset field. Do
+  /// not use.
+  /// - "ACTION_REQUIRED" : The app requires additional user action to be
+  /// approved. Please refer to https://support.google.com/admob/answer/10564477
+  /// for details and next steps.
+  /// - "IN_REVIEW" : The app is pending review.
+  /// - "APPROVED" : The app is approved and can serve ads.
+  core.String? appApprovalState;
+
   /// The externally visible ID of the app which can be used to integrate with
   /// the AdMob SDK.
   ///
@@ -499,6 +512,7 @@ class App {
   core.String? platform;
 
   App({
+    this.appApprovalState,
     this.appId,
     this.linkedAppInfo,
     this.manualAppInfo,
@@ -508,6 +522,9 @@ class App {
 
   App.fromJson(core.Map json_)
       : this(
+          appApprovalState: json_.containsKey('appApprovalState')
+              ? json_['appApprovalState'] as core.String
+              : null,
           appId:
               json_.containsKey('appId') ? json_['appId'] as core.String : null,
           linkedAppInfo: json_.containsKey('linkedAppInfo')
@@ -525,6 +542,7 @@ class App {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appApprovalState != null) 'appApprovalState': appApprovalState!,
         if (appId != null) 'appId': appId!,
         if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!,
         if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!,

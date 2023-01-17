@@ -141,6 +141,59 @@ class ProjectsDatabasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes a database.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [allowMissing] - If set to true and the Database is not found, the request
+  /// will succeed but no action will be taken.
+  ///
+  /// [etag] - The current etag of the Database. If an etag is provided and does
+  /// not match the current etag of the database, deletion will be blocked and a
+  /// FAILED_PRECONDITION error will be returned.
+  ///
+  /// [validateOnly] - If set, validate the request and preview the response,
+  /// but do not actually delete the database.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Exports a copy of all or a subset of documents from Google Cloud Firestore
   /// to another storage system, such as Google Cloud Storage.
   ///
@@ -1096,30 +1149,37 @@ class ProjectsDatabasesDocumentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
-  /// [collectionId] - Required. The collection ID, relative to `parent`, to
-  /// list. For example: `chatrooms` or `messages`.
+  /// [collectionId] - Optional. The collection ID, relative to `parent`, to
+  /// list. For example: `chatrooms` or `messages`. This is optional, and when
+  /// not provided, Firestore will list documents from all collections under the
+  /// provided `parent`.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [orderBy] - The order to sort results by. For example: `priority desc,
-  /// name`.
+  /// [orderBy] - Optional. The optional ordering of the documents to return.
+  /// For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY`
+  /// used in Firestore queries but in a string representation. When absent,
+  /// documents are ordered based on `__name__ ASC`.
   ///
-  /// [pageSize] - The maximum number of documents to return.
+  /// [pageSize] - Optional. The maximum number of documents to return in a
+  /// single response. Firestore may return fewer than this value.
   ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDocuments` response. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters (with the exception of `page_size`)
+  /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Reads documents as they were at the given time. This may not
-  /// be older than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This may not be older
+  /// than 270 seconds.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a document that does not exist but has sub-documents. These
-  /// documents will be returned with a key but will not have fields,
-  /// Document.create_time, or Document.update_time set. Requests with
-  /// `show_missing` may not specify `where` or `order_by`.
+  /// [showMissing] - If the list should show missing documents. A document is
+  /// missing if it does not exist, but there are sub-documents nested
+  /// underneath it. When true, such missing documents will be returned with a
+  /// key but will not have fields, `create_time`, or `update_time` set.
+  /// Requests with `show_missing` may not specify `where` or `order_by`.
   ///
-  /// [transaction] - Reads documents in a transaction.
+  /// [transaction] - Perform the read as part of an already active transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1224,30 +1284,37 @@ class ProjectsDatabasesDocumentsResource {
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+/documents$`.
   ///
-  /// [collectionId] - Required. The collection ID, relative to `parent`, to
-  /// list. For example: `chatrooms` or `messages`.
+  /// [collectionId] - Optional. The collection ID, relative to `parent`, to
+  /// list. For example: `chatrooms` or `messages`. This is optional, and when
+  /// not provided, Firestore will list documents from all collections under the
+  /// provided `parent`.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [orderBy] - The order to sort results by. For example: `priority desc,
-  /// name`.
+  /// [orderBy] - Optional. The optional ordering of the documents to return.
+  /// For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY`
+  /// used in Firestore queries but in a string representation. When absent,
+  /// documents are ordered based on `__name__ ASC`.
   ///
-  /// [pageSize] - The maximum number of documents to return.
+  /// [pageSize] - Optional. The maximum number of documents to return in a
+  /// single response. Firestore may return fewer than this value.
   ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDocuments` response. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters (with the exception of `page_size`)
+  /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Reads documents as they were at the given time. This may not
-  /// be older than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This may not be older
+  /// than 270 seconds.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a document that does not exist but has sub-documents. These
-  /// documents will be returned with a key but will not have fields,
-  /// Document.create_time, or Document.update_time set. Requests with
-  /// `show_missing` may not specify `where` or `order_by`.
+  /// [showMissing] - If the list should show missing documents. A document is
+  /// missing if it does not exist, but there are sub-documents nested
+  /// underneath it. When true, such missing documents will be returned with a
+  /// key but will not have fields, `create_time`, or `update_time` set.
+  /// Requests with `show_missing` may not specify `where` or `order_by`.
   ///
-  /// [transaction] - Reads documents in a transaction.
+  /// [transaction] - Perform the read as part of an already active transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3705,7 +3772,9 @@ class ListDocumentsResponse {
   /// The Documents found.
   core.List<Document>? documents;
 
-  /// The next page token.
+  /// A token to retrieve the next page of documents.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListDocumentsResponse({

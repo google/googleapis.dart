@@ -4411,6 +4411,7 @@ api.MaterializedViewDefinition buildMaterializedViewDefinition() {
   final o = api.MaterializedViewDefinition();
   buildCounterMaterializedViewDefinition++;
   if (buildCounterMaterializedViewDefinition < 3) {
+    o.allowNonIncrementalDefinition = true;
     o.enableRefresh = true;
     o.lastRefreshTime = 'foo';
     o.maxStaleness = 'foo';
@@ -4424,6 +4425,7 @@ api.MaterializedViewDefinition buildMaterializedViewDefinition() {
 void checkMaterializedViewDefinition(api.MaterializedViewDefinition o) {
   buildCounterMaterializedViewDefinition++;
   if (buildCounterMaterializedViewDefinition < 3) {
+    unittest.expect(o.allowNonIncrementalDefinition!, unittest.isTrue);
     unittest.expect(o.enableRefresh!, unittest.isTrue);
     unittest.expect(
       o.lastRefreshTime!,

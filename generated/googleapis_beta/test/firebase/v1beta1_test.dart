@@ -218,6 +218,7 @@ api.AndroidApp buildAndroidApp() {
     o.apiKeyId = 'foo';
     o.appId = 'foo';
     o.displayName = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.packageName = 'foo';
     o.projectId = 'foo';
@@ -242,6 +243,10 @@ void checkAndroidApp(api.AndroidApp o) {
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -497,6 +502,7 @@ api.IosApp buildIosApp() {
     o.appStoreId = 'foo';
     o.bundleId = 'foo';
     o.displayName = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.projectId = 'foo';
     o.state = 'foo';
@@ -527,6 +533,10 @@ void checkIosApp(api.IosApp o) {
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1402,6 +1412,7 @@ api.WebApp buildWebApp() {
     o.appId = 'foo';
     o.appUrls = buildUnnamed17();
     o.displayName = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.projectId = 'foo';
     o.state = 'foo';
@@ -1425,6 +1436,10 @@ void checkWebApp(api.WebApp o) {
     checkUnnamed17(o.appUrls!);
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(

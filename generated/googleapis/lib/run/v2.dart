@@ -1554,7 +1554,11 @@ class GoogleCloudRunV2BinaryAuthorization {
       };
 }
 
-/// Represents a specific Cloud SQL instance.
+/// Represents a set of Cloud SQL instances.
+///
+/// Each one will be available under /cloudsql/\[instance\]. Visit
+/// https://cloud.google.com/sql/docs/mysql/connect-run for more information on
+/// how to connect Cloud SQL and Cloud Run.
 class GoogleCloudRunV2CloudSqlInstance {
   /// The Cloud SQL instance connection names, as can be found in
   /// https://console.cloud.google.com/sql/instances.
@@ -1776,7 +1780,7 @@ class GoogleCloudRunV2Container {
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   GoogleCloudRunV2Probe? livenessProbe;
 
-  /// Name of the container specified as a DNS_LABEL.
+  /// Name of the container specified as a DNS_LABEL (RFC 1123).
   core.String? name;
 
   /// List of ports to expose from the container.
@@ -1997,6 +2001,11 @@ class GoogleCloudRunV2Execution {
   /// KRM-style annotations for the resource.
   core.Map<core.String, core.String>? annotations;
 
+  /// The number of tasks which reached phase Cancelled.
+  ///
+  /// Output only.
+  core.int? cancelledCount;
+
   /// Represents time when the execution was completed.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
@@ -2107,6 +2116,11 @@ class GoogleCloudRunV2Execution {
   /// documentation.
   core.String? launchStage;
 
+  /// URI where logs for this execution can be found in Cloud Console.
+  ///
+  /// Output only.
+  core.String? logUri;
+
   /// The unique name of this Execution.
   ///
   /// Output only.
@@ -2139,6 +2153,11 @@ class GoogleCloudRunV2Execution {
   ///
   /// Output only.
   core.bool? reconciling;
+
+  /// The number of tasks which have retried at least once.
+  ///
+  /// Output only.
+  core.int? retriedCount;
 
   /// The number of actively running tasks.
   ///
@@ -2187,6 +2206,7 @@ class GoogleCloudRunV2Execution {
 
   GoogleCloudRunV2Execution({
     this.annotations,
+    this.cancelledCount,
     this.completionTime,
     this.conditions,
     this.createTime,
@@ -2198,10 +2218,12 @@ class GoogleCloudRunV2Execution {
     this.job,
     this.labels,
     this.launchStage,
+    this.logUri,
     this.name,
     this.observedGeneration,
     this.parallelism,
     this.reconciling,
+    this.retriedCount,
     this.runningCount,
     this.startTime,
     this.succeededCount,
@@ -2221,6 +2243,9 @@ class GoogleCloudRunV2Execution {
                     item as core.String,
                   ),
                 )
+              : null,
+          cancelledCount: json_.containsKey('cancelledCount')
+              ? json_['cancelledCount'] as core.int
               : null,
           completionTime: json_.containsKey('completionTime')
               ? json_['completionTime'] as core.String
@@ -2259,6 +2284,9 @@ class GoogleCloudRunV2Execution {
           launchStage: json_.containsKey('launchStage')
               ? json_['launchStage'] as core.String
               : null,
+          logUri: json_.containsKey('logUri')
+              ? json_['logUri'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           observedGeneration: json_.containsKey('observedGeneration')
               ? json_['observedGeneration'] as core.String
@@ -2268,6 +2296,9 @@ class GoogleCloudRunV2Execution {
               : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
+              : null,
+          retriedCount: json_.containsKey('retriedCount')
+              ? json_['retriedCount'] as core.int
               : null,
           runningCount: json_.containsKey('runningCount')
               ? json_['runningCount'] as core.int
@@ -2293,6 +2324,7 @@ class GoogleCloudRunV2Execution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
+        if (cancelledCount != null) 'cancelledCount': cancelledCount!,
         if (completionTime != null) 'completionTime': completionTime!,
         if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
@@ -2304,11 +2336,13 @@ class GoogleCloudRunV2Execution {
         if (job != null) 'job': job!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
+        if (logUri != null) 'logUri': logUri!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (parallelism != null) 'parallelism': parallelism!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (retriedCount != null) 'retriedCount': retriedCount!,
         if (runningCount != null) 'runningCount': runningCount!,
         if (startTime != null) 'startTime': startTime!,
         if (succeededCount != null) 'succeededCount': succeededCount!,
@@ -3196,6 +3230,20 @@ class GoogleCloudRunV2Revision {
   /// https://cloud.google.com/run/docs/securing/using-cmek
   core.String? encryptionKey;
 
+  /// The action to take if the encryption key is revoked.
+  /// Possible string values are:
+  /// - "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED" : Unspecified
+  /// - "PREVENT_NEW" : Prevents the creation of new instances.
+  /// - "SHUTDOWN" : Shuts down existing instances, and prevents creation of new
+  /// ones.
+  core.String? encryptionKeyRevocationAction;
+
+  /// If encryption_key_revocation_action is SHUTDOWN, the duration before
+  /// shutting down all instances.
+  ///
+  /// The minimum increment is 1 hour.
+  core.String? encryptionKeyShutdownDuration;
+
   /// A system-generated fingerprint for this version of the resource.
   ///
   /// May be used to detect modification conflict during updates.
@@ -3350,6 +3398,8 @@ class GoogleCloudRunV2Revision {
     this.createTime,
     this.deleteTime,
     this.encryptionKey,
+    this.encryptionKeyRevocationAction,
+    this.encryptionKeyShutdownDuration,
     this.etag,
     this.executionEnvironment,
     this.expireTime,
@@ -3403,6 +3453,14 @@ class GoogleCloudRunV2Revision {
           encryptionKey: json_.containsKey('encryptionKey')
               ? json_['encryptionKey'] as core.String
               : null,
+          encryptionKeyRevocationAction:
+              json_.containsKey('encryptionKeyRevocationAction')
+                  ? json_['encryptionKeyRevocationAction'] as core.String
+                  : null,
+          encryptionKeyShutdownDuration:
+              json_.containsKey('encryptionKeyShutdownDuration')
+                  ? json_['encryptionKeyShutdownDuration'] as core.String
+                  : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           executionEnvironment: json_.containsKey('executionEnvironment')
               ? json_['executionEnvironment'] as core.String
@@ -3474,6 +3532,10 @@ class GoogleCloudRunV2Revision {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (encryptionKeyRevocationAction != null)
+          'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
+        if (encryptionKeyShutdownDuration != null)
+          'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
         if (etag != null) 'etag': etag!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
@@ -4375,6 +4437,11 @@ class GoogleCloudRunV2Task {
   /// Output only.
   GoogleCloudRunV2TaskAttemptResult? lastAttemptResult;
 
+  /// URI where logs for this execution can be found in Cloud Console.
+  ///
+  /// Output only.
+  core.String? logUri;
+
   /// Number of retries allowed per Task, before marking this Task failed.
   core.int? maxRetries;
 
@@ -4470,6 +4537,7 @@ class GoogleCloudRunV2Task {
     this.job,
     this.labels,
     this.lastAttemptResult,
+    this.logUri,
     this.maxRetries,
     this.name,
     this.observedGeneration,
@@ -4547,6 +4615,9 @@ class GoogleCloudRunV2Task {
                   json_['lastAttemptResult']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          logUri: json_.containsKey('logUri')
+              ? json_['logUri'] as core.String
+              : null,
           maxRetries: json_.containsKey('maxRetries')
               ? json_['maxRetries'] as core.int
               : null,
@@ -4603,6 +4674,7 @@ class GoogleCloudRunV2Task {
         if (job != null) 'job': job!,
         if (labels != null) 'labels': labels!,
         if (lastAttemptResult != null) 'lastAttemptResult': lastAttemptResult!,
+        if (logUri != null) 'logUri': logUri!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)

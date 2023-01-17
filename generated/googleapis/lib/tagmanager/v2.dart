@@ -2125,6 +2125,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// - "serverPageLocationUrl"
   /// - "serverPageLocationPath"
   /// - "serverPageLocationHostname"
+  /// - "visitorRegion"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4731,6 +4732,7 @@ class BuiltInVariable {
   /// - "serverPageLocationUrl"
   /// - "serverPageLocationPath"
   /// - "serverPageLocationHostname"
+  /// - "visitorRegion"
   core.String? type;
 
   /// GTM Workspace ID.

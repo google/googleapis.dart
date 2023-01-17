@@ -25,10 +25,8 @@
 ///     - [ProjectsLocationsJobsResource]
 ///       - [ProjectsLocationsJobsTaskGroupsResource]
 ///         - [ProjectsLocationsJobsTaskGroupsTasksResource]
-///     - [ProjectsLocationsNodesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsStateResource]
-///     - [ProjectsLocationsTasksResource]
 library batch.v1;
 
 import 'dart:async' as async;
@@ -77,14 +75,10 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsJobsResource get jobs =>
       ProjectsLocationsJobsResource(_requester);
-  ProjectsLocationsNodesResource get nodes =>
-      ProjectsLocationsNodesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsStateResource get state =>
       ProjectsLocationsStateResource(_requester);
-  ProjectsLocationsTasksResource get tasks =>
-      ProjectsLocationsTasksResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -649,168 +643,6 @@ class ProjectsLocationsJobsTaskGroupsTasksResource {
   }
 }
 
-class ProjectsLocationsNodesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsNodesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1053,168 +885,6 @@ class ProjectsLocationsStateResource {
   }
 }
 
-class ProjectsLocationsTasksResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsTasksResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/tasks/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/tasks/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/tasks/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// Accelerator describes Compute Engine accelerators to be attached to the VM.
 class Accelerator {
   /// The number of accelerators of this type.
@@ -1340,9 +1010,11 @@ class AgentInfo {
       };
 }
 
-/// AgentMetadata never changes for a single instance of VM agent.
+/// VM Agent Metadata.
 class AgentMetadata {
   /// When the VM agent started.
+  ///
+  /// Use agent_startup_time instead.
   core.String? creationTime;
 
   /// Full name of the entity that created this vm.
@@ -1352,11 +1024,17 @@ class AgentMetadata {
   /// is retrieved from the vm metadata key of "created-by".
   core.String? creator;
 
+  /// image version for the VM that this agent is installed on.
+  core.String? imageVersion;
+
   /// GCP instance name (go/instance-name).
   core.String? instance;
 
   /// GCP instance ID (go/instance-id).
   core.String? instanceId;
+
+  /// If the GCP instance has received preemption notice.
+  core.bool? instancePreemptionNoticeReceived;
 
   /// parsed contents of /etc/os-release
   core.Map<core.String, core.String>? osRelease;
@@ -1370,8 +1048,10 @@ class AgentMetadata {
   AgentMetadata({
     this.creationTime,
     this.creator,
+    this.imageVersion,
     this.instance,
     this.instanceId,
+    this.instancePreemptionNoticeReceived,
     this.osRelease,
     this.version,
     this.zone,
@@ -1385,12 +1065,19 @@ class AgentMetadata {
           creator: json_.containsKey('creator')
               ? json_['creator'] as core.String
               : null,
+          imageVersion: json_.containsKey('imageVersion')
+              ? json_['imageVersion'] as core.String
+              : null,
           instance: json_.containsKey('instance')
               ? json_['instance'] as core.String
               : null,
           instanceId: json_.containsKey('instanceId')
               ? json_['instanceId'] as core.String
               : null,
+          instancePreemptionNoticeReceived:
+              json_.containsKey('instancePreemptionNoticeReceived')
+                  ? json_['instancePreemptionNoticeReceived'] as core.bool
+                  : null,
           osRelease: json_.containsKey('osRelease')
               ? (json_['osRelease'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -1408,8 +1095,11 @@ class AgentMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (creator != null) 'creator': creator!,
+        if (imageVersion != null) 'imageVersion': imageVersion!,
         if (instance != null) 'instance': instance!,
         if (instanceId != null) 'instanceId': instanceId!,
+        if (instancePreemptionNoticeReceived != null)
+          'instancePreemptionNoticeReceived': instancePreemptionNoticeReceived!,
         if (osRelease != null) 'osRelease': osRelease!,
         if (version != null) 'version': version!,
         if (zone != null) 'zone': zone!,
@@ -1515,6 +1205,43 @@ class AgentTaskInfo {
         if (runnable != null) 'runnable': runnable!,
         if (taskId != null) 'taskId': taskId!,
         if (taskStatus != null) 'taskStatus': taskStatus!,
+      };
+}
+
+/// VM timing information
+class AgentTimingInfo {
+  /// Agent startup time
+  core.String? agentStartupTime;
+
+  /// Boot timestamp of the VM OS
+  core.String? bootTime;
+
+  /// Startup time of the Batch VM script.
+  core.String? scriptStartupTime;
+
+  AgentTimingInfo({
+    this.agentStartupTime,
+    this.bootTime,
+    this.scriptStartupTime,
+  });
+
+  AgentTimingInfo.fromJson(core.Map json_)
+      : this(
+          agentStartupTime: json_.containsKey('agentStartupTime')
+              ? json_['agentStartupTime'] as core.String
+              : null,
+          bootTime: json_.containsKey('bootTime')
+              ? json_['bootTime'] as core.String
+              : null,
+          scriptStartupTime: json_.containsKey('scriptStartupTime')
+              ? json_['scriptStartupTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentStartupTime != null) 'agentStartupTime': agentStartupTime!,
+        if (bootTime != null) 'bootTime': bootTime!,
+        if (scriptStartupTime != null) 'scriptStartupTime': scriptStartupTime!,
       };
 }
 
@@ -1862,13 +1589,13 @@ class Container {
 
   /// Optional password for logging in to a docker registry.
   ///
-  /// If password matches "projects / * /secrets / * /versions / * " then Batch
+  /// If password matches `projects / * /secrets / * /versions / * ` then Batch
   /// will read the password from the Secret Manager;
   core.String? password;
 
   /// Optional username for logging in to a docker registry.
   ///
-  /// If username matches "projects / * /secrets / * /versions / * " then Batch
+  /// If username matches `projects / * /secrets / * /versions / * ` then Batch
   /// will read the username from the Secret Manager.
   core.String? username;
 
@@ -1946,20 +1673,35 @@ class Disk {
   core.String? diskInterface;
 
   /// Name of a public or custom image used as the data source.
+  ///
+  /// For example, the following are all valid URLs: (1) Specify the image by
+  /// its family name: projects/{project}/global/images/family/{image_family}
+  /// (2) Specify the image version:
+  /// projects/{project}/global/images/{image_version} You can also use Batch
+  /// customized image in short names. The following image values are supported
+  /// for a boot disk: "batch-debian": use Batch Debian images. "batch-centos":
+  /// use Batch CentOS images. "batch-cos": use Batch Container-Optimized
+  /// images.
   core.String? image;
 
   /// Disk size in GB.
   ///
-  /// This field is ignored if `data_source` is `disk` or `image`. If `type` is
-  /// `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final
-  /// size will be the next greater multiple of 375 GB.
+  /// For persistent disk, this field is ignored if `data_source` is `image` or
+  /// `snapshot`. For local SSD, size_gb should be a multiple of 375GB,
+  /// otherwise, the final size will be the next greater multiple of 375 GB. For
+  /// boot disk, Batch will calculate the boot disk size based on source image
+  /// and task requirements if you do not speicify the size. If both this field
+  /// and the boot_disk_mib field in task spec's compute_resource are defined,
+  /// Batch will only honor this field.
   core.String? sizeGb;
 
   /// Name of a snapshot used as the data source.
   core.String? snapshot;
 
-  /// Disk type as shown in `gcloud compute disk-types list` For example,
-  /// "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+  /// Disk type as shown in `gcloud compute disk-types list`.
+  ///
+  /// For example, local SSD uses type "local-ssd". Persistent disks and boot
+  /// disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
   core.String? type;
 
   Disk({
@@ -2006,15 +1748,41 @@ typedef Empty = $Empty;
 /// An Environment describes a collection of environment variables to set when
 /// executing Tasks.
 class Environment {
+  /// An encrypted JSON dictionary where the key/value pairs correspond to
+  /// environment variable names and their values.
+  KMSEnvMap? encryptedVariables;
+
+  /// A map of environment variable names to Secret Manager secret names.
+  ///
+  /// The VM will access the named secrets to set the value of each environment
+  /// variable.
+  core.Map<core.String, core.String>? secretVariables;
+
   /// A map of environment variable names to values.
   core.Map<core.String, core.String>? variables;
 
   Environment({
+    this.encryptedVariables,
+    this.secretVariables,
     this.variables,
   });
 
   Environment.fromJson(core.Map json_)
       : this(
+          encryptedVariables: json_.containsKey('encryptedVariables')
+              ? KMSEnvMap.fromJson(json_['encryptedVariables']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secretVariables: json_.containsKey('secretVariables')
+              ? (json_['secretVariables']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           variables: json_.containsKey('variables')
               ? (json_['variables'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -2026,6 +1794,9 @@ class Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptedVariables != null)
+          'encryptedVariables': encryptedVariables!,
+        if (secretVariables != null) 'secretVariables': secretVariables!,
         if (variables != null) 'variables': variables!,
       };
 }
@@ -2078,6 +1849,11 @@ class InstancePolicy {
   /// The accelerators attached to each VM instance.
   core.List<Accelerator>? accelerators;
 
+  /// Book disk to be created and attached to each VM by this InstancePolicy.
+  ///
+  /// Boot disk will be deleted when the VM is deleted.
+  Disk? bootDisk;
+
   /// Non-boot disks to be attached for each VM created by this InstancePolicy.
   ///
   /// New disks will be deleted when the VM is deleted.
@@ -2107,6 +1883,7 @@ class InstancePolicy {
 
   InstancePolicy({
     this.accelerators,
+    this.bootDisk,
     this.disks,
     this.machineType,
     this.minCpuPlatform,
@@ -2120,6 +1897,10 @@ class InstancePolicy {
                   .map((value) => Accelerator.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          bootDisk: json_.containsKey('bootDisk')
+              ? Disk.fromJson(
+                  json_['bootDisk'] as core.Map<core.String, core.dynamic>)
               : null,
           disks: json_.containsKey('disks')
               ? (json_['disks'] as core.List)
@@ -2140,6 +1921,7 @@ class InstancePolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null) 'accelerators': accelerators!,
+        if (bootDisk != null) 'bootDisk': bootDisk!,
         if (disks != null) 'disks': disks!,
         if (machineType != null) 'machineType': machineType!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
@@ -2480,6 +2262,34 @@ class JobStatus {
         if (state != null) 'state': state!,
         if (statusEvents != null) 'statusEvents': statusEvents!,
         if (taskGroups != null) 'taskGroups': taskGroups!,
+      };
+}
+
+class KMSEnvMap {
+  /// The value of the cipherText response from the `encrypt` method.
+  core.String? cipherText;
+
+  /// The name of the KMS key that will be used to decrypt the cipher text.
+  core.String? keyName;
+
+  KMSEnvMap({
+    this.cipherText,
+    this.keyName,
+  });
+
+  KMSEnvMap.fromJson(core.Map json_)
+      : this(
+          cipherText: json_.containsKey('cipherText')
+              ? json_['cipherText'] as core.String
+              : null,
+          keyName: json_.containsKey('keyName')
+              ? json_['keyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cipherText != null) 'cipherText': cipherText!,
+        if (keyName != null) 'keyName': keyName!,
       };
 }
 
@@ -2833,7 +2643,12 @@ class NFS {
 
 /// A network interface.
 class NetworkInterface {
-  /// The URL of the network resource.
+  /// The URL of an existing network resource.
+  ///
+  /// You can specify the network as a full or partial URL. For example, the
+  /// following are all valid URLs:
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// projects/{project}/global/networks/{network} global/networks/{network}
   core.String? network;
 
   /// Default is false (with an external IP address).
@@ -2846,7 +2661,13 @@ class NetworkInterface {
   /// information.
   core.bool? noExternalIpAddress;
 
-  /// The URL of the Subnetwork resource.
+  /// The URL of an existing subnetwork resource in the network.
+  ///
+  /// You can specify the subnetwork as a full or partial URL. For example, the
+  /// following are all valid URLs:
+  /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
+  /// projects/{project}/regions/{region}/subnetworks/{subnetwork}
+  /// regions/{region}/subnetworks/{subnetwork}
   core.String? subnetwork;
 
   NetworkInterface({
@@ -3104,11 +2925,15 @@ class ReportAgentStateRequest {
   /// Agent info.
   AgentInfo? agentInfo;
 
+  /// Agent timing info.
+  AgentTimingInfo? agentTimingInfo;
+
   /// Agent metadata.
   AgentMetadata? metadata;
 
   ReportAgentStateRequest({
     this.agentInfo,
+    this.agentTimingInfo,
     this.metadata,
   });
 
@@ -3118,6 +2943,10 @@ class ReportAgentStateRequest {
               ? AgentInfo.fromJson(
                   json_['agentInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          agentTimingInfo: json_.containsKey('agentTimingInfo')
+              ? AgentTimingInfo.fromJson(json_['agentTimingInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           metadata: json_.containsKey('metadata')
               ? AgentMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -3126,21 +2955,36 @@ class ReportAgentStateRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentInfo != null) 'agentInfo': agentInfo!,
+        if (agentTimingInfo != null) 'agentTimingInfo': agentTimingInfo!,
         if (metadata != null) 'metadata': metadata!,
       };
 }
 
 /// Response to ReportAgentStateRequest.
 class ReportAgentStateResponse {
+  /// Default report interval override
+  core.String? defaultReportInterval;
+
+  /// Minimum report interval override
+  core.String? minReportInterval;
+
   /// Tasks assigned to the agent
   core.List<AgentTask>? tasks;
 
   ReportAgentStateResponse({
+    this.defaultReportInterval,
+    this.minReportInterval,
     this.tasks,
   });
 
   ReportAgentStateResponse.fromJson(core.Map json_)
       : this(
+          defaultReportInterval: json_.containsKey('defaultReportInterval')
+              ? json_['defaultReportInterval'] as core.String
+              : null,
+          minReportInterval: json_.containsKey('minReportInterval')
+              ? json_['minReportInterval'] as core.String
+              : null,
           tasks: json_.containsKey('tasks')
               ? (json_['tasks'] as core.List)
                   .map((value) => AgentTask.fromJson(
@@ -3150,6 +2994,9 @@ class ReportAgentStateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultReportInterval != null)
+          'defaultReportInterval': defaultReportInterval!,
+        if (minReportInterval != null) 'minReportInterval': minReportInterval!,
         if (tasks != null) 'tasks': tasks!,
       };
 }
@@ -3599,9 +3446,7 @@ class TaskSpec {
   /// Environment variables to set before running the Task.
   Environment? environment;
 
-  /// Environment variables to set before running the Task.
-  ///
-  /// You can set up to 100 environments.
+  /// Deprecated: please use environment(non-plural) instead.
   core.Map<core.String, core.String>? environments;
 
   /// Lifecycle management schema when any task in a task group is failed.

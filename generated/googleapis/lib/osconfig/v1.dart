@@ -3606,7 +3606,7 @@ class OSPolicyResourceExecResourceExec {
 
   /// An inline script.
   ///
-  /// The size of the script is limited to 1024 characters.
+  /// The size of the script is limited to 32KiB.
   core.String? script;
 
   OSPolicyResourceExecResourceExec({
@@ -3776,7 +3776,7 @@ class OSPolicyResourceFileRemote {
 class OSPolicyResourceFileResource {
   /// A a file with this content.
   ///
-  /// The size of the content is limited to 1024 characters.
+  /// The size of the content is limited to 32KiB.
   core.String? content;
 
   /// A remote or local source.

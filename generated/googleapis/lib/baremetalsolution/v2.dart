@@ -2361,6 +2361,14 @@ class Instance {
   /// be populated in Get/List responses.
   core.List<Volume>? volumes;
 
+  /// The workload profile for the instance.
+  /// Possible string values are:
+  /// - "WORKLOAD_PROFILE_UNSPECIFIED" : The workload profile is in an unknown
+  /// state.
+  /// - "WORKLOAD_PROFILE_GENERIC" : The workload profile is generic.
+  /// - "WORKLOAD_PROFILE_HANA" : The workload profile is hana.
+  core.String? workloadProfile;
+
   Instance({
     this.createTime,
     this.hyperthreadingEnabled,
@@ -2379,6 +2387,7 @@ class Instance {
     this.state,
     this.updateTime,
     this.volumes,
+    this.workloadProfile,
   });
 
   Instance.fromJson(core.Map json_)
@@ -2446,6 +2455,9 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          workloadProfile: json_.containsKey('workloadProfile')
+              ? json_['workloadProfile'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2468,6 +2480,7 @@ class Instance {
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumes != null) 'volumes': volumes!,
+        if (workloadProfile != null) 'workloadProfile': workloadProfile!,
       };
 }
 
@@ -4802,6 +4815,14 @@ class Volume {
   /// - "HDD" : This storage type for this volume is HDD.
   core.String? storageType;
 
+  /// The workload profile for the volume.
+  /// Possible string values are:
+  /// - "WORKLOAD_PROFILE_UNSPECIFIED" : The workload profile is in an unknown
+  /// state.
+  /// - "GENERIC" : The workload profile is generic.
+  /// - "HANA" : The workload profile is hana.
+  core.String? workloadProfile;
+
   Volume({
     this.autoGrownSizeGib,
     this.bootVolume,
@@ -4824,6 +4845,7 @@ class Volume {
     this.snapshotSchedulePolicy,
     this.state,
     this.storageType,
+    this.workloadProfile,
   });
 
   Volume.fromJson(core.Map json_)
@@ -4893,6 +4915,9 @@ class Volume {
           storageType: json_.containsKey('storageType')
               ? json_['storageType'] as core.String
               : null,
+          workloadProfile: json_.containsKey('workloadProfile')
+              ? json_['workloadProfile'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4921,6 +4946,7 @@ class Volume {
           'snapshotSchedulePolicy': snapshotSchedulePolicy!,
         if (state != null) 'state': state!,
         if (storageType != null) 'storageType': storageType!,
+        if (workloadProfile != null) 'workloadProfile': workloadProfile!,
       };
 }
 

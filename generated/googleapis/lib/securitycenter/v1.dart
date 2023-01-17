@@ -114,9 +114,9 @@ class FoldersAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to groupBy. Its format is
-  /// "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent to group the assets by. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -155,9 +155,9 @@ class FoldersAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent assets should belong to. Its
-  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent that the listed assets belong
+  /// to. Its format is "organizations/\[organization_id\],
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -359,8 +359,8 @@ class FoldersBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new BigQuery export's parent.
-  /// Its format is "organizations/\[organization_id\]",
+  /// [parent] - Required. The name of the parent resource of the new BigQuery
+  /// export. Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
@@ -407,8 +407,8 @@ class FoldersBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to delete. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// [name] - Required. The name of the BigQuery export to delete. Its format
+  /// is organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
@@ -893,8 +893,8 @@ class FoldersNotificationConfigsResource {
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contain
-  /// alphanumeric characters, underscores or hyphens only.
+  /// parent scope. It must be between 1 and 128 characters and contain
+  /// alphanumeric characters, underscores, or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1012,8 +1012,9 @@ class FoldersNotificationConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list notification configs. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// [parent] - Required. The name of the parent in which to list the
+  /// notification configurations. Its format is
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
   /// "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
@@ -1128,7 +1129,7 @@ class FoldersSourcesResource {
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
   /// format should be "organizations/\[organization_id\],
-  /// folders/\[folder_id\], or projects/\[project_id\]".
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -1476,7 +1477,12 @@ class FoldersSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -1751,9 +1757,9 @@ class OrganizationsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to groupBy. Its format is
-  /// "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent to group the assets by. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1792,9 +1798,9 @@ class OrganizationsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent assets should belong to. Its
-  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent that the listed assets belong
+  /// to. Its format is "organizations/\[organization_id\],
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -2043,8 +2049,8 @@ class OrganizationsBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new BigQuery export's parent.
-  /// Its format is "organizations/\[organization_id\]",
+  /// [parent] - Required. The name of the parent resource of the new BigQuery
+  /// export. Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -2091,8 +2097,8 @@ class OrganizationsBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to delete. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// [name] - Required. The name of the BigQuery export to delete. Its format
+  /// is organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
@@ -2579,8 +2585,8 @@ class OrganizationsNotificationConfigsResource {
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contain
-  /// alphanumeric characters, underscores or hyphens only.
+  /// parent scope. It must be between 1 and 128 characters and contain
+  /// alphanumeric characters, underscores, or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2700,8 +2706,9 @@ class OrganizationsNotificationConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list notification configs. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// [parent] - Required. The name of the parent in which to list the
+  /// notification configurations. Its format is
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
   /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -3123,7 +3130,7 @@ class OrganizationsSourcesResource {
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
   /// format should be "organizations/\[organization_id\],
-  /// folders/\[folder_id\], or projects/\[project_id\]".
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -3655,7 +3662,12 @@ class OrganizationsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -3839,9 +3851,9 @@ class ProjectsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to groupBy. Its format is
-  /// "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent to group the assets by. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3880,9 +3892,9 @@ class ProjectsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent assets should belong to. Its
-  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
-  /// projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent that the listed assets belong
+  /// to. Its format is "organizations/\[organization_id\],
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -4084,8 +4096,8 @@ class ProjectsBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new BigQuery export's parent.
-  /// Its format is "organizations/\[organization_id\]",
+  /// [parent] - Required. The name of the parent resource of the new BigQuery
+  /// export. Its format is "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -4132,8 +4144,8 @@ class ProjectsBigQueryExportsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to delete. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// [name] - Required. The name of the BigQuery export to delete. Its format
+  /// is organizations/{organization}/bigQueryExports/{export_id},
   /// folders/{folder}/bigQueryExports/{export_id}, or
   /// projects/{project}/bigQueryExports/{export_id}
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
@@ -4619,8 +4631,8 @@ class ProjectsNotificationConfigsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters, and contain
-  /// alphanumeric characters, underscores or hyphens only.
+  /// parent scope. It must be between 1 and 128 characters and contain
+  /// alphanumeric characters, underscores, or hyphens only.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4738,8 +4750,9 @@ class ProjectsNotificationConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list notification configs. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// [parent] - Required. The name of the parent in which to list the
+  /// notification configurations. Its format is
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
   /// "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -4854,7 +4867,7 @@ class ProjectsSourcesResource {
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
   /// format should be "organizations/\[organization_id\],
-  /// folders/\[folder_id\], or projects/\[project_id\]".
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -5202,7 +5215,12 @@ class ProjectsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Required. The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6018,9 +6036,11 @@ class Connection {
       };
 }
 
-/// Representa a single contact's email address
+/// The email address of a contact.
 class Contact {
-  /// An email address e.g. "person123@company.com"
+  /// An email address.
+  ///
+  /// For example, "`person123@company.com`".
   core.String? email;
 
   Contact({
@@ -6881,7 +6901,7 @@ class Finding {
   /// otherwise addressed and is no longer active.
   core.String? state;
 
-  /// Represents vulnerability-specific fields like CVE and CVS scores.
+  /// Represents vulnerability-specific fields like CVE and CVSS scores.
   ///
   /// CVE stands for Common Vulnerabilities and Exposures
   /// (https://cve.mitre.org/about/)
@@ -7193,7 +7213,7 @@ typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Configures how to deliver Findings to BigQuery Instance.
 class GoogleCloudSecuritycenterV1BigQueryExport {
-  /// The time at which the big query export was created.
+  /// The time at which the BigQuery export was created.
   ///
   /// This field is set by the server and will be ignored if provided on export
   /// on creation.
@@ -7225,7 +7245,7 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   /// literals `true` and `false` without quotes.
   core.String? filter;
 
-  /// Email address of the user who last edited the big query export.
+  /// Email address of the user who last edited the BigQuery export.
   ///
   /// This field is set by the server and will be ignored if provided on export
   /// creation or update.
@@ -7244,13 +7264,13 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   /// in responses, and is ignored when provided in create requests.
   core.String? name;
 
-  /// The service account that needs permission to create table, upload data to
-  /// the big query dataset.
+  /// The service account that needs permission to create table and upload data
+  /// to the BigQuery dataset.
   ///
   /// Output only.
   core.String? principal;
 
-  /// The most recent time at which the big export was updated.
+  /// The most recent time at which the BigQuery export was updated.
   ///
   /// This field is set by the server and will be ignored if provided on export
   /// creation or update.
@@ -7318,7 +7338,7 @@ class GoogleCloudSecuritycenterV1Binding {
   /// The Role or ClusterRole referenced by the binding.
   Role? role;
 
-  /// Represents the subjects(s) bound to the role.
+  /// Represents one or more subjects that are bound to the role.
   ///
   /// Not always available for PATCH requests.
   core.List<Subject>? subjects;
@@ -7983,17 +8003,18 @@ class IamPolicy {
       };
 }
 
-/// Represents what's commonly known as an Indicator of compromise (IoC) in
+/// Represents what's commonly known as an _indicator of compromise_ (IoC) in
 /// computer forensics.
 ///
 /// This is an artifact observed on a network or in an operating system that,
-/// with high confidence, indicates a computer intrusion. Reference:
-/// https://en.wikipedia.org/wiki/Indicator_of_compromise
+/// with high confidence, indicates a computer intrusion. For more information,
+/// see
+/// [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
 class Indicator {
   /// List of domains associated to the Finding.
   core.List<core.String>? domains;
 
-  /// List of ip addresses associated to the Finding.
+  /// The list of IP addresses that are associated with the finding.
   core.List<core.String>? ipAddresses;
 
   /// The list of matched signatures indicating that the given process is
@@ -8048,8 +8069,7 @@ class KernelRootkit {
   /// Rootkit name when available.
   core.String? name;
 
-  /// True when unexpected modifications of kernel read-only data memory are
-  /// present.
+  /// True when unexpected modifications of kernel code memory are present.
   core.bool? unexpectedCodeModification;
 
   /// True when `ftrace` points are present with callbacks pointing to regions
@@ -8073,7 +8093,8 @@ class KernelRootkit {
   /// Such processes are in the run queue, but not in the process task list.
   core.bool? unexpectedProcessesInRunqueue;
 
-  /// Flag indicating unexpected modifications of kernel read-only data memory.
+  /// True when unexpected modifications of kernel read-only data memory are
+  /// present.
   core.bool? unexpectedReadOnlyDataModification;
 
   /// True when system call handlers that are are not in the expected kernel or
@@ -8149,7 +8170,7 @@ class KernelRootkit {
       };
 }
 
-/// Kubernetes related attributes.
+/// Kubernetes-related attributes.
 class Kubernetes {
   /// Provides information on any Kubernetes access reviews (i.e. privilege
   /// checks) relevant to the finding.
@@ -9654,13 +9675,6 @@ class ServiceAccountDelegationInfo {
 }
 
 /// Request message for updating a finding's state.
-///
-/// The
-/// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-/// of the finding. Example:
-/// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-/// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-/// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
 class SetFindingStateRequest {
   /// The time at which the updated state takes effect.
   ///

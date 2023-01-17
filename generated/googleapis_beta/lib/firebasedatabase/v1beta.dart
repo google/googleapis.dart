@@ -14,8 +14,8 @@
 
 /// Firebase Realtime Database API - v1beta
 ///
-/// The Firebase Realtime Database Management API enables programmatic
-/// provisioning and management of Realtime Database instances.
+/// The Firebase Realtime Database API enables programmatic provisioning and
+/// management of Realtime Database instances.
 ///
 /// For more information, see
 /// <https://firebase.google.com/docs/reference/rest/database/database-management/rest/>
@@ -42,8 +42,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Firebase Realtime Database Management API enables programmatic
-/// provisioning and management of Realtime Database instances.
+/// The Firebase Realtime Database API enables programmatic provisioning and
+/// management of Realtime Database instances.
 class FirebaseRealtimeDatabaseApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

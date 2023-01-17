@@ -165,6 +165,131 @@ void checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
   buildCounterBatchModifyMessagesRequest--;
 }
 
+core.int buildCounterCseIdentity = 0;
+api.CseIdentity buildCseIdentity() {
+  final o = api.CseIdentity();
+  buildCounterCseIdentity++;
+  if (buildCounterCseIdentity < 3) {
+    o.emailAddress = 'foo';
+    o.primaryKeyPairId = 'foo';
+  }
+  buildCounterCseIdentity--;
+  return o;
+}
+
+void checkCseIdentity(api.CseIdentity o) {
+  buildCounterCseIdentity++;
+  if (buildCounterCseIdentity < 3) {
+    unittest.expect(
+      o.emailAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryKeyPairId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCseIdentity--;
+}
+
+core.List<api.CsePrivateKeyMetadata> buildUnnamed4() => [
+      buildCsePrivateKeyMetadata(),
+      buildCsePrivateKeyMetadata(),
+    ];
+
+void checkUnnamed4(core.List<api.CsePrivateKeyMetadata> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCsePrivateKeyMetadata(o[0]);
+  checkCsePrivateKeyMetadata(o[1]);
+}
+
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterCseKeyPair = 0;
+api.CseKeyPair buildCseKeyPair() {
+  final o = api.CseKeyPair();
+  buildCounterCseKeyPair++;
+  if (buildCounterCseKeyPair < 3) {
+    o.disableTime = 'foo';
+    o.enablementState = 'foo';
+    o.keyPairId = 'foo';
+    o.pem = 'foo';
+    o.pkcs7 = 'foo';
+    o.privateKeyMetadata = buildUnnamed4();
+    o.subjectEmailAddresses = buildUnnamed5();
+  }
+  buildCounterCseKeyPair--;
+  return o;
+}
+
+void checkCseKeyPair(api.CseKeyPair o) {
+  buildCounterCseKeyPair++;
+  if (buildCounterCseKeyPair < 3) {
+    unittest.expect(
+      o.disableTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enablementState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.keyPairId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pkcs7!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4(o.privateKeyMetadata!);
+    checkUnnamed5(o.subjectEmailAddresses!);
+  }
+  buildCounterCseKeyPair--;
+}
+
+core.int buildCounterCsePrivateKeyMetadata = 0;
+api.CsePrivateKeyMetadata buildCsePrivateKeyMetadata() {
+  final o = api.CsePrivateKeyMetadata();
+  buildCounterCsePrivateKeyMetadata++;
+  if (buildCounterCsePrivateKeyMetadata < 3) {
+    o.kaclsKeyMetadata = buildKaclsKeyMetadata();
+    o.privateKeyMetadataId = 'foo';
+  }
+  buildCounterCsePrivateKeyMetadata--;
+  return o;
+}
+
+void checkCsePrivateKeyMetadata(api.CsePrivateKeyMetadata o) {
+  buildCounterCsePrivateKeyMetadata++;
+  if (buildCounterCsePrivateKeyMetadata < 3) {
+    checkKaclsKeyMetadata(o.kaclsKeyMetadata!);
+    unittest.expect(
+      o.privateKeyMetadataId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCsePrivateKeyMetadata--;
+}
+
 core.int buildCounterDelegate = 0;
 api.Delegate buildDelegate() {
   final o = api.Delegate();
@@ -192,6 +317,21 @@ void checkDelegate(api.Delegate o) {
   buildCounterDelegate--;
 }
 
+core.int buildCounterDisableCseKeyPairRequest = 0;
+api.DisableCseKeyPairRequest buildDisableCseKeyPairRequest() {
+  final o = api.DisableCseKeyPairRequest();
+  buildCounterDisableCseKeyPairRequest++;
+  if (buildCounterDisableCseKeyPairRequest < 3) {}
+  buildCounterDisableCseKeyPairRequest--;
+  return o;
+}
+
+void checkDisableCseKeyPairRequest(api.DisableCseKeyPairRequest o) {
+  buildCounterDisableCseKeyPairRequest++;
+  if (buildCounterDisableCseKeyPairRequest < 3) {}
+  buildCounterDisableCseKeyPairRequest--;
+}
+
 core.int buildCounterDraft = 0;
 api.Draft buildDraft() {
   final o = api.Draft();
@@ -214,6 +354,21 @@ void checkDraft(api.Draft o) {
     checkMessage(o.message!);
   }
   buildCounterDraft--;
+}
+
+core.int buildCounterEnableCseKeyPairRequest = 0;
+api.EnableCseKeyPairRequest buildEnableCseKeyPairRequest() {
+  final o = api.EnableCseKeyPairRequest();
+  buildCounterEnableCseKeyPairRequest++;
+  if (buildCounterEnableCseKeyPairRequest < 3) {}
+  buildCounterEnableCseKeyPairRequest--;
+  return o;
+}
+
+void checkEnableCseKeyPairRequest(api.EnableCseKeyPairRequest o) {
+  buildCounterEnableCseKeyPairRequest++;
+  if (buildCounterEnableCseKeyPairRequest < 3) {}
+  buildCounterEnableCseKeyPairRequest--;
 }
 
 core.int buildCounterFilter = 0;
@@ -242,12 +397,12 @@ void checkFilter(api.Filter o) {
   buildCounterFilter--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -259,12 +414,12 @@ void checkUnnamed4(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -281,9 +436,9 @@ api.FilterAction buildFilterAction() {
   final o = api.FilterAction();
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    o.addLabelIds = buildUnnamed4();
+    o.addLabelIds = buildUnnamed6();
     o.forward = 'foo';
-    o.removeLabelIds = buildUnnamed5();
+    o.removeLabelIds = buildUnnamed7();
   }
   buildCounterFilterAction--;
   return o;
@@ -292,12 +447,12 @@ api.FilterAction buildFilterAction() {
 void checkFilterAction(api.FilterAction o) {
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    checkUnnamed4(o.addLabelIds!);
+    checkUnnamed6(o.addLabelIds!);
     unittest.expect(
       o.forward!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.removeLabelIds!);
+    checkUnnamed7(o.removeLabelIds!);
   }
   buildCounterFilterAction--;
 }
@@ -385,56 +540,56 @@ void checkForwardingAddress(api.ForwardingAddress o) {
   buildCounterForwardingAddress--;
 }
 
-core.List<api.HistoryLabelAdded> buildUnnamed6() => [
+core.List<api.HistoryLabelAdded> buildUnnamed8() => [
       buildHistoryLabelAdded(),
       buildHistoryLabelAdded(),
     ];
 
-void checkUnnamed6(core.List<api.HistoryLabelAdded> o) {
+void checkUnnamed8(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelAdded(o[0]);
   checkHistoryLabelAdded(o[1]);
 }
 
-core.List<api.HistoryLabelRemoved> buildUnnamed7() => [
+core.List<api.HistoryLabelRemoved> buildUnnamed9() => [
       buildHistoryLabelRemoved(),
       buildHistoryLabelRemoved(),
     ];
 
-void checkUnnamed7(core.List<api.HistoryLabelRemoved> o) {
+void checkUnnamed9(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelRemoved(o[0]);
   checkHistoryLabelRemoved(o[1]);
 }
 
-core.List<api.Message> buildUnnamed8() => [
+core.List<api.Message> buildUnnamed10() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed8(core.List<api.Message> o) {
+void checkUnnamed10(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.HistoryMessageAdded> buildUnnamed9() => [
+core.List<api.HistoryMessageAdded> buildUnnamed11() => [
       buildHistoryMessageAdded(),
       buildHistoryMessageAdded(),
     ];
 
-void checkUnnamed9(core.List<api.HistoryMessageAdded> o) {
+void checkUnnamed11(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageAdded(o[0]);
   checkHistoryMessageAdded(o[1]);
 }
 
-core.List<api.HistoryMessageDeleted> buildUnnamed10() => [
+core.List<api.HistoryMessageDeleted> buildUnnamed12() => [
       buildHistoryMessageDeleted(),
       buildHistoryMessageDeleted(),
     ];
 
-void checkUnnamed10(core.List<api.HistoryMessageDeleted> o) {
+void checkUnnamed12(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageDeleted(o[0]);
   checkHistoryMessageDeleted(o[1]);
@@ -446,11 +601,11 @@ api.History buildHistory() {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = 'foo';
-    o.labelsAdded = buildUnnamed6();
-    o.labelsRemoved = buildUnnamed7();
-    o.messages = buildUnnamed8();
-    o.messagesAdded = buildUnnamed9();
-    o.messagesDeleted = buildUnnamed10();
+    o.labelsAdded = buildUnnamed8();
+    o.labelsRemoved = buildUnnamed9();
+    o.messages = buildUnnamed10();
+    o.messagesAdded = buildUnnamed11();
+    o.messagesDeleted = buildUnnamed12();
   }
   buildCounterHistory--;
   return o;
@@ -463,21 +618,21 @@ void checkHistory(api.History o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.labelsAdded!);
-    checkUnnamed7(o.labelsRemoved!);
-    checkUnnamed8(o.messages!);
-    checkUnnamed9(o.messagesAdded!);
-    checkUnnamed10(o.messagesDeleted!);
+    checkUnnamed8(o.labelsAdded!);
+    checkUnnamed9(o.labelsRemoved!);
+    checkUnnamed10(o.messages!);
+    checkUnnamed11(o.messagesAdded!);
+    checkUnnamed12(o.messagesDeleted!);
   }
   buildCounterHistory--;
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -494,7 +649,7 @@ api.HistoryLabelAdded buildHistoryLabelAdded() {
   final o = api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    o.labelIds = buildUnnamed11();
+    o.labelIds = buildUnnamed13();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelAdded--;
@@ -504,18 +659,18 @@ api.HistoryLabelAdded buildHistoryLabelAdded() {
 void checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed11(o.labelIds!);
+    checkUnnamed13(o.labelIds!);
     checkMessage(o.message!);
   }
   buildCounterHistoryLabelAdded--;
 }
 
-core.List<core.String> buildUnnamed12() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -532,7 +687,7 @@ api.HistoryLabelRemoved buildHistoryLabelRemoved() {
   final o = api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    o.labelIds = buildUnnamed12();
+    o.labelIds = buildUnnamed14();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelRemoved--;
@@ -542,7 +697,7 @@ api.HistoryLabelRemoved buildHistoryLabelRemoved() {
 void checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed12(o.labelIds!);
+    checkUnnamed14(o.labelIds!);
     checkMessage(o.message!);
   }
   buildCounterHistoryLabelRemoved--;
@@ -615,6 +770,33 @@ void checkImapSettings(api.ImapSettings o) {
     );
   }
   buildCounterImapSettings--;
+}
+
+core.int buildCounterKaclsKeyMetadata = 0;
+api.KaclsKeyMetadata buildKaclsKeyMetadata() {
+  final o = api.KaclsKeyMetadata();
+  buildCounterKaclsKeyMetadata++;
+  if (buildCounterKaclsKeyMetadata < 3) {
+    o.kaclsData = 'foo';
+    o.kaclsUri = 'foo';
+  }
+  buildCounterKaclsKeyMetadata--;
+  return o;
+}
+
+void checkKaclsKeyMetadata(api.KaclsKeyMetadata o) {
+  buildCounterKaclsKeyMetadata++;
+  if (buildCounterKaclsKeyMetadata < 3) {
+    unittest.expect(
+      o.kaclsData!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kaclsUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterKaclsKeyMetadata--;
 }
 
 core.int buildCounterLabel = 0;
@@ -730,12 +912,82 @@ void checkLanguageSettings(api.LanguageSettings o) {
   buildCounterLanguageSettings--;
 }
 
-core.List<api.Delegate> buildUnnamed13() => [
+core.List<api.CseIdentity> buildUnnamed15() => [
+      buildCseIdentity(),
+      buildCseIdentity(),
+    ];
+
+void checkUnnamed15(core.List<api.CseIdentity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCseIdentity(o[0]);
+  checkCseIdentity(o[1]);
+}
+
+core.int buildCounterListCseIdentitiesResponse = 0;
+api.ListCseIdentitiesResponse buildListCseIdentitiesResponse() {
+  final o = api.ListCseIdentitiesResponse();
+  buildCounterListCseIdentitiesResponse++;
+  if (buildCounterListCseIdentitiesResponse < 3) {
+    o.cseIdentities = buildUnnamed15();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListCseIdentitiesResponse--;
+  return o;
+}
+
+void checkListCseIdentitiesResponse(api.ListCseIdentitiesResponse o) {
+  buildCounterListCseIdentitiesResponse++;
+  if (buildCounterListCseIdentitiesResponse < 3) {
+    checkUnnamed15(o.cseIdentities!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListCseIdentitiesResponse--;
+}
+
+core.List<api.CseKeyPair> buildUnnamed16() => [
+      buildCseKeyPair(),
+      buildCseKeyPair(),
+    ];
+
+void checkUnnamed16(core.List<api.CseKeyPair> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCseKeyPair(o[0]);
+  checkCseKeyPair(o[1]);
+}
+
+core.int buildCounterListCseKeyPairsResponse = 0;
+api.ListCseKeyPairsResponse buildListCseKeyPairsResponse() {
+  final o = api.ListCseKeyPairsResponse();
+  buildCounterListCseKeyPairsResponse++;
+  if (buildCounterListCseKeyPairsResponse < 3) {
+    o.cseKeyPairs = buildUnnamed16();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListCseKeyPairsResponse--;
+  return o;
+}
+
+void checkListCseKeyPairsResponse(api.ListCseKeyPairsResponse o) {
+  buildCounterListCseKeyPairsResponse++;
+  if (buildCounterListCseKeyPairsResponse < 3) {
+    checkUnnamed16(o.cseKeyPairs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListCseKeyPairsResponse--;
+}
+
+core.List<api.Delegate> buildUnnamed17() => [
       buildDelegate(),
       buildDelegate(),
     ];
 
-void checkUnnamed13(core.List<api.Delegate> o) {
+void checkUnnamed17(core.List<api.Delegate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDelegate(o[0]);
   checkDelegate(o[1]);
@@ -746,7 +998,7 @@ api.ListDelegatesResponse buildListDelegatesResponse() {
   final o = api.ListDelegatesResponse();
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    o.delegates = buildUnnamed13();
+    o.delegates = buildUnnamed17();
   }
   buildCounterListDelegatesResponse--;
   return o;
@@ -755,17 +1007,17 @@ api.ListDelegatesResponse buildListDelegatesResponse() {
 void checkListDelegatesResponse(api.ListDelegatesResponse o) {
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    checkUnnamed13(o.delegates!);
+    checkUnnamed17(o.delegates!);
   }
   buildCounterListDelegatesResponse--;
 }
 
-core.List<api.Draft> buildUnnamed14() => [
+core.List<api.Draft> buildUnnamed18() => [
       buildDraft(),
       buildDraft(),
     ];
 
-void checkUnnamed14(core.List<api.Draft> o) {
+void checkUnnamed18(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDraft(o[0]);
   checkDraft(o[1]);
@@ -776,7 +1028,7 @@ api.ListDraftsResponse buildListDraftsResponse() {
   final o = api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    o.drafts = buildUnnamed14();
+    o.drafts = buildUnnamed18();
     o.nextPageToken = 'foo';
     o.resultSizeEstimate = 42;
   }
@@ -787,7 +1039,7 @@ api.ListDraftsResponse buildListDraftsResponse() {
 void checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed14(o.drafts!);
+    checkUnnamed18(o.drafts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -800,12 +1052,12 @@ void checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse--;
 }
 
-core.List<api.Filter> buildUnnamed15() => [
+core.List<api.Filter> buildUnnamed19() => [
       buildFilter(),
       buildFilter(),
     ];
 
-void checkUnnamed15(core.List<api.Filter> o) {
+void checkUnnamed19(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
@@ -816,7 +1068,7 @@ api.ListFiltersResponse buildListFiltersResponse() {
   final o = api.ListFiltersResponse();
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    o.filter = buildUnnamed15();
+    o.filter = buildUnnamed19();
   }
   buildCounterListFiltersResponse--;
   return o;
@@ -825,17 +1077,17 @@ api.ListFiltersResponse buildListFiltersResponse() {
 void checkListFiltersResponse(api.ListFiltersResponse o) {
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    checkUnnamed15(o.filter!);
+    checkUnnamed19(o.filter!);
   }
   buildCounterListFiltersResponse--;
 }
 
-core.List<api.ForwardingAddress> buildUnnamed16() => [
+core.List<api.ForwardingAddress> buildUnnamed20() => [
       buildForwardingAddress(),
       buildForwardingAddress(),
     ];
 
-void checkUnnamed16(core.List<api.ForwardingAddress> o) {
+void checkUnnamed20(core.List<api.ForwardingAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkForwardingAddress(o[0]);
   checkForwardingAddress(o[1]);
@@ -846,7 +1098,7 @@ api.ListForwardingAddressesResponse buildListForwardingAddressesResponse() {
   final o = api.ListForwardingAddressesResponse();
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    o.forwardingAddresses = buildUnnamed16();
+    o.forwardingAddresses = buildUnnamed20();
   }
   buildCounterListForwardingAddressesResponse--;
   return o;
@@ -856,17 +1108,17 @@ void checkListForwardingAddressesResponse(
     api.ListForwardingAddressesResponse o) {
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    checkUnnamed16(o.forwardingAddresses!);
+    checkUnnamed20(o.forwardingAddresses!);
   }
   buildCounterListForwardingAddressesResponse--;
 }
 
-core.List<api.History> buildUnnamed17() => [
+core.List<api.History> buildUnnamed21() => [
       buildHistory(),
       buildHistory(),
     ];
 
-void checkUnnamed17(core.List<api.History> o) {
+void checkUnnamed21(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -877,7 +1129,7 @@ api.ListHistoryResponse buildListHistoryResponse() {
   final o = api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    o.history = buildUnnamed17();
+    o.history = buildUnnamed21();
     o.historyId = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -888,7 +1140,7 @@ api.ListHistoryResponse buildListHistoryResponse() {
 void checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed17(o.history!);
+    checkUnnamed21(o.history!);
     unittest.expect(
       o.historyId!,
       unittest.equals('foo'),
@@ -901,12 +1153,12 @@ void checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse--;
 }
 
-core.List<api.Label> buildUnnamed18() => [
+core.List<api.Label> buildUnnamed22() => [
       buildLabel(),
       buildLabel(),
     ];
 
-void checkUnnamed18(core.List<api.Label> o) {
+void checkUnnamed22(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -917,7 +1169,7 @@ api.ListLabelsResponse buildListLabelsResponse() {
   final o = api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    o.labels = buildUnnamed18();
+    o.labels = buildUnnamed22();
   }
   buildCounterListLabelsResponse--;
   return o;
@@ -926,17 +1178,17 @@ api.ListLabelsResponse buildListLabelsResponse() {
 void checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed18(o.labels!);
+    checkUnnamed22(o.labels!);
   }
   buildCounterListLabelsResponse--;
 }
 
-core.List<api.Message> buildUnnamed19() => [
+core.List<api.Message> buildUnnamed23() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed19(core.List<api.Message> o) {
+void checkUnnamed23(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -947,7 +1199,7 @@ api.ListMessagesResponse buildListMessagesResponse() {
   final o = api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed19();
+    o.messages = buildUnnamed23();
     o.nextPageToken = 'foo';
     o.resultSizeEstimate = 42;
   }
@@ -958,7 +1210,7 @@ api.ListMessagesResponse buildListMessagesResponse() {
 void checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed19(o.messages!);
+    checkUnnamed23(o.messages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -971,12 +1223,12 @@ void checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse--;
 }
 
-core.List<api.SendAs> buildUnnamed20() => [
+core.List<api.SendAs> buildUnnamed24() => [
       buildSendAs(),
       buildSendAs(),
     ];
 
-void checkUnnamed20(core.List<api.SendAs> o) {
+void checkUnnamed24(core.List<api.SendAs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSendAs(o[0]);
   checkSendAs(o[1]);
@@ -987,7 +1239,7 @@ api.ListSendAsResponse buildListSendAsResponse() {
   final o = api.ListSendAsResponse();
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    o.sendAs = buildUnnamed20();
+    o.sendAs = buildUnnamed24();
   }
   buildCounterListSendAsResponse--;
   return o;
@@ -996,17 +1248,17 @@ api.ListSendAsResponse buildListSendAsResponse() {
 void checkListSendAsResponse(api.ListSendAsResponse o) {
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    checkUnnamed20(o.sendAs!);
+    checkUnnamed24(o.sendAs!);
   }
   buildCounterListSendAsResponse--;
 }
 
-core.List<api.SmimeInfo> buildUnnamed21() => [
+core.List<api.SmimeInfo> buildUnnamed25() => [
       buildSmimeInfo(),
       buildSmimeInfo(),
     ];
 
-void checkUnnamed21(core.List<api.SmimeInfo> o) {
+void checkUnnamed25(core.List<api.SmimeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSmimeInfo(o[0]);
   checkSmimeInfo(o[1]);
@@ -1017,7 +1269,7 @@ api.ListSmimeInfoResponse buildListSmimeInfoResponse() {
   final o = api.ListSmimeInfoResponse();
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    o.smimeInfo = buildUnnamed21();
+    o.smimeInfo = buildUnnamed25();
   }
   buildCounterListSmimeInfoResponse--;
   return o;
@@ -1026,17 +1278,17 @@ api.ListSmimeInfoResponse buildListSmimeInfoResponse() {
 void checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    checkUnnamed21(o.smimeInfo!);
+    checkUnnamed25(o.smimeInfo!);
   }
   buildCounterListSmimeInfoResponse--;
 }
 
-core.List<api.Thread> buildUnnamed22() => [
+core.List<api.Thread> buildUnnamed26() => [
       buildThread(),
       buildThread(),
     ];
 
-void checkUnnamed22(core.List<api.Thread> o) {
+void checkUnnamed26(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThread(o[0]);
   checkThread(o[1]);
@@ -1049,7 +1301,7 @@ api.ListThreadsResponse buildListThreadsResponse() {
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = 'foo';
     o.resultSizeEstimate = 42;
-    o.threads = buildUnnamed22();
+    o.threads = buildUnnamed26();
   }
   buildCounterListThreadsResponse--;
   return o;
@@ -1066,17 +1318,17 @@ void checkListThreadsResponse(api.ListThreadsResponse o) {
       o.resultSizeEstimate!,
       unittest.equals(42),
     );
-    checkUnnamed22(o.threads!);
+    checkUnnamed26(o.threads!);
   }
   buildCounterListThreadsResponse--;
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1096,7 +1348,7 @@ api.Message buildMessage() {
     o.historyId = 'foo';
     o.id = 'foo';
     o.internalDate = 'foo';
-    o.labelIds = buildUnnamed23();
+    o.labelIds = buildUnnamed27();
     o.payload = buildMessagePart();
     o.raw = 'foo';
     o.sizeEstimate = 42;
@@ -1122,7 +1374,7 @@ void checkMessage(api.Message o) {
       o.internalDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.labelIds!);
+    checkUnnamed27(o.labelIds!);
     checkMessagePart(o.payload!);
     unittest.expect(
       o.raw!,
@@ -1144,23 +1396,23 @@ void checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-core.List<api.MessagePartHeader> buildUnnamed24() => [
+core.List<api.MessagePartHeader> buildUnnamed28() => [
       buildMessagePartHeader(),
       buildMessagePartHeader(),
     ];
 
-void checkUnnamed24(core.List<api.MessagePartHeader> o) {
+void checkUnnamed28(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePartHeader(o[0]);
   checkMessagePartHeader(o[1]);
 }
 
-core.List<api.MessagePart> buildUnnamed25() => [
+core.List<api.MessagePart> buildUnnamed29() => [
       buildMessagePart(),
       buildMessagePart(),
     ];
 
-void checkUnnamed25(core.List<api.MessagePart> o) {
+void checkUnnamed29(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePart(o[0]);
   checkMessagePart(o[1]);
@@ -1173,10 +1425,10 @@ api.MessagePart buildMessagePart() {
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
     o.filename = 'foo';
-    o.headers = buildUnnamed24();
+    o.headers = buildUnnamed28();
     o.mimeType = 'foo';
     o.partId = 'foo';
-    o.parts = buildUnnamed25();
+    o.parts = buildUnnamed29();
   }
   buildCounterMessagePart--;
   return o;
@@ -1190,7 +1442,7 @@ void checkMessagePart(api.MessagePart o) {
       o.filename!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.headers!);
+    checkUnnamed28(o.headers!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -1199,7 +1451,7 @@ void checkMessagePart(api.MessagePart o) {
       o.partId!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.parts!);
+    checkUnnamed29(o.parts!);
   }
   buildCounterMessagePart--;
 }
@@ -1263,12 +1515,12 @@ void checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1280,12 +1532,12 @@ void checkUnnamed26(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1302,8 +1554,8 @@ api.ModifyMessageRequest buildModifyMessageRequest() {
   final o = api.ModifyMessageRequest();
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    o.addLabelIds = buildUnnamed26();
-    o.removeLabelIds = buildUnnamed27();
+    o.addLabelIds = buildUnnamed30();
+    o.removeLabelIds = buildUnnamed31();
   }
   buildCounterModifyMessageRequest--;
   return o;
@@ -1312,18 +1564,18 @@ api.ModifyMessageRequest buildModifyMessageRequest() {
 void checkModifyMessageRequest(api.ModifyMessageRequest o) {
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed26(o.addLabelIds!);
-    checkUnnamed27(o.removeLabelIds!);
+    checkUnnamed30(o.addLabelIds!);
+    checkUnnamed31(o.removeLabelIds!);
   }
   buildCounterModifyMessageRequest--;
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1335,12 +1587,12 @@ void checkUnnamed28(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed29() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed29(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1357,8 +1609,8 @@ api.ModifyThreadRequest buildModifyThreadRequest() {
   final o = api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    o.addLabelIds = buildUnnamed28();
-    o.removeLabelIds = buildUnnamed29();
+    o.addLabelIds = buildUnnamed32();
+    o.removeLabelIds = buildUnnamed33();
   }
   buildCounterModifyThreadRequest--;
   return o;
@@ -1367,10 +1619,25 @@ api.ModifyThreadRequest buildModifyThreadRequest() {
 void checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed28(o.addLabelIds!);
-    checkUnnamed29(o.removeLabelIds!);
+    checkUnnamed32(o.addLabelIds!);
+    checkUnnamed33(o.removeLabelIds!);
   }
   buildCounterModifyThreadRequest--;
+}
+
+core.int buildCounterObliterateCseKeyPairRequest = 0;
+api.ObliterateCseKeyPairRequest buildObliterateCseKeyPairRequest() {
+  final o = api.ObliterateCseKeyPairRequest();
+  buildCounterObliterateCseKeyPairRequest++;
+  if (buildCounterObliterateCseKeyPairRequest < 3) {}
+  buildCounterObliterateCseKeyPairRequest--;
+  return o;
+}
+
+void checkObliterateCseKeyPairRequest(api.ObliterateCseKeyPairRequest o) {
+  buildCounterObliterateCseKeyPairRequest++;
+  if (buildCounterObliterateCseKeyPairRequest < 3) {}
+  buildCounterObliterateCseKeyPairRequest--;
 }
 
 core.int buildCounterPopSettings = 0;
@@ -1578,12 +1845,12 @@ void checkSmtpMsa(api.SmtpMsa o) {
   buildCounterSmtpMsa--;
 }
 
-core.List<api.Message> buildUnnamed30() => [
+core.List<api.Message> buildUnnamed34() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed30(core.List<api.Message> o) {
+void checkUnnamed34(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -1596,7 +1863,7 @@ api.Thread buildThread() {
   if (buildCounterThread < 3) {
     o.historyId = 'foo';
     o.id = 'foo';
-    o.messages = buildUnnamed30();
+    o.messages = buildUnnamed34();
     o.snippet = 'foo';
   }
   buildCounterThread--;
@@ -1614,7 +1881,7 @@ void checkThread(api.Thread o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.messages!);
+    checkUnnamed34(o.messages!);
     unittest.expect(
       o.snippet!,
       unittest.equals('foo'),
@@ -1671,12 +1938,12 @@ void checkVacationSettings(api.VacationSettings o) {
   buildCounterVacationSettings--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1694,7 +1961,7 @@ api.WatchRequest buildWatchRequest() {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = 'foo';
-    o.labelIds = buildUnnamed31();
+    o.labelIds = buildUnnamed35();
     o.topicName = 'foo';
   }
   buildCounterWatchRequest--;
@@ -1708,7 +1975,7 @@ void checkWatchRequest(api.WatchRequest o) {
       o.labelFilterAction!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.labelIds!);
+    checkUnnamed35(o.labelIds!);
     unittest.expect(
       o.topicName!,
       unittest.equals('foo'),
@@ -1744,80 +2011,80 @@ void checkWatchResponse(api.WatchResponse o) {
   buildCounterWatchResponse--;
 }
 
-core.List<core.String> buildUnnamed32() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed32(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed33() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed33(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed34() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed34(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed35() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed35(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed36() => [
       'foo',
       'foo',
     ];
 
 void checkUnnamed36(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed37() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed37(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed38() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed38(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed39() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed39(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed40() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1860,6 +2127,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CseIdentity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCseIdentity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CseIdentity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCseIdentity(od);
+    });
+  });
+
+  unittest.group('obj-schema-CseKeyPair', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCseKeyPair();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CseKeyPair.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCseKeyPair(od);
+    });
+  });
+
+  unittest.group('obj-schema-CsePrivateKeyMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCsePrivateKeyMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CsePrivateKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCsePrivateKeyMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-Delegate', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDelegate();
@@ -1870,6 +2167,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DisableCseKeyPairRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDisableCseKeyPairRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisableCseKeyPairRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDisableCseKeyPairRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Draft', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDraft();
@@ -1877,6 +2184,16 @@ void main() {
       final od =
           api.Draft.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDraft(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnableCseKeyPairRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnableCseKeyPairRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnableCseKeyPairRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnableCseKeyPairRequest(od);
     });
   });
 
@@ -1980,6 +2297,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-KaclsKeyMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildKaclsKeyMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.KaclsKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkKaclsKeyMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-Label', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLabel();
@@ -2007,6 +2334,26 @@ void main() {
       final od = api.LanguageSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLanguageSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListCseIdentitiesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListCseIdentitiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListCseIdentitiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListCseIdentitiesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListCseKeyPairsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListCseKeyPairsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListCseKeyPairsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListCseKeyPairsResponse(od);
     });
   });
 
@@ -2167,6 +2514,16 @@ void main() {
       final od = api.ModifyThreadRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkModifyThreadRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ObliterateCseKeyPairRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildObliterateCseKeyPairRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ObliterateCseKeyPairRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkObliterateCseKeyPairRequest(od);
     });
   });
 
@@ -2937,7 +3294,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GmailApi(mock).users.history;
       final arg_userId = 'foo';
-      final arg_historyTypes = buildUnnamed32();
+      final arg_historyTypes = buildUnnamed36();
       final arg_labelId = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -3683,7 +4040,7 @@ void main() {
       final arg_userId = 'foo';
       final arg_id = 'foo';
       final arg_format = 'foo';
-      final arg_metadataHeaders = buildUnnamed33();
+      final arg_metadataHeaders = buildUnnamed37();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -3951,7 +4308,7 @@ void main() {
       final res = api.GmailApi(mock).users.messages;
       final arg_userId = 'foo';
       final arg_includeSpamTrash = true;
-      final arg_labelIds = buildUnnamed34();
+      final arg_labelIds = buildUnnamed38();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_q = 'foo';
@@ -5135,6 +5492,861 @@ void main() {
       final response = await res.updateVacation(arg_request, arg_userId,
           $fields: arg_$fields);
       checkVacationSettings(response as api.VacationSettings);
+    });
+  });
+
+  unittest.group('resource-UsersSettingsCseIdentitiesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.identities;
+      final arg_request = buildCseIdentity();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CseIdentity.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCseIdentity(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/identities', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals('/settings/cse/identities'),
+        );
+        pathOffset += 24;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseIdentity());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkCseIdentity(response as api.CseIdentity);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.identities;
+      final arg_userId = 'foo';
+      final arg_cseEmailAddress = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/identities/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals('/settings/cse/identities/'),
+        );
+        pathOffset += 25;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_cseEmailAddress'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      await res.delete(arg_userId, arg_cseEmailAddress, $fields: arg_$fields);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.identities;
+      final arg_userId = 'foo';
+      final arg_cseEmailAddress = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/identities/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals('/settings/cse/identities/'),
+        );
+        pathOffset += 25;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_cseEmailAddress'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseIdentity());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.get(arg_userId, arg_cseEmailAddress, $fields: arg_$fields);
+      checkCseIdentity(response as api.CseIdentity);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.identities;
+      final arg_userId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/identities', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals('/settings/cse/identities'),
+        );
+        pathOffset += 24;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListCseIdentitiesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_userId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCseIdentitiesResponse(response as api.ListCseIdentitiesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.identities;
+      final arg_request = buildCseIdentity();
+      final arg_userId = 'foo';
+      final arg_emailAddress = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CseIdentity.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCseIdentity(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/identities/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals('/settings/cse/identities/'),
+        );
+        pathOffset += 25;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_emailAddress'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseIdentity());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_userId, arg_emailAddress,
+          $fields: arg_$fields);
+      checkCseIdentity(response as api.CseIdentity);
+    });
+  });
+
+  unittest.group('resource-UsersSettingsCseKeypairsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_request = buildCseKeyPair();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CseKeyPair.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCseKeyPair(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/settings/cse/keypairs'),
+        );
+        pathOffset += 22;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseKeyPair());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkCseKeyPair(response as api.CseKeyPair);
+    });
+
+    unittest.test('method--disable', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_request = buildDisableCseKeyPairRequest();
+      final arg_userId = 'foo';
+      final arg_keyPairId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DisableCseKeyPairRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDisableCseKeyPairRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('/settings/cse/keypairs/'),
+        );
+        pathOffset += 23;
+        index = path.indexOf(':disable', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_keyPairId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals(':disable'),
+        );
+        pathOffset += 8;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseKeyPair());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.disable(arg_request, arg_userId, arg_keyPairId,
+          $fields: arg_$fields);
+      checkCseKeyPair(response as api.CseKeyPair);
+    });
+
+    unittest.test('method--enable', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_request = buildEnableCseKeyPairRequest();
+      final arg_userId = 'foo';
+      final arg_keyPairId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EnableCseKeyPairRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnableCseKeyPairRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('/settings/cse/keypairs/'),
+        );
+        pathOffset += 23;
+        index = path.indexOf(':enable', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_keyPairId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals(':enable'),
+        );
+        pathOffset += 7;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseKeyPair());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.enable(arg_request, arg_userId, arg_keyPairId,
+          $fields: arg_$fields);
+      checkCseKeyPair(response as api.CseKeyPair);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_userId = 'foo';
+      final arg_keyPairId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('/settings/cse/keypairs/'),
+        );
+        pathOffset += 23;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_keyPairId'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCseKeyPair());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.get(arg_userId, arg_keyPairId, $fields: arg_$fields);
+      checkCseKeyPair(response as api.CseKeyPair);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_userId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/settings/cse/keypairs'),
+        );
+        pathOffset += 22;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListCseKeyPairsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_userId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCseKeyPairsResponse(response as api.ListCseKeyPairsResponse);
+    });
+
+    unittest.test('method--obliterate', () async {
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.cse.keypairs;
+      final arg_request = buildObliterateCseKeyPairRequest();
+      final arg_userId = 'foo';
+      final arg_keyPairId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ObliterateCseKeyPairRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObliterateCseKeyPairRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('gmail/v1/users/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/settings/cse/keypairs/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('/settings/cse/keypairs/'),
+        );
+        pathOffset += 23;
+        index = path.indexOf(':obliterate', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_keyPairId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals(':obliterate'),
+        );
+        pathOffset += 11;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      await res.obliterate(arg_request, arg_userId, arg_keyPairId,
+          $fields: arg_$fields);
     });
   });
 
@@ -7021,7 +8233,7 @@ void main() {
       final arg_userId = 'foo';
       final arg_id = 'foo';
       final arg_format = 'foo';
-      final arg_metadataHeaders = buildUnnamed35();
+      final arg_metadataHeaders = buildUnnamed39();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -7105,7 +8317,7 @@ void main() {
       final res = api.GmailApi(mock).users.threads;
       final arg_userId = 'foo';
       final arg_includeSpamTrash = true;
-      final arg_labelIds = buildUnnamed36();
+      final arg_labelIds = buildUnnamed40();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_q = 'foo';

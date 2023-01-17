@@ -1461,6 +1461,12 @@ class Entity {
 
 /// The result of fetching an entity from Datastore.
 class EntityResult {
+  /// The time at which the entity was created.
+  ///
+  /// This field is set for `FULL` entity results. If this entity is missing,
+  /// this field will not be set.
+  core.String? createTime;
+
   /// A cursor that points to the position after the result entity.
   ///
   /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
@@ -1491,6 +1497,7 @@ class EntityResult {
   core.String? version;
 
   EntityResult({
+    this.createTime,
     this.cursor,
     this.entity,
     this.updateTime,
@@ -1499,6 +1506,9 @@ class EntityResult {
 
   EntityResult.fromJson(core.Map json_)
       : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
           cursor: json_.containsKey('cursor')
               ? json_['cursor'] as core.String
               : null,
@@ -1515,6 +1525,7 @@ class EntityResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (cursor != null) 'cursor': cursor!,
         if (entity != null) 'entity': entity!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2368,6 +2379,11 @@ class MutationResult {
   /// mutation.
   core.bool? conflictDetected;
 
+  /// The create time of the entity.
+  ///
+  /// This field will not be set after a 'delete'.
+  core.String? createTime;
+
   /// The automatically allocated key.
   ///
   /// Set only when the mutation allocated a key.
@@ -2390,6 +2406,7 @@ class MutationResult {
 
   MutationResult({
     this.conflictDetected,
+    this.createTime,
     this.key,
     this.updateTime,
     this.version,
@@ -2399,6 +2416,9 @@ class MutationResult {
       : this(
           conflictDetected: json_.containsKey('conflictDetected')
               ? json_['conflictDetected'] as core.bool
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
           key: json_.containsKey('key')
               ? Key.fromJson(
@@ -2414,6 +2434,7 @@ class MutationResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conflictDetected != null) 'conflictDetected': conflictDetected!,
+        if (createTime != null) 'createTime': createTime!,
         if (key != null) 'key': key!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,

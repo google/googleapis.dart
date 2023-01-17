@@ -1739,7 +1739,7 @@
             }
         }
     },
-    "revision": "20221106",
+    "revision": "20221214",
     "rootUrl": "https://beyondcorp.googleapis.com/",
     "schemas": {
         "AllocatedConnection": {
