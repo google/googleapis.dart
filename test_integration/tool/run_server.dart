@@ -6,7 +6,7 @@ Future<void> main() async {
   final clientId = openClientId();
 
   final proc = await Process.start(
-      'dart',
+      Platform.resolvedExecutable,
       [
         'run',
         'build_runner',
