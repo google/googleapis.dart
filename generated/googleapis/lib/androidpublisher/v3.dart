@@ -3100,7 +3100,7 @@ class MonetizationSubscriptionsResource {
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
   /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3299,7 +3299,7 @@ class MonetizationSubscriptionsResource {
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
   /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3673,7 +3673,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
   /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3972,7 +3972,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
   /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -8776,7 +8776,7 @@ class RegionsVersion {
   /// A string representing version of the available regions being used for the
   /// specified resource.
   ///
-  /// The current version is 2022/01.
+  /// The current version is 2022/02.
   ///
   /// Required.
   core.String? version;

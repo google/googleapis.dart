@@ -157,7 +157,7 @@
                             "type": "string"
                         },
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         }
@@ -186,7 +186,7 @@
                             "type": "string"
                         },
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         }
@@ -215,7 +215,7 @@
                             "type": "string"
                         },
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert metadata is associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert metadata is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         }
@@ -236,7 +236,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         },
@@ -317,7 +317,7 @@
                                     "type": "string"
                                 },
                                 "customerId": {
-                                    "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
+                                    "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -349,7 +349,7 @@
                                     "type": "string"
                                 },
                                 "customerId": {
-                                    "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert feedback are associated with. Inferred from the caller identity if not provided.",
+                                    "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -381,7 +381,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert settings are associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must/ have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         }
@@ -402,7 +402,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "customerId": {
-                            "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert settings are associated with. Inferred from the caller identity if not provided.",
+                            "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                             "location": "query",
                             "type": "string"
                         }
@@ -421,7 +421,7 @@
             }
         }
     },
-    "revision": "20230110",
+    "revision": "20230123",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AbuseDetected": {
@@ -628,7 +628,7 @@
                     "type": "string"
                 },
                 "customerId": {
-                    "description": "Output only. The unique identifier of the Google account of the customer.",
+                    "description": "Output only. The unique identifier of the Google Workspace account of the customer.",
                     "type": "string"
                 },
                 "data": {
@@ -695,7 +695,7 @@
                     "type": "string"
                 },
                 "customerId": {
-                    "description": "Output only. The unique identifier of the Google account of the customer.",
+                    "description": "Output only. The unique identifier of the Google Workspace account of the customer.",
                     "type": "string"
                 },
                 "email": {
@@ -738,7 +738,7 @@
                     "type": "string"
                 },
                 "customerId": {
-                    "description": "Output only. The unique identifier of the Google account of the customer.",
+                    "description": "Output only. The unique identifier of the Google Workspace account of the customer.",
                     "type": "string"
                 },
                 "etag": {
@@ -913,14 +913,14 @@
             "id": "BatchDeleteAlertsRequest",
             "properties": {
                 "alertId": {
-                    "description": "Required. list of alert IDs.",
+                    "description": "Required. The list of alert IDs to delete.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "customerId": {
-                    "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with.",
+                    "description": "Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                     "type": "string"
                 }
             },
@@ -934,7 +934,7 @@
                     "additionalProperties": {
                         "$ref": "Status"
                     },
-                    "description": "The status details for each failed alert_id.",
+                    "description": "The status details for each failed `alert_id`.",
                     "type": "object"
                 },
                 "successAlertIds": {
@@ -952,14 +952,14 @@
             "id": "BatchUndeleteAlertsRequest",
             "properties": {
                 "alertId": {
-                    "description": "Required. list of alert IDs.",
+                    "description": "Required. The list of alert IDs to undelete.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "customerId": {
-                    "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with.",
+                    "description": "Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                     "type": "string"
                 }
             },
@@ -973,7 +973,7 @@
                     "additionalProperties": {
                         "$ref": "Status"
                     },
-                    "description": "The status details for each failed alert_id.",
+                    "description": "The status details for each failed `alert_id`.",
                     "type": "object"
                 },
                 "successAlertIds": {
@@ -1602,19 +1602,19 @@
                             "ACTION_TYPE_UNSPECIFIED",
                             "DRIVE_BLOCK_EXTERNAL_SHARING",
                             "DRIVE_WARN_ON_EXTERNAL_SHARING",
+                            "DELETE_WEBPROTECT_EVIDENCE",
                             "ALERT",
                             "RULE_ACTIVATE",
-                            "RULE_DEACTIVATE",
-                            "DELETE_WEBPROTECT_EVIDENCE"
+                            "RULE_DEACTIVATE"
                         ],
                         "enumDescriptions": [
                             "Action type is unspecified.",
                             "Block sharing a file externally.",
                             "Show a warning message when sharing a file externally.",
+                            "Delete web protect evidence file",
                             "Send alert.",
                             "Activate Rule Action",
-                            "Deactivate Rule Action",
-                            "Chrome actions Delete web protect evidence file"
+                            "Deactivate Rule Action"
                         ],
                         "type": "string"
                     },
@@ -1646,19 +1646,19 @@
                             "ACTION_TYPE_UNSPECIFIED",
                             "DRIVE_BLOCK_EXTERNAL_SHARING",
                             "DRIVE_WARN_ON_EXTERNAL_SHARING",
+                            "DELETE_WEBPROTECT_EVIDENCE",
                             "ALERT",
                             "RULE_ACTIVATE",
-                            "RULE_DEACTIVATE",
-                            "DELETE_WEBPROTECT_EVIDENCE"
+                            "RULE_DEACTIVATE"
                         ],
                         "enumDescriptions": [
                             "Action type is unspecified.",
                             "Block sharing a file externally.",
                             "Show a warning message when sharing a file externally.",
+                            "Delete web protect evidence file",
                             "Send alert.",
                             "Activate Rule Action",
-                            "Deactivate Rule Action",
-                            "Chrome actions Delete web protect evidence file"
+                            "Deactivate Rule Action"
                         ],
                         "type": "string"
                     },
@@ -1940,7 +1940,7 @@
             "id": "UndeleteAlertRequest",
             "properties": {
                 "customerId": {
-                    "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
+                    "description": "Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial \"C\" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).",
                     "type": "string"
                 }
             },

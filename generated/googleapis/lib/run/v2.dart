@@ -948,6 +948,57 @@ class ProjectsLocationsOperationsResource {
     return GoogleLongrunningListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    GoogleLongrunningWaitOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsServicesResource {
@@ -1766,10 +1817,11 @@ class GoogleCloudRunV2Container {
   /// List of environment variables to set in the container.
   core.List<GoogleCloudRunV2EnvVar>? env;
 
-  /// URL of the Container image in Google Container Registry or Google Artifact
-  /// Registry.
+  /// Name of the container image in Dockerhub, Google Artifact Registry, or
+  /// Google Container Registry.
   ///
-  /// More info: https://kubernetes.io/docs/concepts/containers/images
+  /// If the host is not provided, Dockerhub is assumed. More info:
+  /// https://kubernetes.io/docs/concepts/containers/images
   ///
   /// Required.
   core.String? image;
@@ -5534,6 +5586,9 @@ class GoogleLongrunningOperation {
         if (response != null) 'response': response!,
       };
 }
+
+/// The request message for Operations.WaitOperation.
+typedef GoogleLongrunningWaitOperationRequest = $WaitOperationRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

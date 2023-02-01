@@ -4265,6 +4265,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
       final arg_rolloutId = 'foo';
+      final arg_startingPhaseId = 'foo';
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4312,6 +4313,10 @@ void main() {
           unittest.equals(arg_rolloutId),
         );
         unittest.expect(
+          queryMap['startingPhaseId']!.first,
+          unittest.equals(arg_startingPhaseId),
+        );
+        unittest.expect(
           queryMap['validateOnly']!.first,
           unittest.equals('$arg_validateOnly'),
         );
@@ -4329,6 +4334,7 @@ void main() {
       final response = await res.create(arg_request, arg_parent,
           requestId: arg_requestId,
           rolloutId: arg_rolloutId,
+          startingPhaseId: arg_startingPhaseId,
           validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);

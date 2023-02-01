@@ -517,7 +517,7 @@
             }
         }
     },
-    "revision": "20221229",
+    "revision": "20230123",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "schemas": {
         "GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest": {
@@ -561,7 +561,8 @@
                         "ITAR",
                         "AU_REGIONS_AND_US_SUPPORT",
                         "ASSURED_WORKLOADS_FOR_PARTNERS",
-                        "ISR_REGIONS"
+                        "ISR_REGIONS",
+                        "CA_PROTECTED_B"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -577,7 +578,8 @@
                         "International Traffic in Arms Regulations",
                         "Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.",
                         "Assured Workloads for Partners",
-                        "Assured Workloads for Israel Regions"
+                        "Assured Workloads for Israel Regions",
+                        "Assured Workloads for Canada Protected B regime"
                     ],
                     "type": "string"
                 },
@@ -905,7 +907,8 @@
                         "ITAR",
                         "AU_REGIONS_AND_US_SUPPORT",
                         "ASSURED_WORKLOADS_FOR_PARTNERS",
-                        "ISR_REGIONS"
+                        "ISR_REGIONS",
+                        "CA_PROTECTED_B"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -921,7 +924,8 @@
                         "International Traffic in Arms Regulations",
                         "Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.",
                         "Assured Workloads for Partners",
-                        "Assured Workloads for Israel Regions"
+                        "Assured Workloads for Israel Regions",
+                        "Assured Workloads for Canada Protected B regime"
                     ],
                     "type": "string"
                 },

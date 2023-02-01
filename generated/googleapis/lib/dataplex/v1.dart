@@ -196,6 +196,148 @@ class ProjectsLocationsDataAttributeBindingsResource {
   ProjectsLocationsDataAttributeBindingsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a DataAttributeBinding resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent data taxonomy
+  /// projects/{project_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dataAttributeBindingId] - Required. DataAttributeBinding identifier. *
+  /// Must contain only lowercase letters, numbers and hyphens. * Must start
+  /// with a letter. * Must be between 1-63 characters. * Must end with a number
+  /// or a letter. * Must be unique within the Location.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataAttributeBinding request,
+    core.String parent, {
+    core.String? dataAttributeBindingId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dataAttributeBindingId != null)
+        'dataAttributeBindingId': [dataAttributeBindingId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dataAttributeBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DataAttributeBinding resource.
+  ///
+  /// All attributes within the DataAttributeBinding must be deleted before the
+  /// DataAttributeBinding can be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataAttributeBinding:
+  /// projects/{project_number}/locations/{location_id}/dataAttributeBindings/{data_attribute_binding_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [etag] - Required. If the client provided etag value does not match the
+  /// current etag value, the DeleteDataAttributeBindingRequest method returns
+  /// an ABORTED error response. Etags must be used when calling the
+  /// DeleteDataAttributeBinding.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a DataAttributeBinding resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataAttributeBinding:
+  /// projects/{project_number}/locations/{location_id}/dataAttributeBindings/{data_attribute_binding_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataAttributeBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataAttributeBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataAttributeBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -251,6 +393,123 @@ class ProjectsLocationsDataAttributeBindingsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DataAttributeBinding resources in a project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location:
+  /// projects/{project_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request. Filter using resource:
+  /// filter=resource:"resource-name" Filter using attribute:
+  /// filter=attributes:"attribute-name" Filter using attribute in paths list:
+  /// filter=paths.attributes:"attribute-name"
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataAttributeBindings to return.
+  /// The service may return fewer than this value. If unspecified, at most 10
+  /// DataAttributeBindings will be returned. The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataAttributeBindings call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// ListDataAttributeBindings must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataAttributeBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataAttributeBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dataAttributeBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a DataAttributeBinding resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The relative resource name of the Data Attribute
+  /// Binding, of the form:
+  /// projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDataplexV1DataAttributeBinding request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -934,6 +1193,145 @@ class ProjectsLocationsDataTaxonomiesResource {
   ProjectsLocationsDataTaxonomiesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a DataTaxonomy resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the data taxonomy location, of
+  /// the form: projects/{project_number}/locations/{location_id} where
+  /// location_id refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dataTaxonomyId] - Required. DataTaxonomy identifier. * Must contain only
+  /// lowercase letters, numbers and hyphens. * Must start with a letter. * Must
+  /// be between 1-63 characters. * Must end with a number or a letter. * Must
+  /// be unique within the Project.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataTaxonomy request,
+    core.String parent, {
+    core.String? dataTaxonomyId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dataTaxonomyId != null) 'dataTaxonomyId': [dataTaxonomyId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataTaxonomies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DataTaxonomy resource.
+  ///
+  /// All attributes within the DataTaxonomy must be deleted before the
+  /// DataTaxonomy can be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataTaxonomy:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If the client provided etag value does not match the
+  /// current etag value,the DeleteDataTaxonomy method returns an ABORTED error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a DataTaxonomy resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataTaxonomy:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataTaxonomy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataTaxonomy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataTaxonomy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -989,6 +1387,119 @@ class ProjectsLocationsDataTaxonomiesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DataTaxonomy resources in a project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the DataTaxonomy location, of
+  /// the form: projects/{project_number}/locations/{location_id} where
+  /// location_id refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request.
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataTaxonomies to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// DataTaxonomies will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataTaxonomies call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to ListDataTaxonomies must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataTaxonomiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataTaxonomiesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataTaxonomies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataTaxonomiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a DataTaxonomy resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The relative resource name of the DataTaxonomy, of
+  /// the form:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDataplexV1DataTaxonomy request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1098,6 +1609,143 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   ProjectsLocationsDataTaxonomiesAttributesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a DataAttribute resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent data taxonomy
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [dataAttributeId] - Required. DataAttribute identifier. * Must contain
+  /// only lowercase letters, numbers and hyphens. * Must start with a letter. *
+  /// Must be between 1-63 characters. * Must end with a number or a letter. *
+  /// Must be unique within the DataTaxonomy.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataAttribute request,
+    core.String parent, {
+    core.String? dataAttributeId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dataAttributeId != null) 'dataAttributeId': [dataAttributeId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attributes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Data Attribute resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataAttribute:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If the client provided etag value does not match the
+  /// current etag value, the DeleteDataAttribute method returns an ABORTED
+  /// error response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a Data Attribute resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the dataAttribute:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataAttribute].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataAttribute> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataAttribute.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1153,6 +1801,119 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Data Attribute resources in a DataTaxonomy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the DataTaxonomy:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request.
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataAttributes to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// dataAttributes will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataAttributes call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to ListDataAttributes must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataAttributesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataAttributesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attributes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataAttributesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a DataAttribute resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The relative resource name of the dataAttribute, of
+  /// the form:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDataplexV1DataAttribute request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -6363,6 +7124,375 @@ class GoogleCloudDataplexV1ContentSqlScript {
       };
 }
 
+/// DataAccessSpec holds the access control configuration to be enforced on data
+/// stored within resources (eg: rows, columns in BigQuery Tables).
+///
+/// When associated with data,the data is only accessible to principals
+/// explicitly granted access through the DataAttribute. Principals with access
+/// to the containing resource are not implicitly granted access.
+class GoogleCloudDataplexV1DataAccessSpec {
+  /// The format of strings follows the pattern followed by IAM in the bindings.
+  ///
+  /// user:{email}, serviceAccount:{email} group:{email}. The set of principals
+  /// to be granted reader role on data stored within resources.
+  ///
+  /// Optional.
+  core.List<core.String>? readers;
+
+  GoogleCloudDataplexV1DataAccessSpec({
+    this.readers,
+  });
+
+  GoogleCloudDataplexV1DataAccessSpec.fromJson(core.Map json_)
+      : this(
+          readers: json_.containsKey('readers')
+              ? (json_['readers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readers != null) 'readers': readers!,
+      };
+}
+
+/// Denotes one dataAttribute in a dataTaxonomy, for example, PII.
+///
+/// DataAttribute resources can be defined in a hierarchy. A single
+/// dataAttribute resource can contain specs of multiple types PII -
+/// ResourceAccessSpec : - readers :foo@bar.com - DataAccessSpec : - readers
+/// :bar@foo.com
+class GoogleCloudDataplexV1DataAttribute {
+  /// The number of child attributes present for this attribute.
+  ///
+  /// Output only.
+  core.int? attributeCount;
+
+  /// The time when the DataAttribute was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Specified when applied to data stored on the resource (eg: rows, columns
+  /// in BigQuery Tables).
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataAccessSpec? dataAccessSpec;
+
+  /// Description of the DataAttribute.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// User-defined labels for the DataAttribute.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The relative resource name of the dataAttribute, of the form:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The ID of the parent DataAttribute resource, should belong to the same
+  /// data taxonomy.
+  ///
+  /// Circular dependency in parent chain is not valid. Maximum depth of the
+  /// hierarchy allowed is 4. a -\> b -\> c -\> d -\> e, depth = 4
+  ///
+  /// Optional.
+  core.String? parentId;
+
+  /// Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery
+  /// dataset, BigQuery table).
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1ResourceAccessSpec? resourceAccessSpec;
+
+  /// System generated globally unique ID for the DataAttribute.
+  ///
+  /// This ID will be different if the DataAttribute is deleted and re-created
+  /// with the same name.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the DataAttribute was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1DataAttribute({
+    this.attributeCount,
+    this.createTime,
+    this.dataAccessSpec,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.parentId,
+    this.resourceAccessSpec,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1DataAttribute.fromJson(core.Map json_)
+      : this(
+          attributeCount: json_.containsKey('attributeCount')
+              ? json_['attributeCount'] as core.int
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dataAccessSpec: json_.containsKey('dataAccessSpec')
+              ? GoogleCloudDataplexV1DataAccessSpec.fromJson(
+                  json_['dataAccessSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parentId: json_.containsKey('parentId')
+              ? json_['parentId'] as core.String
+              : null,
+          resourceAccessSpec: json_.containsKey('resourceAccessSpec')
+              ? GoogleCloudDataplexV1ResourceAccessSpec.fromJson(
+                  json_['resourceAccessSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeCount != null) 'attributeCount': attributeCount!,
+        if (createTime != null) 'createTime': createTime!,
+        if (dataAccessSpec != null) 'dataAccessSpec': dataAccessSpec!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (parentId != null) 'parentId': parentId!,
+        if (resourceAccessSpec != null)
+          'resourceAccessSpec': resourceAccessSpec!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// DataAttributeBinding represents binding of attributes to resources.
+///
+/// Eg: Bind 'CustomerInfo' entity with 'PII' attribute.
+class GoogleCloudDataplexV1DataAttributeBinding {
+  /// List of attributes to be associated with the resource, provided in the
+  /// form:
+  /// projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+  ///
+  /// Optional.
+  core.List<core.String>? attributes;
+
+  /// The time when the DataAttributeBinding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the DataAttributeBinding.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Etags must be used when calling the DeleteDataAttributeBinding and the
+  /// UpdateDataAttributeBinding method.
+  core.String? etag;
+
+  /// User-defined labels for the DataAttributeBinding.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The relative resource name of the Data Attribute Binding, of the form:
+  /// projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The list of paths for items within the associated resource (eg.
+  ///
+  /// columns within a table) along with attribute bindings.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDataplexV1DataAttributeBindingPath>? paths;
+
+  /// The resource name of the resource that is binded to attributes.
+  ///
+  /// Presently, only entity resource is supported in the form:
+  /// projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id}
+  /// Must belong in the same project and region as the attribute binding, and
+  /// there can only exist one active binding for a resource.
+  ///
+  /// Optional. Immutable.
+  core.String? resource;
+
+  /// System generated globally unique ID for the DataAttributeBinding.
+  ///
+  /// This ID will be different if the DataAttributeBinding is deleted and
+  /// re-created with the same name.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the DataAttributeBinding was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1DataAttributeBinding({
+    this.attributes,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.paths,
+    this.resource,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1DataAttributeBinding.fromJson(core.Map json_)
+      : this(
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          paths: json_.containsKey('paths')
+              ? (json_['paths'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataAttributeBindingPath.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (paths != null) 'paths': paths!,
+        if (resource != null) 'resource': resource!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents a subresource of a given resource, and associated bindings with
+/// it.
+class GoogleCloudDataplexV1DataAttributeBindingPath {
+  /// List of attributes to be associated with the path of the resource,
+  /// provided in the form:
+  /// projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+  ///
+  /// Optional.
+  core.List<core.String>? attributes;
+
+  /// The name identifier of the path.
+  ///
+  /// Nested columns should be of the form: 'country.state.city'.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DataAttributeBindingPath({
+    this.attributes,
+    this.name,
+  });
+
+  GoogleCloudDataplexV1DataAttributeBindingPath.fromJson(core.Map json_)
+      : this(
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// DataProfileResult defines the output of DataProfileScan.
 ///
 /// Each field of the table will have field type specific profile result.
@@ -7756,6 +8886,116 @@ class GoogleCloudDataplexV1DataSource {
       };
 }
 
+/// DataTaxonomy represents a set of hierarchical DataAttributes resources,
+/// grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes
+/// to manage PII data.
+///
+/// It is defined at project level.
+class GoogleCloudDataplexV1DataTaxonomy {
+  /// The number of attributes in the DataTaxonomy.
+  ///
+  /// Output only.
+  core.int? attributeCount;
+
+  /// The time when the DataTaxonomy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the DataTaxonomy.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// User-defined labels for the DataTaxonomy.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The relative resource name of the DataTaxonomy, of the form:
+  /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// System generated globally unique ID for the dataTaxonomy.
+  ///
+  /// This ID will be different if the DataTaxonomy is deleted and re-created
+  /// with the same name.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the DataTaxonomy was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1DataTaxonomy({
+    this.attributeCount,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1DataTaxonomy.fromJson(core.Map json_)
+      : this(
+          attributeCount: json_.containsKey('attributeCount')
+              ? json_['attributeCount'] as core.int
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeCount != null) 'attributeCount': attributeCount!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Represents tables and fileset metadata contained within a zone.
 class GoogleCloudDataplexV1Entity {
   /// Identifies the access mechanism to the entity.
@@ -8902,6 +10142,97 @@ class GoogleCloudDataplexV1ListContentResponse {
       };
 }
 
+/// List DataAttributeBindings response.
+class GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
+  /// DataAttributeBindings under the given parent Location.
+  core.List<GoogleCloudDataplexV1DataAttributeBinding>? dataAttributeBindings;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachableLocations;
+
+  GoogleCloudDataplexV1ListDataAttributeBindingsResponse({
+    this.dataAttributeBindings,
+    this.nextPageToken,
+    this.unreachableLocations,
+  });
+
+  GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
+      core.Map json_)
+      : this(
+          dataAttributeBindings: json_.containsKey('dataAttributeBindings')
+              ? (json_['dataAttributeBindings'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataAttributeBinding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachableLocations: json_.containsKey('unreachableLocations')
+              ? (json_['unreachableLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataAttributeBindings != null)
+          'dataAttributeBindings': dataAttributeBindings!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachableLocations != null)
+          'unreachableLocations': unreachableLocations!,
+      };
+}
+
+/// List DataAttributes response.
+class GoogleCloudDataplexV1ListDataAttributesResponse {
+  /// DataAttributes under the given parent DataTaxonomy.
+  core.List<GoogleCloudDataplexV1DataAttribute>? dataAttributes;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachableLocations;
+
+  GoogleCloudDataplexV1ListDataAttributesResponse({
+    this.dataAttributes,
+    this.nextPageToken,
+    this.unreachableLocations,
+  });
+
+  GoogleCloudDataplexV1ListDataAttributesResponse.fromJson(core.Map json_)
+      : this(
+          dataAttributes: json_.containsKey('dataAttributes')
+              ? (json_['dataAttributes'] as core.List)
+                  .map((value) => GoogleCloudDataplexV1DataAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachableLocations: json_.containsKey('unreachableLocations')
+              ? (json_['unreachableLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataAttributes != null) 'dataAttributes': dataAttributes!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachableLocations != null)
+          'unreachableLocations': unreachableLocations!,
+      };
+}
+
 /// List DataScanJobs response.
 class GoogleCloudDataplexV1ListDataScanJobsResponse {
   /// DataScanJobs (BASIC view only) under a given dataScan.
@@ -8975,6 +10306,50 @@ class GoogleCloudDataplexV1ListDataScansResponse {
         if (dataScans != null) 'dataScans': dataScans!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// List DataTaxonomies response.
+class GoogleCloudDataplexV1ListDataTaxonomiesResponse {
+  /// DataTaxonomies under the given parent location.
+  core.List<GoogleCloudDataplexV1DataTaxonomy>? dataTaxonomies;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachableLocations;
+
+  GoogleCloudDataplexV1ListDataTaxonomiesResponse({
+    this.dataTaxonomies,
+    this.nextPageToken,
+    this.unreachableLocations,
+  });
+
+  GoogleCloudDataplexV1ListDataTaxonomiesResponse.fromJson(core.Map json_)
+      : this(
+          dataTaxonomies: json_.containsKey('dataTaxonomies')
+              ? (json_['dataTaxonomies'] as core.List)
+                  .map((value) => GoogleCloudDataplexV1DataTaxonomy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachableLocations: json_.containsKey('unreachableLocations')
+              ? (json_['unreachableLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataTaxonomies != null) 'dataTaxonomies': dataTaxonomies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachableLocations != null)
+          'unreachableLocations': unreachableLocations!,
       };
 }
 
@@ -9321,6 +10696,60 @@ class GoogleCloudDataplexV1Partition {
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (values != null) 'values': values!,
+      };
+}
+
+/// ResourceAccessSpec holds the access control configuration to be enforced on
+/// the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery
+/// table.
+class GoogleCloudDataplexV1ResourceAccessSpec {
+  /// The set of principals to be granted owner role on the resource.
+  ///
+  /// Optional.
+  core.List<core.String>? owners;
+
+  /// The format of strings follows the pattern followed by IAM in the bindings.
+  ///
+  /// user:{email}, serviceAccount:{email} group:{email}. The set of principals
+  /// to be granted reader role on the resource.
+  ///
+  /// Optional.
+  core.List<core.String>? readers;
+
+  /// The set of principals to be granted writer role on the resource.
+  ///
+  /// Optional.
+  core.List<core.String>? writers;
+
+  GoogleCloudDataplexV1ResourceAccessSpec({
+    this.owners,
+    this.readers,
+    this.writers,
+  });
+
+  GoogleCloudDataplexV1ResourceAccessSpec.fromJson(core.Map json_)
+      : this(
+          owners: json_.containsKey('owners')
+              ? (json_['owners'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          readers: json_.containsKey('readers')
+              ? (json_['readers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          writers: json_.containsKey('writers')
+              ? (json_['writers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (owners != null) 'owners': owners!,
+        if (readers != null) 'readers': readers!,
+        if (writers != null) 'writers': writers!,
       };
 }
 

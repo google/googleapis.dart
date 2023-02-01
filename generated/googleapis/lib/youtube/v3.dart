@@ -3641,7 +3641,7 @@ class PlaylistsResource {
   ///
   /// [channelId] - Return the playlists owned by the specified channel ID.
   ///
-  /// [hl] - Returen content in specified language
+  /// [hl] - Return content in specified language
   ///
   /// [id] - Return the playlists with the given IDs for Stubby or Apiary.
   ///

@@ -4641,6 +4641,56 @@ class GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics {
       };
 }
 
+/// Gives a short summary of an evaluation, and links to the evaluation itself.
+class GoogleCloudDocumentaiV1beta3EvaluationReference {
+  /// An aggregate of the statistics for the evaluation with fuzzy matching on.
+  GoogleCloudDocumentaiV1beta3EvaluationMetrics? aggregateMetrics;
+
+  /// An aggregate of the statistics for the evaluation with fuzzy matching off.
+  GoogleCloudDocumentaiV1beta3EvaluationMetrics? aggregateMetricsExact;
+
+  /// The resource name of the evaluation.
+  core.String? evaluation;
+
+  /// The resource name of the Long Running Operation for the evaluation.
+  core.String? operation;
+
+  GoogleCloudDocumentaiV1beta3EvaluationReference({
+    this.aggregateMetrics,
+    this.aggregateMetricsExact,
+    this.evaluation,
+    this.operation,
+  });
+
+  GoogleCloudDocumentaiV1beta3EvaluationReference.fromJson(core.Map json_)
+      : this(
+          aggregateMetrics: json_.containsKey('aggregateMetrics')
+              ? GoogleCloudDocumentaiV1beta3EvaluationMetrics.fromJson(
+                  json_['aggregateMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          aggregateMetricsExact: json_.containsKey('aggregateMetricsExact')
+              ? GoogleCloudDocumentaiV1beta3EvaluationMetrics.fromJson(
+                  json_['aggregateMetricsExact']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          evaluation: json_.containsKey('evaluation')
+              ? json_['evaluation'] as core.String
+              : null,
+          operation: json_.containsKey('operation')
+              ? json_['operation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateMetrics != null) 'aggregateMetrics': aggregateMetrics!,
+        if (aggregateMetricsExact != null)
+          'aggregateMetricsExact': aggregateMetricsExact!,
+        if (evaluation != null) 'evaluation': evaluation!,
+        if (operation != null) 'operation': operation!,
+      };
+}
+
 /// Response message for fetch processor types.
 class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse {
   /// The list of processor types.
@@ -5402,6 +5452,9 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   /// The KMS key version with which data is encrypted.
   core.String? kmsKeyVersionName;
 
+  /// The most recently invoked evaluation for the processor version.
+  GoogleCloudDocumentaiV1beta3EvaluationReference? latestEvaluation;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -5431,6 +5484,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
     this.googleManaged,
     this.kmsKeyName,
     this.kmsKeyVersionName,
+    this.latestEvaluation,
     this.name,
     this.state,
   });
@@ -5462,6 +5516,11 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
           kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
               ? json_['kmsKeyVersionName'] as core.String
               : null,
+          latestEvaluation: json_.containsKey('latestEvaluation')
+              ? GoogleCloudDocumentaiV1beta3EvaluationReference.fromJson(
+                  json_['latestEvaluation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -5475,6 +5534,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
         if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+        if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };

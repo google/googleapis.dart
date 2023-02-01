@@ -70,6 +70,23 @@ void checkError(api.Error o) {
   buildCounterError--;
 }
 
+core.Map<core.String, core.String> buildUnnamed0() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed0(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterExecution = 0;
 api.Execution buildExecution() {
   final o = api.Execution();
@@ -80,6 +97,7 @@ api.Execution buildExecution() {
     o.duration = 'foo';
     o.endTime = 'foo';
     o.error = buildError();
+    o.labels = buildUnnamed0();
     o.name = 'foo';
     o.result = 'foo';
     o.startTime = 'foo';
@@ -111,6 +129,7 @@ void checkExecution(api.Execution o) {
       unittest.equals('foo'),
     );
     checkError(o.error!);
+    checkUnnamed0(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -136,12 +155,12 @@ void checkExecution(api.Execution o) {
   buildCounterExecution--;
 }
 
-core.List<api.Execution> buildUnnamed0() => [
+core.List<api.Execution> buildUnnamed1() => [
       buildExecution(),
       buildExecution(),
     ];
 
-void checkUnnamed0(core.List<api.Execution> o) {
+void checkUnnamed1(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0]);
   checkExecution(o[1]);
@@ -152,7 +171,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
   final o = api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed0();
+    o.executions = buildUnnamed1();
     o.nextPageToken = 'foo';
   }
   buildCounterListExecutionsResponse--;
@@ -162,7 +181,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
 void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed0(o.executions!);
+    checkUnnamed1(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -203,12 +222,12 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1() => {
+core.Map<core.String, core.String> buildUnnamed2() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed1(core.Map<core.String, core.String> o) {
+void checkUnnamed2(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -225,7 +244,7 @@ api.PubsubMessage buildPubsubMessage() {
   final o = api.PubsubMessage();
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
-    o.attributes = buildUnnamed1();
+    o.attributes = buildUnnamed2();
     o.data = 'foo';
     o.messageId = 'foo';
     o.orderingKey = 'foo';
@@ -238,7 +257,7 @@ api.PubsubMessage buildPubsubMessage() {
 void checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
-    checkUnnamed1(o.attributes!);
+    checkUnnamed2(o.attributes!);
     unittest.expect(
       o.data!,
       unittest.equals('foo'),
@@ -259,12 +278,12 @@ void checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage--;
 }
 
-core.List<api.StackTraceElement> buildUnnamed2() => [
+core.List<api.StackTraceElement> buildUnnamed3() => [
       buildStackTraceElement(),
       buildStackTraceElement(),
     ];
 
-void checkUnnamed2(core.List<api.StackTraceElement> o) {
+void checkUnnamed3(core.List<api.StackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackTraceElement(o[0]);
   checkStackTraceElement(o[1]);
@@ -275,7 +294,7 @@ api.StackTrace buildStackTrace() {
   final o = api.StackTrace();
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    o.elements = buildUnnamed2();
+    o.elements = buildUnnamed3();
   }
   buildCounterStackTrace--;
   return o;
@@ -284,7 +303,7 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkUnnamed2(o.elements!);
+    checkUnnamed3(o.elements!);
   }
   buildCounterStackTrace--;
 }
@@ -318,12 +337,12 @@ void checkStackTraceElement(api.StackTraceElement o) {
   buildCounterStackTraceElement--;
 }
 
-core.List<api.Step> buildUnnamed3() => [
+core.List<api.Step> buildUnnamed4() => [
       buildStep(),
       buildStep(),
     ];
 
-void checkUnnamed3(core.List<api.Step> o) {
+void checkUnnamed4(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStep(o[0]);
   checkStep(o[1]);
@@ -334,7 +353,7 @@ api.Status buildStatus() {
   final o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    o.currentSteps = buildUnnamed3();
+    o.currentSteps = buildUnnamed4();
   }
   buildCounterStatus--;
   return o;
@@ -343,7 +362,7 @@ api.Status buildStatus() {
 void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    checkUnnamed3(o.currentSteps!);
+    checkUnnamed4(o.currentSteps!);
   }
   buildCounterStatus--;
 }
@@ -771,6 +790,8 @@ void main() {
           .workflows
           .executions;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_view = 'foo';
@@ -808,6 +829,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -831,6 +860,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           view: arg_view,

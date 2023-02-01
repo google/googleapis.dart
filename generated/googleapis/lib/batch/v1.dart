@@ -1976,6 +1976,9 @@ class InstancePolicyOrTemplate {
 
 /// VM instance status.
 class InstanceStatus {
+  /// The VM boot disk.
+  Disk? bootDisk;
+
   /// The Compute Engine machine type.
   core.String? machineType;
 
@@ -1995,6 +1998,7 @@ class InstanceStatus {
   core.String? taskPack;
 
   InstanceStatus({
+    this.bootDisk,
     this.machineType,
     this.provisioningModel,
     this.taskPack,
@@ -2002,6 +2006,10 @@ class InstanceStatus {
 
   InstanceStatus.fromJson(core.Map json_)
       : this(
+          bootDisk: json_.containsKey('bootDisk')
+              ? Disk.fromJson(
+                  json_['bootDisk'] as core.Map<core.String, core.dynamic>)
+              : null,
           machineType: json_.containsKey('machineType')
               ? json_['machineType'] as core.String
               : null,
@@ -2014,6 +2022,7 @@ class InstanceStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bootDisk != null) 'bootDisk': bootDisk!,
         if (machineType != null) 'machineType': machineType!,
         if (provisioningModel != null) 'provisioningModel': provisioningModel!,
         if (taskPack != null) 'taskPack': taskPack!,
@@ -3131,18 +3140,29 @@ class ServiceAccount {
   /// the email field here.
   core.String? email;
 
+  /// List of scopes to be enabled for this service account on the VM, in
+  /// addition to the cloud-platform API scope that will be added by default.
+  core.List<core.String>? scopes;
+
   ServiceAccount({
     this.email,
+    this.scopes,
   });
 
   ServiceAccount.fromJson(core.Map json_)
       : this(
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 

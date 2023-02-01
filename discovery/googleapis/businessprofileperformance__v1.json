@@ -321,7 +321,7 @@
             }
         }
     },
-    "revision": "20230115",
+    "revision": "20230131",
     "rootUrl": "https://businessprofileperformance.googleapis.com/",
     "schemas": {
         "Date": {

@@ -1811,8 +1811,10 @@ api.IPAllocationPolicy buildIPAllocationPolicy() {
     o.nodeIpv4CidrBlock = 'foo';
     o.servicesIpv4Cidr = 'foo';
     o.servicesIpv4CidrBlock = 'foo';
+    o.servicesIpv6CidrBlock = 'foo';
     o.servicesSecondaryRangeName = 'foo';
     o.stackType = 'foo';
+    o.subnetIpv6CidrBlock = 'foo';
     o.subnetworkName = 'foo';
     o.tpuIpv4CidrBlock = 'foo';
     o.useIpAliases = true;
@@ -1859,11 +1861,19 @@ void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.servicesIpv6CidrBlock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.servicesSecondaryRangeName!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.stackType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subnetIpv6CidrBlock!,
       unittest.equals('foo'),
     );
     unittest.expect(

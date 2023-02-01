@@ -456,6 +456,7 @@ api.Verification buildVerification() {
   final o = api.Verification();
   buildCounterVerification++;
   if (buildCounterVerification < 3) {
+    o.announcement = 'foo';
     o.createTime = 'foo';
     o.method = 'foo';
     o.name = 'foo';
@@ -468,6 +469,10 @@ api.Verification buildVerification() {
 void checkVerification(api.Verification o) {
   buildCounterVerification++;
   if (buildCounterVerification < 3) {
+    unittest.expect(
+      o.announcement!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -494,6 +499,7 @@ api.VerificationOption buildVerificationOption() {
   buildCounterVerificationOption++;
   if (buildCounterVerificationOption < 3) {
     o.addressData = buildAddressVerificationData();
+    o.announcement = 'foo';
     o.emailData = buildEmailVerificationData();
     o.phoneNumber = 'foo';
     o.verificationMethod = 'foo';
@@ -506,6 +512,10 @@ void checkVerificationOption(api.VerificationOption o) {
   buildCounterVerificationOption++;
   if (buildCounterVerificationOption < 3) {
     checkAddressVerificationData(o.addressData!);
+    unittest.expect(
+      o.announcement!,
+      unittest.equals('foo'),
+    );
     checkEmailVerificationData(o.emailData!);
     unittest.expect(
       o.phoneNumber!,

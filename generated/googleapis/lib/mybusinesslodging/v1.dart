@@ -163,7 +163,7 @@ class LocationsLodgingResource {
   /// Request parameters:
   ///
   /// [name] - Required. Google identifier for this location in the form:
-  /// `accounts/{account_id}/locations/{location_id}/lodging`
+  /// `locations/{location_id}/lodging`
   /// Value must have pattern `^locations/\[^/\]+/lodging$`.
   ///
   /// [readMask] - Required. The specific fields to return. Use "*" to include

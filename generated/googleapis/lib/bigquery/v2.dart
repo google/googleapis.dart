@@ -2735,6 +2735,10 @@ class BiEngineReason {
 class BiEngineStatistics {
   /// \[Output-only\] Specifies which mode of BI Engine acceleration was
   /// performed (if any).
+  core.String? accelerationMode;
+
+  /// \[Output-only\] Specifies which mode of BI Engine acceleration was
+  /// performed (if any).
   core.String? biEngineMode;
 
   /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the
@@ -2744,12 +2748,16 @@ class BiEngineStatistics {
   core.List<BiEngineReason>? biEngineReasons;
 
   BiEngineStatistics({
+    this.accelerationMode,
     this.biEngineMode,
     this.biEngineReasons,
   });
 
   BiEngineStatistics.fromJson(core.Map json_)
       : this(
+          accelerationMode: json_.containsKey('accelerationMode')
+              ? json_['accelerationMode'] as core.String
+              : null,
           biEngineMode: json_.containsKey('biEngineMode')
               ? json_['biEngineMode'] as core.String
               : null,
@@ -2762,6 +2770,7 @@ class BiEngineStatistics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerationMode != null) 'accelerationMode': accelerationMode!,
         if (biEngineMode != null) 'biEngineMode': biEngineMode!,
         if (biEngineReasons != null) 'biEngineReasons': biEngineReasons!,
       };

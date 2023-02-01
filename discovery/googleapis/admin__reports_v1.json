@@ -621,7 +621,7 @@
             }
         }
     },
-    "revision": "20230117",
+    "revision": "20230131",
     "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Activities": {

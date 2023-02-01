@@ -743,6 +743,9 @@ class AndroidModel {
   /// Examples: "Nexus 5", "Galaxy S5".
   core.String? name;
 
+  /// Version-specific information of an Android model.
+  core.List<PerAndroidVersionInfo>? perVersionInfo;
+
   /// Screen density in DPI.
   ///
   /// This corresponds to ro.sf.lcd_density
@@ -783,6 +786,7 @@ class AndroidModel {
     this.lowFpsVideoRecording,
     this.manufacturer,
     this.name,
+    this.perVersionInfo,
     this.screenDensity,
     this.screenX,
     this.screenY,
@@ -811,6 +815,12 @@ class AndroidModel {
               ? json_['manufacturer'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          perVersionInfo: json_.containsKey('perVersionInfo')
+              ? (json_['perVersionInfo'] as core.List)
+                  .map((value) => PerAndroidVersionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           screenDensity: json_.containsKey('screenDensity')
               ? json_['screenDensity'] as core.int
               : null,
@@ -850,6 +860,7 @@ class AndroidModel {
           'lowFpsVideoRecording': lowFpsVideoRecording!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (name != null) 'name': name!,
+        if (perVersionInfo != null) 'perVersionInfo': perVersionInfo!,
         if (screenDensity != null) 'screenDensity': screenDensity!,
         if (screenX != null) 'screenX': screenX!,
         if (screenY != null) 'screenY': screenY!,
@@ -2062,6 +2073,9 @@ class IosModel {
   /// Examples: "iPhone 4s", "iPad Mini 2".
   core.String? name;
 
+  /// Version-specific information of an iOS model.
+  core.List<PerIosVersionInfo>? perVersionInfo;
+
   /// Screen density in DPI.
   core.int? screenDensity;
 
@@ -2084,6 +2098,7 @@ class IosModel {
     this.formFactor,
     this.id,
     this.name,
+    this.perVersionInfo,
     this.screenDensity,
     this.screenX,
     this.screenY,
@@ -2103,6 +2118,12 @@ class IosModel {
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          perVersionInfo: json_.containsKey('perVersionInfo')
+              ? (json_['perVersionInfo'] as core.List)
+                  .map((value) => PerIosVersionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           screenDensity: json_.containsKey('screenDensity')
               ? json_['screenDensity'] as core.int
               : null,
@@ -2130,6 +2151,7 @@ class IosModel {
         if (formFactor != null) 'formFactor': formFactor!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
+        if (perVersionInfo != null) 'perVersionInfo': perVersionInfo!,
         if (screenDensity != null) 'screenDensity': screenDensity!,
         if (screenX != null) 'screenX': screenX!,
         if (screenY != null) 'screenY': screenY!,
@@ -2686,6 +2708,114 @@ class Orientation {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (tags != null) 'tags': tags!,
+      };
+}
+
+/// A version-specific information of an Android model.
+class PerAndroidVersionInfo {
+  /// The number of online devices for an Android version.
+  /// Possible string values are:
+  /// - "DEVICE_CAPACITY_UNSPECIFIED" : The value of device capacity is unknown
+  /// or unset.
+  /// - "DEVICE_CAPACITY_HIGH" : Devices that are high in capacity (The lab has
+  /// a large number of these devices). These devices are generally suggested
+  /// for running a large number of simultaneous tests (e.g. more than 100
+  /// tests). Please note that high capacity devices do not guarantee short wait
+  /// times due to several factors: 1. Traffic (how heavily they are used at any
+  /// given moment) 2. High capacity devices are prioritized for certain usages,
+  /// which may cause user tests to be slower than selecting other similar
+  /// device types.
+  /// - "DEVICE_CAPACITY_MEDIUM" : Devices that are medium in capacity (The lab
+  /// has a decent number of these devices, though not as many as high capacity
+  /// devices). These devices are suitable for fewer test runs (e.g. fewer than
+  /// 100 tests) and only for low shard counts (e.g. less than 10 shards).
+  /// - "DEVICE_CAPACITY_LOW" : Devices that are low in capacity (The lab has a
+  /// small number of these devices). These devices may be used if users need to
+  /// test on this specific device model and version. Please note that due to
+  /// low capacity, the tests may take much longer to finish, especially if a
+  /// large number of tests are invoked at once. These devices are not suitable
+  /// for test sharding.
+  /// - "DEVICE_CAPACITY_NONE" : Devices that are completely missing from the
+  /// lab. These devices are unavailable either temporarily or permanently and
+  /// should not be requested. If the device is also marked as deprecated, this
+  /// state is very likely permanent.
+  core.String? deviceCapacity;
+
+  /// An Android version.
+  core.String? versionId;
+
+  PerAndroidVersionInfo({
+    this.deviceCapacity,
+    this.versionId,
+  });
+
+  PerAndroidVersionInfo.fromJson(core.Map json_)
+      : this(
+          deviceCapacity: json_.containsKey('deviceCapacity')
+              ? json_['deviceCapacity'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
+
+/// A version-specific information of an iOS model.
+class PerIosVersionInfo {
+  /// The number of online devices for an iOS version.
+  /// Possible string values are:
+  /// - "DEVICE_CAPACITY_UNSPECIFIED" : The value of device capacity is unknown
+  /// or unset.
+  /// - "DEVICE_CAPACITY_HIGH" : Devices that are high in capacity (The lab has
+  /// a large number of these devices). These devices are generally suggested
+  /// for running a large number of simultaneous tests (e.g. more than 100
+  /// tests). Please note that high capacity devices do not guarantee short wait
+  /// times due to several factors: 1. Traffic (how heavily they are used at any
+  /// given moment) 2. High capacity devices are prioritized for certain usages,
+  /// which may cause user tests to be slower than selecting other similar
+  /// device types.
+  /// - "DEVICE_CAPACITY_MEDIUM" : Devices that are medium in capacity (The lab
+  /// has a decent number of these devices, though not as many as high capacity
+  /// devices). These devices are suitable for fewer test runs (e.g. fewer than
+  /// 100 tests) and only for low shard counts (e.g. less than 10 shards).
+  /// - "DEVICE_CAPACITY_LOW" : Devices that are low in capacity (The lab has a
+  /// small number of these devices). These devices may be used if users need to
+  /// test on this specific device model and version. Please note that due to
+  /// low capacity, the tests may take much longer to finish, especially if a
+  /// large number of tests are invoked at once. These devices are not suitable
+  /// for test sharding.
+  /// - "DEVICE_CAPACITY_NONE" : Devices that are completely missing from the
+  /// lab. These devices are unavailable either temporarily or permanently and
+  /// should not be requested. If the device is also marked as deprecated, this
+  /// state is very likely permanent.
+  core.String? deviceCapacity;
+
+  /// An iOS version.
+  core.String? versionId;
+
+  PerIosVersionInfo({
+    this.deviceCapacity,
+    this.versionId,
+  });
+
+  PerIosVersionInfo.fromJson(core.Map json_)
+      : this(
+          deviceCapacity: json_.containsKey('deviceCapacity')
+              ? json_['deviceCapacity'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 

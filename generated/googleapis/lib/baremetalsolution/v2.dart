@@ -4807,6 +4807,12 @@ class Volume {
   /// - "UPDATING" : The storage volume is being updated.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Name of the storage aggregate pool to allocate the volume in. Can be used
+  /// only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+  core.String? storageAggregatePool;
+
   /// The storage type for this volume.
   /// Possible string values are:
   /// - "STORAGE_TYPE_UNSPECIFIED" : The storage type for this volume is
@@ -4844,6 +4850,7 @@ class Volume {
     this.snapshotReservationDetail,
     this.snapshotSchedulePolicy,
     this.state,
+    this.storageAggregatePool,
     this.storageType,
     this.workloadProfile,
   });
@@ -4912,6 +4919,9 @@ class Volume {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageAggregatePool: json_.containsKey('storageAggregatePool')
+              ? json_['storageAggregatePool'] as core.String
+              : null,
           storageType: json_.containsKey('storageType')
               ? json_['storageType'] as core.String
               : null,
@@ -4945,6 +4955,8 @@ class Volume {
         if (snapshotSchedulePolicy != null)
           'snapshotSchedulePolicy': snapshotSchedulePolicy!,
         if (state != null) 'state': state!,
+        if (storageAggregatePool != null)
+          'storageAggregatePool': storageAggregatePool!,
         if (storageType != null) 'storageType': storageType!,
         if (workloadProfile != null) 'workloadProfile': workloadProfile!,
       };
@@ -5005,6 +5017,12 @@ class VolumeConfig {
   /// Whether snapshots should be enabled.
   core.bool? snapshotsEnabled;
 
+  /// Input only.
+  ///
+  /// Name of the storage aggregate pool to allocate the volume in. Can be used
+  /// only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+  core.String? storageAggregatePool;
+
   /// The type of this Volume.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The unspecified type.
@@ -5027,6 +5045,7 @@ class VolumeConfig {
     this.protocol,
     this.sizeGb,
     this.snapshotsEnabled,
+    this.storageAggregatePool,
     this.type,
     this.userNote,
   });
@@ -5066,6 +5085,9 @@ class VolumeConfig {
           snapshotsEnabled: json_.containsKey('snapshotsEnabled')
               ? json_['snapshotsEnabled'] as core.bool
               : null,
+          storageAggregatePool: json_.containsKey('storageAggregatePool')
+              ? json_['storageAggregatePool'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           userNote: json_.containsKey('userNote')
               ? json_['userNote'] as core.String
@@ -5083,6 +5105,8 @@ class VolumeConfig {
         if (protocol != null) 'protocol': protocol!,
         if (sizeGb != null) 'sizeGb': sizeGb!,
         if (snapshotsEnabled != null) 'snapshotsEnabled': snapshotsEnabled!,
+        if (storageAggregatePool != null)
+          'storageAggregatePool': storageAggregatePool!,
         if (type != null) 'type': type!,
         if (userNote != null) 'userNote': userNote!,
       };

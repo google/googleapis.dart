@@ -26,6 +26,28 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAddIdpCredentialRequest = 0;
+api.AddIdpCredentialRequest buildAddIdpCredentialRequest() {
+  final o = api.AddIdpCredentialRequest();
+  buildCounterAddIdpCredentialRequest++;
+  if (buildCounterAddIdpCredentialRequest < 3) {
+    o.pemData = 'foo';
+  }
+  buildCounterAddIdpCredentialRequest--;
+  return o;
+}
+
+void checkAddIdpCredentialRequest(api.AddIdpCredentialRequest o) {
+  buildCounterAddIdpCredentialRequest++;
+  if (buildCounterAddIdpCredentialRequest < 3) {
+    unittest.expect(
+      o.pemData!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAddIdpCredentialRequest--;
+}
+
 core.int buildCounterCancelUserInvitationRequest = 0;
 api.CancelUserInvitationRequest buildCancelUserInvitationRequest() {
   final o = api.CancelUserInvitationRequest();
@@ -59,6 +81,28 @@ void checkCheckTransitiveMembershipResponse(
     unittest.expect(o.hasMembership!, unittest.isTrue);
   }
   buildCounterCheckTransitiveMembershipResponse--;
+}
+
+core.int buildCounterDsaPublicKeyInfo = 0;
+api.DsaPublicKeyInfo buildDsaPublicKeyInfo() {
+  final o = api.DsaPublicKeyInfo();
+  buildCounterDsaPublicKeyInfo++;
+  if (buildCounterDsaPublicKeyInfo < 3) {
+    o.keySize = 42;
+  }
+  buildCounterDsaPublicKeyInfo--;
+  return o;
+}
+
+void checkDsaPublicKeyInfo(api.DsaPublicKeyInfo o) {
+  buildCounterDsaPublicKeyInfo++;
+  if (buildCounterDsaPublicKeyInfo < 3) {
+    unittest.expect(
+      o.keySize!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterDsaPublicKeyInfo--;
 }
 
 core.List<api.DynamicGroupQuery> buildUnnamed0() => [
@@ -1074,6 +1118,124 @@ void checkGroupRelation(api.GroupRelation o) {
   buildCounterGroupRelation--;
 }
 
+core.int buildCounterIdpCredential = 0;
+api.IdpCredential buildIdpCredential() {
+  final o = api.IdpCredential();
+  buildCounterIdpCredential++;
+  if (buildCounterIdpCredential < 3) {
+    o.dsaKeyInfo = buildDsaPublicKeyInfo();
+    o.name = 'foo';
+    o.rsaKeyInfo = buildRsaPublicKeyInfo();
+    o.updateTime = 'foo';
+  }
+  buildCounterIdpCredential--;
+  return o;
+}
+
+void checkIdpCredential(api.IdpCredential o) {
+  buildCounterIdpCredential++;
+  if (buildCounterIdpCredential < 3) {
+    checkDsaPublicKeyInfo(o.dsaKeyInfo!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkRsaPublicKeyInfo(o.rsaKeyInfo!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterIdpCredential--;
+}
+
+core.int buildCounterInboundSamlSsoProfile = 0;
+api.InboundSamlSsoProfile buildInboundSamlSsoProfile() {
+  final o = api.InboundSamlSsoProfile();
+  buildCounterInboundSamlSsoProfile++;
+  if (buildCounterInboundSamlSsoProfile < 3) {
+    o.customer = 'foo';
+    o.displayName = 'foo';
+    o.idpConfig = buildSamlIdpConfig();
+    o.name = 'foo';
+    o.spConfig = buildSamlSpConfig();
+  }
+  buildCounterInboundSamlSsoProfile--;
+  return o;
+}
+
+void checkInboundSamlSsoProfile(api.InboundSamlSsoProfile o) {
+  buildCounterInboundSamlSsoProfile++;
+  if (buildCounterInboundSamlSsoProfile < 3) {
+    unittest.expect(
+      o.customer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkSamlIdpConfig(o.idpConfig!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkSamlSpConfig(o.spConfig!);
+  }
+  buildCounterInboundSamlSsoProfile--;
+}
+
+core.int buildCounterInboundSsoAssignment = 0;
+api.InboundSsoAssignment buildInboundSsoAssignment() {
+  final o = api.InboundSsoAssignment();
+  buildCounterInboundSsoAssignment++;
+  if (buildCounterInboundSsoAssignment < 3) {
+    o.customer = 'foo';
+    o.name = 'foo';
+    o.rank = 42;
+    o.samlSsoInfo = buildSamlSsoInfo();
+    o.signInBehavior = buildSignInBehavior();
+    o.ssoMode = 'foo';
+    o.targetGroup = 'foo';
+    o.targetOrgUnit = 'foo';
+  }
+  buildCounterInboundSsoAssignment--;
+  return o;
+}
+
+void checkInboundSsoAssignment(api.InboundSsoAssignment o) {
+  buildCounterInboundSsoAssignment++;
+  if (buildCounterInboundSsoAssignment < 3) {
+    unittest.expect(
+      o.customer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rank!,
+      unittest.equals(42),
+    );
+    checkSamlSsoInfo(o.samlSsoInfo!);
+    checkSignInBehavior(o.signInBehavior!);
+    unittest.expect(
+      o.ssoMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetOrgUnit!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInboundSsoAssignment--;
+}
+
 core.int buildCounterIsInvitableUserResponse = 0;
 api.IsInvitableUserResponse buildIsInvitableUserResponse() {
   final o = api.IsInvitableUserResponse();
@@ -1128,12 +1290,120 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.Membership> buildUnnamed13() => [
+core.List<api.IdpCredential> buildUnnamed13() => [
+      buildIdpCredential(),
+      buildIdpCredential(),
+    ];
+
+void checkUnnamed13(core.List<api.IdpCredential> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkIdpCredential(o[0]);
+  checkIdpCredential(o[1]);
+}
+
+core.int buildCounterListIdpCredentialsResponse = 0;
+api.ListIdpCredentialsResponse buildListIdpCredentialsResponse() {
+  final o = api.ListIdpCredentialsResponse();
+  buildCounterListIdpCredentialsResponse++;
+  if (buildCounterListIdpCredentialsResponse < 3) {
+    o.idpCredentials = buildUnnamed13();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListIdpCredentialsResponse--;
+  return o;
+}
+
+void checkListIdpCredentialsResponse(api.ListIdpCredentialsResponse o) {
+  buildCounterListIdpCredentialsResponse++;
+  if (buildCounterListIdpCredentialsResponse < 3) {
+    checkUnnamed13(o.idpCredentials!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListIdpCredentialsResponse--;
+}
+
+core.List<api.InboundSamlSsoProfile> buildUnnamed14() => [
+      buildInboundSamlSsoProfile(),
+      buildInboundSamlSsoProfile(),
+    ];
+
+void checkUnnamed14(core.List<api.InboundSamlSsoProfile> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInboundSamlSsoProfile(o[0]);
+  checkInboundSamlSsoProfile(o[1]);
+}
+
+core.int buildCounterListInboundSamlSsoProfilesResponse = 0;
+api.ListInboundSamlSsoProfilesResponse
+    buildListInboundSamlSsoProfilesResponse() {
+  final o = api.ListInboundSamlSsoProfilesResponse();
+  buildCounterListInboundSamlSsoProfilesResponse++;
+  if (buildCounterListInboundSamlSsoProfilesResponse < 3) {
+    o.inboundSamlSsoProfiles = buildUnnamed14();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListInboundSamlSsoProfilesResponse--;
+  return o;
+}
+
+void checkListInboundSamlSsoProfilesResponse(
+    api.ListInboundSamlSsoProfilesResponse o) {
+  buildCounterListInboundSamlSsoProfilesResponse++;
+  if (buildCounterListInboundSamlSsoProfilesResponse < 3) {
+    checkUnnamed14(o.inboundSamlSsoProfiles!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListInboundSamlSsoProfilesResponse--;
+}
+
+core.List<api.InboundSsoAssignment> buildUnnamed15() => [
+      buildInboundSsoAssignment(),
+      buildInboundSsoAssignment(),
+    ];
+
+void checkUnnamed15(core.List<api.InboundSsoAssignment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInboundSsoAssignment(o[0]);
+  checkInboundSsoAssignment(o[1]);
+}
+
+core.int buildCounterListInboundSsoAssignmentsResponse = 0;
+api.ListInboundSsoAssignmentsResponse buildListInboundSsoAssignmentsResponse() {
+  final o = api.ListInboundSsoAssignmentsResponse();
+  buildCounterListInboundSsoAssignmentsResponse++;
+  if (buildCounterListInboundSsoAssignmentsResponse < 3) {
+    o.inboundSsoAssignments = buildUnnamed15();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListInboundSsoAssignmentsResponse--;
+  return o;
+}
+
+void checkListInboundSsoAssignmentsResponse(
+    api.ListInboundSsoAssignmentsResponse o) {
+  buildCounterListInboundSsoAssignmentsResponse++;
+  if (buildCounterListInboundSsoAssignmentsResponse < 3) {
+    checkUnnamed15(o.inboundSsoAssignments!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListInboundSsoAssignmentsResponse--;
+}
+
+core.List<api.Membership> buildUnnamed16() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed13(core.List<api.Membership> o) {
+void checkUnnamed16(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -1144,7 +1414,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   final o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed13();
+    o.memberships = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -1154,7 +1424,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed13(o.memberships!);
+    checkUnnamed16(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1163,12 +1433,12 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.UserInvitation> buildUnnamed14() => [
+core.List<api.UserInvitation> buildUnnamed17() => [
       buildUserInvitation(),
       buildUserInvitation(),
     ];
 
-void checkUnnamed14(core.List<api.UserInvitation> o) {
+void checkUnnamed17(core.List<api.UserInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInvitation(o[0]);
   checkUserInvitation(o[1]);
@@ -1180,7 +1450,7 @@ api.ListUserInvitationsResponse buildListUserInvitationsResponse() {
   buildCounterListUserInvitationsResponse++;
   if (buildCounterListUserInvitationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.userInvitations = buildUnnamed14();
+    o.userInvitations = buildUnnamed17();
   }
   buildCounterListUserInvitationsResponse--;
   return o;
@@ -1193,7 +1463,7 @@ void checkListUserInvitationsResponse(api.ListUserInvitationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.userInvitations!);
+    checkUnnamed17(o.userInvitations!);
   }
   buildCounterListUserInvitationsResponse--;
 }
@@ -1242,23 +1512,23 @@ void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-core.List<api.EntityKey> buildUnnamed15() => [
+core.List<api.EntityKey> buildUnnamed18() => [
       buildEntityKey(),
       buildEntityKey(),
     ];
 
-void checkUnnamed15(core.List<api.EntityKey> o) {
+void checkUnnamed18(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityKey(o[0]);
   checkEntityKey(o[1]);
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed16() => [
+core.List<api.TransitiveMembershipRole> buildUnnamed19() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed16(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed19(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1270,9 +1540,9 @@ api.MemberRelation buildMemberRelation() {
   buildCounterMemberRelation++;
   if (buildCounterMemberRelation < 3) {
     o.member = 'foo';
-    o.preferredMemberKey = buildUnnamed15();
+    o.preferredMemberKey = buildUnnamed18();
     o.relationType = 'foo';
-    o.roles = buildUnnamed16();
+    o.roles = buildUnnamed19();
   }
   buildCounterMemberRelation--;
   return o;
@@ -1285,12 +1555,12 @@ void checkMemberRelation(api.MemberRelation o) {
       o.member!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.preferredMemberKey!);
+    checkUnnamed18(o.preferredMemberKey!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.roles!);
+    checkUnnamed19(o.roles!);
   }
   buildCounterMemberRelation--;
 }
@@ -1319,12 +1589,12 @@ void checkMemberRestriction(api.MemberRestriction o) {
   buildCounterMemberRestriction--;
 }
 
-core.List<api.MembershipRole> buildUnnamed17() => [
+core.List<api.MembershipRole> buildUnnamed20() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed17(core.List<api.MembershipRole> o) {
+void checkUnnamed20(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
@@ -1338,7 +1608,7 @@ api.Membership buildMembership() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed17();
+    o.roles = buildUnnamed20();
     o.type = 'foo';
     o.updateTime = 'foo';
   }
@@ -1358,7 +1628,7 @@ void checkMembership(api.Membership o) {
       unittest.equals('foo'),
     );
     checkEntityKey(o.preferredMemberKey!);
-    checkUnnamed17(o.roles!);
+    checkUnnamed20(o.roles!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1421,23 +1691,23 @@ void checkMembershipRoleRestrictionEvaluation(
   buildCounterMembershipRoleRestrictionEvaluation--;
 }
 
-core.List<api.MembershipRole> buildUnnamed18() => [
+core.List<api.MembershipRole> buildUnnamed21() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed18(core.List<api.MembershipRole> o) {
+void checkUnnamed21(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1449,12 +1719,12 @@ void checkUnnamed19(core.List<core.String> o) {
   );
 }
 
-core.List<api.UpdateMembershipRolesParams> buildUnnamed20() => [
+core.List<api.UpdateMembershipRolesParams> buildUnnamed23() => [
       buildUpdateMembershipRolesParams(),
       buildUpdateMembershipRolesParams(),
     ];
 
-void checkUnnamed20(core.List<api.UpdateMembershipRolesParams> o) {
+void checkUnnamed23(core.List<api.UpdateMembershipRolesParams> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateMembershipRolesParams(o[0]);
   checkUpdateMembershipRolesParams(o[1]);
@@ -1465,9 +1735,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
   final o = api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed18();
-    o.removeRoles = buildUnnamed19();
-    o.updateRolesParams = buildUnnamed20();
+    o.addRoles = buildUnnamed21();
+    o.removeRoles = buildUnnamed22();
+    o.updateRolesParams = buildUnnamed23();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
@@ -1476,9 +1746,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
 void checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed18(o.addRoles!);
-    checkUnnamed19(o.removeRoles!);
-    checkUnnamed20(o.updateRolesParams!);
+    checkUnnamed21(o.addRoles!);
+    checkUnnamed22(o.removeRoles!);
+    checkUnnamed23(o.updateRolesParams!);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
@@ -1502,7 +1772,7 @@ void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed24() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1515,7 +1785,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1547,7 +1817,7 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed22() => {
+core.Map<core.String, core.Object?> buildUnnamed25() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1560,7 +1830,7 @@ core.Map<core.String, core.Object?> buildUnnamed22() => {
       },
     };
 
-void checkUnnamed22(core.Map<core.String, core.Object?> o) {
+void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1599,9 +1869,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed21();
+    o.metadata = buildUnnamed24();
     o.name = 'foo';
-    o.response = buildUnnamed22();
+    o.response = buildUnnamed25();
   }
   buildCounterOperation--;
   return o;
@@ -1612,12 +1882,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed21(o.metadata!);
+    checkUnnamed24(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.response!);
+    checkUnnamed25(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1663,12 +1933,120 @@ void checkRestrictionEvaluations(api.RestrictionEvaluations o) {
   buildCounterRestrictionEvaluations--;
 }
 
-core.List<api.Group> buildUnnamed23() => [
+core.int buildCounterRsaPublicKeyInfo = 0;
+api.RsaPublicKeyInfo buildRsaPublicKeyInfo() {
+  final o = api.RsaPublicKeyInfo();
+  buildCounterRsaPublicKeyInfo++;
+  if (buildCounterRsaPublicKeyInfo < 3) {
+    o.keySize = 42;
+  }
+  buildCounterRsaPublicKeyInfo--;
+  return o;
+}
+
+void checkRsaPublicKeyInfo(api.RsaPublicKeyInfo o) {
+  buildCounterRsaPublicKeyInfo++;
+  if (buildCounterRsaPublicKeyInfo < 3) {
+    unittest.expect(
+      o.keySize!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterRsaPublicKeyInfo--;
+}
+
+core.int buildCounterSamlIdpConfig = 0;
+api.SamlIdpConfig buildSamlIdpConfig() {
+  final o = api.SamlIdpConfig();
+  buildCounterSamlIdpConfig++;
+  if (buildCounterSamlIdpConfig < 3) {
+    o.changePasswordUri = 'foo';
+    o.entityId = 'foo';
+    o.logoutRedirectUri = 'foo';
+    o.singleSignOnServiceUri = 'foo';
+  }
+  buildCounterSamlIdpConfig--;
+  return o;
+}
+
+void checkSamlIdpConfig(api.SamlIdpConfig o) {
+  buildCounterSamlIdpConfig++;
+  if (buildCounterSamlIdpConfig < 3) {
+    unittest.expect(
+      o.changePasswordUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.logoutRedirectUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.singleSignOnServiceUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSamlIdpConfig--;
+}
+
+core.int buildCounterSamlSpConfig = 0;
+api.SamlSpConfig buildSamlSpConfig() {
+  final o = api.SamlSpConfig();
+  buildCounterSamlSpConfig++;
+  if (buildCounterSamlSpConfig < 3) {
+    o.assertionConsumerServiceUri = 'foo';
+    o.entityId = 'foo';
+  }
+  buildCounterSamlSpConfig--;
+  return o;
+}
+
+void checkSamlSpConfig(api.SamlSpConfig o) {
+  buildCounterSamlSpConfig++;
+  if (buildCounterSamlSpConfig < 3) {
+    unittest.expect(
+      o.assertionConsumerServiceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSamlSpConfig--;
+}
+
+core.int buildCounterSamlSsoInfo = 0;
+api.SamlSsoInfo buildSamlSsoInfo() {
+  final o = api.SamlSsoInfo();
+  buildCounterSamlSsoInfo++;
+  if (buildCounterSamlSsoInfo < 3) {
+    o.inboundSamlSsoProfile = 'foo';
+  }
+  buildCounterSamlSsoInfo--;
+  return o;
+}
+
+void checkSamlSsoInfo(api.SamlSsoInfo o) {
+  buildCounterSamlSsoInfo++;
+  if (buildCounterSamlSsoInfo < 3) {
+    unittest.expect(
+      o.inboundSamlSsoProfile!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSamlSsoInfo--;
+}
+
+core.List<api.Group> buildUnnamed26() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed23(core.List<api.Group> o) {
+void checkUnnamed26(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -1679,7 +2057,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
   final o = api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed23();
+    o.groups = buildUnnamed26();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchGroupsResponse--;
@@ -1689,7 +2067,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
 void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed23(o.groups!);
+    checkUnnamed26(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1698,12 +2076,12 @@ void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse--;
 }
 
-core.List<api.GroupRelation> buildUnnamed24() => [
+core.List<api.GroupRelation> buildUnnamed27() => [
       buildGroupRelation(),
       buildGroupRelation(),
     ];
 
-void checkUnnamed24(core.List<api.GroupRelation> o) {
+void checkUnnamed27(core.List<api.GroupRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupRelation(o[0]);
   checkGroupRelation(o[1]);
@@ -1714,7 +2092,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
   final o = api.SearchTransitiveGroupsResponse();
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    o.memberships = buildUnnamed24();
+    o.memberships = buildUnnamed27();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveGroupsResponse--;
@@ -1724,7 +2102,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
 void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    checkUnnamed24(o.memberships!);
+    checkUnnamed27(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1733,12 +2111,12 @@ void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse--;
 }
 
-core.List<api.MemberRelation> buildUnnamed25() => [
+core.List<api.MemberRelation> buildUnnamed28() => [
       buildMemberRelation(),
       buildMemberRelation(),
     ];
 
-void checkUnnamed25(core.List<api.MemberRelation> o) {
+void checkUnnamed28(core.List<api.MemberRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMemberRelation(o[0]);
   checkMemberRelation(o[1]);
@@ -1750,7 +2128,7 @@ api.SearchTransitiveMembershipsResponse
   final o = api.SearchTransitiveMembershipsResponse();
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    o.memberships = buildUnnamed25();
+    o.memberships = buildUnnamed28();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveMembershipsResponse--;
@@ -1761,7 +2139,7 @@ void checkSearchTransitiveMembershipsResponse(
     api.SearchTransitiveMembershipsResponse o) {
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    checkUnnamed25(o.memberships!);
+    checkUnnamed28(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1809,7 +2187,29 @@ void checkSendUserInvitationRequest(api.SendUserInvitationRequest o) {
   buildCounterSendUserInvitationRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed26() => {
+core.int buildCounterSignInBehavior = 0;
+api.SignInBehavior buildSignInBehavior() {
+  final o = api.SignInBehavior();
+  buildCounterSignInBehavior++;
+  if (buildCounterSignInBehavior < 3) {
+    o.redirectCondition = 'foo';
+  }
+  buildCounterSignInBehavior--;
+  return o;
+}
+
+void checkSignInBehavior(api.SignInBehavior o) {
+  buildCounterSignInBehavior++;
+  if (buildCounterSignInBehavior < 3) {
+    unittest.expect(
+      o.redirectCondition!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSignInBehavior--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1822,7 +2222,7 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1854,15 +2254,15 @@ void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed27() => [
-      buildUnnamed26(),
-      buildUnnamed26(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
+      buildUnnamed29(),
+      buildUnnamed29(),
     ];
 
-void checkUnnamed27(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed30(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed26(o[0]);
-  checkUnnamed26(o[1]);
+  checkUnnamed29(o[0]);
+  checkUnnamed29(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1871,7 +2271,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed27();
+    o.details = buildUnnamed30();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1885,7 +2285,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed27(o.details!);
+    checkUnnamed30(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1978,6 +2378,16 @@ void checkUserInvitation(api.UserInvitation o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AddIdpCredentialRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddIdpCredentialRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddIdpCredentialRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddIdpCredentialRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-CancelUserInvitationRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCancelUserInvitationRequest();
@@ -1995,6 +2405,16 @@ void main() {
       final od = api.CheckTransitiveMembershipResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCheckTransitiveMembershipResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-DsaPublicKeyInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDsaPublicKeyInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DsaPublicKeyInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDsaPublicKeyInfo(od);
     });
   });
 
@@ -2245,6 +2665,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IdpCredential', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIdpCredential();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IdpCredential.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIdpCredential(od);
+    });
+  });
+
+  unittest.group('obj-schema-InboundSamlSsoProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInboundSamlSsoProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InboundSamlSsoProfile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInboundSamlSsoProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-InboundSsoAssignment', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInboundSsoAssignment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InboundSsoAssignment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInboundSsoAssignment(od);
+    });
+  });
+
   unittest.group('obj-schema-IsInvitableUserResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIsInvitableUserResponse();
@@ -2262,6 +2712,36 @@ void main() {
       final od = api.ListGroupsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListGroupsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListIdpCredentialsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListIdpCredentialsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListIdpCredentialsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListIdpCredentialsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListInboundSamlSsoProfilesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListInboundSamlSsoProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListInboundSamlSsoProfilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListInboundSamlSsoProfilesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListInboundSsoAssignmentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListInboundSsoAssignmentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListInboundSsoAssignmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListInboundSsoAssignmentsResponse(od);
     });
   });
 
@@ -2405,6 +2885,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RsaPublicKeyInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRsaPublicKeyInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RsaPublicKeyInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRsaPublicKeyInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-SamlIdpConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSamlIdpConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SamlIdpConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSamlIdpConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SamlSpConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSamlSpConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SamlSpConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSamlSpConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SamlSsoInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSamlSsoInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SamlSsoInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSamlSsoInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchGroupsResponse();
@@ -2452,6 +2972,16 @@ void main() {
       final od = api.SendUserInvitationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSendUserInvitationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SignInBehavior', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignInBehavior();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignInBehavior.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSignInBehavior(od);
     });
   });
 
@@ -5104,6 +5634,830 @@ void main() {
           $fields: arg_$fields);
       checkSearchTransitiveMembershipsResponse(
           response as api.SearchTransitiveMembershipsResponse);
+    });
+  });
+
+  unittest.group('resource-InboundSamlSsoProfilesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSamlSsoProfiles;
+      final arg_request = buildInboundSamlSsoProfile();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InboundSamlSsoProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInboundSamlSsoProfile(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals('v1/inboundSamlSsoProfiles'),
+        );
+        pathOffset += 25;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSamlSsoProfiles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSamlSsoProfiles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildInboundSamlSsoProfile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInboundSamlSsoProfile(response as api.InboundSamlSsoProfile);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSamlSsoProfiles;
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals('v1/inboundSamlSsoProfiles'),
+        );
+        pathOffset += 25;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListInboundSamlSsoProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInboundSamlSsoProfilesResponse(
+          response as api.ListInboundSamlSsoProfilesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSamlSsoProfiles;
+      final arg_request = buildInboundSamlSsoProfile();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InboundSamlSsoProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInboundSamlSsoProfile(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-InboundSamlSsoProfilesIdpCredentialsResource', () {
+    unittest.test('method--add', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final arg_request = buildAddIdpCredentialRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddIdpCredentialRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddIdpCredentialRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.add(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildIdpCredential());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkIdpCredential(response as api.IdpCredential);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListIdpCredentialsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListIdpCredentialsResponse(
+          response as api.ListIdpCredentialsResponse);
+    });
+  });
+
+  unittest.group('resource-InboundSsoAssignmentsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSsoAssignments;
+      final arg_request = buildInboundSsoAssignment();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InboundSsoAssignment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInboundSsoAssignment(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals('v1/inboundSsoAssignments'),
+        );
+        pathOffset += 24;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSsoAssignments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSsoAssignments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildInboundSsoAssignment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInboundSsoAssignment(response as api.InboundSsoAssignment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSsoAssignments;
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals('v1/inboundSsoAssignments'),
+        );
+        pathOffset += 24;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListInboundSsoAssignmentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInboundSsoAssignmentsResponse(
+          response as api.ListInboundSsoAssignmentsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).inboundSsoAssignments;
+      final arg_request = buildInboundSsoAssignment();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InboundSsoAssignment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInboundSsoAssignment(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

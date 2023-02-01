@@ -340,6 +340,7 @@ api.GoogleCloudOrgpolicyV2Policy buildGoogleCloudOrgpolicyV2Policy() {
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     o.alternate = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
+    o.dryRunSpec = buildGoogleCloudOrgpolicyV2PolicySpec();
     o.name = 'foo';
     o.spec = buildGoogleCloudOrgpolicyV2PolicySpec();
   }
@@ -351,6 +352,7 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     checkGoogleCloudOrgpolicyV2AlternatePolicySpec(o.alternate!);
+    checkGoogleCloudOrgpolicyV2PolicySpec(o.dryRunSpec!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1052,6 +1054,7 @@ void main() {
       final res = api.OrgPolicyApi(mock).folders.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
@@ -1090,6 +1093,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1100,8 +1107,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });
@@ -1762,6 +1769,7 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
@@ -1800,6 +1808,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1810,8 +1822,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });
@@ -2177,6 +2189,7 @@ void main() {
       final res = api.OrgPolicyApi(mock).projects.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
@@ -2215,6 +2228,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2225,8 +2242,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });

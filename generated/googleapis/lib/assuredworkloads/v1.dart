@@ -1304,6 +1304,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// create production workloads.
   /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners
   /// - "ISR_REGIONS" : Assured Workloads for Israel Regions
+  /// - "CA_PROTECTED_B" : Assured Workloads for Canada Protected B regime
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.

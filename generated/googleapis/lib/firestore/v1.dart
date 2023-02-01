@@ -156,6 +156,10 @@ class ProjectsDatabasesResource {
   /// not match the current etag of the database, deletion will be blocked and a
   /// FAILED_PRECONDITION error will be returned.
   ///
+  /// [freeId] - If set, will free the database_id associated with this
+  /// database. uid will be used as the resource id to identify this deleted
+  /// database.
+  ///
   /// [validateOnly] - If set, validate the request and preview the response,
   /// but do not actually delete the database.
   ///
@@ -173,12 +177,14 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.bool? allowMissing,
     core.String? etag,
+    core.bool? freeId,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
+      if (freeId != null) 'freeId': ['${freeId}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };

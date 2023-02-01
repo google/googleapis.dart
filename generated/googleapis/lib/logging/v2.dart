@@ -9442,7 +9442,8 @@ class CmekSettings {
   /// CryptoKeyVersion of kms_key that has been configured.
   ///
   /// It will be populated in cases where the CMEK settings are bound to a
-  /// single key version.
+  /// single key version.If this field is populated, the kms_key is tied to a
+  /// specific CryptoKeyVersion.
   core.String? kmsKeyVersionName;
 
   /// The resource name of the CMEK settings.
@@ -9957,6 +9958,8 @@ class ListLogEntriesRequest {
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]Projects
   /// listed in the project_ids field are added to this list.
+  ///
+  /// A maximum of 100 resources may be specified in a single request.
   ///
   /// Required.
   core.List<core.String>? resourceNames;

@@ -5184,7 +5184,7 @@ class MigratingVm {
   /// Output only.
   core.String? createTime;
 
-  /// The percentage progress of the current running replication cycle.
+  /// Details of the current running replication cycle.
   ///
   /// Output only.
   ReplicationCycle? currentSyncInfo;

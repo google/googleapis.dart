@@ -275,7 +275,6 @@ class SpacesMembersResource {
 
   SpacesMembersResource(commons.ApiRequester client) : _requester = client;
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Returns a membership.
   ///
   /// Requires
@@ -326,7 +325,6 @@ class SpacesMembersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Lists memberships in a space.
   ///
   /// Requires
@@ -1686,15 +1684,18 @@ class GoogleAppsCardV1BorderStyle {
 /// A text, icon, or text + icon button that users can click.
 ///
 /// To make an image a clickable button, specify an Image (not an
-/// ImageComponent) and set an `onClick` action.
+/// ImageComponent) and set an `onClick` action. Currently supported in Chat
+/// apps (including
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs) and
+/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards))
+/// and Google Workspace Add-ons.
 class GoogleAppsCardV1Button {
   /// The alternative text used for accessibility.
   ///
   /// Set descriptive text that lets users know what the button does. For
   /// example, if a button opens a hyperlink, you might write: "Opens a new
   /// browser tab and navigates to the Google Chat developer documentation at
-  /// https://developers.google.com/chat". Has no effect when an icon is set;
-  /// use `icon.alt_text` instead.
+  /// https://developers.google.com/chat".
   core.String? altText;
 
   /// If set, the button is filled with a solid background color and the font
@@ -1721,12 +1722,13 @@ class GoogleAppsCardV1Button {
 
   /// The icon image.
   ///
-  /// If both `icon` and `text` are set, then the icon appears in place of the
-  /// text. Support for both an icon and text is coming soon.
+  /// If both `icon` and `text` are set, then the icon appears before the text.
   GoogleAppsCardV1Icon? icon;
 
   /// The action to perform when the button is clicked, such as opening a
   /// hyperlink or running a custom function.
+  ///
+  /// Required.
   GoogleAppsCardV1OnClick? onClick;
 
   /// The text displayed inside the button.
@@ -2439,15 +2441,14 @@ class GoogleAppsCardV1GridItem {
 class GoogleAppsCardV1Icon {
   /// A description of the icon used for accessibility.
   ///
-  /// If unspecified, a default value is provided. As a best practice, you
-  /// should set a helpful description. For example, if an icon displays a
-  /// user's account portrait, you could describe it as "A user's account
-  /// portrait." If the icon displays in a Button, this alt text takes
-  /// precedence and overwrites the button's alt text, so you should write alt
-  /// text for the button: Set descriptive text that lets users know what the
-  /// button does. For example, if a button opens a hyperlink, you might write:
-  /// "Opens a new browser tab and navigates to the Google Chat developer
-  /// documentation at https://developers.google.com/chat".
+  /// If unspecified, the default value "Button" is provided. As a best
+  /// practice, you should set a helpful description for what the icon displays,
+  /// and if applicable, what it does. For example, `A user's account portrait`,
+  /// or `Opens a new browser tab and navigates to the Google Chat developer
+  /// documentation at https://developers.google.com/chat`. If the icon is set
+  /// in a Button, the `altText` appears as helper text when the user hovers
+  /// over the button. However, if the button also sets `text`, the icon's
+  /// `altText` is ignored.
   ///
   /// Optional.
   core.String? altText;
@@ -3104,11 +3105,11 @@ class GoogleAppsCardV1TextInput {
   /// Optional.
   GoogleAppsCardV1Action? autoCompleteAction;
 
-  /// Text that appears inside the text input field meant to assist users by
+  /// Text that appears below the text input field meant to assist users by
   /// prompting them to enter a certain value.
   ///
-  /// This text is not visible after users begin typing. Required if `label` is
-  /// unspecified. Otherwise, optional.
+  /// This text is always visible. Required if `label` is unspecified.
+  /// Otherwise, optional.
   core.String? hintText;
 
   /// Suggested values that users can enter.

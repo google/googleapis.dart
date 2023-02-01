@@ -7805,11 +7805,12 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// specified.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? likelihood;
 
   /// Regular expression based CustomInfoType.
@@ -9229,11 +9230,12 @@ class GooglePrivacyDlpV2Finding {
   /// Confidence of how likely it is that the `info_type` is correct.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? likelihood;
 
   /// Where the content was found.
@@ -10364,11 +10366,12 @@ class GooglePrivacyDlpV2InspectConfig {
   /// to learn more.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? minLikelihood;
 
   /// Set of rules to apply to the findings for this InspectConfig.
@@ -11668,11 +11671,12 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
   /// Set the likelihood of a finding to a fixed value.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? fixedLikelihood;
 
   /// Increase or decrease the likelihood by the specified number of levels.

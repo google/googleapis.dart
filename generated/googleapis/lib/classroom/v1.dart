@@ -183,7 +183,7 @@ class CoursesResource {
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
   /// create courses or for access errors. * `NOT_FOUND` if the primary teacher
   /// is not a valid user. * `FAILED_PRECONDITION` if the course owner's account
-  /// is disabled or for the following request errors: *
+  /// is disabled or for the following request errors: * UserCannotOwnCourse *
   /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was
   /// specified in the `id` and already exists.
   ///
@@ -6793,7 +6793,8 @@ typedef TurnInStudentSubmissionRequest = $Empty;
 class UserProfile {
   /// Email address of the user.
   ///
-  /// Read-only.
+  /// Must request `https://www.googleapis.com/auth/classroom.profile.emails`
+  /// scope for this field to be populated in a response body. Read-only.
   core.String? emailAddress;
 
   /// Identifier of the user.
@@ -6813,14 +6814,15 @@ class UserProfile {
 
   /// URL of user's profile photo.
   ///
-  /// Read-only.
+  /// Must request `https://www.googleapis.com/auth/classroom.profile.photos`
+  /// scope for this field to be populated in a response body. Read-only.
   core.String? photoUrl;
 
-  /// Represents whether a G Suite for Education user's domain administrator has
-  /// explicitly verified them as being a teacher.
+  /// Represents whether a Google Workspace for Education user's domain
+  /// administrator has explicitly verified them as being a teacher.
   ///
-  /// If the user is not a member of a G Suite for Education domain, than this
-  /// field is always false. Read-only
+  /// This field is always false if the user is not a member of a Google
+  /// Workspace for Education domain. Read-only
   core.bool? verifiedTeacher;
 
   UserProfile({

@@ -24,6 +24,7 @@ packages:
     - admob:v1
     - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
+    - advisorynotifications:v1
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticshub:v1
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
@@ -145,6 +146,7 @@ packages:
     - healthcare:v1
     - homegraph:v1
     - iam:v1 # https://cloud.google.com/iam/
+    - iam:v2
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
@@ -154,6 +156,7 @@ packages:
     - jobs:v4
     - keep:v1
     - kgsearch:v1 # https://developers.google.com/knowledge-graph/
+    - kmsinventory:v1
     - language:v1 # https://cloud.google.com/natural-language/
     - libraryagent:v1 # https://cloud.google.com/docs/quota
     - licensing:v1 # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
@@ -207,6 +210,7 @@ packages:
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4 # https://developers.google.com/safe-browsing/
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
+    - searchads360:v0
     - searchconsole:v1 # https://developers.google.com/webmaster-tools/search-console-api/
     - secretmanager:v1
     - securitycenter:v1
@@ -329,9 +333,6 @@ skipped_apis:
 - cloudasset:v1p5beta1 # v1 included
 - cloudasset:v1p7beta1 # v1 included
 - cloudbilling:v1beta
-- cloudbuild:v1alpha1 # v1 included
-- cloudbuild:v1alpha2 # v1 included
-- cloudbuild:v1beta1
 - cloudfunctions:v2alpha # v2beta included
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v1beta1 # v1 included
@@ -382,7 +383,6 @@ skipped_apis:
 - identitytoolkit:v2
 - integrations:v1alpha
 - jobs:v3p1beta1 # v3 included
-- language:v1beta1 # v1 included
 - language:v1beta2 # v1 included
 - managedidentities:v1alpha1 # v1 included
 - managedidentities:v1beta1 # v1 included

@@ -30,6 +30,7 @@
 ///     - [ProjectsLocationsProcessorsResource]
 ///       - [ProjectsLocationsProcessorsHumanReviewConfigResource]
 ///       - [ProjectsLocationsProcessorsProcessorVersionsResource]
+///         - [ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource]
 ///   - [ProjectsOperationsResource]
 library documentai.v1;
 
@@ -972,6 +973,11 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
 class ProjectsLocationsProcessorsProcessorVersionsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource
+      get evaluations =>
+          ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource(
+              _requester);
+
   ProjectsLocationsProcessorsProcessorVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
@@ -1092,6 +1098,53 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deploy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Evaluates a ProcessorVersion against annotated documents, producing an
+  /// Evaluation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [processorVersion] - Required. The resource name of the ProcessorVersion
+  /// to evaluate.
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> evaluateProcessorVersion(
+    GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest request,
+    core.String processorVersion, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$processorVersion') +
+        ':evaluateProcessorVersion';
 
     final response_ = await _requester.request(
       url_,
@@ -1236,6 +1289,54 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Trains a new processor version.
+  ///
+  /// Operation metadata is returned as
+  /// cloud_documentai_core.TrainProcessorVersionMetadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project, location and processor) to
+  /// create the new version for. Format:
+  /// `projects/{project}/locations/{location}/processors/{processor}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> train(
+    GoogleCloudDocumentaiV1TrainProcessorVersionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/processorVersions:train';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Undeploys the processor version.
   ///
   /// [request] - The metadata request object.
@@ -1275,6 +1376,102 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a specific evaluation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Evaluation to get.
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}/evaluations/{evaluation}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1Evaluation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1Evaluation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1Evaluation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a set of evaluations for a given processor version.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the ProcessorVersion to list
+  /// evaluations for.
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [pageSize] - The standard list page size. If unspecified, at most 5
+  /// evaluations will be returned. The maximum value is 100; values above 100
+  /// will be coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListEvaluations`
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1ListEvaluationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1ListEvaluationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/evaluations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1ListEvaluationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3579,6 +3776,464 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
 /// Request message for the enable processor method.
 typedef GoogleCloudDocumentaiV1EnableProcessorRequest = $Empty;
 
+/// Evaluates the given ProcessorVersion against the supplied documents.
+class GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest {
+  /// The documents used in the evaluation.
+  ///
+  /// If unspecified, use the processor's dataset as evaluation input.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1BatchDocumentsInputConfig? evaluationDocuments;
+
+  GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest({
+    this.evaluationDocuments,
+  });
+
+  GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
+      core.Map json_)
+      : this(
+          evaluationDocuments: json_.containsKey('evaluationDocuments')
+              ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
+                  json_['evaluationDocuments']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluationDocuments != null)
+          'evaluationDocuments': evaluationDocuments!,
+      };
+}
+
+/// An evaluation of a ProcessorVersion's performance.
+class GoogleCloudDocumentaiV1Evaluation {
+  /// Metrics for all the entities in aggregate.
+  GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics? allEntitiesMetrics;
+
+  /// The time that the evaluation was created.
+  core.String? createTime;
+
+  /// Counters for the documents used in the evaluation.
+  GoogleCloudDocumentaiV1EvaluationCounters? documentCounters;
+
+  /// Metrics across confidence levels, for different entities.
+  core.Map<core.String,
+      GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics>? entityMetrics;
+
+  /// The KMS key name used for encryption.
+  core.String? kmsKeyName;
+
+  /// The KMS key version with which data is encrypted.
+  core.String? kmsKeyVersionName;
+
+  /// The resource name of the evaluation.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}`
+  core.String? name;
+
+  GoogleCloudDocumentaiV1Evaluation({
+    this.allEntitiesMetrics,
+    this.createTime,
+    this.documentCounters,
+    this.entityMetrics,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
+    this.name,
+  });
+
+  GoogleCloudDocumentaiV1Evaluation.fromJson(core.Map json_)
+      : this(
+          allEntitiesMetrics: json_.containsKey('allEntitiesMetrics')
+              ? GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics
+                  .fromJson(json_['allEntitiesMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          documentCounters: json_.containsKey('documentCounters')
+              ? GoogleCloudDocumentaiV1EvaluationCounters.fromJson(
+                  json_['documentCounters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          entityMetrics: json_.containsKey('entityMetrics')
+              ? (json_['entityMetrics'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics
+                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allEntitiesMetrics != null)
+          'allEntitiesMetrics': allEntitiesMetrics!,
+        if (createTime != null) 'createTime': createTime!,
+        if (documentCounters != null) 'documentCounters': documentCounters!,
+        if (entityMetrics != null) 'entityMetrics': entityMetrics!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Evaluations metrics, at a specific confidence level.
+class GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
+  /// The confidence level.
+  core.double? confidenceLevel;
+
+  /// The metrics at the specific confidence level.
+  GoogleCloudDocumentaiV1EvaluationMetrics? metrics;
+
+  GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics({
+    this.confidenceLevel,
+    this.metrics,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics.fromJson(
+      core.Map json_)
+      : this(
+          confidenceLevel: json_.containsKey('confidenceLevel')
+              ? (json_['confidenceLevel'] as core.num).toDouble()
+              : null,
+          metrics: json_.containsKey('metrics')
+              ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
+                  json_['metrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel!,
+        if (metrics != null) 'metrics': metrics!,
+      };
+}
+
+/// Evaluation counters for the documents that were used.
+class GoogleCloudDocumentaiV1EvaluationCounters {
+  /// How many documents were used in the evaluation.
+  core.int? evaluatedDocumentsCount;
+
+  /// How many documents were not included in the evaluation as Document AI
+  /// failed to process them.
+  core.int? failedDocumentsCount;
+
+  /// How many documents were sent for evaluation.
+  core.int? inputDocumentsCount;
+
+  /// How many documents were not included in the evaluation as they didn't pass
+  /// validation.
+  core.int? invalidDocumentsCount;
+
+  GoogleCloudDocumentaiV1EvaluationCounters({
+    this.evaluatedDocumentsCount,
+    this.failedDocumentsCount,
+    this.inputDocumentsCount,
+    this.invalidDocumentsCount,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationCounters.fromJson(core.Map json_)
+      : this(
+          evaluatedDocumentsCount: json_.containsKey('evaluatedDocumentsCount')
+              ? json_['evaluatedDocumentsCount'] as core.int
+              : null,
+          failedDocumentsCount: json_.containsKey('failedDocumentsCount')
+              ? json_['failedDocumentsCount'] as core.int
+              : null,
+          inputDocumentsCount: json_.containsKey('inputDocumentsCount')
+              ? json_['inputDocumentsCount'] as core.int
+              : null,
+          invalidDocumentsCount: json_.containsKey('invalidDocumentsCount')
+              ? json_['invalidDocumentsCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluatedDocumentsCount != null)
+          'evaluatedDocumentsCount': evaluatedDocumentsCount!,
+        if (failedDocumentsCount != null)
+          'failedDocumentsCount': failedDocumentsCount!,
+        if (inputDocumentsCount != null)
+          'inputDocumentsCount': inputDocumentsCount!,
+        if (invalidDocumentsCount != null)
+          'invalidDocumentsCount': invalidDocumentsCount!,
+      };
+}
+
+/// Evaluation metrics, either in aggregate or about a specific entity.
+class GoogleCloudDocumentaiV1EvaluationMetrics {
+  /// The calculated f1 score.
+  core.double? f1Score;
+
+  /// The amount of false negatives.
+  core.int? falseNegativesCount;
+
+  /// The amount of false positives.
+  core.int? falsePositivesCount;
+
+  /// The amount of documents with a ground truth occurrence.
+  core.int? groundTruthDocumentCount;
+
+  /// The amount of occurrences in ground truth documents.
+  core.int? groundTruthOccurrencesCount;
+
+  /// The calculated precision.
+  core.double? precision;
+
+  /// The amount of documents with a predicted occurrence.
+  core.int? predictedDocumentCount;
+
+  /// The amount of occurrences in predicted documents.
+  core.int? predictedOccurrencesCount;
+
+  /// The calculated recall.
+  core.double? recall;
+
+  /// The amount of documents that had an occurrence of this label.
+  core.int? totalDocumentsCount;
+
+  /// The amount of true positives.
+  core.int? truePositivesCount;
+
+  GoogleCloudDocumentaiV1EvaluationMetrics({
+    this.f1Score,
+    this.falseNegativesCount,
+    this.falsePositivesCount,
+    this.groundTruthDocumentCount,
+    this.groundTruthOccurrencesCount,
+    this.precision,
+    this.predictedDocumentCount,
+    this.predictedOccurrencesCount,
+    this.recall,
+    this.totalDocumentsCount,
+    this.truePositivesCount,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(core.Map json_)
+      : this(
+          f1Score: json_.containsKey('f1Score')
+              ? (json_['f1Score'] as core.num).toDouble()
+              : null,
+          falseNegativesCount: json_.containsKey('falseNegativesCount')
+              ? json_['falseNegativesCount'] as core.int
+              : null,
+          falsePositivesCount: json_.containsKey('falsePositivesCount')
+              ? json_['falsePositivesCount'] as core.int
+              : null,
+          groundTruthDocumentCount:
+              json_.containsKey('groundTruthDocumentCount')
+                  ? json_['groundTruthDocumentCount'] as core.int
+                  : null,
+          groundTruthOccurrencesCount:
+              json_.containsKey('groundTruthOccurrencesCount')
+                  ? json_['groundTruthOccurrencesCount'] as core.int
+                  : null,
+          precision: json_.containsKey('precision')
+              ? (json_['precision'] as core.num).toDouble()
+              : null,
+          predictedDocumentCount: json_.containsKey('predictedDocumentCount')
+              ? json_['predictedDocumentCount'] as core.int
+              : null,
+          predictedOccurrencesCount:
+              json_.containsKey('predictedOccurrencesCount')
+                  ? json_['predictedOccurrencesCount'] as core.int
+                  : null,
+          recall: json_.containsKey('recall')
+              ? (json_['recall'] as core.num).toDouble()
+              : null,
+          totalDocumentsCount: json_.containsKey('totalDocumentsCount')
+              ? json_['totalDocumentsCount'] as core.int
+              : null,
+          truePositivesCount: json_.containsKey('truePositivesCount')
+              ? json_['truePositivesCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (f1Score != null) 'f1Score': f1Score!,
+        if (falseNegativesCount != null)
+          'falseNegativesCount': falseNegativesCount!,
+        if (falsePositivesCount != null)
+          'falsePositivesCount': falsePositivesCount!,
+        if (groundTruthDocumentCount != null)
+          'groundTruthDocumentCount': groundTruthDocumentCount!,
+        if (groundTruthOccurrencesCount != null)
+          'groundTruthOccurrencesCount': groundTruthOccurrencesCount!,
+        if (precision != null) 'precision': precision!,
+        if (predictedDocumentCount != null)
+          'predictedDocumentCount': predictedDocumentCount!,
+        if (predictedOccurrencesCount != null)
+          'predictedOccurrencesCount': predictedOccurrencesCount!,
+        if (recall != null) 'recall': recall!,
+        if (totalDocumentsCount != null)
+          'totalDocumentsCount': totalDocumentsCount!,
+        if (truePositivesCount != null)
+          'truePositivesCount': truePositivesCount!,
+      };
+}
+
+/// Metrics across multiple confidence levels.
+class GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
+  /// The calculated area under the precision recall curve (AUPRC), computed by
+  /// integrating over all confidence thresholds.
+  core.double? auprc;
+
+  /// The AUPRC for metrics with fuzzy matching disabled, i.e., exact matching
+  /// only.
+  core.double? auprcExact;
+
+  /// Metrics across confidence levels with fuzzy matching enabled.
+  core.List<GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics>?
+      confidenceLevelMetrics;
+
+  /// Metrics across confidence levels with only exact matching.
+  core.List<GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics>?
+      confidenceLevelMetricsExact;
+
+  /// The Estimated Calibration Error (ECE) of the confidence of the predicted
+  /// entities.
+  core.double? estimatedCalibrationError;
+
+  /// The ECE for the predicted entities with fuzzy matching disabled, i.e.,
+  /// exact matching only.
+  core.double? estimatedCalibrationErrorExact;
+
+  /// The metrics type for the label.
+  /// Possible string values are:
+  /// - "METRICS_TYPE_UNSPECIFIED" : The metrics type is unspecified. By
+  /// default, metrics without a particular specification are for leaf entity
+  /// types (i.e., top-level entity types without child types, or child types
+  /// which are not parent types themselves).
+  /// - "AGGREGATE" : Indicates whether metrics for this particular label type
+  /// represent an aggregate of metrics for other types instead of being based
+  /// on actual TP/FP/FN values for the label type. Metrics for parent (i.e.,
+  /// non-leaf) entity types are an aggregate of metrics for their children.
+  core.String? metricsType;
+
+  GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics({
+    this.auprc,
+    this.auprcExact,
+    this.confidenceLevelMetrics,
+    this.confidenceLevelMetricsExact,
+    this.estimatedCalibrationError,
+    this.estimatedCalibrationErrorExact,
+    this.metricsType,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
+      core.Map json_)
+      : this(
+          auprc: json_.containsKey('auprc')
+              ? (json_['auprc'] as core.num).toDouble()
+              : null,
+          auprcExact: json_.containsKey('auprcExact')
+              ? (json_['auprcExact'] as core.num).toDouble()
+              : null,
+          confidenceLevelMetrics: json_.containsKey('confidenceLevelMetrics')
+              ? (json_['confidenceLevelMetrics'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          confidenceLevelMetricsExact: json_
+                  .containsKey('confidenceLevelMetricsExact')
+              ? (json_['confidenceLevelMetricsExact'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          estimatedCalibrationError:
+              json_.containsKey('estimatedCalibrationError')
+                  ? (json_['estimatedCalibrationError'] as core.num).toDouble()
+                  : null,
+          estimatedCalibrationErrorExact: json_
+                  .containsKey('estimatedCalibrationErrorExact')
+              ? (json_['estimatedCalibrationErrorExact'] as core.num).toDouble()
+              : null,
+          metricsType: json_.containsKey('metricsType')
+              ? json_['metricsType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auprc != null) 'auprc': auprc!,
+        if (auprcExact != null) 'auprcExact': auprcExact!,
+        if (confidenceLevelMetrics != null)
+          'confidenceLevelMetrics': confidenceLevelMetrics!,
+        if (confidenceLevelMetricsExact != null)
+          'confidenceLevelMetricsExact': confidenceLevelMetricsExact!,
+        if (estimatedCalibrationError != null)
+          'estimatedCalibrationError': estimatedCalibrationError!,
+        if (estimatedCalibrationErrorExact != null)
+          'estimatedCalibrationErrorExact': estimatedCalibrationErrorExact!,
+        if (metricsType != null) 'metricsType': metricsType!,
+      };
+}
+
+/// Gives a short summary of an evaluation, and links to the evaluation itself.
+class GoogleCloudDocumentaiV1EvaluationReference {
+  /// An aggregate of the statistics for the evaluation with fuzzy matching on.
+  GoogleCloudDocumentaiV1EvaluationMetrics? aggregateMetrics;
+
+  /// An aggregate of the statistics for the evaluation with fuzzy matching off.
+  GoogleCloudDocumentaiV1EvaluationMetrics? aggregateMetricsExact;
+
+  /// The resource name of the evaluation.
+  core.String? evaluation;
+
+  /// The resource name of the Long Running Operation for the evaluation.
+  core.String? operation;
+
+  GoogleCloudDocumentaiV1EvaluationReference({
+    this.aggregateMetrics,
+    this.aggregateMetricsExact,
+    this.evaluation,
+    this.operation,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationReference.fromJson(core.Map json_)
+      : this(
+          aggregateMetrics: json_.containsKey('aggregateMetrics')
+              ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
+                  json_['aggregateMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          aggregateMetricsExact: json_.containsKey('aggregateMetricsExact')
+              ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
+                  json_['aggregateMetricsExact']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          evaluation: json_.containsKey('evaluation')
+              ? json_['evaluation'] as core.String
+              : null,
+          operation: json_.containsKey('operation')
+              ? json_['operation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateMetrics != null) 'aggregateMetrics': aggregateMetrics!,
+        if (aggregateMetricsExact != null)
+          'aggregateMetricsExact': aggregateMetricsExact!,
+        if (evaluation != null) 'evaluation': evaluation!,
+        if (operation != null) 'operation': operation!,
+      };
+}
+
 /// Response message for fetch processor types.
 class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /// The list of processor types.
@@ -3727,6 +4382,40 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+/// The response from ListEvaluations.
+class GoogleCloudDocumentaiV1ListEvaluationsResponse {
+  /// The evaluations requested.
+  core.List<GoogleCloudDocumentaiV1Evaluation>? evaluations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudDocumentaiV1ListEvaluationsResponse({
+    this.evaluations,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDocumentaiV1ListEvaluationsResponse.fromJson(core.Map json_)
+      : this(
+          evaluations: json_.containsKey('evaluations')
+              ? (json_['evaluations'] as core.List)
+                  .map((value) => GoogleCloudDocumentaiV1Evaluation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluations != null) 'evaluations': evaluations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4190,6 +4879,9 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The KMS key version with which data is encrypted.
   core.String? kmsKeyVersionName;
 
+  /// The most recently invoked evaluation for the processor version.
+  GoogleCloudDocumentaiV1EvaluationReference? latestEvaluation;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -4219,6 +4911,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
     this.googleManaged,
     this.kmsKeyName,
     this.kmsKeyVersionName,
+    this.latestEvaluation,
     this.name,
     this.state,
   });
@@ -4250,6 +4943,11 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
           kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
               ? json_['kmsKeyVersionName'] as core.String
               : null,
+          latestEvaluation: json_.containsKey('latestEvaluation')
+              ? GoogleCloudDocumentaiV1EvaluationReference.fromJson(
+                  json_['latestEvaluation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -4263,6 +4961,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
         if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+        if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -4415,6 +5114,102 @@ class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultProcessorVersion != null)
           'defaultProcessorVersion': defaultProcessorVersion!,
+      };
+}
+
+/// Request message for the create processor version method.
+class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
+  /// The processor version to use as a base for training.
+  ///
+  /// This processor version must be a child of `parent`. Format:
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`.
+  ///
+  /// Optional.
+  core.String? baseProcessorVersion;
+
+  /// The schema the processor version will be trained with.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
+
+  /// The input data used to train the `ProcessorVersion`.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData? inputData;
+
+  /// The processor version to be created.
+  ///
+  /// Required.
+  GoogleCloudDocumentaiV1ProcessorVersion? processorVersion;
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequest({
+    this.baseProcessorVersion,
+    this.documentSchema,
+    this.inputData,
+    this.processorVersion,
+  });
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(core.Map json_)
+      : this(
+          baseProcessorVersion: json_.containsKey('baseProcessorVersion')
+              ? json_['baseProcessorVersion'] as core.String
+              : null,
+          documentSchema: json_.containsKey('documentSchema')
+              ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
+                  json_['documentSchema']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          inputData: json_.containsKey('inputData')
+              ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
+                  .fromJson(
+                      json_['inputData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          processorVersion: json_.containsKey('processorVersion')
+              ? GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
+                  json_['processorVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseProcessorVersion != null)
+          'baseProcessorVersion': baseProcessorVersion!,
+        if (documentSchema != null) 'documentSchema': documentSchema!,
+        if (inputData != null) 'inputData': inputData!,
+        if (processorVersion != null) 'processorVersion': processorVersion!,
+      };
+}
+
+/// The input data used to train a new `ProcessorVersion`.
+class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
+  /// The documents used for testing the trained version.
+  GoogleCloudDocumentaiV1BatchDocumentsInputConfig? testDocuments;
+
+  /// The documents used for training the new version.
+  GoogleCloudDocumentaiV1BatchDocumentsInputConfig? trainingDocuments;
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData({
+    this.testDocuments,
+    this.trainingDocuments,
+  });
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData.fromJson(
+      core.Map json_)
+      : this(
+          testDocuments: json_.containsKey('testDocuments')
+              ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
+                  json_['testDocuments'] as core.Map<core.String, core.dynamic>)
+              : null,
+          trainingDocuments: json_.containsKey('trainingDocuments')
+              ? GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
+                  json_['trainingDocuments']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testDocuments != null) 'testDocuments': testDocuments!,
+        if (trainingDocuments != null) 'trainingDocuments': trainingDocuments!,
       };
 }
 

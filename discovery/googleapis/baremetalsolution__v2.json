@@ -1435,7 +1435,7 @@
             }
         }
     },
-    "revision": "20230104",
+    "revision": "20230113",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "AllowedClient": {
@@ -3235,6 +3235,10 @@
                     ],
                     "type": "string"
                 },
+                "storageAggregatePool": {
+                    "description": "Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.",
+                    "type": "string"
+                },
                 "storageType": {
                     "description": "The storage type for this volume.",
                     "enum": [
@@ -3342,6 +3346,10 @@
                 "snapshotsEnabled": {
                     "description": "Whether snapshots should be enabled.",
                     "type": "boolean"
+                },
+                "storageAggregatePool": {
+                    "description": "Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.",
+                    "type": "string"
                 },
                 "type": {
                     "description": "The type of this Volume.",

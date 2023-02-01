@@ -6842,8 +6842,8 @@ class PropertyDefinition {
   /// Indicates that the property can be used for generating facets.
   ///
   /// Cannot be true for properties whose type is object. IsReturnable must be
-  /// true to set this option. Only supported for boolean, enum, and text
-  /// properties.
+  /// true to set this option. Only supported for boolean, enum, integer, and
+  /// text properties.
   core.bool? isFacetable;
 
   /// Indicates that multiple values are allowed for the property.

@@ -1455,7 +1455,7 @@
             }
         }
     },
-    "revision": "20230111",
+    "revision": "20230123",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "AptArtifact": {

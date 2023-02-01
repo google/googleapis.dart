@@ -987,6 +987,9 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   ///
   /// [rolloutId] - Required. ID of the `Rollout`.
   ///
+  /// [startingPhaseId] - Optional. The starting phase ID for the `Rollout`. If
+  /// empty the `Rollout` will start at the first phase.
+  ///
   /// [validateOnly] - Optional. If set to true, the request is validated and
   /// the user is provided with an expected result, but no actual change is
   /// made.
@@ -1006,6 +1009,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
     core.String parent, {
     core.String? requestId,
     core.String? rolloutId,
+    core.String? startingPhaseId,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
@@ -1013,6 +1017,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (rolloutId != null) 'rolloutId': [rolloutId],
+      if (startingPhaseId != null) 'startingPhaseId': [startingPhaseId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };

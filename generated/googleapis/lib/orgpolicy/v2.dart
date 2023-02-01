@@ -390,6 +390,10 @@ class FoldersPoliciesResource {
   /// equivalent project number.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -403,10 +407,12 @@ class FoldersPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -988,6 +994,10 @@ class OrganizationsPoliciesResource {
   /// equivalent project number.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1001,10 +1011,12 @@ class OrganizationsPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1343,6 +1355,10 @@ class ProjectsPoliciesResource {
   /// equivalent project number.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1356,10 +1372,12 @@ class ProjectsPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1754,6 +1772,12 @@ class GoogleCloudOrgpolicyV2Policy {
   /// Deprecated.
   GoogleCloudOrgpolicyV2AlternatePolicySpec? alternate;
 
+  /// dry-run policy.
+  ///
+  /// Audit-only policy, can be used to monitor how the policy would have
+  /// impacted the existing and future resources if it's enforced.
+  GoogleCloudOrgpolicyV2PolicySpec? dryRunSpec;
+
   /// The resource name of the Policy.
   ///
   /// Must be one of the following forms, where constraint_name is the name of
@@ -1774,6 +1798,7 @@ class GoogleCloudOrgpolicyV2Policy {
 
   GoogleCloudOrgpolicyV2Policy({
     this.alternate,
+    this.dryRunSpec,
     this.name,
     this.spec,
   });
@@ -1784,6 +1809,10 @@ class GoogleCloudOrgpolicyV2Policy {
               ? GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
                   json_['alternate'] as core.Map<core.String, core.dynamic>)
               : null,
+          dryRunSpec: json_.containsKey('dryRunSpec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
@@ -1793,6 +1822,7 @@ class GoogleCloudOrgpolicyV2Policy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternate != null) 'alternate': alternate!,
+        if (dryRunSpec != null) 'dryRunSpec': dryRunSpec!,
         if (name != null) 'name': name!,
         if (spec != null) 'spec': spec!,
       };

@@ -777,6 +777,11 @@ class ServiceBusinessContext {
 
 /// A verification represents a verification attempt on a location.
 class Verification {
+  /// Response announcement set only if the method is VETTED_PARTNER.
+  ///
+  /// Optional.
+  core.String? announcement;
+
   /// The timestamp when the verification is requested.
   core.String? createTime;
 
@@ -811,6 +816,7 @@ class Verification {
   core.String? state;
 
   Verification({
+    this.announcement,
     this.createTime,
     this.method,
     this.name,
@@ -819,6 +825,9 @@ class Verification {
 
   Verification.fromJson(core.Map json_)
       : this(
+          announcement: json_.containsKey('announcement')
+              ? json_['announcement'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -831,6 +840,7 @@ class Verification {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (announcement != null) 'announcement': announcement!,
         if (createTime != null) 'createTime': createTime!,
         if (method != null) 'method': method!,
         if (name != null) 'name': name!,
@@ -844,6 +854,9 @@ class Verification {
 class VerificationOption {
   /// Set only if the method is MAIL.
   AddressVerificationData? addressData;
+
+  /// Set only if the method is VETTED_PARTNER.
+  core.String? announcement;
 
   /// Set only if the method is EMAIL.
   EmailVerificationData? emailData;
@@ -874,6 +887,7 @@ class VerificationOption {
 
   VerificationOption({
     this.addressData,
+    this.announcement,
     this.emailData,
     this.phoneNumber,
     this.verificationMethod,
@@ -884,6 +898,9 @@ class VerificationOption {
           addressData: json_.containsKey('addressData')
               ? AddressVerificationData.fromJson(
                   json_['addressData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          announcement: json_.containsKey('announcement')
+              ? json_['announcement'] as core.String
               : null,
           emailData: json_.containsKey('emailData')
               ? EmailVerificationData.fromJson(
@@ -899,6 +916,7 @@ class VerificationOption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressData != null) 'addressData': addressData!,
+        if (announcement != null) 'announcement': announcement!,
         if (emailData != null) 'emailData': emailData!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (verificationMethod != null)

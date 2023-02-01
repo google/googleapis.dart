@@ -287,7 +287,7 @@
             }
         }
     },
-    "revision": "20230112",
+    "revision": "20230131",
     "rootUrl": "https://domainsrdap.googleapis.com/",
     "schemas": {
         "HttpBody": {

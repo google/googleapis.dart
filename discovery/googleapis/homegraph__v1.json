@@ -214,7 +214,7 @@
             }
         }
     },
-    "revision": "20230106",
+    "revision": "20230127",
     "rootUrl": "https://homegraph.googleapis.com/",
     "schemas": {
         "AgentDeviceId": {
@@ -244,7 +244,7 @@
             "type": "object"
         },
         "Device": {
-            "description": "Third-party device definition. Next ID = 14",
+            "description": "Third-party device definition.",
             "id": "Device",
             "properties": {
                 "attributes": {

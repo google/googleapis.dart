@@ -34,7 +34,6 @@
 ///       - [ProjectsLocationsJobsStagesResource]
 ///       - [ProjectsLocationsJobsWorkItemsResource]
 ///     - [ProjectsLocationsSnapshotsResource]
-///     - [ProjectsLocationsSqlResource]
 ///     - [ProjectsLocationsTemplatesResource]
 ///   - [ProjectsSnapshotsResource]
 ///   - [ProjectsTemplatesResource]
@@ -1003,8 +1002,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsJobsResource(_requester);
   ProjectsLocationsSnapshotsResource get snapshots =>
       ProjectsLocationsSnapshotsResource(_requester);
-  ProjectsLocationsSqlResource get sql =>
-      ProjectsLocationsSqlResource(_requester);
   ProjectsLocationsTemplatesResource get templates =>
       ProjectsLocationsTemplatesResource(_requester);
 
@@ -2231,66 +2228,6 @@ class ProjectsLocationsSnapshotsResource {
       queryParams: queryParams_,
     );
     return ListSnapshotsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsSqlResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsSqlResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Validates a GoogleSQL query for Cloud Dataflow syntax.
-  ///
-  /// Will always confirm the given query parses correctly, and if able to look
-  /// up schema information from DataCatalog, will validate that the query
-  /// analyzes properly as well.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - Required. The ID of the Cloud Platform project that the job
-  /// belongs to.
-  ///
-  /// [location] - The
-  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-  /// to which to direct the request.
-  ///
-  /// [query] - The sql query to validate.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ValidateResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ValidateResponse> validate(
-    core.String projectId,
-    core.String location, {
-    core.String? query,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1b3/projects/' +
-        commons.escapeVariable('$projectId') +
-        '/locations/' +
-        commons.escapeVariable('$location') +
-        '/sql:validate';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ValidateResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6237,6 +6174,8 @@ class JobMetadata {
 /// of a Dataflow job.
 ///
 /// Metrics correspond to user-defined and system-defined metrics in the job.
+/// For more information, see
+/// [Dataflow job metrics](https://cloud.google.com/dataflow/docs/guides/using-monitoring-intf).
 /// This resource captures only the most recent values of each metric;
 /// time-series data can be queried for them (under the same metric names) from
 /// Cloud Monitoring.
@@ -8052,29 +7991,6 @@ class PubsubSnapshotMetadata {
       };
 }
 
-/// Information about a validated query.
-class QueryInfo {
-  /// Includes an entry for each satisfied QueryProperty.
-  core.List<core.String>? queryProperty;
-
-  QueryInfo({
-    this.queryProperty,
-  });
-
-  QueryInfo.fromJson(core.Map json_)
-      : this(
-          queryProperty: json_.containsKey('queryProperty')
-              ? (json_['queryProperty'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (queryProperty != null) 'queryProperty': queryProperty!,
-      };
-}
-
 /// An instruction that reads records.
 ///
 /// Takes no inputs, produces one output.
@@ -8306,6 +8222,8 @@ typedef ResourceUtilizationReportResponse = $Empty;
 class RuntimeEnvironment {
   /// Additional experiment flags for the job, specified with the
   /// `--experiments` option.
+  ///
+  /// Optional.
   core.List<core.String>? additionalExperiments;
 
   /// Additional user labels to be specified for the job.
@@ -8314,17 +8232,25 @@ class RuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? additionalUserLabels;
 
   /// Whether to bypass the safety checks for the job's temporary directory.
   ///
   /// Use with caution.
+  ///
+  /// Optional.
   core.bool? bypassTempDirValidation;
 
   /// Whether to enable Streaming Engine for the job.
+  ///
+  /// Optional.
   core.bool? enableStreamingEngine;
 
   /// Configuration for VM IPs.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
   /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
@@ -8334,26 +8260,42 @@ class RuntimeEnvironment {
   /// Name for the Cloud KMS key for the job.
   ///
   /// Key format is: projects//locations//keyRings//cryptoKeys/
+  ///
+  /// Optional.
   core.String? kmsKeyName;
 
   /// The machine type to use for the job.
   ///
   /// Defaults to the value from the template if not specified.
+  ///
+  /// Optional.
   core.String? machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
+  ///
+  /// The default value is 1.
+  ///
+  /// Optional.
   core.int? maxWorkers;
 
   /// Network to which VMs will be assigned.
   ///
   /// If empty or unspecified, the service will use the network "default".
+  ///
+  /// Optional.
   core.String? network;
 
   /// The initial number of Google Compute Engine instances for the job.
+  ///
+  /// The default value is 11.
+  ///
+  /// Optional.
   core.int? numWorkers;
 
   /// The email address of the service account to run the job as.
+  ///
+  /// Optional.
   core.String? serviceAccountEmail;
 
   /// Subnetwork to which VMs will be assigned, if desired.
@@ -8363,11 +8305,15 @@ class RuntimeEnvironment {
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
+  ///
+  /// Optional.
   core.String? subnetwork;
 
   /// The Cloud Storage path to use for temporary files.
   ///
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// Required.
   core.String? tempLocation;
 
   /// The Compute Engine region
@@ -8376,6 +8322,8 @@ class RuntimeEnvironment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
+  ///
+  /// Required.
   core.String? workerRegion;
 
   /// The Compute Engine zone
@@ -8386,6 +8334,8 @@ class RuntimeEnvironment {
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
+  ///
+  /// Optional.
   core.String? workerZone;
 
   /// The Compute Engine
@@ -8393,6 +8343,8 @@ class RuntimeEnvironment {
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
+  ///
+  /// Optional.
   core.String? zone;
 
   RuntimeEnvironment({
@@ -11067,38 +11019,6 @@ class TransformSummary {
         if (name != null) 'name': name!,
         if (outputCollectionName != null)
           'outputCollectionName': outputCollectionName!,
-      };
-}
-
-/// Response to the validation request.
-class ValidateResponse {
-  /// Will be empty if validation succeeds.
-  core.String? errorMessage;
-
-  /// Information about the validated query.
-  ///
-  /// Not defined if validation fails.
-  QueryInfo? queryInfo;
-
-  ValidateResponse({
-    this.errorMessage,
-    this.queryInfo,
-  });
-
-  ValidateResponse.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          queryInfo: json_.containsKey('queryInfo')
-              ? QueryInfo.fromJson(
-                  json_['queryInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (queryInfo != null) 'queryInfo': queryInfo!,
       };
 }
 
