@@ -30,14 +30,13 @@
 library firebaseremoteconfig.v1;
 
 import 'dart:async' as async;
+import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -269,14 +268,14 @@ class ProjectsRemoteConfigResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [HttpBody].
+  /// Completes with a [Response].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> downloadDefaults(
+  async.Future<Response> downloadDefaults(
     core.String project, {
     core.String? format,
     core.String? $fields,
@@ -295,7 +294,7 @@ class ProjectsRemoteConfigResource {
       'GET',
       queryParams: queryParams_,
     );
-    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return Response.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a list of Remote Config template versions that have been published,
@@ -760,26 +759,6 @@ class FetchRemoteConfigResponse {
         if (templateVersion != null) 'templateVersion': templateVersion!,
       };
 }
-
-/// Message that represents an arbitrary HTTP body.
-///
-/// It should only be used for payload formats that can't be represented as
-/// JSON, such as raw binary or an HTML page. This message can be used both in
-/// streaming and non-streaming API methods in the request as well as the
-/// response. It can be used as a top-level request field, which is convenient
-/// if one wants to extract parameters from either the URL or HTTP template into
-/// the request fields and also want access to the raw HTTP body. Example:
-/// message GetResourceRequest { // A unique request id. string request_id = 1;
-/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
-/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
-/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
-/// (google.protobuf.Empty); } Example with streaming methods: service
-/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
-/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
-/// (stream google.api.HttpBody); } Use of this type only changes how the
-/// request and response bodies are handled, all other features will continue to
-/// work unchanged.
-typedef HttpBody = $HttpBody;
 
 /// Contains a paginated list of versions of the RemoteConfig.
 class ListVersionsResponse {
@@ -1265,6 +1244,40 @@ class RemoteConfigUser {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (name != null) 'name': name!,
       };
+}
+
+/// The values in the configuration.
+///
+/// Properties of the object. Contains field @type with type URL.
+class Response extends collection.MapBase<core.String, core.Object?> {
+  final _innerMap = <core.String, core.Object?>{};
+
+  Response();
+
+  Response.fromJson(core.Map<core.String, core.dynamic> json_) {
+    json_.forEach((core.String key, value) {
+      this[key] = value;
+    });
+  }
+
+  @core.override
+  core.Object? operator [](core.Object? key) => _innerMap[key];
+
+  @core.override
+  void operator []=(core.String key, core.Object? value) {
+    _innerMap[key] = value;
+  }
+
+  @core.override
+  void clear() {
+    _innerMap.clear();
+  }
+
+  @core.override
+  core.Iterable<core.String> get keys => _innerMap.keys;
+
+  @core.override
+  core.Object? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 /// Replace the published Remote Config template with an earlier version.
