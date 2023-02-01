@@ -4833,9 +4833,9 @@ class AlertPolicy {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4987,9 +4987,9 @@ class BasicService {
           serviceLabels: json_.containsKey('serviceLabels')
               ? (json_['serviceLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5321,10 +5321,10 @@ class CollectdPayload {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TypedValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6693,9 +6693,9 @@ class HttpCheck {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7618,9 +7618,9 @@ class LogMatch {
               ? (json_['labelExtractors']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7701,9 +7701,9 @@ class Metric {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8306,9 +8306,9 @@ class MonitoredResource {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8688,9 +8688,9 @@ class NotificationChannel {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8705,9 +8705,9 @@ class NotificationChannel {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9414,9 +9414,9 @@ class Service {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9588,9 +9588,9 @@ class ServiceLevelObjective {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10337,9 +10337,9 @@ class UptimeCheckConfig {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

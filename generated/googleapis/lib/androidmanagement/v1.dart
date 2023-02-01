@@ -2663,10 +2663,10 @@ class ClearAppsDataStatus {
       : this(
           results: json_.containsKey('results')
               ? (json_['results'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PerAppResult.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3525,9 +3525,9 @@ class Device {
               ? (json_['systemProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4860,9 +4860,9 @@ class ManagedConfigurationTemplate {
               ? (json_['configurationVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8142,9 +8142,9 @@ class UserFacingMessage {
               ? (json_['localizedMessages']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -639,9 +639,9 @@ class Evaluation {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -965,9 +965,9 @@ class ResourceFilter {
               ? (json_['inclusionLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1298,9 +1298,9 @@ class SapValidationValidationDetail {
       : this(
           details: json_.containsKey('details')
               ? (json_['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

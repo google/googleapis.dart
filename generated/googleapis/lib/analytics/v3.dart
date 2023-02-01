@@ -5552,9 +5552,9 @@ class Column {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8416,9 +8416,9 @@ class GaData {
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9597,9 +9597,9 @@ class McfData {
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10565,9 +10565,9 @@ class RealtimeData {
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

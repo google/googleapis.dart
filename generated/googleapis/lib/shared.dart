@@ -2908,9 +2908,9 @@ class $Channel00 {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9442,9 +9442,9 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
       : this(
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10958,9 +10958,9 @@ class $Labels {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11838,9 +11838,9 @@ class $Location00 {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11912,9 +11912,9 @@ class $Location01 {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12232,9 +12232,9 @@ class $Material {
       : this(
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12673,9 +12673,9 @@ class $MetricRule {
           metricCosts: json_.containsKey('metricCosts')
               ? (json_['metricCosts'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -13096,9 +13096,9 @@ class $MonitoredResourceMetadata {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -15787,9 +15787,9 @@ class $PubsubMessage {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -16006,9 +16006,9 @@ class $QuotaLimit {
           unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
           values: json_.containsKey('values')
               ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -16561,9 +16561,9 @@ class $Request03 {
           stateMetadata: json_.containsKey('stateMetadata')
               ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -17124,9 +17124,9 @@ class $SetLabelsRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -18249,9 +18249,9 @@ class $Subject {
       : this(
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

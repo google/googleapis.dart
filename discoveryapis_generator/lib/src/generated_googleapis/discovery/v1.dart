@@ -544,10 +544,10 @@ class JsonSchema {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -626,10 +626,10 @@ class RestDescriptionAuthOauth2 {
       : this(
           scopes: json_.containsKey('scopes')
               ? (json_['scopes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestDescriptionAuthOauth2ScopesValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -874,10 +874,10 @@ class RestDescription {
               : null,
           methods: json_.containsKey('methods')
               ? (json_['methods'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestMethod.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -894,10 +894,10 @@ class RestDescription {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -906,10 +906,10 @@ class RestDescription {
               : null,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestResource.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -921,10 +921,10 @@ class RestDescription {
               : null,
           schemas: json_.containsKey('schemas')
               ? (json_['schemas'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1265,10 +1265,10 @@ class RestMethod {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1340,19 +1340,19 @@ class RestResource {
       : this(
           methods: json_.containsKey('methods')
               ? (json_['methods'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestMethod.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestResource.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

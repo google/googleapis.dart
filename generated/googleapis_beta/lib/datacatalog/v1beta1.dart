@@ -4650,10 +4650,10 @@ class GoogleCloudDatacatalogV1beta1Tag {
               : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDatacatalogV1beta1TagField.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4823,10 +4823,10 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
               : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5083,10 +5083,10 @@ class GoogleCloudDatacatalogV1beta1UsageSignal {
               ? (json_['usageWithinTimeRange']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDatacatalogV1beta1UsageStats.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

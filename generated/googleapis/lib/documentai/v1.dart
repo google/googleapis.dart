@@ -3860,10 +3860,10 @@ class GoogleCloudDocumentaiV1Evaluation {
           entityMetrics: json_.containsKey('entityMetrics')
               ? (json_['entityMetrics'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

@@ -6980,10 +6980,10 @@ class Finding {
               : null,
           contacts: json_.containsKey('contacts')
               ? (json_['contacts'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ContactDetails.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7014,10 +7014,10 @@ class Finding {
               ? (json_['externalSystems']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudSecuritycenterV1ExternalSystem.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -9631,9 +9631,9 @@ class SecurityMarks {
               : null,
           marks: json_.containsKey('marks')
               ? (json_['marks'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

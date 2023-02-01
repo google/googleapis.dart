@@ -1864,9 +1864,9 @@ class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
                   ? (json_['customizedEntitiesPropertiesConversions']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -2089,9 +2089,9 @@ class GoogleCloudContentwarehouseV1DataUpdateAction {
       : this(
           entries: json_.containsKey('entries')
               ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2120,9 +2120,9 @@ class GoogleCloudContentwarehouseV1DataValidationAction {
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3270,9 +3270,9 @@ class GoogleCloudContentwarehouseV1HistogramQueryResult {
       : this(
           histogram: json_.containsKey('histogram')
               ? (json_['histogram'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3687,10 +3687,10 @@ class GoogleCloudContentwarehouseV1MapProperty {
       : this(
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContentwarehouseV1Value.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

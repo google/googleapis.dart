@@ -3013,10 +3013,10 @@ class Deployment {
               : null,
           files: json_.containsKey('files')
               ? (json_['files'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4780,9 +4780,9 @@ class Service {
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4985,9 +4985,9 @@ class StaticFilesHandler {
           httpHeaders: json_.containsKey('httpHeaders')
               ? (json_['httpHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5067,9 +5067,9 @@ class TrafficSplit {
           allocations: json_.containsKey('allocations')
               ? (json_['allocations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -5538,9 +5538,9 @@ class Version {
           betaSettings: json_.containsKey('betaSettings')
               ? (json_['betaSettings'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5548,9 +5548,9 @@ class Version {
               ? (json_['buildEnvVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5582,9 +5582,9 @@ class Version {
           envVariables: json_.containsKey('envVariables')
               ? (json_['envVariables'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

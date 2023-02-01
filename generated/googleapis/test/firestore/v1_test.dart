@@ -2021,10 +2021,10 @@ void checkRunQueryResponseElement(api.RunQueryResponseElement o) {
 }
 
 api.RunQueryResponse buildRunQueryResponse() {
-  final o = api.RunQueryResponse();
-  o.add(buildRunQueryResponseElement());
-  o.add(buildRunQueryResponseElement());
-  return o;
+  return [
+    buildRunQueryResponseElement(),
+    buildRunQueryResponseElement(),
+  ];
 }
 
 void checkRunQueryResponse(api.RunQueryResponse o) {
@@ -3165,7 +3165,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRunQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunQueryResponse.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => api.RunQueryResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkRunQueryResponse(od);
     });
   });

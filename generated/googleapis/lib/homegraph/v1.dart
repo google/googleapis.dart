@@ -723,9 +723,9 @@ class QueryResponsePayload {
       : this(
           devices: json_.containsKey('devices')
               ? (json_['devices'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.Map<core.String, core.dynamic>,
+                    value as core.Map<core.String, core.dynamic>,
                   ),
                 )
               : null,

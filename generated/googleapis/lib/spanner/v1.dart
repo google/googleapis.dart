@@ -5452,9 +5452,9 @@ class ExecuteSqlRequest {
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5703,9 +5703,9 @@ class IndexedHotKey {
           sparseHotKeys: json_.containsKey('sparseHotKeys')
               ? (json_['sparseHotKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -5732,10 +5732,10 @@ class IndexedKeyRangeInfos {
           keyRangeInfos: json_.containsKey('keyRangeInfos')
               ? (json_['keyRangeInfos'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     KeyRangeInfos.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5894,9 +5894,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6078,9 +6078,9 @@ class InstanceConfig {
                   : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6836,9 +6836,9 @@ class LocalizedString {
       : this(
           args: json_.containsKey('args')
               ? (json_['args'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6947,10 +6947,10 @@ class Metric {
           indexedHotKeys: json_.containsKey('indexedHotKeys')
               ? (json_['indexedHotKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     IndexedHotKey.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6958,10 +6958,10 @@ class Metric {
               ? (json_['indexedKeyRangeInfos']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     IndexedKeyRangeInfos.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7454,9 +7454,9 @@ class PartitionQueryRequest {
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8810,9 +8810,9 @@ class Session {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8883,9 +8883,9 @@ class ShortRepresentation {
           subqueries: json_.containsKey('subqueries')
               ? (json_['subqueries'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -8938,9 +8938,9 @@ class Statement {
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

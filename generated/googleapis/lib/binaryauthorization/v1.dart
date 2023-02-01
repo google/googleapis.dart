@@ -1545,10 +1545,10 @@ class Policy {
               ? (json_['clusterAdmissionRules']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     AdmissionRule.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1569,10 +1569,10 @@ class Policy {
                   ? (json_['istioServiceIdentityAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1581,10 +1581,10 @@ class Policy {
                   ? (json_['kubernetesNamespaceAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1593,10 +1593,10 @@ class Policy {
                   ? (json_['kubernetesServiceAccountAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,

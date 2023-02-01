@@ -3479,10 +3479,10 @@ class GoogleCloudRetailV2AttributesConfig {
               ? (json_['catalogAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRetailV2CatalogAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3988,10 +3988,10 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRetailV2CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5257,10 +5257,10 @@ class GoogleCloudRetailV2LocalInventory {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRetailV2CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5683,9 +5683,9 @@ class GoogleCloudRetailV2PredictRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6370,10 +6370,10 @@ class GoogleCloudRetailV2Product {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRetailV2CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7812,9 +7812,9 @@ class GoogleCloudRetailV2SearchRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8707,9 +8707,9 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
               ? (json_['matchingVariantFields']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9406,10 +9406,10 @@ class GoogleCloudRetailV2UserEvent {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRetailV2CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

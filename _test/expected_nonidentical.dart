@@ -30,7 +30,6 @@
 library toyApi.D0_1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -162,8 +161,12 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return MapOfToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        ToyResponse.fromJson(value as core.Map<core.String, core.dynamic>),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -197,8 +200,12 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return MapOfToyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        ToyResponse.fromJson(value as core.Map<core.String, core.dynamic>),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -232,7 +239,12 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return MapOfint.fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        value as core.int,
+      ),
+    );
   }
 
   /// Request parameters:
@@ -384,7 +396,10 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return ListOfListOfString.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) =>
+            (value as core.List).map((value) => value as core.String).toList())
+        .toList();
   }
 
   /// [request] - The metadata request object.
@@ -418,7 +433,16 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return ListOfMapOfListOfString.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+              (key, value) => core.MapEntry(
+                key,
+                (value as core.List)
+                    .map((value) => value as core.String)
+                    .toList(),
+              ),
+            ))
+        .toList();
   }
 
   /// Request parameters:
@@ -482,8 +506,19 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return MapOfListOfMapOfbool.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        (value as core.List)
+            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.bool,
+                  ),
+                ))
+            .toList(),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -517,8 +552,17 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return MapOfMapOfbool.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        (value as core.Map<core.String, core.dynamic>).map(
+          (key, value) => core.MapEntry(
+            key,
+            value as core.bool,
+          ),
+        ),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -674,7 +718,9 @@ class ToyApi {
       body: body_,
       queryParams: queryParams_,
     );
-    return ListOfString.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => value as core.String)
+        .toList();
   }
 }
 
@@ -873,481 +919,36 @@ class StorageResource {
   }
 }
 
-class ListOfListOfString extends collection.ListBase<core.List<core.String>> {
-  final core.List<core.List<core.String>> _inner;
+typedef ListOfListOfString = core.List<core.List<core.String>>;
 
-  ListOfListOfString() : _inner = [];
+typedef ListOfListOfToyRequest = core.List<core.List<ToyRequest>>;
 
-  ListOfListOfString.fromJson(core.List json)
-      : _inner = json
-            .map((value) => (value as core.List)
-                .map((value) => value as core.String)
-                .toList())
-            .toList();
+typedef ListOfListOfint = core.List<core.List<core.int>>;
 
-  @core.override
-  core.List<core.String> operator [](core.int key) => _inner[key];
+typedef ListOfMapOfListOfString
+    = core.List<core.Map<core.String, core.List<core.String>>>;
 
-  @core.override
-  void operator []=(core.int key, core.List<core.String> value) {
-    _inner[key] = value;
-  }
+typedef ListOfMapOfListOfint
+    = core.List<core.Map<core.String, core.List<core.int>>>;
 
-  @core.override
-  core.int get length => _inner.length;
+typedef ListOfString = core.List<core.String>;
 
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
+typedef ListOfToyRequest = core.List<ToyRequest>;
 
-  @core.override
-  void add(core.List<core.String> element) {
-    _inner.add(element);
-  }
-}
+typedef MapOfListOfMapOfbool
+    = core.Map<core.String, core.List<core.Map<core.String, core.bool>>>;
 
-class ListOfListOfToyRequest
-    extends collection.ListBase<core.List<ToyRequest>> {
-  final core.List<core.List<ToyRequest>> _inner;
+typedef MapOfListOfMapOfint
+    = core.Map<core.String, core.List<core.Map<core.String, core.int>>>;
 
-  ListOfListOfToyRequest() : _inner = [];
+typedef MapOfMapOfbool
+    = core.Map<core.String, core.Map<core.String, core.bool>>;
 
-  ListOfListOfToyRequest.fromJson(core.List json)
-      : _inner = json
-            .map((value) => (value as core.List)
-                .map((value) => ToyRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>))
-                .toList())
-            .toList();
+typedef MapOfMapOfint = core.Map<core.String, core.Map<core.String, core.int>>;
 
-  @core.override
-  core.List<ToyRequest> operator [](core.int key) => _inner[key];
+typedef MapOfToyResponse = core.Map<core.String, ToyResponse>;
 
-  @core.override
-  void operator []=(core.int key, core.List<ToyRequest> value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.List<ToyRequest> element) {
-    _inner.add(element);
-  }
-}
-
-class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
-  final core.List<core.List<core.int>> _inner;
-
-  ListOfListOfint() : _inner = [];
-
-  ListOfListOfint.fromJson(core.List json)
-      : _inner = json
-            .map((value) =>
-                (value as core.List).map((value) => value as core.int).toList())
-            .toList();
-
-  @core.override
-  core.List<core.int> operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, core.List<core.int> value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.List<core.int> element) {
-    _inner.add(element);
-  }
-}
-
-class ListOfMapOfListOfString
-    extends collection.ListBase<core.Map<core.String, core.List<core.String>>> {
-  final core.List<core.Map<core.String, core.List<core.String>>> _inner;
-
-  ListOfMapOfListOfString() : _inner = [];
-
-  ListOfMapOfListOfString.fromJson(core.List json)
-      : _inner = json
-            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    (item as core.List)
-                        .map((value) => value as core.String)
-                        .toList(),
-                  ),
-                ))
-            .toList();
-
-  @core.override
-  core.Map<core.String, core.List<core.String>> operator [](core.int key) =>
-      _inner[key];
-
-  @core.override
-  void operator []=(
-      core.int key, core.Map<core.String, core.List<core.String>> value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.Map<core.String, core.List<core.String>> element) {
-    _inner.add(element);
-  }
-}
-
-class ListOfMapOfListOfint
-    extends collection.ListBase<core.Map<core.String, core.List<core.int>>> {
-  final core.List<core.Map<core.String, core.List<core.int>>> _inner;
-
-  ListOfMapOfListOfint() : _inner = [];
-
-  ListOfMapOfListOfint.fromJson(core.List json)
-      : _inner = json
-            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    (item as core.List)
-                        .map((value) => value as core.int)
-                        .toList(),
-                  ),
-                ))
-            .toList();
-
-  @core.override
-  core.Map<core.String, core.List<core.int>> operator [](core.int key) =>
-      _inner[key];
-
-  @core.override
-  void operator []=(
-      core.int key, core.Map<core.String, core.List<core.int>> value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.Map<core.String, core.List<core.int>> element) {
-    _inner.add(element);
-  }
-}
-
-class ListOfString extends collection.ListBase<core.String> {
-  final core.List<core.String> _inner;
-
-  ListOfString() : _inner = [];
-
-  ListOfString.fromJson(core.List json)
-      : _inner = json.map((value) => value as core.String).toList();
-
-  @core.override
-  core.String operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, core.String value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.String element) {
-    _inner.add(element);
-  }
-}
-
-class ListOfToyRequest extends collection.ListBase<ToyRequest> {
-  final core.List<ToyRequest> _inner;
-
-  ListOfToyRequest() : _inner = [];
-
-  ListOfToyRequest.fromJson(core.List json)
-      : _inner = json
-            .map((value) => ToyRequest.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  ToyRequest operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, ToyRequest value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(ToyRequest element) {
-    _inner.add(element);
-  }
-}
-
-class MapOfListOfMapOfbool extends collection
-    .MapBase<core.String, core.List<core.Map<core.String, core.bool>>> {
-  final _innerMap =
-      <core.String, core.List<core.Map<core.String, core.bool>>>{};
-
-  MapOfListOfMapOfbool();
-
-  MapOfListOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = (value as core.List)
-          .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.bool,
-                ),
-              ))
-          .toList();
-    });
-  }
-
-  @core.override
-  core.List<core.Map<core.String, core.bool>>? operator [](core.Object? key) =>
-      _innerMap[key];
-
-  @core.override
-  void operator []=(
-      core.String key, core.List<core.Map<core.String, core.bool>> value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.List<core.Map<core.String, core.bool>>? remove(core.Object? key) =>
-      _innerMap.remove(key);
-}
-
-class MapOfListOfMapOfint extends collection
-    .MapBase<core.String, core.List<core.Map<core.String, core.int>>> {
-  final _innerMap = <core.String, core.List<core.Map<core.String, core.int>>>{};
-
-  MapOfListOfMapOfint();
-
-  MapOfListOfMapOfint.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = (value as core.List)
-          .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.int,
-                ),
-              ))
-          .toList();
-    });
-  }
-
-  @core.override
-  core.List<core.Map<core.String, core.int>>? operator [](core.Object? key) =>
-      _innerMap[key];
-
-  @core.override
-  void operator []=(
-      core.String key, core.List<core.Map<core.String, core.int>> value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.List<core.Map<core.String, core.int>>? remove(core.Object? key) =>
-      _innerMap.remove(key);
-}
-
-class MapOfMapOfbool
-    extends collection.MapBase<core.String, core.Map<core.String, core.bool>> {
-  final _innerMap = <core.String, core.Map<core.String, core.bool>>{};
-
-  MapOfMapOfbool();
-
-  MapOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = (value as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.bool,
-        ),
-      );
-    });
-  }
-
-  @core.override
-  core.Map<core.String, core.bool>? operator [](core.Object? key) =>
-      _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Map<core.String, core.bool> value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Map<core.String, core.bool>? remove(core.Object? key) =>
-      _innerMap.remove(key);
-}
-
-class MapOfMapOfint
-    extends collection.MapBase<core.String, core.Map<core.String, core.int>> {
-  final _innerMap = <core.String, core.Map<core.String, core.int>>{};
-
-  MapOfMapOfint();
-
-  MapOfMapOfint.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = (value as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.int,
-        ),
-      );
-    });
-  }
-
-  @core.override
-  core.Map<core.String, core.int>? operator [](core.Object? key) =>
-      _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Map<core.String, core.int> value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Map<core.String, core.int>? remove(core.Object? key) =>
-      _innerMap.remove(key);
-}
-
-class MapOfToyResponse extends collection.MapBase<core.String, ToyResponse> {
-  final _innerMap = <core.String, ToyResponse>{};
-
-  MapOfToyResponse();
-
-  MapOfToyResponse.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] =
-          ToyResponse.fromJson(value as core.Map<core.String, core.dynamic>);
-    });
-  }
-
-  @core.override
-  ToyResponse? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, ToyResponse value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  ToyResponse? remove(core.Object? key) => _innerMap.remove(key);
-}
-
-class MapOfint extends collection.MapBase<core.String, core.int> {
-  final _innerMap = <core.String, core.int>{};
-
-  MapOfint();
-
-  MapOfint.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value as core.int;
-    });
-  }
-
-  @core.override
-  core.int? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.int value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.int? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef MapOfint = core.Map<core.String, core.int>;
 
 class NestedResponse {
   core.String? nestedResult;
@@ -1425,10 +1026,10 @@ class ToyMapResponse {
       : this(
           mapResult: json_.containsKey('mapResult')
               ? (json_['mapResult'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     NestedResponse.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1441,9 +1042,9 @@ class ToyMapResponse {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String?,
+                    value as core.String?,
                   ),
                 )
               : null,

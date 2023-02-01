@@ -3141,9 +3141,9 @@ class GoogleCloudRecommenderV1InsightStateInfo {
           stateMetadata: json_.containsKey('stateMetadata')
               ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3213,9 +3213,9 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3374,9 +3374,9 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
           stateMetadata: json_.containsKey('stateMetadata')
               ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3533,10 +3533,10 @@ class GoogleCloudRecommenderV1Operation {
               ? (json_['pathValueMatchers']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRecommenderV1ValueMatcher.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3850,9 +3850,9 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
           stateMetadata: json_.containsKey('stateMetadata')
               ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3922,9 +3922,9 @@ class GoogleCloudRecommenderV1RecommenderConfig {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -1900,10 +1900,10 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
               ? (json_['categoricalFeatures']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRecommendationengineV1beta1FeatureMapStringList
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1911,10 +1911,10 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
               ? (json_['numericalFeatures']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2554,9 +2554,9 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2810,9 +2810,9 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
               : null,
           costs: json_.containsKey('costs')
               ? (json_['costs'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -3222,9 +3222,9 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
       : this(
           costs: json_.containsKey('costs')
               ? (json_['costs'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -3237,9 +3237,9 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
               : null,
           taxes: json_.containsKey('taxes')
               ? (json_['taxes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,

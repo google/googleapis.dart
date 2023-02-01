@@ -856,9 +856,9 @@ class V2Key {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -13439,9 +13439,9 @@ class GoogleCloudDialogflowV2ArticleAnswer {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -13520,9 +13520,9 @@ class GoogleCloudDialogflowV2AssistQueryParameters {
                   ? (json_['documentsMetadataFilters']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -15043,9 +15043,9 @@ class GoogleCloudDialogflowV2Document {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -15813,9 +15813,9 @@ class GoogleCloudDialogflowV2FaqAnswer {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -15995,9 +15995,9 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
           requestHeaders: json_.containsKey('requestHeaders')
               ? (json_['requestHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -16862,9 +16862,9 @@ class GoogleCloudDialogflowV2ImportDocumentTemplate {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -20146,9 +20146,9 @@ class GoogleCloudDialogflowV2Participant {
                   ? (json_['documentsMetadataFilters']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -20323,9 +20323,9 @@ class GoogleCloudDialogflowV2QueryParameters {
           webhookHeaders: json_.containsKey('webhookHeaders')
               ? (json_['webhookHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -21359,9 +21359,9 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
           textSections: json_.containsKey('textSections')
               ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -21853,10 +21853,10 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
               ? (json_['synthesizeSpeechConfigs']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

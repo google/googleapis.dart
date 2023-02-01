@@ -529,9 +529,9 @@ class CheckResponse {
       : this(
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -588,9 +588,9 @@ class Peer {
           ip: json_.containsKey('ip') ? json_['ip'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -745,9 +745,9 @@ class Request {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -908,9 +908,9 @@ class Resource {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -926,9 +926,9 @@ class Resource {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1072,9 +1072,9 @@ class Response {
           code: json_.containsKey('code') ? json_['code'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

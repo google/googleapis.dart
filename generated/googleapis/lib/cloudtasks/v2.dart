@@ -1143,9 +1143,9 @@ class AppEngineHttpRequest {
           body: json_.containsKey('body') ? json_['body'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1635,9 +1635,9 @@ class HttpRequest {
           body: json_.containsKey('body') ? json_['body'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

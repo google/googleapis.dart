@@ -1925,10 +1925,10 @@ class BatchUpdateContactsRequest {
       : this(
           contacts: json_.containsKey('contacts')
               ? (json_['contacts'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Person.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1971,10 +1971,10 @@ class BatchUpdateContactsResponse {
           updateResult: json_.containsKey('updateResult')
               ? (json_['updateResult'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PersonResponse.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

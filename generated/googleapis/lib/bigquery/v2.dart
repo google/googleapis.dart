@@ -31,7 +31,6 @@
 library bigquery.v2;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -4305,9 +4304,9 @@ class Dataset {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4446,9 +4445,9 @@ class DatasetListDatasets {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4608,9 +4607,9 @@ class DestinationTableProperties {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6696,9 +6695,9 @@ class JobConfiguration {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7640,10 +7639,10 @@ class JobConfigurationQuery {
               ? (json_['tableDefinitions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ExternalDataConfiguration.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8880,36 +8879,7 @@ class JobStatus {
 }
 
 /// Represents a single JSON object.
-class JsonObject extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  JsonObject();
-
-  JsonObject.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef JsonObject = core.Map<core.String, core.Object?>;
 
 class ListModelsResponse {
   /// Models in the requested dataset.
@@ -9349,9 +9319,9 @@ class Model {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10005,10 +9975,10 @@ class QueryParameterValue {
           structValues: json_.containsKey('structValues')
               ? (json_['structValues'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     QueryParameterValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -10203,9 +10173,9 @@ class QueryRequest {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10721,9 +10691,9 @@ class RemoteFunctionOptions {
               ? (json_['userDefinedContext']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11546,9 +11516,9 @@ class SparkOptions {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11599,9 +11569,9 @@ class SparkStatistics {
       : this(
           endpoints: json_.containsKey('endpoints')
               ? (json_['endpoints'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12145,9 +12115,9 @@ class Table {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12348,8 +12318,7 @@ class TableDataInsertAllRequestRows {
               ? json_['insertId'] as core.String
               : null,
           json: json_.containsKey('json')
-              ? JsonObject.fromJson(
-                  json_['json'] as core.Map<core.String, core.dynamic>)
+              ? json_['json'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -12872,9 +12841,9 @@ class TableListTables {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -13705,9 +13674,9 @@ class TrainingOptions {
               ? (json_['labelClassWeights']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,

@@ -992,9 +992,10 @@ class AggregationResult {
               ? (json_['aggregateProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1458,9 +1459,10 @@ class Entity {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1665,9 +1667,9 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1730,9 +1732,9 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2065,10 +2067,10 @@ class GqlQuery {
           namedBindings: json_.containsKey('namedBindings')
               ? (json_['namedBindings'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GqlQueryParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

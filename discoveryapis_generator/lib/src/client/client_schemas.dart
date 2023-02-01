@@ -76,7 +76,7 @@ $toJsonString
   String jsonEncode(String value) => '${className}Factory.toJson($value)';
 
   @override
-  String jsonDecode(String json) =>
+  String jsonDecode(String json, {String? importName}) =>
       '${className}Factory.fromJson($json as $_coreMapJsonType)';
 
   String get _coreMapJsonTypeArguments =>

@@ -4260,18 +4260,18 @@ void checkJobStatus(api.JobStatus o) {
 }
 
 api.JsonObject buildJsonObject() {
-  final o = api.JsonObject();
-  o['a'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
+  return {
+    'a': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
+    'b': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
   };
-  o['b'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
 }
 
 void checkJsonObject(api.JsonObject o) {
@@ -8748,8 +8748,7 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildJsonObject();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.JsonObject.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = oJson as core.Map<core.String, core.dynamic>;
       checkJsonObject(od);
     });
   });

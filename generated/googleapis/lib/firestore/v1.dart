@@ -32,7 +32,6 @@
 library firestore.v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -1621,7 +1620,10 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return RunQueryResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => RunQueryResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -2016,9 +2018,10 @@ class AggregationResult {
               ? (json_['aggregateFields']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2214,9 +2217,9 @@ class BatchWriteRequest {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2595,9 +2598,10 @@ class Document {
               : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3860,9 +3864,10 @@ class MapValue {
       : this(
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4423,38 +4428,7 @@ class RunQueryResponseElement {
 }
 
 /// The response for Firestore.RunQuery.
-class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
-  final core.List<RunQueryResponseElement> _inner;
-
-  RunQueryResponse() : _inner = [];
-
-  RunQueryResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => RunQueryResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  RunQueryResponseElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, RunQueryResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(RunQueryResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef RunQueryResponse = core.List<RunQueryResponseElement>;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -4963,9 +4937,9 @@ class WriteRequest {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

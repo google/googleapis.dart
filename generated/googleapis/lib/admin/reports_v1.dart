@@ -1416,9 +1416,9 @@ class Channel {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

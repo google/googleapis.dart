@@ -1304,9 +1304,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1782,9 +1782,9 @@ class GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
           scoreBuckets: json_.containsKey('scoreBuckets')
               ? (json_['scoreBuckets'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1817,10 +1817,10 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
           actionMetrics: json_.containsKey('actionMetrics')
               ? (json_['actionMetrics'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

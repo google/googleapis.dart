@@ -752,10 +752,10 @@ void checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
 
 api.IdentitytoolkitRelyingpartyGetPublicKeysResponse
     buildIdentitytoolkitRelyingpartyGetPublicKeysResponse() {
-  final o = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse();
-  o['a'] = 'foo';
-  o['b'] = 'foo';
-  return o;
+  return {
+    'a': 'foo',
+    'b': 'foo',
+  };
 }
 
 void checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
@@ -2724,8 +2724,12 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildIdentitytoolkitRelyingpartyGetPublicKeysResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          value as core.String,
+        ),
+      );
       checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(od);
     });
   });

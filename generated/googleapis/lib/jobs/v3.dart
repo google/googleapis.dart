@@ -1071,9 +1071,9 @@ class ClientEvent {
               : null,
           extraInfo: json_.containsKey('extraInfo')
               ? (json_['extraInfo'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2141,9 +2141,9 @@ class CustomAttributeHistogramResult {
                   ? (json_['stringValueHistogramResult']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.int,
+                        value as core.int,
                       ),
                     )
                   : null,
@@ -2345,9 +2345,9 @@ class HistogramResult {
               : null,
           values: json_.containsKey('values')
               ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -2784,10 +2784,10 @@ class Job {
               ? (json_['customAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

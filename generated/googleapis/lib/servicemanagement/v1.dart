@@ -3474,9 +3474,9 @@ class JavaSettings {
               ? (json_['serviceClassNames']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5806,9 +5806,9 @@ class TrafficPercentStrategy {
           percentages: json_.containsKey('percentages')
               ? (json_['percentages'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,

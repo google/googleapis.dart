@@ -281,10 +281,10 @@ class AutoText {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -619,10 +619,10 @@ class ColumnBreak {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1495,56 +1495,56 @@ class Document {
               : null,
           footers: json_.containsKey('footers')
               ? (json_['footers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Footer.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           footnotes: json_.containsKey('footnotes')
               ? (json_['footnotes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Footnote.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Header.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           inlineObjects: json_.containsKey('inlineObjects')
               ? (json_['inlineObjects'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     InlineObject.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           lists: json_.containsKey('lists')
               ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    List.fromJson(item as core.Map<core.String, core.dynamic>),
+                    List.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           namedRanges: json_.containsKey('namedRanges')
               ? (json_['namedRanges'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     NamedRanges.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1556,10 +1556,10 @@ class Document {
               ? (json_['positionedObjects']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PositionedObject.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1571,10 +1571,10 @@ class Document {
                   ? (json_['suggestedDocumentStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedDocumentStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1583,10 +1583,10 @@ class Document {
                   ? (json_['suggestedNamedStylesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedNamedStyles.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2610,10 +2610,10 @@ class FootnoteReference {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2718,10 +2718,10 @@ class HorizontalRule {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2962,10 +2962,10 @@ class InlineObject {
                   ? (json_['suggestedInlineObjectPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedInlineObjectProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -3043,10 +3043,10 @@ class InlineObjectElement {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -3651,10 +3651,10 @@ class List {
                   ? (json_['suggestedListPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedListProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4378,10 +4378,10 @@ class PageBreak {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4468,10 +4468,10 @@ class Paragraph {
               ? (json_['suggestedBulletChanges']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     SuggestedBullet.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4480,10 +4480,10 @@ class Paragraph {
                   ? (json_['suggestedParagraphStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedParagraphStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4492,10 +4492,10 @@ class Paragraph {
                   ? (json_['suggestedPositionedObjectIds']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         ObjectReferences.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -5286,10 +5286,10 @@ class Person {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -5436,10 +5436,10 @@ class PositionedObject {
                   ? (json_['suggestedPositionedObjectPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedPositionedObjectProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -6300,10 +6300,10 @@ class RichLink {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -7586,10 +7586,10 @@ class TableCell {
                   ? (json_['suggestedTableCellStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTableCellStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -8171,10 +8171,10 @@ class TableRow {
                   ? (json_['suggestedTableRowStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTableRowStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -8354,10 +8354,10 @@ class TextRun {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,

@@ -29,7 +29,6 @@
 library admob.v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -321,7 +320,10 @@ class AccountsMediationReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GenerateMediationReportResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => GenerateMediationReportResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 }
 
@@ -374,7 +376,10 @@ class AccountsNetworkReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GenerateNetworkReportResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => GenerateNetworkReportResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 }
 
@@ -742,41 +747,8 @@ class GenerateMediationReportResponseElement {
 /// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
 /// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
 /// }\]
-class GenerateMediationReportResponse
-    extends collection.ListBase<GenerateMediationReportResponseElement> {
-  final core.List<GenerateMediationReportResponseElement> _inner;
-
-  GenerateMediationReportResponse() : _inner = [];
-
-  GenerateMediationReportResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => GenerateMediationReportResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  GenerateMediationReportResponseElement operator [](core.int key) =>
-      _inner[key];
-
-  @core.override
-  void operator []=(
-      core.int key, GenerateMediationReportResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(GenerateMediationReportResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef GenerateMediationReportResponse
+    = core.List<GenerateMediationReportResponseElement>;
 
 /// Request to generate an AdMob Network report.
 class GenerateNetworkReportRequest {
@@ -852,39 +824,8 @@ class GenerateNetworkReportResponseElement {
 /// "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app
 /// name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000}
 /// } } }, { "footer": {"matchingRowCount": 1} }\]
-class GenerateNetworkReportResponse
-    extends collection.ListBase<GenerateNetworkReportResponseElement> {
-  final core.List<GenerateNetworkReportResponseElement> _inner;
-
-  GenerateNetworkReportResponse() : _inner = [];
-
-  GenerateNetworkReportResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => GenerateNetworkReportResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  GenerateNetworkReportResponseElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, GenerateNetworkReportResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(GenerateNetworkReportResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef GenerateNetworkReportResponse
+    = core.List<GenerateNetworkReportResponseElement>;
 
 /// Response for the ad units list request.
 class ListAdUnitsResponse {
@@ -1779,20 +1720,20 @@ class ReportRow {
               ? (json_['dimensionValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ReportRowDimensionValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           metricValues: json_.containsKey('metricValues')
               ? (json_['metricValues'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ReportRowMetricValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

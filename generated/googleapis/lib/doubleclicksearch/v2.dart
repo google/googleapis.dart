@@ -27,7 +27,6 @@
 library doubleclicksearch.v2;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -1239,8 +1238,7 @@ class Report {
               : null,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
-                  .map((value) => ReportRow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           statisticsCurrencyCode: json_.containsKey('statisticsCurrencyCode')
@@ -1784,36 +1782,7 @@ class ReportRequest {
 ///
 /// Indicates the columns that are represented in this row. That is, each key
 /// corresponds to a column with a non-empty cell in this row.
-class ReportRow extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  ReportRow();
-
-  ReportRow.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef ReportRow = core.Map<core.String, core.Object?>;
 
 /// A saved column
 class SavedColumn {

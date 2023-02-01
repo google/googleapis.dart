@@ -684,9 +684,9 @@ class BuildProvenance {
           buildOptions: json_.containsKey('buildOptions')
               ? (json_['buildOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1349,9 +1349,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
       : this(
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3084,10 +3084,10 @@ class Source {
           fileHashes: json_.containsKey('fileHashes')
               ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileHashes.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3143,9 +3143,9 @@ class SourceContext {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3183,9 +3183,9 @@ class Subject {
       : this(
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

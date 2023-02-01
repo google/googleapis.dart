@@ -206,9 +206,9 @@ class AndroidConfig {
               : null,
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -646,9 +646,9 @@ class ApnsConfig {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -882,9 +882,9 @@ class Message {
               : null,
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1032,9 +1032,9 @@ class WebpushConfig {
       : this(
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1044,9 +1044,9 @@ class WebpushConfig {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
