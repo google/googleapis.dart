@@ -1538,7 +1538,7 @@ class AuthorizationAttemptInfo {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "FAILURE_REASON_UNSPECIFIED"
+  /// - "FAILURE_REASON_UNSPECIFIED" : FailureReason is unspecified.
   /// - "CONFIG" : There was a problem with the user's DNS or load balancer
   /// configuration for this domain.
   /// - "CAA" : Certificate issuance forbidden by an explicit CAA record for the
@@ -1551,7 +1551,7 @@ class AuthorizationAttemptInfo {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
   /// - "AUTHORIZING" : Certificate provisioning for this domain is under way.
   /// GCP will attempt to authorize the domain.
   /// - "AUTHORIZED" : A managed certificate can be provisioned, no issues for
@@ -2657,7 +2657,7 @@ class ManagedCertificate {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
   /// - "PROVISIONING" : Certificate Manager attempts to provision or renew the
   /// certificate. If the process takes longer than expected, consult the
   /// `provisioning_issue` field.
@@ -2808,7 +2808,7 @@ class ProvisioningIssue {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "REASON_UNSPECIFIED"
+  /// - "REASON_UNSPECIFIED" : Reason is unspecified.
   /// - "AUTHORIZATION_ISSUE" : Certificate provisioning failed due to an issue
   /// with one or more of the domains on the certificate. For details of which
   /// domains failed, consult the `authorization_attempt_info` field.

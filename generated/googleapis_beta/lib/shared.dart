@@ -22,45 +22,6 @@ import 'dart:core' as core;
 
 /// Used by:
 ///
-/// - alertcenter:v1beta1 : BatchDeleteAlertsRequest
-/// - alertcenter:v1beta1 : BatchUndeleteAlertsRequest
-class $AlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  $AlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  $AlertsRequest.fromJson(core.Map json_)
-      : this(
-          alertId: json_.containsKey('alertId')
-              ? (json_['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1beta1 : AliasContext
 /// - ondemandscanning:v1beta1 : AliasContext
 class $AliasContext {

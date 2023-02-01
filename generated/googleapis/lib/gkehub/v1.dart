@@ -1693,6 +1693,10 @@ class CommonFeatureState {
       };
 }
 
+/// CommonFleetDefaultMemberConfigSpec contains default configuration
+/// information for memberships of a fleet
+typedef CommonFleetDefaultMemberConfigSpec = $Empty;
+
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
   /// Set to true to allow the vertical scaling.
@@ -3006,6 +3010,11 @@ class Feature {
   /// Output only.
   core.String? deleteTime;
 
+  /// Feature configuration applicable to all memberships of the fleet.
+  ///
+  /// Optional.
+  CommonFleetDefaultMemberConfigSpec? fleetDefaultMemberConfig;
+
   /// GCP labels for this Feature.
   core.Map<core.String, core.String>? labels;
 
@@ -3095,6 +3104,7 @@ class Feature {
   Feature({
     this.createTime,
     this.deleteTime,
+    this.fleetDefaultMemberConfig,
     this.labels,
     this.membershipSpecs,
     this.membershipStates,
@@ -3115,6 +3125,12 @@ class Feature {
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
+          fleetDefaultMemberConfig:
+              json_.containsKey('fleetDefaultMemberConfig')
+                  ? CommonFleetDefaultMemberConfigSpec.fromJson(
+                      json_['fleetDefaultMemberConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -3186,6 +3202,8 @@ class Feature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (fleetDefaultMemberConfig != null)
+          'fleetDefaultMemberConfig': fleetDefaultMemberConfig!,
         if (labels != null) 'labels': labels!,
         if (membershipSpecs != null) 'membershipSpecs': membershipSpecs!,
         if (membershipStates != null) 'membershipStates': membershipStates!,

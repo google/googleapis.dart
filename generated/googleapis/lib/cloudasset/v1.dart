@@ -2676,7 +2676,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2692,9 +2694,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -4928,7 +4928,49 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-typedef GoogleIdentityAccesscontextmanagerV1IngressSource = $IngressSource;
+class GoogleIdentityAccesscontextmanagerV1IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
+  /// is specified for `access_level`, then all IngressSources will be allowed.
+  core.String? accessLevel;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String? resource;
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource({
+    this.accessLevel,
+    this.resource,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(core.Map json_)
+      : this(
+          accessLevel: json_.containsKey('accessLevel')
+              ? json_['accessLevel'] as core.String
+              : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (resource != null) 'resource': resource!,
+      };
+}
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -4989,10 +5031,10 @@ typedef GoogleIdentityAccesscontextmanagerV1OsConstraint = $OsConstraint;
 /// outside of the `ServicePerimeter`, the request will be blocked. Otherwise
 /// the request is allowed. There are two types of Service Perimeter - Regular
 /// and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud
-/// project can only belong to a single regular Service Perimeter. Service
-/// Perimeter Bridges can contain only Google Cloud projects as members, a
-/// single Google Cloud project may belong to multiple Service Perimeter
-/// Bridges.
+/// project or VPC network can only belong to a single regular Service
+/// Perimeter. Service Perimeter Bridges can contain only Google Cloud projects
+/// as members, a single Google Cloud project may belong to multiple Service
+/// Perimeter Bridges.
 class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Description of the `ServicePerimeter` and its use.
   ///
@@ -5010,11 +5052,11 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
 
   /// Perimeter type indicator.
   ///
-  /// A single project is allowed to be a member of single regular perimeter,
-  /// but multiple service perimeter bridges. A project cannot be a included in
-  /// a perimeter bridge without being included in regular perimeter. For
-  /// perimeter bridges, the restricted service list as well as access level
-  /// lists must be empty.
+  /// A single project or VPC network is allowed to be a member of single
+  /// regular perimeter, but multiple service perimeter bridges. A project
+  /// cannot be a included in a perimeter bridge without being included in
+  /// regular perimeter. For perimeter bridges, the restricted service list as
+  /// well as access level lists must be empty.
   /// Possible string values are:
   /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter. When no value is
   /// specified, the perimeter uses this type.
@@ -5133,7 +5175,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
   /// Currently only projects and VPCs are allowed. Project format:
-  /// `projects/{project_number}` VPC format:
+  /// `projects/{project_number}` VPC network format:
   /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   core.List<core.String>? resources;
 

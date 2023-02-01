@@ -2656,6 +2656,53 @@ class $CdnPolicyNegativeCachingPolicy {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : CertificateChains
+/// - kmsinventory:v1 : GoogleCloudKmsV1KeyOperationAttestationCertificateChains
+class $CertificateChains {
+  /// Cavium certificate chain corresponding to the attestation.
+  core.List<core.String>? caviumCerts;
+
+  /// Google card certificate chain corresponding to the attestation.
+  core.List<core.String>? googleCardCerts;
+
+  /// Google partition certificate chain corresponding to the attestation.
+  core.List<core.String>? googlePartitionCerts;
+
+  $CertificateChains({
+    this.caviumCerts,
+    this.googleCardCerts,
+    this.googlePartitionCerts,
+  });
+
+  $CertificateChains.fromJson(core.Map json_)
+      : this(
+          caviumCerts: json_.containsKey('caviumCerts')
+              ? (json_['caviumCerts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          googleCardCerts: json_.containsKey('googleCardCerts')
+              ? (json_['googleCardCerts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          googlePartitionCerts: json_.containsKey('googlePartitionCerts')
+              ? (json_['googlePartitionCerts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caviumCerts != null) 'caviumCerts': caviumCerts!,
+        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
+        if (googlePartitionCerts != null)
+          'googlePartitionCerts': googlePartitionCerts!,
+      };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.5 : ChangeLog
 /// - dfareporting:v4 : ChangeLog
 class $ChangeLog {
@@ -4509,6 +4556,105 @@ class $CreativeGroupAssignment {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : CryptoKeyVersionTemplate
+/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
+class $CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  $CryptoKeyVersionTemplate({
+    this.algorithm,
+    this.protectionLevel,
+  });
+
+  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
+      : this(
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
+              : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -5139,141 +5285,6 @@ class $DefaultClickThroughEventTagProperties {
           'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
         if (overrideInheritedEventTag != null)
           'overrideInheritedEventTag': overrideInheritedEventTag!,
-      };
-}
-
-/// Used by:
-///
-/// - displayvideo:v1 : DeleteAssignedTargetingOptionsRequest
-/// - displayvideo:v2 : DeleteAssignedTargetingOptionsRequest
-class $DeleteAssignedTargetingOptionsRequest {
-  /// The assigned targeting option IDs to delete.
-  ///
-  /// Required.
-  core.List<core.String>? assignedTargetingOptionIds;
-
-  /// Identifies the type of this assigned targeting option.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
-  /// or is unknown in this version.
-  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
-  /// websites or apps).
-  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
-  /// education or puzzle games).
-  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
-  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
-  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
-  /// on a specific day.
-  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
-  /// example, 18-24).
-  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
-  /// regions on a regional location list.
-  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
-  /// points of interest on a proximity location list.
-  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
-  /// female or male).
-  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
-  /// for video ads.
-  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
-  /// for video ads.
-  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
-  /// status (for example, parent or not a parent).
-  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
-  /// in a specific content instream position (for example, pre-roll, mid-roll,
-  /// or post-roll).
-  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
-  /// content outstream position.
-  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
-  /// example, tablet or connected TV).
-  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
-  /// audiences. Singleton field, at most one can exist on a single Lineitem at
-  /// a time.
-  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
-  /// example, Chrome).
-  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
-  /// income range (for example, top 10%).
-  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
-  /// position.
-  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
-  /// party verification (for example, IAS or DoubleVerify).
-  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
-  /// specific digital content label ratings (for example, DL-MA: suitable only
-  /// for mature audiences).
-  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
-  /// by sensitive categories (for example, adult).
-  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
-  /// example, web or app).
-  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
-  /// carrier or internet service provider (ISP) (for example, Comcast or
-  /// Orange).
-  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
-  /// system (for example, macOS).
-  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
-  /// make or model (for example, Roku or Samsung).
-  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
-  /// example, dog or retriever).
-  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
-  /// negative keyword list.
-  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
-  /// example, 80% viewable).
-  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
-  /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
-  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
-  /// example, English or Japanese).
-  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
-  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
-  /// (for example, a city or state).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
-  /// group of deals and auction packages.
-  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
-  /// exchanges.
-  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
-  /// sub-exchanges.
-  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
-  /// such as a notable building, a street address, or latitude/longitude
-  /// coordinates.
-  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
-  /// business chain within a specific geo region.
-  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
-  /// content duration.
-  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
-  /// content stream type.
-  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
-  /// native content position.
-  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
-  /// inventory.
-  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
-  /// content type.
-  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
-  core.String? targetingType;
-
-  $DeleteAssignedTargetingOptionsRequest({
-    this.assignedTargetingOptionIds,
-    this.targetingType,
-  });
-
-  $DeleteAssignedTargetingOptionsRequest.fromJson(core.Map json_)
-      : this(
-          assignedTargetingOptionIds:
-              json_.containsKey('assignedTargetingOptionIds')
-                  ? (json_['assignedTargetingOptionIds'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          targetingType: json_.containsKey('targetingType')
-              ? json_['targetingType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedTargetingOptionIds != null)
-          'assignedTargetingOptionIds': assignedTargetingOptionIds!,
-        if (targetingType != null) 'targetingType': targetingType!,
       };
 }
 
@@ -6701,6 +6712,7 @@ class $EgressFrom {
 /// - gkebackup:v1 : GoogleLongrunningCancelOperationRequest
 /// - gkehub:v1 : AppDevExperienceFeatureSpec
 /// - gkehub:v1 : CancelOperationRequest
+/// - gkehub:v1 : CommonFleetDefaultMemberConfigSpec
 /// - gkehub:v1 : Empty
 /// - gkehub:v1 : FleetObservabilityFeatureSpec
 /// - gkehub:v1 : FleetObservabilityFeatureState
@@ -6820,6 +6832,9 @@ class $EgressFrom {
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
+/// - retail:v2 : GoogleCloudRetailV2PauseModelRequest
+/// - retail:v2 : GoogleCloudRetailV2ResumeModelRequest
+/// - retail:v2 : GoogleCloudRetailV2TuneModelRequest
 /// - retail:v2 : GoogleProtobufEmpty
 /// - run:v1 : CancelExecutionRequest
 /// - run:v1 : RunJobRequest
@@ -6828,6 +6843,11 @@ class $EgressFrom {
 /// - runtimeconfig:v1 : Empty
 /// - safebrowsing:v4 : GoogleProtobufEmpty
 /// - script:v1 : Empty
+/// - searchads360:v0 : GoogleAdsSearchads360V0Common__EnhancedCpc
+/// - searchads360:v0 : GoogleAdsSearchads360V0Common__FrequencyCapEntry
+/// - searchads360:v0 : GoogleAdsSearchads360V0Common__ManualCpa
+/// - searchads360:v0 : GoogleAdsSearchads360V0Common__ManualCpm
+/// - searchads360:v0 : GoogleAdsSearchads360V0Common__TargetCpm
 /// - secretmanager:v1 : Empty
 /// - securitycenter:v1 : Empty
 /// - securitycenter:v1 : RunAssetDiscoveryRequest
@@ -7706,6 +7726,7 @@ class $ExportOptions {
 /// - gkehub:v1 : Expr
 /// - healthcare:v1 : Expr
 /// - iam:v1 : Expr
+/// - iam:v2 : GoogleTypeExpr
 /// - iap:v1 : Expr
 /// - ids:v1 : Expr
 /// - managedidentities:v1 : Expr
@@ -7782,6 +7803,42 @@ class $Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudkms:v1 : ExternalProtectionLevelOptions
+/// - kmsinventory:v1 : GoogleCloudKmsV1ExternalProtectionLevelOptions
+class $ExternalProtectionLevelOptions {
+  /// The path to the external key material on the EKM when using EkmConnection
+  /// e.g., "v0/my/key".
+  ///
+  /// Set this field instead of external_key_uri when using an EkmConnection.
+  core.String? ekmConnectionKeyPath;
+
+  /// The URI for an external resource that this CryptoKeyVersion represents.
+  core.String? externalKeyUri;
+
+  $ExternalProtectionLevelOptions({
+    this.ekmConnectionKeyPath,
+    this.externalKeyUri,
+  });
+
+  $ExternalProtectionLevelOptions.fromJson(core.Map json_)
+      : this(
+          ekmConnectionKeyPath: json_.containsKey('ekmConnectionKeyPath')
+              ? json_['ekmConnectionKeyPath'] as core.String
+              : null,
+          externalKeyUri: json_.containsKey('externalKeyUri')
+              ? json_['externalKeyUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ekmConnectionKeyPath != null)
+          'ekmConnectionKeyPath': ekmConnectionKeyPath!,
+        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
       };
 }
 
@@ -9861,54 +9918,6 @@ class $Identity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revision != null) 'revision': revision!,
         if (updateId != null) 'updateId': updateId!,
-      };
-}
-
-/// Used by:
-///
-/// - accesscontextmanager:v1 : IngressSource
-/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
-class $IngressSource {
-  /// An AccessLevel resource name that allow resources within the
-  /// ServicePerimeters to be accessed from the internet.
-  ///
-  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
-  /// Referencing a nonexistent AccessLevel will cause an error. If no
-  /// AccessLevel names are listed, resources within the perimeter can only be
-  /// accessed via Google Cloud calls with request origins within the perimeter.
-  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
-  /// is specified for `access_level`, then all IngressSources will be allowed.
-  core.String? accessLevel;
-
-  /// A Google Cloud resource that is allowed to ingress the perimeter.
-  ///
-  /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects and VPCs are allowed. Project format:
-  /// `projects/{project_number}` VPC format:
-  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-  /// The project may be in any Google Cloud organization, not just the
-  /// organization that the perimeter is defined in. `*` is not allowed, the
-  /// case of allowing all Google Cloud resources only is not supported.
-  core.String? resource;
-
-  $IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
-
-  $IngressSource.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_.containsKey('accessLevel')
-              ? json_['accessLevel'] as core.String
-              : null,
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -17975,6 +17984,7 @@ class $StartPageToken {
 /// - gkehub:v1 : GoogleRpcStatus
 /// - healthcare:v1 : Status
 /// - iam:v1 : Status
+/// - iam:v2 : GoogleRpcStatus
 /// - ids:v1 : Status
 /// - jobs:v4 : Status
 /// - logging:v2 : Status
@@ -20373,6 +20383,34 @@ class $VpcServiceControlsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+      };
+}
+
+/// Used by:
+///
+/// - run:v2 : GoogleLongrunningWaitOperationRequest
+/// - translate:v3 : WaitOperationRequest
+class $WaitOperationRequest {
+  /// The maximum duration to wait before timing out.
+  ///
+  /// If left blank, the wait will be at most the time permitted by the
+  /// underlying HTTP/RPC protocol. If RPC context deadline is also specified,
+  /// the shorter one will be used.
+  core.String? timeout;
+
+  $WaitOperationRequest({
+    this.timeout,
+  });
+
+  $WaitOperationRequest.fromJson(core.Map json_)
+      : this(
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 

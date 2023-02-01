@@ -272,7 +272,7 @@ class Metric {
   /// will add up to ~1.
   core.List<Bin>? histogram;
 
-  /// Common useful percentiles of the Metric.
+  /// Commonly useful percentiles of the Metric.
   ///
   /// The value type for the percentiles will be the same as the value types
   /// given for the Histogram bins.
@@ -470,7 +470,9 @@ class Record {
   ///
   /// Metrics are keyed on the metric name. Allowed key values:
   /// \["first_contentful_paint", "first_input_delay",
-  /// "largest_contentful_paint", "cumulative_layout_shift"\]
+  /// "largest_contentful_paint", "cumulative_layout_shift",
+  /// "experimental_time_to_first_byte",
+  /// "experimental_interaction_to_next_paint"\]
   core.Map<core.String, Metric>? metrics;
 
   Record({

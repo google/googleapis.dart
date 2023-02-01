@@ -2544,6 +2544,7 @@ api.Volume buildVolume() {
     o.snapshotReservationDetail = buildSnapshotReservationDetail();
     o.snapshotSchedulePolicy = 'foo';
     o.state = 'foo';
+    o.storageAggregatePool = 'foo';
     o.storageType = 'foo';
     o.workloadProfile = 'foo';
   }
@@ -2623,6 +2624,10 @@ void checkVolume(api.Volume o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.storageAggregatePool!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.storageType!,
       unittest.equals('foo'),
     );
@@ -2688,6 +2693,7 @@ api.VolumeConfig buildVolumeConfig() {
     o.protocol = 'foo';
     o.sizeGb = 42;
     o.snapshotsEnabled = true;
+    o.storageAggregatePool = 'foo';
     o.type = 'foo';
     o.userNote = 'foo';
   }
@@ -2726,6 +2732,10 @@ void checkVolumeConfig(api.VolumeConfig o) {
       unittest.equals(42),
     );
     unittest.expect(o.snapshotsEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.storageAggregatePool!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.type!,
       unittest.equals('foo'),

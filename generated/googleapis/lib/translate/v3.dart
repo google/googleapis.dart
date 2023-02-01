@@ -4349,26 +4349,4 @@ class Translation {
 }
 
 /// The request message for Operations.WaitOperation.
-class WaitOperationRequest {
-  /// The maximum duration to wait before timing out.
-  ///
-  /// If left blank, the wait will be at most the time permitted by the
-  /// underlying HTTP/RPC protocol. If RPC context deadline is also specified,
-  /// the shorter one will be used.
-  core.String? timeout;
-
-  WaitOperationRequest({
-    this.timeout,
-  });
-
-  WaitOperationRequest.fromJson(core.Map json_)
-      : this(
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (timeout != null) 'timeout': timeout!,
-      };
-}
+typedef WaitOperationRequest = $WaitOperationRequest;

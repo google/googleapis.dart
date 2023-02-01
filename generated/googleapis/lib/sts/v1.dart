@@ -324,6 +324,10 @@ class GoogleIdentityStsV1ExchangeOauthTokenResponse {
   /// issued and the time when the access token will expires.
   core.int? expiresIn;
 
+  /// Google issued ID token in response to the OAuth token exchange request for
+  /// ID token flow.
+  core.String? idToken;
+
   /// A refresh token, issued by Google, in response to the OAuth token exchange
   /// request for refresh token flow
   core.String? refreshToken;
@@ -334,13 +338,13 @@ class GoogleIdentityStsV1ExchangeOauthTokenResponse {
   /// The type of token.
   ///
   /// Field reserved for RFC compliance. See
-  /// https://www.rfc-editor.org/rfc/rfc6749#section-5.1 Note: No token_type is
-  /// returned for current implementation
+  /// https://www.rfc-editor.org/rfc/rfc6749#section-5.1
   core.String? tokenType;
 
   GoogleIdentityStsV1ExchangeOauthTokenResponse({
     this.accessToken,
     this.expiresIn,
+    this.idToken,
     this.refreshToken,
     this.scope,
     this.tokenType,
@@ -353,6 +357,9 @@ class GoogleIdentityStsV1ExchangeOauthTokenResponse {
               : null,
           expiresIn: json_.containsKey('expires_in')
               ? json_['expires_in'] as core.int
+              : null,
+          idToken: json_.containsKey('id_token')
+              ? json_['id_token'] as core.String
               : null,
           refreshToken: json_.containsKey('refresh_token')
               ? json_['refresh_token'] as core.String
@@ -367,6 +374,7 @@ class GoogleIdentityStsV1ExchangeOauthTokenResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'access_token': accessToken!,
         if (expiresIn != null) 'expires_in': expiresIn!,
+        if (idToken != null) 'id_token': idToken!,
         if (refreshToken != null) 'refresh_token': refreshToken!,
         if (scope != null) 'scope': scope!,
         if (tokenType != null) 'token_type': tokenType!,

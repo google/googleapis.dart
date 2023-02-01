@@ -299,6 +299,23 @@ void checkCommonFeatureState(api.CommonFeatureState o) {
   buildCounterCommonFeatureState--;
 }
 
+core.int buildCounterCommonFleetDefaultMemberConfigSpec = 0;
+api.CommonFleetDefaultMemberConfigSpec
+    buildCommonFleetDefaultMemberConfigSpec() {
+  final o = api.CommonFleetDefaultMemberConfigSpec();
+  buildCounterCommonFleetDefaultMemberConfigSpec++;
+  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {}
+  buildCounterCommonFleetDefaultMemberConfigSpec--;
+  return o;
+}
+
+void checkCommonFleetDefaultMemberConfigSpec(
+    api.CommonFleetDefaultMemberConfigSpec o) {
+  buildCounterCommonFleetDefaultMemberConfigSpec++;
+  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {}
+  buildCounterCommonFleetDefaultMemberConfigSpec--;
+}
+
 core.int buildCounterConfigManagementConfigSync = 0;
 api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
   final o = api.ConfigManagementConfigSync();
@@ -1297,6 +1314,7 @@ api.Feature buildFeature() {
   if (buildCounterFeature < 3) {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
+    o.fleetDefaultMemberConfig = buildCommonFleetDefaultMemberConfigSpec();
     o.labels = buildUnnamed8();
     o.membershipSpecs = buildUnnamed9();
     o.membershipStates = buildUnnamed10();
@@ -1323,6 +1341,7 @@ void checkFeature(api.Feature o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
+    checkCommonFleetDefaultMemberConfigSpec(o.fleetDefaultMemberConfig!);
     checkUnnamed8(o.labels!);
     checkUnnamed9(o.membershipSpecs!);
     checkUnnamed10(o.membershipStates!);
@@ -3114,6 +3133,16 @@ void main() {
       final od = api.CommonFeatureState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCommonFeatureState(od);
+    });
+  });
+
+  unittest.group('obj-schema-CommonFleetDefaultMemberConfigSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCommonFleetDefaultMemberConfigSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CommonFleetDefaultMemberConfigSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommonFleetDefaultMemberConfigSpec(od);
     });
   });
 

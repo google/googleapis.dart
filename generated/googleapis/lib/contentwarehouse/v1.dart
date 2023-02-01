@@ -117,16 +117,7 @@ class ProjectsResource {
 
   /// Sets the access control policy for a resource.
   ///
-  /// Replaces any existing policy. You can set ACL with condition for projects
-  /// only. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where
-  /// the left of the operator is `DocumentSchemaId` or property name and the
-  /// right of the operator is a number or a quoted string. You must escape
-  /// backslash (\\) and quote (\") characters. Boolean expressions (AND/OR) are
-  /// supported up to 3 levels of nesting (for example, "((A AND B AND C) OR D)
-  /// AND E"), a maximum of 10 comparisons are allowed in the expression. The
-  /// expression must be \< 6000 bytes in length. Sample condition:
-  /// `"DocumentSchemaId = \"some schema id\" " OR SchemaId.floatPropertyName >=
-  /// 10`
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -837,16 +828,7 @@ class ProjectsLocationsDocumentsResource {
 
   /// Sets the access control policy for a resource.
   ///
-  /// Replaces any existing policy. You can set ACL with condition for projects
-  /// only. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where
-  /// the left of the operator is `DocumentSchemaId` or property name and the
-  /// right of the operator is a number or a quoted string. You must escape
-  /// backslash (\\) and quote (\") characters. Boolean expressions (AND/OR) are
-  /// supported up to 3 levels of nesting (for example, "((A AND B AND C) OR D)
-  /// AND E"), a maximum of 10 comparisons are allowed in the expression. The
-  /// expression must be \< 6000 bytes in length. Sample condition:
-  /// `"DocumentSchemaId = \"some schema id\" " OR SchemaId.floatPropertyName >=
-  /// 10`
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2327,6 +2309,7 @@ class GoogleCloudContentwarehouseV1Document {
   /// - "RAW_DOCUMENT_FILE_TYPE_XLSX" : Microsoft Excel format
   /// - "RAW_DOCUMENT_FILE_TYPE_PPTX" : Microsoft Powerpoint format
   /// - "RAW_DOCUMENT_FILE_TYPE_TEXT" : UTF-8 encoded text format
+  /// - "RAW_DOCUMENT_FILE_TYPE_TIFF" : TIFF or TIF image file format
   core.String? rawDocumentFileType;
 
   /// Raw document file in Cloud Storage path.
@@ -4888,7 +4871,15 @@ class GoogleCloudContentwarehouseV1SetAclRequest {
   ///
   /// The size of the policy is limited to a few 10s of KB. This refers to an
   /// Identity and Access (IAM) policy, which specifies access controls for the
-  /// Document.
+  /// Document. You can set ACL with condition for projects only. Supported
+  /// operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the left of the
+  /// operator is `DocumentSchemaId` or property name and the right of the
+  /// operator is a number or a quoted string. You must escape backslash (\\)
+  /// and quote (\") characters. Boolean expressions (AND/OR) are supported up
+  /// to 3 levels of nesting (for example, "((A AND B AND C) OR D) AND E"), a
+  /// maximum of 10 comparisons are allowed in the expression. The expression
+  /// must be \< 6000 bytes in length. Sample condition: `"DocumentSchemaId =
+  /// \"some schema id\" OR SchemaId.floatPropertyName >= 10"`
   ///
   /// Required.
   GoogleIamV1Policy? policy;

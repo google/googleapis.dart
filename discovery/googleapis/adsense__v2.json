@@ -1823,7 +1823,7 @@
             }
         }
     },
-    "revision": "20230117",
+    "revision": "20230131",
     "rootUrl": "https://adsense.googleapis.com/",
     "schemas": {
         "Account": {

@@ -3692,10 +3692,11 @@ class Container {
   /// Not supported by Cloud Run.
   core.List<EnvFromSource>? envFrom;
 
-  /// URL of the Container image in Google Container Registry or Google Artifact
-  /// Registry.
+  /// Name of the container image in Dockerhub, Google Artifact Registry, or
+  /// Google Container Registry.
   ///
-  /// More info: https://kubernetes.io/docs/concepts/containers/images
+  /// If the host is not provided, Dockerhub is assumed. More info:
+  /// https://kubernetes.io/docs/concepts/containers/images
   ///
   /// Required.
   core.String? image;

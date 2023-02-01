@@ -1431,6 +1431,9 @@ class UsersMessagesResource {
   /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
   /// headers.
   ///
+  /// For example usage, see
+  /// [Sending email](https://developers.google.com/gmail/api/guides/sending).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2083,7 +2086,6 @@ class UsersSettingsCseIdentitiesResource {
   /// Google publishes the S/MIME certificate to a shared domain-wide directory
   /// so that people within a Google Workspace organization can encrypt and send
   /// mail to the identity.
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2132,7 +2134,6 @@ class UsersSettingsCseIdentitiesResource {
   /// messages. You cannot restore the identity after you delete it. Instead,
   /// use the CreateCseIdentity method to create another identity with the same
   /// configuration.
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// Request parameters:
   ///
@@ -2173,8 +2174,6 @@ class UsersSettingsCseIdentitiesResource {
   }
 
   /// Retrieves a client-side encryption identity configuration.
-  ///
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// Request parameters:
   ///
@@ -2218,8 +2217,6 @@ class UsersSettingsCseIdentitiesResource {
   }
 
   /// Lists the client-side encrypted identities for an authenticated user.
-  ///
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// Request parameters:
   ///
@@ -2273,7 +2270,6 @@ class UsersSettingsCseIdentitiesResource {
   ///
   /// The updated key pair must validate against Google's
   /// [S/MIME certificate profiles](https://support.google.com/a/answer/7300887).
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2331,8 +2327,6 @@ class UsersSettingsCseKeypairsResource {
   /// Creates and uploads a client-side encryption S/MIME public key certificate
   /// chain and private key metadata for the authenticated user.
   ///
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2380,7 +2374,6 @@ class UsersSettingsCseKeypairsResource {
   /// CSE message texts or sign outgoing CSE mail. To regain access, use the
   /// EnableCseKeyPair to turn on the key pair. After 30 days, you can
   /// permanently delete the key pair by using the ObliterateCseKeyPair method.
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2432,7 +2425,6 @@ class UsersSettingsCseKeypairsResource {
   ///
   /// The key pair becomes active again for any associated client-side
   /// encryption identities.
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2482,8 +2474,6 @@ class UsersSettingsCseKeypairsResource {
 
   /// Retrieves an existing client-side encryption key pair.
   ///
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-  ///
   /// Request parameters:
   ///
   /// [userId] - The requester's primary email address. To indicate the
@@ -2525,8 +2515,6 @@ class UsersSettingsCseKeypairsResource {
   }
 
   /// Lists client-side encryption key pairs for an authenticated user.
-  ///
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// Request parameters:
   ///
@@ -2582,7 +2570,6 @@ class UsersSettingsCseKeypairsResource {
   /// method. Gmail can't restore or decrypt any messages that were encrypted by
   /// an obliterated key. Authenticated users and Google Workspace
   /// administrators lose access to reading the encrypted messages.
-  /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4154,12 +4141,11 @@ class BatchModifyMessagesRequest {
       };
 }
 
-/// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-///
 /// The client-side encryption (CSE) configuration for the email address of an
-/// authenticated user. Gmail uses CSE configurations to save drafts of
-/// client-side encrypted email messages, and to sign and send encrypted email
-/// messages.
+/// authenticated user.
+///
+/// Gmail uses CSE configurations to save drafts of client-side encrypted email
+/// messages, and to sign and send encrypted email messages.
 class CseIdentity {
   /// The email address for the sending identity.
   ///
@@ -4191,11 +4177,10 @@ class CseIdentity {
       };
 }
 
-/// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-///
 /// A client-side encryption S/MIME key pair, which is comprised of a public
-/// key, its certificate chain, and metadata for its paired private key. Gmail
-/// uses the key pair to complete the following tasks: - Sign outgoing
+/// key, its certificate chain, and metadata for its paired private key.
+///
+/// Gmail uses the key pair to complete the following tasks: - Sign outgoing
 /// client-side encrypted messages. - Save and reopen drafts of client-side
 /// encrypted messages. - Save and reopen sent messages. - Decrypt incoming or
 /// archived S/MIME messages.

@@ -312,6 +312,7 @@ api.CommitRequest buildCommitRequest() {
     o.databaseId = 'foo';
     o.mode = 'foo';
     o.mutations = buildUnnamed6();
+    o.singleUseTransaction = buildTransactionOptions();
     o.transaction = 'foo';
   }
   buildCounterCommitRequest--;
@@ -330,6 +331,7 @@ void checkCommitRequest(api.CommitRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.mutations!);
+    checkTransactionOptions(o.singleUseTransaction!);
     unittest.expect(
       o.transaction!,
       unittest.equals('foo'),
@@ -1201,6 +1203,7 @@ api.LookupResponse buildLookupResponse() {
     o.found = buildUnnamed24();
     o.missing = buildUnnamed25();
     o.readTime = 'foo';
+    o.transaction = 'foo';
   }
   buildCounterLookupResponse--;
   return o;
@@ -1214,6 +1217,10 @@ void checkLookupResponse(api.LookupResponse o) {
     checkUnnamed25(o.missing!);
     unittest.expect(
       o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transaction!,
       unittest.equals('foo'),
     );
   }
@@ -1629,6 +1636,7 @@ api.ReadOptions buildReadOptions() {
   final o = api.ReadOptions();
   buildCounterReadOptions++;
   if (buildCounterReadOptions < 3) {
+    o.newTransaction = buildTransactionOptions();
     o.readConsistency = 'foo';
     o.readTime = 'foo';
     o.transaction = 'foo';
@@ -1640,6 +1648,7 @@ api.ReadOptions buildReadOptions() {
 void checkReadOptions(api.ReadOptions o) {
   buildCounterReadOptions++;
   if (buildCounterReadOptions < 3) {
+    checkTransactionOptions(o.newTransaction!);
     unittest.expect(
       o.readConsistency!,
       unittest.equals('foo'),
@@ -1807,6 +1816,7 @@ api.RunAggregationQueryResponse buildRunAggregationQueryResponse() {
   if (buildCounterRunAggregationQueryResponse < 3) {
     o.batch = buildAggregationResultBatch();
     o.query = buildAggregationQuery();
+    o.transaction = 'foo';
   }
   buildCounterRunAggregationQueryResponse--;
   return o;
@@ -1817,6 +1827,10 @@ void checkRunAggregationQueryResponse(api.RunAggregationQueryResponse o) {
   if (buildCounterRunAggregationQueryResponse < 3) {
     checkAggregationResultBatch(o.batch!);
     checkAggregationQuery(o.query!);
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRunAggregationQueryResponse--;
 }
@@ -1858,6 +1872,7 @@ api.RunQueryResponse buildRunQueryResponse() {
   if (buildCounterRunQueryResponse < 3) {
     o.batch = buildQueryResultBatch();
     o.query = buildQuery();
+    o.transaction = 'foo';
   }
   buildCounterRunQueryResponse--;
   return o;
@@ -1868,6 +1883,10 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
   if (buildCounterRunQueryResponse < 3) {
     checkQueryResultBatch(o.batch!);
     checkQuery(o.query!);
+    unittest.expect(
+      o.transaction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRunQueryResponse--;
 }

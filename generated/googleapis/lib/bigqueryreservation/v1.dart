@@ -1237,6 +1237,51 @@ class Assignment {
       };
 }
 
+/// Auto scaling settings.
+///
+/// max_slots and budget are mutually exclusive. If max_slots is set: * The
+/// system will create a dedicated `FLEX` capacity commitment to hold the slots
+/// for auto-scale. Users won't be able to manage it, to avoid conflicts. *
+/// Scale-up will happen if there are always pending tasks for the past 10
+/// minutes. * Scale-down will happen, if the system detects that scale-up won't
+/// be triggered again. If budget is set: * The system will try to use more
+/// slots immediately. * At a particular moment, the number of slots scaled is
+/// determined by the sytsem, based on the remaining budget and system limit.
+/// But overall the usage will conform to the budget if there is enough traffic.
+/// * The system will round the slot usage every minute. **Note** this is an
+/// alpha feature.
+class Autoscale {
+  /// The slot capacity added to this reservation when autoscale happens.
+  ///
+  /// Will be between \[0, max_slots\].
+  ///
+  /// Output only.
+  core.String? currentSlots;
+
+  /// Number of slots to be scaled when needed.
+  core.String? maxSlots;
+
+  Autoscale({
+    this.currentSlots,
+    this.maxSlots,
+  });
+
+  Autoscale.fromJson(core.Map json_)
+      : this(
+          currentSlots: json_.containsKey('currentSlots')
+              ? json_['currentSlots'] as core.String
+              : null,
+          maxSlots: json_.containsKey('maxSlots')
+              ? json_['maxSlots'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentSlots != null) 'currentSlots': currentSlots!,
+        if (maxSlots != null) 'maxSlots': maxSlots!,
+      };
+}
+
 /// Represents a BI Reservation.
 class BiReservation {
   /// The resource name of the singleton BI reservation.
@@ -1308,6 +1353,13 @@ class CapacityCommitment {
   /// Output only.
   core.String? commitmentStartTime;
 
+  /// Edition of the capacity commitment.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Default value, only for legacy reservations and
+  /// capacity commitments.
+  /// - "ENTERPRISE" : Enterprise edition.
+  core.String? edition;
+
   /// For FAILED commitment plan, provides the reason of failure.
   ///
   /// Output only.
@@ -1349,6 +1401,12 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? plan;
 
   /// The plan this capacity commitment is converted to after
@@ -1372,6 +1430,12 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? renewalPlan;
 
   /// Number of slots in this commitment.
@@ -1392,6 +1456,7 @@ class CapacityCommitment {
   CapacityCommitment({
     this.commitmentEndTime,
     this.commitmentStartTime,
+    this.edition,
     this.failureStatus,
     this.multiRegionAuxiliary,
     this.name,
@@ -1408,6 +1473,9 @@ class CapacityCommitment {
               : null,
           commitmentStartTime: json_.containsKey('commitmentStartTime')
               ? json_['commitmentStartTime'] as core.String
+              : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
               : null,
           failureStatus: json_.containsKey('failureStatus')
               ? Status.fromJson(
@@ -1432,6 +1500,7 @@ class CapacityCommitment {
         if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
         if (commitmentStartTime != null)
           'commitmentStartTime': commitmentStartTime!,
+        if (edition != null) 'edition': edition!,
         if (failureStatus != null) 'failureStatus': failureStatus!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,
@@ -1609,6 +1678,11 @@ class MoveAssignmentRequest {
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
+  /// The configuration parameters for the auto scaling feature.
+  ///
+  /// Note this is an alpha feature.
+  Autoscale? autoscale;
+
   /// Job concurrency target which sets a soft upper bound on the number of jobs
   /// that can run concurrently in this reservation.
   ///
@@ -1623,6 +1697,13 @@ class Reservation {
   ///
   /// Output only.
   core.String? creationTime;
+
+  /// Edition of the reservation.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Default value, only for legacy reservations and
+  /// capacity commitments.
+  /// - "ENTERPRISE" : Enterprise edition.
+  core.String? edition;
 
   /// If false, any query or pipeline job using this reservation will use idle
   /// slots from other reservations within the same admin project.
@@ -1666,8 +1747,10 @@ class Reservation {
   core.String? updateTime;
 
   Reservation({
+    this.autoscale,
     this.concurrency,
     this.creationTime,
+    this.edition,
     this.ignoreIdleSlots,
     this.multiRegionAuxiliary,
     this.name,
@@ -1677,11 +1760,18 @@ class Reservation {
 
   Reservation.fromJson(core.Map json_)
       : this(
+          autoscale: json_.containsKey('autoscale')
+              ? Autoscale.fromJson(
+                  json_['autoscale'] as core.Map<core.String, core.dynamic>)
+              : null,
           concurrency: json_.containsKey('concurrency')
               ? json_['concurrency'] as core.String
               : null,
           creationTime: json_.containsKey('creationTime')
               ? json_['creationTime'] as core.String
+              : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
               : null,
           ignoreIdleSlots: json_.containsKey('ignoreIdleSlots')
               ? json_['ignoreIdleSlots'] as core.bool
@@ -1699,8 +1789,10 @@ class Reservation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscale != null) 'autoscale': autoscale!,
         if (concurrency != null) 'concurrency': concurrency!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (edition != null) 'edition': edition!,
         if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,

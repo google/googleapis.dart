@@ -495,6 +495,7 @@ api.BiEngineStatistics buildBiEngineStatistics() {
   final o = api.BiEngineStatistics();
   buildCounterBiEngineStatistics++;
   if (buildCounterBiEngineStatistics < 3) {
+    o.accelerationMode = 'foo';
     o.biEngineMode = 'foo';
     o.biEngineReasons = buildUnnamed10();
   }
@@ -505,6 +506,10 @@ api.BiEngineStatistics buildBiEngineStatistics() {
 void checkBiEngineStatistics(api.BiEngineStatistics o) {
   buildCounterBiEngineStatistics++;
   if (buildCounterBiEngineStatistics < 3) {
+    unittest.expect(
+      o.accelerationMode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.biEngineMode!,
       unittest.equals('foo'),

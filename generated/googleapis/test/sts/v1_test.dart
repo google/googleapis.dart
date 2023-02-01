@@ -88,6 +88,7 @@ api.GoogleIdentityStsV1ExchangeOauthTokenResponse
   if (buildCounterGoogleIdentityStsV1ExchangeOauthTokenResponse < 3) {
     o.accessToken = 'foo';
     o.expiresIn = 42;
+    o.idToken = 'foo';
     o.refreshToken = 'foo';
     o.scope = 'foo';
     o.tokenType = 'foo';
@@ -107,6 +108,10 @@ void checkGoogleIdentityStsV1ExchangeOauthTokenResponse(
     unittest.expect(
       o.expiresIn!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.idToken!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.refreshToken!,

@@ -155,9 +155,11 @@ class FoldersAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent that the listed assets belong
-  /// to. Its format is "organizations/\[organization_id\],
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent resource that contains the
+  /// assets. The value that you can specify on parent depends on the method in
+  /// which you specify parent. You can specify one of the following values:
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -1128,7 +1130,7 @@ class FoldersSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\],
+  /// format should be "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
@@ -1798,9 +1800,11 @@ class OrganizationsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent that the listed assets belong
-  /// to. Its format is "organizations/\[organization_id\],
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent resource that contains the
+  /// assets. The value that you can specify on parent depends on the method in
+  /// which you specify parent. You can specify one of the following values:
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -3129,7 +3133,7 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\],
+  /// format should be "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -3892,9 +3896,11 @@ class ProjectsAssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent that the listed assets belong
-  /// to. Its format is "organizations/\[organization_id\],
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// [parent] - Required. The name of the parent resource that contains the
+  /// assets. The value that you can specify on parent depends on the method in
+  /// which you specify parent. You can specify one of the following values:
+  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -4866,7 +4872,7 @@ class ProjectsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\],
+  /// format should be "organizations/\[organization_id\]",
   /// "folders/\[folder_id\]", or "projects/\[project_id\]".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -5426,15 +5432,18 @@ class Access {
   /// "iam.googleapis.com"
   core.String? serviceName;
 
-  /// What kind of user agent is associated, e.g. operating system shells,
-  /// embedded or stand-alone applications, etc.
+  /// What kind of user agent is associated, for example operating system
+  /// shells, embedded or stand-alone applications, etc.
   core.String? userAgentFamily;
 
-  /// A string representing a username.
+  /// A string that represents the username of a user, user account, or other
+  /// entity involved in the access event.
   ///
-  /// This is likely not an IAM principal. For instance, this may be the system
-  /// user name if the finding is VM-related, or this may be some type of
-  /// application login user name, depending on the type of finding.
+  /// What the entity is and what its role in the access event is depends on the
+  /// finding that this field appears in. The entity is likely not an IAM
+  /// principal, but could be a user that is logged into an operating system, if
+  /// the finding is VM-related, or a user that is logged into some type of
+  /// application that is involved in the access event.
   core.String? userName;
 
   Access({
@@ -5834,7 +5843,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -5850,9 +5861,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

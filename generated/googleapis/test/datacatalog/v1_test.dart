@@ -2805,6 +2805,7 @@ api.GoogleCloudDatacatalogV1Taxonomy buildGoogleCloudDatacatalogV1Taxonomy() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.policyTagCount = 42;
+    o.service = buildGoogleCloudDatacatalogV1TaxonomyService();
     o.taxonomyTimestamps = buildGoogleCloudDatacatalogV1SystemTimestamps();
   }
   buildCounterGoogleCloudDatacatalogV1Taxonomy--;
@@ -2832,9 +2833,39 @@ void checkGoogleCloudDatacatalogV1Taxonomy(
       o.policyTagCount!,
       unittest.equals(42),
     );
+    checkGoogleCloudDatacatalogV1TaxonomyService(o.service!);
     checkGoogleCloudDatacatalogV1SystemTimestamps(o.taxonomyTimestamps!);
   }
   buildCounterGoogleCloudDatacatalogV1Taxonomy--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1TaxonomyService = 0;
+api.GoogleCloudDatacatalogV1TaxonomyService
+    buildGoogleCloudDatacatalogV1TaxonomyService() {
+  final o = api.GoogleCloudDatacatalogV1TaxonomyService();
+  buildCounterGoogleCloudDatacatalogV1TaxonomyService++;
+  if (buildCounterGoogleCloudDatacatalogV1TaxonomyService < 3) {
+    o.identity = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterGoogleCloudDatacatalogV1TaxonomyService--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1TaxonomyService(
+    api.GoogleCloudDatacatalogV1TaxonomyService o) {
+  buildCounterGoogleCloudDatacatalogV1TaxonomyService++;
+  if (buildCounterGoogleCloudDatacatalogV1TaxonomyService < 3) {
+    unittest.expect(
+      o.identity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDatacatalogV1TaxonomyService--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest = 0;
@@ -4220,6 +4251,16 @@ void main() {
       final od = api.GoogleCloudDatacatalogV1Taxonomy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1Taxonomy(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1TaxonomyService', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1TaxonomyService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1TaxonomyService.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1TaxonomyService(od);
     });
   });
 
@@ -7531,6 +7572,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -7567,6 +7609,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -7587,6 +7633,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

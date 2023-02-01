@@ -2250,7 +2250,7 @@ class ProjectsRegionsClustersResource {
   /// [clusterName] - Required. The cluster name.
   ///
   /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// decommissioning. Graceful decommissioning allows removing nodes from the
   /// cluster without interrupting jobs in progress. Timeout specifies how long
   /// to wait for jobs in progress to finish before forcefully removing nodes
   /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
@@ -5655,7 +5655,10 @@ class ExecutionConfig {
   /// value is 10 minutes; maximum value is 14 days (see JSON representation of
   /// Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-  /// Defaults to 4 hours if not set.
+  /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified,
+  /// the conditions are treated as and OR: the workload will be terminated when
+  /// it has been idle for idle_ttl or when the ttl has passed, whichever comes
+  /// first.
   ///
   /// Optional.
   core.String? idleTtl;
@@ -8321,6 +8324,7 @@ class Metric {
   /// - "YARN" : YARN metric source.
   /// - "SPARK_HISTORY_SERVER" : Spark History Server metric source.
   /// - "HIVESERVER2" : Hiveserver2 metric source.
+  /// - "HIVEMETASTORE" : hivemetastore metric source
   core.String? metricSource;
 
   Metric({
@@ -9507,7 +9511,7 @@ class RepairClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
-  /// Timeout for graceful YARN decomissioning.
+  /// Timeout for graceful YARN decommissioning.
   ///
   /// Graceful decommissioning facilitates the removal of cluster nodes without
   /// interrupting jobs in progress. The timeout specifies the amount of time to

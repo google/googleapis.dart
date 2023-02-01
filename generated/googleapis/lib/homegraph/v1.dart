@@ -335,8 +335,6 @@ class AgentOtherDeviceId {
 }
 
 /// Third-party device definition.
-///
-/// Next ID = 14
 class Device {
   /// Attributes for the traits supported by the device.
   ///

@@ -2662,6 +2662,41 @@ void checkGoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics(
   buildCounterGoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics--;
 }
 
+core.int buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference = 0;
+api.GoogleCloudDocumentaiV1beta3EvaluationReference
+    buildGoogleCloudDocumentaiV1beta3EvaluationReference() {
+  final o = api.GoogleCloudDocumentaiV1beta3EvaluationReference();
+  buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference < 3) {
+    o.aggregateMetrics = buildGoogleCloudDocumentaiV1beta3EvaluationMetrics();
+    o.aggregateMetricsExact =
+        buildGoogleCloudDocumentaiV1beta3EvaluationMetrics();
+    o.evaluation = 'foo';
+    o.operation = 'foo';
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3EvaluationReference(
+    api.GoogleCloudDocumentaiV1beta3EvaluationReference o) {
+  buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference < 3) {
+    checkGoogleCloudDocumentaiV1beta3EvaluationMetrics(o.aggregateMetrics!);
+    checkGoogleCloudDocumentaiV1beta3EvaluationMetrics(
+        o.aggregateMetricsExact!);
+    unittest.expect(
+      o.evaluation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3EvaluationReference--;
+}
+
 core.List<api.GoogleCloudDocumentaiV1beta3ProcessorType> buildUnnamed48() => [
       buildGoogleCloudDocumentaiV1beta3ProcessorType(),
       buildGoogleCloudDocumentaiV1beta3ProcessorType(),
@@ -3274,6 +3309,7 @@ api.GoogleCloudDocumentaiV1beta3ProcessorVersion
     o.googleManaged = true;
     o.kmsKeyName = 'foo';
     o.kmsKeyVersionName = 'foo';
+    o.latestEvaluation = buildGoogleCloudDocumentaiV1beta3EvaluationReference();
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -3305,6 +3341,7 @@ void checkGoogleCloudDocumentaiV1beta3ProcessorVersion(
       o.kmsKeyVersionName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1beta3EvaluationReference(o.latestEvaluation!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4926,6 +4963,17 @@ void main() {
           api.GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3EvaluationReference',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1beta3EvaluationReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1beta3EvaluationReference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3EvaluationReference(od);
     });
   });
 

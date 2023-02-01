@@ -337,7 +337,7 @@
             }
         }
     },
-    "revision": "20230111",
+    "revision": "20230131",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {

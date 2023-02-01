@@ -2749,6 +2749,9 @@ class ProjectsLocationsTaxonomiesResource {
   /// of.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Supported field for filter is 'service' and value is
+  /// 'dataplex'. Eg: service=dataplex.
+  ///
   /// [pageSize] - The maximum number of items to return. Must be a value
   /// between 1 and 1000 inclusively. If not set, defaults to 50.
   ///
@@ -2768,11 +2771,13 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1ListTaxonomiesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -6997,6 +7002,14 @@ class GoogleCloudDatacatalogV1Taxonomy {
   /// Output only.
   core.int? policyTagCount;
 
+  /// Identity of the service which owns the Taxonomy.
+  ///
+  /// This field is only populated when the taxonomy is created by a GCP
+  /// service. Currently only 'DATAPLEX' is supported.
+  ///
+  /// Output only.
+  GoogleCloudDatacatalogV1TaxonomyService? service;
+
   /// Creation and modification timestamps of this taxonomy.
   ///
   /// Output only.
@@ -7008,6 +7021,7 @@ class GoogleCloudDatacatalogV1Taxonomy {
     this.displayName,
     this.name,
     this.policyTagCount,
+    this.service,
     this.taxonomyTimestamps,
   });
 
@@ -7028,6 +7042,10 @@ class GoogleCloudDatacatalogV1Taxonomy {
           policyTagCount: json_.containsKey('policyTagCount')
               ? json_['policyTagCount'] as core.int
               : null,
+          service: json_.containsKey('service')
+              ? GoogleCloudDatacatalogV1TaxonomyService.fromJson(
+                  json_['service'] as core.Map<core.String, core.dynamic>)
+              : null,
           taxonomyTimestamps: json_.containsKey('taxonomyTimestamps')
               ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
                   json_['taxonomyTimestamps']
@@ -7042,8 +7060,40 @@ class GoogleCloudDatacatalogV1Taxonomy {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (policyTagCount != null) 'policyTagCount': policyTagCount!,
+        if (service != null) 'service': service!,
         if (taxonomyTimestamps != null)
           'taxonomyTimestamps': taxonomyTimestamps!,
+      };
+}
+
+/// The source system of the Taxonomy.
+class GoogleCloudDatacatalogV1TaxonomyService {
+  /// P4SA Identity of the service.
+  core.String? identity;
+
+  /// The GCP service name.
+  /// Possible string values are:
+  /// - "MANAGING_SYSTEM_UNSPECIFIED" : Default value
+  /// - "MANAGING_SYSTEM_DATAPLEX" : Dataplex.
+  /// - "MANAGING_SYSTEM_OTHER" : Other
+  core.String? name;
+
+  GoogleCloudDatacatalogV1TaxonomyService({
+    this.identity,
+    this.name,
+  });
+
+  GoogleCloudDatacatalogV1TaxonomyService.fromJson(core.Map json_)
+      : this(
+          identity: json_.containsKey('identity')
+              ? json_['identity'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (identity != null) 'identity': identity!,
+        if (name != null) 'name': name!,
       };
 }
 

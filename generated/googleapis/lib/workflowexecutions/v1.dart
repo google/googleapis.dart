@@ -285,6 +285,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters applied to the \[Executions.ListExecutions\]
+  /// results. The following fields are supported for filtering: executionID,
+  /// state, startTime, endTime, duration, workflowRevisionID, stepName, and
+  /// label.
+  ///
+  /// [orderBy] - Optional. The orderding applied to the
+  /// \[Executions.ListExecutions\] results. By default the ordering is based on
+  /// descending start time. The following fields are supported for order by:
+  /// executionID, startTime, endTime, duration, state, and workflowRevisionID.
+  ///
   /// [pageSize] - Maximum number of executions to return per call. Max
   /// supported value depends on the selected Execution view: it's 1000 for
   /// BASIC and 100 for FULL. The default value used if the field is not
@@ -317,12 +327,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -420,6 +434,14 @@ class Execution {
   /// Output only.
   Error? error;
 
+  /// Labels associated with this execution.
+  ///
+  /// Labels can contain at most 64 entries. Keys and values can be no longer
+  /// than 63 characters and can only contain lowercase letters, numeric
+  /// characters, underscores and dashes. Label keys must start with a letter.
+  /// International characters are allowed.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name of the execution.
   ///
   /// Format:
@@ -467,6 +489,7 @@ class Execution {
     this.duration,
     this.endTime,
     this.error,
+    this.labels,
     this.name,
     this.result,
     this.startTime,
@@ -493,6 +516,14 @@ class Execution {
               ? Error.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           result: json_.containsKey('result')
               ? json_['result'] as core.String
@@ -517,6 +548,7 @@ class Execution {
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (result != null) 'result': result!,
         if (startTime != null) 'startTime': startTime!,

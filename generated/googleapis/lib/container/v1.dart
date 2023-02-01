@@ -3868,6 +3868,10 @@ class AutoprovisioningNodePoolDefaults {
   core.String? diskType;
 
   /// The image type to use for NAP created node.
+  ///
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
   core.String? imageType;
 
   /// Specifies the node management options for NAP created node-pools.
@@ -3881,8 +3885,8 @@ class AutoprovisioningNodePoolDefaults {
   /// more information, read
   /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   /// This field is deprecated, min_cpu_platform should be specified using
-  /// https://cloud.google.com/requested-min-cpu-platform label selector on the
-  /// pod. To unset the min cpu platform field pass "automatic" as field value.
+  /// `cloud.google.com/requested-min-cpu-platform` label selector on the pod.
+  /// To unset the min cpu platform field pass "automatic" as field value.
   ///
   /// Deprecated.
   core.String? minCpuPlatform;
@@ -6612,6 +6616,11 @@ class IPAllocationPolicy {
   /// to use.
   core.String? servicesIpv4CidrBlock;
 
+  /// The services IPv6 CIDR block for the cluster.
+  ///
+  /// Output only.
+  core.String? servicesIpv6CidrBlock;
+
   /// The name of the secondary range to be used as for the services CIDR block.
   ///
   /// The secondary range will be used for service ClusterIPs. This must be an
@@ -6626,6 +6635,11 @@ class IPAllocationPolicy {
   /// - "IPV4" : Cluster is IPV4 only
   /// - "IPV4_IPV6" : Cluster can use both IPv4 and IPv6
   core.String? stackType;
+
+  /// The subnet's IPv6 CIDR block used by nodes and pods.
+  ///
+  /// Output only.
+  core.String? subnetIpv6CidrBlock;
 
   /// A custom subnetwork name to be used if `create_subnetwork` is true.
   ///
@@ -6669,8 +6683,10 @@ class IPAllocationPolicy {
     this.nodeIpv4CidrBlock,
     this.servicesIpv4Cidr,
     this.servicesIpv4CidrBlock,
+    this.servicesIpv6CidrBlock,
     this.servicesSecondaryRangeName,
     this.stackType,
+    this.subnetIpv6CidrBlock,
     this.subnetworkName,
     this.tpuIpv4CidrBlock,
     this.useIpAliases,
@@ -6707,12 +6723,18 @@ class IPAllocationPolicy {
           servicesIpv4CidrBlock: json_.containsKey('servicesIpv4CidrBlock')
               ? json_['servicesIpv4CidrBlock'] as core.String
               : null,
+          servicesIpv6CidrBlock: json_.containsKey('servicesIpv6CidrBlock')
+              ? json_['servicesIpv6CidrBlock'] as core.String
+              : null,
           servicesSecondaryRangeName:
               json_.containsKey('servicesSecondaryRangeName')
                   ? json_['servicesSecondaryRangeName'] as core.String
                   : null,
           stackType: json_.containsKey('stackType')
               ? json_['stackType'] as core.String
+              : null,
+          subnetIpv6CidrBlock: json_.containsKey('subnetIpv6CidrBlock')
+              ? json_['subnetIpv6CidrBlock'] as core.String
               : null,
           subnetworkName: json_.containsKey('subnetworkName')
               ? json_['subnetworkName'] as core.String
@@ -6741,9 +6763,13 @@ class IPAllocationPolicy {
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
         if (servicesIpv4CidrBlock != null)
           'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
+        if (servicesIpv6CidrBlock != null)
+          'servicesIpv6CidrBlock': servicesIpv6CidrBlock!,
         if (servicesSecondaryRangeName != null)
           'servicesSecondaryRangeName': servicesSecondaryRangeName!,
         if (stackType != null) 'stackType': stackType!,
+        if (subnetIpv6CidrBlock != null)
+          'subnetIpv6CidrBlock': subnetIpv6CidrBlock!,
         if (subnetworkName != null) 'subnetworkName': subnetworkName!,
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (useIpAliases != null) 'useIpAliases': useIpAliases!,
@@ -7935,6 +7961,9 @@ class NodeConfig {
   /// The image type to use for this node.
   ///
   /// Note that for a given image type, the latest version of it will be used.
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
   core.String? imageType;
 
   /// Node kubelet configs.
@@ -8647,7 +8676,10 @@ class NodePool {
   /// Upgrade settings control disruption and speed of the upgrade.
   UpgradeSettings? upgradeSettings;
 
-  /// The version of the Kubernetes of this node.
+  /// The version of Kubernetes running on this NodePool's nodes.
+  ///
+  /// If unspecified, it defaults as described
+  /// [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   core.String? version;
 
   NodePool({
@@ -11417,6 +11449,10 @@ class UpdateNodePoolRequest {
 
   /// The desired image type for the node pool.
   ///
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
+  ///
   /// Required.
   core.String? imageType;
 
@@ -11707,7 +11743,9 @@ class UpgradeSettings {
 
   /// Update strategy of the node pool.
   /// Possible string values are:
-  /// - "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" : Default value.
+  /// - "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" : Default value if unset. GKE
+  /// internally defaults the update strategy to SURGE for unspecified
+  /// strategies.
   /// - "BLUE_GREEN" : blue-green upgrade.
   /// - "SURGE" : SURGE is the traditional way of upgrade a node pool. max_surge
   /// and max_unavailable determines the level of upgrade parallelism.

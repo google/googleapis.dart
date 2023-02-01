@@ -3292,8 +3292,8 @@ class Trigger {
   /// Optional.
   core.String? serviceAccount;
 
-  /// To deliver messages, Eventarc might use other GCP products as a transport
-  /// intermediary.
+  /// To deliver messages, Eventarc might use other Google Cloud products as a
+  /// transport intermediary.
   ///
   /// This field contains a reference to that transport intermediary. This
   /// information can be used for debugging purposes.

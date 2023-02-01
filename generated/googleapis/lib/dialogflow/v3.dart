@@ -7850,6 +7850,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Possible string values are:
   /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
   /// - "BLOB" : Agent content will be exported as raw bytes.
+  /// - "JSON_PACKAGE" : Agent content will be exported in JSON Package format.
   core.String? dataFormat;
 
   /// Environment name.

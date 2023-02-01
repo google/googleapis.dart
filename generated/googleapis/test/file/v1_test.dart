@@ -52,6 +52,7 @@ api.Backup buildBackup() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.downloadBytes = 'foo';
+    o.kmsKey = 'foo';
     o.labels = buildUnnamed0();
     o.name = 'foo';
     o.satisfiesPzs = true;
@@ -82,6 +83,10 @@ void checkBackup(api.Backup o) {
     );
     unittest.expect(
       o.downloadBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKey!,
       unittest.equals('foo'),
     );
     checkUnnamed0(o.labels!);

@@ -1164,6 +1164,11 @@ class Backup {
   /// Output only.
   core.String? downloadBytes;
 
+  /// KMS key name used for data encryption.
+  ///
+  /// Immutable.
+  core.String? kmsKey;
+
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
 
@@ -1234,6 +1239,7 @@ class Backup {
     this.createTime,
     this.description,
     this.downloadBytes,
+    this.kmsKey,
     this.labels,
     this.name,
     this.satisfiesPzs,
@@ -1257,6 +1263,9 @@ class Backup {
               : null,
           downloadBytes: json_.containsKey('downloadBytes')
               ? json_['downloadBytes'] as core.String
+              : null,
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -1291,6 +1300,7 @@ class Backup {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (downloadBytes != null) 'downloadBytes': downloadBytes!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,

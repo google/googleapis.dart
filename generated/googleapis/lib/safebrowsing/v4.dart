@@ -530,20 +530,16 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats. This enum was never launched and should be re-used for
-  /// the next list.
+  /// incident threats.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial will not be shown for patterns from this
-  /// list.
+  /// subresource filter.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
-  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
-  /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
-  /// expressions.
-  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
-  /// Chrome. See go/sb-accuracytips.
-  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
-  /// WebRisk. See go/lower-precision-blocklists-enterprise.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat type.
+  /// - "HIGH_CONFIDENCE_ALLOWLIST" : URL expressions that are very likely to be
+  /// safe.
+  /// - "ACCURACY_TIPS" : An experimental threat type related to Jigsaw. See
+  /// https://jigsaw.google.com/.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest({
@@ -794,20 +790,16 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats. This enum was never launched and should be re-used for
-  /// the next list.
+  /// incident threats.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial will not be shown for patterns from this
-  /// list.
+  /// subresource filter.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
-  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
-  /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
-  /// expressions.
-  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
-  /// Chrome. See go/sb-accuracytips.
-  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
-  /// WebRisk. See go/lower-precision-blocklists-enterprise.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat type.
+  /// - "HIGH_CONFIDENCE_ALLOWLIST" : URL expressions that are very likely to be
+  /// safe.
+  /// - "ACCURACY_TIPS" : An experimental threat type related to Jigsaw. See
+  /// https://jigsaw.google.com/.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse({
@@ -1402,20 +1394,16 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats. This enum was never launched and should be re-used for
-  /// the next list.
+  /// incident threats.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial will not be shown for patterns from this
-  /// list.
+  /// subresource filter.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
-  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
-  /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
-  /// expressions.
-  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
-  /// Chrome. See go/sb-accuracytips.
-  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
-  /// WebRisk. See go/lower-precision-blocklists-enterprise.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat type.
+  /// - "HIGH_CONFIDENCE_ALLOWLIST" : URL expressions that are very likely to be
+  /// safe.
+  /// - "ACCURACY_TIPS" : An experimental threat type related to Jigsaw. See
+  /// https://jigsaw.google.com/.
   core.String? threatType;
 
   /// Details about the user that encountered the threat.
@@ -1661,20 +1649,16 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats. This enum was never launched and should be re-used for
-  /// the next list.
+  /// incident threats.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial will not be shown for patterns from this
-  /// list.
+  /// subresource filter.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
-  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
-  /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
-  /// expressions.
-  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
-  /// Chrome. See go/sb-accuracytips.
-  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
-  /// WebRisk. See go/lower-precision-blocklists-enterprise.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat type.
+  /// - "HIGH_CONFIDENCE_ALLOWLIST" : URL expressions that are very likely to be
+  /// safe.
+  /// - "ACCURACY_TIPS" : An experimental threat type related to Jigsaw. See
+  /// https://jigsaw.google.com/.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatListDescriptor({
@@ -1758,20 +1742,16 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats. This enum was never launched and should be re-used for
-  /// the next list.
+  /// incident threats.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial will not be shown for patterns from this
-  /// list.
+  /// subresource filter.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
-  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
-  /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
-  /// expressions.
-  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
-  /// Chrome. See go/sb-accuracytips.
-  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
-  /// WebRisk. See go/lower-precision-blocklists-enterprise.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat type.
+  /// - "HIGH_CONFIDENCE_ALLOWLIST" : URL expressions that are very likely to be
+  /// safe.
+  /// - "ACCURACY_TIPS" : An experimental threat type related to Jigsaw. See
+  /// https://jigsaw.google.com/.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatMatch({

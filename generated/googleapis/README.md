@@ -90,6 +90,11 @@ Generates performance reports, generates ad codes, and provides publisher manage
 - [Documentation](https://developers.google.com/adsense/host/)
 - [API details](https://pub.dev/documentation/googleapis/10.0.0/adsensehost.v4_1/adsensehost.v4_1-library.html)
 
+#### Advisory Notifications API - `advisorynotifications.v1`
+
+- [Documentation](https://cloud.google.com/advisory-notifications)
+- [API details](https://pub.dev/documentation/googleapis/10.0.0/advisorynotifications.v1/advisorynotifications.v1-library.html)
+
 #### ![Logo](https://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - `analytics.v3`
 
 Views and manages your Google Analytics data.
@@ -913,6 +918,13 @@ Manages identity and access control for Google Cloud Platform resources, includi
 - [Documentation](https://cloud.google.com/iam/)
 - [API details](https://pub.dev/documentation/googleapis/10.0.0/iam.v1/iam.v1-library.html)
 
+#### Identity and Access Management (IAM) API - `iam.v2`
+
+Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. 
+
+- [Documentation](https://cloud.google.com/iam/)
+- [API details](https://pub.dev/documentation/googleapis/10.0.0/iam.v2/iam.v2-library.html)
+
 #### IAM Service Account Credentials API - `iamcredentials.v1`
 
 Creates short-lived credentials for impersonating IAM service accounts. To enable this API, you must enable the IAM API (iam.googleapis.com). 
@@ -975,6 +987,11 @@ Searches the Google Knowledge Graph for entities.
 
 - [Documentation](https://developers.google.com/knowledge-graph/)
 - [API details](https://pub.dev/documentation/googleapis/10.0.0/kgsearch.v1/kgsearch.v1-library.html)
+
+#### KMS Inventory API - `kmsinventory.v1`
+
+- [Documentation](https://cloud.google.com/kms/)
+- [API details](https://pub.dev/documentation/googleapis/10.0.0/kmsinventory.v1/kmsinventory.v1-library.html)
 
 #### Cloud Natural Language API - `language.v1`
 
@@ -1330,6 +1347,13 @@ Manages and executes Google Apps Script projects.
 
 - [Documentation](https://developers.google.com/apps-script/api/)
 - [API details](https://pub.dev/documentation/googleapis/10.0.0/script.v1/script.v1-library.html)
+
+#### Search Ads 360 Reporting API - `searchads360.v0`
+
+The Search Ads 360 API allows developers to automate downloading reports from Search Ads 360.
+
+- [Documentation](https://developers.google.com/search-ads/reporting)
+- [API details](https://pub.dev/documentation/googleapis/10.0.0/searchads360.v0/searchads360.v0-library.html)
 
 #### Google Search Console API - `searchconsole.v1`
 

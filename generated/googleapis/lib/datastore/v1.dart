@@ -1247,6 +1247,12 @@ class CommitRequest {
   /// no two mutations may affect a single entity.
   core.List<Mutation>? mutations;
 
+  /// Options for beginning a new transaction for this request.
+  ///
+  /// The transaction is committed when the request completes. If specified,
+  /// TransactionOptions.mode must be TransactionOptions.ReadWrite.
+  TransactionOptions? singleUseTransaction;
+
   /// The identifier of the transaction associated with the commit.
   ///
   /// A transaction identifier is returned by a call to
@@ -1264,6 +1270,7 @@ class CommitRequest {
     this.databaseId,
     this.mode,
     this.mutations,
+    this.singleUseTransaction,
     this.transaction,
   });
 
@@ -1279,6 +1286,10 @@ class CommitRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          singleUseTransaction: json_.containsKey('singleUseTransaction')
+              ? TransactionOptions.fromJson(json_['singleUseTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           transaction: json_.containsKey('transaction')
               ? json_['transaction'] as core.String
               : null,
@@ -1288,6 +1299,8 @@ class CommitRequest {
         if (databaseId != null) 'databaseId': databaseId!,
         if (mode != null) 'mode': mode!,
         if (mutations != null) 'mutations': mutations!,
+        if (singleUseTransaction != null)
+          'singleUseTransaction': singleUseTransaction!,
         if (transaction != null) 'transaction': transaction!,
       };
 }
@@ -2249,11 +2262,26 @@ class LookupResponse {
   /// The time at which these entities were read or found missing.
   core.String? readTime;
 
+  /// The identifier of the transaction that was started as part of this Lookup
+  /// request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// LookupRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   LookupResponse({
     this.deferred,
     this.found,
     this.missing,
     this.readTime,
+    this.transaction,
   });
 
   LookupResponse.fromJson(core.Map json_)
@@ -2279,6 +2307,9 @@ class LookupResponse {
           readTime: json_.containsKey('readTime')
               ? json_['readTime'] as core.String
               : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2286,6 +2317,7 @@ class LookupResponse {
         if (found != null) 'found': found!,
         if (missing != null) 'missing': missing!,
         if (readTime != null) 'readTime': readTime!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -2579,7 +2611,8 @@ class PropertyFilter {
   /// Requires: * No other `NOT_EQUAL` or `NOT_IN` is in the same query. * That
   /// `property` comes first in the `order_by`.
   /// - "HAS_ANCESTOR" : Limit the result set to the given entity and its
-  /// descendants. Requires: * That `value` is an entity key.
+  /// descendants. Requires: * That `value` is an entity key. * No other
+  /// `HAS_ANCESTOR` is in the same query.
   /// - "NOT_IN" : The value of the `property` is not in the given array.
   /// Requires: * That `value` is a non-empty `ArrayValue` with at most 10
   /// values. * No other `IN`, `NOT_IN`, `NOT_EQUAL` is in the same query. *
@@ -2955,6 +2988,13 @@ class ReadOnly {
 
 /// The options shared by read requests.
 class ReadOptions {
+  /// Options for beginning a new transaction for this request.
+  ///
+  /// The new transaction identifier will be returned in the corresponding
+  /// response as either LookupResponse.transaction or
+  /// RunQueryResponse.transaction.
+  TransactionOptions? newTransaction;
+
   /// The non-transactional read consistency to use.
   /// Possible string values are:
   /// - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
@@ -2983,6 +3023,7 @@ class ReadOptions {
   }
 
   ReadOptions({
+    this.newTransaction,
     this.readConsistency,
     this.readTime,
     this.transaction,
@@ -2990,6 +3031,10 @@ class ReadOptions {
 
   ReadOptions.fromJson(core.Map json_)
       : this(
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           readConsistency: json_.containsKey('readConsistency')
               ? json_['readConsistency'] as core.String
               : null,
@@ -3002,6 +3047,7 @@ class ReadOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readConsistency != null) 'readConsistency': readConsistency!,
         if (readTime != null) 'readTime': readTime!,
         if (transaction != null) 'transaction': transaction!,
@@ -3200,9 +3246,24 @@ class RunAggregationQueryResponse {
   /// The parsed form of the `GqlQuery` from the request, if it was set.
   AggregationQuery? query;
 
+  /// The identifier of the transaction that was started as part of this
+  /// RunAggregationQuery request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// RunAggregationQueryRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   RunAggregationQueryResponse({
     this.batch,
     this.query,
+    this.transaction,
   });
 
   RunAggregationQueryResponse.fromJson(core.Map json_)
@@ -3215,11 +3276,15 @@ class RunAggregationQueryResponse {
               ? AggregationQuery.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batch != null) 'batch': batch!,
         if (query != null) 'query': query!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -3296,9 +3361,24 @@ class RunQueryResponse {
   /// The parsed form of the `GqlQuery` from the request, if it was set.
   Query? query;
 
+  /// The identifier of the transaction that was started as part of this
+  /// RunQuery request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// RunQueryRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   RunQueryResponse({
     this.batch,
     this.query,
+    this.transaction,
   });
 
   RunQueryResponse.fromJson(core.Map json_)
@@ -3311,11 +3391,15 @@ class RunQueryResponse {
               ? Query.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batch != null) 'batch': batch!,
         if (query != null) 'query': query!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 

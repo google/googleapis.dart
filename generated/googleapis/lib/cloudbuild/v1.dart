@@ -4251,7 +4251,7 @@ class Build {
   ///
   /// If this amount of time elapses, work on the build will cease and the build
   /// status will be `TIMEOUT`. `timeout` starts ticking from `startTime`.
-  /// Default time is ten minutes.
+  /// Default time is 60 minutes.
   core.String? timeout;
 
   /// Stores timing information for phases of the build.
@@ -5532,6 +5532,7 @@ class GitFileSource {
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
+  /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when
@@ -6265,6 +6266,7 @@ class GitRepoSource {
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
+  /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
   /// The URI of the repo.
@@ -8084,7 +8086,7 @@ class WorkerConfig {
   ///
   /// See
   /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
-  /// Specify a value of up to 1000. If `0` is specified, Cloud Build will use a
+  /// Specify a value of up to 2000. If `0` is specified, Cloud Build will use a
   /// standard disk size.
   core.String? diskSizeGb;
 

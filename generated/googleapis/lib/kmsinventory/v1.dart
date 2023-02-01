@@ -1,0 +1,1060 @@
+// This is a generated file (see the discoveryapis_generator project).
+
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: file_names
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_string_interpolations
+
+/// KMS Inventory API - v1
+///
+/// For more information, see <https://cloud.google.com/kms/>
+///
+/// Create an instance of [KmsinventoryApi] to access these resources:
+///
+/// - [OrganizationsResource]
+///   - [OrganizationsProtectedResourcesResource]
+/// - [ProjectsResource]
+///   - [ProjectsCryptoKeysResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsKeyRingsResource]
+///       - [ProjectsLocationsKeyRingsCryptoKeysResource]
+library kmsinventory.v1;
+
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
+
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:http/http.dart' as http;
+
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
+import '../src/user_agent.dart';
+
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
+
+class KmsinventoryApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
+  final commons.ApiRequester _requester;
+
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+
+  KmsinventoryApi(http.Client client,
+      {core.String rootUrl = 'https://kmsinventory.googleapis.com/',
+      core.String servicePath = ''})
+      : _requester =
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsProtectedResourcesResource get protectedResources =>
+      OrganizationsProtectedResourcesResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsProtectedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsProtectedResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns metadata about the resources protected by the given Cloud KMS
+  /// CryptoKey in the given Cloud organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. Resource name of the organization. Example:
+  /// organizations/123
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [cryptoKey] - Required. The resource name of the CryptoKey.
+  ///
+  /// [pageSize] - The maximum number of resources to return. The service may
+  /// return fewer than this value. If unspecified, at most 500 resources will
+  /// be returned. The maximum value is 500; values above 500 will be coerced to
+  /// 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// KeyTrackingService.SearchProtectedResources call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// KeyTrackingService.SearchProtectedResources must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>
+      search(
+    core.String scope, {
+    core.String? cryptoKey,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (cryptoKey != null) 'cryptoKey': [cryptoKey],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$scope') + '/protectedResources:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsCryptoKeysResource get cryptoKeys =>
+      ProjectsCryptoKeysResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsCryptoKeysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsCryptoKeysResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns cryptographic keys managed by Cloud KMS in a given Cloud project.
+  ///
+  /// Note that this data is sourced from snapshots, meaning it may not
+  /// completely reflect the actual state of key metadata at call time.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Google Cloud project for which to retrieve key
+  /// metadata, in the format `projects / * `
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of keys to return. The service
+  /// may return fewer than this value. If unspecified, at most 1000 keys will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. Pass this into a subsequent request in order to
+  /// receive the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudKmsInventoryV1ListCryptoKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudKmsInventoryV1ListCryptoKeysResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudKmsInventoryV1ListCryptoKeysResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKeyRingsResource get keyRings =>
+      ProjectsLocationsKeyRingsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsKeyRingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKeyRingsCryptoKeysResource get cryptoKeys =>
+      ProjectsLocationsKeyRingsCryptoKeysResource(_requester);
+
+  ProjectsLocationsKeyRingsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsKeyRingsCryptoKeysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKeyRingsCryptoKeysResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns aggregate information about the resources protected by the given
+  /// Cloud KMS CryptoKey.
+  ///
+  /// Only resources within the same Cloud organization as the key will be
+  /// returned. The project that holds the key must be part of an organization
+  /// in order for this call to succeed.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKey.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudKmsInventoryV1ProtectedResourcesSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>
+      getProtectedResourcesSummary(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + '/protectedResourcesSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Response message for KeyDashboardService.ListCryptoKeys.
+class GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
+  /// The list of CryptoKeys.
+  core.List<GoogleCloudKmsV1CryptoKey>? cryptoKeys;
+
+  /// The page token returned from the previous response if the next page is
+  /// desired.
+  core.String? nextPageToken;
+
+  GoogleCloudKmsInventoryV1ListCryptoKeysResponse({
+    this.cryptoKeys,
+    this.nextPageToken,
+  });
+
+  GoogleCloudKmsInventoryV1ListCryptoKeysResponse.fromJson(core.Map json_)
+      : this(
+          cryptoKeys: json_.containsKey('cryptoKeys')
+              ? (json_['cryptoKeys'] as core.List)
+                  .map((value) => GoogleCloudKmsV1CryptoKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cryptoKeys != null) 'cryptoKeys': cryptoKeys!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Metadata about a resource protected by a Cloud KMS key.
+class GoogleCloudKmsInventoryV1ProtectedResource {
+  /// The Cloud product that owns the resource.
+  ///
+  /// Example: `compute`
+  core.String? cloudProduct;
+
+  /// The time at which this resource was created.
+  ///
+  /// The granularity is in seconds. Timestamp.nanos will always be 0.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The name of the Cloud KMS
+  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+  /// used to protect this resource via CMEK.
+  ///
+  /// This field is empty if the Google Cloud product owning the resource does
+  /// not provide key version data to Asset Inventory. If there are multiple key
+  /// versions protecting the resource, then this is same value as the first
+  /// element of crypto_key_versions.
+  core.String? cryptoKeyVersion;
+
+  /// The names of the Cloud KMS
+  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+  /// used to protect this resource via CMEK.
+  ///
+  /// This field is empty if the Google Cloud product owning the resource does
+  /// not provide key versions data to Asset Inventory. The first element of
+  /// this field is stored in crypto_key_version.
+  core.List<core.String>? cryptoKeyVersions;
+
+  /// A key-value pair of the resource's labels (v1) to their values.
+  core.Map<core.String, core.String>? labels;
+
+  /// Location can be `global`, regional like `us-east1`, or zonal like
+  /// `us-west1-b`.
+  core.String? location;
+
+  /// The full resource name of the resource.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
+  core.String? name;
+
+  /// Format: `projects/{PROJECT_NUMBER}`.
+  core.String? project;
+
+  /// The ID of the project that owns the resource.
+  core.String? projectId;
+
+  /// Example: `compute.googleapis.com/Disk`
+  core.String? resourceType;
+
+  GoogleCloudKmsInventoryV1ProtectedResource({
+    this.cloudProduct,
+    this.createTime,
+    this.cryptoKeyVersion,
+    this.cryptoKeyVersions,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.projectId,
+    this.resourceType,
+  });
+
+  GoogleCloudKmsInventoryV1ProtectedResource.fromJson(core.Map json_)
+      : this(
+          cloudProduct: json_.containsKey('cloudProduct')
+              ? json_['cloudProduct'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          cryptoKeyVersion: json_.containsKey('cryptoKeyVersion')
+              ? json_['cryptoKeyVersion'] as core.String
+              : null,
+          cryptoKeyVersions: json_.containsKey('cryptoKeyVersions')
+              ? (json_['cryptoKeyVersions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProduct != null) 'cloudProduct': cloudProduct!,
+        if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
+        if (cryptoKeyVersions != null) 'cryptoKeyVersions': cryptoKeyVersions!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
+        if (projectId != null) 'projectId': projectId!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// Aggregate information about the resources protected by a Cloud KMS key in
+/// the same Cloud organization as the key.
+class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
+  /// The number of resources protected by the key grouped by Cloud product.
+  core.Map<core.String, core.String>? cloudProducts;
+
+  /// The number of resources protected by the key grouped by region.
+  core.Map<core.String, core.String>? locations;
+
+  /// The full name of the ProtectedResourcesSummary resource.
+  ///
+  /// Example:
+  /// projects/test-project/locations/us/keyRings/test-keyring/cryptoKeys/test-key/protectedResourcesSummary
+  core.String? name;
+
+  /// The number of distinct Cloud projects in the same Cloud organization as
+  /// the key that have resources protected by the key.
+  core.int? projectCount;
+
+  /// The total number of protected resources in the same Cloud organization as
+  /// the key.
+  core.String? resourceCount;
+
+  /// The number of resources protected by the key grouped by resource type.
+  core.Map<core.String, core.String>? resourceTypes;
+
+  GoogleCloudKmsInventoryV1ProtectedResourcesSummary({
+    this.cloudProducts,
+    this.locations,
+    this.name,
+    this.projectCount,
+    this.resourceCount,
+    this.resourceTypes,
+  });
+
+  GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(core.Map json_)
+      : this(
+          cloudProducts: json_.containsKey('cloudProducts')
+              ? (json_['cloudProducts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectCount: json_.containsKey('projectCount')
+              ? json_['projectCount'] as core.int
+              : null,
+          resourceCount: json_.containsKey('resourceCount')
+              ? json_['resourceCount'] as core.String
+              : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProducts != null) 'cloudProducts': cloudProducts!,
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!,
+        if (projectCount != null) 'projectCount': projectCount!,
+        if (resourceCount != null) 'resourceCount': resourceCount!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// Response message for KeyTrackingService.SearchProtectedResources.
+class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Protected resources for this page.
+  core.List<GoogleCloudKmsInventoryV1ProtectedResource>? protectedResources;
+
+  GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse({
+    this.nextPageToken,
+    this.protectedResources,
+  });
+
+  GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          protectedResources: json_.containsKey('protectedResources')
+              ? (json_['protectedResources'] as core.List)
+                  .map((value) =>
+                      GoogleCloudKmsInventoryV1ProtectedResource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (protectedResources != null)
+          'protectedResources': protectedResources!,
+      };
+}
+
+/// A CryptoKey represents a logical key that can be used for cryptographic
+/// operations.
+///
+/// A CryptoKey is made up of zero or more versions, which represent the actual
+/// key material used in cryptographic operations.
+class GoogleCloudKmsV1CryptoKey {
+  /// The time at which this CryptoKey was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource name of the backend environment where the key material for
+  /// all CryptoKeyVersions associated with this CryptoKey reside and where all
+  /// related cryptographic operations are performed.
+  ///
+  /// Only applicable if CryptoKeyVersions have a ProtectionLevel of
+  /// EXTERNAL_VPC, with the resource name in the format `projects / *
+  /// /locations / * /ekmConnections / * `. Note, this list is non-exhaustive
+  /// and may apply to additional ProtectionLevels in the future.
+  ///
+  /// Immutable.
+  core.String? cryptoKeyBackend;
+
+  /// The period of time that versions of this key spend in the
+  /// DESTROY_SCHEDULED state before transitioning to DESTROYED.
+  ///
+  /// If not specified at creation time, the default duration is 24 hours.
+  ///
+  /// Immutable.
+  core.String? destroyScheduledDuration;
+
+  /// Whether this key may contain imported versions only.
+  ///
+  /// Immutable.
+  core.bool? importOnly;
+
+  /// Labels with user-defined metadata.
+  ///
+  /// For more information, see
+  /// [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name for this CryptoKey in the format `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// At next_rotation_time, the Key Management Service will automatically: 1.
+  ///
+  /// Create a new version of this CryptoKey. 2. Mark the new version as
+  /// primary. Key rotations performed manually via CreateCryptoKeyVersion and
+  /// UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with
+  /// purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this
+  /// field must be omitted.
+  core.String? nextRotationTime;
+
+  /// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when
+  /// this CryptoKey is given in EncryptRequest.name.
+  ///
+  /// The CryptoKey's primary version can be updated via
+  /// UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have
+  /// a primary. For other keys, this field will be omitted.
+  ///
+  /// Output only.
+  GoogleCloudKmsV1CryptoKeyVersion? primary;
+
+  /// The immutable purpose of this CryptoKey.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_PURPOSE_UNSPECIFIED" : Not specified.
+  /// - "ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// Encrypt and Decrypt.
+  /// - "ASYMMETRIC_SIGN" : CryptoKeys with this purpose may be used with
+  /// AsymmetricSign and GetPublicKey.
+  /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// AsymmetricDecrypt and GetPublicKey.
+  /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
+  core.String? purpose;
+
+  /// next_rotation_time will be advanced by this period when the service
+  /// automatically rotates a key.
+  ///
+  /// Must be at least 24 hours and at most 876,000 hours. If rotation_period is
+  /// set, next_rotation_time must also be set. Keys with purpose
+  /// ENCRYPT_DECRYPT support automatic rotation. For other keys, this field
+  /// must be omitted.
+  core.String? rotationPeriod;
+
+  /// A template describing settings for new CryptoKeyVersion instances.
+  ///
+  /// The properties of new CryptoKeyVersion instances created by either
+  /// CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+  GoogleCloudKmsV1CryptoKeyVersionTemplate? versionTemplate;
+
+  GoogleCloudKmsV1CryptoKey({
+    this.createTime,
+    this.cryptoKeyBackend,
+    this.destroyScheduledDuration,
+    this.importOnly,
+    this.labels,
+    this.name,
+    this.nextRotationTime,
+    this.primary,
+    this.purpose,
+    this.rotationPeriod,
+    this.versionTemplate,
+  });
+
+  GoogleCloudKmsV1CryptoKey.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          cryptoKeyBackend: json_.containsKey('cryptoKeyBackend')
+              ? json_['cryptoKeyBackend'] as core.String
+              : null,
+          destroyScheduledDuration:
+              json_.containsKey('destroyScheduledDuration')
+                  ? json_['destroyScheduledDuration'] as core.String
+                  : null,
+          importOnly: json_.containsKey('importOnly')
+              ? json_['importOnly'] as core.bool
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nextRotationTime: json_.containsKey('nextRotationTime')
+              ? json_['nextRotationTime'] as core.String
+              : null,
+          primary: json_.containsKey('primary')
+              ? GoogleCloudKmsV1CryptoKeyVersion.fromJson(
+                  json_['primary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          purpose: json_.containsKey('purpose')
+              ? json_['purpose'] as core.String
+              : null,
+          rotationPeriod: json_.containsKey('rotationPeriod')
+              ? json_['rotationPeriod'] as core.String
+              : null,
+          versionTemplate: json_.containsKey('versionTemplate')
+              ? GoogleCloudKmsV1CryptoKeyVersionTemplate.fromJson(
+                  json_['versionTemplate']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyBackend != null) 'cryptoKeyBackend': cryptoKeyBackend!,
+        if (destroyScheduledDuration != null)
+          'destroyScheduledDuration': destroyScheduledDuration!,
+        if (importOnly != null) 'importOnly': importOnly!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+        if (primary != null) 'primary': primary!,
+        if (purpose != null) 'purpose': purpose!,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
+        if (versionTemplate != null) 'versionTemplate': versionTemplate!,
+      };
+}
+
+/// A CryptoKeyVersion represents an individual cryptographic key, and the
+/// associated key material.
+///
+/// An ENABLED version can be used for cryptographic operations. For security
+/// reasons, the raw cryptographic key material represented by a
+/// CryptoKeyVersion can never be viewed or exported. It can only be used to
+/// encrypt, decrypt, or sign data when an authorized user or application
+/// invokes Cloud KMS.
+class GoogleCloudKmsV1CryptoKeyVersion {
+  /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  core.String? algorithm;
+
+  /// Statement that was generated and signed by the HSM at key creation time.
+  ///
+  /// Use this statement to verify attributes of the key as stored on the HSM,
+  /// independently of Google. Only provided for key versions with
+  /// protection_level HSM.
+  ///
+  /// Output only.
+  GoogleCloudKmsV1KeyOperationAttestation? attestation;
+
+  /// The time at which this CryptoKeyVersion was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time this CryptoKeyVersion's key material was destroyed.
+  ///
+  /// Only present if state is DESTROYED.
+  ///
+  /// Output only.
+  core.String? destroyEventTime;
+
+  /// The time this CryptoKeyVersion's key material is scheduled for
+  /// destruction.
+  ///
+  /// Only present if state is DESTROY_SCHEDULED.
+  ///
+  /// Output only.
+  core.String? destroyTime;
+
+  /// ExternalProtectionLevelOptions stores a group of additional fields for
+  /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
+  /// protection level and EXTERNAL_VPC protection levels.
+  GoogleCloudKmsV1ExternalProtectionLevelOptions?
+      externalProtectionLevelOptions;
+
+  /// The time this CryptoKeyVersion's key material was generated.
+  ///
+  /// Output only.
+  core.String? generateTime;
+
+  /// The root cause of the most recent import failure.
+  ///
+  /// Only present if state is IMPORT_FAILED.
+  ///
+  /// Output only.
+  core.String? importFailureReason;
+
+  /// The name of the ImportJob used in the most recent import of this
+  /// CryptoKeyVersion.
+  ///
+  /// Only present if the underlying key material was imported.
+  ///
+  /// Output only.
+  core.String? importJob;
+
+  /// The time at which this CryptoKeyVersion's key material was most recently
+  /// imported.
+  ///
+  /// Output only.
+  core.String? importTime;
+
+  /// The resource name for this CryptoKeyVersion in the format `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * /cryptoKeyVersions / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The ProtectionLevel describing how crypto operations are performed with
+  /// this CryptoKeyVersion.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  /// Whether or not this key version is eligible for reimport, by being
+  /// specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+  ///
+  /// Output only.
+  core.bool? reimportEligible;
+
+  /// The current state of the CryptoKeyVersion.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" : Not specified.
+  /// - "PENDING_GENERATION" : This version is still being generated. It may not
+  /// be used, enabled, disabled, or destroyed yet. Cloud KMS will automatically
+  /// mark this version ENABLED as soon as the version is ready.
+  /// - "ENABLED" : This version may be used for cryptographic operations.
+  /// - "DISABLED" : This version may not be used, but the key material is still
+  /// available, and the version can be placed back into the ENABLED state.
+  /// - "DESTROYED" : This version is destroyed, and the key material is no
+  /// longer stored. This version may only become ENABLED again if this version
+  /// is reimport_eligible and the original key material is reimported with a
+  /// call to KeyManagementService.ImportCryptoKeyVersion.
+  /// - "DESTROY_SCHEDULED" : This version is scheduled for destruction, and
+  /// will be destroyed soon. Call RestoreCryptoKeyVersion to put it back into
+  /// the DISABLED state.
+  /// - "PENDING_IMPORT" : This version is still being imported. It may not be
+  /// used, enabled, disabled, or destroyed yet. Cloud KMS will automatically
+  /// mark this version ENABLED as soon as the version is ready.
+  /// - "IMPORT_FAILED" : This version was not imported successfully. It may not
+  /// be used, enabled, disabled, or destroyed. The submitted key material has
+  /// been discarded. Additional details can be found in
+  /// CryptoKeyVersion.import_failure_reason.
+  core.String? state;
+
+  GoogleCloudKmsV1CryptoKeyVersion({
+    this.algorithm,
+    this.attestation,
+    this.createTime,
+    this.destroyEventTime,
+    this.destroyTime,
+    this.externalProtectionLevelOptions,
+    this.generateTime,
+    this.importFailureReason,
+    this.importJob,
+    this.importTime,
+    this.name,
+    this.protectionLevel,
+    this.reimportEligible,
+    this.state,
+  });
+
+  GoogleCloudKmsV1CryptoKeyVersion.fromJson(core.Map json_)
+      : this(
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
+              : null,
+          attestation: json_.containsKey('attestation')
+              ? GoogleCloudKmsV1KeyOperationAttestation.fromJson(
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          destroyEventTime: json_.containsKey('destroyEventTime')
+              ? json_['destroyEventTime'] as core.String
+              : null,
+          destroyTime: json_.containsKey('destroyTime')
+              ? json_['destroyTime'] as core.String
+              : null,
+          externalProtectionLevelOptions:
+              json_.containsKey('externalProtectionLevelOptions')
+                  ? GoogleCloudKmsV1ExternalProtectionLevelOptions.fromJson(
+                      json_['externalProtectionLevelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          generateTime: json_.containsKey('generateTime')
+              ? json_['generateTime'] as core.String
+              : null,
+          importFailureReason: json_.containsKey('importFailureReason')
+              ? json_['importFailureReason'] as core.String
+              : null,
+          importJob: json_.containsKey('importJob')
+              ? json_['importJob'] as core.String
+              : null,
+          importTime: json_.containsKey('importTime')
+              ? json_['importTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+          reimportEligible: json_.containsKey('reimportEligible')
+              ? json_['reimportEligible'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (attestation != null) 'attestation': attestation!,
+        if (createTime != null) 'createTime': createTime!,
+        if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
+        if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (externalProtectionLevelOptions != null)
+          'externalProtectionLevelOptions': externalProtectionLevelOptions!,
+        if (generateTime != null) 'generateTime': generateTime!,
+        if (importFailureReason != null)
+          'importFailureReason': importFailureReason!,
+        if (importJob != null) 'importJob': importJob!,
+        if (importTime != null) 'importTime': importTime!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (reimportEligible != null) 'reimportEligible': reimportEligible!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A CryptoKeyVersionTemplate specifies the properties to use when creating a
+/// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
+/// automatically as a result of auto-rotation.
+typedef GoogleCloudKmsV1CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
+
+/// ExternalProtectionLevelOptions stores a group of additional fields for
+/// configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
+/// level and EXTERNAL_VPC protection levels.
+typedef GoogleCloudKmsV1ExternalProtectionLevelOptions
+    = $ExternalProtectionLevelOptions;
+
+/// Contains an HSM-generated attestation about a key operation.
+///
+/// For more information, see
+/// [Verifying attestations](https://cloud.google.com/kms/docs/attest-key).
+class GoogleCloudKmsV1KeyOperationAttestation {
+  /// The certificate chains needed to validate the attestation
+  ///
+  /// Output only.
+  GoogleCloudKmsV1KeyOperationAttestationCertificateChains? certChains;
+
+  /// The attestation data provided by the HSM when the key operation was
+  /// performed.
+  ///
+  /// Output only.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The format of the attestation data.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ATTESTATION_FORMAT_UNSPECIFIED" : Not specified.
+  /// - "CAVIUM_V1_COMPRESSED" : Cavium HSM attestation compressed with gzip.
+  /// Note that this format is defined by Cavium and subject to change at any
+  /// time. See
+  /// https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/software-key-attestation.html.
+  /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
+  /// This is a new format introduced in Cavium's version 3.2-08.
+  core.String? format;
+
+  GoogleCloudKmsV1KeyOperationAttestation({
+    this.certChains,
+    this.content,
+    this.format,
+  });
+
+  GoogleCloudKmsV1KeyOperationAttestation.fromJson(core.Map json_)
+      : this(
+          certChains: json_.containsKey('certChains')
+              ? GoogleCloudKmsV1KeyOperationAttestationCertificateChains
+                  .fromJson(json_['certChains']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certChains != null) 'certChains': certChains!,
+        if (content != null) 'content': content!,
+        if (format != null) 'format': format!,
+      };
+}
+
+/// Certificate chains needed to verify the attestation.
+///
+/// Certificates in chains are PEM-encoded and are ordered based on
+/// https://tools.ietf.org/html/rfc5246#section-7.4.2.
+typedef GoogleCloudKmsV1KeyOperationAttestationCertificateChains
+    = $CertificateChains;

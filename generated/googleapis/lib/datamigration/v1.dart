@@ -932,7 +932,7 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// [commitId] - Request a specific commit id. If not specified, the entities
   /// from the latest commit are returned.
   ///
-  /// [filter] - Filter the returned entities based on AIP-160 standard
+  /// [filter] - Filter the returned entities based on AIP-160 standard.
   ///
   /// [pageSize] - The maximum number of entities to return. The service may
   /// return fewer than this value.
@@ -944,7 +944,7 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// conversionWorkspace.describeDatabaseEntities must match the call that
   /// provided the page token.
   ///
-  /// [tree] - The tree to fetch
+  /// [tree] - The tree to fetch.
   /// Possible string values are:
   /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type
   /// - "SOURCE_TREE" : The source database tree

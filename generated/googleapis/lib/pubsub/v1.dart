@@ -84,6 +84,47 @@ class ProjectsSchemasResource {
 
   ProjectsSchemasResource(commons.ApiRequester client) : _requester = client;
 
+  /// Commits a new schema revision to an existing schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema we are revising. Format is
+  /// `projects/{project}/schemas/{schema}`.
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> commit(
+    CommitSchemaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':commit';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Schema.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a schema.
   ///
   /// [request] - The metadata request object.
@@ -166,6 +207,48 @@ class ProjectsSchemasResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific schema revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema revision to be deleted, with a
+  /// revision ID explicitly included. Example:
+  /// projects/123/schemas/my-schema@c7cfa2a8
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [revisionId] - Required. The revision ID to roll back to. It must be a
+  /// revision of the same schema. Example: c7cfa2a8
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> deleteRevision(
+    core.String name, {
+    core.String? revisionId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (revisionId != null) 'revisionId': [revisionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteRevision';
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Schema.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a schema.
@@ -329,6 +412,103 @@ class ProjectsSchemasResource {
     );
     return ListSchemasResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all schema revisions for the named schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema to list revisions for.
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of revisions to return per page.
+  ///
+  /// [pageToken] - The page token, received from a previous ListSchemaRevisions
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [view] - The set of Schema fields to return in the response. If not set,
+  /// returns Schemas with `name` and `type`, but not `definition`. Set to
+  /// `FULL` to retrieve all fields.
+  /// Possible string values are:
+  /// - "SCHEMA_VIEW_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the BASIC view.
+  /// - "BASIC" : Include the name and type of the schema, but not the
+  /// definition.
+  /// - "FULL" : Include all Schema object fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSchemaRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSchemaRevisionsResponse> listRevisions(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listRevisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSchemaRevisionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new schema revision that is a copy of the provided revision_id.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The schema being rolled back with revision id.
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> rollback(
+    RollbackSchemaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Schema.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2314,6 +2494,30 @@ class Binding {
       };
 }
 
+/// Request for CommitSchema method.
+class CommitSchemaRequest {
+  /// The schema revision to commit.
+  ///
+  /// Required.
+  Schema? schema;
+
+  CommitSchemaRequest({
+    this.schema,
+  });
+
+  CommitSchemaRequest.fromJson(core.Map json_)
+      : this(
+          schema: json_.containsKey('schema')
+              ? Schema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schema != null) 'schema': schema!,
+      };
+}
+
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
   /// See
@@ -2466,6 +2670,40 @@ class ExpirationPolicy {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Response for the `ListSchemaRevisions` method.
+class ListSchemaRevisionsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The revisions of the schema.
+  core.List<Schema>? schemas;
+
+  ListSchemaRevisionsResponse({
+    this.nextPageToken,
+    this.schemas,
+  });
+
+  ListSchemaRevisionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          schemas: json_.containsKey('schemas')
+              ? (json_['schemas'] as core.List)
+                  .map((value) => Schema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (schemas != null) 'schemas': schemas!,
+      };
+}
 
 /// Response for the `ListSchemas` method.
 class ListSchemasResponse {
@@ -3205,6 +3443,31 @@ class RetryPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
         if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
+      };
+}
+
+/// Request for the `RollbackSchema` method.
+class RollbackSchemaRequest {
+  /// The revision ID to roll back to.
+  ///
+  /// It must be a revision of the same schema. Example: c7cfa2a8
+  ///
+  /// Required.
+  core.String? revisionId;
+
+  RollbackSchemaRequest({
+    this.revisionId,
+  });
+
+  RollbackSchemaRequest.fromJson(core.Map json_)
+      : this(
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 

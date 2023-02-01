@@ -63,6 +63,33 @@ void checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
+core.int buildCounterAutoscale = 0;
+api.Autoscale buildAutoscale() {
+  final o = api.Autoscale();
+  buildCounterAutoscale++;
+  if (buildCounterAutoscale < 3) {
+    o.currentSlots = 'foo';
+    o.maxSlots = 'foo';
+  }
+  buildCounterAutoscale--;
+  return o;
+}
+
+void checkAutoscale(api.Autoscale o) {
+  buildCounterAutoscale++;
+  if (buildCounterAutoscale < 3) {
+    unittest.expect(
+      o.currentSlots!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxSlots!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAutoscale--;
+}
+
 core.List<api.TableReference> buildUnnamed0() => [
       buildTableReference(),
       buildTableReference(),
@@ -115,6 +142,7 @@ api.CapacityCommitment buildCapacityCommitment() {
   if (buildCounterCapacityCommitment < 3) {
     o.commitmentEndTime = 'foo';
     o.commitmentStartTime = 'foo';
+    o.edition = 'foo';
     o.failureStatus = buildStatus();
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
@@ -136,6 +164,10 @@ void checkCapacityCommitment(api.CapacityCommitment o) {
     );
     unittest.expect(
       o.commitmentStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.edition!,
       unittest.equals('foo'),
     );
     checkStatus(o.failureStatus!);
@@ -349,8 +381,10 @@ api.Reservation buildReservation() {
   final o = api.Reservation();
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
+    o.autoscale = buildAutoscale();
     o.concurrency = 'foo';
     o.creationTime = 'foo';
+    o.edition = 'foo';
     o.ignoreIdleSlots = true;
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
@@ -364,12 +398,17 @@ api.Reservation buildReservation() {
 void checkReservation(api.Reservation o) {
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
+    checkAutoscale(o.autoscale!);
     unittest.expect(
       o.concurrency!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.edition!,
       unittest.equals('foo'),
     );
     unittest.expect(o.ignoreIdleSlots!, unittest.isTrue);
@@ -629,6 +668,16 @@ void main() {
       final od =
           api.Assignment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAssignment(od);
+    });
+  });
+
+  unittest.group('obj-schema-Autoscale', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutoscale();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Autoscale.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAutoscale(od);
     });
   });
 
