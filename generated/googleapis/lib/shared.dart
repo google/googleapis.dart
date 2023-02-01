@@ -9687,7 +9687,6 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// - apigeeregistry:v1 : HttpBody
 /// - cloudbuild:v1 : HttpBody
 /// - domainsrdap:v1 : HttpBody
-/// - firebaseremoteconfig:v1 : HttpBody
 /// - healthcare:v1 : HttpBody
 /// - ml:v1 : GoogleApi__HttpBody
 /// - retail:v2 : GoogleApiHttpBody
