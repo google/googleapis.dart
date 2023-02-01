@@ -285,10 +285,10 @@ class Attributes {
           attributeMap: json_.containsKey('attributeMap')
               ? (json_['attributeMap'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     AttributeValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

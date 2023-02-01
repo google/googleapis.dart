@@ -2432,10 +2432,10 @@ class RepresentativeInfoData {
       : this(
           divisions: json_.containsKey('divisions')
               ? (json_['divisions'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GeographicDivision.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2496,10 +2496,10 @@ class RepresentativeInfoResponse {
       : this(
           divisions: json_.containsKey('divisions')
               ? (json_['divisions'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GeographicDivision.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

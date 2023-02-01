@@ -4391,9 +4391,9 @@ class Build {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4407,10 +4407,10 @@ class Build {
               : null,
           timing: json_.containsKey('timing')
               ? (json_['timing'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TimeSpan.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5222,9 +5222,9 @@ class BuildTrigger {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6389,9 +6389,9 @@ class InlineSecret {
       : this(
           envMap: json_.containsKey('envMap')
               ? (json_['envMap'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7249,9 +7249,9 @@ class RepoSource {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7543,9 +7543,9 @@ class Secret {
               : null,
           secretEnv: json_.containsKey('secretEnv')
               ? (json_['secretEnv'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7739,10 +7739,10 @@ class SourceProvenance {
           fileHashes: json_.containsKey('fileHashes')
               ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileHashes.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8212,9 +8212,9 @@ class WorkerPool {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

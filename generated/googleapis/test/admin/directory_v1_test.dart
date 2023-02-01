@@ -4716,18 +4716,18 @@ void checkUser(api.User o) {
 }
 
 api.UserCustomProperties buildUserCustomProperties() {
-  final o = api.UserCustomProperties();
-  o['a'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
+  return {
+    'a': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
+    'b': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
   };
-  o['b'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
 }
 
 void checkUserCustomProperties(api.UserCustomProperties o) {
@@ -5909,8 +5909,7 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildUserCustomProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UserCustomProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = oJson as core.Map<core.String, core.dynamic>;
       checkUserCustomProperties(od);
     });
   });

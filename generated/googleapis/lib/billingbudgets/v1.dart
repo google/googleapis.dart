@@ -628,9 +628,9 @@ class GoogleCloudBillingBudgetsV1Filter {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.List,
+                    value as core.List,
                   ),
                 )
               : null,

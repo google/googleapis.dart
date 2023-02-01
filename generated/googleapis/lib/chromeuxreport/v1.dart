@@ -493,10 +493,10 @@ class Record {
               : null,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Metric.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

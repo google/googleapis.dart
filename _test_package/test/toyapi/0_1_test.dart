@@ -44,10 +44,10 @@ void checkUnnamed0(core.List<core.String> o) {
 }
 
 api.ListOfListOfString buildListOfListOfString() {
-  final o = api.ListOfListOfString();
-  o.add(buildUnnamed0());
-  o.add(buildUnnamed0());
-  return o;
+  return [
+    buildUnnamed0(),
+    buildUnnamed0(),
+  ];
 }
 
 void checkListOfListOfString(api.ListOfListOfString o) {
@@ -68,10 +68,10 @@ void checkUnnamed1(core.List<api.ToyRequest> o) {
 }
 
 api.ListOfListOfToyRequest buildListOfListOfToyRequest() {
-  final o = api.ListOfListOfToyRequest();
-  o.add(buildUnnamed1());
-  o.add(buildUnnamed1());
-  return o;
+  return [
+    buildUnnamed1(),
+    buildUnnamed1(),
+  ];
 }
 
 void checkListOfListOfToyRequest(api.ListOfListOfToyRequest o) {
@@ -98,10 +98,10 @@ void checkUnnamed2(core.List<core.int> o) {
 }
 
 api.ListOfListOfint buildListOfListOfint() {
-  final o = api.ListOfListOfint();
-  o.add(buildUnnamed2());
-  o.add(buildUnnamed2());
-  return o;
+  return [
+    buildUnnamed2(),
+    buildUnnamed2(),
+  ];
 }
 
 void checkListOfListOfint(api.ListOfListOfint o) {
@@ -139,10 +139,10 @@ void checkUnnamed4(core.Map<core.String, core.List<core.String>> o) {
 }
 
 api.ListOfMapOfListOfString buildListOfMapOfListOfString() {
-  final o = api.ListOfMapOfListOfString();
-  o.add(buildUnnamed4());
-  o.add(buildUnnamed4());
-  return o;
+  return [
+    buildUnnamed4(),
+    buildUnnamed4(),
+  ];
 }
 
 void checkListOfMapOfListOfString(api.ListOfMapOfListOfString o) {
@@ -180,10 +180,10 @@ void checkUnnamed6(core.Map<core.String, core.List<core.int>> o) {
 }
 
 api.ListOfMapOfListOfint buildListOfMapOfListOfint() {
-  final o = api.ListOfMapOfListOfint();
-  o.add(buildUnnamed6());
-  o.add(buildUnnamed6());
-  return o;
+  return [
+    buildUnnamed6(),
+    buildUnnamed6(),
+  ];
 }
 
 void checkListOfMapOfListOfint(api.ListOfMapOfListOfint o) {
@@ -193,10 +193,10 @@ void checkListOfMapOfListOfint(api.ListOfMapOfListOfint o) {
 }
 
 api.ListOfString buildListOfString() {
-  final o = api.ListOfString();
-  o.add('foo');
-  o.add('foo');
-  return o;
+  return [
+    'foo',
+    'foo',
+  ];
 }
 
 void checkListOfString(api.ListOfString o) {
@@ -212,10 +212,10 @@ void checkListOfString(api.ListOfString o) {
 }
 
 api.ListOfToyRequest buildListOfToyRequest() {
-  final o = api.ListOfToyRequest();
-  o.add(buildToyRequest());
-  o.add(buildToyRequest());
-  return o;
+  return [
+    buildToyRequest(),
+    buildToyRequest(),
+  ];
 }
 
 void checkListOfToyRequest(api.ListOfToyRequest o) {
@@ -247,10 +247,10 @@ void checkUnnamed8(core.List<core.Map<core.String, core.bool>> o) {
 }
 
 api.MapOfListOfMapOfbool buildMapOfListOfMapOfbool() {
-  final o = api.MapOfListOfMapOfbool();
-  o['a'] = buildUnnamed8();
-  o['b'] = buildUnnamed8();
-  return o;
+  return {
+    'a': buildUnnamed8(),
+    'b': buildUnnamed8(),
+  };
 }
 
 void checkMapOfListOfMapOfbool(api.MapOfListOfMapOfbool o) {
@@ -288,10 +288,10 @@ void checkUnnamed10(core.List<core.Map<core.String, core.int>> o) {
 }
 
 api.MapOfListOfMapOfint buildMapOfListOfMapOfint() {
-  final o = api.MapOfListOfMapOfint();
-  o['a'] = buildUnnamed10();
-  o['b'] = buildUnnamed10();
-  return o;
+  return {
+    'a': buildUnnamed10(),
+    'b': buildUnnamed10(),
+  };
 }
 
 void checkMapOfListOfMapOfint(api.MapOfListOfMapOfint o) {
@@ -312,10 +312,10 @@ void checkUnnamed11(core.Map<core.String, core.bool> o) {
 }
 
 api.MapOfMapOfbool buildMapOfMapOfbool() {
-  final o = api.MapOfMapOfbool();
-  o['a'] = buildUnnamed11();
-  o['b'] = buildUnnamed11();
-  return o;
+  return {
+    'a': buildUnnamed11(),
+    'b': buildUnnamed11(),
+  };
 }
 
 void checkMapOfMapOfbool(api.MapOfMapOfbool o) {
@@ -342,10 +342,10 @@ void checkUnnamed12(core.Map<core.String, core.int> o) {
 }
 
 api.MapOfMapOfint buildMapOfMapOfint() {
-  final o = api.MapOfMapOfint();
-  o['a'] = buildUnnamed12();
-  o['b'] = buildUnnamed12();
-  return o;
+  return {
+    'a': buildUnnamed12(),
+    'b': buildUnnamed12(),
+  };
 }
 
 void checkMapOfMapOfint(api.MapOfMapOfint o) {
@@ -355,10 +355,10 @@ void checkMapOfMapOfint(api.MapOfMapOfint o) {
 }
 
 api.MapOfToyResponse buildMapOfToyResponse() {
-  final o = api.MapOfToyResponse();
-  o['a'] = buildToyResponse();
-  o['b'] = buildToyResponse();
-  return o;
+  return {
+    'a': buildToyResponse(),
+    'b': buildToyResponse(),
+  };
 }
 
 void checkMapOfToyResponse(api.MapOfToyResponse o) {
@@ -368,10 +368,10 @@ void checkMapOfToyResponse(api.MapOfToyResponse o) {
 }
 
 api.MapOfint buildMapOfint() {
-  final o = api.MapOfint();
-  o['a'] = 42;
-  o['b'] = 42;
-  return o;
+  return {
+    'a': 42,
+    'b': 42,
+  };
 }
 
 void checkMapOfint(api.MapOfint o) {
@@ -642,7 +642,11 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfString();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfListOfString.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => (value as core.List)
+              .map((value) => value as core.String)
+              .toList())
+          .toList();
       checkListOfListOfString(od);
     });
   });
@@ -651,7 +655,12 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfToyRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfListOfToyRequest.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => (value as core.List)
+              .map((value) => api.ToyRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList())
+          .toList();
       checkListOfListOfToyRequest(od);
     });
   });
@@ -660,7 +669,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfListOfint.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) =>
+              (value as core.List).map((value) => value as core.int).toList())
+          .toList();
       checkListOfListOfint(od);
     });
   });
@@ -669,7 +681,16 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfMapOfListOfString();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfMapOfListOfString.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+                (key, value) => core.MapEntry(
+                  key,
+                  (value as core.List)
+                      .map((value) => value as core.String)
+                      .toList(),
+                ),
+              ))
+          .toList();
       checkListOfMapOfListOfString(od);
     });
   });
@@ -678,7 +699,16 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfMapOfListOfint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfMapOfListOfint.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+                (key, value) => core.MapEntry(
+                  key,
+                  (value as core.List)
+                      .map((value) => value as core.int)
+                      .toList(),
+                ),
+              ))
+          .toList();
       checkListOfMapOfListOfint(od);
     });
   });
@@ -687,7 +717,8 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfString();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfString.fromJson(oJson as core.List);
+      final od =
+          (oJson as core.List).map((value) => value as core.String).toList();
       checkListOfString(od);
     });
   });
@@ -696,7 +727,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfToyRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfToyRequest.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => api.ToyRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkListOfToyRequest(od);
     });
   });
@@ -705,8 +739,20 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfListOfMapOfbool();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MapOfListOfMapOfbool.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          (value as core.List)
+              .map(
+                  (value) => (value as core.Map<core.String, core.dynamic>).map(
+                        (key, value) => core.MapEntry(
+                          key,
+                          value as core.bool,
+                        ),
+                      ))
+              .toList(),
+        ),
+      );
       checkMapOfListOfMapOfbool(od);
     });
   });
@@ -715,8 +761,20 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfListOfMapOfint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MapOfListOfMapOfint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          (value as core.List)
+              .map(
+                  (value) => (value as core.Map<core.String, core.dynamic>).map(
+                        (key, value) => core.MapEntry(
+                          key,
+                          value as core.int,
+                        ),
+                      ))
+              .toList(),
+        ),
+      );
       checkMapOfListOfMapOfint(od);
     });
   });
@@ -725,8 +783,17 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfMapOfbool();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MapOfMapOfbool.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          (value as core.Map<core.String, core.dynamic>).map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.bool,
+            ),
+          ),
+        ),
+      );
       checkMapOfMapOfbool(od);
     });
   });
@@ -735,8 +802,17 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfMapOfint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MapOfMapOfint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          (value as core.Map<core.String, core.dynamic>).map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+        ),
+      );
       checkMapOfMapOfint(od);
     });
   });
@@ -745,8 +821,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfToyResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MapOfToyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          api.ToyResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>),
+        ),
+      );
       checkMapOfToyResponse(od);
     });
   });
@@ -755,8 +836,12 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildMapOfint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.MapOfint.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          value as core.int,
+        ),
+      );
       checkMapOfint(od);
     });
   });
@@ -937,7 +1022,10 @@ void main() {
       final arg_request = buildListOfToyRequest();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ListOfToyRequest.fromJson(json as core.List);
+        final obj = (json as core.List)
+            .map((value) => api.ToyRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
         checkListOfToyRequest(obj);
 
         final path = (req.url).path;
@@ -997,7 +1085,12 @@ void main() {
       final arg_request = buildListOfListOfToyRequest();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ListOfListOfToyRequest.fromJson(json as core.List);
+        final obj = (json as core.List)
+            .map((value) => (value as core.List)
+                .map((value) => api.ToyRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>))
+                .toList())
+            .toList();
         checkListOfListOfToyRequest(obj);
 
         final path = (req.url).path;
@@ -1057,8 +1150,12 @@ void main() {
       final arg_request = buildMapOfint();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.MapOfint.fromJson(json as core.Map<core.String, core.dynamic>);
+        final obj = (json as core.Map<core.String, core.dynamic>).map(
+          (key, value) => core.MapEntry(
+            key,
+            value as core.int,
+          ),
+        );
         checkMapOfint(obj);
 
         final path = (req.url).path;
@@ -1336,7 +1433,10 @@ void main() {
       final arg_request = buildListOfListOfint();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ListOfListOfint.fromJson(json as core.List);
+        final obj = (json as core.List)
+            .map((value) =>
+                (value as core.List).map((value) => value as core.int).toList())
+            .toList();
         checkListOfListOfint(obj);
 
         final path = (req.url).path;
@@ -1396,7 +1496,16 @@ void main() {
       final arg_request = buildListOfMapOfListOfint();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ListOfMapOfListOfint.fromJson(json as core.List);
+        final obj = (json as core.List)
+            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    (value as core.List)
+                        .map((value) => value as core.int)
+                        .toList(),
+                  ),
+                ))
+            .toList();
         checkListOfMapOfListOfint(obj);
 
         final path = (req.url).path;
@@ -1511,8 +1620,20 @@ void main() {
       final arg_request = buildMapOfListOfMapOfint();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.MapOfListOfMapOfint.fromJson(
-            json as core.Map<core.String, core.dynamic>);
+        final obj = (json as core.Map<core.String, core.dynamic>).map(
+          (key, value) => core.MapEntry(
+            key,
+            (value as core.List)
+                .map((value) =>
+                    (value as core.Map<core.String, core.dynamic>).map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        value as core.int,
+                      ),
+                    ))
+                .toList(),
+          ),
+        );
         checkMapOfListOfMapOfint(obj);
 
         final path = (req.url).path;
@@ -1572,8 +1693,17 @@ void main() {
       final arg_request = buildMapOfMapOfint();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.MapOfMapOfint.fromJson(
-            json as core.Map<core.String, core.dynamic>);
+        final obj = (json as core.Map<core.String, core.dynamic>).map(
+          (key, value) => core.MapEntry(
+            key,
+            (value as core.Map<core.String, core.dynamic>).map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.int,
+              ),
+            ),
+          ),
+        );
         checkMapOfMapOfint(obj);
 
         final path = (req.url).path;
@@ -1857,7 +1987,8 @@ void main() {
       final arg_request = buildListOfString();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ListOfString.fromJson(json as core.List);
+        final obj =
+            (json as core.List).map((value) => value as core.String).toList();
         checkListOfString(obj);
 
         final path = (req.url).path;

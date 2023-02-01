@@ -539,9 +539,9 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
           resourceInfo: json_.containsKey('resourceInfo')
               ? (json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -685,9 +685,9 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -911,18 +911,18 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
           launchOptions: json_.containsKey('launchOptions')
               ? (json_['launchOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -930,9 +930,9 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
               ? (json_['transformNameMappings']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1055,9 +1055,9 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1065,9 +1065,9 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
               ? (json_['transformNameMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1368,9 +1368,9 @@ class GoogleCloudDatapipelinesV1Pipeline {
               ? (json_['pipelineSources']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1554,9 +1554,9 @@ class GoogleCloudDatapipelinesV1RuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

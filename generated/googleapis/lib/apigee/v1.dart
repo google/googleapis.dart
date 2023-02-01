@@ -14478,9 +14478,9 @@ class GoogleCloudApigeeV1ApiProxy {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -14681,9 +14681,9 @@ class GoogleCloudApigeeV1ApiProxyRevision {
                   ? (json_['entityMetaDataAsProperties']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -15119,9 +15119,9 @@ class GoogleCloudApigeeV1ArchiveDeployment {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -16631,9 +16631,9 @@ class GoogleCloudApigeeV1DebugMask {
           namespaces: json_.containsKey('namespaces')
               ? (json_['namespaces'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -17231,9 +17231,9 @@ class GoogleCloudApigeeV1DeploymentConfig {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -17247,9 +17247,9 @@ class GoogleCloudApigeeV1DeploymentConfig {
               : null,
           endpoints: json_.containsKey('endpoints')
               ? (json_['endpoints'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -18395,9 +18395,9 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           featureFlags: json_.containsKey('featureFlags')
               ? (json_['featureFlags'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -22486,9 +22486,9 @@ class GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
           dimensions: json_.containsKey('dimensions')
               ? (json_['dimensions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -24935,9 +24935,9 @@ class GoogleCloudApigeeV1SharedFlowRevision {
                   ? (json_['entityMetaDataAsProperties']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,

@@ -275,10 +275,10 @@ void checkGenerateMediationReportResponseElement(
 }
 
 api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
-  final o = api.GenerateMediationReportResponse();
-  o.add(buildGenerateMediationReportResponseElement());
-  o.add(buildGenerateMediationReportResponseElement());
-  return o;
+  return [
+    buildGenerateMediationReportResponseElement(),
+    buildGenerateMediationReportResponseElement(),
+  ];
 }
 
 void checkGenerateMediationReportResponse(
@@ -333,10 +333,10 @@ void checkGenerateNetworkReportResponseElement(
 }
 
 api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
-  final o = api.GenerateNetworkReportResponse();
-  o.add(buildGenerateNetworkReportResponseElement());
-  o.add(buildGenerateNetworkReportResponseElement());
-  return o;
+  return [
+    buildGenerateNetworkReportResponseElement(),
+    buildGenerateNetworkReportResponseElement(),
+  ];
 }
 
 void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
@@ -1130,8 +1130,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateMediationReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GenerateMediationReportResponse.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => api.GenerateMediationReportResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkGenerateMediationReportResponse(od);
     });
   });
@@ -1160,7 +1162,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateNetworkReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateNetworkReportResponse.fromJson(oJson as core.List);
+      final od = (oJson as core.List)
+          .map((value) => api.GenerateNetworkReportResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkGenerateNetworkReportResponse(od);
     });
   });

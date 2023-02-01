@@ -1283,10 +1283,10 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
           memberships: json_.containsKey('memberships')
               ? (json_['memberships'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1661,10 +1661,10 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
           policyOverlay: json_.containsKey('policyOverlay')
               ? (json_['policyOverlay'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleIamV1Policy.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

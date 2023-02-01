@@ -566,18 +566,18 @@ void checkRemoteConfigUser(api.RemoteConfigUser o) {
 }
 
 api.Response buildResponse() {
-  final o = api.Response();
-  o['a'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
+  return {
+    'a': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
+    'b': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
   };
-  o['b'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
 }
 
 void checkResponse(api.Response o) {
@@ -810,8 +810,7 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Response.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = oJson as core.Map<core.String, core.dynamic>;
       checkResponse(od);
     });
   });

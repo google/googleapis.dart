@@ -209,10 +209,10 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
           memberships: json_.containsKey('memberships')
               ? (json_['memberships'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

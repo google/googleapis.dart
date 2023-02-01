@@ -393,9 +393,9 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -468,17 +468,17 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
           cloudProducts: json_.containsKey('cloudProducts')
               ? (json_['cloudProducts'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           locations: json_.containsKey('locations')
               ? (json_['locations'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -492,9 +492,9 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
           resourceTypes: json_.containsKey('resourceTypes')
               ? (json_['resourceTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -674,9 +674,9 @@ class GoogleCloudKmsV1CryptoKey {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

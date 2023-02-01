@@ -690,10 +690,10 @@ class LighthouseResultV5 {
       : this(
           audits: json_.containsKey('audits')
               ? (json_['audits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     LighthouseAuditResultV5.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -704,10 +704,10 @@ class LighthouseResultV5 {
           categoryGroups: json_.containsKey('categoryGroups')
               ? (json_['categoryGroups'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     CategoryGroupV5.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -809,10 +809,10 @@ class PagespeedApiLoadingExperienceV5 {
               : null,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     UserPageLoadMetricV5.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1477,9 +1477,9 @@ class StackPack {
           descriptions: json_.containsKey('descriptions')
               ? (json_['descriptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

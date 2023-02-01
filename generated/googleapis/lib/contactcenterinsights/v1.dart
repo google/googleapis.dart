@@ -2046,19 +2046,19 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
               : null,
           entities: json_.containsKey('entities')
               ? (json_['entities'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1Entity.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           intents: json_.containsKey('intents')
               ? (json_['intents'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1Intent.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2070,10 +2070,10 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
           phraseMatchers: json_.containsKey('phraseMatchers')
               ? (json_['phraseMatchers'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2333,9 +2333,9 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2518,18 +2518,18 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
                   ? (json_['customHighlighterMatches']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.int,
+                        value as core.int,
                       ),
                     )
                   : null,
           issueMatches: json_.containsKey('issueMatches')
               ? (json_['issueMatches'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -2537,10 +2537,10 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
               ? (json_['issueMatchesStats']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2548,9 +2548,9 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
               ? (json_['smartHighlighterMatches']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -2910,10 +2910,10 @@ class GoogleCloudContactcenterinsightsV1Conversation {
               ? (json_['dialogflowIntents']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2925,9 +2925,9 @@ class GoogleCloudContactcenterinsightsV1Conversation {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3563,9 +3563,9 @@ class GoogleCloudContactcenterinsightsV1Entity {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3823,9 +3823,9 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4397,10 +4397,10 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
           issueStats: json_.containsKey('issueStats')
               ? (json_['issueStats'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5194,9 +5194,9 @@ class GoogleCloudContactcenterinsightsV1Settings {
                   ? (json_['pubsubNotificationSettings']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -5294,9 +5294,9 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5350,9 +5350,9 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

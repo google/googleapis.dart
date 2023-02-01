@@ -4226,9 +4226,9 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
               ? (json_['bigqueryImportKeys']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5175,10 +5175,10 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
               ? (json_['annotationColors']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5591,9 +5591,9 @@ class GoogleCloudDatalabelingV1beta1LabelStats {
           exampleCount: json_.containsKey('exampleCount')
               ? (json_['exampleCount'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

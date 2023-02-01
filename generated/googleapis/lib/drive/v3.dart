@@ -3141,9 +3141,9 @@ class About {
           exportFormats: json_.containsKey('exportFormats')
               ? (json_['exportFormats'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.List)
+                    (value as core.List)
                         .map((value) => value as core.String)
                         .toList(),
                   ),
@@ -3157,9 +3157,9 @@ class About {
           importFormats: json_.containsKey('importFormats')
               ? (json_['importFormats'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.List)
+                    (value as core.List)
                         .map((value) => value as core.String)
                         .toList(),
                   ),
@@ -3169,9 +3169,9 @@ class About {
           maxImportSizes: json_.containsKey('maxImportSizes')
               ? (json_['maxImportSizes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5361,9 +5361,9 @@ class File {
           appProperties: json_.containsKey('appProperties')
               ? (json_['appProperties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String?,
+                    value as core.String?,
                   ),
                 )
               : null,
@@ -5400,9 +5400,9 @@ class File {
           exportLinks: json_.containsKey('exportLinks')
               ? (json_['exportLinks'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5495,9 +5495,9 @@ class File {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String?,
+                    value as core.String?,
                   ),
                 )
               : null,
@@ -5783,10 +5783,10 @@ class Label {
       : this(
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     LabelField.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6721,9 +6721,9 @@ class Revision {
           exportLinks: json_.containsKey('exportLinks')
               ? (json_['exportLinks'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

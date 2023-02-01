@@ -2013,9 +2013,9 @@ class DuplicateObjectRequest {
               : null,
           objectIds: json_.containsKey('objectIds')
               ? (json_['objectIds'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2967,10 +2967,10 @@ class List {
           nestingLevel: json_.containsKey('nestingLevel')
               ? (json_['nestingLevel'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     NestingLevel.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6604,9 +6604,9 @@ class TextContent {
       : this(
           lists: json_.containsKey('lists')
               ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    List.fromJson(item as core.Map<core.String, core.dynamic>),
+                    List.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

@@ -1294,10 +1294,10 @@ class FormResponse {
       : this(
           answers: json_.containsKey('answers')
               ? (json_['answers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Answer.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

@@ -458,10 +458,10 @@ class LoginProfile {
           sshPublicKeys: json_.containsKey('sshPublicKeys')
               ? (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     SshPublicKey.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

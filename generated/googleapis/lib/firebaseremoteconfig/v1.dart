@@ -30,7 +30,6 @@
 library firebaseremoteconfig.v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -294,7 +293,7 @@ class ProjectsRemoteConfigResource {
       'GET',
       queryParams: queryParams_,
     );
-    return Response.fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return response_ as core.Map<core.String, core.dynamic>;
   }
 
   /// Get a list of Remote Config template versions that have been published,
@@ -606,9 +605,9 @@ class FetchRemoteConfigRequest {
               ? (json_['analyticsUserProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -718,9 +717,9 @@ class FetchRemoteConfigResponse {
               : null,
           entries: json_.containsKey('entries')
               ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -734,10 +733,10 @@ class FetchRemoteConfigResponse {
               ? (json_['personalizationMetadata']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PersonalizationMetadata.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -942,20 +941,20 @@ class RemoteConfig {
               ? (json_['parameterGroups']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameterGroup.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1089,10 +1088,10 @@ class RemoteConfigParameter {
               ? (json_['conditionalValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameterValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1150,10 +1149,10 @@ class RemoteConfigParameterGroup {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1249,36 +1248,7 @@ class RemoteConfigUser {
 /// The values in the configuration.
 ///
 /// Properties of the object. Contains field @type with type URL.
-class Response extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  Response();
-
-  Response.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef Response = core.Map<core.String, core.Object?>;
 
 /// Replace the published Remote Config template with an earlier version.
 class RollbackRemoteConfigRequest {

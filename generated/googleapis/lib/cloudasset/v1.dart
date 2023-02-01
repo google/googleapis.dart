@@ -2908,10 +2908,10 @@ class Explanation {
               ? (json_['matchedPermissions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Permissions.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5799,9 +5799,9 @@ class Inventory {
       : this(
           items: json_.containsKey('items')
               ? (json_['items'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Item.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Item.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7545,9 +7545,9 @@ class ResourceSearchResult {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7575,10 +7575,10 @@ class ResourceSearchResult {
           relationships: json_.containsKey('relationships')
               ? (json_['relationships'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RelatedResources.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7741,9 +7741,9 @@ class SavedQuery {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

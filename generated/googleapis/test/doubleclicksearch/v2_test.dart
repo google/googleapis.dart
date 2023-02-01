@@ -829,18 +829,18 @@ void checkReportRequest(api.ReportRequest o) {
 }
 
 api.ReportRow buildReportRow() {
-  final o = api.ReportRow();
-  o['a'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
+  return {
+    'a': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
+    'b': {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    },
   };
-  o['b'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
 }
 
 void checkReportRow(api.ReportRow o) {
@@ -1147,8 +1147,7 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildReportRow();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ReportRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = oJson as core.Map<core.String, core.dynamic>;
       checkReportRow(od);
     });
   });

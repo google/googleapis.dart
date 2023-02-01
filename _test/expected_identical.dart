@@ -149,10 +149,10 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, item) => core.MapEntry(
+      (key, value) => core.MapEntry(
         key,
         ToyResponseFactory.fromJson(
-            item as core.Map<core.String, core.dynamic>),
+            value as core.Map<core.String, core.dynamic>),
       ),
     );
   }
@@ -192,10 +192,10 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, item) => core.MapEntry(
+      (key, value) => core.MapEntry(
         key,
         ToyResponseFactory.fromJson(
-            item as core.Map<core.String, core.dynamic>),
+            value as core.Map<core.String, core.dynamic>),
       ),
     );
   }
@@ -232,9 +232,9 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, item) => core.MapEntry(
+      (key, value) => core.MapEntry(
         key,
-        item as core.int,
+        value as core.int,
       ),
     );
   }
@@ -429,9 +429,9 @@ class ToyApi {
     );
     return (response_ as core.List)
         .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-              (key, item) => core.MapEntry(
+              (key, value) => core.MapEntry(
                 key,
-                (item as core.List)
+                (value as core.List)
                     .map((value) => value as core.String)
                     .toList(),
               ),
@@ -504,13 +504,13 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, item) => core.MapEntry(
+      (key, value) => core.MapEntry(
         key,
-        (item as core.List)
+        (value as core.List)
             .map((value) => (value as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.bool,
+                    value as core.bool,
                   ),
                 ))
             .toList(),
@@ -552,12 +552,12 @@ class ToyApi {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, item) => core.MapEntry(
+      (key, value) => core.MapEntry(
         key,
-        (item as core.Map<core.String, core.dynamic>).map(
-          (key, item) => core.MapEntry(
+        (value as core.Map<core.String, core.dynamic>).map(
+          (key, value) => core.MapEntry(
             key,
-            item as core.bool,
+            value as core.bool,
           ),
         ),
       ),
@@ -960,10 +960,10 @@ class ToyMapResponseFactory {
     if (json_.containsKey('mapResult')) {
       message.mapResult =
           (json_['mapResult'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
+        (key, value) => core.MapEntry(
           key,
           NestedResponseFactory.fromJson(
-              item as core.Map<core.String, core.dynamic>),
+              value as core.Map<core.String, core.dynamic>),
         ),
       );
     }
@@ -978,9 +978,9 @@ class ToyMapResponseFactory {
     if (json_.containsKey('properties')) {
       message.properties =
           (json_['properties'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
+        (key, value) => core.MapEntry(
           key,
-          item as core.String,
+          value as core.String,
         ),
       );
     }

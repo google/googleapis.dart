@@ -25,7 +25,6 @@
 library identitytoolkit.v3;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -354,8 +353,12 @@ class RelyingpartyResource {
       'GET',
       queryParams: queryParams_,
     );
-    return IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        value as core.String,
+      ),
+    );
   }
 
   /// Get recaptcha secure param.
@@ -1284,9 +1287,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
               ? (json_['customParameter']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1657,38 +1660,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
 }
 
 /// Respone of getting public keys.
-class IdentitytoolkitRelyingpartyGetPublicKeysResponse
-    extends collection.MapBase<core.String, core.String> {
-  final _innerMap = <core.String, core.String>{};
-
-  IdentitytoolkitRelyingpartyGetPublicKeysResponse();
-
-  IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-      core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value as core.String;
-    });
-  }
-
-  @core.override
-  core.String? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.String value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.String? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef IdentitytoolkitRelyingpartyGetPublicKeysResponse
+    = core.Map<core.String, core.String>;
 
 /// Request to reset the password.
 class IdentitytoolkitRelyingpartyResetPasswordRequest {

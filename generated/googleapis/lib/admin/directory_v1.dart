@@ -57,7 +57,6 @@
 library admin.directory_v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -7360,9 +7359,9 @@ class Channel {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12141,10 +12140,9 @@ class User {
           customSchemas: json_.containsKey('customSchemas')
               ? (json_['customSchemas'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    UserCustomProperties.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                    value as core.Map<core.String, core.dynamic>,
                   ),
                 )
               : null,
@@ -12303,37 +12301,7 @@ class User {
 
 /// JSON template for a set of custom properties (i.e. all fields in a
 /// particular schema)
-class UserCustomProperties
-    extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  UserCustomProperties();
-
-  UserCustomProperties.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef UserCustomProperties = core.Map<core.String, core.Object?>;
 
 class UserMakeAdmin {
   /// Indicates the administrator status of the user.
