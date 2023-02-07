@@ -114,7 +114,7 @@
             }
         }
     },
-    "revision": "20230130",
+    "revision": "20230206",
     "rootUrl": "https://travelimpactmodel.googleapis.com/",
     "schemas": {
         "ComputeFlightEmissionsRequest": {

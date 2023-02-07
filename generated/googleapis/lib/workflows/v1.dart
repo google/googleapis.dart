@@ -421,6 +421,12 @@ class ProjectsLocationsWorkflowsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
   ///
+  /// [revisionId] - Optional. Optional. The revision of the workflow to
+  /// retrieve. If the revision_id is empty, the latest revision is retrieved.
+  /// The format is "000001-a4d", where the first 6 characters define the
+  /// zero-padded decimal revision number. They are followed by a hyphen and 3
+  /// hexadecimal characters. (go/wf_adr_clh_1)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -433,9 +439,11 @@ class ProjectsLocationsWorkflowsResource {
   /// this method will complete with the same error.
   async.Future<Workflow> get(
     core.String name, {
+    core.String? revisionId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (revisionId != null) 'revisionId': [revisionId],
       if ($fields != null) 'fields': [$fields],
     };
 

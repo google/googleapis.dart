@@ -3185,12 +3185,17 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
   /// a `parent`.
   /// - "ADD" : Add an element.
   /// - "REMOVE" : Remove an element identified by `parent`.
-  /// - "REPLACE" : Replace an element identified by `parent`.
-  /// - "EVAL_REQUESTED" : Request human review for the element identified by
-  /// `parent`.
-  /// - "EVAL_APPROVED" : Element is reviewed and approved at human review,
-  /// confidence will be set to 1.0.
-  /// - "EVAL_SKIPPED" : Element is skipped in the validation process.
+  /// - "UPDATE" : Updates any fields within the given provenance scope of the
+  /// message. It 'overwrites' the fields rather than replacing them. This is
+  /// especially relevant when we just want to update a field value of an entity
+  /// without also affecting all the child properties.
+  /// - "REPLACE" : Currently unused. Replace an element identified by `parent`.
+  /// - "EVAL_REQUESTED" : Deprecated. Request human review for the element
+  /// identified by `parent`.
+  /// - "EVAL_APPROVED" : Deprecated. Element is reviewed and approved at human
+  /// review, confidence will be set to 1.0.
+  /// - "EVAL_SKIPPED" : Deprecated. Element is skipped in the validation
+  /// process.
   core.String? type;
 
   GoogleCloudDocumentaiV1DocumentProvenance({

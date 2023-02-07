@@ -451,9 +451,8 @@ class SpacesMessagesResource {
   ///
   /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
   /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see \[Start
-  /// or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// specify a `threadKey` or the thread.name. For example usage, see
+  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -750,7 +749,9 @@ class SpacesMessagesAttachmentsResource {
 
   /// Gets the metadata of a message attachment.
   ///
-  /// The attachment data is fetched using the media API. Requires
+  /// The attachment data is fetched using the
+  /// [media API](https://developers.google.com/chat/api/reference/rest/v1/media/download).
+  /// Requires
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
@@ -797,7 +798,7 @@ class SpacesMessagesAttachmentsResource {
 /// and snooze time in the list of string parameters.
 typedef ActionParameter = $ActionParameter;
 
-/// Parameters that a Chat app can use to configure how it's response is posted.
+/// Parameters that a Chat app can use to configure how its response is posted.
 class ActionResponse {
   /// Input only.
   ///
@@ -968,7 +969,7 @@ class ActionStatus {
 /// Example plain-text message body: ``` Hello @FooBot how are you!" ``` The
 /// corresponding annotations metadata: ``` "annotations":[{
 /// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user":
-/// { "name":"users/107946847022116401880", "displayName":"FooBot",
+/// { "name":"users/{user}", "displayName":"FooBot",
 /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }]
 /// ```
 class Annotation {
@@ -1317,8 +1318,11 @@ class CardHeader {
 
 /// Widgets for Chat apps to specify.
 class CardWithId {
-  /// Card proto that allows Chat apps to specify UI elements and editable
-  /// widgets.
+  /// Cards support a defined layout, interactive UI elements like buttons, and
+  /// rich media like images.
+  ///
+  /// Use this card to present detailed information, gather information from
+  /// users, and guide users to take a next step.
   GoogleAppsCardV1Card? card;
 
   /// Required for `cardsV2` messages.
@@ -3747,17 +3751,10 @@ class Membership {
   /// Output only.
   core.String? createTime;
 
-  /// A Google Chat user or app.
-  ///
-  /// Format: `users/{user}` or `users/app` When `users/{user}`, represents a
-  /// [person](https://developers.google.com/people/api/rest/v1/people) in the
-  /// People API or a
-  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
-  /// in the Admin SDK Directory API. When `users/app`, represents a Chat app
-  /// creating membership for itself.
+  /// The Google Chat user or app the membership corresponds to.
   User? member;
 
-  /// Resource name of the membership.
+  /// Resource name of the membership, assigned by the server.
   ///
   /// Format: spaces/{space}/members/{member}
   core.String? name;
@@ -3774,7 +3771,7 @@ class Membership {
   /// conversations, everyone has this role.
   /// - "ROLE_MANAGER" : A space manager. The user has all basic permissions
   /// plus administrative permissions that allow them to manage the space, like
-  /// adding or removing members. Only supports SpaceType.SPACE.
+  /// adding or removing members. Only supported in SpaceType.SPACE.
   core.String? role;
 
   /// State of the membership.
@@ -3837,7 +3834,7 @@ class Message {
   /// Plain-text body of the message with all Chat app mentions stripped out.
   core.String? argumentText;
 
-  /// User uploaded attachment.
+  /// User-uploaded attachment.
   core.List<Attachment>? attachment;
 
   /// Deprecated: Use `cards_v2` instead.
@@ -3851,7 +3848,7 @@ class Message {
   /// editable widgets, such as: - Formatted text - Buttons - Clickable images -
   /// Checkboxes - Radio buttons - Input widgets.
   ///
-  /// Cards are usually displayed below the text-body of a Chat message, but can
+  /// Cards are usually displayed below the text body of a Chat message, but can
   /// situationally appear other places, such as
   /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The
   /// `cardId` is a unique identifier among cards in the same message and for
@@ -3921,8 +3918,8 @@ class Message {
 
   /// The thread the message belongs to.
   ///
-  /// For example usage, see \[Start or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// For example usage, see
+  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   Thread? thread;
 
   /// When `true`, the message is a response in a reply thread.
@@ -4224,7 +4221,8 @@ class Space {
   ///
   /// Required when
   /// [creating a space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create).
-  /// For direct messages, this field may be empty.
+  /// For direct messages, this field may be empty. Supports up to 128
+  /// characters.
   core.String? displayName;
 
   /// Resource name of the space.
@@ -4324,12 +4322,14 @@ class SpaceDetails {
   /// A description of the space.
   ///
   /// It could describe the space's discussion topic, functional purpose, or
-  /// participants.
+  /// participants. Supports up to 150 characters.
   ///
   /// Optional.
   core.String? description;
 
   /// The space's rules, expectations, and etiquette.
+  ///
+  /// Supports up to 5,000 characters.
   ///
   /// Optional.
   core.String? guidelines;
@@ -4413,8 +4413,8 @@ class Thread {
   /// Opaque thread identifier.
   ///
   /// To start or add to a thread, create a message and specify a `threadKey` or
-  /// the thread.name. For example usage, see \[Start or reply to a message
-  /// thread\](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// the thread.name. For example usage, see
+  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   /// For other requests, this is an output only field.
   ///
   /// Optional.
@@ -4456,8 +4456,15 @@ class User {
 
   /// Resource name for a Google Chat user.
   ///
-  /// For human users, represents a person in the People API or a user in the
-  /// Admin SDK Directory API. Format: `users/{user}`
+  /// Format: `users/{user}`. `users/app` can be used as an alias for the
+  /// calling app bot user. For human users, `{user}` is the same user
+  /// identifier as: - the `{person_id`} for the
+  /// [Person](https://developers.google.com/people/api/rest/v1/people) in the
+  /// People API, where the Person `resource_name` is `people/{person_id}`. For
+  /// example, `users/123456789` in Chat API represents the same person as
+  /// `people/123456789` in People API. - the `id` for a
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Admin SDK Directory API.
   core.String? name;
 
   /// User type.

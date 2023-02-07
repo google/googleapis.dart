@@ -12198,6 +12198,8 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 class TextConfig {
   /// The transformations to apply to the detected data.
+  ///
+  /// Deprecated. Use `additional_transformations` instead.
   core.List<InfoTypeTransformation>? transformations;
 
   TextConfig({

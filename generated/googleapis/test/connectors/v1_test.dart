@@ -163,6 +163,8 @@ api.AuthConfigTemplate buildAuthConfigTemplate() {
   if (buildCounterAuthConfigTemplate < 3) {
     o.authType = 'foo';
     o.configVariableTemplates = buildUnnamed3();
+    o.description = 'foo';
+    o.displayName = 'foo';
   }
   buildCounterAuthConfigTemplate--;
   return o;
@@ -176,6 +178,14 @@ void checkAuthConfigTemplate(api.AuthConfigTemplate o) {
       unittest.equals('foo'),
     );
     checkUnnamed3(o.configVariableTemplates!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuthConfigTemplate--;
 }

@@ -3073,7 +3073,7 @@ class $ChannelAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
+/// - safebrowsing:v4 : Checksum
 /// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
 class $Checksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
@@ -6841,7 +6841,7 @@ class $EgressFrom {
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
-/// - safebrowsing:v4 : GoogleProtobufEmpty
+/// - safebrowsing:v4 : Empty
 /// - script:v1 : Empty
 /// - searchads360:v0 : GoogleAdsSearchads360V0Common__EnhancedCpc
 /// - searchads360:v0 : GoogleAdsSearchads360V0Common__FrequencyCapEntry
@@ -9918,6 +9918,54 @@ class $Identity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revision != null) 'revision': revision!,
         if (updateId != null) 'updateId': updateId!,
+      };
+}
+
+/// Used by:
+///
+/// - accesscontextmanager:v1 : IngressSource
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
+class $IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
+  /// is specified for `access_level`, then all IngressSources will be allowed.
+  core.String? accessLevel;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String? resource;
+
+  $IngressSource({
+    this.accessLevel,
+    this.resource,
+  });
+
+  $IngressSource.fromJson(core.Map json_)
+      : this(
+          accessLevel: json_.containsKey('accessLevel')
+              ? json_['accessLevel'] as core.String
+              : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -16030,7 +16078,7 @@ class $QuotaLimit {
 
 /// Used by:
 ///
-/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
+/// - safebrowsing:v4 : RawIndices
 /// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
 class $RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.

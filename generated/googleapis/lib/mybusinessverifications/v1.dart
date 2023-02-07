@@ -799,9 +799,7 @@ class Verification {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? method;
 
   /// Resource name of the verification.
@@ -880,9 +878,7 @@ class VerificationOption {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? verificationMethod;
 
   VerificationOption({
@@ -1025,9 +1021,7 @@ class VerifyLocationRequest {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? method;
 
   /// The input for PHONE_CALL/SMS method The phone number that should be called

@@ -25084,8 +25084,12 @@ class Promotion {
   /// The content language used as part of the unique identifier.
   ///
   /// `en` content language is available for all target countries. `fr` content
-  /// language is available for `CA` and `FR` target countries, and `de` content
-  /// language is available for `DE` target country.
+  /// language is available for `CA` and `FR` target countries. `de` content
+  /// language is available for `DE` target country. `nl` content language is
+  /// available for `NL` target country. `it` content language is available for
+  /// `IT` target country. `pt` content language is available for `BR` target
+  /// country. `ja` content language is available for `JP` target country. `ko`
+  /// content language is available for `KR` target country.
   ///
   /// Required.
   core.String? contentLanguage;
@@ -25280,7 +25284,8 @@ class Promotion {
 
   /// The target country used as part of the unique identifier.
   ///
-  /// Can be `AU`, `CA`, `DE`, `FR`, `GB`, `IN` or `US`.
+  /// Can be `AU`, `CA`, `DE`, `FR`, `GB`, `IN`, `US`, `BR`, `ES`, `NL`, `JP`,
+  /// `IT` or `KR`.
   ///
   /// Required.
   core.String? targetCountry;

@@ -2293,7 +2293,7 @@
             }
         }
     },
-    "revision": "20230120",
+    "revision": "20230125",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ApprovalConfig": {

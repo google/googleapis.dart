@@ -1445,6 +1445,55 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     return GoogleCloudDatacatalogV1Tag.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Reconciles tags created with a given tag template on a given Entry.
+  ///
+  /// Reconciliation is an operation that given a list of tags creates or
+  /// updates them on the entry. Additionally, the operation is also able to
+  /// delete tags not mentioned in the tag list. It can be achieved by setting
+  /// force_delete_missing parameter. Reconciliation is a long-running operation
+  /// done in the background, so this method returns long-running operation
+  /// resource. The resource can be queried with Operations.GetOperation which
+  /// contains metadata and response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of Entry to be tagged.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reconcile(
+    GoogleCloudDatacatalogV1ReconcileTagsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags:reconcile';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsEntryGroupsTagsResource {
@@ -3375,7 +3424,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -3391,9 +3442,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -5711,6 +5760,58 @@ class GoogleCloudDatacatalogV1PolicyTag {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (parentPolicyTag != null) 'parentPolicyTag': parentPolicyTag!,
+      };
+}
+
+/// Request message for ReconcileTags.
+class GoogleCloudDatacatalogV1ReconcileTagsRequest {
+  /// If set to true deletes from the entry tags related to given tag template
+  /// and not mentioned in the tags source.
+  ///
+  /// If set to false only creates and updates of the tags mentioned in the
+  /// source will take place. Other tags in that entry using the same tag
+  /// template will be retained instead of being deleted.
+  core.bool? forceDeleteMissing;
+
+  /// The name of the tag template, that will be used for reconciliation.
+  ///
+  /// Required.
+  core.String? tagTemplate;
+
+  /// A list of tags to be applied on a given entry.
+  ///
+  /// Individual tags may specify tag template, but it must be the same as the
+  /// one in the ReconcileTagsRequest. The sole entry and each of its columns
+  /// must be mentioned at most once.
+  core.List<GoogleCloudDatacatalogV1Tag>? tags;
+
+  GoogleCloudDatacatalogV1ReconcileTagsRequest({
+    this.forceDeleteMissing,
+    this.tagTemplate,
+    this.tags,
+  });
+
+  GoogleCloudDatacatalogV1ReconcileTagsRequest.fromJson(core.Map json_)
+      : this(
+          forceDeleteMissing: json_.containsKey('forceDeleteMissing')
+              ? json_['forceDeleteMissing'] as core.bool
+              : null,
+          tagTemplate: json_.containsKey('tagTemplate')
+              ? json_['tagTemplate'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => GoogleCloudDatacatalogV1Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forceDeleteMissing != null)
+          'forceDeleteMissing': forceDeleteMissing!,
+        if (tagTemplate != null) 'tagTemplate': tagTemplate!,
+        if (tags != null) 'tags': tags!,
       };
 }
 

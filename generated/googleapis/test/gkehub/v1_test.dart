@@ -963,6 +963,30 @@ void checkConfigManagementPolicyController(
   buildCounterConfigManagementPolicyController--;
 }
 
+core.int buildCounterConfigManagementPolicyControllerMigration = 0;
+api.ConfigManagementPolicyControllerMigration
+    buildConfigManagementPolicyControllerMigration() {
+  final o = api.ConfigManagementPolicyControllerMigration();
+  buildCounterConfigManagementPolicyControllerMigration++;
+  if (buildCounterConfigManagementPolicyControllerMigration < 3) {
+    o.stage = 'foo';
+  }
+  buildCounterConfigManagementPolicyControllerMigration--;
+  return o;
+}
+
+void checkConfigManagementPolicyControllerMigration(
+    api.ConfigManagementPolicyControllerMigration o) {
+  buildCounterConfigManagementPolicyControllerMigration++;
+  if (buildCounterConfigManagementPolicyControllerMigration < 3) {
+    unittest.expect(
+      o.stage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementPolicyControllerMigration--;
+}
+
 core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
@@ -1008,6 +1032,7 @@ api.ConfigManagementPolicyControllerState
   buildCounterConfigManagementPolicyControllerState++;
   if (buildCounterConfigManagementPolicyControllerState < 3) {
     o.deploymentState = buildConfigManagementGatekeeperDeploymentState();
+    o.migration = buildConfigManagementPolicyControllerMigration();
     o.version = buildConfigManagementPolicyControllerVersion();
   }
   buildCounterConfigManagementPolicyControllerState--;
@@ -1019,6 +1044,7 @@ void checkConfigManagementPolicyControllerState(
   buildCounterConfigManagementPolicyControllerState++;
   if (buildCounterConfigManagementPolicyControllerState < 3) {
     checkConfigManagementGatekeeperDeploymentState(o.deploymentState!);
+    checkConfigManagementPolicyControllerMigration(o.migration!);
     checkConfigManagementPolicyControllerVersion(o.version!);
   }
   buildCounterConfigManagementPolicyControllerState--;
@@ -3325,6 +3351,16 @@ void main() {
       final od = api.ConfigManagementPolicyController.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConfigManagementPolicyController(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementPolicyControllerMigration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConfigManagementPolicyControllerMigration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConfigManagementPolicyControllerMigration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementPolicyControllerMigration(od);
     });
   });
 

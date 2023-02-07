@@ -468,6 +468,7 @@ class $Date {
 /// - gkehub:v2alpha : Empty
 /// - lifesciences:v2beta : CancelOperationRequest
 /// - lifesciences:v2beta : Empty
+/// - metastore:v1beta : CancelOperationRequest
 /// - metastore:v1beta : Empty
 /// - networkconnectivity:v1alpha1 : Empty
 /// - networkconnectivity:v1alpha1 : GoogleLongrunningCancelOperationRequest

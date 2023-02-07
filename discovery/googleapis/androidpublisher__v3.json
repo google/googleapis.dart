@@ -3919,7 +3919,7 @@
             }
         }
     },
-    "revision": "20230131",
+    "revision": "20230207",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "AcquisitionTargetingRule": {

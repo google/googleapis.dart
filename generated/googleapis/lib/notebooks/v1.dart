@@ -485,7 +485,7 @@ class ProjectsLocationsExecutionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Filter applied to resulting executions. Currently only supports
-  /// filtering executions by a specified schedule_id. Format: `schedule_id=`
+  /// filtering executions by a specified `schedule_id`. Format: `schedule_id=`
   ///
   /// [orderBy] - Sort by field.
   ///
@@ -972,6 +972,48 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':report';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reports and processes an instance event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reportEvent(
+    ReportInstanceEventRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reportEvent';
 
     final response_ = await _requester.request(
       url_,
@@ -2082,9 +2124,10 @@ class ProjectsLocationsRuntimesResource {
   /// new value, as follows: { "software_config":{ "kernels": \[{ 'repository':
   /// 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }\], }
   /// } Currently, only the following fields can be updated: -
-  /// software_config.kernels - software_config.post_startup_script -
-  /// software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-  /// software_config.idle_shutdown_timeout - software_config.disable_terminal
+  /// `software_config.kernels` - `software_config.post_startup_script` -
+  /// `software_config.custom_gpu_driver_path` - `software_config.idle_shutdown`
+  /// - `software_config.idle_shutdown_timeout` -
+  /// `software_config.disable_terminal` - `labels`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2752,8 +2795,8 @@ class ProjectsLocationsSchedulesResource {
 /// Definition of a hardware accelerator.
 ///
 /// Note that not all combinations of `type` and `core_count` are valid. Check
-/// \[GPUs on Compute Engine\](/compute/docs/gpus/#gpus-list) to find a valid
-/// combination. TPUs are not supported.
+/// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list)
+/// to find a valid combination. TPUs are not supported.
 class AcceleratorConfig {
   /// Count of cores of this accelerator.
   core.String? coreCount;
@@ -2826,7 +2869,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2842,9 +2887,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3084,7 +3127,7 @@ class Disk {
   core.bool? boot;
 
   /// Indicates a unique device name of your choice that is reflected into the
-  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// `/dev/disk/by-id/google-*` tree of a Linux operating system running within
   /// the instance.
   ///
   /// This name can be used to reference the device for mounting, resizing, and
@@ -3116,7 +3159,7 @@ class Disk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: * NVME * SCSI
+  /// values: * `NVME` * `SCSI`
   core.String? interface;
 
   /// Type of the resource.
@@ -3130,19 +3173,19 @@ class Disk {
   /// usage data for public and marketplace images.
   core.List<core.String>? licenses;
 
-  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+  /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`.
   ///
-  /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: * READ_ONLY * READ_WRITE
+  /// If not specified, the default is to attach the disk in `READ_WRITE` mode.
+  /// Valid values: * `READ_ONLY` * `READ_WRITE`
   core.String? mode;
 
   /// Indicates a valid partial or full URL to an existing Persistent Disk
   /// resource.
   core.String? source;
 
-  /// Indicates the type of the disk, either SCRATCH or PERSISTENT.
+  /// Indicates the type of the disk, either `SCRATCH` or `PERSISTENT`.
   ///
-  /// Valid values: * PERSISTENT * SCRATCH
+  /// Valid values: * `PERSISTENT` * `SCRATCH`
   core.String? type;
 
   Disk({
@@ -3794,8 +3837,8 @@ class GuestOsFeature {
   /// The ID of a supported feature.
   ///
   /// Read Enabling guest operating system features to see a list of available
-  /// options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET *
-  /// SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+  /// options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` *
+  /// `SECURE_BOOT` * `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
   core.String? type;
 
   GuestOsFeature({
@@ -3818,7 +3861,7 @@ class Instance {
   ///
   /// If you use accelerators, make sure that your configuration has \[enough
   /// vCPUs and memory to support the `machine_type` you have
-  /// selected\](/compute/docs/gpus/#gpus-list).
+  /// selected\](https://cloud.google.com/compute/docs/gpus/#gpus-list).
   AcceleratorConfig? acceleratorConfig;
 
   /// Input only.
@@ -3925,8 +3968,9 @@ class Instance {
   /// These can be later modified by the setLabels method.
   core.Map<core.String, core.String>? labels;
 
-  /// The \[Compute Engine machine type\](/compute/docs/machine-types) of this
-  /// instance.
+  /// The
+  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types)
+  /// of this instance.
   ///
   /// Required.
   core.String? machineType;
@@ -4466,7 +4510,7 @@ class ListInstancesResponse {
 
   /// Locations that could not be reached.
   ///
-  /// For example, \['us-west1-a', 'us-central1-b'\]. A ListInstancesResponse
+  /// For example, `['us-west1-a', 'us-central1-b']`. A ListInstancesResponse
   /// will only contain either instances or unreachables,
   core.List<core.String>? unreachable;
 
@@ -4576,7 +4620,7 @@ class ListRuntimesResponse {
 
   /// Locations that could not be reached.
   ///
-  /// For example, \['us-west1', 'us-central1'\]. A ListRuntimesResponse will
+  /// For example, `['us-west1', 'us-central1']`. A ListRuntimesResponse will
   /// only contain either runtimes or unreachables,
   core.List<core.String>? unreachable;
 
@@ -4675,7 +4719,7 @@ class LocalDisk {
   core.bool? boot;
 
   /// Specifies a unique device name of your choice that is reflected into the
-  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// `/dev/disk/by-id/google-*` tree of a Linux operating system running within
   /// the instance.
   ///
   /// This name can be used to reference the device for mounting, resizing, and
@@ -4719,7 +4763,7 @@ class LocalDisk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: * NVME * SCSI
+  /// values: * `NVME` * `SCSI`
   core.String? interface;
 
   /// Type of the resource.
@@ -4734,20 +4778,20 @@ class LocalDisk {
   /// Output only.
   core.List<core.String>? licenses;
 
-  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+  /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`.
   ///
-  /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: * READ_ONLY * READ_WRITE
+  /// If not specified, the default is to attach the disk in `READ_WRITE` mode.
+  /// Valid values: * `READ_ONLY` * `READ_WRITE`
   core.String? mode;
 
   /// Specifies a valid partial or full URL to an existing Persistent Disk
   /// resource.
   core.String? source;
 
-  /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+  /// Specifies the type of the disk, either `SCRATCH` or `PERSISTENT`.
   ///
-  /// If not specified, the default is PERSISTENT. Valid values: * PERSISTENT *
-  /// SCRATCH
+  /// If not specified, the default is `PERSISTENT`. Valid values: *
+  /// `PERSISTENT` * `SCRATCH`
   core.String? type;
 
   LocalDisk({
@@ -5178,6 +5222,40 @@ class RegisterInstanceRequest {
       };
 }
 
+/// Request for reporting a Managed Notebook Event.
+class ReportInstanceEventRequest {
+  /// The Event to be reported.
+  ///
+  /// Required.
+  Event? event;
+
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  ReportInstanceEventRequest({
+    this.event,
+    this.vmId,
+  });
+
+  ReportInstanceEventRequest.fromJson(core.Map json_)
+      : this(
+          event: json_.containsKey('event')
+              ? Event.fromJson(
+                  json_['event'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (event != null) 'event': event!,
+        if (vmId != null) 'vmId': vmId!,
+      };
+}
+
 /// Request for notebook instances to report information to Notebooks API.
 class ReportInstanceInfoRequest {
   /// The metadata reported to Notebooks API.
@@ -5310,7 +5388,7 @@ typedef ResetRuntimeRequest = $RuntimeRequest;
 class RollbackInstanceRequest {
   /// The snapshot for rollback.
   ///
-  /// Example: "projects/test-project/global/snapshots/krwlzipynril".
+  /// Example: `projects/test-project/global/snapshots/krwlzipynril`.
   ///
   /// Required.
   core.String? targetSnapshot;
@@ -5355,6 +5433,17 @@ class Runtime {
   /// - "AGENT_NOT_RUNNING" : The runtime health monitoring agent is not
   /// running. Applies to ACTIVE state.
   core.String? healthState;
+
+  /// The labels to associate with this Managed Notebook or Runtime.
+  ///
+  /// Label **keys** must contain 1 to 63 characters, and must conform to
+  /// [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+  /// empty, but, if present, must contain 1 to 63 characters, and must conform
+  /// to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32
+  /// labels can be associated with a cluster.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
 
   /// Contains Runtime daemon metrics such as Service status and JupyterLab
   /// stats.
@@ -5403,6 +5492,7 @@ class Runtime {
     this.accessConfig,
     this.createTime,
     this.healthState,
+    this.labels,
     this.metrics,
     this.name,
     this.softwareConfig,
@@ -5422,6 +5512,14 @@ class Runtime {
               : null,
           healthState: json_.containsKey('healthState')
               ? json_['healthState'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           metrics: json_.containsKey('metrics')
               ? RuntimeMetrics.fromJson(
@@ -5447,6 +5545,7 @@ class Runtime {
         if (accessConfig != null) 'accessConfig': accessConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (healthState != null) 'healthState': healthState!,
+        if (labels != null) 'labels': labels!,
         if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
@@ -5565,8 +5664,8 @@ class RuntimeGuestOsFeature {
   /// Read
   /// [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
   /// to see a list of available options. Valid values: *
-  /// FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE
-  /// * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+  /// `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` *
+  /// `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
   core.String? type;
 
   RuntimeGuestOsFeature({
@@ -5781,8 +5880,8 @@ class Schedule {
 
   /// Cron-tab formatted schedule by which the job will execute.
   ///
-  /// Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED =
-  /// every Wednesday More examples: https://crontab.guru/examples.html
+  /// Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED`
+  /// = every Wednesday More examples: https://crontab.guru/examples.html
   core.String? cronSchedule;
 
   /// A brief description of this environment.
@@ -5790,8 +5889,8 @@ class Schedule {
 
   /// Display name used for UI purposes.
   ///
-  /// Name can only contain alphanumeric characters, hyphens '-', and
-  /// underscores '_'.
+  /// Name can only contain alphanumeric characters, hyphens `-`, and
+  /// underscores `_`.
   ///
   /// Output only.
   core.String? displayName;
@@ -6078,8 +6177,9 @@ class SetInstanceMachineTypeRequest {
 
 /// A set of Shielded Instance options.
 ///
-/// Check \[Images using supported Shielded VM features\] Not all combinations
-/// are valid.
+/// Check
+/// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+/// Not all combinations are valid.
 typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;
 
 /// Request for starting a notebook instance
@@ -6282,7 +6382,7 @@ class UpgradeHistoryEntry {
 
   /// Target VM Image.
   ///
-  /// Format: ainotebooks-vm/project/image-name/name.
+  /// Format: `ainotebooks-vm/project/image-name/name`.
   core.String? targetImage;
 
   /// Target VM Version, like m63.
@@ -6435,19 +6535,19 @@ class VertexAIParameters {
   /// Environment variables.
   ///
   /// At most 100 environment variables can be specified and unique. Example:
-  /// GCP_BUCKET=gs://my-bucket/samples/
+  /// `GCP_BUCKET=gs://my-bucket/samples/`
   core.Map<core.String, core.String>? env;
 
   /// The full name of the Compute Engine
-  /// \[network\](/compute/docs/networks-and-firewalls#networks) to which the
-  /// Job should be peered.
+  /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+  /// to which the Job should be peered.
   ///
   /// For example, `projects/12345/global/networks/myVPC`.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert)
   /// is of the form `projects/{project}/global/networks/{network}`. Where
-  /// {project} is a project number, as in `12345`, and {network} is a network
-  /// name. Private services access must already be configured for the network.
-  /// If left unspecified, the job is not peered with any network.
+  /// `{project}` is a project number, as in `12345`, and `{network}` is a
+  /// network name. Private services access must already be configured for the
+  /// network. If left unspecified, the job is not peered with any network.
   core.String? network;
 
   VertexAIParameters({

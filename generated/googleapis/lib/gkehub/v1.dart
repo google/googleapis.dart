@@ -914,7 +914,8 @@ class ProjectsLocationsMembershipsResource {
   ///
   /// [parent] - Required. The parent (project and location) where the
   /// Memberships will be listed. Specified in the format `projects / *
-  /// /locations / * `.
+  /// /locations / * `. `projects / * /locations/-` list memberships in all the
+  /// regions.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Lists Memberships that match the filter expression,
@@ -1549,7 +1550,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1565,9 +1568,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2705,6 +2706,32 @@ class ConfigManagementPolicyController {
       };
 }
 
+/// State for the migration of PolicyController from ACM -\> PoCo Hub.
+class ConfigManagementPolicyControllerMigration {
+  /// Stage of the migration.
+  /// Possible string values are:
+  /// - "STAGE_UNSPECIFIED" : Unknown state of migration.
+  /// - "ACM_MANAGED" : ACM Hub/Operator manages policycontroller. No migration
+  /// yet completed.
+  /// - "POCO_MANAGED" : All migrations steps complete; Poco Hub now manages
+  /// policycontroller.
+  core.String? stage;
+
+  ConfigManagementPolicyControllerMigration({
+    this.stage,
+  });
+
+  ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
+      : this(
+          stage:
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stage != null) 'stage': stage!,
+      };
+}
+
 /// PolicyControllerMonitoring specifies the backends Policy Controller should
 /// export metrics to.
 ///
@@ -2739,11 +2766,15 @@ class ConfigManagementPolicyControllerState {
   /// The state about the policy controller installation.
   ConfigManagementGatekeeperDeploymentState? deploymentState;
 
+  /// Record state of ACM -\> PoCo Hub migration for this feature.
+  ConfigManagementPolicyControllerMigration? migration;
+
   /// The version of Gatekeeper Policy Controller deployed.
   ConfigManagementPolicyControllerVersion? version;
 
   ConfigManagementPolicyControllerState({
     this.deploymentState,
+    this.migration,
     this.version,
   });
 
@@ -2754,6 +2785,10 @@ class ConfigManagementPolicyControllerState {
                   json_['deploymentState']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          migration: json_.containsKey('migration')
+              ? ConfigManagementPolicyControllerMigration.fromJson(
+                  json_['migration'] as core.Map<core.String, core.dynamic>)
+              : null,
           version: json_.containsKey('version')
               ? ConfigManagementPolicyControllerVersion.fromJson(
                   json_['version'] as core.Map<core.String, core.dynamic>)
@@ -2762,6 +2797,7 @@ class ConfigManagementPolicyControllerState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null) 'deploymentState': deploymentState!,
+        if (migration != null) 'migration': migration!,
         if (version != null) 'version': version!,
       };
 }

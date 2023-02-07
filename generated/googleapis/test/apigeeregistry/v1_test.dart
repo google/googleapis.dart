@@ -574,6 +574,38 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterBuild = 0;
+api.Build buildBuild() {
+  final o = api.Build();
+  buildCounterBuild++;
+  if (buildCounterBuild < 3) {
+    o.commitId = 'foo';
+    o.commitTime = 'foo';
+    o.repo = 'foo';
+  }
+  buildCounterBuild--;
+  return o;
+}
+
+void checkBuild(api.Build o) {
+  buildCounterBuild++;
+  if (buildCounterBuild < 3) {
+    unittest.expect(
+      o.commitId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.commitTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repo!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBuild--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -758,6 +790,7 @@ api.Instance buildInstance() {
   final o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    o.build = buildBuild();
     o.config = buildConfig();
     o.createTime = 'foo';
     o.name = 'foo';
@@ -772,6 +805,7 @@ api.Instance buildInstance() {
 void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    checkBuild(o.build!);
     checkConfig(o.config!);
     unittest.expect(
       o.createTime!,
@@ -1694,6 +1728,16 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-Build', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBuild();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Build.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBuild(od);
     });
   });
 

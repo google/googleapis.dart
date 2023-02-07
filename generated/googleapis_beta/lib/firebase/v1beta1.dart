@@ -2331,6 +2331,14 @@ class AndroidApp {
   /// This etag is strongly validated.
   core.String? etag;
 
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the AndroidApp, in the format: projects/
   /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent
   /// Project's
@@ -2381,6 +2389,7 @@ class AndroidApp {
     this.appId,
     this.displayName,
     this.etag,
+    this.expireTime,
     this.name,
     this.packageName,
     this.projectId,
@@ -2400,6 +2409,9 @@ class AndroidApp {
               ? json_['displayName'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           packageName: json_.containsKey('packageName')
               ? json_['packageName'] as core.String
@@ -2426,6 +2438,7 @@ class AndroidApp {
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (packageName != null) 'packageName': packageName!,
         if (projectId != null) 'projectId': projectId!,
@@ -2618,6 +2631,14 @@ class FirebaseAppInfo {
   /// The user-assigned display name of the Firebase App.
   core.String? displayName;
 
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the Firebase App, in the format: projects/PROJECT_ID
   /// /iosApps/APP_ID or projects/PROJECT_ID/androidApps/APP_ID or projects/
   /// PROJECT_ID/webApps/APP_ID
@@ -2662,6 +2683,7 @@ class FirebaseAppInfo {
     this.apiKeyId,
     this.appId,
     this.displayName,
+    this.expireTime,
     this.name,
     this.namespace,
     this.platform,
@@ -2678,6 +2700,9 @@ class FirebaseAppInfo {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           namespace: json_.containsKey('namespace')
               ? json_['namespace'] as core.String
@@ -2693,6 +2718,7 @@ class FirebaseAppInfo {
         if (apiKeyId != null) 'apiKeyId': apiKeyId!,
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (namespace != null) 'namespace': namespace!,
         if (platform != null) 'platform': platform!,
@@ -2880,6 +2906,14 @@ class IosApp {
   /// This etag is strongly validated.
   core.String? etag;
 
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
@@ -2923,6 +2957,7 @@ class IosApp {
     this.bundleId,
     this.displayName,
     this.etag,
+    this.expireTime,
     this.name,
     this.projectId,
     this.state,
@@ -2946,6 +2981,9 @@ class IosApp {
               ? json_['displayName'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
@@ -2964,6 +3002,7 @@ class IosApp {
         if (bundleId != null) 'bundleId': bundleId!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (state != null) 'state': state!,
@@ -3907,6 +3946,14 @@ class WebApp {
   /// This etag is strongly validated.
   core.String? etag;
 
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
@@ -3956,6 +4003,7 @@ class WebApp {
     this.appUrls,
     this.displayName,
     this.etag,
+    this.expireTime,
     this.name,
     this.projectId,
     this.state,
@@ -3978,6 +4026,9 @@ class WebApp {
               ? json_['displayName'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
@@ -3994,6 +4045,7 @@ class WebApp {
         if (appUrls != null) 'appUrls': appUrls!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (state != null) 'state': state!,

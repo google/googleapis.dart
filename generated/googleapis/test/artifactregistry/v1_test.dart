@@ -140,6 +140,28 @@ void checkDockerImage(api.DockerImage o) {
   buildCounterDockerImage--;
 }
 
+core.int buildCounterDockerRepository = 0;
+api.DockerRepository buildDockerRepository() {
+  final o = api.DockerRepository();
+  buildCounterDockerRepository++;
+  if (buildCounterDockerRepository < 3) {
+    o.publicRepository = 'foo';
+  }
+  buildCounterDockerRepository--;
+  return o;
+}
+
+void checkDockerRepository(api.DockerRepository o) {
+  buildCounterDockerRepository++;
+  if (buildCounterDockerRepository < 3) {
+    unittest.expect(
+      o.publicRepository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDockerRepository--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -210,6 +232,7 @@ api.GoogleDevtoolsArtifactregistryV1File
   buildCounterGoogleDevtoolsArtifactregistryV1File++;
   if (buildCounterGoogleDevtoolsArtifactregistryV1File < 3) {
     o.createTime = 'foo';
+    o.fetchTime = 'foo';
     o.hashes = buildUnnamed2();
     o.name = 'foo';
     o.owner = 'foo';
@@ -226,6 +249,10 @@ void checkGoogleDevtoolsArtifactregistryV1File(
   if (buildCounterGoogleDevtoolsArtifactregistryV1File < 3) {
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fetchTime!,
       unittest.equals('foo'),
     );
     checkUnnamed2(o.hashes!);
@@ -890,6 +917,28 @@ void checkMavenArtifact(api.MavenArtifact o) {
   buildCounterMavenArtifact--;
 }
 
+core.int buildCounterMavenRepository = 0;
+api.MavenRepository buildMavenRepository() {
+  final o = api.MavenRepository();
+  buildCounterMavenRepository++;
+  if (buildCounterMavenRepository < 3) {
+    o.publicRepository = 'foo';
+  }
+  buildCounterMavenRepository--;
+  return o;
+}
+
+void checkMavenRepository(api.MavenRepository o) {
+  buildCounterMavenRepository++;
+  if (buildCounterMavenRepository < 3) {
+    unittest.expect(
+      o.publicRepository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMavenRepository--;
+}
+
 core.int buildCounterMavenRepositoryConfig = 0;
 api.MavenRepositoryConfig buildMavenRepositoryConfig() {
   final o = api.MavenRepositoryConfig();
@@ -973,6 +1022,28 @@ void checkNpmPackage(api.NpmPackage o) {
     );
   }
   buildCounterNpmPackage--;
+}
+
+core.int buildCounterNpmRepository = 0;
+api.NpmRepository buildNpmRepository() {
+  final o = api.NpmRepository();
+  buildCounterNpmRepository++;
+  if (buildCounterNpmRepository < 3) {
+    o.publicRepository = 'foo';
+  }
+  buildCounterNpmRepository--;
+  return o;
+}
+
+void checkNpmRepository(api.NpmRepository o) {
+  buildCounterNpmRepository++;
+  if (buildCounterNpmRepository < 3) {
+    unittest.expect(
+      o.publicRepository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNpmRepository--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed18() => {
@@ -1246,6 +1317,58 @@ void checkPythonPackage(api.PythonPackage o) {
   buildCounterPythonPackage--;
 }
 
+core.int buildCounterPythonRepository = 0;
+api.PythonRepository buildPythonRepository() {
+  final o = api.PythonRepository();
+  buildCounterPythonRepository++;
+  if (buildCounterPythonRepository < 3) {
+    o.publicRepository = 'foo';
+  }
+  buildCounterPythonRepository--;
+  return o;
+}
+
+void checkPythonRepository(api.PythonRepository o) {
+  buildCounterPythonRepository++;
+  if (buildCounterPythonRepository < 3) {
+    unittest.expect(
+      o.publicRepository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPythonRepository--;
+}
+
+core.int buildCounterRemoteRepositoryConfig = 0;
+api.RemoteRepositoryConfig buildRemoteRepositoryConfig() {
+  final o = api.RemoteRepositoryConfig();
+  buildCounterRemoteRepositoryConfig++;
+  if (buildCounterRemoteRepositoryConfig < 3) {
+    o.description = 'foo';
+    o.dockerRepository = buildDockerRepository();
+    o.mavenRepository = buildMavenRepository();
+    o.npmRepository = buildNpmRepository();
+    o.pythonRepository = buildPythonRepository();
+  }
+  buildCounterRemoteRepositoryConfig--;
+  return o;
+}
+
+void checkRemoteRepositoryConfig(api.RemoteRepositoryConfig o) {
+  buildCounterRemoteRepositoryConfig++;
+  if (buildCounterRemoteRepositoryConfig < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkDockerRepository(o.dockerRepository!);
+    checkMavenRepository(o.mavenRepository!);
+    checkNpmRepository(o.npmRepository!);
+    checkPythonRepository(o.pythonRepository!);
+  }
+  buildCounterRemoteRepositoryConfig--;
+}
+
 core.Map<core.String, core.String> buildUnnamed21() => {
       'x': 'foo',
       'y': 'foo',
@@ -1274,10 +1397,13 @@ api.Repository buildRepository() {
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed21();
     o.mavenConfig = buildMavenRepositoryConfig();
+    o.mode = 'foo';
     o.name = 'foo';
+    o.remoteRepositoryConfig = buildRemoteRepositoryConfig();
     o.satisfiesPzs = true;
     o.sizeBytes = 'foo';
     o.updateTime = 'foo';
+    o.virtualRepositoryConfig = buildVirtualRepositoryConfig();
   }
   buildCounterRepository--;
   return o;
@@ -1305,9 +1431,14 @@ void checkRepository(api.Repository o) {
     checkUnnamed21(o.labels!);
     checkMavenRepositoryConfig(o.mavenConfig!);
     unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
+    checkRemoteRepositoryConfig(o.remoteRepositoryConfig!);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.sizeBytes!,
@@ -1317,6 +1448,7 @@ void checkRepository(api.Repository o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkVirtualRepositoryConfig(o.virtualRepositoryConfig!);
   }
   buildCounterRepository--;
 }
@@ -1652,6 +1784,65 @@ void checkUploadYumArtifactRequest(api.UploadYumArtifactRequest o) {
   buildCounterUploadYumArtifactRequest--;
 }
 
+core.int buildCounterUpstreamPolicy = 0;
+api.UpstreamPolicy buildUpstreamPolicy() {
+  final o = api.UpstreamPolicy();
+  buildCounterUpstreamPolicy++;
+  if (buildCounterUpstreamPolicy < 3) {
+    o.id = 'foo';
+    o.priority = 42;
+    o.repository = 'foo';
+  }
+  buildCounterUpstreamPolicy--;
+  return o;
+}
+
+void checkUpstreamPolicy(api.UpstreamPolicy o) {
+  buildCounterUpstreamPolicy++;
+  if (buildCounterUpstreamPolicy < 3) {
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.priority!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.repository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpstreamPolicy--;
+}
+
+core.int buildCounterVPCSCConfig = 0;
+api.VPCSCConfig buildVPCSCConfig() {
+  final o = api.VPCSCConfig();
+  buildCounterVPCSCConfig++;
+  if (buildCounterVPCSCConfig < 3) {
+    o.name = 'foo';
+    o.vpcscPolicy = 'foo';
+  }
+  buildCounterVPCSCConfig--;
+  return o;
+}
+
+void checkVPCSCConfig(api.VPCSCConfig o) {
+  buildCounterVPCSCConfig++;
+  if (buildCounterVPCSCConfig < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vpcscPolicy!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVPCSCConfig--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
@@ -1749,6 +1940,36 @@ void checkVersion(api.Version o) {
   buildCounterVersion--;
 }
 
+core.List<api.UpstreamPolicy> buildUnnamed29() => [
+      buildUpstreamPolicy(),
+      buildUpstreamPolicy(),
+    ];
+
+void checkUnnamed29(core.List<api.UpstreamPolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUpstreamPolicy(o[0]);
+  checkUpstreamPolicy(o[1]);
+}
+
+core.int buildCounterVirtualRepositoryConfig = 0;
+api.VirtualRepositoryConfig buildVirtualRepositoryConfig() {
+  final o = api.VirtualRepositoryConfig();
+  buildCounterVirtualRepositoryConfig++;
+  if (buildCounterVirtualRepositoryConfig < 3) {
+    o.upstreamPolicies = buildUnnamed29();
+  }
+  buildCounterVirtualRepositoryConfig--;
+  return o;
+}
+
+void checkVirtualRepositoryConfig(api.VirtualRepositoryConfig o) {
+  buildCounterVirtualRepositoryConfig++;
+  if (buildCounterVirtualRepositoryConfig < 3) {
+    checkUnnamed29(o.upstreamPolicies!);
+  }
+  buildCounterVirtualRepositoryConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
@@ -1767,6 +1988,16 @@ void main() {
       final od = api.DockerImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDockerImage(od);
+    });
+  });
+
+  unittest.group('obj-schema-DockerRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDockerRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DockerRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDockerRepository(od);
     });
   });
 
@@ -1970,6 +2201,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MavenRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMavenRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MavenRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMavenRepository(od);
+    });
+  });
+
   unittest.group('obj-schema-MavenRepositoryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMavenRepositoryConfig();
@@ -1987,6 +2228,16 @@ void main() {
       final od =
           api.NpmPackage.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNpmPackage(od);
+    });
+  });
+
+  unittest.group('obj-schema-NpmRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNpmRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NpmRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNpmRepository(od);
     });
   });
 
@@ -2037,6 +2288,26 @@ void main() {
       final od = api.PythonPackage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPythonPackage(od);
+    });
+  });
+
+  unittest.group('obj-schema-PythonRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPythonRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PythonRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPythonRepository(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoteRepositoryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoteRepositoryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoteRepositoryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRemoteRepositoryConfig(od);
     });
   });
 
@@ -2159,6 +2430,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UpstreamPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpstreamPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpstreamPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpstreamPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-VPCSCConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVPCSCConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VPCSCConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVPCSCConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-Version', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVersion();
@@ -2166,6 +2457,16 @@ void main() {
       final od =
           api.Version.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-VirtualRepositoryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVirtualRepositoryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VirtualRepositoryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVirtualRepositoryConfig(od);
     });
   });
 
@@ -2340,6 +2641,58 @@ void main() {
       checkLocation(response as api.Location);
     });
 
+    unittest.test('method--getVpcscConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVPCSCConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getVpcscConfig(arg_name, $fields: arg_$fields);
+      checkVPCSCConfig(response as api.VPCSCConfig);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ArtifactRegistryApi(mock).projects.locations;
@@ -2409,6 +2762,69 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+
+    unittest.test('method--updateVpcscConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_request = buildVPCSCConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.VPCSCConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkVPCSCConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVPCSCConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateVpcscConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkVPCSCConfig(response as api.VPCSCConfig);
     });
   });
 
