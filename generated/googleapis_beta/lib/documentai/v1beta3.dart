@@ -3490,12 +3490,17 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
   /// a `parent`.
   /// - "ADD" : Add an element.
   /// - "REMOVE" : Remove an element identified by `parent`.
-  /// - "REPLACE" : Replace an element identified by `parent`.
-  /// - "EVAL_REQUESTED" : Request human review for the element identified by
-  /// `parent`.
-  /// - "EVAL_APPROVED" : Element is reviewed and approved at human review,
-  /// confidence will be set to 1.0.
-  /// - "EVAL_SKIPPED" : Element is skipped in the validation process.
+  /// - "UPDATE" : Updates any fields within the given provenance scope of the
+  /// message. It 'overwrites' the fields rather than replacing them. This is
+  /// especially relevant when we just want to update a field value of an entity
+  /// without also affecting all the child properties.
+  /// - "REPLACE" : Currently unused. Replace an element identified by `parent`.
+  /// - "EVAL_REQUESTED" : Deprecated. Request human review for the element
+  /// identified by `parent`.
+  /// - "EVAL_APPROVED" : Deprecated. Element is reviewed and approved at human
+  /// review, confidence will be set to 1.0.
+  /// - "EVAL_SKIPPED" : Deprecated. Element is skipped in the validation
+  /// process.
   core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentProvenance({
@@ -5015,23 +5020,34 @@ class GoogleCloudDocumentaiV1beta3NormalizedVertex {
 
 /// Config for Document OCR.
 class GoogleCloudDocumentaiV1beta3OcrConfig {
+  /// A list of advanced OCR options to further fine-tune OCR behavior.
+  core.List<core.String>? advancedOcrOptions;
+
   /// Enables special handling for PDFs with existing text information.
   ///
   /// Results in better text extraction quality in such PDF inputs.
   core.bool? enableNativePdfParsing;
 
   GoogleCloudDocumentaiV1beta3OcrConfig({
+    this.advancedOcrOptions,
     this.enableNativePdfParsing,
   });
 
   GoogleCloudDocumentaiV1beta3OcrConfig.fromJson(core.Map json_)
       : this(
+          advancedOcrOptions: json_.containsKey('advancedOcrOptions')
+              ? (json_['advancedOcrOptions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           enableNativePdfParsing: json_.containsKey('enableNativePdfParsing')
               ? json_['enableNativePdfParsing'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedOcrOptions != null)
+          'advancedOcrOptions': advancedOcrOptions!,
         if (enableNativePdfParsing != null)
           'enableNativePdfParsing': enableNativePdfParsing!,
       };

@@ -1052,6 +1052,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WorkflowsApi(mock).projects.locations.workflows;
       final arg_name = 'foo';
+      final arg_revisionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1086,6 +1087,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['revisionId']!.first,
+          unittest.equals(arg_revisionId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1096,7 +1101,8 @@ void main() {
         final resp = convert.json.encode(buildWorkflow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(arg_name,
+          revisionId: arg_revisionId, $fields: arg_$fields);
       checkWorkflow(response as api.Workflow);
     });
 

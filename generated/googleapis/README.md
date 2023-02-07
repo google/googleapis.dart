@@ -36,7 +36,7 @@ An API for controlling access to data by Google personnel.
 
 #### Access Context Manager API - `accesscontextmanager.v1`
 
-An API for setting attribute based access control to requests to GCP services.
+An API for setting attribute based access control to requests to Google Cloud services.
 
 - [Documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/)
 - [API details](https://pub.dev/documentation/googleapis/10.0.0/accesscontextmanager.v1/accesscontextmanager.v1-library.html)

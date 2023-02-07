@@ -2093,6 +2093,7 @@ api.StatusEvent buildStatusEvent() {
     o.description = 'foo';
     o.eventTime = 'foo';
     o.taskExecution = buildTaskExecution();
+    o.taskState = 'foo';
     o.type = 'foo';
   }
   buildCounterStatusEvent--;
@@ -2111,6 +2112,10 @@ void checkStatusEvent(api.StatusEvent o) {
       unittest.equals('foo'),
     );
     checkTaskExecution(o.taskExecution!);
+    unittest.expect(
+      o.taskState!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.type!,
       unittest.equals('foo'),

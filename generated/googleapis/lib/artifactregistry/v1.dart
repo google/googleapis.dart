@@ -221,6 +221,43 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the VPCSC Config for the Project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the VPCSCConfig resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcscConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VPCSCConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VPCSCConfig> getVpcscConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VPCSCConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -270,6 +307,54 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the VPCSC Config for the Project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the project's VPC SC Config. Always of the form:
+  /// projects/{projectID}/locations/{location}/vpcscConfig In update request:
+  /// never set In response: always set
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcscConfig$`.
+  ///
+  /// [updateMask] - Field mask to support partial updates.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VPCSCConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VPCSCConfig> updateVpcscConfig(
+    VPCSCConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return VPCSCConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2035,7 +2120,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2051,9 +2138,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2196,6 +2281,31 @@ class DockerImage {
       };
 }
 
+/// Configuration for a Docker remote repository.
+class DockerRepository {
+  /// One of the publicly available Docker repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "DOCKER_HUB" : Docker Hub.
+  core.String? publicRepository;
+
+  DockerRepository({
+    this.publicRepository,
+  });
+
+  DockerRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2230,6 +2340,13 @@ class GoogleDevtoolsArtifactregistryV1File {
   /// The time when the File was created.
   core.String? createTime;
 
+  /// The time when the last attempt to refresh the file's data was made.
+  ///
+  /// Only set when the repository is remote.
+  ///
+  /// Output only.
+  core.String? fetchTime;
+
   /// The hashes of the file content.
   core.List<Hash>? hashes;
 
@@ -2250,6 +2367,7 @@ class GoogleDevtoolsArtifactregistryV1File {
 
   GoogleDevtoolsArtifactregistryV1File({
     this.createTime,
+    this.fetchTime,
     this.hashes,
     this.name,
     this.owner,
@@ -2261,6 +2379,9 @@ class GoogleDevtoolsArtifactregistryV1File {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          fetchTime: json_.containsKey('fetchTime')
+              ? json_['fetchTime'] as core.String
               : null,
           hashes: json_.containsKey('hashes')
               ? (json_['hashes'] as core.List)
@@ -2281,6 +2402,7 @@ class GoogleDevtoolsArtifactregistryV1File {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (fetchTime != null) 'fetchTime': fetchTime!,
         if (hashes != null) 'hashes': hashes!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
@@ -2793,6 +2915,31 @@ class MavenArtifact {
       };
 }
 
+/// Configuration for a Maven remote repository.
+class MavenRepository {
+  /// One of the publicly available Maven repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "MAVEN_CENTRAL" : Maven Central.
+  core.String? publicRepository;
+
+  MavenRepository({
+    this.publicRepository,
+  });
+
+  MavenRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
 /// MavenRepositoryConfig is maven related repository details.
 ///
 /// Provides additional configuration details for repositories of the maven
@@ -2902,6 +3049,31 @@ class NpmPackage {
         if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a Npm remote repository.
+class NpmRepository {
+  /// One of the publicly available Npm repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "NPMJS" : npmjs.
+  core.String? publicRepository;
+
+  NpmRepository({
+    this.publicRepository,
+  });
+
+  NpmRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
 
@@ -3251,6 +3423,88 @@ class PythonPackage {
       };
 }
 
+/// Configuration for a Python remote repository.
+class PythonRepository {
+  /// One of the publicly available Python repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "PYPI" : PyPI.
+  core.String? publicRepository;
+
+  PythonRepository({
+    this.publicRepository,
+  });
+
+  PythonRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
+/// Remote repository configuration.
+class RemoteRepositoryConfig {
+  /// The description of the remote source.
+  core.String? description;
+
+  /// Specific settings for a Docker remote repository.
+  DockerRepository? dockerRepository;
+
+  /// Specific settings for a Maven remote repository.
+  MavenRepository? mavenRepository;
+
+  /// Specific settings for an Npm remote repository.
+  NpmRepository? npmRepository;
+
+  /// Specific settings for a Python remote repository.
+  PythonRepository? pythonRepository;
+
+  RemoteRepositoryConfig({
+    this.description,
+    this.dockerRepository,
+    this.mavenRepository,
+    this.npmRepository,
+    this.pythonRepository,
+  });
+
+  RemoteRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          dockerRepository: json_.containsKey('dockerRepository')
+              ? DockerRepository.fromJson(json_['dockerRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mavenRepository: json_.containsKey('mavenRepository')
+              ? MavenRepository.fromJson(json_['mavenRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          npmRepository: json_.containsKey('npmRepository')
+              ? NpmRepository.fromJson(
+                  json_['npmRepository'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pythonRepository: json_.containsKey('pythonRepository')
+              ? PythonRepository.fromJson(json_['pythonRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (dockerRepository != null) 'dockerRepository': dockerRepository!,
+        if (mavenRepository != null) 'mavenRepository': mavenRepository!,
+        if (npmRepository != null) 'npmRepository': npmRepository!,
+        if (pythonRepository != null) 'pythonRepository': pythonRepository!,
+      };
+}
+
 /// A Repository for storing artifacts with a specific format.
 class Repository {
   /// The time when the repository was created.
@@ -3291,9 +3545,22 @@ class Repository {
   /// repositories of maven type.
   MavenRepositoryConfig? mavenConfig;
 
+  /// The mode of the repository.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "STANDARD_REPOSITORY" : A standard repository storing artifacts.
+  /// - "VIRTUAL_REPOSITORY" : A virtual repository to serve artifacts from one
+  /// or more sources.
+  /// - "REMOTE_REPOSITORY" : A remote repository to serve artifacts from a
+  /// remote source.
+  core.String? mode;
+
   /// The name of the repository, for example:
   /// "projects/p1/locations/us-central1/repositories/repo1".
   core.String? name;
+
+  /// Configuration specific for a Remote Repository.
+  RemoteRepositoryConfig? remoteRepositoryConfig;
 
   /// If set, the repository satisfies physical zone separation.
   ///
@@ -3311,6 +3578,9 @@ class Repository {
   /// The time when the repository was last updated.
   core.String? updateTime;
 
+  /// Configuration specific for a Virtual Repository.
+  VirtualRepositoryConfig? virtualRepositoryConfig;
+
   Repository({
     this.createTime,
     this.description,
@@ -3318,10 +3588,13 @@ class Repository {
     this.kmsKeyName,
     this.labels,
     this.mavenConfig,
+    this.mode,
     this.name,
+    this.remoteRepositoryConfig,
     this.satisfiesPzs,
     this.sizeBytes,
     this.updateTime,
+    this.virtualRepositoryConfig,
   });
 
   Repository.fromJson(core.Map json_)
@@ -3350,7 +3623,12 @@ class Repository {
               ? MavenRepositoryConfig.fromJson(
                   json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
+              ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -3359,6 +3637,11 @@ class Repository {
               : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
+              : null,
+          virtualRepositoryConfig: json_.containsKey('virtualRepositoryConfig')
+              ? VirtualRepositoryConfig.fromJson(
+                  json_['virtualRepositoryConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3369,10 +3652,15 @@ class Repository {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (mavenConfig != null) 'mavenConfig': mavenConfig!,
+        if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (remoteRepositoryConfig != null)
+          'remoteRepositoryConfig': remoteRepositoryConfig!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (virtualRepositoryConfig != null)
+          'virtualRepositoryConfig': virtualRepositoryConfig!,
       };
 }
 
@@ -3556,6 +3844,81 @@ class UploadYumArtifactMediaResponse {
 /// The request to upload an artifact.
 typedef UploadYumArtifactRequest = $Empty;
 
+/// Artifact policy configuration for the repository contents.
+class UpstreamPolicy {
+  /// The user-provided ID of the upstream policy.
+  core.String? id;
+
+  /// Entries with a greater priority value take precedence in the pull order.
+  core.int? priority;
+
+  /// A reference to the repository resource, for example:
+  /// "projects/p1/locations/us-central1/repository/repo1".
+  core.String? repository;
+
+  UpstreamPolicy({
+    this.id,
+    this.priority,
+    this.repository,
+  });
+
+  UpstreamPolicy.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (priority != null) 'priority': priority!,
+        if (repository != null) 'repository': repository!,
+      };
+}
+
+/// The Artifact Registry VPC SC config that apply to a Project.
+class VPCSCConfig {
+  /// The name of the project's VPC SC Config.
+  ///
+  /// Always of the form: projects/{projectID}/locations/{location}/vpcscConfig
+  /// In update request: never set In response: always set
+  core.String? name;
+
+  /// The project per location VPC SC policy that defines the VPC SC behavior
+  /// for the Remote Repository (Allow/Deny).
+  /// Possible string values are:
+  /// - "VPCSC_POLICY_UNSPECIFIED" : VPCSC_POLICY_UNSPECIFIED - the VPS SC
+  /// policy is not defined. When VPS SC policy is not defined - the Service
+  /// will use the default behavior (VPCSC_DENY).
+  /// - "DENY" : VPCSC_DENY - repository will block the requests to the
+  /// Upstreams for the Remote Repositories if the resource is in the perimeter.
+  /// - "ALLOW" : VPCSC_ALLOW - repository will allow the requests to the
+  /// Upstreams for the Remote Repositories if the resource is in the perimeter.
+  core.String? vpcscPolicy;
+
+  VPCSCConfig({
+    this.name,
+    this.vpcscPolicy,
+  });
+
+  VPCSCConfig.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          vpcscPolicy: json_.containsKey('vpcscPolicy')
+              ? json_['vpcscPolicy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (vpcscPolicy != null) 'vpcscPolicy': vpcscPolicy!,
+      };
+}
+
 /// The body of a version resource.
 ///
 /// A version resource represents a collection of components, such as files and
@@ -3637,5 +4000,32 @@ class Version {
         if (name != null) 'name': name!,
         if (relatedTags != null) 'relatedTags': relatedTags!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Virtual repository configuration.
+class VirtualRepositoryConfig {
+  /// Policies that configure the upstream artifacts distributed by the Virtual
+  /// Repository.
+  ///
+  /// Upstream policies cannot be set on a standard repository.
+  core.List<UpstreamPolicy>? upstreamPolicies;
+
+  VirtualRepositoryConfig({
+    this.upstreamPolicies,
+  });
+
+  VirtualRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          upstreamPolicies: json_.containsKey('upstreamPolicies')
+              ? (json_['upstreamPolicies'] as core.List)
+                  .map((value) => UpstreamPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
       };
 }

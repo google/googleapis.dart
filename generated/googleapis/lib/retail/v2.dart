@@ -3562,7 +3562,7 @@ class GoogleCloudRetailV2BigQuerySource {
   /// here: https://support.google.com/analytics/answer/3437719. *
   /// `user_event_ga4`: The schema is available here:
   /// https://support.google.com/analytics/answer/7029846. Supported values for
-  /// auto-completion imports: * `suggestions` (default): One JSON completion
+  /// autocomplete imports: * `suggestions` (default): One JSON completion
   /// suggestion per line. * `denylist`: One JSON deny suggestion per line. *
   /// `allowlist`: One JSON allow suggestion per line.
   core.String? dataSchema;
@@ -3898,7 +3898,7 @@ class GoogleCloudRetailV2ColorInfo {
       };
 }
 
-/// Response of the auto-complete query.
+/// Response of the autocomplete query.
 class GoogleCloudRetailV2CompleteQueryResponse {
   /// A unique complete token.
   ///

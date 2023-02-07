@@ -1841,6 +1841,45 @@ void checkGoogleCloudDatacatalogV1PolicyTag(
   buildCounterGoogleCloudDatacatalogV1PolicyTag--;
 }
 
+core.List<api.GoogleCloudDatacatalogV1Tag> buildUnnamed18() => [
+      buildGoogleCloudDatacatalogV1Tag(),
+      buildGoogleCloudDatacatalogV1Tag(),
+    ];
+
+void checkUnnamed18(core.List<api.GoogleCloudDatacatalogV1Tag> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDatacatalogV1Tag(o[0]);
+  checkGoogleCloudDatacatalogV1Tag(o[1]);
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest = 0;
+api.GoogleCloudDatacatalogV1ReconcileTagsRequest
+    buildGoogleCloudDatacatalogV1ReconcileTagsRequest() {
+  final o = api.GoogleCloudDatacatalogV1ReconcileTagsRequest();
+  buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest < 3) {
+    o.forceDeleteMissing = true;
+    o.tagTemplate = 'foo';
+    o.tags = buildUnnamed18();
+  }
+  buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1ReconcileTagsRequest(
+    api.GoogleCloudDatacatalogV1ReconcileTagsRequest o) {
+  buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest < 3) {
+    unittest.expect(o.forceDeleteMissing!, unittest.isTrue);
+    unittest.expect(
+      o.tagTemplate!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed18(o.tags!);
+  }
+  buildCounterGoogleCloudDatacatalogV1ReconcileTagsRequest--;
+}
+
 core.int
     buildCounterGoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest =
     0;
@@ -1915,12 +1954,12 @@ void checkGoogleCloudDatacatalogV1ReplaceTaxonomyRequest(
   buildCounterGoogleCloudDatacatalogV1ReplaceTaxonomyRequest--;
 }
 
-core.List<api.GoogleCloudDatacatalogV1RoutineSpecArgument> buildUnnamed18() => [
+core.List<api.GoogleCloudDatacatalogV1RoutineSpecArgument> buildUnnamed19() => [
       buildGoogleCloudDatacatalogV1RoutineSpecArgument(),
       buildGoogleCloudDatacatalogV1RoutineSpecArgument(),
     ];
 
-void checkUnnamed18(
+void checkUnnamed19(
     core.List<api.GoogleCloudDatacatalogV1RoutineSpecArgument> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1RoutineSpecArgument(o[0]);
@@ -1937,7 +1976,7 @@ api.GoogleCloudDatacatalogV1RoutineSpec
     o.definitionBody = 'foo';
     o.language = 'foo';
     o.returnType = 'foo';
-    o.routineArguments = buildUnnamed18();
+    o.routineArguments = buildUnnamed19();
     o.routineType = 'foo';
   }
   buildCounterGoogleCloudDatacatalogV1RoutineSpec--;
@@ -1961,7 +2000,7 @@ void checkGoogleCloudDatacatalogV1RoutineSpec(
       o.returnType!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.routineArguments!);
+    checkUnnamed19(o.routineArguments!);
     unittest.expect(
       o.routineType!,
       unittest.equals('foo'),
@@ -2004,12 +2043,12 @@ void checkGoogleCloudDatacatalogV1RoutineSpecArgument(
   buildCounterGoogleCloudDatacatalogV1RoutineSpecArgument--;
 }
 
-core.List<api.GoogleCloudDatacatalogV1ColumnSchema> buildUnnamed19() => [
+core.List<api.GoogleCloudDatacatalogV1ColumnSchema> buildUnnamed20() => [
       buildGoogleCloudDatacatalogV1ColumnSchema(),
       buildGoogleCloudDatacatalogV1ColumnSchema(),
     ];
 
-void checkUnnamed19(core.List<api.GoogleCloudDatacatalogV1ColumnSchema> o) {
+void checkUnnamed20(core.List<api.GoogleCloudDatacatalogV1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1ColumnSchema(o[0]);
   checkGoogleCloudDatacatalogV1ColumnSchema(o[1]);
@@ -2020,7 +2059,7 @@ api.GoogleCloudDatacatalogV1Schema buildGoogleCloudDatacatalogV1Schema() {
   final o = api.GoogleCloudDatacatalogV1Schema();
   buildCounterGoogleCloudDatacatalogV1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1Schema < 3) {
-    o.columns = buildUnnamed19();
+    o.columns = buildUnnamed20();
   }
   buildCounterGoogleCloudDatacatalogV1Schema--;
   return o;
@@ -2029,7 +2068,7 @@ api.GoogleCloudDatacatalogV1Schema buildGoogleCloudDatacatalogV1Schema() {
 void checkGoogleCloudDatacatalogV1Schema(api.GoogleCloudDatacatalogV1Schema o) {
   buildCounterGoogleCloudDatacatalogV1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1Schema < 3) {
-    checkUnnamed19(o.columns!);
+    checkUnnamed20(o.columns!);
   }
   buildCounterGoogleCloudDatacatalogV1Schema--;
 }
@@ -2075,23 +2114,6 @@ void checkGoogleCloudDatacatalogV1SearchCatalogRequest(
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequest--;
 }
 
-core.List<core.String> buildUnnamed20() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
@@ -2126,6 +2148,23 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope = 0;
 api.GoogleCloudDatacatalogV1SearchCatalogRequestScope
     buildGoogleCloudDatacatalogV1SearchCatalogRequestScope() {
@@ -2133,10 +2172,10 @@ api.GoogleCloudDatacatalogV1SearchCatalogRequestScope
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope < 3) {
     o.includeGcpPublicDatasets = true;
-    o.includeOrgIds = buildUnnamed20();
-    o.includeProjectIds = buildUnnamed21();
+    o.includeOrgIds = buildUnnamed21();
+    o.includeProjectIds = buildUnnamed22();
     o.includePublicTagTemplates = true;
-    o.restrictedLocations = buildUnnamed22();
+    o.restrictedLocations = buildUnnamed23();
     o.starredOnly = true;
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope--;
@@ -2148,33 +2187,33 @@ void checkGoogleCloudDatacatalogV1SearchCatalogRequestScope(
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope < 3) {
     unittest.expect(o.includeGcpPublicDatasets!, unittest.isTrue);
-    checkUnnamed20(o.includeOrgIds!);
-    checkUnnamed21(o.includeProjectIds!);
+    checkUnnamed21(o.includeOrgIds!);
+    checkUnnamed22(o.includeProjectIds!);
     unittest.expect(o.includePublicTagTemplates!, unittest.isTrue);
-    checkUnnamed22(o.restrictedLocations!);
+    checkUnnamed23(o.restrictedLocations!);
     unittest.expect(o.starredOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope--;
 }
 
-core.List<api.GoogleCloudDatacatalogV1SearchCatalogResult> buildUnnamed23() => [
+core.List<api.GoogleCloudDatacatalogV1SearchCatalogResult> buildUnnamed24() => [
       buildGoogleCloudDatacatalogV1SearchCatalogResult(),
       buildGoogleCloudDatacatalogV1SearchCatalogResult(),
     ];
 
-void checkUnnamed23(
+void checkUnnamed24(
     core.List<api.GoogleCloudDatacatalogV1SearchCatalogResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1SearchCatalogResult(o[0]);
   checkGoogleCloudDatacatalogV1SearchCatalogResult(o[1]);
 }
 
-core.List<core.String> buildUnnamed24() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2193,8 +2232,8 @@ api.GoogleCloudDatacatalogV1SearchCatalogResponse
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse < 3) {
     o.nextPageToken = 'foo';
-    o.results = buildUnnamed23();
-    o.unreachable = buildUnnamed24();
+    o.results = buildUnnamed24();
+    o.unreachable = buildUnnamed25();
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse--;
   return o;
@@ -2208,8 +2247,8 @@ void checkGoogleCloudDatacatalogV1SearchCatalogResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.results!);
-    checkUnnamed24(o.unreachable!);
+    checkUnnamed24(o.results!);
+    checkUnnamed25(o.unreachable!);
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse--;
 }
@@ -2283,12 +2322,12 @@ void checkGoogleCloudDatacatalogV1SearchCatalogResult(
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResult--;
 }
 
-core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> buildUnnamed25() => [
+core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> buildUnnamed26() => [
       buildGoogleCloudDatacatalogV1SerializedPolicyTag(),
       buildGoogleCloudDatacatalogV1SerializedPolicyTag(),
     ];
 
-void checkUnnamed25(
+void checkUnnamed26(
     core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1SerializedPolicyTag(o[0]);
@@ -2301,7 +2340,7 @@ api.GoogleCloudDatacatalogV1SerializedPolicyTag
   final o = api.GoogleCloudDatacatalogV1SerializedPolicyTag();
   buildCounterGoogleCloudDatacatalogV1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1SerializedPolicyTag < 3) {
-    o.childPolicyTags = buildUnnamed25();
+    o.childPolicyTags = buildUnnamed26();
     o.description = 'foo';
     o.displayName = 'foo';
     o.policyTag = 'foo';
@@ -2314,7 +2353,7 @@ void checkGoogleCloudDatacatalogV1SerializedPolicyTag(
     api.GoogleCloudDatacatalogV1SerializedPolicyTag o) {
   buildCounterGoogleCloudDatacatalogV1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1SerializedPolicyTag < 3) {
-    checkUnnamed25(o.childPolicyTags!);
+    checkUnnamed26(o.childPolicyTags!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2331,12 +2370,12 @@ void checkGoogleCloudDatacatalogV1SerializedPolicyTag(
   buildCounterGoogleCloudDatacatalogV1SerializedPolicyTag--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2348,12 +2387,12 @@ void checkUnnamed26(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> buildUnnamed27() => [
+core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> buildUnnamed28() => [
       buildGoogleCloudDatacatalogV1SerializedPolicyTag(),
       buildGoogleCloudDatacatalogV1SerializedPolicyTag(),
     ];
 
-void checkUnnamed27(
+void checkUnnamed28(
     core.List<api.GoogleCloudDatacatalogV1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1SerializedPolicyTag(o[0]);
@@ -2366,10 +2405,10 @@ api.GoogleCloudDatacatalogV1SerializedTaxonomy
   final o = api.GoogleCloudDatacatalogV1SerializedTaxonomy();
   buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy < 3) {
-    o.activatedPolicyTypes = buildUnnamed26();
+    o.activatedPolicyTypes = buildUnnamed27();
     o.description = 'foo';
     o.displayName = 'foo';
-    o.policyTags = buildUnnamed27();
+    o.policyTags = buildUnnamed28();
   }
   buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy--;
   return o;
@@ -2379,7 +2418,7 @@ void checkGoogleCloudDatacatalogV1SerializedTaxonomy(
     api.GoogleCloudDatacatalogV1SerializedTaxonomy o) {
   buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy < 3) {
-    checkUnnamed26(o.activatedPolicyTypes!);
+    checkUnnamed27(o.activatedPolicyTypes!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2388,7 +2427,7 @@ void checkGoogleCloudDatacatalogV1SerializedTaxonomy(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.policyTags!);
+    checkUnnamed28(o.policyTags!);
   }
   buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy--;
 }
@@ -2461,12 +2500,12 @@ void checkGoogleCloudDatacatalogV1StarEntryResponse(
   buildCounterGoogleCloudDatacatalogV1StarEntryResponse--;
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2484,7 +2523,7 @@ api.GoogleCloudDatacatalogV1StorageProperties
   final o = api.GoogleCloudDatacatalogV1StorageProperties();
   buildCounterGoogleCloudDatacatalogV1StorageProperties++;
   if (buildCounterGoogleCloudDatacatalogV1StorageProperties < 3) {
-    o.filePattern = buildUnnamed28();
+    o.filePattern = buildUnnamed29();
     o.fileType = 'foo';
   }
   buildCounterGoogleCloudDatacatalogV1StorageProperties--;
@@ -2495,7 +2534,7 @@ void checkGoogleCloudDatacatalogV1StorageProperties(
     api.GoogleCloudDatacatalogV1StorageProperties o) {
   buildCounterGoogleCloudDatacatalogV1StorageProperties++;
   if (buildCounterGoogleCloudDatacatalogV1StorageProperties < 3) {
-    checkUnnamed28(o.filePattern!);
+    checkUnnamed29(o.filePattern!);
     unittest.expect(
       o.fileType!,
       unittest.equals('foo'),
@@ -2561,13 +2600,13 @@ void checkGoogleCloudDatacatalogV1TableSpec(
   buildCounterGoogleCloudDatacatalogV1TableSpec--;
 }
 
-core.Map<core.String, api.GoogleCloudDatacatalogV1TagField> buildUnnamed29() =>
+core.Map<core.String, api.GoogleCloudDatacatalogV1TagField> buildUnnamed30() =>
     {
       'x': buildGoogleCloudDatacatalogV1TagField(),
       'y': buildGoogleCloudDatacatalogV1TagField(),
     };
 
-void checkUnnamed29(
+void checkUnnamed30(
     core.Map<core.String, api.GoogleCloudDatacatalogV1TagField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1TagField(o['x']!);
@@ -2580,7 +2619,7 @@ api.GoogleCloudDatacatalogV1Tag buildGoogleCloudDatacatalogV1Tag() {
   buildCounterGoogleCloudDatacatalogV1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1Tag < 3) {
     o.column = 'foo';
-    o.fields = buildUnnamed29();
+    o.fields = buildUnnamed30();
     o.name = 'foo';
     o.template = 'foo';
     o.templateDisplayName = 'foo';
@@ -2596,7 +2635,7 @@ void checkGoogleCloudDatacatalogV1Tag(api.GoogleCloudDatacatalogV1Tag o) {
       o.column!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.fields!);
+    checkUnnamed30(o.fields!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2690,12 +2729,12 @@ void checkGoogleCloudDatacatalogV1TagFieldEnumValue(
 }
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1TagTemplateField>
-    buildUnnamed30() => {
+    buildUnnamed31() => {
           'x': buildGoogleCloudDatacatalogV1TagTemplateField(),
           'y': buildGoogleCloudDatacatalogV1TagTemplateField(),
         };
 
-void checkUnnamed30(
+void checkUnnamed31(
     core.Map<core.String, api.GoogleCloudDatacatalogV1TagTemplateField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1TagTemplateField(o['x']!);
@@ -2709,7 +2748,7 @@ api.GoogleCloudDatacatalogV1TagTemplate
   buildCounterGoogleCloudDatacatalogV1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1TagTemplate < 3) {
     o.displayName = 'foo';
-    o.fields = buildUnnamed30();
+    o.fields = buildUnnamed31();
     o.isPubliclyReadable = true;
     o.name = 'foo';
   }
@@ -2725,7 +2764,7 @@ void checkGoogleCloudDatacatalogV1TagTemplate(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.fields!);
+    checkUnnamed31(o.fields!);
     unittest.expect(o.isPubliclyReadable!, unittest.isTrue);
     unittest.expect(
       o.name!,
@@ -2778,12 +2817,12 @@ void checkGoogleCloudDatacatalogV1TagTemplateField(
   buildCounterGoogleCloudDatacatalogV1TagTemplateField--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2800,7 +2839,7 @@ api.GoogleCloudDatacatalogV1Taxonomy buildGoogleCloudDatacatalogV1Taxonomy() {
   final o = api.GoogleCloudDatacatalogV1Taxonomy();
   buildCounterGoogleCloudDatacatalogV1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1Taxonomy < 3) {
-    o.activatedPolicyTypes = buildUnnamed31();
+    o.activatedPolicyTypes = buildUnnamed32();
     o.description = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
@@ -2816,7 +2855,7 @@ void checkGoogleCloudDatacatalogV1Taxonomy(
     api.GoogleCloudDatacatalogV1Taxonomy o) {
   buildCounterGoogleCloudDatacatalogV1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1Taxonomy < 3) {
-    checkUnnamed31(o.activatedPolicyTypes!);
+    checkUnnamed32(o.activatedPolicyTypes!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2903,12 +2942,12 @@ void checkGoogleCloudDatacatalogV1UnstarEntryResponse(
 }
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1CommonUsageStats>
-    buildUnnamed32() => {
+    buildUnnamed33() => {
           'x': buildGoogleCloudDatacatalogV1CommonUsageStats(),
           'y': buildGoogleCloudDatacatalogV1CommonUsageStats(),
         };
 
-void checkUnnamed32(
+void checkUnnamed33(
     core.Map<core.String, api.GoogleCloudDatacatalogV1CommonUsageStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1CommonUsageStats(o['x']!);
@@ -2916,12 +2955,12 @@ void checkUnnamed32(
 }
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1UsageStats>
-    buildUnnamed33() => {
+    buildUnnamed34() => {
           'x': buildGoogleCloudDatacatalogV1UsageStats(),
           'y': buildGoogleCloudDatacatalogV1UsageStats(),
         };
 
-void checkUnnamed33(
+void checkUnnamed34(
     core.Map<core.String, api.GoogleCloudDatacatalogV1UsageStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1UsageStats(o['x']!);
@@ -2934,10 +2973,10 @@ api.GoogleCloudDatacatalogV1UsageSignal
   final o = api.GoogleCloudDatacatalogV1UsageSignal();
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
-    o.commonUsageWithinTimeRange = buildUnnamed32();
+    o.commonUsageWithinTimeRange = buildUnnamed33();
     o.favoriteCount = 'foo';
     o.updateTime = 'foo';
-    o.usageWithinTimeRange = buildUnnamed33();
+    o.usageWithinTimeRange = buildUnnamed34();
   }
   buildCounterGoogleCloudDatacatalogV1UsageSignal--;
   return o;
@@ -2947,7 +2986,7 @@ void checkGoogleCloudDatacatalogV1UsageSignal(
     api.GoogleCloudDatacatalogV1UsageSignal o) {
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
-    checkUnnamed32(o.commonUsageWithinTimeRange!);
+    checkUnnamed33(o.commonUsageWithinTimeRange!);
     unittest.expect(
       o.favoriteCount!,
       unittest.equals('foo'),
@@ -2956,7 +2995,7 @@ void checkGoogleCloudDatacatalogV1UsageSignal(
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.usageWithinTimeRange!);
+    checkUnnamed34(o.usageWithinTimeRange!);
   }
   buildCounterGoogleCloudDatacatalogV1UsageSignal--;
 }
@@ -3023,12 +3062,12 @@ void checkGoogleCloudDatacatalogV1ViewSpec(
   buildCounterGoogleCloudDatacatalogV1ViewSpec--;
 }
 
-core.List<api.Operation> buildUnnamed34() => [
+core.List<api.Operation> buildUnnamed35() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed34(core.List<api.Operation> o) {
+void checkUnnamed35(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -3040,7 +3079,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed34();
+    o.operations = buildUnnamed35();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -3053,12 +3092,12 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.operations!);
+    checkUnnamed35(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed35() => {
+core.Map<core.String, core.Object?> buildUnnamed36() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3071,7 +3110,7 @@ core.Map<core.String, core.Object?> buildUnnamed35() => {
       },
     };
 
-void checkUnnamed35(core.Map<core.String, core.Object?> o) {
+void checkUnnamed36(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3103,7 +3142,7 @@ void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed36() => {
+core.Map<core.String, core.Object?> buildUnnamed37() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3116,7 +3155,7 @@ core.Map<core.String, core.Object?> buildUnnamed36() => {
       },
     };
 
-void checkUnnamed36(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3155,9 +3194,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed35();
+    o.metadata = buildUnnamed36();
     o.name = 'foo';
-    o.response = buildUnnamed36();
+    o.response = buildUnnamed37();
   }
   buildCounterOperation--;
   return o;
@@ -3168,22 +3207,22 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed35(o.metadata!);
+    checkUnnamed36(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.response!);
+    checkUnnamed37(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.Binding> buildUnnamed37() => [
+core.List<api.Binding> buildUnnamed38() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed37(core.List<api.Binding> o) {
+void checkUnnamed38(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -3194,7 +3233,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed37();
+    o.bindings = buildUnnamed38();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -3205,7 +3244,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed37(o.bindings!);
+    checkUnnamed38(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3237,7 +3276,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed38() => {
+core.Map<core.String, core.Object?> buildUnnamed39() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3250,7 +3289,7 @@ core.Map<core.String, core.Object?> buildUnnamed38() => {
       },
     };
 
-void checkUnnamed38(core.Map<core.String, core.Object?> o) {
+void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3282,15 +3321,15 @@ void checkUnnamed38(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed39() => [
-      buildUnnamed38(),
-      buildUnnamed38(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed40() => [
+      buildUnnamed39(),
+      buildUnnamed39(),
     ];
 
-void checkUnnamed39(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed40(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed38(o[0]);
-  checkUnnamed38(o[1]);
+  checkUnnamed39(o[0]);
+  checkUnnamed39(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -3299,7 +3338,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed39();
+    o.details = buildUnnamed40();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -3313,49 +3352,13 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed39(o.details!);
+    checkUnnamed40(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterStatus--;
-}
-
-core.List<core.String> buildUnnamed40() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed40(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed40();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed40(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
 }
 
 core.List<core.String> buildUnnamed41() => [
@@ -3375,23 +3378,23 @@ void checkUnnamed41(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterTestIamPermissionsResponse = 0;
-api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
-  final o = api.TestIamPermissionsResponse();
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
     o.permissions = buildUnnamed41();
   }
-  buildCounterTestIamPermissionsResponse--;
+  buildCounterTestIamPermissionsRequest--;
   return o;
 }
 
-void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
     checkUnnamed41(o.permissions!);
   }
-  buildCounterTestIamPermissionsResponse--;
+  buildCounterTestIamPermissionsRequest--;
 }
 
 core.List<core.String> buildUnnamed42() => [
@@ -3400,6 +3403,42 @@ core.List<core.String> buildUnnamed42() => [
     ];
 
 void checkUnnamed42(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsResponse = 0;
+api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
+  final o = api.TestIamPermissionsResponse();
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    o.permissions = buildUnnamed42();
+  }
+  buildCounterTestIamPermissionsResponse--;
+  return o;
+}
+
+void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    checkUnnamed42(o.permissions!);
+  }
+  buildCounterTestIamPermissionsResponse--;
+}
+
+core.List<core.String> buildUnnamed43() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4001,6 +4040,16 @@ void main() {
       final od = api.GoogleCloudDatacatalogV1PolicyTag.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1PolicyTag(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1ReconcileTagsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1ReconcileTagsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1ReconcileTagsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1ReconcileTagsRequest(od);
     });
   });
 
@@ -5993,6 +6042,65 @@ void main() {
       checkGoogleCloudDatacatalogV1Tag(
           response as api.GoogleCloudDatacatalogV1Tag);
     });
+
+    unittest.test('method--reconcile', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final arg_request = buildGoogleCloudDatacatalogV1ReconcileTagsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudDatacatalogV1ReconcileTagsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDatacatalogV1ReconcileTagsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.reconcile(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
   });
 
   unittest.group('resource-ProjectsLocationsEntryGroupsTagsResource', () {
@@ -7332,7 +7440,7 @@ void main() {
       final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       final arg_parent = 'foo';
       final arg_serializedTaxonomies = true;
-      final arg_taxonomies = buildUnnamed42();
+      final arg_taxonomies = buildUnnamed43();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

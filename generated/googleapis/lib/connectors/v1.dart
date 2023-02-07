@@ -1649,9 +1649,17 @@ class AuthConfigTemplate {
   /// Config variables to describe an `AuthConfig` for a `Connection`.
   core.List<ConfigVariableTemplate>? configVariableTemplates;
 
+  /// Connector specific description for an authentication template.
+  core.String? description;
+
+  /// Display name for authentication template.
+  core.String? displayName;
+
   AuthConfigTemplate({
     this.authType,
     this.configVariableTemplates,
+    this.description,
+    this.displayName,
   });
 
   AuthConfigTemplate.fromJson(core.Map json_)
@@ -1665,12 +1673,20 @@ class AuthConfigTemplate {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authType != null) 'authType': authType!,
         if (configVariableTemplates != null)
           'configVariableTemplates': configVariableTemplates!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -1753,7 +1769,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1769,9 +1787,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

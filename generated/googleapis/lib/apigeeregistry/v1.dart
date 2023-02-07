@@ -5648,7 +5648,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -5664,9 +5666,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -5698,6 +5698,47 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Build information of the Instance if it's in `ACTIVE` state.
+class Build {
+  /// Commit ID of the latest commit in the build.
+  ///
+  /// Output only.
+  core.String? commitId;
+
+  /// Commit time of the latest commit in the build.
+  ///
+  /// Output only.
+  core.String? commitTime;
+
+  /// Path of the open source repository: github.com/apigee/registry.
+  ///
+  /// Output only.
+  core.String? repo;
+
+  Build({
+    this.commitId,
+    this.commitTime,
+    this.repo,
+  });
+
+  Build.fromJson(core.Map json_)
+      : this(
+          commitId: json_.containsKey('commitId')
+              ? json_['commitId'] as core.String
+              : null,
+          commitTime: json_.containsKey('commitTime')
+              ? json_['commitTime'] as core.String
+              : null,
+          repo: json_.containsKey('repo') ? json_['repo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitId != null) 'commitId': commitId!,
+        if (commitTime != null) 'commitTime': commitTime!,
+        if (repo != null) 'repo': repo!,
       };
 }
 
@@ -5793,6 +5834,11 @@ typedef HttpBody = $HttpBody;
 ///
 /// Currently, only one instance is allowed for each project.
 class Instance {
+  /// Build info of the Instance if it's in `ACTIVE` state.
+  ///
+  /// Output only.
+  Build? build;
+
   /// Config of the Instance.
   ///
   /// Required.
@@ -5833,6 +5879,7 @@ class Instance {
   core.String? updateTime;
 
   Instance({
+    this.build,
     this.config,
     this.createTime,
     this.name,
@@ -5843,6 +5890,10 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
+          build: json_.containsKey('build')
+              ? Build.fromJson(
+                  json_['build'] as core.Map<core.String, core.dynamic>)
+              : null,
           config: json_.containsKey('config')
               ? Config.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
@@ -5862,6 +5913,7 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,

@@ -1843,6 +1843,8 @@ class RestrictionChange {
   /// download, and print that might result in uncontrolled duplicates of items.
   /// - "DRIVE_FILE_STREAM" : When restricted, this prevents use of Drive File
   /// Stream.
+  /// - "FILE_ORGANIZER_CAN_SHARE_FOLDERS" : When restricted, this limits
+  /// sharing of folders to managers only.
   core.String? feature;
 
   /// The restriction in place after the change.

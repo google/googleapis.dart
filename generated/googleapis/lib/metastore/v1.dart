@@ -21,7 +21,6 @@
 ///
 /// Create an instance of [DataprocMetastoreApi] to access these resources:
 ///
-/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsFederationsResource]
@@ -55,7 +54,6 @@ class DataprocMetastoreApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   DataprocMetastoreApi(http.Client client,
@@ -63,61 +61,6 @@ class DataprocMetastoreApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation, the
-  /// operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// Code.CANCELLED.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    CancelOperationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsResource {
@@ -673,6 +616,56 @@ class ProjectsLocationsOperationsResource {
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Deletes a long-running operation.
   ///
@@ -2118,14 +2111,16 @@ class Binding {
   /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, my-project.svc.id.goog\[my-namespace/my-kubernetes-sa\].
   /// group:{emailid}: An email address that represents a Google group. For
-  /// example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a user that has been
-  /// recently deleted. For example,
-  /// alice@example.com?uid=123456789012345678901. If the user is recovered,
-  /// this value reverts to user:{emailid} and the recovered user retains the
-  /// role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a service account that
-  /// has been recently deleted. For example,
+  /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, google.com or
+  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a user that has been recently deleted. For
+  /// example, alice@example.com?uid=123456789012345678901. If the user is
+  /// recovered, this value reverts to user:{emailid} and the recovered user
+  /// retains the role in the binding.
+  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
   /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
@@ -2134,9 +2129,7 @@ class Binding {
   /// recently deleted. For example,
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
-  /// role in the binding. domain:{domain}: The G Suite domain (primary) that
-  /// represents all the users of that domain. For example, google.com or
-  /// example.com.
+  /// role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.

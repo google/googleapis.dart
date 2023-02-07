@@ -4928,49 +4928,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-class GoogleIdentityAccesscontextmanagerV1IngressSource {
-  /// An AccessLevel resource name that allow resources within the
-  /// ServicePerimeters to be accessed from the internet.
-  ///
-  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
-  /// Referencing a nonexistent AccessLevel will cause an error. If no
-  /// AccessLevel names are listed, resources within the perimeter can only be
-  /// accessed via Google Cloud calls with request origins within the perimeter.
-  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
-  /// is specified for `access_level`, then all IngressSources will be allowed.
-  core.String? accessLevel;
-
-  /// A Google Cloud resource that is allowed to ingress the perimeter.
-  ///
-  /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects and VPCs are allowed. Project format:
-  /// `projects/{project_number}` VPC network format:
-  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
-  /// The project may be in any Google Cloud organization, not just the
-  /// organization that the perimeter is defined in. `*` is not allowed, the
-  /// case of allowing all Google Cloud resources only is not supported.
-  core.String? resource;
-
-  GoogleIdentityAccesscontextmanagerV1IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_.containsKey('accessLevel')
-              ? json_['accessLevel'] as core.String
-              : null,
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1IngressSource = $IngressSource;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -7239,7 +7197,7 @@ class Resource {
 
 /// A result of Resource Search, containing information of a cloud resource.
 ///
-/// Next ID: 31
+/// Next ID: 32
 class ResourceSearchResult {
   /// The additional searchable attributes of this resource.
   ///

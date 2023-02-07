@@ -5823,7 +5823,7 @@ class Criteria {
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\] There is a
-  /// limit of 100 policies per snooze. This limit is checked during snooze
+  /// limit of 16 policies per snooze. This limit is checked during snooze
   /// creation.
   core.List<core.String>? policies;
 

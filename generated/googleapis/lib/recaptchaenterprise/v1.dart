@@ -886,10 +886,17 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// Optional.
   core.List<core.String>? reasons;
 
+  /// If the Assessment is part of a Payment Transaction, provide details on
+  /// Payment Lifecycle Events that occur in the Transaction.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent? transactionEvent;
+
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest({
     this.annotation,
     this.hashedAccountId,
     this.reasons,
+    this.transactionEvent,
   });
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
@@ -906,19 +913,25 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          transactionEvent: json_.containsKey('transactionEvent')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(
+                  json_['transactionEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotation != null) 'annotation': annotation!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (reasons != null) 'reasons': reasons!,
+        if (transactionEvent != null) 'transactionEvent': transactionEvent!,
       };
 }
 
 /// Empty response for AnnotateAssessment.
 typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
-/// A recaptcha assessment resource.
+/// A reCAPTCHA Enterprise assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Assessment returned by account defender when a hashed_account_id is
   /// provided.
@@ -1143,14 +1156,14 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The site key that was used to invoke reCAPTCHA on your site and generate
-  /// the token.
+  /// The site key that was used to invoke reCAPTCHA Enterprise on your site and
+  /// generate the token.
   ///
   /// Optional.
   core.String? siteKey;
 
-  /// The user response token provided by the reCAPTCHA client-side integration
-  /// on your site.
+  /// The user response token provided by the reCAPTCHA Enterprise client-side
+  /// integration on your site.
   ///
   /// Optional.
   core.String? token;
@@ -2063,6 +2076,129 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
         if (invalidReason != null) 'invalidReason': invalidReason!,
         if (iosBundleId != null) 'iosBundleId': iosBundleId!,
         if (valid != null) 'valid': valid!,
+      };
+}
+
+/// Describes an event in the lifecycle of a payment transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
+  /// Timestamp when this transaction event occurred; otherwise assumed to be
+  /// the time of the API call.
+  ///
+  /// Optional.
+  core.String? eventTime;
+
+  /// The type of this transaction event.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSACTION_EVENT_TYPE_UNSPECIFIED" : Default, unspecified event type.
+  /// - "MERCHANT_APPROVE" : Indicates that the transaction is approved by the
+  /// merchant's risk engine. The accompanying reasons can include 'INHOUSE',
+  /// 'ACCERTIFY', or 'RECAPTCHA'.
+  /// - "MERCHANT_DENY" : Indicates that the transaction is denied and concluded
+  /// due to risks detected by the merchant's risk engine. The accompanying
+  /// reasons can include 'INHOUSE', 'ACCERTIFY', 'MANUAL_REVIEW', or
+  /// 'RECAPTCHA'.
+  /// - "MANUAL_REVIEW" : Indicates that the transaction is being evaluated by a
+  /// human, due to suspicion or risk.
+  /// - "AUTHORIZATION" : Indicates that the authorization attempt with the card
+  /// issuer succeeded.
+  /// - "AUTHORIZATION_DECLINE" : Indicates that the authorization attempt with
+  /// the card issuer failed. The accompanying reasons can include Visa's '54'
+  /// indicating that the card is expired or '82' indicating that the CVV is
+  /// incorrect.
+  /// - "PAYMENT_CAPTURE" : Indicates that the transaction is completed because
+  /// the funds were settled.
+  /// - "PAYMENT_CAPTURE_DECLINE" : Indicates that the transaction could not be
+  /// completed because the funds were not settled.
+  /// - "CANCEL" : Indicates that the transaction has been canceled. Specify the
+  /// reason for the cancellation. For example, 'INSUFFICIENT_INVENTORY'.
+  /// - "CHARGEBACK_INQUIRY" : Indicates that the merchant has received a
+  /// chargeback inquiry for the transaction, requesting additional information
+  /// before a chargeback is officially issued and a formal chargeback
+  /// notification is sent.
+  /// - "CHARGEBACK_ALERT" : Indicates that the merchant has received a
+  /// chargeback alert for the transaction. The process of resolving the dispute
+  /// without involving the payment network is started.
+  /// - "FRAUD_NOTIFICATION" : Indicates that a fraud notification is issued for
+  /// the transaction, sent by the payment instrument's issuing bank because the
+  /// transaction appears to be fraudulent. We recommend including TC40 or SAFE
+  /// data in the `reason` field for this event type. For partial chargebacks,
+  /// we recommend that you include an amount in the `value` field.
+  /// - "CHARGEBACK" : Indicates that the merchant is informed by the payment
+  /// network that the transaction has entered the chargeback process. Reason
+  /// code examples include Discover's '4553' and '6041'. For partial
+  /// chargebacks, we recommend that you include an amount in the `value` field.
+  /// - "CHARGEBACK_REPRESENTMENT" : Indicates that the transaction has entered
+  /// the chargeback process, and that the merchant has chosen to enter
+  /// representment. Reason examples include Discover's '4553' and '6041'. For
+  /// partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "CHARGEBACK_REVERSE" : Indicates that the transaction has had a
+  /// chargeback which was illegitimate and was reversed as a result. For
+  /// partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "REFUND_REQUEST" : Indicates that the merchant has received a refund for
+  /// a completed transaction. For partial refunds, we recommend that you
+  /// include an amount in the `value` field. Reason example: 'TAX_EXEMPT'
+  /// (partial refund of exempt tax)
+  /// - "REFUND_DECLINE" : Indicates that the merchant has received a refund
+  /// request for this transaction, but that they have declined it. For partial
+  /// refunds, we recommend that you include an amount in the `value` field.
+  /// Reason example: 'TAX_EXEMPT' (partial refund of exempt tax)
+  /// - "REFUND" : Indicates that the completed transaction was refunded by the
+  /// merchant. For partial refunds, we recommend that you include an amount in
+  /// the `value` field. Reason example: 'TAX_EXEMPT' (partial refund of exempt
+  /// tax)
+  /// - "REFUND_REVERSE" : Indicates that the completed transaction was refunded
+  /// by the merchant, and that this refund was reversed. For partial refunds,
+  /// we recommend that you include an amount in the `value` field.
+  core.String? eventType;
+
+  /// The reason or standardized code which corresponds with this transaction
+  /// event, if one exists.
+  ///
+  /// E.g. a CHARGEBACK Event with code 4553.
+  ///
+  /// Optional.
+  core.String? reason;
+
+  /// The value that corresponds with this transaction event, if one exists.
+  ///
+  /// E.g. A refund event where $5.00 was refunded. Currency is obtained from
+  /// the original transaction data.
+  ///
+  /// Optional.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent({
+    this.eventTime,
+    this.eventType,
+    this.reason,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
+              : null,
+          eventType: json_.containsKey('eventType')
+              ? json_['eventType'] as core.String
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (eventType != null) 'eventType': eventType!,
+        if (reason != null) 'reason': reason!,
+        if (value != null) 'value': value!,
       };
 }
 

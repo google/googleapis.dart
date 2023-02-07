@@ -446,7 +446,10 @@ class ProjectsLocationsFunctionsResource {
   /// comma separated list of fields. The default sorting oder is ascending. See
   /// https://google.aip.dev/132#ordering.
   ///
-  /// [pageSize] - Maximum number of functions to return per call.
+  /// [pageSize] - Maximum number of functions to return per call. The largest
+  /// allowed page_size is 1,000, if the page_size is omitted or specified as
+  /// greater than 1,000 then it will be replaced as 1,000. The size of the list
+  /// response can be less than specified when used with filters.
   ///
   /// [pageToken] - The value returned by the last `ListFunctionsResponse`;
   /// indicates that this is a continuation of a prior `ListFunctions` call, and
@@ -885,7 +888,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -901,9 +906,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

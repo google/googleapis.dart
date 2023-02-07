@@ -4181,6 +4181,12 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1OsUpdateStatus>? osUpdateStatus;
 
+  /// Peripherals reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
+
   /// Device serial number.
   ///
   /// This value is the same as the Admin Console's Serial Number in the
@@ -4223,6 +4229,7 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.networkStatusReport,
     this.orgUnitId,
     this.osUpdateStatus,
+    this.peripheralsReport,
     this.serialNumber,
     this.storageInfo,
     this.storageStatusReport,
@@ -4329,6 +4336,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          peripheralsReport: json_.containsKey('peripheralsReport')
+              ? (json_['peripheralsReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1PeripheralsReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serialNumber: json_.containsKey('serialNumber')
               ? json_['serialNumber'] as core.String
               : null,
@@ -4377,6 +4391,7 @@ class GoogleChromeManagementV1TelemetryDevice {
           'networkStatusReport': networkStatusReport!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
+        if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (storageInfo != null) 'storageInfo': storageInfo!,
         if (storageStatusReport != null)

@@ -1469,7 +1469,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1485,9 +1487,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3108,9 +3108,22 @@ class Runnable {
 /// Script runnable.
 class Script {
   /// Script file path on the host VM.
+  ///
+  /// To specify an interpreter, please add a `#!`(also known as
+  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first
+  /// line of the file.(For example, to execute the script using bash,
+  /// `#!/bin/bash` should be the first line of the file. To execute the script
+  /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the
+  /// file.) Otherwise, the file will by default be excuted by `/bin/sh`.
   core.String? path;
 
   /// Shell script text.
+  ///
+  /// To specify an interpreter, please add a `#!\n` at the beginning of the
+  /// text.(For example, to execute the script using bash, `#!/bin/bash\n`
+  /// should be added. To execute the script using`Python3`, `#!/usr/bin/env
+  /// python3\n` should be added.) Otherwise, the script will by default be
+  /// excuted by `/bin/sh`.
   core.String? text;
 
   Script({
@@ -3223,6 +3236,16 @@ class StatusEvent {
   /// Task Execution
   TaskExecution? taskExecution;
 
+  /// Task State
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : unknown state
+  /// - "PENDING" : The Task is created and waiting for resources.
+  /// - "ASSIGNED" : The Task is assigned to at least one VM.
+  /// - "RUNNING" : The Task is running.
+  /// - "FAILED" : The Task has failed.
+  /// - "SUCCEEDED" : The Task has succeeded.
+  core.String? taskState;
+
   /// Type of the event.
   core.String? type;
 
@@ -3230,6 +3253,7 @@ class StatusEvent {
     this.description,
     this.eventTime,
     this.taskExecution,
+    this.taskState,
     this.type,
   });
 
@@ -3245,6 +3269,9 @@ class StatusEvent {
               ? TaskExecution.fromJson(
                   json_['taskExecution'] as core.Map<core.String, core.dynamic>)
               : null,
+          taskState: json_.containsKey('taskState')
+              ? json_['taskState'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
@@ -3252,6 +3279,7 @@ class StatusEvent {
         if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (taskExecution != null) 'taskExecution': taskExecution!,
+        if (taskState != null) 'taskState': taskState!,
         if (type != null) 'type': type!,
       };
 }

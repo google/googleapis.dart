@@ -1040,7 +1040,7 @@
             }
         }
     },
-    "revision": "20230127",
+    "revision": "20230129",
     "rootUrl": "https://documentai.googleapis.com/",
     "schemas": {
         "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata": {
@@ -2978,6 +2978,7 @@
                         "OPERATION_TYPE_UNSPECIFIED",
                         "ADD",
                         "REMOVE",
+                        "UPDATE",
                         "REPLACE",
                         "EVAL_REQUESTED",
                         "EVAL_APPROVED",
@@ -2987,10 +2988,11 @@
                         "Operation type unspecified. If no operation is specified a provenance entry is simply used to match against a `parent`.",
                         "Add an element.",
                         "Remove an element identified by `parent`.",
-                        "Replace an element identified by `parent`.",
-                        "Request human review for the element identified by `parent`.",
-                        "Element is reviewed and approved at human review, confidence will be set to 1.0.",
-                        "Element is skipped in the validation process."
+                        "Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.",
+                        "Currently unused. Replace an element identified by `parent`.",
+                        "Deprecated. Request human review for the element identified by `parent`.",
+                        "Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.",
+                        "Deprecated. Element is skipped in the validation process."
                     ],
                     "type": "string"
                 }
@@ -3363,6 +3365,17 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata": {
+            "description": "Metadata of the EvaluateProcessorVersion method.",
+            "id": "GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata",
+            "properties": {
+                "commonMetadata": {
+                    "$ref": "GoogleCloudDocumentaiV1CommonOperationMetadata",
+                    "description": "The basic metadata of the long running operation."
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest": {
             "description": "Evaluates the given ProcessorVersion against the supplied documents.",
             "id": "GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest",
@@ -3370,6 +3383,17 @@
                 "evaluationDocuments": {
                     "$ref": "GoogleCloudDocumentaiV1BatchDocumentsInputConfig",
                     "description": "Optional. The documents used in the evaluation. If unspecified, use the processor's dataset as evaluation input."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse": {
+            "description": "Metadata of the EvaluateProcessorVersion method.",
+            "id": "GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse",
+            "properties": {
+                "evaluation": {
+                    "description": "The resource name of the created evaluation.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4147,6 +4171,56 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudDocumentaiV1TrainProcessorVersionMetadata": {
+            "description": "The metadata that represents a processor version being created.",
+            "id": "GoogleCloudDocumentaiV1TrainProcessorVersionMetadata",
+            "properties": {
+                "commonMetadata": {
+                    "$ref": "GoogleCloudDocumentaiV1CommonOperationMetadata",
+                    "description": "The basic metadata of the long running operation."
+                },
+                "testDatasetValidation": {
+                    "$ref": "GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation",
+                    "description": "The test dataset validation information."
+                },
+                "trainingDatasetValidation": {
+                    "$ref": "GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation",
+                    "description": "The training dataset validation information."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation": {
+            "description": "The dataset validation information. This includes any and all errors with documents and the dataset.",
+            "id": "GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation",
+            "properties": {
+                "datasetErrorCount": {
+                    "description": "The total number of dataset errors.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "datasetErrors": {
+                    "description": "Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single dataset error is terminal for training.",
+                    "items": {
+                        "$ref": "GoogleRpcStatus"
+                    },
+                    "type": "array"
+                },
+                "documentErrorCount": {
+                    "description": "The total number of document errors.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "documentErrors": {
+                    "description": "Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any document with errors will not be used throughout training.",
+                    "items": {
+                        "$ref": "GoogleRpcStatus"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDocumentaiV1TrainProcessorVersionRequest": {
             "description": "Request message for the create processor version method.",
             "id": "GoogleCloudDocumentaiV1TrainProcessorVersionRequest",
@@ -4181,6 +4255,17 @@
                 "trainingDocuments": {
                     "$ref": "GoogleCloudDocumentaiV1BatchDocumentsInputConfig",
                     "description": "The documents used for training the new version."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1TrainProcessorVersionResponse": {
+            "description": "The response for the TrainProcessorVersion method.",
+            "id": "GoogleCloudDocumentaiV1TrainProcessorVersionResponse",
+            "properties": {
+                "processorVersion": {
+                    "description": "The resource name of the processor version produced by training.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5123,6 +5208,7 @@
                         "OPERATION_TYPE_UNSPECIFIED",
                         "ADD",
                         "REMOVE",
+                        "UPDATE",
                         "REPLACE",
                         "EVAL_REQUESTED",
                         "EVAL_APPROVED",
@@ -5132,10 +5218,11 @@
                         "Operation type unspecified. If no operation is specified a provenance entry is simply used to match against a `parent`.",
                         "Add an element.",
                         "Remove an element identified by `parent`.",
-                        "Replace an element identified by `parent`.",
-                        "Request human review for the element identified by `parent`.",
-                        "Element is reviewed and approved at human review, confidence will be set to 1.0.",
-                        "Element is skipped in the validation process."
+                        "Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.",
+                        "Currently unused. Replace an element identified by `parent`.",
+                        "Deprecated. Request human review for the element identified by `parent`.",
+                        "Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.",
+                        "Deprecated. Element is skipped in the validation process."
                     ],
                     "type": "string"
                 }
@@ -6424,6 +6511,7 @@
                         "OPERATION_TYPE_UNSPECIFIED",
                         "ADD",
                         "REMOVE",
+                        "UPDATE",
                         "REPLACE",
                         "EVAL_REQUESTED",
                         "EVAL_APPROVED",
@@ -6433,10 +6521,11 @@
                         "Operation type unspecified. If no operation is specified a provenance entry is simply used to match against a `parent`.",
                         "Add an element.",
                         "Remove an element identified by `parent`.",
-                        "Replace an element identified by `parent`.",
-                        "Request human review for the element identified by `parent`.",
-                        "Element is reviewed and approved at human review, confidence will be set to 1.0.",
-                        "Element is skipped in the validation process."
+                        "Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.",
+                        "Currently unused. Replace an element identified by `parent`.",
+                        "Deprecated. Request human review for the element identified by `parent`.",
+                        "Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.",
+                        "Deprecated. Element is skipped in the validation process."
                     ],
                     "type": "string"
                 }
