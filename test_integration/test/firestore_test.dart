@@ -11,7 +11,7 @@ import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 void main() {
-  test('firestore', () async {
+  test('firestore NULL_VALUE', () async {
     await withClientFromDefaultCredentials([FirestoreApi.datastoreScope],
         (client) async {
       final firestore = FirestoreApi(client);
@@ -30,6 +30,37 @@ void main() {
       );
 
       print(prettyJsonEncode(document));
+    });
+  });
+
+  // google/googleapis.dart#504
+  test('firestore documents.batchGet', () async {
+    await withClientFromDefaultCredentials([FirestoreApi.datastoreScope],
+        (client) async {
+      final firestore = FirestoreApi(client);
+      final documents = firestore.projects.databases.documents;
+
+      final input = Document(
+        fields: {
+          'places': Value(nullValue: 'NULL_VALUE'),
+        },
+      );
+
+      print(prettyJsonEncode(input));
+      final document = await documents.createDocument(
+        input,
+        _documentsPath,
+        'googleapis_integration_test',
+      );
+
+      print(prettyJsonEncode(document));
+
+      final result = await documents.batchGet(
+        BatchGetDocumentsRequest(documents: [document.name!]),
+        _databaseId,
+      );
+
+      print(prettyJsonEncode(result));
     });
   });
 }

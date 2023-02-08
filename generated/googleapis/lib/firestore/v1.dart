@@ -840,8 +840,10 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return BatchGetDocumentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.List)
+        .map((value) => BatchGetDocumentsResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 
   /// Applies a batch of write operations.
@@ -2133,8 +2135,7 @@ class BatchGetDocumentsRequest {
       };
 }
 
-/// The streamed response for Firestore.BatchGetDocuments.
-class BatchGetDocumentsResponse {
+class BatchGetDocumentsResponseElement {
   /// A document that was requested.
   Document? found;
 
@@ -2164,14 +2165,14 @@ class BatchGetDocumentsResponse {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  BatchGetDocumentsResponse({
+  BatchGetDocumentsResponseElement({
     this.found,
     this.missing,
     this.readTime,
     this.transaction,
   });
 
-  BatchGetDocumentsResponse.fromJson(core.Map json_)
+  BatchGetDocumentsResponseElement.fromJson(core.Map json_)
       : this(
           found: json_.containsKey('found')
               ? Document.fromJson(
@@ -2195,6 +2196,9 @@ class BatchGetDocumentsResponse {
         if (transaction != null) 'transaction': transaction!,
       };
 }
+
+/// The streamed response for Firestore.BatchGetDocuments.
+typedef BatchGetDocumentsResponse = core.List<BatchGetDocumentsResponseElement>;
 
 /// The request for Firestore.BatchWrite.
 class BatchWriteRequest {
