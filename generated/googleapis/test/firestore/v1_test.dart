@@ -160,23 +160,24 @@ void checkBatchGetDocumentsRequest(api.BatchGetDocumentsRequest o) {
   buildCounterBatchGetDocumentsRequest--;
 }
 
-core.int buildCounterBatchGetDocumentsResponse = 0;
-api.BatchGetDocumentsResponse buildBatchGetDocumentsResponse() {
-  final o = api.BatchGetDocumentsResponse();
-  buildCounterBatchGetDocumentsResponse++;
-  if (buildCounterBatchGetDocumentsResponse < 3) {
+core.int buildCounterBatchGetDocumentsResponseElement = 0;
+api.BatchGetDocumentsResponseElement buildBatchGetDocumentsResponseElement() {
+  final o = api.BatchGetDocumentsResponseElement();
+  buildCounterBatchGetDocumentsResponseElement++;
+  if (buildCounterBatchGetDocumentsResponseElement < 3) {
     o.found = buildDocument();
     o.missing = 'foo';
     o.readTime = 'foo';
     o.transaction = 'foo';
   }
-  buildCounterBatchGetDocumentsResponse--;
+  buildCounterBatchGetDocumentsResponseElement--;
   return o;
 }
 
-void checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
-  buildCounterBatchGetDocumentsResponse++;
-  if (buildCounterBatchGetDocumentsResponse < 3) {
+void checkBatchGetDocumentsResponseElement(
+    api.BatchGetDocumentsResponseElement o) {
+  buildCounterBatchGetDocumentsResponseElement++;
+  if (buildCounterBatchGetDocumentsResponseElement < 3) {
     checkDocument(o.found!);
     unittest.expect(
       o.missing!,
@@ -191,7 +192,20 @@ void checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterBatchGetDocumentsResponse--;
+  buildCounterBatchGetDocumentsResponseElement--;
+}
+
+api.BatchGetDocumentsResponse buildBatchGetDocumentsResponse() {
+  return [
+    buildBatchGetDocumentsResponseElement(),
+    buildBatchGetDocumentsResponseElement(),
+  ];
+}
+
+void checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBatchGetDocumentsResponseElement(o[0]);
+  checkBatchGetDocumentsResponseElement(o[1]);
 }
 
 core.Map<core.String, core.String> buildUnnamed3() => {
@@ -2641,12 +2655,24 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BatchGetDocumentsResponseElement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBatchGetDocumentsResponseElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchGetDocumentsResponseElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBatchGetDocumentsResponseElement(od);
+    });
+  });
+
   unittest.group('obj-schema-BatchGetDocumentsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBatchGetDocumentsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.BatchGetDocumentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.List)
+          .map((value) => api.BatchGetDocumentsResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkBatchGetDocumentsResponse(od);
     });
   });
