@@ -1221,6 +1221,7 @@ api.HTTPGetAction buildHTTPGetAction() {
     o.host = 'foo';
     o.httpHeaders = buildUnnamed17();
     o.path = 'foo';
+    o.port = 42;
     o.scheme = 'foo';
   }
   buildCounterHTTPGetAction--;
@@ -1238,6 +1239,10 @@ void checkHTTPGetAction(api.HTTPGetAction o) {
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
     );
     unittest.expect(
       o.scheme!,

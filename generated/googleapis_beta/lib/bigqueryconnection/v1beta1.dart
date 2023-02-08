@@ -551,7 +551,43 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
+  core.List<core.String>? exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String? logType;
+
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
+
+  AuditLogConfig.fromJson(core.Map json_)
+      : this(
+          exemptedMembers: json_.containsKey('exemptedMembers')
+              ? (json_['exemptedMembers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: json_.containsKey('logType')
+              ? json_['logType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -853,7 +889,61 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-typedef Expr = $Expr;
+class Expr {
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
+  core.String? expression;
+
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
+  core.String? location;
+
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
+  core.String? title;
+
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
+
+  Expr.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          expression: json_.containsKey('expression')
+              ? json_['expression'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
@@ -879,7 +969,38 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+class GetPolicyOptions {
+  /// The maximum policy version that will be used to format the policy.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional role bindings must
+  /// specify version 3. Policies with no conditional role bindings may specify
+  /// any valid value or leave the field unset. The policy in the response might
+  /// use the policy version that you specified, or it might use a lower policy
+  /// version. For example, if you specify version 3, but the policy has no
+  /// conditional role bindings, the response uses version 1. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
+  core.int? requestedPolicyVersion;
+
+  GetPolicyOptions({
+    this.requestedPolicyVersion,
+  });
+
+  GetPolicyOptions.fromJson(core.Map json_)
+      : this(
+          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
+              ? json_['requestedPolicyVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion!,
+      };
+}
 
 /// The response for ConnectionService.ListConnections.
 class ListConnectionsResponse {
@@ -1072,7 +1193,52 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+class TestIamPermissionsRequest {
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
+
+  TestIamPermissionsRequest.fromJson(core.Map json_)
+      : this(
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  TestIamPermissionsResponse.fromJson(core.Map json_)
+      : this(
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}

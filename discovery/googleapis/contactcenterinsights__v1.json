@@ -1354,7 +1354,7 @@
             }
         }
     },
-    "revision": "20230129",
+    "revision": "20230206",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "schemas": {
         "GoogleCloudContactcenterinsightsV1Analysis": {

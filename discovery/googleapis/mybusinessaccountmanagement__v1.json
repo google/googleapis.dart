@@ -528,7 +528,7 @@
             }
         }
     },
-    "revision": "20230206",
+    "revision": "20230207",
     "rootUrl": "https://mybusinessaccountmanagement.googleapis.com/",
     "schemas": {
         "AcceptInvitationRequest": {

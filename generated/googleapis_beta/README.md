@@ -58,33 +58,12 @@ Groups and counts similar errors from cloud services and applications, reports n
 - [Documentation](https://cloud.google.com/error-reporting/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/clouderrorreporting.v1beta1/clouderrorreporting.v1beta1-library.html)
 
-#### Cloud Functions API - `cloudfunctions.v2beta`
-
-Manages lightweight user-provided functions executed in response to events.
-
-- [Documentation](https://cloud.google.com/functions)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/cloudfunctions.v2beta/cloudfunctions.v2beta-library.html)
-
 #### Google Cloud Support API - `cloudsupport.v2beta`
 
 Manages Google Cloud technical support cases for Customer Care support offerings. 
 
 - [Documentation](https://cloud.google.com/support/docs/apis)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/cloudsupport.v2beta/cloudsupport.v2beta-library.html)
-
-#### Container Analysis API - `containeranalysis.v1beta1`
-
-An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
-
-- [Documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/containeranalysis.v1beta1/containeranalysis.v1beta1-library.html)
-
-#### Google Cloud Data Catalog API - `datacatalog.v1beta1`
-
-A fully managed and highly scalable data discovery and metadata management service. 
-
-- [Documentation](https://cloud.google.com/data-catalog/docs/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/datacatalog.v1beta1/datacatalog.v1beta1-library.html)
 
 #### Dataflow API - `dataflow.v1b3`
 
@@ -104,20 +83,6 @@ Public API for Google Cloud AI Data Labeling Service.
 
 - [Documentation](https://cloud.google.com/datastream/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/datastream.v1alpha1/datastream.v1alpha1-library.html)
-
-#### Cloud Document AI API - `documentai.v1beta3`
-
-Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.
-
-- [Documentation](https://cloud.google.com/document-ai/docs/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/documentai.v1beta3/documentai.v1beta3-library.html)
-
-#### Cloud Domains API - `domains.v1beta1`
-
-Enables management and configuration of domain names.
-
-- [Documentation](https://cloud.google.com/domains/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/domains.v1beta1/domains.v1beta1-library.html)
 
 #### Fact Check Tools API - `factchecktools.v1alpha1`
 
@@ -171,53 +136,6 @@ Cloud Life Sciences is a suite of services and tools for managing, processing, a
 - [Documentation](https://cloud.google.com/life-sciences)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/lifesciences.v2beta/lifesciences.v2beta-library.html)
 
-#### Dataproc Metastore API - `metastore.v1beta`
-
-The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.
-
-- [Documentation](https://cloud.google.com/dataproc-metastore/docs)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/metastore.v1beta/metastore.v1beta-library.html)
-
-#### Network Connectivity API - `networkconnectivity.v1alpha1`
-
-This API enables connectivity with and between Google Cloud resources.
-
-- [Documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/networkconnectivity.v1alpha1/networkconnectivity.v1alpha1-library.html)
-
-#### Network Security API - `networksecurity.v1beta1`
-
-- [Documentation](https://cloud.google.com/networking)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/networksecurity.v1beta1/networksecurity.v1beta1-library.html)
-
-#### On-Demand Scanning API - `ondemandscanning.v1beta1`
-
-A service to scan container images for vulnerabilities.
-
-- [Documentation](https://cloud.google.com/container-analysis/docs/on-demand-scanning/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/ondemandscanning.v1beta1/ondemandscanning.v1beta1-library.html)
-
-#### OS Config API - `osconfig.v1alpha`
-
-OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.
-
-- [Documentation](https://cloud.google.com/compute/docs/osconfig/rest)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/osconfig.v1alpha/osconfig.v1alpha-library.html)
-
-#### Policy Simulator API - `policysimulator.v1beta1`
-
- Policy Simulator is a collection of endpoints for creating, running, and viewing a Replay. A `Replay` is a type of simulation that lets you see how your members' access to resources might change if you changed your IAM policy. During a `Replay`, Policy Simulator re-evaluates, or replays, past access attempts under both the current policy and your proposed policy, and compares those results to determine how your members' access might change under the proposed policy.
-
-- [Documentation](https://cloud.google.com/iam/docs/simulating-access)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/policysimulator.v1beta1/policysimulator.v1beta1-library.html)
-
-#### Certificate Authority API - `privateca.v1beta1`
-
-The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys. 
-
-- [Documentation](https://cloud.google.com/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/privateca.v1beta1/privateca.v1beta1-library.html)
-
 #### SAS Portal API (Testing) - `prod_tt_sasportal.v1alpha1`
 
 - [Documentation](https://developers.google.com/spectrum-access-system/)
@@ -248,11 +166,4 @@ API to publish and access results from developer tools.
 
 - [Documentation](https://firebase.google.com/docs/test-lab/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/toolresults.v1beta3/toolresults.v1beta3-library.html)
-
-#### Cloud TPU API - `tpu.v2alpha1`
-
-TPU API provides customers with access to Google TPU technology.
-
-- [Documentation](https://cloud.google.com/tpu/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/tpu.v2alpha1/tpu.v2alpha1-library.html)
 

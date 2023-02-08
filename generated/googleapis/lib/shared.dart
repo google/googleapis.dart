@@ -11478,45 +11478,6 @@ class $Linear {
 
 /// Used by:
 ///
-/// - cloudasset:v1 : GoogleCloudAssetV1ListConstraint
-/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintListConstraint
-class $ListConstraint {
-  /// Indicates whether values grouped into categories can be used in
-  /// `Policy.allowed_values` and `Policy.denied_values`.
-  ///
-  /// For example, `"in:Python"` would match any value in the 'Python' group.
-  core.bool? supportsIn;
-
-  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
-  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
-  ///
-  /// For example, `"under:folders/123"` would match any resource under the
-  /// 'folders/123' folder.
-  core.bool? supportsUnder;
-
-  $ListConstraint({
-    this.supportsIn,
-    this.supportsUnder,
-  });
-
-  $ListConstraint.fromJson(core.Map json_)
-      : this(
-          supportsIn: json_.containsKey('supportsIn')
-              ? json_['supportsIn'] as core.bool
-              : null,
-          supportsUnder: json_.containsKey('supportsUnder')
-              ? json_['supportsUnder'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (supportsIn != null) 'supportsIn': supportsIn!,
-        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
-      };
-}
-
-/// Used by:
-///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1ListPolicy
 /// - cloudresourcemanager:v1 : ListPolicy
 class $ListPolicy {

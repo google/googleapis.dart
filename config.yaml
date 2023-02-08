@@ -277,15 +277,10 @@ packages:
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
-    - cloudfunctions:v2beta
     - cloudsupport:v2beta
-    - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
-    - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - datalabeling:v1beta1
     - datastream:v1alpha1
-    - documentai:v1beta3
-    - domains:v1beta1
     - factchecktools:v1alpha1
     - fcmdata:v1beta1
     - firebase:v1beta1
@@ -294,19 +289,11 @@ packages:
     - firebasestorage:v1beta
     - gkehub:v2alpha
     - lifesciences:v2beta
-    - metastore:v1beta
-    - networkconnectivity:v1alpha1
-    - networksecurity:v1beta1
-    - ondemandscanning:v1beta1
-    - osconfig:v1alpha
-    - policysimulator:v1beta1
-    - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1
     - recommendationengine:v1beta1
     - sasportal:v1alpha1
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
-    - tpu:v2alpha1
 
 additional_apis:
   "firebaseremoteconfig:v1": https://firebaseremoteconfig.googleapis.com/$discovery/rest?version=v1
@@ -334,6 +321,7 @@ skipped_apis:
 - cloudasset:v1p7beta1 # v1 included
 - cloudbilling:v1beta
 - cloudfunctions:v2alpha # v2beta included
+- cloudfunctions:v2beta
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
@@ -348,6 +336,8 @@ skipped_apis:
 - contactcenteraiplatform:v1alpha1
 - container:v1beta1 # v1 included
 - containeranalysis:v1alpha1 # v1beta1 included
+- containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
+- datacatalog:v1beta1
 - dataform:v1beta1
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
@@ -361,7 +351,9 @@ skipped_apis:
 - discoveryengine:v1beta
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
+- documentai:v1beta3
 - domains:v1alpha2 # v1beta1 included
+- domains:v1beta1
 - drivelabels:v2beta
 - eventarc:v1beta1 # v1 included
 - file:v1beta1
@@ -388,9 +380,14 @@ skipped_apis:
 - managedidentities:v1beta1 # v1 included
 - memcache:v1beta2 # v1 included
 - metastore:v1alpha # v1beta included
+- metastore:v1beta
 - monitoring:v1 # v3 included
+- networkconnectivity:v1alpha1
 - networkmanagement:v1beta1 # v1 included
+- networksecurity:v1beta1
 - networkservices:v1beta1
+- ondemandscanning:v1beta1
+- osconfig:v1alpha
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
@@ -398,8 +395,10 @@ skipped_apis:
 - playdeveloperreporting:v1beta1
 - policyanalyzer:v1beta1
 - policysimulator:v1alpha
+- policysimulator:v1beta1
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
+- privateca:v1beta1
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
 - realtimebidding:v1alpha
@@ -420,6 +419,7 @@ skipped_apis:
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
 - tpu:v1alpha1 # v1 included
+- tpu:v2alpha1
 - translate:v2 # v3 included
 - translate:v3beta1 # v3 included
 - videointelligence:v1beta2 # v1 included
