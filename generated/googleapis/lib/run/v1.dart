@@ -4787,6 +4787,11 @@ class HTTPGetAction {
   /// Path to access on the HTTP server.
   core.String? path;
 
+  /// Port number to access on the container.
+  ///
+  /// Number must be in the range 1 to 65535.
+  core.int? port;
+
   /// Not supported by Cloud Run.
   core.String? scheme;
 
@@ -4794,6 +4799,7 @@ class HTTPGetAction {
     this.host,
     this.httpHeaders,
     this.path,
+    this.port,
     this.scheme,
   });
 
@@ -4807,6 +4813,7 @@ class HTTPGetAction {
                   .toList()
               : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
           scheme: json_.containsKey('scheme')
               ? json_['scheme'] as core.String
               : null,
@@ -4816,6 +4823,7 @@ class HTTPGetAction {
         if (host != null) 'host': host!,
         if (httpHeaders != null) 'httpHeaders': httpHeaders!,
         if (path != null) 'path': path!,
+        if (port != null) 'port': port!,
         if (scheme != null) 'scheme': scheme!,
       };
 }

@@ -6519,10 +6519,14 @@ class DeviceTierConfig {
   /// Definition of the set of device tiers for the app.
   DeviceTierSet? deviceTierSet;
 
+  /// Definition of user country sets for the app.
+  core.List<UserCountrySet>? userCountrySets;
+
   DeviceTierConfig({
     this.deviceGroups,
     this.deviceTierConfigId,
     this.deviceTierSet,
+    this.userCountrySets,
   });
 
   DeviceTierConfig.fromJson(core.Map json_)
@@ -6540,6 +6544,12 @@ class DeviceTierConfig {
               ? DeviceTierSet.fromJson(
                   json_['deviceTierSet'] as core.Map<core.String, core.dynamic>)
               : null,
+          userCountrySets: json_.containsKey('userCountrySets')
+              ? (json_['userCountrySets'] as core.List)
+                  .map((value) => UserCountrySet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6547,6 +6557,7 @@ class DeviceTierConfig {
         if (deviceTierConfigId != null)
           'deviceTierConfigId': deviceTierConfigId!,
         if (deviceTierSet != null) 'deviceTierSet': deviceTierSet!,
+        if (userCountrySets != null) 'userCountrySets': userCountrySets!,
       };
 }
 
@@ -10940,6 +10951,41 @@ class UserComment {
         if (text != null) 'text': text!,
         if (thumbsDownCount != null) 'thumbsDownCount': thumbsDownCount!,
         if (thumbsUpCount != null) 'thumbsUpCount': thumbsUpCount!,
+      };
+}
+
+/// A set of user countries.
+///
+/// A country set determines what variation of app content gets served to a
+/// specific location.
+class UserCountrySet {
+  /// List of country codes representing countries.
+  ///
+  /// A Country code is represented in ISO 3166 alpha-2 format. For Example:-
+  /// "IT" for Italy, "GE" for Georgia.
+  core.List<core.String>? countryCodes;
+
+  /// Country set name.
+  core.String? name;
+
+  UserCountrySet({
+    this.countryCodes,
+    this.name,
+  });
+
+  UserCountrySet.fromJson(core.Map json_)
+      : this(
+          countryCodes: json_.containsKey('countryCodes')
+              ? (json_['countryCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCodes != null) 'countryCodes': countryCodes!,
+        if (name != null) 'name': name!,
       };
 }
 

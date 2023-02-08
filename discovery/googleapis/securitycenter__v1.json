@@ -3370,7 +3370,7 @@
             }
         }
     },
-    "revision": "20230202",
+    "revision": "20230126",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {

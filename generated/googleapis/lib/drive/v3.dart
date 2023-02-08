@@ -5211,7 +5211,9 @@ class File {
 
   /// The size of the file's content in bytes.
   ///
-  /// This is applicable to binary files in Google Drive and Google Docs files.
+  /// This field is populated for files with binary content stored in Google
+  /// Drive and for Docs Editors files; it is not populated for shortcuts or
+  /// folders.
   core.String? size;
 
   /// The list of spaces which contain the file.

@@ -4030,7 +4030,40 @@ class GoogleCloudAssetV1IdentityList {
 
 /// A `Constraint` that allows or disallows a list of string values, which are
 /// configured by an organization's policy administrator with a `Policy`.
-typedef GoogleCloudAssetV1ListConstraint = $ListConstraint;
+class GoogleCloudAssetV1ListConstraint {
+  /// Indicates whether values grouped into categories can be used in
+  /// `Policy.allowed_values` and `Policy.denied_values`.
+  ///
+  /// For example, `"in:Python"` would match any value in the 'Python' group.
+  core.bool? supportsIn;
+
+  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
+  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
+  ///
+  /// For example, `"under:folders/123"` would match any resource under the
+  /// 'folders/123' folder.
+  core.bool? supportsUnder;
+
+  GoogleCloudAssetV1ListConstraint({
+    this.supportsIn,
+    this.supportsUnder,
+  });
+
+  GoogleCloudAssetV1ListConstraint.fromJson(core.Map json_)
+      : this(
+          supportsIn: json_.containsKey('supportsIn')
+              ? json_['supportsIn'] as core.bool
+              : null,
+          supportsUnder: json_.containsKey('supportsUnder')
+              ? json_['supportsUnder'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (supportsIn != null) 'supportsIn': supportsIn!,
+        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
+      };
+}
 
 /// BigQuery destination.
 class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination {

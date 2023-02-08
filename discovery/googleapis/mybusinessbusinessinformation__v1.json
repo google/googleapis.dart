@@ -660,7 +660,7 @@
             }
         }
     },
-    "revision": "20230206",
+    "revision": "20230207",
     "rootUrl": "https://mybusinessbusinessinformation.googleapis.com/",
     "schemas": {
         "AdWordsLocationExtensions": {
