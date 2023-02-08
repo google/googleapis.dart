@@ -198,6 +198,417 @@ class LocationsWorkforcePoolsResource {
 
   LocationsWorkforcePoolsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkforcePool.
+  ///
+  /// You cannot reuse the name of a deleted pool until 30 days after deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - The location of the pool to create. Format:
+  /// `locations/{location}`.
+  /// Value must have pattern `^locations/\[^/\]+$`.
+  ///
+  /// [workforcePoolId] - The ID to use for the pool, which becomes the final
+  /// component of the resource name. The IDs must be a globally unique string
+  /// of 6 to 63 lowercase letters, digits, or hyphens. It must start with a
+  /// letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved
+  /// for use by Google, and may not be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkforcePool request,
+    core.String location, {
+    core.String? workforcePoolId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workforcePoolId != null) 'workforcePoolId': [workforcePoolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + '/workforcePools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkforcePool.
+  ///
+  /// You cannot use a deleted WorkforcePool to exchange external credentials
+  /// for Google Cloud credentials. However, deletion does not revoke
+  /// credentials that have already been issued. Credentials issued for a
+  /// deleted pool do not grant access to resources. If the pool is undeleted,
+  /// and the credentials are not expired, they grant access again. You can
+  /// undelete a pool for 30 days. After 30 days, deletion is permanent. You
+  /// cannot update deleted pools. However, you can view and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to delete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkforcePool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to retrieve. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets IAM policies on a WorkforcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkforcePools under the specified parent.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted pools are also listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - The location of the pool. Format: `locations/{location}`.
+  /// Value must have pattern `^locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of pools to return. If unspecified, at
+  /// most 50 pools will be returned. The maximum value is 1000; values above
+  /// 1000 are truncated to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListWorkforcePools`
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [parent] - Required. The parent resource to list pools for. Format:
+  /// `organizations/{org-id}`.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted pools.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkforcePoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkforcePoolsResponse> list(
+    core.String location, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + '/workforcePools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkforcePoolsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkforcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the pool. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkforcePool request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets IAM policies on a WorkforcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the caller's permissions on the WorkforcePool.
+  ///
+  /// If the pool does not exist, this will return an empty set of permissions,
+  /// not a `NOT_FOUND` error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePool, as long as it was deleted fewer than 30 days
+  /// ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to undelete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkforcePoolRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsWorkforcePoolsOperationsResource {
@@ -256,6 +667,283 @@ class LocationsWorkforcePoolsProvidersResource {
 
   LocationsWorkforcePoolsProvidersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkforcePoolProvider in a WorkforcePool.
+  ///
+  /// You cannot reuse the name of a deleted provider until 30 days after
+  /// deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The pool to create this provider in. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [workforcePoolProviderId] - Required. The ID for the provider, which
+  /// becomes the final component of the resource name. This value must be 4-32
+  /// characters, and may contain the characters \[a-z0-9-\]. The prefix `gcp-`
+  /// is reserved for use by Google, and may not be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkforcePoolProvider request,
+    core.String parent, {
+    core.String? workforcePoolProviderId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workforcePoolProviderId != null)
+        'workforcePoolProviderId': [workforcePoolProviderId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkforcePoolProvider.
+  ///
+  /// Deleting a provider does not revoke credentials that have already been\
+  /// issued; they continue to grant access. You can undelete a provider for 30
+  /// days. After 30 days, deletion is permanent. You cannot update deleted
+  /// providers. However, you can view and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to delete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkforcePoolProvider.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to retrieve. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProvider].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProvider> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProvider.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkforcePoolProviders in a WorkforcePool.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted providers are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The pool to list providers for. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}`
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of providers to return. If unspecified, at
+  /// most 50 providers are returned. The maximum value is 100; values above 100
+  /// are truncated to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkforcePoolProviders` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted providers.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkforcePoolProvidersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkforcePoolProvidersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkforcePoolProvidersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkforcePoolProvider.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the provider. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkforcePoolProvider request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePoolProvider, as long as it was deleted fewer than 30
+  /// days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to undelete. Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkforcePoolProviderRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsWorkforcePoolsProvidersKeysResource {
@@ -370,6 +1058,102 @@ class LocationsWorkforcePoolsSubjectsResource {
 
   LocationsWorkforcePoolsSubjectsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes a WorkforcePoolSubject.
+  ///
+  /// Subject must not already be in a deleted state. A WorkforcePoolSubject is
+  /// automatically created the first time an external credential is exchanged
+  /// for a Google Cloud credential with a mapped `google.subject` attribute.
+  /// There is no path to manually create WorkforcePoolSubjects. Once deleted,
+  /// the WorkforcePoolSubject may not be used for 30 days. After 30 days, the
+  /// WorkforcePoolSubject will be deleted forever and can be reused in token
+  /// exchanges with Google Cloud STS. This will automatically create a new
+  /// WorkforcePoolSubject that is independent of the previously deleted
+  /// WorkforcePoolSubject with the same google.subject value.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the WorkforcePoolSubject. Special
+  /// characters, like '/' and ':', must be escaped, because all URLs need to
+  /// conform to the "When to Escape and Unescape" section of
+  /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/subjects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30
+  /// days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the WorkforcePoolSubject. Special
+  /// characters, like '/' and ':', must be escaped, because all URLs need to
+  /// conform to the "When to Escape and Unescape" section of
+  /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/subjects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkforcePoolSubjectRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsWorkforcePoolsSubjectsOperationsResource {
@@ -3718,6 +4502,105 @@ typedef EnableServiceAccountRequest = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// Request message for `GetIamPolicy` method.
+class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`.
+  GetPolicyOptions? options;
+
+  GetIamPolicyRequest({
+    this.options,
+  });
+
+  GetIamPolicyRequest.fromJson(core.Map json_)
+      : this(
+          options: json_.containsKey('options')
+              ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (options != null) 'options': options!,
+      };
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+typedef GetPolicyOptions = $GetPolicyOptions;
+
+/// Represents an OpenId Connect 1.0 identity provider.
+class GoogleIamAdminV1WorkforcePoolProviderOidc {
+  /// The client ID.
+  ///
+  /// Must match the audience claim of the JWT issued by the identity provider.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The OIDC issuer URI.
+  ///
+  /// Must be a valid URI using the 'https' scheme.
+  ///
+  /// Required.
+  core.String? issuerUri;
+
+  GoogleIamAdminV1WorkforcePoolProviderOidc({
+    this.clientId,
+    this.issuerUri,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          issuerUri: json_.containsKey('issuerUri')
+              ? json_['issuerUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (issuerUri != null) 'issuerUri': issuerUri!,
+      };
+}
+
+/// Represents a SAML identity provider.
+class GoogleIamAdminV1WorkforcePoolProviderSaml {
+  /// SAML Identity provider configuration metadata xml doc.
+  ///
+  /// The xml document should comply with
+  /// [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+  /// The max size of the acceptable xml document will be bounded to 128k
+  /// characters. The metadata xml document should satisfy the following
+  /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
+  /// contain at least one non-expired signing key certificate. 3) For each
+  /// signing key: a) Valid from should be no more than 7 days from now. b)
+  /// Valid to should be no more than 14 years in the future. 4) Up to 3 IdP
+  /// signing keys are allowed in the metadata xml. When updating the provider's
+  /// metadata xml, at least one non-expired signing key must overlap with the
+  /// existing metadata. This requirement is skipped if there are no non-expired
+  /// signing keys present in the existing metadata.
+  ///
+  /// Required.
+  core.String? idpMetadataXml;
+
+  GoogleIamAdminV1WorkforcePoolProviderSaml({
+    this.idpMetadataXml,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderSaml.fromJson(core.Map json_)
+      : this(
+          idpMetadataXml: json_.containsKey('idpMetadataXml')
+              ? json_['idpMetadataXml'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (idpMetadataXml != null) 'idpMetadataXml': idpMetadataXml!,
+      };
+}
+
 /// The request to lint a Cloud IAM policy object.
 class LintPolicyRequest {
   /// google.iam.v1.Binding.condition object to be linted.
@@ -3964,6 +4847,75 @@ class ListServiceAccountsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null) 'accounts': accounts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListWorkforcePoolProviders.
+class ListWorkforcePoolProvidersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of providers.
+  core.List<WorkforcePoolProvider>? workforcePoolProviders;
+
+  ListWorkforcePoolProvidersResponse({
+    this.nextPageToken,
+    this.workforcePoolProviders,
+  });
+
+  ListWorkforcePoolProvidersResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workforcePoolProviders: json_.containsKey('workforcePoolProviders')
+              ? (json_['workforcePoolProviders'] as core.List)
+                  .map((value) => WorkforcePoolProvider.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workforcePoolProviders != null)
+          'workforcePoolProviders': workforcePoolProviders!,
+      };
+}
+
+/// Response message for ListWorkforcePools.
+class ListWorkforcePoolsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of pools.
+  core.List<WorkforcePool>? workforcePools;
+
+  ListWorkforcePoolsResponse({
+    this.nextPageToken,
+    this.workforcePools,
+  });
+
+  ListWorkforcePoolsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workforcePools: json_.containsKey('workforcePools')
+              ? (json_['workforcePools'] as core.List)
+                  .map((value) => WorkforcePool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workforcePools != null) 'workforcePools': workforcePools!,
       };
 }
 
@@ -5304,6 +6256,15 @@ class UndeleteServiceAccountResponse {
       };
 }
 
+/// Request message for UndeleteWorkforcePoolProvider.
+typedef UndeleteWorkforcePoolProviderRequest = $Empty;
+
+/// Request message for UndeleteWorkforcePool.
+typedef UndeleteWorkforcePoolRequest = $Empty;
+
+/// Request message for UndeleteWorkforcePoolSubject.
+typedef UndeleteWorkforcePoolSubjectRequest = $Empty;
+
 /// Request message for UndeleteWorkloadIdentityPoolProvider.
 typedef UndeleteWorkloadIdentityPoolProviderRequest = $Empty;
 
@@ -5339,6 +6300,281 @@ class UploadServiceAccountKeyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyData != null) 'publicKeyData': publicKeyData!,
+      };
+}
+
+/// Represents a collection of external workforces.
+///
+/// Provides namespaces for federated users that can be referenced in IAM
+/// policies.
+class WorkforcePool {
+  /// A user-specified description of the pool.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String? description;
+
+  /// Whether the pool is disabled.
+  ///
+  /// You cannot use a disabled pool to exchange tokens, or use existing tokens
+  /// to access resources. If the pool is re-enabled, existing tokens grant
+  /// access again.
+  core.bool? disabled;
+
+  /// A user-specified display name of the pool in Google Cloud Console.
+  ///
+  /// Cannot exceed 32 characters.
+  core.String? displayName;
+
+  /// The resource name of the pool.
+  ///
+  /// Format: `locations/{location}/workforcePools/{workforce_pool_id}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The resource name of the parent.
+  ///
+  /// Format: `organizations/{org-id}`.
+  ///
+  /// Immutable.
+  core.String? parent;
+
+  /// Duration that the Google Cloud access tokens, console sign-in sessions,
+  /// and `gcloud` sign-in sessions from this pool are valid.
+  ///
+  /// Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If
+  /// `session_duration` is not configured, minted credentials have a default
+  /// duration of one hour (3600s). For SAML providers, the lifetime of the
+  /// token is the minimum of the `session_duration` and the SessionNotOnOrAfter
+  /// claim in the SAML assertion.
+  core.String? sessionDuration;
+
+  /// The state of the pool.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The pool is active and may be used in Google Cloud policies.
+  /// - "DELETED" : The pool is soft-deleted. Soft-deleted pools are permanently
+  /// deleted after approximately 30 days. You can restore a soft-deleted pool
+  /// using UndeleteWorkforcePool. You cannot reuse the ID of a soft-deleted
+  /// pool until it is permanently deleted. While a pool is deleted, you cannot
+  /// use it to exchange tokens, or use existing tokens to access resources. If
+  /// the pool is undeleted, existing tokens grant access again.
+  core.String? state;
+
+  WorkforcePool({
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.name,
+    this.parent,
+    this.sessionDuration,
+    this.state,
+  });
+
+  WorkforcePool.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          sessionDuration: json_.containsKey('sessionDuration')
+              ? json_['sessionDuration'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (sessionDuration != null) 'sessionDuration': sessionDuration!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A configuration for an external identity provider.
+class WorkforcePoolProvider {
+  /// A [Common Expression Language](https://opensource.google/projects/cel)
+  /// expression, in plain text, to restrict what otherwise valid authentication
+  /// credentials issued by the provider should not be accepted.
+  ///
+  /// The expression must output a boolean representing whether to allow the
+  /// federation. The following keywords may be referenced in the expressions: *
+  /// `assertion`: JSON representing the authentication credential issued by the
+  /// provider. * `google`: The Google attributes mapped from the assertion in
+  /// the `attribute_mappings`. `google.profile_photo` and `google.display_name`
+  /// are not supported. * `attribute`: The custom attributes mapped from the
+  /// assertion in the `attribute_mappings`. The maximum length of the attribute
+  /// condition expression is 4096 characters. If unspecified, all valid
+  /// authentication credentials will be accepted. The following example shows
+  /// how to only allow credentials with a mapped `google.groups` value of
+  /// `admins`: ``` "'admins' in google.groups" ```
+  core.String? attributeCondition;
+
+  /// Maps attributes from the authentication credentials issued by an external
+  /// identity provider to Google Cloud attributes, such as `subject` and
+  /// `segment`.
+  ///
+  /// Each key must be a string specifying the Google Cloud IAM attribute to map
+  /// to. The following keys are supported: * `google.subject`: The principal
+  /// IAM is authenticating. You can reference this value in IAM bindings. This
+  /// is also the subject that appears in Cloud Logging logs. This is a required
+  /// field and the mapped subject cannot exceed 127 bytes. * `google.groups`:
+  /// Groups the authenticating user belongs to. You can grant groups access to
+  /// resources using an IAM `principalSet` binding; access applies to all
+  /// members of the group. * `google.display_name`: The name of the
+  /// authenticated user. This is an optional field and the mapped display name
+  /// cannot exceed 100 bytes. If not set, `google.subject` will be displayed
+  /// instead. This attribute cannot be referenced in IAM bindings. *
+  /// `google.profile_photo`: The URL that specifies the authenticated user's
+  /// thumbnail photo. This is an optional field. When set, the image will be
+  /// visible as the user's profile picture. If not set, a generic user icon
+  /// will be displayed instead. This attribute cannot be referenced in IAM
+  /// bindings. You can also provide custom attributes by specifying
+  /// `attribute.{custom_attribute}`, where {custom_attribute} is the name of
+  /// the custom attribute to be mapped. You can define a maximum of 50 custom
+  /// attributes. The maximum length of a mapped attribute key is 100
+  /// characters, and the key may only contain the characters \[a-z0-9_\]. You
+  /// can reference these attributes in IAM policies to define fine-grained
+  /// access for a workforce pool to Google Cloud resources. For example: *
+  /// `google.subject`:
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool}/subject/{value}`
+  /// * `google.groups`:
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool}/group/{value}`
+  /// * `attribute.{custom_attribute}`:
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool}/attribute.{custom_attribute}/{value}`
+  /// Each value must be a
+  /// [Common Expression Language](https://opensource.google/projects/cel)
+  /// function that maps an identity provider credential to the normalized
+  /// attribute specified by the corresponding map key. You can use the
+  /// `assertion` keyword in the expression to access a JSON representation of
+  /// the authentication credential issued by the provider. The maximum length
+  /// of an attribute mapping expression is 2048 characters. When evaluated, the
+  /// total size of all mapped attributes must not exceed 4KB. For OIDC
+  /// providers, you must supply a custom mapping that includes the
+  /// `google.subject` attribute. For example, the following maps the `sub`
+  /// claim of the incoming credential to the `subject` attribute on a Google
+  /// token: ``` {"google.subject": "assertion.sub"} ```
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? attributeMapping;
+
+  /// A user-specified description of the provider.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String? description;
+
+  /// Whether the provider is disabled.
+  ///
+  /// You cannot use a disabled provider to exchange tokens. However, existing
+  /// tokens still grant access.
+  core.bool? disabled;
+
+  /// A user-specified display name for the provider.
+  ///
+  /// Cannot exceed 32 characters.
+  core.String? displayName;
+
+  /// The resource name of the provider.
+  ///
+  /// Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// An OpenId Connect 1.0 identity provider configuration.
+  GoogleIamAdminV1WorkforcePoolProviderOidc? oidc;
+
+  /// A SAML identity provider configuration.
+  GoogleIamAdminV1WorkforcePoolProviderSaml? saml;
+
+  /// The state of the provider.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The provider is active and may be used to validate
+  /// authentication credentials.
+  /// - "DELETED" : The provider is soft-deleted. Soft-deleted providers are
+  /// permanently deleted after approximately 30 days. You can restore a
+  /// soft-deleted provider using UndeleteWorkforcePoolProvider.
+  core.String? state;
+
+  WorkforcePoolProvider({
+    this.attributeCondition,
+    this.attributeMapping,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.name,
+    this.oidc,
+    this.saml,
+    this.state,
+  });
+
+  WorkforcePoolProvider.fromJson(core.Map json_)
+      : this(
+          attributeCondition: json_.containsKey('attributeCondition')
+              ? json_['attributeCondition'] as core.String
+              : null,
+          attributeMapping: json_.containsKey('attributeMapping')
+              ? (json_['attributeMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          oidc: json_.containsKey('oidc')
+              ? GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(
+                  json_['oidc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          saml: json_.containsKey('saml')
+              ? GoogleIamAdminV1WorkforcePoolProviderSaml.fromJson(
+                  json_['saml'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeCondition != null)
+          'attributeCondition': attributeCondition!,
+        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (oidc != null) 'oidc': oidc!,
+        if (saml != null) 'saml': saml!,
+        if (state != null) 'state': state!,
       };
 }
 

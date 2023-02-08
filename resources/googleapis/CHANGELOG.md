@@ -1,3 +1,11 @@
+## 10.1.0
+
+### API changes
+
+- `advisorynotifications` - new!
+- `iam` - added `v2`
+- `kmsinventory` - new!
+
 ## 10.0.0
 
 ### API changes

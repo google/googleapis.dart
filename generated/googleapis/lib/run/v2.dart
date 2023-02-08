@@ -2579,9 +2579,15 @@ class GoogleCloudRunV2HTTPGetAction {
   /// Defaults to '/'.
   core.String? path;
 
+  /// Port number to access on the container.
+  ///
+  /// Must be in the range 1 to 65535.
+  core.int? port;
+
   GoogleCloudRunV2HTTPGetAction({
     this.httpHeaders,
     this.path,
+    this.port,
   });
 
   GoogleCloudRunV2HTTPGetAction.fromJson(core.Map json_)
@@ -2593,11 +2599,13 @@ class GoogleCloudRunV2HTTPGetAction {
                   .toList()
               : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (httpHeaders != null) 'httpHeaders': httpHeaders!,
         if (path != null) 'path': path!,
+        if (port != null) 'port': port!,
       };
 }
 

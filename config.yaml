@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 10.0.0
+    version: 10.1.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -210,7 +210,6 @@ packages:
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4 # https://developers.google.com/safe-browsing/
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
-    - searchads360:v0
     - searchconsole:v1 # https://developers.google.com/webmaster-tools/search-console-api/
     - secretmanager:v1
     - securitycenter:v1
@@ -407,6 +406,7 @@ skipped_apis:
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - runtimeconfig:v1beta1 # v1 included
+- searchads360:v0
 - secretmanager:v1beta1 # v1 included
 - securitycenter:v1beta1 # v1 included
 - securitycenter:v1beta2 # v1 included
