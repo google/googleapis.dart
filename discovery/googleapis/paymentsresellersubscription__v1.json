@@ -394,7 +394,7 @@
             }
         }
     },
-    "revision": "20230207",
+    "revision": "20230208",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "schemas": {
         "GoogleCloudPaymentsResellerSubscriptionV1Amount": {

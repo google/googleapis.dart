@@ -2304,7 +2304,9 @@ typedef HangoutsChatExportOptions = $ExportOptions;
 /// The Chat spaces to search
 class HangoutsChatInfo {
   /// A list of Chat spaces IDs, as provided by the
-  /// [Chat API](https://developers.google.com/hangouts/chat).
+  /// [Chat API](https://developers.google.com/chat).
+  ///
+  /// There is a limit of exporting from 500 Chat spaces per request.
   core.List<core.String>? roomId;
 
   HangoutsChatInfo({

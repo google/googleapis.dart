@@ -7580,10 +7580,11 @@ class File {
   /// Drive; it isn't populated for Docs Editors or shortcut files.
   core.String? fileExtension;
 
-  /// The size of the file in bytes.
+  /// The size of the file's content in bytes.
   ///
-  /// This field is populated for files with content stored in Google Drive and
-  /// for files in Docs Editors; it isn't populated for shortcut files.
+  /// This field is populated for files with binary content stored in Google
+  /// Drive and for Docs Editors files; it is not populated for shortcuts or
+  /// folders.
   core.String? fileSize;
 
   /// Folder color as an RGB hex string if the file is a folder or a shortcut to

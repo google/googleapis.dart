@@ -660,6 +660,7 @@ api.GoogleCloudRunV2HTTPGetAction buildGoogleCloudRunV2HTTPGetAction() {
   if (buildCounterGoogleCloudRunV2HTTPGetAction < 3) {
     o.httpHeaders = buildUnnamed11();
     o.path = 'foo';
+    o.port = 42;
   }
   buildCounterGoogleCloudRunV2HTTPGetAction--;
   return o;
@@ -672,6 +673,10 @@ void checkGoogleCloudRunV2HTTPGetAction(api.GoogleCloudRunV2HTTPGetAction o) {
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
     );
   }
   buildCounterGoogleCloudRunV2HTTPGetAction--;

@@ -6736,6 +6736,9 @@ class $EgressFrom {
 /// - iam:v1 : EnableServiceAccountKeyRequest
 /// - iam:v1 : EnableServiceAccountRequest
 /// - iam:v1 : UndeleteServiceAccountRequest
+/// - iam:v1 : UndeleteWorkforcePoolProviderRequest
+/// - iam:v1 : UndeleteWorkforcePoolRequest
+/// - iam:v1 : UndeleteWorkforcePoolSubjectRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolProviderRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
 /// - iap:v1 : Empty
@@ -6843,11 +6846,6 @@ class $EgressFrom {
 /// - runtimeconfig:v1 : Empty
 /// - safebrowsing:v4 : Empty
 /// - script:v1 : Empty
-/// - searchads360:v0 : GoogleAdsSearchads360V0Common__EnhancedCpc
-/// - searchads360:v0 : GoogleAdsSearchads360V0Common__FrequencyCapEntry
-/// - searchads360:v0 : GoogleAdsSearchads360V0Common__ManualCpa
-/// - searchads360:v0 : GoogleAdsSearchads360V0Common__ManualCpm
-/// - searchads360:v0 : GoogleAdsSearchads360V0Common__TargetCpm
 /// - secretmanager:v1 : Empty
 /// - securitycenter:v1 : Empty
 /// - securitycenter:v1 : RunAssetDiscoveryRequest
@@ -8640,6 +8638,7 @@ class $GeoRegionTargetingOptionDetails {
 /// - containeranalysis:v1 : GetPolicyOptions
 /// - datacatalog:v1 : GetPolicyOptions
 /// - dns:v1 : GoogleIamV1GetPolicyOptions
+/// - iam:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
 /// - securitycenter:v1 : GetPolicyOptions
 /// - servicedirectory:v1 : GetPolicyOptions
