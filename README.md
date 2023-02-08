@@ -565,8 +565,3 @@ only available through a Limited Preview program:
   <a href="http://developers.google.com/products/">developers' products page</a>.
   Find the product you're interested in on that page and follow the link.
   Be sure to look the API reference docs for Dart as some of the Dart APIs have quirks.
-
-## Publishing automation
-
-For information about our publishing automation and release process, see
-https://github.com/dart-lang/ecosystem/wiki/Publishing-automation.
