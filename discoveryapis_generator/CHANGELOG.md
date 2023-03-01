@@ -2,6 +2,7 @@
 
 - Require Dart 2.16 or later.
 - Add positional parameters to all schema types.
+- Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
 

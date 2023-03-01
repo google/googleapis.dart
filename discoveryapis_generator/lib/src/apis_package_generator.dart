@@ -199,7 +199,11 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
     }
 
     sink.writeln('name: ${pubspec.name}');
-    sink.writeln('version: ${pubspec.version}');
+    if (pubspec.version == null) {
+      sink.writeln('publish_to: none');
+    } else {
+      sink.writeln('version: ${pubspec.version}');
+    }
     if (pubspec.author != null) {
       sink.writeln('author: ${pubspec.author}');
     }

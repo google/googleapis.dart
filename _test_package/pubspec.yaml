@@ -1,5 +1,5 @@
 name: test_package
-version: 0.1.0-dev
+publish_to: none
 description: Auto-generated client libraries.
 environment:
   sdk: '>=2.17.0 <3.0.0'

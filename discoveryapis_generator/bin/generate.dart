@@ -19,8 +19,11 @@ ArgParser packageCommandArgParser() => ArgParser()
       defaultsTo: 'googleapis')
   ..addOption('package-name',
       help: 'Name of the generated API package.', defaultsTo: 'googleapis')
-  ..addOption('package-version',
-      help: 'Version of the generated API package.', defaultsTo: '0.1.0-dev')
+  ..addOption(
+    'package-version',
+    help: 'Version of the generated API package. '
+        'If omitted, the package will be flagged as `publish_to: none`.',
+  )
   ..addOption('package-description',
       help: 'Description of the generated API package.',
       defaultsTo: 'Auto-generated client libraries.')
@@ -96,7 +99,7 @@ void main(List<String> arguments) {
     case 'package':
       final pubspec = Pubspec(
         commandOptions['package-name'] as String,
-        commandOptions['package-version'] as String,
+        commandOptions['package-version'] as String?,
         commandOptions['package-description'] as String,
         author: commandOptions['package-author'] as String?,
         repository: commandOptions['package-repository'] as String?,

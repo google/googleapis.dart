@@ -248,9 +248,9 @@ class DiscoveryPackagesConfiguration {
   static String _generateReadme(
     String? readmeFile,
     String packageName,
-    String packageVersion,
-    List<RestDescription?> items,
-  ) {
+    List<RestDescription?> items, {
+    String? packageVersion,
+  }) {
     final sb = StringBuffer();
     if (readmeFile != null) {
       sb.write(File(readmeFile).readAsStringSync());
@@ -262,9 +262,6 @@ class DiscoveryPackagesConfiguration {
 The following is a list of APIs that are currently available inside this
 package.
 ''');
-
-    final basePubUri =
-        'https://pub.dev/documentation/$packageName/$packageVersion/';
 
     for (var item in items) {
       sb.write('#### ');
@@ -287,10 +284,14 @@ package.
       if (item.documentationLink != null) {
         sb.writeln('- [Documentation](${item.documentationLink})');
       }
-      final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
-      sb
-        ..writeln('- [API details]($pubUri)')
-        ..writeln();
+
+      if (packageVersion != null) {
+        final basePubUri =
+            'https://pub.dev/documentation/$packageName/$packageVersion/';
+        final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
+        sb.writeln('- [API details]($pubUri)');
+      }
+      sb.writeln();
     }
     return sb.toString();
   }
@@ -322,7 +323,7 @@ package.
     List<RestDescription?> allApis,
   ) {
     final apis = _listFromYaml(values['apis'] as List?).cast<String>();
-    final version = values['version'] as String? ?? '0.1.0-dev';
+    final version = values['version'] as String?;
     final author = values['author'] as String?;
     final repository = values['repository'] as String?;
 
@@ -375,7 +376,12 @@ package.
     }
 
     // Generate the README.md file content.
-    final readme = _generateReadme(readmeFile, name, version, apiDescriptions);
+    final readme = _generateReadme(
+      readmeFile,
+      name,
+      apiDescriptions,
+      packageVersion: version,
+    );
 
     // Read the LICENSE
     final license = File(licenseFile).readAsStringSync();
