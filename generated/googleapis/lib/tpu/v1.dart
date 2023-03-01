@@ -845,7 +845,29 @@ class ProjectsLocationsTensorflowVersionsResource {
 }
 
 /// A accelerator type that a Node can be configured with.
-typedef AcceleratorType = $AcceleratorType;
+class AcceleratorType {
+  /// The resource name.
+  core.String? name;
+
+  /// the accelerator type.
+  core.String? type;
+
+  AcceleratorType({
+    this.name,
+    this.type,
+  });
+
+  AcceleratorType.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

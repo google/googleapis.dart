@@ -4618,6 +4618,20 @@ class Device {
   /// For example, "123456789abcdef0".
   core.String? androidId;
 
+  /// The internal hardware codename of the device.
+  ///
+  /// This comes from android.os.Build.DEVICE. (field named "device" per
+  /// logs/wireless/android/android_checkin.proto)
+  core.String? device;
+
+  /// The build fingerprint of the device if known.
+  core.String? latestBuildFingerprint;
+
+  /// The manufacturer of the device.
+  ///
+  /// This comes from android.os.Build.MANUFACTURER.
+  core.String? maker;
+
   /// Identifies the extent to which the device is controlled by a managed
   /// Google Play EMM in various deployment configurations.
   ///
@@ -4636,17 +4650,42 @@ class Device {
   /// - "unmanagedProfile"
   core.String? managementType;
 
+  /// The model name of the device.
+  ///
+  /// This comes from android.os.Build.MODEL.
+  core.String? model;
+
   /// The policy enforced on the device.
   Policy? policy;
+
+  /// The product name of the device.
+  ///
+  /// This comes from android.os.Build.PRODUCT.
+  core.String? product;
 
   /// The device report updated with the latest app states.
   DeviceReport? report;
 
+  /// Retail brand for the device, if set.
+  ///
+  /// See https://developer.android.com/reference/android/os/Build.html#BRAND
+  core.String? retailBrand;
+
+  /// API compatibility version.
+  core.int? sdkVersion;
+
   Device({
     this.androidId,
+    this.device,
+    this.latestBuildFingerprint,
+    this.maker,
     this.managementType,
+    this.model,
     this.policy,
+    this.product,
     this.report,
+    this.retailBrand,
+    this.sdkVersion,
   });
 
   Device.fromJson(core.Map json_)
@@ -4654,24 +4693,51 @@ class Device {
           androidId: json_.containsKey('androidId')
               ? json_['androidId'] as core.String
               : null,
+          device: json_.containsKey('device')
+              ? json_['device'] as core.String
+              : null,
+          latestBuildFingerprint: json_.containsKey('latestBuildFingerprint')
+              ? json_['latestBuildFingerprint'] as core.String
+              : null,
+          maker:
+              json_.containsKey('maker') ? json_['maker'] as core.String : null,
           managementType: json_.containsKey('managementType')
               ? json_['managementType'] as core.String
               : null,
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
               : null,
           report: json_.containsKey('report')
               ? DeviceReport.fromJson(
                   json_['report'] as core.Map<core.String, core.dynamic>)
               : null,
+          retailBrand: json_.containsKey('retailBrand')
+              ? json_['retailBrand'] as core.String
+              : null,
+          sdkVersion: json_.containsKey('sdkVersion')
+              ? json_['sdkVersion'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidId != null) 'androidId': androidId!,
+        if (device != null) 'device': device!,
+        if (latestBuildFingerprint != null)
+          'latestBuildFingerprint': latestBuildFingerprint!,
+        if (maker != null) 'maker': maker!,
         if (managementType != null) 'managementType': managementType!,
+        if (model != null) 'model': model!,
         if (policy != null) 'policy': policy!,
+        if (product != null) 'product': product!,
         if (report != null) 'report': report!,
+        if (retailBrand != null) 'retailBrand': retailBrand!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
       };
 }
 

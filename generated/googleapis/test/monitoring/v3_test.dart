@@ -1523,6 +1523,7 @@ api.HttpCheck buildHttpCheck() {
     o.authInfo = buildBasicAuthentication();
     o.body = 'foo';
     o.contentType = 'foo';
+    o.customContentType = 'foo';
     o.headers = buildUnnamed22();
     o.maskHeaders = true;
     o.path = 'foo';
@@ -1547,6 +1548,10 @@ void checkHttpCheck(api.HttpCheck o) {
     );
     unittest.expect(
       o.contentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customContentType!,
       unittest.equals('foo'),
     );
     checkUnnamed22(o.headers!);

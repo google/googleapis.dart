@@ -883,6 +883,33 @@ void checkFirewallRule(api.FirewallRule o) {
   buildCounterFirewallRule--;
 }
 
+core.int buildCounterFlexibleRuntimeSettings = 0;
+api.FlexibleRuntimeSettings buildFlexibleRuntimeSettings() {
+  final o = api.FlexibleRuntimeSettings();
+  buildCounterFlexibleRuntimeSettings++;
+  if (buildCounterFlexibleRuntimeSettings < 3) {
+    o.operatingSystem = 'foo';
+    o.runtimeVersion = 'foo';
+  }
+  buildCounterFlexibleRuntimeSettings--;
+  return o;
+}
+
+void checkFlexibleRuntimeSettings(api.FlexibleRuntimeSettings o) {
+  buildCounterFlexibleRuntimeSettings++;
+  if (buildCounterFlexibleRuntimeSettings < 3) {
+    unittest.expect(
+      o.operatingSystem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.runtimeVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFlexibleRuntimeSettings--;
+}
+
 core.int buildCounterHealthCheck = 0;
 api.HealthCheck buildHealthCheck() {
   final o = api.HealthCheck();
@@ -2567,6 +2594,7 @@ api.Version buildVersion() {
     o.env = 'foo';
     o.envVariables = buildUnnamed29();
     o.errorHandlers = buildUnnamed30();
+    o.flexibleRuntimeSettings = buildFlexibleRuntimeSettings();
     o.handlers = buildUnnamed31();
     o.healthCheck = buildHealthCheck();
     o.id = 'foo';
@@ -2630,6 +2658,7 @@ void checkVersion(api.Version o) {
     );
     checkUnnamed29(o.envVariables!);
     checkUnnamed30(o.errorHandlers!);
+    checkFlexibleRuntimeSettings(o.flexibleRuntimeSettings!);
     checkUnnamed31(o.handlers!);
     checkHealthCheck(o.healthCheck!);
     unittest.expect(
@@ -3015,6 +3044,16 @@ void main() {
       final od = api.FirewallRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkFirewallRule(od);
+    });
+  });
+
+  unittest.group('obj-schema-FlexibleRuntimeSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFlexibleRuntimeSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FlexibleRuntimeSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFlexibleRuntimeSettings(od);
     });
   });
 

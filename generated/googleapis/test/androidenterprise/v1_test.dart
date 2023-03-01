@@ -750,9 +750,16 @@ api.Device buildDevice() {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
     o.androidId = 'foo';
+    o.device = 'foo';
+    o.latestBuildFingerprint = 'foo';
+    o.maker = 'foo';
     o.managementType = 'foo';
+    o.model = 'foo';
     o.policy = buildPolicy();
+    o.product = 'foo';
     o.report = buildDeviceReport();
+    o.retailBrand = 'foo';
+    o.sdkVersion = 42;
   }
   buildCounterDevice--;
   return o;
@@ -766,11 +773,39 @@ void checkDevice(api.Device o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.device!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.latestBuildFingerprint!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maker!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.managementType!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
     checkPolicy(o.policy!);
+    unittest.expect(
+      o.product!,
+      unittest.equals('foo'),
+    );
     checkDeviceReport(o.report!);
+    unittest.expect(
+      o.retailBrand!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals(42),
+    );
   }
   buildCounterDevice--;
 }

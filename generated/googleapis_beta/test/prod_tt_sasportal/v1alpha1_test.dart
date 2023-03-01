@@ -1240,6 +1240,59 @@ void checkSasPortalPolicy(api.SasPortalPolicy o) {
   buildCounterSasPortalPolicy--;
 }
 
+core.int buildCounterSasPortalProvisionDeploymentRequest = 0;
+api.SasPortalProvisionDeploymentRequest
+    buildSasPortalProvisionDeploymentRequest() {
+  final o = api.SasPortalProvisionDeploymentRequest();
+  buildCounterSasPortalProvisionDeploymentRequest++;
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    o.newDeploymentDisplayName = 'foo';
+    o.newOrganizationDisplayName = 'foo';
+  }
+  buildCounterSasPortalProvisionDeploymentRequest--;
+  return o;
+}
+
+void checkSasPortalProvisionDeploymentRequest(
+    api.SasPortalProvisionDeploymentRequest o) {
+  buildCounterSasPortalProvisionDeploymentRequest++;
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    unittest.expect(
+      o.newDeploymentDisplayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newOrganizationDisplayName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalProvisionDeploymentRequest--;
+}
+
+core.int buildCounterSasPortalProvisionDeploymentResponse = 0;
+api.SasPortalProvisionDeploymentResponse
+    buildSasPortalProvisionDeploymentResponse() {
+  final o = api.SasPortalProvisionDeploymentResponse();
+  buildCounterSasPortalProvisionDeploymentResponse++;
+  if (buildCounterSasPortalProvisionDeploymentResponse < 3) {
+    o.errorMessage = 'foo';
+  }
+  buildCounterSasPortalProvisionDeploymentResponse--;
+  return o;
+}
+
+void checkSasPortalProvisionDeploymentResponse(
+    api.SasPortalProvisionDeploymentResponse o) {
+  buildCounterSasPortalProvisionDeploymentResponse++;
+  if (buildCounterSasPortalProvisionDeploymentResponse < 3) {
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalProvisionDeploymentResponse--;
+}
+
 core.int buildCounterSasPortalSetPolicyRequest = 0;
 api.SasPortalSetPolicyRequest buildSasPortalSetPolicyRequest() {
   final o = api.SasPortalSetPolicyRequest();
@@ -1819,6 +1872,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalProvisionDeploymentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalProvisionDeploymentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalProvisionDeploymentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalProvisionDeploymentRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalProvisionDeploymentResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalProvisionDeploymentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalProvisionDeploymentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalProvisionDeploymentResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalSetPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalSetPolicyRequest();
@@ -2077,6 +2150,64 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkSasPortalCustomer(response as api.SasPortalCustomer);
+    });
+
+    unittest.test('method--provisionDeployment', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_request = buildSasPortalProvisionDeploymentRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SasPortalProvisionDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalProvisionDeploymentRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 38),
+          unittest.equals('v1alpha1/customers:provisionDeployment'),
+        );
+        pathOffset += 38;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSasPortalProvisionDeploymentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.provisionDeployment(arg_request, $fields: arg_$fields);
+      checkSasPortalProvisionDeploymentResponse(
+          response as api.SasPortalProvisionDeploymentResponse);
     });
   });
 

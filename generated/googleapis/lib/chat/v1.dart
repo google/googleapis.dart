@@ -54,6 +54,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// Authentication is a prerequisite for using the Google Chat REST API.
 class HangoutsChatApi {
+  /// Private Service: https://www.googleapis.com/auth/chat.bot
+  static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
+
   /// View, add, and remove members from conversations in Google Chat
   static const chatMembershipsScope =
       'https://www.googleapis.com/auth/chat.memberships';
@@ -1538,7 +1541,8 @@ class FormAction {
 
 /// An action that describes the behavior when the form is submitted.
 ///
-/// For example, an Apps Script can be invoked to handle the form.
+/// For example, an Apps Script can be invoked to handle the form. If the action
+/// is triggered, the form values are sent to the server.
 class GoogleAppsCardV1Action {
   /// A custom function to invoke when the containing element is clicked or
   /// othrwise activated.
@@ -1586,16 +1590,20 @@ class GoogleAppsCardV1Action {
   /// Indicates whether form values persist after the action.
   ///
   /// The default value is `false`. If `true`, form values remain after the
-  /// action is triggered. When using
-  /// [LoadIndicator.NONE](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-  /// for actions, `persist_values` = `true`is recommended, as it ensures that
-  /// any changes made by the user after form or on change actions are sent to
-  /// the server are not overwritten by the response. If `false`, the form
-  /// values are cleared when the action is triggered. When `persist_values` is
-  /// set to `false`, it is strongly recommended that the card use
-  /// [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-  /// for all actions, as this locks the UI to ensure no changes are made by the
-  /// user while the action is being processed. Not supported by Chat apps.
+  /// action is triggered. To let the user make changes while the action is
+  /// being processed, set
+  /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// to `NONE`. For
+  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// in Chat apps, you must also set the action's
+  /// [ResponseType](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype)
+  /// to `UPDATE_MESSAGE` and use the same
+  /// \[`card_id`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#CardWithId)
+  /// from the card that contained the action. If `false`, the form values are
+  /// cleared when the action is triggered. To prevent the user from making
+  /// changes while the action is being processed, set
+  /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// to `SPINNER`.
   core.bool? persistValues;
 
   GoogleAppsCardV1Action({
@@ -2176,8 +2184,7 @@ class GoogleAppsCardV1DateTimePicker {
 class GoogleAppsCardV1DecoratedText {
   /// The text that appears below `text`.
   ///
-  /// Always truncates. Supports simple formatting. See Text formatting for
-  /// formatting details.
+  /// Always truncates.
   core.String? bottomLabel;
 
   /// A button that can be clicked to trigger an action.
@@ -2186,7 +2193,7 @@ class GoogleAppsCardV1DecoratedText {
   /// An icon displayed after the text.
   ///
   /// Supports
-  /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
+  /// \[built-in\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
   /// and
   /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
   /// icons.
@@ -2202,11 +2209,6 @@ class GoogleAppsCardV1DecoratedText {
   GoogleAppsCardV1Icon? startIcon;
 
   /// A switch widget can be clicked to change its state and trigger an action.
-  ///
-  /// Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon.
   GoogleAppsCardV1SwitchControl? switchControl;
 
   /// The primary text.
@@ -2218,8 +2220,7 @@ class GoogleAppsCardV1DecoratedText {
 
   /// The text that appears above `text`.
   ///
-  /// Always truncates. Supports simple formatting. See Text formatting for
-  /// formatting details.
+  /// Always truncates.
   core.String? topLabel;
 
   /// The wrap text setting.
@@ -2296,24 +2297,21 @@ class GoogleAppsCardV1DecoratedText {
 
 /// Displays a divider between widgets, a horizontal line.
 ///
-/// For example, the following JSON creates a divider: ``` "divider": { } ```
+/// For example, the following JSON creates a divider: ``` "divider": {} ```
 typedef GoogleAppsCardV1Divider = $Empty;
 
 /// Displays a grid with a collection of items.
 ///
 /// A grid supports any number of columns and items. The number of rows is
 /// determined by items divided by columns. A grid with 10 items and 2 columns
-/// has 5 rows. A grid with 11 items and 2 columns has 6 rows. Currently
-/// supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
-/// Support for
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-/// is coming soon. For example, the following JSON creates a 2 column grid with
-/// a single item: ``` "grid": { "title": "A fine collection of items",
-/// "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 },
-/// "items": [ "image": { "imageUri": "https://www.example.com/image.png",
-/// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } },
-/// "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink": {
-/// "url":"https://www.example.com" } } } ```
+/// has 5 rows. A grid with 11 items and 2 columns has 6 rows. For example, the
+/// following JSON creates a 2 column grid with a single item: ``` "grid": {
+/// "title": "A fine collection of items", "columnCount": 2, "borderStyle": {
+/// "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri":
+/// "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" },
+/// "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment":
+/// "CENTER" } ], "onClick": { "openLink": { "url": "https://www.example.com" }
+/// } } ```
 class GoogleAppsCardV1Grid {
   /// The border style to apply to each grid item.
   GoogleAppsCardV1BorderStyle? borderStyle;
@@ -2438,7 +2436,7 @@ class GoogleAppsCardV1GridItem {
 /// An icon displayed in a widget on a card.
 ///
 /// Supports
-/// [standard](https://developers.google.com/chat/api/guides/message-formats/cards)
+/// \[built-in\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
 /// and
 /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
 /// icons.
@@ -2467,7 +2465,7 @@ class GoogleAppsCardV1Icon {
   /// The crop style applied to the image.
   ///
   /// In some cases, applying a `CIRCLE` crop causes the image to be drawn
-  /// larger than a standard icon.
+  /// larger than a built-in icon.
   /// Possible string values are:
   /// - "SQUARE" : Default value. Applies a square mask to the image. For
   /// example, a 4x3 image becomes 3x3.
@@ -2475,11 +2473,11 @@ class GoogleAppsCardV1Icon {
   /// image becomes a circle with a diameter of 3.
   core.String? imageType;
 
-  /// Display one of the standard icons provided by Google Workspace.
+  /// Display one of the built-in icons provided by Google Workspace.
   ///
   /// For example, to display an airplane icon, specify `AIRPLANE`. For a bus,
-  /// specify `BUS`. For a full list of supported icons, see
-  /// [standard icons](https://developers.google.com/chat/api/guides/message-formats/cards).
+  /// specify `BUS`. For a full list of supported icons, see \[built-in
+  /// icons\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons).
   core.String? knownIcon;
 
   GoogleAppsCardV1Icon({
@@ -2825,10 +2823,7 @@ class GoogleAppsCardV1Section {
 /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
 /// When you need to collect data from users that matches options you set, use a
 /// selection input. To collect abstract data from users, use the text input
-/// widget instead. Only supported in
-/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-/// coming soon.
+/// widget instead.
 class GoogleAppsCardV1SelectionInput {
   /// An array of the selected items.
   ///
@@ -2864,25 +2859,13 @@ class GoogleAppsCardV1SelectionInput {
   /// Mixing check boxes and switches, for example, is not supported.
   /// Possible string values are:
   /// - "CHECK_BOX" : A set of checkboxes. Users can select multiple check boxes
-  /// per selection input. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon.
+  /// per selection input.
   /// - "RADIO_BUTTON" : A set of radio buttons. Users can select one radio
-  /// button per selection input. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon.
+  /// button per selection input.
   /// - "SWITCH" : A set of switches. Users can turn on multiple switches at
-  /// once per selection input. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon.
+  /// once per selection input.
   /// - "DROPDOWN" : A dropdown menu. Users can select one dropdown menu item
-  /// per selection input. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon.
+  /// per selection input.
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -3020,10 +3003,7 @@ class GoogleAppsCardV1Suggestions {
 
 /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
 ///
-/// Only supported on the `decoratedText` widget. Currently supported in
-/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-/// is coming soon.
+/// Only supported on the `decoratedText` widget.
 class GoogleAppsCardV1SwitchControl {
   /// How the switch appears in the user interface.
   /// Possible string values are:
@@ -3093,10 +3073,6 @@ class GoogleAppsCardV1SwitchControl {
 /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
 /// When you need to collect abstract data from users, use a text input. To
 /// collect defined data from users, use the selection input widget instead.
-/// Only supported in
-/// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-/// coming soon.
 class GoogleAppsCardV1TextInput {
   /// Specify what action to take when the text input field provides suggestions
   /// to users who interact with it.
@@ -3250,19 +3226,19 @@ class GoogleAppsCardV1Widget {
   ///
   /// For example, the following JSON creates two buttons. The first is a blue
   /// text button and the second is an image button that opens a link: ```
-  /// "buttonList": { "buttons": [ "button": { "text": "Edit", "color": { "red":
-  /// 0, "green": 0, "blue": 1, "alpha": 1 } "disabled": true }, "button": {
-  /// "icon": { "knownIcon": "INVITE" "altText": "check calendar" }, "onClick":
-  /// { "openLink": { "url": "https://example.com/calendar" } } }, ] } ```
+  /// "buttonList": { "buttons": [ { "text": "Edit", "color": { "red": 0,
+  /// "green": 0, "blue": 1, "alpha": 1 }, "disabled": true, }, { "icon": {
+  /// "knownIcon": "INVITE", "altText": "check calendar" }, "onClick": {
+  /// "openLink": { "url": "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
 
   /// Displays a selection/input widget for date, time, or date and time.
   ///
   /// Not supported by Chat apps. Support by Chat apps is coming soon. For
   /// example, the following JSON creates a datetime picker to schedule an
-  /// appointment: ``` "date_time_picker": { "name": "appointment_time",
-  /// "label": "Book your appointment at:", "type":
-  /// "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
+  /// appointment: ``` "dateTimePicker": { "name": "appointment_time", "label":
+  /// "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch":
+  /// "796435200000" } ```
   GoogleAppsCardV1DateTimePicker? dateTimePicker;
 
   /// Displays a decorated text item.
@@ -3270,9 +3246,9 @@ class GoogleAppsCardV1Widget {
   /// For example, the following JSON creates a decorated text widget showing
   /// email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" },
   /// "topLabel": "Email Address", "text": "sasha@example.com", "bottomLabel":
-  /// "This is a new Email address!", "switchWidget": { "name":
+  /// "This is a new Email address!", "switchControl": { "name":
   /// "has_send_welcome_email_to_sasha", "selected": false, "controlType":
-  /// "ControlType.CHECKBOX" } } ```
+  /// "CHECKBOX" } } ```
   GoogleAppsCardV1DecoratedText? decoratedText;
 
   /// Displays a horizontal line divider between widgets.
@@ -3285,54 +3261,44 @@ class GoogleAppsCardV1Widget {
   /// A grid supports any number of columns and items. The number of rows is
   /// determined by the upper bounds of the number items divided by the number
   /// of columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11
-  /// items and 2 columns has 6 rows. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon. For example, the following JSON creates a 2 column grid
-  /// with a single item: ``` "grid": { "title": "A fine collection of items",
-  /// "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 },
-  /// "items": [ "image": { "imageUri": "https://www.example.com/image.png",
-  /// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } },
-  /// "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink":
-  /// { "url":"https://www.example.com" } } } ```
+  /// items and 2 columns has 6 rows. For example, the following JSON creates a
+  /// 2 column grid with a single item: ``` "grid": { "title": "A fine
+  /// collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
+  /// "cornerRadius": 4 }, "items": [ { "image": { "imageUri":
+  /// "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" },
+  /// "borderStyle": { "type": "STROKE" } }, "title": "An item",
+  /// "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url":
+  /// "https://www.example.com" } } } ```
   GoogleAppsCardV1Grid? grid;
 
   /// Displays an image.
   ///
   /// For example, the following JSON creates an image with alternative text:
   /// ``` "image": { "imageUrl":
-  /// "https://developers.google.com/chat/images/quickstart-app-avatar.png"
+  /// "https://developers.google.com/chat/images/quickstart-app-avatar.png",
   /// "altText": "Chat app avatar" } ```
   GoogleAppsCardV1Image? image;
 
   /// Displays a selection control that lets users select items.
   ///
   /// Selection controls can be check boxes, radio buttons, switches, or
-  /// dropdown menus. Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon. For example, the following JSON creates a dropdown menu
+  /// dropdown menus. For example, the following JSON creates a dropdown menu
   /// that lets users choose a size: ``` "selectionInput": { "name": "size",
-  /// "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ { "text":
-  /// "S", "value": "small", "selected": false }, { "text": "M", "value":
-  /// "medium", "selected": true }, { "text": "L", "value": "large", "selected":
-  /// false }, { "text": "XL", "value": "extra_large", "selected": false } ] }
-  /// ```
+  /// "label": "Size" "type": "DROPDOWN", "items": [ { "text": "S", "value":
+  /// "small", "selected": false }, { "text": "M", "value": "medium",
+  /// "selected": true }, { "text": "L", "value": "large", "selected": false },
+  /// { "text": "XL", "value": "extra_large", "selected": false } ] } ```
   GoogleAppsCardV1SelectionInput? selectionInput;
 
   /// Displays a text box that users can type into.
   ///
-  /// Currently supported in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-  /// is coming soon. For example, the following JSON creates a text input for
-  /// an email address: ``` "textInput": { "name": "mailing_address", "label":
-  /// "Mailing Address" } ``` As another example, the following JSON creates a
-  /// text input for a programming language with static suggestions: ```
-  /// "textInput": { "name": "preferred_programing_language", "label":
-  /// "Preferred Language", "initialSuggestions": { "items": [ { "text": "C++"
-  /// }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] }
-  /// } ```
+  /// For example, the following JSON creates a text input for an email address:
+  /// ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" }
+  /// ``` As another example, the following JSON creates a text input for a
+  /// programming language with static suggestions: ``` "textInput": { "name":
+  /// "preferred_programing_language", "label": "Preferred Language",
+  /// "initialSuggestions": { "items": [ { "text": "C++" }, { "text": "Java" },
+  /// { "text": "JavaScript" }, { "text": "Python" } ] } } ```
   GoogleAppsCardV1TextInput? textInput;
 
   /// Displays a text paragraph.
@@ -3832,6 +3798,8 @@ class Message {
   core.List<Annotation>? annotations;
 
   /// Plain-text body of the message with all Chat app mentions stripped out.
+  ///
+  /// Output only.
   core.String? argumentText;
 
   /// User-uploaded attachment.
@@ -3841,7 +3809,8 @@ class Message {
   ///
   /// Rich, formatted and interactive cards that can be used to display UI
   /// elements such as: formatted texts, buttons, clickable images. Cards are
-  /// normally displayed below the plain-text body of the message.
+  /// normally displayed below the plain-text body of the message. `cards` and
+  /// `cards_v2` can have a maximum size of 32 KB.
   core.List<Card>? cards;
 
   /// Richly formatted and interactive cards that display UI elements and
@@ -3850,10 +3819,12 @@ class Message {
   ///
   /// Cards are usually displayed below the text body of a Chat message, but can
   /// situationally appear other places, such as
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The
-  /// `cardId` is a unique identifier among cards in the same message and for
-  /// identifying user input values. Currently supported widgets include: -
-  /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` - `Divider`
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). `cards_v2`
+  /// and `cards` can have a maximum size of 32 KB. The `cardId` is a unique
+  /// identifier among cards in the same message and for identifying user input
+  /// values. Currently supported widgets include: - `TextParagraph` -
+  /// `DecoratedText` - `Image` - `ButtonList` - `Divider` - `TextInput` -
+  /// `SelectionInput` (CHECKBOX, RADIO_BUTTON, SWITCH, DROPDOWN) - `Grid`
   core.List<CardWithId>? cardsV2;
 
   /// A custom name for a Chat message assigned at creation.
@@ -4217,6 +4188,16 @@ class SlashCommandMetadata {
 /// Spaces are conversations between two or more users or 1:1 messages between a
 /// user and a Chat app.
 class Space {
+  /// Whether the Chat app was installed by a Google Workspace administrator.
+  ///
+  /// Administrators can install a Chat app for their domain, organizational
+  /// unit, or a group of users. Administrators can only install Chat apps for
+  /// direct messaging between users and the app. To support admin install, your
+  /// app must feature direct messaging.
+  ///
+  /// Output only.
+  core.bool? adminInstalled;
+
   /// The space's display name.
   ///
   /// Required when
@@ -4274,6 +4255,7 @@ class Space {
   core.String? type;
 
   Space({
+    this.adminInstalled,
     this.displayName,
     this.name,
     this.singleUserBotDm,
@@ -4285,6 +4267,9 @@ class Space {
 
   Space.fromJson(core.Map json_)
       : this(
+          adminInstalled: json_.containsKey('adminInstalled')
+              ? json_['adminInstalled'] as core.bool
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -4306,6 +4291,7 @@ class Space {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adminInstalled != null) 'adminInstalled': adminInstalled!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,

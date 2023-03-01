@@ -2087,6 +2087,11 @@ class Connection {
   /// Output only.
   core.String? serviceDirectory;
 
+  /// Ssl config of a connection
+  ///
+  /// Optional.
+  SslConfig? sslConfig;
+
   /// Current status of the connection.
   ///
   /// Output only.
@@ -2117,6 +2122,7 @@ class Connection {
     this.nodeConfig,
     this.serviceAccount,
     this.serviceDirectory,
+    this.sslConfig,
     this.status,
     this.suspended,
     this.updateTime,
@@ -2178,6 +2184,10 @@ class Connection {
           serviceDirectory: json_.containsKey('serviceDirectory')
               ? json_['serviceDirectory'] as core.String
               : null,
+          sslConfig: json_.containsKey('sslConfig')
+              ? SslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           status: json_.containsKey('status')
               ? ConnectionStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
@@ -2207,6 +2217,7 @@ class Connection {
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
         if (status != null) 'status': status!,
         if (suspended != null) 'suspended': suspended!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2311,6 +2322,8 @@ class ConnectionStatus {
   /// - "DELETING" : Connection is being deleted.
   /// - "UPDATING" : Connection is being updated.
   /// - "ERROR" : Connection is not running due to an error.
+  /// - "AUTHORIZATION_REQUIRED" : Connection is not running due to an auth
+  /// error for the Oauth2 Auth Code based connector.
   core.String? state;
 
   /// Status provides detailed information for the state.
@@ -2542,6 +2555,11 @@ class ConnectorVersion {
   /// Output only.
   core.List<RoleGrant>? roleGrants;
 
+  /// Ssl configuration supported by the Connector.
+  ///
+  /// Output only.
+  SslConfigTemplate? sslConfigTemplate;
+
   /// Information about the runtime features supported by the Connector.
   ///
   /// Output only.
@@ -2564,6 +2582,7 @@ class ConnectorVersion {
     this.releaseVersion,
     this.roleGrant,
     this.roleGrants,
+    this.sslConfigTemplate,
     this.supportedRuntimeFeatures,
     this.updateTime,
   });
@@ -2617,6 +2636,10 @@ class ConnectorVersion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sslConfigTemplate: json_.containsKey('sslConfigTemplate')
+              ? SslConfigTemplate.fromJson(json_['sslConfigTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           supportedRuntimeFeatures:
               json_.containsKey('supportedRuntimeFeatures')
                   ? SupportedRuntimeFeatures.fromJson(
@@ -2643,6 +2666,7 @@ class ConnectorVersion {
         if (releaseVersion != null) 'releaseVersion': releaseVersion!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
         if (roleGrants != null) 'roleGrants': roleGrants!,
+        if (sslConfigTemplate != null) 'sslConfigTemplate': sslConfigTemplate!,
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4438,6 +4462,192 @@ class SshPublicKey {
         if (sshClientCert != null) 'sshClientCert': sshClientCert!,
         if (sshClientCertPass != null) 'sshClientCertPass': sshClientCertPass!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// SSL Configuration of a connection
+class SslConfig {
+  /// Additional SSL related field values
+  core.List<ConfigVariable>? additionalVariables;
+
+  /// Type of Client Cert (PEM/JKS/..
+  ///
+  /// etc.)
+  /// Possible string values are:
+  /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
+  /// - "PEM" : Privacy Enhanced Mail (PEM) Type
+  core.String? clientCertType;
+
+  /// Client Certificate
+  Secret? clientCertificate;
+
+  /// Client Private Key
+  Secret? clientPrivateKey;
+
+  /// Secret containing the passphrase protecting the Client Private Key
+  Secret? clientPrivateKeyPass;
+
+  /// Private Server Certificate.
+  ///
+  /// Needs to be specified if trust model is `PRIVATE`.
+  Secret? privateServerCertificate;
+
+  /// Type of Server Cert (PEM/JKS/..
+  ///
+  /// etc.)
+  /// Possible string values are:
+  /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
+  /// - "PEM" : Privacy Enhanced Mail (PEM) Type
+  core.String? serverCertType;
+
+  /// Trust Model of the SSL connection
+  /// Possible string values are:
+  /// - "PUBLIC" : Public Trust Model. Takes the Default Java trust store.
+  /// - "PRIVATE" : Private Trust Model. Takes custom/private trust store.
+  /// - "INSECURE" : Insecure Trust Model. Accept all certificates.
+  core.String? trustModel;
+
+  /// Controls the ssl type for the given connector version.
+  /// Possible string values are:
+  /// - "SSL_TYPE_UNSPECIFIED" : No SSL configuration required.
+  /// - "TLS" : TLS Handshake
+  /// - "MTLS" : mutual TLS (MTLS) Handshake
+  core.String? type;
+
+  /// Bool for enabling SSL
+  core.bool? useSsl;
+
+  SslConfig({
+    this.additionalVariables,
+    this.clientCertType,
+    this.clientCertificate,
+    this.clientPrivateKey,
+    this.clientPrivateKeyPass,
+    this.privateServerCertificate,
+    this.serverCertType,
+    this.trustModel,
+    this.type,
+    this.useSsl,
+  });
+
+  SslConfig.fromJson(core.Map json_)
+      : this(
+          additionalVariables: json_.containsKey('additionalVariables')
+              ? (json_['additionalVariables'] as core.List)
+                  .map((value) => ConfigVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          clientCertType: json_.containsKey('clientCertType')
+              ? json_['clientCertType'] as core.String
+              : null,
+          clientCertificate: json_.containsKey('clientCertificate')
+              ? Secret.fromJson(json_['clientCertificate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clientPrivateKey: json_.containsKey('clientPrivateKey')
+              ? Secret.fromJson(json_['clientPrivateKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clientPrivateKeyPass: json_.containsKey('clientPrivateKeyPass')
+              ? Secret.fromJson(json_['clientPrivateKeyPass']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          privateServerCertificate:
+              json_.containsKey('privateServerCertificate')
+                  ? Secret.fromJson(json_['privateServerCertificate']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          serverCertType: json_.containsKey('serverCertType')
+              ? json_['serverCertType'] as core.String
+              : null,
+          trustModel: json_.containsKey('trustModel')
+              ? json_['trustModel'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          useSsl:
+              json_.containsKey('useSsl') ? json_['useSsl'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalVariables != null)
+          'additionalVariables': additionalVariables!,
+        if (clientCertType != null) 'clientCertType': clientCertType!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientPrivateKey != null) 'clientPrivateKey': clientPrivateKey!,
+        if (clientPrivateKeyPass != null)
+          'clientPrivateKeyPass': clientPrivateKeyPass!,
+        if (privateServerCertificate != null)
+          'privateServerCertificate': privateServerCertificate!,
+        if (serverCertType != null) 'serverCertType': serverCertType!,
+        if (trustModel != null) 'trustModel': trustModel!,
+        if (type != null) 'type': type!,
+        if (useSsl != null) 'useSsl': useSsl!,
+      };
+}
+
+/// Ssl config details of a connector version
+class SslConfigTemplate {
+  /// Any additional fields that need to be rendered
+  core.List<ConfigVariableTemplate>? additionalVariables;
+
+  /// List of supported Client Cert Types
+  core.List<core.String>? clientCertType;
+
+  /// Boolean for determining if the connector version mandates TLS.
+  core.bool? isTlsMandatory;
+
+  /// List of supported Server Cert Types
+  core.List<core.String>? serverCertType;
+
+  /// Controls the ssl type for the given connector version
+  /// Possible string values are:
+  /// - "SSL_TYPE_UNSPECIFIED" : No SSL configuration required.
+  /// - "TLS" : TLS Handshake
+  /// - "MTLS" : mutual TLS (MTLS) Handshake
+  core.String? sslType;
+
+  SslConfigTemplate({
+    this.additionalVariables,
+    this.clientCertType,
+    this.isTlsMandatory,
+    this.serverCertType,
+    this.sslType,
+  });
+
+  SslConfigTemplate.fromJson(core.Map json_)
+      : this(
+          additionalVariables: json_.containsKey('additionalVariables')
+              ? (json_['additionalVariables'] as core.List)
+                  .map((value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          clientCertType: json_.containsKey('clientCertType')
+              ? (json_['clientCertType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          isTlsMandatory: json_.containsKey('isTlsMandatory')
+              ? json_['isTlsMandatory'] as core.bool
+              : null,
+          serverCertType: json_.containsKey('serverCertType')
+              ? (json_['serverCertType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sslType: json_.containsKey('sslType')
+              ? json_['sslType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalVariables != null)
+          'additionalVariables': additionalVariables!,
+        if (clientCertType != null) 'clientCertType': clientCertType!,
+        if (isTlsMandatory != null) 'isTlsMandatory': isTlsMandatory!,
+        if (serverCertType != null) 'serverCertType': serverCertType!,
+        if (sslType != null) 'sslType': sslType!,
       };
 }
 

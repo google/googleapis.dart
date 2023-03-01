@@ -1307,6 +1307,13 @@ class Function_ {
   /// response to a condition in another service.
   EventTrigger? eventTrigger;
 
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt function resources.
+  ///
+  /// It must match the pattern
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  core.String? kmsKeyName;
+
   /// Labels associated with this Cloud Function.
   core.Map<core.String, core.String>? labels;
 
@@ -1350,6 +1357,7 @@ class Function_ {
     this.description,
     this.environment,
     this.eventTrigger,
+    this.kmsKeyName,
     this.labels,
     this.name,
     this.serviceConfig,
@@ -1373,6 +1381,9 @@ class Function_ {
           eventTrigger: json_.containsKey('eventTrigger')
               ? EventTrigger.fromJson(
                   json_['eventTrigger'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -1405,6 +1416,7 @@ class Function_ {
         if (description != null) 'description': description!,
         if (environment != null) 'environment': environment!,
         if (eventTrigger != null) 'eventTrigger': eventTrigger!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceConfig != null) 'serviceConfig': serviceConfig!,
@@ -1421,7 +1433,38 @@ typedef GenerateDownloadUrlRequest = $Empty;
 typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
-typedef GenerateUploadUrlRequest = $Empty;
+class GenerateUploadUrlRequest {
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt function source code objects in intermediate Cloud Storage
+  /// buckets.
+  ///
+  /// When you generate an upload url and upload your source code, it gets
+  /// copied to an intermediate Cloud Storage bucket. The source code is then
+  /// copied to a versioned directory in the sources bucket in the consumer
+  /// project during the function deployment. It must match the pattern
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  /// The Google Cloud Functions service account
+  /// (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be
+  /// granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter
+  /// (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the
+  /// Key/KeyRing/Project/Organization (least access preferred).
+  core.String? kmsKeyName;
+
+  GenerateUploadUrlRequest({
+    this.kmsKeyName,
+  });
+
+  GenerateUploadUrlRequest.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// Response of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlResponse {

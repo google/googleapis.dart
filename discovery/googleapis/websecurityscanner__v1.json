@@ -524,7 +524,7 @@
             }
         }
     },
-    "revision": "20230205",
+    "revision": "20230226",
     "rootUrl": "https://websecurityscanner.googleapis.com/",
     "schemas": {
         "Authentication": {

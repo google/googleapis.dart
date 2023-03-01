@@ -3029,6 +3029,11 @@ class EffectiveTag {
   /// `tagKeys/123`.
   core.String? tagKey;
 
+  /// The parent name of the tag key.
+  ///
+  /// Must be in the format `organizations/{organization_id}`.
+  core.String? tagKeyParentName;
+
   /// Resource name for TagValue in the format `tagValues/456`.
   core.String? tagValue;
 
@@ -3037,6 +3042,7 @@ class EffectiveTag {
     this.namespacedTagKey,
     this.namespacedTagValue,
     this.tagKey,
+    this.tagKeyParentName,
     this.tagValue,
   });
 
@@ -3054,6 +3060,9 @@ class EffectiveTag {
           tagKey: json_.containsKey('tagKey')
               ? json_['tagKey'] as core.String
               : null,
+          tagKeyParentName: json_.containsKey('tagKeyParentName')
+              ? json_['tagKeyParentName'] as core.String
+              : null,
           tagValue: json_.containsKey('tagValue')
               ? json_['tagValue'] as core.String
               : null,
@@ -3065,6 +3074,7 @@ class EffectiveTag {
         if (namespacedTagValue != null)
           'namespacedTagValue': namespacedTagValue!,
         if (tagKey != null) 'tagKey': tagKey!,
+        if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
         if (tagValue != null) 'tagValue': tagValue!,
       };
 }

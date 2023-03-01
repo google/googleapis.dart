@@ -4410,7 +4410,7 @@ class ExecutionSpec {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution.
+  /// that task signals the success of the execution. Defaults to 1.
   ///
   /// Optional.
   core.int? taskCount;
@@ -7533,6 +7533,8 @@ class TaskSpec {
 
   /// Number of retries allowed per task, before marking this job failed.
   ///
+  /// Defaults to 3.
+  ///
   /// Optional.
   core.int? maxRetries;
 
@@ -7550,7 +7552,7 @@ class TaskSpec {
   /// try to mark it failed and kill associated containers.
   ///
   /// This applies per attempt of a task, meaning each retry can run for the
-  /// full timeout.
+  /// full timeout. Defaults to 600 seconds.
   ///
   /// Optional.
   core.String? timeoutSeconds;

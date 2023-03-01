@@ -1682,6 +1682,7 @@ api.Release buildRelease() {
     o.abandoned = true;
     o.annotations = buildUnnamed26();
     o.buildArtifacts = buildUnnamed27();
+    o.condition = buildReleaseCondition();
     o.createTime = 'foo';
     o.deliveryPipelineSnapshot = buildDeliveryPipeline();
     o.description = 'foo';
@@ -1709,6 +1710,7 @@ void checkRelease(api.Release o) {
     unittest.expect(o.abandoned!, unittest.isTrue);
     checkUnnamed26(o.annotations!);
     checkUnnamed27(o.buildArtifacts!);
+    checkReleaseCondition(o.condition!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1760,6 +1762,46 @@ void checkRelease(api.Release o) {
     );
   }
   buildCounterRelease--;
+}
+
+core.int buildCounterReleaseCondition = 0;
+api.ReleaseCondition buildReleaseCondition() {
+  final o = api.ReleaseCondition();
+  buildCounterReleaseCondition++;
+  if (buildCounterReleaseCondition < 3) {
+    o.releaseReadyCondition = buildReleaseReadyCondition();
+    o.skaffoldSupportedCondition = buildSkaffoldSupportedCondition();
+  }
+  buildCounterReleaseCondition--;
+  return o;
+}
+
+void checkReleaseCondition(api.ReleaseCondition o) {
+  buildCounterReleaseCondition++;
+  if (buildCounterReleaseCondition < 3) {
+    checkReleaseReadyCondition(o.releaseReadyCondition!);
+    checkSkaffoldSupportedCondition(o.skaffoldSupportedCondition!);
+  }
+  buildCounterReleaseCondition--;
+}
+
+core.int buildCounterReleaseReadyCondition = 0;
+api.ReleaseReadyCondition buildReleaseReadyCondition() {
+  final o = api.ReleaseReadyCondition();
+  buildCounterReleaseReadyCondition++;
+  if (buildCounterReleaseReadyCondition < 3) {
+    o.status = true;
+  }
+  buildCounterReleaseReadyCondition--;
+  return o;
+}
+
+void checkReleaseReadyCondition(api.ReleaseReadyCondition o) {
+  buildCounterReleaseReadyCondition++;
+  if (buildCounterReleaseReadyCondition < 3) {
+    unittest.expect(o.status!, unittest.isTrue);
+  }
+  buildCounterReleaseReadyCondition--;
 }
 
 core.int buildCounterRetryJobRequest = 0;
@@ -2003,12 +2045,48 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
+core.int buildCounterSkaffoldSupportedCondition = 0;
+api.SkaffoldSupportedCondition buildSkaffoldSupportedCondition() {
+  final o = api.SkaffoldSupportedCondition();
+  buildCounterSkaffoldSupportedCondition++;
+  if (buildCounterSkaffoldSupportedCondition < 3) {
+    o.maintenanceModeTime = 'foo';
+    o.skaffoldSupportState = 'foo';
+    o.status = true;
+    o.supportExpirationTime = 'foo';
+  }
+  buildCounterSkaffoldSupportedCondition--;
+  return o;
+}
+
+void checkSkaffoldSupportedCondition(api.SkaffoldSupportedCondition o) {
+  buildCounterSkaffoldSupportedCondition++;
+  if (buildCounterSkaffoldSupportedCondition < 3) {
+    unittest.expect(
+      o.maintenanceModeTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skaffoldSupportState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.status!, unittest.isTrue);
+    unittest.expect(
+      o.supportExpirationTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSkaffoldSupportedCondition--;
+}
+
 core.int buildCounterSkaffoldVersion = 0;
 api.SkaffoldVersion buildSkaffoldVersion() {
   final o = api.SkaffoldVersion();
   buildCounterSkaffoldVersion++;
   if (buildCounterSkaffoldVersion < 3) {
+    o.maintenanceModeTime = 'foo';
     o.supportEndDate = buildDate();
+    o.supportExpirationTime = 'foo';
     o.version = 'foo';
   }
   buildCounterSkaffoldVersion--;
@@ -2018,7 +2096,15 @@ api.SkaffoldVersion buildSkaffoldVersion() {
 void checkSkaffoldVersion(api.SkaffoldVersion o) {
   buildCounterSkaffoldVersion++;
   if (buildCounterSkaffoldVersion < 3) {
+    unittest.expect(
+      o.maintenanceModeTime!,
+      unittest.equals('foo'),
+    );
     checkDate(o.supportEndDate!);
+    unittest.expect(
+      o.supportExpirationTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2989,6 +3075,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ReleaseCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReleaseCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReleaseCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReleaseCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReleaseReadyCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReleaseReadyCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReleaseReadyCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReleaseReadyCondition(od);
+    });
+  });
+
   unittest.group('obj-schema-RetryJobRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRetryJobRequest();
@@ -3036,6 +3142,16 @@ void main() {
       final od = api.SetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SkaffoldSupportedCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSkaffoldSupportedCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SkaffoldSupportedCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSkaffoldSupportedCondition(od);
     });
   });
 

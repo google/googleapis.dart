@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20230131",
+    "revision": "20230218",
     "rootUrl": "https://redis.googleapis.com/",
     "schemas": {
         "Empty": {
@@ -781,6 +781,13 @@
                     "description": "Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.",
                     "type": "string"
                 },
+                "availableMaintenanceVersions": {
+                    "description": "Optional. The available maintenance versions that an instance could update to.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "connectMode": {
                     "description": "Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.",
                     "enum": [
@@ -838,6 +845,10 @@
                     "$ref": "MaintenanceSchedule",
                     "description": "Output only. Date and time of upcoming maintenance events which have been scheduled.",
                     "readOnly": true
+                },
+                "maintenanceVersion": {
+                    "description": "Optional. The self service update maintenance version. The version is date based such as \"20210712_00_00\".",
+                    "type": "string"
                 },
                 "memorySizeGb": {
                     "description": "Required. Redis memory size in GiB.",

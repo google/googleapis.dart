@@ -6212,6 +6212,11 @@ class DriveCapabilities {
   /// this shared drive.
   core.bool? canChangeDriveMembersOnlyRestriction;
 
+  /// Whether the current user can change the
+  /// sharingFoldersRequiresOrganizerPermission restriction of this shared
+  /// drive.
+  core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+
   /// Whether the current user can comment on files in this shared drive.
   core.bool? canComment;
 
@@ -6269,6 +6274,7 @@ class DriveCapabilities {
     this.canChangeDomainUsersOnlyRestriction,
     this.canChangeDriveBackground,
     this.canChangeDriveMembersOnlyRestriction,
+    this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
     this.canComment,
     this.canCopy,
     this.canDeleteChildren,
@@ -6307,6 +6313,12 @@ class DriveCapabilities {
               json_.containsKey('canChangeDriveMembersOnlyRestriction')
                   ? json_['canChangeDriveMembersOnlyRestriction'] as core.bool
                   : null,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
+                  .containsKey(
+                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
+              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+                  as core.bool
+              : null,
           canComment: json_.containsKey('canComment')
               ? json_['canComment'] as core.bool
               : null,
@@ -6365,6 +6377,10 @@ class DriveCapabilities {
         if (canChangeDriveMembersOnlyRestriction != null)
           'canChangeDriveMembersOnlyRestriction':
               canChangeDriveMembersOnlyRestriction!,
+        if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction !=
+            null)
+          'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
+              canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
         if (canComment != null) 'canComment': canComment!,
         if (canCopy != null) 'canCopy': canCopy!,
         if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
@@ -6408,11 +6424,18 @@ class DriveRestrictions {
   /// members.
   core.bool? driveMembersOnly;
 
+  /// If true, only users with the organizer role can share folders.
+  ///
+  /// If false, users with either the organizer role or the file organizer role
+  /// can share folders.
+  core.bool? sharingFoldersRequiresOrganizerPermission;
+
   DriveRestrictions({
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
     this.driveMembersOnly,
+    this.sharingFoldersRequiresOrganizerPermission,
   });
 
   DriveRestrictions.fromJson(core.Map json_)
@@ -6431,6 +6454,10 @@ class DriveRestrictions {
           driveMembersOnly: json_.containsKey('driveMembersOnly')
               ? json_['driveMembersOnly'] as core.bool
               : null,
+          sharingFoldersRequiresOrganizerPermission: json_
+                  .containsKey('sharingFoldersRequiresOrganizerPermission')
+              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6440,6 +6467,9 @@ class DriveRestrictions {
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
         if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly!,
+        if (sharingFoldersRequiresOrganizerPermission != null)
+          'sharingFoldersRequiresOrganizerPermission':
+              sharingFoldersRequiresOrganizerPermission!,
       };
 }
 
@@ -9754,6 +9784,10 @@ class TeamDriveCapabilities {
   /// this Team Drive.
   core.bool? canChangeDomainUsersOnlyRestriction;
 
+  /// Whether the current user can change the
+  /// sharingFoldersRequiresOrganizerPermission restriction of this Team Drive.
+  core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+
   /// Whether the current user can change the background of this Team Drive.
   core.bool? canChangeTeamDriveBackground;
 
@@ -9819,6 +9853,7 @@ class TeamDriveCapabilities {
     this.canAddChildren,
     this.canChangeCopyRequiresWriterPermissionRestriction,
     this.canChangeDomainUsersOnlyRestriction,
+    this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
     this.canChangeTeamDriveBackground,
     this.canChangeTeamMembersOnlyRestriction,
     this.canComment,
@@ -9852,6 +9887,12 @@ class TeamDriveCapabilities {
               json_.containsKey('canChangeDomainUsersOnlyRestriction')
                   ? json_['canChangeDomainUsersOnlyRestriction'] as core.bool
                   : null,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
+                  .containsKey(
+                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
+              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+                  as core.bool
+              : null,
           canChangeTeamDriveBackground:
               json_.containsKey('canChangeTeamDriveBackground')
                   ? json_['canChangeTeamDriveBackground'] as core.bool
@@ -9916,6 +9957,10 @@ class TeamDriveCapabilities {
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
               canChangeDomainUsersOnlyRestriction!,
+        if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction !=
+            null)
+          'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
+              canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
         if (canChangeTeamDriveBackground != null)
           'canChangeTeamDriveBackground': canChangeTeamDriveBackground!,
         if (canChangeTeamMembersOnlyRestriction != null)
@@ -9963,6 +10008,12 @@ class TeamDriveRestrictions {
   /// outside of this Team Drive.
   core.bool? domainUsersOnly;
 
+  /// If true, only users with the organizer role can share folders.
+  ///
+  /// If false, users with either the organizer role or the file organizer role
+  /// can share folders.
+  core.bool? sharingFoldersRequiresOrganizerPermission;
+
   /// Whether access to items inside this Team Drive is restricted to members of
   /// this Team Drive.
   core.bool? teamMembersOnly;
@@ -9971,6 +10022,7 @@ class TeamDriveRestrictions {
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
+    this.sharingFoldersRequiresOrganizerPermission,
     this.teamMembersOnly,
   });
 
@@ -9987,6 +10039,10 @@ class TeamDriveRestrictions {
           domainUsersOnly: json_.containsKey('domainUsersOnly')
               ? json_['domainUsersOnly'] as core.bool
               : null,
+          sharingFoldersRequiresOrganizerPermission: json_
+                  .containsKey('sharingFoldersRequiresOrganizerPermission')
+              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
+              : null,
           teamMembersOnly: json_.containsKey('teamMembersOnly')
               ? json_['teamMembersOnly'] as core.bool
               : null,
@@ -9998,6 +10054,9 @@ class TeamDriveRestrictions {
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (sharingFoldersRequiresOrganizerPermission != null)
+          'sharingFoldersRequiresOrganizerPermission':
+              sharingFoldersRequiresOrganizerPermission!,
         if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly!,
       };
 }

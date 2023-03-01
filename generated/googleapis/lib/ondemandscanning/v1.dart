@@ -1568,6 +1568,27 @@ class Location {
       };
 }
 
+class Maintainer {
+  core.String? kind;
+  core.String? name;
+
+  Maintainer({
+    this.kind,
+    this.name,
+  });
+
+  Maintainer.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -1935,6 +1956,9 @@ class PackageData {
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
 
+  /// The maintainer of the package.
+  Maintainer? maintainer;
+
   /// The OS affected by a vulnerability Used to generate the cpe_uri for OS
   /// packages
   core.String? os;
@@ -1969,6 +1993,7 @@ class PackageData {
     this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
+    this.maintainer,
     this.os,
     this.osVersion,
     this.package,
@@ -1998,6 +2023,10 @@ class PackageData {
           hashDigest: json_.containsKey('hashDigest')
               ? json_['hashDigest'] as core.String
               : null,
+          maintainer: json_.containsKey('maintainer')
+              ? Maintainer.fromJson(
+                  json_['maintainer'] as core.Map<core.String, core.dynamic>)
+              : null,
           os: json_.containsKey('os') ? json_['os'] as core.String : null,
           osVersion: json_.containsKey('osVersion')
               ? json_['osVersion'] as core.String
@@ -2026,6 +2055,7 @@ class PackageData {
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
         if (hashDigest != null) 'hashDigest': hashDigest!,
+        if (maintainer != null) 'maintainer': maintainer!,
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
@@ -2728,6 +2758,9 @@ class VulnerabilityOccurrence {
   /// Output only.
   core.double? cvssScore;
 
+  /// The cvss v2 score for the vulnerability.
+  CVSS? cvssV2;
+
   /// CVSS version used to populate cvss_score and severity.
   ///
   /// Output only.
@@ -2803,6 +2836,7 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssV2,
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
@@ -2819,6 +2853,10 @@ class VulnerabilityOccurrence {
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssV2: json_.containsKey('cvssV2')
+              ? CVSS.fromJson(
+                  json_['cvssV2'] as core.Map<core.String, core.dynamic>)
               : null,
           cvssVersion: json_.containsKey('cvssVersion')
               ? json_['cvssVersion'] as core.String
@@ -2859,6 +2897,7 @@ class VulnerabilityOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,

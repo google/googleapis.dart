@@ -1165,11 +1165,17 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this campaign that identifies the assigned targeting
@@ -1339,11 +1345,17 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2773,11 +2785,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2950,11 +2968,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3011,7 +3035,32 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -3109,11 +3158,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -3172,7 +3227,33 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
-  /// options to list.
+  /// options to list. Supported targeting types include: *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -3270,11 +3351,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -3566,7 +3653,7 @@ class AdvertisersLineItemsResource {
   /// `targetingType desc`.
   ///
   /// [pageSize] - Requested page size. The size must be an integer between `1`
-  /// and `5000`. If unspecified, the default is '5000'. Returns error code
+  /// and `5000`. If unspecified, the default is `5000`. Returns error code
   /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
   /// [pageToken] - A token that lets the client fetch the next page of results.
@@ -4095,7 +4182,32 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -4193,11 +4305,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4256,7 +4374,32 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -4354,11 +4497,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -4415,7 +4564,36 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -4513,11 +4691,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -4576,7 +4760,37 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
-  /// options to list.
+  /// options to list. Supported targeting types include: *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -4674,11 +4888,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -6217,11 +6437,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6368,11 +6594,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -6423,7 +6655,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6521,11 +6754,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -6578,7 +6817,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6676,11 +6916,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -6885,6 +7131,8 @@ class AdvertisersYoutubeAdGroupsResource {
   /// Lists assigned targeting options for multiple YouTube ad groups across
   /// targeting types.
   ///
+  /// Inherieted assigned targeting options are not included.
+  ///
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line items belongs
@@ -6909,7 +7157,7 @@ class AdvertisersYoutubeAdGroupsResource {
   /// `targetingType desc`.
   ///
   /// [pageSize] - Requested page size. The size must be an integer between `1`
-  /// and `5000`. If unspecified, the default is '5000'. Returns error code
+  /// and `5000`. If unspecified, the default is `5000`. Returns error code
   /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
   /// [pageToken] - A token that lets the client fetch the next page of results.
@@ -7104,7 +7352,7 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
 
   /// Gets a single targeting option assigned to a YouTube ad group.
   ///
-  /// Inherited targeting is not included.
+  /// Inherited assigned targeting options are not included.
   ///
   /// Request parameters:
   ///
@@ -7117,12 +7365,12 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option. Supported targeting types include: * `TARGETING_TYPE_GENDER` *
-  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_AUDIENCE_GROUP` *
-  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_APP` *
-  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_KEYWORD` *
-  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_SESSION_POSITION` *
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
+  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` *
   /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -7221,11 +7469,17 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -7273,7 +7527,7 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
 
   /// Lists the targeting options assigned to a YouTube ad group.
   ///
-  /// Inherited targeting is not included.
+  /// Inherited assigned targeting options are not included.
   ///
   /// Request parameters:
   ///
@@ -7287,12 +7541,12 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types include: *
-  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_AGE_RANGE` *
-  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_URL` *
-  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CATEGORY` *
-  /// `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -7391,11 +7645,17 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -10730,11 +10990,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10879,11 +11145,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -11030,11 +11302,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -11183,11 +11461,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -11485,11 +11769,17 @@ class TargetingTypesTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -11651,11 +11941,17 @@ class TargetingTypesTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -11837,11 +12133,17 @@ class TargetingTypesTargetingOptionsResource {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12176,20 +12478,20 @@ typedef ActiveViewVideoViewabilityMetricConfig
 
 /// Additional URLs related to the ad, including beacons.
 class AdUrl {
-  /// The type of the AD url.
+  /// The type of the Ad URL.
   /// Possible string values are:
   /// - "AD_URL_TYPE_UNSPECIFIED" : Unknown or unspecified.
   /// - "AD_URL_TYPE_BEACON_IMPRESSION" : A 1x1 tracking pixel to ping when an
   /// impression of a creative is delivered.
   /// - "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION" : Expandable DCM
   /// impression beacon. At serving time, it is expanded to several beacons.
-  /// - "AD_URL_TYPE_BEACON_CLICK" : Tracking url to ping when the click event
+  /// - "AD_URL_TYPE_BEACON_CLICK" : Tracking URL to ping when the click event
   /// is triggered.
-  /// - "AD_URL_TYPE_BEACON_SKIP" : Tracking url to ping when the skip event is
+  /// - "AD_URL_TYPE_BEACON_SKIP" : Tracking URL to ping when the skip event is
   /// triggered.
   core.String? type;
 
-  /// The url value of the ad url.
+  /// The URL string value.
   core.String? url;
 
   AdUrl({
@@ -13213,11 +13515,17 @@ class AssignedTargetingOption {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -13800,7 +14108,7 @@ class AudienceGroupAssignedTargetingOptionDetails {
       };
 }
 
-/// The details for audio ad.
+/// Details for an audio ad.
 class AudioAd {
   /// The webpage address that appears with the ad.
   core.String? displayUrl;
@@ -13808,7 +14116,7 @@ class AudioAd {
   /// The URL address of the webpage that people reach after they click the ad.
   core.String? finalUrl;
 
-  /// The URL address which is loaded in background for tracking purpose.
+  /// The URL address loaded in the background for tracking purposes.
   core.String? trackingUrl;
 
   /// The YouTube video of the ad.
@@ -14292,10 +14600,64 @@ class BulkEditAssignedLocationsResponse {
 class BulkEditAssignedTargetingOptionsRequest {
   /// The assigned targeting options to create in batch, specified as a list of
   /// CreateAssignedTargetingOptionsRequest.
+  ///
+  /// Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
   /// DeleteAssignedTargetingOptionsRequest.
+  ///
+  /// Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   /// The ID of the line items whose targeting is being updated.
@@ -14985,9 +15347,9 @@ class BulkUpdateLineItemsResponse {
       };
 }
 
-/// Ad details for BumperAd.
+/// Details for a bumper ad.
 class BumperAd {
-  /// Common attributes data model.
+  /// Common ad attributes.
   CommonInStreamAttribute? commonInStreamAttribute;
 
   BumperAd({
@@ -15485,7 +15847,7 @@ class CombinedAudienceGroup {
 /// Details of combined audience targeting setting.
 typedef CombinedAudienceTargetingSetting = $CombinedAudienceTargetingSetting;
 
-/// The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+/// Common attributes for in-stream, non-skippable and bumper ads.
 class CommonInStreamAttribute {
   /// The text on the call-to-action button.
   core.String? actionButtonLabel;
@@ -15493,7 +15855,7 @@ class CommonInStreamAttribute {
   /// The headline of the call-to-action banner.
   core.String? actionHeadline;
 
-  /// The image which shows next to the video Ad.
+  /// The image which shows next to the video ad.
   ImageAsset? companionBanner;
 
   /// The webpage address that appears with the ad.
@@ -15502,7 +15864,7 @@ class CommonInStreamAttribute {
   /// The URL address of the webpage that people reach after they click the ad.
   core.String? finalUrl;
 
-  /// The URL address which is loaded in background for tracking purpose.
+  /// The URL address loaded in the background for tracking purposes.
   core.String? trackingUrl;
 
   /// The YouTube video of the ad.
@@ -15964,11 +16326,17 @@ class CreateAssignedTargetingOptionsRequest {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -17278,11 +17646,11 @@ class CustomLabel {
   /// The key of the label.
   /// Possible string values are:
   /// - "CUSTOM_LABEL_KEY_UNSPECIFIED" : Not specified or unknown.
-  /// - "CUSTOM_LABEL_KEY_0" : index 0.
-  /// - "CUSTOM_LABEL_KEY_1" : index 1.
-  /// - "CUSTOM_LABEL_KEY_2" : index 2.
-  /// - "CUSTOM_LABEL_KEY_3" : index 3.
-  /// - "CUSTOM_LABEL_KEY_4" : index 4.
+  /// - "CUSTOM_LABEL_KEY_0" : Key index 0.
+  /// - "CUSTOM_LABEL_KEY_1" : Key index 1.
+  /// - "CUSTOM_LABEL_KEY_2" : Key index 2.
+  /// - "CUSTOM_LABEL_KEY_3" : Key index 3.
+  /// - "CUSTOM_LABEL_KEY_4" : Key index 4.
   core.String? key;
 
   /// The value of the label.
@@ -17508,11 +17876,17 @@ class DeleteAssignedTargetingOptionsRequest {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest({
@@ -17702,7 +18076,7 @@ class DigitalContentLabelTargetingOptionDetails {
 /// Dimensions.
 typedef Dimensions = $Dimensions;
 
-/// The ad of which source is DV360 creative.
+/// The ad sourced from a DV360 creative.
 class DisplayVideoSourceAd {
   /// The ID of the source creative.
   core.String? creativeId;
@@ -19224,7 +19598,7 @@ typedef HouseholdIncomeTargetingOptionDetails
 /// A filtering option that filters entities by their entity IDs.
 typedef IdFilter = $IdFilter;
 
-/// The meta data of an image asset.
+/// Meta data of an image asset.
 class ImageAsset {
   /// File size of the image asset in bytes.
   core.String? fileSize;
@@ -19262,12 +19636,12 @@ class ImageAsset {
       };
 }
 
-/// Ad details for InStreamAd
+/// Details for an in-stream ad.
 class InStreamAd {
-  /// Common attributes data model.
+  /// Common ad attributes.
   CommonInStreamAttribute? commonInStreamAttribute;
 
-  /// The custom parameters to pass custom values to tracking url template.
+  /// The custom parameters to pass custom values to tracking URL template.
   core.Map<core.String, core.String>? customParameters;
 
   InStreamAd({
@@ -20593,11 +20967,7 @@ class LineItem {
   /// the line item.
   ///
   /// This config is only applicable when eligible audience list targeting is
-  /// assigned to the line item. Beginning November 7, 2022, these settings may
-  /// represent the \[optimized targeting
-  /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-  /// targeting expansion. This feature will be rolled out to all partners by
-  /// November 9, 2022.
+  /// assigned to the line item.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -22026,7 +22396,6 @@ class ListUsersResponse {
       };
 }
 
-/// Response message for YoutubeAdGroupAdService.ListYoutubeAdGroupAds.
 class ListYoutubeAdGroupAdsResponse {
   /// A token to retrieve the next page of results.
   ///
@@ -22151,12 +22520,13 @@ typedef LookupInvoiceCurrencyResponse = $LookupInvoiceCurrencyResponse;
 /// A single manual trigger in Display & Video 360.
 typedef ManualTrigger = $ManualTrigger;
 
-/// The details for masthead ad.
+/// Details for a Masthead Ad.
 class MastheadAd {
-  /// Video will autoplay for certain period of time.
+  /// The duration of time the video will autoplay.
   core.String? autoplayVideoDuration;
 
-  /// Video will start to play after certain period of time in millisecond.
+  /// The amount of time in milliseconds after which the video will start to
+  /// play.
   core.String? autoplayVideoStartMillisecond;
 
   /// The text on the call-to-action button.
@@ -22168,7 +22538,9 @@ class MastheadAd {
   /// The tracking URL for the call-to-action button.
   core.String? callToActionTrackingUrl;
 
-  /// The videos (up to 2) that appear next to the Masthead ad on desktop.
+  /// The videos that appear next to the Masthead Ad on desktop.
+  ///
+  /// Can be no more than two.
   core.List<YoutubeVideoDetails>? companionYoutubeVideos;
 
   /// The description of the ad.
@@ -22181,10 +22553,10 @@ class MastheadAd {
   /// YouTube page.
   core.bool? showChannelArt;
 
-  /// The YouTube video of the ad.
+  /// The YouTube video used by the ad.
   YoutubeVideoDetails? video;
 
-  /// Aspect ratio of the autoplaying YouTube video on the Masthead.
+  /// The aspect ratio of the autoplaying YouTube video on the Masthead.
   /// Possible string values are:
   /// - "VIDEO_ASPECT_RATIO_UNSPECIFIED" : Not specified or unknown.
   /// - "VIDEO_ASPECT_RATIO_WIDESCREEN" : The video is stretched and the top and
@@ -22352,12 +22724,12 @@ typedef NegativeKeywordList = $NegativeKeywordList;
 typedef NegativeKeywordListAssignedTargetingOptionDetails
     = $NegativeKeywordListAssignedTargetingOptionDetails;
 
-/// Ad details for NonSkippableAd
+/// Details for a non-skippable ad.
 class NonSkippableAd {
-  /// Common attributes data model.
+  /// Common ad attributes.
   CommonInStreamAttribute? commonInStreamAttribute;
 
-  /// The custom parameters to pass custom values to tracking url template.
+  /// The custom parameters to pass custom values to tracking URL template.
   core.Map<core.String, core.String>? customParameters;
 
   NonSkippableAd({
@@ -22940,13 +23312,13 @@ typedef PrismaCpeCode = $PrismaCpeCode;
 
 /// The details of product feed.
 class ProductFeedData {
-  /// True if opt out of showing products.
+  /// Whether the product feed has opted-out of showing products.
   core.bool? isFeedDisabled;
 
-  /// A list of dimensions which are used to match products.
+  /// A list of dimensions used to match products.
   core.List<ProductMatchDimension>? productMatchDimensions;
 
-  /// The type of the way to select the products.
+  /// How products are selected by the product feed.
   /// Possible string values are:
   /// - "PRODUCT_MATCH_TYPE_UNSPECIFIED" : Not specified or unknown.
   /// - "PRODUCT_MATCH_TYPE_ALL_PRODUCTS" : All the products are matched.
@@ -22985,12 +23357,13 @@ class ProductFeedData {
       };
 }
 
-/// The dimension which are used to match products.
+/// A dimension used to match products.
 class ProductMatchDimension {
   /// The custom label to match all the products with the label.
   CustomLabel? customLabel;
 
-  /// The ID of the product offer to match the product with the same offer ID.
+  /// The ID of the product offer to match with a product with the same offer
+  /// ID.
   core.String? productOfferId;
 
   ProductMatchDimension({
@@ -23774,11 +24147,7 @@ class TargetFrequency {
 /// Settings that control the targeting expansion of the line item.
 ///
 /// Targeting expansion allows the line item to reach a larger audience based on
-/// the original audience list and the targeting expansion level. Beginning
-/// November 7, 2022, these settings may represent the \[optimized targeting
-/// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-/// targeting expansion. This feature will be rolled out to all partners by
-/// November 9, 2022.
+/// the original audience list and the targeting expansion level.
 typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in
@@ -23986,11 +24355,17 @@ class TargetingOption {
   /// content type.
   /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel.
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
   /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for the AdGroup of YouTube
-  /// Programmatic Reservation line item.
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -24656,7 +25031,7 @@ class VideoAdSequenceStep {
       };
 }
 
-/// The details for video discovery ad.
+/// Details for a video discovery ad.
 class VideoDiscoveryAd {
   /// First text line for the ad.
   core.String? description1;
@@ -24664,10 +25039,10 @@ class VideoDiscoveryAd {
   /// Second text line for the ad.
   core.String? description2;
 
-  /// The headline of the video discovery ad.
+  /// The headline of ad.
   core.String? headline;
 
-  /// Thumbnail image to use in the ad.
+  /// Thumbnail image used in the ad.
   /// Possible string values are:
   /// - "THUMBNAIL_UNSPECIFIED" : Unknown or unspecified.
   /// - "THUMBNAIL_DEFAULT" : The default thumbnail, can be auto-generated or
@@ -24677,7 +25052,7 @@ class VideoDiscoveryAd {
   /// - "THUMBNAIL_3" : Thumbnail 3, generated from the video.
   core.String? thumbnail;
 
-  /// The YouTube video which the ad wants to promote.
+  /// The YouTube video the ad promotes.
   YoutubeVideoDetails? video;
 
   VideoDiscoveryAd({
@@ -24717,42 +25092,42 @@ class VideoDiscoveryAd {
       };
 }
 
-/// The details for video performance ad.
+/// Details for a video performance ad.
 class VideoPerformanceAd {
-  /// The list of text assets which show on the call-to-action button.
+  /// The list of text assets shown on the call-to-action button.
   core.List<core.String>? actionButtonLabels;
 
-  /// The list of companion banners of this ad.
+  /// The list of companion banners used by this ad.
   core.List<ImageAsset>? companionBanners;
 
-  /// The custom parameters to pass custom values to tracking url template.
+  /// The custom parameters to pass custom values to tracking URL template.
   core.Map<core.String, core.String>? customParameters;
 
-  /// The list of descriptions which show on the call-to-action banner.
+  /// The list of descriptions shown on the call-to-action banner.
   core.List<core.String>? descriptions;
 
-  /// The first piece after the domain in the display url.
+  /// The first piece after the domain in the display URL.
   core.String? displayUrlBreadcrumb1;
 
-  /// The second piece after the domain in the display url.
+  /// The second piece after the domain in the display URL.
   core.String? displayUrlBreadcrumb2;
 
-  /// The domain of the display url
+  /// The domain of the display URL.
   core.String? domain;
 
   /// The URL address of the webpage that people reach after they click the ad.
   core.String? finalUrl;
 
-  /// The list of headlines which show on the call-to-action banner.
+  /// The list of headlines shown on the call-to-action banner.
   core.List<core.String>? headlines;
 
-  /// The list of lone headlines which show on the call-to-action banner.
+  /// The list of lone headlines shown on the call-to-action banner.
   core.List<core.String>? longHeadlines;
 
-  /// The URL address which is loaded in background for tracking purpose.
+  /// The URL address loaded in the background for tracking purposes.
   core.String? trackingUrl;
 
-  /// The list of YouTube video assets in this ad.
+  /// The list of YouTube video assets used by this ad.
   core.List<YoutubeVideoDetails>? videos;
 
   VideoPerformanceAd({
@@ -24954,7 +25329,7 @@ typedef ViewabilityTargetingOptionDetails = $ViewabilityTargetingOptionDetails;
 
 /// A single YouTube ad group associated with a YouTube and Partners line item.
 class YoutubeAdGroup {
-  /// The format of the ad group.
+  /// The format of the ads in the ad group.
   /// Possible string values are:
   /// - "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_UNSPECIFIED" : Format value is not
   /// specified or is unknown in this version.
@@ -24970,7 +25345,7 @@ class YoutubeAdGroup {
   /// - "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_REACH" :
   /// [Effective reach ad groups](https://support.google.com/displayvideo/answer/9173684),
   /// including in-stream and bumper ads.
-  /// - "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_MASTHEAD" : Video Masthead that is
+  /// - "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is
   /// surfaced on the top slot on the YouTube homepage.
   core.String? adGroupFormat;
 
@@ -24982,7 +25357,7 @@ class YoutubeAdGroup {
   /// The unique ID of the advertiser the ad group belongs to.
   core.String? advertiserId;
 
-  /// The bidding strategy of the ad group.
+  /// The bidding strategy used by the ad group.
   YoutubeAndPartnersBiddingStrategy? biddingStrategy;
 
   /// The display name of the ad group.
@@ -25016,7 +25391,7 @@ class YoutubeAdGroup {
   /// The resource name of the ad group.
   core.String? name;
 
-  /// The data to represent the product feed in this ad group.
+  /// The settings of the product feed in this ad group.
   ProductFeedData? productFeedData;
 
   /// The
@@ -25027,7 +25402,7 @@ class YoutubeAdGroup {
   /// assigned to the ad group.
   TargetingExpansionConfig? targetingExpansion;
 
-  /// The IDs of the YouTubeAds associated with the ad group.
+  /// The IDs of the youtube_ad_group_ad resources associated with the ad group.
   core.List<core.String>? youtubeAdIds;
 
   YoutubeAdGroup({
@@ -25101,42 +25476,41 @@ class YoutubeAdGroup {
       };
 }
 
-/// A single YouTube ad group ad associated with a YouTube ad group.
+/// A single ad associated with a YouTube ad group.
 class YoutubeAdGroupAd {
-  /// The unique ID of the ad group ad.
+  /// The unique ID of the ad.
   ///
   /// Assigned by the system.
   core.String? adGroupAdId;
 
-  /// The unique ID of the ad group that the ad group ad belongs to.
+  /// The unique ID of the ad group that the ad belongs to.
   core.String? adGroupId;
 
-  /// The list of ad urls.
+  /// List of URLs used by the ad.
   core.List<AdUrl>? adUrls;
 
-  /// The unique ID of the advertiser the ad group ad belongs to.
+  /// The unique ID of the advertiser the ad belongs to.
   core.String? advertiserId;
 
-  /// Audio ad for reach purpose.
-  ///
-  /// [details](https://support.google.com/displayvideo/answer/6274216)
+  /// Details of an \[audio
+  /// ad\](//support.google.com/displayvideo/answer/6274216) used for reach
+  /// marketing objectives.
   AudioAd? audioAd;
 
-  /// Non-skippable short video ad for reach purpose and video length equal to
-  /// or less than 6 seconds.
-  ///
-  /// [details](https://support.google.com/displayvideo/answer/6274216)
+  /// Details of a \[non-skippable short video
+  /// ad\](//support.google.com/displayvideo/answer/6274216), equal to or less
+  /// than 6 seconds, used for reach.
   BumperAd? bumperAd;
 
-  /// The display name of the ad group ad.
+  /// The display name of the ad.
   ///
   /// Must be UTF-8 encoded with a maximum size of 255 bytes.
   core.String? displayName;
 
-  /// The ad sourcing DV360 creative.
+  /// Details of an ad sourced from a Display & Video 360 creative.
   DisplayVideoSourceAd? displayVideoSourceAd;
 
-  /// The entity status of the ad group ad.
+  /// The entity status of the ad.
   /// Possible string values are:
   /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
   /// or is unknown in this version.
@@ -25152,34 +25526,31 @@ class YoutubeAdGroupAd {
   /// deletion.
   core.String? entityStatus;
 
-  /// Skippable in-stream ad after 5 seconds for brand awareness or reach
-  /// marketing objectives.
-  ///
-  /// [details](https://support.google.com/displayvideo/answer/6274216)
+  /// Details of an \[in-stream ad skippable after 5
+  /// seconds\](//support.google.com/displayvideo/answer/6274216), used for
+  /// brand awareness or reach marketing objectives.
   InStreamAd? inStreamAd;
 
-  /// The ad which shows on YouTube homepage.
-  ///
-  /// [details](https://support.google.com/google-ads/answer/9709826)
+  /// Details of an \[ad served on the YouTube Home
+  /// feed\](//support.google.com/google-ads/answer/9709826).
   MastheadAd? mastheadAd;
 
-  /// The resource name of the ad group ad.
+  /// The resource name of the ad.
   core.String? name;
 
-  /// Non-skippable short in-stream ad for reach marketing objectives, and video
-  /// length is between 6 and 15 seconds.
-  ///
-  /// [details](https://support.google.com/displayvideo/answer/6274216)
+  /// Details of a \[non-skippable short in-stream video
+  /// ad\](//support.google.com/displayvideo/answer/6274216), between 6 and 15
+  /// seconds, used for reach marketing objectives.
   NonSkippableAd? nonSkippableAd;
 
-  /// An ad which shows in places of discovery to promote a video.
-  ///
-  /// [details](https://support.google.com/displayvideo/answer/6274216)
+  /// Details of an \[ad promoting a
+  /// video\](//support.google.com/displayvideo/answer/6274216) that shows in
+  /// places of discovery.
   VideoDiscoveryAd? videoDiscoverAd;
 
-  /// The ad to drive actions to the business, service or product.
-  ///
-  /// [details](https://support.google.com/google-ads/answer/10147229)
+  /// Details of an \[ad used in a video action
+  /// campaign\](//support.google.com/google-ads/answer/10147229) to drive
+  /// actions to the business, service or product.
   VideoPerformanceAd? videoPerformanceAd;
 
   YoutubeAdGroupAd({
@@ -25713,9 +26084,9 @@ class YoutubeVideoAssignedTargetingOptionDetails {
       };
 }
 
-/// Details of the YouTube video.
+/// Details of a YouTube video.
 class YoutubeVideoDetails {
-  /// The ID which can be searched on YouTube webpage.
+  /// The YouTube video ID which can be searched on YouTube webpage.
   core.String? id;
 
   /// The reason why the video data is not available.

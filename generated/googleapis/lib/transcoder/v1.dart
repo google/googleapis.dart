@@ -798,6 +798,16 @@ class AudioStream {
   /// `aac-he-v2` - `mp3` - `ac3` - `eac3`
   core.String? codec;
 
+  /// The name for this particular audio stream that will be added to the
+  /// HLS/DASH manifest.
+  core.String? displayName;
+
+  /// The BCP-47 language code, such as `en-US` or `sr-Latn`.
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
   /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
   core.List<AudioMapping>? mapping;
 
@@ -811,6 +821,8 @@ class AudioStream {
     this.channelCount,
     this.channelLayout,
     this.codec,
+    this.displayName,
+    this.languageCode,
     this.mapping,
     this.sampleRateHertz,
   });
@@ -830,6 +842,12 @@ class AudioStream {
               : null,
           codec:
               json_.containsKey('codec') ? json_['codec'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => AudioMapping.fromJson(
@@ -846,6 +864,8 @@ class AudioStream {
         if (channelCount != null) 'channelCount': channelCount!,
         if (channelLayout != null) 'channelLayout': channelLayout!,
         if (codec != null) 'codec': codec!,
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null) 'mapping': mapping!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
       };
@@ -2837,11 +2857,23 @@ class TextStream {
   /// `cea608` - `cea708` - `webvtt`
   core.String? codec;
 
+  /// The name for this particular text stream that will be added to the
+  /// HLS/DASH manifest.
+  core.String? displayName;
+
+  /// The BCP-47 language code, such as `en-US` or `sr-Latn`.
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
   /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
   core.List<TextMapping>? mapping;
 
   TextStream({
     this.codec,
+    this.displayName,
+    this.languageCode,
     this.mapping,
   });
 
@@ -2849,6 +2881,12 @@ class TextStream {
       : this(
           codec:
               json_.containsKey('codec') ? json_['codec'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => TextMapping.fromJson(
@@ -2859,6 +2897,8 @@ class TextStream {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (codec != null) 'codec': codec!,
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null) 'mapping': mapping!,
       };
 }

@@ -161,7 +161,7 @@
             }
         }
     },
-    "revision": "20230206",
+    "revision": "20230226",
     "rootUrl": "https://policyanalyzer.googleapis.com/",
     "schemas": {
         "GoogleCloudPolicyanalyzerV1Activity": {

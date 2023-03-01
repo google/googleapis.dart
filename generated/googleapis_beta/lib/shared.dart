@@ -153,6 +153,7 @@ class $Date {
 /// - recommendationengine:v1beta1 : GoogleProtobufEmpty
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
+/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
@@ -1019,6 +1020,32 @@ class $SasPortalNrqzValidation {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
+/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
+class $SasPortalProvisionDeploymentResponse {
+  /// Optional error message if the provisioning request is not successful.
+  ///
+  /// Optional.
+  core.String? errorMessage;
+
+  $SasPortalProvisionDeploymentResponse({
+    this.errorMessage,
+  });
+
+  $SasPortalProvisionDeploymentResponse.fromJson(core.Map json_)
+      : this(
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
       };
 }
 

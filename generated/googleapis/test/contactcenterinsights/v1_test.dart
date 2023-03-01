@@ -2736,6 +2736,7 @@ api.GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig
     o.annotatorSelector =
         buildGoogleCloudContactcenterinsightsV1AnnotatorSelector();
     o.runtimeIntegrationAnalysisPercentage = 42.0;
+    o.uploadConversationAnalysisPercentage = 42.0;
   }
   buildCounterGoogleCloudContactcenterinsightsV1SettingsAnalysisConfig--;
   return o;
@@ -2750,6 +2751,10 @@ void checkGoogleCloudContactcenterinsightsV1SettingsAnalysisConfig(
         o.annotatorSelector!);
     unittest.expect(
       o.runtimeIntegrationAnalysisPercentage!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.uploadConversationAnalysisPercentage!,
       unittest.equals(42.0),
     );
   }

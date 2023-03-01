@@ -206,7 +206,7 @@ class ProjectsLocationsCaPoolsResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -262,7 +262,7 @@ class ProjectsLocationsCaPoolsResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -512,7 +512,7 @@ class ProjectsLocationsCaPoolsResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -735,7 +735,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -798,7 +798,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1091,7 +1091,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1359,7 +1359,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1712,7 +1712,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1825,7 +1825,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1883,7 +1883,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2090,7 +2090,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2478,7 +2478,7 @@ class ActivateCertificateAuthorityRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -4680,6 +4680,142 @@ class ListOperationsResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
+/// Describes the X.509 name constraints extension, per
+/// https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+class NameConstraints {
+  /// Indicates whether or not the name constraints are marked critical.
+  core.bool? critical;
+
+  /// Contains excluded DNS names.
+  ///
+  /// Any DNS name that can be constructed by simply adding zero or more labels
+  /// to the left-hand side of the name satisfies the name constraint. For
+  /// example, `example.com`, `www.example.com`, `www.sub.example.com` would
+  /// satisfy `example.com` while `example1.com` does not.
+  core.List<core.String>? excludedDnsNames;
+
+  /// Contains the excluded email addresses.
+  ///
+  /// The value can be a particular email address, a hostname to indicate all
+  /// email addresses on that host or a domain with a leading period (e.g.
+  /// `.example.com`) to indicate all email addresses in that domain.
+  core.List<core.String>? excludedEmailAddresses;
+
+  /// Contains the excluded IP ranges.
+  ///
+  /// For IPv4 addresses, the ranges are expressed using CIDR notation as
+  /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in
+  /// similar encoding as IPv4 addresses.
+  core.List<core.String>? excludedIpRanges;
+
+  /// Contains the excluded URIs that apply to the host part of the name.
+  ///
+  /// The value can be a hostname or a domain with a leading period (like
+  /// `.example.com`)
+  core.List<core.String>? excludedUris;
+
+  /// Contains permitted DNS names.
+  ///
+  /// Any DNS name that can be constructed by simply adding zero or more labels
+  /// to the left-hand side of the name satisfies the name constraint. For
+  /// example, `example.com`, `www.example.com`, `www.sub.example.com` would
+  /// satisfy `example.com` while `example1.com` does not.
+  core.List<core.String>? permittedDnsNames;
+
+  /// Contains the permitted email addresses.
+  ///
+  /// The value can be a particular email address, a hostname to indicate all
+  /// email addresses on that host or a domain with a leading period (e.g.
+  /// `.example.com`) to indicate all email addresses in that domain.
+  core.List<core.String>? permittedEmailAddresses;
+
+  /// Contains the permitted IP ranges.
+  ///
+  /// For IPv4 addresses, the ranges are expressed using CIDR notation as
+  /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in
+  /// similar encoding as IPv4 addresses.
+  core.List<core.String>? permittedIpRanges;
+
+  /// Contains the permitted URIs that apply to the host part of the name.
+  ///
+  /// The value can be a hostname or a domain with a leading period (like
+  /// `.example.com`)
+  core.List<core.String>? permittedUris;
+
+  NameConstraints({
+    this.critical,
+    this.excludedDnsNames,
+    this.excludedEmailAddresses,
+    this.excludedIpRanges,
+    this.excludedUris,
+    this.permittedDnsNames,
+    this.permittedEmailAddresses,
+    this.permittedIpRanges,
+    this.permittedUris,
+  });
+
+  NameConstraints.fromJson(core.Map json_)
+      : this(
+          critical: json_.containsKey('critical')
+              ? json_['critical'] as core.bool
+              : null,
+          excludedDnsNames: json_.containsKey('excludedDnsNames')
+              ? (json_['excludedDnsNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedEmailAddresses: json_.containsKey('excludedEmailAddresses')
+              ? (json_['excludedEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedIpRanges: json_.containsKey('excludedIpRanges')
+              ? (json_['excludedIpRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedUris: json_.containsKey('excludedUris')
+              ? (json_['excludedUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedDnsNames: json_.containsKey('permittedDnsNames')
+              ? (json_['permittedDnsNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedEmailAddresses: json_.containsKey('permittedEmailAddresses')
+              ? (json_['permittedEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedIpRanges: json_.containsKey('permittedIpRanges')
+              ? (json_['permittedIpRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedUris: json_.containsKey('permittedUris')
+              ? (json_['permittedUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (critical != null) 'critical': critical!,
+        if (excludedDnsNames != null) 'excludedDnsNames': excludedDnsNames!,
+        if (excludedEmailAddresses != null)
+          'excludedEmailAddresses': excludedEmailAddresses!,
+        if (excludedIpRanges != null) 'excludedIpRanges': excludedIpRanges!,
+        if (excludedUris != null) 'excludedUris': excludedUris!,
+        if (permittedDnsNames != null) 'permittedDnsNames': permittedDnsNames!,
+        if (permittedEmailAddresses != null)
+          'permittedEmailAddresses': permittedEmailAddresses!,
+        if (permittedIpRanges != null) 'permittedIpRanges': permittedIpRanges!,
+        if (permittedUris != null) 'permittedUris': permittedUris!,
+      };
+}
+
 /// An ObjectId specifies an object identifier (OID).
 ///
 /// These provide context and describe types in ASN.1 messages.
@@ -5089,7 +5225,7 @@ class RevokeCertificateRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -5675,6 +5811,11 @@ class X509Parameters {
   /// Optional.
   KeyUsage? keyUsage;
 
+  /// Describes the X.509 name constraints extension.
+  ///
+  /// Optional.
+  NameConstraints? nameConstraints;
+
   /// Describes the X.509 certificate policy object identifiers, per
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   ///
@@ -5686,6 +5827,7 @@ class X509Parameters {
     this.aiaOcspServers,
     this.caOptions,
     this.keyUsage,
+    this.nameConstraints,
     this.policyIds,
   });
 
@@ -5710,6 +5852,10 @@ class X509Parameters {
               ? KeyUsage.fromJson(
                   json_['keyUsage'] as core.Map<core.String, core.dynamic>)
               : null,
+          nameConstraints: json_.containsKey('nameConstraints')
+              ? NameConstraints.fromJson(json_['nameConstraints']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           policyIds: json_.containsKey('policyIds')
               ? (json_['policyIds'] as core.List)
                   .map((value) => ObjectId.fromJson(
@@ -5724,6 +5870,7 @@ class X509Parameters {
         if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers!,
         if (caOptions != null) 'caOptions': caOptions!,
         if (keyUsage != null) 'keyUsage': keyUsage!,
+        if (nameConstraints != null) 'nameConstraints': nameConstraints!,
         if (policyIds != null) 'policyIds': policyIds!,
       };
 }

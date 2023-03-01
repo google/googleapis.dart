@@ -547,6 +547,48 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// RenameInstance sets a new name for an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> rename(
+    RenameInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rename';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Perform an ungraceful, hard reset on a server.
   ///
   /// Equivalent to shutting the power off and then turning it back on.
@@ -1505,6 +1547,49 @@ class ProjectsLocationsVolumesResource {
   ProjectsLocationsVolumesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Skips volume's cooloff and deletes it now.
+  ///
+  /// Volume must be in cooloff state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Volume.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> evict(
+    EvictVolumeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':evict';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get details of a single storage volume.
   ///
   /// Request parameters:
@@ -1686,6 +1771,49 @@ class ProjectsLocationsVolumesLunsResource {
 
   ProjectsLocationsVolumesLunsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Skips lun's cooloff and deletes it now.
+  ///
+  /// Lun must be in cooloff state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the lun.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/luns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> evict(
+    EvictLunRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':evict';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Get details of a single storage logical unit number(LUN).
   ///
@@ -2132,6 +2260,12 @@ typedef Empty = $Empty;
 
 /// Message for enabling the interactive serial console on an instance.
 typedef EnableInteractiveSerialConsoleRequest = $Empty;
+
+/// Request for skip lun cooloff and delete it.
+typedef EvictLunRequest = $Empty;
+
+/// Request for skip volume cooloff and delete it.
+typedef EvictVolumeRequest = $Empty;
 
 /// Response with all provisioning settings.
 class FetchInstanceProvisioningSettingsResponse {
@@ -3146,6 +3280,13 @@ class Lun {
   /// Display if this LUN is a boot LUN.
   core.bool? bootLun;
 
+  /// Time after which LUN will be fully deleted.
+  ///
+  /// It is filled only for LUNs in COOL_OFF state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// An identifier for the LUN, generated by the backend.
   core.String? id;
 
@@ -3174,6 +3315,8 @@ class Lun {
   /// - "UPDATING" : The LUN is being updated.
   /// - "READY" : The LUN is ready for use.
   /// - "DELETING" : The LUN has been requested to be deleted.
+  /// - "COOL_OFF" : The LUN is in cool off state. It will be deleted after
+  /// `expire_time`.
   core.String? state;
 
   /// The storage type for this LUN.
@@ -3191,6 +3334,7 @@ class Lun {
 
   Lun({
     this.bootLun,
+    this.expireTime,
     this.id,
     this.multiprotocolType,
     this.name,
@@ -3206,6 +3350,9 @@ class Lun {
       : this(
           bootLun: json_.containsKey('bootLun')
               ? json_['bootLun'] as core.bool
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           multiprotocolType: json_.containsKey('multiprotocolType')
@@ -3231,6 +3378,7 @@ class Lun {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bootLun != null) 'bootLun': bootLun!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
         if (multiprotocolType != null) 'multiprotocolType': multiprotocolType!,
         if (name != null) 'name': name!,
@@ -4327,6 +4475,31 @@ class QosPolicy {
       };
 }
 
+/// Message requesting rename of a server.
+class RenameInstanceRequest {
+  /// The new `name` of the instance.
+  ///
+  /// Format: {instancename}
+  ///
+  /// Required.
+  core.String? newName;
+
+  RenameInstanceRequest({
+    this.newName,
+  });
+
+  RenameInstanceRequest.fromJson(core.Map json_)
+      : this(
+          newName: json_.containsKey('newName')
+              ? json_['newName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newName != null) 'newName': newName!,
+      };
+}
+
 /// Message requesting to reset a server.
 typedef ResetInstanceRequest = $Empty;
 
@@ -4719,6 +4892,13 @@ class Volume {
   /// current_size_gib includes this value.
   core.String? emergencySizeGib;
 
+  /// Time after which volume will be fully deleted.
+  ///
+  /// It is filled only for volumes in COOLOFF state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// An identifier for the `Volume`, generated by the backend.
   core.String? id;
 
@@ -4805,6 +4985,8 @@ class Volume {
   /// - "READY" : The storage volume is ready for use.
   /// - "DELETING" : The storage volume has been requested to be deleted.
   /// - "UPDATING" : The storage volume is being updated.
+  /// - "COOL_OFF" : The storage volume is in cool off state. It will be deleted
+  /// after `expire_time`.
   core.String? state;
 
   /// Input only.
@@ -4834,6 +5016,7 @@ class Volume {
     this.bootVolume,
     this.currentSizeGib,
     this.emergencySizeGib,
+    this.expireTime,
     this.id,
     this.labels,
     this.maxSizeGib,
@@ -4868,6 +5051,9 @@ class Volume {
               : null,
           emergencySizeGib: json_.containsKey('emergencySizeGib')
               ? json_['emergencySizeGib'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           labels: json_.containsKey('labels')
@@ -4935,6 +5121,7 @@ class Volume {
         if (bootVolume != null) 'bootVolume': bootVolume!,
         if (currentSizeGib != null) 'currentSizeGib': currentSizeGib!,
         if (emergencySizeGib != null) 'emergencySizeGib': emergencySizeGib!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (maxSizeGib != null) 'maxSizeGib': maxSizeGib!,

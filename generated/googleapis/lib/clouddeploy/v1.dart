@@ -3700,6 +3700,11 @@ class Release {
   /// List of artifacts to pass through to Skaffold command.
   core.List<BuildArtifact>? buildArtifacts;
 
+  /// Information around the state of the Release.
+  ///
+  /// Output only.
+  ReleaseCondition? condition;
+
   /// Time at which the `Release` was created.
   ///
   /// Output only.
@@ -3800,6 +3805,7 @@ class Release {
     this.abandoned,
     this.annotations,
     this.buildArtifacts,
+    this.condition,
     this.createTime,
     this.deliveryPipelineSnapshot,
     this.description,
@@ -3837,6 +3843,10 @@ class Release {
                   .map((value) => BuildArtifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          condition: json_.containsKey('condition')
+              ? ReleaseCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -3911,6 +3921,7 @@ class Release {
         if (abandoned != null) 'abandoned': abandoned!,
         if (annotations != null) 'annotations': annotations!,
         if (buildArtifacts != null) 'buildArtifacts': buildArtifacts!,
+        if (condition != null) 'condition': condition!,
         if (createTime != null) 'createTime': createTime!,
         if (deliveryPipelineSnapshot != null)
           'deliveryPipelineSnapshot': deliveryPipelineSnapshot!,
@@ -3929,6 +3940,67 @@ class Release {
         if (targetRenders != null) 'targetRenders': targetRenders!,
         if (targetSnapshots != null) 'targetSnapshots': targetSnapshots!,
         if (uid != null) 'uid': uid!,
+      };
+}
+
+/// ReleaseCondition contains all conditions relevant to a Release.
+class ReleaseCondition {
+  /// Details around the Releases's overall status.
+  ReleaseReadyCondition? releaseReadyCondition;
+
+  /// Details around the support state of the release's skaffold version.
+  SkaffoldSupportedCondition? skaffoldSupportedCondition;
+
+  ReleaseCondition({
+    this.releaseReadyCondition,
+    this.skaffoldSupportedCondition,
+  });
+
+  ReleaseCondition.fromJson(core.Map json_)
+      : this(
+          releaseReadyCondition: json_.containsKey('releaseReadyCondition')
+              ? ReleaseReadyCondition.fromJson(json_['releaseReadyCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          skaffoldSupportedCondition:
+              json_.containsKey('skaffoldSupportedCondition')
+                  ? SkaffoldSupportedCondition.fromJson(
+                      json_['skaffoldSupportedCondition']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (releaseReadyCondition != null)
+          'releaseReadyCondition': releaseReadyCondition!,
+        if (skaffoldSupportedCondition != null)
+          'skaffoldSupportedCondition': skaffoldSupportedCondition!,
+      };
+}
+
+/// ReleaseReadyCondition contains information around the status of the Release.
+///
+/// If a release is not ready, you cannot create a rollout with the release.
+class ReleaseReadyCondition {
+  /// True if the Release is in a valid state.
+  ///
+  /// Otherwise at least one condition in `ReleaseCondition` is in an invalid
+  /// state. Iterate over those conditions and see which condition(s) has status
+  /// = false to find out what is wrong with the Release.
+  core.bool? status;
+
+  ReleaseReadyCondition({
+    this.status,
+  });
+
+  ReleaseReadyCondition.fromJson(core.Map json_)
+      : this(
+          status:
+              json_.containsKey('status') ? json_['status'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4295,10 +4367,75 @@ class SetIamPolicyRequest {
       };
 }
 
+/// SkaffoldSupportedCondition contains information about when support for the
+/// release's version of skaffold ends.
+class SkaffoldSupportedCondition {
+  /// The time at which this release's version of skaffold will enter
+  /// maintenance mode.
+  core.String? maintenanceModeTime;
+
+  /// The skaffold support state for this release's version of skaffold.
+  /// Possible string values are:
+  /// - "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "SKAFFOLD_SUPPORT_STATE_SUPPORTED" : This skaffold version is currently
+  /// supported.
+  /// - "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE" : This skaffold version is in
+  /// maintenance mode.
+  /// - "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED" : This skaffold version is no
+  /// longer supported.
+  core.String? skaffoldSupportState;
+
+  /// True if the version of skaffold used by this release is supported.
+  core.bool? status;
+
+  /// The time at which this release's version of skaffold will no longer be
+  /// supported.
+  core.String? supportExpirationTime;
+
+  SkaffoldSupportedCondition({
+    this.maintenanceModeTime,
+    this.skaffoldSupportState,
+    this.status,
+    this.supportExpirationTime,
+  });
+
+  SkaffoldSupportedCondition.fromJson(core.Map json_)
+      : this(
+          maintenanceModeTime: json_.containsKey('maintenanceModeTime')
+              ? json_['maintenanceModeTime'] as core.String
+              : null,
+          skaffoldSupportState: json_.containsKey('skaffoldSupportState')
+              ? json_['skaffoldSupportState'] as core.String
+              : null,
+          status:
+              json_.containsKey('status') ? json_['status'] as core.bool : null,
+          supportExpirationTime: json_.containsKey('supportExpirationTime')
+              ? json_['supportExpirationTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceModeTime != null)
+          'maintenanceModeTime': maintenanceModeTime!,
+        if (skaffoldSupportState != null)
+          'skaffoldSupportState': skaffoldSupportState!,
+        if (status != null) 'status': status!,
+        if (supportExpirationTime != null)
+          'supportExpirationTime': supportExpirationTime!,
+      };
+}
+
 /// Details of a supported Skaffold version.
 class SkaffoldVersion {
+  /// The time at which this version of skaffold will enter maintenance mode.
+  core.String? maintenanceModeTime;
+
   /// Date when this version is expected to no longer be supported.
   Date? supportEndDate;
+
+  /// The time at which this version of skaffold will no longer be supported.
+  core.String? supportExpirationTime;
 
   /// Release version number.
   ///
@@ -4306,15 +4443,23 @@ class SkaffoldVersion {
   core.String? version;
 
   SkaffoldVersion({
+    this.maintenanceModeTime,
     this.supportEndDate,
+    this.supportExpirationTime,
     this.version,
   });
 
   SkaffoldVersion.fromJson(core.Map json_)
       : this(
+          maintenanceModeTime: json_.containsKey('maintenanceModeTime')
+              ? json_['maintenanceModeTime'] as core.String
+              : null,
           supportEndDate: json_.containsKey('supportEndDate')
               ? Date.fromJson(json_['supportEndDate']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          supportExpirationTime: json_.containsKey('supportExpirationTime')
+              ? json_['supportExpirationTime'] as core.String
               : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.String
@@ -4322,7 +4467,11 @@ class SkaffoldVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceModeTime != null)
+          'maintenanceModeTime': maintenanceModeTime!,
         if (supportEndDate != null) 'supportEndDate': supportEndDate!,
+        if (supportExpirationTime != null)
+          'supportExpirationTime': supportExpirationTime!,
         if (version != null) 'version': version!,
       };
 }

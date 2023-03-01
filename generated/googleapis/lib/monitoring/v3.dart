@@ -6599,7 +6599,18 @@ class HttpCheck {
   /// - "TYPE_UNSPECIFIED" : No content type specified.
   /// - "URL_ENCODED" : body is in URL-encoded form. Equivalent to setting the
   /// Content-Type to application/x-www-form-urlencoded in the HTTP request.
+  /// - "USER_PROVIDED" : body is in custom_content_type form. Equivalent to
+  /// setting the Content-Type to the contents of custom_content_type in the
+  /// HTTP request.
   core.String? contentType;
+
+  /// A user provided content type header to use for the check.
+  ///
+  /// The invalid configurations outlined in the content_type field apply to
+  /// custom_content_type, as well as the following: 1. content_type is
+  /// URL_ENCODED and custom_content_type is set. 2. content_type is
+  /// USER_PROVIDED and custom_content_type is not set.
+  core.String? customContentType;
 
   /// The list of headers to send as part of the Uptime check request.
   ///
@@ -6664,6 +6675,7 @@ class HttpCheck {
     this.authInfo,
     this.body,
     this.contentType,
+    this.customContentType,
     this.headers,
     this.maskHeaders,
     this.path,
@@ -6690,6 +6702,9 @@ class HttpCheck {
           body: json_.containsKey('body') ? json_['body'] as core.String : null,
           contentType: json_.containsKey('contentType')
               ? json_['contentType'] as core.String
+              : null,
+          customContentType: json_.containsKey('customContentType')
+              ? json_['customContentType'] as core.String
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
@@ -6724,6 +6739,7 @@ class HttpCheck {
         if (authInfo != null) 'authInfo': authInfo!,
         if (body != null) 'body': body!,
         if (contentType != null) 'contentType': contentType!,
+        if (customContentType != null) 'customContentType': customContentType!,
         if (headers != null) 'headers': headers!,
         if (maskHeaders != null) 'maskHeaders': maskHeaders!,
         if (path != null) 'path': path!,
@@ -10391,6 +10407,12 @@ class UptimeCheckIp {
   /// continent of South America.
   /// - "ASIA_PACIFIC" : Allows checks to run from locations within the Asia
   /// Pacific area (ex: Singapore).
+  /// - "USA_OREGON" : Allows checks to run from locations within the western
+  /// United States of America
+  /// - "USA_IOWA" : Allows checks to run from locations within the central
+  /// United States of America
+  /// - "USA_VIRGINIA" : Allows checks to run from locations within the eastern
+  /// United States of America
   core.String? region;
 
   UptimeCheckIp({

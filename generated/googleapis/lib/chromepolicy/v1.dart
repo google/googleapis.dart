@@ -800,6 +800,11 @@ class MediaResource {
 }
 
 class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
+  /// In the event that this policy was deprecated in favor of another policy,
+  /// the fully qualified namespace(s) of the new policies as they will show in
+  /// PolicyAPI.
+  core.List<core.String>? deprecatedInFavorOf;
+
   /// Description about current life cycle.
   core.String? description;
 
@@ -825,6 +830,7 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
   core.String? policyApiLifecycleStage;
 
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle({
+    this.deprecatedInFavorOf,
     this.description,
     this.endSupport,
     this.policyApiLifecycleStage,
@@ -832,6 +838,11 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
 
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(core.Map json_)
       : this(
+          deprecatedInFavorOf: json_.containsKey('deprecatedInFavorOf')
+              ? (json_['deprecatedInFavorOf'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -845,6 +856,8 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecatedInFavorOf != null)
+          'deprecatedInFavorOf': deprecatedInFavorOf!,
         if (description != null) 'description': description!,
         if (endSupport != null) 'endSupport': endSupport!,
         if (policyApiLifecycleStage != null)

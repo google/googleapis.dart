@@ -10357,7 +10357,11 @@ class GooglePrivacyDlpV2InspectConfig {
   /// images, finding limits don't apply. They can cause unexpected or
   /// inconsistent results, where only some data is redacted. Don't include
   /// finding limits in RedactImage requests. Otherwise, Cloud DLP returns an
-  /// error.
+  /// error. When set within `InspectJobConfig`, the specified maximum values
+  /// aren't hard limits. If an inspection job reaches these limits, the job
+  /// ends gradually, not abruptly. Therefore, the actual number of findings
+  /// that Cloud DLP returns can be multiple times higher than these maximum
+  /// values.
   GooglePrivacyDlpV2FindingLimits? limits;
 
   /// Only returns findings equal or above this threshold.

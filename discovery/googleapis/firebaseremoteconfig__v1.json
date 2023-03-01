@@ -337,7 +337,7 @@
             }
         }
     },
-    "revision": "20230208",
+    "revision": "20230301",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {
@@ -345,7 +345,7 @@
             "id": "ExperimentDescription",
             "properties": {
                 "experimentId": {
-                    "description": "The Firebase A/B Testing experiment ID. A string of max length 22 characters.",
+                    "description": "The Firebase A/B Testing experiment ID. A string of max length 22 characters. Format: _exp_ This is referred to as the tracking id and is different from the experiment id which is used internally by ABT.",
                     "type": "string"
                 },
                 "experimentStartTime": {

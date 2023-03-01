@@ -1258,6 +1258,7 @@ api.MysqlSourceConfig buildMysqlSourceConfig() {
   if (buildCounterMysqlSourceConfig < 3) {
     o.excludeObjects = buildMysqlRdbms();
     o.includeObjects = buildMysqlRdbms();
+    o.maxConcurrentBackfillTasks = 42;
     o.maxConcurrentCdcTasks = 42;
   }
   buildCounterMysqlSourceConfig--;
@@ -1269,6 +1270,10 @@ void checkMysqlSourceConfig(api.MysqlSourceConfig o) {
   if (buildCounterMysqlSourceConfig < 3) {
     checkMysqlRdbms(o.excludeObjects!);
     checkMysqlRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentBackfillTasks!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.maxConcurrentCdcTasks!,
       unittest.equals(42),
@@ -1687,6 +1692,7 @@ api.OracleSourceConfig buildOracleSourceConfig() {
     o.dropLargeObjects = buildDropLargeObjects();
     o.excludeObjects = buildOracleRdbms();
     o.includeObjects = buildOracleRdbms();
+    o.maxConcurrentBackfillTasks = 42;
     o.maxConcurrentCdcTasks = 42;
     o.streamLargeObjects = buildStreamLargeObjects();
   }
@@ -1700,6 +1706,10 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
     checkDropLargeObjects(o.dropLargeObjects!);
     checkOracleRdbms(o.excludeObjects!);
     checkOracleRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentBackfillTasks!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.maxConcurrentCdcTasks!,
       unittest.equals(42),
@@ -1936,6 +1946,7 @@ api.PostgresqlSourceConfig buildPostgresqlSourceConfig() {
   if (buildCounterPostgresqlSourceConfig < 3) {
     o.excludeObjects = buildPostgresqlRdbms();
     o.includeObjects = buildPostgresqlRdbms();
+    o.maxConcurrentBackfillTasks = 42;
     o.publication = 'foo';
     o.replicationSlot = 'foo';
   }
@@ -1948,6 +1959,10 @@ void checkPostgresqlSourceConfig(api.PostgresqlSourceConfig o) {
   if (buildCounterPostgresqlSourceConfig < 3) {
     checkPostgresqlRdbms(o.excludeObjects!);
     checkPostgresqlRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentBackfillTasks!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.publication!,
       unittest.equals('foo'),

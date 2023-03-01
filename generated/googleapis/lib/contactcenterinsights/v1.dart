@@ -5228,9 +5228,14 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /// to analyze automatically, between \[0, 100\].
   core.double? runtimeIntegrationAnalysisPercentage;
 
+  /// Percentage of conversations created using the UploadConversation endpoint
+  /// to analyze automatically, between \[0, 100\].
+  core.double? uploadConversationAnalysisPercentage;
+
   GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig({
     this.annotatorSelector,
     this.runtimeIntegrationAnalysisPercentage,
+    this.uploadConversationAnalysisPercentage,
   });
 
   GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
@@ -5246,6 +5251,11 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
                   ? (json_['runtimeIntegrationAnalysisPercentage'] as core.num)
                       .toDouble()
                   : null,
+          uploadConversationAnalysisPercentage:
+              json_.containsKey('uploadConversationAnalysisPercentage')
+                  ? (json_['uploadConversationAnalysisPercentage'] as core.num)
+                      .toDouble()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5253,6 +5263,9 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
         if (runtimeIntegrationAnalysisPercentage != null)
           'runtimeIntegrationAnalysisPercentage':
               runtimeIntegrationAnalysisPercentage!,
+        if (uploadConversationAnalysisPercentage != null)
+          'uploadConversationAnalysisPercentage':
+              uploadConversationAnalysisPercentage!,
       };
 }
 

@@ -320,6 +320,8 @@ class ChangesResource {
 
   /// Subscribes to changes for a user.
   ///
+  /// To use this method, you must include the pageToken query parameter.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1900,6 +1902,9 @@ class PermissionsResource {
   PermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a permission for a file or shared drive.
+  ///
+  /// For more information on creating permissions, see Share files, folders &
+  /// drives.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3744,6 +3749,11 @@ class DriveCapabilities {
   /// this shared drive.
   core.bool? canChangeDriveMembersOnlyRestriction;
 
+  /// Whether the current user can change the
+  /// sharingFoldersRequiresOrganizerPermission restriction of this shared
+  /// drive.
+  core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+
   /// Whether the current user can comment on files in this shared drive.
   core.bool? canComment;
 
@@ -3801,6 +3811,7 @@ class DriveCapabilities {
     this.canChangeDomainUsersOnlyRestriction,
     this.canChangeDriveBackground,
     this.canChangeDriveMembersOnlyRestriction,
+    this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
     this.canComment,
     this.canCopy,
     this.canDeleteChildren,
@@ -3839,6 +3850,12 @@ class DriveCapabilities {
               json_.containsKey('canChangeDriveMembersOnlyRestriction')
                   ? json_['canChangeDriveMembersOnlyRestriction'] as core.bool
                   : null,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
+                  .containsKey(
+                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
+              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+                  as core.bool
+              : null,
           canComment: json_.containsKey('canComment')
               ? json_['canComment'] as core.bool
               : null,
@@ -3897,6 +3914,10 @@ class DriveCapabilities {
         if (canChangeDriveMembersOnlyRestriction != null)
           'canChangeDriveMembersOnlyRestriction':
               canChangeDriveMembersOnlyRestriction!,
+        if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction !=
+            null)
+          'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
+              canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
         if (canComment != null) 'canComment': canComment!,
         if (canCopy != null) 'canCopy': canCopy!,
         if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
@@ -3940,11 +3961,18 @@ class DriveRestrictions {
   /// members.
   core.bool? driveMembersOnly;
 
+  /// If true, only users with the organizer role can share folders.
+  ///
+  /// If false, users with either the organizer role or the file organizer role
+  /// can share folders.
+  core.bool? sharingFoldersRequiresOrganizerPermission;
+
   DriveRestrictions({
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
     this.driveMembersOnly,
+    this.sharingFoldersRequiresOrganizerPermission,
   });
 
   DriveRestrictions.fromJson(core.Map json_)
@@ -3963,6 +3991,10 @@ class DriveRestrictions {
           driveMembersOnly: json_.containsKey('driveMembersOnly')
               ? json_['driveMembersOnly'] as core.bool
               : null,
+          sharingFoldersRequiresOrganizerPermission: json_
+                  .containsKey('sharingFoldersRequiresOrganizerPermission')
+              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3972,6 +4004,9 @@ class DriveRestrictions {
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
         if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly!,
+        if (sharingFoldersRequiresOrganizerPermission != null)
+          'sharingFoldersRequiresOrganizerPermission':
+              sharingFoldersRequiresOrganizerPermission!,
       };
 }
 
@@ -6171,7 +6206,7 @@ class PermissionPermissionDetails {
   /// The permission type for this user.
   ///
   /// While new values may be added in future, the following are currently
-  /// possible:
+  /// allowed:
   /// - file
   /// - member
   core.String? permissionType;
@@ -6179,7 +6214,7 @@ class PermissionPermissionDetails {
   /// The primary role for this user.
   ///
   /// While new values may be added in the future, the following are currently
-  /// possible:
+  /// allowed:
   /// - organizer
   /// - fileOrganizer
   /// - writer
@@ -6261,8 +6296,8 @@ class PermissionTeamDrivePermissionDetails {
 
 /// A permission for a file.
 ///
-/// A permission grants a user, group, domain or the world access to a file or a
-/// folder hierarchy.
+/// A permission grants a user, group, domain, or the world access to a file or
+/// a folder hierarchy.
 class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
@@ -6277,14 +6312,18 @@ class Permission {
   /// The "pretty" name of the value of the permission.
   ///
   /// The following is a list of examples for each type of permission:
-  /// - user - User's full name, as defined for their Google account, such as
+  /// - user - User's full name, as defined for their Google Account, such as
   /// "Joe Smith."
   /// - group - Name of the Google Group, such as "The Company Administrators."
-  /// - domain - String domain name, such as "thecompany.com."
+  /// - domain - String domain name, such as "your-company.com."
   /// - anyone - No displayName is present.
   core.String? displayName;
 
   /// The domain to which this permission refers.
+  ///
+  /// The following options are currently allowed:
+  /// - The entire domain, such as "your-company.com."
+  /// - A target audience, such as "ID.audience.googledomains.com."
   core.String? domain;
 
   /// The email address of the user or group to which this permission refers.
@@ -6293,10 +6332,10 @@ class Permission {
   /// The time at which this permission will expire (RFC 3339 date-time).
   ///
   /// Expiration times have the following restrictions:
-  /// - They cannot be set on shared drive items
-  /// - They can only be set on user and group permissions
-  /// - The time must be in the future
-  /// - The time cannot be more than a year in the future
+  /// - They cannot be set on shared drive items.
+  /// - They can only be set on user and group permissions.
+  /// - The time must be in the future.
+  /// - The time cannot be more than one year in the future.
   core.DateTime? expirationTime;
 
   /// The ID of this permission.
@@ -6312,14 +6351,14 @@ class Permission {
 
   /// Whether the account associated with this permission is a pending owner.
   ///
-  /// Only populated for user type permissions for files that are not in a
-  /// shared drive.
+  /// Only populated for user type permissions for files that aren't in a shared
+  /// drive.
   core.bool? pendingOwner;
 
   /// Details of whether the permissions on this shared drive item are inherited
-  /// or directly on this item.
+  /// or are directly on this item.
   ///
-  /// This is an output-only field which is present only for shared drive items.
+  /// This is an output-only field that's present only for shared drive items.
   core.List<PermissionPermissionDetails>? permissionDetails;
 
   /// A link to the user's profile photo, if available.
@@ -6348,8 +6387,8 @@ class Permission {
   /// - domain
   /// - anyone When creating a permission, if type is user or group, you must
   /// provide an emailAddress for the user or group. When type is domain, you
-  /// must provide a domain. There isn't extra information required for a anyone
-  /// type.
+  /// must provide a domain. There isn't extra information required for the
+  /// anyone type.
   core.String? type;
 
   /// Indicates the view for this permission.
@@ -6910,6 +6949,10 @@ class TeamDriveCapabilities {
   /// this Team Drive.
   core.bool? canChangeDomainUsersOnlyRestriction;
 
+  /// Whether the current user can change the
+  /// sharingFoldersRequiresOrganizerPermission restriction of this Team Drive.
+  core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+
   /// Whether the current user can change the background of this Team Drive.
   core.bool? canChangeTeamDriveBackground;
 
@@ -6975,6 +7018,7 @@ class TeamDriveCapabilities {
     this.canAddChildren,
     this.canChangeCopyRequiresWriterPermissionRestriction,
     this.canChangeDomainUsersOnlyRestriction,
+    this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
     this.canChangeTeamDriveBackground,
     this.canChangeTeamMembersOnlyRestriction,
     this.canComment,
@@ -7008,6 +7052,12 @@ class TeamDriveCapabilities {
               json_.containsKey('canChangeDomainUsersOnlyRestriction')
                   ? json_['canChangeDomainUsersOnlyRestriction'] as core.bool
                   : null,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
+                  .containsKey(
+                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
+              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+                  as core.bool
+              : null,
           canChangeTeamDriveBackground:
               json_.containsKey('canChangeTeamDriveBackground')
                   ? json_['canChangeTeamDriveBackground'] as core.bool
@@ -7072,6 +7122,10 @@ class TeamDriveCapabilities {
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
               canChangeDomainUsersOnlyRestriction!,
+        if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction !=
+            null)
+          'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
+              canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
         if (canChangeTeamDriveBackground != null)
           'canChangeTeamDriveBackground': canChangeTeamDriveBackground!,
         if (canChangeTeamMembersOnlyRestriction != null)
@@ -7119,6 +7173,12 @@ class TeamDriveRestrictions {
   /// outside of this Team Drive.
   core.bool? domainUsersOnly;
 
+  /// If true, only users with the organizer role can share folders.
+  ///
+  /// If false, users with either the organizer role or the file organizer role
+  /// can share folders.
+  core.bool? sharingFoldersRequiresOrganizerPermission;
+
   /// Whether access to items inside this Team Drive is restricted to members of
   /// this Team Drive.
   core.bool? teamMembersOnly;
@@ -7127,6 +7187,7 @@ class TeamDriveRestrictions {
     this.adminManagedRestrictions,
     this.copyRequiresWriterPermission,
     this.domainUsersOnly,
+    this.sharingFoldersRequiresOrganizerPermission,
     this.teamMembersOnly,
   });
 
@@ -7143,6 +7204,10 @@ class TeamDriveRestrictions {
           domainUsersOnly: json_.containsKey('domainUsersOnly')
               ? json_['domainUsersOnly'] as core.bool
               : null,
+          sharingFoldersRequiresOrganizerPermission: json_
+                  .containsKey('sharingFoldersRequiresOrganizerPermission')
+              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
+              : null,
           teamMembersOnly: json_.containsKey('teamMembersOnly')
               ? json_['teamMembersOnly'] as core.bool
               : null,
@@ -7154,6 +7219,9 @@ class TeamDriveRestrictions {
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (sharingFoldersRequiresOrganizerPermission != null)
+          'sharingFoldersRequiresOrganizerPermission':
+              sharingFoldersRequiresOrganizerPermission!,
         if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly!,
       };
 }

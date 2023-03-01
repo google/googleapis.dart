@@ -218,8 +218,9 @@ class ProjectsSchemasResource {
   /// `projects/123/schemas/my-schema@c7cfa2a8`
   /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
   ///
-  /// [revisionId] - Required. The revision ID to roll back to. It must be a
-  /// revision of the same schema. Example: c7cfa2a8
+  /// [revisionId] - Optional. This field is deprecated and should not be used
+  /// for specifying the revision ID. The revision ID should be specified via
+  /// the `name` parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -3012,6 +3012,12 @@ class MysqlSourceConfig {
   /// MySQL objects to retrieve from the source.
   MysqlRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks.
   ///
   /// The number should be non negative. If not set (or set to 0), the system's
@@ -3021,6 +3027,7 @@ class MysqlSourceConfig {
   MysqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
   });
 
@@ -3034,6 +3041,10 @@ class MysqlSourceConfig {
               ? MysqlRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
               ? json_['maxConcurrentCdcTasks'] as core.int
               : null,
@@ -3042,6 +3053,8 @@ class MysqlSourceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
       };
@@ -3463,6 +3476,12 @@ class OracleSourceConfig {
   /// Oracle objects to include in the stream.
   OracleRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks.
   ///
   /// The number should be non negative. If not set (or set to 0), the system's
@@ -3478,6 +3497,7 @@ class OracleSourceConfig {
     this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
     this.streamLargeObjects,
   });
@@ -3496,6 +3516,10 @@ class OracleSourceConfig {
               ? OracleRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
               ? json_['maxConcurrentCdcTasks'] as core.int
               : null,
@@ -3509,6 +3533,8 @@ class OracleSourceConfig {
         if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
         if (streamLargeObjects != null)
@@ -3750,6 +3776,12 @@ class PostgresqlSourceConfig {
   /// PostgreSQL objects to include in the stream.
   PostgresqlRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// The name of the publication that includes the set of all tables that are
   /// defined in the stream's include_objects.
   ///
@@ -3765,6 +3797,7 @@ class PostgresqlSourceConfig {
   PostgresqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.publication,
     this.replicationSlot,
   });
@@ -3779,6 +3812,10 @@ class PostgresqlSourceConfig {
               ? PostgresqlRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           publication: json_.containsKey('publication')
               ? json_['publication'] as core.String
               : null,
@@ -3790,6 +3827,8 @@ class PostgresqlSourceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (publication != null) 'publication': publication!,
         if (replicationSlot != null) 'replicationSlot': replicationSlot!,
       };

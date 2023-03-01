@@ -213,9 +213,7 @@ class ProjectsEventsResource {
   /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
   /// **Note:** [Error Reporting](https://cloud.google.com/error-reporting) is a
   /// global service built on Cloud Logging and doesn't analyze logs stored in
-  /// regional log buckets or logs routed to other Google Cloud projects. For
-  /// more information, see
-  /// [Using Error Reporting with regionalized logs](https://cloud.google.com/error-reporting/docs/regionalization).
+  /// regional log buckets or logs routed to other Google Cloud projects.
   ///
   /// [request] - The metadata request object.
   ///

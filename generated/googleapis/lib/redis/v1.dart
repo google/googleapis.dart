@@ -1072,6 +1072,11 @@ class Instance {
   /// Optional.
   core.String? authorizedNetwork;
 
+  /// The available maintenance versions that an instance could update to.
+  ///
+  /// Optional.
+  core.List<core.String>? availableMaintenanceVersions;
+
   /// The network connect mode of the Redis instance.
   ///
   /// If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -1138,6 +1143,13 @@ class Instance {
   ///
   /// Output only.
   MaintenanceSchedule? maintenanceSchedule;
+
+  /// The self service update maintenance version.
+  ///
+  /// The version is date based such as "20210712_00_00".
+  ///
+  /// Optional.
+  core.String? maintenanceVersion;
 
   /// Redis memory size in GiB.
   ///
@@ -1327,6 +1339,7 @@ class Instance {
     this.alternativeLocationId,
     this.authEnabled,
     this.authorizedNetwork,
+    this.availableMaintenanceVersions,
     this.connectMode,
     this.createTime,
     this.currentLocationId,
@@ -1337,6 +1350,7 @@ class Instance {
     this.locationId,
     this.maintenancePolicy,
     this.maintenanceSchedule,
+    this.maintenanceVersion,
     this.memorySizeGb,
     this.name,
     this.nodes,
@@ -1370,6 +1384,12 @@ class Instance {
           authorizedNetwork: json_.containsKey('authorizedNetwork')
               ? json_['authorizedNetwork'] as core.String
               : null,
+          availableMaintenanceVersions:
+              json_.containsKey('availableMaintenanceVersions')
+                  ? (json_['availableMaintenanceVersions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           connectMode: json_.containsKey('connectMode')
               ? json_['connectMode'] as core.String
               : null,
@@ -1404,6 +1424,9 @@ class Instance {
           maintenanceSchedule: json_.containsKey('maintenanceSchedule')
               ? MaintenanceSchedule.fromJson(json_['maintenanceSchedule']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceVersion: json_.containsKey('maintenanceVersion')
+              ? json_['maintenanceVersion'] as core.String
               : null,
           memorySizeGb: json_.containsKey('memorySizeGb')
               ? json_['memorySizeGb'] as core.int
@@ -1480,6 +1503,8 @@ class Instance {
           'alternativeLocationId': alternativeLocationId!,
         if (authEnabled != null) 'authEnabled': authEnabled!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (availableMaintenanceVersions != null)
+          'availableMaintenanceVersions': availableMaintenanceVersions!,
         if (connectMode != null) 'connectMode': connectMode!,
         if (createTime != null) 'createTime': createTime!,
         if (currentLocationId != null) 'currentLocationId': currentLocationId!,
@@ -1492,6 +1517,8 @@ class Instance {
         if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (maintenanceSchedule != null)
           'maintenanceSchedule': maintenanceSchedule!,
+        if (maintenanceVersion != null)
+          'maintenanceVersion': maintenanceVersion!,
         if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
         if (name != null) 'name': name!,
         if (nodes != null) 'nodes': nodes!,

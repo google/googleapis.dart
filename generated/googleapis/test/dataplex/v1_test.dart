@@ -696,6 +696,7 @@ api.GoogleCloudDataplexV1AssetResourceStatus
   final o = api.GoogleCloudDataplexV1AssetResourceStatus();
   buildCounterGoogleCloudDataplexV1AssetResourceStatus++;
   if (buildCounterGoogleCloudDataplexV1AssetResourceStatus < 3) {
+    o.managedAccessIdentity = 'foo';
     o.message = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -708,6 +709,10 @@ void checkGoogleCloudDataplexV1AssetResourceStatus(
     api.GoogleCloudDataplexV1AssetResourceStatus o) {
   buildCounterGoogleCloudDataplexV1AssetResourceStatus++;
   if (buildCounterGoogleCloudDataplexV1AssetResourceStatus < 3) {
+    unittest.expect(
+      o.managedAccessIdentity!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -7967,6 +7972,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1DataScan();
       final arg_parent = 'foo';
       final arg_dataScanId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudDataplexV1DataScan.fromJson(
@@ -8009,6 +8015,10 @@ void main() {
           unittest.equals(arg_dataScanId),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8020,7 +8030,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          dataScanId: arg_dataScanId, $fields: arg_$fields);
+          dataScanId: arg_dataScanId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });
@@ -8281,6 +8293,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1DataScan();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudDataplexV1DataScan.fromJson(
@@ -8323,6 +8336,10 @@ void main() {
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8334,7 +8351,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });

@@ -3743,7 +3743,7 @@ class Gateway {
   /// balancer. Max length 64 characters. Scope should start with a letter and
   /// can only have letters, numbers, hyphens.
   ///
-  /// Required. Immutable.
+  /// Optional.
   core.String? scope;
 
   /// Server-defined URL of this resource

@@ -4432,6 +4432,43 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     return FhirStore.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets metrics associated with the FHIR store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the FHIR store to get metrics for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FhirStoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FhirStoreMetrics> getFHIRStoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getFHIRStoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FhirStoreMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -7246,7 +7283,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -7262,9 +7301,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -9276,6 +9313,76 @@ class FhirStore {
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
         if (validationConfig != null) 'validationConfig': validationConfig!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Count of resources and total storage size by type for a given FHIR store.
+class FhirStoreMetric {
+  /// The total count of FHIR resources in the store of this resource type.
+  core.String? count;
+
+  /// The FHIR resource type this metric applies to.
+  core.String? resourceType;
+
+  /// The total amount of structured storage used by FHIR resources of this
+  /// resource type in the store.
+  core.String? structuredStorageSizeBytes;
+
+  FhirStoreMetric({
+    this.count,
+    this.resourceType,
+    this.structuredStorageSizeBytes,
+  });
+
+  FhirStoreMetric.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+      };
+}
+
+/// List of metrics for a given FHIR store.
+class FhirStoreMetrics {
+  /// List of FhirStoreMetric by resource type.
+  core.List<FhirStoreMetric>? metrics;
+
+  /// The resource name of the FHIR store to get metrics for, in the format
+  /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  core.String? name;
+
+  FhirStoreMetrics({
+    this.metrics,
+    this.name,
+  });
+
+  FhirStoreMetrics.fromJson(core.Map json_)
+      : this(
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => FhirStoreMetric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -11611,6 +11718,10 @@ class RevokeConsentRequest {
 ///
 /// Determines how the server generates the schema.
 class SchemaConfig {
+  /// The configuration for exported BigQuery tables to be partitioned by FHIR
+  /// resource's last updated time column.
+  TimePartitioning? lastUpdatedPartitionConfig;
+
   /// The depth for all recursive structures in the output analytics schema.
   ///
   /// For example, `concept` in the CodeSystem resource is a recursive
@@ -11640,12 +11751,18 @@ class SchemaConfig {
   core.String? schemaType;
 
   SchemaConfig({
+    this.lastUpdatedPartitionConfig,
     this.recursiveStructureDepth,
     this.schemaType,
   });
 
   SchemaConfig.fromJson(core.Map json_)
       : this(
+          lastUpdatedPartitionConfig: json_
+                  .containsKey('lastUpdatedPartitionConfig')
+              ? TimePartitioning.fromJson(json_['lastUpdatedPartitionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           recursiveStructureDepth: json_.containsKey('recursiveStructureDepth')
               ? json_['recursiveStructureDepth'] as core.String
               : null,
@@ -11655,6 +11772,8 @@ class SchemaConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (lastUpdatedPartitionConfig != null)
+          'lastUpdatedPartitionConfig': lastUpdatedPartitionConfig!,
         if (recursiveStructureDepth != null)
           'recursiveStructureDepth': recursiveStructureDepth!,
         if (schemaType != null) 'schemaType': schemaType!,
@@ -12247,6 +12366,39 @@ class TextSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (beginOffset != null) 'beginOffset': beginOffset!,
         if (content != null) 'content': content!,
+      };
+}
+
+/// Configuration for FHIR BigQuery time-partitioned tables.
+class TimePartitioning {
+  /// Number of milliseconds for which to keep the storage for a partition.
+  core.String? expirationMs;
+
+  /// Type of partitioning.
+  /// Possible string values are:
+  /// - "PARTITION_TYPE_UNSPECIFIED" : Default unknown time.
+  /// - "HOUR" : Data partitioned by hour.
+  /// - "DAY" : Data partitioned by day.
+  /// - "MONTH" : Data partitioned by month.
+  /// - "YEAR" : Data partitioned by year.
+  core.String? type;
+
+  TimePartitioning({
+    this.expirationMs,
+    this.type,
+  });
+
+  TimePartitioning.fromJson(core.Map json_)
+      : this(
+          expirationMs: json_.containsKey('expirationMs')
+              ? json_['expirationMs'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expirationMs != null) 'expirationMs': expirationMs!,
+        if (type != null) 'type': type!,
       };
 }
 

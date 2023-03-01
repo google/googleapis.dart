@@ -886,8 +886,8 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// Optional.
   core.List<core.String>? reasons;
 
-  /// If the Assessment is part of a Payment Transaction, provide details on
-  /// Payment Lifecycle Events that occur in the Transaction.
+  /// If the assessment is part of a payment transaction, provide details on
+  /// payment lifecycle events that occur in the transaction.
   ///
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1TransactionEvent? transactionEvent;
@@ -947,6 +947,10 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// The event being assessed.
   GoogleCloudRecaptchaenterpriseV1Event? event;
 
+  /// Assessment returned by Fraud Prevention when TransactionData is provided.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment?
+      fraudPreventionAssessment;
+
   /// The resource name for the Assessment in the format
   /// "projects/{project}/assessments/{assessment}".
   ///
@@ -972,6 +976,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.accountDefenderAssessment,
     this.accountVerification,
     this.event,
+    this.fraudPreventionAssessment,
     this.name,
     this.privatePasswordLeakVerification,
     this.riskAnalysis,
@@ -995,6 +1000,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
                   json_['event'] as core.Map<core.String, core.dynamic>)
               : null,
+          fraudPreventionAssessment:
+              json_.containsKey('fraudPreventionAssessment')
+                  ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
+                      .fromJson(json_['fraudPreventionAssessment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           privatePasswordLeakVerification: json_
                   .containsKey('privatePasswordLeakVerification')
@@ -1019,6 +1030,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
         if (accountVerification != null)
           'accountVerification': accountVerification!,
         if (event != null) 'event': event!,
+        if (fraudPreventionAssessment != null)
+          'fraudPreventionAssessment': fraudPreventionAssessment!,
         if (name != null) 'name': name!,
         if (privatePasswordLeakVerification != null)
           'privatePasswordLeakVerification': privatePasswordLeakVerification!,
@@ -1168,6 +1181,14 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? token;
 
+  /// Data describing a payment transaction to be assessed.
+  ///
+  /// Sending this data enables reCAPTCHA Enterprise Fraud Prevention and the
+  /// FraudPreventionAssessment component in the response.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1TransactionData? transactionData;
+
   /// The user agent present in the request from the user's device related to
   /// this event.
   ///
@@ -1185,6 +1206,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
     this.hashedAccountId,
     this.siteKey,
     this.token,
+    this.transactionData,
     this.userAgent,
     this.userIpAddress,
   });
@@ -1202,6 +1224,11 @@ class GoogleCloudRecaptchaenterpriseV1Event {
               : null,
           token:
               json_.containsKey('token') ? json_['token'] as core.String : null,
+          transactionData: json_.containsKey('transactionData')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionData.fromJson(
+                  json_['transactionData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           userAgent: json_.containsKey('userAgent')
               ? json_['userAgent'] as core.String
               : null,
@@ -1215,8 +1242,106 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (siteKey != null) 'siteKey': siteKey!,
         if (token != null) 'token': token!,
+        if (transactionData != null) 'transactionData': transactionData!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (userIpAddress != null) 'userIpAddress': userIpAddress!,
+      };
+}
+
+/// Assessment for Fraud Prevention.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
+  /// Assessment of this transaction for risk of being part of a card testing
+  /// attack.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict?
+      cardTestingVerdict;
+
+  /// Assessment of this transaction for risk of a stolen instrument.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict?
+      stolenInstrumentVerdict;
+
+  /// Probability (0-1) of this transaction being fraudulent.
+  ///
+  /// Summarizes the combined risk of attack vectors below.
+  core.double? transactionRisk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
+    this.cardTestingVerdict,
+    this.stolenInstrumentVerdict,
+    this.transactionRisk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
+      core.Map json_)
+      : this(
+          cardTestingVerdict: json_.containsKey('cardTestingVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+                  .fromJson(json_['cardTestingVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stolenInstrumentVerdict: json_.containsKey('stolenInstrumentVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
+                  .fromJson(json_['stolenInstrumentVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          transactionRisk: json_.containsKey('transactionRisk')
+              ? (json_['transactionRisk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cardTestingVerdict != null)
+          'cardTestingVerdict': cardTestingVerdict!,
+        if (stolenInstrumentVerdict != null)
+          'stolenInstrumentVerdict': stolenInstrumentVerdict!,
+        if (transactionRisk != null) 'transactionRisk': transactionRisk!,
+      };
+}
+
+/// Information about card testing fraud, where an adversary is testing
+/// fraudulently obtained cards or brute forcing their details.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict {
+  /// Probability (0-1) of this transaction attempt being part of a card testing
+  /// attack.
+  core.double? risk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict({
+    this.risk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
+      core.Map json_)
+      : this(
+          risk: json_.containsKey('risk')
+              ? (json_['risk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (risk != null) 'risk': risk!,
+      };
+}
+
+/// Information about stolen instrument fraud, where the user is not the
+/// legitimate owner of the instrument being used for the purchase.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict {
+  /// Probability (0-1) of this transaction being executed with a stolen
+  /// instrument.
+  core.double? risk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict({
+    this.risk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
+      core.Map json_)
+      : this(
+          risk: json_.containsKey('risk')
+              ? (json_['risk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (risk != null) 'risk': risk!,
       };
 }
 
@@ -2079,6 +2204,381 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
       };
 }
 
+/// Transaction data associated with a payment protected by reCAPTCHA
+/// Enterprise.
+///
+/// All fields are optional.
+class GoogleCloudRecaptchaenterpriseV1TransactionData {
+  /// Address associated with the payment method when applicable.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? billingAddress;
+
+  /// The Bank Identification Number - generally the first 6 or 8 digits of the
+  /// card.
+  core.String? cardBin;
+
+  /// The last four digits of the card.
+  core.String? cardLastFour;
+
+  /// The currency code in ISO-4217 format.
+  core.String? currencyCode;
+
+  /// Information about the payment gateway's response to the transaction.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo? gatewayInfo;
+
+  /// Items purchased in this transaction.
+  core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>? items;
+
+  /// Information about the user or users fulfilling the transaction.
+  core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>? merchants;
+
+  /// The payment method for the transaction.
+  ///
+  /// The allowed values are: * credit-card * debit-card * gift-card *
+  /// processor-{name} (If a third-party is used, for example, processor-paypal)
+  /// * custom-{name} (If an alternative method is used, for example,
+  /// custom-crypto)
+  core.String? paymentMethod;
+
+  /// Destination address if this transaction involves shipping a physical item.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? shippingAddress;
+
+  /// The value of shipping in the specified currency.
+  ///
+  /// 0 for free or no shipping.
+  core.double? shippingValue;
+
+  /// Unique identifier for the transaction.
+  ///
+  /// This custom identifier can be used to reference this transaction in the
+  /// future, for example, labeling a refund or chargeback event. Two attempts
+  /// at the same transaction should use the same transaction id.
+  core.String? transactionId;
+
+  /// Information about the user paying/initiating the transaction.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser? user;
+
+  /// The decimal value of the transaction in the specified currency.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionData({
+    this.billingAddress,
+    this.cardBin,
+    this.cardLastFour,
+    this.currencyCode,
+    this.gatewayInfo,
+    this.items,
+    this.merchants,
+    this.paymentMethod,
+    this.shippingAddress,
+    this.shippingValue,
+    this.transactionId,
+    this.user,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionData.fromJson(core.Map json_)
+      : this(
+          billingAddress: json_.containsKey('billingAddress')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+                  json_['billingAddress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cardBin: json_.containsKey('cardBin')
+              ? json_['cardBin'] as core.String
+              : null,
+          cardLastFour: json_.containsKey('cardLastFour')
+              ? json_['cardLastFour'] as core.String
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          gatewayInfo: json_.containsKey('gatewayInfo')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
+                  .fromJson(json_['gatewayInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          merchants: json_.containsKey('merchants')
+              ? (json_['merchants'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          paymentMethod: json_.containsKey('paymentMethod')
+              ? json_['paymentMethod'] as core.String
+              : null,
+          shippingAddress: json_.containsKey('shippingAddress')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+                  json_['shippingAddress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          shippingValue: json_.containsKey('shippingValue')
+              ? (json_['shippingValue'] as core.num).toDouble()
+              : null,
+          transactionId: json_.containsKey('transactionId')
+              ? json_['transactionId'] as core.String
+              : null,
+          user: json_.containsKey('user')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAddress != null) 'billingAddress': billingAddress!,
+        if (cardBin != null) 'cardBin': cardBin!,
+        if (cardLastFour != null) 'cardLastFour': cardLastFour!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (gatewayInfo != null) 'gatewayInfo': gatewayInfo!,
+        if (items != null) 'items': items!,
+        if (merchants != null) 'merchants': merchants!,
+        if (paymentMethod != null) 'paymentMethod': paymentMethod!,
+        if (shippingAddress != null) 'shippingAddress': shippingAddress!,
+        if (shippingValue != null) 'shippingValue': shippingValue!,
+        if (transactionId != null) 'transactionId': transactionId!,
+        if (user != null) 'user': user!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Structured address format for billing and shipping addresses.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
+  /// The first lines of the address.
+  ///
+  /// The first line generally contains the street name and number, and further
+  /// lines may include information such as an apartment number.
+  core.List<core.String>? address;
+
+  /// The state, province, or otherwise administrative area of the address.
+  core.String? administrativeArea;
+
+  /// The town/city of the address.
+  core.String? locality;
+
+  /// The postal or ZIP code of the address.
+  core.String? postalCode;
+
+  /// The recipient name, potentially including information such as "care of".
+  core.String? recipient;
+
+  /// The CLDR country/region of the address.
+  core.String? regionCode;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress({
+    this.address,
+    this.administrativeArea,
+    this.locality,
+    this.postalCode,
+    this.recipient,
+    this.regionCode,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+      core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? (json_['address'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: json_.containsKey('administrativeArea')
+              ? json_['administrativeArea'] as core.String
+              : null,
+          locality: json_.containsKey('locality')
+              ? json_['locality'] as core.String
+              : null,
+          postalCode: json_.containsKey('postalCode')
+              ? json_['postalCode'] as core.String
+              : null,
+          recipient: json_.containsKey('recipient')
+              ? json_['recipient'] as core.String
+              : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipient != null) 'recipient': recipient!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Details about the transaction from the gateway.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
+  /// AVS response code from the gateway (available only when reCAPTCHA
+  /// Enterprise is called after authorization).
+  core.String? avsResponseCode;
+
+  /// CVV response code from the gateway (available only when reCAPTCHA
+  /// Enterprise is called after authorization).
+  core.String? cvvResponseCode;
+
+  /// Gateway response code describing the state of the transaction.
+  core.String? gatewayResponseCode;
+
+  /// Name of the gateway service (for example, stripe, square, paypal).
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo({
+    this.avsResponseCode,
+    this.cvvResponseCode,
+    this.gatewayResponseCode,
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo.fromJson(
+      core.Map json_)
+      : this(
+          avsResponseCode: json_.containsKey('avsResponseCode')
+              ? json_['avsResponseCode'] as core.String
+              : null,
+          cvvResponseCode: json_.containsKey('cvvResponseCode')
+              ? json_['cvvResponseCode'] as core.String
+              : null,
+          gatewayResponseCode: json_.containsKey('gatewayResponseCode')
+              ? json_['gatewayResponseCode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avsResponseCode != null) 'avsResponseCode': avsResponseCode!,
+        if (cvvResponseCode != null) 'cvvResponseCode': cvvResponseCode!,
+        if (gatewayResponseCode != null)
+          'gatewayResponseCode': gatewayResponseCode!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Line items being purchased in this transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
+  /// When a merchant is specified, its corresponding account_id.
+  ///
+  /// Necessary to populate marketplace-style transactions.
+  core.String? merchantAccountId;
+
+  /// The full name of the item.
+  core.String? name;
+
+  /// The quantity of this item that is being purchased.
+  core.String? quantity;
+
+  /// The value per item that the user is paying, in the transaction currency,
+  /// after discounts.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataItem({
+    this.merchantAccountId,
+    this.name,
+    this.quantity,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataItem.fromJson(core.Map json_)
+      : this(
+          merchantAccountId: json_.containsKey('merchantAccountId')
+              ? json_['merchantAccountId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          quantity: json_.containsKey('quantity')
+              ? json_['quantity'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (merchantAccountId != null) 'merchantAccountId': merchantAccountId!,
+        if (name != null) 'name': name!,
+        if (quantity != null) 'quantity': quantity!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Details about a user's account involved in the transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
+  /// Unique account identifier for this user.
+  ///
+  /// If using account defender, this should match the hashed_account_id field.
+  /// Otherwise, a unique and persistent identifier for this account.
+  core.String? accountId;
+
+  /// The epoch milliseconds of the user's account creation.
+  core.String? creationMs;
+
+  /// The email address of the user.
+  core.String? email;
+
+  /// Whether the email has been verified to be accessible by the user (OTP or
+  /// similar).
+  core.bool? emailVerified;
+
+  /// The phone number of the user, with country code.
+  core.String? phoneNumber;
+
+  /// Whether the phone number has been verified to be accessible by the user
+  /// (OTP or similar).
+  core.bool? phoneVerified;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser({
+    this.accountId,
+    this.creationMs,
+    this.email,
+    this.emailVerified,
+    this.phoneNumber,
+    this.phoneVerified,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          creationMs: json_.containsKey('creationMs')
+              ? json_['creationMs'] as core.String
+              : null,
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          emailVerified: json_.containsKey('emailVerified')
+              ? json_['emailVerified'] as core.bool
+              : null,
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
+              : null,
+          phoneVerified: json_.containsKey('phoneVerified')
+              ? json_['phoneVerified'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (creationMs != null) 'creationMs': creationMs!,
+        if (email != null) 'email': email!,
+        if (emailVerified != null) 'emailVerified': emailVerified!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (phoneVerified != null) 'phoneVerified': phoneVerified!,
+      };
+}
+
 /// Describes an event in the lifecycle of a payment transaction.
 class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   /// Timestamp when this transaction event occurred; otherwise assumed to be
@@ -2093,19 +2593,19 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   /// Possible string values are:
   /// - "TRANSACTION_EVENT_TYPE_UNSPECIFIED" : Default, unspecified event type.
   /// - "MERCHANT_APPROVE" : Indicates that the transaction is approved by the
-  /// merchant's risk engine. The accompanying reasons can include 'INHOUSE',
-  /// 'ACCERTIFY', or 'RECAPTCHA'.
+  /// merchant. The accompanying reasons can include terms such as 'INHOUSE',
+  /// 'ACCERTIFY', 'CYBERSOURCE', or 'MANUAL_REVIEW'.
   /// - "MERCHANT_DENY" : Indicates that the transaction is denied and concluded
-  /// due to risks detected by the merchant's risk engine. The accompanying
-  /// reasons can include 'INHOUSE', 'ACCERTIFY', 'MANUAL_REVIEW', or
-  /// 'RECAPTCHA'.
+  /// due to risks detected by the merchant. The accompanying reasons can
+  /// include terms such as 'INHOUSE', 'ACCERTIFY', 'CYBERSOURCE', or
+  /// 'MANUAL_REVIEW'.
   /// - "MANUAL_REVIEW" : Indicates that the transaction is being evaluated by a
   /// human, due to suspicion or risk.
   /// - "AUTHORIZATION" : Indicates that the authorization attempt with the card
   /// issuer succeeded.
   /// - "AUTHORIZATION_DECLINE" : Indicates that the authorization attempt with
   /// the card issuer failed. The accompanying reasons can include Visa's '54'
-  /// indicating that the card is expired or '82' indicating that the CVV is
+  /// indicating that the card is expired, or '82' indicating that the CVV is
   /// incorrect.
   /// - "PAYMENT_CAPTURE" : Indicates that the transaction is completed because
   /// the funds were settled.
@@ -2114,27 +2614,28 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   /// - "CANCEL" : Indicates that the transaction has been canceled. Specify the
   /// reason for the cancellation. For example, 'INSUFFICIENT_INVENTORY'.
   /// - "CHARGEBACK_INQUIRY" : Indicates that the merchant has received a
-  /// chargeback inquiry for the transaction, requesting additional information
-  /// before a chargeback is officially issued and a formal chargeback
-  /// notification is sent.
+  /// chargeback inquiry due to fraud for the transaction, requesting additional
+  /// information before a fraud chargeback is officially issued and a formal
+  /// chargeback notification is sent.
   /// - "CHARGEBACK_ALERT" : Indicates that the merchant has received a
-  /// chargeback alert for the transaction. The process of resolving the dispute
-  /// without involving the payment network is started.
+  /// chargeback alert due to fraud for the transaction. The process of
+  /// resolving the dispute without involving the payment network is started.
   /// - "FRAUD_NOTIFICATION" : Indicates that a fraud notification is issued for
   /// the transaction, sent by the payment instrument's issuing bank because the
   /// transaction appears to be fraudulent. We recommend including TC40 or SAFE
   /// data in the `reason` field for this event type. For partial chargebacks,
   /// we recommend that you include an amount in the `value` field.
   /// - "CHARGEBACK" : Indicates that the merchant is informed by the payment
-  /// network that the transaction has entered the chargeback process. Reason
-  /// code examples include Discover's '4553' and '6041'. For partial
-  /// chargebacks, we recommend that you include an amount in the `value` field.
-  /// - "CHARGEBACK_REPRESENTMENT" : Indicates that the transaction has entered
-  /// the chargeback process, and that the merchant has chosen to enter
-  /// representment. Reason examples include Discover's '4553' and '6041'. For
+  /// network that the transaction has entered the chargeback process due to
+  /// fraud. Reason code examples include Discover's '6005' and '6041'. For
   /// partial chargebacks, we recommend that you include an amount in the
   /// `value` field.
-  /// - "CHARGEBACK_REVERSE" : Indicates that the transaction has had a
+  /// - "CHARGEBACK_REPRESENTMENT" : Indicates that the transaction has entered
+  /// the chargeback process due to fraud, and that the merchant has chosen to
+  /// enter representment. Reason examples include Discover's '6005' and '6041'.
+  /// For partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "CHARGEBACK_REVERSE" : Indicates that the transaction has had a fraud
   /// chargeback which was illegitimate and was reversed as a result. For
   /// partial chargebacks, we recommend that you include an amount in the
   /// `value` field.
@@ -2155,18 +2656,18 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   /// we recommend that you include an amount in the `value` field.
   core.String? eventType;
 
-  /// The reason or standardized code which corresponds with this transaction
+  /// The reason or standardized code that corresponds with this transaction
   /// event, if one exists.
   ///
-  /// E.g. a CHARGEBACK Event with code 4553.
+  /// For example, a CHARGEBACK event with code 6005.
   ///
   /// Optional.
   core.String? reason;
 
   /// The value that corresponds with this transaction event, if one exists.
   ///
-  /// E.g. A refund event where $5.00 was refunded. Currency is obtained from
-  /// the original transaction data.
+  /// For example, a refund event where $5.00 was refunded. Currency is obtained
+  /// from the original transaction data.
   ///
   /// Optional.
   core.double? value;
@@ -2222,6 +2723,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// Possible string values are:
   /// - "WAF_SERVICE_UNSPECIFIED" : Undefined WAF
   /// - "CA" : Cloud Armor
+  /// - "FASTLY" : Fastly
   core.String? wafService;
 
   GoogleCloudRecaptchaenterpriseV1WafSettings({

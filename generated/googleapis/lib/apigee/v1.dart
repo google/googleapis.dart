@@ -5650,8 +5650,7 @@ class OrganizationsEnvironmentsResource {
   /// `organizations/{org}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [name] - Optional. Name of the environment. Alternatively, the name may be
-  /// specified in the request body in the name field.
+  /// [name] - Optional. Name of the environment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25266,7 +25265,9 @@ class GoogleCloudApigeeV1TargetServer {
   /// - "PROTOCOL_UNSPECIFIED" : UNSPECIFIED defaults to HTTP for backwards
   /// compatibility.
   /// - "HTTP" : The TargetServer uses HTTP.
-  /// - "GRPC" : The TargetServer uses GRPC.
+  /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
+  /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
+  /// _CALLOUT generally available.
   core.String? protocol;
 
   /// Specifies TLS configuration info for this TargetServer.
@@ -25340,7 +25341,9 @@ class GoogleCloudApigeeV1TargetServerConfig {
   /// - "PROTOCOL_UNSPECIFIED" : UNSPECIFIED defaults to HTTP for backwards
   /// compatibility.
   /// - "HTTP" : The TargetServer uses HTTP.
-  /// - "GRPC" : The TargetServer uses GRPC.
+  /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
+  /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
+  /// _CALLOUT generally available.
   core.String? protocol;
 
   /// TLS settings for the target server.
@@ -25974,7 +25977,9 @@ class GoogleIamV1Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -25990,9 +25995,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

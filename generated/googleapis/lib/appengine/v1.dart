@@ -3437,6 +3437,35 @@ class FirewallRule {
       };
 }
 
+/// Runtime settings for the App Engine flexible environment.
+class FlexibleRuntimeSettings {
+  /// The operating system of the application runtime.
+  core.String? operatingSystem;
+
+  /// The runtime version of an App Engine flexible application.
+  core.String? runtimeVersion;
+
+  FlexibleRuntimeSettings({
+    this.operatingSystem,
+    this.runtimeVersion,
+  });
+
+  FlexibleRuntimeSettings.fromJson(core.Map json_)
+      : this(
+          operatingSystem: json_.containsKey('operatingSystem')
+              ? json_['operatingSystem'] as core.String
+              : null,
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operatingSystem != null) 'operatingSystem': operatingSystem!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
+
 /// Health checking configuration for VM instances.
 ///
 /// Unhealthy instances are killed and replaced with new instances. Only
@@ -5341,6 +5370,9 @@ class Version {
   /// set.
   core.List<ErrorHandler>? errorHandlers;
 
+  /// Settings for App Engine flexible runtimes.
+  FlexibleRuntimeSettings? flexibleRuntimeSettings;
+
   /// An ordered list of URL-matching patterns that should be applied to
   /// incoming requests.
   ///
@@ -5492,6 +5524,7 @@ class Version {
     this.env,
     this.envVariables,
     this.errorHandlers,
+    this.flexibleRuntimeSettings,
     this.handlers,
     this.healthCheck,
     this.id,
@@ -5593,6 +5626,11 @@ class Version {
                   .map((value) => ErrorHandler.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          flexibleRuntimeSettings: json_.containsKey('flexibleRuntimeSettings')
+              ? FlexibleRuntimeSettings.fromJson(
+                  json_['flexibleRuntimeSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           handlers: json_.containsKey('handlers')
               ? (json_['handlers'] as core.List)
@@ -5698,6 +5736,8 @@ class Version {
         if (env != null) 'env': env!,
         if (envVariables != null) 'envVariables': envVariables!,
         if (errorHandlers != null) 'errorHandlers': errorHandlers!,
+        if (flexibleRuntimeSettings != null)
+          'flexibleRuntimeSettings': flexibleRuntimeSettings!,
         if (handlers != null) 'handlers': handlers!,
         if (healthCheck != null) 'healthCheck': healthCheck!,
         if (id != null) 'id': id!,

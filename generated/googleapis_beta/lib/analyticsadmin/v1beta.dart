@@ -314,9 +314,9 @@ class AccountsResource {
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Field names
-  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
-  /// be updated. To replace the entire entity, use one path with the string "*"
-  /// to match all fields.
+  /// must be in snake case (for example, "field_to_update"). Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -460,7 +460,7 @@ class PropertiesResource {
   /// Acknowledges the terms of user data collection for the specified property.
   ///
   /// This acknowledgement must be completed (either in the Google Analytics UI
-  /// or via this API) before MeasurementProtocolSecret resources may be
+  /// or through this API) before MeasurementProtocolSecret resources may be
   /// created.
   ///
   /// [request] - The metadata request object.
@@ -2670,7 +2670,7 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   /// Output only.
   core.bool? custom;
 
-  /// If set, this event can currently be deleted via DeleteConversionEvent.
+  /// If set, this event can currently be deleted with DeleteConversionEvent.
   ///
   /// Output only.
   core.bool? deletable;
@@ -3931,7 +3931,7 @@ class GoogleAnalyticsAdminV1betaProperty {
   ///
   /// When creating a property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
   /// "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-  /// types cannot yet be created via Google Analytics Admin API.
+  /// types cannot yet be created with the Google Analytics Admin API.
   ///
   /// Immutable.
   /// Possible string values are:
@@ -4102,7 +4102,7 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
 
   /// Redirect URI where the user will be sent after accepting Terms of Service.
   ///
-  /// Must be configured in Developers Console as a Redirect URI
+  /// Must be configured in Cloud Console as a Redirect URI.
   core.String? redirectUri;
 
   GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest({

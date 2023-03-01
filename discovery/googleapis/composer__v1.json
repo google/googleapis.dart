@@ -460,7 +460,7 @@
             }
         }
     },
-    "revision": "20230201",
+    "revision": "20230222",
     "rootUrl": "https://composer.googleapis.com/",
     "schemas": {
         "AllowedIpRange": {

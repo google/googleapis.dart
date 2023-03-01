@@ -4750,6 +4750,9 @@ class VulnerabilityNote {
   /// indicates high severity.
   core.double? cvssScore;
 
+  /// The full description of the v2 CVSS for this vulnerability.
+  CVSS? cvssV2;
+
   /// The full description of the CVSSv3 for this vulnerability.
   CVSSv3? cvssV3;
 
@@ -4789,6 +4792,7 @@ class VulnerabilityNote {
 
   VulnerabilityNote({
     this.cvssScore,
+    this.cvssV2,
     this.cvssV3,
     this.cvssVersion,
     this.details,
@@ -4801,6 +4805,10 @@ class VulnerabilityNote {
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssV2: json_.containsKey('cvssV2')
+              ? CVSS.fromJson(
+                  json_['cvssV2'] as core.Map<core.String, core.dynamic>)
               : null,
           cvssV3: json_.containsKey('cvssV3')
               ? CVSSv3.fromJson(
@@ -4831,6 +4839,7 @@ class VulnerabilityNote {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssV3 != null) 'cvssV3': cvssV3!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (details != null) 'details': details!,
@@ -4849,6 +4858,9 @@ class VulnerabilityOccurrence {
   ///
   /// Output only.
   core.double? cvssScore;
+
+  /// The cvss v2 score for the vulnerability.
+  CVSS? cvssV2;
 
   /// CVSS version used to populate cvss_score and severity.
   ///
@@ -4925,6 +4937,7 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssV2,
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
@@ -4941,6 +4954,10 @@ class VulnerabilityOccurrence {
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssV2: json_.containsKey('cvssV2')
+              ? CVSS.fromJson(
+                  json_['cvssV2'] as core.Map<core.String, core.dynamic>)
               : null,
           cvssVersion: json_.containsKey('cvssVersion')
               ? json_['cvssVersion'] as core.String
@@ -4981,6 +4998,7 @@ class VulnerabilityOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,

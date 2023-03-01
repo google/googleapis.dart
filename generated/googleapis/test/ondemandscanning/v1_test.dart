@@ -1744,6 +1744,33 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterMaintainer = 0;
+api.Maintainer buildMaintainer() {
+  final o = api.Maintainer();
+  buildCounterMaintainer++;
+  if (buildCounterMaintainer < 3) {
+    o.kind = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterMaintainer--;
+  return o;
+}
+
+void checkMaintainer(api.Maintainer o) {
+  buildCounterMaintainer++;
+  if (buildCounterMaintainer < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMaintainer--;
+}
+
 core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
@@ -2095,6 +2122,7 @@ api.PackageData buildPackageData() {
     o.dependencyChain = buildUnnamed29();
     o.fileLocation = buildUnnamed30();
     o.hashDigest = 'foo';
+    o.maintainer = buildMaintainer();
     o.os = 'foo';
     o.osVersion = 'foo';
     o.package = 'foo';
@@ -2120,6 +2148,7 @@ void checkPackageData(api.PackageData o) {
       o.hashDigest!,
       unittest.equals('foo'),
     );
+    checkMaintainer(o.maintainer!);
     unittest.expect(
       o.os!,
       unittest.equals('foo'),
@@ -3223,6 +3252,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
   buildCounterVulnerabilityOccurrence++;
   if (buildCounterVulnerabilityOccurrence < 3) {
     o.cvssScore = 42.0;
+    o.cvssV2 = buildCVSS();
     o.cvssVersion = 'foo';
     o.cvssv3 = buildCVSS();
     o.effectiveSeverity = 'foo';
@@ -3245,6 +3275,7 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
       o.cvssScore!,
       unittest.equals(42.0),
     );
+    checkCVSS(o.cvssV2!);
     unittest.expect(
       o.cvssVersion!,
       unittest.equals('foo'),
@@ -3787,6 +3818,16 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-Maintainer', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMaintainer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Maintainer.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMaintainer(od);
     });
   });
 

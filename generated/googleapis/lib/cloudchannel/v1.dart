@@ -4358,6 +4358,13 @@ class GoogleCloudChannelV1Customer {
   /// Output only.
   GoogleCloudChannelV1CloudIdentityInfo? cloudIdentityInfo;
 
+  /// External CRM ID for the customer.
+  ///
+  /// Populated only if a CRM ID exists for this customer.
+  ///
+  /// Optional.
+  core.String? correlationId;
+
   /// Time when the customer was created.
   ///
   /// Output only.
@@ -4412,6 +4419,7 @@ class GoogleCloudChannelV1Customer {
     this.channelPartnerId,
     this.cloudIdentityId,
     this.cloudIdentityInfo,
+    this.correlationId,
     this.createTime,
     this.domain,
     this.languageCode,
@@ -4437,6 +4445,9 @@ class GoogleCloudChannelV1Customer {
               ? GoogleCloudChannelV1CloudIdentityInfo.fromJson(
                   json_['cloudIdentityInfo']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          correlationId: json_.containsKey('correlationId')
+              ? json_['correlationId'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -4470,6 +4481,7 @@ class GoogleCloudChannelV1Customer {
         if (channelPartnerId != null) 'channelPartnerId': channelPartnerId!,
         if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
         if (cloudIdentityInfo != null) 'cloudIdentityInfo': cloudIdentityInfo!,
+        if (correlationId != null) 'correlationId': correlationId!,
         if (createTime != null) 'createTime': createTime!,
         if (domain != null) 'domain': domain!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -4732,9 +4744,9 @@ class GoogleCloudChannelV1Entitlement {
   /// units for a flexible offer OR - num_units: The total commitment for
   /// commitment-based offers The response may additionally include the
   /// following output-only Parameters: - assigned_units: The number of licenses
-  /// assigned to users. For GCP billing accounts, the following Parameter may
-  /// be accepted as input: - display_name: The display name of the billing
-  /// account.
+  /// assigned to users. For GCP billing subaccounts, the following Parameter
+  /// may be accepted as input: - display_name: The display name of the billing
+  /// subaccount.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.

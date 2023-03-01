@@ -88,6 +88,53 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Fetches a set of static IP addresses that need to be allowlisted by the
+  /// customer when using the static-IP connectivity method.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the location for which static IPs
+  /// should be returned. Must be in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of IPs to return.
+  ///
+  /// [pageToken] - A page token, received from a previous `FetchStaticIps`
+  /// call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchStaticIpsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchStaticIpsResponse> fetchStaticIps(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchStaticIps';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchStaticIpsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets information about a location.
   ///
   /// Request parameters:
@@ -188,17 +235,17 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of connection
+  /// [parent] - Required. The parent which owns this collection of connection
   /// profiles.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [connectionProfileId] - Required. The connection profile identifier.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two requests with the same id, then the second request
-  /// will be ignored. It is recommended to always set this value to a UUID. The
-  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-  /// and hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [skipValidation] - Optional. Create the connection profile without
   /// validating it. The default is false. Only supported for Oracle connection
@@ -262,9 +309,9 @@ class ProjectsLocationsConnectionProfilesResource {
   /// [force] - In case of force delete, the CloudSQL replica database is also
   /// deleted (only for CloudSQL connection profile).
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -399,7 +446,7 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of connection
+  /// [parent] - Required. The parent which owns this collection of connection
   /// profiles.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -420,7 +467,7 @@ class ProjectsLocationsConnectionProfilesResource {
   /// [pageSize] - The maximum number of connection profiles to return. The
   /// service may return fewer than this value. If unspecified, at most 50
   /// connection profiles will be returned. The maximum value is 1000; values
-  /// above 1000 will be coerced to 1000.
+  /// above 1000 are coerced to 1000.
   ///
   /// [pageToken] - A page token, received from a previous
   /// `ListConnectionProfiles` call. Provide this to retrieve the subsequent
@@ -475,18 +522,18 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two requests with the same id, then the second request
-  /// will be ignored. It is recommended to always set this value to a UUID. The
-  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-  /// and hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [skipValidation] - Optional. Update the connection profile without
   /// validating it. The default is false. Only supported for Oracle connection
   /// profiles.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the connection profile resource by the update.
+  /// overwritten by the update in the conversion workspace resource.
   ///
   /// [validateOnly] - Optional. Only validate the connection profile, but don't
   /// update any resources. The default is false. Only supported for Oracle
@@ -639,14 +686,14 @@ class ProjectsLocationsConversionWorkspacesResource {
   ProjectsLocationsConversionWorkspacesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Apply draft tree onto a specific destination database
+  /// Applies draft tree onto a specific destination database.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the conversion workspace resource to apply
-  /// draft to destination for. in the form of:
+  /// [name] - Required. The name of the conversion workspace resource for which
+  /// to apply the draft tree. Must be in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
@@ -772,16 +819,16 @@ class ProjectsLocationsConversionWorkspacesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of conversion
+  /// [parent] - Required. The parent which owns this collection of conversion
   /// workspaces.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [conversionWorkspaceId] - Required. The ID of the conversion workspace to
   /// create.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -830,9 +877,9 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -872,12 +919,12 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Request parameters:
   ///
   /// [conversionWorkspace] - Required. Name of the conversion workspace
-  /// resource whose revisions are listed. in the form of:
+  /// resource whose revisions are listed. Must be in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [commitId] - Optional. Optional filter to request a specific commit id
+  /// [commitId] - Optional. Optional filter to request a specific commit ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -913,29 +960,28 @@ class ProjectsLocationsConversionWorkspacesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Use this method to describe the database entities tree for a specific
-  /// conversion workspace and a specific tree type.
+  /// Describes the database entities tree for a specific conversion workspace
+  /// and a specific tree type.
   ///
-  /// The DB Entities are not a resource like conversion workspace or mapping
-  /// rule, and they can not be created, updated or deleted like one. Instead
-  /// they are simple data objects describing the structure of the client
-  /// database.
+  /// Database entities are not resources like conversion workspaces or mapping
+  /// rules, and they can't be created, updated or deleted. Instead, they are
+  /// simple data objects describing the structure of the client database.
   ///
   /// Request parameters:
   ///
   /// [conversionWorkspace] - Required. Name of the conversion workspace
-  /// resource whose DB entities are described in the form of:
+  /// resource whose database entities are described. Must be in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [commitId] - Request a specific commit id. If not specified, the entities
+  /// [commitId] - Request a specific commit ID. If not specified, the entities
   /// from the latest commit are returned.
   ///
   /// [filter] - Filter the returned entities based on AIP-160 standard.
   ///
   /// [pageSize] - The maximum number of entities to return. The service may
-  /// return fewer than this value.
+  /// return fewer entities than the value specifies.
   ///
   /// [pageToken] - The nextPageToken value received in the previous call to
   /// conversionWorkspace.describeDatabaseEntities, used in the subsequent
@@ -946,10 +992,10 @@ class ProjectsLocationsConversionWorkspacesResource {
   ///
   /// [tree] - The tree to fetch.
   /// Possible string values are:
-  /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type
-  /// - "SOURCE_TREE" : The source database tree
-  /// - "DRAFT_TREE" : The draft database tree
-  /// - "DESTINATION_TREE" : The destination database tree
+  /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type.
+  /// - "SOURCE_TREE" : The source database tree.
+  /// - "DRAFT_TREE" : The draft database tree.
+  /// - "DESTINATION_TREE" : The destination database tree.
   ///
   /// [uncommitted] - Whether to retrieve the latest committed version of the
   /// entities or the latest version. This field is ignored if a specific
@@ -1096,7 +1142,7 @@ class ProjectsLocationsConversionWorkspacesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of conversion
+  /// [parent] - Required. The parent which owns this collection of conversion
   /// workspaces.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -1108,11 +1154,11 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// this year by specifying **createTime %gt;
   /// 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
   /// example, you could specify **source.version = "12.c.1"** to select all
-  /// conversion workspaces with source database version equal to 12.c.1
+  /// conversion workspaces with source database version equal to 12.c.1.
   ///
   /// [pageSize] - The maximum number of conversion workspaces to return. The
   /// service may return fewer than this value. If unspecified, at most 50 sets
-  /// will be returned.
+  /// are returned.
   ///
   /// [pageToken] - The nextPageToken value received in the previous call to
   /// conversionWorkspaces.list, used in the subsequent request to retrieve the
@@ -1167,14 +1213,14 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the conversion workspace resource by the update.
+  /// overwritten by the update in the conversion workspace resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1211,13 +1257,13 @@ class ProjectsLocationsConversionWorkspacesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Rollbacks a conversion workspace to the last committed spanshot.
+  /// Rolls back a conversion workspace to the last committed snapshot.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the conversion workspace resource to rollback
+  /// [name] - Required. Name of the conversion workspace resource to roll back
   /// to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
@@ -1253,31 +1299,29 @@ class ProjectsLocationsConversionWorkspacesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Use this method to search/list the background jobs for a specific
-  /// conversion workspace.
+  /// Searches/lists the background jobs for a specific conversion workspace.
   ///
-  /// The background jobs are not a resource like conversion workspace or
-  /// mapping rule, and they can not be created, updated or deleted like one.
-  /// Instead they are a way to expose the data plane jobs log.
+  /// The background jobs are not resources like conversion workspaces or
+  /// mapping rules, and they can't be created, updated or deleted. Instead,
+  /// they are a way to expose the data plane jobs log.
   ///
   /// Request parameters:
   ///
   /// [conversionWorkspace] - Required. Name of the conversion workspace
-  /// resource whos jobs are listed. in the form of:
+  /// resource whose jobs are listed, in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [completedUntilTime] - Optional. If supplied, will only return jobs that
+  /// [completedUntilTime] - Optional. If provided, only returns jobs that
   /// completed until (not including) the given timestamp.
   ///
   /// [maxSize] - Optional. The maximum number of jobs to return. The service
-  /// may return fewer than this value. If unspecified, at most 100 jobs will be
-  /// returned. The maximum value is 100; values above 100 will be coerced to
-  /// 100.
+  /// may return fewer than this value. If unspecified, at most 100 jobs are
+  /// returned. The maximum value is 100; values above 100 are coerced to 100.
   ///
   /// [returnMostRecentPerJobType] - Optional. Whether or not to return just the
-  /// most recent job per job type
+  /// most recent job per job type,
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1325,7 +1369,7 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Request parameters:
   ///
   /// [name] - Name of the conversion workspace resource to seed with new
-  /// database structure. in the form of:
+  /// database structure, in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
@@ -1526,15 +1570,15 @@ class ProjectsLocationsMigrationJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of migration
+  /// [parent] - Required. The parent which owns this collection of migration
   /// jobs.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [migrationJobId] - Required. The ID of the instance to create.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -1585,9 +1629,9 @@ class ProjectsLocationsMigrationJobsResource {
   /// with the migration job. In case of force delete, the destination CloudSQL
   /// replica database is also deleted.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -1765,7 +1809,7 @@ class ProjectsLocationsMigrationJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns this collection of
+  /// [parent] - Required. The parent which owns this collection of
   /// migrationJobs.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -1784,8 +1828,8 @@ class ProjectsLocationsMigrationJobsResource {
   ///
   /// [pageSize] - The maximum number of migration jobs to return. The service
   /// may return fewer than this value. If unspecified, at most 50 migration
-  /// jobs will be returned. The maximum value is 1000; values above 1000 will
-  /// be coerced to 1000.
+  /// jobs will be returned. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000.
   ///
   /// [pageToken] - The nextPageToken value received in the previous call to
   /// migrationJobs.list, used in the subsequent request to retrieve the next
@@ -1841,14 +1885,14 @@ class ProjectsLocationsMigrationJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
-  /// [requestId] - A unique id used to identify the request. If the server
-  /// receives two requests with the same id, then the second request will be
-  /// ignored. It is recommended to always set this value to a UUID. The id must
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the migration job resource by the update.
+  /// overwritten by the update in the conversion workspace resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2446,11 +2490,11 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// [privateConnectionId] - Required. The private connection identifier.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two requests with the same id, then the second request
-  /// will be ignored. It is recommended to always set this value to a UUID. The
-  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-  /// and hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [skipValidation] - Optional. If set to true, will skip validations.
   ///
@@ -2500,11 +2544,11 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two requests with the same id, then the second request
-  /// will be ignored. It is recommended to always set this value to a UUID. The
-  /// id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-  /// and hyphens (-). The maximum length is 40 characters.
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2592,8 +2636,8 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// [orderBy] - Order by fields for the result.
   ///
   /// [pageSize] - Maximum number of private connections to return. If
-  /// unspecified, at most 50 private connections that will be returned. The
-  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// unspecified, at most 50 private connections that are returned. The maximum
+  /// value is 1000; values above 1000 are coerced to 1000.
   ///
   /// [pageToken] - Page token received from a previous `ListPrivateConnections`
   /// call. Provide this to retrieve the subsequent page. When paginating, all
@@ -2833,13 +2877,13 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// Execution log of a background job.
 class BackgroundJobLogEntry {
   /// Job completion comment, such as how many entities were seeded, how many
-  /// warnings were found during conversion and similar information.
+  /// warnings were found during conversion, and similar information.
   core.String? completionComment;
 
   /// Job completion state, i.e. the final state after the job completed.
   /// Possible string values are:
   /// - "JOB_COMPLETION_STATE_UNSPECIFIED" : The status is not specified. This
-  /// state will be used when job is not yet finished.
+  /// state is used when job is not yet finished.
   /// - "SUCCEEDED" : Success.
   /// - "FAILED" : Error.
   core.String? completionState;
@@ -2847,29 +2891,30 @@ class BackgroundJobLogEntry {
   /// The timestamp when the background job was finished.
   core.String? finishTime;
 
-  /// The background job log entry id
+  /// The background job log entry ID.
   core.String? id;
 
-  /// Import rules job details
+  /// Import rules job details.
   ImportRulesJobDetails? importRulesJobDetails;
 
   /// The type of job that was executed.
   /// Possible string values are:
-  /// - "BACKGROUND_JOB_TYPE_UNSPECIFIED" : Unspecified background job type
-  /// - "BACKGROUND_JOB_TYPE_SOURCE_SEED" : Job to seed from the source database
+  /// - "BACKGROUND_JOB_TYPE_UNSPECIFIED" : Unspecified background job type.
+  /// - "BACKGROUND_JOB_TYPE_SOURCE_SEED" : Job to seed from the source
+  /// database.
   /// - "BACKGROUND_JOB_TYPE_CONVERT" : Job to convert the source database into
-  /// a draft of the destination database
+  /// a draft of the destination database.
   /// - "BACKGROUND_JOB_TYPE_APPLY_DESTINATION" : Job to apply the draft tree
-  /// onto the destination
+  /// onto the destination.
   /// - "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE" : Job to import and convert
-  /// mapping rules from an external source such as an ora2pg config file
+  /// mapping rules from an external source such as an ora2pg config file.
   core.String? jobType;
 
   /// Whether the client requested the conversion workspace to be committed
   /// after a successful completion of the job.
   core.bool? requestAutocommit;
 
-  /// Seed job details
+  /// Seed job details.
   SeedJobDetails? seedJobDetails;
 
   /// The timestamp when the background job was started.
@@ -3332,63 +3377,63 @@ class CloudSqlSettings {
 /// Column is not used as an independent entity, it is retrieved as part of a
 /// Table entity.
 class ColumnEntity {
-  /// Is the column of array type
+  /// Is the column of array type.
   core.bool? array;
 
-  /// If the column is array, of which length
+  /// If the column is array, of which length.
   core.int? arrayLength;
 
-  /// Is the column auto-generated/identity
+  /// Is the column auto-generated/identity.
   core.bool? autoGenerated;
 
-  /// Charset override - instead of table level charset
+  /// Charset override - instead of table level charset.
   core.String? charset;
 
-  /// Collation override - instead of table level collation
+  /// Collation override - instead of table level collation.
   core.String? collation;
 
-  /// Comment associated with the column
+  /// Comment associated with the column.
   core.String? comment;
 
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// Column data type
+  /// Column data type.
   core.String? dataType;
 
-  /// Default value of the column
+  /// Default value of the column.
   core.String? defaultValue;
 
-  /// Column fractional second precision - used for timestamp based datatypes
+  /// Column fractional second precision - used for timestamp based datatypes.
   core.int? fractionalSecondsPrecision;
 
-  /// Column length - e.g. varchar (50)
+  /// Column length - e.g. varchar (50).
   core.String? length;
 
-  /// Column name
+  /// Column name.
   core.String? name;
 
-  /// Is the column nullable
+  /// Is the column nullable.
   core.bool? nullable;
 
-  /// Column order in the table
+  /// Column order in the table.
   core.int? ordinalPosition;
 
-  /// Column precision - when relevant
+  /// Column precision - when relevant.
   core.int? precision;
 
-  /// Column scale - when relevant
+  /// Column scale - when relevant.
   core.int? scale;
 
   /// Specifies the list of values allowed in the column.
   ///
-  /// List is empty if set values is not required
+  /// List is empty if setValues is not required.
   core.List<core.String>? setValues;
 
-  /// Is the column a UDT
+  /// Is the column a UDT.
   core.bool? udt;
 
   ColumnEntity({
@@ -3672,29 +3717,29 @@ class ConnectionProfile {
 /// Constraint is not used as an independent entity, it is retrieved as part of
 /// another entity such as Table or View.
 class ConstraintEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The name of the table constraint
+  /// The name of the table constraint.
   core.String? name;
 
-  /// Reference Columns which may be associated with the constraint.
+  /// Reference columns which may be associated with the constraint.
   ///
-  /// eg: if the constraint is a FOREIGN_KEY, this represents the list of full
-  /// names of referenced columns by the foreign key.
+  /// For example, if the constraint is a FOREIGN_KEY, this represents the list
+  /// of full names of referenced columns by the foreign key.
   core.List<core.String>? referenceColumns;
 
   /// Reference table which may be associated with the constraint.
   ///
-  /// eg: if the constraint is a FOREIGN_KEY, this represents the list of full
-  /// name of the referenced table by the foreign key.
+  /// For example, if the constraint is a FOREIGN_KEY, this represents the list
+  /// of full name of the referenced table by the foreign key.
   core.String? referenceTable;
 
-  /// Table columns used as part of the Constraint for e.g. primary key
-  /// constraint should list the columns which constitutes the key
+  /// Table columns used as part of the Constraint, for example primary key
+  /// constraint should list the columns which constitutes the key.
   core.List<core.String>? tableColumns;
 
   /// Table which is associated with the constraint.
@@ -3705,8 +3750,8 @@ class ConstraintEntity {
   /// defined.
   core.String? tableName;
 
-  /// Type of constraint - e.g. unique, primary key, foreign key (currently only
-  /// primary key is supported)
+  /// Type of constraint, for example unique, primary key, foreign key
+  /// (currently only primary key is supported).
   core.String? type;
 
   ConstraintEntity({
@@ -3767,7 +3812,7 @@ class ConversionWorkspace {
   /// Required.
   DatabaseEngineInfo? destination;
 
-  /// The display name for the workspace
+  /// The display name for the workspace.
   core.String? displayName;
 
   /// A generic list of settings for the workspace.
@@ -3779,12 +3824,12 @@ class ConversionWorkspace {
   core.Map<core.String, core.String>? globalSettings;
 
   /// Whether the workspace has uncommitted changes (changes which were made
-  /// after the workspace was committed)
+  /// after the workspace was committed).
   ///
   /// Output only.
   core.bool? hasUncommittedChanges;
 
-  /// The latest commit id
+  /// The latest commit ID.
   ///
   /// Output only.
   core.String? latestCommitId;
@@ -3905,8 +3950,8 @@ class ConversionWorkspaceInfo {
 
 /// Request message for 'ConvertConversionWorkspace' request.
 class ConvertConversionWorkspaceRequest {
-  /// Should the conversion workspace be committed automatically after the
-  /// conversion.
+  /// Specifies whether the conversion workspace is to be committed
+  /// automatically after the conversion.
   core.bool? autoCommit;
 
   /// Filter the entities to convert.
@@ -3936,9 +3981,9 @@ class ConvertConversionWorkspaceRequest {
       };
 }
 
-/// The type and version of a source or destination DB.
+/// The type and version of a source or destination database.
 class DatabaseEngineInfo {
-  /// Engine Type.
+  /// Engine type.
   ///
   /// Required.
   /// Possible string values are:
@@ -3946,10 +3991,10 @@ class DatabaseEngineInfo {
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
   /// - "POSTGRESQL" : The source engine is PostgreSQL.
-  /// - "ORACLE" : The source engine is Oracle
+  /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
-  /// Engine named version, for e.g. 12.c.1
+  /// Engine named version, for example 12.c.1.
   ///
   /// Required.
   core.String? version;
@@ -3975,33 +4020,34 @@ class DatabaseEngineInfo {
       };
 }
 
-/// The base entity type for all the database related entities The message
-/// contains the entity name, the name of its parent, its type and the specific
-/// details per its type
+/// The base entity type for all the database related entities.
+///
+/// The message contains the entity name, the name of its parent, the entity
+/// type, and the specific details per entity type.
 class DatabaseEntity {
-  /// Function
+  /// Function.
   FunctionEntity? databaseFunction;
 
-  /// Package
+  /// Package.
   PackageEntity? databasePackage;
 
   /// The type of the database entity (table, view, index, ...).
   /// Possible string values are:
-  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type
-  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema
-  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table
-  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column
-  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint
-  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index
-  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger
-  /// - "DATABASE_ENTITY_TYPE_VIEW" : View
-  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence
-  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure
-  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function
-  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym
-  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package
-  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT
-  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View.
   core.String? entityType;
 
   /// Details about entity mappings.
@@ -4018,16 +4064,16 @@ class DatabaseEntity {
   /// Schema.
   SchemaEntity? schema;
 
-  /// Sequence
+  /// Sequence.
   SequenceEntity? sequence;
 
   /// The short name (e.g. table name) of the entity.
   core.String? shortName;
 
-  /// Stored Procedure
+  /// Stored procedure.
   StoredProcedureEntity? storedProcedure;
 
-  /// Synonym
+  /// Synonym.
   SynonymEntity? synonym;
 
   /// Table.
@@ -4035,14 +4081,14 @@ class DatabaseEntity {
 
   /// The type of tree the entity belongs to.
   /// Possible string values are:
-  /// - "TREE_TYPE_UNSPECIFIED" : Tree Type Unspecified.
+  /// - "TREE_TYPE_UNSPECIFIED" : Tree type unspecified.
   /// - "SOURCE" : Tree of entities loaded from a source database.
   /// - "DRAFT" : Tree of entities converted from the source tree using the
   /// mapping rules.
   /// - "DESTINATION" : Tree of entities observed on the destination database.
   core.String? tree;
 
-  /// View
+  /// View.
   ViewEntity? view;
 
   DatabaseEntity({
@@ -4138,7 +4184,7 @@ class DatabaseType {
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
   /// - "POSTGRESQL" : The source engine is PostgreSQL.
-  /// - "ORACLE" : The source engine is Oracle
+  /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
   /// The database provider.
@@ -4200,7 +4246,7 @@ class DescribeDatabaseEntitiesResponse {
   /// The list of database entities for the conversion workspace.
   core.List<DatabaseEntity>? databaseEntities;
 
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -4292,21 +4338,21 @@ class EntityMapping {
   /// Target entity full name.
   ///
   /// The draft entity can also include a column, index or constraint using the
-  /// same naming notation schema.table.column
+  /// same naming notation schema.table.column.
   core.String? draftEntity;
 
   /// Entity mapping log entries.
   ///
   /// Multiple rules can be effective and contribute changes to a converted
-  /// entity such as, a rule can handle the entity name, another rule can handle
+  /// entity, such as a rule can handle the entity name, another rule can handle
   /// an entity type. In addition, rules which did not change the entity are
-  /// also logged along the with the reason preventing them to do so.
+  /// also logged along with the reason preventing them to do so.
   core.List<EntityMappingLogEntry>? mappingLog;
 
   /// Source entity full name.
   ///
   /// The source entity can also be a column, index or constraint using the same
-  /// naming notation schema.table.column
+  /// naming notation schema.table.column.
   core.String? sourceEntity;
 
   EntityMapping({
@@ -4343,10 +4389,10 @@ class EntityMappingLogEntry {
   /// Comment.
   core.String? mappingComment;
 
-  /// Which rule caused it.
+  /// Which rule caused this log entry.
   core.String? ruleId;
 
-  /// Rule revision id
+  /// Rule revision ID.
   core.String? ruleRevisionId;
 
   EntityMappingLogEntry({
@@ -4395,18 +4441,51 @@ class EntityMappingLogEntry {
 /// information.
 typedef Expr = $Expr;
 
+/// Response message for a 'FetchStaticIps' request.
+class FetchStaticIpsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of static IPs.
+  core.List<core.String>? staticIps;
+
+  FetchStaticIpsResponse({
+    this.nextPageToken,
+    this.staticIps,
+  });
+
+  FetchStaticIpsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          staticIps: json_.containsKey('staticIps')
+              ? (json_['staticIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (staticIps != null) 'staticIps': staticIps!,
+      };
+}
+
 /// Forward SSH Tunnel connectivity.
 typedef ForwardSshTunnelConnectivity = $ForwardSshTunnelConnectivity;
 
 /// Function's parent is a schema.
 class FunctionEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The SQL code which creates the function
+  /// The SQL code which creates the function.
   core.String? sqlCode;
 
   FunctionEntity({
@@ -4440,7 +4519,7 @@ class GenerateSshScriptRequest {
   /// The VM creation configuration
   VmCreationConfig? vmCreationConfig;
 
-  /// The port that will be open on the bastion host
+  /// The port that will be open on the bastion host.
   core.int? vmPort;
 
   /// The VM selection configuration
@@ -4482,15 +4561,16 @@ class ImportMappingRulesRequest {
   /// import operation.
   core.bool? autoCommit;
 
-  /// One or more rules files
+  /// One or more rules files.
   core.List<RulesFile>? rulesFiles;
 
   /// The format of the rules content file.
   /// Possible string values are:
-  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified Rules Format
-  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : Harbour Bridge
-  /// Session file
-  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : ORA2PG config file
+  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified rules format.
+  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : HarbourBridge
+  /// session file.
+  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : Ora2Pg configuration
+  /// file.
   core.String? rulesFormat;
 
   ImportMappingRulesRequest({
@@ -4522,17 +4602,18 @@ class ImportMappingRulesRequest {
       };
 }
 
-/// Details regarding an Import Rules background job
+/// Details regarding an Import Rules background job.
 class ImportRulesJobDetails {
-  /// The requested file format
+  /// The requested file format.
   /// Possible string values are:
-  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified Rules Format
-  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : Harbour Bridge
-  /// Session file
-  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : ORA2PG config file
+  /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified rules format.
+  /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : HarbourBridge
+  /// session file.
+  /// - "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE" : Ora2Pg configuration
+  /// file.
   core.String? fileFormat;
 
-  /// File names used for the import rules job
+  /// File names used for the import rules job.
   core.List<core.String>? files;
 
   ImportRulesJobDetails({
@@ -4561,23 +4642,23 @@ class ImportRulesJobDetails {
 /// Index is not used as an independent entity, it is retrieved as part of a
 /// Table entity.
 class IndexEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The name of the index
+  /// The name of the index.
   core.String? name;
 
-  /// Table columns used as part of the Index for e.g. B-TREE index should list
-  /// the columns which constitutes the index.
+  /// Table columns used as part of the Index, for example B-TREE index should
+  /// list the columns which constitutes the index.
   core.List<core.String>? tableColumns;
 
-  /// Type of index - e.g. B-TREE
+  /// Type of index, for example B-TREE.
   core.String? type;
 
-  /// boolean value indicating whether the index is unique
+  /// Boolean value indicating whether the index is unique.
   core.bool? unique;
 
   IndexEntity({
@@ -4618,7 +4699,7 @@ class ListConnectionProfilesResponse {
   /// The response list of connection profiles.
   core.List<ConnectionProfile>? connectionProfiles;
 
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -4663,7 +4744,7 @@ class ListConversionWorkspacesResponse {
   /// The list of conversion workspace objects.
   core.List<ConversionWorkspace>? conversionWorkspaces;
 
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -4740,7 +4821,7 @@ class ListMigrationJobsResponse {
   /// The list of migration jobs objects.
   core.List<MigrationJob>? migrationJobs;
 
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -4813,7 +4894,7 @@ class ListOperationsResponse {
 
 /// Response message for 'ListPrivateConnections' request.
 class ListPrivateConnectionsResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -5426,7 +5507,7 @@ class OracleConnectionProfile {
 
 /// Package's parent is a schema.
 class PackageEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5438,7 +5519,7 @@ class PackageEntity {
   /// body is mandatory.
   core.String? packageBody;
 
-  /// The SQL code which creates the package
+  /// The SQL code which creates the package.
   core.String? packageSqlCode;
 
   PackageEntity({
@@ -5815,10 +5896,10 @@ class PrivateConnection {
   /// "wrench", "mass": "1.3kg", "count": "3" }`.
   core.Map<core.String, core.String>? labels;
 
-  /// The resource's name.
+  /// The name of the resource.
   core.String? name;
 
-  /// The state of the Private Connection.
+  /// The state of the private connection.
   ///
   /// Output only.
   /// Possible string values are:
@@ -5839,7 +5920,7 @@ class PrivateConnection {
   /// Output only.
   core.String? updateTime;
 
-  /// VPC Peering Config.
+  /// VPC peering configuration.
   VpcPeeringConfig? vpcPeeringConfig;
 
   PrivateConnection({
@@ -6009,15 +6090,15 @@ class ReverseSshConnectivity {
 /// Request message for 'RollbackConversionWorkspace' request.
 typedef RollbackConversionWorkspaceRequest = $Empty;
 
-/// Details of a single rules file
+/// Details of a single rules file.
 class RulesFile {
-  /// The text content of the rules that needs to be converted
+  /// The text content of the rules that needs to be converted.
   core.String? rulesContent;
 
   /// The filename of the rules that needs to be converted.
   ///
-  /// This is used mainly so future logs of the import rules job will contain
-  /// this detail and can therefore be searched by it later
+  /// The filename is used mainly so that future logs of the import rules job
+  /// contain it, and can therefore be searched by it.
   core.String? rulesSourceFilename;
 
   RulesFile({
@@ -6043,14 +6124,14 @@ class RulesFile {
 }
 
 /// Schema typically has no parent entity, but can have a parent entity
-/// DatabaseInstance (for database engines which supports it).
+/// DatabaseInstance (for database engines which support it).
 ///
-/// For some database engines the term schema and user can be used
+/// For some database engines, the terms schema and user can be used
 /// interchangeably when they refer to a namespace or a collection of other
 /// database entities. Can store additional information which is schema
 /// specific.
 class SchemaEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6137,9 +6218,9 @@ class SeedConversionWorkspaceRequest {
       };
 }
 
-/// Details regarding a Seed background job
+/// Details regarding a Seed background job.
 class SeedJobDetails {
-  /// The connection profile which was used for the seed job
+  /// The connection profile which was used for the seed job.
   core.String? connectionProfile;
 
   SeedJobDetails({
@@ -6160,22 +6241,23 @@ class SeedJobDetails {
 
 /// Sequence's parent is a schema.
 class SequenceEntity {
-  /// Indicates number of entries to cache / precreate
+  /// Indicates number of entries to cache / precreate.
   core.String? cache;
 
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// Indicates whether the sequence value should cycle through
+  /// Indicates whether the sequence value should cycle through.
   core.bool? cycle;
 
-  /// Increment value for the sequence
+  /// Increment value for the sequence.
   core.String? increment;
 
-  /// Maximum number for the sequence represented as bytes to accommodate large
+  /// Maximum number for the sequence represented as bytes to accommodate large.
+  ///
   /// numbers
   core.String? maxValue;
   core.List<core.int> get maxValueAsBytes => convert_1.base64.decode(maxValue!);
@@ -6187,7 +6269,8 @@ class SequenceEntity {
         .replaceAll('+', '-');
   }
 
-  /// Minimum number for the sequence represented as bytes to accommodate large
+  /// Minimum number for the sequence represented as bytes to accommodate large.
+  ///
   /// numbers
   core.String? minValue;
   core.List<core.int> get minValueAsBytes => convert_1.base64.decode(minValue!);
@@ -6199,7 +6282,8 @@ class SequenceEntity {
         .replaceAll('+', '-');
   }
 
-  /// Start number for the sequence represented as bytes to accommodate large
+  /// Start number for the sequence represented as bytes to accommodate large.
+  ///
   /// numbers
   core.String? startValue;
   core.List<core.int> get startValueAsBytes =>
@@ -6484,10 +6568,10 @@ class SslConfig {
 /// Request message for 'StartMigrationJob' request.
 typedef StartMigrationJobRequest = $Empty;
 
-/// The source database will allow incoming connections from the destination
-/// database's public IP.
+/// The source database will allow incoming connections from the public IP of
+/// the destination database.
 ///
-/// You can retrieve the Cloud SQL instance's public IP from the Cloud SQL
+/// You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL
 /// console or using Cloud SQL APIs. No additional configuration is required.
 typedef StaticIpConnectivity = $Empty;
 
@@ -6508,13 +6592,13 @@ typedef StopMigrationJobRequest = $Empty;
 
 /// Stored procedure's parent is a schema.
 class StoredProcedureEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The SQL code which creates the stored procedure
+  /// The SQL code which creates the stored procedure.
   core.String? sqlCode;
 
   StoredProcedureEntity({
@@ -6540,33 +6624,34 @@ class StoredProcedureEntity {
 
 /// Synonym's parent is a schema.
 class SynonymEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The name of the entity for which the synonym is being created (the source)
+  /// The name of the entity for which the synonym is being created (the
+  /// source).
   core.String? sourceEntity;
 
   /// The type of the entity for which the synonym is being created (usually a
-  /// table or a sequence)
+  /// table or a sequence).
   /// Possible string values are:
-  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type
-  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema
-  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table
-  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column
-  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint
-  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index
-  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger
-  /// - "DATABASE_ENTITY_TYPE_VIEW" : View
-  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence
-  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure
-  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function
-  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym
-  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package
-  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT
-  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View.
   core.String? sourceType;
 
   SynonymEntity({
@@ -6597,22 +6682,22 @@ class SynonymEntity {
 
 /// Table's parent is a schema.
 class TableEntity {
-  /// Table Columns.
+  /// Table columns.
   core.List<ColumnEntity>? columns;
 
-  /// Comment associated with the table
+  /// Comment associated with the table.
   core.String? comment;
 
-  /// Table Constraints.
+  /// Table constraints.
   core.List<ConstraintEntity>? constraints;
 
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// Table Indices.
+  /// Table indices.
   core.List<IndexEntity>? indices;
 
   /// Table triggers.
@@ -6680,23 +6765,24 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// Trigger is not used as an independent entity, it is retrieved as part of a
 /// Table entity.
 class TriggerEntity {
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
-  /// The name of the trigger
+  /// The name of the trigger.
   core.String? name;
 
-  /// The SQL code which creates the trigger
+  /// The SQL code which creates the trigger.
   core.String? sqlCode;
 
-  /// Indicates when the trigger fires, e.g. BEFORE STATEMENT, AFTER EACH ROW
+  /// Indicates when the trigger fires, for example BEFORE STATEMENT, AFTER EACH
+  /// ROW.
   core.String? triggerType;
 
-  /// The DML, DDL, or database events that fires the trigger, e.g. INSERT,
-  /// UPDATE
+  /// The DML, DDL, or database events that fire the trigger, for example
+  /// INSERT, UPDATE.
   core.List<core.String>? triggeringEvents;
 
   TriggerEntity({
@@ -6779,10 +6865,10 @@ typedef VerifyMigrationJobRequest = $Empty;
 
 /// View's parent is a schema.
 class ViewEntity {
-  /// View Constraints.
+  /// View constraints.
   core.List<ConstraintEntity>? constraints;
 
-  /// Custom engine specific features
+  /// Custom engine specific features.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6882,7 +6968,7 @@ class VmSelectionConfig {
       };
 }
 
-/// The VPC Peering configuration is used to create VPC peering with the
+/// The VPC peering configuration is used to create VPC peering with the
 /// consumer's VPC.
 class VpcPeeringConfig {
   /// A free subnet for peering.
@@ -6892,7 +6978,8 @@ class VpcPeeringConfig {
   /// Required.
   core.String? subnet;
 
-  /// Fully qualified name of the VPC DMS will peer to.
+  /// Fully qualified name of the VPC that Database Migration Service will peer
+  /// to.
   ///
   /// Required.
   core.String? vpcName;

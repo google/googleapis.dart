@@ -1707,6 +1707,7 @@ class Operation {
   /// additional validation logic. It should only be used during the onboarding
   /// process. It is only available to Google internal services, and the service
   /// must be approved by chemist-dev@google.com in order to use this level.
+  /// - "PROMOTED" : Used internally by Chemist.
   core.String? importance;
 
   /// Labels describing the operation.
