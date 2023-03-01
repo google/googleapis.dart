@@ -205,6 +205,45 @@ class CustomersResource {
     return SasPortalCustomer.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Creates a new SAS deployment through the GCP workflow.
+  ///
+  /// Creates a SAS organization if an organization match is not found.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalProvisionDeploymentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalProvisionDeploymentResponse> provisionDeployment(
+    SasPortalProvisionDeploymentRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:provisionDeployment';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SasPortalProvisionDeploymentResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CustomersDeploymentsResource {
@@ -4289,6 +4328,20 @@ class SasPortalPolicy {
         if (etag != null) 'etag': etag!,
       };
 }
+
+/// Request for \[ProvisionDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\]. No input
+/// is needed, because GCP Project, Organization Info, and caller’s GAIA ID
+/// should be retrieved from the RPC handler, and used as inputs to create a new
+/// SAS organization (if not exists) and a new SAS deployment.
+typedef SasPortalProvisionDeploymentRequest = $Empty;
+
+/// Response for \[ProvisionDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\].
+typedef SasPortalProvisionDeploymentResponse
+    = $SasPortalProvisionDeploymentResponse;
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {

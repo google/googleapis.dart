@@ -1341,11 +1341,10 @@ class CapacityCommitment {
   /// Output only.
   core.String? commitmentStartTime;
 
-  /// Edition of the capacity commitment.
+  /// Do not use.
   /// Possible string values are:
-  /// - "EDITION_UNSPECIFIED" : Default value, only for legacy reservations and
-  /// capacity commitments.
-  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "EDITION_UNSPECIFIED" : Do not use.
+  /// - "ENTERPRISE" : Do not use.
   core.String? edition;
 
   /// For FAILED commitment plan, provides the reason of failure.
@@ -1389,12 +1388,7 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
-  /// if edition is specified to values other than EDITION_UNSPECIFIED.
-  /// Otherwise CreateCapacityCommitmentRequest or
-  /// UpdateCapacityCommitmentRequest will be rejected with error code
-  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
-  /// commitment will be removed at the end of its commitment period.
+  /// - "NONE" : Do not use.
   core.String? plan;
 
   /// The plan this capacity commitment is converted to after
@@ -1418,12 +1412,7 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
-  /// if edition is specified to values other than EDITION_UNSPECIFIED.
-  /// Otherwise CreateCapacityCommitmentRequest or
-  /// UpdateCapacityCommitmentRequest will be rejected with error code
-  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
-  /// commitment will be removed at the end of its commitment period.
+  /// - "NONE" : Do not use.
   core.String? renewalPlan;
 
   /// Number of slots in this commitment.
@@ -1686,11 +1675,10 @@ class Reservation {
   /// Output only.
   core.String? creationTime;
 
-  /// Edition of the reservation.
+  /// Do not use.
   /// Possible string values are:
-  /// - "EDITION_UNSPECIFIED" : Default value, only for legacy reservations and
-  /// capacity commitments.
-  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "EDITION_UNSPECIFIED" : Do not use.
+  /// - "ENTERPRISE" : Do not use.
   core.String? edition;
 
   /// If false, any query or pipeline job using this reservation will use idle

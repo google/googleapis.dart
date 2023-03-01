@@ -936,8 +936,78 @@ class ProjectsLocationsRuntimeVersionsResource {
   }
 }
 
+/// A TPU accelerator configuration.
+class AcceleratorConfig {
+  /// Topology of TPU in chips.
+  ///
+  /// Required.
+  core.String? topology;
+
+  /// Type of TPU.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified version.
+  /// - "V2" : TPU v2.
+  /// - "V3" : TPU v3.
+  /// - "V4" : TPU v4.
+  core.String? type;
+
+  AcceleratorConfig({
+    this.topology,
+    this.type,
+  });
+
+  AcceleratorConfig.fromJson(core.Map json_)
+      : this(
+          topology: json_.containsKey('topology')
+              ? json_['topology'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (topology != null) 'topology': topology!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// A accelerator type that a Node can be configured with.
-typedef AcceleratorType = $AcceleratorType;
+class AcceleratorType {
+  /// The accelerator config.
+  core.List<AcceleratorConfig>? acceleratorConfigs;
+
+  /// The resource name.
+  core.String? name;
+
+  /// the accelerator type.
+  core.String? type;
+
+  AcceleratorType({
+    this.acceleratorConfigs,
+    this.name,
+    this.type,
+  });
+
+  AcceleratorType.fromJson(core.Map json_)
+      : this(
+          acceleratorConfigs: json_.containsKey('acceleratorConfigs')
+              ? (json_['acceleratorConfigs'] as core.List)
+                  .map((value) => AcceleratorConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorConfigs != null)
+          'acceleratorConfigs': acceleratorConfigs!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// An access config attached to the TPU worker.
 class AccessConfig {
@@ -1441,6 +1511,9 @@ class NetworkEndpoint {
 
 /// A TPU instance.
 class Node {
+  /// The AccleratorConfig for the TPU Node.
+  AcceleratorConfig? acceleratorConfig;
+
   /// The type of hardware accelerators associated with this node.
   ///
   /// Required.
@@ -1578,6 +1651,7 @@ class Node {
   core.List<core.String>? tags;
 
   Node({
+    this.acceleratorConfig,
     this.acceleratorType,
     this.apiVersion,
     this.cidrBlock,
@@ -1603,6 +1677,10 @@ class Node {
 
   Node.fromJson(core.Map json_)
       : this(
+          acceleratorConfig: json_.containsKey('acceleratorConfig')
+              ? AcceleratorConfig.fromJson(json_['acceleratorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           acceleratorType: json_.containsKey('acceleratorType')
               ? json_['acceleratorType'] as core.String
               : null,
@@ -1689,6 +1767,7 @@ class Node {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (cidrBlock != null) 'cidrBlock': cidrBlock!,

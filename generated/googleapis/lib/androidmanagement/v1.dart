@@ -85,7 +85,8 @@ class EnterprisesResource {
 
   /// Creates an enterprise.
   ///
-  /// This is the last step in the enterprise signup flow.
+  /// This is the last step in the enterprise signup flow. See also:
+  /// SigninDetail
   ///
   /// [request] - The metadata request object.
   ///
@@ -288,6 +289,8 @@ class EnterprisesResource {
   }
 
   /// Updates an enterprise.
+  ///
+  /// See also: SigninDetail
   ///
   /// [request] - The metadata request object.
   ///
@@ -3916,6 +3919,8 @@ class Enterprise {
   core.List<core.String>? enabledNotificationTypes;
 
   /// The name of the enterprise displayed to users.
+  ///
+  /// This field has a maximum length of 100 characters.
   core.String? enterpriseDisplayName;
 
   /// An image displayed as a logo during device provisioning.

@@ -303,6 +303,54 @@ class CustomersReportsResource {
 
   CustomersReportsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Count of Chrome Browsers that have been recently enrolled, have new policy
+  /// to be synced, or have no recent activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer" prefixed with
+  /// "customers/".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit. If omitted, all
+  /// data will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>
+      countChromeBrowsersNeedingAttention(
+    core.String customer, {
+    core.String? orgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeBrowsersNeedingAttention';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of the number of devices expiring in each month of the
   /// selected time frame.
   ///
@@ -602,6 +650,147 @@ class CustomersReportsResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a summary of printing done by each printer.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer ID prefixed with "customers/" or
+  /// "customers/my_customer" to use the customer associated to the account
+  /// making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter results, AND-separated fields in EBNF
+  /// syntax. Note: OR operations are not supported in this filter. Note: Only
+  /// \>= and \<= comparators are supported in this filter. Supported filter
+  /// fields: * completion_time
+  ///
+  /// [orderBy] - Field used to order results. If omitted, results will be
+  /// ordered in ascending order of the 'printer' field. Supported order_by
+  /// fields: * printer * job_count * device_count * user_count
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 100.
+  ///
+  /// [pageToken] - Token to specify the page of the response to be returned.
+  ///
+  /// [printerOrgUnitId] - The ID of the organizational unit for printers. If
+  /// specified, only data for printers from the specified organizational unit
+  /// will be returned. If omitted, data for printers from all organizational
+  /// units will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountPrintJobsByPrinterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>
+      countPrintJobsByPrinter(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? printerOrgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (printerOrgUnitId != null) 'printerOrgUnitId': [printerOrgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countPrintJobsByPrinter';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a summary of printing done by each user.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer ID prefixed with "customers/" or
+  /// "customers/my_customer" to use the customer associated to the account
+  /// making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter results, AND-separated fields in EBNF
+  /// syntax. Note: OR operations are not supported in this filter. Note: Only
+  /// \>= and \<= comparators are supported in this filter. Supported filter
+  /// fields: * completion_time
+  ///
+  /// [orderBy] - Field used to order results. If omitted, results will be
+  /// ordered in ascending order of the 'user_email' field. Supported order_by
+  /// fields: * user_email * job_count * printer_count * device_count
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 100.
+  ///
+  /// [pageToken] - Token to specify the page of the response to be returned.
+  ///
+  /// [printerOrgUnitId] - The ID of the organizational unit for printers. If
+  /// specified, only print jobs initiated with printers from the specified
+  /// organizational unit will be counted. If omitted, all print jobs will be
+  /// counted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1CountPrintJobsByUserResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountPrintJobsByUserResponse>
+      countPrintJobsByUser(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? printerOrgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (printerOrgUnitId != null) 'printerOrgUnitId': [printerOrgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countPrintJobsByUser';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2111,6 +2300,48 @@ class GoogleChromeManagementV1CountChromeAppRequestsResponse {
       };
 }
 
+/// Response containing counts for browsers that need attention.
+class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse {
+  /// Number of browsers that haven’t had any recent activity
+  core.String? noRecentActivityCount;
+
+  /// Number of browsers that are pending an OS update
+  core.String? pendingBrowserUpdateCount;
+
+  /// Number of browsers that have been recently enrolled
+  core.String? recentlyEnrolledCount;
+
+  GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse({
+    this.noRecentActivityCount,
+    this.pendingBrowserUpdateCount,
+    this.recentlyEnrolledCount,
+  });
+
+  GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse.fromJson(
+      core.Map json_)
+      : this(
+          noRecentActivityCount: json_.containsKey('noRecentActivityCount')
+              ? json_['noRecentActivityCount'] as core.String
+              : null,
+          pendingBrowserUpdateCount:
+              json_.containsKey('pendingBrowserUpdateCount')
+                  ? json_['pendingBrowserUpdateCount'] as core.String
+                  : null,
+          recentlyEnrolledCount: json_.containsKey('recentlyEnrolledCount')
+              ? json_['recentlyEnrolledCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (noRecentActivityCount != null)
+          'noRecentActivityCount': noRecentActivityCount!,
+        if (pendingBrowserUpdateCount != null)
+          'pendingBrowserUpdateCount': pendingBrowserUpdateCount!,
+        if (recentlyEnrolledCount != null)
+          'recentlyEnrolledCount': recentlyEnrolledCount!,
+      };
+}
+
 /// Response containing a list of devices expiring in each month of a selected
 /// time frame.
 ///
@@ -2354,6 +2585,92 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
         if (installedApps != null) 'installedApps': installedApps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Response containing a summary printing report for each printer from the
+/// specified organizational unit for the requested time interval.
+class GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
+  /// Pagination token for requesting the next page.
+  core.String? nextPageToken;
+
+  /// List of PrinterReports matching request.
+  core.List<GoogleChromeManagementV1PrinterReport>? printerReports;
+
+  /// Total number of printers matching request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1CountPrintJobsByPrinterResponse({
+    this.nextPageToken,
+    this.printerReports,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          printerReports: json_.containsKey('printerReports')
+              ? (json_['printerReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1PrinterReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printerReports != null) 'printerReports': printerReports!,
+        if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Response containing a summary printing report for each user that has
+/// initiated a print job with a printer from the specified organizational unit
+/// during the requested time interval.
+class GoogleChromeManagementV1CountPrintJobsByUserResponse {
+  /// Pagination token for requesting the next page.
+  core.String? nextPageToken;
+
+  /// Total number of users matching request.
+  core.String? totalSize;
+
+  /// List of UserPrintReports matching request.
+  core.List<GoogleChromeManagementV1UserPrintReport>? userPrintReports;
+
+  GoogleChromeManagementV1CountPrintJobsByUserResponse({
+    this.nextPageToken,
+    this.totalSize,
+    this.userPrintReports,
+  });
+
+  GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.String
+              : null,
+          userPrintReports: json_.containsKey('userPrintReports')
+              ? (json_['userPrintReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1UserPrintReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+        if (userPrintReports != null) 'userPrintReports': userPrintReports!,
       };
 }
 
@@ -2840,12 +3157,100 @@ class GoogleChromeManagementV1DiskInfo {
       };
 }
 
+/// Information of a display device.
+class GoogleChromeManagementV1DisplayDevice {
+  /// Display height in millimeters.
+  ///
+  /// Output only.
+  core.int? displayHeightMm;
+
+  /// Display device name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Display width in millimeters.
+  ///
+  /// Output only.
+  core.int? displayWidthMm;
+
+  /// Is display internal or not.
+  ///
+  /// Output only.
+  core.bool? internal;
+
+  /// Year of manufacture.
+  ///
+  /// Output only.
+  core.int? manufactureYear;
+
+  /// Three letter manufacturer ID.
+  ///
+  /// Output only.
+  core.String? manufacturerId;
+
+  /// Manufacturer product code.
+  ///
+  /// Output only.
+  core.int? modelId;
+
+  GoogleChromeManagementV1DisplayDevice({
+    this.displayHeightMm,
+    this.displayName,
+    this.displayWidthMm,
+    this.internal,
+    this.manufactureYear,
+    this.manufacturerId,
+    this.modelId,
+  });
+
+  GoogleChromeManagementV1DisplayDevice.fromJson(core.Map json_)
+      : this(
+          displayHeightMm: json_.containsKey('displayHeightMm')
+              ? json_['displayHeightMm'] as core.int
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          displayWidthMm: json_.containsKey('displayWidthMm')
+              ? json_['displayWidthMm'] as core.int
+              : null,
+          internal: json_.containsKey('internal')
+              ? json_['internal'] as core.bool
+              : null,
+          manufactureYear: json_.containsKey('manufactureYear')
+              ? json_['manufactureYear'] as core.int
+              : null,
+          manufacturerId: json_.containsKey('manufacturerId')
+              ? json_['manufacturerId'] as core.String
+              : null,
+          modelId: json_.containsKey('modelId')
+              ? json_['modelId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayHeightMm != null) 'displayHeightMm': displayHeightMm!,
+        if (displayName != null) 'displayName': displayName!,
+        if (displayWidthMm != null) 'displayWidthMm': displayWidthMm!,
+        if (internal != null) 'internal': internal!,
+        if (manufactureYear != null) 'manufactureYear': manufactureYear!,
+        if (manufacturerId != null) 'manufacturerId': manufacturerId!,
+        if (modelId != null) 'modelId': modelId!,
+      };
+}
+
 /// Information for a display.
 class GoogleChromeManagementV1DisplayInfo {
   /// Represents the graphics card device id.
   ///
   /// Output only.
   core.String? deviceId;
+
+  /// Display device name.
+  ///
+  /// Output only.
+  core.String? displayName;
 
   /// Indicates if display is internal or not.
   ///
@@ -2869,6 +3274,7 @@ class GoogleChromeManagementV1DisplayInfo {
 
   GoogleChromeManagementV1DisplayInfo({
     this.deviceId,
+    this.displayName,
     this.isInternal,
     this.refreshRate,
     this.resolutionHeight,
@@ -2879,6 +3285,9 @@ class GoogleChromeManagementV1DisplayInfo {
       : this(
           deviceId: json_.containsKey('deviceId')
               ? json_['deviceId'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           isInternal: json_.containsKey('isInternal')
               ? json_['isInternal'] as core.bool
@@ -2896,6 +3305,7 @@ class GoogleChromeManagementV1DisplayInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
+        if (displayName != null) 'displayName': displayName!,
         if (isInternal != null) 'isInternal': isInternal!,
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (resolutionHeight != null) 'resolutionHeight': resolutionHeight!,
@@ -3006,8 +3416,26 @@ class GoogleChromeManagementV1GraphicsInfo {
   /// Output only.
   GoogleChromeManagementV1GraphicsAdapterInfo? adapterInfo;
 
+  /// Information about the display(s) of the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1DisplayDevice>? displayDevices;
+
+  /// Is ePrivacy screen supported or not.
+  ///
+  /// Output only.
+  core.bool? eprivacySupported;
+
+  /// Information about the internal touch screen(s) of the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TouchScreenInfo? touchScreenInfo;
+
   GoogleChromeManagementV1GraphicsInfo({
     this.adapterInfo,
+    this.displayDevices,
+    this.eprivacySupported,
+    this.touchScreenInfo,
   });
 
   GoogleChromeManagementV1GraphicsInfo.fromJson(core.Map json_)
@@ -3016,10 +3444,28 @@ class GoogleChromeManagementV1GraphicsInfo {
               ? GoogleChromeManagementV1GraphicsAdapterInfo.fromJson(
                   json_['adapterInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          displayDevices: json_.containsKey('displayDevices')
+              ? (json_['displayDevices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DisplayDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          eprivacySupported: json_.containsKey('eprivacySupported')
+              ? json_['eprivacySupported'] as core.bool
+              : null,
+          touchScreenInfo: json_.containsKey('touchScreenInfo')
+              ? GoogleChromeManagementV1TouchScreenInfo.fromJson(
+                  json_['touchScreenInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adapterInfo != null) 'adapterInfo': adapterInfo!,
+        if (displayDevices != null) 'displayDevices': displayDevices!,
+        if (eprivacySupported != null) 'eprivacySupported': eprivacySupported!,
+        if (touchScreenInfo != null) 'touchScreenInfo': touchScreenInfo!,
       };
 }
 
@@ -3943,6 +4389,72 @@ class GoogleChromeManagementV1PeripheralsReport {
         if (reportTime != null) 'reportTime': reportTime!,
         if (usbPeripheralReport != null)
           'usbPeripheralReport': usbPeripheralReport!,
+      };
+}
+
+/// Report for CountPrintJobsByPrinter, contains statistics on printer usage.
+///
+/// Contains the total number of print jobs initiated with this printer, the
+/// number of users and the number of devices that have initiated at least one
+/// print job with this printer.
+class GoogleChromeManagementV1PrinterReport {
+  /// Number of chrome devices that have been used to send print jobs to the
+  /// specified printer.
+  core.String? deviceCount;
+
+  /// Number of print jobs sent to the printer.
+  core.String? jobCount;
+
+  /// Printer name.
+  core.String? printer;
+
+  /// Printer API ID.
+  core.String? printerId;
+
+  /// Printer model.
+  core.String? printerModel;
+
+  /// Number of users that have sent print jobs to the printer.
+  core.String? userCount;
+
+  GoogleChromeManagementV1PrinterReport({
+    this.deviceCount,
+    this.jobCount,
+    this.printer,
+    this.printerId,
+    this.printerModel,
+    this.userCount,
+  });
+
+  GoogleChromeManagementV1PrinterReport.fromJson(core.Map json_)
+      : this(
+          deviceCount: json_.containsKey('deviceCount')
+              ? json_['deviceCount'] as core.String
+              : null,
+          jobCount: json_.containsKey('jobCount')
+              ? json_['jobCount'] as core.String
+              : null,
+          printer: json_.containsKey('printer')
+              ? json_['printer'] as core.String
+              : null,
+          printerId: json_.containsKey('printerId')
+              ? json_['printerId'] as core.String
+              : null,
+          printerModel: json_.containsKey('printerModel')
+              ? json_['printerModel'] as core.String
+              : null,
+          userCount: json_.containsKey('userCount')
+              ? json_['userCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCount != null) 'deviceCount': deviceCount!,
+        if (jobCount != null) 'jobCount': jobCount!,
+        if (printer != null) 'printer': printer!,
+        if (printerId != null) 'printerId': printerId!,
+        if (printerModel != null) 'printerModel': printerModel!,
+        if (userCount != null) 'userCount': userCount!,
       };
 }
 
@@ -4890,6 +5402,86 @@ class GoogleChromeManagementV1TotalMemoryEncryptionInfo {
       };
 }
 
+/// Information of an internal touch screen device.
+class GoogleChromeManagementV1TouchScreenDevice {
+  /// Touch screen device display name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Touch screen device is stylus capable or not.
+  ///
+  /// Output only.
+  core.bool? stylusCapable;
+
+  /// Number of touch points supported on the device.
+  ///
+  /// Output only.
+  core.int? touchPointCount;
+
+  GoogleChromeManagementV1TouchScreenDevice({
+    this.displayName,
+    this.stylusCapable,
+    this.touchPointCount,
+  });
+
+  GoogleChromeManagementV1TouchScreenDevice.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          stylusCapable: json_.containsKey('stylusCapable')
+              ? json_['stylusCapable'] as core.bool
+              : null,
+          touchPointCount: json_.containsKey('touchPointCount')
+              ? json_['touchPointCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (stylusCapable != null) 'stylusCapable': stylusCapable!,
+        if (touchPointCount != null) 'touchPointCount': touchPointCount!,
+      };
+}
+
+/// Information on the device touch screen.
+class GoogleChromeManagementV1TouchScreenInfo {
+  /// List of the internal touch screen devices.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1TouchScreenDevice>? devices;
+
+  /// Touchpad library name used by the input stack.
+  ///
+  /// Output only.
+  core.String? touchpadLibrary;
+
+  GoogleChromeManagementV1TouchScreenInfo({
+    this.devices,
+    this.touchpadLibrary,
+  });
+
+  GoogleChromeManagementV1TouchScreenInfo.fromJson(core.Map json_)
+      : this(
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TouchScreenDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          touchpadLibrary: json_.containsKey('touchpadLibrary')
+              ? json_['touchpadLibrary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (devices != null) 'devices': devices!,
+        if (touchpadLibrary != null) 'touchpadLibrary': touchpadLibrary!,
+      };
+}
+
 /// USB connected peripheral report.
 class GoogleChromeManagementV1UsbPeripheralReport {
   /// Categories the device belongs to https://www.usb.org/defined-class-codes
@@ -4976,6 +5568,63 @@ class GoogleChromeManagementV1UsbPeripheralReport {
         if (subclassId != null) 'subclassId': subclassId!,
         if (vendor != null) 'vendor': vendor!,
         if (vid != null) 'vid': vid!,
+      };
+}
+
+/// Report for CountPrintJobsByUser, contains printing statistics for a user.
+///
+/// Contains the number of printers, the number of devices used to initiate
+/// print jobs, and the number of print jobs initiated.
+class GoogleChromeManagementV1UserPrintReport {
+  /// Number of chrome devices that have been used to initiate print jobs by the
+  /// user.
+  core.String? deviceCount;
+
+  /// Number of print jobs initiated by the user.
+  core.String? jobCount;
+
+  /// Number of printers used by the user.
+  core.String? printerCount;
+
+  /// The primary e-mail address of the user.
+  core.String? userEmail;
+
+  /// The unique Directory API ID of the user.
+  core.String? userId;
+
+  GoogleChromeManagementV1UserPrintReport({
+    this.deviceCount,
+    this.jobCount,
+    this.printerCount,
+    this.userEmail,
+    this.userId,
+  });
+
+  GoogleChromeManagementV1UserPrintReport.fromJson(core.Map json_)
+      : this(
+          deviceCount: json_.containsKey('deviceCount')
+              ? json_['deviceCount'] as core.String
+              : null,
+          jobCount: json_.containsKey('jobCount')
+              ? json_['jobCount'] as core.String
+              : null,
+          printerCount: json_.containsKey('printerCount')
+              ? json_['printerCount'] as core.String
+              : null,
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
+              : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCount != null) 'deviceCount': deviceCount!,
+        if (jobCount != null) 'jobCount': jobCount!,
+        if (printerCount != null) 'printerCount': printerCount!,
+        if (userEmail != null) 'userEmail': userEmail!,
+        if (userId != null) 'userId': userId!,
       };
 }
 

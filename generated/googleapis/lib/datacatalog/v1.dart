@@ -845,15 +845,16 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to
-  /// the Data Catalog.
+  /// Imports entries from a source, such as data previously dumped into a Cloud
+  /// Storage bucket, into Data Catalog.
   ///
-  /// Dump here is a snapshot of the third-party system state, that needs to be
-  /// ingested in the Data Catalog. Import of entries is a sync operation that
-  /// reconciles state of the third-party system and Data Catalog. ImportEntries
-  /// is a long-running operation done in the background, so this method returns
-  /// long-running operation resource. The resource can be queried with
-  /// Operations.GetOperation which contains metadata and response.
+  /// Import of entries is a sync operation that reconciles the state of the
+  /// third-party system with the Data Catalog. `ImportEntries` accepts source
+  /// data snapshots of a third-party system. Snapshot should be delivered as a
+  /// .wire or base65-encoded .txt file containing a sequence of Protocol Buffer
+  /// messages of DumpItem type. `ImportEntries` returns a long-running
+  /// operation resource that can be queried with Operations.GetOperation to
+  /// return ImportEntriesMetadata and an ImportEntriesResponse message.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1446,15 +1447,13 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Reconciles tags created with a given tag template on a given Entry.
+  /// `ReconcileTags` creates or updates a list of tags on the entry.
   ///
-  /// Reconciliation is an operation that given a list of tags creates or
-  /// updates them on the entry. Additionally, the operation is also able to
-  /// delete tags not mentioned in the tag list. It can be achieved by setting
-  /// force_delete_missing parameter. Reconciliation is a long-running operation
-  /// done in the background, so this method returns long-running operation
-  /// resource. The resource can be queried with Operations.GetOperation which
-  /// contains metadata and response.
+  /// If the ReconcileTagsRequest.force_delete_missing parameter is set, the
+  /// operation deletes tags not included in the input tag list. `ReconcileTags`
+  /// returns a long-running operation resource that can be queried with
+  /// Operations.GetOperation to return ReconcileTagsMetadata and a
+  /// ReconcileTagsResponse message.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5765,24 +5764,22 @@ class GoogleCloudDatacatalogV1PolicyTag {
 
 /// Request message for ReconcileTags.
 class GoogleCloudDatacatalogV1ReconcileTagsRequest {
-  /// If set to true deletes from the entry tags related to given tag template
-  /// and not mentioned in the tags source.
+  /// If set to `true`, deletes entry tags related to a tag template not listed
+  /// in the tags source from an entry.
   ///
-  /// If set to false only creates and updates of the tags mentioned in the
-  /// source will take place. Other tags in that entry using the same tag
-  /// template will be retained instead of being deleted.
+  /// If set to `false`, unlisted tags are retained.
   core.bool? forceDeleteMissing;
 
-  /// The name of the tag template, that will be used for reconciliation.
+  /// The name of the tag template, which is used for reconciliation.
   ///
   /// Required.
   core.String? tagTemplate;
 
-  /// A list of tags to be applied on a given entry.
+  /// A list of tags to apply to an entry.
   ///
-  /// Individual tags may specify tag template, but it must be the same as the
-  /// one in the ReconcileTagsRequest. The sole entry and each of its columns
-  /// must be mentioned at most once.
+  /// A tag can specify a tag template, which must be the template specified in
+  /// the `ReconcileTagsRequest`. The sole entry and each of its columns must be
+  /// mentioned at most once.
   core.List<GoogleCloudDatacatalogV1Tag>? tags;
 
   GoogleCloudDatacatalogV1ReconcileTagsRequest({
@@ -6124,8 +6121,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
 
 /// The criteria that select the subspace used for query matching.
 class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
-  /// If `true`, include Google Cloud Platform (GCP) public datasets in search
-  /// results.
+  /// If `true`, include Google Cloud public datasets in search results.
   ///
   /// By default, they are excluded. See \[Google Cloud Public
   /// Datasets\](/public-datasets) for more information.
@@ -6901,7 +6897,8 @@ class GoogleCloudDatacatalogV1TagFieldEnumValue {
 
 /// A tag template defines a tag that can have one or more typed fields.
 ///
-/// The template is used to create tags that are attached to GCP resources.
+/// The template is used to create tags that are attached to Google Cloud
+/// resources.
 /// [Tag template roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)
 /// provide permissions to create, edit, and use the template. For example, see
 /// the
@@ -7105,8 +7102,8 @@ class GoogleCloudDatacatalogV1Taxonomy {
 
   /// Identity of the service which owns the Taxonomy.
   ///
-  /// This field is only populated when the taxonomy is created by a GCP
-  /// service. Currently only 'DATAPLEX' is supported.
+  /// This field is only populated when the taxonomy is created by a Google
+  /// Cloud service. Currently only 'DATAPLEX' is supported.
   ///
   /// Output only.
   GoogleCloudDatacatalogV1TaxonomyService? service;
@@ -7172,7 +7169,7 @@ class GoogleCloudDatacatalogV1TaxonomyService {
   /// P4SA Identity of the service.
   core.String? identity;
 
-  /// The GCP service name.
+  /// The Google Cloud service name.
   /// Possible string values are:
   /// - "MANAGING_SYSTEM_UNSPECIFIED" : Default value
   /// - "MANAGING_SYSTEM_DATAPLEX" : Dataplex.

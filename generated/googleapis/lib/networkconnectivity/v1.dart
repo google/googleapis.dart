@@ -419,8 +419,7 @@ class ProjectsLocationsGlobalHubsResource {
   ///
   /// [orderBy] - Sort the results by a certain order.
   ///
-  /// [pageSize] - The maximum number of results per page that should be
-  /// returned.
+  /// [pageSize] - The maximum number of results per page to return.
   ///
   /// [pageToken] - The page token.
   ///
@@ -1970,8 +1969,7 @@ class ProjectsLocationsSpokesResource {
   ///
   /// [orderBy] - Sort the results by a certain order.
   ///
-  /// [pageSize] - The maximum number of results per page that should be
-  /// returned.
+  /// [pageSize] - The maximum number of results to return per page.
   ///
   /// [pageToken] - The page token.
   ///
@@ -2267,7 +2265,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2283,9 +2283,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2510,10 +2508,10 @@ class Hub {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : No state information available
-  /// - "CREATING" : The resource's create operation is in progress
+  /// - "CREATING" : The resource's create operation is in progress.
   /// - "ACTIVE" : The resource is active
-  /// - "DELETING" : The resource's Delete operation is in progress
-  /// - "UPDATING" : The resource's Update operation is in progress
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
   core.String? state;
 
   /// The Google-generated UUID for the hub.
@@ -3384,10 +3382,10 @@ class Spoke {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : No state information available
-  /// - "CREATING" : The resource's create operation is in progress
+  /// - "CREATING" : The resource's create operation is in progress.
   /// - "ACTIVE" : The resource is active
-  /// - "DELETING" : The resource's Delete operation is in progress
-  /// - "UPDATING" : The resource's Update operation is in progress
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
   core.String? state;
 
   /// The Google-generated UUID for the spoke.

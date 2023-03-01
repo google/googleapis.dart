@@ -2074,8 +2074,7 @@ class Product {
       };
 }
 
-/// The data matches with the vertical specification for product in
-/// http://google3/googlebase/verticals/devel/product_certification
+/// Product certification data.
 class ProductCertification {
   /// This is the product's brand name.
   ///

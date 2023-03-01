@@ -1630,6 +1630,8 @@ class ProjectsDatabasesDocumentsResource {
 
   /// Streams batches of document updates and deletes, in order.
   ///
+  /// This method is only available via the gRPC API (not REST).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2979,6 +2981,11 @@ class GoogleFirestoreAdminV1Database {
   /// Mode but is not recommended.
   core.String? concurrencyMode;
 
+  /// The timestamp at which this database was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
@@ -3017,14 +3024,30 @@ class GoogleFirestoreAdminV1Database {
   /// - "DATASTORE_MODE" : Firestore in Datastore Mode.
   core.String? type;
 
+  /// The system-generated UUID4 for this Database.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp at which this database was most recently updated.
+  ///
+  /// Note this only includes updates to the database resource and not data
+  /// contained by the database.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
     this.concurrencyMode,
+    this.createTime,
     this.etag,
     this.keyPrefix,
     this.locationId,
     this.name,
     this.type,
+    this.uid,
+    this.updateTime,
   });
 
   GoogleFirestoreAdminV1Database.fromJson(core.Map json_)
@@ -3036,6 +3059,9 @@ class GoogleFirestoreAdminV1Database {
           concurrencyMode: json_.containsKey('concurrencyMode')
               ? json_['concurrencyMode'] as core.String
               : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           keyPrefix: json_.containsKey('keyPrefix')
               ? json_['keyPrefix'] as core.String
@@ -3045,17 +3071,24 @@ class GoogleFirestoreAdminV1Database {
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineIntegrationMode != null)
           'appEngineIntegrationMode': appEngineIntegrationMode!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
+        if (createTime != null) 'createTime': createTime!,
         if (etag != null) 'etag': etag!,
         if (keyPrefix != null) 'keyPrefix': keyPrefix!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

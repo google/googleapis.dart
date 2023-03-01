@@ -770,11 +770,14 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
   if (buildCounterGoogleFirestoreAdminV1Database < 3) {
     o.appEngineIntegrationMode = 'foo';
     o.concurrencyMode = 'foo';
+    o.createTime = 'foo';
     o.etag = 'foo';
     o.keyPrefix = 'foo';
     o.locationId = 'foo';
     o.name = 'foo';
     o.type = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Database--;
   return o;
@@ -789,6 +792,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.concurrencyMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -809,6 +816,14 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
   }

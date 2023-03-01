@@ -14612,6 +14612,12 @@ class GoogleCloudDialogflowV2ConversationProfile {
   /// Defaults to America/New_York.
   core.String? timeZone;
 
+  /// Configuration for Text-to-Speech synthesization.
+  ///
+  /// Used by Phone Gateway to specify synthesization options. If agent defines
+  /// synthesization options as well, agent settings overrides the option here.
+  GoogleCloudDialogflowV2SynthesizeSpeechConfig? ttsConfig;
+
   /// Update time of the conversation profile.
   ///
   /// Output only.
@@ -14631,6 +14637,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
     this.securitySettings,
     this.sttConfig,
     this.timeZone,
+    this.ttsConfig,
     this.updateTime,
   });
 
@@ -14687,6 +14694,10 @@ class GoogleCloudDialogflowV2ConversationProfile {
           timeZone: json_.containsKey('timeZone')
               ? json_['timeZone'] as core.String
               : null,
+          ttsConfig: json_.containsKey('ttsConfig')
+              ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+                  json_['ttsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -14712,6 +14723,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (sttConfig != null) 'sttConfig': sttConfig!,
         if (timeZone != null) 'timeZone': timeZone!,
+        if (ttsConfig != null) 'ttsConfig': ttsConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -21245,6 +21257,9 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
 
 /// The request message for Conversations.SuggestConversationSummary.
 class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
+  /// Parameters for a human assist query.
+  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
+
   /// Max number of messages prior to and including \[latest_message\] to use as
   /// context when compiling the suggestion.
   ///
@@ -21259,6 +21274,7 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestConversationSummaryRequest({
+    this.assistQueryParams,
     this.contextSize,
     this.latestMessage,
   });
@@ -21266,6 +21282,11 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
       core.Map json_)
       : this(
+          assistQueryParams: json_.containsKey('assistQueryParams')
+              ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                  json_['assistQueryParams']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           contextSize: json_.containsKey('contextSize')
               ? json_['contextSize'] as core.int
               : null,
@@ -21275,6 +21296,7 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };

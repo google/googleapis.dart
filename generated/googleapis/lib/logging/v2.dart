@@ -24,6 +24,7 @@
 ///   - [BillingAccountsExclusionsResource]
 ///   - [BillingAccountsLocationsResource]
 ///     - [BillingAccountsLocationsBucketsResource]
+///       - [BillingAccountsLocationsBucketsLinksResource]
 ///       - [BillingAccountsLocationsBucketsViewsResource]
 ///         - [BillingAccountsLocationsBucketsViewsLogsResource]
 ///     - [BillingAccountsLocationsOperationsResource]
@@ -35,6 +36,7 @@
 ///   - [FoldersExclusionsResource]
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsBucketsResource]
+///       - [FoldersLocationsBucketsLinksResource]
 ///       - [FoldersLocationsBucketsViewsResource]
 ///         - [FoldersLocationsBucketsViewsLogsResource]
 ///     - [FoldersLocationsOperationsResource]
@@ -42,6 +44,7 @@
 ///   - [FoldersSinksResource]
 /// - [LocationsResource]
 ///   - [LocationsBucketsResource]
+///     - [LocationsBucketsLinksResource]
 ///     - [LocationsBucketsViewsResource]
 ///   - [LocationsOperationsResource]
 /// - [LogsResource]
@@ -50,6 +53,7 @@
 ///   - [OrganizationsExclusionsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsBucketsResource]
+///       - [OrganizationsLocationsBucketsLinksResource]
 ///       - [OrganizationsLocationsBucketsViewsResource]
 ///         - [OrganizationsLocationsBucketsViewsLogsResource]
 ///     - [OrganizationsLocationsOperationsResource]
@@ -59,6 +63,7 @@
 ///   - [ProjectsExclusionsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBucketsResource]
+///       - [ProjectsLocationsBucketsLinksResource]
 ///       - [ProjectsLocationsBucketsViewsResource]
 ///         - [ProjectsLocationsBucketsViewsLogsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -593,6 +598,8 @@ class BillingAccountsLocationsResource {
 class BillingAccountsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
+  BillingAccountsLocationsBucketsLinksResource get links =>
+      BillingAccountsLocationsBucketsLinksResource(_requester);
   BillingAccountsLocationsBucketsViewsResource get views =>
       BillingAccountsLocationsBucketsViewsResource(_requester);
 
@@ -647,6 +654,57 @@ class BillingAccountsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a log bucket asynchronously that can be used to store log
+  /// entries.After a bucket has been created, the bucket's location cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createAsync(
+    LogBucket request,
+    core.String parent, {
+    core.String? bucketId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (bucketId != null) 'bucketId': [bucketId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/buckets:createAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -790,14 +848,9 @@ class BillingAccountsLocationsBucketsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a log bucket.
-  ///
-  /// This method replaces the following fields in the existing bucket with
-  /// values from the new bucket: retention_periodIf the retention period is
-  /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
-  /// bucket's location cannot be changed.
+  /// Updates a log bucket.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -899,6 +952,259 @@ class BillingAccountsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAsync(
+    LogBucket request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsLocationsBucketsLinksResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Asynchronously creates linked dataset in BigQuery which makes it possible
+  /// to use BugQuery to read the logs stored in the bucket.
+  ///
+  /// A bucket may currently only contain one link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the bucket to create a link
+  /// for.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. The ID to use for the link. The link_id can have up
+  /// to 100 characters. A valid link_id must only have alphanumeric characters
+  /// and underscores within it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a link.
+  ///
+  /// This will also delete the corresponding BigQuery linked dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the link to
+  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists links.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose links are to be
+  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2778,6 +3084,8 @@ class FoldersLocationsResource {
 class FoldersLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
+  FoldersLocationsBucketsLinksResource get links =>
+      FoldersLocationsBucketsLinksResource(_requester);
   FoldersLocationsBucketsViewsResource get views =>
       FoldersLocationsBucketsViewsResource(_requester);
 
@@ -2832,6 +3140,57 @@ class FoldersLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a log bucket asynchronously that can be used to store log
+  /// entries.After a bucket has been created, the bucket's location cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createAsync(
+    LogBucket request,
+    core.String parent, {
+    core.String? bucketId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (bucketId != null) 'bucketId': [bucketId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/buckets:createAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -2975,14 +3334,9 @@ class FoldersLocationsBucketsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a log bucket.
-  ///
-  /// This method replaces the following fields in the existing bucket with
-  /// values from the new bucket: retention_periodIf the retention period is
-  /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
-  /// bucket's location cannot be changed.
+  /// Updates a log bucket.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3084,6 +3438,259 @@ class FoldersLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAsync(
+    LogBucket request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersLocationsBucketsLinksResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Asynchronously creates linked dataset in BigQuery which makes it possible
+  /// to use BugQuery to read the logs stored in the bucket.
+  ///
+  /// A bucket may currently only contain one link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the bucket to create a link
+  /// for.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. The ID to use for the link. The link_id can have up
+  /// to 100 characters. A valid link_id must only have alphanumeric characters
+  /// and underscores within it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a link.
+  ///
+  /// This will also delete the corresponding BigQuery linked dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the link to
+  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists links.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose links are to be
+  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4131,6 +4738,8 @@ class LocationsResource {
 class LocationsBucketsResource {
   final commons.ApiRequester _requester;
 
+  LocationsBucketsLinksResource get links =>
+      LocationsBucketsLinksResource(_requester);
   LocationsBucketsViewsResource get views =>
       LocationsBucketsViewsResource(_requester);
 
@@ -4184,6 +4793,57 @@ class LocationsBucketsResource {
       queryParams: queryParams_,
     );
     return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a log bucket asynchronously that can be used to store log
+  /// entries.After a bucket has been created, the bucket's location cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createAsync(
+    LogBucket request,
+    core.String parent, {
+    core.String? bucketId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (bucketId != null) 'bucketId': [bucketId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/buckets:createAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -4327,14 +4987,9 @@ class LocationsBucketsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a log bucket.
-  ///
-  /// This method replaces the following fields in the existing bucket with
-  /// values from the new bucket: retention_periodIf the retention period is
-  /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
-  /// bucket's location cannot be changed.
+  /// Updates a log bucket.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4436,6 +5091,259 @@ class LocationsBucketsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAsync(
+    LogBucket request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsBucketsLinksResource {
+  final commons.ApiRequester _requester;
+
+  LocationsBucketsLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Asynchronously creates linked dataset in BigQuery which makes it possible
+  /// to use BugQuery to read the logs stored in the bucket.
+  ///
+  /// A bucket may currently only contain one link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the bucket to create a link
+  /// for.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. The ID to use for the link. The link_id can have up
+  /// to 100 characters. A valid link_id must only have alphanumeric characters
+  /// and underscores within it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a link.
+  ///
+  /// This will also delete the corresponding BigQuery linked dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the link to
+  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists links.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose links are to be
+  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5601,6 +6509,8 @@ class OrganizationsLocationsResource {
 class OrganizationsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsBucketsLinksResource get links =>
+      OrganizationsLocationsBucketsLinksResource(_requester);
   OrganizationsLocationsBucketsViewsResource get views =>
       OrganizationsLocationsBucketsViewsResource(_requester);
 
@@ -5655,6 +6565,57 @@ class OrganizationsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a log bucket asynchronously that can be used to store log
+  /// entries.After a bucket has been created, the bucket's location cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createAsync(
+    LogBucket request,
+    core.String parent, {
+    core.String? bucketId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (bucketId != null) 'bucketId': [bucketId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/buckets:createAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -5798,14 +6759,9 @@ class OrganizationsLocationsBucketsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a log bucket.
-  ///
-  /// This method replaces the following fields in the existing bucket with
-  /// values from the new bucket: retention_periodIf the retention period is
-  /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
-  /// bucket's location cannot be changed.
+  /// Updates a log bucket.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5907,6 +6863,259 @@ class OrganizationsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAsync(
+    LogBucket request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsBucketsLinksResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Asynchronously creates linked dataset in BigQuery which makes it possible
+  /// to use BugQuery to read the logs stored in the bucket.
+  ///
+  /// A bucket may currently only contain one link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the bucket to create a link
+  /// for.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. The ID to use for the link. The link_id can have up
+  /// to 100 characters. A valid link_id must only have alphanumeric characters
+  /// and underscores within it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a link.
+  ///
+  /// This will also delete the corresponding BigQuery linked dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the link to
+  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists links.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose links are to be
+  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7314,6 +8523,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBucketsLinksResource get links =>
+      ProjectsLocationsBucketsLinksResource(_requester);
   ProjectsLocationsBucketsViewsResource get views =>
       ProjectsLocationsBucketsViewsResource(_requester);
 
@@ -7368,6 +8579,57 @@ class ProjectsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a log bucket asynchronously that can be used to store log
+  /// entries.After a bucket has been created, the bucket's location cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createAsync(
+    LogBucket request,
+    core.String parent, {
+    core.String? bucketId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (bucketId != null) 'bucketId': [bucketId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/buckets:createAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -7511,14 +8773,9 @@ class ProjectsLocationsBucketsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a log bucket.
-  ///
-  /// This method replaces the following fields in the existing bucket with
-  /// values from the new bucket: retention_periodIf the retention period is
-  /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
-  /// bucket's location cannot be changed.
+  /// Updates a log bucket.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7620,6 +8877,259 @@ class ProjectsLocationsBucketsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+  /// DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket
+  /// has been created, the bucket's location cannot be changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAsync(
+    LogBucket request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateAsync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBucketsLinksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Asynchronously creates linked dataset in BigQuery which makes it possible
+  /// to use BugQuery to read the logs stored in the bucket.
+  ///
+  /// A bucket may currently only contain one link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the bucket to create a link
+  /// for.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. The ID to use for the link. The link_id can have up
+  /// to 100 characters. A valid link_id must only have alphanumeric characters
+  /// and underscores within it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a link.
+  ///
+  /// This will also delete the corresponding BigQuery linked dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the link to
+  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists links.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose links are to be
+  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
+  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9295,6 +10805,34 @@ class V2Resource {
   }
 }
 
+/// Describes a BigQuery dataset that was created by a link.
+class BigQueryDataset {
+  /// The full resource name of the BigQuery dataset.
+  ///
+  /// The DATASET_ID will match the ID of the link, so the link must match the
+  /// naming restrictions of BigQuery datasets (alphanumeric characters and
+  /// underscores only).The dataset will have a resource path of
+  /// "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
+  ///
+  /// Output only.
+  core.String? datasetId;
+
+  BigQueryDataset({
+    this.datasetId,
+  });
+
+  BigQueryDataset.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+      };
+}
+
 /// Options that change functionality of a sink exporting data to BigQuery.
 class BigQueryOptions {
   /// Whether to use BigQuery's partition tables
@@ -9795,6 +11333,89 @@ typedef LabelDescriptor = $LabelDescriptor;
 /// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
+/// Describes a link connected to an analytics enabled bucket.
+class Link {
+  /// The information of a BigQuery Dataset.
+  ///
+  /// When a link is created, a BigQuery dataset is created along with it, in
+  /// the same project as the LogBucket it's linked to. This dataset will also
+  /// have BigQuery Views corresponding to the LogViews in the bucket.
+  BigQueryDataset? bigqueryDataset;
+
+  /// The creation timestamp of the link.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Describes this link.The maximum length of the description is 8000
+  /// characters.
+  core.String? description;
+
+  /// The resource lifecycle state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only
+  /// used/useful for distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETE_REQUESTED" : The resource has been marked for deletion by the
+  /// user. For some resources (e.g. buckets), this can be reversed by an
+  /// un-delete operation.
+  /// - "UPDATING" : The resource has been marked for an update by the user. It
+  /// will remain in this state until the update is complete.
+  /// - "CREATING" : The resource has been marked for creation by the user. It
+  /// will remain in this state until the creation is complete.
+  /// - "FAILED" : The resource is in an INTERNAL error state.
+  core.String? lifecycleState;
+
+  /// The resource name of the link.
+  ///
+  /// The name can have up to 100 characters. A valid link id (at the end of the
+  /// link name) must only have alphanumeric characters and underscores within
+  /// it.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// For
+  /// example:\`projects/my-project/locations/global/buckets/my-bucket/links/my_link
+  core.String? name;
+
+  Link({
+    this.bigqueryDataset,
+    this.createTime,
+    this.description,
+    this.lifecycleState,
+    this.name,
+  });
+
+  Link.fromJson(core.Map json_)
+      : this(
+          bigqueryDataset: json_.containsKey('bigqueryDataset')
+              ? BigQueryDataset.fromJson(json_['bigqueryDataset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          lifecycleState: json_.containsKey('lifecycleState')
+              ? json_['lifecycleState'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The response from ListBuckets.
 class ListBucketsResponse {
   /// A list of buckets.
@@ -9863,6 +11484,42 @@ class ListExclusionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exclusions != null) 'exclusions': exclusions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response from ListLinks.
+class ListLinksResponse {
+  /// A list of links.
+  core.List<Link>? links;
+
+  /// If there might be more results than those appearing in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  ListLinksResponse({
+    this.links,
+    this.nextPageToken,
+  });
+
+  ListLinksResponse.fromJson(core.Map json_)
+      : this(
+          links: json_.containsKey('links')
+              ? (json_['links'] as core.List)
+                  .map((value) => Link.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (links != null) 'links': links!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -10274,6 +11931,10 @@ typedef Location = $Location01;
 
 /// Describes a repository in which log entries are stored.
 class LogBucket {
+  /// Whether log analytics is enabled for this bucket.Once enabled, log
+  /// analytics features cannot be disabled.
+  core.bool? analyticsEnabled;
+
   /// The CMEK settings of the log bucket.
   ///
   /// If present, new log entries written to this log bucket are encrypted using
@@ -10305,6 +11966,11 @@ class LogBucket {
   /// - "DELETE_REQUESTED" : The resource has been marked for deletion by the
   /// user. For some resources (e.g. buckets), this can be reversed by an
   /// un-delete operation.
+  /// - "UPDATING" : The resource has been marked for an update by the user. It
+  /// will remain in this state until the update is complete.
+  /// - "CREATING" : The resource has been marked for creation by the user. It
+  /// will remain in this state until the creation is complete.
+  /// - "FAILED" : The resource is in an INTERNAL error state.
   core.String? lifecycleState;
 
   /// Whether the bucket is locked.The retention period on a locked bucket
@@ -10345,6 +12011,7 @@ class LogBucket {
   core.String? updateTime;
 
   LogBucket({
+    this.analyticsEnabled,
     this.cmekSettings,
     this.createTime,
     this.description,
@@ -10359,6 +12026,9 @@ class LogBucket {
 
   LogBucket.fromJson(core.Map json_)
       : this(
+          analyticsEnabled: json_.containsKey('analyticsEnabled')
+              ? json_['analyticsEnabled'] as core.bool
+              : null,
           cmekSettings: json_.containsKey('cmekSettings')
               ? CmekSettings.fromJson(
                   json_['cmekSettings'] as core.Map<core.String, core.dynamic>)
@@ -10395,6 +12065,7 @@ class LogBucket {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsEnabled != null) 'analyticsEnabled': analyticsEnabled!,
         if (cmekSettings != null) 'cmekSettings': cmekSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,

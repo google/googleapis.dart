@@ -14,6 +14,8 @@
 
 /// Advisory Notifications API - v1
 ///
+/// An API for accessing Advisory Notifications in Google Cloud
+///
 /// For more information, see <https://cloud.google.com/advisory-notifications>
 ///
 /// Create an instance of [AdvisorynotificationsApi] to access these resources:
@@ -34,6 +36,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// An API for accessing Advisory Notifications in Google Cloud
 class AdvisorynotificationsApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

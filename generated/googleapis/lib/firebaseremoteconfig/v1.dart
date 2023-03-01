@@ -421,7 +421,9 @@ class ProjectsRemoteConfigResource {
 class ExperimentDescription {
   /// The Firebase A/B Testing experiment ID.
   ///
-  /// A string of max length 22 characters.
+  /// A string of max length 22 characters. Format: _exp_ This is referred to as
+  /// the tracking id and is different from the experiment id which is used
+  /// internally by ABT.
   core.String? experimentId;
 
   /// When the experiment was started.

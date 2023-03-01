@@ -6345,8 +6345,8 @@ class WorkforcePool {
   /// Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If
   /// `session_duration` is not configured, minted credentials have a default
   /// duration of one hour (3600s). For SAML providers, the lifetime of the
-  /// token is the minimum of the `session_duration` and the SessionNotOnOrAfter
-  /// claim in the SAML assertion.
+  /// token is the minimum of the `session_duration` and the
+  /// `SessionNotOnOrAfter` claim in the SAML assertion.
   core.String? sessionDuration;
 
   /// The state of the pool.

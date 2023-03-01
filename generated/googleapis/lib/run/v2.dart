@@ -2477,8 +2477,7 @@ class GoogleCloudRunV2ExecutionTemplate {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// that task signals the success of the execution. Defaults to 1.
   core.int? taskCount;
 
   /// Describes the task(s) that will be created when executing an execution.
@@ -2538,8 +2537,9 @@ class GoogleCloudRunV2ExecutionTemplate {
 class GoogleCloudRunV2GRPCAction {
   /// Port number of the gRPC service.
   ///
-  /// Number must be in the range 1 to 65535. If not specified, defaults to
-  /// 8080.
+  /// Number must be in the range 1 to 65535. If not specified, defaults to the
+  /// exposed port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
   core.int? port;
 
   /// Service is the name of the service to place in the gRPC HealthCheckRequest
@@ -2581,7 +2581,9 @@ class GoogleCloudRunV2HTTPGetAction {
 
   /// Port number to access on the container.
   ///
-  /// Must be in the range 1 to 65535.
+  /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
+  /// port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
   core.int? port;
 
   GoogleCloudRunV2HTTPGetAction({
@@ -4376,7 +4378,9 @@ class GoogleCloudRunV2Service {
 class GoogleCloudRunV2TCPSocketAction {
   /// Port number to access on the container.
   ///
-  /// Must be in the range 1 to 65535. If not specified, defaults to 8080.
+  /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
+  /// port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
   core.int? port;
 
   GoogleCloudRunV2TCPSocketAction({
@@ -4812,6 +4816,8 @@ class GoogleCloudRunV2TaskTemplate {
   core.String? executionEnvironment;
 
   /// Number of retries allowed per Task, before marking this Task failed.
+  ///
+  /// Defaults to 3.
   core.int? maxRetries;
 
   /// Email address of the IAM service account associated with the Task of a
@@ -4826,7 +4832,7 @@ class GoogleCloudRunV2TaskTemplate {
   /// actively try to mark it failed and kill associated containers.
   ///
   /// This applies per attempt of a task, meaning each retry can run for the
-  /// full timeout.
+  /// full timeout. Defaults to 600 seconds.
   core.String? timeout;
 
   /// A list of Volumes to make available to containers.

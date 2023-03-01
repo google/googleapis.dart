@@ -8141,7 +8141,7 @@
             }
         }
     },
-    "revision": "20230203",
+    "revision": "20230222",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AudioInput": {
@@ -8432,7 +8432,7 @@
                     "type": "string"
                 },
                 "versionConfigs": {
-                    "description": "Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
+                    "description": "A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
                     "items": {
                         "$ref": "GoogleCloudDialogflowCxV3EnvironmentVersionConfig"
                     },
@@ -10293,7 +10293,7 @@
                     "type": "string"
                 },
                 "versionConfigs": {
-                    "description": "Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
+                    "description": "A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
                     "items": {
                         "$ref": "GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig"
                     },
@@ -12947,6 +12947,10 @@
                 "timeZone": {
                     "description": "The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.",
                     "type": "string"
+                },
+                "ttsConfig": {
+                    "$ref": "GoogleCloudDialogflowV2SynthesizeSpeechConfig",
+                    "description": "Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here."
                 },
                 "updateTime": {
                     "description": "Output only. Update time of the conversation profile.",
@@ -16291,6 +16295,10 @@
             "description": "The request message for Conversations.SuggestConversationSummary.",
             "id": "GoogleCloudDialogflowV2SuggestConversationSummaryRequest",
             "properties": {
+                "assistQueryParams": {
+                    "$ref": "GoogleCloudDialogflowV2AssistQueryParameters",
+                    "description": "Parameters for a human assist query."
+                },
                 "contextSize": {
                     "description": "Max number of messages prior to and including [latest_message] to use as context when compiling the suggestion. By default 500 and at most 1000.",
                     "format": "int32",

@@ -1634,6 +1634,9 @@ class BackendRule {
   /// The default is no deadline.
   core.double? operationDeadline;
 
+  /// The map between request protocol and the backend address.
+  core.Map<core.String, BackendRule>? overridesByRequestProtocol;
+
   ///
   /// Possible string values are:
   /// - "PATH_TRANSLATION_UNSPECIFIED"
@@ -1686,6 +1689,7 @@ class BackendRule {
     this.jwtAudience,
     this.minDeadline,
     this.operationDeadline,
+    this.overridesByRequestProtocol,
     this.pathTranslation,
     this.protocol,
     this.selector,
@@ -1711,6 +1715,18 @@ class BackendRule {
           operationDeadline: json_.containsKey('operationDeadline')
               ? (json_['operationDeadline'] as core.num).toDouble()
               : null,
+          overridesByRequestProtocol:
+              json_.containsKey('overridesByRequestProtocol')
+                  ? (json_['overridesByRequestProtocol']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        BackendRule.fromJson(
+                            value as core.Map<core.String, core.dynamic>),
+                      ),
+                    )
+                  : null,
           pathTranslation: json_.containsKey('pathTranslation')
               ? json_['pathTranslation'] as core.String
               : null,
@@ -1729,6 +1745,8 @@ class BackendRule {
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
         if (minDeadline != null) 'minDeadline': minDeadline!,
         if (operationDeadline != null) 'operationDeadline': operationDeadline!,
+        if (overridesByRequestProtocol != null)
+          'overridesByRequestProtocol': overridesByRequestProtocol!,
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
         if (protocol != null) 'protocol': protocol!,
         if (selector != null) 'selector': selector!,

@@ -2042,6 +2042,7 @@ api.Space buildSpace() {
   final o = api.Space();
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
+    o.adminInstalled = true;
     o.displayName = 'foo';
     o.name = 'foo';
     o.singleUserBotDm = true;
@@ -2057,6 +2058,7 @@ api.Space buildSpace() {
 void checkSpace(api.Space o) {
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
+    unittest.expect(o.adminInstalled!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),

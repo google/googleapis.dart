@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 10.1.0
+    version: 10.2.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -17,6 +17,7 @@ packages:
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
     - accessapproval:v1
     - accesscontextmanager:v1
+    - acmedns:v1
     - adexperiencereport:v1 # https://developers.google.com/ad-experience-report/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
@@ -198,6 +199,7 @@ packages:
     - privateca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
+    - readerrevenuesubscriptionlinking:v1
     - realtimebidding:v1
     - recaptchaenterprise:v1
     - recommender:v1
@@ -249,6 +251,7 @@ packages:
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - vmmigration:v1
+    - vpcaccess:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webrisk:v1
     - websecurityscanner:v1
@@ -398,6 +401,8 @@ skipped_apis:
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - privateca:v1beta1
+- publicca:v1alpha1
+- publicca:v1beta1
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
 - realtimebidding:v1alpha
@@ -429,6 +434,7 @@ skipped_apis:
 - vision:v1p1beta1 # v1 included
 - vision:v1p2beta1 # v1 included
 - vmmigration:v1alpha1
+- vpcaccess:v1beta1
 - websecurityscanner:v1alpha # v1 included
 - websecurityscanner:v1beta # v1 included
 - workflowexecutions:v1beta # v1 included

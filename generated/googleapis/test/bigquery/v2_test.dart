@@ -1437,6 +1437,7 @@ api.Dataset buildDataset() {
     o.defaultCollation = 'foo';
     o.defaultEncryptionConfiguration = buildEncryptionConfiguration();
     o.defaultPartitionExpirationMs = 'foo';
+    o.defaultRoundingMode = 'foo';
     o.defaultTableExpirationMs = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
@@ -1473,6 +1474,10 @@ void checkDataset(api.Dataset o) {
     checkEncryptionConfiguration(o.defaultEncryptionConfiguration!);
     unittest.expect(
       o.defaultPartitionExpirationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultRoundingMode!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6406,6 +6411,7 @@ api.Table buildTable() {
     o.clustering = buildClustering();
     o.creationTime = 'foo';
     o.defaultCollation = 'foo';
+    o.defaultRoundingMode = 'foo';
     o.description = 'foo';
     o.encryptionConfiguration = buildEncryptionConfiguration();
     o.etag = 'foo';
@@ -6458,6 +6464,10 @@ void checkTable(api.Table o) {
     );
     unittest.expect(
       o.defaultCollation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultRoundingMode!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6893,6 +6903,7 @@ api.TableFieldSchema buildTableFieldSchema() {
     o.name = 'foo';
     o.policyTags = buildTableFieldSchemaPolicyTags();
     o.precision = 'foo';
+    o.roundingMode = 'foo';
     o.scale = 'foo';
     o.type = 'foo';
   }
@@ -6932,6 +6943,10 @@ void checkTableFieldSchema(api.TableFieldSchema o) {
     checkTableFieldSchemaPolicyTags(o.policyTags!);
     unittest.expect(
       o.precision!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.roundingMode!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -738,14 +738,28 @@ core.int buildCounterDiagnoseClusterRequest = 0;
 api.DiagnoseClusterRequest buildDiagnoseClusterRequest() {
   final o = api.DiagnoseClusterRequest();
   buildCounterDiagnoseClusterRequest++;
-  if (buildCounterDiagnoseClusterRequest < 3) {}
+  if (buildCounterDiagnoseClusterRequest < 3) {
+    o.diagnosisInterval = buildInterval();
+    o.job = 'foo';
+    o.yarnApplicationId = 'foo';
+  }
   buildCounterDiagnoseClusterRequest--;
   return o;
 }
 
 void checkDiagnoseClusterRequest(api.DiagnoseClusterRequest o) {
   buildCounterDiagnoseClusterRequest++;
-  if (buildCounterDiagnoseClusterRequest < 3) {}
+  if (buildCounterDiagnoseClusterRequest < 3) {
+    checkInterval(o.diagnosisInterval!);
+    unittest.expect(
+      o.job!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.yarnApplicationId!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterDiagnoseClusterRequest--;
 }
 
@@ -834,6 +848,7 @@ api.EncryptionConfig buildEncryptionConfig() {
   buildCounterEncryptionConfig++;
   if (buildCounterEncryptionConfig < 3) {
     o.gcePdKmsKeyName = 'foo';
+    o.kmsKey = 'foo';
   }
   buildCounterEncryptionConfig--;
   return o;
@@ -844,6 +859,10 @@ void checkEncryptionConfig(api.EncryptionConfig o) {
   if (buildCounterEncryptionConfig < 3) {
     unittest.expect(
       o.gcePdKmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKey!,
       unittest.equals('foo'),
     );
   }
@@ -936,7 +955,9 @@ api.ExecutionConfig buildExecutionConfig() {
     o.networkTags = buildUnnamed13();
     o.networkUri = 'foo';
     o.serviceAccount = 'foo';
+    o.stagingBucket = 'foo';
     o.subnetworkUri = 'foo';
+    o.ttl = 'foo';
   }
   buildCounterExecutionConfig--;
   return o;
@@ -963,7 +984,15 @@ void checkExecutionConfig(api.ExecutionConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.stagingBucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.subnetworkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ttl!,
       unittest.equals('foo'),
     );
   }
@@ -1870,6 +1899,33 @@ void checkInstantiateWorkflowTemplateRequest(
     );
   }
   buildCounterInstantiateWorkflowTemplateRequest--;
+}
+
+core.int buildCounterInterval = 0;
+api.Interval buildInterval() {
+  final o = api.Interval();
+  buildCounterInterval++;
+  if (buildCounterInterval < 3) {
+    o.endTime = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterInterval--;
+  return o;
+}
+
+void checkInterval(api.Interval o) {
+  buildCounterInterval++;
+  if (buildCounterInterval < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInterval--;
 }
 
 core.Map<core.String, core.String> buildUnnamed34() => {
@@ -5706,6 +5762,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Interval', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInterval();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Interval.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkInterval(od);
+    });
+  });
+
   unittest.group('obj-schema-Job', () {
     unittest.test('to-json--from-json', () async {
       final o = buildJob();
@@ -7036,6 +7102,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataprocApi(mock).projects.locations.batches;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -7072,6 +7140,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -7091,6 +7167,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

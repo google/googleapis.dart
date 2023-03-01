@@ -2632,7 +2632,32 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -2787,7 +2812,33 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
-  /// options to list.
+  /// options to list. Supported targeting types include: *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -3181,7 +3232,7 @@ class AdvertisersLineItemsResource {
   /// the field name. Example: `targetingType desc`.
   ///
   /// [pageSize] - Requested page size. The size must be an integer between `1`
-  /// and `5000`. If unspecified, the default is '5000'. Returns error code
+  /// and `5000`. If unspecified, the default is `5000`. Returns error code
   /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
   /// [pageToken] - A token that lets the client fetch the next page of results.
@@ -3610,7 +3661,32 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -3765,7 +3841,32 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -3918,7 +4019,36 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -4073,7 +4203,37 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
-  /// options to list.
+  /// options to list. Supported targeting types include: *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+  /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` *
+  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+  /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+  /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` *
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` *
+  /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5902,7 +6062,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6051,7 +6212,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -18512,11 +18674,7 @@ class LineItem {
   /// the line item.
   ///
   /// This config is only applicable when eligible audience list targeting is
-  /// assigned to the line item. Beginning November 7, 2022, these settings may
-  /// represent the \[optimized targeting
-  /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-  /// targeting expansion. This feature will be rolled out to all partners by
-  /// November 9, 2022.
+  /// assigned to the line item.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -21257,11 +21415,7 @@ typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 /// Settings that control the targeting expansion of the line item.
 ///
 /// Targeting expansion allows the line item to reach a larger audience based on
-/// the original audience list and the targeting expansion level. Beginning
-/// November 7, 2022, these settings may represent the \[optimized targeting
-/// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-/// targeting expansion. This feature will be rolled out to all partners by
-/// November 9, 2022.
+/// the original audience list and the targeting expansion level.
 typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in

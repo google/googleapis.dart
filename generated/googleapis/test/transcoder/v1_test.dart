@@ -261,6 +261,8 @@ api.AudioStream buildAudioStream() {
     o.channelCount = 42;
     o.channelLayout = buildUnnamed0();
     o.codec = 'foo';
+    o.displayName = 'foo';
+    o.languageCode = 'foo';
     o.mapping = buildUnnamed1();
     o.sampleRateHertz = 42;
   }
@@ -282,6 +284,14 @@ void checkAudioStream(api.AudioStream o) {
     checkUnnamed0(o.channelLayout!);
     unittest.expect(
       o.codec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
       unittest.equals('foo'),
     );
     checkUnnamed1(o.mapping!);
@@ -1687,6 +1697,8 @@ api.TextStream buildTextStream() {
   buildCounterTextStream++;
   if (buildCounterTextStream < 3) {
     o.codec = 'foo';
+    o.displayName = 'foo';
+    o.languageCode = 'foo';
     o.mapping = buildUnnamed22();
   }
   buildCounterTextStream--;
@@ -1698,6 +1710,14 @@ void checkTextStream(api.TextStream o) {
   if (buildCounterTextStream < 3) {
     unittest.expect(
       o.codec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
       unittest.equals('foo'),
     );
     checkUnnamed22(o.mapping!);

@@ -1016,7 +1016,7 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the file to retrieve.
+  /// [name] - Required. The name of the file to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/.*$`.
   ///
@@ -1053,8 +1053,8 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the repository whose files will be listed. For
-  /// example: "projects/p1/locations/us-central1/repositories/repo1
+  /// [parent] - Required. The name of the repository whose files will be
+  /// listed. For example: "projects/p1/locations/us-central1/repositories/repo1
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
@@ -2338,6 +2338,8 @@ typedef Expr = $Expr;
 /// Versions.
 class GoogleDevtoolsArtifactregistryV1File {
   /// The time when the File was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// The time when the last attempt to refresh the file's data was made.
@@ -2363,6 +2365,8 @@ class GoogleDevtoolsArtifactregistryV1File {
   core.String? sizeBytes;
 
   /// The time when the File was last updated.
+  ///
+  /// Output only.
   core.String? updateTime;
 
   GoogleDevtoolsArtifactregistryV1File({
@@ -3853,7 +3857,7 @@ class UpstreamPolicy {
   core.int? priority;
 
   /// A reference to the repository resource, for example:
-  /// "projects/p1/locations/us-central1/repository/repo1".
+  /// "projects/p1/locations/us-central1/repositories/repo1".
   core.String? repository;
 
   UpstreamPolicy({

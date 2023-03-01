@@ -694,6 +694,7 @@ api.DriveCapabilities buildDriveCapabilities() {
     o.canChangeDomainUsersOnlyRestriction = true;
     o.canChangeDriveBackground = true;
     o.canChangeDriveMembersOnlyRestriction = true;
+    o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction = true;
     o.canComment = true;
     o.canCopy = true;
     o.canDeleteChildren = true;
@@ -722,6 +723,9 @@ void checkDriveCapabilities(api.DriveCapabilities o) {
     unittest.expect(o.canChangeDomainUsersOnlyRestriction!, unittest.isTrue);
     unittest.expect(o.canChangeDriveBackground!, unittest.isTrue);
     unittest.expect(o.canChangeDriveMembersOnlyRestriction!, unittest.isTrue);
+    unittest.expect(
+        o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
+        unittest.isTrue);
     unittest.expect(o.canComment!, unittest.isTrue);
     unittest.expect(o.canCopy!, unittest.isTrue);
     unittest.expect(o.canDeleteChildren!, unittest.isTrue);
@@ -749,6 +753,7 @@ api.DriveRestrictions buildDriveRestrictions() {
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
     o.driveMembersOnly = true;
+    o.sharingFoldersRequiresOrganizerPermission = true;
   }
   buildCounterDriveRestrictions--;
   return o;
@@ -761,6 +766,8 @@ void checkDriveRestrictions(api.DriveRestrictions o) {
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
     unittest.expect(o.driveMembersOnly!, unittest.isTrue);
+    unittest.expect(
+        o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
   }
   buildCounterDriveRestrictions--;
 }
@@ -2676,6 +2683,7 @@ api.TeamDriveCapabilities buildTeamDriveCapabilities() {
     o.canAddChildren = true;
     o.canChangeCopyRequiresWriterPermissionRestriction = true;
     o.canChangeDomainUsersOnlyRestriction = true;
+    o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction = true;
     o.canChangeTeamDriveBackground = true;
     o.canChangeTeamMembersOnlyRestriction = true;
     o.canComment = true;
@@ -2705,6 +2713,9 @@ void checkTeamDriveCapabilities(api.TeamDriveCapabilities o) {
     unittest.expect(
         o.canChangeCopyRequiresWriterPermissionRestriction!, unittest.isTrue);
     unittest.expect(o.canChangeDomainUsersOnlyRestriction!, unittest.isTrue);
+    unittest.expect(
+        o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
+        unittest.isTrue);
     unittest.expect(o.canChangeTeamDriveBackground!, unittest.isTrue);
     unittest.expect(o.canChangeTeamMembersOnlyRestriction!, unittest.isTrue);
     unittest.expect(o.canComment!, unittest.isTrue);
@@ -2734,6 +2745,7 @@ api.TeamDriveRestrictions buildTeamDriveRestrictions() {
     o.adminManagedRestrictions = true;
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
+    o.sharingFoldersRequiresOrganizerPermission = true;
     o.teamMembersOnly = true;
   }
   buildCounterTeamDriveRestrictions--;
@@ -2746,6 +2758,8 @@ void checkTeamDriveRestrictions(api.TeamDriveRestrictions o) {
     unittest.expect(o.adminManagedRestrictions!, unittest.isTrue);
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
+    unittest.expect(
+        o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
     unittest.expect(o.teamMembersOnly!, unittest.isTrue);
   }
   buildCounterTeamDriveRestrictions--;

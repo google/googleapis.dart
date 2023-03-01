@@ -109,6 +109,9 @@ class LocationsResource {
   /// profile.
   /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the
   /// business profile.
+  /// - "BUSINESS_FOOD_MENU_CLICKS" : The number of clicks to view or interact
+  /// with the menu content on the business profile. Multiple clicks by a unique
+  /// user within a single day are counted as 1.
   ///
   /// [dailyRange_endDate_day] - Day of a month. Must be from 1 to 31 and valid
   /// for the year and month, or 0 to specify a year by itself or a year and

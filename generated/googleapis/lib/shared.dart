@@ -22,34 +22,6 @@ import 'dart:core' as core;
 
 /// Used by:
 ///
-/// - tpu:v1 : AcceleratorType
-/// - tpu:v2 : AcceleratorType
-class $AcceleratorType {
-  /// The resource name.
-  core.String? name;
-
-  /// the accelerator type.
-  core.String? type;
-
-  $AcceleratorType({
-    this.name,
-    this.type,
-  });
-
-  $AcceleratorType.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : AccessPolicy
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
 class $AccessPolicy {
@@ -1598,7 +1570,6 @@ class $AuditAdvertiserResponse {
 /// - analyticshub:v1 : AuditLogConfig
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
-/// - batch:v1 : AuditLogConfig
 /// - beyondcorp:v1 : GoogleIamV1AuditLogConfig
 /// - bigquery:v2 : AuditLogConfig
 /// - bigtableadmin:v2 : AuditLogConfig
@@ -3073,7 +3044,7 @@ class $ChannelAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - safebrowsing:v4 : Checksum
+/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
 /// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
 class $Checksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
@@ -6470,6 +6441,8 @@ class $EgressFrom {
 /// - baremetalsolution:v2 : DisableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : Empty
 /// - baremetalsolution:v2 : EnableInteractiveSerialConsoleRequest
+/// - baremetalsolution:v2 : EvictLunRequest
+/// - baremetalsolution:v2 : EvictVolumeRequest
 /// - baremetalsolution:v2 : ResetInstanceRequest
 /// - baremetalsolution:v2 : RestoreVolumeSnapshotRequest
 /// - baremetalsolution:v2 : StartInstanceRequest
@@ -6522,7 +6495,6 @@ class $EgressFrom {
 /// - clouddeploy:v1 : VerifyJob
 /// - cloudfunctions:v1 : Retry
 /// - cloudfunctions:v2 : GenerateDownloadUrlRequest
-/// - cloudfunctions:v2 : GenerateUploadUrlRequest
 /// - cloudidentity:v1 : CancelUserInvitationRequest
 /// - cloudidentity:v1 : SendUserInvitationRequest
 /// - cloudiot:v1 : BindDeviceToGatewayResponse
@@ -6569,6 +6541,7 @@ class $EgressFrom {
 /// - content:v2.1 : CaptureOrderRequest
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
 /// - content:v2.1 : RequestReviewBuyOnGoogleProgramRequest
+/// - content:v2.1 : UndeleteConversionSourceRequest
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1DateTimeTypeOptions
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1FloatTypeOptions
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1IntegerTypeOptions
@@ -6615,7 +6588,6 @@ class $EgressFrom {
 /// - dataplex:v1 : GoogleCloudDataplexV1TriggerOnDemand
 /// - dataplex:v1 : GoogleLongrunningCancelOperationRequest
 /// - dataproc:v1 : CancelJobRequest
-/// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
 /// - datastore:v1 : Empty
 /// - datastore:v1 : ReserveIdsResponse
@@ -6826,6 +6798,7 @@ class $EgressFrom {
 /// - pubsublite:v1 : CancelOperationRequest
 /// - pubsublite:v1 : CommitCursorResponse
 /// - pubsublite:v1 : Empty
+/// - readerrevenuesubscriptionlinking:v1 : DeleteReaderResponse
 /// - realtimebidding:v1 : ActivatePretargetingConfigRequest
 /// - realtimebidding:v1 : CloseUserListRequest
 /// - realtimebidding:v1 : Empty
@@ -6844,7 +6817,7 @@ class $EgressFrom {
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
-/// - safebrowsing:v4 : Empty
+/// - safebrowsing:v4 : GoogleProtobufEmpty
 /// - script:v1 : Empty
 /// - secretmanager:v1 : Empty
 /// - securitycenter:v1 : Empty
@@ -7690,7 +7663,6 @@ class $ExportOptions {
 /// - apigee:v1 : GoogleTypeExpr
 /// - apigeeregistry:v1 : Expr
 /// - artifactregistry:v1 : Expr
-/// - batch:v1 : Expr
 /// - beyondcorp:v1 : GoogleTypeExpr
 /// - bigquery:v2 : Expr
 /// - bigtableadmin:v2 : Expr
@@ -11477,6 +11449,36 @@ class $Linear {
 
 /// Used by:
 ///
+/// - compute:v1 : HelpLink
+/// - vmmigration:v1 : Link
+class $Link {
+  /// Describes what the link offers.
+  core.String? description;
+
+  /// The URL of the link.
+  core.String? url;
+
+  $Link({
+    this.description,
+    this.url,
+  });
+
+  $Link.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (url != null) 'url': url!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1ListPolicy
 /// - cloudresourcemanager:v1 : ListPolicy
 class $ListPolicy {
@@ -11754,6 +11756,41 @@ class $ListTargetingExpression {
 
 /// Used by:
 ///
+/// - compute:v1 : LocalizedMessage
+/// - vmmigration:v1 : LocalizedMessage
+class $LocalizedMessage {
+  /// The locale used following the specification defined at
+  /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt.
+  ///
+  /// Examples are: "en-US", "fr-CH", "es-MX"
+  core.String? locale;
+
+  /// The localized error message in the above locale.
+  core.String? message;
+
+  $LocalizedMessage({
+    this.locale,
+    this.message,
+  });
+
+  $LocalizedMessage.fromJson(core.Map json_)
+      : this(
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locale != null) 'locale': locale!,
+        if (message != null) 'message': message!,
+      };
+}
+
+/// Used by:
+///
 /// - apigateway:v1 : ApigatewayLocation
 /// - apigeeregistry:v1 : Location
 /// - artifactregistry:v1 : Location
@@ -11800,6 +11837,7 @@ class $ListTargetingExpression {
 /// - tpu:v2 : Location
 /// - translate:v3 : Location
 /// - vmmigration:v1 : Location
+/// - vpcaccess:v1 : Location
 /// - workflows:v1 : Location
 /// - workloadmanager:v1 : Location
 class $Location00 {
@@ -14931,7 +14969,6 @@ class $PerformanceGoalBidStrategy {
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - apigeeregistry:v1 : TestIamPermissionsResponse
 /// - artifactregistry:v1 : TestIamPermissionsResponse
-/// - batch:v1 : TestIamPermissionsResponse
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
 /// - bigtableadmin:v2 : TestIamPermissionsResponse
@@ -16038,7 +16075,7 @@ class $QuotaLimit {
 
 /// Used by:
 ///
-/// - safebrowsing:v4 : RawIndices
+/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
 /// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
 class $RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
@@ -16512,7 +16549,7 @@ class $Request02 {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -18040,6 +18077,7 @@ class $StartPageToken {
 /// - videointelligence:v1 : GoogleRpc_Status
 /// - vision:v1 : Status
 /// - vmmigration:v1 : Status
+/// - vpcaccess:v1 : Status
 /// - webrisk:v1 : GoogleRpcStatus
 /// - workflows:v1 : Status
 /// - workloadmanager:v1 : Status
@@ -18562,18 +18600,6 @@ class $TargetingExpansionConfig {
 
   /// Magnitude of expansion for applicable targeting under this line item.
   ///
-  /// Beginning November 7, 2022, the behavior of this field will change in the
-  /// following ways with the replacement of targeting expansion with
-  /// \[optimized
-  /// targeting\](//support.google.com/displayvideo/answer/12060859): * This
-  /// field will represent the optimized targeting checkbox, with a
-  /// `NO_EXPANSION` value representing optimized targeting turned off and a
-  /// `LEAST_EXPANSION` value representing optimized targeting turned on. *
-  /// `NO_EXPANSION` will be the default value for the field and will be
-  /// automatically assigned if you do not set the field. * If you set the field
-  /// to any value other than `NO_EXPANSION`, it will automatically be set to
-  /// `LEAST_EXPANSION`.
-  ///
   /// Required.
   /// Possible string values are:
   /// - "TARGETING_EXPANSION_LEVEL_UNSPECIFIED" : Targeting expansion level is
@@ -18681,7 +18707,6 @@ class $TenantProjectRequest {
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - apigeeregistry:v1 : TestIamPermissionsRequest
 /// - artifactregistry:v1 : TestIamPermissionsRequest
-/// - batch:v1 : TestIamPermissionsRequest
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest

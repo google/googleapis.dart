@@ -678,6 +678,7 @@ api.GoogleCloudChannelV1Customer buildGoogleCloudChannelV1Customer() {
     o.channelPartnerId = 'foo';
     o.cloudIdentityId = 'foo';
     o.cloudIdentityInfo = buildGoogleCloudChannelV1CloudIdentityInfo();
+    o.correlationId = 'foo';
     o.createTime = 'foo';
     o.domain = 'foo';
     o.languageCode = 'foo';
@@ -707,6 +708,10 @@ void checkGoogleCloudChannelV1Customer(api.GoogleCloudChannelV1Customer o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudChannelV1CloudIdentityInfo(o.cloudIdentityInfo!);
+    unittest.expect(
+      o.correlationId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

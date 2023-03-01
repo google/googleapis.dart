@@ -154,6 +154,7 @@ api.EffectiveTag buildEffectiveTag() {
     o.namespacedTagKey = 'foo';
     o.namespacedTagValue = 'foo';
     o.tagKey = 'foo';
+    o.tagKeyParentName = 'foo';
     o.tagValue = 'foo';
   }
   buildCounterEffectiveTag--;
@@ -174,6 +175,10 @@ void checkEffectiveTag(api.EffectiveTag o) {
     );
     unittest.expect(
       o.tagKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tagKeyParentName!,
       unittest.equals('foo'),
     );
     unittest.expect(

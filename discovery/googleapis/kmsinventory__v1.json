@@ -234,7 +234,7 @@
             }
         }
     },
-    "revision": "20230201",
+    "revision": "20230226",
     "rootUrl": "https://kmsinventory.googleapis.com/",
     "schemas": {
         "GoogleCloudKmsInventoryV1ListCryptoKeysResponse": {

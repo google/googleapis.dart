@@ -5803,6 +5803,12 @@ class ProjectsOperationsResource {
 /// settings set at different levels define DTMF detections running in parallel.
 /// Hierarchy: Agent-\>Flow-\>Page-\>Fulfillment/Parameter.
 class GoogleCloudDialogflowCxV3AdvancedSettings {
+  /// If present, incoming audio is exported by Dialogflow to the configured
+  /// Google Cloud Storage destination.
+  ///
+  /// Exposed at the following levels: - Agent level - Flow level
+  GoogleCloudDialogflowCxV3GcsDestination? audioExportGcsDestination;
+
   /// Settings for logging.
   ///
   /// Settings for Dialogflow History, Contact Center messages, StackDriver
@@ -5810,11 +5816,18 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings? loggingSettings;
 
   GoogleCloudDialogflowCxV3AdvancedSettings({
+    this.audioExportGcsDestination,
     this.loggingSettings,
   });
 
   GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(core.Map json_)
       : this(
+          audioExportGcsDestination:
+              json_.containsKey('audioExportGcsDestination')
+                  ? GoogleCloudDialogflowCxV3GcsDestination.fromJson(
+                      json_['audioExportGcsDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           loggingSettings: json_.containsKey('loggingSettings')
               ? GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
                   .fromJson(json_['loggingSettings']
@@ -5823,6 +5836,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (audioExportGcsDestination != null)
+          'audioExportGcsDestination': audioExportGcsDestination!,
         if (loggingSettings != null) 'loggingSettings': loggingSettings!,
       };
 }
@@ -5945,6 +5960,10 @@ class GoogleCloudDialogflowCxV3Agent {
   /// `default_language_code`).
   core.List<core.String>? supportedLanguageCodes;
 
+  /// Settings on instructing the speech synthesizer on how to generate the
+  /// output audio content.
+  GoogleCloudDialogflowCxV3TextToSpeechSettings? textToSpeechSettings;
+
   /// The time zone of the agent from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -5966,6 +5985,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.speechToTextSettings,
     this.startFlow,
     this.supportedLanguageCodes,
+    this.textToSpeechSettings,
     this.timeZone,
   });
 
@@ -6014,6 +6034,11 @@ class GoogleCloudDialogflowCxV3Agent {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          textToSpeechSettings: json_.containsKey('textToSpeechSettings')
+              ? GoogleCloudDialogflowCxV3TextToSpeechSettings.fromJson(
+                  json_['textToSpeechSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           timeZone: json_.containsKey('timeZone')
               ? json_['timeZone'] as core.String
               : null,
@@ -6038,6 +6063,8 @@ class GoogleCloudDialogflowCxV3Agent {
         if (startFlow != null) 'startFlow': startFlow!,
         if (supportedLanguageCodes != null)
           'supportedLanguageCodes': supportedLanguageCodes!,
+        if (textToSpeechSettings != null)
+          'textToSpeechSettings': textToSpeechSettings!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -7166,8 +7193,6 @@ class GoogleCloudDialogflowCxV3Environment {
   ///
   /// You should include version configs for all flows that are reachable from
   /// `Start Flow` in the agent. Otherwise, an error will be returned.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>? versionConfigs;
 
   /// The webhook configuration for this environment.
@@ -8685,6 +8710,32 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
       };
 }
 
+/// Google Cloud Storage location for a Dialogflow operation that writes or
+/// exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+class GoogleCloudDialogflowCxV3GcsDestination {
+  /// The Google Cloud Storage URI for the exported objects.
+  ///
+  /// A URI is of the form: gs://bucket/object-name-or-prefix Whether a full
+  /// object name, or just a prefix, its usage depends on the Dialogflow
+  /// operation.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudDialogflowCxV3GcsDestination({
+    this.uri,
+  });
+
+  GoogleCloudDialogflowCxV3GcsDestination.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// The request message for Flows.ImportFlow.
 class GoogleCloudDialogflowCxV3ImportFlowRequest {
   /// Uncompressed raw byte content for flow.
@@ -10090,6 +10141,9 @@ class GoogleCloudDialogflowCxV3Match {
 
 /// Request of MatchIntent.
 class GoogleCloudDialogflowCxV3MatchIntentRequest {
+  /// Persist session parameter changes from `query_params`.
+  core.bool? persistParameterChanges;
+
   /// The input specification.
   ///
   /// Required.
@@ -10099,12 +10153,16 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
   GoogleCloudDialogflowCxV3QueryParameters? queryParams;
 
   GoogleCloudDialogflowCxV3MatchIntentRequest({
+    this.persistParameterChanges,
     this.queryInput,
     this.queryParams,
   });
 
   GoogleCloudDialogflowCxV3MatchIntentRequest.fromJson(core.Map json_)
       : this(
+          persistParameterChanges: json_.containsKey('persistParameterChanges')
+              ? json_['persistParameterChanges'] as core.bool
+              : null,
           queryInput: json_.containsKey('queryInput')
               ? GoogleCloudDialogflowCxV3QueryInput.fromJson(
                   json_['queryInput'] as core.Map<core.String, core.dynamic>)
@@ -10116,6 +10174,8 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (persistParameterChanges != null)
+          'persistParameterChanges': persistParameterChanges!,
         if (queryInput != null) 'queryInput': queryInput!,
         if (queryParams != null) 'queryParams': queryParams!,
       };
@@ -12318,6 +12378,39 @@ class GoogleCloudDialogflowCxV3TextInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
+      };
+}
+
+/// Settings related to speech generating.
+class GoogleCloudDialogflowCxV3TextToSpeechSettings {
+  /// Configuration of how speech should be synthesized, mapping from language
+  /// (https://dialogflow.com/docs/reference/language) to
+  /// SynthesizeSpeechConfig.
+  core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
+      synthesizeSpeechConfigs;
+
+  GoogleCloudDialogflowCxV3TextToSpeechSettings({
+    this.synthesizeSpeechConfigs,
+  });
+
+  GoogleCloudDialogflowCxV3TextToSpeechSettings.fromJson(core.Map json_)
+      : this(
+          synthesizeSpeechConfigs: json_.containsKey('synthesizeSpeechConfigs')
+              ? (json_['synthesizeSpeechConfigs']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowCxV3SynthesizeSpeechConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (synthesizeSpeechConfigs != null)
+          'synthesizeSpeechConfigs': synthesizeSpeechConfigs!,
       };
 }
 

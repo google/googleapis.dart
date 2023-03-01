@@ -242,7 +242,7 @@ class ProjectsLocationsGroupsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -297,7 +297,7 @@ class ProjectsLocationsGroupsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -443,7 +443,7 @@ class ProjectsLocationsGroupsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -755,7 +755,7 @@ class ProjectsLocationsSourcesResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -812,7 +812,7 @@ class ProjectsLocationsSourcesResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1021,7 +1021,7 @@ class ProjectsLocationsSourcesResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1096,7 +1096,7 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1153,7 +1153,7 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes after the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1365,7 +1365,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1622,7 +1622,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1874,7 +1874,7 @@ class ProjectsLocationsSourcesMigratingVmsCloneJobsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2080,7 +2080,7 @@ class ProjectsLocationsSourcesMigratingVmsCutoverJobsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2347,7 +2347,7 @@ class ProjectsLocationsSourcesUtilizationReportsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2408,7 +2408,7 @@ class ProjectsLocationsSourcesUtilizationReportsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2587,7 +2587,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2647,7 +2647,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2803,7 +2803,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -4648,6 +4648,9 @@ typedef InitializingReplicationStep = $Empty;
 /// InstantiatingMigratedVMStep contains specific step details.
 typedef InstantiatingMigratedVMStep = $Empty;
 
+/// Describes a URL link.
+typedef Link = $Link;
+
 /// Response message for 'ListCloneJobs' request.
 class ListCloneJobsResponse {
   /// The list of clone jobs response.
@@ -5164,6 +5167,10 @@ class ListUtilizationReportsResponse {
       };
 }
 
+/// Provides a localized error message that is safe to return to the user which
+/// can be attached to an RPC error.
+typedef LocalizedMessage = $LocalizedMessage;
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
@@ -5211,6 +5218,15 @@ class MigratingVm {
 
   /// The labels of the migrating VM.
   core.Map<core.String, core.String>? labels;
+
+  /// Details of the last replication cycle.
+  ///
+  /// This will be updated whenever a replication cycle is finished and is not
+  /// to be confused with last_sync which is only updated on successful
+  /// replication cycles.
+  ///
+  /// Output only.
+  ReplicationCycle? lastReplicationCycle;
 
   /// The most updated snapshot created time in the source that finished
   /// replication.
@@ -5298,6 +5314,7 @@ class MigratingVm {
     this.error,
     this.group,
     this.labels,
+    this.lastReplicationCycle,
     this.lastSync,
     this.name,
     this.policy,
@@ -5348,6 +5365,10 @@ class MigratingVm {
                   ),
                 )
               : null,
+          lastReplicationCycle: json_.containsKey('lastReplicationCycle')
+              ? ReplicationCycle.fromJson(json_['lastReplicationCycle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           lastSync: json_.containsKey('lastSync')
               ? ReplicationSync.fromJson(
                   json_['lastSync'] as core.Map<core.String, core.dynamic>)
@@ -5394,6 +5415,8 @@ class MigratingVm {
         if (error != null) 'error': error!,
         if (group != null) 'group': group!,
         if (labels != null) 'labels': labels!,
+        if (lastReplicationCycle != null)
+          'lastReplicationCycle': lastReplicationCycle!,
         if (lastSync != null) 'lastSync': lastSync!,
         if (name != null) 'name': name!,
         if (policy != null) 'policy': policy!,
@@ -5403,6 +5426,69 @@ class MigratingVm {
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents migration resource warning information that can be used with
+/// google.rpc.Status message.
+///
+/// MigrationWarning is used to present the user with warning information in
+/// migration operations.
+class MigrationWarning {
+  /// Suggested action for solving the warning.
+  LocalizedMessage? actionItem;
+
+  /// The warning code.
+  /// Possible string values are:
+  /// - "WARNING_CODE_UNSPECIFIED" : Default value. This value is not used.
+  /// - "ADAPTATION_WARNING" : A warning originated from OS Adaptation.
+  core.String? code;
+
+  /// URL(s) pointing to additional information on handling the current warning.
+  core.List<Link>? helpLinks;
+
+  /// The localized warning message.
+  LocalizedMessage? warningMessage;
+
+  /// The time the warning occurred.
+  core.String? warningTime;
+
+  MigrationWarning({
+    this.actionItem,
+    this.code,
+    this.helpLinks,
+    this.warningMessage,
+    this.warningTime,
+  });
+
+  MigrationWarning.fromJson(core.Map json_)
+      : this(
+          actionItem: json_.containsKey('actionItem')
+              ? LocalizedMessage.fromJson(
+                  json_['actionItem'] as core.Map<core.String, core.dynamic>)
+              : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          helpLinks: json_.containsKey('helpLinks')
+              ? (json_['helpLinks'] as core.List)
+                  .map((value) => Link.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          warningMessage: json_.containsKey('warningMessage')
+              ? LocalizedMessage.fromJson(json_['warningMessage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          warningTime: json_.containsKey('warningTime')
+              ? json_['warningTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionItem != null) 'actionItem': actionItem!,
+        if (code != null) 'code': code!,
+        if (helpLinks != null) 'helpLinks': helpLinks!,
+        if (warningMessage != null) 'warningMessage': warningMessage!,
+        if (warningTime != null) 'warningTime': warningTime!,
       };
 }
 
@@ -5653,6 +5739,11 @@ class ReplicationCycle {
   /// The accumulated duration the replication cycle was paused.
   core.String? totalPauseDuration;
 
+  /// Warnings that occurred during the cycle.
+  ///
+  /// Output only.
+  core.List<MigrationWarning>? warnings;
+
   ReplicationCycle({
     this.cycleNumber,
     this.endTime,
@@ -5663,6 +5754,7 @@ class ReplicationCycle {
     this.state,
     this.steps,
     this.totalPauseDuration,
+    this.warnings,
   });
 
   ReplicationCycle.fromJson(core.Map json_)
@@ -5695,6 +5787,12 @@ class ReplicationCycle {
           totalPauseDuration: json_.containsKey('totalPauseDuration')
               ? json_['totalPauseDuration'] as core.String
               : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => MigrationWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5708,6 +5806,7 @@ class ReplicationCycle {
         if (steps != null) 'steps': steps!,
         if (totalPauseDuration != null)
           'totalPauseDuration': totalPauseDuration!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -6007,7 +6106,7 @@ class UpgradeApplianceRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The

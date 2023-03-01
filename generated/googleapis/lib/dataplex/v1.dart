@@ -638,6 +638,9 @@ class ProjectsLocationsDataScansResource {
   /// number or a letter. Must be between 1-63 characters. Must be unique within
   /// the customer project / location.
   ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -652,11 +655,13 @@ class ProjectsLocationsDataScansResource {
     GoogleCloudDataplexV1DataScan request,
     core.String parent, {
     core.String? dataScanId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (dataScanId != null) 'dataScanId': [dataScanId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -894,6 +899,9 @@ class ProjectsLocationsDataScansResource {
   ///
   /// [updateMask] - Required. Mask of fields to update.
   ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -908,11 +916,13 @@ class ProjectsLocationsDataScansResource {
     GoogleCloudDataplexV1DataScan request,
     core.String name, {
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1084,7 +1094,7 @@ class ProjectsLocationsDataScansJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the DataScanJob:
-  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
+  /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
   /// where project refers to a project_id or project_number and location_id
   /// refers to a GCP region.
   /// Value must have pattern
@@ -6827,6 +6837,11 @@ class GoogleCloudDataplexV1AssetResourceSpec {
 
 /// Status of the resource referenced by an asset.
 class GoogleCloudDataplexV1AssetResourceStatus {
+  /// Service account associated with the BigQuery Connection.
+  ///
+  /// Output only.
+  core.String? managedAccessIdentity;
+
   /// Additional information about the current state.
   core.String? message;
 
@@ -6841,6 +6856,7 @@ class GoogleCloudDataplexV1AssetResourceStatus {
   core.String? updateTime;
 
   GoogleCloudDataplexV1AssetResourceStatus({
+    this.managedAccessIdentity,
     this.message,
     this.state,
     this.updateTime,
@@ -6848,6 +6864,9 @@ class GoogleCloudDataplexV1AssetResourceStatus {
 
   GoogleCloudDataplexV1AssetResourceStatus.fromJson(core.Map json_)
       : this(
+          managedAccessIdentity: json_.containsKey('managedAccessIdentity')
+              ? json_['managedAccessIdentity'] as core.String
+              : null,
           message: json_.containsKey('message')
               ? json_['message'] as core.String
               : null,
@@ -6859,6 +6878,8 @@ class GoogleCloudDataplexV1AssetResourceStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (managedAccessIdentity != null)
+          'managedAccessIdentity': managedAccessIdentity!,
         if (message != null) 'message': message!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -7127,8 +7148,8 @@ class GoogleCloudDataplexV1ContentSqlScript {
 /// DataAccessSpec holds the access control configuration to be enforced on data
 /// stored within resources (eg: rows, columns in BigQuery Tables).
 ///
-/// When associated with data,the data is only accessible to principals
-/// explicitly granted access through the DataAttribute. Principals with access
+/// When associated with data, the data is only accessible to principals
+/// explicitly granted access through the DataAccessSpec. Principals with access
 /// to the containing resource are not implicitly granted access.
 class GoogleCloudDataplexV1DataAccessSpec {
   /// The format of strings follows the pattern followed by IAM in the bindings.
@@ -7361,7 +7382,7 @@ class GoogleCloudDataplexV1DataAttributeBinding {
   /// Optional.
   core.List<GoogleCloudDataplexV1DataAttributeBindingPath>? paths;
 
-  /// The resource name of the resource that is binded to attributes.
+  /// The resource name of the resource that is associated to attributes.
   ///
   /// Presently, only entity resource is supported in the form:
   /// projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id}
@@ -9446,6 +9467,7 @@ class GoogleCloudDataplexV1Environment {
       };
 }
 
+/// URI Endpoints to access sessions associated with the Environment.
 class GoogleCloudDataplexV1EnvironmentEndpoints {
   /// URI to serve notebook APIs
   ///
@@ -9635,6 +9657,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime {
       };
 }
 
+/// Configuration for sessions created for this environment.
 class GoogleCloudDataplexV1EnvironmentSessionSpec {
   /// If True, this causes sessions to be pre-created and available for faster
   /// startup to enable interactive exploration use-cases.
@@ -9674,6 +9697,7 @@ class GoogleCloudDataplexV1EnvironmentSessionSpec {
       };
 }
 
+/// Status of sessions created for this environment.
 class GoogleCloudDataplexV1EnvironmentSessionStatus {
   /// Queries over sessions to mark whether the environment is currently active
   /// or not
@@ -11093,7 +11117,9 @@ class GoogleCloudDataplexV1Session {
   /// Output only.
   core.String? name;
 
+  /// State of Session
   ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State is not specified.
   /// - "ACTIVE" : Resource is active, i.e., ready to use.
@@ -12601,14 +12627,16 @@ class GoogleIamV1Binding {
   /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, my-project.svc.id.goog\[my-namespace/my-kubernetes-sa\].
   /// group:{emailid}: An email address that represents a Google group. For
-  /// example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a user that has been
-  /// recently deleted. For example,
-  /// alice@example.com?uid=123456789012345678901. If the user is recovered,
-  /// this value reverts to user:{emailid} and the recovered user retains the
-  /// role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a service account that
-  /// has been recently deleted. For example,
+  /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, google.com or
+  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a user that has been recently deleted. For
+  /// example, alice@example.com?uid=123456789012345678901. If the user is
+  /// recovered, this value reverts to user:{emailid} and the recovered user
+  /// retains the role in the binding.
+  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
   /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
@@ -12617,9 +12645,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
-  /// role in the binding. domain:{domain}: The G Suite domain (primary) that
-  /// represents all the users of that domain. For example, google.com or
-  /// example.com.
+  /// role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.

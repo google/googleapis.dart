@@ -147,6 +147,36 @@ void checkEnableInteractiveSerialConsoleRequest(
   buildCounterEnableInteractiveSerialConsoleRequest--;
 }
 
+core.int buildCounterEvictLunRequest = 0;
+api.EvictLunRequest buildEvictLunRequest() {
+  final o = api.EvictLunRequest();
+  buildCounterEvictLunRequest++;
+  if (buildCounterEvictLunRequest < 3) {}
+  buildCounterEvictLunRequest--;
+  return o;
+}
+
+void checkEvictLunRequest(api.EvictLunRequest o) {
+  buildCounterEvictLunRequest++;
+  if (buildCounterEvictLunRequest < 3) {}
+  buildCounterEvictLunRequest--;
+}
+
+core.int buildCounterEvictVolumeRequest = 0;
+api.EvictVolumeRequest buildEvictVolumeRequest() {
+  final o = api.EvictVolumeRequest();
+  buildCounterEvictVolumeRequest++;
+  if (buildCounterEvictVolumeRequest < 3) {}
+  buildCounterEvictVolumeRequest--;
+  return o;
+}
+
+void checkEvictVolumeRequest(api.EvictVolumeRequest o) {
+  buildCounterEvictVolumeRequest++;
+  if (buildCounterEvictVolumeRequest < 3) {}
+  buildCounterEvictVolumeRequest--;
+}
+
 core.List<api.OSImage> buildUnnamed0() => [
       buildOSImage(),
       buildOSImage(),
@@ -1152,6 +1182,7 @@ api.Lun buildLun() {
   buildCounterLun++;
   if (buildCounterLun < 3) {
     o.bootLun = true;
+    o.expireTime = 'foo';
     o.id = 'foo';
     o.multiprotocolType = 'foo';
     o.name = 'foo';
@@ -1170,6 +1201,10 @@ void checkLun(api.Lun o) {
   buildCounterLun++;
   if (buildCounterLun < 3) {
     unittest.expect(o.bootLun!, unittest.isTrue);
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2079,6 +2114,28 @@ void checkQosPolicy(api.QosPolicy o) {
   buildCounterQosPolicy--;
 }
 
+core.int buildCounterRenameInstanceRequest = 0;
+api.RenameInstanceRequest buildRenameInstanceRequest() {
+  final o = api.RenameInstanceRequest();
+  buildCounterRenameInstanceRequest++;
+  if (buildCounterRenameInstanceRequest < 3) {
+    o.newName = 'foo';
+  }
+  buildCounterRenameInstanceRequest--;
+  return o;
+}
+
+void checkRenameInstanceRequest(api.RenameInstanceRequest o) {
+  buildCounterRenameInstanceRequest++;
+  if (buildCounterRenameInstanceRequest < 3) {
+    unittest.expect(
+      o.newName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRenameInstanceRequest--;
+}
+
 core.int buildCounterResetInstanceRequest = 0;
 api.ResetInstanceRequest buildResetInstanceRequest() {
   final o = api.ResetInstanceRequest();
@@ -2528,6 +2585,7 @@ api.Volume buildVolume() {
     o.bootVolume = true;
     o.currentSizeGib = 'foo';
     o.emergencySizeGib = 'foo';
+    o.expireTime = 'foo';
     o.id = 'foo';
     o.labels = buildUnnamed46();
     o.maxSizeGib = 'foo';
@@ -2566,6 +2624,10 @@ void checkVolume(api.Volume o) {
     );
     unittest.expect(
       o.emergencySizeGib!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2843,6 +2905,26 @@ void main() {
       final od = api.EnableInteractiveSerialConsoleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnableInteractiveSerialConsoleRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-EvictLunRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEvictLunRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EvictLunRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEvictLunRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-EvictVolumeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEvictVolumeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EvictVolumeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEvictVolumeRequest(od);
     });
   });
 
@@ -3188,6 +3270,16 @@ void main() {
       final od =
           api.QosPolicy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkQosPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-RenameInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRenameInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RenameInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRenameInstanceRequest(od);
     });
   });
 
@@ -3954,6 +4046,64 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--rename', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.instances;
+      final arg_request = buildRenameInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RenameInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRenameInstanceRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildInstance());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.rename(arg_request, arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
     unittest.test('method--reset', () async {
@@ -5225,6 +5375,64 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsVolumesResource', () {
+    unittest.test('method--evict', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.volumes;
+      final arg_request = buildEvictVolumeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EvictVolumeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEvictVolumeRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.evict(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.BaremetalsolutionApi(mock).projects.locations.volumes;
@@ -5471,6 +5679,65 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsVolumesLunsResource', () {
+    unittest.test('method--evict', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BaremetalsolutionApi(mock).projects.locations.volumes.luns;
+      final arg_request = buildEvictLunRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EvictLunRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEvictLunRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.evict(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res =

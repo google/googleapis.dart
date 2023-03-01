@@ -391,6 +391,7 @@ api.Function_ buildFunction_() {
     o.description = 'foo';
     o.environment = 'foo';
     o.eventTrigger = buildEventTrigger();
+    o.kmsKeyName = 'foo';
     o.labels = buildUnnamed5();
     o.name = 'foo';
     o.serviceConfig = buildServiceConfig();
@@ -415,6 +416,10 @@ void checkFunction_(api.Function_ o) {
       unittest.equals('foo'),
     );
     checkEventTrigger(o.eventTrigger!);
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed5(o.labels!);
     unittest.expect(
       o.name!,
@@ -475,14 +480,21 @@ core.int buildCounterGenerateUploadUrlRequest = 0;
 api.GenerateUploadUrlRequest buildGenerateUploadUrlRequest() {
   final o = api.GenerateUploadUrlRequest();
   buildCounterGenerateUploadUrlRequest++;
-  if (buildCounterGenerateUploadUrlRequest < 3) {}
+  if (buildCounterGenerateUploadUrlRequest < 3) {
+    o.kmsKeyName = 'foo';
+  }
   buildCounterGenerateUploadUrlRequest--;
   return o;
 }
 
 void checkGenerateUploadUrlRequest(api.GenerateUploadUrlRequest o) {
   buildCounterGenerateUploadUrlRequest++;
-  if (buildCounterGenerateUploadUrlRequest < 3) {}
+  if (buildCounterGenerateUploadUrlRequest < 3) {
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterGenerateUploadUrlRequest--;
 }
 

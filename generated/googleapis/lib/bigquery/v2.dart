@@ -4148,6 +4148,9 @@ class Dataset {
   /// Optional.
   core.String? defaultPartitionExpirationMs;
 
+  /// \[Output-only\] The default rounding mode of the dataset.
+  core.String? defaultRoundingMode;
+
   /// The default lifetime of all tables in the dataset, in milliseconds.
   ///
   /// The minimum value is 3600000 milliseconds (one hour). Once this property
@@ -4241,6 +4244,7 @@ class Dataset {
     this.defaultCollation,
     this.defaultEncryptionConfiguration,
     this.defaultPartitionExpirationMs,
+    this.defaultRoundingMode,
     this.defaultTableExpirationMs,
     this.description,
     this.etag,
@@ -4286,6 +4290,9 @@ class Dataset {
               json_.containsKey('defaultPartitionExpirationMs')
                   ? json_['defaultPartitionExpirationMs'] as core.String
                   : null,
+          defaultRoundingMode: json_.containsKey('defaultRoundingMode')
+              ? json_['defaultRoundingMode'] as core.String
+              : null,
           defaultTableExpirationMs:
               json_.containsKey('defaultTableExpirationMs')
                   ? json_['defaultTableExpirationMs'] as core.String
@@ -4345,6 +4352,8 @@ class Dataset {
           'defaultEncryptionConfiguration': defaultEncryptionConfiguration!,
         if (defaultPartitionExpirationMs != null)
           'defaultPartitionExpirationMs': defaultPartitionExpirationMs!,
+        if (defaultRoundingMode != null)
+          'defaultRoundingMode': defaultRoundingMode!,
         if (defaultTableExpirationMs != null)
           'defaultTableExpirationMs': defaultTableExpirationMs!,
         if (description != null) 'description': description!,
@@ -11830,6 +11839,9 @@ class Table {
   /// \[Output-only\] The default collation of the table.
   core.String? defaultCollation;
 
+  /// \[Output-only\] The default rounding mode of the table.
+  core.String? defaultRoundingMode;
+
   /// A user-friendly description of this table.
   ///
   /// Optional.
@@ -12036,6 +12048,7 @@ class Table {
     this.clustering,
     this.creationTime,
     this.defaultCollation,
+    this.defaultRoundingMode,
     this.description,
     this.encryptionConfiguration,
     this.etag,
@@ -12089,6 +12102,9 @@ class Table {
               : null,
           defaultCollation: json_.containsKey('defaultCollation')
               ? json_['defaultCollation'] as core.String
+              : null,
+          defaultRoundingMode: json_.containsKey('defaultRoundingMode')
+              ? json_['defaultRoundingMode'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -12219,6 +12235,8 @@ class Table {
         if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (defaultCollation != null) 'defaultCollation': defaultCollation!,
+        if (defaultRoundingMode != null)
+          'defaultRoundingMode': defaultRoundingMode!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
           'encryptionConfiguration': encryptionConfiguration!,
@@ -12654,6 +12672,13 @@ class TableFieldSchema {
   /// Optional.
   core.String? precision;
 
+  /// Rounding Mode specification of the field.
+  ///
+  /// It only can be set on NUMERIC or BIGNUMERIC type fields.
+  ///
+  /// Optional.
+  core.String? roundingMode;
+
   /// See documentation for precision.
   ///
   /// Optional.
@@ -12681,6 +12706,7 @@ class TableFieldSchema {
     this.name,
     this.policyTags,
     this.precision,
+    this.roundingMode,
     this.scale,
     this.type,
   });
@@ -12718,6 +12744,9 @@ class TableFieldSchema {
           precision: json_.containsKey('precision')
               ? json_['precision'] as core.String
               : null,
+          roundingMode: json_.containsKey('roundingMode')
+              ? json_['roundingMode'] as core.String
+              : null,
           scale:
               json_.containsKey('scale') ? json_['scale'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -12735,6 +12764,7 @@ class TableFieldSchema {
         if (name != null) 'name': name!,
         if (policyTags != null) 'policyTags': policyTags!,
         if (precision != null) 'precision': precision!,
+        if (roundingMode != null) 'roundingMode': roundingMode!,
         if (scale != null) 'scale': scale!,
         if (type != null) 'type': type!,
       };

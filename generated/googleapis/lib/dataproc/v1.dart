@@ -635,6 +635,21 @@ class ProjectsLocationsBatchesResource {
   /// [parent] - Required. The parent, which owns this collection of batches.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter for the batches to return in the response.A
+  /// filter is a logical expression constraining the values of various fields
+  /// in each batch resource. Filters are case sensitive, and may contain
+  /// multiple clauses combined with logical operators (AND/OR). Supported
+  /// fields are batch_id, batch_uuid, state, and create_time.e.g. state =
+  /// RUNNING and create_time \< "2023-01-01T00:00:00Z" filters for batches in
+  /// state RUNNING that were created before 2023-01-01See
+  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed
+  /// description of the filter syntax and a list of supported comparisons.
+  ///
+  /// [orderBy] - Optional. Field(s) on which to sort the list of
+  /// batches.Currently the only supported sort orders are unspecified (empty)
+  /// and create_time desc to sort by most recently created batches first.See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
   /// [pageSize] - Optional. The maximum number of batches to return in each
   /// response. The service may return fewer than this value. The default page
   /// size is 20; the maximum page size is 1000.
@@ -654,11 +669,15 @@ class ProjectsLocationsBatchesResource {
   /// this method will complete with the same error.
   async.Future<ListBatchesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4152,9 +4171,9 @@ class AcceleratorConfig {
   /// expose to this instance.
   ///
   /// See Compute Engine AcceleratorTypes
-  /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
-  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-  /// projects/\[project_id\]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+  /// (https://cloud.google.com/compute/docs/reference/v1/acceleratorTypes).Examples:
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]/acceleratorTypes/nvidia-tesla-k80
+  /// projects/\[project_id\]/zones/\[zone\]/acceleratorTypes/nvidia-tesla-k80
   /// nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto
   /// Zone Placement
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
@@ -4772,14 +4791,16 @@ class Binding {
   /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, my-project.svc.id.goog\[my-namespace/my-kubernetes-sa\].
   /// group:{emailid}: An email address that represents a Google group. For
-  /// example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a user that has been
-  /// recently deleted. For example,
-  /// alice@example.com?uid=123456789012345678901. If the user is recovered,
-  /// this value reverts to user:{emailid} and the recovered user retains the
-  /// role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
-  /// email address (plus unique identifier) representing a service account that
-  /// has been recently deleted. For example,
+  /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, google.com or
+  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a user that has been recently deleted. For
+  /// example, alice@example.com?uid=123456789012345678901. If the user is
+  /// recovered, this value reverts to user:{emailid} and the recovered user
+  /// retains the role in the binding.
+  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
   /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
@@ -4788,9 +4809,7 @@ class Binding {
   /// recently deleted. For example,
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
-  /// role in the binding. domain:{domain}: The G Suite domain (primary) that
-  /// represents all the users of that domain. For example, google.com or
-  /// example.com.
+  /// role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.
@@ -4893,7 +4912,7 @@ class Cluster {
   /// The virtual cluster config is used when creating a Dataproc cluster that
   /// does not directly control the underlying compute resources, for example,
   /// when creating a Dataproc-on-GKE cluster
-  /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
+  /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
   ///
   /// Dataproc may set default values, and values may change when clusters are
   /// updated. Exactly one of config or virtual_cluster_config must be
@@ -5433,7 +5452,49 @@ class DataprocMetricConfig {
 }
 
 /// A request to collect cluster diagnostic information.
-typedef DiagnoseClusterRequest = $Empty;
+class DiagnoseClusterRequest {
+  /// Time interval in which diagnosis should be carried out on the cluster.
+  ///
+  /// Optional.
+  Interval? diagnosisInterval;
+
+  /// DEPRECATED Specifies the job on which diagnosis is to be performed.
+  ///
+  /// Format: projects/{project}/regions/{region}/jobs/{job}
+  ///
+  /// Optional.
+  core.String? job;
+
+  /// DEPRECATED Specifies the yarn application on which diagnosis is to be
+  /// performed.
+  ///
+  /// Optional.
+  core.String? yarnApplicationId;
+
+  DiagnoseClusterRequest({
+    this.diagnosisInterval,
+    this.job,
+    this.yarnApplicationId,
+  });
+
+  DiagnoseClusterRequest.fromJson(core.Map json_)
+      : this(
+          diagnosisInterval: json_.containsKey('diagnosisInterval')
+              ? Interval.fromJson(json_['diagnosisInterval']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          job: json_.containsKey('job') ? json_['job'] as core.String : null,
+          yarnApplicationId: json_.containsKey('yarnApplicationId')
+              ? json_['yarnApplicationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosisInterval != null) 'diagnosisInterval': diagnosisInterval!,
+        if (job != null) 'job': job!,
+        if (yarnApplicationId != null) 'yarnApplicationId': yarnApplicationId!,
+      };
+}
 
 /// Specifies the config of disk options for a group of VM instances.
 class DiskConfig {
@@ -5552,8 +5613,15 @@ class EncryptionConfig {
   /// Optional.
   core.String? gcePdKmsKeyName;
 
+  /// The Cloud KMS key name to use for encrypting customer core content and
+  /// cluster PD disk for all instances in the cluster.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
   EncryptionConfig({
     this.gcePdKmsKeyName,
+    this.kmsKey,
   });
 
   EncryptionConfig.fromJson(core.Map json_)
@@ -5561,10 +5629,14 @@ class EncryptionConfig {
           gcePdKmsKeyName: json_.containsKey('gcePdKmsKeyName')
               ? json_['gcePdKmsKeyName'] as core.String
               : null,
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
       };
 }
 
@@ -5683,10 +5755,37 @@ class ExecutionConfig {
   /// Optional.
   core.String? serviceAccount;
 
+  /// A Cloud Storage bucket used to stage workload dependencies, config files,
+  /// and store workload output and other ephemeral data, such as Spark history
+  /// files.
+  ///
+  /// If you do not specify a staging bucket, Cloud Dataproc will determine a
+  /// Cloud Storage location according to the region where your workload is
+  /// running, and then create and manage project-level, per-location staging
+  /// and temporary buckets. This field requires a Cloud Storage bucket name,
+  /// not a gs://... URI to a Cloud Storage bucket.
+  ///
+  /// Optional.
+  core.String? stagingBucket;
+
   /// Subnetwork URI to connect workload to.
   ///
   /// Optional.
   core.String? subnetworkUri;
+
+  /// The duration after which the workload will be terminated.
+  ///
+  /// When the workload passes this ttl, it will be unconditionally killed
+  /// without waiting for ongoing work to finish. Minimum value is 10 minutes;
+  /// maximum value is 14 days (see JSON representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If
+  /// both ttl and idle_ttl are specified, the conditions are treated as and OR:
+  /// the workload will be terminated when it has been idle for idle_ttl or when
+  /// the ttl has passed, whichever comes first. If ttl is not specified for a
+  /// session, it defaults to 24h.
+  ///
+  /// Optional.
+  core.String? ttl;
 
   ExecutionConfig({
     this.idleTtl,
@@ -5694,7 +5793,9 @@ class ExecutionConfig {
     this.networkTags,
     this.networkUri,
     this.serviceAccount,
+    this.stagingBucket,
     this.subnetworkUri,
+    this.ttl,
   });
 
   ExecutionConfig.fromJson(core.Map json_)
@@ -5716,9 +5817,13 @@ class ExecutionConfig {
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
+          stagingBucket: json_.containsKey('stagingBucket')
+              ? json_['stagingBucket'] as core.String
+              : null,
           subnetworkUri: json_.containsKey('subnetworkUri')
               ? json_['subnetworkUri'] as core.String
               : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5727,7 +5832,9 @@ class ExecutionConfig {
         if (networkTags != null) 'networkTags': networkTags!,
         if (networkUri != null) 'networkUri': networkUri!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (stagingBucket != null) 'stagingBucket': stagingBucket!,
         if (subnetworkUri != null) 'subnetworkUri': subnetworkUri!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -5784,8 +5891,8 @@ class GceClusterConfig {
   /// if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
   /// (https://cloud.google.com/compute/docs/subnetworks) for more
   /// information).A full URL, partial URI, or short name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/regions/global/default
-  /// projects/\[project_id\]/regions/global/default default
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/global/networks/default
+  /// projects/\[project_id\]/global/networks/default default
   ///
   /// Optional.
   core.String? networkUri;
@@ -5854,8 +5961,8 @@ class GceClusterConfig {
   ///
   /// Cannot be specified with network_uri.A full URL, partial URI, or short
   /// name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/regions/us-east1/subnetworks/sub0
-  /// projects/\[project_id\]/regions/us-east1/subnetworks/sub0 sub0
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/regions/\[region\]/subnetworks/sub0
+  /// projects/\[project_id\]/regions/\[region\]/subnetworks/sub0 sub0
   ///
   /// Optional.
   core.String? subnetworkUri;
@@ -5864,14 +5971,13 @@ class GceClusterConfig {
   /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   core.List<core.String>? tags;
 
-  /// The zone where the Compute Engine cluster will be located.
+  /// The Compute Engine zone where the Dataproc cluster will be located.
   ///
-  /// On a create request, it is required in the "global" region. If omitted in
-  /// a non-global Dataproc region, the service will pick a zone in the
-  /// corresponding Compute Engine region. On a get request, zone will always be
-  /// present.A full URL, partial URI, or short name are valid. Examples:
+  /// If omitted, the service will pick a zone in the cluster's Compute Engine
+  /// region. On a get request, zone will always be present.A full URL, partial
+  /// URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]
-  /// projects/\[project_id\]/zones/\[zone\] us-central1-f
+  /// projects/\[project_id\]/zones/\[zone\] \[zone\]
   ///
   /// Optional.
   core.String? zoneUri;
@@ -6768,12 +6874,12 @@ class InstanceGroupConfig {
 
   /// The Compute Engine image resource used for cluster instances.The URI can
   /// represent an image or image family.Image examples:
-  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/global/images/\[image-id\]
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/global/images/\[image-id\]
   /// projects/\[project_id\]/global/images/\[image-id\] image-idImage family
   /// examples.
   ///
   /// Dataproc will use the most recent image from the family:
-  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/global/images/family/\[custom-image-family-name\]
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/global/images/family/\[custom-image-family-name\]
   /// projects/\[project_id\]/global/images/family/\[custom-image-family-name\]If
   /// the URI is unspecified, it will be inferred from
   /// SoftwareConfig.image_version or the system default.
@@ -6803,8 +6909,8 @@ class InstanceGroupConfig {
   /// partial URI, or short name are valid.
   ///
   /// Examples:
-  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/us-east1-a/machineTypes/n1-standard-2
-  /// projects/\[project_id\]/zones/us-east1-a/machineTypes/n1-standard-2
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]/machineTypes/n1-standard-2
+  /// projects/\[project_id\]/zones/\[zone\]/machineTypes/n1-standard-2
   /// n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
   /// Placement
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
@@ -7048,6 +7154,45 @@ class InstantiateWorkflowTemplateRequest {
         if (parameters != null) 'parameters': parameters!,
         if (requestId != null) 'requestId': requestId!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).The start must be less than or equal to the end.
+///
+/// When the start equals the end, the interval is empty (matches no time). When
+/// both start and end are unspecified, the interval matches any time.
+class Interval {
+  /// Exclusive end of the interval.If specified, a Timestamp matching this
+  /// interval will have to be before the end.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Inclusive start of the interval.If specified, a Timestamp matching this
+  /// interval will have to be the same or after the start.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  Interval({
+    this.endTime,
+    this.startTime,
+  });
+
+  Interval.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -8466,8 +8611,8 @@ class NodeGroupAffinity {
   /// are valid.
   ///
   /// Examples:
-  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/us-central1-a/nodeGroups/node-group-1
-  /// projects/\[project_id\]/zones/us-central1-a/nodeGroups/node-group-1
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]/nodeGroups/node-group-1
+  /// projects/\[project_id\]/zones/\[zone\]/nodeGroups/node-group-1
   /// node-group-1
   ///
   /// Required.
@@ -11159,7 +11304,7 @@ class ValueValidation {
 
 /// The Dataproc cluster config for a cluster that does not directly control the
 /// underlying compute resources, such as a Dataproc-on-GKE cluster
-/// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
+/// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
 class VirtualClusterConfig {
   /// Configuration of auxiliary services used by this cluster.
   ///

@@ -1923,12 +1923,21 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 
 /// Individual line item definition of a subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
+  /// The price of the product/service in this line item.
+  ///
+  /// The amount could be the wholesale price, or it can include a cost of sale
+  /// based on the contract.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
+
   /// Description of this line item.
   ///
   /// Output only.
   core.String? description;
 
-  /// It is set only if the line item has its own free trial applied.
+  /// If the line item has its own free trial promotion, it is set after the
+  /// line item is activated.
   ///
   /// End time of the line item free trial period, in ISO 8061 format. For
   /// example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime
@@ -1997,6 +2006,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   core.String? state;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
+    this.amount,
     this.description,
     this.lineItemFreeTrialEndTime,
     this.lineItemPromotionSpecs,
@@ -2010,6 +2020,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
       core.Map json_)
       : this(
+          amount: json_.containsKey('amount')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -2047,6 +2061,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
         if (description != null) 'description': description!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,

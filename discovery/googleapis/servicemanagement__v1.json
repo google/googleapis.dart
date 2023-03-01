@@ -827,7 +827,7 @@
             }
         }
     },
-    "revision": "20230207",
+    "revision": "20230220",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "schemas": {
         "Advice": {
@@ -1081,6 +1081,13 @@
                     "description": "The number of seconds to wait for the completion of a long running operation. The default is no deadline.",
                     "format": "double",
                     "type": "number"
+                },
+                "overridesByRequestProtocol": {
+                    "additionalProperties": {
+                        "$ref": "BackendRule"
+                    },
+                    "description": "The map between request protocol and the backend address.",
+                    "type": "object"
                 },
                 "pathTranslation": {
                     "enum": [

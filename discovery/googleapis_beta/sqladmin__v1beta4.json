@@ -1919,7 +1919,7 @@
             }
         }
     },
-    "revision": "20221209",
+    "revision": "20230211",
     "rootUrl": "https://sqladmin.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2311,6 +2311,7 @@
                         "MYSQL_8_0_29",
                         "MYSQL_8_0_30",
                         "MYSQL_8_0_31",
+                        "MYSQL_8_0_32",
                         "SQLSERVER_2019_STANDARD",
                         "SQLSERVER_2019_ENTERPRISE",
                         "SQLSERVER_2019_EXPRESS",
@@ -2340,6 +2341,7 @@
                         "The database major version is MySQL 8.0 and the minor version is 29.",
                         "The database major version is MySQL 8.0 and the minor version is 30.",
                         "The database major version is MySQL 8.0 and the minor version is 31.",
+                        "The database major version is MySQL 8.0 and the minor version is 32.",
                         "The database version is SQL Server 2019 Standard.",
                         "The database version is SQL Server 2019 Enterprise.",
                         "The database version is SQL Server 2019 Express.",
@@ -2499,6 +2501,7 @@
                         "MYSQL_8_0_29",
                         "MYSQL_8_0_30",
                         "MYSQL_8_0_31",
+                        "MYSQL_8_0_32",
                         "SQLSERVER_2019_STANDARD",
                         "SQLSERVER_2019_ENTERPRISE",
                         "SQLSERVER_2019_EXPRESS",
@@ -2528,6 +2531,7 @@
                         "The database major version is MySQL 8.0 and the minor version is 29.",
                         "The database major version is MySQL 8.0 and the minor version is 30.",
                         "The database major version is MySQL 8.0 and the minor version is 31.",
+                        "The database major version is MySQL 8.0 and the minor version is 32.",
                         "The database version is SQL Server 2019 Standard.",
                         "The database version is SQL Server 2019 Enterprise.",
                         "The database version is SQL Server 2019 Express.",
@@ -3033,6 +3037,7 @@
                             "MYSQL_8_0_29",
                             "MYSQL_8_0_30",
                             "MYSQL_8_0_31",
+                            "MYSQL_8_0_32",
                             "SQLSERVER_2019_STANDARD",
                             "SQLSERVER_2019_ENTERPRISE",
                             "SQLSERVER_2019_EXPRESS",
@@ -3062,6 +3067,7 @@
                             "The database major version is MySQL 8.0 and the minor version is 29.",
                             "The database major version is MySQL 8.0 and the minor version is 30.",
                             "The database major version is MySQL 8.0 and the minor version is 31.",
+                            "The database major version is MySQL 8.0 and the minor version is 32.",
                             "The database version is SQL Server 2019 Standard.",
                             "The database version is SQL Server 2019 Enterprise.",
                             "The database version is SQL Server 2019 Express.",
@@ -4890,7 +4896,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations resource that has information about the operation.",
+                    "description": "Unused.",
                     "type": "string"
                 }
             },

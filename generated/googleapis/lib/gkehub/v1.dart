@@ -23,7 +23,9 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsFeaturesResource]
 ///     - [ProjectsLocationsMembershipsResource]
+///       - [ProjectsLocationsMembershipsBindingsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsScopesResource]
 library gkehub.v1;
 
 import 'dart:async' as async;
@@ -75,6 +77,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsMembershipsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsScopesResource get scopes =>
+      ProjectsLocationsScopesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -607,6 +611,9 @@ class ProjectsLocationsFeaturesResource {
 class ProjectsLocationsMembershipsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsMembershipsBindingsResource get bindings =>
+      ProjectsLocationsMembershipsBindingsResource(_requester);
+
   ProjectsLocationsMembershipsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -692,6 +699,10 @@ class ProjectsLocationsMembershipsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any subresource from this Membership
+  /// will also be deleted. Otherwise, the request will only work if the
+  /// Membership has no subresource.
+  ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
@@ -716,10 +727,12 @@ class ProjectsLocationsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1133,6 +1146,233 @@ class ProjectsLocationsMembershipsResource {
   }
 }
 
+class ProjectsLocationsMembershipsBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMembershipsBindingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a MembershipBinding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the
+  /// MembershipBinding will be created. Specified in the format `projects / *
+  /// /locations / * /memberships / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
+  ///
+  /// [membershipBindingId] - Required. The ID to use for the MembershipBinding.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MembershipBinding request,
+    core.String parent, {
+    core.String? membershipBindingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (membershipBindingId != null)
+        'membershipBindingId': [membershipBindingId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a MembershipBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The MembershipBinding resource name in the format
+  /// `projects / * /locations / * /memberships / * /bindings / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the details of a MembershipBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The MembershipBinding resource name in the format
+  /// `projects / * /locations / * /memberships / * /bindings / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MembershipBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MembershipBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MembershipBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists MembershipBindings.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Membership for which the
+  /// MembershipBindings will be listed. Specified in the format `projects / *
+  /// /locations / * /memberships / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
+  /// specifies number of resources to return. If unspecified or set to 0, all
+  /// resources will be returned.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// `ListMembershipBindings` which specifies the position in the list from
+  /// where to continue listing the resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMembershipBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMembershipBindingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMembershipBindingsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a MembershipBinding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the membershipbinding itself
+  /// `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MembershipBinding request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1322,6 +1562,182 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsScopesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsScopesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the Scope
+  /// will be created. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [scopeId] - Required. Client chosen ID for the Scope. `scope_id` must be a
+  /// ????
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Scope request,
+    core.String parent, {
+    core.String? scopeId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (scopeId != null) 'scopeId': [scopeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Scope resource name in the format `projects / *
+  /// /locations / * /scopes / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the details of a Scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Scope resource name in the format `projects / *
+  /// /locations / * /scopes / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Scope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Scope> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Scope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the Scope
+  /// will be listed. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
+  /// specifies number of resources to return. If unspecified or set to 0, all
+  /// resources will be returned.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to `ListScopes`
+  /// which specifies the position in the list from where to continue listing
+  /// the resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListScopesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListScopesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4033,6 +4449,43 @@ class ListLocationsResponse {
       };
 }
 
+/// List of MembershipBindings.
+class ListMembershipBindingsResponse {
+  /// The list of membership_bindings
+  core.List<MembershipBinding>? membershipBindings;
+
+  /// A token to request the next page of resources from the
+  /// `ListMembershipBindings` method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  ListMembershipBindingsResponse({
+    this.membershipBindings,
+    this.nextPageToken,
+  });
+
+  ListMembershipBindingsResponse.fromJson(core.Map json_)
+      : this(
+          membershipBindings: json_.containsKey('membershipBindings')
+              ? (json_['membershipBindings'] as core.List)
+                  .map((value) => MembershipBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (membershipBindings != null)
+          'membershipBindings': membershipBindings!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for the `GkeHub.ListMemberships` method.
 class ListMembershipsResponse {
   /// A token to request the next page of resources from the `ListMemberships`
@@ -4108,6 +4561,42 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// List of Scopes.
+class ListScopesResponse {
+  /// A token to request the next page of resources from the `ListScopes`
+  /// method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of Scopes
+  core.List<Scope>? scopes;
+
+  ListScopesResponse({
+    this.nextPageToken,
+    this.scopes,
+  });
+
+  ListScopesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => Scope.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
@@ -4281,6 +4770,123 @@ class Membership {
       };
 }
 
+/// MembershipBinding is a subresource of a Membership, representing what Fleet
+/// Scopes (or other, future Fleet resources) a Membership is bound to.
+class MembershipBinding {
+  /// When the membership binding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// When the membership binding was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Whether the membershipbinding is Fleet-wide; true means that this
+  /// Membership should be bound to all Namespaces in this entire Fleet.
+  core.bool? fleet;
+
+  /// The resource name for the membershipbinding itself
+  /// `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
+  core.String? name;
+
+  /// A Workspace resource name in the format `projects / * /locations / *
+  /// /scopes / * `.
+  core.String? scope;
+
+  /// State of the membership binding resource.
+  ///
+  /// Output only.
+  MembershipBindingLifecycleState? state;
+
+  /// Google-generated UUID for this resource.
+  ///
+  /// This is unique across all membershipbinding resources. If a
+  /// membershipbinding resource is deleted and another resource with the same
+  /// name is created, it gets a different uid.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// When the membership binding was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MembershipBinding({
+    this.createTime,
+    this.deleteTime,
+    this.fleet,
+    this.name,
+    this.scope,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  MembershipBinding.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          fleet:
+              json_.containsKey('fleet') ? json_['fleet'] as core.bool : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          scope:
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          state: json_.containsKey('state')
+              ? MembershipBindingLifecycleState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (fleet != null) 'fleet': fleet!,
+        if (name != null) 'name': name!,
+        if (scope != null) 'scope': scope!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// MembershipBindingLifecycleState describes the state of a Binding resource.
+class MembershipBindingLifecycleState {
+  /// The current state of the MembershipBinding resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : The code is not set.
+  /// - "CREATING" : The membershipbinding is being created.
+  /// - "READY" : The membershipbinding active.
+  /// - "DELETING" : The membershipbinding is being deleted.
+  /// - "UPDATING" : The membershipbinding is being updated.
+  core.String? code;
+
+  MembershipBindingLifecycleState({
+    this.code,
+  });
+
+  MembershipBindingLifecycleState.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+      };
+}
+
 /// MembershipEndpoint contains information needed to contact a Kubernetes API,
 /// endpoint and any additional Kubernetes metadata.
 class MembershipEndpoint {
@@ -4298,6 +4904,12 @@ class MembershipEndpoint {
   ///
   /// Optional.
   GkeCluster? gkeCluster;
+
+  /// Whether the lifecycle of this membership is managed by a google cluster
+  /// platform service.
+  ///
+  /// Output only.
+  core.bool? googleManaged;
 
   /// Useful Kubernetes-specific metadata.
   ///
@@ -4332,6 +4944,7 @@ class MembershipEndpoint {
     this.applianceCluster,
     this.edgeCluster,
     this.gkeCluster,
+    this.googleManaged,
     this.kubernetesMetadata,
     this.kubernetesResource,
     this.multiCloudCluster,
@@ -4351,6 +4964,9 @@ class MembershipEndpoint {
           gkeCluster: json_.containsKey('gkeCluster')
               ? GkeCluster.fromJson(
                   json_['gkeCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googleManaged: json_.containsKey('googleManaged')
+              ? json_['googleManaged'] as core.bool
               : null,
           kubernetesMetadata: json_.containsKey('kubernetesMetadata')
               ? KubernetesMetadata.fromJson(json_['kubernetesMetadata']
@@ -4374,6 +4990,7 @@ class MembershipEndpoint {
         if (applianceCluster != null) 'applianceCluster': applianceCluster!,
         if (edgeCluster != null) 'edgeCluster': edgeCluster!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
+        if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kubernetesMetadata != null)
           'kubernetesMetadata': kubernetesMetadata!,
         if (kubernetesResource != null)
@@ -4956,6 +5573,79 @@ class ResourceOptions {
       };
 }
 
+/// Scope represents a Scope in a Fleet.
+class Scope {
+  /// When the scope was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// When the scope was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// The resource name for the scope
+  /// `projects/{project}/locations/{location}/scopes/{scope}`
+  core.String? name;
+
+  /// State of the scope resource.
+  ///
+  /// Output only.
+  ScopeLifecycleState? state;
+
+  /// Google-generated UUID for this resource.
+  ///
+  /// This is unique across all scope resources. If a scope resource is deleted
+  /// and another resource with the same name is created, it gets a different
+  /// uid.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// When the scope was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Scope({
+    this.createTime,
+    this.deleteTime,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  Scope.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state: json_.containsKey('state')
+              ? ScopeLifecycleState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// ScopeFeatureSpec contains feature specs for a fleet scope.
 typedef ScopeFeatureSpec = $Empty;
 
@@ -4980,6 +5670,33 @@ class ScopeFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+/// ScopeLifecycleState describes the state of a Scope resource.
+class ScopeLifecycleState {
+  /// The current state of the scope resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : The code is not set.
+  /// - "CREATING" : The scope is being created.
+  /// - "READY" : The scope active.
+  /// - "DELETING" : The scope is being deleted.
+  /// - "UPDATING" : The scope is being updated.
+  core.String? code;
+
+  ScopeLifecycleState({
+    this.code,
+  });
+
+  ScopeLifecycleState.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
       };
 }
 

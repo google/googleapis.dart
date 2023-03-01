@@ -30,6 +30,7 @@
 /// - [BuyongoogleprogramsResource]
 /// - [CollectionsResource]
 /// - [CollectionstatusesResource]
+/// - [ConversionsourcesResource]
 /// - [CssesResource]
 /// - [DatafeedsResource]
 /// - [DatafeedstatusesResource]
@@ -94,6 +95,8 @@ class ShoppingContentApi {
   CollectionsResource get collections => CollectionsResource(_requester);
   CollectionstatusesResource get collectionstatuses =>
       CollectionstatusesResource(_requester);
+  ConversionsourcesResource get conversionsources =>
+      ConversionsourcesResource(_requester);
   CssesResource get csses => CssesResource(_requester);
   DatafeedsResource get datafeeds => DatafeedsResource(_requester);
   DatafeedstatusesResource get datafeedstatuses =>
@@ -2077,6 +2080,284 @@ class CollectionstatusesResource {
     );
     return ListCollectionStatusesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ConversionsourcesResource {
+  final commons.ApiRequester _requester;
+
+  ConversionsourcesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new conversion source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionSource> create(
+    ConversionSource request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') + '/conversionsources';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ConversionSource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Archives an existing conversion source.
+  ///
+  /// It will be recoverable for 30 days. This archiving behavior is not typical
+  /// in the Content API and unique to this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [conversionSourceId] - Required. The ID of the conversion source to be
+  /// deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String merchantId,
+    core.String conversionSourceId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/conversionsources/' +
+        commons.escapeVariable('$conversionSourceId');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Fetches a conversion source.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [conversionSourceId] - Required. The REST ID of the collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionSource> get(
+    core.String merchantId,
+    core.String conversionSourceId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/conversionsources/' +
+        commons.escapeVariable('$conversionSourceId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConversionSource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of conversion sources the caller has access to.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [pageSize] - The maximum number of conversion sources to return in a page.
+  /// If no `page_size` is specified, `100` is used as the default value. The
+  /// maximum value is `200`. Values above `200` will be coerced to `200`.
+  /// Regardless of pagination, at most `200` conversion sources are returned in
+  /// total.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [showDeleted] - If true, also returns archived conversion sources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConversionSourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConversionSourcesResponse> list(
+    core.String merchantId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') + '/conversionsources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConversionSourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates information of an existing conversion source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [conversionSourceId] - Required. The ID of the conversion source to be
+  /// updated.
+  ///
+  /// [updateMask] - Required. List of fields being updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionSource> patch(
+    ConversionSource request,
+    core.String merchantId,
+    core.String conversionSourceId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/conversionsources/' +
+        commons.escapeVariable('$conversionSourceId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ConversionSource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Re-enables an archived conversion source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the new
+  /// conversion source.
+  ///
+  /// [conversionSourceId] - Required. The ID of the conversion source to be
+  /// undeleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> undelete(
+    UndeleteConversionSourceRequest request,
+    core.String merchantId,
+    core.String conversionSourceId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/conversionsources/' +
+        commons.escapeVariable('$conversionSourceId') +
+        ':undelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
   }
 }
 
@@ -8128,6 +8409,9 @@ class Account {
   /// The business information of the account.
   AccountBusinessInformation? businessInformation;
 
+  /// Settings for conversion tracking.
+  AccountConversionSettings? conversionSettings;
+
   /// ID of CSS the account belongs to.
   core.String? cssId;
 
@@ -8179,6 +8463,7 @@ class Account {
     this.automaticImprovements,
     this.automaticLabelIds,
     this.businessInformation,
+    this.conversionSettings,
     this.cssId,
     this.googleMyBusinessLink,
     this.id,
@@ -8217,6 +8502,10 @@ class Account {
               : null,
           businessInformation: json_.containsKey('businessInformation')
               ? AccountBusinessInformation.fromJson(json_['businessInformation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          conversionSettings: json_.containsKey('conversionSettings')
+              ? AccountConversionSettings.fromJson(json_['conversionSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
           cssId:
@@ -8263,6 +8552,8 @@ class Account {
         if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
         if (businessInformation != null)
           'businessInformation': businessInformation!,
+        if (conversionSettings != null)
+          'conversionSettings': conversionSettings!,
         if (cssId != null) 'cssId': cssId!,
         if (googleMyBusinessLink != null)
           'googleMyBusinessLink': googleMyBusinessLink!,
@@ -8464,7 +8755,8 @@ class AccountBusinessInformation {
   /// This field will only be updated if explicitly set.
   core.String? koreanBusinessRegistrationNumber;
 
-  /// The phone number of the business.
+  /// The phone number of the business in
+  /// [E.164](https://en.wikipedia.org/wiki/E.164) format.
   ///
   /// This can only be updated if a verified phone number is not already set. To
   /// replace a verified phone number use the
@@ -8515,6 +8807,33 @@ class AccountBusinessInformation {
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (phoneVerificationStatus != null)
           'phoneVerificationStatus': phoneVerificationStatus!,
+      };
+}
+
+/// Settings for conversion tracking.
+class AccountConversionSettings {
+  /// When enabled, free listing URLs have a parameter to enable conversion
+  /// tracking for products owned by the current merchant account.
+  ///
+  /// See
+  /// \[auto-tagging\](https://support.google.com/merchants/answer/11127659).
+  core.bool? freeListingsAutoTaggingEnabled;
+
+  AccountConversionSettings({
+    this.freeListingsAutoTaggingEnabled,
+  });
+
+  AccountConversionSettings.fromJson(core.Map json_)
+      : this(
+          freeListingsAutoTaggingEnabled:
+              json_.containsKey('freeListingsAutoTaggingEnabled')
+                  ? json_['freeListingsAutoTaggingEnabled'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (freeListingsAutoTaggingEnabled != null)
+          'freeListingsAutoTaggingEnabled': freeListingsAutoTaggingEnabled!,
       };
 }
 
@@ -10626,8 +10945,105 @@ class Amount {
       };
 }
 
+/// Represents attribution settings for conversion sources receiving
+/// pre-attribution data.
+class AttributionSettings {
+  /// Lookback windows (in days) used for attribution in this source.
+  ///
+  /// Supported values are 7, 30, 60, 90.
+  ///
+  /// Required.
+  core.int? attributionLookbackWindowInDays;
+
+  /// Attribution model.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ATTRIBUTION_MODEL_UNSPECIFIED"
+  /// - "CROSS_CHANNEL_LAST_CLICK" : Cross-channel Last Click model.
+  /// - "ADS_PREFERRED_LAST_CLICK" : Ads-preferred Last Click model.
+  /// - "CROSS_CHANNEL_DATA_DRIVEN" : Cross-channel Data Driven model.
+  /// - "CROSS_CHANNEL_FIRST_CLICK" : Cross-channel Frist Click model.
+  /// - "CROSS_CHANNEL_LINEAR" : Cross-channel Linear model.
+  /// - "CROSS_CHANNEL_POSITION_BASED" : Cross-channel Position Based model.
+  /// - "CROSS_CHANNEL_TIME_DECAY" : Cross-channel Time Decay model.
+  core.String? attributionModel;
+
+  /// Unordered list.
+  ///
+  /// List of different conversion types a conversion event can be classified
+  /// as. A standard "purchase" type will be automatically created if this list
+  /// is empty at creation time.
+  ///
+  /// Immutable.
+  core.List<AttributionSettingsConversionType>? conversionType;
+
+  AttributionSettings({
+    this.attributionLookbackWindowInDays,
+    this.attributionModel,
+    this.conversionType,
+  });
+
+  AttributionSettings.fromJson(core.Map json_)
+      : this(
+          attributionLookbackWindowInDays:
+              json_.containsKey('attributionLookbackWindowInDays')
+                  ? json_['attributionLookbackWindowInDays'] as core.int
+                  : null,
+          attributionModel: json_.containsKey('attributionModel')
+              ? json_['attributionModel'] as core.String
+              : null,
+          conversionType: json_.containsKey('conversionType')
+              ? (json_['conversionType'] as core.List)
+                  .map((value) => AttributionSettingsConversionType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributionLookbackWindowInDays != null)
+          'attributionLookbackWindowInDays': attributionLookbackWindowInDays!,
+        if (attributionModel != null) 'attributionModel': attributionModel!,
+        if (conversionType != null) 'conversionType': conversionType!,
+      };
+}
+
+/// Message representing a types of conversion events
+class AttributionSettingsConversionType {
+  /// Option indicating if the type should be included in Merchant Center
+  /// reporting.
+  ///
+  /// Output only.
+  core.bool? includeInReporting;
+
+  /// Conversion event name, as it'll be reported by the client.
+  ///
+  /// Output only.
+  core.String? name;
+
+  AttributionSettingsConversionType({
+    this.includeInReporting,
+    this.name,
+  });
+
+  AttributionSettingsConversionType.fromJson(core.Map json_)
+      : this(
+          includeInReporting: json_.containsKey('includeInReporting')
+              ? json_['includeInReporting'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeInReporting != null)
+          'includeInReporting': includeInReporting!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Fields related to the
-/// [Best Sellers reports](https://support.google.com/merchants/answer/9488679).
+/// [Best sellers reports](https://support.google.com/merchants/answer/9488679).
 class BestSellers {
   /// Google product category ID to calculate the ranking for, represented in
   /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
@@ -11543,6 +11959,92 @@ class CollectionStatusItemLevelIssue {
         if (documentation != null) 'documentation': documentation!,
         if (resolution != null) 'resolution': resolution!,
         if (servability != null) 'servability': servability!,
+      };
+}
+
+/// Represents a conversion source owned by a Merchant account.
+///
+/// A merchant account can have up to 200 conversion sources.
+class ConversionSource {
+  /// Generated by the Content API upon creation of a new `ConversionSource`.
+  ///
+  /// Format: \[a-z\]{4}:.+ The four characters before the colon represent the
+  /// type of conversio source. Content after the colon represents the ID of the
+  /// conversion source within that type. The ID of two different conversion
+  /// sources might be the same across different types. The following type
+  /// prefixes are supported: - galk: For GoogleAnalyticsLink sources. - mcdn:
+  /// For MerchantCenterDestination sources.
+  ///
+  /// Output only.
+  core.String? conversionSourceId;
+
+  /// The time when an archived conversion source becomes permanently deleted
+  /// and is no longer available to undelete.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Conversion Source of type "Link to Google Analytics Property".
+  ///
+  /// Immutable.
+  GoogleAnalyticsLink? googleAnalyticsLink;
+
+  /// Conversion Source of type "Merchant Center Tag Destination".
+  MerchantCenterDestination? merchantCenterDestination;
+
+  /// Current state of this conversion source.
+  ///
+  /// Can't be edited through the API.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED"
+  /// - "ACTIVE" : Conversion source is fully functional.
+  /// - "ARCHIVED" : Conversion source has been archived in the last 30 days and
+  /// not currently functional. Can be restored using the undelete method.
+  /// - "PENDING" : Conversion source creation has started but not fully
+  /// finished yet.
+  core.String? state;
+
+  ConversionSource({
+    this.conversionSourceId,
+    this.expireTime,
+    this.googleAnalyticsLink,
+    this.merchantCenterDestination,
+    this.state,
+  });
+
+  ConversionSource.fromJson(core.Map json_)
+      : this(
+          conversionSourceId: json_.containsKey('conversionSourceId')
+              ? json_['conversionSourceId'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          googleAnalyticsLink: json_.containsKey('googleAnalyticsLink')
+              ? GoogleAnalyticsLink.fromJson(json_['googleAnalyticsLink']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          merchantCenterDestination:
+              json_.containsKey('merchantCenterDestination')
+                  ? MerchantCenterDestination.fromJson(
+                      json_['merchantCenterDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionSourceId != null)
+          'conversionSourceId': conversionSourceId!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (googleAnalyticsLink != null)
+          'googleAnalyticsLink': googleAnalyticsLink!,
+        if (merchantCenterDestination != null)
+          'merchantCenterDestination': merchantCenterDestination!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -13441,6 +13943,52 @@ class GmbAccountsGmbAccount {
       };
 }
 
+/// "Google Analytics Link" sources can be used to get conversion data from an
+/// existing Google Analytics property into the linked Merchant Center account.
+class GoogleAnalyticsLink {
+  /// Attribution settings for the linked Google Analytics property.
+  ///
+  /// Output only.
+  AttributionSettings? attributionSettings;
+
+  /// ID of the Google Analytics property the merchant is linked to.
+  ///
+  /// Required. Immutable.
+  core.String? propertyId;
+
+  /// Name of the Google Analytics property the merchant is linked to.
+  ///
+  /// Output only.
+  core.String? propertyName;
+
+  GoogleAnalyticsLink({
+    this.attributionSettings,
+    this.propertyId,
+    this.propertyName,
+  });
+
+  GoogleAnalyticsLink.fromJson(core.Map json_)
+      : this(
+          attributionSettings: json_.containsKey('attributionSettings')
+              ? AttributionSettings.fromJson(json_['attributionSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          propertyId: json_.containsKey('propertyId')
+              ? json_['propertyId'] as core.String
+              : null,
+          propertyName: json_.containsKey('propertyName')
+              ? json_['propertyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributionSettings != null)
+          'attributionSettings': attributionSettings!,
+        if (propertyId != null) 'propertyId': propertyId!,
+        if (propertyName != null) 'propertyName': propertyName!,
+      };
+}
+
 /// A non-empty list of row or column headers for a table.
 ///
 /// Exactly one of `prices`, `weights`, `numItems`, `postalCodeGroupNames`, or
@@ -14730,6 +15278,38 @@ class ListCollectionsResponse {
       };
 }
 
+/// Response message for the ListConversionSources method.
+class ListConversionSourcesResponse {
+  /// List of conversion sources.
+  core.List<ConversionSource>? conversionSources;
+
+  /// Token to be used to fetch the next results page.
+  core.String? nextPageToken;
+
+  ListConversionSourcesResponse({
+    this.conversionSources,
+    this.nextPageToken,
+  });
+
+  ListConversionSourcesResponse.fromJson(core.Map json_)
+      : this(
+          conversionSources: json_.containsKey('conversionSources')
+              ? (json_['conversionSources'] as core.List)
+                  .map((value) => ConversionSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionSources != null) 'conversionSources': conversionSources!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for the `ListCsses` method
 class ListCssesResponse {
   /// The CSS domains affiliated with the specified CSS group.
@@ -15307,6 +15887,69 @@ class LoyaltyPoints {
         if (name != null) 'name': name!,
         if (pointsValue != null) 'pointsValue': pointsValue!,
         if (ratio != null) 'ratio': ratio!,
+      };
+}
+
+/// "Merchant Center Destination" sources can be used to send conversion events
+/// from a website using a Google tag directly to a Merchant Center account
+/// where the source is created.
+class MerchantCenterDestination {
+  /// Attribution settings being used for the Merchant Center Destination.
+  ///
+  /// Required.
+  AttributionSettings? attributionSettings;
+
+  /// Three-letter currency code (ISO 4217).
+  ///
+  /// The currency code defines in which currency the conversions sent to this
+  /// destination will be reported in Merchant Center.
+  ///
+  /// Required.
+  core.String? currencyCode;
+
+  /// Merchant Center Destination ID.
+  ///
+  /// Output only.
+  core.String? destinationId;
+
+  /// Merchant-specified display name for the destination.
+  ///
+  /// This is the name that identifies the conversion source within the Merchant
+  /// Center UI. Limited to 64 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  MerchantCenterDestination({
+    this.attributionSettings,
+    this.currencyCode,
+    this.destinationId,
+    this.displayName,
+  });
+
+  MerchantCenterDestination.fromJson(core.Map json_)
+      : this(
+          attributionSettings: json_.containsKey('attributionSettings')
+              ? AttributionSettings.fromJson(json_['attributionSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          destinationId: json_.containsKey('destinationId')
+              ? json_['destinationId'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributionSettings != null)
+          'attributionSettings': attributionSettings!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (destinationId != null) 'destinationId': destinationId!,
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -22096,7 +22739,7 @@ typedef Price = $Shared03;
 /// The price represented as a number and currency.
 typedef PriceAmount = $Shared03;
 
-/// Price Competitiveness fields requested by the merchant in the query.
+/// Price competitiveness fields requested by the merchant in the query.
 ///
 /// Field values are only set if the merchant queries
 /// `PriceCompetitivenessProductView`.
@@ -22142,7 +22785,7 @@ class PriceCompetitiveness {
       };
 }
 
-/// Price Insights fields requested by the merchant in the query.
+/// Price insights fields requested by the merchant in the query.
 ///
 /// Field values are only set if the merchant queries
 /// `PriceInsightsProductView`.
@@ -22421,8 +23064,9 @@ class Product {
   /// The REST ID of the product.
   ///
   /// Content API methods that operate on products take this as their
-  /// `productId` parameter. The REST ID for a product is of the form
-  /// channel:contentLanguage: targetCountry: offerId.
+  /// `productId` parameter. The REST ID for a product has one of the 2 forms
+  /// channel:contentLanguage: targetCountry: offerId or
+  /// channel:contentLanguage:feedLabel: offerId.
   core.String? id;
 
   /// False when the item does not have unique product identifiers appropriate
@@ -26301,7 +26945,7 @@ class RegionalinventoryCustomBatchResponseEntry {
 
 /// Result row returned from the search query.
 class ReportRow {
-  /// Best Sellers fields requested by the merchant in the query.
+  /// Best sellers fields requested by the merchant in the query.
   ///
   /// Field values are only set if the merchant queries
   /// `BestSellersProductClusterView` or `BestSellersBrandView`.
@@ -26317,13 +26961,13 @@ class ReportRow {
   /// Metric values are only set for metrics requested explicitly in the query.
   Metrics? metrics;
 
-  /// Price Competitiveness fields requested by the merchant in the query.
+  /// Price competitiveness fields requested by the merchant in the query.
   ///
   /// Field values are only set if the merchant queries
   /// `PriceCompetitivenessProductView`.
   PriceCompetitiveness? priceCompetitiveness;
 
-  /// Price Insights fields requested by the merchant in the query.
+  /// Price insights fields requested by the merchant in the query.
   ///
   /// Field values are only set if the merchant queries
   /// `PriceInsightsProductView`.
@@ -30814,6 +31458,9 @@ class TransitTableTransitTimeRowTransitTimeValue {
           'minTransitTimeInDays': minTransitTimeInDays!,
       };
 }
+
+/// Request message for the UndeleteConversionSource method.
+typedef UndeleteConversionSourceRequest = $Empty;
 
 class UnitInvoice {
   /// Additional charges for a unit, for example, shipping costs.

@@ -1336,6 +1336,7 @@ api.GoogleCloudDialogflowV2ConversationProfile
     o.securitySettings = 'foo';
     o.sttConfig = buildGoogleCloudDialogflowV2SpeechToTextConfig();
     o.timeZone = 'foo';
+    o.ttsConfig = buildGoogleCloudDialogflowV2SynthesizeSpeechConfig();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDialogflowV2ConversationProfile--;
@@ -1380,6 +1381,7 @@ void checkGoogleCloudDialogflowV2ConversationProfile(
       o.timeZone!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDialogflowV2SynthesizeSpeechConfig(o.ttsConfig!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -6492,6 +6494,7 @@ api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest
   buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest++;
   if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest <
       3) {
+    o.assistQueryParams = buildGoogleCloudDialogflowV2AssistQueryParameters();
     o.contextSize = 42;
     o.latestMessage = 'foo';
   }
@@ -6504,6 +6507,7 @@ void checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(
   buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest++;
   if (buildCounterGoogleCloudDialogflowV2SuggestConversationSummaryRequest <
       3) {
+    checkGoogleCloudDialogflowV2AssistQueryParameters(o.assistQueryParams!);
     unittest.expect(
       o.contextSize!,
       unittest.equals(42),

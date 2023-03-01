@@ -1848,6 +1848,9 @@ class Publisher {
 /// Restricted export config, used to configure restricted export on linked
 /// dataset.
 class RestrictedExportConfig {
+  /// If true, enable restricted export.
+  core.bool? enabled;
+
   /// If true, restrict direct table access(read api/tabledata.list) on linked
   /// table.
   core.bool? restrictDirectTableAccess;
@@ -1857,12 +1860,16 @@ class RestrictedExportConfig {
   core.bool? restrictQueryResult;
 
   RestrictedExportConfig({
+    this.enabled,
     this.restrictDirectTableAccess,
     this.restrictQueryResult,
   });
 
   RestrictedExportConfig.fromJson(core.Map json_)
       : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
           restrictDirectTableAccess:
               json_.containsKey('restrictDirectTableAccess')
                   ? json_['restrictDirectTableAccess'] as core.bool
@@ -1873,6 +1880,7 @@ class RestrictedExportConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
         if (restrictDirectTableAccess != null)
           'restrictDirectTableAccess': restrictDirectTableAccess!,
         if (restrictQueryResult != null)
