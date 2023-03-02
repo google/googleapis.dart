@@ -2,11 +2,8 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
@@ -84,7 +81,7 @@
 /// - [UserRolePermissionsResource]
 /// - [UserRolesResource]
 /// - [VideoFormatsResource]
-library dfareporting.v3_5;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -100,13 +97,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Build applications to efficiently manage large or complex trafficking,
 /// reporting, and attribution workflows for Campaign Manager 360.

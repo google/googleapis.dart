@@ -17,10 +17,10 @@ export 'googleapis_auth.dart';
 export 'src/authentication_exception.dart' show AuthenticationException;
 export 'src/oauth2_flows/token_model.dart'
     show
+        CodeResponse,
         requestAccessCredentials,
         requestAuthorizationCode,
-        revokeConsent,
-        CodeResponse;
+        revokeConsent;
 
 /// Will create and complete with a [BrowserOAuth2Flow] object.
 ///

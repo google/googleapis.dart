@@ -3,17 +3,12 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
-
-library file_test_package.toyApi.client;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -25,13 +20,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Request headers used by all libraries in this package
 final requestHeaders = {
@@ -792,6 +787,8 @@ class ComputeResource {
   ///
   /// [mimeType] - The MIME type of the format requested for this export.
   ///
+  /// [dimensions] - Dimensions to base the report on.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -807,11 +804,13 @@ class ComputeResource {
   async.Future<commons.Media?> export(
     core.String fileId,
     core.String mimeType, {
+    core.List<core.String>? dimensions,
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
+      if (dimensions != null) 'dimensions': dimensions,
       if ($fields != null) 'fields': [$fields],
     };
 

@@ -40,23 +40,23 @@ jobs:
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
-    name: "analyze_and_format; Dart 2.17.0; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth, test_integration; `dart analyze`"
+    name: "analyze_and_format; Dart 2.19.0; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth, test_integration; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -280,23 +280,23 @@ jobs:
         if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
         working-directory: test_integration
   job_004:
-    name: "unittest; Dart 2.17.0; PKG: _test_package; `dart test`"
+    name: "unittest; Dart 2.19.0; PKG: _test_package; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test_package;commands:test_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:_test_package;commands:test_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test_package
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:_test_package
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -314,23 +314,23 @@ jobs:
       - job_002
       - job_003
   job_005:
-    name: "unittest; Dart 2.17.0; PKG: discoveryapis_commons; `dart test`"
+    name: "unittest; Dart 2.19.0; PKG: discoveryapis_commons; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:discoveryapis_commons;commands:test_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:discoveryapis_commons;commands:test_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:discoveryapis_commons
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:discoveryapis_commons
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -348,23 +348,23 @@ jobs:
       - job_002
       - job_003
   job_006:
-    name: "unittest; Dart 2.17.0; PKG: discoveryapis_generator; `dart test`"
+    name: "unittest; Dart 2.19.0; PKG: discoveryapis_generator; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:discoveryapis_generator;commands:test_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:discoveryapis_generator;commands:test_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:discoveryapis_generator
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:discoveryapis_generator
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -382,23 +382,23 @@ jobs:
       - job_002
       - job_003
   job_007:
-    name: "unittest; Dart 2.17.0; PKG: generated/googleapis; `dart test`"
+    name: "unittest; Dart 2.19.0; PKG: generated/googleapis; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:generated/googleapis;commands:test_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:generated/googleapis;commands:test_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:generated/googleapis
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:generated/googleapis
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -416,23 +416,23 @@ jobs:
       - job_002
       - job_003
   job_008:
-    name: "unittest; Dart 2.17.0; PKG: generated/googleapis_beta; `dart test`"
+    name: "unittest; Dart 2.19.0; PKG: generated/googleapis_beta; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:generated/googleapis_beta;commands:test_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:generated/googleapis_beta;commands:test_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:generated/googleapis_beta
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:generated/googleapis_beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -450,23 +450,23 @@ jobs:
       - job_002
       - job_003
   job_009:
-    name: "unittest; Dart 2.17.0; PKG: googleapis_auth; `dart test -p chrome`"
+    name: "unittest; Dart 2.19.0; PKG: googleapis_auth; `dart test -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:googleapis_auth;commands:test_2"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:googleapis_auth;commands:test_2"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:googleapis_auth
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:googleapis_auth
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -484,23 +484,23 @@ jobs:
       - job_002
       - job_003
   job_010:
-    name: "unittest; Dart 2.17.0; PKG: googleapis_auth; `dart test -p vm`"
+    name: "unittest; Dart 2.19.0; PKG: googleapis_auth; `dart test -p vm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:googleapis_auth;commands:test_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:googleapis_auth;commands:test_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:googleapis_auth
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0;packages:googleapis_auth
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
-          sdk: "2.17.0"
+          sdk: "2.19.0"
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c

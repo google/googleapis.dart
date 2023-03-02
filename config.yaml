@@ -10,8 +10,8 @@ packages:
     example: resources/googleapis/examples/main.dart
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     extraDevDependencies:
+        dart_flutter_team_lints: ^1.0.0
         googleapis_auth: ^1.0.0
-        lints: ^2.0.0
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/

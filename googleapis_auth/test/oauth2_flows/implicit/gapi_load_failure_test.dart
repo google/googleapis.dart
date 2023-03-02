@@ -4,6 +4,8 @@
 
 @TestOn('browser')
 @Timeout.factor(4)
+library;
+
 import 'dart:html';
 import 'dart:js' as js;
 

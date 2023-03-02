@@ -145,7 +145,7 @@ ${requestHeadersField(pubspec.version)}
 /// Shared types to minimize the package size. Do not use directly.
 @core.Deprecated('Avoid importing this library. '
 'Use the members defined in the target API library instead.',)
-library \$shared;
+library;
 
 ${ignoreForFileComments(ignoreForFileSet)}
 

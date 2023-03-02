@@ -4,8 +4,6 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
-library discoveryapis_generator.dart_api_test_library;
-
 import 'dart_api_library.dart';
 import 'dart_resources.dart';
 import 'dart_schema_type.dart';
@@ -128,11 +126,11 @@ import '../$testSharedDartFileName';
 
 const _testIgnores = {
   ...ignoreForFileSet,
-  'cascade_invocations',
   'prefer_const_declarations',
+  'prefer_expression_function_bodies',
   'prefer_final_locals',
   'unnecessary_cast',
-  'unnecessary_parenthesis',
+  'unreachable_from_main',
   'unused_local_variable',
 };
 

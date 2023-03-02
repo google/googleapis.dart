@@ -1,4 +1,6 @@
 @Timeout(Duration(seconds: 2))
+library;
+
 import 'dart:convert';
 
 import 'package:googleapis_auth/src/utils.dart';
