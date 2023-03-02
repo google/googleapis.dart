@@ -33,7 +33,8 @@ void main() {
       final pubspecFile = File(p.join(dataPath, 'pubspec.yaml'));
       pubspecFile.copySync(p.join(outputDir.path, 'pubspec.yaml'));
       // Generate the client stubs.
-      final results = generateApiFiles(inputPath, outputDir.path);
+      final results =
+          generateApiFiles(inputPath, outputDir.path, updatePubspec: true);
       expect(results.length, 2, reason: 'But got `$results`');
       expect(results[0].success, isTrue);
       expect(results[1].info, isTrue);

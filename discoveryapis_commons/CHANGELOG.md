@@ -1,3 +1,7 @@
+## 1.0.6-dev
+
+- Require Dart 2.19
+
 ## 1.0.5
 
 - Drop use of `NullThrownError`.

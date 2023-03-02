@@ -62,13 +62,6 @@ http.StreamedResponse binaryResponse(
   return http.StreamedResponse(stream, status, headers: headers);
 }
 
-Stream<List<int>> byteStream(String s) {
-  final bodyController = StreamController<List<int>>()
-    ..add(utf8.encode(s))
-    ..close();
-  return bodyController.stream;
-}
-
 class TestError {}
 
 const isApiRequestError = TypeMatcher<ApiRequestError>();

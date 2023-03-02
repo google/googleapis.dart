@@ -4,8 +4,6 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
-library discoveryapis_generator.dart_resources;
-
 import 'dart:collection';
 
 import 'dart_api_library.dart';

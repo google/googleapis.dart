@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.apis_files_generator;
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -127,13 +125,16 @@ class ApisFilesGenerator {
           value = '\'$value\'';
         }
         sink.writeln('$indent$key: $value');
-      } else if (value is Map<String, dynamic>) {
+      } else if (value is Map) {
         sink.writeln('$indent$key:');
         value.forEach((key, value) {
-          writeValue(sink, key, value, '$indent  ');
+          writeValue(sink, key as String, value, '$indent  ');
         });
+      } else if (value == null) {
+        sink.writeln('$indent$key: null');
       } else {
-        throw UnimplementedError();
+        throw UnimplementedError(
+            'not sure how to party of ${value.runtimeType}');
       }
     }
 
@@ -160,14 +161,15 @@ class ApisFilesGenerator {
     if (updatePubspec) {
       final sink = StringBuffer();
       for (var key in pubspecKeys) {
-        Map? value;
+        Object? value;
         if (key == 'dependencies') {
           // patch up dependencies.
-          value = pubspec![key] as Map?;
-          value = value != null ? value = Map.from(value) : {};
-          value.addAll(_computeNewDependencies(value));
+          var localValue = pubspec![key] as Map?;
+          localValue = localValue != null ? value = Map.from(localValue) : {};
+          localValue.addAll(_computeNewDependencies(localValue));
+          value = localValue;
         } else {
-          value = pubspec![key] as Map?;
+          value = pubspec![key];
         }
         writeValue(sink, key, value, '');
       }

@@ -3,7 +3,7 @@ version: 8.1.0-dev
 description: Auto-generated client libraries for accessing Google APIs described through the API discovery service.
 repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: ^1.0.0
