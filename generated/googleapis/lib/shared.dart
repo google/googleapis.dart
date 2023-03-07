@@ -1086,6 +1086,12 @@ class $Asset {
   ///
   /// This is a unique identifier for the asset. This ID can be passed to other
   /// API calls, e.g. CreateCreative to associate the asset with a creative.
+  /// **On April 5, 2023, the value of this ID will be updated. Before this
+  /// date, we recommend that you stop using any cached media IDs when creating
+  /// or updating creatives, and instead upload assets immediately before using
+  /// them for creative production.** **After April 5, you can update cached
+  /// media IDs to the new values by retrieving them from associated creative
+  /// resources or re-uploading them.**
   core.String? mediaId;
 
   $Asset({
@@ -6484,8 +6490,10 @@ class $EgressFrom {
 /// - clouddebugger:v2 : UpdateActiveBreakpointResponse
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
+/// - clouddeploy:v1 : AdvanceChildRolloutJob
 /// - clouddeploy:v1 : ApproveRolloutResponse
 /// - clouddeploy:v1 : CancelOperationRequest
+/// - clouddeploy:v1 : CreateChildRolloutJob
 /// - clouddeploy:v1 : DeployJob
 /// - clouddeploy:v1 : Empty
 /// - clouddeploy:v1 : RetryJobResponse
@@ -6656,6 +6664,15 @@ class $EgressFrom {
 /// - driveactivity:v2 : NoConsolidation
 /// - driveactivity:v2 : UnknownUser
 /// - driveactivity:v2 : Upload
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
+/// - drivelabels:v2 : GoogleProtobufEmpty
 /// - essentialcontacts:v1 : GoogleProtobufEmpty
 /// - eventarc:v1 : Empty
 /// - eventarc:v1 : GoogleLongrunningCancelOperationRequest
@@ -18858,6 +18875,42 @@ class $TestPermissionsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Used by:
+///
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2FieldLongTextOptions
+/// - drivelabels:v2 : GoogleAppsDriveLabelsV2FieldTextOptions
+class $TextOptions {
+  /// The maximum valid length of values for the text field.
+  ///
+  /// Output only.
+  core.int? maxLength;
+
+  /// The minimum valid length of values for the text field.
+  ///
+  /// Output only.
+  core.int? minLength;
+
+  $TextOptions({
+    this.maxLength,
+    this.minLength,
+  });
+
+  $TextOptions.fromJson(core.Map json_)
+      : this(
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.int
+              : null,
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxLength != null) 'maxLength': maxLength!,
+        if (minLength != null) 'minLength': minLength!,
       };
 }
 

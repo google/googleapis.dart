@@ -1979,7 +1979,7 @@ class BatchTranslateDocumentRequest {
   /// Required.
   BatchDocumentOutputConfig? outputConfig;
 
-  /// The BCP-47 language code of the input document if known, for example,
+  /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
   /// Supported language codes are listed in
@@ -1988,7 +1988,7 @@ class BatchTranslateDocumentRequest {
   /// Required.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input document.
+  /// The ISO-639 language code to use for translation of the input document.
   ///
   /// Specify up to 10 language codes here.
   ///
@@ -2468,7 +2468,7 @@ class DetectedLanguage {
   /// The confidence of the detection result for this language.
   core.double? confidence;
 
-  /// The BCP-47 language code of the source content in the request, detected
+  /// The ISO-639 language code of the source content in the request, detected
   /// automatically.
   core.String? languageCode;
 
@@ -3188,14 +3188,14 @@ class InputFile {
 
 /// Used with unidirectional glossaries.
 class LanguageCodePair {
-  /// The BCP-47 language code of the input text, for example, "en-US".
+  /// The ISO-639 language code of the input text, for example, "en-US".
   ///
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
   /// Required.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code for translation output, for example, "zh-CN".
+  /// The ISO-639 language code for translation output, for example, "zh-CN".
   ///
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
@@ -3227,7 +3227,7 @@ class LanguageCodePair {
 
 /// Used with equivalent term set glossaries.
 class LanguageCodesSet {
-  /// The BCP-47 language code(s) for terms defined in the glossary.
+  /// The ISO-639 language code(s) for terms defined in the glossary.
   ///
   /// All entries are unique. The list contains at least two entries. Expected
   /// to be an exact match for GlossaryTerm.language_code.
@@ -3788,7 +3788,7 @@ class SupportedLanguage {
   /// Supported language code, generally consisting of its ISO 639-1 identifier,
   /// for example, 'en', 'ja'.
   ///
-  /// In certain cases, BCP-47 codes including language and region identifiers
+  /// In certain cases, ISO-639 codes including language and region identifiers
   /// are returned (for example, 'zh-TW' and 'zh-CN').
   core.String? languageCode;
 
@@ -3931,7 +3931,7 @@ class TranslateDocumentRequest {
   /// Optional.
   core.String? model;
 
-  /// The BCP-47 language code of the input document if known, for example,
+  /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
   /// Supported language codes are listed in Language Support. If the source
@@ -3943,8 +3943,8 @@ class TranslateDocumentRequest {
   /// Optional.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input document, set
-  /// to one of the language codes listed in Language Support.
+  /// The ISO-639 language code to use for translation of the input document,
+  /// set to one of the language codes listed in Language Support.
   ///
   /// Required.
   core.String? targetLanguageCode;
@@ -4177,7 +4177,7 @@ class TranslateTextRequest {
   /// Optional.
   core.String? model;
 
-  /// The BCP-47 language code of the input text if known, for example, "en-US"
+  /// The ISO-639 language code of the input text if known, for example, "en-US"
   /// or "sr-Latn".
   ///
   /// Supported language codes are listed in Language Support. If the source
@@ -4187,7 +4187,7 @@ class TranslateTextRequest {
   /// Optional.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input text, set to
+  /// The ISO-639 language code to use for translation of the input text, set to
   /// one of the language codes listed in Language Support.
   ///
   /// Required.
@@ -4290,7 +4290,7 @@ class TranslateTextResponse {
 
 /// A single translation response.
 class Translation {
-  /// The BCP-47 language code of source text in the initial request, detected
+  /// The ISO-639 language code of source text in the initial request, detected
   /// automatically, if no source language was passed within the initial
   /// request.
   ///

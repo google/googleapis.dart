@@ -3382,7 +3382,6 @@ void main() {
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
-      final arg_freeId = true;
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3426,10 +3425,6 @@ void main() {
           unittest.equals(arg_etag),
         );
         unittest.expect(
-          queryMap['freeId']!.first,
-          unittest.equals('$arg_freeId'),
-        );
-        unittest.expect(
           queryMap['validateOnly']!.first,
           unittest.equals('$arg_validateOnly'),
         );
@@ -3447,7 +3442,6 @@ void main() {
       final response = await res.delete(arg_name,
           allowMissing: arg_allowMissing,
           etag: arg_etag,
-          freeId: arg_freeId,
           validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkGoogleLongrunningOperation(

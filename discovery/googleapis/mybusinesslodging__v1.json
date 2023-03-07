@@ -192,7 +192,7 @@
             }
         }
     },
-    "revision": "20230228",
+    "revision": "20230306",
     "rootUrl": "https://mybusinesslodging.googleapis.com/",
     "schemas": {
         "Accessibility": {

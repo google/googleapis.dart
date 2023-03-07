@@ -349,6 +349,7 @@ api.ConfigVariableTemplate buildConfigVariableTemplate() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.enumOptions = buildUnnamed6();
+    o.isAdvanced = true;
     o.key = 'foo';
     o.required = true;
     o.roleGrant = buildRoleGrant();
@@ -373,6 +374,7 @@ void checkConfigVariableTemplate(api.ConfigVariableTemplate o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.enumOptions!);
+    unittest.expect(o.isAdvanced!, unittest.isTrue);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),

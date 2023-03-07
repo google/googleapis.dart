@@ -7,7 +7,7 @@ index d6fd38a6b..d72932013 100644
                                      ]
                                  },
 -                                "listen": {
--                                    "description": "Listens to changes. This method is only available via the gRPC API (not REST).",
+-                                    "description": "Listens to changes. This method is only available via gRPC or WebChannel (not REST).",
 -                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:listen",
 -                                    "httpMethod": "POST",
 -                                    "id": "firestore.projects.databases.documents.listen",

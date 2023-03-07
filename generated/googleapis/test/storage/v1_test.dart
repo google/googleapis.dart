@@ -6243,6 +6243,7 @@ void main() {
       final arg_delimiter = 'foo';
       final arg_endOffset = 'foo';
       final arg_includeTrailingDelimiter = true;
+      final arg_matchGlob = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_prefix = 'foo';
@@ -6314,6 +6315,10 @@ void main() {
           unittest.equals('$arg_includeTrailingDelimiter'),
         );
         unittest.expect(
+          queryMap['matchGlob']!.first,
+          unittest.equals(arg_matchGlob),
+        );
+        unittest.expect(
           core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
@@ -6356,6 +6361,7 @@ void main() {
           delimiter: arg_delimiter,
           endOffset: arg_endOffset,
           includeTrailingDelimiter: arg_includeTrailingDelimiter,
+          matchGlob: arg_matchGlob,
           maxResults: arg_maxResults,
           pageToken: arg_pageToken,
           prefix: arg_prefix,

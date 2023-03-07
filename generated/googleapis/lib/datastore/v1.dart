@@ -1360,6 +1360,8 @@ class CompositeFilter {
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : The results are required to satisfy each of the combined
   /// filters.
+  /// - "OR" : Documents are required to satisfy at least one of the combined
+  /// filters.
   core.String? op;
 
   CompositeFilter({

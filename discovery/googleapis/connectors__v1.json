@@ -1077,7 +1077,7 @@
             }
         }
     },
-    "revision": "20230220",
+    "revision": "20230222",
     "rootUrl": "https://connectors.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1324,6 +1324,10 @@
                         "$ref": "EnumOption"
                     },
                     "type": "array"
+                },
+                "isAdvanced": {
+                    "description": "Indicates if current template is part of advanced settings",
+                    "type": "boolean"
                 },
                 "key": {
                     "description": "Key of the config variable.",

@@ -120,6 +120,33 @@ void checkApplyConversionWorkspaceRequest(
   buildCounterApplyConversionWorkspaceRequest--;
 }
 
+core.int buildCounterApplyJobDetails = 0;
+api.ApplyJobDetails buildApplyJobDetails() {
+  final o = api.ApplyJobDetails();
+  buildCounterApplyJobDetails++;
+  if (buildCounterApplyJobDetails < 3) {
+    o.connectionProfile = 'foo';
+    o.filter = 'foo';
+  }
+  buildCounterApplyJobDetails--;
+  return o;
+}
+
+void checkApplyJobDetails(api.ApplyJobDetails o) {
+  buildCounterApplyJobDetails++;
+  if (buildCounterApplyJobDetails < 3) {
+    unittest.expect(
+      o.connectionProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterApplyJobDetails--;
+}
+
 core.List<api.AuditLogConfig> buildUnnamed1() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -201,8 +228,10 @@ api.BackgroundJobLogEntry buildBackgroundJobLogEntry() {
   final o = api.BackgroundJobLogEntry();
   buildCounterBackgroundJobLogEntry++;
   if (buildCounterBackgroundJobLogEntry < 3) {
+    o.applyJobDetails = buildApplyJobDetails();
     o.completionComment = 'foo';
     o.completionState = 'foo';
+    o.convertJobDetails = buildConvertJobDetails();
     o.finishTime = 'foo';
     o.id = 'foo';
     o.importRulesJobDetails = buildImportRulesJobDetails();
@@ -218,6 +247,7 @@ api.BackgroundJobLogEntry buildBackgroundJobLogEntry() {
 void checkBackgroundJobLogEntry(api.BackgroundJobLogEntry o) {
   buildCounterBackgroundJobLogEntry++;
   if (buildCounterBackgroundJobLogEntry < 3) {
+    checkApplyJobDetails(o.applyJobDetails!);
     unittest.expect(
       o.completionComment!,
       unittest.equals('foo'),
@@ -226,6 +256,7 @@ void checkBackgroundJobLogEntry(api.BackgroundJobLogEntry o) {
       o.completionState!,
       unittest.equals('foo'),
     );
+    checkConvertJobDetails(o.convertJobDetails!);
     unittest.expect(
       o.finishTime!,
       unittest.equals('foo'),
@@ -968,6 +999,28 @@ void checkConvertConversionWorkspaceRequest(
     );
   }
   buildCounterConvertConversionWorkspaceRequest--;
+}
+
+core.int buildCounterConvertJobDetails = 0;
+api.ConvertJobDetails buildConvertJobDetails() {
+  final o = api.ConvertJobDetails();
+  buildCounterConvertJobDetails++;
+  if (buildCounterConvertJobDetails < 3) {
+    o.filter = 'foo';
+  }
+  buildCounterConvertJobDetails--;
+  return o;
+}
+
+void checkConvertJobDetails(api.ConvertJobDetails o) {
+  buildCounterConvertJobDetails++;
+  if (buildCounterConvertJobDetails < 3) {
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConvertJobDetails--;
 }
 
 core.int buildCounterDatabaseEngineInfo = 0;
@@ -4156,6 +4209,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ApplyJobDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildApplyJobDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApplyJobDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkApplyJobDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -4293,6 +4356,16 @@ void main() {
       final od = api.ConvertConversionWorkspaceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConvertConversionWorkspaceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConvertJobDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConvertJobDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConvertJobDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConvertJobDetails(od);
     });
   });
 

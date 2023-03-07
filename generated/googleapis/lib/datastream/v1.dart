@@ -3475,14 +3475,14 @@ class OracleSourceConfig {
 
   /// Maximum number of concurrent backfill tasks.
   ///
-  /// The number should be non negative. If not set (or set to 0), the system's
-  /// default value will be used.
+  /// The number should be non-negative. If not set (or set to 0), the system's
+  /// default value is used.
   core.int? maxConcurrentBackfillTasks;
 
   /// Maximum number of concurrent CDC tasks.
   ///
-  /// The number should be non negative. If not set (or set to 0), the system's
-  /// default value will be used.
+  /// The number should be non-negative. If not set (or set to 0), the system's
+  /// default value is used.
   core.int? maxConcurrentCdcTasks;
 
   /// Stream large object values.

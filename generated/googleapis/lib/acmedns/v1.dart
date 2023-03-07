@@ -59,8 +59,10 @@ class AcmeChallengeSetsResource {
   ///
   /// Request parameters:
   ///
-  /// [rootDomain] - Required. SLD + TLD domain name to list challenges. This
-  /// MAY be Unicode or Punycode.
+  /// [rootDomain] - Required. SLD + TLD domain name to list challenges. For
+  /// example, this would be "google.com" for any FQDN under "google.com". That
+  /// includes challenges for "subdomain.google.com". This MAY be Unicode or
+  /// Punycode.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -101,8 +103,10 @@ class AcmeChallengeSetsResource {
   ///
   /// Request parameters:
   ///
-  /// [rootDomain] - Required. SLD + TLD domain name to update records for. This
-  /// MAY be Unicode or Punycode.
+  /// [rootDomain] - Required. SLD + TLD domain name to update records for. For
+  /// example, this would be "google.com" for any FQDN under "google.com". That
+  /// includes challenges for "subdomain.google.com". This MAY be Unicode or
+  /// Punycode.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

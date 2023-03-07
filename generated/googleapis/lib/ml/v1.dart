@@ -2830,6 +2830,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "TPU_V3" : TPU v3.
   /// - "TPU_V2_POD" : TPU v2 POD.
   /// - "TPU_V3_POD" : TPU v3 POD.
+  /// - "TPU_V4_POD" : TPU v4 POD.
   core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig({

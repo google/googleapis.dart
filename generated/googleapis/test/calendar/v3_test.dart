@@ -1249,6 +1249,7 @@ api.Event buildEvent() {
     o.transparency = 'foo';
     o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.visibility = 'foo';
+    o.workingLocationProperties = buildEventWorkingLocationProperties();
   }
   buildCounterEvent--;
   return o;
@@ -1350,6 +1351,7 @@ void checkEvent(api.Event o) {
       o.visibility!,
       unittest.equals('foo'),
     );
+    checkEventWorkingLocationProperties(o.workingLocationProperties!);
   }
   buildCounterEvent--;
 }
@@ -1508,6 +1510,114 @@ void checkEventReminder(api.EventReminder o) {
     );
   }
   buildCounterEventReminder--;
+}
+
+core.int buildCounterEventWorkingLocationPropertiesCustomLocation = 0;
+api.EventWorkingLocationPropertiesCustomLocation
+    buildEventWorkingLocationPropertiesCustomLocation() {
+  final o = api.EventWorkingLocationPropertiesCustomLocation();
+  buildCounterEventWorkingLocationPropertiesCustomLocation++;
+  if (buildCounterEventWorkingLocationPropertiesCustomLocation < 3) {
+    o.label = 'foo';
+  }
+  buildCounterEventWorkingLocationPropertiesCustomLocation--;
+  return o;
+}
+
+void checkEventWorkingLocationPropertiesCustomLocation(
+    api.EventWorkingLocationPropertiesCustomLocation o) {
+  buildCounterEventWorkingLocationPropertiesCustomLocation++;
+  if (buildCounterEventWorkingLocationPropertiesCustomLocation < 3) {
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventWorkingLocationPropertiesCustomLocation--;
+}
+
+core.int buildCounterEventWorkingLocationPropertiesOfficeLocation = 0;
+api.EventWorkingLocationPropertiesOfficeLocation
+    buildEventWorkingLocationPropertiesOfficeLocation() {
+  final o = api.EventWorkingLocationPropertiesOfficeLocation();
+  buildCounterEventWorkingLocationPropertiesOfficeLocation++;
+  if (buildCounterEventWorkingLocationPropertiesOfficeLocation < 3) {
+    o.buildingId = 'foo';
+    o.deskId = 'foo';
+    o.floorId = 'foo';
+    o.floorSectionId = 'foo';
+    o.label = 'foo';
+  }
+  buildCounterEventWorkingLocationPropertiesOfficeLocation--;
+  return o;
+}
+
+void checkEventWorkingLocationPropertiesOfficeLocation(
+    api.EventWorkingLocationPropertiesOfficeLocation o) {
+  buildCounterEventWorkingLocationPropertiesOfficeLocation++;
+  if (buildCounterEventWorkingLocationPropertiesOfficeLocation < 3) {
+    unittest.expect(
+      o.buildingId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deskId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.floorId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.floorSectionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventWorkingLocationPropertiesOfficeLocation--;
+}
+
+core.int buildCounterEventWorkingLocationProperties = 0;
+api.EventWorkingLocationProperties buildEventWorkingLocationProperties() {
+  final o = api.EventWorkingLocationProperties();
+  buildCounterEventWorkingLocationProperties++;
+  if (buildCounterEventWorkingLocationProperties < 3) {
+    o.customLocation = buildEventWorkingLocationPropertiesCustomLocation();
+    o.homeOffice = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
+    o.officeLocation = buildEventWorkingLocationPropertiesOfficeLocation();
+  }
+  buildCounterEventWorkingLocationProperties--;
+  return o;
+}
+
+void checkEventWorkingLocationProperties(api.EventWorkingLocationProperties o) {
+  buildCounterEventWorkingLocationProperties++;
+  if (buildCounterEventWorkingLocationProperties < 3) {
+    checkEventWorkingLocationPropertiesCustomLocation(o.customLocation!);
+    var casted1 = (o.homeOffice!) as core.Map;
+    unittest.expect(casted1, unittest.hasLength(3));
+    unittest.expect(
+      casted1['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted1['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted1['string'],
+      unittest.equals('foo'),
+    );
+    checkEventWorkingLocationPropertiesOfficeLocation(o.officeLocation!);
+  }
+  buildCounterEventWorkingLocationProperties--;
 }
 
 core.List<api.EventReminder> buildUnnamed18() => [
@@ -2324,6 +2434,36 @@ void main() {
       final od = api.EventReminder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEventReminder(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventWorkingLocationPropertiesCustomLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationPropertiesCustomLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationPropertiesCustomLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationPropertiesCustomLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventWorkingLocationPropertiesOfficeLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationPropertiesOfficeLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationPropertiesOfficeLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationPropertiesOfficeLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventWorkingLocationProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationProperties(od);
     });
   });
 

@@ -1225,6 +1225,7 @@ api.PartnerClaim buildPartnerClaim() {
     o.googleWorkspaceCustomerId = 'foo';
     o.preProvisioningToken = 'foo';
     o.sectionType = 'foo';
+    o.simlockProfileId = 'foo';
   }
   buildCounterPartnerClaim--;
   return o;
@@ -1249,6 +1250,10 @@ void checkPartnerClaim(api.PartnerClaim o) {
     );
     unittest.expect(
       o.sectionType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.simlockProfileId!,
       unittest.equals('foo'),
     );
   }

@@ -383,6 +383,7 @@ skipped_apis:
 - memcache:v1beta2 # v1 included
 - metastore:v1alpha # v1beta included
 - metastore:v1beta
+- migrationcenter:v1alpha1
 - monitoring:v1 # v3 included
 - networkconnectivity:v1alpha1
 - networkmanagement:v1beta1 # v1 included

@@ -1195,7 +1195,7 @@
             }
         }
     },
-    "revision": "20230221",
+    "revision": "20230224",
     "rootUrl": "https://eventarc.googleapis.com/",
     "schemas": {
         "AuditConfig": {

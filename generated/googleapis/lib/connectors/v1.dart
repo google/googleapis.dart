@@ -1895,6 +1895,9 @@ class ConfigVariableTemplate {
   /// To be populated if `ValueType` is `ENUM`
   core.List<EnumOption>? enumOptions;
 
+  /// Indicates if current template is part of advanced settings
+  core.bool? isAdvanced;
+
   /// Key of the config variable.
   core.String? key;
 
@@ -1934,6 +1937,7 @@ class ConfigVariableTemplate {
     this.description,
     this.displayName,
     this.enumOptions,
+    this.isAdvanced,
     this.key,
     this.required,
     this.roleGrant,
@@ -1960,6 +1964,9 @@ class ConfigVariableTemplate {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          isAdvanced: json_.containsKey('isAdvanced')
+              ? json_['isAdvanced'] as core.bool
+              : null,
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
           required: json_.containsKey('required')
               ? json_['required'] as core.bool
@@ -1984,6 +1991,7 @@ class ConfigVariableTemplate {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (enumOptions != null) 'enumOptions': enumOptions!,
+        if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
         if (required != null) 'required': required!,
         if (roleGrant != null) 'roleGrant': roleGrant!,

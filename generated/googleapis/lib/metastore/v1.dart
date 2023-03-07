@@ -1956,6 +1956,62 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Configuration information for the auxiliary service versions.
+class AuxiliaryVersionConfig {
+  /// A mapping of Hive metastore configuration key-value pairs to apply to the
+  /// auxiliary Hive metastore (configured in hive-site.xml) in addition to the
+  /// primary version's overrides.
+  ///
+  /// If keys are present in both the auxiliary version's overrides and the
+  /// primary version's overrides, the value from the auxiliary version's
+  /// overrides takes precedence.
+  core.Map<core.String, core.String>? configOverrides;
+
+  /// The network configuration contains the endpoint URI(s) of the auxiliary
+  /// Hive metastore service.
+  ///
+  /// Output only.
+  NetworkConfig? networkConfig;
+
+  /// The Hive metastore version of the auxiliary service.
+  ///
+  /// It must be less than the primary Hive metastore service's version.
+  core.String? version;
+
+  AuxiliaryVersionConfig({
+    this.configOverrides,
+    this.networkConfig,
+    this.version,
+  });
+
+  AuxiliaryVersionConfig.fromJson(core.Map json_)
+      : this(
+          configOverrides: json_.containsKey('configOverrides')
+              ? (json_['configOverrides']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          networkConfig: json_.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configOverrides != null) 'configOverrides': configOverrides!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Represents a backend metastore for the federation.
 class BackendMetastore {
   /// The type of the backend metastore.
@@ -2517,6 +2573,18 @@ class Federation {
 /// Specifies configuration information specific to running Hive metastore
 /// software as the metastore service.
 class HiveMetastoreConfig {
+  /// A mapping of Hive metastore version to the auxiliary version
+  /// configuration.
+  ///
+  /// When specified, a secondary Hive metastore service is created along with
+  /// the primary service. All auxiliary versions must be less than the
+  /// service's primary version. The key is the auxiliary service name and it
+  /// must match the regular expression a-z?. This means that the first
+  /// character must be a lowercase letter, and all the following characters
+  /// must be hyphens, lowercase letters, or digits, except the last character,
+  /// which cannot be a hyphen.
+  core.Map<core.String, AuxiliaryVersionConfig>? auxiliaryVersions;
+
   /// A mapping of Hive metastore configuration key-value pairs to apply to the
   /// Hive metastore (configured in hive-site.xml).
   ///
@@ -2539,6 +2607,7 @@ class HiveMetastoreConfig {
   core.String? version;
 
   HiveMetastoreConfig({
+    this.auxiliaryVersions,
     this.configOverrides,
     this.kerberosConfig,
     this.version,
@@ -2546,6 +2615,17 @@ class HiveMetastoreConfig {
 
   HiveMetastoreConfig.fromJson(core.Map json_)
       : this(
+          auxiliaryVersions: json_.containsKey('auxiliaryVersions')
+              ? (json_['auxiliaryVersions']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    AuxiliaryVersionConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           configOverrides: json_.containsKey('configOverrides')
               ? (json_['configOverrides']
                       as core.Map<core.String, core.dynamic>)
@@ -2566,6 +2646,7 @@ class HiveMetastoreConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryVersions != null) 'auxiliaryVersions': auxiliaryVersions!,
         if (configOverrides != null) 'configOverrides': configOverrides!,
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
         if (version != null) 'version': version!,
@@ -3466,6 +3547,46 @@ class RestoreServiceRequest {
       };
 }
 
+/// Represents the scaling configuration of a metastore service.
+class ScalingConfig {
+  /// An enum of readable instance sizes, with each instance size mapping to a
+  /// float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+  /// Possible string values are:
+  /// - "INSTANCE_SIZE_UNSPECIFIED" : Unspecified instance size
+  /// - "EXTRA_SMALL" : Extra small instance size, maps to a scaling factor of
+  /// 0.1.
+  /// - "SMALL" : Small instance size, maps to a scaling factor of 0.5.
+  /// - "MEDIUM" : Medium instance size, maps to a scaling factor of 1.0.
+  /// - "LARGE" : Large instance size, maps to a scaling factor of 3.0.
+  /// - "EXTRA_LARGE" : Extra large instance size, maps to a scaling factor of
+  /// 6.0.
+  core.String? instanceSize;
+
+  /// Scaling factor, increments of 0.1 for values less than 1.0, and increments
+  /// of 1.0 for values greater than 1.0.
+  core.double? scalingFactor;
+
+  ScalingConfig({
+    this.instanceSize,
+    this.scalingFactor,
+  });
+
+  ScalingConfig.fromJson(core.Map json_)
+      : this(
+          instanceSize: json_.containsKey('instanceSize')
+              ? json_['instanceSize'] as core.String
+              : null,
+          scalingFactor: json_.containsKey('scalingFactor')
+              ? (json_['scalingFactor'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceSize != null) 'instanceSize': instanceSize!,
+        if (scalingFactor != null) 'scalingFactor': scalingFactor!,
+      };
+}
+
 /// A securely stored value.
 class Secret {
   /// The relative resource name of a Secret Manager secret version, in the
@@ -3582,6 +3703,9 @@ class Service {
   /// considered stable and have been validated for production use.
   core.String? releaseChannel;
 
+  /// Scaling configuration of the metastore service.
+  ScalingConfig? scalingConfig;
+
   /// The current state of the metastore service.
   ///
   /// Output only.
@@ -3648,6 +3772,7 @@ class Service {
     this.networkConfig,
     this.port,
     this.releaseChannel,
+    this.scalingConfig,
     this.state,
     this.stateMessage,
     this.telemetryConfig,
@@ -3708,6 +3833,10 @@ class Service {
           releaseChannel: json_.containsKey('releaseChannel')
               ? json_['releaseChannel'] as core.String
               : null,
+          scalingConfig: json_.containsKey('scalingConfig')
+              ? ScalingConfig.fromJson(
+                  json_['scalingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           stateMessage: json_.containsKey('stateMessage')
@@ -3741,6 +3870,7 @@ class Service {
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (port != null) 'port': port!,
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
+        if (scalingConfig != null) 'scalingConfig': scalingConfig!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,

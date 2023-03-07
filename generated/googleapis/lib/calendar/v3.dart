@@ -3974,6 +3974,7 @@ class Event {
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
+  /// - "workingLocation" - A working location event.
   core.String? eventType;
 
   /// Extended properties of the event.
@@ -4173,6 +4174,11 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
+  /// Working Location event data.
+  ///
+  /// Read-only.
+  EventWorkingLocationProperties? workingLocationProperties;
+
   Event({
     this.anyoneCanAddSelf,
     this.attachments,
@@ -4213,6 +4219,7 @@ class Event {
     this.transparency,
     this.updated,
     this.visibility,
+    this.workingLocationProperties,
   });
 
   Event.fromJson(core.Map json_)
@@ -4345,6 +4352,12 @@ class Event {
           visibility: json_.containsKey('visibility')
               ? json_['visibility'] as core.String
               : null,
+          workingLocationProperties:
+              json_.containsKey('workingLocationProperties')
+                  ? EventWorkingLocationProperties.fromJson(
+                      json_['workingLocationProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4391,6 +4404,8 @@ class Event {
         if (transparency != null) 'transparency': transparency!,
         if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
         if (visibility != null) 'visibility': visibility!,
+        if (workingLocationProperties != null)
+          'workingLocationProperties': workingLocationProperties!,
       };
 }
 
@@ -4653,6 +4668,123 @@ class EventReminder {
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (minutes != null) 'minutes': minutes!,
+      };
+}
+
+/// If present, specifies that the user is working from a custom location.
+class EventWorkingLocationPropertiesCustomLocation {
+  /// An optional extra label for additional information.
+  core.String? label;
+
+  EventWorkingLocationPropertiesCustomLocation({
+    this.label,
+  });
+
+  EventWorkingLocationPropertiesCustomLocation.fromJson(core.Map json_)
+      : this(
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+      };
+}
+
+/// If present, specifies that the user is working from an office.
+class EventWorkingLocationPropertiesOfficeLocation {
+  /// An optional building identifier.
+  ///
+  /// This should reference a building ID in the organization's Resources
+  /// database.
+  core.String? buildingId;
+
+  /// An optional arbitrary desk identifier.
+  core.String? deskId;
+
+  /// An optional arbitrary floor identifier.
+  core.String? floorId;
+
+  /// An optional arbitrary floor section identifier.
+  core.String? floorSectionId;
+
+  /// An optional extra label for additional information.
+  core.String? label;
+
+  EventWorkingLocationPropertiesOfficeLocation({
+    this.buildingId,
+    this.deskId,
+    this.floorId,
+    this.floorSectionId,
+    this.label,
+  });
+
+  EventWorkingLocationPropertiesOfficeLocation.fromJson(core.Map json_)
+      : this(
+          buildingId: json_.containsKey('buildingId')
+              ? json_['buildingId'] as core.String
+              : null,
+          deskId: json_.containsKey('deskId')
+              ? json_['deskId'] as core.String
+              : null,
+          floorId: json_.containsKey('floorId')
+              ? json_['floorId'] as core.String
+              : null,
+          floorSectionId: json_.containsKey('floorSectionId')
+              ? json_['floorSectionId'] as core.String
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (deskId != null) 'deskId': deskId!,
+        if (floorId != null) 'floorId': floorId!,
+        if (floorSectionId != null) 'floorSectionId': floorSectionId!,
+        if (label != null) 'label': label!,
+      };
+}
+
+class EventWorkingLocationProperties {
+  /// If present, specifies that the user is working from a custom location.
+  EventWorkingLocationPropertiesCustomLocation? customLocation;
+
+  /// If present, specifies that the user is working at home.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? homeOffice;
+
+  /// If present, specifies that the user is working from an office.
+  EventWorkingLocationPropertiesOfficeLocation? officeLocation;
+
+  EventWorkingLocationProperties({
+    this.customLocation,
+    this.homeOffice,
+    this.officeLocation,
+  });
+
+  EventWorkingLocationProperties.fromJson(core.Map json_)
+      : this(
+          customLocation: json_.containsKey('customLocation')
+              ? EventWorkingLocationPropertiesCustomLocation.fromJson(
+                  json_['customLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          homeOffice:
+              json_.containsKey('homeOffice') ? json_['homeOffice'] : null,
+          officeLocation: json_.containsKey('officeLocation')
+              ? EventWorkingLocationPropertiesOfficeLocation.fromJson(
+                  json_['officeLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customLocation != null) 'customLocation': customLocation!,
+        if (homeOffice != null) 'homeOffice': homeOffice!,
+        if (officeLocation != null) 'officeLocation': officeLocation!,
       };
 }
 

@@ -1479,6 +1479,9 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Immutable.
   core.String? name;
 
+  /// Shows if dry run is supported for this constraint or not.
+  core.bool? supportsDryRun;
+
   GoogleCloudOrgpolicyV2Constraint({
     this.booleanConstraint,
     this.constraintDefault,
@@ -1486,6 +1489,7 @@ class GoogleCloudOrgpolicyV2Constraint {
     this.displayName,
     this.listConstraint,
     this.name,
+    this.supportsDryRun,
   });
 
   GoogleCloudOrgpolicyV2Constraint.fromJson(core.Map json_)
@@ -1510,6 +1514,9 @@ class GoogleCloudOrgpolicyV2Constraint {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          supportsDryRun: json_.containsKey('supportsDryRun')
+              ? json_['supportsDryRun'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1519,6 +1526,7 @@ class GoogleCloudOrgpolicyV2Constraint {
         if (displayName != null) 'displayName': displayName!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
+        if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
       };
 }
 

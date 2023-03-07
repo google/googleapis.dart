@@ -1333,6 +1333,12 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Required.
   core.String? displayName;
 
+  /// Represents the Ekm Provisioning State of the given workload.
+  ///
+  /// Optional.
+  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse?
+      ekmProvisioningResponse;
+
   /// Indicates the sovereignty status of the given workload.
   ///
   /// Currently meant to be used by Europe/Canada customers.
@@ -1428,6 +1434,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.compliantButDisallowedServices,
     this.createTime,
     this.displayName,
+    this.ekmProvisioningResponse,
     this.enableSovereignControls,
     this.etag,
     this.kajEnrollmentState,
@@ -1465,6 +1472,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          ekmProvisioningResponse: json_.containsKey('ekmProvisioningResponse')
+              ? GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+                  .fromJson(json_['ekmProvisioningResponse']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           enableSovereignControls: json_.containsKey('enableSovereignControls')
               ? json_['enableSovereignControls'] as core.bool
@@ -1524,6 +1536,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
           'compliantButDisallowedServices': compliantButDisallowedServices!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (ekmProvisioningResponse != null)
+          'ekmProvisioningResponse': ekmProvisioningResponse!,
         if (enableSovereignControls != null)
           'enableSovereignControls': enableSovereignControls!,
         if (etag != null) 'etag': etag!,
@@ -1574,6 +1588,66 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
       };
 }
 
+/// External key management systems(EKM) Provisioning response
+class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
+  /// Indicates Ekm provisioning error if any.
+  /// Possible string values are:
+  /// - "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED" : No error domain
+  /// - "UNSPECIFIED_ERROR" : Error but domain is unspecified.
+  /// - "GOOGLE_SERVER_ERROR" : Internal logic breaks within provisioning code.
+  /// - "EXTERNAL_USER_ERROR" : Error occurred with the customer not granting
+  /// permission/creating resource.
+  /// - "EXTERNAL_PARTNER_ERROR" : Error occurred within the partner’s
+  /// provisioning cluster.
+  /// - "TIMEOUT_ERROR" : Resource wasn't provisioned in the required 7 day time
+  /// period
+  core.String? ekmProvisioningErrorDomain;
+
+  /// Detailed error message if Ekm provisioning fails
+  core.String? ekmProvisioningErrorMessage;
+
+  /// Indicates Ekm enrollment Provisioning of a given workload.
+  /// Possible string values are:
+  /// - "EKM_PROVISIONING_STATE_UNSPECIFIED" : Default State for Ekm
+  /// Provisioning
+  /// - "EKM_PROVISIONING_STATE_PENDING" : Pending State for Ekm Provisioning
+  /// - "EKM_PROVISIONING_STATE_FAILED" : Failed State for Ekm Provisioning
+  /// - "EKM_PROVISIONING_STATE_COMPLETED" : Completed State for Ekm
+  /// Provisioning
+  core.String? ekmProvisioningState;
+
+  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse({
+    this.ekmProvisioningErrorDomain,
+    this.ekmProvisioningErrorMessage,
+    this.ekmProvisioningState,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
+      core.Map json_)
+      : this(
+          ekmProvisioningErrorDomain:
+              json_.containsKey('ekmProvisioningErrorDomain')
+                  ? json_['ekmProvisioningErrorDomain'] as core.String
+                  : null,
+          ekmProvisioningErrorMessage:
+              json_.containsKey('ekmProvisioningErrorMessage')
+                  ? json_['ekmProvisioningErrorMessage'] as core.String
+                  : null,
+          ekmProvisioningState: json_.containsKey('ekmProvisioningState')
+              ? json_['ekmProvisioningState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ekmProvisioningErrorDomain != null)
+          'ekmProvisioningErrorDomain': ekmProvisioningErrorDomain!,
+        if (ekmProvisioningErrorMessage != null)
+          'ekmProvisioningErrorMessage': ekmProvisioningErrorMessage!,
+        if (ekmProvisioningState != null)
+          'ekmProvisioningState': ekmProvisioningState!,
+      };
+}
+
 /// Settings specific to the Key Management Service.
 ///
 /// This message is deprecated. In order to create a Keyring, callers should
@@ -1620,7 +1694,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
 
 /// Permissions granted to the AW Partner SA account for the customer workload
 class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
-  /// Allow partner to view data and logs
+  /// Allow the partner to view inspectability logs and monitoring violations.
   core.bool? dataLogsViewer;
 
   /// Allow partner to monitor folder and remediate violations

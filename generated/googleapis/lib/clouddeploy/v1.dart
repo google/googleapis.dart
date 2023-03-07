@@ -1947,6 +1947,47 @@ typedef AbandonReleaseRequest = $Empty;
 /// The response object for `AbandonRelease`.
 typedef AbandonReleaseResponse = $Empty;
 
+/// An advanceChildRollout Job.
+typedef AdvanceChildRolloutJob = $Empty;
+
+/// AdvanceChildRolloutJobRun contains information specific to a
+/// advanceChildRollout `JobRun`.
+class AdvanceChildRolloutJobRun {
+  /// Name of the `ChildRollout`.
+  ///
+  /// Format is projects/{project}/
+  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
+  /// releases/{release}/rollouts/a-z{0,62}.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// the ID of the ChildRollout's Phase.
+  ///
+  /// Output only.
+  core.String? rolloutPhaseId;
+
+  AdvanceChildRolloutJobRun({
+    this.rollout,
+    this.rolloutPhaseId,
+  });
+
+  AdvanceChildRolloutJobRun.fromJson(core.Map json_)
+      : this(
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          rolloutPhaseId: json_.containsKey('rolloutPhaseId')
+              ? json_['rolloutPhaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollout != null) 'rollout': rollout!,
+        if (rolloutPhaseId != null) 'rolloutPhaseId': rolloutPhaseId!,
+      };
+}
+
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
   /// Membership of the GKE Hub-registered cluster to which to apply the
@@ -2173,6 +2214,46 @@ class BuildArtifact {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// ChildRollouts job composition
+class ChildRolloutJobs {
+  /// List of AdvanceChildRolloutJobs
+  ///
+  /// Output only.
+  core.List<Job>? advanceRolloutJobs;
+
+  /// List of CreateChildRolloutJobs
+  ///
+  /// Output only.
+  core.List<Job>? createRolloutJobs;
+
+  ChildRolloutJobs({
+    this.advanceRolloutJobs,
+    this.createRolloutJobs,
+  });
+
+  ChildRolloutJobs.fromJson(core.Map json_)
+      : this(
+          advanceRolloutJobs: json_.containsKey('advanceRolloutJobs')
+              ? (json_['advanceRolloutJobs'] as core.List)
+                  .map((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createRolloutJobs: json_.containsKey('createRolloutJobs')
+              ? (json_['createRolloutJobs'] as core.List)
+                  .map((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceRolloutJobs != null)
+          'advanceRolloutJobs': advanceRolloutJobs!,
+        if (createRolloutJobs != null) 'createRolloutJobs': createRolloutJobs!,
+      };
+}
+
 /// Information specifying where to deploy a Cloud Run Service.
 class CloudRunLocation {
   /// The location for the Cloud Run Service.
@@ -2282,6 +2363,47 @@ class Config {
           'defaultSkaffoldVersion': defaultSkaffoldVersion!,
         if (name != null) 'name': name!,
         if (supportedVersions != null) 'supportedVersions': supportedVersions!,
+      };
+}
+
+/// A createChildRollout Job.
+typedef CreateChildRolloutJob = $Empty;
+
+/// CreateChildRolloutJobRun contains information specific to a
+/// createChildRollout `JobRun`.
+class CreateChildRolloutJobRun {
+  /// Name of the `ChildRollout`.
+  ///
+  /// Format is projects/{project}/
+  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
+  /// releases/{release}/rollouts/a-z{0,62}.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The ID of the childRollout Phase initiated by this JobRun.
+  ///
+  /// Output only.
+  core.String? rolloutPhaseId;
+
+  CreateChildRolloutJobRun({
+    this.rollout,
+    this.rolloutPhaseId,
+  });
+
+  CreateChildRolloutJobRun.fromJson(core.Map json_)
+      : this(
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          rolloutPhaseId: json_.containsKey('rolloutPhaseId')
+              ? json_['rolloutPhaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollout != null) 'rollout': rollout!,
+        if (rolloutPhaseId != null) 'rolloutPhaseId': rolloutPhaseId!,
       };
 }
 
@@ -2789,6 +2911,16 @@ class GkeCluster {
 
 /// Job represents an operation for a `Rollout`.
 class Job {
+  /// An advanceChildRollout Job.
+  ///
+  /// Output only.
+  AdvanceChildRolloutJob? advanceChildRolloutJob;
+
+  /// A createChildRollout Job.
+  ///
+  /// Output only.
+  CreateChildRolloutJob? createChildRolloutJob;
+
   /// A deploy Job.
   ///
   /// Output only.
@@ -2825,6 +2957,8 @@ class Job {
   VerifyJob? verifyJob;
 
   Job({
+    this.advanceChildRolloutJob,
+    this.createChildRolloutJob,
     this.deployJob,
     this.id,
     this.jobRun,
@@ -2834,6 +2968,14 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
+          advanceChildRolloutJob: json_.containsKey('advanceChildRolloutJob')
+              ? AdvanceChildRolloutJob.fromJson(json_['advanceChildRolloutJob']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createChildRolloutJob: json_.containsKey('createChildRolloutJob')
+              ? CreateChildRolloutJob.fromJson(json_['createChildRolloutJob']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           deployJob: json_.containsKey('deployJob')
               ? DeployJob.fromJson(
                   json_['deployJob'] as core.Map<core.String, core.dynamic>)
@@ -2851,6 +2993,10 @@ class Job {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceChildRolloutJob != null)
+          'advanceChildRolloutJob': advanceChildRolloutJob!,
+        if (createChildRolloutJob != null)
+          'createChildRolloutJob': createChildRolloutJob!,
         if (deployJob != null) 'deployJob': deployJob!,
         if (id != null) 'id': id!,
         if (jobRun != null) 'jobRun': jobRun!,
@@ -2863,6 +3009,16 @@ class Job {
 ///
 /// A `JobRun` contains information of a single `Rollout` job evaluation.
 class JobRun {
+  /// Information specific to an advanceChildRollout `JobRun`
+  ///
+  /// Output only.
+  AdvanceChildRolloutJobRun? advanceChildRolloutJobRun;
+
+  /// Information specific to a createChildRollout `JobRun`.
+  ///
+  /// Output only.
+  CreateChildRolloutJobRun? createChildRolloutJobRun;
+
   /// Time at which the `JobRun` was created.
   ///
   /// Output only.
@@ -2930,6 +3086,8 @@ class JobRun {
   VerifyJobRun? verifyJobRun;
 
   JobRun({
+    this.advanceChildRolloutJobRun,
+    this.createChildRolloutJobRun,
     this.createTime,
     this.deployJobRun,
     this.endTime,
@@ -2945,6 +3103,18 @@ class JobRun {
 
   JobRun.fromJson(core.Map json_)
       : this(
+          advanceChildRolloutJobRun:
+              json_.containsKey('advanceChildRolloutJobRun')
+                  ? AdvanceChildRolloutJobRun.fromJson(
+                      json_['advanceChildRolloutJobRun']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          createChildRolloutJobRun:
+              json_.containsKey('createChildRolloutJobRun')
+                  ? CreateChildRolloutJobRun.fromJson(
+                      json_['createChildRolloutJobRun']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -2975,6 +3145,10 @@ class JobRun {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceChildRolloutJobRun != null)
+          'advanceChildRolloutJobRun': advanceChildRolloutJobRun!,
+        if (createChildRolloutJobRun != null)
+          'createChildRolloutJobRun': createChildRolloutJobRun!,
         if (createTime != null) 'createTime': createTime!,
         if (deployJobRun != null) 'deployJobRun': deployJobRun!,
         if (endTime != null) 'endTime': endTime!,
@@ -3300,6 +3474,31 @@ class Metadata {
       };
 }
 
+/// Information specifying a multiTarget.
+class MultiTarget {
+  /// The target_ids of this multiTarget.
+  ///
+  /// Required.
+  core.List<core.String>? targetIds;
+
+  MultiTarget({
+    this.targetIds,
+  });
+
+  MultiTarget.fromJson(core.Map json_)
+      : this(
+          targetIds: json_.containsKey('targetIds')
+              ? (json_['targetIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetIds != null) 'targetIds': targetIds!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -3379,6 +3578,11 @@ class Operation {
 /// Phase represents a collection of jobs that are logically grouped together
 /// for a `Rollout`.
 class Phase {
+  /// ChildRollout job composition.
+  ///
+  /// Output only.
+  ChildRolloutJobs? childRolloutJobs;
+
   /// Deployment job composition.
   ///
   /// Output only.
@@ -3402,6 +3606,7 @@ class Phase {
   core.String? state;
 
   Phase({
+    this.childRolloutJobs,
     this.deploymentJobs,
     this.id,
     this.state,
@@ -3409,6 +3614,10 @@ class Phase {
 
   Phase.fromJson(core.Map json_)
       : this(
+          childRolloutJobs: json_.containsKey('childRolloutJobs')
+              ? ChildRolloutJobs.fromJson(json_['childRolloutJobs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           deploymentJobs: json_.containsKey('deploymentJobs')
               ? DeploymentJobs.fromJson(json_['deploymentJobs']
                   as core.Map<core.String, core.dynamic>)
@@ -3419,6 +3628,7 @@ class Phase {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (childRolloutJobs != null) 'childRolloutJobs': childRolloutJobs!,
         if (deploymentJobs != null) 'deploymentJobs': deploymentJobs!,
         if (id != null) 'id': id!,
         if (state != null) 'state': state!,
@@ -4064,6 +4274,15 @@ class Rollout {
   /// Output only.
   core.String? approveTime;
 
+  /// Name of the `ControllerRollout`.
+  ///
+  /// Format is projects/{project}/
+  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
+  /// releases/{release}/rollouts/a-z{0,62}.
+  ///
+  /// Output only.
+  core.String? controllerRollout;
+
   /// Time at which the `Rollout` was created.
   ///
   /// Output only.
@@ -4190,6 +4409,7 @@ class Rollout {
     this.annotations,
     this.approvalState,
     this.approveTime,
+    this.controllerRollout,
     this.createTime,
     this.deployEndTime,
     this.deployFailureCause,
@@ -4224,6 +4444,9 @@ class Rollout {
               : null,
           approveTime: json_.containsKey('approveTime')
               ? json_['approveTime'] as core.String
+              : null,
+          controllerRollout: json_.containsKey('controllerRollout')
+              ? json_['controllerRollout'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -4281,6 +4504,7 @@ class Rollout {
         if (annotations != null) 'annotations': annotations!,
         if (approvalState != null) 'approvalState': approvalState!,
         if (approveTime != null) 'approveTime': approveTime!,
+        if (controllerRollout != null) 'controllerRollout': controllerRollout!,
         if (createTime != null) 'createTime': createTime!,
         if (deployEndTime != null) 'deployEndTime': deployEndTime!,
         if (deployFailureCause != null)
@@ -4635,6 +4859,9 @@ class Target {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Information specifying a multiTarget.
+  MultiTarget? multiTarget;
+
   /// Name of the `Target`.
   ///
   /// Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
@@ -4674,6 +4901,7 @@ class Target {
     this.executionConfigs,
     this.gke,
     this.labels,
+    this.multiTarget,
     this.name,
     this.requireApproval,
     this.run,
@@ -4722,6 +4950,10 @@ class Target {
                   ),
                 )
               : null,
+          multiTarget: json_.containsKey('multiTarget')
+              ? MultiTarget.fromJson(
+                  json_['multiTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           requireApproval: json_.containsKey('requireApproval')
               ? json_['requireApproval'] as core.bool
@@ -4748,6 +4980,7 @@ class Target {
         if (executionConfigs != null) 'executionConfigs': executionConfigs!,
         if (gke != null) 'gke': gke!,
         if (labels != null) 'labels': labels!,
+        if (multiTarget != null) 'multiTarget': multiTarget!,
         if (name != null) 'name': name!,
         if (requireApproval != null) 'requireApproval': requireApproval!,
         if (run != null) 'run': run!,
