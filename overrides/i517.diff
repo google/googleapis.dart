@@ -1,0 +1,46 @@
+diff --git a/discovery/googleapis/firestore__v1.json b/discovery/googleapis/firestore__v1.json
+index da7241732..aa15b8894 100644
+--- a/discovery/googleapis/firestore__v1.json
++++ b/discovery/googleapis/firestore__v1.json
+@@ -3085,23 +3085,26 @@
+         "RunAggregationQueryResponse": {
+             "description": "The response for Firestore.RunAggregationQuery.",
+             "id": "RunAggregationQueryResponse",
+-            "properties": {
+-                "readTime": {
+-                    "description": "The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.",
+-                    "format": "google-datetime",
+-                    "type": "string"
++            "items": {
++                "properties": {
++                    "readTime": {
++                        "description": "The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.",
++                        "format": "google-datetime",
++                        "type": "string"
++                    },
++                    "result": {
++                        "$ref": "AggregationResult",
++                        "description": "A single aggregation result. Not present when reporting partial progress."
++                    },
++                    "transaction": {
++                        "description": "The transaction that was started as part of this request. Only present on the first response when the request requested to start a new transaction.",
++                        "format": "byte",
++                        "type": "string"
++                    }
+                 },
+-                "result": {
+-                    "$ref": "AggregationResult",
+-                    "description": "A single aggregation result. Not present when reporting partial progress."
+-                },
+-                "transaction": {
+-                    "description": "The transaction that was started as part of this request. Only present on the first response when the request requested to start a new transaction.",
+-                    "format": "byte",
+-                    "type": "string"
+-                }
++                "type": "object"
+             },
+-            "type": "object"
++            "type": "array"
+         },
+         "RunQueryRequest": {
+             "description": "The request for Firestore.RunQuery.",

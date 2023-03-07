@@ -1950,22 +1950,24 @@ void checkRunAggregationQueryRequest(api.RunAggregationQueryRequest o) {
   buildCounterRunAggregationQueryRequest--;
 }
 
-core.int buildCounterRunAggregationQueryResponse = 0;
-api.RunAggregationQueryResponse buildRunAggregationQueryResponse() {
-  final o = api.RunAggregationQueryResponse();
-  buildCounterRunAggregationQueryResponse++;
-  if (buildCounterRunAggregationQueryResponse < 3) {
+core.int buildCounterRunAggregationQueryResponseElement = 0;
+api.RunAggregationQueryResponseElement
+    buildRunAggregationQueryResponseElement() {
+  final o = api.RunAggregationQueryResponseElement();
+  buildCounterRunAggregationQueryResponseElement++;
+  if (buildCounterRunAggregationQueryResponseElement < 3) {
     o.readTime = 'foo';
     o.result = buildAggregationResult();
     o.transaction = 'foo';
   }
-  buildCounterRunAggregationQueryResponse--;
+  buildCounterRunAggregationQueryResponseElement--;
   return o;
 }
 
-void checkRunAggregationQueryResponse(api.RunAggregationQueryResponse o) {
-  buildCounterRunAggregationQueryResponse++;
-  if (buildCounterRunAggregationQueryResponse < 3) {
+void checkRunAggregationQueryResponseElement(
+    api.RunAggregationQueryResponseElement o) {
+  buildCounterRunAggregationQueryResponseElement++;
+  if (buildCounterRunAggregationQueryResponseElement < 3) {
     unittest.expect(
       o.readTime!,
       unittest.equals('foo'),
@@ -1976,7 +1978,20 @@ void checkRunAggregationQueryResponse(api.RunAggregationQueryResponse o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterRunAggregationQueryResponse--;
+  buildCounterRunAggregationQueryResponseElement--;
+}
+
+api.RunAggregationQueryResponse buildRunAggregationQueryResponse() {
+  return [
+    buildRunAggregationQueryResponseElement(),
+    buildRunAggregationQueryResponseElement(),
+  ];
+}
+
+void checkRunAggregationQueryResponse(api.RunAggregationQueryResponse o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRunAggregationQueryResponseElement(o[0]);
+  checkRunAggregationQueryResponseElement(o[1]);
 }
 
 core.int buildCounterRunQueryRequest = 0;
@@ -3169,12 +3184,24 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RunAggregationQueryResponseElement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRunAggregationQueryResponseElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RunAggregationQueryResponseElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRunAggregationQueryResponseElement(od);
+    });
+  });
+
   unittest.group('obj-schema-RunAggregationQueryResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRunAggregationQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunAggregationQueryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.List)
+          .map((value) => api.RunAggregationQueryResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
       checkRunAggregationQueryResponse(od);
     });
   });
