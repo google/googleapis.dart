@@ -2562,6 +2562,9 @@ class ObjectsResource {
   /// instance of delimiter will have their metadata included in items in
   /// addition to prefixes.
   ///
+  /// [matchGlob] - Filter results to objects and prefixes that match this glob
+  /// pattern.
+  ///
   /// [maxResults] - Maximum number of items plus prefixes to return in a single
   /// page of responses. As duplicate prefixes are omitted, fewer total results
   /// may be returned than requested. The service will use this parameter or
@@ -2603,6 +2606,7 @@ class ObjectsResource {
     core.String? delimiter,
     core.String? endOffset,
     core.bool? includeTrailingDelimiter,
+    core.String? matchGlob,
     core.int? maxResults,
     core.String? pageToken,
     core.String? prefix,
@@ -2617,6 +2621,7 @@ class ObjectsResource {
       if (endOffset != null) 'endOffset': [endOffset],
       if (includeTrailingDelimiter != null)
         'includeTrailingDelimiter': ['${includeTrailingDelimiter}'],
+      if (matchGlob != null) 'matchGlob': [matchGlob],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],

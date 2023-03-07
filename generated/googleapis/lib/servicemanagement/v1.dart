@@ -4938,6 +4938,11 @@ class Publishing {
   /// - "STREET_VIEW" : Street View Org.
   core.String? organization;
 
+  /// Optional link to proto reference documentation.
+  ///
+  /// Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
+  core.String? protoReferenceDocumentationUri;
+
   Publishing({
     this.apiShortName,
     this.codeownerGithubTeams,
@@ -4948,6 +4953,7 @@ class Publishing {
     this.methodSettings,
     this.newIssueUri,
     this.organization,
+    this.protoReferenceDocumentationUri,
   });
 
   Publishing.fromJson(core.Map json_)
@@ -4987,6 +4993,10 @@ class Publishing {
           organization: json_.containsKey('organization')
               ? json_['organization'] as core.String
               : null,
+          protoReferenceDocumentationUri:
+              json_.containsKey('protoReferenceDocumentationUri')
+                  ? json_['protoReferenceDocumentationUri'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5000,6 +5010,8 @@ class Publishing {
         if (methodSettings != null) 'methodSettings': methodSettings!,
         if (newIssueUri != null) 'newIssueUri': newIssueUri!,
         if (organization != null) 'organization': organization!,
+        if (protoReferenceDocumentationUri != null)
+          'protoReferenceDocumentationUri': protoReferenceDocumentationUri!,
       };
 }
 

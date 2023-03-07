@@ -3326,14 +3326,22 @@ class ClusterMetadata {
       };
 }
 
-/// Identifies the cluster-scoped resources to restore from the Backup.
+/// Defines the scope of cluster-scoped resources to restore.
+///
+/// Some group kinds are not reasonable choices for a restore, and will cause an
+/// error if selected here. Any scope selection that would restore "all valid"
+/// resources automatically excludes these group kinds. -
+/// gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob -
+/// metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState -
+/// migration.k8s.io/StorageVersionMigration - Node -
+/// snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some
+/// group kinds are driven by restore configuration elsewhere, and will cause an
+/// error if selected here. - Namespace - PersistentVolume
 class ClusterResourceRestoreScope {
-  /// A list of "types" of cluster-scoped resources to be restored from the
-  /// Backup.
+  /// A list of cluster-scoped resource group kinds to restore from the backup.
   ///
-  /// An empty list means that NO cluster-scoped resources will be restored.
-  /// Note that Namespaces and PersistentVolume restoration is handled
-  /// separately and is not governed by this field.
+  /// If specified, only the selected resources will be restored. Mutually
+  /// exclusive to any other field in the message.
   core.List<GroupKind>? selectedGroupKinds;
 
   ClusterResourceRestoreScope({
@@ -4262,7 +4270,7 @@ class Restore {
 
 /// Configuration of a restore.
 ///
-/// Next id: 9
+/// Next id: 11
 class RestoreConfig {
   /// Restore all namespaced resources in the Backup if set to "True".
   ///
@@ -4704,7 +4712,7 @@ class SubstitutionRule {
   /// Substitution will not be performed against fields whose value does not
   /// match this expression. If this field is NOT specified, then ALL fields
   /// matched by the target_json_path expression will undergo substitution. Note
-  /// that an empty (e.g., "", rather than unspecified) value for for this field
+  /// that an empty (e.g., "", rather than unspecified) value for this field
   /// will only match empty fields.
   core.String? originalValuePattern;
 

@@ -233,9 +233,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// returned execution. The API will default to the FULL view.
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
-  /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, duration, state and
-  /// workflow_revision_id.
+  /// - "BASIC" : Includes only basic metadata about the execution. The
+  /// following fields are returned: name, start_time, end_time, duration,
+  /// state, and workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -287,7 +287,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// state, startTime, endTime, duration, workflowRevisionID, stepName, and
   /// label.
   ///
-  /// [orderBy] - Optional. The orderding applied to the
+  /// [orderBy] - Optional. The ordering applied to the
   /// \[Executions.ListExecutions\] results. By default the ordering is based on
   /// descending start time. The following fields are supported for order by:
   /// executionID, startTime, endTime, duration, state, and workflowRevisionID.
@@ -301,15 +301,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// [pageToken] - A page token, received from a previous `ListExecutions`
   /// call. Provide this to retrieve the subsequent page. When paginating, all
   /// other parameters provided to `ListExecutions` must match the call that
-  /// provided the page token.
+  /// provided the page token. Note that pagination is applied to dynamic data.
+  /// The list of executions returned can change between page requests.
   ///
   /// [view] - Optional. A view defining which fields should be filled in the
   /// returned executions. The API will default to the BASIC view.
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
-  /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, duration, state and
-  /// workflow_revision_id.
+  /// - "BASIC" : Includes only basic metadata about the execution. The
+  /// following fields are returned: name, start_time, end_time, duration,
+  /// state, and workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -435,8 +436,10 @@ class Execution {
   ///
   /// Labels can contain at most 64 entries. Keys and values can be no longer
   /// than 63 characters and can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. Label keys must start with a letter.
-  /// International characters are allowed.
+  /// characters, underscores, and dashes. Label keys must start with a letter.
+  /// International characters are allowed. By default, labels are inherited
+  /// from the workflow but are overridden by any labels associated with the
+  /// execution.
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the execution.

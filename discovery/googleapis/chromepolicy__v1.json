@@ -555,7 +555,7 @@
             }
         }
     },
-    "revision": "20230301",
+    "revision": "20230304",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle": {
@@ -1070,10 +1070,6 @@
                     "description": "Output only. Current lifecycle information.",
                     "readOnly": true
                 },
-                "policyApiLifeycle": {
-                    "$ref": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle",
-                    "description": "Deprecated field because of typo."
-                },
                 "policyDescription": {
                     "description": "Output only. Description about the policy schema for user consumption.",
                     "readOnly": true,
@@ -1371,7 +1367,7 @@
                     "type": "string"
                 },
                 "policySchemaFilter": {
-                    "description": "The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema name. Wildcards cannot be used in namespace directly. Please read https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For example: Valid: \"chrome.users.*\", \"chrome.users.apps.*\", \"chrome.printers.*\" Invalid: \"*\", \"*.users\", \"chrome.*\", \"chrome.*.apps.*\"",
+                    "description": "Required. The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema name. Wildcards cannot be used in namespace directly. Please read https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For example: Valid: \"chrome.users.*\", \"chrome.users.apps.*\", \"chrome.printers.*\" Invalid: \"*\", \"*.users\", \"chrome.*\", \"chrome.*.apps.*\"",
                     "type": "string"
                 },
                 "policyTargetKey": {

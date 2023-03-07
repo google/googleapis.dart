@@ -1651,9 +1651,6 @@ class GoogleChromePolicyVersionsV1PolicySchema {
   /// Output only.
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifecycle;
 
-  /// Deprecated field because of typo.
-  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifeycle;
-
   /// Description about the policy schema for user consumption.
   ///
   /// Output only.
@@ -1687,7 +1684,6 @@ class GoogleChromePolicyVersionsV1PolicySchema {
     this.name,
     this.notices,
     this.policyApiLifecycle,
-    this.policyApiLifeycle,
     this.policyDescription,
     this.schemaName,
     this.supportUri,
@@ -1739,11 +1735,6 @@ class GoogleChromePolicyVersionsV1PolicySchema {
                   json_['policyApiLifecycle']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          policyApiLifeycle: json_.containsKey('policyApiLifeycle')
-              ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
-                  json_['policyApiLifeycle']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           policyDescription: json_.containsKey('policyDescription')
               ? json_['policyDescription'] as core.String
               : null,
@@ -1772,7 +1763,6 @@ class GoogleChromePolicyVersionsV1PolicySchema {
         if (notices != null) 'notices': notices!,
         if (policyApiLifecycle != null)
           'policyApiLifecycle': policyApiLifecycle!,
-        if (policyApiLifeycle != null) 'policyApiLifeycle': policyApiLifeycle!,
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
@@ -2274,6 +2264,8 @@ class GoogleChromePolicyVersionsV1ResolveRequest {
   /// details on schema namespaces. For example: Valid: "chrome.users.*",
   /// "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
   /// "chrome.*", "chrome.*.apps.*"
+  ///
+  /// Required.
   core.String? policySchemaFilter;
 
   /// The key of the target resource on which the policies should be resolved.

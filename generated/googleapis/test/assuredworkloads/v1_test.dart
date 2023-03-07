@@ -632,6 +632,8 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.compliantButDisallowedServices = buildUnnamed9();
     o.createTime = 'foo';
     o.displayName = 'foo';
+    o.ekmProvisioningResponse =
+        buildGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse();
     o.enableSovereignControls = true;
     o.etag = 'foo';
     o.kajEnrollmentState = 'foo';
@@ -672,6 +674,8 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse(
+        o.ekmProvisioningResponse!);
     unittest.expect(o.enableSovereignControls!, unittest.isTrue);
     unittest.expect(
       o.etag!,
@@ -730,6 +734,44 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus(
     );
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus--;
+}
+
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse =
+    0;
+api.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+    buildGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse() {
+  final o = api.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse();
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse <
+      3) {
+    o.ekmProvisioningErrorDomain = 'foo';
+    o.ekmProvisioningErrorMessage = 'foo';
+    o.ekmProvisioningState = 'foo';
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse(
+    api.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse o) {
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse <
+      3) {
+    unittest.expect(
+      o.ekmProvisioningErrorDomain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ekmProvisioningErrorMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ekmProvisioningState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse--;
 }
 
 core.int buildCounterGoogleCloudAssuredworkloadsV1WorkloadKMSSettings = 0;
@@ -1330,6 +1372,20 @@ void main() {
           api.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse(od);
     });
   });
 

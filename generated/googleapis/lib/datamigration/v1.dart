@@ -2812,6 +2812,35 @@ class ApplyConversionWorkspaceRequest {
       };
 }
 
+/// Details regarding an Apply background job.
+class ApplyJobDetails {
+  /// The connection profile which was used for the apply job.
+  core.String? connectionProfile;
+
+  /// AIP-160 based filter used to specify the entities to apply
+  core.String? filter;
+
+  ApplyJobDetails({
+    this.connectionProfile,
+    this.filter,
+  });
+
+  ApplyJobDetails.fromJson(core.Map json_)
+      : this(
+          connectionProfile: json_.containsKey('connectionProfile')
+              ? json_['connectionProfile'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionProfile != null) 'connectionProfile': connectionProfile!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2873,6 +2902,9 @@ typedef AuditLogConfig = $AuditLogConfig;
 
 /// Execution log of a background job.
 class BackgroundJobLogEntry {
+  /// Apply job details.
+  ApplyJobDetails? applyJobDetails;
+
   /// Job completion comment, such as how many entities were seeded, how many
   /// warnings were found during conversion, and similar information.
   core.String? completionComment;
@@ -2884,6 +2916,9 @@ class BackgroundJobLogEntry {
   /// - "SUCCEEDED" : Success.
   /// - "FAILED" : Error.
   core.String? completionState;
+
+  /// Convert job details.
+  ConvertJobDetails? convertJobDetails;
 
   /// The timestamp when the background job was finished.
   core.String? finishTime;
@@ -2918,8 +2953,10 @@ class BackgroundJobLogEntry {
   core.String? startTime;
 
   BackgroundJobLogEntry({
+    this.applyJobDetails,
     this.completionComment,
     this.completionState,
+    this.convertJobDetails,
     this.finishTime,
     this.id,
     this.importRulesJobDetails,
@@ -2931,11 +2968,19 @@ class BackgroundJobLogEntry {
 
   BackgroundJobLogEntry.fromJson(core.Map json_)
       : this(
+          applyJobDetails: json_.containsKey('applyJobDetails')
+              ? ApplyJobDetails.fromJson(json_['applyJobDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           completionComment: json_.containsKey('completionComment')
               ? json_['completionComment'] as core.String
               : null,
           completionState: json_.containsKey('completionState')
               ? json_['completionState'] as core.String
+              : null,
+          convertJobDetails: json_.containsKey('convertJobDetails')
+              ? ConvertJobDetails.fromJson(json_['convertJobDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           finishTime: json_.containsKey('finishTime')
               ? json_['finishTime'] as core.String
@@ -2961,8 +3006,10 @@ class BackgroundJobLogEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applyJobDetails != null) 'applyJobDetails': applyJobDetails!,
         if (completionComment != null) 'completionComment': completionComment!,
         if (completionState != null) 'completionState': completionState!,
+        if (convertJobDetails != null) 'convertJobDetails': convertJobDetails!,
         if (finishTime != null) 'finishTime': finishTime!,
         if (id != null) 'id': id!,
         if (importRulesJobDetails != null)
@@ -3974,6 +4021,27 @@ class ConvertConversionWorkspaceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoCommit != null) 'autoCommit': autoCommit!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
+/// Details regarding a Convert background job.
+class ConvertJobDetails {
+  /// AIP-160 based filter used to specify the entities to convert
+  core.String? filter;
+
+  ConvertJobDetails({
+    this.filter,
+  });
+
+  ConvertJobDetails.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
       };
 }

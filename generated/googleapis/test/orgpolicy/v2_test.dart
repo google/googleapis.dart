@@ -61,6 +61,7 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
     o.displayName = 'foo';
     o.listConstraint = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
     o.name = 'foo';
+    o.supportsDryRun = true;
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
   return o;
@@ -89,6 +90,7 @@ void checkGoogleCloudOrgpolicyV2Constraint(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.supportsDryRun!, unittest.isTrue);
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
 }

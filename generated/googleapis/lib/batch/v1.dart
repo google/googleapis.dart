@@ -1265,9 +1265,9 @@ class ComputeResource {
 /// Container runnable.
 class Container {
   /// If set to true, external network access to and from container will be
-  /// blocked.
-  ///
-  /// The container will use the default internal network 'goog-internal'.
+  /// blocked, containers that are with block_external_network as true can still
+  /// communicate with each other, network cannot be specified in the
+  /// `container.options` field.
   core.bool? blockExternalNetwork;
 
   /// Overrides the `CMD` specified in the container.
@@ -1363,7 +1363,7 @@ class Container {
 /// A new persistent disk or a local ssd.
 ///
 /// A VM can only have one local SSD setting but multiple local SSD partitions.
-/// https://cloud.google.com/compute/docs/disks#pdspecs.
+/// See https://cloud.google.com/compute/docs/disks#pdspecs and
 /// https://cloud.google.com/compute/docs/disks#localssds.
 class Disk {
   /// Local SSDs are available through both "SCSI" and "NVMe" interfaces.
@@ -1374,14 +1374,14 @@ class Disk {
 
   /// Name of a public or custom image used as the data source.
   ///
-  /// For example, the following are all valid URLs: (1) Specify the image by
-  /// its family name: projects/{project}/global/images/family/{image_family}
-  /// (2) Specify the image version:
+  /// For example, the following are all valid URLs: * Specify the image by its
+  /// family name: projects/{project}/global/images/family/{image_family} *
+  /// Specify the image version:
   /// projects/{project}/global/images/{image_version} You can also use Batch
   /// customized image in short names. The following image values are supported
-  /// for a boot disk: "batch-debian": use Batch Debian images. "batch-centos":
-  /// use Batch CentOS images. "batch-cos": use Batch Container-Optimized
-  /// images.
+  /// for a boot disk: * "batch-debian": use Batch Debian images. *
+  /// "batch-centos": use Batch CentOS images. * "batch-cos": use Batch
+  /// Container-Optimized images.
   core.String? image;
 
   /// Disk size in GB.
@@ -1529,7 +1529,7 @@ class InstancePolicy {
   /// The accelerators attached to each VM instance.
   core.List<Accelerator>? accelerators;
 
-  /// Book disk to be created and attached to each VM by this InstancePolicy.
+  /// Boot disk to be created and attached to each VM by this InstancePolicy.
   ///
   /// Boot disk will be deleted when the VM is deleted.
   Disk? bootDisk;
@@ -1545,7 +1545,7 @@ class InstancePolicy {
   /// The minimum CPU platform.
   ///
   /// See
-  /// `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`.
+  /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
   /// Not yet implemented.
   core.String? minCpuPlatform;
 
@@ -2341,9 +2341,9 @@ class NetworkInterface {
   /// The URL of an existing network resource.
   ///
   /// You can specify the network as a full or partial URL. For example, the
-  /// following are all valid URLs:
+  /// following are all valid URLs: *
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  /// projects/{project}/global/networks/{network} global/networks/{network}
+  /// * projects/{project}/global/networks/{network} * global/networks/{network}
   core.String? network;
 
   /// Default is false (with an external IP address).
@@ -2359,9 +2359,9 @@ class NetworkInterface {
   /// The URL of an existing subnetwork resource in the network.
   ///
   /// You can specify the subnetwork as a full or partial URL. For example, the
-  /// following are all valid URLs:
+  /// following are all valid URLs: *
   /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
-  /// projects/{project}/regions/{region}/subnetworks/{subnetwork}
+  /// * projects/{project}/regions/{region}/subnetworks/{subnetwork} *
   /// regions/{region}/subnetworks/{subnetwork}
   core.String? subnetwork;
 
@@ -2896,7 +2896,7 @@ class TaskGroup {
 
   /// Number of Tasks in the TaskGroup.
   ///
-  /// default is 1
+  /// Default is 1.
   core.String? taskCount;
 
   /// Max number of tasks that can be run on a VM at the same time.

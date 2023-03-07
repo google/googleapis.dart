@@ -230,7 +230,7 @@ class SpacesResource {
   /// [pageSize] - Optional. The maximum number of spaces to return. The service
   /// may return fewer than this value. If unspecified, at most 100 spaces are
   /// returned. The maximum value is 1000; values above 1000 are coerced to
-  /// 1000. Negative values return an INVALID_ARGUMENT error.
+  /// 1000. Negative values return an `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - Optional. A page token, received from a previous list spaces
   /// call. Provide this to retrieve the subsequent page. When paginating, the
@@ -351,11 +351,11 @@ class SpacesMembersResource {
   /// returned. The maximum value is 1000; values above 1000 are coerced to
   /// 1000. Negative values return an INVALID_ARGUMENT error.
   ///
-  /// [pageToken] - A page token, received from a previous list memberships
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided should match the call that provided the page
-  /// token. Passing different values to the other parameters may lead to
-  /// unexpected results.
+  /// [pageToken] - A page token, received from a previous call to list
+  /// memberships. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided should match the call that
+  /// provided the page token. Passing different values to the other parameters
+  /// may lead to unexpected results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3816,12 +3816,12 @@ class Message {
   ///
   /// Cards are usually displayed below the text body of a Chat message, but can
   /// situationally appear other places, such as
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). `cards_v2`
-  /// and `cards` can have a maximum size of 32 KB. The `cardId` is a unique
-  /// identifier among cards in the same message and for identifying user input
-  /// values. Currently supported widgets include: - `TextParagraph` -
-  /// `DecoratedText` - `Image` - `ButtonList` - `Divider` - `TextInput` -
-  /// `SelectionInput` (CHECKBOX, RADIO_BUTTON, SWITCH, DROPDOWN) - `Grid`
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Each card
+  /// can have a maximum size of 32 KB. The `cardId` is a unique identifier
+  /// among cards in the same message and for identifying user input values.
+  /// Currently supported widgets include: - `TextParagraph` - `DecoratedText` -
+  /// `Image` - `ButtonList` - `Divider` - `TextInput` - `SelectionInput` -
+  /// `Grid`
   core.List<CardWithId>? cardsV2;
 
   /// A custom name for a Chat message assigned at creation.
@@ -3863,6 +3863,12 @@ class Message {
 
   /// The user who created the message.
   ///
+  /// If your Chat app
+  /// [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users),
+  /// the output populates the
+  /// [user](https://developers.google.com/chat/api/reference/rest/v1/User)
+  /// `name` and `type`.
+  ///
   /// Output only.
   User? sender;
 
@@ -3871,11 +3877,11 @@ class Message {
   /// Output only.
   SlashCommand? slashCommand;
 
-  /// The space the message belongs to.
-  ///
-  /// When accessed with
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users),
-  /// only the name of the Space is populated.
+  /// If your Chat app
+  /// [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users),
+  /// the output populates the
+  /// [space](https://developers.google.com/chat/api/reference/rest/v1/spaces)
+  /// `name`.
   Space? space;
 
   /// Plain-text body of the message.

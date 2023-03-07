@@ -867,8 +867,6 @@ api.GoogleChromePolicyVersionsV1PolicySchema
     o.notices = buildUnnamed15();
     o.policyApiLifecycle =
         buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
-    o.policyApiLifeycle =
-        buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
     o.policyDescription = 'foo';
     o.schemaName = 'foo';
     o.supportUri = 'foo';
@@ -897,8 +895,6 @@ void checkGoogleChromePolicyVersionsV1PolicySchema(
     checkUnnamed15(o.notices!);
     checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
         o.policyApiLifecycle!);
-    checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
-        o.policyApiLifeycle!);
     unittest.expect(
       o.policyDescription!,
       unittest.equals('foo'),

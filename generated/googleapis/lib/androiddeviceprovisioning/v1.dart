@@ -1308,7 +1308,7 @@ class ClaimDeviceRequest {
   /// Must and can only be set when DeviceProvisioningSectionType is
   /// SECTION_TYPE_SIM_LOCK.
   ///
-  /// The unique identifier of the SimLock profile (go/simlock/profiles).
+  /// The unique identifier of the SimLock profile.
   ///
   /// Optional.
   core.String? simlockProfileId;
@@ -2815,6 +2815,14 @@ class PartnerClaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
+  /// Must and can only be set when DeviceProvisioningSectionType is
+  /// SECTION_TYPE_SIM_LOCK.
+  ///
+  /// The unique identifier of the SimLock profile.
+  ///
+  /// Optional.
+  core.String? simlockProfileId;
+
   PartnerClaim({
     this.customerId,
     this.deviceIdentifier,
@@ -2822,6 +2830,7 @@ class PartnerClaim {
     this.googleWorkspaceCustomerId,
     this.preProvisioningToken,
     this.sectionType,
+    this.simlockProfileId,
   });
 
   PartnerClaim.fromJson(core.Map json_)
@@ -2847,6 +2856,9 @@ class PartnerClaim {
           sectionType: json_.containsKey('sectionType')
               ? json_['sectionType'] as core.String
               : null,
+          simlockProfileId: json_.containsKey('simlockProfileId')
+              ? json_['simlockProfileId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2858,6 +2870,7 @@ class PartnerClaim {
         if (preProvisioningToken != null)
           'preProvisioningToken': preProvisioningToken!,
         if (sectionType != null) 'sectionType': sectionType!,
+        if (simlockProfileId != null) 'simlockProfileId': simlockProfileId!,
       };
 }
 

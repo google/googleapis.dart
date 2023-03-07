@@ -1593,6 +1593,9 @@ class DropInfo {
   /// - "GOOGLE_MANAGED_SERVICE_NO_PEERING" : Packet was dropped because there
   /// is no peering between the originating network and the Google Managed
   /// Services Network.
+  /// - "GKE_PSC_ENDPOINT_MISSING" : Packet was dropped because the GKE cluster
+  /// uses Private Service Connect (PSC), but the PSC endpoint is not found in
+  /// the project.
   /// - "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS" : Packet was dropped because the
   /// Cloud SQL instance has neither a private nor a public IP address.
   /// - "GKE_CONTROL_PLANE_REGION_MISMATCH" : Packet was dropped because a GKE
@@ -1620,6 +1623,8 @@ class DropInfo {
   /// in a project that is not approved to connect to the service.
   /// - "CLOUD_RUN_REVISION_NOT_READY" : Packet sent from a Cloud Run revision
   /// that is not ready.
+  /// - "DROPPED_INSIDE_PSC_SERVICE_PRODUCER" : Packet was dropped inside
+  /// Private Service Connect service producer.
   core.String? cause;
 
   /// URI of the resource that caused the drop.

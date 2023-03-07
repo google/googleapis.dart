@@ -4076,7 +4076,7 @@
             }
         }
     },
-    "revision": "20230207",
+    "revision": "20230223",
     "rootUrl": "https://healthcare.googleapis.com/",
     "schemas": {
         "ActivateConsentRequest": {

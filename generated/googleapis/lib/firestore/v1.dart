@@ -97,11 +97,8 @@ class ProjectsDatabasesResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [databaseId] - Required. The ID to use for the database, which will become
-  /// the final component of the database's resource name. This value should be
-  /// 4-63 characters. Valid characters are /a-z-/ with first character a letter
-  /// and the last a letter or a number. Must not be UUID-like
-  /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database id
-  /// is also valid.
+  /// the final component of the database's resource name. The value must be set
+  /// to "(default)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -152,10 +149,6 @@ class ProjectsDatabasesResource {
   /// not match the current etag of the database, deletion will be blocked and a
   /// FAILED_PRECONDITION error will be returned.
   ///
-  /// [freeId] - If set, will free the database_id associated with this
-  /// database. uid will be used as the resource id to identify this deleted
-  /// database.
-  ///
   /// [validateOnly] - If set, validate the request and preview the response,
   /// but do not actually delete the database.
   ///
@@ -173,14 +166,12 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.bool? allowMissing,
     core.String? etag,
-    core.bool? freeId,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
-      if (freeId != null) 'freeId': ['${freeId}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1627,7 +1618,7 @@ class ProjectsDatabasesDocumentsResource {
 
   /// Streams batches of document updates and deletes, in order.
   ///
-  /// This method is only available via the gRPC API (not REST).
+  /// This method is only available via gRPC or WebChannel (not REST).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2454,6 +2445,8 @@ class CompositeFilter {
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : Documents are required to satisfy all of the combined filters.
+  /// - "OR" : Documents are required to satisfy at least one of the combined
+  /// filters.
   core.String? op;
 
   CompositeFilter({
@@ -4282,7 +4275,13 @@ class RunAggregationQueryRequest {
 
 /// The response for Firestore.RunAggregationQuery.
 class RunAggregationQueryResponse {
-  /// The time at which the aggregate value is valid for.
+  /// The time at which the aggregate result was computed.
+  ///
+  /// This is always monotonically increasing; in this case, the previous
+  /// AggregationResult in the result stream are guaranteed not to have changed
+  /// between their `read_time` and this one. If the query returns no results, a
+  /// response with `read_time` and no `result` will be sent, and this
+  /// represents the time at which the query was run.
   core.String? readTime;
 
   /// A single aggregation result.
@@ -4553,7 +4552,10 @@ class StructuredQuery {
   /// ORDER BY a ASC, __name__ ASC`
   core.List<Order>? orderBy;
 
-  /// The projection to return.
+  /// Optional sub-set of the fields to return.
+  ///
+  /// This acts as a DocumentMask over the documents returned from a query. When
+  /// not set, assumes that the caller wants all fields returned.
   Projection? select;
 
   /// A potential prefix of a position in the result set to start the query at.

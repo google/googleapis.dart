@@ -19,7 +19,6 @@
 /// - [ProjectsResource]
 ///   - [ProjectsOperationsResource]
 ///   - [ProjectsSubmissionsResource]
-///   - [ProjectsUrisResource]
 /// - [ThreatListsResource]
 /// - [UrisResource]
 library;
@@ -120,7 +119,6 @@ class ProjectsResource {
       ProjectsOperationsResource(_requester);
   ProjectsSubmissionsResource get submissions =>
       ProjectsSubmissionsResource(_requester);
-  ProjectsUrisResource get uris => ProjectsUrisResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -262,13 +260,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -370,64 +361,6 @@ class ProjectsSubmissionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1Submission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsUrisResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsUrisResource(commons.ApiRequester client) : _requester = client;
-
-  /// Submits a URI suspected of containing malicious content to be reviewed.
-  ///
-  /// Returns a google.longrunning.Operation which, once the review is complete,
-  /// is updated with its result. You can use the
-  /// [Pub/Sub API](https://cloud.google.com/pubsub) to receive notifications
-  /// for the returned Operation. If the result verifies the existence of
-  /// malicious content, the site will be added to the
-  /// [Google's Social Engineering lists](https://support.google.com/webmasters/answer/6350487/)
-  /// in order to protect users that could get exposed to this threat in the
-  /// future. Only allowlisted projects can use this method during Early Access.
-  /// Please reach out to Sales or your customer engineer to obtain access.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The name of the project that is making the
-  /// submission. This string is in the format "projects/{project_number}".
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> submit(
-    GoogleCloudWebriskV1SubmitUriRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/uris:submit';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -930,59 +863,22 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
 
 /// Wraps a URI that might be displaying malicious content.
 class GoogleCloudWebriskV1Submission {
-  /// ThreatTypes found to be associated with the submitted URI after reviewing
-  /// it.
-  ///
-  /// This might be empty if the URI was not added to any list.
-  core.List<core.String>? threatTypes;
-
   /// The URI that is being reported for malicious content to be analyzed.
   ///
   /// Required.
   core.String? uri;
 
   GoogleCloudWebriskV1Submission({
-    this.threatTypes,
     this.uri,
   });
 
   GoogleCloudWebriskV1Submission.fromJson(core.Map json_)
       : this(
-          threatTypes: json_.containsKey('threatTypes')
-              ? (json_['threatTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (threatTypes != null) 'threatTypes': threatTypes!,
         if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Request to send a potentially malicious URI to WebRisk.
-class GoogleCloudWebriskV1SubmitUriRequest {
-  /// The submission that contains the URI to be scanned.
-  ///
-  /// Required.
-  GoogleCloudWebriskV1Submission? submission;
-
-  GoogleCloudWebriskV1SubmitUriRequest({
-    this.submission,
-  });
-
-  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map json_)
-      : this(
-          submission: json_.containsKey('submission')
-              ? GoogleCloudWebriskV1Submission.fromJson(
-                  json_['submission'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (submission != null) 'submission': submission!,
       };
 }
 

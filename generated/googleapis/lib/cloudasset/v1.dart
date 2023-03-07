@@ -3438,24 +3438,24 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
   /// for more information.
   core.String? attachedResource;
 
-  /// The folder(s) that this IAM policy belongs to, in the form of
+  /// The folder(s) that this IAM policy belongs to, in the format of
   /// folders/{FOLDER_NUMBER}.
   ///
-  /// This field is available when the IAM policy belongs(directly or
+  /// This field is available when the IAM policy belongs (directly or
   /// cascadingly) to one or more folders.
   core.List<core.String>? folders;
 
-  /// The organization that this IAM policy belongs to, in the form of
+  /// The organization that this IAM policy belongs to, in the format of
   /// organizations/{ORGANIZATION_NUMBER}.
   ///
-  /// This field is available when the IAM policy belongs(directly or
+  /// This field is available when the IAM policy belongs (directly or
   /// cascadingly) to an organization.
   core.String? organization;
 
   /// The IAM policy directly set on the given resource.
   Policy? policy;
 
-  /// The project that this IAM policy belongs to, in the form of
+  /// The project that this IAM policy belongs to, in the format of
   /// projects/{PROJECT_NUMBER}.
   ///
   /// This field is available when the IAM policy belongs to a project.
@@ -3504,11 +3504,11 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
 /// The Google Cloud resources governed by the organization policies of the
 /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
 class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
-  /// The folder(s) that this resource belongs to, in the form of
+  /// The folder(s) that this resource belongs to, in the format of
   /// folders/{FOLDER_NUMBER}.
   ///
-  /// This field is available when the resource belongs(directly or cascadingly)
-  /// to one or more folders.
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to one or more folders.
   core.List<core.String>? folders;
 
   /// The
@@ -3516,11 +3516,11 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   /// of the Google Cloud resource.
   core.String? fullResourceName;
 
-  /// The organization that this resource belongs to, in the form of
+  /// The organization that this resource belongs to, in the format of
   /// organizations/{ORGANIZATION_NUMBER}.
   ///
-  /// This field is available when the resource belongs(directly or cascadingly)
-  /// to an organization.
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to an organization.
   core.String? organization;
 
   /// The
@@ -3529,7 +3529,7 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name.
   core.String? parent;
 
-  /// The project that this resource belongs to, in the form of
+  /// The project that this resource belongs to, in the format of
   /// projects/{PROJECT_NUMBER}.
   ///
   /// This field is available when the resource belongs to a project.

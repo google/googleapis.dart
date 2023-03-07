@@ -3065,6 +3065,7 @@ api.Publishing buildPublishing() {
     o.methodSettings = buildUnnamed63();
     o.newIssueUri = 'foo';
     o.organization = 'foo';
+    o.protoReferenceDocumentationUri = 'foo';
   }
   buildCounterPublishing--;
   return o;
@@ -3098,6 +3099,10 @@ void checkPublishing(api.Publishing o) {
     );
     unittest.expect(
       o.organization!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protoReferenceDocumentationUri!,
       unittest.equals('foo'),
     );
   }
