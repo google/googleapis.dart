@@ -63,6 +63,27 @@ void main() {
       print(prettyJsonEncode(result));
     });
   });
+
+  // Regression test for https://github.com/google/googleapis.dart/issues/517
+  test('runAggregationQuery', () async {
+    final req = RunAggregationQueryRequest(
+      structuredAggregationQuery: StructuredAggregationQuery(
+        aggregations: [Aggregation(alias: 'count', count: Count())],
+        structuredQuery: StructuredQuery(
+          from: [CollectionSelector(collectionId: 'foo')],
+        ),
+      ),
+    );
+
+    await withClientFromDefaultCredentials([FirestoreApi.datastoreScope],
+        (client) async {
+      final firestore = FirestoreApi(client);
+      final documents = firestore.projects.databases.documents;
+
+      final res = await documents.runAggregationQuery(req, _documentsPath);
+      expect(res, isA<List>().having((p0) => p0.length, 'length', 1));
+    });
+  });
 }
 
 String get _databaseId =>
