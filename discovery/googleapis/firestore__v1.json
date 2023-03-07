@@ -3088,23 +3088,26 @@
         "RunAggregationQueryResponse": {
             "description": "The response for Firestore.RunAggregationQuery.",
             "id": "RunAggregationQueryResponse",
-            "properties": {
-                "readTime": {
-                    "description": "The time at which the aggregate value is valid for.",
-                    "format": "google-datetime",
-                    "type": "string"
+            "items": {
+                "properties": {
+                    "readTime": {
+                        "description": "The time at which the aggregate value is valid for.",
+                        "format": "google-datetime",
+                        "type": "string"
+                    },
+                    "result": {
+                        "$ref": "AggregationResult",
+                        "description": "A single aggregation result. Not present when reporting partial progress."
+                    },
+                    "transaction": {
+                        "description": "The transaction that was started as part of this request. Only present on the first response when the request requested to start a new transaction.",
+                        "format": "byte",
+                        "type": "string"
+                    }
                 },
-                "result": {
-                    "$ref": "AggregationResult",
-                    "description": "A single aggregation result. Not present when reporting partial progress."
-                },
-                "transaction": {
-                    "description": "The transaction that was started as part of this request. Only present on the first response when the request requested to start a new transaction.",
-                    "format": "byte",
-                    "type": "string"
-                }
+                "type": "object"
             },
-            "type": "object"
+            "type": "array"
         },
         "RunQueryRequest": {
             "description": "The request for Firestore.RunQuery.",

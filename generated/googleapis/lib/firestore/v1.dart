@@ -1573,8 +1573,10 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return RunAggregationQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.List)
+        .map((value) => RunAggregationQueryResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 
   /// Runs a query.
@@ -4280,8 +4282,7 @@ class RunAggregationQueryRequest {
       };
 }
 
-/// The response for Firestore.RunAggregationQuery.
-class RunAggregationQueryResponse {
+class RunAggregationQueryResponseElement {
   /// The time at which the aggregate value is valid for.
   core.String? readTime;
 
@@ -4303,13 +4304,13 @@ class RunAggregationQueryResponse {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunAggregationQueryResponse({
+  RunAggregationQueryResponseElement({
     this.readTime,
     this.result,
     this.transaction,
   });
 
-  RunAggregationQueryResponse.fromJson(core.Map json_)
+  RunAggregationQueryResponseElement.fromJson(core.Map json_)
       : this(
           readTime: json_.containsKey('readTime')
               ? json_['readTime'] as core.String
@@ -4329,6 +4330,10 @@ class RunAggregationQueryResponse {
         if (transaction != null) 'transaction': transaction!,
       };
 }
+
+/// The response for Firestore.RunAggregationQuery.
+typedef RunAggregationQueryResponse
+    = core.List<RunAggregationQueryResponseElement>;
 
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
