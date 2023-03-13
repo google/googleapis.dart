@@ -18,7 +18,7 @@ JsObject get _googleAccountsId =>
 ///
 /// The returned [AccessCredentials] will *always* have a `null` value for
 /// [AccessCredentials.refreshToken] and
-/// [AccessCredentials.accessToken.idToken].
+/// [AccessCredentials.idToken].
 ///
 /// See
 /// [Choose a user authorization model](https://developers.google.com/identity/oauth2/web/guides/choose-authorization-model)
