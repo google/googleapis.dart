@@ -11,6 +11,7 @@ import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/oauth2_flows/implicit.dart';
+import 'src/oauth2_flows/token_model.dart';
 import 'src/service_account_credentials.dart';
 
 export 'googleapis_auth.dart';
@@ -23,6 +24,9 @@ export 'src/oauth2_flows/token_model.dart'
         revokeConsent;
 
 /// Will create and complete with a [BrowserOAuth2Flow] object.
+///
+/// This function is *deprecated*. Use [requestAccessCredentials] or
+/// [requestAuthorizationCode] instead.
 ///
 /// This function will perform an implicit browser based oauth2 flow.
 ///
@@ -42,6 +46,10 @@ export 'src/oauth2_flows/token_model.dart'
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
+@Deprecated(
+  'This function is deprecated. Use requestAccessCredentials or '
+  'requestAuthorizationCode instead.',
+)
 Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
   ClientId clientId,
   List<String> scopes, {
