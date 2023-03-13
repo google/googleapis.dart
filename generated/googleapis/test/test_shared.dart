@@ -13,8 +13,7 @@ class HttpServerMock extends http.BaseClient {
     core.Future<http.StreamedResponse> Function(
       http.BaseRequest,
       core.Object?,
-    )
-        callback,
+    ) callback,
     core.bool expectJson,
   ) {
     _callback = callback;
