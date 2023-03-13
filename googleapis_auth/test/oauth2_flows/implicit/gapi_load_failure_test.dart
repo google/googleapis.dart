@@ -20,6 +20,7 @@ void main() {
   test('gapi-load-failure', () {
     impl.gapiUrl = resource('non_existent.js');
     expect(
+      // ignore: deprecated_member_use_from_same_package
       auth.createImplicitBrowserFlow(_clientId, _scopes),
       throwsA(isA<auth.AuthenticationException>()),
     );
@@ -39,6 +40,7 @@ void main() {
 
     final sw = Stopwatch()..start();
     try {
+      // ignore: deprecated_member_use_from_same_package
       await auth.createImplicitBrowserFlow(_clientId, _scopes);
       fail('expected error');
     } catch (error) {

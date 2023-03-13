@@ -18,6 +18,7 @@ void main() {
     final clientId = auth.ClientId('foo_client', 'foo_secret');
     final scopes = ['scope1', 'scope2'];
 
+    // ignore: deprecated_member_use_from_same_package
     final flow = await auth.createImplicitBrowserFlow(clientId, scopes);
     final result = await flow.runHybridFlow(force: false);
     final credentials = result.credentials;

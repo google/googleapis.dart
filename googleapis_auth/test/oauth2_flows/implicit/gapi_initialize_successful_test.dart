@@ -19,7 +19,9 @@ void main() {
     final clientId2 = auth.ClientId('c', 'd');
     final scopes = ['scope1', 'scope2'];
 
+    // ignore: deprecated_member_use_from_same_package
     expect(auth.createImplicitBrowserFlow(clientId, scopes), completes);
+    // ignore: deprecated_member_use_from_same_package
     expect(auth.createImplicitBrowserFlow(clientId2, scopes), completes);
   });
 }
