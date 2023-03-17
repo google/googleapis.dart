@@ -120,6 +120,8 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
       if (codeVerifier != null) 'code_verifier': codeVerifier,
       'grant_type': 'authorization_code',
       'redirect_uri': redirectUrl,
+      'prompt': 'consent',
+      'access_type': 'offline',
     },
   );
   final accessToken = parseAccessToken(jsonMap);
