@@ -388,6 +388,66 @@ class AccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns a customized report of data access records.
+  ///
+  /// The report provides records of each time a user reads Google Analytics
+  /// reporting data. Access records are retained for up to 2 years. Data Access
+  /// Reports can be requested for a property. The property must be in Google
+  /// Analytics 360. This method is only available to Administrators. These data
+  /// access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data
+  /// API, and other products like Firebase & Admob that can retrieve data from
+  /// Google Analytics through a linkage. These records don't include property
+  /// configuration changes like adding a stream or changing a property's time
+  /// zone. For configuration change history, see
+  /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [entity] - The Data Access Report supports requesting at the property
+  /// level or account level. If requested at the account level, Data Access
+  /// Reports include all access for all properties under that account. To
+  /// request at the property level, entity should be for example
+  /// 'properties/123' if "123" is your GA4 property ID. To request at the
+  /// account level, entity should be for example 'accounts/1234' if "1234" is
+  /// your GA4 Account ID.
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaRunAccessReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaRunAccessReportResponse>
+      runAccessReport(
+    GoogleAnalyticsAdminV1betaRunAccessReportRequest request,
+    core.String entity, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$entity') + ':runAccessReport';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Searches through all changes to an account or its children given the
   /// specified set of filters.
   ///
@@ -778,6 +838,66 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaProperty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a customized report of data access records.
+  ///
+  /// The report provides records of each time a user reads Google Analytics
+  /// reporting data. Access records are retained for up to 2 years. Data Access
+  /// Reports can be requested for a property. The property must be in Google
+  /// Analytics 360. This method is only available to Administrators. These data
+  /// access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data
+  /// API, and other products like Firebase & Admob that can retrieve data from
+  /// Google Analytics through a linkage. These records don't include property
+  /// configuration changes like adding a stream or changing a property's time
+  /// zone. For configuration change history, see
+  /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [entity] - The Data Access Report supports requesting at the property
+  /// level or account level. If requested at the account level, Data Access
+  /// Reports include all access for all properties under that account. To
+  /// request at the property level, entity should be for example
+  /// 'properties/123' if "123" is your GA4 property ID. To request at the
+  /// account level, entity should be for example 'accounts/1234' if "1234" is
+  /// your GA4 Account ID.
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaRunAccessReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaRunAccessReportResponse>
+      runAccessReport(
+    GoogleAnalyticsAdminV1betaRunAccessReportRequest request,
+    core.String entity, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$entity') + ':runAccessReport';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2244,6 +2364,581 @@ class PropertiesGoogleAdsLinksResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
+
+/// To express that the result needs to be between two numbers (inclusive).
+class GoogleAnalyticsAdminV1betaAccessBetweenFilter {
+  /// Begins with this number.
+  GoogleAnalyticsAdminV1betaNumericValue? fromValue;
+
+  /// Ends with this number.
+  GoogleAnalyticsAdminV1betaNumericValue? toValue;
+
+  GoogleAnalyticsAdminV1betaAccessBetweenFilter({
+    this.fromValue,
+    this.toValue,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessBetweenFilter.fromJson(core.Map json_)
+      : this(
+          fromValue: json_.containsKey('fromValue')
+              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['fromValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          toValue: json_.containsKey('toValue')
+              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['toValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fromValue != null) 'fromValue': fromValue!,
+        if (toValue != null) 'toValue': toValue!,
+      };
+}
+
+/// A contiguous range of days: startDate, startDate + 1, ..., endDate.
+class GoogleAnalyticsAdminV1betaAccessDateRange {
+  /// The inclusive end date for the query in the format `YYYY-MM-DD`.
+  ///
+  /// Cannot be before `startDate`. The format `NdaysAgo`, `yesterday`, or
+  /// `today` is also accepted, and in that case, the date is inferred based on
+  /// the current time in the request's time zone.
+  core.String? endDate;
+
+  /// The inclusive start date for the query in the format `YYYY-MM-DD`.
+  ///
+  /// Cannot be after `endDate`. The format `NdaysAgo`, `yesterday`, or `today`
+  /// is also accepted, and in that case, the date is inferred based on the
+  /// current time in the request's time zone.
+  core.String? startDate;
+
+  GoogleAnalyticsAdminV1betaAccessDateRange({
+    this.endDate,
+    this.startDate,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessDateRange.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? json_['endDate'] as core.String
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? json_['startDate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+      };
+}
+
+/// Dimensions are attributes of your data.
+///
+/// For example, the dimension `userEmail` indicates the email of the user that
+/// accessed reporting data. Dimension values in report responses are strings.
+class GoogleAnalyticsAdminV1betaAccessDimension {
+  /// The API name of the dimension.
+  ///
+  /// See
+  /// [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema)
+  /// for the list of dimensions supported in this API. Dimensions are
+  /// referenced by name in `dimensionFilter` and `orderBys`.
+  core.String? dimensionName;
+
+  GoogleAnalyticsAdminV1betaAccessDimension({
+    this.dimensionName,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessDimension.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+      };
+}
+
+/// Describes a dimension column in the report.
+///
+/// Dimensions requested in a report produce column entries within rows and
+/// DimensionHeaders. However, dimensions used exclusively within filters or
+/// expressions do not produce columns in a report; correspondingly, those
+/// dimensions do not produce headers.
+class GoogleAnalyticsAdminV1betaAccessDimensionHeader {
+  /// The dimension's name; for example 'userEmail'.
+  core.String? dimensionName;
+
+  GoogleAnalyticsAdminV1betaAccessDimensionHeader({
+    this.dimensionName,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessDimensionHeader.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+      };
+}
+
+/// The value of a dimension.
+class GoogleAnalyticsAdminV1betaAccessDimensionValue {
+  /// The dimension value.
+  ///
+  /// For example, this value may be 'France' for the 'country' dimension.
+  core.String? value;
+
+  GoogleAnalyticsAdminV1betaAccessDimensionValue({
+    this.value,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessDimensionValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// An expression to filter dimension or metric values.
+class GoogleAnalyticsAdminV1betaAccessFilter {
+  /// A filter for two values.
+  GoogleAnalyticsAdminV1betaAccessBetweenFilter? betweenFilter;
+
+  /// The dimension name or metric name.
+  core.String? fieldName;
+
+  /// A filter for in list values.
+  GoogleAnalyticsAdminV1betaAccessInListFilter? inListFilter;
+
+  /// A filter for numeric or date values.
+  GoogleAnalyticsAdminV1betaAccessNumericFilter? numericFilter;
+
+  /// Strings related filter.
+  GoogleAnalyticsAdminV1betaAccessStringFilter? stringFilter;
+
+  GoogleAnalyticsAdminV1betaAccessFilter({
+    this.betweenFilter,
+    this.fieldName,
+    this.inListFilter,
+    this.numericFilter,
+    this.stringFilter,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessFilter.fromJson(core.Map json_)
+      : this(
+          betweenFilter: json_.containsKey('betweenFilter')
+              ? GoogleAnalyticsAdminV1betaAccessBetweenFilter.fromJson(
+                  json_['betweenFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fieldName: json_.containsKey('fieldName')
+              ? json_['fieldName'] as core.String
+              : null,
+          inListFilter: json_.containsKey('inListFilter')
+              ? GoogleAnalyticsAdminV1betaAccessInListFilter.fromJson(
+                  json_['inListFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          numericFilter: json_.containsKey('numericFilter')
+              ? GoogleAnalyticsAdminV1betaAccessNumericFilter.fromJson(
+                  json_['numericFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringFilter: json_.containsKey('stringFilter')
+              ? GoogleAnalyticsAdminV1betaAccessStringFilter.fromJson(
+                  json_['stringFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (betweenFilter != null) 'betweenFilter': betweenFilter!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (inListFilter != null) 'inListFilter': inListFilter!,
+        if (numericFilter != null) 'numericFilter': numericFilter!,
+        if (stringFilter != null) 'stringFilter': stringFilter!,
+      };
+}
+
+/// Expresses dimension or metric filters.
+///
+/// The fields in the same expression need to be either all dimensions or all
+/// metrics.
+class GoogleAnalyticsAdminV1betaAccessFilterExpression {
+  /// A primitive filter.
+  ///
+  /// In the same FilterExpression, all of the filter's field names need to be
+  /// either all dimensions or all metrics.
+  GoogleAnalyticsAdminV1betaAccessFilter? accessFilter;
+
+  /// Each of the FilterExpressions in the and_group has an AND relationship.
+  GoogleAnalyticsAdminV1betaAccessFilterExpressionList? andGroup;
+
+  /// The FilterExpression is NOT of not_expression.
+  GoogleAnalyticsAdminV1betaAccessFilterExpression? notExpression;
+
+  /// Each of the FilterExpressions in the or_group has an OR relationship.
+  GoogleAnalyticsAdminV1betaAccessFilterExpressionList? orGroup;
+
+  GoogleAnalyticsAdminV1betaAccessFilterExpression({
+    this.accessFilter,
+    this.andGroup,
+    this.notExpression,
+    this.orGroup,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(core.Map json_)
+      : this(
+          accessFilter: json_.containsKey('accessFilter')
+              ? GoogleAnalyticsAdminV1betaAccessFilter.fromJson(
+                  json_['accessFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          andGroup: json_.containsKey('andGroup')
+              ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
+                  json_['andGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          notExpression: json_.containsKey('notExpression')
+              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                  json_['notExpression'] as core.Map<core.String, core.dynamic>)
+              : null,
+          orGroup: json_.containsKey('orGroup')
+              ? GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(
+                  json_['orGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessFilter != null) 'accessFilter': accessFilter!,
+        if (andGroup != null) 'andGroup': andGroup!,
+        if (notExpression != null) 'notExpression': notExpression!,
+        if (orGroup != null) 'orGroup': orGroup!,
+      };
+}
+
+/// A list of filter expressions.
+class GoogleAnalyticsAdminV1betaAccessFilterExpressionList {
+  /// A list of filter expressions.
+  core.List<GoogleAnalyticsAdminV1betaAccessFilterExpression>? expressions;
+
+  GoogleAnalyticsAdminV1betaAccessFilterExpressionList({
+    this.expressions,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessFilterExpressionList.fromJson(core.Map json_)
+      : this(
+          expressions: json_.containsKey('expressions')
+              ? (json_['expressions'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expressions != null) 'expressions': expressions!,
+      };
+}
+
+/// The result needs to be in a list of string values.
+typedef GoogleAnalyticsAdminV1betaAccessInListFilter = $InListFilter;
+
+/// The quantitative measurements of a report.
+///
+/// For example, the metric `accessCount` is the total number of data access
+/// records.
+class GoogleAnalyticsAdminV1betaAccessMetric {
+  /// The API name of the metric.
+  ///
+  /// See
+  /// [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema)
+  /// for the list of metrics supported in this API. Metrics are referenced by
+  /// name in `metricFilter` & `orderBys`.
+  core.String? metricName;
+
+  GoogleAnalyticsAdminV1betaAccessMetric({
+    this.metricName,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessMetric.fromJson(core.Map json_)
+      : this(
+          metricName: json_.containsKey('metricName')
+              ? json_['metricName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
+      };
+}
+
+/// Describes a metric column in the report.
+///
+/// Visible metrics requested in a report produce column entries within rows and
+/// MetricHeaders. However, metrics used exclusively within filters or
+/// expressions do not produce columns in a report; correspondingly, those
+/// metrics do not produce headers.
+class GoogleAnalyticsAdminV1betaAccessMetricHeader {
+  /// The metric's name; for example 'accessCount'.
+  core.String? metricName;
+
+  GoogleAnalyticsAdminV1betaAccessMetricHeader({
+    this.metricName,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessMetricHeader.fromJson(core.Map json_)
+      : this(
+          metricName: json_.containsKey('metricName')
+              ? json_['metricName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
+      };
+}
+
+/// The value of a metric.
+class GoogleAnalyticsAdminV1betaAccessMetricValue {
+  /// The measurement value.
+  ///
+  /// For example, this value may be '13'.
+  core.String? value;
+
+  GoogleAnalyticsAdminV1betaAccessMetricValue({
+    this.value,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessMetricValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Filters for numeric or date values.
+class GoogleAnalyticsAdminV1betaAccessNumericFilter {
+  /// The operation type for this filter.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : Unspecified.
+  /// - "EQUAL" : Equal
+  /// - "LESS_THAN" : Less than
+  /// - "LESS_THAN_OR_EQUAL" : Less than or equal
+  /// - "GREATER_THAN" : Greater than
+  /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal
+  core.String? operation;
+
+  /// A numeric value or a date value.
+  GoogleAnalyticsAdminV1betaNumericValue? value;
+
+  GoogleAnalyticsAdminV1betaAccessNumericFilter({
+    this.operation,
+    this.value,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessNumericFilter.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? json_['operation'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? GoogleAnalyticsAdminV1betaNumericValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Order bys define how rows will be sorted in the response.
+///
+/// For example, ordering rows by descending access count is one ordering, and
+/// ordering rows by the country string is a different ordering.
+class GoogleAnalyticsAdminV1betaAccessOrderBy {
+  /// If true, sorts by descending order.
+  ///
+  /// If false or unspecified, sorts in ascending order.
+  core.bool? desc;
+
+  /// Sorts results by a dimension's values.
+  GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy? dimension;
+
+  /// Sorts results by a metric's values.
+  GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy? metric;
+
+  GoogleAnalyticsAdminV1betaAccessOrderBy({
+    this.desc,
+    this.dimension,
+    this.metric,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessOrderBy.fromJson(core.Map json_)
+      : this(
+          desc: json_.containsKey('desc') ? json_['desc'] as core.bool : null,
+          dimension: json_.containsKey('dimension')
+              ? GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+                  .fromJson(
+                      json_['dimension'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metric: json_.containsKey('metric')
+              ? GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy.fromJson(
+                  json_['metric'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desc != null) 'desc': desc!,
+        if (dimension != null) 'dimension': dimension!,
+        if (metric != null) 'metric': metric!,
+      };
+}
+
+/// Sorts by dimension values.
+typedef GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+    = $DimensionOrderBy;
+
+/// Sorts by metric values.
+typedef GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy = $MetricOrderBy;
+
+/// Current state of all quotas for this Analytics property.
+///
+/// If any quota for a property is exhausted, all requests to that property will
+/// return Resource Exhausted errors.
+class GoogleAnalyticsAdminV1betaAccessQuota {
+  /// Properties can use up to 50 concurrent requests.
+  GoogleAnalyticsAdminV1betaAccessQuotaStatus? concurrentRequests;
+
+  /// Properties and cloud project pairs can have up to 50 server errors per
+  /// hour.
+  GoogleAnalyticsAdminV1betaAccessQuotaStatus? serverErrorsPerProjectPerHour;
+
+  /// Properties can use 250,000 tokens per day.
+  ///
+  /// Most requests consume fewer than 10 tokens.
+  GoogleAnalyticsAdminV1betaAccessQuotaStatus? tokensPerDay;
+
+  /// Properties can use 50,000 tokens per hour.
+  ///
+  /// An API request consumes a single number of tokens, and that number is
+  /// deducted from all of the hourly, daily, and per project hourly quotas.
+  GoogleAnalyticsAdminV1betaAccessQuotaStatus? tokensPerHour;
+
+  /// Properties can use up to 25% of their tokens per project per hour.
+  ///
+  /// This amounts to Analytics 360 Properties can use 12,500 tokens per project
+  /// per hour. An API request consumes a single number of tokens, and that
+  /// number is deducted from all of the hourly, daily, and per project hourly
+  /// quotas.
+  GoogleAnalyticsAdminV1betaAccessQuotaStatus? tokensPerProjectPerHour;
+
+  GoogleAnalyticsAdminV1betaAccessQuota({
+    this.concurrentRequests,
+    this.serverErrorsPerProjectPerHour,
+    this.tokensPerDay,
+    this.tokensPerHour,
+    this.tokensPerProjectPerHour,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessQuota.fromJson(core.Map json_)
+      : this(
+          concurrentRequests: json_.containsKey('concurrentRequests')
+              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['concurrentRequests']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          serverErrorsPerProjectPerHour:
+              json_.containsKey('serverErrorsPerProjectPerHour')
+                  ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                      json_['serverErrorsPerProjectPerHour']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          tokensPerDay: json_.containsKey('tokensPerDay')
+              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['tokensPerDay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokensPerHour: json_.containsKey('tokensPerHour')
+              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['tokensPerHour'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokensPerProjectPerHour: json_.containsKey('tokensPerProjectPerHour')
+              ? GoogleAnalyticsAdminV1betaAccessQuotaStatus.fromJson(
+                  json_['tokensPerProjectPerHour']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (concurrentRequests != null)
+          'concurrentRequests': concurrentRequests!,
+        if (serverErrorsPerProjectPerHour != null)
+          'serverErrorsPerProjectPerHour': serverErrorsPerProjectPerHour!,
+        if (tokensPerDay != null) 'tokensPerDay': tokensPerDay!,
+        if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!,
+        if (tokensPerProjectPerHour != null)
+          'tokensPerProjectPerHour': tokensPerProjectPerHour!,
+      };
+}
+
+/// Current state for a particular quota group.
+typedef GoogleAnalyticsAdminV1betaAccessQuotaStatus = $QuotaStatus;
+
+/// Access report data for each row.
+class GoogleAnalyticsAdminV1betaAccessRow {
+  /// List of dimension values.
+  ///
+  /// These values are in the same order as specified in the request.
+  core.List<GoogleAnalyticsAdminV1betaAccessDimensionValue>? dimensionValues;
+
+  /// List of metric values.
+  ///
+  /// These values are in the same order as specified in the request.
+  core.List<GoogleAnalyticsAdminV1betaAccessMetricValue>? metricValues;
+
+  GoogleAnalyticsAdminV1betaAccessRow({
+    this.dimensionValues,
+    this.metricValues,
+  });
+
+  GoogleAnalyticsAdminV1betaAccessRow.fromJson(core.Map json_)
+      : this(
+          dimensionValues: json_.containsKey('dimensionValues')
+              ? (json_['dimensionValues'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessDimensionValue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metricValues: json_.containsKey('metricValues')
+              ? (json_['metricValues'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessMetricValue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionValues != null) 'dimensionValues': dimensionValues!,
+        if (metricValues != null) 'metricValues': metricValues!,
+      };
+}
+
+/// The filter for strings.
+typedef GoogleAnalyticsAdminV1betaAccessStringFilter = $StringFilter;
 
 /// A resource message representing a Google Analytics account.
 class GoogleAnalyticsAdminV1betaAccount {
@@ -3835,6 +4530,9 @@ class GoogleAnalyticsAdminV1betaMeasurementProtocolSecret {
       };
 }
 
+/// To represent a number.
+typedef GoogleAnalyticsAdminV1betaNumericValue = $NumericValue;
+
 /// A resource message representing a Google Analytics GA4 property.
 class GoogleAnalyticsAdminV1betaProperty {
   /// The resource name of the parent account Format: accounts/{account_id}
@@ -4144,6 +4842,244 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountTicketId != null) 'accountTicketId': accountTicketId!,
+      };
+}
+
+/// The request for a Data Access Record Report.
+class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
+  /// Date ranges of access records to read.
+  ///
+  /// If multiple date ranges are requested, each response row will contain a
+  /// zero based date range index. If two date ranges overlap, the access
+  /// records for the overlapping days is included in the response rows for both
+  /// date ranges. Requests are allowed up to 2 date ranges.
+  core.List<GoogleAnalyticsAdminV1betaAccessDateRange>? dateRanges;
+
+  /// Dimension filters let you restrict report response to specific dimension
+  /// values which match the filter.
+  ///
+  /// For example, filtering on access records of a single user. To learn more,
+  /// see
+  /// [Fundamentals of Dimension Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters)
+  /// for examples. Metrics cannot be used in this filter.
+  GoogleAnalyticsAdminV1betaAccessFilterExpression? dimensionFilter;
+
+  /// The dimensions requested and displayed in the response.
+  ///
+  /// Requests are allowed up to 9 dimensions.
+  core.List<GoogleAnalyticsAdminV1betaAccessDimension>? dimensions;
+
+  /// The number of rows to return.
+  ///
+  /// If unspecified, 10,000 rows are returned. The API returns a maximum of
+  /// 100,000 rows per request, no matter how many you ask for. `limit` must be
+  /// positive. The API may return fewer rows than the requested `limit`, if
+  /// there aren't as many remaining rows as the `limit`. For instance, there
+  /// are fewer than 300 possible values for the dimension `country`, so when
+  /// reporting on only `country`, you can't get more than 300 rows, even if you
+  /// set `limit` to a higher value. To learn more about this pagination
+  /// parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  core.String? limit;
+
+  /// Metric filters allow you to restrict report response to specific metric
+  /// values which match the filter.
+  ///
+  /// Metric filters are applied after aggregating the report's rows, similar to
+  /// SQL having-clause. Dimensions cannot be used in this filter.
+  GoogleAnalyticsAdminV1betaAccessFilterExpression? metricFilter;
+
+  /// The metrics requested and displayed in the response.
+  ///
+  /// Requests are allowed up to 10 metrics.
+  core.List<GoogleAnalyticsAdminV1betaAccessMetric>? metrics;
+
+  /// The row count of the start row.
+  ///
+  /// The first row is counted as row 0. If offset is unspecified, it is treated
+  /// as 0. If offset is zero, then this method will return the first page of
+  /// results with `limit` entries. To learn more about this pagination
+  /// parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  core.String? offset;
+
+  /// Specifies how rows are ordered in the response.
+  core.List<GoogleAnalyticsAdminV1betaAccessOrderBy>? orderBys;
+
+  /// Toggles whether to return the current state of this Analytics Property's
+  /// quota.
+  ///
+  /// Quota is returned in \[AccessQuota\](#AccessQuota). For account-level
+  /// requests, this field must be false.
+  core.bool? returnEntityQuota;
+
+  /// This request's time zone if specified.
+  ///
+  /// If unspecified, the property's time zone is used. The request's time zone
+  /// is used to interpret the start & end dates of the report. Formatted as
+  /// strings from the IANA Time Zone database
+  /// (https://www.iana.org/time-zones); for example "America/New_York" or
+  /// "Asia/Tokyo".
+  core.String? timeZone;
+
+  GoogleAnalyticsAdminV1betaRunAccessReportRequest({
+    this.dateRanges,
+    this.dimensionFilter,
+    this.dimensions,
+    this.limit,
+    this.metricFilter,
+    this.metrics,
+    this.offset,
+    this.orderBys,
+    this.returnEntityQuota,
+    this.timeZone,
+  });
+
+  GoogleAnalyticsAdminV1betaRunAccessReportRequest.fromJson(core.Map json_)
+      : this(
+          dateRanges: json_.containsKey('dateRanges')
+              ? (json_['dateRanges'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessDateRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          dimensionFilter: json_.containsKey('dimensionFilter')
+              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                  json_['dimensionFilter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessDimension.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          limit:
+              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          metricFilter: json_.containsKey('metricFilter')
+              ? GoogleAnalyticsAdminV1betaAccessFilterExpression.fromJson(
+                  json_['metricFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          offset: json_.containsKey('offset')
+              ? json_['offset'] as core.String
+              : null,
+          orderBys: json_.containsKey('orderBys')
+              ? (json_['orderBys'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessOrderBy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          returnEntityQuota: json_.containsKey('returnEntityQuota')
+              ? json_['returnEntityQuota'] as core.bool
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateRanges != null) 'dateRanges': dateRanges!,
+        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (limit != null) 'limit': limit!,
+        if (metricFilter != null) 'metricFilter': metricFilter!,
+        if (metrics != null) 'metrics': metrics!,
+        if (offset != null) 'offset': offset!,
+        if (orderBys != null) 'orderBys': orderBys!,
+        if (returnEntityQuota != null) 'returnEntityQuota': returnEntityQuota!,
+        if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// The customized Data Access Record Report response.
+class GoogleAnalyticsAdminV1betaRunAccessReportResponse {
+  /// The header for a column in the report that corresponds to a specific
+  /// dimension.
+  ///
+  /// The number of DimensionHeaders and ordering of DimensionHeaders matches
+  /// the dimensions present in rows.
+  core.List<GoogleAnalyticsAdminV1betaAccessDimensionHeader>? dimensionHeaders;
+
+  /// The header for a column in the report that corresponds to a specific
+  /// metric.
+  ///
+  /// The number of MetricHeaders and ordering of MetricHeaders matches the
+  /// metrics present in rows.
+  core.List<GoogleAnalyticsAdminV1betaAccessMetricHeader>? metricHeaders;
+
+  /// The quota state for this Analytics property including this request.
+  ///
+  /// This field doesn't work with account-level requests.
+  GoogleAnalyticsAdminV1betaAccessQuota? quota;
+
+  /// The total number of rows in the query result.
+  ///
+  /// `rowCount` is independent of the number of rows returned in the response,
+  /// the `limit` request parameter, and the `offset` request parameter. For
+  /// example if a query returns 175 rows and includes `limit` of 50 in the API
+  /// request, the response will contain `rowCount` of 175 but only 50 rows. To
+  /// learn more about this pagination parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  core.int? rowCount;
+
+  /// Rows of dimension value combinations and metric values in the report.
+  core.List<GoogleAnalyticsAdminV1betaAccessRow>? rows;
+
+  GoogleAnalyticsAdminV1betaRunAccessReportResponse({
+    this.dimensionHeaders,
+    this.metricHeaders,
+    this.quota,
+    this.rowCount,
+    this.rows,
+  });
+
+  GoogleAnalyticsAdminV1betaRunAccessReportResponse.fromJson(core.Map json_)
+      : this(
+          dimensionHeaders: json_.containsKey('dimensionHeaders')
+              ? (json_['dimensionHeaders'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessDimensionHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metricHeaders: json_.containsKey('metricHeaders')
+              ? (json_['metricHeaders'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1betaAccessMetricHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          quota: json_.containsKey('quota')
+              ? GoogleAnalyticsAdminV1betaAccessQuota.fromJson(
+                  json_['quota'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.int
+              : null,
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
+                  .map((value) => GoogleAnalyticsAdminV1betaAccessRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionHeaders != null) 'dimensionHeaders': dimensionHeaders!,
+        if (metricHeaders != null) 'metricHeaders': metricHeaders!,
+        if (quota != null) 'quota': quota!,
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rows != null) 'rows': rows!,
       };
 }
 

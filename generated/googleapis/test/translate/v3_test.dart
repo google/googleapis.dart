@@ -140,6 +140,7 @@ api.BatchTranslateDocumentRequest buildBatchTranslateDocumentRequest() {
   buildCounterBatchTranslateDocumentRequest++;
   if (buildCounterBatchTranslateDocumentRequest < 3) {
     o.customizedAttribution = 'foo';
+    o.enableShadowRemovalNativePdf = true;
     o.formatConversions = buildUnnamed0();
     o.glossaries = buildUnnamed1();
     o.inputConfigs = buildUnnamed2();
@@ -159,6 +160,7 @@ void checkBatchTranslateDocumentRequest(api.BatchTranslateDocumentRequest o) {
       o.customizedAttribution!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
     checkUnnamed0(o.formatConversions!);
     checkUnnamed1(o.glossaries!);
     checkUnnamed2(o.inputConfigs!);

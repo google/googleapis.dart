@@ -1467,6 +1467,7 @@ api.Trigger buildTrigger() {
     o.createTime = 'foo';
     o.destination = buildDestination();
     o.etag = 'foo';
+    o.eventDataContentType = 'foo';
     o.eventFilters = buildUnnamed26();
     o.labels = buildUnnamed27();
     o.name = 'foo';
@@ -1494,6 +1495,10 @@ void checkTrigger(api.Trigger o) {
     checkDestination(o.destination!);
     unittest.expect(
       o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventDataContentType!,
       unittest.equals('foo'),
     );
     checkUnnamed26(o.eventFilters!);

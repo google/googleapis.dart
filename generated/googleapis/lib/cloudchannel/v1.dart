@@ -849,7 +849,7 @@ class AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource {
   /// to technical issues in the backend. In this case, contact Cloud Channel
   /// support. Return Value: If successful, the ChannelPartnerRepricingConfig
   /// resources. The data for each resource is displayed in the ascending order
-  /// of: * channel partner ID * RepricingConfig.effective_invoice_month *
+  /// of: * Channel Partner ID * RepricingConfig.effective_invoice_month *
   /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an
   /// error.
   ///
@@ -2130,7 +2130,7 @@ class AccountsCustomersCustomerRepricingConfigsResource {
   /// the given account. * INTERNAL: Any non-user error related to technical
   /// issues in the backend. In this case, contact Cloud Channel support. Return
   /// Value: If successful, the CustomerRepricingConfig resources. The data for
-  /// each resource is displayed in the ascending order of: * customer ID *
+  /// each resource is displayed in the ascending order of: * Customer ID *
   /// RepricingConfig.EntitlementGranularity.entitlement *
   /// RepricingConfig.effective_invoice_month *
   /// CustomerRepricingConfig.update_time If unsuccessful, returns an error.
@@ -2721,6 +2721,78 @@ class AccountsCustomersEntitlementsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// List entitlement history.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different. *
+  /// INVALID_ARGUMENT: Missing or invalid required fields in the request. *
+  /// NOT_FOUND: The parent resource doesn't exist. Usually the result of an
+  /// invalid name parameter. * INTERNAL: Any non-user error related to a
+  /// technical issue in the backend. In this case, contact CloudChannel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. In this case, contact Cloud Channel support. Return value: List
+  /// of EntitlementChanges.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the entitlement for which to
+  /// list entitlement changes. The `-` wildcard may be used to match
+  /// entitlements across a customer. Formats: *
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  /// * accounts/{account_id}/customers/{customer_id}/entitlements/-
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters applied to the list results.
+  ///
+  /// [pageSize] - Optional. The maximum number of entitlement changes to
+  /// return. The service may return fewer than this value. If unspecified,
+  /// returns at most 10 entitlement changes. The maximum value is 50; the
+  /// server will coerce values above 50.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// CloudChannelService.ListEntitlementChanges call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// CloudChannelService.ListEntitlementChanges must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListEntitlementChangesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListEntitlementChangesResponse>
+      listEntitlementChanges(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':listEntitlementChanges';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the requested Offer resource.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The entitlement doesn't belong
@@ -2912,6 +2984,11 @@ class AccountsOffersResource {
   /// [pageToken] - Optional. A token for a page of results other than the first
   /// page.
   ///
+  /// [showFutureOffers] - Optional. A boolean flag that determines if a
+  /// response returns future offers 30 days from now. If the show_future_offers
+  /// is true, the response will only contain offers that are scheduled to be
+  /// available 30 days from now.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2928,6 +3005,7 @@ class AccountsOffersResource {
     core.String? languageCode,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showFutureOffers,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -2935,6 +3013,7 @@ class AccountsOffersResource {
       if (languageCode != null) 'languageCode': [languageCode],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showFutureOffers != null) 'showFutureOffers': ['${showFutureOffers}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4860,6 +4939,188 @@ class GoogleCloudChannelV1Entitlement {
       };
 }
 
+/// Change event entry for Entitlement order history
+class GoogleCloudChannelV1EntitlementChange {
+  /// The Entitlement's activation reason
+  /// Possible string values are:
+  /// - "ACTIVATION_REASON_UNSPECIFIED" : Not used.
+  /// - "RESELLER_REVOKED_SUSPENSION" : Reseller reactivated a suspended
+  /// Entitlement.
+  /// - "CUSTOMER_ACCEPTED_PENDING_TOS" : Customer accepted pending terms of
+  /// service.
+  /// - "RENEWAL_SETTINGS_CHANGED" : Reseller updated the renewal settings on an
+  /// entitlement that was suspended due to cancellation, and this update
+  /// reactivated the entitlement.
+  /// - "OTHER_ACTIVATION_REASON" : Other reasons (Activated temporarily for
+  /// cancellation, added a payment plan to a trial entitlement, etc.)
+  core.String? activationReason;
+
+  /// Cancellation reason for the Entitlement.
+  /// Possible string values are:
+  /// - "CANCELLATION_REASON_UNSPECIFIED" : Not used.
+  /// - "SERVICE_TERMINATED" : Reseller triggered a cancellation of the service.
+  /// - "RELATIONSHIP_ENDED" : Relationship between the reseller and customer
+  /// has ended due to a transfer.
+  /// - "PARTIAL_TRANSFER" : Entitlement transferred away from reseller while
+  /// still keeping other entitlement(s) with the reseller.
+  core.String? cancellationReason;
+
+  /// The change action type.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : Not used.
+  /// - "CREATED" : New Entitlement was created.
+  /// - "PRICE_PLAN_SWITCHED" : Price plan associated with an Entitlement was
+  /// changed.
+  /// - "COMMITMENT_CHANGED" : Number of seats committed for a commitment
+  /// Entitlement was changed.
+  /// - "RENEWED" : An annual Entitlement was renewed.
+  /// - "SUSPENDED" : Entitlement was suspended.
+  /// - "ACTIVATED" : Entitlement was activated.
+  /// - "CANCELLED" : Entitlement was cancelled.
+  /// - "SKU_CHANGED" : Entitlement was upgraded or downgraded for ex. from
+  /// Google Workspace Business Standard to Google Workspace Business Plus.
+  /// - "RENEWAL_SETTING_CHANGED" : The settings for renewal of an Entitlement
+  /// have changed.
+  /// - "PAID_SUBSCRIPTION_STARTED" : Use for Google Workspace subscription.
+  /// Either a trial was converted to a paid subscription or a new subscription
+  /// with no trial is created.
+  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
+  /// - "SUSPENSION_DETAILS_CHANGED" : The suspension details have changed (but
+  /// it is still suspended).
+  /// - "TRIAL_END_DATE_EXTENDED" : The trial end date was extended.
+  /// - "TRIAL_STARTED" : Entitlement started trial.
+  core.String? changeType;
+
+  /// The submitted time of the change.
+  core.String? createTime;
+
+  /// Resource name of an entitlement in the form:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  ///
+  /// Required.
+  core.String? entitlement;
+
+  /// Resource name of the Offer at the time of change.
+  ///
+  /// Takes the form: accounts/{account_id}/offers/{offer_id}.
+  ///
+  /// Required.
+  core.String? offer;
+
+  /// Human-readable identifier that shows what operator made a change.
+  ///
+  /// When the operator_type is RESELLER, this is the user's email address. For
+  /// all other operator types, this is empty.
+  core.String? operator;
+
+  /// Operator type responsible for the change.
+  /// Possible string values are:
+  /// - "OPERATOR_TYPE_UNSPECIFIED" : Not used.
+  /// - "CUSTOMER_SERVICE_REPRESENTATIVE" : Customer service representative.
+  /// - "SYSTEM" : System auto job.
+  /// - "CUSTOMER" : Customer user.
+  /// - "RESELLER" : Reseller user.
+  core.String? operatorType;
+
+  /// e.g. purchase_number change reason, entered by CRS.
+  core.String? otherChangeReason;
+
+  /// Extended parameters, such as: purchase_order_number, gcp_details;
+  /// internal_correlation_id, long_running_operation_id, order_id; etc.
+  core.List<GoogleCloudChannelV1Parameter>? parameters;
+
+  /// Service provisioned for an Entitlement.
+  GoogleCloudChannelV1ProvisionedService? provisionedService;
+
+  /// Suspension reason for the Entitlement.
+  /// Possible string values are:
+  /// - "SUSPENSION_REASON_UNSPECIFIED" : Not used.
+  /// - "RESELLER_INITIATED" : Entitlement was manually suspended by the
+  /// Reseller.
+  /// - "TRIAL_ENDED" : Trial ended.
+  /// - "RENEWAL_WITH_TYPE_CANCEL" : Entitlement renewal was canceled.
+  /// - "PENDING_TOS_ACCEPTANCE" : Entitlement was automatically suspended on
+  /// creation for pending ToS acceptance on customer.
+  /// - "OTHER" : Other reasons (internal reasons, abuse, etc.).
+  core.String? suspensionReason;
+
+  GoogleCloudChannelV1EntitlementChange({
+    this.activationReason,
+    this.cancellationReason,
+    this.changeType,
+    this.createTime,
+    this.entitlement,
+    this.offer,
+    this.operator,
+    this.operatorType,
+    this.otherChangeReason,
+    this.parameters,
+    this.provisionedService,
+    this.suspensionReason,
+  });
+
+  GoogleCloudChannelV1EntitlementChange.fromJson(core.Map json_)
+      : this(
+          activationReason: json_.containsKey('activationReason')
+              ? json_['activationReason'] as core.String
+              : null,
+          cancellationReason: json_.containsKey('cancellationReason')
+              ? json_['cancellationReason'] as core.String
+              : null,
+          changeType: json_.containsKey('changeType')
+              ? json_['changeType'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          entitlement: json_.containsKey('entitlement')
+              ? json_['entitlement'] as core.String
+              : null,
+          offer:
+              json_.containsKey('offer') ? json_['offer'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          operatorType: json_.containsKey('operatorType')
+              ? json_['operatorType'] as core.String
+              : null,
+          otherChangeReason: json_.containsKey('otherChangeReason')
+              ? json_['otherChangeReason'] as core.String
+              : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
+                  .map((value) => GoogleCloudChannelV1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          provisionedService: json_.containsKey('provisionedService')
+              ? GoogleCloudChannelV1ProvisionedService.fromJson(
+                  json_['provisionedService']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          suspensionReason: json_.containsKey('suspensionReason')
+              ? json_['suspensionReason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationReason != null) 'activationReason': activationReason!,
+        if (cancellationReason != null)
+          'cancellationReason': cancellationReason!,
+        if (changeType != null) 'changeType': changeType!,
+        if (createTime != null) 'createTime': createTime!,
+        if (entitlement != null) 'entitlement': entitlement!,
+        if (offer != null) 'offer': offer!,
+        if (operator != null) 'operator': operator!,
+        if (operatorType != null) 'operatorType': operatorType!,
+        if (otherChangeReason != null) 'otherChangeReason': otherChangeReason!,
+        if (parameters != null) 'parameters': parameters!,
+        if (provisionedService != null)
+          'provisionedService': provisionedService!,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+      };
+}
+
 /// Request message for CloudChannelReportsService.FetchReportResults.
 class GoogleCloudChannelV1FetchReportResultsRequest {
   /// Requested page size of the report.
@@ -5184,6 +5445,40 @@ class GoogleCloudChannelV1ListCustomersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null) 'customers': customers!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for CloudChannelService.ListEntitlementChanges
+class GoogleCloudChannelV1ListEntitlementChangesResponse {
+  /// The list of entitlement changes.
+  core.List<GoogleCloudChannelV1EntitlementChange>? entitlementChanges;
+
+  /// A token to list the next page of results.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListEntitlementChangesResponse({
+    this.entitlementChanges,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(core.Map json_)
+      : this(
+          entitlementChanges: json_.containsKey('entitlementChanges')
+              ? (json_['entitlementChanges'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1EntitlementChange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entitlementChanges != null)
+          'entitlementChanges': entitlementChanges!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

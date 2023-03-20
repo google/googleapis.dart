@@ -25,6 +25,7 @@
 ///       - [ProjectsLocationsConnectionsConnectionSchemaMetadataResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
+///     - [ProjectsLocationsGlobalResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvidersResource]
 ///       - [ProjectsLocationsProvidersConnectorsResource]
@@ -78,6 +79,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsConnectionsResource get connections =>
       ProjectsLocationsConnectionsResource(_requester);
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsProvidersResource get providers =>
@@ -840,6 +843,50 @@ class ProjectsLocationsConnectionsRuntimeEntitySchemasResource {
   }
 }
 
+class ProjectsLocationsGlobalResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetGlobalSettings gets settings of a project.
+  ///
+  /// GlobalSettings is a singleton resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Settings.
+  /// Value must have pattern `^projects/\[^/\]+/locations/global/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -978,13 +1025,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -4384,6 +4424,46 @@ class SetIamPolicyRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Global Settings details.
+class Settings {
+  /// Resource name of the Connection.
+  ///
+  /// Format: projects/{project}/locations/global/settings}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Flag indicates if user is in PayG model
+  ///
+  /// Output only.
+  core.bool? payg;
+
+  /// Flag indicates whether vpc-sc is enabled.
+  ///
+  /// Optional.
+  core.bool? vpcsc;
+
+  Settings({
+    this.name,
+    this.payg,
+    this.vpcsc,
+  });
+
+  Settings.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          payg: json_.containsKey('payg') ? json_['payg'] as core.bool : null,
+          vpcsc:
+              json_.containsKey('vpcsc') ? json_['vpcsc'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (payg != null) 'payg': payg!,
+        if (vpcsc != null) 'vpcsc': vpcsc!,
       };
 }
 

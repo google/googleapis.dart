@@ -2117,6 +2117,40 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed32() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed33() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Acl', () {
     unittest.test('to-json--from-json', () async {
@@ -4724,14 +4758,15 @@ void main() {
       final res = api.CalendarApi(mock).events;
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
+      final arg_eventTypes = buildUnnamed28();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed28();
+      final arg_privateExtendedProperty = buildUnnamed29();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed29();
+      final arg_sharedExtendedProperty = buildUnnamed30();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -4794,6 +4829,10 @@ void main() {
         unittest.expect(
           queryMap['alwaysIncludeEmail']!.first,
           unittest.equals('$arg_alwaysIncludeEmail'),
+        );
+        unittest.expect(
+          queryMap['eventTypes']!,
+          unittest.equals(arg_eventTypes),
         );
         unittest.expect(
           queryMap['iCalUID']!.first,
@@ -4872,6 +4911,7 @@ void main() {
       }), true);
       final response = await res.list(arg_calendarId,
           alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          eventTypes: arg_eventTypes,
           iCalUID: arg_iCalUID,
           maxAttendees: arg_maxAttendees,
           maxResults: arg_maxResults,
@@ -5329,14 +5369,15 @@ void main() {
       final arg_request = buildChannel();
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
+      final arg_eventTypes = buildUnnamed31();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed30();
+      final arg_privateExtendedProperty = buildUnnamed32();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed31();
+      final arg_sharedExtendedProperty = buildUnnamed33();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -5403,6 +5444,10 @@ void main() {
         unittest.expect(
           queryMap['alwaysIncludeEmail']!.first,
           unittest.equals('$arg_alwaysIncludeEmail'),
+        );
+        unittest.expect(
+          queryMap['eventTypes']!,
+          unittest.equals(arg_eventTypes),
         );
         unittest.expect(
           queryMap['iCalUID']!.first,
@@ -5481,6 +5526,7 @@ void main() {
       }), true);
       final response = await res.watch(arg_request, arg_calendarId,
           alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          eventTypes: arg_eventTypes,
           iCalUID: arg_iCalUID,
           maxAttendees: arg_maxAttendees,
           maxResults: arg_maxResults,

@@ -376,9 +376,11 @@ api.GoogleCloudKmsV1CryptoKeyVersion buildGoogleCloudKmsV1CryptoKeyVersion() {
     o.createTime = 'foo';
     o.destroyEventTime = 'foo';
     o.destroyTime = 'foo';
+    o.externalDestructionFailureReason = 'foo';
     o.externalProtectionLevelOptions =
         buildGoogleCloudKmsV1ExternalProtectionLevelOptions();
     o.generateTime = 'foo';
+    o.generationFailureReason = 'foo';
     o.importFailureReason = 'foo';
     o.importJob = 'foo';
     o.importTime = 'foo';
@@ -412,10 +414,18 @@ void checkGoogleCloudKmsV1CryptoKeyVersion(
       o.destroyTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.externalDestructionFailureReason!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudKmsV1ExternalProtectionLevelOptions(
         o.externalProtectionLevelOptions!);
     unittest.expect(
       o.generateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generationFailureReason!,
       unittest.equals('foo'),
     );
     unittest.expect(

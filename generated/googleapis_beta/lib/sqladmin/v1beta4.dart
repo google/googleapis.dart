@@ -37,6 +37,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1795,6 +1797,94 @@ class ProjectsInstancesResource {
 
   ProjectsInstancesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Get Disk Shrink Config for a given instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesGetDiskShrinkConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesGetDiskShrinkConfigResponse> getDiskShrinkConfig(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/getDiskShrinkConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SqlInstancesGetDiskShrinkConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform Disk Shrink on primary instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> performDiskShrink(
+    PerformDiskShrinkContext request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/performDiskShrink';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Reschedules the maintenance on the given instance.
   ///
   /// [request] - The metadata request object.
@@ -1831,6 +1921,52 @@ class ProjectsInstancesResource {
         '/instances/' +
         commons.escapeVariable('$instance') +
         '/rescheduleMaintenance';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reset Replica Size to primary instance disk size.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the read replica.
+  ///
+  /// [instance] - Cloud SQL read replica instance name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resetReplicaSize(
+    SqlInstancesResetReplicaSizeRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/resetReplicaSize';
 
     final response_ = await _requester.request(
       url_,
@@ -5798,6 +5934,7 @@ class Operation {
   /// - "LOG_CLEANUP" : Recovers logs from an instance's old data disk.
   /// - "AUTO_RESTART" : Performs auto-restart of an HA-enabled Cloud SQL
   /// database for auto recovery.
+  /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -6117,6 +6254,27 @@ class PasswordValidationPolicy {
         if (passwordChangeInterval != null)
           'passwordChangeInterval': passwordChangeInterval!,
         if (reuseInterval != null) 'reuseInterval': reuseInterval!,
+      };
+}
+
+/// Perform disk shrink context.
+class PerformDiskShrinkContext {
+  /// The target disk shrink size in GigaBytes.
+  core.String? targetSizeGb;
+
+  PerformDiskShrinkContext({
+    this.targetSizeGb,
+  });
+
+  PerformDiskShrinkContext.fromJson(core.Map json_)
+      : this(
+          targetSizeGb: json_.containsKey('targetSizeGb')
+              ? json_['targetSizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetSizeGb != null) 'targetSizeGb': targetSizeGb!,
       };
 }
 
@@ -6751,7 +6909,9 @@ class SqlExternalSyncSettingError {
   /// - "UNSUPPORTED_STORAGE_ENGINE" : The primary instance has tables with
   /// unsupported storage engine.
   /// - "LIMITED_SUPPORT_TABLES" : Source has tables with limited support eg:
-  /// PostgreSQL tables without primary keys
+  /// PostgreSQL tables without primary keys.
+  /// - "EXISTING_DATA_IN_REPLICA" : The replica instance contains existing
+  /// data.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -6773,6 +6933,34 @@ class SqlExternalSyncSettingError {
         if (detail != null) 'detail': detail!,
         if (kind != null) 'kind': kind!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Instance get disk shrink config response.
+class SqlInstancesGetDiskShrinkConfigResponse {
+  /// This is always `sql#getDiskShrinkConfig`.
+  core.String? kind;
+
+  /// The minimum size to which a disk can be shrunk in GigaBytes.
+  core.String? minimalTargetSizeGb;
+
+  SqlInstancesGetDiskShrinkConfigResponse({
+    this.kind,
+    this.minimalTargetSizeGb,
+  });
+
+  SqlInstancesGetDiskShrinkConfigResponse.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          minimalTargetSizeGb: json_.containsKey('minimalTargetSizeGb')
+              ? json_['minimalTargetSizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (minimalTargetSizeGb != null)
+          'minimalTargetSizeGb': minimalTargetSizeGb!,
       };
 }
 
@@ -6799,6 +6987,9 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
         if (reschedule != null) 'reschedule': reschedule!,
       };
 }
+
+/// Instance reset replica size request.
+typedef SqlInstancesResetReplicaSizeRequest = $Empty;
 
 class SqlInstancesStartExternalSyncRequest {
   /// MySQL-specific settings for start external sync.

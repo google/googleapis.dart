@@ -299,6 +299,53 @@ class ProjectsLocationsConnectorsResource {
     return ListConnectorsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a Serverless VPC Access connector, returns an operation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name in the format `projects / * /locations / *
+  /// /connectors / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [updateMask] - The fields to update on the entry group. If absent or
+  /// empty, all modifiable fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Connector request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -349,13 +396,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///

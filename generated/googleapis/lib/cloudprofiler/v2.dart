@@ -9,7 +9,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Stackdriver Profiler API - v2
+/// Cloud Profiler API - v2
 ///
 /// Manages continuous profiling information.
 ///

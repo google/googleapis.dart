@@ -694,13 +694,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1838,6 +1831,7 @@ class BackfillJob {
 /// Backfill strategy to disable automatic backfill for the Stream's objects.
 typedef BackfillNoneStrategy = $Empty;
 
+/// BigQuery destination configuration
 class BigQueryDestinationConfig {
   /// The guaranteed data freshness (in seconds) when querying tables created by
   /// the stream.
@@ -4159,6 +4153,7 @@ class SourceConfig {
 /// Destination datasets are created so that hierarchy of the destination data
 /// objects matches the source hierarchy.
 class SourceHierarchyDatasets {
+  /// The dataset template to use for dynamic dataset creation.
   DatasetTemplate? datasetTemplate;
 
   SourceHierarchyDatasets({
@@ -4247,6 +4242,10 @@ class StartBackfillJobResponse {
 }
 
 /// Static IP address connectivity.
+///
+/// Used when the source database is configured to allow incoming connections
+/// from the Datastream public IP addresses for the region specified in the
+/// connection profile.
 typedef StaticServiceIpConnectivity = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for

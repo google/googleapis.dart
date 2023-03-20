@@ -822,6 +822,7 @@ api.BuildOptions buildBuildOptions() {
   final o = api.BuildOptions();
   buildCounterBuildOptions++;
   if (buildCounterBuildOptions < 3) {
+    o.defaultLogsBucketBehavior = 'foo';
     o.diskSizeGb = 'foo';
     o.dynamicSubstitutions = true;
     o.env = buildUnnamed14();
@@ -843,6 +844,10 @@ api.BuildOptions buildBuildOptions() {
 void checkBuildOptions(api.BuildOptions o) {
   buildCounterBuildOptions++;
   if (buildCounterBuildOptions < 3) {
+    unittest.expect(
+      o.defaultLogsBucketBehavior!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.diskSizeGb!,
       unittest.equals('foo'),

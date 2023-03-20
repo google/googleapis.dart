@@ -980,6 +980,7 @@ api.ExecuteSqlRequest buildExecuteSqlRequest() {
   final o = api.ExecuteSqlRequest();
   buildCounterExecuteSqlRequest++;
   if (buildCounterExecuteSqlRequest < 3) {
+    o.dataBoostEnabled = true;
     o.paramTypes = buildUnnamed9();
     o.params = buildUnnamed10();
     o.partitionToken = 'foo';
@@ -998,6 +999,7 @@ api.ExecuteSqlRequest buildExecuteSqlRequest() {
 void checkExecuteSqlRequest(api.ExecuteSqlRequest o) {
   buildCounterExecuteSqlRequest++;
   if (buildCounterExecuteSqlRequest < 3) {
+    unittest.expect(o.dataBoostEnabled!, unittest.isTrue);
     checkUnnamed9(o.paramTypes!);
     checkUnnamed10(o.params!);
     unittest.expect(
@@ -3263,6 +3265,7 @@ api.ReadRequest buildReadRequest() {
   buildCounterReadRequest++;
   if (buildCounterReadRequest < 3) {
     o.columns = buildUnnamed58();
+    o.dataBoostEnabled = true;
     o.index = 'foo';
     o.keySet = buildKeySet();
     o.limit = 'foo';
@@ -3280,6 +3283,7 @@ void checkReadRequest(api.ReadRequest o) {
   buildCounterReadRequest++;
   if (buildCounterReadRequest < 3) {
     checkUnnamed58(o.columns!);
+    unittest.expect(o.dataBoostEnabled!, unittest.isTrue);
     unittest.expect(
       o.index!,
       unittest.equals('foo'),

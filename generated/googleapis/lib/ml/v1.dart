@@ -2187,13 +2187,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2828,9 +2821,9 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_A100" : Nvidia A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
+  /// - "TPU_V4" : TPU v4.
   /// - "TPU_V2_POD" : TPU v2 POD.
   /// - "TPU_V3_POD" : TPU v3 POD.
-  /// - "TPU_V4_POD" : TPU v4 POD.
   core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig({

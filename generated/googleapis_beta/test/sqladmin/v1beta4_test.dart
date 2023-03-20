@@ -2479,6 +2479,28 @@ void checkPasswordValidationPolicy(api.PasswordValidationPolicy o) {
   buildCounterPasswordValidationPolicy--;
 }
 
+core.int buildCounterPerformDiskShrinkContext = 0;
+api.PerformDiskShrinkContext buildPerformDiskShrinkContext() {
+  final o = api.PerformDiskShrinkContext();
+  buildCounterPerformDiskShrinkContext++;
+  if (buildCounterPerformDiskShrinkContext < 3) {
+    o.targetSizeGb = 'foo';
+  }
+  buildCounterPerformDiskShrinkContext--;
+  return o;
+}
+
+void checkPerformDiskShrinkContext(api.PerformDiskShrinkContext o) {
+  buildCounterPerformDiskShrinkContext++;
+  if (buildCounterPerformDiskShrinkContext < 3) {
+    unittest.expect(
+      o.targetSizeGb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPerformDiskShrinkContext--;
+}
+
 core.int buildCounterReplicaConfiguration = 0;
 api.ReplicaConfiguration buildReplicaConfiguration() {
   final o = api.ReplicaConfiguration();
@@ -2825,6 +2847,35 @@ void checkSqlExternalSyncSettingError(api.SqlExternalSyncSettingError o) {
   buildCounterSqlExternalSyncSettingError--;
 }
 
+core.int buildCounterSqlInstancesGetDiskShrinkConfigResponse = 0;
+api.SqlInstancesGetDiskShrinkConfigResponse
+    buildSqlInstancesGetDiskShrinkConfigResponse() {
+  final o = api.SqlInstancesGetDiskShrinkConfigResponse();
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
+  if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
+    o.kind = 'foo';
+    o.minimalTargetSizeGb = 'foo';
+  }
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
+  return o;
+}
+
+void checkSqlInstancesGetDiskShrinkConfigResponse(
+    api.SqlInstancesGetDiskShrinkConfigResponse o) {
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
+  if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minimalTargetSizeGb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
+}
+
 core.int buildCounterSqlInstancesRescheduleMaintenanceRequestBody = 0;
 api.SqlInstancesRescheduleMaintenanceRequestBody
     buildSqlInstancesRescheduleMaintenanceRequestBody() {
@@ -2844,6 +2895,23 @@ void checkSqlInstancesRescheduleMaintenanceRequestBody(
     checkReschedule(o.reschedule!);
   }
   buildCounterSqlInstancesRescheduleMaintenanceRequestBody--;
+}
+
+core.int buildCounterSqlInstancesResetReplicaSizeRequest = 0;
+api.SqlInstancesResetReplicaSizeRequest
+    buildSqlInstancesResetReplicaSizeRequest() {
+  final o = api.SqlInstancesResetReplicaSizeRequest();
+  buildCounterSqlInstancesResetReplicaSizeRequest++;
+  if (buildCounterSqlInstancesResetReplicaSizeRequest < 3) {}
+  buildCounterSqlInstancesResetReplicaSizeRequest--;
+  return o;
+}
+
+void checkSqlInstancesResetReplicaSizeRequest(
+    api.SqlInstancesResetReplicaSizeRequest o) {
+  buildCounterSqlInstancesResetReplicaSizeRequest++;
+  if (buildCounterSqlInstancesResetReplicaSizeRequest < 3) {}
+  buildCounterSqlInstancesResetReplicaSizeRequest--;
 }
 
 core.int buildCounterSqlInstancesStartExternalSyncRequest = 0;
@@ -4199,6 +4267,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PerformDiskShrinkContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPerformDiskShrinkContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerformDiskShrinkContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPerformDiskShrinkContext(od);
+    });
+  });
+
   unittest.group('obj-schema-ReplicaConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReplicaConfiguration();
@@ -4269,6 +4347,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SqlInstancesGetDiskShrinkConfigResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesGetDiskShrinkConfigResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesGetDiskShrinkConfigResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesGetDiskShrinkConfigResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SqlInstancesRescheduleMaintenanceRequestBody', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSqlInstancesRescheduleMaintenanceRequestBody();
@@ -4276,6 +4364,16 @@ void main() {
       final od = api.SqlInstancesRescheduleMaintenanceRequestBody.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlInstancesRescheduleMaintenanceRequestBody(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesResetReplicaSizeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesResetReplicaSizeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesResetReplicaSizeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesResetReplicaSizeRequest(od);
     });
   });
 
@@ -7495,6 +7593,176 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesResource', () {
+    unittest.test('method--getDiskShrinkConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/getDiskShrinkConfig', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/getDiskShrinkConfig'),
+        );
+        pathOffset += 20;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSqlInstancesGetDiskShrinkConfigResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getDiskShrinkConfig(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesGetDiskShrinkConfigResponse(
+          response as api.SqlInstancesGetDiskShrinkConfigResponse);
+    });
+
+    unittest.test('method--performDiskShrink', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_request = buildPerformDiskShrinkContext();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.PerformDiskShrinkContext.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPerformDiskShrinkContext(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/performDiskShrink', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/performDiskShrink'),
+        );
+        pathOffset += 18;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.performDiskShrink(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--rescheduleMaintenance', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).projects.instances;
@@ -7577,6 +7845,93 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.rescheduleMaintenance(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--resetReplicaSize', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_request = buildSqlInstancesResetReplicaSizeRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SqlInstancesResetReplicaSizeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSqlInstancesResetReplicaSizeRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/resetReplicaSize', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/resetReplicaSize'),
+        );
+        pathOffset += 17;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.resetReplicaSize(
           arg_request, arg_project, arg_instance,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);

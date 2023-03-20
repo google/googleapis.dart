@@ -797,7 +797,7 @@ class Promotion {
 
 /// Image belonging to a custom search result.
 class ResultImage {
-  /// The size of the image, in pixels.
+  /// The size of the image, in bytes.
   core.int? byteSize;
 
   /// A URL pointing to the webpage hosting the image.

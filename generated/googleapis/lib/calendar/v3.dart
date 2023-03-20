@@ -1549,6 +1549,11 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
+  /// [eventTypes] - Event types to return. Optional. The default is
+  /// \["default", "outOfOffice", "focusTime"\]. This is used by the Working
+  /// Location developer preview and only the default value is allowed for
+  /// non-opted-in users.
+  ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
   /// its iCalendar ID.
@@ -1660,6 +1665,7 @@ class EventsResource {
   async.Future<Events> list(
     core.String calendarId, {
     core.bool? alwaysIncludeEmail,
+    core.List<core.String>? eventTypes,
     core.String? iCalUID,
     core.int? maxAttendees,
     core.int? maxResults,
@@ -1681,6 +1687,7 @@ class EventsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (eventTypes != null) 'eventTypes': eventTypes,
       if (iCalUID != null) 'iCalUID': [iCalUID],
       if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2055,6 +2062,11 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
+  /// [eventTypes] - Event types to return. Optional. The default is
+  /// \["default", "outOfOffice", "focusTime"\]. This is used by the Working
+  /// Location developer preview and only the default value is allowed for
+  /// non-opted-in users.
+  ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
   /// its iCalendar ID.
@@ -2167,6 +2179,7 @@ class EventsResource {
     Channel request,
     core.String calendarId, {
     core.bool? alwaysIncludeEmail,
+    core.List<core.String>? eventTypes,
     core.String? iCalUID,
     core.int? maxAttendees,
     core.int? maxResults,
@@ -2189,6 +2202,7 @@ class EventsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (eventTypes != null) 'eventTypes': eventTypes,
       if (iCalUID != null) 'iCalUID': [iCalUID],
       if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],

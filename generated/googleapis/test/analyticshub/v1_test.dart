@@ -691,7 +691,6 @@ api.RestrictedExportConfig buildRestrictedExportConfig() {
   buildCounterRestrictedExportConfig++;
   if (buildCounterRestrictedExportConfig < 3) {
     o.enabled = true;
-    o.restrictDirectTableAccess = true;
     o.restrictQueryResult = true;
   }
   buildCounterRestrictedExportConfig--;
@@ -702,7 +701,6 @@ void checkRestrictedExportConfig(api.RestrictedExportConfig o) {
   buildCounterRestrictedExportConfig++;
   if (buildCounterRestrictedExportConfig < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
-    unittest.expect(o.restrictDirectTableAccess!, unittest.isTrue);
     unittest.expect(o.restrictQueryResult!, unittest.isTrue);
   }
   buildCounterRestrictedExportConfig--;

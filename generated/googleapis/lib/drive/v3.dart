@@ -962,7 +962,7 @@ class DrivesResource {
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the metadate for a shared drive.
+  /// Updates the metadata for a shared drive.
   ///
   /// [request] - The metadata request object.
   ///
@@ -970,8 +970,8 @@ class DrivesResource {
   ///
   /// [driveId] - The ID of the shared drive.
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to true, then the requester is granted access if they're an
   /// administrator of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3666,7 +3666,7 @@ class ContentRestriction {
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set.
 ///
-/// This is a write only field; it can only be set on drive.drives.update
+/// This is a write-only field; it can only be set on drive.drives.update
 /// requests that don't set themeId. When specified, all fields of the
 /// backgroundImageFile must be set.
 class DriveBackgroundImageFile {
@@ -4012,7 +4012,7 @@ class Drive {
   /// An image file and cropping parameters from which a background image for
   /// this shared drive is set.
   ///
-  /// This is a write only field; it can only be set on drive.drives.update
+  /// This is a write-only field; it can only be set on drive.drives.update
   /// requests that don't set themeId. When specified, all fields of the
   /// backgroundImageFile must be set.
   DriveBackgroundImageFile? backgroundImageFile;
@@ -4025,8 +4025,7 @@ class Drive {
 
   /// The color of this shared drive as an RGB hex string.
   ///
-  /// It can only be set on a drive.drives.update request that does not set
-  /// themeId.
+  /// It can only be set on drive.drives.update requests that don't set themeId.
   core.String? colorRgb;
 
   /// The time at which the shared drive was created (RFC 3339 date-time).
@@ -4057,7 +4056,7 @@ class Drive {
   /// shared drive.
   DriveRestrictions? restrictions;
 
-  /// The ID of the theme from which the background image and color will be set.
+  /// The ID of the theme from which the background image and color are set.
   ///
   /// The set of possible driveThemes can be retrieved from a drive.about.get
   /// response. When not specified on a drive.drives.create request, a random

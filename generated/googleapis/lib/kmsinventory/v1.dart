@@ -809,6 +809,13 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// Output only.
   core.String? destroyTime;
 
+  /// The root cause of the most recent external destruction failure.
+  ///
+  /// Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+  ///
+  /// Output only.
+  core.String? externalDestructionFailureReason;
+
   /// ExternalProtectionLevelOptions stores a group of additional fields for
   /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
   /// protection level and EXTERNAL_VPC protection levels.
@@ -819,6 +826,13 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   ///
   /// Output only.
   core.String? generateTime;
+
+  /// The root cause of the most recent generation failure.
+  ///
+  /// Only present if state is GENERATION_FAILED.
+  ///
+  /// Output only.
+  core.String? generationFailureReason;
 
   /// The root cause of the most recent import failure.
   ///
@@ -889,6 +903,17 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// be used, enabled, disabled, or destroyed. The submitted key material has
   /// been discarded. Additional details can be found in
   /// CryptoKeyVersion.import_failure_reason.
+  /// - "GENERATION_FAILED" : This version was not generated successfully. It
+  /// may not be used, enabled, disabled, or destroyed. Additional details can
+  /// be found in CryptoKeyVersion.generation_failure_reason.
+  /// - "PENDING_EXTERNAL_DESTRUCTION" : This version was destroyed, and it may
+  /// not be used or enabled again. Cloud KMS is waiting for the corresponding
+  /// key material residing in an external key manager to be destroyed.
+  /// - "EXTERNAL_DESTRUCTION_FAILED" : This version was destroyed, and it may
+  /// not be used or enabled again. However, Cloud KMS could not confirm that
+  /// the corresponding key material residing in an external key manager was
+  /// destroyed. Additional details can be found in
+  /// CryptoKeyVersion.external_destruction_failure_reason.
   core.String? state;
 
   GoogleCloudKmsV1CryptoKeyVersion({
@@ -897,8 +922,10 @@ class GoogleCloudKmsV1CryptoKeyVersion {
     this.createTime,
     this.destroyEventTime,
     this.destroyTime,
+    this.externalDestructionFailureReason,
     this.externalProtectionLevelOptions,
     this.generateTime,
+    this.generationFailureReason,
     this.importFailureReason,
     this.importJob,
     this.importTime,
@@ -926,6 +953,10 @@ class GoogleCloudKmsV1CryptoKeyVersion {
           destroyTime: json_.containsKey('destroyTime')
               ? json_['destroyTime'] as core.String
               : null,
+          externalDestructionFailureReason:
+              json_.containsKey('externalDestructionFailureReason')
+                  ? json_['externalDestructionFailureReason'] as core.String
+                  : null,
           externalProtectionLevelOptions:
               json_.containsKey('externalProtectionLevelOptions')
                   ? GoogleCloudKmsV1ExternalProtectionLevelOptions.fromJson(
@@ -934,6 +965,9 @@ class GoogleCloudKmsV1CryptoKeyVersion {
                   : null,
           generateTime: json_.containsKey('generateTime')
               ? json_['generateTime'] as core.String
+              : null,
+          generationFailureReason: json_.containsKey('generationFailureReason')
+              ? json_['generationFailureReason'] as core.String
               : null,
           importFailureReason: json_.containsKey('importFailureReason')
               ? json_['importFailureReason'] as core.String
@@ -961,9 +995,13 @@ class GoogleCloudKmsV1CryptoKeyVersion {
         if (createTime != null) 'createTime': createTime!,
         if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (externalDestructionFailureReason != null)
+          'externalDestructionFailureReason': externalDestructionFailureReason!,
         if (externalProtectionLevelOptions != null)
           'externalProtectionLevelOptions': externalProtectionLevelOptions!,
         if (generateTime != null) 'generateTime': generateTime!,
+        if (generationFailureReason != null)
+          'generationFailureReason': generationFailureReason!,
         if (importFailureReason != null)
           'importFailureReason': importFailureReason!,
         if (importJob != null) 'importJob': importJob!,

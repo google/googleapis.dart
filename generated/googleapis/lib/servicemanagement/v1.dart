@@ -1217,6 +1217,7 @@ class Api {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   /// A version string for this interface.
@@ -2012,6 +2013,10 @@ class ClientLibrarySettings {
   RubySettings? rubySettings;
 
   /// Version of the API to apply these settings to.
+  ///
+  /// This is the full protobuf package for the API, ending in the version
+  /// element. Examples: "google.cloud.speech.v1" and
+  /// "google.spanner.admin.database.v1".
   core.String? version;
 
   ClientLibrarySettings({
@@ -2758,6 +2763,9 @@ typedef Endpoint = $Endpoint;
 
 /// Enum type definition.
 class Enum {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  core.String? edition;
+
   /// Enum value definitions.
   core.List<EnumValue>? enumvalue;
 
@@ -2774,9 +2782,11 @@ class Enum {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   Enum({
+    this.edition,
     this.enumvalue,
     this.name,
     this.options,
@@ -2786,6 +2796,9 @@ class Enum {
 
   Enum.fromJson(core.Map json_)
       : this(
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
+              : null,
           enumvalue: json_.containsKey('enumvalue')
               ? (json_['enumvalue'] as core.List)
                   .map((value) => EnumValue.fromJson(
@@ -2809,6 +2822,7 @@ class Enum {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (edition != null) 'edition': edition!,
         if (enumvalue != null) 'enumvalue': enumvalue!,
         if (name != null) 'name': name!,
         if (options != null) 'options': options!,
@@ -3914,6 +3928,7 @@ class Method {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   Method({
@@ -3970,7 +3985,8 @@ class MethodSettings {
   ///
   /// Complements RPCs that use the annotations in
   /// google/longrunning/operations.proto. Example of a YAML configuration::
-  /// publishing: method_behavior: - selector: CreateAdDomain long_running:
+  /// publishing: method_settings: - selector:
+  /// google.cloud.speech.v2.Speech.BatchRecognize long_running:
   /// initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5
   /// max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds:
   /// 54000 # 90 minutes
@@ -4345,7 +4361,7 @@ typedef MetricRule = $MetricRule;
 /// mixin construct implies that all methods in `AccessControl` are also
 /// declared with same name and request/response types in `Storage`. A
 /// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inheriting documentation and annotations as
+/// `Storage.GetAcl` method after inherting documentation and annotations as
 /// follows: service Storage { // Get the underlying ACL object. rpc
 /// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
 /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
@@ -5848,6 +5864,9 @@ class TrafficPercentStrategy {
 
 /// A protocol buffer message type.
 class Type {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  core.String? edition;
+
   /// The list of fields.
   core.List<Field>? fields;
 
@@ -5867,9 +5886,11 @@ class Type {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   Type({
+    this.edition,
     this.fields,
     this.name,
     this.oneofs,
@@ -5880,6 +5901,9 @@ class Type {
 
   Type.fromJson(core.Map json_)
       : this(
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
+              : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => Field.fromJson(
@@ -5908,6 +5932,7 @@ class Type {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (edition != null) 'edition': edition!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (oneofs != null) 'oneofs': oneofs!,

@@ -139,6 +139,7 @@ api.GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings < 3) {
     o.allowAllPackageNames = true;
     o.allowedPackageNames = buildUnnamed2();
+    o.supportNonGoogleAppStoreDistribution = true;
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings--;
   return o;
@@ -150,6 +151,7 @@ void checkGoogleCloudRecaptchaenterpriseV1AndroidKeySettings(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings < 3) {
     unittest.expect(o.allowAllPackageNames!, unittest.isTrue);
     checkUnnamed2(o.allowedPackageNames!);
+    unittest.expect(o.supportNonGoogleAppStoreDistribution!, unittest.isTrue);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings--;
 }
@@ -239,6 +241,8 @@ api.GoogleCloudRecaptchaenterpriseV1Assessment
     o.accountVerification =
         buildGoogleCloudRecaptchaenterpriseV1AccountVerificationInfo();
     o.event = buildGoogleCloudRecaptchaenterpriseV1Event();
+    o.firewallPolicyAssessment =
+        buildGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment();
     o.fraudPreventionAssessment =
         buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment();
     o.name = 'foo';
@@ -260,6 +264,8 @@ void checkGoogleCloudRecaptchaenterpriseV1Assessment(
     checkGoogleCloudRecaptchaenterpriseV1AccountVerificationInfo(
         o.accountVerification!);
     checkGoogleCloudRecaptchaenterpriseV1Event(o.event!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment(
+        o.firewallPolicyAssessment!);
     checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment(
         o.fraudPreventionAssessment!);
     unittest.expect(
@@ -355,6 +361,23 @@ void checkGoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo(
   buildCounterGoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo--;
 }
 
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudRecaptchaenterpriseV1Event = 0;
 api.GoogleCloudRecaptchaenterpriseV1Event
     buildGoogleCloudRecaptchaenterpriseV1Event() {
@@ -362,12 +385,18 @@ api.GoogleCloudRecaptchaenterpriseV1Event
   buildCounterGoogleCloudRecaptchaenterpriseV1Event++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1Event < 3) {
     o.expectedAction = 'foo';
+    o.express = true;
+    o.firewallPolicyEvaluation = true;
     o.hashedAccountId = 'foo';
+    o.headers = buildUnnamed4();
+    o.ja3 = 'foo';
+    o.requestedUri = 'foo';
     o.siteKey = 'foo';
     o.token = 'foo';
     o.transactionData = buildGoogleCloudRecaptchaenterpriseV1TransactionData();
     o.userAgent = 'foo';
     o.userIpAddress = 'foo';
+    o.wafTokenAssessment = true;
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1Event--;
   return o;
@@ -381,8 +410,19 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
       o.expectedAction!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.express!, unittest.isTrue);
+    unittest.expect(o.firewallPolicyEvaluation!, unittest.isTrue);
     unittest.expect(
       o.hashedAccountId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4(o.headers!);
+    unittest.expect(
+      o.ja3!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedUri!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -402,8 +442,247 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
       o.userIpAddress!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.wafTokenAssessment!, unittest.isTrue);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1Event--;
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction = 0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallAction() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction < 3) {
+    o.allow = buildGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction();
+    o.block = buildGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction();
+    o.redirect =
+        buildGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction();
+    o.setHeader =
+        buildGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction();
+    o.substitute =
+        buildGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction();
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction < 3) {
+    checkGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction(o.allow!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction(o.block!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction(
+        o.redirect!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction(
+        o.setHeader!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(
+        o.substitute!);
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallAction--;
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction--;
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction--;
+}
+
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction <
+      3) {}
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction--;
+}
+
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction <
+      3) {
+    o.key = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction <
+      3) {
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction--;
+}
+
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+    buildGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction() {
+  final o =
+      api.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction <
+      3) {
+    o.path = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction <
+      3) {
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction--;
+}
+
+core.List<api.GoogleCloudRecaptchaenterpriseV1FirewallAction> buildUnnamed5() =>
+    [
+      buildGoogleCloudRecaptchaenterpriseV1FirewallAction(),
+      buildGoogleCloudRecaptchaenterpriseV1FirewallAction(),
+    ];
+
+void checkUnnamed5(
+    core.List<api.GoogleCloudRecaptchaenterpriseV1FirewallAction> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudRecaptchaenterpriseV1FirewallAction(o[0]);
+  checkGoogleCloudRecaptchaenterpriseV1FirewallAction(o[1]);
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy = 0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy
+    buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy < 3) {
+    o.actions = buildUnnamed5();
+    o.condition = 'foo';
+    o.description = 'foo';
+    o.name = 'foo';
+    o.path = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy < 3) {
+    checkUnnamed5(o.actions!);
+    unittest.expect(
+      o.condition!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicy--;
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+    buildGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment <
+      3) {
+    o.error = buildGoogleRpcStatus();
+    o.firewallPolicy = buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy();
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment(
+    api.GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment <
+      3) {
+    checkGoogleRpcStatus(o.error!);
+    checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(o.firewallPolicy!);
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment--;
 }
 
 core.int buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment =
@@ -501,12 +780,12 @@ void checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrum
   buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -525,7 +804,7 @@ api.GoogleCloudRecaptchaenterpriseV1IOSKeySettings
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
     o.allowAllBundleIds = true;
-    o.allowedBundleIds = buildUnnamed4();
+    o.allowedBundleIds = buildUnnamed6();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
   return o;
@@ -536,17 +815,17 @@ void checkGoogleCloudRecaptchaenterpriseV1IOSKeySettings(
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
     unittest.expect(o.allowAllBundleIds!, unittest.isTrue);
-    checkUnnamed4(o.allowedBundleIds!);
+    checkUnnamed6(o.allowedBundleIds!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
+core.Map<core.String, core.String> buildUnnamed7() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -569,7 +848,7 @@ api.GoogleCloudRecaptchaenterpriseV1Key
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.iosSettings = buildGoogleCloudRecaptchaenterpriseV1IOSKeySettings();
-    o.labels = buildUnnamed5();
+    o.labels = buildUnnamed7();
     o.name = 'foo';
     o.testingOptions = buildGoogleCloudRecaptchaenterpriseV1TestingOptions();
     o.wafSettings = buildGoogleCloudRecaptchaenterpriseV1WafSettings();
@@ -593,7 +872,7 @@ void checkGoogleCloudRecaptchaenterpriseV1Key(
       unittest.equals('foo'),
     );
     checkGoogleCloudRecaptchaenterpriseV1IOSKeySettings(o.iosSettings!);
-    checkUnnamed5(o.labels!);
+    checkUnnamed7(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -605,12 +884,55 @@ void checkGoogleCloudRecaptchaenterpriseV1Key(
   buildCounterGoogleCloudRecaptchaenterpriseV1Key--;
 }
 
-core.List<api.GoogleCloudRecaptchaenterpriseV1Key> buildUnnamed6() => [
+core.List<api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy> buildUnnamed8() =>
+    [
+      buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy(),
+      buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy(),
+    ];
+
+void checkUnnamed8(
+    core.List<api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(o[0]);
+  checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(o[1]);
+}
+
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+    buildGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse();
+  buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse <
+      3) {
+    o.firewallPolicies = buildUnnamed8();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse(
+    api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse <
+      3) {
+    checkUnnamed8(o.firewallPolicies!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse--;
+}
+
+core.List<api.GoogleCloudRecaptchaenterpriseV1Key> buildUnnamed9() => [
       buildGoogleCloudRecaptchaenterpriseV1Key(),
       buildGoogleCloudRecaptchaenterpriseV1Key(),
     ];
 
-void checkUnnamed6(core.List<api.GoogleCloudRecaptchaenterpriseV1Key> o) {
+void checkUnnamed9(core.List<api.GoogleCloudRecaptchaenterpriseV1Key> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1Key(o[0]);
   checkGoogleCloudRecaptchaenterpriseV1Key(o[1]);
@@ -622,7 +944,7 @@ api.GoogleCloudRecaptchaenterpriseV1ListKeysResponse
   final o = api.GoogleCloudRecaptchaenterpriseV1ListKeysResponse();
   buildCounterGoogleCloudRecaptchaenterpriseV1ListKeysResponse++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ListKeysResponse < 3) {
-    o.keys = buildUnnamed6();
+    o.keys = buildUnnamed9();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ListKeysResponse--;
@@ -633,7 +955,7 @@ void checkGoogleCloudRecaptchaenterpriseV1ListKeysResponse(
     api.GoogleCloudRecaptchaenterpriseV1ListKeysResponse o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1ListKeysResponse++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ListKeysResponse < 3) {
-    checkUnnamed6(o.keys!);
+    checkUnnamed9(o.keys!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -643,12 +965,12 @@ void checkGoogleCloudRecaptchaenterpriseV1ListKeysResponse(
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>
-    buildUnnamed7() => [
+    buildUnnamed10() => [
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(),
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(),
         ];
 
-void checkUnnamed7(
+void checkUnnamed10(
     core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -667,7 +989,7 @@ api.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.relatedAccountGroupMemberships = buildUnnamed7();
+    o.relatedAccountGroupMemberships = buildUnnamed10();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse--;
   return o;
@@ -683,18 +1005,18 @@ void checkGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResp
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.relatedAccountGroupMemberships!);
+    checkUnnamed10(o.relatedAccountGroupMemberships!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse--;
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>
-    buildUnnamed8() => [
+    buildUnnamed11() => [
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroup(),
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroup(),
         ];
 
-void checkUnnamed8(
+void checkUnnamed11(
     core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1RelatedAccountGroup(o[0]);
@@ -712,7 +1034,7 @@ api.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.relatedAccountGroups = buildUnnamed8();
+    o.relatedAccountGroups = buildUnnamed11();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse--;
   return o;
@@ -727,31 +1049,31 @@ void checkGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.relatedAccountGroups!);
+    checkUnnamed11(o.relatedAccountGroups!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse--;
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>
-    buildUnnamed9() => [
+    buildUnnamed12() => [
           buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(),
           buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(),
         ];
 
-void checkUnnamed9(
+void checkUnnamed12(
     core.List<api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(o[0]);
   checkGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(o[1]);
 }
 
-core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics> buildUnnamed10() =>
+core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics> buildUnnamed13() =>
     [
       buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics(),
       buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics(),
     ];
 
-void checkUnnamed10(
+void checkUnnamed13(
     core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1ScoreMetrics(o[0]);
@@ -764,9 +1086,9 @@ api.GoogleCloudRecaptchaenterpriseV1Metrics
   final o = api.GoogleCloudRecaptchaenterpriseV1Metrics();
   buildCounterGoogleCloudRecaptchaenterpriseV1Metrics++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1Metrics < 3) {
-    o.challengeMetrics = buildUnnamed9();
+    o.challengeMetrics = buildUnnamed12();
     o.name = 'foo';
-    o.scoreMetrics = buildUnnamed10();
+    o.scoreMetrics = buildUnnamed13();
     o.startTime = 'foo';
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1Metrics--;
@@ -777,12 +1099,12 @@ void checkGoogleCloudRecaptchaenterpriseV1Metrics(
     api.GoogleCloudRecaptchaenterpriseV1Metrics o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1Metrics++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1Metrics < 3) {
-    checkUnnamed9(o.challengeMetrics!);
+    checkUnnamed12(o.challengeMetrics!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.scoreMetrics!);
+    checkUnnamed13(o.scoreMetrics!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -812,12 +1134,12 @@ void checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(
   buildCounterGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest--;
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -839,7 +1161,7 @@ api.GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
   buildCounterGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification <
       3) {
-    o.encryptedLeakMatchPrefixes = buildUnnamed11();
+    o.encryptedLeakMatchPrefixes = buildUnnamed14();
     o.encryptedUserCredentialsHash = 'foo';
     o.lookupHashPrefix = 'foo';
     o.reencryptedUserCredentialsHash = 'foo';
@@ -853,7 +1175,7 @@ void checkGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification(
   buildCounterGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification <
       3) {
-    checkUnnamed11(o.encryptedLeakMatchPrefixes!);
+    checkUnnamed14(o.encryptedLeakMatchPrefixes!);
     unittest.expect(
       o.encryptedUserCredentialsHash!,
       unittest.equals('foo'),
@@ -956,12 +1278,12 @@ void checkGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse(
   buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse--;
 }
 
-core.List<core.String> buildUnnamed12() => [
+core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -979,7 +1301,7 @@ api.GoogleCloudRecaptchaenterpriseV1RiskAnalysis
   final o = api.GoogleCloudRecaptchaenterpriseV1RiskAnalysis();
   buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis < 3) {
-    o.reasons = buildUnnamed12();
+    o.reasons = buildUnnamed15();
     o.score = 42.0;
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis--;
@@ -990,7 +1312,7 @@ void checkGoogleCloudRecaptchaenterpriseV1RiskAnalysis(
     api.GoogleCloudRecaptchaenterpriseV1RiskAnalysis o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis < 3) {
-    checkUnnamed12(o.reasons!);
+    checkUnnamed15(o.reasons!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -999,12 +1321,12 @@ void checkGoogleCloudRecaptchaenterpriseV1RiskAnalysis(
   buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis--;
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {
+core.Map<core.String, core.String> buildUnnamed16() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed13(core.Map<core.String, core.String> o) {
+void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1022,7 +1344,7 @@ api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution
   final o = api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution();
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution < 3) {
-    o.scoreBuckets = buildUnnamed13();
+    o.scoreBuckets = buildUnnamed16();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution--;
   return o;
@@ -1032,18 +1354,18 @@ void checkGoogleCloudRecaptchaenterpriseV1ScoreDistribution(
     api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution < 3) {
-    checkUnnamed13(o.scoreBuckets!);
+    checkUnnamed16(o.scoreBuckets!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreDistribution--;
 }
 
 core.Map<core.String, api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution>
-    buildUnnamed14() => {
+    buildUnnamed17() => {
           'x': buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution(),
           'y': buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution(),
         };
 
-void checkUnnamed14(
+void checkUnnamed17(
     core.Map<core.String, api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1057,7 +1379,7 @@ api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics
   final o = api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics();
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics < 3) {
-    o.actionMetrics = buildUnnamed14();
+    o.actionMetrics = buildUnnamed17();
     o.overallMetrics = buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics--;
@@ -1068,7 +1390,7 @@ void checkGoogleCloudRecaptchaenterpriseV1ScoreMetrics(
     api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics < 3) {
-    checkUnnamed14(o.actionMetrics!);
+    checkUnnamed17(o.actionMetrics!);
     checkGoogleCloudRecaptchaenterpriseV1ScoreDistribution(o.overallMetrics!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1ScoreMetrics--;
@@ -1115,12 +1437,12 @@ void checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRe
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>
-    buildUnnamed15() => [
+    buildUnnamed18() => [
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(),
           buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(),
         ];
 
-void checkUnnamed15(
+void checkUnnamed18(
     core.List<api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1139,7 +1461,7 @@ api.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
   if (buildCounterGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.relatedAccountGroupMemberships = buildUnnamed15();
+    o.relatedAccountGroupMemberships = buildUnnamed18();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse--;
   return o;
@@ -1155,7 +1477,7 @@ void checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRe
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.relatedAccountGroupMemberships!);
+    checkUnnamed18(o.relatedAccountGroupMemberships!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse--;
 }
@@ -1241,12 +1563,12 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1TransactionDataItem>
-    buildUnnamed16() => [
+    buildUnnamed19() => [
           buildGoogleCloudRecaptchaenterpriseV1TransactionDataItem(),
           buildGoogleCloudRecaptchaenterpriseV1TransactionDataItem(),
         ];
 
-void checkUnnamed16(
+void checkUnnamed19(
     core.List<api.GoogleCloudRecaptchaenterpriseV1TransactionDataItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1TransactionDataItem(o[0]);
@@ -1254,12 +1576,12 @@ void checkUnnamed16(
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1TransactionDataUser>
-    buildUnnamed17() => [
+    buildUnnamed20() => [
           buildGoogleCloudRecaptchaenterpriseV1TransactionDataUser(),
           buildGoogleCloudRecaptchaenterpriseV1TransactionDataUser(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed20(
     core.List<api.GoogleCloudRecaptchaenterpriseV1TransactionDataUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecaptchaenterpriseV1TransactionDataUser(o[0]);
@@ -1279,8 +1601,8 @@ api.GoogleCloudRecaptchaenterpriseV1TransactionData
     o.currencyCode = 'foo';
     o.gatewayInfo =
         buildGoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo();
-    o.items = buildUnnamed16();
-    o.merchants = buildUnnamed17();
+    o.items = buildUnnamed19();
+    o.merchants = buildUnnamed20();
     o.paymentMethod = 'foo';
     o.shippingAddress =
         buildGoogleCloudRecaptchaenterpriseV1TransactionDataAddress();
@@ -1313,8 +1635,8 @@ void checkGoogleCloudRecaptchaenterpriseV1TransactionData(
     );
     checkGoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo(
         o.gatewayInfo!);
-    checkUnnamed16(o.items!);
-    checkUnnamed17(o.merchants!);
+    checkUnnamed19(o.items!);
+    checkUnnamed20(o.merchants!);
     unittest.expect(
       o.paymentMethod!,
       unittest.equals('foo'),
@@ -1338,12 +1660,12 @@ void checkGoogleCloudRecaptchaenterpriseV1TransactionData(
   buildCounterGoogleCloudRecaptchaenterpriseV1TransactionData--;
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1361,7 +1683,7 @@ api.GoogleCloudRecaptchaenterpriseV1TransactionDataAddress
   final o = api.GoogleCloudRecaptchaenterpriseV1TransactionDataAddress();
   buildCounterGoogleCloudRecaptchaenterpriseV1TransactionDataAddress++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TransactionDataAddress < 3) {
-    o.address = buildUnnamed18();
+    o.address = buildUnnamed21();
     o.administrativeArea = 'foo';
     o.locality = 'foo';
     o.postalCode = 'foo';
@@ -1376,7 +1698,7 @@ void checkGoogleCloudRecaptchaenterpriseV1TransactionDataAddress(
     api.GoogleCloudRecaptchaenterpriseV1TransactionDataAddress o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1TransactionDataAddress++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TransactionDataAddress < 3) {
-    checkUnnamed18(o.address!);
+    checkUnnamed21(o.address!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -1593,12 +1915,12 @@ void checkGoogleCloudRecaptchaenterpriseV1WafSettings(
   buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1618,7 +1940,7 @@ api.GoogleCloudRecaptchaenterpriseV1WebKeySettings
   if (buildCounterGoogleCloudRecaptchaenterpriseV1WebKeySettings < 3) {
     o.allowAllDomains = true;
     o.allowAmpTraffic = true;
-    o.allowedDomains = buildUnnamed19();
+    o.allowedDomains = buildUnnamed22();
     o.challengeSecurityPreference = 'foo';
     o.integrationType = 'foo';
   }
@@ -1632,7 +1954,7 @@ void checkGoogleCloudRecaptchaenterpriseV1WebKeySettings(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1WebKeySettings < 3) {
     unittest.expect(o.allowAllDomains!, unittest.isTrue);
     unittest.expect(o.allowAmpTraffic!, unittest.isTrue);
-    checkUnnamed19(o.allowedDomains!);
+    checkUnnamed22(o.allowedDomains!);
     unittest.expect(
       o.challengeSecurityPreference!,
       unittest.equals('foo'),
@@ -1658,6 +1980,91 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed23() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed23(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
+      buildUnnamed23(),
+      buildUnnamed23(),
+    ];
+
+void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed23(o[0]);
+  checkUnnamed23(o[1]);
+}
+
+core.int buildCounterGoogleRpcStatus = 0;
+api.GoogleRpcStatus buildGoogleRpcStatus() {
+  final o = api.GoogleRpcStatus();
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
+    o.code = 42;
+    o.details = buildUnnamed24();
+    o.message = 'foo';
+  }
+  buildCounterGoogleRpcStatus--;
+  return o;
+}
+
+void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed24(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleRpcStatus--;
 }
 
 void main() {
@@ -1768,6 +2175,109 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecaptchaenterpriseV1FirewallAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallAction(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallPolicy',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment(od);
+    });
+  });
+
   unittest.group(
       'obj-schema-GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment',
       () {
@@ -1829,6 +2339,20 @@ void main() {
       final od = api.GoogleCloudRecaptchaenterpriseV1Key.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecaptchaenterpriseV1Key(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse(od);
     });
   });
 
@@ -2132,6 +2656,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleRpcStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleRpcStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleRpcStatus(od);
+    });
+  });
+
   unittest.group('resource-ProjectsAssessmentsResource', () {
     unittest.test('method--annotate', () async {
       final mock = HttpServerMock();
@@ -2253,6 +2787,306 @@ void main() {
           await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkGoogleCloudRecaptchaenterpriseV1Assessment(
           response as api.GoogleCloudRecaptchaenterpriseV1Assessment);
+    });
+  });
+
+  unittest.group('resource-ProjectsFirewallpoliciesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.firewallpolicies;
+      final arg_request = buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(
+          response as api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.firewallpolicies;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.firewallpolicies;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(
+          response as api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.firewallpolicies;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse(response
+          as api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.firewallpolicies;
+      final arg_request = buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudRecaptchaenterpriseV1FirewallPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(
+          response as api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy);
     });
   });
 

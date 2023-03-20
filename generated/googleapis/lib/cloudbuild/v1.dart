@@ -4504,6 +4504,16 @@ class BuildApproval {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
+  /// Option to specify how default logs buckets are setup.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED" : Unspecified.
+  /// - "REGIONAL_USER_OWNED_BUCKET" : Bucket is located in user-owned project
+  /// in the same region as the build. The builder service account must have
+  /// access to create and write to GCS buckets in the build project.
+  core.String? defaultLogsBucketBehavior;
+
   /// Requested disk size for the VM that runs the build.
   ///
   /// Note that this is *NOT* "disk free"; some of the space will be used by the
@@ -4612,6 +4622,7 @@ class BuildOptions {
   core.String? workerPool;
 
   BuildOptions({
+    this.defaultLogsBucketBehavior,
     this.diskSizeGb,
     this.dynamicSubstitutions,
     this.env,
@@ -4629,6 +4640,10 @@ class BuildOptions {
 
   BuildOptions.fromJson(core.Map json_)
       : this(
+          defaultLogsBucketBehavior:
+              json_.containsKey('defaultLogsBucketBehavior')
+                  ? json_['defaultLogsBucketBehavior'] as core.String
+                  : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
               ? json_['diskSizeGb'] as core.String
               : null,
@@ -4681,6 +4696,8 @@ class BuildOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultLogsBucketBehavior != null)
+          'defaultLogsBucketBehavior': defaultLogsBucketBehavior!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (dynamicSubstitutions != null)
           'dynamicSubstitutions': dynamicSubstitutions!,

@@ -1338,10 +1338,13 @@ class CapacityCommitment {
   /// Output only.
   core.String? commitmentStartTime;
 
-  /// Do not use.
+  /// Edition of the capacity commitment.
   /// Possible string values are:
-  /// - "EDITION_UNSPECIFIED" : Do not use.
-  /// - "ENTERPRISE" : Do not use.
+  /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
+  /// ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
   core.String? edition;
 
   /// For FAILED commitment plan, provides the reason of failure.
@@ -1375,6 +1378,8 @@ class CapacityCommitment {
   /// - "FLEX" : Flex commitments have committed period of 1 minute after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
+  /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
   /// becoming ACTIVE. After that, they are converted to a new commitment based
   /// on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex
@@ -1382,10 +1387,22 @@ class CapacityCommitment {
   /// - "MONTHLY" : Monthly commitments have a committed period of 30 days after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "MONTHLY_FLAT_RATE" : Same as MONTHLY, should only be used if flat-rate
+  /// commitments are still available.
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  /// - "NONE" : Do not use.
+  /// - "ANNUAL_FLAT_RATE" : Same as ANNUAL, should only be used if flat-rate
+  /// commitments are still available.
+  /// - "THREE_YEAR" : 3-year commitments have a committed period of 1095(3 *
+  /// 365) days after becoming ACTIVE. After that they are converted to a new
+  /// commitment based on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? plan;
 
   /// The plan this capacity commitment is converted to after
@@ -1399,6 +1416,8 @@ class CapacityCommitment {
   /// - "FLEX" : Flex commitments have committed period of 1 minute after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
+  /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
   /// becoming ACTIVE. After that, they are converted to a new commitment based
   /// on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex
@@ -1406,10 +1425,22 @@ class CapacityCommitment {
   /// - "MONTHLY" : Monthly commitments have a committed period of 30 days after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "MONTHLY_FLAT_RATE" : Same as MONTHLY, should only be used if flat-rate
+  /// commitments are still available.
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  /// - "NONE" : Do not use.
+  /// - "ANNUAL_FLAT_RATE" : Same as ANNUAL, should only be used if flat-rate
+  /// commitments are still available.
+  /// - "THREE_YEAR" : 3-year commitments have a committed period of 1095(3 *
+  /// 365) days after becoming ACTIVE. After that they are converted to a new
+  /// commitment based on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? renewalPlan;
 
   /// Number of slots in this commitment.
@@ -1630,22 +1661,34 @@ class MergeCapacityCommitmentsRequest {
 /// "bigquery.reservationAssignments.delete" permission are required on the
 /// related assignee.
 class MoveAssignmentRequest {
+  /// The optional assignment ID.
+  ///
+  /// A new assignment name is generated if this field is empty. This field can
+  /// contain only lowercase alphanumeric characters or dashes. Max length is 64
+  /// characters.
+  core.String? assignmentId;
+
   /// The new reservation ID, e.g.:
   /// `projects/myotherproject/locations/US/reservations/team2-prod`
   core.String? destinationId;
 
   MoveAssignmentRequest({
+    this.assignmentId,
     this.destinationId,
   });
 
   MoveAssignmentRequest.fromJson(core.Map json_)
       : this(
+          assignmentId: json_.containsKey('assignmentId')
+              ? json_['assignmentId'] as core.String
+              : null,
           destinationId: json_.containsKey('destinationId')
               ? json_['destinationId'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assignmentId != null) 'assignmentId': assignmentId!,
         if (destinationId != null) 'destinationId': destinationId!,
       };
 }
@@ -1672,10 +1715,13 @@ class Reservation {
   /// Output only.
   core.String? creationTime;
 
-  /// Do not use.
+  /// Edition of the reservation.
   /// Possible string values are:
-  /// - "EDITION_UNSPECIFIED" : Do not use.
-  /// - "ENTERPRISE" : Do not use.
+  /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
+  /// ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
   core.String? edition;
 
   /// If false, any query or pipeline job using this reservation will use idle

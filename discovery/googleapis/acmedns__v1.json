@@ -144,7 +144,7 @@
             }
         }
     },
-    "revision": "20230304",
+    "revision": "20230322",
     "rootUrl": "https://acmedns.googleapis.com/",
     "schemas": {
         "AcmeChallengeSet": {

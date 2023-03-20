@@ -2660,7 +2660,9 @@ class Creative {
   ///
   /// The URL to fetch an interest group ad used in \[TURTLEDOVE on-device
   /// auction\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups").
-  /// This should be unique among all creatives for a given `accountId`.
+  /// This should be unique among all creatives for a given `accountId`. This
+  /// URL should be the same as the URL returned by
+  /// \[generateBid()\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#32-on-device-bidding).
   core.String? renderUrl;
 
   /// All restricted categories for the ads that may be shown from this
@@ -4111,6 +4113,13 @@ class PolicyTopicEntry {
   /// URL of the help center article describing this policy topic.
   core.String? helpCenterUrl;
 
+  /// Whether or not the policy topic is missing a certificate.
+  ///
+  /// Some policy topics require a certificate to unblock serving in some
+  /// regions. For more information about creative certification, refer to:
+  /// https://support.google.com/authorizedbuyers/answer/7450776
+  core.bool? missingCertificate;
+
   /// Policy topic this entry refers to.
   ///
   /// For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or
@@ -4122,6 +4131,7 @@ class PolicyTopicEntry {
   PolicyTopicEntry({
     this.evidences,
     this.helpCenterUrl,
+    this.missingCertificate,
     this.policyTopic,
   });
 
@@ -4136,6 +4146,9 @@ class PolicyTopicEntry {
           helpCenterUrl: json_.containsKey('helpCenterUrl')
               ? json_['helpCenterUrl'] as core.String
               : null,
+          missingCertificate: json_.containsKey('missingCertificate')
+              ? json_['missingCertificate'] as core.bool
+              : null,
           policyTopic: json_.containsKey('policyTopic')
               ? json_['policyTopic'] as core.String
               : null,
@@ -4144,6 +4157,8 @@ class PolicyTopicEntry {
   core.Map<core.String, core.dynamic> toJson() => {
         if (evidences != null) 'evidences': evidences!,
         if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
+        if (missingCertificate != null)
+          'missingCertificate': missingCertificate!,
         if (policyTopic != null) 'policyTopic': policyTopic!,
       };
 }

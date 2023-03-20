@@ -17201,6 +17201,8 @@ class GuaranteedOrder {
   /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
   /// - "EXCHANGE_APPLOVIN" : AppLovin.
   /// - "EXCHANGE_CONNATIX" : Connatix.
+  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
+  /// - "EXCHANGE_HIVESTACK" : Hivestack.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -17918,6 +17920,8 @@ class InventorySource {
   /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
   /// - "EXCHANGE_APPLOVIN" : AppLovin.
   /// - "EXCHANGE_CONNATIX" : Connatix.
+  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
+  /// - "EXCHANGE_HIVESTACK" : Hivestack.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -18671,7 +18675,11 @@ class LineItem {
   /// the line item.
   ///
   /// This config is only applicable when eligible audience list targeting is
-  /// assigned to the line item.
+  /// assigned to the line item. Beginning **March 25, 2023**, these settings
+  /// may represent the \[optimized targeting
+  /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
+  /// targeting expansion. This feature will be rolled out to all partners by
+  /// mid-April 2023.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -21412,7 +21420,11 @@ typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 /// Settings that control the targeting expansion of the line item.
 ///
 /// Targeting expansion allows the line item to reach a larger audience based on
-/// the original audience list and the targeting expansion level.
+/// the original audience list and the targeting expansion level. Beginning
+/// **March 25, 2023**, these settings may represent the \[optimized targeting
+/// feature\](//support.google.com/displayvideo/answer/12060859) in place of
+/// targeting expansion. This feature will be rolled out to all partners by
+/// mid-April 2023.
 typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in

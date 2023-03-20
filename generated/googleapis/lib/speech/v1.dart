@@ -106,13 +106,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1865,8 +1858,8 @@ class RecognizeResponse {
 /// Config to enable speaker diarization.
 class SpeakerDiarizationConfig {
   /// If 'true', enables speaker detection for each recognized word in the top
-  /// alternative of the recognition result using a speaker_tag provided in the
-  /// WordInfo.
+  /// alternative of the recognition result using a speaker_label provided in
+  /// the WordInfo.
   core.bool? enableSpeakerDiarization;
 
   /// Maximum number of speakers in the conversation.
@@ -2240,12 +2233,23 @@ class WordInfo {
   /// time offset can vary.
   core.String? endTime;
 
+  /// A label value assigned for every unique speaker within the audio.
+  ///
+  /// This field specifies which speaker was detected to have spoken this word.
+  /// For some models, like medical_conversation this can be actual speaker
+  /// role, for example "patient" or "provider", but generally this would be a
+  /// number identifying a speaker. This field is only set if
+  /// enable_speaker_diarization = 'true' and only for the top alternative.
+  ///
+  /// Output only.
+  core.String? speakerLabel;
+
   /// A distinct integer value is assigned for every speaker within the audio.
   ///
   /// This field specifies which one of those speakers was detected to have
   /// spoken this word. Value ranges from '1' to diarization_speaker_count.
-  /// speaker_tag is set if enable_speaker_diarization = 'true' and only in the
-  /// top alternative.
+  /// speaker_tag is set if enable_speaker_diarization = 'true' and only for the
+  /// top alternative. Note: Use speaker_label instead.
   ///
   /// Output only.
   core.int? speakerTag;
@@ -2264,6 +2268,7 @@ class WordInfo {
   WordInfo({
     this.confidence,
     this.endTime,
+    this.speakerLabel,
     this.speakerTag,
     this.startTime,
     this.word,
@@ -2277,6 +2282,9 @@ class WordInfo {
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
+          speakerLabel: json_.containsKey('speakerLabel')
+              ? json_['speakerLabel'] as core.String
+              : null,
           speakerTag: json_.containsKey('speakerTag')
               ? json_['speakerTag'] as core.int
               : null,
@@ -2289,6 +2297,7 @@ class WordInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
+        if (speakerLabel != null) 'speakerLabel': speakerLabel!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
         if (startTime != null) 'startTime': startTime!,
         if (word != null) 'word': word!,

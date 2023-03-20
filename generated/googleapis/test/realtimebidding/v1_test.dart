@@ -1895,6 +1895,7 @@ api.PolicyTopicEntry buildPolicyTopicEntry() {
   if (buildCounterPolicyTopicEntry < 3) {
     o.evidences = buildUnnamed40();
     o.helpCenterUrl = 'foo';
+    o.missingCertificate = true;
     o.policyTopic = 'foo';
   }
   buildCounterPolicyTopicEntry--;
@@ -1909,6 +1910,7 @@ void checkPolicyTopicEntry(api.PolicyTopicEntry o) {
       o.helpCenterUrl!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.missingCertificate!, unittest.isTrue);
     unittest.expect(
       o.policyTopic!,
       unittest.equals('foo'),

@@ -375,6 +375,10 @@ class LabelsResource {
   ///
   /// Request parameters:
   ///
+  /// [customer] - The customer to scope this list request to. For example:
+  /// "customers/abcd1234". If unset, will return all labels within the current
+  /// customer.
+  ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
   /// field labels. When not specified, values in the default configured
   /// language are used.
@@ -427,6 +431,7 @@ class LabelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsDriveLabelsV2ListLabelsResponse> list({
+    core.String? customer,
     core.String? languageCode,
     core.String? minimumRole,
     core.int? pageSize,
@@ -437,6 +442,7 @@ class LabelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customer != null) 'customer': [customer],
       if (languageCode != null) 'languageCode': [languageCode],
       if (minimumRole != null) 'minimumRole': [minimumRole],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1347,6 +1353,10 @@ class UsersResource {
   /// "users/me/capabilities" is supported.
   /// Value must have pattern `^users/\[^/\]+/capabilities$`.
   ///
+  /// [customer] - The customer to scope this request to. For example:
+  /// "customers/abcd1234". If unset, will return settings within the current
+  /// customer.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1359,9 +1369,11 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsDriveLabelsV2UserCapabilities> getCapabilities(
     core.String name, {
+    core.String? customer,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
     };
 

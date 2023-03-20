@@ -131,6 +131,8 @@ class ProjectsLocationsCatalogsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
+  /// [banner] - The banner context for completion suggestions.
+  ///
   /// [dataset] - Determines which dataset to use for fetching completion.
   /// "user-data" will use the imported dataset through
   /// CompletionService.ImportCompletionData. "cloud-retail" will use the
@@ -183,6 +185,7 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2CompleteQueryResponse> completeQuery(
     core.String catalog, {
+    core.String? banner,
     core.String? dataset,
     core.String? deviceType,
     core.List<core.String>? languageCodes,
@@ -192,6 +195,7 @@ class ProjectsLocationsCatalogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (banner != null) 'banner': [banner],
       if (dataset != null) 'dataset': [dataset],
       if (deviceType != null) 'deviceType': [deviceType],
       if (languageCodes != null) 'languageCodes': languageCodes,
@@ -824,13 +828,17 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   ProjectsLocationsCatalogsBranchesProductsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Incrementally adds place IDs to Product.fulfillment_info.place_ids.
+  /// It is recommended to use the ProductService.AddLocalInventories method
+  /// instead of ProductService.AddFulfillmentPlaces.
   ///
-  /// This process is asynchronous and does not require the Product to exist
-  /// before updating fulfillment information. If the request is valid, the
-  /// update will be enqueued and processed downstream. As a consequence, when a
-  /// response is returned, the added place IDs are not immediately manifested
-  /// in the Product queried by ProductService.GetProduct or
+  /// ProductService.AddLocalInventories achieves the same results but provides
+  /// more fine-grained control over ingesting local inventory data.
+  /// Incrementally adds place IDs to Product.fulfillment_info.place_ids. This
+  /// process is asynchronous and does not require the Product to exist before
+  /// updating fulfillment information. If the request is valid, the update will
+  /// be enqueued and processed downstream. As a consequence, when a response is
+  /// returned, the added place IDs are not immediately manifested in the
+  /// Product queried by ProductService.GetProduct or
   /// ProductService.ListProducts. The returned Operations will be obsolete
   /// after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
   /// conflicting updates are issued, the Operations associated with the stale
@@ -1268,8 +1276,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids.
+  /// It is recommended to use the ProductService.RemoveLocalInventories method
+  /// instead of ProductService.RemoveFulfillmentPlaces.
   ///
+  /// ProductService.RemoveLocalInventories achieves the same results but
+  /// provides more fine-grained control over ingesting local inventory data.
+  /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids.
   /// This process is asynchronous and does not require the Product to exist
   /// before updating fulfillment information. If the request is valid, the
   /// update will be enqueued and processed downstream. As a consequence, when a
@@ -1845,6 +1857,44 @@ class ProjectsLocationsCatalogsModelsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets a model.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Model to get. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2Model].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2Model> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2Model.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all the models linked to this event store.
   ///
   /// Request parameters:
@@ -2126,13 +2176,6 @@ class ProjectsLocationsCatalogsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3061,13 +3104,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3163,13 +3199,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5586,7 +5615,7 @@ class GoogleCloudRetailV2PredictRequest {
   /// choices. If `filterSyntaxV2` is set to true under the `params` field, then
   /// attribute-based expressions are expected instead of the above described
   /// tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
-  /// (categories: ANY("Phones")) * (brands: ANY("Pixel")) AND (colors:
+  /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors:
   /// ANY("Red") OR categories: ANY("Phones")) For more information, see
   /// [Filter recommendations](https://cloud.google.com/retail/docs/filter-recs).
   core.String? filter;
@@ -6144,9 +6173,9 @@ class GoogleCloudRetailV2Product {
 
   /// A list of local inventories specific to different places.
   ///
-  /// This is only available for users who have Retail Search enabled, and it
-  /// can be managed by ProductService.AddLocalInventories and
-  /// ProductService.RemoveLocalInventories APIs.
+  /// This field can be managed by ProductService.AddLocalInventories and
+  /// ProductService.RemoveLocalInventories APIs if fine-grained, high-volume
+  /// updates are necessary.
   ///
   /// Output only.
   core.List<GoogleCloudRetailV2LocalInventory>? localInventories;
@@ -7558,6 +7587,12 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
+  /// Represents the banner in request, for projects that combine banners.
+  ///
+  /// For example: a retailer can sell products under different banners like
+  /// retailer-main, retailer-baby, retailer-meds, etc. under one project.
+  core.String? banner;
+
   /// Boost specification to boost certain products.
   ///
   /// See more details at this
@@ -7759,6 +7794,7 @@ class GoogleCloudRetailV2SearchRequest {
   core.String? visitorId;
 
   GoogleCloudRetailV2SearchRequest({
+    this.banner,
     this.boostSpec,
     this.branch,
     this.canonicalFilter,
@@ -7783,6 +7819,9 @@ class GoogleCloudRetailV2SearchRequest {
 
   GoogleCloudRetailV2SearchRequest.fromJson(core.Map json_)
       : this(
+          banner: json_.containsKey('banner')
+              ? json_['banner'] as core.String
+              : null,
           boostSpec: json_.containsKey('boostSpec')
               ? GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(
                   json_['boostSpec'] as core.Map<core.String, core.dynamic>)
@@ -7867,6 +7906,7 @@ class GoogleCloudRetailV2SearchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (banner != null) 'banner': banner!,
         if (boostSpec != null) 'boostSpec': boostSpec!,
         if (branch != null) 'branch': branch!,
         if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
@@ -8117,10 +8157,15 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// textual fields. Maximum is 10.
   core.List<core.String>? contains;
 
-  /// Set only if values should be bucketized into intervals.
+  /// For all numerical facet keys that appear in the list of products from the
+  /// catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from
+  /// their distribution weekly.
   ///
-  /// Must be set for facets with numerical values. Must not be set for facet
-  /// with text values. Maximum number of intervals is 30.
+  /// If the model assigns a high score to a numerical facet key and its
+  /// intervals are not specified in the search request, these percentiles will
+  /// become the bounds for its intervals and will be returned in the response.
+  /// If the facet key intervals are specified in the request, then the
+  /// specified intervals will be returned instead.
   core.List<GoogleCloudRetailV2Interval>? intervals;
 
   /// Supported textual and numerical facet keys in Product object, over which
@@ -9220,6 +9265,13 @@ class GoogleCloudRetailV2UserEvent {
   /// PredictResponse.attribution_token to this field.
   core.String? attributionToken;
 
+  /// Represents the banner of the user event, for projects that combine
+  /// banners.
+  ///
+  /// For example: retailer can have events from multiple banners like
+  /// retailer-main, retailer-baby, retailer-meds, etc. under one project.
+  core.String? banner;
+
   /// The ID or name of the associated shopping cart.
   ///
   /// This ID is used to associate multiple items added or present in the cart
@@ -9379,6 +9431,7 @@ class GoogleCloudRetailV2UserEvent {
   GoogleCloudRetailV2UserEvent({
     this.attributes,
     this.attributionToken,
+    this.banner,
     this.cartId,
     this.completionDetail,
     this.eventTime,
@@ -9413,6 +9466,9 @@ class GoogleCloudRetailV2UserEvent {
               : null,
           attributionToken: json_.containsKey('attributionToken')
               ? json_['attributionToken'] as core.String
+              : null,
+          banner: json_.containsKey('banner')
+              ? json_['banner'] as core.String
               : null,
           cartId: json_.containsKey('cartId')
               ? json_['cartId'] as core.String
@@ -9482,6 +9538,7 @@ class GoogleCloudRetailV2UserEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
+        if (banner != null) 'banner': banner!,
         if (cartId != null) 'cartId': cartId!,
         if (completionDetail != null) 'completionDetail': completionDetail!,
         if (eventTime != null) 'eventTime': eventTime!,

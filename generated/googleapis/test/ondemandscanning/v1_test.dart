@@ -1539,6 +1539,33 @@ void checkInTotoStatement(api.InTotoStatement o) {
   buildCounterInTotoStatement--;
 }
 
+core.int buildCounterJustification = 0;
+api.Justification buildJustification() {
+  final o = api.Justification();
+  buildCounterJustification++;
+  if (buildCounterJustification < 3) {
+    o.details = 'foo';
+    o.justificationType = 'foo';
+  }
+  buildCounterJustification--;
+  return o;
+}
+
+void checkJustification(api.Justification o) {
+  buildCounterJustification++;
+  if (buildCounterJustification < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.justificationType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterJustification--;
+}
+
 core.int buildCounterJwt = 0;
 api.Jwt buildJwt() {
   final o = api.Jwt();
@@ -2115,6 +2142,7 @@ api.PackageData buildPackageData() {
   final o = api.PackageData();
   buildCounterPackageData++;
   if (buildCounterPackageData < 3) {
+    o.architecture = 'foo';
     o.cpeUri = 'foo';
     o.dependencyChain = buildUnnamed29();
     o.fileLocation = buildUnnamed30();
@@ -2135,6 +2163,10 @@ api.PackageData buildPackageData() {
 void checkPackageData(api.PackageData o) {
   buildCounterPackageData++;
   if (buildCounterPackageData < 3) {
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cpeUri!,
       unittest.equals('foo'),
@@ -2495,6 +2527,35 @@ void checkRelatedUrl(api.RelatedUrl o) {
     );
   }
   buildCounterRelatedUrl--;
+}
+
+core.int buildCounterRemediation = 0;
+api.Remediation buildRemediation() {
+  final o = api.Remediation();
+  buildCounterRemediation++;
+  if (buildCounterRemediation < 3) {
+    o.details = 'foo';
+    o.remediationType = 'foo';
+    o.remediationUri = buildRelatedUrl();
+  }
+  buildCounterRemediation--;
+  return o;
+}
+
+void checkRemediation(api.Remediation o) {
+  buildCounterRemediation++;
+  if (buildCounterRemediation < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.remediationType!,
+      unittest.equals('foo'),
+    );
+    checkRelatedUrl(o.remediationUri!);
+  }
+  buildCounterRemediation--;
 }
 
 core.int buildCounterRepoId = 0;
@@ -3221,15 +3282,21 @@ void checkVersion(api.Version o) {
   buildCounterVersion--;
 }
 
-core.List<api.PackageIssue> buildUnnamed50() => [
-      buildPackageIssue(),
-      buildPackageIssue(),
+core.List<core.String> buildUnnamed50() => [
+      'foo',
+      'foo',
     ];
 
-void checkUnnamed50(core.List<api.PackageIssue> o) {
+void checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPackageIssue(o[0]);
-  checkPackageIssue(o[1]);
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.RelatedUrl> buildUnnamed51() => [
@@ -3238,6 +3305,79 @@ core.List<api.RelatedUrl> buildUnnamed51() => [
     ];
 
 void checkUnnamed51(core.List<api.RelatedUrl> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRelatedUrl(o[0]);
+  checkRelatedUrl(o[1]);
+}
+
+core.List<api.Remediation> buildUnnamed52() => [
+      buildRemediation(),
+      buildRemediation(),
+    ];
+
+void checkUnnamed52(core.List<api.Remediation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRemediation(o[0]);
+  checkRemediation(o[1]);
+}
+
+core.int buildCounterVexAssessment = 0;
+api.VexAssessment buildVexAssessment() {
+  final o = api.VexAssessment();
+  buildCounterVexAssessment++;
+  if (buildCounterVexAssessment < 3) {
+    o.cve = 'foo';
+    o.impacts = buildUnnamed50();
+    o.justification = buildJustification();
+    o.noteName = 'foo';
+    o.relatedUris = buildUnnamed51();
+    o.remediations = buildUnnamed52();
+    o.state = 'foo';
+  }
+  buildCounterVexAssessment--;
+  return o;
+}
+
+void checkVexAssessment(api.VexAssessment o) {
+  buildCounterVexAssessment++;
+  if (buildCounterVexAssessment < 3) {
+    unittest.expect(
+      o.cve!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed50(o.impacts!);
+    checkJustification(o.justification!);
+    unittest.expect(
+      o.noteName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed51(o.relatedUris!);
+    checkUnnamed52(o.remediations!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVexAssessment--;
+}
+
+core.List<api.PackageIssue> buildUnnamed53() => [
+      buildPackageIssue(),
+      buildPackageIssue(),
+    ];
+
+void checkUnnamed53(core.List<api.PackageIssue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPackageIssue(o[0]);
+  checkPackageIssue(o[1]);
+}
+
+core.List<api.RelatedUrl> buildUnnamed54() => [
+      buildRelatedUrl(),
+      buildRelatedUrl(),
+    ];
+
+void checkUnnamed54(core.List<api.RelatedUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRelatedUrl(o[0]);
   checkRelatedUrl(o[1]);
@@ -3255,11 +3395,12 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
     o.effectiveSeverity = 'foo';
     o.fixAvailable = true;
     o.longDescription = 'foo';
-    o.packageIssue = buildUnnamed50();
-    o.relatedUrls = buildUnnamed51();
+    o.packageIssue = buildUnnamed53();
+    o.relatedUrls = buildUnnamed54();
     o.severity = 'foo';
     o.shortDescription = 'foo';
     o.type = 'foo';
+    o.vexAssessment = buildVexAssessment();
   }
   buildCounterVulnerabilityOccurrence--;
   return o;
@@ -3287,8 +3428,8 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
       o.longDescription!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.packageIssue!);
-    checkUnnamed51(o.relatedUrls!);
+    checkUnnamed53(o.packageIssue!);
+    checkUnnamed54(o.relatedUrls!);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),
@@ -3301,27 +3442,28 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
       o.type!,
       unittest.equals('foo'),
     );
+    checkVexAssessment(o.vexAssessment!);
   }
   buildCounterVulnerabilityOccurrence--;
 }
 
-core.List<api.Category> buildUnnamed52() => [
+core.List<api.Category> buildUnnamed55() => [
       buildCategory(),
       buildCategory(),
     ];
 
-void checkUnnamed52(core.List<api.Category> o) {
+void checkUnnamed55(core.List<api.Category> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategory(o[0]);
   checkCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed53() => [
+core.List<core.String> buildUnnamed56() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3338,10 +3480,10 @@ api.WindowsUpdate buildWindowsUpdate() {
   final o = api.WindowsUpdate();
   buildCounterWindowsUpdate++;
   if (buildCounterWindowsUpdate < 3) {
-    o.categories = buildUnnamed52();
+    o.categories = buildUnnamed55();
     o.description = 'foo';
     o.identity = buildIdentity();
-    o.kbArticleIds = buildUnnamed53();
+    o.kbArticleIds = buildUnnamed56();
     o.lastPublishedTimestamp = 'foo';
     o.supportUrl = 'foo';
     o.title = 'foo';
@@ -3353,13 +3495,13 @@ api.WindowsUpdate buildWindowsUpdate() {
 void checkWindowsUpdate(api.WindowsUpdate o) {
   buildCounterWindowsUpdate++;
   if (buildCounterWindowsUpdate < 3) {
-    checkUnnamed52(o.categories!);
+    checkUnnamed55(o.categories!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
     checkIdentity(o.identity!);
-    checkUnnamed53(o.kbArticleIds!);
+    checkUnnamed56(o.kbArticleIds!);
     unittest.expect(
       o.lastPublishedTimestamp!,
       unittest.equals('foo'),
@@ -3749,6 +3891,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Justification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJustification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Justification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkJustification(od);
+    });
+  });
+
   unittest.group('obj-schema-Jwt', () {
     unittest.test('to-json--from-json', () async {
       final o = buildJwt();
@@ -3938,6 +4090,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Remediation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemediation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Remediation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRemediation(od);
+    });
+  });
+
   unittest.group('obj-schema-RepoId', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRepoId();
@@ -4085,6 +4247,16 @@ void main() {
       final od =
           api.Version.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-VexAssessment', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVexAssessment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VexAssessment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVexAssessment(od);
     });
   });
 

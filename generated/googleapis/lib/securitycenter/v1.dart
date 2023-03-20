@@ -5930,6 +5930,80 @@ class BulkMuteFindingsRequest {
       };
 }
 
+/// The [data profile](https://cloud.google.com/dlp/docs/data-profiles)
+/// associated with the finding.
+class CloudDlpDataProfile {
+  /// Name of the data profile, for example,
+  /// `projects/123/locations/europe/tableProfiles/8383929`.
+  core.String? dataProfile;
+
+  CloudDlpDataProfile({
+    this.dataProfile,
+  });
+
+  CloudDlpDataProfile.fromJson(core.Map json_)
+      : this(
+          dataProfile: json_.containsKey('dataProfile')
+              ? json_['dataProfile'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataProfile != null) 'dataProfile': dataProfile!,
+      };
+}
+
+/// Details about the Cloud Data Loss Prevention (Cloud DLP)
+/// [inspection job](https://cloud.google.com/dlp/docs/concepts-job-triggers)
+/// that produced the finding.
+class CloudDlpInspection {
+  /// Whether Cloud DLP scanned the complete resource or a sampled subset.
+  core.bool? fullScan;
+
+  /// The
+  /// [type of information](https://cloud.google.com/dlp/docs/infotypes-reference)
+  /// found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
+  core.String? infoType;
+
+  /// The number of times Cloud DLP found this infoType within this job and
+  /// resource.
+  core.String? infoTypeCount;
+
+  /// Name of the inspection job, for example,
+  /// `projects/123/locations/europe/dlpJobs/i-8383929`.
+  core.String? inspectJob;
+
+  CloudDlpInspection({
+    this.fullScan,
+    this.infoType,
+    this.infoTypeCount,
+    this.inspectJob,
+  });
+
+  CloudDlpInspection.fromJson(core.Map json_)
+      : this(
+          fullScan: json_.containsKey('fullScan')
+              ? json_['fullScan'] as core.bool
+              : null,
+          infoType: json_.containsKey('infoType')
+              ? json_['infoType'] as core.String
+              : null,
+          infoTypeCount: json_.containsKey('infoTypeCount')
+              ? json_['infoTypeCount'] as core.String
+              : null,
+          inspectJob: json_.containsKey('inspectJob')
+              ? json_['inspectJob'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullScan != null) 'fullScan': fullScan!,
+        if (infoType != null) 'infoType': infoType!,
+        if (infoTypeCount != null) 'infoTypeCount': infoTypeCount!,
+        if (inspectJob != null) 'inspectJob': inspectJob!,
+      };
+}
+
 /// Contains compliance information about a security standard indicating unmet
 /// recommendations.
 class Compliance {
@@ -6669,6 +6743,12 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
+  /// Cloud DLP data profile associated with the finding.
+  CloudDlpDataProfile? cloudDlpDataProfile;
+
+  /// Cloud DLP inspection associated with the finding.
+  CloudDlpInspection? cloudDlpInspection;
+
   /// Contains compliance information for security standards associated to the
   /// finding.
   core.List<Compliance>? compliances;
@@ -6767,6 +6847,12 @@ class Finding {
   /// See: https://attack.mitre.org
   MitreAttack? mitreAttack;
 
+  /// Unique identifier of the module which generated the finding.
+  ///
+  /// Example:
+  /// folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885
+  core.String? moduleName;
+
   /// Indicates the mute state of a finding (either muted, unmuted or
   /// undefined).
   ///
@@ -6802,6 +6888,10 @@ class Finding {
 
   /// Next steps associate to the finding.
   core.String? nextSteps;
+
+  /// Contains information about the org policy constraints associated with the
+  /// finding.
+  core.List<OrgPolicyConstraint>? orgPolicyConstraints;
 
   /// The relative resource name of the source the finding belongs to.
   ///
@@ -6910,6 +7000,8 @@ class Finding {
     this.access,
     this.canonicalName,
     this.category,
+    this.cloudDlpDataProfile,
+    this.cloudDlpInspection,
     this.compliances,
     this.connections,
     this.contacts,
@@ -6928,11 +7020,13 @@ class Finding {
     this.kernelRootkit,
     this.kubernetes,
     this.mitreAttack,
+    this.moduleName,
     this.mute,
     this.muteInitiator,
     this.muteUpdateTime,
     this.name,
     this.nextSteps,
+    this.orgPolicyConstraints,
     this.parent,
     this.parentDisplayName,
     this.processes,
@@ -6955,6 +7049,14 @@ class Finding {
               : null,
           category: json_.containsKey('category')
               ? json_['category'] as core.String
+              : null,
+          cloudDlpDataProfile: json_.containsKey('cloudDlpDataProfile')
+              ? CloudDlpDataProfile.fromJson(json_['cloudDlpDataProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudDlpInspection: json_.containsKey('cloudDlpInspection')
+              ? CloudDlpInspection.fromJson(json_['cloudDlpInspection']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           compliances: json_.containsKey('compliances')
               ? (json_['compliances'] as core.List)
@@ -7045,6 +7147,9 @@ class Finding {
               ? MitreAttack.fromJson(
                   json_['mitreAttack'] as core.Map<core.String, core.dynamic>)
               : null,
+          moduleName: json_.containsKey('moduleName')
+              ? json_['moduleName'] as core.String
+              : null,
           mute: json_.containsKey('mute') ? json_['mute'] as core.String : null,
           muteInitiator: json_.containsKey('muteInitiator')
               ? json_['muteInitiator'] as core.String
@@ -7055,6 +7160,12 @@ class Finding {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nextSteps: json_.containsKey('nextSteps')
               ? json_['nextSteps'] as core.String
+              : null,
+          orgPolicyConstraints: json_.containsKey('orgPolicyConstraints')
+              ? (json_['orgPolicyConstraints'] as core.List)
+                  .map((value) => OrgPolicyConstraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
@@ -7093,6 +7204,10 @@ class Finding {
         if (access != null) 'access': access!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
+        if (cloudDlpDataProfile != null)
+          'cloudDlpDataProfile': cloudDlpDataProfile!,
+        if (cloudDlpInspection != null)
+          'cloudDlpInspection': cloudDlpInspection!,
         if (compliances != null) 'compliances': compliances!,
         if (connections != null) 'connections': connections!,
         if (contacts != null) 'contacts': contacts!,
@@ -7111,11 +7226,14 @@ class Finding {
         if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
         if (kubernetes != null) 'kubernetes': kubernetes!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
+        if (moduleName != null) 'moduleName': moduleName!,
         if (mute != null) 'mute': mute!,
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
+        if (orgPolicyConstraints != null)
+          'orgPolicyConstraints': orgPolicyConstraints!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (processes != null) 'processes': processes!,
@@ -8952,6 +9070,27 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Encapsulates data about a constraint associated with an organization policy.
+class OrgPolicyConstraint {
+  /// The resource name of the constraint.
+  ///
+  /// Example: "organizations/{organization_id}/constraints/{constraint_name}"
+  core.String? name;
+
+  OrgPolicyConstraint({
+    this.name,
+  });
+
+  OrgPolicyConstraint.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 

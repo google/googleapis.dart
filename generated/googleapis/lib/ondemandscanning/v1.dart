@@ -210,13 +210,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1421,6 +1414,9 @@ class InTotoStatement {
       };
 }
 
+/// Justification provides the justification when the state of the assessment if
+/// NOT_AFFECTED.
+typedef Justification = $Justification;
 typedef Jwt = $Jwt;
 
 /// Indicates a language package available between this package and the
@@ -1705,6 +1701,7 @@ class Occurrence {
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
+  /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1931,6 +1928,9 @@ class Operation {
 }
 
 class PackageData {
+  /// The architecture of the package.
+  core.String? architecture;
+
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
   /// the vulnerability may manifest.
   ///
@@ -1986,6 +1986,7 @@ class PackageData {
   core.String? version;
 
   PackageData({
+    this.architecture,
     this.cpeUri,
     this.dependencyChain,
     this.fileLocation,
@@ -2002,6 +2003,9 @@ class PackageData {
 
   PackageData.fromJson(core.Map json_)
       : this(
+          architecture: json_.containsKey('architecture')
+              ? json_['architecture'] as core.String
+              : null,
           cpeUri: json_.containsKey('cpeUri')
               ? json_['cpeUri'] as core.String
               : null,
@@ -2048,6 +2052,7 @@ class PackageData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
@@ -2298,6 +2303,51 @@ typedef Recipe = $Recipe;
 
 /// Metadata for any related URL information.
 typedef RelatedUrl = $RelatedUrl;
+
+/// Specifies details on how to handle (and presumably, fix) a vulnerability.
+class Remediation {
+  /// Contains a comprehensive human-readable discussion of the remediation.
+  core.String? details;
+
+  /// The type of remediation that can be applied.
+  /// Possible string values are:
+  /// - "REMEDIATION_TYPE_UNSPECIFIED" : No remediation type specified.
+  /// - "MITIGATION" : A MITIGATION is available.
+  /// - "NO_FIX_PLANNED" : No fix is planned.
+  /// - "NONE_AVAILABLE" : Not available.
+  /// - "VENDOR_FIX" : A vendor fix is available.
+  /// - "WORKAROUND" : A workaround is available.
+  core.String? remediationType;
+
+  /// Contains the URL where to obtain the remediation.
+  RelatedUrl? remediationUri;
+
+  Remediation({
+    this.details,
+    this.remediationType,
+    this.remediationUri,
+  });
+
+  Remediation.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          remediationType: json_.containsKey('remediationType')
+              ? json_['remediationType'] as core.String
+              : null,
+          remediationUri: json_.containsKey('remediationUri')
+              ? RelatedUrl.fromJson(json_['remediationUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (remediationType != null) 'remediationType': remediationType!,
+        if (remediationUri != null) 'remediationUri': remediationUri!,
+      };
+}
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
@@ -2745,6 +2795,98 @@ class UpgradeOccurrence {
 /// Version contains structured information about the version of a package.
 typedef Version = $Version;
 
+/// VexAssessment provides all publisher provided Vex information that is
+/// related to this vulnerability.
+class VexAssessment {
+  /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
+  /// tracking number for the vulnerability.
+  core.String? cve;
+
+  /// Contains information about the impact of this vulnerability, this will
+  /// change with time.
+  core.List<core.String>? impacts;
+
+  /// Justification provides the justification when the state of the assessment
+  /// if NOT_AFFECTED.
+  Justification? justification;
+
+  /// The VulnerabilityAssessment note from which this VexAssessment was
+  /// generated.
+  ///
+  /// This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+  core.String? noteName;
+
+  /// Holds a list of references associated with this vulnerability item and
+  /// assessment.
+  core.List<RelatedUrl>? relatedUris;
+
+  /// Specifies details on how to handle (and presumably, fix) a vulnerability.
+  core.List<Remediation>? remediations;
+
+  /// Provides the state of this Vulnerability assessment.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? state;
+
+  VexAssessment({
+    this.cve,
+    this.impacts,
+    this.justification,
+    this.noteName,
+    this.relatedUris,
+    this.remediations,
+    this.state,
+  });
+
+  VexAssessment.fromJson(core.Map json_)
+      : this(
+          cve: json_.containsKey('cve') ? json_['cve'] as core.String : null,
+          impacts: json_.containsKey('impacts')
+              ? (json_['impacts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          justification: json_.containsKey('justification')
+              ? Justification.fromJson(
+                  json_['justification'] as core.Map<core.String, core.dynamic>)
+              : null,
+          noteName: json_.containsKey('noteName')
+              ? json_['noteName'] as core.String
+              : null,
+          relatedUris: json_.containsKey('relatedUris')
+              ? (json_['relatedUris'] as core.List)
+                  .map((value) => RelatedUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          remediations: json_.containsKey('remediations')
+              ? (json_['remediations'] as core.List)
+                  .map((value) => Remediation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!,
+        if (impacts != null) 'impacts': impacts!,
+        if (justification != null) 'justification': justification!,
+        if (noteName != null) 'noteName': noteName!,
+        if (relatedUris != null) 'relatedUris': relatedUris!,
+        if (remediations != null) 'remediations': remediations!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// An occurrence of a severity vulnerability on a resource.
 class VulnerabilityOccurrence {
   /// The CVSS score of this vulnerability.
@@ -2830,6 +2972,7 @@ class VulnerabilityOccurrence {
   /// The type of package; whether native or non native (e.g., ruby gems,
   /// node.js packages, etc.).
   core.String? type;
+  VexAssessment? vexAssessment;
 
   VulnerabilityOccurrence({
     this.cvssScore,
@@ -2844,6 +2987,7 @@ class VulnerabilityOccurrence {
     this.severity,
     this.shortDescription,
     this.type,
+    this.vexAssessment,
   });
 
   VulnerabilityOccurrence.fromJson(core.Map json_)
@@ -2890,6 +3034,10 @@ class VulnerabilityOccurrence {
               ? json_['shortDescription'] as core.String
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          vexAssessment: json_.containsKey('vexAssessment')
+              ? VexAssessment.fromJson(
+                  json_['vexAssessment'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2905,6 +3053,7 @@ class VulnerabilityOccurrence {
         if (severity != null) 'severity': severity!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (type != null) 'type': type!,
+        if (vexAssessment != null) 'vexAssessment': vexAssessment!,
       };
 }
 

@@ -1684,7 +1684,7 @@
             }
         }
     },
-    "revision": "20230223",
+    "revision": "20230320",
     "rootUrl": "https://recommender.googleapis.com/",
     "schemas": {
         "GoogleCloudRecommenderV1CostProjection": {

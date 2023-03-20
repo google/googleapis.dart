@@ -53,6 +53,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class SASPortalTestingApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
   /// Read, create, update, and delete your SAS Portal data.
   static const sasportalScope = 'https://www.googleapis.com/auth/sasportal';
 
@@ -4332,43 +4337,8 @@ class SasPortalPolicy {
 /// Project, Organization Info, and caller’s GAIA ID should be retrieved from
 /// the RPC handler, and used as inputs to create a new SAS organization (if not
 /// exists) and a new SAS deployment.
-class SasPortalProvisionDeploymentRequest {
-  /// If this field is set, and a new SAS Portal Deployment needs to be created,
-  /// its display name will be set to the value of this field.
-  ///
-  /// Optional.
-  core.String? newDeploymentDisplayName;
-
-  /// If this field is set, and a new SAS Portal Organization needs to be
-  /// created, its display name will be set to the value of this field.
-  ///
-  /// Optional.
-  core.String? newOrganizationDisplayName;
-
-  SasPortalProvisionDeploymentRequest({
-    this.newDeploymentDisplayName,
-    this.newOrganizationDisplayName,
-  });
-
-  SasPortalProvisionDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          newDeploymentDisplayName:
-              json_.containsKey('newDeploymentDisplayName')
-                  ? json_['newDeploymentDisplayName'] as core.String
-                  : null,
-          newOrganizationDisplayName:
-              json_.containsKey('newOrganizationDisplayName')
-                  ? json_['newOrganizationDisplayName'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (newDeploymentDisplayName != null)
-          'newDeploymentDisplayName': newDeploymentDisplayName!,
-        if (newOrganizationDisplayName != null)
-          'newOrganizationDisplayName': newOrganizationDisplayName!,
-      };
-}
+typedef SasPortalProvisionDeploymentRequest
+    = $SasPortalProvisionDeploymentRequest;
 
 /// Response for \[ProvisionDeployment\].
 ///

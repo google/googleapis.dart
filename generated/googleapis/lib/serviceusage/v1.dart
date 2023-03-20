@@ -577,6 +577,7 @@ class Api {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   /// A version string for this interface.
@@ -1381,6 +1382,7 @@ class Method {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   Method({
@@ -1457,7 +1459,7 @@ typedef MetricRule = $MetricRule;
 /// mixin construct implies that all methods in `AccessControl` are also
 /// declared with same name and request/response types in `Storage`. A
 /// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inheriting documentation and annotations as
+/// `Storage.GetAcl` method after inherting documentation and annotations as
 /// follows: service Storage { // Get the underlying ACL object. rpc
 /// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
 /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern

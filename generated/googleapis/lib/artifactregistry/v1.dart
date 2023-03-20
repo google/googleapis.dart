@@ -2303,6 +2303,33 @@ class DockerRepository {
       };
 }
 
+/// DockerRepositoryConfig is docker related repository details.
+///
+/// Provides additional configuration details for repositories of the docker
+/// format type.
+class DockerRepositoryConfig {
+  /// The repository which enabled this flag prevents all tags from being
+  /// modified, moved or deleted.
+  ///
+  /// This does not prevent tags from being created.
+  core.bool? immutableTags;
+
+  DockerRepositoryConfig({
+    this.immutableTags,
+  });
+
+  DockerRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          immutableTags: json_.containsKey('immutableTags')
+              ? json_['immutableTags'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (immutableTags != null) 'immutableTags': immutableTags!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3509,10 +3536,16 @@ class RemoteRepositoryConfig {
 /// A Repository for storing artifacts with a specific format.
 class Repository {
   /// The time when the repository was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// The user-provided description of the repository.
   core.String? description;
+
+  /// Docker repository config contains repository level configuration for the
+  /// repositories of docker type.
+  DockerRepositoryConfig? dockerConfig;
 
   /// The format of packages that are stored in the repository.
   /// Possible string values are:
@@ -3577,6 +3610,8 @@ class Repository {
   core.String? sizeBytes;
 
   /// The time when the repository was last updated.
+  ///
+  /// Output only.
   core.String? updateTime;
 
   /// Configuration specific for a Virtual Repository.
@@ -3585,6 +3620,7 @@ class Repository {
   Repository({
     this.createTime,
     this.description,
+    this.dockerConfig,
     this.format,
     this.kmsKeyName,
     this.labels,
@@ -3605,6 +3641,10 @@ class Repository {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          dockerConfig: json_.containsKey('dockerConfig')
+              ? DockerRepositoryConfig.fromJson(
+                  json_['dockerConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           format: json_.containsKey('format')
               ? json_['format'] as core.String
@@ -3649,6 +3689,7 @@ class Repository {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (dockerConfig != null) 'dockerConfig': dockerConfig!,
         if (format != null) 'format': format!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,

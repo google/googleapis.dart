@@ -1336,7 +1336,9 @@ class AddDnsZoneRequest {
   /// Required.
   core.String? consumerNetwork;
 
-  /// The DNS name suffix for the zones e.g. `example.com`.
+  /// The DNS name suffix for the zones e.g. `example.com.`.
+  ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
   ///
   /// Required.
   core.String? dnsSuffix;
@@ -2041,6 +2043,8 @@ class DnsRecordSet {
   core.List<core.String>? data;
 
   /// The DNS or domain name of the record set, e.g. `test.example.com`.
+  ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
   ///
   /// Required.
   core.String? domain;

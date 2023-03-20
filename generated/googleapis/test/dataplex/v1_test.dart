@@ -2264,6 +2264,7 @@ api.GoogleCloudDataplexV1DataSource buildGoogleCloudDataplexV1DataSource() {
   buildCounterGoogleCloudDataplexV1DataSource++;
   if (buildCounterGoogleCloudDataplexV1DataSource < 3) {
     o.entity = 'foo';
+    o.resource = 'foo';
   }
   buildCounterGoogleCloudDataplexV1DataSource--;
   return o;
@@ -2275,6 +2276,10 @@ void checkGoogleCloudDataplexV1DataSource(
   if (buildCounterGoogleCloudDataplexV1DataSource < 3) {
     unittest.expect(
       o.entity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resource!,
       unittest.equals('foo'),
     );
   }

@@ -636,6 +636,13 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [updateMask] - The list of fields to update relative to Job. If empty,
+  /// only RequestedJobState will be considered for update. If the FieldMask is
+  /// not empty and RequestedJobState is none/empty, The fields specified in the
+  /// update mask will be the only ones considered for update. If both
+  /// RequestedJobState and update_mask are specified, we will first handle
+  /// RequestedJobState and then the update_mask fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -651,11 +658,13 @@ class ProjectsJobsResource {
     core.String projectId,
     core.String jobId, {
     core.String? location,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1560,6 +1569,13 @@ class ProjectsLocationsJobsResource {
   ///
   /// [jobId] - The job ID.
   ///
+  /// [updateMask] - The list of fields to update relative to Job. If empty,
+  /// only RequestedJobState will be considered for update. If the FieldMask is
+  /// not empty and RequestedJobState is none/empty, The fields specified in the
+  /// update mask will be the only ones considered for update. If both
+  /// RequestedJobState and update_mask are specified, we will first handle
+  /// RequestedJobState and then the update_mask fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1575,10 +1591,12 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6102,6 +6120,9 @@ class JobMetadata {
   /// Identification of a Spanner source used in the Dataflow job.
   core.List<SpannerIODetails>? spannerDetails;
 
+  /// List of display properties to help UI filter jobs.
+  core.Map<core.String, core.String>? userDisplayProperties;
+
   JobMetadata({
     this.bigTableDetails,
     this.bigqueryDetails,
@@ -6110,6 +6131,7 @@ class JobMetadata {
     this.pubsubDetails,
     this.sdkVersion,
     this.spannerDetails,
+    this.userDisplayProperties,
   });
 
   JobMetadata.fromJson(core.Map json_)
@@ -6154,6 +6176,16 @@ class JobMetadata {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          userDisplayProperties: json_.containsKey('userDisplayProperties')
+              ? (json_['userDisplayProperties']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6164,6 +6196,8 @@ class JobMetadata {
         if (pubsubDetails != null) 'pubsubDetails': pubsubDetails!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
         if (spannerDetails != null) 'spannerDetails': spannerDetails!,
+        if (userDisplayProperties != null)
+          'userDisplayProperties': userDisplayProperties!,
       };
 }
 
@@ -7473,6 +7507,14 @@ class ParameterMetadata {
   /// Optional.
   core.Map<core.String, core.String>? customMetadata;
 
+  /// Specifies a group name for this parameter to be rendered under.
+  ///
+  /// Group header text will be rendered exactly as specified in this field.
+  /// Only considered when parent_name is NOT provided.
+  ///
+  /// Optional.
+  core.String? groupName;
+
   /// The help text to display for the parameter.
   ///
   /// Required.
@@ -7522,6 +7564,25 @@ class ParameterMetadata {
   /// Cloud Storage.
   core.String? paramType;
 
+  /// Specifies the name of the parent parameter.
+  ///
+  /// Used in conjunction with 'parent_trigger_values' to make this parameter
+  /// conditional (will only be rendered conditionally). Should be mappable to a
+  /// ParameterMetadata.name field.
+  ///
+  /// Optional.
+  core.String? parentName;
+
+  /// The value(s) of the 'parent_name' parameter which will trigger this
+  /// parameter to be shown.
+  ///
+  /// If left empty, ANY non-empty value in parent_name will trigger this
+  /// parameter to be shown. Only considered when this parameter is conditional
+  /// (when 'parent_name' has been provided).
+  ///
+  /// Optional.
+  core.List<core.String>? parentTriggerValues;
+
   /// Regexes that the parameter must match.
   ///
   /// Optional.
@@ -7529,11 +7590,14 @@ class ParameterMetadata {
 
   ParameterMetadata({
     this.customMetadata,
+    this.groupName,
     this.helpText,
     this.isOptional,
     this.label,
     this.name,
     this.paramType,
+    this.parentName,
+    this.parentTriggerValues,
     this.regexes,
   });
 
@@ -7548,6 +7612,9 @@ class ParameterMetadata {
                   ),
                 )
               : null,
+          groupName: json_.containsKey('groupName')
+              ? json_['groupName'] as core.String
+              : null,
           helpText: json_.containsKey('helpText')
               ? json_['helpText'] as core.String
               : null,
@@ -7560,6 +7627,14 @@ class ParameterMetadata {
           paramType: json_.containsKey('paramType')
               ? json_['paramType'] as core.String
               : null,
+          parentName: json_.containsKey('parentName')
+              ? json_['parentName'] as core.String
+              : null,
+          parentTriggerValues: json_.containsKey('parentTriggerValues')
+              ? (json_['parentTriggerValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           regexes: json_.containsKey('regexes')
               ? (json_['regexes'] as core.List)
                   .map((value) => value as core.String)
@@ -7569,11 +7644,15 @@ class ParameterMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetadata != null) 'customMetadata': customMetadata!,
+        if (groupName != null) 'groupName': groupName!,
         if (helpText != null) 'helpText': helpText!,
         if (isOptional != null) 'isOptional': isOptional!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
         if (paramType != null) 'paramType': paramType!,
+        if (parentName != null) 'parentName': parentName!,
+        if (parentTriggerValues != null)
+          'parentTriggerValues': parentTriggerValues!,
         if (regexes != null) 'regexes': regexes!,
       };
 }

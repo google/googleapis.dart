@@ -11270,18 +11270,8 @@ class LiveBroadcastStatistics {
   /// broadcast that already ended.
   core.String? concurrentViewers;
 
-  /// The total number of live chat messages currently on the broadcast.
-  ///
-  /// The property and its value will be present if the broadcast is public, has
-  /// the live chat feature enabled, and has at least one message. Note that
-  /// this field will not be filled after the broadcast ends. So this property
-  /// would not identify the number of chat messages for an archived video of a
-  /// completed live broadcast.
-  core.String? totalChatCount;
-
   LiveBroadcastStatistics({
     this.concurrentViewers,
-    this.totalChatCount,
   });
 
   LiveBroadcastStatistics.fromJson(core.Map json_)
@@ -11289,14 +11279,10 @@ class LiveBroadcastStatistics {
           concurrentViewers: json_.containsKey('concurrentViewers')
               ? json_['concurrentViewers'] as core.String
               : null,
-          totalChatCount: json_.containsKey('totalChatCount')
-              ? json_['totalChatCount'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (concurrentViewers != null) 'concurrentViewers': concurrentViewers!,
-        if (totalChatCount != null) 'totalChatCount': totalChatCount!,
       };
 }
 

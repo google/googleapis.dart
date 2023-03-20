@@ -9657,7 +9657,7 @@
             }
         }
     },
-    "revision": "20230302",
+    "revision": "20230323",
     "rootUrl": "https://dfareporting.googleapis.com/",
     "schemas": {
         "Account": {
@@ -18884,6 +18884,10 @@
                         },
                         "startDate": {
                             "format": "date",
+                            "type": "string"
+                        },
+                        "timezone": {
+                            "description": "The timezone when the report will run.",
                             "type": "string"
                         }
                     },

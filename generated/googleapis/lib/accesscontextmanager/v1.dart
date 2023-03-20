@@ -1547,13 +1547,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1812,7 +1805,8 @@ class OrganizationsGcpUserAccessBindingsResource {
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
-  /// required and must always be: update_mask { paths: "access_levels" }
+  /// required and may only contain the following fields: `access_levels`,
+  /// `dry_run_access_levels`. update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2644,8 +2638,17 @@ class GcpUserAccessBinding {
   /// have exactly one element. Example:
   /// "accessPolicies/9522/accessLevels/device_trusted"
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? accessLevels;
+
+  /// Dry run access level that will be evaluated but will not be enforced.
+  ///
+  /// The access denial based on dry run policy will be logged. Only one access
+  /// level is supported, not multiple. This list must have exactly one element.
+  /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+  ///
+  /// Optional.
+  core.List<core.String>? dryRunAccessLevels;
 
   /// Google Group id whose members are subject to this binding's restrictions.
   ///
@@ -2671,6 +2674,7 @@ class GcpUserAccessBinding {
 
   GcpUserAccessBinding({
     this.accessLevels,
+    this.dryRunAccessLevels,
     this.groupKey,
     this.name,
   });
@@ -2682,6 +2686,11 @@ class GcpUserAccessBinding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          dryRunAccessLevels: json_.containsKey('dryRunAccessLevels')
+              ? (json_['dryRunAccessLevels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           groupKey: json_.containsKey('groupKey')
               ? json_['groupKey'] as core.String
               : null,
@@ -2690,6 +2699,8 @@ class GcpUserAccessBinding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (dryRunAccessLevels != null)
+          'dryRunAccessLevels': dryRunAccessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
       };

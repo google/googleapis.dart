@@ -190,6 +190,9 @@ class AccountsResource {
 
   /// Claims the website of a Merchant Center sub-account.
   ///
+  /// Merchant accounts with approved third-party CSSs aren't required to claim
+  /// a website.
+  ///
   /// Request parameters:
   ///
   /// [merchantId] - The ID of the managing account. If this parameter is not
@@ -12698,7 +12701,8 @@ class DatafeedTarget {
   /// Feed label for the DatafeedTarget.
   ///
   /// Either `country` or `feedLabel` is required. If both `feedLabel` and
-  /// `country` is specified, the values must match.
+  /// `country` is specified, the values must match. Must be less than or equal
+  /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
   core.String? feedLabel;
 
   /// The list of destinations to include for this target (corresponds to
@@ -23041,7 +23045,8 @@ class Product {
 
   /// Feed label for the item.
   ///
-  /// Either `targetCountry` or `feedLabel` is required.
+  /// Either `targetCountry` or `feedLabel` is required. Must be less than or
+  /// equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
   core.String? feedLabel;
 
   /// Target gender of the item.
@@ -23100,10 +23105,10 @@ class Product {
   /// Value: the fixed string "`content#product`"
   core.String? kind;
 
-  /// Additional URLs of lifestyle images of the item, used to explicitly
-  /// identify images that showcase your item in a real-world context.
+  /// Additional URLs of lifestyle images of the item.
   ///
-  /// See the Help Center article for more information.
+  /// Used to explicitly identify images that showcase your item in a real-world
+  /// context. See the Help Center article for more information.
   core.List<core.String>? lifestyleImageLinks;
 
   /// URL directly linking to your item's page on your website.
@@ -24809,8 +24814,7 @@ class ProductUnitPricingMeasure {
 /// Product fields.
 ///
 /// Values are only set for fields requested explicitly in the request's search
-/// query. Available only to selected merchants. Submit the
-/// [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
+/// query.
 class ProductView {
   /// Aggregated destination status.
   /// Possible string values are:
@@ -26978,9 +26982,7 @@ class ReportRow {
 
   /// Product fields requested by the merchant in the query.
   ///
-  /// Field values are only set if the merchant queries `ProductView`. Available
-  /// only to selected merchants. Submit the
-  /// [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
+  /// Field values are only set if the merchant queries `ProductView`.
   ProductView? productView;
 
   /// Segmentation dimensions requested by the merchant in the query.

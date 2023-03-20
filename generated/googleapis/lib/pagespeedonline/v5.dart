@@ -374,6 +374,11 @@ class Environment {
   /// The benchmark index number that indicates rough device class.
   core.double? benchmarkIndex;
 
+  /// The version of libraries with which these results were generated.
+  ///
+  /// Ex: axe-core.
+  core.Map<core.String, core.String>? credits;
+
   /// The user agent string of the version of Chrome used.
   core.String? hostUserAgent;
 
@@ -382,6 +387,7 @@ class Environment {
 
   Environment({
     this.benchmarkIndex,
+    this.credits,
     this.hostUserAgent,
     this.networkUserAgent,
   });
@@ -390,6 +396,14 @@ class Environment {
       : this(
           benchmarkIndex: json_.containsKey('benchmarkIndex')
               ? (json_['benchmarkIndex'] as core.num).toDouble()
+              : null,
+          credits: json_.containsKey('credits')
+              ? (json_['credits'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           hostUserAgent: json_.containsKey('hostUserAgent')
               ? json_['hostUserAgent'] as core.String
@@ -401,6 +415,7 @@ class Environment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex!,
+        if (credits != null) 'credits': credits!,
         if (hostUserAgent != null) 'hostUserAgent': hostUserAgent!,
         if (networkUserAgent != null) 'networkUserAgent': networkUserAgent!,
       };
@@ -429,6 +444,79 @@ class I18n {
   core.Map<core.String, core.dynamic> toJson() => {
         if (rendererFormattedStrings != null)
           'rendererFormattedStrings': rendererFormattedStrings!,
+      };
+}
+
+/// Message containing an Entity.
+class LhrEntity {
+  /// An optional category name for the entity.
+  ///
+  /// Optional.
+  core.String? category;
+
+  /// An optional homepage URL of the entity.
+  ///
+  /// Optional.
+  core.String? homepage;
+
+  /// An optional flag indicating if the entity is the first party.
+  ///
+  /// Optional.
+  core.bool? isFirstParty;
+
+  /// An optional flag indicating if the entity is not recognized.
+  ///
+  /// Optional.
+  core.bool? isUnrecognized;
+
+  /// Name of the entity.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// A list of URL origin strings that belong to this entity.
+  ///
+  /// Required.
+  core.List<core.String>? origins;
+
+  LhrEntity({
+    this.category,
+    this.homepage,
+    this.isFirstParty,
+    this.isUnrecognized,
+    this.name,
+    this.origins,
+  });
+
+  LhrEntity.fromJson(core.Map json_)
+      : this(
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
+              : null,
+          homepage: json_.containsKey('homepage')
+              ? json_['homepage'] as core.String
+              : null,
+          isFirstParty: json_.containsKey('isFirstParty')
+              ? json_['isFirstParty'] as core.bool
+              : null,
+          isUnrecognized: json_.containsKey('isUnrecognized')
+              ? json_['isUnrecognized'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          origins: json_.containsKey('origins')
+              ? (json_['origins'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (homepage != null) 'homepage': homepage!,
+        if (isFirstParty != null) 'isFirstParty': isFirstParty!,
+        if (isUnrecognized != null) 'isUnrecognized': isUnrecognized!,
+        if (name != null) 'name': name!,
+        if (origins != null) 'origins': origins!,
       };
 }
 
@@ -626,20 +714,36 @@ class LighthouseResultV5 {
   /// The configuration settings for this LHR.
   ConfigSettings? configSettings;
 
+  /// Entity classification data.
+  core.List<LhrEntity>? entities;
+
   /// Environment settings that were used when making this LHR.
   Environment? environment;
 
   /// The time that this run was fetched.
   core.String? fetchTime;
 
+  /// URL displayed on the page after Lighthouse finishes.
+  core.String? finalDisplayedUrl;
+
   /// The final resolved url that was audited.
   core.String? finalUrl;
+
+  /// Screenshot data of the full page, along with node rects relevant to the
+  /// audit results.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? fullPageScreenshot;
 
   /// The internationalization strings that are required to render the LHR.
   I18n? i18n;
 
   /// The lighthouse version that was used to generate this LHR.
   core.String? lighthouseVersion;
+
+  /// URL of the main document request of the final navigation.
+  core.String? mainDocumentUrl;
 
   /// The original requested url.
   core.String? requestedUrl;
@@ -670,11 +774,15 @@ class LighthouseResultV5 {
     this.categories,
     this.categoryGroups,
     this.configSettings,
+    this.entities,
     this.environment,
     this.fetchTime,
+    this.finalDisplayedUrl,
     this.finalUrl,
+    this.fullPageScreenshot,
     this.i18n,
     this.lighthouseVersion,
+    this.mainDocumentUrl,
     this.requestedUrl,
     this.runWarnings,
     this.runtimeError,
@@ -712,6 +820,12 @@ class LighthouseResultV5 {
               ? ConfigSettings.fromJson(json_['configSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          entities: json_.containsKey('entities')
+              ? (json_['entities'] as core.List)
+                  .map((value) => LhrEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           environment: json_.containsKey('environment')
               ? Environment.fromJson(
                   json_['environment'] as core.Map<core.String, core.dynamic>)
@@ -719,8 +833,14 @@ class LighthouseResultV5 {
           fetchTime: json_.containsKey('fetchTime')
               ? json_['fetchTime'] as core.String
               : null,
+          finalDisplayedUrl: json_.containsKey('finalDisplayedUrl')
+              ? json_['finalDisplayedUrl'] as core.String
+              : null,
           finalUrl: json_.containsKey('finalUrl')
               ? json_['finalUrl'] as core.String
+              : null,
+          fullPageScreenshot: json_.containsKey('fullPageScreenshot')
+              ? json_['fullPageScreenshot']
               : null,
           i18n: json_.containsKey('i18n')
               ? I18n.fromJson(
@@ -728,6 +848,9 @@ class LighthouseResultV5 {
               : null,
           lighthouseVersion: json_.containsKey('lighthouseVersion')
               ? json_['lighthouseVersion'] as core.String
+              : null,
+          mainDocumentUrl: json_.containsKey('mainDocumentUrl')
+              ? json_['mainDocumentUrl'] as core.String
               : null,
           requestedUrl: json_.containsKey('requestedUrl')
               ? json_['requestedUrl'] as core.String
@@ -759,11 +882,16 @@ class LighthouseResultV5 {
         if (categories != null) 'categories': categories!,
         if (categoryGroups != null) 'categoryGroups': categoryGroups!,
         if (configSettings != null) 'configSettings': configSettings!,
+        if (entities != null) 'entities': entities!,
         if (environment != null) 'environment': environment!,
         if (fetchTime != null) 'fetchTime': fetchTime!,
+        if (finalDisplayedUrl != null) 'finalDisplayedUrl': finalDisplayedUrl!,
         if (finalUrl != null) 'finalUrl': finalUrl!,
+        if (fullPageScreenshot != null)
+          'fullPageScreenshot': fullPageScreenshot!,
         if (i18n != null) 'i18n': i18n!,
         if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion!,
+        if (mainDocumentUrl != null) 'mainDocumentUrl': mainDocumentUrl!,
         if (requestedUrl != null) 'requestedUrl': requestedUrl!,
         if (runWarnings != null) 'runWarnings': runWarnings!,
         if (runtimeError != null) 'runtimeError': runtimeError!,

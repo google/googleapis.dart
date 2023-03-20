@@ -5031,8 +5031,8 @@ class Form {
 
   /// URL of the form responses document.
   ///
-  /// Only set if respsonses have been recorded and only when the requesting
-  /// user is an editor of the form. Read-only.
+  /// Only set if responses have been recorded and only when the requesting user
+  /// is an editor of the form. Read-only.
   core.String? responseUrl;
 
   /// URL of a thumbnail image of the Form.

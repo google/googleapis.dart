@@ -951,6 +951,229 @@ class LocationsWorkforcePoolsProvidersKeysResource {
 
   LocationsWorkforcePoolsProvidersKeysResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The provider to create this key in.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [workforcePoolProviderKeyId] - Required. The ID to use for the key, which
+  /// becomes the final component of the resource name. This value must be 4-32
+  /// characters, and may contain the characters \[a-z0-9-\].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkforcePoolProviderKey request,
+    core.String parent, {
+    core.String? workforcePoolProviderKeyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workforcePoolProviderKeyId != null)
+        'workforcePoolProviderKeyId': [workforcePoolProviderKeyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keys';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkforcePoolProviderKey.
+  ///
+  /// You can undelete a key for 30 days. After 30 days, deletion is permanent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key to delete.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a WorkforcePoolProviderKey.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key to retrieve.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolProviderKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolProviderKey> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolProviderKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkforcePoolProviderKeys in a
+  /// WorkforcePoolProvider.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted keys are also listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The provider resource to list encryption keys for.
+  /// Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of keys to return. If unspecified, all
+  /// keys are returned. The maximum value is 10; values above 10 are truncated
+  /// to 10.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkforcePoolProviderKeys` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted keys.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkforcePoolProviderKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkforcePoolProviderKeysResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keys';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkforcePoolProviderKeysResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkforcePoolProviderKey, as long as it was deleted fewer than
+  /// 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key to undelete.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkforcePoolProviderKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsWorkforcePoolsProvidersKeysOperationsResource {
@@ -2307,6 +2530,230 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource {
   ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Create a new WorkloadIdentityPoolProviderKey in a
+  /// WorkloadIdentityPoolProvider.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent provider resource to create the key in.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [workloadIdentityPoolProviderKeyId] - Required. The ID to use for the key,
+  /// which becomes the final component of the resource name. This value should
+  /// be 4-32 characters, and may contain the characters \[a-z0-9-\].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkloadIdentityPoolProviderKey request,
+    core.String parent, {
+    core.String? workloadIdentityPoolProviderKeyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (workloadIdentityPoolProviderKeyId != null)
+        'workloadIdentityPoolProviderKeyId': [
+          workloadIdentityPoolProviderKeyId
+        ],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keys';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an WorkloadIdentityPoolProviderKey.
+  ///
+  /// You can undelete a key for 30 days. After 30 days, deletion is permanent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the encryption key to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkloadIdentityPoolProviderKey.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPoolProviderKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPoolProviderKey> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadIdentityPoolProviderKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkloadIdentityPoolProviderKeys in a project.
+  ///
+  /// If show_deleted is set to `true`, then deleted pools are also listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent provider resource to list encryption keys
+  /// for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of keys to return. If unspecified, all
+  /// keys are returned. The maximum value is 10; values above 10 are truncated
+  /// to 10.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [showDeleted] - Whether to return soft deleted resources as well.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadIdentityPoolProviderKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadIdentityPoolProviderKeysResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keys';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkloadIdentityPoolProviderKeysResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes an WorkloadIdentityPoolProviderKey, as long as it was deleted
+  /// fewer than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the encryption key to undelete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkloadIdentityPoolProviderKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource {
@@ -4598,6 +5045,87 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
       };
 }
 
+/// Represents a public key data along with its format.
+class KeyData {
+  /// The format of the key.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KEY_FORMAT_UNSPECIFIED" : No format has been specified. This is an
+  /// invalid format and must not be used.
+  /// - "RSA_X509_PEM" : A RSA public key wrapped in an X.509v3 certificate
+  /// (\[RFC5280\] ( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
+  /// and wrapped in
+  /// [public certificate label](https://datatracker.ietf.org/doc/html/rfc7468#section-5.1).
+  core.String? format;
+
+  /// The key data.
+  ///
+  /// The format of the key is represented by the format field.
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// The specifications for the key.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "KEY_SPEC_UNSPECIFIED" : No key specification specified.
+  /// - "RSA_2048" : A 2048 bit RSA key.
+  /// - "RSA_3072" : A 3072 bit RSA key.
+  /// - "RSA_4096" : A 4096 bit RSA key.
+  core.String? keySpec;
+
+  /// Latest timestamp when this key is valid.
+  ///
+  /// Attempts to use this key after this time will fail. Only present if the
+  /// key data represents a X.509 certificate.
+  ///
+  /// Output only.
+  core.String? notAfterTime;
+
+  /// Earliest timestamp when this key is valid.
+  ///
+  /// Attempts to use this key before this time will fail. Only present if the
+  /// key data represents a X.509 certificate.
+  ///
+  /// Output only.
+  core.String? notBeforeTime;
+
+  KeyData({
+    this.format,
+    this.key,
+    this.keySpec,
+    this.notAfterTime,
+    this.notBeforeTime,
+  });
+
+  KeyData.fromJson(core.Map json_)
+      : this(
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          keySpec: json_.containsKey('keySpec')
+              ? json_['keySpec'] as core.String
+              : null,
+          notAfterTime: json_.containsKey('notAfterTime')
+              ? json_['notAfterTime'] as core.String
+              : null,
+          notBeforeTime: json_.containsKey('notBeforeTime')
+              ? json_['notBeforeTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (format != null) 'format': format!,
+        if (key != null) 'key': key!,
+        if (keySpec != null) 'keySpec': keySpec!,
+        if (notAfterTime != null) 'notAfterTime': notAfterTime!,
+        if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
+      };
+}
+
 /// The request to lint a Cloud IAM policy object.
 class LintPolicyRequest {
   /// google.iam.v1.Binding.condition object to be linted.
@@ -4847,6 +5375,42 @@ class ListServiceAccountsResponse {
       };
 }
 
+/// Response message for ListWorkforcePoolProviderKeys.
+class ListWorkforcePoolProviderKeysResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of WorkforcePoolProviderKeys.
+  core.List<WorkforcePoolProviderKey>? workforcePoolProviderKeys;
+
+  ListWorkforcePoolProviderKeysResponse({
+    this.nextPageToken,
+    this.workforcePoolProviderKeys,
+  });
+
+  ListWorkforcePoolProviderKeysResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workforcePoolProviderKeys:
+              json_.containsKey('workforcePoolProviderKeys')
+                  ? (json_['workforcePoolProviderKeys'] as core.List)
+                      .map((value) => WorkforcePoolProviderKey.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workforcePoolProviderKeys != null)
+          'workforcePoolProviderKeys': workforcePoolProviderKeys!,
+      };
+}
+
 /// Response message for ListWorkforcePoolProviders.
 class ListWorkforcePoolProvidersResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -4913,6 +5477,42 @@ class ListWorkforcePoolsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workforcePools != null) 'workforcePools': workforcePools!,
+      };
+}
+
+/// Response message for ListWorkloadIdentityPoolProviderKeys.
+class ListWorkloadIdentityPoolProviderKeysResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of WorkloadIdentityPoolProviderKey
+  core.List<WorkloadIdentityPoolProviderKey>? workloadIdentityPoolProviderKeys;
+
+  ListWorkloadIdentityPoolProviderKeysResponse({
+    this.nextPageToken,
+    this.workloadIdentityPoolProviderKeys,
+  });
+
+  ListWorkloadIdentityPoolProviderKeysResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workloadIdentityPoolProviderKeys:
+              json_.containsKey('workloadIdentityPoolProviderKeys')
+                  ? (json_['workloadIdentityPoolProviderKeys'] as core.List)
+                      .map((value) => WorkloadIdentityPoolProviderKey.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workloadIdentityPoolProviderKeys != null)
+          'workloadIdentityPoolProviderKeys': workloadIdentityPoolProviderKeys!,
       };
 }
 
@@ -6253,6 +6853,9 @@ class UndeleteServiceAccountResponse {
       };
 }
 
+/// Request message for UndeleteWorkforcePoolProviderKey.
+typedef UndeleteWorkforcePoolProviderKeyRequest = $Empty;
+
 /// Request message for UndeleteWorkforcePoolProvider.
 typedef UndeleteWorkforcePoolProviderRequest = $Empty;
 
@@ -6261,6 +6864,9 @@ typedef UndeleteWorkforcePoolRequest = $Empty;
 
 /// Request message for UndeleteWorkforcePoolSubject.
 typedef UndeleteWorkforcePoolSubjectRequest = $Empty;
+
+/// Request message for UndeleteWorkloadIdentityPoolProviderKey.
+typedef UndeleteWorkloadIdentityPoolProviderKeyRequest = $Empty;
 
 /// Request message for UndeleteWorkloadIdentityPoolProvider.
 typedef UndeleteWorkloadIdentityPoolProviderRequest = $Empty;
@@ -6575,6 +7181,82 @@ class WorkforcePoolProvider {
       };
 }
 
+/// Represents a public key configuration for a Workforce Pool Provider.
+///
+/// The key can be configured in your identity provider to encrypt SAML
+/// assertions. Google holds the corresponding private key, which it uses to
+/// decrypt encrypted tokens.
+class WorkforcePoolProviderKey {
+  /// The time after which the key will be permanently deleted and cannot be
+  /// recovered.
+  ///
+  /// Note that the key may get purged before this time if the total limit of
+  /// keys per provider is exceeded.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Public half of the asymmetric key.
+  ///
+  /// Immutable.
+  KeyData? keyData;
+
+  /// The resource name of the key.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the key.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The key is active.
+  /// - "DELETED" : The key is soft-deleted. Soft-deleted keys are permanently
+  /// deleted after approximately 30 days. You can restore a soft-deleted key
+  /// using UndeleteWorkforcePoolProviderKey.
+  core.String? state;
+
+  /// The purpose of the key.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "KEY_USE_UNSPECIFIED" : KeyUse unspecified.
+  /// - "ENCRYPTION" : The key is used for encryption.
+  core.String? use;
+
+  WorkforcePoolProviderKey({
+    this.expireTime,
+    this.keyData,
+    this.name,
+    this.state,
+    this.use,
+  });
+
+  WorkforcePoolProviderKey.fromJson(core.Map json_)
+      : this(
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          keyData: json_.containsKey('keyData')
+              ? KeyData.fromJson(
+                  json_['keyData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          use: json_.containsKey('use') ? json_['use'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (keyData != null) 'keyData': keyData!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (use != null) 'use': use!,
+      };
+}
+
 /// Represents a collection of external workload identities.
 ///
 /// You can define IAM policies to grant these identities access to Google Cloud
@@ -6822,5 +7504,83 @@ class WorkloadIdentityPoolProvider {
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a public key configuration for your workload identity pool
+/// provider.
+///
+/// The key can be configured in your identity provider to encrypt the SAML
+/// assertions. Google holds the corresponding private key which it uses to
+/// decrypt encrypted tokens.
+class WorkloadIdentityPoolProviderKey {
+  /// Time after which the key will be permanently purged and cannot be
+  /// recovered.
+  ///
+  /// Note that the key may get purged before this timestamp if the total limit
+  /// of keys per provider is crossed.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Public half of the asymmetric key.
+  ///
+  /// Immutable.
+  KeyData? keyData;
+
+  /// The resource name of the key.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the key.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The key is active.
+  /// - "DELETED" : The key is soft-deleted. Soft-deleted keys are permanently
+  /// deleted after approximately 30 days. You can restore a soft-deleted key
+  /// using UndeleteWorkloadIdentityPoolProviderKey. While a key is deleted, you
+  /// cannot use it during the federation.
+  core.String? state;
+
+  /// The purpose of the key.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "KEY_USE_UNSPECIFIED" : The key use is not known.
+  /// - "ENCRYPTION" : The public key is used for encryption purposes.
+  core.String? use;
+
+  WorkloadIdentityPoolProviderKey({
+    this.expireTime,
+    this.keyData,
+    this.name,
+    this.state,
+    this.use,
+  });
+
+  WorkloadIdentityPoolProviderKey.fromJson(core.Map json_)
+      : this(
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          keyData: json_.containsKey('keyData')
+              ? KeyData.fromJson(
+                  json_['keyData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          use: json_.containsKey('use') ? json_['use'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (keyData != null) 'keyData': keyData!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (use != null) 'use': use!,
       };
 }

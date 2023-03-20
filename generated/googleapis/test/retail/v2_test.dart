@@ -3335,6 +3335,7 @@ api.GoogleCloudRetailV2SearchRequest buildGoogleCloudRetailV2SearchRequest() {
   final o = api.GoogleCloudRetailV2SearchRequest();
   buildCounterGoogleCloudRetailV2SearchRequest++;
   if (buildCounterGoogleCloudRetailV2SearchRequest < 3) {
+    o.banner = 'foo';
     o.boostSpec = buildGoogleCloudRetailV2SearchRequestBoostSpec();
     o.branch = 'foo';
     o.canonicalFilter = 'foo';
@@ -3368,6 +3369,10 @@ void checkGoogleCloudRetailV2SearchRequest(
     api.GoogleCloudRetailV2SearchRequest o) {
   buildCounterGoogleCloudRetailV2SearchRequest++;
   if (buildCounterGoogleCloudRetailV2SearchRequest < 3) {
+    unittest.expect(
+      o.banner!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRetailV2SearchRequestBoostSpec(o.boostSpec!);
     unittest.expect(
       o.branch!,
@@ -4490,6 +4495,7 @@ api.GoogleCloudRetailV2UserEvent buildGoogleCloudRetailV2UserEvent() {
   if (buildCounterGoogleCloudRetailV2UserEvent < 3) {
     o.attributes = buildUnnamed91();
     o.attributionToken = 'foo';
+    o.banner = 'foo';
     o.cartId = 'foo';
     o.completionDetail = buildGoogleCloudRetailV2CompletionDetail();
     o.eventTime = 'foo';
@@ -4519,6 +4525,10 @@ void checkGoogleCloudRetailV2UserEvent(api.GoogleCloudRetailV2UserEvent o) {
     checkUnnamed91(o.attributes!);
     unittest.expect(
       o.attributionToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.banner!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6007,6 +6017,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudRetailApi(mock).projects.locations.catalogs;
       final arg_catalog = 'foo';
+      final arg_banner = 'foo';
       final arg_dataset = 'foo';
       final arg_deviceType = 'foo';
       final arg_languageCodes = buildUnnamed101();
@@ -6047,6 +6058,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['banner']!.first,
+          unittest.equals(arg_banner),
+        );
+        unittest.expect(
           queryMap['dataset']!.first,
           unittest.equals(arg_dataset),
         );
@@ -6083,6 +6098,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.completeQuery(arg_catalog,
+          banner: arg_banner,
           dataset: arg_dataset,
           deviceType: arg_deviceType,
           languageCodes: arg_languageCodes,
@@ -8056,6 +8072,58 @@ void main() {
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRetailApi(mock).projects.locations.catalogs.models;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleCloudRetailV2Model());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRetailV2Model(response as api.GoogleCloudRetailV2Model);
     });
 
     unittest.test('method--list', () async {

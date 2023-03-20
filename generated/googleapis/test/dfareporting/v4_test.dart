@@ -10781,6 +10781,7 @@ api.ReportSchedule buildReportSchedule() {
     o.repeatsOnWeekDays = buildUnnamed196();
     o.runsOnDayOfMonth = 'foo';
     o.startDate = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timezone = 'foo';
   }
   buildCounterReportSchedule--;
   return o;
@@ -10810,6 +10811,10 @@ void checkReportSchedule(api.ReportSchedule o) {
     unittest.expect(
       o.startDate!,
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
+    );
+    unittest.expect(
+      o.timezone!,
+      unittest.equals('foo'),
     );
   }
   buildCounterReportSchedule--;

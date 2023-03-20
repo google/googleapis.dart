@@ -72,6 +72,7 @@
 ///     - [OrganizationsEnvironmentsQueriesResource]
 ///     - [OrganizationsEnvironmentsReferencesResource]
 ///     - [OrganizationsEnvironmentsResourcefilesResource]
+///     - [OrganizationsEnvironmentsSecurityIncidentsResource]
 ///     - [OrganizationsEnvironmentsSecurityReportsResource]
 ///     - [OrganizationsEnvironmentsSecurityStatsResource]
 ///     - [OrganizationsEnvironmentsSharedflowsResource]
@@ -5620,6 +5621,8 @@ class OrganizationsEnvironmentsResource {
       OrganizationsEnvironmentsReferencesResource(_requester);
   OrganizationsEnvironmentsResourcefilesResource get resourcefiles =>
       OrganizationsEnvironmentsResourcefilesResource(_requester);
+  OrganizationsEnvironmentsSecurityIncidentsResource get securityIncidents =>
+      OrganizationsEnvironmentsSecurityIncidentsResource(_requester);
   OrganizationsEnvironmentsSecurityReportsResource get securityReports =>
       OrganizationsEnvironmentsSecurityReportsResource(_requester);
   OrganizationsEnvironmentsSecurityStatsResource get securityStats =>
@@ -9410,6 +9413,112 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }
 }
 
+class OrganizationsEnvironmentsSecurityIncidentsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsSecurityIncidentsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetSecurityIncident gets the specified security incident.
+  ///
+  /// Returns NOT_FOUND if security incident is not present for the specified
+  /// organization and environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Security incident in the following format:
+  /// \`organizations/{org}/environments/{environment}/securityIncidents/{incident}'.
+  /// Example:
+  /// organizations/testOrg/environments/testEnv/securityIncidents/1234-4567-890-111
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityIncidents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityIncident].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityIncident> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityIncident.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ListSecurityIncidents lists all the security incident associated with the
+  /// environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. For a specific organization, list of all the security
+  /// incidents. Format: `organizations/{org}/environments/{environment}`
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression to be used to get the list of security
+  /// incidents, where filtering can be done on API Proxies. Example: filter =
+  /// "api_proxy = /", "first_detected_time \>", "last_detected_time \<"
+  ///
+  /// [pageSize] - The maximum number of incidents to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 incidents will be
+  /// returned.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListSecurityIncident` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListSecurityIncidentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSecurityIncidentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityIncidents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSecurityIncidentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsEnvironmentsSecurityReportsResource {
   final commons.ApiRequester _requester;
 
@@ -12280,13 +12389,6 @@ class OrganizationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -17278,6 +17380,13 @@ class GoogleCloudApigeeV1DeploymentConfig {
 /// DeploymentGroupConfig represents a deployment group that should be present
 /// in a particular environment.
 class GoogleCloudApigeeV1DeploymentGroupConfig {
+  /// Type of the deployment group, which will be either Standard or Extensible.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_GROUP_TYPE_UNSPECIFIED" : Unspecified type
+  /// - "STANDARD" : Standard type
+  /// - "EXTENSIBLE" : Extensible Type
+  core.String? deploymentGroupType;
+
   /// Name of the deployment group in the following format:
   /// `organizations/{org}/environments/{env}/deploymentGroups/{group}`.
   core.String? name;
@@ -17292,6 +17401,7 @@ class GoogleCloudApigeeV1DeploymentGroupConfig {
   core.String? uid;
 
   GoogleCloudApigeeV1DeploymentGroupConfig({
+    this.deploymentGroupType,
     this.name,
     this.revisionId,
     this.uid,
@@ -17299,6 +17409,9 @@ class GoogleCloudApigeeV1DeploymentGroupConfig {
 
   GoogleCloudApigeeV1DeploymentGroupConfig.fromJson(core.Map json_)
       : this(
+          deploymentGroupType: json_.containsKey('deploymentGroupType')
+              ? json_['deploymentGroupType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           revisionId: json_.containsKey('revisionId')
               ? json_['revisionId'] as core.String
@@ -17307,6 +17420,8 @@ class GoogleCloudApigeeV1DeploymentGroupConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentGroupType != null)
+          'deploymentGroupType': deploymentGroupType!,
         if (name != null) 'name': name!,
         if (revisionId != null) 'revisionId': revisionId!,
         if (uid != null) 'uid': uid!,
@@ -20659,6 +20774,40 @@ class GoogleCloudApigeeV1ListRatePlansResponse {
       };
 }
 
+/// Response for ListSecurityIncidents.
+class GoogleCloudApigeeV1ListSecurityIncidentsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of security incidents in the organization
+  core.List<GoogleCloudApigeeV1SecurityIncident>? securityIncidents;
+
+  GoogleCloudApigeeV1ListSecurityIncidentsResponse({
+    this.nextPageToken,
+    this.securityIncidents,
+  });
+
+  GoogleCloudApigeeV1ListSecurityIncidentsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityIncidents: json_.containsKey('securityIncidents')
+              ? (json_['securityIncidents'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1SecurityIncident.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityIncidents != null) 'securityIncidents': securityIncidents!,
+      };
+}
+
 /// Response for ListSecurityProfileRevisions.
 class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse {
   /// A token that can be sent as `page_token` to retrieve the next page.
@@ -23990,6 +24139,98 @@ class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documentationLink != null) 'documentationLink': documentationLink!,
+      };
+}
+
+/// Represents an SecurityIncident resource.
+class GoogleCloudApigeeV1SecurityIncident {
+  /// Detection types which are part of the incident.
+  ///
+  /// Examples: Flooder, OAuth Abuser, Static Content Scraper, Anomaly
+  /// Detection.
+  ///
+  /// Output only.
+  core.List<core.String>? detectionTypes;
+
+  /// Display name of the security incident.
+  core.String? displayName;
+
+  /// The time when events associated with the incident were first detected.
+  ///
+  /// Output only.
+  core.String? firstDetectedTime;
+
+  /// The time when events associated with the incident were last detected.
+  ///
+  /// Output only.
+  core.String? lastDetectedTime;
+
+  /// Name of the security incident resource.
+  ///
+  /// Format:
+  /// organizations/{org}/environments/{environment}/securityIncidents/{incident}
+  /// Example:
+  /// organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Risk level of the incident.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RISK_LEVEL_UNSPECIFIED" : Risk Level Unspecified.
+  /// - "LOW" : Risk level of the incident is low.
+  /// - "MODERATE" : Risk level of the incident is moderate.
+  /// - "SEVERE" : Risk level of the incident is severe.
+  core.String? riskLevel;
+
+  /// Total traffic detected as part of the incident.
+  core.String? trafficCount;
+
+  GoogleCloudApigeeV1SecurityIncident({
+    this.detectionTypes,
+    this.displayName,
+    this.firstDetectedTime,
+    this.lastDetectedTime,
+    this.name,
+    this.riskLevel,
+    this.trafficCount,
+  });
+
+  GoogleCloudApigeeV1SecurityIncident.fromJson(core.Map json_)
+      : this(
+          detectionTypes: json_.containsKey('detectionTypes')
+              ? (json_['detectionTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          firstDetectedTime: json_.containsKey('firstDetectedTime')
+              ? json_['firstDetectedTime'] as core.String
+              : null,
+          lastDetectedTime: json_.containsKey('lastDetectedTime')
+              ? json_['lastDetectedTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          riskLevel: json_.containsKey('riskLevel')
+              ? json_['riskLevel'] as core.String
+              : null,
+          trafficCount: json_.containsKey('trafficCount')
+              ? json_['trafficCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectionTypes != null) 'detectionTypes': detectionTypes!,
+        if (displayName != null) 'displayName': displayName!,
+        if (firstDetectedTime != null) 'firstDetectedTime': firstDetectedTime!,
+        if (lastDetectedTime != null) 'lastDetectedTime': lastDetectedTime!,
+        if (name != null) 'name': name!,
+        if (riskLevel != null) 'riskLevel': riskLevel!,
+        if (trafficCount != null) 'trafficCount': trafficCount!,
       };
 }
 

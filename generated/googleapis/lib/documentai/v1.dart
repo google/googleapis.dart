@@ -362,13 +362,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3183,9 +3176,9 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
   /// - "ADD" : Add an element.
   /// - "REMOVE" : Remove an element identified by `parent`.
   /// - "UPDATE" : Updates any fields within the given provenance scope of the
-  /// message. It 'overwrites' the fields rather than replacing them. This is
-  /// especially relevant when we just want to update a field value of an entity
-  /// without also affecting all the child properties.
+  /// message. It overwrites the fields rather than replacing them. Use this
+  /// when you want to update a field value of an entity without also updating
+  /// all the child properties.
   /// - "REPLACE" : Currently unused. Replace an element identified by `parent`.
   /// - "EVAL_REQUESTED" : Deprecated. Request human review for the element
   /// identified by `parent`.
@@ -4905,6 +4898,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// - "DELETING" : The processor version is being deleted.
   /// - "FAILED" : The processor version failed and is in an indeterminate
   /// state.
+  /// - "IMPORTING" : The processor version is being imported.
   core.String? state;
 
   GoogleCloudDocumentaiV1ProcessorVersion({

@@ -512,8 +512,10 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
     o.createTime = 'foo';
     o.destroyEventTime = 'foo';
     o.destroyTime = 'foo';
+    o.externalDestructionFailureReason = 'foo';
     o.externalProtectionLevelOptions = buildExternalProtectionLevelOptions();
     o.generateTime = 'foo';
+    o.generationFailureReason = 'foo';
     o.importFailureReason = 'foo';
     o.importJob = 'foo';
     o.importTime = 'foo';
@@ -546,9 +548,17 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
       o.destroyTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.externalDestructionFailureReason!,
+      unittest.equals('foo'),
+    );
     checkExternalProtectionLevelOptions(o.externalProtectionLevelOptions!);
     unittest.expect(
       o.generateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generationFailureReason!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -725,6 +735,33 @@ void checkDigest(api.Digest o) {
   buildCounterDigest--;
 }
 
+core.int buildCounterEkmConfig = 0;
+api.EkmConfig buildEkmConfig() {
+  final o = api.EkmConfig();
+  buildCounterEkmConfig++;
+  if (buildCounterEkmConfig < 3) {
+    o.defaultEkmConnection = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterEkmConfig--;
+  return o;
+}
+
+void checkEkmConfig(api.EkmConfig o) {
+  buildCounterEkmConfig++;
+  if (buildCounterEkmConfig < 3) {
+    unittest.expect(
+      o.defaultEkmConnection!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEkmConfig--;
+}
+
 core.List<api.ServiceResolver> buildUnnamed8() => [
       buildServiceResolver(),
       buildServiceResolver(),
@@ -742,7 +779,9 @@ api.EkmConnection buildEkmConnection() {
   buildCounterEkmConnection++;
   if (buildCounterEkmConnection < 3) {
     o.createTime = 'foo';
+    o.cryptoSpacePath = 'foo';
     o.etag = 'foo';
+    o.keyManagementMode = 'foo';
     o.name = 'foo';
     o.serviceResolvers = buildUnnamed8();
   }
@@ -758,7 +797,15 @@ void checkEkmConnection(api.EkmConnection o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.cryptoSpacePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.keyManagementMode!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2055,6 +2102,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EkmConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEkmConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.EkmConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEkmConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-EkmConnection', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEkmConnection();
@@ -2477,6 +2534,58 @@ void main() {
       checkLocation(response as api.Location);
     });
 
+    unittest.test('method--getEkmConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEkmConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getEkmConfig(arg_name, $fields: arg_$fields);
+      checkEkmConfig(response as api.EkmConfig);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations;
@@ -2546,6 +2655,69 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+
+    unittest.test('method--updateEkmConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations;
+      final arg_request = buildEkmConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.EkmConfig.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEkmConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEkmConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateEkmConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkEkmConfig(response as api.EkmConfig);
     });
   });
 

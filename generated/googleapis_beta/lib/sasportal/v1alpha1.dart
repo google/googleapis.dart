@@ -53,6 +53,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class SasportalApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
   /// Read, create, update, and delete your SAS Portal data.
   static const sasportalScope = 'https://www.googleapis.com/auth/sasportal';
 
@@ -4328,11 +4333,12 @@ class SasPortalPolicy {
 
 /// Request for \[ProvisionDeployment\].
 ///
-/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\]. No input
-/// is needed, because GCP Project, Organization Info, and caller’s GAIA ID
-/// should be retrieved from the RPC handler, and used as inputs to create a new
-/// SAS organization (if not exists) and a new SAS deployment.
-typedef SasPortalProvisionDeploymentRequest = $Empty;
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\]. GCP
+/// Project, Organization Info, and caller’s GAIA ID should be retrieved from
+/// the RPC handler, and used as inputs to create a new SAS organization (if not
+/// exists) and a new SAS deployment.
+typedef SasPortalProvisionDeploymentRequest
+    = $SasPortalProvisionDeploymentRequest;
 
 /// Response for \[ProvisionDeployment\].
 ///

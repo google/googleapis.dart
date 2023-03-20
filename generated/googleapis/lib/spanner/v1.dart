@@ -587,13 +587,6 @@ class ProjectsInstanceConfigsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1813,13 +1806,6 @@ class ProjectsInstancesBackupsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2741,13 +2727,6 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3670,13 +3649,6 @@ class ProjectsInstancesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5331,6 +5303,13 @@ class ExecuteBatchDmlResponse {
 
 /// The request for ExecuteSql and ExecuteStreamingSql.
 class ExecuteSqlRequest {
+  /// If this is for a partitioned query and this field is set to `true`, the
+  /// request will be executed via Spanner independent compute resources.
+  ///
+  /// If the field is set to `true` but the request does not set
+  /// `partition_token`, the API will return an `INVALID_ARGUMENT` error.
+  core.bool? dataBoostEnabled;
+
   /// It is not always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
@@ -5432,6 +5411,7 @@ class ExecuteSqlRequest {
   TransactionSelector? transaction;
 
   ExecuteSqlRequest({
+    this.dataBoostEnabled,
     this.paramTypes,
     this.params,
     this.partitionToken,
@@ -5446,6 +5426,9 @@ class ExecuteSqlRequest {
 
   ExecuteSqlRequest.fromJson(core.Map json_)
       : this(
+          dataBoostEnabled: json_.containsKey('dataBoostEnabled')
+              ? json_['dataBoostEnabled'] as core.bool
+              : null,
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -5485,6 +5468,7 @@ class ExecuteSqlRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
         if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
@@ -5817,8 +5801,9 @@ class Instance {
   /// The number of nodes allocated to this instance.
   ///
   /// At most one of either node_count or processing_units should be present in
-  /// the message. This may be zero in API responses for instances that are not
-  /// yet in state `READY`. See
+  /// the message. Users can set the node_count field to specify the target
+  /// number of nodes allocated to the instance. This may be zero in API
+  /// responses for instances that are not yet in state `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
   /// for more information about nodes and processing units.
   core.int? nodeCount;
@@ -5826,8 +5811,9 @@ class Instance {
   /// The number of processing units allocated to this instance.
   ///
   /// At most one of processing_units or node_count should be present in the
-  /// message. This may be zero in API responses for instances that are not yet
-  /// in state `READY`. See
+  /// message. Users can set the processing_units field to specify the target
+  /// number of processing units allocated to the instance. This may be zero in
+  /// API responses for instances that are not yet in state `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
   /// for more information about nodes and processing units.
   core.int? processingUnits;
@@ -8042,6 +8028,13 @@ class ReadRequest {
   /// Required.
   core.List<core.String>? columns;
 
+  /// If this is for a partitioned read and this field is set to `true`, the
+  /// request will be executed via Spanner independent compute resources.
+  ///
+  /// If the field is set to `true` but the request does not set
+  /// `partition_token`, the API will return an `INVALID_ARGUMENT` error.
+  core.bool? dataBoostEnabled;
+
   /// If non-empty, the name of an index on table.
   ///
   /// This index is used instead of the table primary key when interpreting
@@ -8115,6 +8108,7 @@ class ReadRequest {
 
   ReadRequest({
     this.columns,
+    this.dataBoostEnabled,
     this.index,
     this.keySet,
     this.limit,
@@ -8131,6 +8125,9 @@ class ReadRequest {
               ? (json_['columns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          dataBoostEnabled: json_.containsKey('dataBoostEnabled')
+              ? json_['dataBoostEnabled'] as core.bool
               : null,
           index:
               json_.containsKey('index') ? json_['index'] as core.String : null,
@@ -8160,6 +8157,7 @@ class ReadRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
+        if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
         if (index != null) 'index': index!,
         if (keySet != null) 'keySet': keySet!,
         if (limit != null) 'limit': limit!,

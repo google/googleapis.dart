@@ -6491,12 +6491,18 @@ class $EgressFrom {
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
+/// - clouddeploy:v1 : AdvanceRolloutResponse
 /// - clouddeploy:v1 : ApproveRolloutResponse
 /// - clouddeploy:v1 : CancelOperationRequest
+/// - clouddeploy:v1 : CancelRolloutRequest
+/// - clouddeploy:v1 : CancelRolloutResponse
 /// - clouddeploy:v1 : CreateChildRolloutJob
 /// - clouddeploy:v1 : DeployJob
 /// - clouddeploy:v1 : Empty
+/// - clouddeploy:v1 : IgnoreJobResponse
 /// - clouddeploy:v1 : RetryJobResponse
+/// - clouddeploy:v1 : TerminateJobRunRequest
+/// - clouddeploy:v1 : TerminateJobRunResponse
 /// - clouddeploy:v1 : VerifyJob
 /// - cloudfunctions:v1 : Retry
 /// - cloudfunctions:v2 : GenerateDownloadUrlRequest
@@ -6542,6 +6548,7 @@ class $EgressFrom {
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
 /// - containeranalysis:v1 : Empty
+/// - containeranalysis:v1 : GeneratePackagesSummaryRequest
 /// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
 /// - content:v2.1 : CaptureOrderRequest
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
@@ -6565,6 +6572,8 @@ class $EgressFrom {
 /// - datafusion:v1 : CancelOperationRequest
 /// - datafusion:v1 : Empty
 /// - datafusion:v1 : RestartInstanceRequest
+/// - datalineage:v1 : GoogleLongrunningCancelOperationRequest
+/// - datalineage:v1 : GoogleProtobufEmpty
 /// - datamigration:v1 : CancelOperationRequest
 /// - datamigration:v1 : Empty
 /// - datamigration:v1 : PromoteMigrationJobRequest
@@ -6722,9 +6731,11 @@ class $EgressFrom {
 /// - iam:v1 : EnableServiceAccountKeyRequest
 /// - iam:v1 : EnableServiceAccountRequest
 /// - iam:v1 : UndeleteServiceAccountRequest
+/// - iam:v1 : UndeleteWorkforcePoolProviderKeyRequest
 /// - iam:v1 : UndeleteWorkforcePoolProviderRequest
 /// - iam:v1 : UndeleteWorkforcePoolRequest
 /// - iam:v1 : UndeleteWorkforcePoolSubjectRequest
+/// - iam:v1 : UndeleteWorkloadIdentityPoolProviderKeyRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolProviderRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
 /// - iap:v1 : Empty
@@ -6784,6 +6795,8 @@ class $EgressFrom {
 /// - notebooks:v1 : StartInstanceRequest
 /// - notebooks:v1 : StopInstanceRequest
 /// - notebooks:v1 : TriggerScheduleRequest
+/// - notebooks:v2 : CancelOperationRequest
+/// - notebooks:v2 : Empty
 /// - ondemandscanning:v1 : Empty
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 /// - orgpolicy:v2 : GoogleProtobufEmpty
@@ -6820,6 +6833,9 @@ class $EgressFrom {
 /// - realtimebidding:v1 : SuspendPretargetingConfigRequest
 /// - realtimebidding:v1 : WatchCreativesRequest
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleCloudRetailV2PauseModelRequest
@@ -7242,6 +7258,8 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
   /// - "EXCHANGE_APPLOVIN" : AppLovin.
   /// - "EXCHANGE_CONNATIX" : Connatix.
+  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
+  /// - "EXCHANGE_HIVESTACK" : Hivestack.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -7379,6 +7397,8 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
   /// - "EXCHANGE_APPLOVIN" : AppLovin.
   /// - "EXCHANGE_CONNATIX" : Connatix.
+  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
+  /// - "EXCHANGE_HIVESTACK" : Hivestack.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -7495,6 +7515,8 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
   /// - "EXCHANGE_APPLOVIN" : AppLovin.
   /// - "EXCHANGE_CONNATIX" : Connatix.
+  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
+  /// - "EXCHANGE_HIVESTACK" : Hivestack.
   core.String? exchange;
 
   $ExchangeTargetingOptionDetails({
@@ -7721,6 +7743,7 @@ class $ExportOptions {
 /// - networksecurity:v1 : Expr
 /// - networkservices:v1 : Expr
 /// - notebooks:v1 : Expr
+/// - notebooks:v2 : Expr
 /// - orgpolicy:v2 : GoogleTypeExpr
 /// - policysimulator:v1 : GoogleTypeExpr
 /// - policytroubleshooter:v1 : GoogleTypeExpr
@@ -10739,6 +10762,55 @@ class $InventorySourceVideoCreativeConfig {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : Justification
+/// - ondemandscanning:v1 : Justification
+class $Justification {
+  /// Additional details on why this justification was chosen.
+  core.String? details;
+
+  /// The justification type for this vulnerability.
+  /// Possible string values are:
+  /// - "JUSTIFICATION_TYPE_UNSPECIFIED" : JUSTIFICATION_TYPE_UNSPECIFIED.
+  /// - "COMPONENT_NOT_PRESENT" : The vulnerable component is not present in the
+  /// product.
+  /// - "VULNERABLE_CODE_NOT_PRESENT" : The vulnerable code is not present.
+  /// Typically this case occurs when source code is configured or built in a
+  /// way that excludes the vulnerable code.
+  /// - "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH" : The vulnerable code can not be
+  /// executed. Typically this case occurs when the product includes the
+  /// vulnerable code but does not call or use the vulnerable code.
+  /// - "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY" : The vulnerable
+  /// code cannot be controlled by an attacker to exploit the vulnerability.
+  /// - "INLINE_MITIGATIONS_ALREADY_EXIST" : The product includes built-in
+  /// protections or features that prevent exploitation of the vulnerability.
+  /// These built-in protections cannot be subverted by the attacker and cannot
+  /// be configured or disabled by the user. These mitigations completely
+  /// prevent exploitation based on known attack vectors.
+  core.String? justificationType;
+
+  $Justification({
+    this.details,
+    this.justificationType,
+  });
+
+  $Justification.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          justificationType: json_.containsKey('justificationType')
+              ? json_['justificationType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (justificationType != null) 'justificationType': justificationType!,
+      };
+}
+
+/// Used by:
+///
 /// - binaryauthorization:v1 : Jwt
 /// - containeranalysis:v1 : Jwt
 /// - ondemandscanning:v1 : Jwt
@@ -11843,6 +11915,7 @@ class $LocalizedMessage {
 /// - networksecurity:v1 : Location
 /// - networkservices:v1 : Location
 /// - notebooks:v1 : Location
+/// - notebooks:v2 : Location
 /// - privateca:v1 : Location
 /// - run:v1 : Location
 /// - secretmanager:v1 : Location
@@ -15021,6 +15094,7 @@ class $PerformanceGoalBidStrategy {
 /// - networksecurity:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - networkservices:v1 : TestIamPermissionsResponse
 /// - notebooks:v1 : TestIamPermissionsResponse
+/// - notebooks:v2 : TestIamPermissionsResponse
 /// - privateca:v1 : TestIamPermissionsResponse
 /// - pubsub:v1 : TestIamPermissionsResponse
 /// - run:v1 : TestIamPermissionsResponse
@@ -18020,6 +18094,7 @@ class $StartPageToken {
 /// - contentwarehouse:v1 : GoogleRpcStatus
 /// - datacatalog:v1 : Status
 /// - datafusion:v1 : Status
+/// - datalineage:v1 : GoogleRpcStatus
 /// - datamigration:v1 : Status
 /// - datapipelines:v1 : GoogleRpcStatus
 /// - dataplex:v1 : GoogleRpcStatus
@@ -18057,6 +18132,7 @@ class $StartPageToken {
 /// - networksecurity:v1 : Status
 /// - networkservices:v1 : Status
 /// - notebooks:v1 : Status
+/// - notebooks:v2 : Status
 /// - ondemandscanning:v1 : Status
 /// - osconfig:v1 : Status
 /// - people:v1 : Status
@@ -18065,6 +18141,7 @@ class $StartPageToken {
 /// - policytroubleshooter:v1 : GoogleRpcStatus
 /// - privateca:v1 : Status
 /// - pubsublite:v1 : Status
+/// - recaptchaenterprise:v1 : GoogleRpcStatus
 /// - redis:v1 : Status
 /// - retail:v2 : GoogleRpcStatus
 /// - run:v1 : GoogleRpcStatus
@@ -18607,12 +18684,33 @@ class $TargetingExpansionConfig {
   /// Similar audiences of the excluded first-party lists will not be excluded.
   /// Only applicable when a first-party audience is positively targeted
   /// (directly or included in a combined audience), otherwise this selection
-  /// will be ignored.
+  /// will be ignored. Beginning **March 25, 2023**, this field may be
+  /// deprecated with the replacement of targeting expansion with \[optimized
+  /// targeting\](//support.google.com/displayvideo/answer/12060859). Upon
+  /// deprecation, this field will be set to `false`. If this field is set to
+  /// `true` when deprecated, all positive first-party audience targeting
+  /// assigned to this line item will be replaced with negative targeting of the
+  /// same first-party audiences to ensure the continued exclusion of those
+  /// audiences. This field will be deprecated for all partners by mid-April
+  /// 2023.
   ///
   /// Required.
   core.bool? excludeFirstPartyAudience;
 
   /// Magnitude of expansion for applicable targeting under this line item.
+  ///
+  /// Beginning **March 25, 2023**, the behavior of this field may change in the
+  /// following ways with the replacement of targeting expansion with
+  /// \[optimized
+  /// targeting\](//support.google.com/displayvideo/answer/12060859): * This
+  /// field will represent the optimized targeting checkbox, with a
+  /// `NO_EXPANSION` value representing optimized targeting turned off and a
+  /// `LEAST_EXPANSION` value representing optimized targeting turned on. *
+  /// `NO_EXPANSION` will be the default value for the field and will be
+  /// automatically assigned if you do not set the field. * If you set the field
+  /// to any value other than `NO_EXPANSION`, it will automatically be set to
+  /// `LEAST_EXPANSION`. This behavior will be rolled out to all partners by
+  /// mid-April 2023.
   ///
   /// Required.
   /// Possible string values are:
@@ -18757,6 +18855,7 @@ class $TenantProjectRequest {
 /// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - networkservices:v1 : TestIamPermissionsRequest
 /// - notebooks:v1 : TestIamPermissionsRequest
+/// - notebooks:v2 : TestIamPermissionsRequest
 /// - privateca:v1 : TestIamPermissionsRequest
 /// - pubsub:v1 : TestIamPermissionsRequest
 /// - run:v1 : TestIamPermissionsRequest
@@ -19092,6 +19191,7 @@ class $ThirdPartyUrl {
 /// Used by:
 ///
 /// - authorizedbuyersmarketplace:v1 : TimeOfDay
+/// - businessprofileperformance:v1 : TimeOfDay
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - jobs:v3 : TimeOfDay

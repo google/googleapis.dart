@@ -416,7 +416,7 @@ Manages keys and performs cryptographic operations in a central cloud service, f
 - [Documentation](https://cloud.google.com/kms/)
 - [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/cloudkms.v1/cloudkms.v1-library.html)
 
-#### Stackdriver Profiler API - `cloudprofiler.v2`
+#### Cloud Profiler API - `cloudprofiler.v2`
 
 Manages continuous profiling information.
 
@@ -558,6 +558,11 @@ Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration 
 
 - [Documentation](https://cloud.google.com/data-fusion/docs)
 - [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/datafusion.v1/datafusion.v1-library.html)
+
+#### Data Lineage API - `datalineage.v1`
+
+- [Documentation](https://cloud.google.com/data-catalog)
+- [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/datalineage.v1/datalineage.v1-library.html)
 
 #### Database Migration API - `datamigration.v1`
 
@@ -1163,6 +1168,13 @@ Notebooks API is used to manage notebook resources in Google Cloud.
 
 - [Documentation](https://cloud.google.com/notebooks/docs/)
 - [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/notebooks.v1/notebooks.v1-library.html)
+
+#### Notebooks API - `notebooks.v2`
+
+Notebooks API is used to manage notebook resources in Google Cloud.
+
+- [Documentation](https://cloud.google.com/notebooks/docs/)
+- [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/notebooks.v2/notebooks.v2-library.html)
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google OAuth2 API - `oauth2.v2`
 

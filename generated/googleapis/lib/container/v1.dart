@@ -4391,6 +4391,9 @@ class Cluster {
   /// Output only.
   core.String? expireTime;
 
+  /// Fleet information for the cluster.
+  Fleet? fleet;
+
   /// Unique id for the cluster.
   ///
   /// Output only.
@@ -4675,6 +4678,7 @@ class Cluster {
     this.endpoint,
     this.etag,
     this.expireTime,
+    this.fleet,
     this.id,
     this.identityServiceConfig,
     this.initialClusterVersion,
@@ -4796,6 +4800,10 @@ class Cluster {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
+              : null,
+          fleet: json_.containsKey('fleet')
+              ? Fleet.fromJson(
+                  json_['fleet'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           identityServiceConfig: json_.containsKey('identityServiceConfig')
@@ -4987,6 +4995,7 @@ class Cluster {
         if (endpoint != null) 'endpoint': endpoint!,
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (fleet != null) 'fleet': fleet!,
         if (id != null) 'id': id!,
         if (identityServiceConfig != null)
           'identityServiceConfig': identityServiceConfig!,
@@ -5280,7 +5289,7 @@ class ClusterUpdate {
   /// Google Services
   /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
   /// Google Services from GKE
-  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables private IPv6 access
   /// to and from Google Services
   core.String? desiredPrivateIpv6GoogleAccess;
 
@@ -6156,6 +6165,52 @@ class Filter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Fleet is the fleet configuration for the cluster.
+class Fleet {
+  /// The full resource name of the registered fleet membership of the cluster,
+  /// in the format `//gkehub.googleapis.com/projects / * /locations / *
+  /// /memberships / * `.
+  ///
+  /// Output only.
+  core.String? membership;
+
+  /// Whether the cluster has been registered through the fleet API.
+  ///
+  /// Output only.
+  core.bool? preRegistered;
+
+  /// The Fleet host project(project ID or project number) where this cluster
+  /// will be registered to.
+  ///
+  /// This field cannot be changed after the cluster has been registered.
+  core.String? project;
+
+  Fleet({
+    this.membership,
+    this.preRegistered,
+    this.project,
+  });
+
+  Fleet.fromJson(core.Map json_)
+      : this(
+          membership: json_.containsKey('membership')
+              ? json_['membership'] as core.String
+              : null,
+          preRegistered: json_.containsKey('preRegistered')
+              ? json_['preRegistered'] as core.bool
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (membership != null) 'membership': membership!,
+        if (preRegistered != null) 'preRegistered': preRegistered!,
+        if (project != null) 'project': project!,
       };
 }
 
@@ -7705,7 +7760,7 @@ class NetworkConfig {
   /// Google Services
   /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
   /// Google Services from GKE
-  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables private IPv6 access
   /// to and from Google Services
   core.String? privateIpv6GoogleAccess;
 
@@ -11860,7 +11915,8 @@ class UsableSubnetworkSecondaryRange {
   /// valid status.
   /// - "UNUSED" : UNUSED denotes that this range is unclaimed by any cluster.
   /// - "IN_USE_SERVICE" : IN_USE_SERVICE denotes that this range is claimed by
-  /// a cluster for services. It cannot be used for other clusters.
+  /// cluster(s) for services. User-managed services range can be shared between
+  /// clusters within the same subnetwork.
   /// - "IN_USE_SHAREABLE_POD" : IN_USE_SHAREABLE_POD denotes this range was
   /// created by the network admin and is currently claimed by a cluster for
   /// pods. It can only be used by other clusters as a pod range.
