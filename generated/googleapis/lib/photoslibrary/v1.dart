@@ -1497,6 +1497,9 @@ class Date {
 /// This filter defines the allowed dates or date ranges for the media returned.
 ///
 /// It's possible to pick a set of specific dates and a set of date ranges.
+/// Media items uploaded without metadata specifying the date the media item was
+/// captured will not be returned in queries using date filters. Google Photos
+/// server upload time is not used as a fallback in this case.
 class DateFilter {
   /// List of dates that match the media items' creation date.
   ///

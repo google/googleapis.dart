@@ -606,6 +606,7 @@ api.Cluster buildCluster() {
     o.endpoint = 'foo';
     o.etag = 'foo';
     o.expireTime = 'foo';
+    o.fleet = buildFleet();
     o.id = 'foo';
     o.identityServiceConfig = buildIdentityServiceConfig();
     o.initialClusterVersion = 'foo';
@@ -704,6 +705,7 @@ void checkCluster(api.Cluster o) {
       o.expireTime!,
       unittest.equals('foo'),
     );
+    checkFleet(o.fleet!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1421,6 +1423,35 @@ void checkFilter(api.Filter o) {
     checkUnnamed11(o.eventType!);
   }
   buildCounterFilter--;
+}
+
+core.int buildCounterFleet = 0;
+api.Fleet buildFleet() {
+  final o = api.Fleet();
+  buildCounterFleet++;
+  if (buildCounterFleet < 3) {
+    o.membership = 'foo';
+    o.preRegistered = true;
+    o.project = 'foo';
+  }
+  buildCounterFleet--;
+  return o;
+}
+
+void checkFleet(api.Fleet o) {
+  buildCounterFleet++;
+  if (buildCounterFleet < 3) {
+    unittest.expect(
+      o.membership!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.preRegistered!, unittest.isTrue);
+    unittest.expect(
+      o.project!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFleet--;
 }
 
 core.int buildCounterGPUSharingConfig = 0;
@@ -5712,6 +5743,16 @@ void main() {
       final od =
           api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFilter(od);
+    });
+  });
+
+  unittest.group('obj-schema-Fleet', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFleet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Fleet.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFleet(od);
     });
   });
 

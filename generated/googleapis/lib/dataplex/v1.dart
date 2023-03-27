@@ -5970,14 +5970,7 @@ class ProjectsLocationsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -8888,8 +8881,19 @@ class GoogleCloudDataplexV1DataSource {
   /// Immutable.
   core.String? entity;
 
+  /// The service-qualified full resource name of the cloud resource for a
+  /// DataScan job to scan against.
+  ///
+  /// The field could be: BigQuery table of type "TABLE" for
+  /// DataProfileScan/DataQualityScan Format:
+  /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+  ///
+  /// Immutable.
+  core.String? resource;
+
   GoogleCloudDataplexV1DataSource({
     this.entity,
+    this.resource,
   });
 
   GoogleCloudDataplexV1DataSource.fromJson(core.Map json_)
@@ -8897,10 +8901,14 @@ class GoogleCloudDataplexV1DataSource {
           entity: json_.containsKey('entity')
               ? json_['entity'] as core.String
               : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!,
+        if (resource != null) 'resource': resource!,
       };
 }
 

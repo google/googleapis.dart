@@ -4550,6 +4550,11 @@ class RoleAssignmentsResource {
   /// resource. You must provide either the `customer` or the `domain`
   /// parameter.
   ///
+  /// [includeIndirectRoleAssignments] - When set to `true`, fetches indirect
+  /// role assignments (i.e. role assignment via a group) as well as direct
+  /// ones. Defaults to `false`. You must specify `user_key` or the indirect
+  /// role assignments will not be included.
+  ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "200".
   ///
@@ -4558,9 +4563,9 @@ class RoleAssignmentsResource {
   /// [roleId] - Immutable ID of a role. If included in the request, returns
   /// only role assignments containing this role ID.
   ///
-  /// [userKey] - The user's primary email address, alias email address, or
-  /// unique user ID. If included in the request, returns role assignments only
-  /// for this user.
+  /// [userKey] - The primary email address, alias email address, or unique user
+  /// or group ID. If included in the request, returns role assignments only for
+  /// this user or group.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4574,6 +4579,7 @@ class RoleAssignmentsResource {
   /// this method will complete with the same error.
   async.Future<RoleAssignments> list(
     core.String customer, {
+    core.bool? includeIndirectRoleAssignments,
     core.int? maxResults,
     core.String? pageToken,
     core.String? roleId,
@@ -4581,6 +4587,8 @@ class RoleAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeIndirectRoleAssignments != null)
+        'includeIndirectRoleAssignments': ['${includeIndirectRoleAssignments}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (roleId != null) 'roleId': [roleId],
@@ -8830,6 +8838,9 @@ class DirectoryChromeosdevicesCommand {
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
   /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
+  /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
+  /// be downloaded from the downloadUrl link present in deviceFiles field of
+  /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? type;
 
   DirectoryChromeosdevicesCommand({
@@ -8955,6 +8966,9 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
   /// - "DEVICE_START_CRD_SESSION" : Starts a Chrome Remote Desktop session.
+  /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
+  /// be downloaded from the downloadUrl link present in deviceFiles field of
+  /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
@@ -11225,6 +11239,14 @@ class RoleAssignment {
   /// (IAM)\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
   core.String? assignedTo;
 
+  /// The type of the assignee (`USER` or `GROUP`).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "user" : An individual user within the domain.
+  /// - "group" : A group within the domain.
+  core.String? assigneeType;
+
   /// ETag of the resource.
   core.String? etag;
 
@@ -11248,6 +11270,7 @@ class RoleAssignment {
 
   RoleAssignment({
     this.assignedTo,
+    this.assigneeType,
     this.etag,
     this.kind,
     this.orgUnitId,
@@ -11260,6 +11283,9 @@ class RoleAssignment {
       : this(
           assignedTo: json_.containsKey('assignedTo')
               ? json_['assignedTo'] as core.String
+              : null,
+          assigneeType: json_.containsKey('assigneeType')
+              ? json_['assigneeType'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
@@ -11279,6 +11305,7 @@ class RoleAssignment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTo != null) 'assignedTo': assignedTo!,
+        if (assigneeType != null) 'assigneeType': assigneeType!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
@@ -12051,7 +12078,9 @@ class User {
   /// Output only.
   core.String? thumbnailPhotoEtag;
 
-  /// Photo Url of the user (Read-only)
+  /// The URL of the user's profile photo.
+  ///
+  /// The URL might be temporary or private.
   ///
   /// Output only.
   core.String? thumbnailPhotoUrl;

@@ -20,6 +20,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsAssessmentsResource]
+///   - [ProjectsFirewallpoliciesResource]
 ///   - [ProjectsKeysResource]
 ///   - [ProjectsRelatedaccountgroupmembershipsResource]
 ///   - [ProjectsRelatedaccountgroupsResource]
@@ -64,6 +65,8 @@ class ProjectsResource {
 
   ProjectsAssessmentsResource get assessments =>
       ProjectsAssessmentsResource(_requester);
+  ProjectsFirewallpoliciesResource get firewallpolicies =>
+      ProjectsFirewallpoliciesResource(_requester);
   ProjectsKeysResource get keys => ProjectsKeysResource(_requester);
   ProjectsRelatedaccountgroupmembershipsResource
       get relatedaccountgroupmemberships =>
@@ -164,6 +167,228 @@ class ProjectsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsFirewallpoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsFirewallpoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA
+  /// Enterprise actions can be executed.
+  ///
+  /// A project may have a maximum of 1000 policies.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project this policy will apply to, in
+  /// the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> create(
+    GoogleCloudRecaptchaenterpriseV1FirewallPolicy request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallpolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to be deleted, in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the requested policy, in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all firewall policies that belong to a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list the policies for, in
+  /// the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of policies to return. Default
+  /// is 10. Max limit is 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a
+  /// previous. ListFirewallPoliciesRequest, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallpolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified firewall policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the FirewallPolicy in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields of the policy
+  /// get updated. If the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> patch(
+    GoogleCloudRecaptchaenterpriseV1FirewallPolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -813,9 +1038,14 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// Example: 'com.companyname.appname'
   core.List<core.String>? allowedPackageNames;
 
+  /// Set to true for keys that are used in an Android application that is
+  /// available for download in app stores in addition to the Google Play Store.
+  core.bool? supportNonGoogleAppStoreDistribution;
+
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings({
     this.allowAllPackageNames,
     this.allowedPackageNames,
+    this.supportNonGoogleAppStoreDistribution,
   });
 
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(core.Map json_)
@@ -828,6 +1058,10 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          supportNonGoogleAppStoreDistribution:
+              json_.containsKey('supportNonGoogleAppStoreDistribution')
+                  ? json_['supportNonGoogleAppStoreDistribution'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -835,6 +1069,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
           'allowAllPackageNames': allowAllPackageNames!,
         if (allowedPackageNames != null)
           'allowedPackageNames': allowedPackageNames!,
+        if (supportNonGoogleAppStoreDistribution != null)
+          'supportNonGoogleAppStoreDistribution':
+              supportNonGoogleAppStoreDistribution!,
       };
 }
 
@@ -944,6 +1181,11 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// The event being assessed.
   GoogleCloudRecaptchaenterpriseV1Event? event;
 
+  /// Assessment returned when firewall policies belonging to the project are
+  /// evaluated using the field firewall_policy_evaluation.
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment?
+      firewallPolicyAssessment;
+
   /// Assessment returned by Fraud Prevention when TransactionData is provided.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment?
       fraudPreventionAssessment;
@@ -973,6 +1215,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.accountDefenderAssessment,
     this.accountVerification,
     this.event,
+    this.firewallPolicyAssessment,
     this.fraudPreventionAssessment,
     this.name,
     this.privatePasswordLeakVerification,
@@ -997,6 +1240,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
                   json_['event'] as core.Map<core.String, core.dynamic>)
               : null,
+          firewallPolicyAssessment:
+              json_.containsKey('firewallPolicyAssessment')
+                  ? GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+                      .fromJson(json_['firewallPolicyAssessment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           fraudPreventionAssessment:
               json_.containsKey('fraudPreventionAssessment')
                   ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
@@ -1027,6 +1276,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
         if (accountVerification != null)
           'accountVerification': accountVerification!,
         if (event != null) 'event': event!,
+        if (firewallPolicyAssessment != null)
+          'firewallPolicyAssessment': firewallPolicyAssessment!,
         if (fraudPreventionAssessment != null)
           'fraudPreventionAssessment': fraudPreventionAssessment!,
         if (name != null) 'name': name!,
@@ -1143,6 +1394,7 @@ class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
       };
 }
 
+/// The event being assessed.
 class GoogleCloudRecaptchaenterpriseV1Event {
   /// The expected action for this type of event.
   ///
@@ -1151,6 +1403,22 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   ///
   /// Optional.
   core.String? expectedAction;
+
+  /// Flag for a reCAPTCHA express request for an assessment without a token.
+  ///
+  /// If enabled, `site_key` must reference a SCORE key with WAF feature set to
+  /// EXPRESS.
+  ///
+  /// Optional.
+  core.bool? express;
+
+  /// Flag for enabling firewall policy config assessment.
+  ///
+  /// If this flag is enabled, the firewall policy will be evaluated and a
+  /// suggested firewall action will be returned in the response.
+  ///
+  /// Optional.
+  core.bool? firewallPolicyEvaluation;
 
   /// Unique stable hashed user identifier for the request.
   ///
@@ -1165,6 +1433,21 @@ class GoogleCloudRecaptchaenterpriseV1Event {
     hashedAccountId =
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
+
+  /// HTTP header information about the request.
+  ///
+  /// Optional.
+  core.List<core.String>? headers;
+
+  /// Optional JA3 fingerprint for SSL clients.
+  ///
+  /// Optional.
+  core.String? ja3;
+
+  /// The URI resource the user requested that triggered an assessment.
+  ///
+  /// Optional.
+  core.String? requestedUri;
 
   /// The site key that was used to invoke reCAPTCHA Enterprise on your site and
   /// generate the token.
@@ -1198,14 +1481,28 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? userIpAddress;
 
+  /// Flag for running WAF token assessment.
+  ///
+  /// If enabled, the token must be specified, and have been created by a
+  /// WAF-enabled key.
+  ///
+  /// Optional.
+  core.bool? wafTokenAssessment;
+
   GoogleCloudRecaptchaenterpriseV1Event({
     this.expectedAction,
+    this.express,
+    this.firewallPolicyEvaluation,
     this.hashedAccountId,
+    this.headers,
+    this.ja3,
+    this.requestedUri,
     this.siteKey,
     this.token,
     this.transactionData,
     this.userAgent,
     this.userIpAddress,
+    this.wafTokenAssessment,
   });
 
   GoogleCloudRecaptchaenterpriseV1Event.fromJson(core.Map json_)
@@ -1213,8 +1510,24 @@ class GoogleCloudRecaptchaenterpriseV1Event {
           expectedAction: json_.containsKey('expectedAction')
               ? json_['expectedAction'] as core.String
               : null,
+          express: json_.containsKey('express')
+              ? json_['express'] as core.bool
+              : null,
+          firewallPolicyEvaluation:
+              json_.containsKey('firewallPolicyEvaluation')
+                  ? json_['firewallPolicyEvaluation'] as core.bool
+                  : null,
           hashedAccountId: json_.containsKey('hashedAccountId')
               ? json_['hashedAccountId'] as core.String
+              : null,
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ja3: json_.containsKey('ja3') ? json_['ja3'] as core.String : null,
+          requestedUri: json_.containsKey('requestedUri')
+              ? json_['requestedUri'] as core.String
               : null,
           siteKey: json_.containsKey('siteKey')
               ? json_['siteKey'] as core.String
@@ -1232,16 +1545,277 @@ class GoogleCloudRecaptchaenterpriseV1Event {
           userIpAddress: json_.containsKey('userIpAddress')
               ? json_['userIpAddress'] as core.String
               : null,
+          wafTokenAssessment: json_.containsKey('wafTokenAssessment')
+              ? json_['wafTokenAssessment'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedAction != null) 'expectedAction': expectedAction!,
+        if (express != null) 'express': express!,
+        if (firewallPolicyEvaluation != null)
+          'firewallPolicyEvaluation': firewallPolicyEvaluation!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
+        if (headers != null) 'headers': headers!,
+        if (ja3 != null) 'ja3': ja3!,
+        if (requestedUri != null) 'requestedUri': requestedUri!,
         if (siteKey != null) 'siteKey': siteKey!,
         if (token != null) 'token': token!,
         if (transactionData != null) 'transactionData': transactionData!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (userIpAddress != null) 'userIpAddress': userIpAddress!,
+        if (wafTokenAssessment != null)
+          'wafTokenAssessment': wafTokenAssessment!,
+      };
+}
+
+/// An individual action.
+///
+/// Each action represents what to do if a policy matches.
+class GoogleCloudRecaptchaenterpriseV1FirewallAction {
+  /// The user request did not match any policy and should be allowed access to
+  /// the requested resource.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction? allow;
+
+  /// This action will deny access to a given page.
+  ///
+  /// The user will get an HTTP error code.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction? block;
+
+  /// This action will redirect the request to a ReCaptcha interstitial to
+  /// attach a token.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction? redirect;
+
+  /// This action will set a custom header but allow the request to continue to
+  /// the customer backend.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction? setHeader;
+
+  /// This action will transparently serve a different page to an offending
+  /// user.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction? substitute;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallAction({
+    this.allow,
+    this.block,
+    this.redirect,
+    this.setHeader,
+    this.substitute,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(core.Map json_)
+      : this(
+          allow: json_.containsKey('allow')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+                  .fromJson(
+                      json_['allow'] as core.Map<core.String, core.dynamic>)
+              : null,
+          block: json_.containsKey('block')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+                  .fromJson(
+                      json_['block'] as core.Map<core.String, core.dynamic>)
+              : null,
+          redirect: json_.containsKey('redirect')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+                  .fromJson(
+                      json_['redirect'] as core.Map<core.String, core.dynamic>)
+              : null,
+          setHeader: json_.containsKey('setHeader')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+                  .fromJson(
+                      json_['setHeader'] as core.Map<core.String, core.dynamic>)
+              : null,
+          substitute: json_.containsKey('substitute')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+                  .fromJson(json_['substitute']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allow != null) 'allow': allow!,
+        if (block != null) 'block': block!,
+        if (redirect != null) 'redirect': redirect!,
+        if (setHeader != null) 'setHeader': setHeader!,
+        if (substitute != null) 'substitute': substitute!,
+      };
+}
+
+/// An allow action continues processing a request unimpeded.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction = $Empty;
+
+/// A block action serves an HTTP error code a prevents the request from hitting
+/// the backend.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction = $Empty;
+
+/// A redirect action returns a 307 (temporary redirect) response, pointing the
+/// user to a ReCaptcha interstitial page to attach a token.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction = $Empty;
+
+/// A set header action sets a header and forwards the request to the backend.
+///
+/// This can be used to trigger custom protection implemented on the backend.
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
+  /// The header key to set in the request to the backend server.
+  core.String? key;
+
+  /// The header value to set in the request to the backend server.
+  core.String? value;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction({
+    this.key,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromJson(
+      core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// A substitute action transparently serves a different page than the one
+/// requested.
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
+  /// The address to redirect to.
+  ///
+  /// The target is a relative path in the current host. Example:
+  /// "/blog/404.html".
+  core.String? path;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({
+    this.path,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromJson(
+      core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+      };
+}
+
+/// A FirewallPolicy represents a single matching pattern and resulting actions
+/// to take.
+class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
+  /// The actions that the caller should take regarding user access.
+  ///
+  /// There should be at most one terminal action. A terminal action is any
+  /// action that forces a response, such as AllowAction, BlockAction or
+  /// SubstituteAction. Zero or more non-terminal actions such as SetHeader
+  /// might be specified. A single policy can contain up to 16 actions.
+  core.List<GoogleCloudRecaptchaenterpriseV1FirewallAction>? actions;
+
+  /// A CEL (Common Expression Language) conditional expression that specifies
+  /// if this policy applies to an incoming user request.
+  ///
+  /// If this condition evaluates to true and the requested path matched the
+  /// path pattern, the associated actions should be executed by the caller. The
+  /// condition string is checked for CEL syntax correctness on creation. For
+  /// more information, see the [CEL spec](https://github.com/google/cel-spec)
+  /// and its
+  /// [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
+  /// A condition has a max length of 500 characters.
+  core.String? condition;
+
+  /// A description of what this policy aims to achieve, for convenience
+  /// purposes.
+  ///
+  /// The description can at most include 256 UTF-8 characters.
+  core.String? description;
+
+  /// The resource name for the FirewallPolicy in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  core.String? name;
+
+  /// The path for which this policy applies, specified as a glob pattern.
+  ///
+  /// For more information on glob, see the
+  /// [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path
+  /// has a max length of 200 characters.
+  core.String? path;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy({
+    this.actions,
+    this.condition,
+    this.description,
+    this.name,
+    this.path,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+      };
+}
+
+/// Policy config assessment.
+class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
+  /// If the processing of a policy config fails, an error will be populated and
+  /// the firewall_policy will be left empty.
+  GoogleRpcStatus? error;
+
+  /// The policy that matched the request.
+  ///
+  /// If more than one policy may match, this is the first match. If no policy
+  /// matches the incoming request, the policy field will be left empty.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy? firewallPolicy;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment({
+    this.error,
+    this.firewallPolicy,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
+      core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          firewallPolicy: json_.containsKey('firewallPolicy')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                  json_['firewallPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (firewallPolicy != null) 'firewallPolicy': firewallPolicy!,
       };
 }
 
@@ -1381,7 +1955,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Settings for keys that can be used by Android apps.
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings? androidSettings;
 
-  /// The timestamp corresponding to the creation of this Key.
+  /// The timestamp corresponding to the creation of this key.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// Human-readable display name of this key.
@@ -1471,6 +2047,42 @@ class GoogleCloudRecaptchaenterpriseV1Key {
         if (testingOptions != null) 'testingOptions': testingOptions!,
         if (wafSettings != null) 'wafSettings': wafSettings!,
         if (webSettings != null) 'webSettings': webSettings!,
+      };
+}
+
+/// Response to request to list firewall policies belonging to a key.
+class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
+  /// Policy details.
+  core.List<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>? firewallPolicies;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// It is set to empty if no policies remain in results.
+  core.String? nextPageToken;
+
+  GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse({
+    this.firewallPolicies,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse.fromJson(
+      core.Map json_)
+      : this(
+          firewallPolicies: json_.containsKey('firewallPolicies')
+              ? (json_['firewallPolicies'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firewallPolicies != null) 'firewallPolicies': firewallPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2117,6 +2729,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
       };
 }
 
+/// Properties of the provided event token.
 class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Action name provided at token generation.
   core.String? action;
@@ -2712,6 +3325,8 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "SESSION_TOKEN" : Use reCAPTCHA session-tokens to protect the whole user
   /// session on the site's domain.
   /// - "ACTION_TOKEN" : Use reCAPTCHA action-tokens to protect user actions.
+  /// - "EXPRESS" : Use reCAPTCHA WAF express protection to protect any context
+  /// other than web pages, like APIs and IoT devices.
   core.String? wafFeature;
 
   /// The WAF service that uses this key.
@@ -2837,3 +3452,12 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef GoogleRpcStatus = $Status;

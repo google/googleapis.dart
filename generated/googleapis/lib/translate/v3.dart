@@ -1729,13 +1729,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1938,6 +1931,15 @@ class BatchTranslateDocumentRequest {
   /// Optional.
   core.String? customizedAttribution;
 
+  /// If true, use the text removal server to remove the shadow text on
+  /// background image for native pdf translation.
+  ///
+  /// Shadow removal feature can only be enabled when
+  /// is_translate_native_pdf_only: false && pdf_native_only: false
+  ///
+  /// Optional.
+  core.bool? enableShadowRemovalNativePdf;
+
   /// Optional.
   core.Map<core.String, core.String>? formatConversions;
 
@@ -1997,6 +1999,7 @@ class BatchTranslateDocumentRequest {
 
   BatchTranslateDocumentRequest({
     this.customizedAttribution,
+    this.enableShadowRemovalNativePdf,
     this.formatConversions,
     this.glossaries,
     this.inputConfigs,
@@ -2011,6 +2014,10 @@ class BatchTranslateDocumentRequest {
           customizedAttribution: json_.containsKey('customizedAttribution')
               ? json_['customizedAttribution'] as core.String
               : null,
+          enableShadowRemovalNativePdf:
+              json_.containsKey('enableShadowRemovalNativePdf')
+                  ? json_['enableShadowRemovalNativePdf'] as core.bool
+                  : null,
           formatConversions: json_.containsKey('formatConversions')
               ? (json_['formatConversions']
                       as core.Map<core.String, core.dynamic>)
@@ -2062,6 +2069,8 @@ class BatchTranslateDocumentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customizedAttribution != null)
           'customizedAttribution': customizedAttribution!,
+        if (enableShadowRemovalNativePdf != null)
+          'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
         if (formatConversions != null) 'formatConversions': formatConversions!,
         if (glossaries != null) 'glossaries': glossaries!,
         if (inputConfigs != null) 'inputConfigs': inputConfigs!,

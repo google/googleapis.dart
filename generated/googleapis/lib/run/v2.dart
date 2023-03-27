@@ -885,13 +885,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1279,9 +1272,8 @@ class ProjectsLocationsServicesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true, and if the Service does not exist, it
-  /// will create a new one. Caller must have both create and update permissions
-  /// for this call if this is set to true.
+  /// [allowMissing] - This field is currently not used by Cloud Run; setting it
+  /// does not have any effect.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
@@ -1645,6 +1637,7 @@ class GoogleCloudRunV2Condition {
   /// attempt failed due to the user container exiting with a non-zero exit
   /// code.
   /// - "CANCELLED" : The execution was cancelled by users.
+  /// - "CANCELLING" : The execution is in the process of being cancelled.
   core.String? executionReason;
 
   /// Last time the condition transitioned from one status to another.
@@ -2125,12 +2118,14 @@ class GoogleCloudRunV2Execution {
   /// https://cloud.google.com/run/docs/configuring/labels
   core.Map<core.String, core.String>? labels;
 
-  /// Set the launch stage to a preview stage on write to allow use of preview
-  /// features in that stage.
-  ///
-  /// On read, describes whether the resource uses preview features. Launch
-  /// Stages are defined at
+  /// The least stable launch stage needed to create this resource, as defined
+  /// by
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value might
+  /// not be what was used as input. For example, if ALPHA was provided as input
+  /// in the parent resource, but only BETA and GA-level features are were, this
+  /// field will be BETA.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -2213,6 +2208,11 @@ class GoogleCloudRunV2Execution {
   /// Output only.
   core.int? runningCount;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Represents time when the execution started to run.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
@@ -2274,6 +2274,7 @@ class GoogleCloudRunV2Execution {
     this.reconciling,
     this.retriedCount,
     this.runningCount,
+    this.satisfiesPzs,
     this.startTime,
     this.succeededCount,
     this.taskCount,
@@ -2352,6 +2353,9 @@ class GoogleCloudRunV2Execution {
           runningCount: json_.containsKey('runningCount')
               ? json_['runningCount'] as core.int
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
@@ -2393,6 +2397,7 @@ class GoogleCloudRunV2Execution {
         if (reconciling != null) 'reconciling': reconciling!,
         if (retriedCount != null) 'retriedCount': retriedCount!,
         if (runningCount != null) 'runningCount': runningCount!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (startTime != null) 'startTime': startTime!,
         if (succeededCount != null) 'succeededCount': succeededCount!,
         if (taskCount != null) 'taskCount': taskCount!,
@@ -2710,7 +2715,11 @@ class GoogleCloudRunV2Job {
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
   /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
-  /// is assumed.
+  /// is assumed. Set the launch stage to a preview stage on input to allow use
+  /// of preview features in that stage. On read (or output), describes whether
+  /// the resource uses preview features. For example, if ALPHA is provided as
+  /// input, but only BETA and GA-level features are used, this field will be
+  /// BETA on output.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -2780,6 +2789,11 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The template used to create executions for this Job.
   ///
   /// Required.
@@ -2824,6 +2838,7 @@ class GoogleCloudRunV2Job {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.template,
     this.terminalCondition,
     this.uid,
@@ -2903,6 +2918,9 @@ class GoogleCloudRunV2Job {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2ExecutionTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -2940,6 +2958,7 @@ class GoogleCloudRunV2Job {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (uid != null) 'uid': uid!,
@@ -3340,12 +3359,14 @@ class GoogleCloudRunV2Revision {
   /// https://cloud.google.com/run/docs/configuring/labels
   core.Map<core.String, core.String>? labels;
 
-  /// Set the launch stage to a preview stage on write to allow use of preview
-  /// features in that stage.
-  ///
-  /// On read, describes whether the resource uses preview features. Launch
-  /// Stages are defined at
+  /// The least stable launch stage needed to create this resource, as defined
+  /// by
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value might
+  /// not be what was used as input. For example, if ALPHA was provided as input
+  /// in the parent resource, but only BETA and GA-level features are were, this
+  /// field will be BETA.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -3410,6 +3431,11 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Scaling settings for this revision.
   GoogleCloudRunV2RevisionScaling? scaling;
 
@@ -3470,6 +3496,7 @@ class GoogleCloudRunV2Revision {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.scaling,
     this.service,
     this.serviceAccount,
@@ -3555,6 +3582,9 @@ class GoogleCloudRunV2Revision {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
@@ -3609,6 +3639,7 @@ class GoogleCloudRunV2Revision {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scaling != null) 'scaling': scaling!,
         if (service != null) 'service': service!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -4078,7 +4109,11 @@ class GoogleCloudRunV2Service {
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
   /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
-  /// is assumed.
+  /// is assumed. Set the launch stage to a preview stage on input to allow use
+  /// of preview features in that stage. On read (or output), describes whether
+  /// the resource uses preview features. For example, if ALPHA is provided as
+  /// input, but only BETA and GA-level features are used, this field will be
+  /// BETA on output.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -4153,6 +4188,11 @@ class GoogleCloudRunV2Service {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The template used to create revisions for this Service.
   ///
   /// Required.
@@ -4222,6 +4262,7 @@ class GoogleCloudRunV2Service {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.template,
     this.terminalCondition,
     this.traffic,
@@ -4308,6 +4349,9 @@ class GoogleCloudRunV2Service {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2RevisionTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -4361,6 +4405,7 @@ class GoogleCloudRunV2Service {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (traffic != null) 'traffic': traffic!,
@@ -4534,6 +4579,11 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.int? retried;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Email address of the IAM service account associated with the Task of a
   /// Job.
   ///
@@ -4604,6 +4654,7 @@ class GoogleCloudRunV2Task {
     this.observedGeneration,
     this.reconciling,
     this.retried,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.startTime,
     this.timeout,
@@ -4692,6 +4743,9 @@ class GoogleCloudRunV2Task {
           retried: json_.containsKey('retried')
               ? json_['retried'] as core.int
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -4742,6 +4796,7 @@ class GoogleCloudRunV2Task {
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (retried != null) 'retried': retried!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (startTime != null) 'startTime': startTime!,
         if (timeout != null) 'timeout': timeout!,

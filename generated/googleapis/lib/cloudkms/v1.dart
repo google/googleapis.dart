@@ -165,6 +165,41 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the EkmConfig singleton resource for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EkmConfig to get.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConfig> getEkmConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EkmConfig.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -215,6 +250,51 @@ class ProjectsLocationsResource {
     );
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the EkmConfig singleton resource for a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name for the EkmConfig in the format
+  /// `projects / * /locations / * /ekmConfig`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [updateMask] - Required. List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConfig> updateEkmConfig(
+    EkmConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EkmConfig.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3308,6 +3388,13 @@ class CryptoKeyVersion {
   /// Output only.
   core.String? destroyTime;
 
+  /// The root cause of the most recent external destruction failure.
+  ///
+  /// Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+  ///
+  /// Output only.
+  core.String? externalDestructionFailureReason;
+
   /// ExternalProtectionLevelOptions stores a group of additional fields for
   /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
   /// protection level and EXTERNAL_VPC protection levels.
@@ -3317,6 +3404,13 @@ class CryptoKeyVersion {
   ///
   /// Output only.
   core.String? generateTime;
+
+  /// The root cause of the most recent generation failure.
+  ///
+  /// Only present if state is GENERATION_FAILED.
+  ///
+  /// Output only.
+  core.String? generationFailureReason;
 
   /// The root cause of the most recent import failure.
   ///
@@ -3387,6 +3481,17 @@ class CryptoKeyVersion {
   /// be used, enabled, disabled, or destroyed. The submitted key material has
   /// been discarded. Additional details can be found in
   /// CryptoKeyVersion.import_failure_reason.
+  /// - "GENERATION_FAILED" : This version was not generated successfully. It
+  /// may not be used, enabled, disabled, or destroyed. Additional details can
+  /// be found in CryptoKeyVersion.generation_failure_reason.
+  /// - "PENDING_EXTERNAL_DESTRUCTION" : This version was destroyed, and it may
+  /// not be used or enabled again. Cloud KMS is waiting for the corresponding
+  /// key material residing in an external key manager to be destroyed.
+  /// - "EXTERNAL_DESTRUCTION_FAILED" : This version was destroyed, and it may
+  /// not be used or enabled again. However, Cloud KMS could not confirm that
+  /// the corresponding key material residing in an external key manager was
+  /// destroyed. Additional details can be found in
+  /// CryptoKeyVersion.external_destruction_failure_reason.
   core.String? state;
 
   CryptoKeyVersion({
@@ -3395,8 +3500,10 @@ class CryptoKeyVersion {
     this.createTime,
     this.destroyEventTime,
     this.destroyTime,
+    this.externalDestructionFailureReason,
     this.externalProtectionLevelOptions,
     this.generateTime,
+    this.generationFailureReason,
     this.importFailureReason,
     this.importJob,
     this.importTime,
@@ -3424,6 +3531,10 @@ class CryptoKeyVersion {
           destroyTime: json_.containsKey('destroyTime')
               ? json_['destroyTime'] as core.String
               : null,
+          externalDestructionFailureReason:
+              json_.containsKey('externalDestructionFailureReason')
+                  ? json_['externalDestructionFailureReason'] as core.String
+                  : null,
           externalProtectionLevelOptions:
               json_.containsKey('externalProtectionLevelOptions')
                   ? ExternalProtectionLevelOptions.fromJson(
@@ -3432,6 +3543,9 @@ class CryptoKeyVersion {
                   : null,
           generateTime: json_.containsKey('generateTime')
               ? json_['generateTime'] as core.String
+              : null,
+          generationFailureReason: json_.containsKey('generationFailureReason')
+              ? json_['generationFailureReason'] as core.String
               : null,
           importFailureReason: json_.containsKey('importFailureReason')
               ? json_['importFailureReason'] as core.String
@@ -3459,9 +3573,13 @@ class CryptoKeyVersion {
         if (createTime != null) 'createTime': createTime!,
         if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (externalDestructionFailureReason != null)
+          'externalDestructionFailureReason': externalDestructionFailureReason!,
         if (externalProtectionLevelOptions != null)
           'externalProtectionLevelOptions': externalProtectionLevelOptions!,
         if (generateTime != null) 'generateTime': generateTime!,
+        if (generationFailureReason != null)
+          'generationFailureReason': generationFailureReason!,
         if (importFailureReason != null)
           'importFailureReason': importFailureReason!,
         if (importJob != null) 'importJob': importJob!,
@@ -3704,6 +3822,43 @@ class Digest {
       };
 }
 
+/// An EkmConfig is a singleton resource that represents configuration
+/// parameters that apply to all CryptoKeys and CryptoKeyVersions with a
+/// ProtectionLevel of EXTERNAL_VPC in a given project and location.
+class EkmConfig {
+  /// Resource name of the default EkmConnection.
+  ///
+  /// Setting this field to the empty string removes the default.
+  ///
+  /// Optional.
+  core.String? defaultEkmConnection;
+
+  /// The resource name for the EkmConfig in the format `projects / * /locations
+  /// / * /ekmConfig`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  EkmConfig({
+    this.defaultEkmConnection,
+    this.name,
+  });
+
+  EkmConfig.fromJson(core.Map json_)
+      : this(
+          defaultEkmConnection: json_.containsKey('defaultEkmConnection')
+              ? json_['defaultEkmConnection'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultEkmConnection != null)
+          'defaultEkmConnection': defaultEkmConnection!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// An EkmConnection represents an individual EKM connection.
 ///
 /// It can be used for creating CryptoKeys and CryptoKeyVersions with a
@@ -3715,10 +3870,42 @@ class EkmConnection {
   /// Output only.
   core.String? createTime;
 
+  /// Identifies the EKM Crypto Space that this EkmConnection maps to.
+  ///
+  /// Note: This field is required if KeyManagementMode is CLOUD_KMS.
+  ///
+  /// Optional.
+  core.String? cryptoSpacePath;
+
   /// Etag of the currently stored EkmConnection.
   ///
   /// Optional.
   core.String? etag;
+
+  /// Describes who can perform control plane operations on the EKM.
+  ///
+  /// If unset, this defaults to MANUAL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KEY_MANAGEMENT_MODE_UNSPECIFIED" : Not specified.
+  /// - "MANUAL" : EKM-side key management operations on CryptoKeys created with
+  /// this EkmConnection must be initiated from the EKM directly and cannot be
+  /// performed from Cloud KMS. This means that: * When creating a
+  /// CryptoKeyVersion associated with this EkmConnection, the caller must
+  /// supply the key path of pre-existing external key material that will be
+  /// linked to the CryptoKeyVersion. * Destruction of external key material
+  /// cannot be requested via the Cloud KMS API and must be performed directly
+  /// in the EKM. * Automatic rotation of key material is not supported.
+  /// - "CLOUD_KMS" : All CryptoKeys created with this EkmConnection use
+  /// EKM-side key management operations initiated from Cloud KMS. This means
+  /// that: * When a CryptoKeyVersion associated with this EkmConnection is
+  /// created, the EKM automatically generates new key material and a new key
+  /// path. The caller cannot supply the key path of pre-existing external key
+  /// material. * Destruction of external key material associated with this
+  /// EkmConnection can be requested by calling DestroyCryptoKeyVersion. *
+  /// Automatic rotation of key material is supported.
+  core.String? keyManagementMode;
 
   /// The resource name for the EkmConnection in the format `projects / *
   /// /locations / * /ekmConnections / * `.
@@ -3734,7 +3921,9 @@ class EkmConnection {
 
   EkmConnection({
     this.createTime,
+    this.cryptoSpacePath,
     this.etag,
+    this.keyManagementMode,
     this.name,
     this.serviceResolvers,
   });
@@ -3744,7 +3933,13 @@ class EkmConnection {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          cryptoSpacePath: json_.containsKey('cryptoSpacePath')
+              ? json_['cryptoSpacePath'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          keyManagementMode: json_.containsKey('keyManagementMode')
+              ? json_['keyManagementMode'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           serviceResolvers: json_.containsKey('serviceResolvers')
               ? (json_['serviceResolvers'] as core.List)
@@ -3756,7 +3951,9 @@ class EkmConnection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoSpacePath != null) 'cryptoSpacePath': cryptoSpacePath!,
         if (etag != null) 'etag': etag!,
+        if (keyManagementMode != null) 'keyManagementMode': keyManagementMode!,
         if (name != null) 'name': name!,
         if (serviceResolvers != null) 'serviceResolvers': serviceResolvers!,
       };

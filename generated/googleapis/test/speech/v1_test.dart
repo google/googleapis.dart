@@ -1109,6 +1109,7 @@ api.WordInfo buildWordInfo() {
   if (buildCounterWordInfo < 3) {
     o.confidence = 42.0;
     o.endTime = 'foo';
+    o.speakerLabel = 'foo';
     o.speakerTag = 42;
     o.startTime = 'foo';
     o.word = 'foo';
@@ -1126,6 +1127,10 @@ void checkWordInfo(api.WordInfo o) {
     );
     unittest.expect(
       o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.speakerLabel!,
       unittest.equals('foo'),
     );
     unittest.expect(

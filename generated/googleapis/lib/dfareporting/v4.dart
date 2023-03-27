@@ -24378,6 +24378,9 @@ class ReportSchedule {
   core.String? runsOnDayOfMonth;
   core.DateTime? startDate;
 
+  /// The timezone when the report will run.
+  core.String? timezone;
+
   ReportSchedule({
     this.active,
     this.every,
@@ -24386,6 +24389,7 @@ class ReportSchedule {
     this.repeatsOnWeekDays,
     this.runsOnDayOfMonth,
     this.startDate,
+    this.timezone,
   });
 
   ReportSchedule.fromJson(core.Map json_)
@@ -24410,6 +24414,9 @@ class ReportSchedule {
           startDate: json_.containsKey('startDate')
               ? core.DateTime.parse(json_['startDate'] as core.String)
               : null,
+          timezone: json_.containsKey('timezone')
+              ? json_['timezone'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -24424,6 +24431,7 @@ class ReportSchedule {
         if (startDate != null)
           'startDate':
               "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        if (timezone != null) 'timezone': timezone!,
       };
 }
 

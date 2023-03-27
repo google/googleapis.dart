@@ -66,6 +66,94 @@ class LocationsResource {
 
   LocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Returns the values for each date from a given time range and optionally
+  /// the sub entity type, where applicable, that are associated with the
+  /// specific daily metrics.
+  ///
+  /// Example request: `GET
+  /// https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location for which the time series should be
+  /// fetched. Format: locations/{location_id} where location_id is an
+  /// unobfuscated listing id.
+  /// Value must have pattern `^locations/\[^/\]+$`.
+  ///
+  /// [dailyMetrics] - Required. The metrics to retrieve time series for.
+  ///
+  /// [dailyRange_endDate_day] - Day of a month. Must be from 1 to 31 and valid
+  /// for the year and month, or 0 to specify a year by itself or a year and
+  /// month where the day isn't significant.
+  ///
+  /// [dailyRange_endDate_month] - Month of a year. Must be from 1 to 12, or 0
+  /// to specify a year without a month and day.
+  ///
+  /// [dailyRange_endDate_year] - Year of the date. Must be from 1 to 9999, or 0
+  /// to specify a date without a year.
+  ///
+  /// [dailyRange_startDate_day] - Day of a month. Must be from 1 to 31 and
+  /// valid for the year and month, or 0 to specify a year by itself or a year
+  /// and month where the day isn't significant.
+  ///
+  /// [dailyRange_startDate_month] - Month of a year. Must be from 1 to 12, or 0
+  /// to specify a year without a month and day.
+  ///
+  /// [dailyRange_startDate_year] - Year of the date. Must be from 1 to 9999, or
+  /// 0 to specify a date without a year.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchMultiDailyMetricsTimeSeriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchMultiDailyMetricsTimeSeriesResponse>
+      fetchMultiDailyMetricsTimeSeries(
+    core.String location, {
+    core.List<core.String>? dailyMetrics,
+    core.int? dailyRange_endDate_day,
+    core.int? dailyRange_endDate_month,
+    core.int? dailyRange_endDate_year,
+    core.int? dailyRange_startDate_day,
+    core.int? dailyRange_startDate_month,
+    core.int? dailyRange_startDate_year,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dailyMetrics != null) 'dailyMetrics': dailyMetrics,
+      if (dailyRange_endDate_day != null)
+        'dailyRange.endDate.day': ['${dailyRange_endDate_day}'],
+      if (dailyRange_endDate_month != null)
+        'dailyRange.endDate.month': ['${dailyRange_endDate_month}'],
+      if (dailyRange_endDate_year != null)
+        'dailyRange.endDate.year': ['${dailyRange_endDate_year}'],
+      if (dailyRange_startDate_day != null)
+        'dailyRange.startDate.day': ['${dailyRange_startDate_day}'],
+      if (dailyRange_startDate_month != null)
+        'dailyRange.startDate.month': ['${dailyRange_startDate_month}'],
+      if (dailyRange_startDate_year != null)
+        'dailyRange.startDate.year': ['${dailyRange_startDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$location') +
+        ':fetchMultiDailyMetricsTimeSeries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchMultiDailyMetricsTimeSeriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the values for each date from a given time range that are
   /// associated with the specific daily metric.
   ///
@@ -349,6 +437,122 @@ class LocationsSearchkeywordsImpressionsMonthlyResource {
   }
 }
 
+/// Represents a single datapoint, where each datapoint is a
+/// DailyMetric-DailySubEntityType-TimeSeries tuple.
+class DailyMetricTimeSeries {
+  /// The DailyMetric that the TimeSeries represents.
+  /// Possible string values are:
+  /// - "DAILY_METRIC_UNKNOWN" : Represents the default unknown value.
+  /// - "BUSINESS_IMPRESSIONS_DESKTOP_MAPS" : Business impressions on Google
+  /// Maps on Desktop devices. Multiple impressions by a unique user within a
+  /// single day are counted as a single impression.
+  /// - "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH" : Business impressions on Google
+  /// Search on Desktop devices. Multiple impressions by a unique user within a
+  /// single day are counted as a single impression.
+  /// - "BUSINESS_IMPRESSIONS_MOBILE_MAPS" : Business impressions on Google Maps
+  /// on Mobile devices. Multiple impressions by a unique user within a single
+  /// day are counted as a single impression.
+  /// - "BUSINESS_IMPRESSIONS_MOBILE_SEARCH" : Business impressions on Google
+  /// Search on Mobile devices. Multiple impressions by a unique user within a
+  /// single day are counted as a single impression.
+  /// - "BUSINESS_CONVERSATIONS" : The number of message conversations received
+  /// on the business profile.
+  /// - "BUSINESS_DIRECTION_REQUESTS" : The number of times a direction request
+  /// was requested to the business location.
+  /// - "CALL_CLICKS" : The number of times the business profile call button was
+  /// clicked.
+  /// - "WEBSITE_CLICKS" : The number of times the business profile website was
+  /// clicked.
+  /// - "BUSINESS_BOOKINGS" : The number of bookings received from the business
+  /// profile.
+  /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the
+  /// business profile.
+  /// - "BUSINESS_FOOD_MENU_CLICKS" : The number of clicks to view or interact
+  /// with the menu content on the business profile. Multiple clicks by a unique
+  /// user within a single day are counted as 1.
+  core.String? dailyMetric;
+
+  /// The DailySubEntityType that the TimeSeries represents.
+  ///
+  /// Will not be present when breakdown does not exist.
+  DailySubEntityType? dailySubEntityType;
+
+  /// List of datapoints where each datapoint is a date-value pair.
+  TimeSeries? timeSeries;
+
+  DailyMetricTimeSeries({
+    this.dailyMetric,
+    this.dailySubEntityType,
+    this.timeSeries,
+  });
+
+  DailyMetricTimeSeries.fromJson(core.Map json_)
+      : this(
+          dailyMetric: json_.containsKey('dailyMetric')
+              ? json_['dailyMetric'] as core.String
+              : null,
+          dailySubEntityType: json_.containsKey('dailySubEntityType')
+              ? DailySubEntityType.fromJson(json_['dailySubEntityType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timeSeries: json_.containsKey('timeSeries')
+              ? TimeSeries.fromJson(
+                  json_['timeSeries'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dailyMetric != null) 'dailyMetric': dailyMetric!,
+        if (dailySubEntityType != null)
+          'dailySubEntityType': dailySubEntityType!,
+        if (timeSeries != null) 'timeSeries': timeSeries!,
+      };
+}
+
+/// Represents all possible subentity types that are associated with
+/// DailyMetrics.
+class DailySubEntityType {
+  /// Represents the day of the week.
+  ///
+  /// Eg: MONDAY.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? dayOfWeek;
+
+  /// Represents the time of the day in 24 hour format.
+  ///
+  /// Eg: 13:34:20
+  TimeOfDay? timeOfDay;
+
+  DailySubEntityType({
+    this.dayOfWeek,
+    this.timeOfDay,
+  });
+
+  DailySubEntityType.fromJson(core.Map json_)
+      : this(
+          dayOfWeek: json_.containsKey('dayOfWeek')
+              ? json_['dayOfWeek'] as core.String
+              : null,
+          timeOfDay: json_.containsKey('timeOfDay')
+              ? TimeOfDay.fromJson(
+                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (timeOfDay != null) 'timeOfDay': timeOfDay!,
+      };
+}
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -390,6 +594,32 @@ class DatedValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Represents the response for FetchMultiDailyMetricsTimeSeries.
+class FetchMultiDailyMetricsTimeSeriesResponse {
+  /// DailyMetrics and their corresponding time series.
+  core.List<MultiDailyMetricTimeSeries>? multiDailyMetricTimeSeries;
+
+  FetchMultiDailyMetricsTimeSeriesResponse({
+    this.multiDailyMetricTimeSeries,
+  });
+
+  FetchMultiDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
+      : this(
+          multiDailyMetricTimeSeries:
+              json_.containsKey('multiDailyMetricTimeSeries')
+                  ? (json_['multiDailyMetricTimeSeries'] as core.List)
+                      .map((value) => MultiDailyMetricTimeSeries.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (multiDailyMetricTimeSeries != null)
+          'multiDailyMetricTimeSeries': multiDailyMetricTimeSeries!,
       };
 }
 
@@ -487,6 +717,31 @@ class ListSearchKeywordImpressionsMonthlyResponse {
       };
 }
 
+/// Represents a list of tuples of DailyMetric-DailySubEntityType-TimeSeries.
+class MultiDailyMetricTimeSeries {
+  /// List of DailyMetric-TimeSeries pairs.
+  core.List<DailyMetricTimeSeries>? dailyMetricTimeSeries;
+
+  MultiDailyMetricTimeSeries({
+    this.dailyMetricTimeSeries,
+  });
+
+  MultiDailyMetricTimeSeries.fromJson(core.Map json_)
+      : this(
+          dailyMetricTimeSeries: json_.containsKey('dailyMetricTimeSeries')
+              ? (json_['dailyMetricTimeSeries'] as core.List)
+                  .map((value) => DailyMetricTimeSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dailyMetricTimeSeries != null)
+          'dailyMetricTimeSeries': dailyMetricTimeSeries!,
+      };
+}
+
 /// Represents a single search keyword and its value.
 class SearchKeywordCount {
   /// One of either: 1) The sum of the number of unique users that used the
@@ -520,6 +775,13 @@ class SearchKeywordCount {
         if (searchKeyword != null) 'searchKeyword': searchKeyword!,
       };
 }
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
 
 /// Represents a timeseries.
 class TimeSeries {

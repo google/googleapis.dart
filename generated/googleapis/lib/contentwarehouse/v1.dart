@@ -17,6 +17,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDataExportJobsResource]
 ///     - [ProjectsLocationsDocumentSchemasResource]
 ///     - [ProjectsLocationsDocumentsResource]
 ///       - [ProjectsLocationsDocumentsDocumentLinksResource]
@@ -77,6 +78,8 @@ class ProjectsResource {
   /// [resource] - Required. REQUIRED: The resource for which the policy is
   /// being requested. Format for document:
   /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  /// Format for collection:
+  /// projects/{project_number}/locations/{location}/collections/{collection_id}.
   /// Format for project: projects/{project_number}.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -123,6 +126,8 @@ class ProjectsResource {
   /// [resource] - Required. REQUIRED: The resource for which the policy is
   /// being requested. Format for document:
   /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  /// Format for collection:
+  /// projects/{project_number}/locations/{location}/collections/{collection_id}.
   /// Format for project: projects/{project_number}.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -162,6 +167,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDataExportJobsResource get dataExportJobs =>
+      ProjectsLocationsDataExportJobsResource(_requester);
   ProjectsLocationsDocumentSchemasResource get documentSchemas =>
       ProjectsLocationsDocumentSchemasResource(_requester);
   ProjectsLocationsDocumentsResource get documents =>
@@ -258,6 +265,91 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDataExportJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataExportJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Archives a data export job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContentwarehouseV1DataExportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContentwarehouseV1DataExportJob> archiveDataExportJob(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContentwarehouseV1DataExportJob.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a data export job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource parent name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContentwarehouseV1DataExportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContentwarehouseV1DataExportJob> create(
+    GoogleCloudContentwarehouseV1DataExportJob request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataExportJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContentwarehouseV1DataExportJob.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -601,6 +693,8 @@ class ProjectsLocationsDocumentsResource {
   /// [resource] - Required. REQUIRED: The resource for which the policy is
   /// being requested. Format for document:
   /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  /// Format for collection:
+  /// projects/{project_number}/locations/{location}/collections/{collection_id}.
   /// Format for project: projects/{project_number}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/documents/\[^/\]+$`.
@@ -773,6 +867,49 @@ class ProjectsLocationsDocumentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lock the document so the document cannot be updated by other users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to lock. Format:
+  /// projects/{project_number}/locations/{location}/documents/{document}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContentwarehouseV1Document].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContentwarehouseV1Document> lock(
+    GoogleCloudContentwarehouseV1LockDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':lock';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContentwarehouseV1Document.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a document.
   ///
   /// Returns INVALID_ARGUMENT if the name of the document is non-empty and does
@@ -876,6 +1013,8 @@ class ProjectsLocationsDocumentsResource {
   /// [resource] - Required. REQUIRED: The resource for which the policy is
   /// being requested. Format for document:
   /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  /// Format for collection:
+  /// projects/{project_number}/locations/{location}/collections/{collection_id}.
   /// Format for project: projects/{project_number}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/documents/\[^/\]+$`.
@@ -2123,6 +2262,103 @@ class GoogleCloudContentwarehouseV1CustomWeightsMetadata {
       };
 }
 
+/// Describes a data export job.
+class GoogleCloudContentwarehouseV1DataExportJob {
+  /// The create time of the job.
+  core.String? createTime;
+
+  /// BigQuery dataset name.
+  core.String? dataset;
+
+  /// Frequency of the data export job.
+  /// Possible string values are:
+  /// - "FREQUENCY_UNSPECIFIED" : Unspecified frequency. Will be rejected.
+  /// - "ADHOC" : Adhoc data export job only runs once and syncs all contents to
+  /// BigQuery. No new updates will be appended after the sync.
+  /// - "DAILY" : Daily job runs daily.
+  /// - "HOURLY" : Hourly job runs hourly.
+  core.String? frequency;
+
+  /// The data export job ID.
+  core.String? id;
+
+  /// Location of document warehouse API.
+  core.String? location;
+
+  /// User project number.
+  ///
+  /// The project should have document warehouse API enabled. The BigQuery
+  /// database should also be in the same project.
+  core.String? projectNumber;
+
+  /// The current state of the data export job.
+  /// Possible string values are:
+  /// - "JOB_STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The job is active. For daily and hourly jobs, DW will do the
+  /// initial sync or sync new updates to BigQuery. For Adhoc jobs, DW will
+  /// execute the full data sync.
+  /// - "ARCHIVED" : The job has been archived. No more updates will be sent to
+  /// BigQuery.
+  core.String? state;
+
+  /// BigQuery table name.
+  core.String? table;
+
+  /// The last update time of the job.
+  core.String? updateTime;
+
+  GoogleCloudContentwarehouseV1DataExportJob({
+    this.createTime,
+    this.dataset,
+    this.frequency,
+    this.id,
+    this.location,
+    this.projectNumber,
+    this.state,
+    this.table,
+    this.updateTime,
+  });
+
+  GoogleCloudContentwarehouseV1DataExportJob.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dataset: json_.containsKey('dataset')
+              ? json_['dataset'] as core.String
+              : null,
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          projectNumber: json_.containsKey('projectNumber')
+              ? json_['projectNumber'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dataset != null) 'dataset': dataset!,
+        if (frequency != null) 'frequency': frequency!,
+        if (id != null) 'id': id!,
+        if (location != null) 'location': location!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (state != null) 'state': state!,
+        if (table != null) 'table': table!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Represents the action responsible for properties update operations.
 class GoogleCloudContentwarehouseV1DataUpdateAction {
   /// Map of (K, V) -\> (valid name of the field, new value of the field) E.g.,
@@ -3236,11 +3472,12 @@ class GoogleCloudContentwarehouseV1GcsIngestPipeline {
   /// Format: gs:///.
   core.String? inputPath;
 
-  /// The Cloud Storage folder path used to store the raw results from
-  /// processors.
+  /// The Doc AI processor type name.
   ///
-  /// Format: gs:///.
-  core.String? processorResultsFolderPath;
+  /// Only used when the format of ingested files is Doc AI Document proto
+  /// format. Reference:
+  /// https://source.corp.google.com/piper///depot/google3/cloud/ai/documentai/core/c/proto/processor.proto;l=21
+  core.String? processorType;
 
   /// The Document Warehouse schema resource name.
   ///
@@ -3250,7 +3487,7 @@ class GoogleCloudContentwarehouseV1GcsIngestPipeline {
 
   GoogleCloudContentwarehouseV1GcsIngestPipeline({
     this.inputPath,
-    this.processorResultsFolderPath,
+    this.processorType,
     this.schemaName,
   });
 
@@ -3259,10 +3496,9 @@ class GoogleCloudContentwarehouseV1GcsIngestPipeline {
           inputPath: json_.containsKey('inputPath')
               ? json_['inputPath'] as core.String
               : null,
-          processorResultsFolderPath:
-              json_.containsKey('processorResultsFolderPath')
-                  ? json_['processorResultsFolderPath'] as core.String
-                  : null,
+          processorType: json_.containsKey('processorType')
+              ? json_['processorType'] as core.String
+              : null,
           schemaName: json_.containsKey('schemaName')
               ? json_['schemaName'] as core.String
               : null,
@@ -3270,8 +3506,7 @@ class GoogleCloudContentwarehouseV1GcsIngestPipeline {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inputPath != null) 'inputPath': inputPath!,
-        if (processorResultsFolderPath != null)
-          'processorResultsFolderPath': processorResultsFolderPath!,
+        if (processorType != null) 'processorType': processorType!,
         if (schemaName != null) 'schemaName': schemaName!,
       };
 }
@@ -3902,6 +4137,36 @@ class GoogleCloudContentwarehouseV1ListSynonymSetsResponse {
       };
 }
 
+/// Request message for DocumentService.LockDocument.
+class GoogleCloudContentwarehouseV1LockDocumentRequest {
+  /// The collection the document connects to.
+  core.String? collectionId;
+
+  /// The user information who locks the document.
+  GoogleCloudContentwarehouseV1UserInfo? lockingUser;
+
+  GoogleCloudContentwarehouseV1LockDocumentRequest({
+    this.collectionId,
+    this.lockingUser,
+  });
+
+  GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(core.Map json_)
+      : this(
+          collectionId: json_.containsKey('collectionId')
+              ? json_['collectionId'] as core.String
+              : null,
+          lockingUser: json_.containsKey('lockingUser')
+              ? GoogleCloudContentwarehouseV1UserInfo.fromJson(
+                  json_['lockingUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collectionId != null) 'collectionId': collectionId!,
+        if (lockingUser != null) 'lockingUser': lockingUser!,
+      };
+}
+
 /// Map property value.
 ///
 /// Represents a structured entries of key value pairs, consisting of field
@@ -3981,7 +4246,7 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
 
 /// The configuration of processing documents in Document Warehouse with DocAi
 /// processors pipeline.
-class GoogleCloudContentwarehouseV1ProcessWithDocAi {
+class GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline {
   /// The list of all the resource names of the documents to be processed.
   ///
   /// Format:
@@ -4003,14 +4268,14 @@ class GoogleCloudContentwarehouseV1ProcessWithDocAi {
   /// Format: gs:///.
   core.String? processorResultsFolderPath;
 
-  GoogleCloudContentwarehouseV1ProcessWithDocAi({
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline({
     this.documents,
     this.exportFolderPath,
     this.processorInfo,
     this.processorResultsFolderPath,
   });
 
-  GoogleCloudContentwarehouseV1ProcessWithDocAi.fromJson(core.Map json_)
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(core.Map json_)
       : this(
           documents: json_.containsKey('documents')
               ? (json_['documents'] as core.List)
@@ -4963,13 +5228,19 @@ class GoogleCloudContentwarehouseV1RunPipelineRequest {
 
   /// Use a DocAI processor to process documents in Document Warehouse, and
   /// re-ingest the updated results into Document Warehouse.
-  GoogleCloudContentwarehouseV1ProcessWithDocAi? processWithDocAiPipeline;
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline?
+      processWithDocAiPipeline;
+
+  /// The meta information collected about the end user, used to enforce access
+  /// control for the service.
+  GoogleCloudContentwarehouseV1RequestMetadata? requestMetadata;
 
   GoogleCloudContentwarehouseV1RunPipelineRequest({
     this.exportCdwPipeline,
     this.gcsIngestPipeline,
     this.gcsIngestWithDocAiProcessorsPipeline,
     this.processWithDocAiPipeline,
+    this.requestMetadata,
   });
 
   GoogleCloudContentwarehouseV1RunPipelineRequest.fromJson(core.Map json_)
@@ -4990,12 +5261,17 @@ class GoogleCloudContentwarehouseV1RunPipelineRequest {
                   .fromJson(json_['gcsIngestWithDocAiProcessorsPipeline']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          processWithDocAiPipeline:
-              json_.containsKey('processWithDocAiPipeline')
-                  ? GoogleCloudContentwarehouseV1ProcessWithDocAi.fromJson(
-                      json_['processWithDocAiPipeline']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
+          processWithDocAiPipeline: json_
+                  .containsKey('processWithDocAiPipeline')
+              ? GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
+                  json_['processWithDocAiPipeline']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestMetadata: json_.containsKey('requestMetadata')
+              ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                  json_['requestMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5006,6 +5282,7 @@ class GoogleCloudContentwarehouseV1RunPipelineRequest {
               gcsIngestWithDocAiProcessorsPipeline!,
         if (processWithDocAiPipeline != null)
           'processWithDocAiPipeline': processWithDocAiPipeline!,
+        if (requestMetadata != null) 'requestMetadata': requestMetadata!,
       };
 }
 
@@ -5740,6 +6017,10 @@ class GoogleCloudContentwarehouseV1UpdateOptions {
   /// names.
   /// - "UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES" : Delete the properties by
   /// names.
+  /// - "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES" : For each
+  /// of the property, replaces the property if the it exists, otherwise inserts
+  /// a new property. And for the rest of the fields, merge them based on update
+  /// mask and merge fields options.
   core.String? updateType;
 
   GoogleCloudContentwarehouseV1UpdateOptions({
@@ -7424,9 +7705,9 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
   /// - "ADD" : Add an element.
   /// - "REMOVE" : Remove an element identified by `parent`.
   /// - "UPDATE" : Updates any fields within the given provenance scope of the
-  /// message. It 'overwrites' the fields rather than replacing them. This is
-  /// especially relevant when we just want to update a field value of an entity
-  /// without also affecting all the child properties.
+  /// message. It overwrites the fields rather than replacing them. Use this
+  /// when you want to update a field value of an entity without also updating
+  /// all the child properties.
   /// - "REPLACE" : Currently unused. Replace an element identified by `parent`.
   /// - "EVAL_REQUESTED" : Deprecated. Request human review for the element
   /// identified by `parent`.

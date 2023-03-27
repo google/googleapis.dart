@@ -93,6 +93,7 @@ packages:
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datacatalog:v1
     - datafusion:v1
+    - datalineage:v1
     - datamigration:v1
     - datapipelines:v1
     - dataplex:v1
@@ -136,8 +137,8 @@ packages:
     - forms:v1
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
-    - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
     - gameservices:v1
+    - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
     - gkebackup:v1
     - gkehub:v1
     - gmail:v1 # https://developers.google.com/gmail/
@@ -182,6 +183,7 @@ packages:
     - networksecurity:v1
     - networkservices:v1
     - notebooks:v1
+    - notebooks:v2
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - ondemandscanning:v1
     - orgpolicy:v2
@@ -398,7 +400,7 @@ skipped_apis:
 - playdeveloperreporting:v1beta1
 - policyanalyzer:v1beta1
 - policysimulator:v1alpha
-- policysimulator:v1beta1
+- policysimulator:v1beta
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - privateca:v1beta1

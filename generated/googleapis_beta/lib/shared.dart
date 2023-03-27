@@ -97,6 +97,49 @@ class $Date {
 
 /// Used by:
 ///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+/// - analyticsdata:v1beta : DimensionOrderBy
+class $DimensionOrderBy {
+  /// A dimension name in the request to order by.
+  core.String? dimensionName;
+
+  /// Controls the rule for dimension value ordering.
+  /// Possible string values are:
+  /// - "ORDER_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "ALPHANUMERIC" : Alphanumeric sort by Unicode code point. For example,
+  /// "2" \< "A" \< "X" \< "b" \< "z".
+  /// - "CASE_INSENSITIVE_ALPHANUMERIC" : Case insensitive alphanumeric sort by
+  /// lower case Unicode code point. For example, "2" \< "A" \< "b" \< "X" \<
+  /// "z".
+  /// - "NUMERIC" : Dimension values are converted to numbers before sorting.
+  /// For example in NUMERIC sort, "25" \< "100", and in `ALPHANUMERIC` sort,
+  /// "100" \< "25". Non-numeric dimension values all have equal ordering value
+  /// below all numeric values.
+  core.String? orderType;
+
+  $DimensionOrderBy({
+    this.dimensionName,
+    this.orderType,
+  });
+
+  $DimensionOrderBy.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+          orderType: json_.containsKey('orderType')
+              ? json_['orderType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (orderType != null) 'orderType': orderType!,
+      };
+}
+
+/// Used by:
+///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
 /// - adexchangebuyer2:v2beta1 : Empty
@@ -150,8 +193,8 @@ class $Date {
 /// - recommendationengine:v1beta1 : GoogleProtobufEmpty
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
-/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
+/// - sqladmin:v1beta4 : SqlInstancesResetReplicaSizeRequest
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
 /// - toolresults:v1beta3 : MatrixDimensionDefinition
@@ -190,6 +233,42 @@ class $Entry {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessInListFilter
+/// - analyticsdata:v1beta : InListFilter
+class $InListFilter {
+  /// If true, the string value is case sensitive.
+  core.bool? caseSensitive;
+
+  /// The list of string values.
+  ///
+  /// Must be non-empty.
+  core.List<core.String>? values;
+
+  $InListFilter({
+    this.caseSensitive,
+    this.values,
+  });
+
+  $InListFilter.fromJson(core.Map json_)
+      : this(
+          caseSensitive: json_.containsKey('caseSensitive')
+              ? json_['caseSensitive'] as core.bool
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -263,6 +342,94 @@ class $Location {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy
+/// - analyticsdata:v1beta : MetricOrderBy
+class $MetricOrderBy {
+  /// A metric name in the request to order by.
+  core.String? metricName;
+
+  $MetricOrderBy({
+    this.metricName,
+  });
+
+  $MetricOrderBy.fromJson(core.Map json_)
+      : this(
+          metricName: json_.containsKey('metricName')
+              ? json_['metricName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaNumericValue
+/// - analyticsdata:v1beta : NumericValue
+class $NumericValue {
+  /// Double value
+  core.double? doubleValue;
+
+  /// Integer value
+  core.String? int64Value;
+
+  $NumericValue({
+    this.doubleValue,
+    this.int64Value,
+  });
+
+  $NumericValue.fromJson(core.Map json_)
+      : this(
+          doubleValue: json_.containsKey('doubleValue')
+              ? (json_['doubleValue'] as core.num).toDouble()
+              : null,
+          int64Value: json_.containsKey('int64Value')
+              ? json_['int64Value'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessQuotaStatus
+/// - analyticsdata:v1beta : QuotaStatus
+class $QuotaStatus {
+  /// Quota consumed by this request.
+  core.int? consumed;
+
+  /// Quota remaining after this request.
+  core.int? remaining;
+
+  $QuotaStatus({
+    this.consumed,
+    this.remaining,
+  });
+
+  $QuotaStatus.fromJson(core.Map json_)
+      : this(
+          consumed: json_.containsKey('consumed')
+              ? json_['consumed'] as core.int
+              : null,
+          remaining: json_.containsKey('remaining')
+              ? json_['remaining'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumed != null) 'consumed': consumed!,
+        if (remaining != null) 'remaining': remaining!,
       };
 }
 
@@ -1022,6 +1189,48 @@ class $SasPortalNrqzValidation {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
+/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
+class $SasPortalProvisionDeploymentRequest {
+  /// If this field is set, and a new SAS Portal Deployment needs to be created,
+  /// its display name will be set to the value of this field.
+  ///
+  /// Optional.
+  core.String? newDeploymentDisplayName;
+
+  /// If this field is set, and a new SAS Portal Organization needs to be
+  /// created, its display name will be set to the value of this field.
+  ///
+  /// Optional.
+  core.String? newOrganizationDisplayName;
+
+  $SasPortalProvisionDeploymentRequest({
+    this.newDeploymentDisplayName,
+    this.newOrganizationDisplayName,
+  });
+
+  $SasPortalProvisionDeploymentRequest.fromJson(core.Map json_)
+      : this(
+          newDeploymentDisplayName:
+              json_.containsKey('newDeploymentDisplayName')
+                  ? json_['newDeploymentDisplayName'] as core.String
+                  : null,
+          newOrganizationDisplayName:
+              json_.containsKey('newOrganizationDisplayName')
+                  ? json_['newOrganizationDisplayName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newDeploymentDisplayName != null)
+          'newDeploymentDisplayName': newDeploymentDisplayName!,
+        if (newOrganizationDisplayName != null)
+          'newOrganizationDisplayName': newOrganizationDisplayName!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
 /// - sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
 class $SasPortalProvisionDeploymentResponse {
@@ -1258,5 +1467,54 @@ class $Status {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessStringFilter
+/// - analyticsdata:v1beta : StringFilter
+class $StringFilter {
+  /// If true, the string value is case sensitive.
+  core.bool? caseSensitive;
+
+  /// The match type for this filter.
+  /// Possible string values are:
+  /// - "MATCH_TYPE_UNSPECIFIED" : Unspecified
+  /// - "EXACT" : Exact match of the string value.
+  /// - "BEGINS_WITH" : Begins with the string value.
+  /// - "ENDS_WITH" : Ends with the string value.
+  /// - "CONTAINS" : Contains the string value.
+  /// - "FULL_REGEXP" : Full match for the regular expression with the string
+  /// value.
+  /// - "PARTIAL_REGEXP" : Partial match for the regular expression with the
+  /// string value.
+  core.String? matchType;
+
+  /// The string value used for the matching.
+  core.String? value;
+
+  $StringFilter({
+    this.caseSensitive,
+    this.matchType,
+    this.value,
+  });
+
+  $StringFilter.fromJson(core.Map json_)
+      : this(
+          caseSensitive: json_.containsKey('caseSensitive')
+              ? json_['caseSensitive'] as core.bool
+              : null,
+          matchType: json_.containsKey('matchType')
+              ? json_['matchType'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (matchType != null) 'matchType': matchType!,
+        if (value != null) 'value': value!,
       };
 }

@@ -105,6 +105,9 @@ class AppsResource {
   ///
   /// Request parameters:
   ///
+  /// [parent] - The project and location in which the application should be
+  /// created, specified in the format projects / * /locations / *
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -117,10 +120,12 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     Application request, {
+    core.String? parent,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1278,14 +1283,7 @@ class AppsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -2113,6 +2111,61 @@ class ProjectsLocationsApplicationsResource {
   ProjectsLocationsApplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates an App Engine application for a Google Cloud Platform project.
+  ///
+  /// Required fields: id - The ID of the target Cloud Platform project.
+  /// location - The region (https://cloud.google.com/appengine/docs/locations)
+  /// where you want the App Engine application located.For more information
+  /// about App Engine applications, see Managing Projects, Applications, and
+  /// Billing
+  /// (https://cloud.google.com/appengine/docs/standard/python/console/).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. The project and location in which the
+  /// application should be created, specified in the format projects / *
+  /// /locations / *
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Application request,
+    core.String projectsId,
+    core.String locationsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets information about an application.
   ///
   /// Request parameters:
@@ -2261,6 +2314,8 @@ class Application {
   ///
   /// This bucket is associated with the application and can be used by the
   /// gcloud deployment commands.@OutputOnly
+  ///
+  /// Output only.
   core.String? codeBucket;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated
@@ -2274,6 +2329,8 @@ class Application {
 
   /// Google Cloud Storage bucket that can be used by this application to store
   /// content.@OutputOnly
+  ///
+  /// Output only.
   core.String? defaultBucket;
 
   /// Cookie expiration policy for this application.
@@ -2281,6 +2338,8 @@ class Application {
 
   /// Hostname used to reach this application, as resolved by App
   /// Engine.@OutputOnly
+  ///
+  /// Output only.
   core.String? defaultHostname;
 
   /// HTTP path dispatch rules for requests to the application that do not
@@ -2294,6 +2353,8 @@ class Application {
 
   /// The Google Container Registry domain used for storing managed build docker
   /// images for this application.
+  ///
+  /// Output only.
   core.String? gcrDomain;
   IdentityAwareProxy? iap;
 
@@ -2315,6 +2376,8 @@ class Application {
   /// Full path to the Application resource in the API.
   ///
   /// Example: apps/myapp.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// The service account associated with the application.
@@ -3558,6 +3621,8 @@ class IdentityAwareProxy {
   core.String? oauth2ClientSecret;
 
   /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+  ///
+  /// Output only.
   core.String? oauth2ClientSecretSha256;
 
   IdentityAwareProxy({

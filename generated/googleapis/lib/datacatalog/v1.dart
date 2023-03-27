@@ -1825,13 +1825,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3738,6 +3731,110 @@ class GoogleCloudDatacatalogV1BusinessContext {
       };
 }
 
+/// Specification that applies to Instance entries that are part of
+/// `CLOUD_BIGTABLE` system.
+///
+/// (user_specified_type)
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+  /// The list of clusters for the Instance.
+  core.List<
+          GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>?
+      cloudBigtableClusterSpecs;
+
+  GoogleCloudDatacatalogV1CloudBigtableInstanceSpec({
+    this.cloudBigtableClusterSpecs,
+  });
+
+  GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(core.Map json_)
+      : this(
+          cloudBigtableClusterSpecs: json_
+                  .containsKey('cloudBigtableClusterSpecs')
+              ? (json_['cloudBigtableClusterSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudBigtableClusterSpecs != null)
+          'cloudBigtableClusterSpecs': cloudBigtableClusterSpecs!,
+      };
+}
+
+/// Spec that applies to clusters of an Instance of Cloud Bigtable.
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
+  /// Name of the cluster.
+  core.String? displayName;
+
+  /// A link back to the parent resource, in this case Instance.
+  core.String? linkedResource;
+
+  /// Location of the cluster, typically a Cloud zone.
+  core.String? location;
+
+  /// Type of the resource.
+  ///
+  /// For a cluster this would be "CLUSTER".
+  core.String? type;
+
+  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec({
+    this.displayName,
+    this.linkedResource,
+    this.location,
+    this.type,
+  });
+
+  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromJson(
+      core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          linkedResource: json_.containsKey('linkedResource')
+              ? json_['linkedResource'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (linkedResource != null) 'linkedResource': linkedResource!,
+        if (location != null) 'location': location!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Specification that applies to all entries that are part of `CLOUD_BIGTABLE`
+/// system (user_specified_type)
+class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
+  /// Display name of the Instance.
+  ///
+  /// This is user specified and different from the resource name.
+  core.String? instanceDisplayName;
+
+  GoogleCloudDatacatalogV1CloudBigtableSystemSpec({
+    this.instanceDisplayName,
+  });
+
+  GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromJson(core.Map json_)
+      : this(
+          instanceDisplayName: json_.containsKey('instanceDisplayName')
+              ? json_['instanceDisplayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceDisplayName != null)
+          'instanceDisplayName': instanceDisplayName!,
+      };
+}
+
 /// Specification for the BigQuery connection to a Cloud SQL instance.
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   /// Database name.
@@ -3923,7 +4020,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
   /// - "DIMENSION_GROUP" : Dimension group - parent for Dimension.
   /// - "FILTER" : Filter.
   /// - "MEASURE" : Measure.
-  /// - "PAREMETER" : Parameter.
+  /// - "PARAMETER" : Parameter.
   core.String? type;
 
   GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
@@ -4240,6 +4337,8 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SPANNER" : Cloud Spanner
+  /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
   core.String? system;
@@ -4424,6 +4523,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// Not supported for BigQuery datasets
   GoogleCloudDatacatalogV1BusinessContext? businessContext;
 
+  /// Specification that applies to Cloud Bigtable system.
+  ///
+  /// Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+  GoogleCloudDatacatalogV1CloudBigtableSystemSpec? cloudBigtableSystemSpec;
+
   /// Physical location of the entry.
   ///
   /// Output only.
@@ -4487,6 +4591,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SPANNER" : Cloud Spanner
+  /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
   core.String? integratedSystem;
@@ -4541,6 +4647,9 @@ class GoogleCloudDatacatalogV1Entry {
   ///
   /// An entry might not have any schema attached to it.
   GoogleCloudDatacatalogV1Schema? schema;
+
+  /// Specification that applies to a Service resource.
+  GoogleCloudDatacatalogV1ServiceSpec? serviceSpec;
 
   /// Timestamps from the underlying resource, not from the Data Catalog entry.
   ///
@@ -4613,6 +4722,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.bigqueryDateShardedSpec,
     this.bigqueryTableSpec,
     this.businessContext,
+    this.cloudBigtableSystemSpec,
     this.dataSource,
     this.dataSourceConnectionSpec,
     this.databaseTableSpec,
@@ -4629,6 +4739,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.personalDetails,
     this.routineSpec,
     this.schema,
+    this.serviceSpec,
     this.sourceSystemTimestamps,
     this.sqlDatabaseSystemSpec,
     this.type,
@@ -4652,6 +4763,11 @@ class GoogleCloudDatacatalogV1Entry {
           businessContext: json_.containsKey('businessContext')
               ? GoogleCloudDatacatalogV1BusinessContext.fromJson(
                   json_['businessContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudBigtableSystemSpec: json_.containsKey('cloudBigtableSystemSpec')
+              ? GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromJson(
+                  json_['cloudBigtableSystemSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
           dataSource: json_.containsKey('dataSource')
@@ -4720,6 +4836,10 @@ class GoogleCloudDatacatalogV1Entry {
               ? GoogleCloudDatacatalogV1Schema.fromJson(
                   json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
+          serviceSpec: json_.containsKey('serviceSpec')
+              ? GoogleCloudDatacatalogV1ServiceSpec.fromJson(
+                  json_['serviceSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
           sourceSystemTimestamps: json_.containsKey('sourceSystemTimestamps')
               ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
                   json_['sourceSystemTimestamps']
@@ -4748,6 +4868,8 @@ class GoogleCloudDatacatalogV1Entry {
           'bigqueryDateShardedSpec': bigqueryDateShardedSpec!,
         if (bigqueryTableSpec != null) 'bigqueryTableSpec': bigqueryTableSpec!,
         if (businessContext != null) 'businessContext': businessContext!,
+        if (cloudBigtableSystemSpec != null)
+          'cloudBigtableSystemSpec': cloudBigtableSystemSpec!,
         if (dataSource != null) 'dataSource': dataSource!,
         if (dataSourceConnectionSpec != null)
           'dataSourceConnectionSpec': dataSourceConnectionSpec!,
@@ -4766,6 +4888,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (personalDetails != null) 'personalDetails': personalDetails!,
         if (routineSpec != null) 'routineSpec': routineSpec!,
         if (schema != null) 'schema': schema!,
+        if (serviceSpec != null) 'serviceSpec': serviceSpec!,
         if (sourceSystemTimestamps != null)
           'sourceSystemTimestamps': sourceSystemTimestamps!,
         if (sqlDatabaseSystemSpec != null)
@@ -6296,6 +6419,8 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   /// - "DATAPLEX" : Dataplex.
+  /// - "CLOUD_SPANNER" : Cloud Spanner
+  /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
   core.String? integratedSystem;
@@ -6521,6 +6646,33 @@ class GoogleCloudDatacatalogV1SerializedTaxonomy {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (policyTags != null) 'policyTags': policyTags!,
+      };
+}
+
+/// Specification that applies to a Service resource.
+///
+/// Valid only for entries with the `SERVICE` type.
+class GoogleCloudDatacatalogV1ServiceSpec {
+  /// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+  GoogleCloudDatacatalogV1CloudBigtableInstanceSpec? cloudBigtableInstanceSpec;
+
+  GoogleCloudDatacatalogV1ServiceSpec({
+    this.cloudBigtableInstanceSpec,
+  });
+
+  GoogleCloudDatacatalogV1ServiceSpec.fromJson(core.Map json_)
+      : this(
+          cloudBigtableInstanceSpec:
+              json_.containsKey('cloudBigtableInstanceSpec')
+                  ? GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(
+                      json_['cloudBigtableInstanceSpec']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudBigtableInstanceSpec != null)
+          'cloudBigtableInstanceSpec': cloudBigtableInstanceSpec!,
       };
 }
 

@@ -1130,13 +1130,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3252,6 +3245,14 @@ class Trigger {
   /// Output only.
   core.String? etag;
 
+  /// EventDataContentType specifies the type of payload in MIME format that is
+  /// expected from the CloudEvent data field.
+  ///
+  /// This will be set to `application/json` if the value is not defined.
+  ///
+  /// Optional.
+  core.String? eventDataContentType;
+
   /// Unordered list.
   ///
   /// The list of filters that applies to event attributes. Only events that
@@ -3317,6 +3318,7 @@ class Trigger {
     this.createTime,
     this.destination,
     this.etag,
+    this.eventDataContentType,
     this.eventFilters,
     this.labels,
     this.name,
@@ -3349,6 +3351,9 @@ class Trigger {
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          eventDataContentType: json_.containsKey('eventDataContentType')
+              ? json_['eventDataContentType'] as core.String
+              : null,
           eventFilters: json_.containsKey('eventFilters')
               ? (json_['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
@@ -3383,6 +3388,8 @@ class Trigger {
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (etag != null) 'etag': etag!,
+        if (eventDataContentType != null)
+          'eventDataContentType': eventDataContentType!,
         if (eventFilters != null) 'eventFilters': eventFilters!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,

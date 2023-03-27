@@ -1242,7 +1242,10 @@ api.SasPortalProvisionDeploymentRequest
     buildSasPortalProvisionDeploymentRequest() {
   final o = api.SasPortalProvisionDeploymentRequest();
   buildCounterSasPortalProvisionDeploymentRequest++;
-  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {}
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    o.newDeploymentDisplayName = 'foo';
+    o.newOrganizationDisplayName = 'foo';
+  }
   buildCounterSasPortalProvisionDeploymentRequest--;
   return o;
 }
@@ -1250,7 +1253,16 @@ api.SasPortalProvisionDeploymentRequest
 void checkSasPortalProvisionDeploymentRequest(
     api.SasPortalProvisionDeploymentRequest o) {
   buildCounterSasPortalProvisionDeploymentRequest++;
-  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {}
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    unittest.expect(
+      o.newDeploymentDisplayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newOrganizationDisplayName!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterSasPortalProvisionDeploymentRequest--;
 }
 

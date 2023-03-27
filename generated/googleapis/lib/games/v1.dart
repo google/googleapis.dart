@@ -975,6 +975,49 @@ class PlayersResource {
     return Player.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get the application player ids for the currently authenticated player
+  /// across all requested games by the same developer as the calling
+  /// application.
+  ///
+  /// This will only return ids for players that actually have an id (scoped or
+  /// otherwise) with that game.
+  ///
+  /// Request parameters:
+  ///
+  /// [applicationIds] - Required. The application IDs from the Google Play
+  /// developer console for the games to return scoped ids for.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetMultipleApplicationPlayerIdsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetMultipleApplicationPlayerIdsResponse>
+      getMultipleApplicationPlayerIds({
+    core.List<core.String>? applicationIds,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (applicationIds != null) 'applicationIds': applicationIds,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/players/me/multipleApplicationPlayerIds';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetMultipleApplicationPlayerIdsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves scoped player identifiers for currently authenticated user.
   ///
   /// Request parameters:
@@ -2271,6 +2314,35 @@ class ApplicationCategory {
       };
 }
 
+/// Primary scoped player identifier for an application.
+class ApplicationPlayerId {
+  /// The application that this player identifier is for.
+  core.String? applicationId;
+
+  /// The player identifier for the application.
+  core.String? playerId;
+
+  ApplicationPlayerId({
+    this.applicationId,
+    this.playerId,
+  });
+
+  ApplicationPlayerId.fromJson(core.Map json_)
+      : this(
+          applicationId: json_.containsKey('applicationId')
+              ? json_['applicationId'] as core.String
+              : null,
+          playerId: json_.containsKey('playerId')
+              ? json_['playerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (playerId != null) 'playerId': playerId!,
+      };
+}
+
 /// A third party application verification response resource.
 class ApplicationVerifyResponse {
   /// An alternate ID that was once used for the player that was issued the auth
@@ -2935,6 +3007,35 @@ class GamesAchievementSetStepsAtLeast {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (steps != null) 'steps': steps!,
+      };
+}
+
+/// Response message for GetMultipleApplicationPlayerIds rpc.
+class GetMultipleApplicationPlayerIdsResponse {
+  /// The requested applications along with the scoped ids for tha player, if
+  /// that player has an id for the application.
+  ///
+  /// If not, the application is not included in the response.
+  ///
+  /// Output only.
+  core.List<ApplicationPlayerId>? playerIds;
+
+  GetMultipleApplicationPlayerIdsResponse({
+    this.playerIds,
+  });
+
+  GetMultipleApplicationPlayerIdsResponse.fromJson(core.Map json_)
+      : this(
+          playerIds: json_.containsKey('playerIds')
+              ? (json_['playerIds'] as core.List)
+                  .map((value) => ApplicationPlayerId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (playerIds != null) 'playerIds': playerIds!,
       };
 }
 

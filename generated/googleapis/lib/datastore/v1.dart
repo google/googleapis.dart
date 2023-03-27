@@ -835,13 +835,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -890,18 +883,17 @@ class ProjectsOperationsResource {
   }
 }
 
-/// Defines a aggregation that produces a single result.
+/// Defines an aggregation that produces a single result.
 class Aggregation {
   /// Optional name of the property to store the result of the aggregation.
   ///
   /// If not provided, Datastore will pick a default name following the format
   /// `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
-  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ...
-  /// ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
-  /// COUNT_UP_TO(2) AS property_1, COUNT_UP_TO(3) AS count_up_to_3,
-  /// COUNT_UP_TO(4) AS property_2 OVER ( ... ); ``` Requires: * Must be unique
-  /// across all aggregation aliases. * Conform to entity property name
-  /// limitations.
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... );
+  /// ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2)
+  /// AS property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS property_2
+  /// OVER ( ... ); ``` Requires: * Must be unique across all aggregation
+  /// aliases. * Conform to entity property name limitations.
   ///
   /// Optional.
   core.String? alias;
@@ -1394,7 +1386,7 @@ class Count {
   /// Optional constraint on the maximum number of entities to count.
   ///
   /// This provides a way to set an upper bound on the number of entities to
-  /// scan, limiting latency and cost. Unspecified is interpreted as no bound.
+  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
   /// If a zero value is provided, a count result of zero should always be
   /// expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER (
   /// SELECT * FROM k ); ``` Requires: * Must be non-negative when present.
@@ -2715,7 +2707,8 @@ class Query {
   ///
   /// The query results will contain the first result for each distinct
   /// combination of values for the given properties (if empty, all results are
-  /// returned).
+  /// returned). Requires: * If `order` is specified, the set of distinct on
+  /// properties must appear before the non-distinct on properties in `order`.
   core.List<PropertyReference>? distinctOn;
 
   /// An ending point for the query results.

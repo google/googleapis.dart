@@ -395,6 +395,7 @@ api.Function_ buildFunction_() {
     o.state = 'foo';
     o.stateMessages = buildUnnamed6();
     o.updateTime = 'foo';
+    o.url = 'foo';
   }
   buildCounterFunction_--;
   return o;
@@ -430,6 +431,10 @@ void checkFunction_(api.Function_ o) {
     checkUnnamed6(o.stateMessages!);
     unittest.expect(
       o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
       unittest.equals('foo'),
     );
   }

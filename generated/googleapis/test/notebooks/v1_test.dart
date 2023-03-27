@@ -2277,6 +2277,7 @@ api.RuntimeSoftwareConfig buildRuntimeSoftwareConfig() {
     o.idleShutdownTimeout = 42;
     o.installGpuDriver = true;
     o.kernels = buildUnnamed37();
+    o.mixerDisabled = true;
     o.notebookUpgradeSchedule = 'foo';
     o.postStartupScript = 'foo';
     o.postStartupScriptBehavior = 'foo';
@@ -2303,6 +2304,7 @@ void checkRuntimeSoftwareConfig(api.RuntimeSoftwareConfig o) {
     );
     unittest.expect(o.installGpuDriver!, unittest.isTrue);
     checkUnnamed37(o.kernels!);
+    unittest.expect(o.mixerDisabled!, unittest.isTrue);
     unittest.expect(
       o.notebookUpgradeSchedule!,
       unittest.equals('foo'),

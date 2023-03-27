@@ -1305,7 +1305,7 @@
             }
         }
     },
-    "revision": "20230302",
+    "revision": "20230323",
     "rootUrl": "https://authorizedbuyersmarketplace.googleapis.com/",
     "schemas": {
         "AcceptProposalRequest": {

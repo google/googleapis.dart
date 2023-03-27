@@ -1766,13 +1766,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5756,6 +5749,11 @@ class RuntimeSoftwareConfig {
   /// Optional.
   core.List<ContainerImage>? kernels;
 
+  /// Bool indicating whether mixer client should be disabled.
+  ///
+  /// Default: False
+  core.bool? mixerDisabled;
+
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
   ///
   /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -5796,6 +5794,7 @@ class RuntimeSoftwareConfig {
     this.idleShutdownTimeout,
     this.installGpuDriver,
     this.kernels,
+    this.mixerDisabled,
     this.notebookUpgradeSchedule,
     this.postStartupScript,
     this.postStartupScriptBehavior,
@@ -5829,6 +5828,9 @@ class RuntimeSoftwareConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          mixerDisabled: json_.containsKey('mixerDisabled')
+              ? json_['mixerDisabled'] as core.bool
+              : null,
           notebookUpgradeSchedule: json_.containsKey('notebookUpgradeSchedule')
               ? json_['notebookUpgradeSchedule'] as core.String
               : null,
@@ -5858,6 +5860,7 @@ class RuntimeSoftwareConfig {
           'idleShutdownTimeout': idleShutdownTimeout!,
         if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
         if (kernels != null) 'kernels': kernels!,
+        if (mixerDisabled != null) 'mixerDisabled': mixerDisabled!,
         if (notebookUpgradeSchedule != null)
           'notebookUpgradeSchedule': notebookUpgradeSchedule!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,

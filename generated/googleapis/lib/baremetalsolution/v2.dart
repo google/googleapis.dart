@@ -546,6 +546,8 @@ class ProjectsLocationsInstancesResource {
 
   /// RenameInstance sets a new name for an instance.
   ///
+  /// Use with caution, previous names become immediately invalidated.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -889,6 +891,50 @@ class ProjectsLocationsNetworksResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// RenameNetwork sets a new name for a network.
+  ///
+  /// Use with caution, previous names become immediately invalidated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the network.
+  /// Format: projects/{project}/locations/{location}/networks/{network}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Network].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Network> rename(
+    RenameNetworkRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rename';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Network.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsNfsSharesResource {
@@ -1105,6 +1151,50 @@ class ProjectsLocationsNfsSharesResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// RenameNfsShare sets a new name for an nfsshare.
+  ///
+  /// Use with caution, previous names become immediately invalidated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the nfsshare.
+  /// Format: projects/{project}/locations/{location}/nfsshares/{nfsshare}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nfsShares/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NfsShare].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NfsShare> rename(
+    RenameNfsShareRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rename';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return NfsShare.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -1114,9 +1204,6 @@ class ProjectsLocationsOperationsResource {
       : _requester = client;
 
   /// Get details about an operation.
-  ///
-  /// This method used only to work around CCFE lack of passthrough LRO support
-  /// (b/221498758).
   ///
   /// Request parameters:
   ///
@@ -1719,6 +1806,50 @@ class ProjectsLocationsVolumesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// RenameVolume sets a new name for a volume.
+  ///
+  /// Use with caution, previous names become immediately invalidated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the volume.
+  /// Format: projects/{project}/locations/{location}/volumes/{volume}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Volume].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volume> rename(
+    RenameVolumeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rename';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Volume.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Emergency Volume resize.
@@ -2387,6 +2518,11 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
+  /// The firmware version for the instance.
+  ///
+  /// Output only.
+  core.String? firmwareVersion;
+
   /// True if you enable hyperthreading for the server, otherwise false.
   ///
   /// The default value is false.
@@ -2502,6 +2638,7 @@ class Instance {
 
   Instance({
     this.createTime,
+    this.firmwareVersion,
     this.hyperthreadingEnabled,
     this.id,
     this.interactiveSerialConsoleEnabled,
@@ -2525,6 +2662,9 @@ class Instance {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          firmwareVersion: json_.containsKey('firmwareVersion')
+              ? json_['firmwareVersion'] as core.String
               : null,
           hyperthreadingEnabled: json_.containsKey('hyperthreadingEnabled')
               ? json_['hyperthreadingEnabled'] as core.bool
@@ -2593,6 +2733,7 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (hyperthreadingEnabled != null)
           'hyperthreadingEnabled': hyperthreadingEnabled!,
         if (id != null) 'id': id!,
@@ -3287,6 +3428,11 @@ class Lun {
   /// An identifier for the LUN, generated by the backend.
   core.String? id;
 
+  /// Instances this Lun is attached to.
+  ///
+  /// Output only.
+  core.List<core.String>? instances;
+
   /// The LUN multiprotocol type ensures the characteristics of the LUN are
   /// optimized for each operating system.
   /// Possible string values are:
@@ -3333,6 +3479,7 @@ class Lun {
     this.bootLun,
     this.expireTime,
     this.id,
+    this.instances,
     this.multiprotocolType,
     this.name,
     this.shareable,
@@ -3352,6 +3499,11 @@ class Lun {
               ? json_['expireTime'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          instances: json_.containsKey('instances')
+              ? (json_['instances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           multiprotocolType: json_.containsKey('multiprotocolType')
               ? json_['multiprotocolType'] as core.String
               : null,
@@ -3377,6 +3529,7 @@ class Lun {
         if (bootLun != null) 'bootLun': bootLun!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
+        if (instances != null) 'instances': instances!,
         if (multiprotocolType != null) 'multiprotocolType': multiprotocolType!,
         if (name != null) 'name': name!,
         if (shareable != null) 'shareable': shareable!,
@@ -4474,26 +4627,93 @@ class QosPolicy {
 
 /// Message requesting rename of a server.
 class RenameInstanceRequest {
-  /// The new `name` of the instance.
-  ///
-  /// Format: {instancename}
+  /// The new `id` of the instance.
   ///
   /// Required.
-  core.String? newName;
+  core.String? newInstanceId;
 
   RenameInstanceRequest({
-    this.newName,
+    this.newInstanceId,
   });
 
   RenameInstanceRequest.fromJson(core.Map json_)
       : this(
-          newName: json_.containsKey('newName')
-              ? json_['newName'] as core.String
+          newInstanceId: json_.containsKey('newInstanceId')
+              ? json_['newInstanceId'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newName != null) 'newName': newName!,
+        if (newInstanceId != null) 'newInstanceId': newInstanceId!,
+      };
+}
+
+/// Message requesting rename of a server.
+class RenameNetworkRequest {
+  /// The new `id` of the network.
+  ///
+  /// Required.
+  core.String? newNetworkId;
+
+  RenameNetworkRequest({
+    this.newNetworkId,
+  });
+
+  RenameNetworkRequest.fromJson(core.Map json_)
+      : this(
+          newNetworkId: json_.containsKey('newNetworkId')
+              ? json_['newNetworkId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newNetworkId != null) 'newNetworkId': newNetworkId!,
+      };
+}
+
+/// Message requesting rename of a server.
+class RenameNfsShareRequest {
+  /// The new `id` of the nfsshare.
+  ///
+  /// Required.
+  core.String? newNfsshareId;
+
+  RenameNfsShareRequest({
+    this.newNfsshareId,
+  });
+
+  RenameNfsShareRequest.fromJson(core.Map json_)
+      : this(
+          newNfsshareId: json_.containsKey('newNfsshareId')
+              ? json_['newNfsshareId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newNfsshareId != null) 'newNfsshareId': newNfsshareId!,
+      };
+}
+
+/// Message requesting rename of a server.
+class RenameVolumeRequest {
+  /// The new `id` of the volume.
+  ///
+  /// Required.
+  core.String? newVolumeId;
+
+  RenameVolumeRequest({
+    this.newVolumeId,
+  });
+
+  RenameVolumeRequest.fromJson(core.Map json_)
+      : this(
+          newVolumeId: json_.containsKey('newVolumeId')
+              ? json_['newVolumeId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newVolumeId != null) 'newVolumeId': newVolumeId!,
       };
 }
 
@@ -4864,6 +5084,14 @@ class VlanAttachment {
 
 /// A storage volume.
 class Volume {
+  /// Is the Volume attached at at least one instance.
+  ///
+  /// This field is a lightweight counterpart of `instances` field. It is filled
+  /// in List responses as well.
+  ///
+  /// Output only.
+  core.bool? attached;
+
   /// The size, in GiB, that this storage volume has expanded as a result of an
   /// auto grow policy.
   ///
@@ -4898,6 +5126,13 @@ class Volume {
 
   /// An identifier for the `Volume`, generated by the backend.
   core.String? id;
+
+  /// Instances this Volume is attached to.
+  ///
+  /// This field is set only in Get requests.
+  ///
+  /// Output only.
+  core.List<core.String>? instances;
 
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
@@ -5009,12 +5244,14 @@ class Volume {
   core.String? workloadProfile;
 
   Volume({
+    this.attached,
     this.autoGrownSizeGib,
     this.bootVolume,
     this.currentSizeGib,
     this.emergencySizeGib,
     this.expireTime,
     this.id,
+    this.instances,
     this.labels,
     this.maxSizeGib,
     this.name,
@@ -5037,6 +5274,9 @@ class Volume {
 
   Volume.fromJson(core.Map json_)
       : this(
+          attached: json_.containsKey('attached')
+              ? json_['attached'] as core.bool
+              : null,
           autoGrownSizeGib: json_.containsKey('autoGrownSizeGib')
               ? json_['autoGrownSizeGib'] as core.String
               : null,
@@ -5053,6 +5293,11 @@ class Volume {
               ? json_['expireTime'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          instances: json_.containsKey('instances')
+              ? (json_['instances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5114,12 +5359,14 @@ class Volume {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attached != null) 'attached': attached!,
         if (autoGrownSizeGib != null) 'autoGrownSizeGib': autoGrownSizeGib!,
         if (bootVolume != null) 'bootVolume': bootVolume!,
         if (currentSizeGib != null) 'currentSizeGib': currentSizeGib!,
         if (emergencySizeGib != null) 'emergencySizeGib': emergencySizeGib!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
+        if (instances != null) 'instances': instances!,
         if (labels != null) 'labels': labels!,
         if (maxSizeGib != null) 'maxSizeGib': maxSizeGib!,
         if (name != null) 'name': name!,

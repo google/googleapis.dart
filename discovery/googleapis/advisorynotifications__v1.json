@@ -202,7 +202,7 @@
             }
         }
     },
-    "revision": "20230304",
+    "revision": "20230319",
     "rootUrl": "https://advisorynotifications.googleapis.com/",
     "schemas": {
         "GoogleCloudAdvisorynotificationsV1Attachment": {

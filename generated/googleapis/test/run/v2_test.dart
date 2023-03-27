@@ -403,6 +403,7 @@ api.GoogleCloudRunV2Execution buildGoogleCloudRunV2Execution() {
     o.reconciling = true;
     o.retriedCount = 42;
     o.runningCount = 42;
+    o.satisfiesPzs = true;
     o.startTime = 'foo';
     o.succeededCount = 42;
     o.taskCount = 42;
@@ -485,6 +486,7 @@ void checkGoogleCloudRunV2Execution(api.GoogleCloudRunV2Execution o) {
       o.runningCount!,
       unittest.equals(42),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -775,6 +777,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.template = buildGoogleCloudRunV2ExecutionTemplate();
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.uid = 'foo';
@@ -845,6 +848,7 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkGoogleCloudRunV2ExecutionTemplate(o.template!);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     unittest.expect(
@@ -1216,6 +1220,7 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.scaling = buildGoogleCloudRunV2RevisionScaling();
     o.service = 'foo';
     o.serviceAccount = 'foo';
@@ -1293,6 +1298,7 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkGoogleCloudRunV2RevisionScaling(o.scaling!);
     unittest.expect(
       o.service!,
@@ -1651,6 +1657,7 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.template = buildGoogleCloudRunV2RevisionTemplate();
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.traffic = buildUnnamed34();
@@ -1735,6 +1742,7 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkGoogleCloudRunV2RevisionTemplate(o.template!);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     checkUnnamed34(o.traffic!);
@@ -1872,6 +1880,7 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
     o.observedGeneration = 'foo';
     o.reconciling = true;
     o.retried = 42;
+    o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.startTime = 'foo';
     o.timeout = 'foo';
@@ -1957,6 +1966,7 @@ void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
       o.retried!,
       unittest.equals(42),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),

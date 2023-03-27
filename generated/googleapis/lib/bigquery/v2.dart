@@ -7383,6 +7383,13 @@ class JobConfigurationQuery {
   /// Connection properties.
   core.List<ConnectionProperty>? connectionProperties;
 
+  /// Specifies whether the query should be executed as a continuous query.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? continuous;
+
   /// Specifies whether the job is allowed to create new tables.
   ///
   /// The following values are supported: CREATE_IF_NEEDED: If the table does
@@ -7548,6 +7555,7 @@ class JobConfigurationQuery {
     this.allowLargeResults,
     this.clustering,
     this.connectionProperties,
+    this.continuous,
     this.createDisposition,
     this.createSession,
     this.defaultDataset,
@@ -7585,6 +7593,9 @@ class JobConfigurationQuery {
                   .map((value) => ConnectionProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          continuous: json_.containsKey('continuous')
+              ? json_['continuous'] as core.bool
               : null,
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
@@ -7679,6 +7690,7 @@ class JobConfigurationQuery {
         if (clustering != null) 'clustering': clustering!,
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
+        if (continuous != null) 'continuous': continuous!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
@@ -10003,6 +10015,13 @@ class QueryRequest {
   /// Connection properties.
   core.List<ConnectionProperty>? connectionProperties;
 
+  /// Specifies whether the query should be executed as a continuous query.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? continuous;
+
   /// If true, creates a new session, where session id will be a server
   /// generated random id.
   ///
@@ -10141,6 +10160,7 @@ class QueryRequest {
 
   QueryRequest({
     this.connectionProperties,
+    this.continuous,
     this.createSession,
     this.defaultDataset,
     this.dryRun,
@@ -10166,6 +10186,9 @@ class QueryRequest {
                   .map((value) => ConnectionProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          continuous: json_.containsKey('continuous')
+              ? json_['continuous'] as core.bool
               : null,
           createSession: json_.containsKey('createSession')
               ? json_['createSession'] as core.bool
@@ -10225,6 +10248,7 @@ class QueryRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
+        if (continuous != null) 'continuous': continuous!,
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (dryRun != null) 'dryRun': dryRun!,
@@ -10777,6 +10801,8 @@ class Routine {
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
   /// - "PYTHON" : Python language.
+  /// - "JAVA" : Java language.
+  /// - "SCALA" : Scala language.
   core.String? language;
 
   /// The time when this routine was last modified, in milliseconds since the
@@ -11455,18 +11481,25 @@ class SparkOptions {
   /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
   core.List<core.String>? jarUris;
 
+  /// The fully qualified name of a class in jar_uris, for example,
+  /// com.example.wordcount.
+  ///
+  /// Exactly one of main_class and main_jar_uri field should be set for
+  /// Java/Scala language type.
+  core.String? mainClass;
+
   /// The main file/jar URI of the Spark application.
   ///
   /// Exactly one of the definition_body field and the main_file_uri field must
-  /// be set for Python. Exactly one of main_class and main_file_uri field
-  /// should be set for Java/Scala language type.
+  /// be set for Python.
   core.String? mainFileUri;
 
   /// Configuration properties as a set of key/value pairs, which will be passed
   /// on to the Spark application.
   ///
   /// For more information, see
-  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the
+  /// [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
   core.Map<core.String, core.String>? properties;
 
   /// Python files to be placed on the PYTHONPATH for PySpark application.
@@ -11487,6 +11520,7 @@ class SparkOptions {
     this.containerImage,
     this.fileUris,
     this.jarUris,
+    this.mainClass,
     this.mainFileUri,
     this.properties,
     this.pyFileUris,
@@ -11516,6 +11550,9 @@ class SparkOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          mainClass: json_.containsKey('mainClass')
+              ? json_['mainClass'] as core.String
+              : null,
           mainFileUri: json_.containsKey('mainFileUri')
               ? json_['mainFileUri'] as core.String
               : null,
@@ -11544,6 +11581,7 @@ class SparkOptions {
         if (containerImage != null) 'containerImage': containerImage!,
         if (fileUris != null) 'fileUris': fileUris!,
         if (jarUris != null) 'jarUris': jarUris!,
+        if (mainClass != null) 'mainClass': mainClass!,
         if (mainFileUri != null) 'mainFileUri': mainFileUri!,
         if (properties != null) 'properties': properties!,
         if (pyFileUris != null) 'pyFileUris': pyFileUris!,
@@ -11617,7 +11655,7 @@ class StandardSqlDataType {
 
   /// The top level type of this field.
   ///
-  /// Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+  /// Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
   ///
   /// Required.
   /// Possible string values are:

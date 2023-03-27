@@ -4150,6 +4150,53 @@ class PurchasesProductsResource {
     );
   }
 
+  /// Consumes a purchase for an inapp item.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [productId] - The inapp product SKU (for example,
+  /// 'com.some.thing.inapp1').
+  ///
+  /// [token] - The token provided to the user's device when the inapp product
+  /// was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> consume(
+    core.String packageName,
+    core.String productId,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/products/' +
+        commons.escapeVariable('$productId') +
+        '/tokens/' +
+        commons.escapeVariable('$token') +
+        ':consume';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
   /// Checks the purchase and consumption status of an inapp item.
   ///
   /// Request parameters:
@@ -6143,7 +6190,7 @@ class DeveloperComment {
 /// Information specific to cancellations initiated by developers.
 typedef DeveloperInitiatedCancellation = $Empty;
 
-/// LINT.IfChange A group of devices.
+/// A group of devices.
 ///
 /// A group is defined by a set of device selectors. A device belongs to the
 /// group if it matches any selector (logical OR).
@@ -6502,8 +6549,8 @@ class DeviceTier {
       };
 }
 
-/// LINT.IfChange Configuration describing device targeting criteria for the
-/// content of an app.
+/// Configuration describing device targeting criteria for the content of an
+/// app.
 class DeviceTierConfig {
   /// Definition of device groups for the app.
   core.List<DeviceGroup>? deviceGroups;

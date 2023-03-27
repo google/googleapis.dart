@@ -1803,13 +1803,6 @@ class ProjectsDatabasesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1951,17 +1944,17 @@ class ProjectsLocationsResource {
   }
 }
 
-/// Defines a aggregation that produces a single result.
+/// Defines an aggregation that produces a single result.
 class Aggregation {
   /// Optional name of the field to store the result of the aggregation into.
   ///
   /// If not provided, Firestore will pick a default name following the format
   /// `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
-  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ...
-  /// ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
-  /// COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4)
-  /// AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all
-  /// aggregation aliases. * Conform to document field name limitations.
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... );
+  /// ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2)
+  /// AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS field_2 OVER (
+  /// ... ); ``` Requires: * Must be unique across all aggregation aliases. *
+  /// Conform to document field name limitations.
   ///
   /// Optional.
   core.String? alias;
@@ -2481,7 +2474,7 @@ class Count {
   /// Optional constraint on the maximum number of documents to count.
   ///
   /// This provides a way to set an upper bound on the number of documents to
-  /// scan, limiting latency and cost. Unspecified is interpreted as no bound.
+  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
   /// High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k
   /// ); ``` Requires: * Must be greater than zero when present.
   ///
@@ -2955,8 +2948,9 @@ class GoogleFirestoreAdminV1Database {
   /// this database, App Engine configuration will impact this database. This
   /// includes disabling of the application & database, as well as disabling
   /// writes to the database.
-  /// - "DISABLED" : Appengine has no affect on the ability of this database to
-  /// serve requests.
+  /// - "DISABLED" : App Engine has no effect on the ability of this database to
+  /// serve requests. This is the default setting for databases created with the
+  /// Firestore API.
   core.String? appEngineIntegrationMode;
 
   /// The concurrency control mode to use for this database.

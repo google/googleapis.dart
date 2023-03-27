@@ -903,13 +903,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1032,6 +1025,8 @@ class Accelerator {
   /// - "CCAI_INSIGHTS" : Contact Center AI Insights This accelerator is used to
   /// enable import and export pipelines custom built to streamline CCAI
   /// Insights processing.
+  /// - "CLOUDSEARCH" : Cloud search accelerator for CDF. This accelerator is to
+  /// enable Cloud search specific CDF plugins developed by Cloudsearch team.
   core.String? acceleratorType;
 
   /// The state of the accelerator.
@@ -1154,7 +1149,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1170,9 +1167,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1368,6 +1363,8 @@ typedef Expr = $Expr;
 /// Represents a Data Fusion instance.
 class Instance {
   /// List of accelerators enabled for this CDF instance.
+  ///
+  /// Output only.
   core.List<Accelerator>? accelerators;
 
   /// Endpoint on which the REST APIs is accessible.
@@ -1377,6 +1374,8 @@ class Instance {
 
   /// Available versions that the instance can be upgraded to using
   /// UpdateInstanceRequest.
+  ///
+  /// Output only.
   core.List<Version>? availableVersion;
 
   /// The time the instance was created.

@@ -1401,13 +1401,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -4270,7 +4263,7 @@ class Restore {
 
 /// Configuration of a restore.
 ///
-/// Next id: 11
+/// Next id: 12
 class RestoreConfig {
   /// Restore all namespaced resources in the Backup if set to "True".
   ///
@@ -4431,7 +4424,7 @@ class RestoreConfig {
 /// The configuration of a potential series of Restore operations to be
 /// performed against Backups belong to a particular BackupPlan.
 ///
-/// Next id: 11
+/// Next id: 13
 class RestorePlan {
   /// A reference to the BackupPlan from which Backups may be used as the source
   /// for Restores created via this RestorePlan.

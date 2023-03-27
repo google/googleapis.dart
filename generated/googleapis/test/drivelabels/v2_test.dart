@@ -4328,6 +4328,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.DriveLabelsApi(mock).labels;
+      final arg_customer = 'foo';
       final arg_languageCode = 'foo';
       final arg_minimumRole = 'foo';
       final arg_pageSize = 42;
@@ -4367,6 +4368,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['customer']!.first,
+          unittest.equals(arg_customer),
+        );
         unittest.expect(
           queryMap['languageCode']!.first,
           unittest.equals(arg_languageCode),
@@ -4408,6 +4413,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
+          customer: arg_customer,
           languageCode: arg_languageCode,
           minimumRole: arg_minimumRole,
           pageSize: arg_pageSize,
@@ -5515,6 +5521,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DriveLabelsApi(mock).users;
       final arg_name = 'foo';
+      final arg_customer = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5549,6 +5556,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customer']!.first,
+          unittest.equals(arg_customer),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5560,8 +5571,8 @@ void main() {
             convert.json.encode(buildGoogleAppsDriveLabelsV2UserCapabilities());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.getCapabilities(arg_name, $fields: arg_$fields);
+      final response = await res.getCapabilities(arg_name,
+          customer: arg_customer, $fields: arg_$fields);
       checkGoogleAppsDriveLabelsV2UserCapabilities(
           response as api.GoogleAppsDriveLabelsV2UserCapabilities);
     });

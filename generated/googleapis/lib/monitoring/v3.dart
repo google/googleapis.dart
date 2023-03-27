@@ -4866,12 +4866,16 @@ class AlertStrategy {
   /// incidents will close
   core.String? autoClose;
 
+  /// Control how notifications will be sent out, on a per-channel basis.
+  core.List<NotificationChannelStrategy>? notificationChannelStrategy;
+
   /// Required for alert policies with a LogMatch condition.This limit is not
   /// implemented for alert policies that are not log-based.
   NotificationRateLimit? notificationRateLimit;
 
   AlertStrategy({
     this.autoClose,
+    this.notificationChannelStrategy,
     this.notificationRateLimit,
   });
 
@@ -4880,6 +4884,13 @@ class AlertStrategy {
           autoClose: json_.containsKey('autoClose')
               ? json_['autoClose'] as core.String
               : null,
+          notificationChannelStrategy:
+              json_.containsKey('notificationChannelStrategy')
+                  ? (json_['notificationChannelStrategy'] as core.List)
+                      .map((value) => NotificationChannelStrategy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           notificationRateLimit: json_.containsKey('notificationRateLimit')
               ? NotificationRateLimit.fromJson(json_['notificationRateLimit']
                   as core.Map<core.String, core.dynamic>)
@@ -4888,6 +4899,8 @@ class AlertStrategy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoClose != null) 'autoClose': autoClose!,
+        if (notificationChannelStrategy != null)
+          'notificationChannelStrategy': notificationChannelStrategy!,
         if (notificationRateLimit != null)
           'notificationRateLimit': notificationRateLimit!,
       };
@@ -6149,7 +6162,7 @@ typedef Explicit = $Explicit;
 /// Each bucket represents a constant relative uncertainty on a specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
 /// the following boundaries:Upper bound (0 \<= i \< N-1): scale *
-/// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
+/// (growth_factor ^ i).Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
 /// - 1)).
 typedef Exponential = $Exponential;
 
@@ -7040,8 +7053,8 @@ class LatencyCriteria {
 ///
 /// Each bucket represents a constant absolute uncertainty on the specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width * i).
-/// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width *
+/// i).Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
 /// The protocol for the ListAlertPolicies response.
@@ -8863,6 +8876,46 @@ class NotificationChannelDescriptor {
         if (name != null) 'name': name!,
         if (supportedTiers != null) 'supportedTiers': supportedTiers!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Control over how the notification channels in notification_channels are
+/// notified when this alert fires, on a per-channel basis.
+class NotificationChannelStrategy {
+  /// The full REST resource name for the notification channels that these
+  /// settings apply to.
+  ///
+  /// Each of these correspond to the name field in one of the
+  /// NotificationChannel objects referenced in the notification_channels field
+  /// of this AlertPolicy. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
+  core.List<core.String>? notificationChannelNames;
+
+  /// The frequency at which to send reminder notifications for open incidents.
+  core.String? renotifyInterval;
+
+  NotificationChannelStrategy({
+    this.notificationChannelNames,
+    this.renotifyInterval,
+  });
+
+  NotificationChannelStrategy.fromJson(core.Map json_)
+      : this(
+          notificationChannelNames:
+              json_.containsKey('notificationChannelNames')
+                  ? (json_['notificationChannelNames'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          renotifyInterval: json_.containsKey('renotifyInterval')
+              ? json_['renotifyInterval'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (notificationChannelNames != null)
+          'notificationChannelNames': notificationChannelNames!,
+        if (renotifyInterval != null) 'renotifyInterval': renotifyInterval!,
       };
 }
 

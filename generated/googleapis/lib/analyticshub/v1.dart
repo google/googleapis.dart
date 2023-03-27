@@ -1848,17 +1848,12 @@ class RestrictedExportConfig {
   /// If true, enable restricted export.
   core.bool? enabled;
 
-  /// If true, restrict direct table access(read api/tabledata.list) on linked
-  /// table.
-  core.bool? restrictDirectTableAccess;
-
   /// If true, restrict export of query result derived from restricted linked
   /// dataset table.
   core.bool? restrictQueryResult;
 
   RestrictedExportConfig({
     this.enabled,
-    this.restrictDirectTableAccess,
     this.restrictQueryResult,
   });
 
@@ -1867,10 +1862,6 @@ class RestrictedExportConfig {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
-          restrictDirectTableAccess:
-              json_.containsKey('restrictDirectTableAccess')
-                  ? json_['restrictDirectTableAccess'] as core.bool
-                  : null,
           restrictQueryResult: json_.containsKey('restrictQueryResult')
               ? json_['restrictQueryResult'] as core.bool
               : null,
@@ -1878,8 +1869,6 @@ class RestrictedExportConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
-        if (restrictDirectTableAccess != null)
-          'restrictDirectTableAccess': restrictDirectTableAccess!,
         if (restrictQueryResult != null)
           'restrictQueryResult': restrictQueryResult!,
       };

@@ -1312,6 +1312,7 @@ api.Enum buildEnum() {
   final o = api.Enum();
   buildCounterEnum++;
   if (buildCounterEnum < 3) {
+    o.edition = 'foo';
     o.enumvalue = buildUnnamed28();
     o.name = 'foo';
     o.options = buildUnnamed29();
@@ -1325,6 +1326,10 @@ api.Enum buildEnum() {
 void checkEnum(api.Enum o) {
   buildCounterEnum++;
   if (buildCounterEnum < 3) {
+    unittest.expect(
+      o.edition!,
+      unittest.equals('foo'),
+    );
     checkUnnamed28(o.enumvalue!);
     unittest.expect(
       o.name!,
@@ -3969,6 +3974,7 @@ api.Type buildType() {
   final o = api.Type();
   buildCounterType++;
   if (buildCounterType < 3) {
+    o.edition = 'foo';
     o.fields = buildUnnamed84();
     o.name = 'foo';
     o.oneofs = buildUnnamed85();
@@ -3983,6 +3989,10 @@ api.Type buildType() {
 void checkType(api.Type o) {
   buildCounterType++;
   if (buildCounterType < 3) {
+    unittest.expect(
+      o.edition!,
+      unittest.equals('foo'),
+    );
     checkUnnamed84(o.fields!);
     unittest.expect(
       o.name!,

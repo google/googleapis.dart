@@ -5364,13 +5364,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5735,13 +5728,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -6105,7 +6091,7 @@ class GoogleCloudDialogflowCxV3AgentValidationResult {
 class GoogleCloudDialogflowCxV3AudioInput {
   /// The natural language speech audio to be processed.
   ///
-  /// A single request can contain up to 1 minute of speech audio data. The
+  /// A single request can contain up to 2 minutes of speech audio data. The
   /// transcribed text cannot contain more than 256 bytes. For non-streaming
   /// audio detect intent, both `config` and `audio` must be provided. For
   /// streaming audio detect intent, `config` must be provided in the first
@@ -6680,7 +6666,7 @@ class GoogleCloudDialogflowCxV3DeployFlowRequest {
       };
 }
 
-/// Represents an deployment in an environment.
+/// Represents a deployment in an environment.
 ///
 /// A deployment happens when a flow version configured to be active in the
 /// environment. You can configure running pre-deployment steps, e.g. running
@@ -8893,7 +8879,10 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
   /// the language does not exist, then the speech is recognized using the
   /// standard version of the specified model. Refer to
   /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
-  /// for more details.
+  /// for more details. If you specify a model, the following models typically
+  /// have the best performance: - phone_call (best for Agent Assist and
+  /// telephony) - latest_short (best for Dialogflow non-telephony) -
+  /// command_and_search (best for very short utterances and commands)
   ///
   /// Optional.
   core.String? model;

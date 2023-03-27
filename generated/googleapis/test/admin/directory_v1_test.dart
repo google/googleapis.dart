@@ -3832,6 +3832,7 @@ api.RoleAssignment buildRoleAssignment() {
   buildCounterRoleAssignment++;
   if (buildCounterRoleAssignment < 3) {
     o.assignedTo = 'foo';
+    o.assigneeType = 'foo';
     o.etag = 'foo';
     o.kind = 'foo';
     o.orgUnitId = 'foo';
@@ -3848,6 +3849,10 @@ void checkRoleAssignment(api.RoleAssignment o) {
   if (buildCounterRoleAssignment < 3) {
     unittest.expect(
       o.assignedTo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.assigneeType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -12317,6 +12322,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DirectoryApi(mock).roleAssignments;
       final arg_customer = 'foo';
+      final arg_includeIndirectRoleAssignments = true;
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_roleId = 'foo';
@@ -12368,6 +12374,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['includeIndirectRoleAssignments']!.first,
+          unittest.equals('$arg_includeIndirectRoleAssignments'),
+        );
+        unittest.expect(
           core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
@@ -12395,6 +12405,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_customer,
+          includeIndirectRoleAssignments: arg_includeIndirectRoleAssignments,
           maxResults: arg_maxResults,
           pageToken: arg_pageToken,
           roleId: arg_roleId,

@@ -5879,6 +5879,29 @@ class GooglePrivacyDlpV2Action {
       };
 }
 
+/// The results of an Action.
+class GooglePrivacyDlpV2ActionDetails {
+  /// Outcome of a de-identification action.
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails? deidentifyDetails;
+
+  GooglePrivacyDlpV2ActionDetails({
+    this.deidentifyDetails,
+  });
+
+  GooglePrivacyDlpV2ActionDetails.fromJson(core.Map json_)
+      : this(
+          deidentifyDetails: json_.containsKey('deidentifyDetails')
+              ? GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(
+                  json_['deidentifyDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyDetails != null) 'deidentifyDetails': deidentifyDetails!,
+      };
+}
+
 /// Request message for ActivateJobTrigger.
 typedef GooglePrivacyDlpV2ActivateJobTriggerRequest = $Empty;
 
@@ -8337,6 +8360,79 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
       };
 }
 
+/// The results of a Deidentify action from an Inspect job.
+class GooglePrivacyDlpV2DeidentifyDataSourceDetails {
+  /// Stats about de-identification.
+  GooglePrivacyDlpV2DeidentifyDataSourceStats? deidentifyStats;
+
+  /// De-identification config used for the request.
+  GooglePrivacyDlpV2RequestedDeidentifyOptions? requestedOptions;
+
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails({
+    this.deidentifyStats,
+    this.requestedOptions,
+  });
+
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(core.Map json_)
+      : this(
+          deidentifyStats: json_.containsKey('deidentifyStats')
+              ? GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(
+                  json_['deidentifyStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedOptions: json_.containsKey('requestedOptions')
+              ? GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(
+                  json_['requestedOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyStats != null) 'deidentifyStats': deidentifyStats!,
+        if (requestedOptions != null) 'requestedOptions': requestedOptions!,
+      };
+}
+
+/// Summary of what was modified during a transformation.
+class GooglePrivacyDlpV2DeidentifyDataSourceStats {
+  /// Number of successfully applied transformations.
+  core.String? transformationCount;
+
+  /// Number of errors encountered while trying to apply transformations.
+  core.String? transformationErrorCount;
+
+  /// Total size in bytes that were transformed in some way.
+  core.String? transformedBytes;
+
+  GooglePrivacyDlpV2DeidentifyDataSourceStats({
+    this.transformationCount,
+    this.transformationErrorCount,
+    this.transformedBytes,
+  });
+
+  GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(core.Map json_)
+      : this(
+          transformationCount: json_.containsKey('transformationCount')
+              ? json_['transformationCount'] as core.String
+              : null,
+          transformationErrorCount:
+              json_.containsKey('transformationErrorCount')
+                  ? json_['transformationErrorCount'] as core.String
+                  : null,
+          transformedBytes: json_.containsKey('transformedBytes')
+              ? json_['transformedBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transformationCount != null)
+          'transformationCount': transformationCount!,
+        if (transformationErrorCount != null)
+          'transformationErrorCount': transformationErrorCount!,
+        if (transformedBytes != null) 'transformedBytes': transformedBytes!,
+      };
+}
+
 /// DeidentifyTemplates contains instructions on how to de-identify content.
 ///
 /// See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
@@ -8697,6 +8793,9 @@ class GooglePrivacyDlpV2Dictionary {
 
 /// Combines all of the information about a DLP job.
 class GooglePrivacyDlpV2DlpJob {
+  /// Events that should occur after the job has completed.
+  core.List<GooglePrivacyDlpV2ActionDetails>? actionDetails;
+
   /// Time when the job was created.
   core.String? createTime;
 
@@ -8745,6 +8844,7 @@ class GooglePrivacyDlpV2DlpJob {
   core.String? type;
 
   GooglePrivacyDlpV2DlpJob({
+    this.actionDetails,
     this.createTime,
     this.endTime,
     this.errors,
@@ -8759,6 +8859,12 @@ class GooglePrivacyDlpV2DlpJob {
 
   GooglePrivacyDlpV2DlpJob.fromJson(core.Map json_)
       : this(
+          actionDetails: json_.containsKey('actionDetails')
+              ? (json_['actionDetails'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2ActionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -8793,6 +8899,7 @@ class GooglePrivacyDlpV2DlpJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (actionDetails != null) 'actionDetails': actionDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (errors != null) 'errors': errors!,
@@ -10017,6 +10124,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "CHILE" : The infoType is typically used in Chile.
   /// - "CHINA" : The infoType is typically used in China.
   /// - "COLOMBIA" : The infoType is typically used in Colombia.
+  /// - "CROATIA" : The infoType is typically used in Croatia.
   /// - "DENMARK" : The infoType is typically used in Denmark.
   /// - "FRANCE" : The infoType is typically used in France.
   /// - "FINLAND" : The infoType is typically used in Finland.
@@ -10030,6 +10138,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "JAPAN" : The infoType is typically used in Japan.
   /// - "KOREA" : The infoType is typically used in Korea.
   /// - "MEXICO" : The infoType is typically used in Mexico.
+  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   /// - "THE_NETHERLANDS" : The infoType is typically used in the Netherlands.
   /// - "NORWAY" : The infoType is typically used in Norway.
   /// - "PARAGUAY" : The infoType is typically used in Paraguay.
@@ -10048,7 +10157,6 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "URUGUAY" : The infoType is typically used in Uruguay.
   /// - "VENEZUELA" : The infoType is typically used in Venezuela.
   /// - "INTERNAL" : The infoType is typically used in Google internally.
-  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   core.String? locationCategory;
 
   /// The class of identifiers where this infoType belongs
@@ -13191,6 +13299,59 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 
 /// Replace each matching finding with the name of the info_type.
 typedef GooglePrivacyDlpV2ReplaceWithInfoTypeConfig = $Empty;
+
+/// De-id options.
+class GooglePrivacyDlpV2RequestedDeidentifyOptions {
+  /// Snapshot of the state of the DeidentifyTemplate from the Deidentify action
+  /// at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotDeidentifyTemplate;
+
+  /// Snapshot of the state of the image redact DeidentifyTemplate from the
+  /// Deidentify action at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotImageRedactTemplate;
+
+  /// Snapshot of the state of the structured DeidentifyTemplate from the
+  /// Deidentify action at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotStructuredDeidentifyTemplate;
+
+  GooglePrivacyDlpV2RequestedDeidentifyOptions({
+    this.snapshotDeidentifyTemplate,
+    this.snapshotImageRedactTemplate,
+    this.snapshotStructuredDeidentifyTemplate,
+  });
+
+  GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(core.Map json_)
+      : this(
+          snapshotDeidentifyTemplate:
+              json_.containsKey('snapshotDeidentifyTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotDeidentifyTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          snapshotImageRedactTemplate:
+              json_.containsKey('snapshotImageRedactTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotImageRedactTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          snapshotStructuredDeidentifyTemplate:
+              json_.containsKey('snapshotStructuredDeidentifyTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotStructuredDeidentifyTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snapshotDeidentifyTemplate != null)
+          'snapshotDeidentifyTemplate': snapshotDeidentifyTemplate!,
+        if (snapshotImageRedactTemplate != null)
+          'snapshotImageRedactTemplate': snapshotImageRedactTemplate!,
+        if (snapshotStructuredDeidentifyTemplate != null)
+          'snapshotStructuredDeidentifyTemplate':
+              snapshotStructuredDeidentifyTemplate!,
+      };
+}
 
 /// Snapshot of the inspection configuration.
 class GooglePrivacyDlpV2RequestedOptions {

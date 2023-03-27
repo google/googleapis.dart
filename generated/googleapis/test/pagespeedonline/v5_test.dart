@@ -221,12 +221,30 @@ void checkConfigSettings(api.ConfigSettings o) {
   buildCounterConfigSettings--;
 }
 
+core.Map<core.String, core.String> buildUnnamed1() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed1(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterEnvironment = 0;
 api.Environment buildEnvironment() {
   final o = api.Environment();
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
     o.benchmarkIndex = 42.0;
+    o.credits = buildUnnamed1();
     o.hostUserAgent = 'foo';
     o.networkUserAgent = 'foo';
   }
@@ -241,6 +259,7 @@ void checkEnvironment(api.Environment o) {
       o.benchmarkIndex!,
       unittest.equals(42.0),
     );
+    checkUnnamed1(o.credits!);
     unittest.expect(
       o.hostUserAgent!,
       unittest.equals('foo'),
@@ -272,7 +291,62 @@ void checkI18n(api.I18n o) {
   buildCounterI18n--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed1() => {
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterLhrEntity = 0;
+api.LhrEntity buildLhrEntity() {
+  final o = api.LhrEntity();
+  buildCounterLhrEntity++;
+  if (buildCounterLhrEntity < 3) {
+    o.category = 'foo';
+    o.homepage = 'foo';
+    o.isFirstParty = true;
+    o.isUnrecognized = true;
+    o.name = 'foo';
+    o.origins = buildUnnamed2();
+  }
+  buildCounterLhrEntity--;
+  return o;
+}
+
+void checkLhrEntity(api.LhrEntity o) {
+  buildCounterLhrEntity++;
+  if (buildCounterLhrEntity < 3) {
+    unittest.expect(
+      o.category!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.homepage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isFirstParty!, unittest.isTrue);
+    unittest.expect(o.isUnrecognized!, unittest.isTrue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2(o.origins!);
+  }
+  buildCounterLhrEntity--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed3() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -285,7 +359,7 @@ core.Map<core.String, core.Object?> buildUnnamed1() => {
       },
     };
 
-void checkUnnamed1(core.Map<core.String, core.Object?> o) {
+void checkUnnamed3(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted2 = (o['x']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
@@ -323,7 +397,7 @@ api.LighthouseAuditResultV5 buildLighthouseAuditResultV5() {
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     o.description = 'foo';
-    o.details = buildUnnamed1();
+    o.details = buildUnnamed3();
     o.displayValue = 'foo';
     o.errorMessage = 'foo';
     o.explanation = 'foo';
@@ -354,7 +428,7 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.details!);
+    checkUnnamed3(o.details!);
     unittest.expect(
       o.displayValue!,
       unittest.equals('foo'),
@@ -419,12 +493,12 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
   buildCounterLighthouseAuditResultV5--;
 }
 
-core.List<api.AuditRefs> buildUnnamed2() => [
+core.List<api.AuditRefs> buildUnnamed4() => [
       buildAuditRefs(),
       buildAuditRefs(),
     ];
 
-void checkUnnamed2(core.List<api.AuditRefs> o) {
+void checkUnnamed4(core.List<api.AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditRefs(o[0]);
   checkAuditRefs(o[1]);
@@ -435,7 +509,7 @@ api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
   final o = api.LighthouseCategoryV5();
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    o.auditRefs = buildUnnamed2();
+    o.auditRefs = buildUnnamed4();
     o.description = 'foo';
     o.id = 'foo';
     o.manualDescription = 'foo';
@@ -453,7 +527,7 @@ api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
 void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    checkUnnamed2(o.auditRefs!);
+    checkUnnamed4(o.auditRefs!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -488,29 +562,40 @@ void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5--;
 }
 
-core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed3() => {
+core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed5() => {
       'x': buildLighthouseAuditResultV5(),
       'y': buildLighthouseAuditResultV5(),
     };
 
-void checkUnnamed3(core.Map<core.String, api.LighthouseAuditResultV5> o) {
+void checkUnnamed5(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseAuditResultV5(o['x']!);
   checkLighthouseAuditResultV5(o['y']!);
 }
 
-core.Map<core.String, api.CategoryGroupV5> buildUnnamed4() => {
+core.Map<core.String, api.CategoryGroupV5> buildUnnamed6() => {
       'x': buildCategoryGroupV5(),
       'y': buildCategoryGroupV5(),
     };
 
-void checkUnnamed4(core.Map<core.String, api.CategoryGroupV5> o) {
+void checkUnnamed6(core.Map<core.String, api.CategoryGroupV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategoryGroupV5(o['x']!);
   checkCategoryGroupV5(o['y']!);
 }
 
-core.List<core.Object?> buildUnnamed5() => [
+core.List<api.LhrEntity> buildUnnamed7() => [
+      buildLhrEntity(),
+      buildLhrEntity(),
+    ];
+
+void checkUnnamed7(core.List<api.LhrEntity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLhrEntity(o[0]);
+  checkLhrEntity(o[1]);
+}
+
+core.List<core.Object?> buildUnnamed8() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -523,7 +608,7 @@ core.List<core.Object?> buildUnnamed5() => [
       },
     ];
 
-void checkUnnamed5(core.List<core.Object?> o) {
+void checkUnnamed8(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -555,12 +640,12 @@ void checkUnnamed5(core.List<core.Object?> o) {
   );
 }
 
-core.List<api.StackPack> buildUnnamed6() => [
+core.List<api.StackPack> buildUnnamed9() => [
       buildStackPack(),
       buildStackPack(),
     ];
 
-void checkUnnamed6(core.List<api.StackPack> o) {
+void checkUnnamed9(core.List<api.StackPack> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackPack(o[0]);
   checkStackPack(o[1]);
@@ -571,19 +656,27 @@ api.LighthouseResultV5 buildLighthouseResultV5() {
   final o = api.LighthouseResultV5();
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    o.audits = buildUnnamed3();
+    o.audits = buildUnnamed5();
     o.categories = buildCategories();
-    o.categoryGroups = buildUnnamed4();
+    o.categoryGroups = buildUnnamed6();
     o.configSettings = buildConfigSettings();
+    o.entities = buildUnnamed7();
     o.environment = buildEnvironment();
     o.fetchTime = 'foo';
+    o.finalDisplayedUrl = 'foo';
     o.finalUrl = 'foo';
+    o.fullPageScreenshot = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
     o.i18n = buildI18n();
     o.lighthouseVersion = 'foo';
+    o.mainDocumentUrl = 'foo';
     o.requestedUrl = 'foo';
-    o.runWarnings = buildUnnamed5();
+    o.runWarnings = buildUnnamed8();
     o.runtimeError = buildRuntimeError();
-    o.stackPacks = buildUnnamed6();
+    o.stackPacks = buildUnnamed9();
     o.timing = buildTiming();
     o.userAgent = 'foo';
   }
@@ -594,17 +687,36 @@ api.LighthouseResultV5 buildLighthouseResultV5() {
 void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    checkUnnamed3(o.audits!);
+    checkUnnamed5(o.audits!);
     checkCategories(o.categories!);
-    checkUnnamed4(o.categoryGroups!);
+    checkUnnamed6(o.categoryGroups!);
     checkConfigSettings(o.configSettings!);
+    checkUnnamed7(o.entities!);
     checkEnvironment(o.environment!);
     unittest.expect(
       o.fetchTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.finalDisplayedUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.finalUrl!,
+      unittest.equals('foo'),
+    );
+    var casted9 = (o.fullPageScreenshot!) as core.Map;
+    unittest.expect(casted9, unittest.hasLength(3));
+    unittest.expect(
+      casted9['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted9['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted9['string'],
       unittest.equals('foo'),
     );
     checkI18n(o.i18n!);
@@ -613,12 +725,16 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.mainDocumentUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.requestedUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.runWarnings!);
+    checkUnnamed8(o.runWarnings!);
     checkRuntimeError(o.runtimeError!);
-    checkUnnamed6(o.stackPacks!);
+    checkUnnamed9(o.stackPacks!);
     checkTiming(o.timing!);
     unittest.expect(
       o.userAgent!,
@@ -628,12 +744,12 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5--;
 }
 
-core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed7() => {
+core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed10() => {
       'x': buildUserPageLoadMetricV5(),
       'y': buildUserPageLoadMetricV5(),
     };
 
-void checkUnnamed7(core.Map<core.String, api.UserPageLoadMetricV5> o) {
+void checkUnnamed10(core.Map<core.String, api.UserPageLoadMetricV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserPageLoadMetricV5(o['x']!);
   checkUserPageLoadMetricV5(o['y']!);
@@ -646,7 +762,7 @@ api.PagespeedApiLoadingExperienceV5 buildPagespeedApiLoadingExperienceV5() {
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     o.id = 'foo';
     o.initialUrl = 'foo';
-    o.metrics = buildUnnamed7();
+    o.metrics = buildUnnamed10();
     o.originFallback = true;
     o.overallCategory = 'foo';
   }
@@ -666,7 +782,7 @@ void checkPagespeedApiLoadingExperienceV5(
       o.initialUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.metrics!);
+    checkUnnamed10(o.metrics!);
     unittest.expect(o.originFallback!, unittest.isTrue);
     unittest.expect(
       o.overallCategory!,
@@ -1033,12 +1149,12 @@ void checkRuntimeError(api.RuntimeError o) {
   buildCounterRuntimeError--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8() => {
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed8(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1055,7 +1171,7 @@ api.StackPack buildStackPack() {
   final o = api.StackPack();
   buildCounterStackPack++;
   if (buildCounterStackPack < 3) {
-    o.descriptions = buildUnnamed8();
+    o.descriptions = buildUnnamed11();
     o.iconDataURL = 'foo';
     o.id = 'foo';
     o.title = 'foo';
@@ -1067,7 +1183,7 @@ api.StackPack buildStackPack() {
 void checkStackPack(api.StackPack o) {
   buildCounterStackPack++;
   if (buildCounterStackPack < 3) {
-    checkUnnamed8(o.descriptions!);
+    checkUnnamed11(o.descriptions!);
     unittest.expect(
       o.iconDataURL!,
       unittest.equals('foo'),
@@ -1106,12 +1222,12 @@ void checkTiming(api.Timing o) {
   buildCounterTiming--;
 }
 
-core.List<api.Bucket> buildUnnamed9() => [
+core.List<api.Bucket> buildUnnamed12() => [
       buildBucket(),
       buildBucket(),
     ];
 
-void checkUnnamed9(core.List<api.Bucket> o) {
+void checkUnnamed12(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -1123,7 +1239,7 @@ api.UserPageLoadMetricV5 buildUserPageLoadMetricV5() {
   buildCounterUserPageLoadMetricV5++;
   if (buildCounterUserPageLoadMetricV5 < 3) {
     o.category = 'foo';
-    o.distributions = buildUnnamed9();
+    o.distributions = buildUnnamed12();
     o.formFactor = 'foo';
     o.median = 42;
     o.metricId = 'foo';
@@ -1140,7 +1256,7 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
       o.category!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.distributions!);
+    checkUnnamed12(o.distributions!);
     unittest.expect(
       o.formFactor!,
       unittest.equals('foo'),
@@ -1161,12 +1277,12 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
   buildCounterUserPageLoadMetricV5--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1246,6 +1362,16 @@ void main() {
       final od =
           api.I18n.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkI18n(od);
+    });
+  });
+
+  unittest.group('obj-schema-LhrEntity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLhrEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LhrEntity.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLhrEntity(od);
     });
   });
 
@@ -1365,7 +1491,7 @@ void main() {
       final res = api.PagespeedInsightsApi(mock).pagespeedapi;
       final arg_url = 'foo';
       final arg_captchaToken = 'foo';
-      final arg_category = buildUnnamed10();
+      final arg_category = buildUnnamed13();
       final arg_locale = 'foo';
       final arg_strategy = 'foo';
       final arg_utmCampaign = 'foo';

@@ -23,6 +23,7 @@
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
+///   - [ProjectsResourcesResource]
 library;
 
 import 'dart:async' as async;
@@ -64,6 +65,8 @@ class ProjectsResource {
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
+  ProjectsResourcesResource get resources =>
+      ProjectsResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1035,6 +1038,55 @@ class ProjectsOccurrencesResource {
   }
 }
 
+class ProjectsResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsResourcesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a summary of the packages within a given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource to get a packages summary for
+  /// in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+  /// Value must have pattern `^projects/\[^/\]+/resources/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PackagesSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PackagesSummaryResponse> generatePackagesSummary(
+    GeneratePackagesSummaryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':generatePackagesSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PackagesSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -1045,6 +1097,107 @@ typedef AnalysisCompleted = $AnalysisCompleted;
 
 /// Artifact describes a build product.
 typedef Artifact = $Artifact;
+
+/// Assessment provides all information that is related to a single
+/// vulnerability for this product.
+class Assessment {
+  /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
+  /// tracking number for the vulnerability.
+  core.String? cve;
+
+  /// Contains information about the impact of this vulnerability, this will
+  /// change with time.
+  core.List<core.String>? impacts;
+
+  /// Justification provides the justification when the state of the assessment
+  /// if NOT_AFFECTED.
+  Justification? justification;
+
+  /// A detailed description of this Vex.
+  core.String? longDescription;
+
+  /// Holds a list of references associated with this vulnerability item and
+  /// assessment.
+  ///
+  /// These uris have additional information about the vulnerability and the
+  /// assessment itself. E.g. Link to a document which details how this
+  /// assessment concluded the state of this vulnerability.
+  core.List<RelatedUrl>? relatedUris;
+
+  /// Specifies details on how to handle (and presumably, fix) a vulnerability.
+  core.List<Remediation>? remediations;
+
+  /// A one sentence description of this Vex.
+  core.String? shortDescription;
+
+  /// Provides the state of this Vulnerability assessment.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? state;
+
+  Assessment({
+    this.cve,
+    this.impacts,
+    this.justification,
+    this.longDescription,
+    this.relatedUris,
+    this.remediations,
+    this.shortDescription,
+    this.state,
+  });
+
+  Assessment.fromJson(core.Map json_)
+      : this(
+          cve: json_.containsKey('cve') ? json_['cve'] as core.String : null,
+          impacts: json_.containsKey('impacts')
+              ? (json_['impacts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          justification: json_.containsKey('justification')
+              ? Justification.fromJson(
+                  json_['justification'] as core.Map<core.String, core.dynamic>)
+              : null,
+          longDescription: json_.containsKey('longDescription')
+              ? json_['longDescription'] as core.String
+              : null,
+          relatedUris: json_.containsKey('relatedUris')
+              ? (json_['relatedUris'] as core.List)
+                  .map((value) => RelatedUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          remediations: json_.containsKey('remediations')
+              ? (json_['remediations'] as core.List)
+                  .map((value) => Remediation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          shortDescription: json_.containsKey('shortDescription')
+              ? json_['shortDescription'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!,
+        if (impacts != null) 'impacts': impacts!,
+        if (justification != null) 'justification': justification!,
+        if (longDescription != null) 'longDescription': longDescription!,
+        if (relatedUris != null) 'relatedUris': relatedUris!,
+        if (remediations != null) 'remediations': remediations!,
+        if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (state != null) 'state': state!,
+      };
+}
 
 /// Note kind that represents a logical attestation "role" or "authority".
 ///
@@ -2289,6 +2442,7 @@ class DiscoveryNote {
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
+  /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   core.String? analysisKind;
 
   DiscoveryNote({
@@ -2636,6 +2790,12 @@ class FixableTotalByDigest {
         if (totalCount != null) 'totalCount': totalCount!,
       };
 }
+
+/// GeneratePackagesSummaryRequest is the request body for the
+/// GeneratePackagesSummary API method.
+///
+/// It just takes a single name argument, referring to the resource.
+typedef GeneratePackagesSummaryRequest = $Empty;
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
@@ -3079,6 +3239,9 @@ class InTotoStatement {
       };
 }
 
+/// Justification provides the justification when the state of the assessment if
+/// NOT_AFFECTED.
+typedef Justification = $Justification;
 typedef Jwt = $Jwt;
 
 class KnowledgeBase {
@@ -3111,6 +3274,38 @@ typedef Layer = $Layer;
 
 /// License information.
 typedef License = $License;
+
+/// Per license count
+class LicensesSummary {
+  /// The number of fixable vulnerabilities associated with this resource.
+  core.String? count;
+
+  /// The license of the package.
+  ///
+  /// Note that the format of this value is not guaranteed. It may be nil, an
+  /// empty string, a boolean value (A | B), a differently formed boolean value
+  /// (A OR B), etc...
+  core.String? license;
+
+  LicensesSummary({
+    this.count,
+    this.license,
+  });
+
+  LicensesSummary.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          license: json_.containsKey('license')
+              ? json_['license'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (license != null) 'license': license!,
+      };
+}
 
 /// Response for listing occurrences for a note.
 class ListNoteOccurrencesResponse {
@@ -3380,6 +3575,7 @@ class Note {
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
+  /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -3416,6 +3612,9 @@ class Note {
   /// A note describing a package vulnerability.
   VulnerabilityNote? vulnerability;
 
+  /// A note describing a vulnerability assessment.
+  VulnerabilityAssessmentNote? vulnerabilityAssessment;
+
   Note({
     this.attestation,
     this.build,
@@ -3436,6 +3635,7 @@ class Note {
     this.updateTime,
     this.upgrade,
     this.vulnerability,
+    this.vulnerabilityAssessment,
   });
 
   Note.fromJson(core.Map json_)
@@ -3508,6 +3708,11 @@ class Note {
               ? VulnerabilityNote.fromJson(
                   json_['vulnerability'] as core.Map<core.String, core.dynamic>)
               : null,
+          vulnerabilityAssessment: json_.containsKey('vulnerabilityAssessment')
+              ? VulnerabilityAssessmentNote.fromJson(
+                  json_['vulnerabilityAssessment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3530,6 +3735,8 @@ class Note {
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
+        if (vulnerabilityAssessment != null)
+          'vulnerabilityAssessment': vulnerabilityAssessment!,
       };
 }
 
@@ -3584,6 +3791,7 @@ class Occurrence {
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
+  /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -4077,6 +4285,39 @@ class PackageOccurrence {
       };
 }
 
+/// A summary of the packages found within the given resource.
+class PackagesSummaryResponse {
+  /// A listing by license name of each of the licenses and their counts.
+  core.List<LicensesSummary>? licensesSummary;
+
+  /// The unique URL of the image or the container for which this summary
+  /// applies.
+  core.String? resourceUrl;
+
+  PackagesSummaryResponse({
+    this.licensesSummary,
+    this.resourceUrl,
+  });
+
+  PackagesSummaryResponse.fromJson(core.Map json_)
+      : this(
+          licensesSummary: json_.containsKey('licensesSummary')
+              ? (json_['licensesSummary'] as core.List)
+                  .map((value) => LicensesSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceUrl: json_.containsKey('resourceUrl')
+              ? json_['resourceUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (licensesSummary != null) 'licensesSummary': licensesSummary!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4187,9 +4428,93 @@ class Policy {
       };
 }
 
+/// Product contains information about a product and how to uniquely identify
+/// it.
+class Product {
+  /// Contains a URI which is vendor-specific.
+  ///
+  /// Example: The artifact repository URL of an image.
+  core.String? genericUri;
+
+  /// Token that identifies a product so that it can be referred to from other
+  /// parts in the document.
+  ///
+  /// There is no predefined format as long as it uniquely identifies a group in
+  /// the context of the current document.
+  core.String? id;
+
+  /// Name of the product.
+  core.String? name;
+
+  Product({
+    this.genericUri,
+    this.id,
+    this.name,
+  });
+
+  Product.fromJson(core.Map json_)
+      : this(
+          genericUri: json_.containsKey('genericUri')
+              ? json_['genericUri'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (genericUri != null) 'genericUri': genericUri!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
 typedef ProjectRepoId = $ProjectRepoId;
+
+/// Publisher contains information about the publisher of this Note.
+class Publisher {
+  /// Provides information about the authority of the issuing party to release
+  /// the document, in particular, the party's constituency and responsibilities
+  /// or other obligations.
+  core.String? issuingAuthority;
+
+  /// Name of the publisher.
+  ///
+  /// Examples: 'Google', 'Google Cloud Platform'.
+  core.String? name;
+
+  /// The context or namespace.
+  ///
+  /// Contains a URL which is under control of the issuing party and can be used
+  /// as a globally unique identifier for that issuing party. Example:
+  /// https://csaf.io
+  core.String? publisherNamespace;
+
+  Publisher({
+    this.issuingAuthority,
+    this.name,
+    this.publisherNamespace,
+  });
+
+  Publisher.fromJson(core.Map json_)
+      : this(
+          issuingAuthority: json_.containsKey('issuingAuthority')
+              ? json_['issuingAuthority'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          publisherNamespace: json_.containsKey('publisherNamespace')
+              ? json_['publisherNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issuingAuthority != null) 'issuingAuthority': issuingAuthority!,
+        if (name != null) 'name': name!,
+        if (publisherNamespace != null)
+          'publisherNamespace': publisherNamespace!,
+      };
+}
 
 /// Steps taken to build the artifact.
 ///
@@ -4199,6 +4524,51 @@ typedef Recipe = $Recipe;
 
 /// Metadata for any related URL information.
 typedef RelatedUrl = $RelatedUrl;
+
+/// Specifies details on how to handle (and presumably, fix) a vulnerability.
+class Remediation {
+  /// Contains a comprehensive human-readable discussion of the remediation.
+  core.String? details;
+
+  /// The type of remediation that can be applied.
+  /// Possible string values are:
+  /// - "REMEDIATION_TYPE_UNSPECIFIED" : No remediation type specified.
+  /// - "MITIGATION" : A MITIGATION is available.
+  /// - "NO_FIX_PLANNED" : No fix is planned.
+  /// - "NONE_AVAILABLE" : Not available.
+  /// - "VENDOR_FIX" : A vendor fix is available.
+  /// - "WORKAROUND" : A workaround is available.
+  core.String? remediationType;
+
+  /// Contains the URL where to obtain the remediation.
+  RelatedUrl? remediationUri;
+
+  Remediation({
+    this.details,
+    this.remediationType,
+    this.remediationUri,
+  });
+
+  Remediation.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          remediationType: json_.containsKey('remediationType')
+              ? json_['remediationType'] as core.String
+              : null,
+          remediationUri: json_.containsKey('remediationUri')
+              ? RelatedUrl.fromJson(json_['remediationUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (remediationType != null) 'remediationType': remediationType!,
+        if (remediationUri != null) 'remediationUri': remediationUri!,
+      };
+}
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
@@ -4739,6 +5109,173 @@ class UpgradeOccurrence {
 /// Version contains structured information about the version of a package.
 typedef Version = $Version;
 
+/// VexAssessment provides all publisher provided Vex information that is
+/// related to this vulnerability.
+class VexAssessment {
+  /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
+  /// tracking number for the vulnerability.
+  core.String? cve;
+
+  /// Contains information about the impact of this vulnerability, this will
+  /// change with time.
+  core.List<core.String>? impacts;
+
+  /// Justification provides the justification when the state of the assessment
+  /// if NOT_AFFECTED.
+  Justification? justification;
+
+  /// The VulnerabilityAssessment note from which this VexAssessment was
+  /// generated.
+  ///
+  /// This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+  core.String? noteName;
+
+  /// Holds a list of references associated with this vulnerability item and
+  /// assessment.
+  core.List<RelatedUrl>? relatedUris;
+
+  /// Specifies details on how to handle (and presumably, fix) a vulnerability.
+  core.List<Remediation>? remediations;
+
+  /// Provides the state of this Vulnerability assessment.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? state;
+
+  VexAssessment({
+    this.cve,
+    this.impacts,
+    this.justification,
+    this.noteName,
+    this.relatedUris,
+    this.remediations,
+    this.state,
+  });
+
+  VexAssessment.fromJson(core.Map json_)
+      : this(
+          cve: json_.containsKey('cve') ? json_['cve'] as core.String : null,
+          impacts: json_.containsKey('impacts')
+              ? (json_['impacts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          justification: json_.containsKey('justification')
+              ? Justification.fromJson(
+                  json_['justification'] as core.Map<core.String, core.dynamic>)
+              : null,
+          noteName: json_.containsKey('noteName')
+              ? json_['noteName'] as core.String
+              : null,
+          relatedUris: json_.containsKey('relatedUris')
+              ? (json_['relatedUris'] as core.List)
+                  .map((value) => RelatedUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          remediations: json_.containsKey('remediations')
+              ? (json_['remediations'] as core.List)
+                  .map((value) => Remediation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!,
+        if (impacts != null) 'impacts': impacts!,
+        if (justification != null) 'justification': justification!,
+        if (noteName != null) 'noteName': noteName!,
+        if (relatedUris != null) 'relatedUris': relatedUris!,
+        if (remediations != null) 'remediations': remediations!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A single VulnerabilityAssessmentNote represents one particular product's
+/// vulnerability assessment for one CVE.
+class VulnerabilityAssessmentNote {
+  /// Represents a vulnerability assessment for the product.
+  Assessment? assessment;
+
+  /// Identifies the language used by this document, corresponding to IETF BCP
+  /// 47 / RFC 5646.
+  core.String? languageCode;
+
+  /// A detailed description of this Vex.
+  core.String? longDescription;
+
+  /// The product affected by this vex.
+  Product? product;
+
+  /// Publisher details of this Note.
+  Publisher? publisher;
+
+  /// A one sentence description of this Vex.
+  core.String? shortDescription;
+
+  /// The title of the note.
+  ///
+  /// E.g. `Vex-Debian-11.4`
+  core.String? title;
+
+  VulnerabilityAssessmentNote({
+    this.assessment,
+    this.languageCode,
+    this.longDescription,
+    this.product,
+    this.publisher,
+    this.shortDescription,
+    this.title,
+  });
+
+  VulnerabilityAssessmentNote.fromJson(core.Map json_)
+      : this(
+          assessment: json_.containsKey('assessment')
+              ? Assessment.fromJson(
+                  json_['assessment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          longDescription: json_.containsKey('longDescription')
+              ? json_['longDescription'] as core.String
+              : null,
+          product: json_.containsKey('product')
+              ? Product.fromJson(
+                  json_['product'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publisher: json_.containsKey('publisher')
+              ? Publisher.fromJson(
+                  json_['publisher'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shortDescription: json_.containsKey('shortDescription')
+              ? json_['shortDescription'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assessment != null) 'assessment': assessment!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (longDescription != null) 'longDescription': longDescription!,
+        if (product != null) 'product': product!,
+        if (publisher != null) 'publisher': publisher!,
+        if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (title != null) 'title': title!,
+      };
+}
+
 /// A security vulnerability that can be found in resources.
 class VulnerabilityNote {
   /// The CVSS score of this vulnerability.
@@ -4931,6 +5468,7 @@ class VulnerabilityOccurrence {
   /// The type of package; whether native or non native (e.g., ruby gems,
   /// node.js packages, etc.).
   core.String? type;
+  VexAssessment? vexAssessment;
 
   VulnerabilityOccurrence({
     this.cvssScore,
@@ -4945,6 +5483,7 @@ class VulnerabilityOccurrence {
     this.severity,
     this.shortDescription,
     this.type,
+    this.vexAssessment,
   });
 
   VulnerabilityOccurrence.fromJson(core.Map json_)
@@ -4991,6 +5530,10 @@ class VulnerabilityOccurrence {
               ? json_['shortDescription'] as core.String
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          vexAssessment: json_.containsKey('vexAssessment')
+              ? VexAssessment.fromJson(
+                  json_['vexAssessment'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5006,6 +5549,7 @@ class VulnerabilityOccurrence {
         if (severity != null) 'severity': severity!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (type != null) 'type': type!,
+        if (vexAssessment != null) 'vexAssessment': vexAssessment!,
       };
 }
 

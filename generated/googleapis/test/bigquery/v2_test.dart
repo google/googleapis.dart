@@ -3485,6 +3485,7 @@ api.JobConfigurationQuery buildJobConfigurationQuery() {
     o.allowLargeResults = true;
     o.clustering = buildClustering();
     o.connectionProperties = buildUnnamed47();
+    o.continuous = true;
     o.createDisposition = 'foo';
     o.createSession = true;
     o.defaultDataset = buildDatasetReference();
@@ -3517,6 +3518,7 @@ void checkJobConfigurationQuery(api.JobConfigurationQuery o) {
     unittest.expect(o.allowLargeResults!, unittest.isTrue);
     checkClustering(o.clustering!);
     checkUnnamed47(o.connectionProperties!);
+    unittest.expect(o.continuous!, unittest.isTrue);
     unittest.expect(
       o.createDisposition!,
       unittest.equals('foo'),
@@ -5165,6 +5167,7 @@ api.QueryRequest buildQueryRequest() {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
     o.connectionProperties = buildUnnamed83();
+    o.continuous = true;
     o.createSession = true;
     o.defaultDataset = buildDatasetReference();
     o.dryRun = true;
@@ -5190,6 +5193,7 @@ void checkQueryRequest(api.QueryRequest o) {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
     checkUnnamed83(o.connectionProperties!);
+    unittest.expect(o.continuous!, unittest.isTrue);
     unittest.expect(o.createSession!, unittest.isTrue);
     checkDatasetReference(o.defaultDataset!);
     unittest.expect(o.dryRun!, unittest.isTrue);
@@ -6119,6 +6123,7 @@ api.SparkOptions buildSparkOptions() {
     o.containerImage = 'foo';
     o.fileUris = buildUnnamed95();
     o.jarUris = buildUnnamed96();
+    o.mainClass = 'foo';
     o.mainFileUri = 'foo';
     o.properties = buildUnnamed97();
     o.pyFileUris = buildUnnamed98();
@@ -6142,6 +6147,10 @@ void checkSparkOptions(api.SparkOptions o) {
     );
     checkUnnamed95(o.fileUris!);
     checkUnnamed96(o.jarUris!);
+    unittest.expect(
+      o.mainClass!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.mainFileUri!,
       unittest.equals('foo'),

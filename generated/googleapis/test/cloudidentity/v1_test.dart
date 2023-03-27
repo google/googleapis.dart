@@ -979,74 +979,15 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<api.EntityKey> buildUnnamed9() => [
+      buildEntityKey(),
+      buildEntityKey(),
+    ];
 
-void checkUnnamed9(core.Map<core.String, core.String> o) {
+void checkUnnamed9(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGroup = 0;
-api.Group buildGroup() {
-  final o = api.Group();
-  buildCounterGroup++;
-  if (buildCounterGroup < 3) {
-    o.createTime = 'foo';
-    o.description = 'foo';
-    o.displayName = 'foo';
-    o.dynamicGroupMetadata = buildDynamicGroupMetadata();
-    o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed9();
-    o.name = 'foo';
-    o.parent = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterGroup--;
-  return o;
-}
-
-void checkGroup(api.Group o) {
-  buildCounterGroup++;
-  if (buildCounterGroup < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    checkDynamicGroupMetadata(o.dynamicGroupMetadata!);
-    checkEntityKey(o.groupKey!);
-    checkUnnamed9(o.labels!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.parent!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGroup--;
+  checkEntityKey(o[0]);
+  checkEntityKey(o[1]);
 }
 
 core.Map<core.String, core.String> buildUnnamed10() => {
@@ -1066,12 +1007,84 @@ void checkUnnamed10(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed11() => [
+core.int buildCounterGroup = 0;
+api.Group buildGroup() {
+  final o = api.Group();
+  buildCounterGroup++;
+  if (buildCounterGroup < 3) {
+    o.additionalGroupKeys = buildUnnamed9();
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.dynamicGroupMetadata = buildDynamicGroupMetadata();
+    o.groupKey = buildEntityKey();
+    o.labels = buildUnnamed10();
+    o.name = 'foo';
+    o.parent = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterGroup--;
+  return o;
+}
+
+void checkGroup(api.Group o) {
+  buildCounterGroup++;
+  if (buildCounterGroup < 3) {
+    checkUnnamed9(o.additionalGroupKeys!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkDynamicGroupMetadata(o.dynamicGroupMetadata!);
+    checkEntityKey(o.groupKey!);
+    checkUnnamed10(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGroup--;
+}
+
+core.Map<core.String, core.String> buildUnnamed11() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed11(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.TransitiveMembershipRole> buildUnnamed12() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed11(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed12(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1085,9 +1098,9 @@ api.GroupRelation buildGroupRelation() {
     o.displayName = 'foo';
     o.group = 'foo';
     o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed10();
+    o.labels = buildUnnamed11();
     o.relationType = 'foo';
-    o.roles = buildUnnamed11();
+    o.roles = buildUnnamed12();
   }
   buildCounterGroupRelation--;
   return o;
@@ -1105,12 +1118,12 @@ void checkGroupRelation(api.GroupRelation o) {
       unittest.equals('foo'),
     );
     checkEntityKey(o.groupKey!);
-    checkUnnamed10(o.labels!);
+    checkUnnamed11(o.labels!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.roles!);
+    checkUnnamed12(o.roles!);
   }
   buildCounterGroupRelation--;
 }
@@ -1252,12 +1265,12 @@ void checkIsInvitableUserResponse(api.IsInvitableUserResponse o) {
   buildCounterIsInvitableUserResponse--;
 }
 
-core.List<api.Group> buildUnnamed12() => [
+core.List<api.Group> buildUnnamed13() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed12(core.List<api.Group> o) {
+void checkUnnamed13(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -1268,7 +1281,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
   final o = api.ListGroupsResponse();
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    o.groups = buildUnnamed12();
+    o.groups = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterListGroupsResponse--;
@@ -1278,7 +1291,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
 void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    checkUnnamed12(o.groups!);
+    checkUnnamed13(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1287,12 +1300,12 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.IdpCredential> buildUnnamed13() => [
+core.List<api.IdpCredential> buildUnnamed14() => [
       buildIdpCredential(),
       buildIdpCredential(),
     ];
 
-void checkUnnamed13(core.List<api.IdpCredential> o) {
+void checkUnnamed14(core.List<api.IdpCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIdpCredential(o[0]);
   checkIdpCredential(o[1]);
@@ -1303,7 +1316,7 @@ api.ListIdpCredentialsResponse buildListIdpCredentialsResponse() {
   final o = api.ListIdpCredentialsResponse();
   buildCounterListIdpCredentialsResponse++;
   if (buildCounterListIdpCredentialsResponse < 3) {
-    o.idpCredentials = buildUnnamed13();
+    o.idpCredentials = buildUnnamed14();
     o.nextPageToken = 'foo';
   }
   buildCounterListIdpCredentialsResponse--;
@@ -1313,7 +1326,7 @@ api.ListIdpCredentialsResponse buildListIdpCredentialsResponse() {
 void checkListIdpCredentialsResponse(api.ListIdpCredentialsResponse o) {
   buildCounterListIdpCredentialsResponse++;
   if (buildCounterListIdpCredentialsResponse < 3) {
-    checkUnnamed13(o.idpCredentials!);
+    checkUnnamed14(o.idpCredentials!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1322,12 +1335,12 @@ void checkListIdpCredentialsResponse(api.ListIdpCredentialsResponse o) {
   buildCounterListIdpCredentialsResponse--;
 }
 
-core.List<api.InboundSamlSsoProfile> buildUnnamed14() => [
+core.List<api.InboundSamlSsoProfile> buildUnnamed15() => [
       buildInboundSamlSsoProfile(),
       buildInboundSamlSsoProfile(),
     ];
 
-void checkUnnamed14(core.List<api.InboundSamlSsoProfile> o) {
+void checkUnnamed15(core.List<api.InboundSamlSsoProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInboundSamlSsoProfile(o[0]);
   checkInboundSamlSsoProfile(o[1]);
@@ -1339,7 +1352,7 @@ api.ListInboundSamlSsoProfilesResponse
   final o = api.ListInboundSamlSsoProfilesResponse();
   buildCounterListInboundSamlSsoProfilesResponse++;
   if (buildCounterListInboundSamlSsoProfilesResponse < 3) {
-    o.inboundSamlSsoProfiles = buildUnnamed14();
+    o.inboundSamlSsoProfiles = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterListInboundSamlSsoProfilesResponse--;
@@ -1350,7 +1363,7 @@ void checkListInboundSamlSsoProfilesResponse(
     api.ListInboundSamlSsoProfilesResponse o) {
   buildCounterListInboundSamlSsoProfilesResponse++;
   if (buildCounterListInboundSamlSsoProfilesResponse < 3) {
-    checkUnnamed14(o.inboundSamlSsoProfiles!);
+    checkUnnamed15(o.inboundSamlSsoProfiles!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1359,12 +1372,12 @@ void checkListInboundSamlSsoProfilesResponse(
   buildCounterListInboundSamlSsoProfilesResponse--;
 }
 
-core.List<api.InboundSsoAssignment> buildUnnamed15() => [
+core.List<api.InboundSsoAssignment> buildUnnamed16() => [
       buildInboundSsoAssignment(),
       buildInboundSsoAssignment(),
     ];
 
-void checkUnnamed15(core.List<api.InboundSsoAssignment> o) {
+void checkUnnamed16(core.List<api.InboundSsoAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInboundSsoAssignment(o[0]);
   checkInboundSsoAssignment(o[1]);
@@ -1375,7 +1388,7 @@ api.ListInboundSsoAssignmentsResponse buildListInboundSsoAssignmentsResponse() {
   final o = api.ListInboundSsoAssignmentsResponse();
   buildCounterListInboundSsoAssignmentsResponse++;
   if (buildCounterListInboundSsoAssignmentsResponse < 3) {
-    o.inboundSsoAssignments = buildUnnamed15();
+    o.inboundSsoAssignments = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterListInboundSsoAssignmentsResponse--;
@@ -1386,7 +1399,7 @@ void checkListInboundSsoAssignmentsResponse(
     api.ListInboundSsoAssignmentsResponse o) {
   buildCounterListInboundSsoAssignmentsResponse++;
   if (buildCounterListInboundSsoAssignmentsResponse < 3) {
-    checkUnnamed15(o.inboundSsoAssignments!);
+    checkUnnamed16(o.inboundSsoAssignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1395,12 +1408,12 @@ void checkListInboundSsoAssignmentsResponse(
   buildCounterListInboundSsoAssignmentsResponse--;
 }
 
-core.List<api.Membership> buildUnnamed16() => [
+core.List<api.Membership> buildUnnamed17() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed16(core.List<api.Membership> o) {
+void checkUnnamed17(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -1411,7 +1424,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   final o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed16();
+    o.memberships = buildUnnamed17();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -1421,7 +1434,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed16(o.memberships!);
+    checkUnnamed17(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1430,12 +1443,12 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.UserInvitation> buildUnnamed17() => [
+core.List<api.UserInvitation> buildUnnamed18() => [
       buildUserInvitation(),
       buildUserInvitation(),
     ];
 
-void checkUnnamed17(core.List<api.UserInvitation> o) {
+void checkUnnamed18(core.List<api.UserInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInvitation(o[0]);
   checkUserInvitation(o[1]);
@@ -1447,7 +1460,7 @@ api.ListUserInvitationsResponse buildListUserInvitationsResponse() {
   buildCounterListUserInvitationsResponse++;
   if (buildCounterListUserInvitationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.userInvitations = buildUnnamed17();
+    o.userInvitations = buildUnnamed18();
   }
   buildCounterListUserInvitationsResponse--;
   return o;
@@ -1460,7 +1473,7 @@ void checkListUserInvitationsResponse(api.ListUserInvitationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.userInvitations!);
+    checkUnnamed18(o.userInvitations!);
   }
   buildCounterListUserInvitationsResponse--;
 }
@@ -1509,23 +1522,23 @@ void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-core.List<api.EntityKey> buildUnnamed18() => [
+core.List<api.EntityKey> buildUnnamed19() => [
       buildEntityKey(),
       buildEntityKey(),
     ];
 
-void checkUnnamed18(core.List<api.EntityKey> o) {
+void checkUnnamed19(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityKey(o[0]);
   checkEntityKey(o[1]);
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed19() => [
+core.List<api.TransitiveMembershipRole> buildUnnamed20() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed19(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed20(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1537,9 +1550,9 @@ api.MemberRelation buildMemberRelation() {
   buildCounterMemberRelation++;
   if (buildCounterMemberRelation < 3) {
     o.member = 'foo';
-    o.preferredMemberKey = buildUnnamed18();
+    o.preferredMemberKey = buildUnnamed19();
     o.relationType = 'foo';
-    o.roles = buildUnnamed19();
+    o.roles = buildUnnamed20();
   }
   buildCounterMemberRelation--;
   return o;
@@ -1552,12 +1565,12 @@ void checkMemberRelation(api.MemberRelation o) {
       o.member!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.preferredMemberKey!);
+    checkUnnamed19(o.preferredMemberKey!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.roles!);
+    checkUnnamed20(o.roles!);
   }
   buildCounterMemberRelation--;
 }
@@ -1586,12 +1599,12 @@ void checkMemberRestriction(api.MemberRestriction o) {
   buildCounterMemberRestriction--;
 }
 
-core.List<api.MembershipRole> buildUnnamed20() => [
+core.List<api.MembershipRole> buildUnnamed21() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed20(core.List<api.MembershipRole> o) {
+void checkUnnamed21(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
@@ -1603,9 +1616,10 @@ api.Membership buildMembership() {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.createTime = 'foo';
+    o.deliverySetting = 'foo';
     o.name = 'foo';
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed20();
+    o.roles = buildUnnamed21();
     o.type = 'foo';
     o.updateTime = 'foo';
   }
@@ -1621,11 +1635,15 @@ void checkMembership(api.Membership o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.deliverySetting!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkEntityKey(o.preferredMemberKey!);
-    checkUnnamed20(o.roles!);
+    checkUnnamed21(o.roles!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1636,6 +1654,77 @@ void checkMembership(api.Membership o) {
     );
   }
   buildCounterMembership--;
+}
+
+core.Map<core.String, core.String> buildUnnamed22() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed22(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.MembershipRole> buildUnnamed23() => [
+      buildMembershipRole(),
+      buildMembershipRole(),
+    ];
+
+void checkUnnamed23(core.List<api.MembershipRole> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipRole(o[0]);
+  checkMembershipRole(o[1]);
+}
+
+core.int buildCounterMembershipRelation = 0;
+api.MembershipRelation buildMembershipRelation() {
+  final o = api.MembershipRelation();
+  buildCounterMembershipRelation++;
+  if (buildCounterMembershipRelation < 3) {
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.group = 'foo';
+    o.groupKey = buildEntityKey();
+    o.labels = buildUnnamed22();
+    o.membership = 'foo';
+    o.roles = buildUnnamed23();
+  }
+  buildCounterMembershipRelation--;
+  return o;
+}
+
+void checkMembershipRelation(api.MembershipRelation o) {
+  buildCounterMembershipRelation++;
+  if (buildCounterMembershipRelation < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.group!,
+      unittest.equals('foo'),
+    );
+    checkEntityKey(o.groupKey!);
+    checkUnnamed22(o.labels!);
+    unittest.expect(
+      o.membership!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed23(o.roles!);
+  }
+  buildCounterMembershipRelation--;
 }
 
 core.int buildCounterMembershipRole = 0;
@@ -1688,23 +1777,23 @@ void checkMembershipRoleRestrictionEvaluation(
   buildCounterMembershipRoleRestrictionEvaluation--;
 }
 
-core.List<api.MembershipRole> buildUnnamed21() => [
+core.List<api.MembershipRole> buildUnnamed24() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed21(core.List<api.MembershipRole> o) {
+void checkUnnamed24(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1716,12 +1805,12 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<api.UpdateMembershipRolesParams> buildUnnamed23() => [
+core.List<api.UpdateMembershipRolesParams> buildUnnamed26() => [
       buildUpdateMembershipRolesParams(),
       buildUpdateMembershipRolesParams(),
     ];
 
-void checkUnnamed23(core.List<api.UpdateMembershipRolesParams> o) {
+void checkUnnamed26(core.List<api.UpdateMembershipRolesParams> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateMembershipRolesParams(o[0]);
   checkUpdateMembershipRolesParams(o[1]);
@@ -1732,9 +1821,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
   final o = api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed21();
-    o.removeRoles = buildUnnamed22();
-    o.updateRolesParams = buildUnnamed23();
+    o.addRoles = buildUnnamed24();
+    o.removeRoles = buildUnnamed25();
+    o.updateRolesParams = buildUnnamed26();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
@@ -1743,9 +1832,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
 void checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed21(o.addRoles!);
-    checkUnnamed22(o.removeRoles!);
-    checkUnnamed23(o.updateRolesParams!);
+    checkUnnamed24(o.addRoles!);
+    checkUnnamed25(o.removeRoles!);
+    checkUnnamed26(o.updateRolesParams!);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
@@ -1769,7 +1858,7 @@ void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed24() => {
+core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1782,7 +1871,7 @@ core.Map<core.String, core.Object?> buildUnnamed24() => {
       },
     };
 
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1814,7 +1903,7 @@ void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.Map<core.String, core.Object?> buildUnnamed28() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1827,7 +1916,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       },
     };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1866,9 +1955,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed24();
+    o.metadata = buildUnnamed27();
     o.name = 'foo';
-    o.response = buildUnnamed25();
+    o.response = buildUnnamed28();
   }
   buildCounterOperation--;
   return o;
@@ -1879,12 +1968,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed24(o.metadata!);
+    checkUnnamed27(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.response!);
+    checkUnnamed28(o.response!);
   }
   buildCounterOperation--;
 }
@@ -2038,12 +2127,47 @@ void checkSamlSsoInfo(api.SamlSsoInfo o) {
   buildCounterSamlSsoInfo--;
 }
 
-core.List<api.Group> buildUnnamed26() => [
+core.List<api.MembershipRelation> buildUnnamed29() => [
+      buildMembershipRelation(),
+      buildMembershipRelation(),
+    ];
+
+void checkUnnamed29(core.List<api.MembershipRelation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipRelation(o[0]);
+  checkMembershipRelation(o[1]);
+}
+
+core.int buildCounterSearchDirectGroupsResponse = 0;
+api.SearchDirectGroupsResponse buildSearchDirectGroupsResponse() {
+  final o = api.SearchDirectGroupsResponse();
+  buildCounterSearchDirectGroupsResponse++;
+  if (buildCounterSearchDirectGroupsResponse < 3) {
+    o.memberships = buildUnnamed29();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterSearchDirectGroupsResponse--;
+  return o;
+}
+
+void checkSearchDirectGroupsResponse(api.SearchDirectGroupsResponse o) {
+  buildCounterSearchDirectGroupsResponse++;
+  if (buildCounterSearchDirectGroupsResponse < 3) {
+    checkUnnamed29(o.memberships!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSearchDirectGroupsResponse--;
+}
+
+core.List<api.Group> buildUnnamed30() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed26(core.List<api.Group> o) {
+void checkUnnamed30(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -2054,7 +2178,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
   final o = api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed26();
+    o.groups = buildUnnamed30();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchGroupsResponse--;
@@ -2064,7 +2188,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
 void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed26(o.groups!);
+    checkUnnamed30(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2073,12 +2197,12 @@ void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse--;
 }
 
-core.List<api.GroupRelation> buildUnnamed27() => [
+core.List<api.GroupRelation> buildUnnamed31() => [
       buildGroupRelation(),
       buildGroupRelation(),
     ];
 
-void checkUnnamed27(core.List<api.GroupRelation> o) {
+void checkUnnamed31(core.List<api.GroupRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupRelation(o[0]);
   checkGroupRelation(o[1]);
@@ -2089,7 +2213,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
   final o = api.SearchTransitiveGroupsResponse();
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    o.memberships = buildUnnamed27();
+    o.memberships = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveGroupsResponse--;
@@ -2099,7 +2223,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
 void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    checkUnnamed27(o.memberships!);
+    checkUnnamed31(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2108,12 +2232,12 @@ void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse--;
 }
 
-core.List<api.MemberRelation> buildUnnamed28() => [
+core.List<api.MemberRelation> buildUnnamed32() => [
       buildMemberRelation(),
       buildMemberRelation(),
     ];
 
-void checkUnnamed28(core.List<api.MemberRelation> o) {
+void checkUnnamed32(core.List<api.MemberRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMemberRelation(o[0]);
   checkMemberRelation(o[1]);
@@ -2125,7 +2249,7 @@ api.SearchTransitiveMembershipsResponse
   final o = api.SearchTransitiveMembershipsResponse();
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    o.memberships = buildUnnamed28();
+    o.memberships = buildUnnamed32();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveMembershipsResponse--;
@@ -2136,7 +2260,7 @@ void checkSearchTransitiveMembershipsResponse(
     api.SearchTransitiveMembershipsResponse o) {
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    checkUnnamed28(o.memberships!);
+    checkUnnamed32(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2206,7 +2330,7 @@ void checkSignInBehavior(api.SignInBehavior o) {
   buildCounterSignInBehavior--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed29() => {
+core.Map<core.String, core.Object?> buildUnnamed33() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2219,7 +2343,7 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       },
     };
 
-void checkUnnamed29(core.Map<core.String, core.Object?> o) {
+void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2251,15 +2375,15 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
-      buildUnnamed29(),
-      buildUnnamed29(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed34() => [
+      buildUnnamed33(),
+      buildUnnamed33(),
     ];
 
-void checkUnnamed30(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed34(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed29(o[0]);
-  checkUnnamed29(o[1]);
+  checkUnnamed33(o[0]);
+  checkUnnamed33(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2268,7 +2392,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed30();
+    o.details = buildUnnamed34();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2282,7 +2406,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed30(o.details!);
+    checkUnnamed34(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2812,6 +2936,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MembershipRelation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipRelation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipRelation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipRelation(od);
+    });
+  });
+
   unittest.group('obj-schema-MembershipRole', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMembershipRole();
@@ -2919,6 +3053,16 @@ void main() {
       final od = api.SamlSsoInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSamlSsoInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-SearchDirectGroupsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSearchDirectGroupsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchDirectGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSearchDirectGroupsResponse(od);
     });
   });
 
@@ -5492,6 +5636,84 @@ void main() {
           $fields: arg_$fields);
       checkModifyMembershipRolesResponse(
           response as api.ModifyMembershipRolesResponse);
+    });
+
+    unittest.test('method--searchDirectGroups', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).groups.memberships;
+      final arg_parent = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_query = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['query']!.first,
+          unittest.equals(arg_query),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSearchDirectGroupsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.searchDirectGroups(arg_parent,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchDirectGroupsResponse(
+          response as api.SearchDirectGroupsResponse);
     });
 
     unittest.test('method--searchTransitiveGroups', () async {

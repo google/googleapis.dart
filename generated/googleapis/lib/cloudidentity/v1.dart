@@ -1687,13 +1687,21 @@ class GroupsResource {
   /// [pageToken] - The `next_page_token` value returned from a previous search
   /// request, if any.
   ///
-  /// [query] - Required. The search query. Must be specified in
-  /// [Common Expression Language](https://opensource.google/projects/cel). May
-  /// only contain equality operators on the parent and inclusion operators on
-  /// labels (e.g., `parent == 'customers/{customer_id}' &&
-  /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The
-  /// `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// [query] - Required. The search query. * Must be specified in
+  /// [Common Expression Language](https://opensource.google/projects/cel). *
+  /// Must contain equality operators on the parent, e.g. `parent ==
+  /// 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
+  /// example, 'C046psxkn').
   /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
+  /// * Can contain optional inclusion operators on `labels` such as
+  /// `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). * Can
+  /// contain an optional equality operator on `domain_name`. e.g. `domain_name
+  /// == 'abc.com'` * Can contain optional `startsWith/contains/equality`
+  /// operators on `group_key`, e.g. `group_key.startsWith('dev')`,
+  /// `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain
+  /// optional `startsWith/contains/equality` operators on `display_name`, such
+  /// as `display_name.startsWith('dev')` , `display_name.contains('dev')`,
+  /// `display_name == 'dev'`
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -2190,6 +2198,78 @@ class GroupsMembershipsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Searches direct groups of a member.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] -
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the group to search transitive memberships in. Format: groups/{group_id},
+  /// where group_id is always '-' as this API will search across all groups for
+  /// a given member.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [orderBy] - The ordering of membership relation for the display name or
+  /// email in the response. The syntax for this field can be found at
+  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// Example: Sort by the ascending display name: order_by="group_name" or
+  /// order_by="group_name asc". Sort by the descending display name:
+  /// order_by="group_name desc". Sort by the ascending group key:
+  /// order_by="group_key" or order_by="group_key asc". Sort by the descending
+  /// group key: order_by="group_key desc".
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000).
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any
+  ///
+  /// [query] - Required. A CEL expression that MUST include member
+  /// specification AND label(s). Users can search on label attributes of
+  /// groups. CONTAINS match ('in') is supported on labels. Identity-mapped
+  /// groups are uniquely identified by both a `member_key_id` and a
+  /// `member_key_namespace`, which requires an additional query input:
+  /// `member_key_namespace`. Example query: `member_key_id ==
+  /// 'member_key_id_value' && 'label_value' in labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchDirectGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchDirectGroupsResponse> searchDirectGroups(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/memberships:searchDirectGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchDirectGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Search transitive groups of a member.
   ///
   /// **Note:** This feature is only available to Google Workspace Enterprise
@@ -2219,7 +2299,13 @@ class GroupsMembershipsResource {
   /// labels. Identity-mapped groups are uniquely identified by both a
   /// `member_key_id` and a `member_key_namespace`, which requires an additional
   /// query input: `member_key_namespace`. Example query: `member_key_id ==
-  /// 'member_key_id_value' && in labels`
+  /// 'member_key_id_value' && in labels` Query may optionally contain equality
+  /// operators on the parent of the group restricting the search within a
+  /// particular customer, e.g. `parent == 'customers/{customer_id}'`. The
+  /// `customer_id` must begin with "C" (for example, 'C046psxkn'). This
+  /// filtering is only supported for Admins with groups read permissons on the
+  /// input customer. Example query: `member_key_id == 'member_key_id_value' &&
+  /// in labels && parent == 'customers/C046psxkn'`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2444,11 +2530,11 @@ class InboundSamlSsoProfilesResource {
   ///
   /// [filter] - A
   /// [Common Expression Language](https://github.com/google/cel-spec)
-  /// expression to filter the results. The only currently-supported filter is
-  /// filtering by customer. For example: `customer=="customers/C0123abc"`.
-  /// Omitting the filter or specifying a filter of
-  /// `customer=="customers/my_customer"` will return the profiles for the
-  /// customer that the caller (authenticated user) belongs to.
+  /// expression to filter the results. The only supported filter is filtering
+  /// by customer. For example: `customer=="customers/C0123abc"`. Omitting the
+  /// filter or specifying a filter of `customer=="customers/my_customer"` will
+  /// return the profiles for the customer that the caller (authenticated user)
+  /// belongs to.
   ///
   /// [pageSize] - The maximum number of InboundSamlSsoProfiles to return. The
   /// service may return fewer than this value. If omitted (or defaulted to
@@ -2848,8 +2934,8 @@ class InboundSsoAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - A CEL expression to filter the results. The only
-  /// currently-supported filter is filtering by customer. For example:
+  /// [filter] - A CEL expression to filter the results. The only supported
+  /// filter is filtering by customer. For example:
   /// `customer==customers/C0123abc`. Omitting the filter or specifying a filter
   /// of `customer==customers/my_customer` will return the assignments for the
   /// customer that the caller (authenticated user) belongs to.
@@ -4184,6 +4270,11 @@ typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
 /// A `Group` is a collection of entities, where each entity is either a user,
 /// another group, or a service account.
 class Group {
+  /// Additional group keys associated with the Group.
+  ///
+  /// Output only.
+  core.List<EntityKey>? additionalGroupKeys;
+
   /// The time when the `Group` was created.
   ///
   /// Output only.
@@ -4249,6 +4340,7 @@ class Group {
   core.String? updateTime;
 
   Group({
+    this.additionalGroupKeys,
     this.createTime,
     this.description,
     this.displayName,
@@ -4262,6 +4354,12 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
+          additionalGroupKeys: json_.containsKey('additionalGroupKeys')
+              ? (json_['additionalGroupKeys'] as core.List)
+                  .map((value) => EntityKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -4297,6 +4395,8 @@ class Group {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalGroupKeys != null)
+          'additionalGroupKeys': additionalGroupKeys!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -5001,6 +5101,18 @@ class Membership {
   /// Output only.
   core.String? createTime;
 
+  /// Delivery setting associated with the membership.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DELIVERY_SETTING_UNSPECIFIED" : Default. Should not be used.
+  /// - "ALL_MAIL" : Represents each mail should be delivered
+  /// - "DIGEST" : Represents 1 email for every 25 messages.
+  /// - "DAILY" : Represents daily summary of messages.
+  /// - "NONE" : Represents no delivery.
+  /// - "DISABLED" : Represents disabled state.
+  core.String? deliverySetting;
+
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Membership`.
   ///
@@ -5040,6 +5152,7 @@ class Membership {
 
   Membership({
     this.createTime,
+    this.deliverySetting,
     this.name,
     this.preferredMemberKey,
     this.roles,
@@ -5051,6 +5164,9 @@ class Membership {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          deliverySetting: json_.containsKey('deliverySetting')
+              ? json_['deliverySetting'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           preferredMemberKey: json_.containsKey('preferredMemberKey')
@@ -5071,12 +5187,98 @@ class Membership {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (deliverySetting != null) 'deliverySetting': deliverySetting!,
         if (name != null) 'name': name!,
         if (preferredMemberKey != null)
           'preferredMemberKey': preferredMemberKey!,
         if (roles != null) 'roles': roles!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message containing membership relation.
+class MembershipRelation {
+  /// An extended description to help users determine the purpose of a `Group`.
+  core.String? description;
+
+  /// The display name of the `Group`.
+  core.String? displayName;
+
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Group`.
+  ///
+  /// Shall be of the form `groups/{group_id}`.
+  core.String? group;
+
+  /// The `EntityKey` of the `Group`.
+  EntityKey? groupKey;
+
+  /// One or more label entries that apply to the Group.
+  ///
+  /// Currently supported labels contain a key with an empty value.
+  core.Map<core.String, core.String>? labels;
+
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Membership`.
+  ///
+  /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+  core.String? membership;
+
+  /// The `MembershipRole`s that apply to the `Membership`.
+  core.List<MembershipRole>? roles;
+
+  MembershipRelation({
+    this.description,
+    this.displayName,
+    this.group,
+    this.groupKey,
+    this.labels,
+    this.membership,
+    this.roles,
+  });
+
+  MembershipRelation.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          groupKey: json_.containsKey('groupKey')
+              ? EntityKey.fromJson(
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          membership: json_.containsKey('membership')
+              ? json_['membership'] as core.String
+              : null,
+          roles: json_.containsKey('roles')
+              ? (json_['roles'] as core.List)
+                  .map((value) => MembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (group != null) 'group': group!,
+        if (groupKey != null) 'groupKey': groupKey!,
+        if (labels != null) 'labels': labels!,
+        if (membership != null) 'membership': membership!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -5408,15 +5610,15 @@ class SamlIdpConfig {
   ///
   /// When a user clicks the sign-out link on a Google page, they will be
   /// redirected to this URL. This is a pure redirect with no attached SAML
-  /// `LogoutRequest` i.e. SAML single logout is currently not supported. Must
-  /// use `HTTPS`.
+  /// `LogoutRequest` i.e. SAML single logout is not supported. Must use
+  /// `HTTPS`.
   core.String? logoutRedirectUri;
 
   /// The `SingleSignOnService` endpoint location (sign-in page URL) of the
   /// identity provider.
   ///
   /// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
-  /// Currently assumed to accept the `HTTP-Redirect` binding.
+  /// Assumed to accept the `HTTP-Redirect` binding.
   ///
   /// Required.
   core.String? singleSignOnServiceUri;
@@ -5458,7 +5660,7 @@ class SamlSpConfig {
   /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the
   /// IDP-initiated login.
   ///
-  /// Currently assumed to accept response messages via the `HTTP-POST` binding.
+  /// Assumed to accept response messages via the `HTTP-POST` binding.
   ///
   /// Output only.
   core.String? assertionConsumerServiceUri;
@@ -5514,6 +5716,39 @@ class SamlSsoInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (inboundSamlSsoProfile != null)
           'inboundSamlSsoProfile': inboundSamlSsoProfile!,
+      };
+}
+
+/// The response message for MembershipsService.SearchDirectGroups.
+class SearchDirectGroupsResponse {
+  /// List of direct groups satisfying the query.
+  core.List<MembershipRelation>? memberships;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results available for listing.
+  core.String? nextPageToken;
+
+  SearchDirectGroupsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
+
+  SearchDirectGroupsResponse.fromJson(core.Map json_)
+      : this(
+          memberships: json_.containsKey('memberships')
+              ? (json_['memberships'] as core.List)
+                  .map((value) => MembershipRelation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberships != null) 'memberships': memberships!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 

@@ -895,8 +895,10 @@ class V1Resource {
   /// Value must have pattern `^.*$`.
   ///
   /// [updateMask] - The field mask specifying which IAP settings should be
-  /// updated. If omitted, the all of the settings are updated. See
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// updated. If omitted, then all of the settings are updated. See
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+  /// Note: All IAP reauth settings must always be set together, using the field
+  /// mask: `iapSettings.accessSettings.reauthSettings`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

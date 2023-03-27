@@ -356,6 +356,7 @@ api.MoveAssignmentRequest buildMoveAssignmentRequest() {
   final o = api.MoveAssignmentRequest();
   buildCounterMoveAssignmentRequest++;
   if (buildCounterMoveAssignmentRequest < 3) {
+    o.assignmentId = 'foo';
     o.destinationId = 'foo';
   }
   buildCounterMoveAssignmentRequest--;
@@ -365,6 +366,10 @@ api.MoveAssignmentRequest buildMoveAssignmentRequest() {
 void checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest++;
   if (buildCounterMoveAssignmentRequest < 3) {
+    unittest.expect(
+      o.assignmentId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.destinationId!,
       unittest.equals('foo'),

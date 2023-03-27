@@ -693,7 +693,7 @@
             }
         }
     },
-    "revision": "20230224",
+    "revision": "20230317",
     "rootUrl": "https://analyticshub.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1195,10 +1195,6 @@
             "properties": {
                 "enabled": {
                     "description": "If true, enable restricted export.",
-                    "type": "boolean"
-                },
-                "restrictDirectTableAccess": {
-                    "description": "If true, restrict direct table access(read api/tabledata.list) on linked table.",
                     "type": "boolean"
                 },
                 "restrictQueryResult": {

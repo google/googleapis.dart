@@ -159,6 +159,25 @@ void checkDockerRepository(api.DockerRepository o) {
   buildCounterDockerRepository--;
 }
 
+core.int buildCounterDockerRepositoryConfig = 0;
+api.DockerRepositoryConfig buildDockerRepositoryConfig() {
+  final o = api.DockerRepositoryConfig();
+  buildCounterDockerRepositoryConfig++;
+  if (buildCounterDockerRepositoryConfig < 3) {
+    o.immutableTags = true;
+  }
+  buildCounterDockerRepositoryConfig--;
+  return o;
+}
+
+void checkDockerRepositoryConfig(api.DockerRepositoryConfig o) {
+  buildCounterDockerRepositoryConfig++;
+  if (buildCounterDockerRepositoryConfig < 3) {
+    unittest.expect(o.immutableTags!, unittest.isTrue);
+  }
+  buildCounterDockerRepositoryConfig--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -1390,6 +1409,7 @@ api.Repository buildRepository() {
   if (buildCounterRepository < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
+    o.dockerConfig = buildDockerRepositoryConfig();
     o.format = 'foo';
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed21();
@@ -1417,6 +1437,7 @@ void checkRepository(api.Repository o) {
       o.description!,
       unittest.equals('foo'),
     );
+    checkDockerRepositoryConfig(o.dockerConfig!);
     unittest.expect(
       o.format!,
       unittest.equals('foo'),
@@ -1995,6 +2016,16 @@ void main() {
       final od = api.DockerRepository.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDockerRepository(od);
+    });
+  });
+
+  unittest.group('obj-schema-DockerRepositoryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDockerRepositoryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DockerRepositoryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDockerRepositoryConfig(od);
     });
   });
 
