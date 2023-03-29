@@ -5,6 +5,7 @@ environment:
 
 dependencies:
   _discoveryapis_commons: any
+  args: ^2.4.0
   async: ^2.8.2
   googleapis: any
   googleapis_auth: any
