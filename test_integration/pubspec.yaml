@@ -10,6 +10,7 @@ dependencies:
   googleapis: any
   googleapis_auth: any
   http: ^0.13.5
+  path: ^1.8.3
   shelf: ^1.2.0
   stack_trace: ^1.10.0
   yaml: ^3.1.0

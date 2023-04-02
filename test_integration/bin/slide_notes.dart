@@ -8,6 +8,8 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:googleapis/slides/v1.dart' hide List;
+import 'package:http/http.dart';
+import 'package:path/path.dart' as p;
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main(List<String> args) async {
@@ -20,38 +22,79 @@ Future<void> main(List<String> args) async {
     lastSlide = int.tryParse(result['last-slide'] as String);
   }
 
-  final renderHtml = result['html'] as bool;
+  final renderHtml = result['html'] as String?;
 
   await withClientFromUserCredentials(
     [SlidesApi.presentationsReadonlyScope],
     (client) async {
       final api = SlidesApi(client).presentations;
 
-      final result = await api.get(presentationId);
-
-      if (renderHtml) {
-        await _printHtml(
-          result.slides!,
-          api: api,
+      if (renderHtml != null) {
+        await _doHtml(
+          outputDirectory: renderHtml,
           presentationId: presentationId,
+          resource: api,
+          httpClient: client,
           lastSlide: lastSlide,
         );
       } else {
-        _printSlides(result.slides!, lastSlide: lastSlide);
+        final result = await api.get(presentationId);
+
+        print(_printSlides(result.slides!, lastSlide: lastSlide).join('\n'));
       }
     },
   );
 }
 
-Future<void> _printHtml(
+Future<void> _doHtml({
+  required String outputDirectory,
+  required String presentationId,
+  required PresentationsResource resource,
+  required int? lastSlide,
+  required Client httpClient,
+}) async {
+  final result = await resource.get(presentationId);
+
+  final directory = Directory(outputDirectory);
+  if (directory.existsSync()) {
+    print('Please delete $directory first!');
+    exitCode = 1;
+    return;
+  }
+
+  directory.createSync(recursive: true);
+
+  final htmlOutput = File(p.join(directory.path, 'index.html'));
+
+  final writer = await htmlOutput.open(mode: FileMode.writeOnlyAppend);
+
+  try {
+    await for (var line in _yieldSlideHtml(
+      result.slides!,
+      api: resource,
+      presentationId: presentationId,
+      lastSlide: lastSlide,
+      outputDirectory: directory,
+      httpClient: httpClient,
+    )) {
+      writer.writeStringSync('$line\n');
+    }
+  } finally {
+    writer.closeSync();
+  }
+}
+
+Stream<String> _yieldSlideHtml(
   List<Page> pages, {
   required PresentationsResource api,
   required String presentationId,
-  int? lastSlide,
-}) async {
+  required int? lastSlide,
+  required Directory outputDirectory,
+  required Client httpClient,
+}) async* {
   var count = 0;
 
-  print('''
+  yield '''
 <html lang="">
 <head>
   <title>TODO</title>
@@ -71,7 +114,7 @@ td.slide-number {
   text-align: center;
 }
 img {
-  border: 5px black solid;
+  border: 2px lightgray solid;
 }
 th {
   background: lightgray;
@@ -85,20 +128,20 @@ th {
 <th>Script</th>
 <th>Slide</th>
 </tr>
-''');
+''';
 
   for (var slide in pages) {
-    print('<tr>');
+    yield '<tr>';
     // number
-    print('<td class="slide-number">${++count}</td>');
+    yield '<td class="slide-number">${++count}</td>';
     stderr.writeln('Slide #$count');
 
     // notes
-    print('<td class="notes">');
+    yield '<td class="notes">';
     for (var entry in slide.allNotes) {
-      print('<p>${_htmlEscape.convert(entry)}</p>');
+      yield '<p>${_htmlEscape.convert(entry)}</p>';
     }
-    print('</td>');
+    yield '</td>';
 
     final thumb = await api.pages.getThumbnail(
       presentationId,
@@ -106,36 +149,48 @@ th {
       thumbnailProperties_thumbnailSize: 'MEDIUM',
     );
 
-    // image
-    print(
-      '<td><img src="${thumb.contentUrl}" width="${thumb.width}" height="${thumb.height}"></td>',
+    final response = await httpClient.get(Uri.parse(thumb.contentUrl!));
+    assert(response.headers['content-type'] == 'image/png');
+    assert(response.statusCode == 200);
+
+    final imageName = 'slide_${count.toString().padLeft(3, '0')}.png';
+
+    final imagePath = p.join(outputDirectory.path, imageName);
+
+    File(imagePath).writeAsBytesSync(
+      response.bodyBytes,
+      mode: FileMode.writeOnly,
+      flush: true,
     );
 
-    print('</tr>');
+    // image
+    yield '<td><img src="$imageName" width="${thumb.width}" height="${thumb.height}"></td>';
+
+    yield '</tr>';
     if (lastSlide != null && count >= lastSlide) {
       break;
     }
   }
 
-  print('''
+  yield '''
 </table>
 </body>
 </html>
-''');
+''';
 }
 
 const _htmlEscape = HtmlEscape(HtmlEscapeMode.element);
 
-void _printSlides(List<Page> pages, {int? lastSlide}) {
+Iterable<String> _printSlides(List<Page> pages, {int? lastSlide}) sync* {
   var count = 0;
   for (var slide in pages) {
-    print('*** SLIDE ${++count} ***\n');
+    yield '*** SLIDE ${++count} ***\n';
 
     for (var entry in slide.allNotes) {
-      print(entry);
+      yield entry;
     }
 
-    print('');
+    yield '';
     if (lastSlide != null && count >= lastSlide) {
       break;
     }
@@ -166,4 +221,4 @@ extension on Page {
 
 final _parser = ArgParser()
   ..addOption('last-slide')
-  ..addFlag('html');
+  ..addOption('html', help: 'Directory to put the html and image output.');
