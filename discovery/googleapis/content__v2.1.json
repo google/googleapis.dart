@@ -6158,7 +6158,7 @@
             }
         }
     },
-    "revision": "20230316",
+    "revision": "20230324",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "schemas": {
         "Account": {

@@ -1550,9 +1550,9 @@ class EventsResource {
   /// will be provided).
   ///
   /// [eventTypes] - Event types to return. Optional. The default is
-  /// \["default", "outOfOffice", "focusTime"\]. This is used by the Working
-  /// Location developer preview and only the default value is allowed for
-  /// non-opted-in users.
+  /// \["default", "outOfOffice", "focusTime"\]. Only the default value is
+  /// available, unless you're enrolled in the Working Locations developer
+  /// preview. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -2063,9 +2063,9 @@ class EventsResource {
   /// will be provided).
   ///
   /// [eventTypes] - Event types to return. Optional. The default is
-  /// \["default", "outOfOffice", "focusTime"\]. This is used by the Working
-  /// Location developer preview and only the default value is allowed for
-  /// non-opted-in users.
+  /// \["default", "outOfOffice", "focusTime"\]. Only the default value is
+  /// available, unless you're enrolled in the Working Locations developer
+  /// preview. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -3988,7 +3988,7 @@ class Event {
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
-  /// - "workingLocation" - A working location event.
+  /// - "workingLocation" - A working location event. Developer Preview.
   core.String? eventType;
 
   /// Extended properties of the event.
@@ -4188,7 +4188,7 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
-  /// Working Location event data.
+  /// Developer Preview: Working Location event data.
   ///
   /// Read-only.
   EventWorkingLocationProperties? workingLocationProperties;

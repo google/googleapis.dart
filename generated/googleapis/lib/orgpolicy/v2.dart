@@ -1623,7 +1623,7 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
 
   /// The resource instance type on which this policy applies.
   ///
-  /// Format will be of the form : "/" Example: *
+  /// Format will be of the form : `/` Example: *
   /// `compute.googleapis.com/Instance`.
   ///
   /// Immutable.

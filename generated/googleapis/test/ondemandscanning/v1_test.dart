@@ -217,6 +217,33 @@ void checkAttestationOccurrence(api.AttestationOccurrence o) {
   buildCounterAttestationOccurrence--;
 }
 
+core.int buildCounterBinary = 0;
+api.Binary buildBinary() {
+  final o = api.Binary();
+  buildCounterBinary++;
+  if (buildCounterBinary < 3) {
+    o.name = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterBinary--;
+  return o;
+}
+
+void checkBinary(api.Binary o) {
+  buildCounterBinary++;
+  if (buildCounterBinary < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBinary--;
+}
+
 core.int buildCounterBuildOccurrence = 0;
 api.BuildOccurrence buildBuildOccurrence() {
   final o = api.BuildOccurrence();
@@ -2143,6 +2170,7 @@ api.PackageData buildPackageData() {
   buildCounterPackageData++;
   if (buildCounterPackageData < 3) {
     o.architecture = 'foo';
+    o.binary = buildBinary();
     o.cpeUri = 'foo';
     o.dependencyChain = buildUnnamed29();
     o.fileLocation = buildUnnamed30();
@@ -2167,6 +2195,7 @@ void checkPackageData(api.PackageData o) {
       o.architecture!,
       unittest.equals('foo'),
     );
+    checkBinary(o.binary!);
     unittest.expect(
       o.cpeUri!,
       unittest.equals('foo'),
@@ -3566,6 +3595,16 @@ void main() {
       final od = api.AttestationOccurrence.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAttestationOccurrence(od);
+    });
+  });
+
+  unittest.group('obj-schema-Binary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBinary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Binary.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBinary(od);
     });
   });
 

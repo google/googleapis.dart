@@ -548,6 +548,29 @@ class AttestationOccurrence {
       };
 }
 
+class Binary {
+  core.String? name;
+  core.String? version;
+
+  Binary({
+    this.name,
+    this.version,
+  });
+
+  Binary.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Details of a build occurrence.
 class BuildOccurrence {
   /// See InTotoStatement for the replacement.
@@ -1931,6 +1954,15 @@ class PackageData {
   /// The architecture of the package.
   core.String? architecture;
 
+  /// The binary package.
+  ///
+  /// This is significant when the source is different than the binary itself.
+  /// Historically if they've differed, we've stored the name of the source and
+  /// its version in the package/version fields, but we should also store the
+  /// binary package info, as that's what's actually installed. See
+  /// https://b.corp.google.com/issues/175908657#comment15
+  Binary? binary;
+
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
   /// the vulnerability may manifest.
   ///
@@ -1987,6 +2019,7 @@ class PackageData {
 
   PackageData({
     this.architecture,
+    this.binary,
     this.cpeUri,
     this.dependencyChain,
     this.fileLocation,
@@ -2005,6 +2038,10 @@ class PackageData {
       : this(
           architecture: json_.containsKey('architecture')
               ? json_['architecture'] as core.String
+              : null,
+          binary: json_.containsKey('binary')
+              ? Binary.fromJson(
+                  json_['binary'] as core.Map<core.String, core.dynamic>)
               : null,
           cpeUri: json_.containsKey('cpeUri')
               ? json_['cpeUri'] as core.String
@@ -2053,6 +2090,7 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
+        if (binary != null) 'binary': binary!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,

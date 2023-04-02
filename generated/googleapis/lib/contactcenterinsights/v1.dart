@@ -563,6 +563,51 @@ class ProjectsLocationsConversationsResource {
     return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Create a longrunning conversation upload operation.
+  ///
+  /// This method differs from CreateConversation by allowing audio
+  /// transcription and optional DLP redaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the conversation.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> upload(
+    GoogleCloudContactcenterinsightsV1UploadConversationRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:upload';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsConversationsAnalysesResource {
@@ -4960,6 +5005,40 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
       };
 }
 
+/// DLP resources used for redaction while ingesting conversations.
+class GoogleCloudContactcenterinsightsV1RedactionConfig {
+  /// The fully-qualified DLP deidentify template resource name.
+  ///
+  /// Format: `projects/{project}/deidentifyTemplates/{template}`
+  core.String? deidentifyTemplate;
+
+  /// The fully-qualified DLP inspect template resource name.
+  ///
+  /// Format: `projects/{project}/inspectTemplates/{template}`
+  core.String? inspectTemplate;
+
+  GoogleCloudContactcenterinsightsV1RedactionConfig({
+    this.deidentifyTemplate,
+    this.inspectTemplate,
+  });
+
+  GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(core.Map json_)
+      : this(
+          deidentifyTemplate: json_.containsKey('deidentifyTemplate')
+              ? json_['deidentifyTemplate'] as core.String
+              : null,
+          inspectTemplate: json_.containsKey('inspectTemplate')
+              ? json_['inspectTemplate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyTemplate != null)
+          'deidentifyTemplate': deidentifyTemplate!,
+        if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
+      };
+}
+
 /// An annotation that was generated during the customer and agent interaction.
 class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /// The unique identifier of the annotation.
@@ -5147,6 +5226,10 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// topic is: projects/{project}/topics/{topic}
   core.Map<core.String, core.String>? pubsubNotificationSettings;
 
+  /// Default DLP redaction resources to be applied while ingesting
+  /// conversations.
+  GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
+
   /// The time at which the settings were last updated.
   ///
   /// Output only.
@@ -5159,6 +5242,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
     this.languageCode,
     this.name,
     this.pubsubNotificationSettings,
+    this.redactionConfig,
     this.updateTime,
   });
 
@@ -5190,6 +5274,11 @@ class GoogleCloudContactcenterinsightsV1Settings {
                       ),
                     )
                   : null,
+          redactionConfig: json_.containsKey('redactionConfig')
+              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+                  json_['redactionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -5203,6 +5292,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
         if (name != null) 'name': name!,
         if (pubsubNotificationSettings != null)
           'pubsubNotificationSettings': pubsubNotificationSettings!,
+        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5393,6 +5483,70 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// Request to upload a conversation.
+class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
+  /// The conversation resource to create.
+  ///
+  /// Required.
+  GoogleCloudContactcenterinsightsV1Conversation? conversation;
+
+  /// A unique ID for the new conversation.
+  ///
+  /// This ID will become the final component of the conversation's resource
+  /// name. If no ID is specified, a server-generated ID will be used. This
+  /// value should be 4-64 characters and must match the regular expression
+  /// `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+  ///
+  /// Optional.
+  core.String? conversationId;
+
+  /// The parent resource of the conversation.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// DLP settings for transcript redaction.
+  ///
+  /// Optional, will default to the config specified in Settings.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
+
+  GoogleCloudContactcenterinsightsV1UploadConversationRequest({
+    this.conversation,
+    this.conversationId,
+    this.parent,
+    this.redactionConfig,
+  });
+
+  GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
+      core.Map json_)
+      : this(
+          conversation: json_.containsKey('conversation')
+              ? GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                  json_['conversation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conversationId: json_.containsKey('conversationId')
+              ? json_['conversationId'] as core.String
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          redactionConfig: json_.containsKey('redactionConfig')
+              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+                  json_['redactionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (conversationId != null) 'conversationId': conversationId!,
+        if (parent != null) 'parent': parent!,
+        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
       };
 }
 

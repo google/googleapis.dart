@@ -2400,7 +2400,7 @@
             }
         }
     },
-    "revision": "20230310",
+    "revision": "20230323",
     "rootUrl": "https://spanner.googleapis.com/",
     "schemas": {
         "Backup": {
@@ -2426,7 +2426,7 @@
                     ],
                     "enumDescriptions": [
                         "Default value. This value will create a database with the GOOGLE_STANDARD_SQL dialect.",
-                        "Google standard SQL.",
+                        "GoogleSQL supported SQL.",
                         "PostgreSQL supported SQL."
                     ],
                     "readOnly": true,
@@ -2833,7 +2833,7 @@
                     ],
                     "enumDescriptions": [
                         "Default value. This value will create a database with the GOOGLE_STANDARD_SQL dialect.",
-                        "Google standard SQL.",
+                        "GoogleSQL supported SQL.",
                         "PostgreSQL supported SQL."
                     ],
                     "type": "string"
@@ -2967,7 +2967,7 @@
                     ],
                     "enumDescriptions": [
                         "Default value. This value will create a database with the GOOGLE_STANDARD_SQL dialect.",
-                        "Google standard SQL.",
+                        "GoogleSQL supported SQL.",
                         "PostgreSQL supported SQL."
                     ],
                     "readOnly": true,
@@ -5223,7 +5223,7 @@
                     "type": "array"
                 },
                 "throttled": {
-                    "description": "Output only. When true, indicates that the operation is throttled e.g due to resource constraints. When resources become available the operation will resume and this field will be false again.",
+                    "description": "Output only. When true, indicates that the operation is throttled e.g. due to resource constraints. When resources become available the operation will resume and this field will be false again.",
                     "readOnly": true,
                     "type": "boolean"
                 }

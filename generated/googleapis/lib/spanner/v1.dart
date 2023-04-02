@@ -3791,7 +3791,7 @@ class Backup {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 
@@ -4559,7 +4559,7 @@ class CreateDatabaseRequest {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 
@@ -4769,7 +4769,7 @@ class Database {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 

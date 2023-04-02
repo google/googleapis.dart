@@ -412,6 +412,7 @@ class Execution {
   /// and all exceptions raised.
   /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
   /// within workflows.
+  /// - "LOG_NONE" : Explicitly log nothing.
   core.String? callLogLevel;
 
   /// Measures the duration of the execution.

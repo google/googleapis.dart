@@ -6889,10 +6889,6 @@ class Finding {
   /// Next steps associate to the finding.
   core.String? nextSteps;
 
-  /// Contains information about the org policy constraints associated with the
-  /// finding.
-  core.List<OrgPolicyConstraint>? orgPolicyConstraints;
-
   /// The relative resource name of the source the finding belongs to.
   ///
   /// See:
@@ -7026,7 +7022,6 @@ class Finding {
     this.muteUpdateTime,
     this.name,
     this.nextSteps,
-    this.orgPolicyConstraints,
     this.parent,
     this.parentDisplayName,
     this.processes,
@@ -7161,12 +7156,6 @@ class Finding {
           nextSteps: json_.containsKey('nextSteps')
               ? json_['nextSteps'] as core.String
               : null,
-          orgPolicyConstraints: json_.containsKey('orgPolicyConstraints')
-              ? (json_['orgPolicyConstraints'] as core.List)
-                  .map((value) => OrgPolicyConstraint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
@@ -7232,8 +7221,6 @@ class Finding {
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
-        if (orgPolicyConstraints != null)
-          'orgPolicyConstraints': orgPolicyConstraints!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (processes != null) 'processes': processes!,
@@ -9070,27 +9057,6 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
-      };
-}
-
-/// Encapsulates data about a constraint associated with an organization policy.
-class OrgPolicyConstraint {
-  /// The resource name of the constraint.
-  ///
-  /// Example: "organizations/{organization_id}/constraints/{constraint_name}"
-  core.String? name;
-
-  OrgPolicyConstraint({
-    this.name,
-  });
-
-  OrgPolicyConstraint.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
       };
 }
 

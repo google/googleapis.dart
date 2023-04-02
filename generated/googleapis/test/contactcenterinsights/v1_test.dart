@@ -2574,6 +2574,35 @@ void checkGoogleCloudContactcenterinsightsV1PhraseMatcher(
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatcher--;
 }
 
+core.int buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig = 0;
+api.GoogleCloudContactcenterinsightsV1RedactionConfig
+    buildGoogleCloudContactcenterinsightsV1RedactionConfig() {
+  final o = api.GoogleCloudContactcenterinsightsV1RedactionConfig();
+  buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig < 3) {
+    o.deidentifyTemplate = 'foo';
+    o.inspectTemplate = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig--;
+  return o;
+}
+
+void checkGoogleCloudContactcenterinsightsV1RedactionConfig(
+    api.GoogleCloudContactcenterinsightsV1RedactionConfig o) {
+  buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig < 3) {
+    unittest.expect(
+      o.deidentifyTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inspectTemplate!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig--;
+}
+
 core.int buildCounterGoogleCloudContactcenterinsightsV1RuntimeAnnotation = 0;
 api.GoogleCloudContactcenterinsightsV1RuntimeAnnotation
     buildGoogleCloudContactcenterinsightsV1RuntimeAnnotation() {
@@ -2685,6 +2714,8 @@ api.GoogleCloudContactcenterinsightsV1Settings
     o.languageCode = 'foo';
     o.name = 'foo';
     o.pubsubNotificationSettings = buildUnnamed31();
+    o.redactionConfig =
+        buildGoogleCloudContactcenterinsightsV1RedactionConfig();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1Settings--;
@@ -2714,6 +2745,7 @@ void checkGoogleCloudContactcenterinsightsV1Settings(
       unittest.equals('foo'),
     );
     checkUnnamed31(o.pubsubNotificationSettings!);
+    checkGoogleCloudContactcenterinsightsV1RedactionConfig(o.redactionConfig!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -2910,6 +2942,43 @@ void checkGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest(
     );
   }
   buildCounterGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest--;
+}
+
+core.int
+    buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest = 0;
+api.GoogleCloudContactcenterinsightsV1UploadConversationRequest
+    buildGoogleCloudContactcenterinsightsV1UploadConversationRequest() {
+  final o = api.GoogleCloudContactcenterinsightsV1UploadConversationRequest();
+  buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest <
+      3) {
+    o.conversation = buildGoogleCloudContactcenterinsightsV1Conversation();
+    o.conversationId = 'foo';
+    o.parent = 'foo';
+    o.redactionConfig =
+        buildGoogleCloudContactcenterinsightsV1RedactionConfig();
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest--;
+  return o;
+}
+
+void checkGoogleCloudContactcenterinsightsV1UploadConversationRequest(
+    api.GoogleCloudContactcenterinsightsV1UploadConversationRequest o) {
+  buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest <
+      3) {
+    checkGoogleCloudContactcenterinsightsV1Conversation(o.conversation!);
+    unittest.expect(
+      o.conversationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudContactcenterinsightsV1RedactionConfig(o.redactionConfig!);
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1UploadConversationRequest--;
 }
 
 core.int buildCounterGoogleCloudContactcenterinsightsV1View = 0;
@@ -3964,6 +4033,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudContactcenterinsightsV1RedactionConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudContactcenterinsightsV1RedactionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudContactcenterinsightsV1RedactionConfig(od);
+    });
+  });
+
   unittest.group(
       'obj-schema-GoogleCloudContactcenterinsightsV1RuntimeAnnotation', () {
     unittest.test('to-json--from-json', () async {
@@ -4056,6 +4136,19 @@ void main() {
       final od = api.GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudContactcenterinsightsV1UploadConversationRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudContactcenterinsightsV1UploadConversationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudContactcenterinsightsV1UploadConversationRequest
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudContactcenterinsightsV1UploadConversationRequest(od);
     });
   });
 
@@ -4747,6 +4840,68 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudContactcenterinsightsV1Conversation(
           response as api.GoogleCloudContactcenterinsightsV1Conversation);
+    });
+
+    unittest.test('method--upload', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final arg_request =
+          buildGoogleCloudContactcenterinsightsV1UploadConversationRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudContactcenterinsightsV1UploadConversationRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudContactcenterinsightsV1UploadConversationRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.upload(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 

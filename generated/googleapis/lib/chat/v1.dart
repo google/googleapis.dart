@@ -1650,7 +1650,8 @@ class GoogleAppsCardV1Action {
 /// [CommonEventObject](https://developers.google.com/chat/api/reference/rest/v1/Event#commoneventobject).
 typedef GoogleAppsCardV1ActionParameter = $ActionParameter;
 
-/// Represents the complete border style applied to items in a widget.
+/// The style options for the border of a card or widget, including the border
+/// type and color.
 class GoogleAppsCardV1BorderStyle {
   /// The corner radius for the border.
   core.int? cornerRadius;

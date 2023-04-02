@@ -789,6 +789,11 @@ Firebase App Check works alongside other Firebase services to help protect your 
 - [Documentation](https://firebase.google.com/docs/app-check)
 - [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/firebaseappcheck.v1/firebaseappcheck.v1-library.html)
 
+#### Firebase App Distribution API - `firebaseappdistribution.v1`
+
+- [Documentation](https://firebase.google.com/products/app-distribution)
+- [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/firebaseappdistribution.v1/firebaseappdistribution.v1-library.html)
+
 #### Firebase Dynamic Links API - `firebasedynamiclinks.v1`
 
 Programmatically creates and manages Firebase Dynamic Links.

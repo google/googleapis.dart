@@ -7367,7 +7367,7 @@ class GoogleCloudDataplexV1DataAttributeBinding {
 
   /// The list of paths for items within the associated resource (eg.
   ///
-  /// columns within a table) along with attribute bindings.
+  /// columns and partitions within a table) along with attribute bindings.
   ///
   /// Optional.
   core.List<GoogleCloudDataplexV1DataAttributeBindingPath>? paths;
@@ -7466,8 +7466,11 @@ class GoogleCloudDataplexV1DataAttributeBinding {
       };
 }
 
-/// Represents a subresource of a given resource, and associated bindings with
+/// Represents a subresource of the given resource, and associated bindings with
 /// it.
+///
+/// Currently supported subresources are column and partition schema fields
+/// within a table.
 class GoogleCloudDataplexV1DataAttributeBindingPath {
   /// List of attributes to be associated with the path of the resource,
   /// provided in the form:
@@ -7478,7 +7481,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
 
   /// The name identifier of the path.
   ///
-  /// Nested columns should be of the form: 'country.state.city'.
+  /// Nested columns should be of the form: 'address.city'.
   ///
   /// Required.
   core.String? name;

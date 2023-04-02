@@ -1867,6 +1867,19 @@ class Job {
   /// You can use these to organize and group your jobs.
   core.Map<core.String, core.String>? labels;
 
+  /// The processing mode of the job.
+  ///
+  /// The default is `PROCESSING_MODE_INTERACTIVE`.
+  /// Possible string values are:
+  /// - "PROCESSING_MODE_UNSPECIFIED" : The job processing mode is not
+  /// specified.
+  /// - "PROCESSING_MODE_INTERACTIVE" : The job processing mode is interactive
+  /// mode. Interactive job will either be ran or rejected if quota does not
+  /// allow for it.
+  /// - "PROCESSING_MODE_BATCH" : The job processing mode is batch mode. Batch
+  /// mode allows queuing of jobs.
+  core.String? mode;
+
   /// The resource name of the job.
   ///
   /// Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -1919,6 +1932,7 @@ class Job {
     this.error,
     this.inputUri,
     this.labels,
+    this.mode,
     this.name,
     this.outputUri,
     this.startTime,
@@ -1954,6 +1968,7 @@ class Job {
                   ),
                 )
               : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           outputUri: json_.containsKey('outputUri')
               ? json_['outputUri'] as core.String
@@ -1978,6 +1993,7 @@ class Job {
         if (error != null) 'error': error!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (labels != null) 'labels': labels!,
+        if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
         if (outputUri != null) 'outputUri': outputUri!,
         if (startTime != null) 'startTime': startTime!,

@@ -670,14 +670,6 @@ class Contest {
   /// If this is a partisan election, the name of the party/parties it is for.
   core.List<core.String>? primaryParties;
 
-  /// If this is a partisan election, the name of the party it is for.
-  ///
-  /// This field as deprecated in favor of the array "primaryParties", as
-  /// contests may contain more than one party.
-  ///
-  /// Deprecated.
-  core.String? primaryParty;
-
   /// The set of ballot responses for the referendum.
   ///
   /// A ballot response represents a line on the ballot. Common examples might
@@ -766,7 +758,6 @@ class Contest {
     this.numberVotingFor,
     this.office,
     this.primaryParties,
-    this.primaryParty,
     this.referendumBallotResponses,
     this.referendumBrief,
     this.referendumConStatement,
@@ -823,9 +814,6 @@ class Contest {
               ? (json_['primaryParties'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
-              : null,
-          primaryParty: json_.containsKey('primaryParty')
-              ? json_['primaryParty'] as core.String
               : null,
           referendumBallotResponses:
               json_.containsKey('referendumBallotResponses')
@@ -891,7 +879,6 @@ class Contest {
         if (numberVotingFor != null) 'numberVotingFor': numberVotingFor!,
         if (office != null) 'office': office!,
         if (primaryParties != null) 'primaryParties': primaryParties!,
-        if (primaryParty != null) 'primaryParty': primaryParty!,
         if (referendumBallotResponses != null)
           'referendumBallotResponses': referendumBallotResponses!,
         if (referendumBrief != null) 'referendumBrief': referendumBrief!,
