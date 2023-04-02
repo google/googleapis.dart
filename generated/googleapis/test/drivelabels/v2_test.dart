@@ -1949,6 +1949,7 @@ api.GoogleAppsDriveLabelsV2Label buildGoogleAppsDriveLabelsV2Label() {
         buildGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy();
     o.createTime = 'foo';
     o.creator = buildGoogleAppsDriveLabelsV2UserInfo();
+    o.customer = 'foo';
     o.disableTime = 'foo';
     o.disabler = buildGoogleAppsDriveLabelsV2UserInfo();
     o.displayHints = buildGoogleAppsDriveLabelsV2LabelDisplayHints();
@@ -1983,6 +1984,10 @@ void checkGoogleAppsDriveLabelsV2Label(api.GoogleAppsDriveLabelsV2Label o) {
       unittest.equals('foo'),
     );
     checkGoogleAppsDriveLabelsV2UserInfo(o.creator!);
+    unittest.expect(
+      o.customer!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.disableTime!,
       unittest.equals('foo'),

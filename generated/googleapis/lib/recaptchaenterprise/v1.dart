@@ -1821,6 +1821,10 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
 
 /// Assessment for Fraud Prevention.
 class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
+  /// Assessment of this transaction for behavioral trust.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict?
+      behavioralTrustVerdict;
+
   /// Assessment of this transaction for risk of being part of a card testing
   /// attack.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict?
@@ -1836,6 +1840,7 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   core.double? transactionRisk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
+    this.behavioralTrustVerdict,
     this.cardTestingVerdict,
     this.stolenInstrumentVerdict,
     this.transactionRisk,
@@ -1844,6 +1849,11 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
       core.Map json_)
       : this(
+          behavioralTrustVerdict: json_.containsKey('behavioralTrustVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+                  .fromJson(json_['behavioralTrustVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           cardTestingVerdict: json_.containsKey('cardTestingVerdict')
               ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
                   .fromJson(json_['cardTestingVerdict']
@@ -1860,11 +1870,36 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (behavioralTrustVerdict != null)
+          'behavioralTrustVerdict': behavioralTrustVerdict!,
         if (cardTestingVerdict != null)
           'cardTestingVerdict': cardTestingVerdict!,
         if (stolenInstrumentVerdict != null)
           'stolenInstrumentVerdict': stolenInstrumentVerdict!,
         if (transactionRisk != null) 'transactionRisk': transactionRisk!,
+      };
+}
+
+/// Information about behavioral trust of the transaction.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict {
+  /// Probability (0-1) of this transaction attempt being executed in a
+  /// behaviorally trustworthy way.
+  core.double? trust;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict({
+    this.trust,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
+      core.Map json_)
+      : this(
+          trust: json_.containsKey('trust')
+              ? (json_['trust'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trust != null) 'trust': trust!,
       };
 }
 
@@ -3325,7 +3360,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "SESSION_TOKEN" : Use reCAPTCHA session-tokens to protect the whole user
   /// session on the site's domain.
   /// - "ACTION_TOKEN" : Use reCAPTCHA action-tokens to protect user actions.
-  /// - "EXPRESS" : Use reCAPTCHA WAF express protection to protect any context
+  /// - "EXPRESS" : Use reCAPTCHA WAF express protection to protect any content
   /// other than web pages, like APIs and IoT devices.
   core.String? wafFeature;
 

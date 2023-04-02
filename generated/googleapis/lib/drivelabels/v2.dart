@@ -3971,6 +3971,13 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? creator;
 
+  /// The customer this label belongs to.
+  ///
+  /// For example: "customers/123abc789."
+  ///
+  /// Output only.
+  core.String? customer;
+
   /// The time this label was disabled.
   ///
   /// This value has no meaning when the label is not disabled.
@@ -4084,6 +4091,7 @@ class GoogleAppsDriveLabelsV2Label {
     this.appliedLabelPolicy,
     this.createTime,
     this.creator,
+    this.customer,
     this.disableTime,
     this.disabler,
     this.displayHints,
@@ -4121,6 +4129,9 @@ class GoogleAppsDriveLabelsV2Label {
           creator: json_.containsKey('creator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
                   json_['creator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
               : null,
           disableTime: json_.containsKey('disableTime')
               ? json_['disableTime'] as core.String
@@ -4191,6 +4202,7 @@ class GoogleAppsDriveLabelsV2Label {
           'appliedLabelPolicy': appliedLabelPolicy!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
+        if (customer != null) 'customer': customer!,
         if (disableTime != null) 'disableTime': disableTime!,
         if (disabler != null) 'disabler': disabler!,
         if (displayHints != null) 'displayHints': displayHints!,

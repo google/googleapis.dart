@@ -861,6 +861,7 @@ api.Job buildJob() {
     o.error = buildStatus();
     o.inputUri = 'foo';
     o.labels = buildUnnamed3();
+    o.mode = 'foo';
     o.name = 'foo';
     o.outputUri = 'foo';
     o.startTime = 'foo';
@@ -890,6 +891,10 @@ void checkJob(api.Job o) {
       unittest.equals('foo'),
     );
     checkUnnamed3(o.labels!);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

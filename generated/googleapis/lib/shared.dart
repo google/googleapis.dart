@@ -4530,105 +4530,6 @@ class $CreativeGroupAssignment {
 
 /// Used by:
 ///
-/// - cloudkms:v1 : CryptoKeyVersionTemplate
-/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
-class $CryptoKeyVersionTemplate {
-  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
-  ///
-  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
-  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
-  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
-  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA512 digest.
-  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 2048 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 3072 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 4096 bit key.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
-  /// digest.
-  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest.
-  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest.
-  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level.
-  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
-  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
-  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
-  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
-  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
-  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
-  /// encryption by an external key manager.
-  core.String? algorithm;
-
-  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template.
-  ///
-  /// Immutable. Defaults to SOFTWARE.
-  /// Possible string values are:
-  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
-  /// - "SOFTWARE" : Crypto operations are performed in software.
-  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
-  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
-  /// backend.
-  core.String? protectionLevel;
-
-  $CryptoKeyVersionTemplate({
-    this.algorithm,
-    this.protectionLevel,
-  });
-
-  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
-      : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-      };
-}
-
-/// Used by:
-///
 /// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -6690,6 +6591,9 @@ class $EgressFrom {
 /// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
 /// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest
 /// - firebaseappcheck:v1 : GoogleProtobufEmpty
+/// - firebaseappdistribution:v1 : GoogleFirebaseAppdistroV1DistributeReleaseResponse
+/// - firebaseappdistribution:v1 : GoogleLongrunningCancelOperationRequest
+/// - firebaseappdistribution:v1 : GoogleProtobufEmpty
 /// - firebasehosting:v1 : CancelOperationRequest
 /// - firebasehosting:v1 : Empty
 /// - firebaseml:v1 : CancelOperationRequest
@@ -10088,52 +9992,6 @@ class $InstanceGroupManagersApplyUpdatesRequest {
         if (minimalAction != null) 'minimalAction': minimalAction!,
         if (mostDisruptiveAllowedAction != null)
           'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
-      };
-}
-
-/// Used by:
-///
-/// - compute:v1 : InstanceGroupManagersDeleteInstancesRequest
-/// - compute:v1 : RegionInstanceGroupManagersDeleteInstancesRequest
-class $InstanceGroupManagersDeleteInstancesRequest {
-  /// The URLs of one or more instances to delete.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  /// Specifies whether the request should proceed despite the inclusion of
-  /// instances that are not members of the group or that are already in the
-  /// process of being deleted or abandoned.
-  ///
-  /// If this field is set to `false` and such an instance is specified in the
-  /// request, the operation fails. The operation always fails if the request
-  /// contains a malformed instance URL or a reference to an instance that
-  /// exists in a zone or region other than the group's zone or region.
-  core.bool? skipInstancesOnValidationError;
-
-  $InstanceGroupManagersDeleteInstancesRequest({
-    this.instances,
-    this.skipInstancesOnValidationError,
-  });
-
-  $InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map json_)
-      : this(
-          instances: json_.containsKey('instances')
-              ? (json_['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          skipInstancesOnValidationError:
-              json_.containsKey('skipInstancesOnValidationError')
-                  ? json_['skipInstancesOnValidationError'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-        if (skipInstancesOnValidationError != null)
-          'skipInstancesOnValidationError': skipInstancesOnValidationError!,
       };
 }
 
@@ -18110,6 +17968,7 @@ class $StartPageToken {
 /// - domains:v1 : Status
 /// - eventarc:v1 : GoogleRpcStatus
 /// - file:v1 : Status
+/// - firebaseappdistribution:v1 : GoogleRpcStatus
 /// - firebasehosting:v1 : Status
 /// - firebaseml:v1 : Status
 /// - firestore:v1 : Status
@@ -20571,6 +20430,7 @@ class $VpcServiceControlsRequest {
 
 /// Used by:
 ///
+/// - firebaseappdistribution:v1 : GoogleLongrunningWaitOperationRequest
 /// - run:v2 : GoogleLongrunningWaitOperationRequest
 /// - translate:v3 : WaitOperationRequest
 class $WaitOperationRequest {

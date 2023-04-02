@@ -2110,6 +2110,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2199,6 +2200,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2249,6 +2251,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10490,6 +10493,10 @@ class Track {
   core.List<TrackRelease>? releases;
 
   /// Identifier of the track.
+  ///
+  /// Form factor tracks have a special prefix as an identifier, for example
+  /// `wear:production`, `automotive:production`.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   core.String? track;
 
   Track({

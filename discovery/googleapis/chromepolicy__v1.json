@@ -555,7 +555,7 @@
             }
         }
     },
-    "revision": "20230324",
+    "revision": "20230331",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle": {

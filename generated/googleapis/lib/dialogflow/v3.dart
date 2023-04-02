@@ -8992,7 +8992,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 ///
 /// You can provide information for the Dialogflow API to use to match user
 /// input to an intent by adding training phrases (i.e., examples of user input)
-/// to your intent.
+/// to your intent. Next ID: 15
 class GoogleCloudDialogflowCxV3Intent {
   /// Human readable description for better understanding an intent like its
   /// scope, content, result etc.
@@ -10764,7 +10764,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If a DTMF was provided as input, this field will contain a copy of the
-  /// DTMFInput.
+  /// DtmfInput.
   GoogleCloudDialogflowCxV3DtmfInput? dtmf;
 
   /// The Intent that matched the conversational query.

@@ -1342,11 +1342,6 @@ class Function_ {
   /// Output only.
   core.String? updateTime;
 
-  /// The deployed url for the function.
-  ///
-  /// Output only.
-  core.String? url;
-
   Function_({
     this.buildConfig,
     this.description,
@@ -1359,7 +1354,6 @@ class Function_ {
     this.state,
     this.stateMessages,
     this.updateTime,
-    this.url,
   });
 
   Function_.fromJson(core.Map json_)
@@ -1405,7 +1399,6 @@ class Function_ {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1420,7 +1413,6 @@ class Function_ {
         if (state != null) 'state': state!,
         if (stateMessages != null) 'stateMessages': stateMessages!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (url != null) 'url': url!,
       };
 }
 

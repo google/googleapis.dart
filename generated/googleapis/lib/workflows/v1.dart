@@ -771,6 +771,22 @@ typedef Status = $Status;
 
 /// Workflow program to be executed by Workflows.
 class Workflow {
+  /// Describes the level of platform logging to apply to calls and call
+  /// responses during executions of this workflow.
+  ///
+  /// If both the workflow and the execution specify a logging level, the
+  /// execution level takes precedence.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging level specified.
+  /// - "LOG_ALL_CALLS" : Log all call steps within workflows, all call returns,
+  /// and all exceptions raised.
+  /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
+  /// within workflows.
+  /// - "LOG_NONE" : Explicitly log nothing.
+  core.String? callLogLevel;
+
   /// The timestamp for when the workflow was created.
   ///
   /// Output only.
@@ -841,6 +857,7 @@ class Workflow {
   core.String? updateTime;
 
   Workflow({
+    this.callLogLevel,
     this.createTime,
     this.description,
     this.labels,
@@ -855,6 +872,9 @@ class Workflow {
 
   Workflow.fromJson(core.Map json_)
       : this(
+          callLogLevel: json_.containsKey('callLogLevel')
+              ? json_['callLogLevel'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -890,6 +910,7 @@ class Workflow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,

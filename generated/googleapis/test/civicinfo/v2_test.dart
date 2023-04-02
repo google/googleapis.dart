@@ -367,7 +367,6 @@ api.Contest buildContest() {
     o.numberVotingFor = 'foo';
     o.office = 'foo';
     o.primaryParties = buildUnnamed6();
-    o.primaryParty = 'foo';
     o.referendumBallotResponses = buildUnnamed7();
     o.referendumBrief = 'foo';
     o.referendumConStatement = 'foo';
@@ -418,10 +417,6 @@ void checkContest(api.Contest o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.primaryParties!);
-    unittest.expect(
-      o.primaryParty!,
-      unittest.equals('foo'),
-    );
     checkUnnamed7(o.referendumBallotResponses!);
     unittest.expect(
       o.referendumBrief!,

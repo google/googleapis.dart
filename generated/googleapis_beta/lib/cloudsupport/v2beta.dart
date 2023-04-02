@@ -18,7 +18,6 @@
 ///
 /// Create an instance of [CloudSupportApi] to access these resources:
 ///
-/// - [AttachmentsResource]
 /// - [CaseClassificationsResource]
 /// - [CasesResource]
 ///   - [CasesAttachmentsResource]
@@ -58,7 +57,6 @@ class CloudSupportApi {
 
   final commons.ApiRequester _requester;
 
-  AttachmentsResource get attachments => AttachmentsResource(_requester);
   CaseClassificationsResource get caseClassifications =>
       CaseClassificationsResource(_requester);
   CasesResource get cases => CasesResource(_requester);
@@ -69,56 +67,6 @@ class CloudSupportApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class AttachmentsResource {
-  final commons.ApiRequester _requester;
-
-  AttachmentsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Create a file attachment on a case or Cloud resource.
-  ///
-  /// The attachment object must have the following fields set: filename.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the case (or case parent) to
-  /// which the attachment should be attached.
-  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Attachment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Attachment> create(
-    CreateAttachmentRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2beta/' + core.Uri.encodeFull('$parent') + '/attachments';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Attachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class CaseClassificationsResource {
@@ -1226,7 +1174,7 @@ typedef CloseCaseRequest = $Empty;
 class Comment {
   /// The full comment body.
   ///
-  /// Maximum of 120000 characters. This can contain rich text syntax.
+  /// Maximum of 12800 characters. This can contain rich text syntax.
   core.String? body;
 
   /// The time when this comment was created.

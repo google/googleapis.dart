@@ -226,13 +226,9 @@ class ProjectsProfilesResource {
 /// profile of one of these types needs to be collected.
 class CreateProfileRequest {
   /// Deployment details.
-  ///
-  /// Required.
   Deployment? deployment;
 
   /// One or more profile types that the agent is capable of providing.
-  ///
-  /// Required.
   core.List<core.String>? profileType;
 
   CreateProfileRequest({

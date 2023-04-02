@@ -30,6 +30,7 @@ api.AccessKeyCredentials buildAccessKeyCredentials() {
   if (buildCounterAccessKeyCredentials < 3) {
     o.accessKeyId = 'foo';
     o.secretAccessKey = 'foo';
+    o.sessionToken = 'foo';
   }
   buildCounterAccessKeyCredentials--;
   return o;
@@ -44,6 +45,10 @@ void checkAccessKeyCredentials(api.AccessKeyCredentials o) {
     );
     unittest.expect(
       o.secretAccessKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionToken!,
       unittest.equals('foo'),
     );
   }

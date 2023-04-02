@@ -487,6 +487,7 @@ api.Workflow buildWorkflow() {
   final o = api.Workflow();
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
+    o.callLogLevel = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
     o.labels = buildUnnamed10();
@@ -505,6 +506,10 @@ api.Workflow buildWorkflow() {
 void checkWorkflow(api.Workflow o) {
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
+    unittest.expect(
+      o.callLogLevel!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

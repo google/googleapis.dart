@@ -693,6 +693,8 @@ api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
   buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment <
       3) {
+    o.behavioralTrustVerdict =
+        buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict();
     o.cardTestingVerdict =
         buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict();
     o.stolenInstrumentVerdict =
@@ -708,6 +710,8 @@ void checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment(
   buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment <
       3) {
+    checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict(
+        o.behavioralTrustVerdict!);
     checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict(
         o.cardTestingVerdict!);
     checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict(
@@ -718,6 +722,36 @@ void checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment(
     );
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment--;
+}
+
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+    buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict() {
+  final o = api
+      .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict();
+  buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict <
+      3) {
+    o.trust = 42.0;
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict(
+    api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+        o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict <
+      3) {
+    unittest.expect(
+      o.trust!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict--;
 }
 
 core.int
@@ -2288,6 +2322,21 @@ void main() {
       final od = api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict(
+          od);
     });
   });
 

@@ -127,6 +127,7 @@ packages:
     - fcm:v1
     - file:v1
     - firebaseappcheck:v1
+    - firebaseappdistribution:v1
     - firebasedynamiclinks:v1 # https://firebase.google.com/docs/dynamic-links/
     - firebasehosting:v1
     - firebaseml:v1
@@ -137,8 +138,8 @@ packages:
     - forms:v1
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
-    - gameservices:v1
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
+    - gameservices:v1
     - gkebackup:v1
     - gkehub:v1
     - gmail:v1 # https://developers.google.com/gmail/

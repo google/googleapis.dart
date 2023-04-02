@@ -824,14 +824,7 @@ class ProjectsLocationsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -3468,14 +3461,7 @@ class ProjectsRegionsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -5462,16 +5448,31 @@ class DiagnoseClusterRequest {
   /// Optional.
   core.String? job;
 
+  /// Specifies a list of jobs on which diagnosis is to be performed.
+  ///
+  /// Format: projects/{project}/regions/{region}/jobs/{job}
+  ///
+  /// Optional.
+  core.List<core.String>? jobs;
+
   /// DEPRECATED Specifies the yarn application on which diagnosis is to be
   /// performed.
   ///
   /// Optional.
   core.String? yarnApplicationId;
 
+  /// Specifies a list of yarn applications on which diagnosis is to be
+  /// performed.
+  ///
+  /// Optional.
+  core.List<core.String>? yarnApplicationIds;
+
   DiagnoseClusterRequest({
     this.diagnosisInterval,
     this.job,
+    this.jobs,
     this.yarnApplicationId,
+    this.yarnApplicationIds,
   });
 
   DiagnoseClusterRequest.fromJson(core.Map json_)
@@ -5481,15 +5482,28 @@ class DiagnoseClusterRequest {
                   as core.Map<core.String, core.dynamic>)
               : null,
           job: json_.containsKey('job') ? json_['job'] as core.String : null,
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           yarnApplicationId: json_.containsKey('yarnApplicationId')
               ? json_['yarnApplicationId'] as core.String
+              : null,
+          yarnApplicationIds: json_.containsKey('yarnApplicationIds')
+              ? (json_['yarnApplicationIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diagnosisInterval != null) 'diagnosisInterval': diagnosisInterval!,
         if (job != null) 'job': job!,
+        if (jobs != null) 'jobs': jobs!,
         if (yarnApplicationId != null) 'yarnApplicationId': yarnApplicationId!,
+        if (yarnApplicationIds != null)
+          'yarnApplicationIds': yarnApplicationIds!,
       };
 }
 
@@ -5720,14 +5734,14 @@ class EnvironmentConfig {
 class ExecutionConfig {
   /// The duration to keep the session alive while it's idling.
   ///
-  /// Passing this threshold will cause the session to be terminated. Minimum
-  /// value is 10 minutes; maximum value is 14 days (see JSON representation of
-  /// Duration
+  /// Exceeding this threshold causes the session to terminate. This field
+  /// cannot be set on a batch workload. Minimum value is 10 minutes; maximum
+  /// value is 14 days (see JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified,
-  /// the conditions are treated as and OR: the workload will be terminated when
-  /// it has been idle for idle_ttl or when the ttl has passed, whichever comes
-  /// first.
+  /// the conditions are treated as OR conditions: the workload will be
+  /// terminated when it has been idle for idle_ttl or when ttl has been exceed,
+  /// whichever occurs first.
   ///
   /// Optional.
   core.String? idleTtl;
@@ -5772,14 +5786,17 @@ class ExecutionConfig {
 
   /// The duration after which the workload will be terminated.
   ///
-  /// When the workload passes this ttl, it will be unconditionally killed
-  /// without waiting for ongoing work to finish. Minimum value is 10 minutes;
-  /// maximum value is 14 days (see JSON representation of Duration
+  /// When the workload exceeds this duration, it will be unconditionally
+  /// terminated without waiting for ongoing work to finish. If ttl is not
+  /// specified for a batch workload, the workload will be allowed to run until
+  /// it exits naturally (or runs forever without exiting). If ttl is not
+  /// specified for an interactive session, it defaults to 24h. Minimum value is
+  /// 10 minutes; maximum value is 14 days (see JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If
-  /// both ttl and idle_ttl are specified, the conditions are treated as and OR:
-  /// the workload will be terminated when it has been idle for idle_ttl or when
-  /// the ttl has passed, whichever comes first. If ttl is not specified for a
-  /// session, it defaults to 24h.
+  /// both ttl and idle_ttl are specified (for an interactive session), the
+  /// conditions are treated as OR conditions: the workload will be terminated
+  /// when it has been idle for idle_ttl or when ttl has been exceeded,
+  /// whichever occurs first.
   ///
   /// Optional.
   core.String? ttl;

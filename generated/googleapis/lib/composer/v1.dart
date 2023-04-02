@@ -901,6 +901,15 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
+  /// The 'bring your own identity' variant of the URI of the Apache Airflow Web
+  /// UI hosted within this environment, to be accessed with external identities
+  /// using workforce identity federation (see \[Access environments with
+  /// workforce identity
+  /// federation\](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
+  ///
+  /// Output only.
+  core.String? airflowByoidUri;
+
   /// The URI of the Apache Airflow Web UI hosted within this environment (see
   /// \[Airflow web
   /// interface\](/composer/docs/how-to/accessing/airflow-web-interface)).
@@ -1022,6 +1031,7 @@ class EnvironmentConfig {
   WorkloadsConfig? workloadsConfig;
 
   EnvironmentConfig({
+    this.airflowByoidUri,
     this.airflowUri,
     this.dagGcsPrefix,
     this.databaseConfig,
@@ -1042,6 +1052,9 @@ class EnvironmentConfig {
 
   EnvironmentConfig.fromJson(core.Map json_)
       : this(
+          airflowByoidUri: json_.containsKey('airflowByoidUri')
+              ? json_['airflowByoidUri'] as core.String
+              : null,
           airflowUri: json_.containsKey('airflowUri')
               ? json_['airflowUri'] as core.String
               : null,
@@ -1110,6 +1123,7 @@ class EnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (airflowByoidUri != null) 'airflowByoidUri': airflowByoidUri!,
         if (airflowUri != null) 'airflowUri': airflowUri!,
         if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
         if (databaseConfig != null) 'databaseConfig': databaseConfig!,

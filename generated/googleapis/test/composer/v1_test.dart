@@ -236,6 +236,7 @@ api.EnvironmentConfig buildEnvironmentConfig() {
   final o = api.EnvironmentConfig();
   buildCounterEnvironmentConfig++;
   if (buildCounterEnvironmentConfig < 3) {
+    o.airflowByoidUri = 'foo';
     o.airflowUri = 'foo';
     o.dagGcsPrefix = 'foo';
     o.databaseConfig = buildDatabaseConfig();
@@ -260,6 +261,10 @@ api.EnvironmentConfig buildEnvironmentConfig() {
 void checkEnvironmentConfig(api.EnvironmentConfig o) {
   buildCounterEnvironmentConfig++;
   if (buildCounterEnvironmentConfig < 3) {
+    unittest.expect(
+      o.airflowByoidUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.airflowUri!,
       unittest.equals('foo'),

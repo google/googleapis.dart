@@ -1357,7 +1357,8 @@ class CapacityCommitment {
   ///
   /// If set to true, this commitment is placed in the organization's secondary
   /// region which is designated for disaster recovery purposes. If false, this
-  /// commitment is placed in the organization's default region.
+  /// commitment is placed in the organization's default region. NOTE: this is a
+  /// preview feature. Project must be allow-listed in order to set this field.
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the capacity commitment, e.g.,
@@ -1736,7 +1737,9 @@ class Reservation {
   ///
   /// If set to true, this reservation is placed in the organization's secondary
   /// region which is designated for disaster recovery purposes. If false, this
-  /// reservation is placed in the organization's default region.
+  /// reservation is placed in the organization's default region. NOTE: this is
+  /// a preview feature. Project must be allow-listed in order to set this
+  /// field.
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *

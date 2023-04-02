@@ -2853,9 +2853,16 @@ class AccessKeyCredentials {
   /// AWS secret access key.
   core.String? secretAccessKey;
 
+  /// Input only.
+  ///
+  /// AWS session token. Used only when AWS security token service (STS) is
+  /// responsible for creating the temporary credentials.
+  core.String? sessionToken;
+
   AccessKeyCredentials({
     this.accessKeyId,
     this.secretAccessKey,
+    this.sessionToken,
   });
 
   AccessKeyCredentials.fromJson(core.Map json_)
@@ -2866,11 +2873,15 @@ class AccessKeyCredentials {
           secretAccessKey: json_.containsKey('secretAccessKey')
               ? json_['secretAccessKey'] as core.String
               : null,
+          sessionToken: json_.containsKey('sessionToken')
+              ? json_['sessionToken'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessKeyId != null) 'accessKeyId': accessKeyId!,
         if (secretAccessKey != null) 'secretAccessKey': secretAccessKey!,
+        if (sessionToken != null) 'sessionToken': sessionToken!,
       };
 }
 
