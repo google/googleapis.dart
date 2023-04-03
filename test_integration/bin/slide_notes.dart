@@ -75,7 +75,6 @@ Future<void> _doHtml({
       presentationId: presentationId,
       lastSlide: lastSlide,
       outputDirectory: directory,
-      httpClient: httpClient,
     )) {
       writer.writeStringSync('$line\n');
     }
@@ -90,7 +89,6 @@ Stream<String> _yieldSlideHtml(
   required String presentationId,
   required int? lastSlide,
   required Directory outputDirectory,
-  required Client httpClient,
 }) async* {
   var count = 0;
 
@@ -106,9 +104,6 @@ table, th, td {
 td, th {
   padding: 1ex;
   vertical-align: top;
-}
-td.notes {
-  max-width: 400px;
 }
 td.slide-number {
   text-align: center;
@@ -149,22 +144,17 @@ th {
       thumbnailProperties_thumbnailSize: 'MEDIUM',
     );
 
-    final response = await httpClient.get(Uri.parse(thumb.contentUrl!));
+    final response = await get(Uri.parse(thumb.contentUrl!));
     assert(response.headers['content-type'] == 'image/png');
     assert(response.statusCode == 200);
 
-    final imageName = 'slide_${count.toString().padLeft(3, '0')}.png';
+    final dataUri = Uri.dataFromBytes(response.bodyBytes,
+        mimeType: response.headers['content-type']!);
 
-    final imagePath = p.join(outputDirectory.path, imageName);
-
-    File(imagePath).writeAsBytesSync(
-      response.bodyBytes,
-      mode: FileMode.writeOnly,
-      flush: true,
-    );
+    int resize(int? original) => (original! * 0.5).toInt();
 
     // image
-    yield '<td><img src="$imageName" width="${thumb.width}" height="${thumb.height}"></td>';
+    yield '<td><img src="$dataUri" width="${resize(thumb.width)}" height="${resize(thumb.height)}"></td>';
 
     yield '</tr>';
     if (lastSlide != null && count >= lastSlide) {
@@ -207,11 +197,12 @@ extension on Page {
           final value = text.textElements!
               .map((e) => e.textRun?.content)
               .whereType<String>()
-              .join()
-              .trim();
+              .map((e) => e.trim())
+              .where((element) => element.isNotEmpty)
+              .toList();
 
           if (value.isNotEmpty) {
-            yield value;
+            yield* value;
           }
         }
       }
