@@ -2110,6 +2110,47 @@ class TagKeysResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves a TagKey by its namespaced name.
+  ///
+  /// This method will return `PERMISSION_DENIED` if the key does not exist or
+  /// the user does not have permission to view it.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A namespaced tag key name in the format
+  /// `{parentId}/{tagKeyShort}`, such as `42/foo` for a key with short name
+  /// "foo" under the organization with ID 42 or `r2-d2/bar` for a key with
+  /// short name "bar" under the project `r2-d2`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TagKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TagKey> getNamespaced({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v3/tagKeys/namespaced';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TagKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all TagKeys for a parent resource.
   ///
   /// Request parameters:
@@ -2496,6 +2537,49 @@ class TagValuesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a TagValue by its namespaced name.
+  ///
+  /// This method will return `PERMISSION_DENIED` if the value does not exist or
+  /// the user does not have permission to view it.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A namespaced tag value name in the following format:
+  /// `{parentId}/{tagKeyShort}/{tagValueShort}` Examples: - `42/foo/abc` for a
+  /// value with short name "abc" under the key with short name "foo" under the
+  /// organization with ID 42 - `r2-d2/bar/xyz` for a value with short name
+  /// "xyz" under the key with short name "bar" under the project with ID
+  /// "r2-d2"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TagValue].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TagValue> getNamespaced({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v3/tagValues/namespaced';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TagValue.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all TagValues for a specific TagKey.
@@ -4234,10 +4318,19 @@ class TagBinding {
   /// Must be of the form `tagValues/456`.
   core.String? tagValue;
 
+  /// The namespaced name for the TagValue of the TagBinding.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`. For
+  /// methods that support TagValue namespaced name, only one of
+  /// tag_value_namespaced_name or tag_value may be filled. Requests with both
+  /// fields will be rejected.
+  core.String? tagValueNamespacedName;
+
   TagBinding({
     this.name,
     this.parent,
     this.tagValue,
+    this.tagValueNamespacedName,
   });
 
   TagBinding.fromJson(core.Map json_)
@@ -4249,12 +4342,17 @@ class TagBinding {
           tagValue: json_.containsKey('tagValue')
               ? json_['tagValue'] as core.String
               : null,
+          tagValueNamespacedName: json_.containsKey('tagValueNamespacedName')
+              ? json_['tagValueNamespacedName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (tagValue != null) 'tagValue': tagValue!,
+        if (tagValueNamespacedName != null)
+          'tagValueNamespacedName': tagValueNamespacedName!,
       };
 }
 

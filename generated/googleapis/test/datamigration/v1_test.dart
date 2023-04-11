@@ -69,6 +69,7 @@ api.AlloyDbSettings buildAlloyDbSettings() {
   final o = api.AlloyDbSettings();
   buildCounterAlloyDbSettings++;
   if (buildCounterAlloyDbSettings < 3) {
+    o.encryptionConfig = buildEncryptionConfig();
     o.initialUser = buildUserPassword();
     o.labels = buildUnnamed0();
     o.primaryInstanceSettings = buildPrimaryInstanceSettings();
@@ -81,6 +82,7 @@ api.AlloyDbSettings buildAlloyDbSettings() {
 void checkAlloyDbSettings(api.AlloyDbSettings o) {
   buildCounterAlloyDbSettings++;
   if (buildCounterAlloyDbSettings < 3) {
+    checkEncryptionConfig(o.encryptionConfig!);
     checkUserPassword(o.initialUser!);
     checkUnnamed0(o.labels!);
     checkPrimaryInstanceSettings(o.primaryInstanceSettings!);
@@ -1281,6 +1283,28 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
+}
+
+core.int buildCounterEncryptionConfig = 0;
+api.EncryptionConfig buildEncryptionConfig() {
+  final o = api.EncryptionConfig();
+  buildCounterEncryptionConfig++;
+  if (buildCounterEncryptionConfig < 3) {
+    o.kmsKeyName = 'foo';
+  }
+  buildCounterEncryptionConfig--;
+  return o;
+}
+
+void checkEncryptionConfig(api.EncryptionConfig o) {
+  buildCounterEncryptionConfig++;
+  if (buildCounterEncryptionConfig < 3) {
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEncryptionConfig--;
 }
 
 core.List<api.EntityMappingLogEntry> buildUnnamed17() => [
@@ -4446,6 +4470,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EncryptionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEncryptionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EncryptionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEncryptionConfig(od);
     });
   });
 

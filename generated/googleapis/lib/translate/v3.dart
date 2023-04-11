@@ -3891,6 +3891,11 @@ class TranslateDocumentRequest {
   /// Optional.
   DocumentOutputConfig? documentOutputConfig;
 
+  /// If true, enable auto rotation correction in DVS.
+  ///
+  /// Optional.
+  core.bool? enableRotationCorrection;
+
   /// If true, use the text removal server to remove the shadow text on
   /// background image for native pdf translation.
   ///
@@ -3962,6 +3967,7 @@ class TranslateDocumentRequest {
     this.customizedAttribution,
     this.documentInputConfig,
     this.documentOutputConfig,
+    this.enableRotationCorrection,
     this.enableShadowRemovalNativePdf,
     this.glossaryConfig,
     this.isTranslateNativePdfOnly,
@@ -3984,6 +3990,10 @@ class TranslateDocumentRequest {
               ? DocumentOutputConfig.fromJson(json_['documentOutputConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          enableRotationCorrection:
+              json_.containsKey('enableRotationCorrection')
+                  ? json_['enableRotationCorrection'] as core.bool
+                  : null,
           enableShadowRemovalNativePdf:
               json_.containsKey('enableShadowRemovalNativePdf')
                   ? json_['enableShadowRemovalNativePdf'] as core.bool
@@ -4021,6 +4031,8 @@ class TranslateDocumentRequest {
           'documentInputConfig': documentInputConfig!,
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
+        if (enableRotationCorrection != null)
+          'enableRotationCorrection': enableRotationCorrection!,
         if (enableShadowRemovalNativePdf != null)
           'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
         if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,

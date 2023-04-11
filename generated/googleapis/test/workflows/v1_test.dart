@@ -380,6 +380,33 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.int buildCounterStateError = 0;
+api.StateError buildStateError() {
+  final o = api.StateError();
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    o.details = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterStateError--;
+  return o;
+}
+
+void checkStateError(api.StateError o) {
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStateError--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
@@ -489,6 +516,7 @@ api.Workflow buildWorkflow() {
   if (buildCounterWorkflow < 3) {
     o.callLogLevel = 'foo';
     o.createTime = 'foo';
+    o.cryptoKeyName = 'foo';
     o.description = 'foo';
     o.labels = buildUnnamed10();
     o.name = 'foo';
@@ -497,6 +525,7 @@ api.Workflow buildWorkflow() {
     o.serviceAccount = 'foo';
     o.sourceContents = 'foo';
     o.state = 'foo';
+    o.stateError = buildStateError();
     o.updateTime = 'foo';
   }
   buildCounterWorkflow--;
@@ -512,6 +541,10 @@ void checkWorkflow(api.Workflow o) {
     );
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cryptoKeyName!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -543,6 +576,7 @@ void checkWorkflow(api.Workflow o) {
       o.state!,
       unittest.equals('foo'),
     );
+    checkStateError(o.stateError!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -609,6 +643,16 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-StateError', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStateError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.StateError.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStateError(od);
     });
   });
 

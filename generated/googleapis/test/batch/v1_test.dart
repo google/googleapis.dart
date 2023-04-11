@@ -221,6 +221,7 @@ api.AgentTask buildAgentTask() {
     o.spec = buildTaskSpec();
     o.status = buildTaskStatus();
     o.task = 'foo';
+    o.taskSource = 'foo';
   }
   buildCounterAgentTask--;
   return o;
@@ -241,6 +242,10 @@ void checkAgentTask(api.AgentTask o) {
     checkTaskStatus(o.status!);
     unittest.expect(
       o.task!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.taskSource!,
       unittest.equals('foo'),
     );
   }

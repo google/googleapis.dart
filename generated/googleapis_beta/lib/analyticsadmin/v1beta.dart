@@ -3452,9 +3452,10 @@ class GoogleAnalyticsAdminV1betaCustomDimension {
   ///
   /// If this is a user-scoped dimension, then this is the user property name.
   /// If this is an event-scoped dimension, then this is the event parameter
-  /// name. May only contain alphanumeric and underscore characters, starting
-  /// with a letter. Max length of 24 characters for user-scoped dimensions, 40
-  /// characters for event-scoped dimensions.
+  /// name. If this is an item-scoped dimension, then this is the parameter name
+  /// found in the eCommerce items array. May only contain alphanumeric and
+  /// underscore characters, starting with a letter. Max length of 24 characters
+  /// for user-scoped dimensions, 40 characters for event-scoped dimensions.
   ///
   /// Required. Immutable.
   core.String? parameterName;
@@ -3466,6 +3467,7 @@ class GoogleAnalyticsAdminV1betaCustomDimension {
   /// - "DIMENSION_SCOPE_UNSPECIFIED" : Scope unknown or not specified.
   /// - "EVENT" : Dimension scoped to an event.
   /// - "USER" : Dimension scoped to a user.
+  /// - "ITEM" : Dimension scoped to eCommerce items
   core.String? scope;
 
   GoogleAnalyticsAdminV1betaCustomDimension({

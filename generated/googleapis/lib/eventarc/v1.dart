@@ -1868,8 +1868,6 @@ class Channel {
   ///
   /// It must match the pattern `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `.
-  ///
-  /// Optional.
   core.String? cryptoKeyName;
 
   /// The resource name of the channel.
@@ -3248,7 +3246,7 @@ class Trigger {
   /// EventDataContentType specifies the type of payload in MIME format that is
   /// expected from the CloudEvent data field.
   ///
-  /// This will be set to `application/json` if the value is not defined.
+  /// This is set to `application/json` if the value is not defined.
   ///
   /// Optional.
   core.String? eventDataContentType;

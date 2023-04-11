@@ -2821,9 +2821,9 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_A100" : Nvidia A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
-  /// - "TPU_V4" : TPU v4.
   /// - "TPU_V2_POD" : TPU v2 POD.
   /// - "TPU_V3_POD" : TPU v3 POD.
+  /// - "TPU_V4_POD" : TPU v4 POD.
   core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig({

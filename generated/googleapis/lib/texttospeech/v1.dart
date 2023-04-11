@@ -180,7 +180,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [parent] - The resource states of the request in the form of `projects / *
-  /// /locations / * /voices / * `.
+  /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

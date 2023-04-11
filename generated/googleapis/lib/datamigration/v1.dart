@@ -2709,6 +2709,16 @@ class AlloyDbConnectionProfile {
 
 /// Settings for creating an AlloyDB cluster.
 class AlloyDbSettings {
+  /// The encryption config can be specified to encrypt the data disks and other
+  /// persistent data resources of a cluster with a customer-managed encryption
+  /// key (CMEK).
+  ///
+  /// When this field is not specified, the cluster will then use default
+  /// encryption scheme to protect the user data.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfig;
+
   /// Input only.
   ///
   /// Initial user to setup during cluster creation. Required.
@@ -2734,6 +2744,7 @@ class AlloyDbSettings {
   core.String? vpcNetwork;
 
   AlloyDbSettings({
+    this.encryptionConfig,
     this.initialUser,
     this.labels,
     this.primaryInstanceSettings,
@@ -2742,6 +2753,10 @@ class AlloyDbSettings {
 
   AlloyDbSettings.fromJson(core.Map json_)
       : this(
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? EncryptionConfig.fromJson(json_['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           initialUser: json_.containsKey('initialUser')
               ? UserPassword.fromJson(
                   json_['initialUser'] as core.Map<core.String, core.dynamic>)
@@ -2765,6 +2780,7 @@ class AlloyDbSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (initialUser != null) 'initialUser': initialUser!,
         if (labels != null) 'labels': labels!,
         if (primaryInstanceSettings != null)
@@ -4105,7 +4121,7 @@ class DatabaseEntity {
   /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
   /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
   /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
-  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
   /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
   core.String? entityType;
 
@@ -4391,6 +4407,31 @@ class DumpFlags {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EncryptionConfig describes the encryption config of a cluster that is
+/// encrypted with a CMEK (customer-managed encryption key).
+class EncryptionConfig {
+  /// The fully-qualified resource name of the KMS key.
+  ///
+  /// Each Cloud KMS key is regionalized and has the following format:
+  /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
+  core.String? kmsKeyName;
+
+  EncryptionConfig({
+    this.kmsKeyName,
+  });
+
+  EncryptionConfig.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// Details of the mappings of a database entity.
 class EntityMapping {
@@ -6710,7 +6751,7 @@ class SynonymEntity {
   /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
   /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
   /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
-  /// - "DATABASE_ENTITY_TYPE_MATERIAL_VIEW" : Material View.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
   /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
   core.String? sourceType;
 

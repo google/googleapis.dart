@@ -1188,7 +1188,7 @@ class ProjectsHistoriesExecutionsStepsResource {
   /// May return any of the following canonical error codes: - PERMISSION_DENIED
   /// - if the user is not authorized to write project - INVALID_ARGUMENT - if
   /// the request is malformed - FAILED_PRECONDITION - if the requested state
-  /// transition is illegal, e.g try to upload a duplicate xml file or a file
+  /// transition is illegal, e.g. try to upload a duplicate xml file or a file
   /// too large. - NOT_FOUND - if the containing Execution does not exist
   ///
   /// [request] - The metadata request object.
@@ -2581,7 +2581,7 @@ typedef EnvironmentDimensionValueEntry = $Entry;
 /// device configurations - a jenkins job with a build step followed by a test
 /// step The maximum size of an execution message is 1 MiB. An Execution can be
 /// updated until its state is set to COMPLETE at which point it becomes
-/// immutable. Next tag: 16
+/// immutable. Next tag: 17
 class Execution {
   /// The time when the Execution status transitioned to COMPLETE.
   ///
@@ -4604,7 +4604,7 @@ typedef Status = $Status;
 /// instance two steps might have the same start time if some operations are
 /// done in parallel). Here is an example, let's consider that we have a
 /// continuous build is executing a test runner for each iteration. The workflow
-/// would look like: - user creates a Execution with id 1 - user creates an
+/// would look like: - user creates a Execution with id 1 - user creates a
 /// TestExecutionStep with id 100 for Execution 1 - user update
 /// TestExecutionStep with id 100 to add a raw xml log + the service parses the
 /// xml logs and returns a TestExecutionStep with updated TestResult(s). - user

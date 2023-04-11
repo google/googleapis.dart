@@ -1366,7 +1366,8 @@ class Channel {
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
-  /// Optional.
+  /// A payload is data that is sent in the body of an HTTP POST, PUT, or PATCH
+  /// message and contains important information about the request. Optional.
   core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.

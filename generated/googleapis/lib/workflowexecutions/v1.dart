@@ -472,7 +472,17 @@ class Execution {
   /// - "SUCCEEDED" : The execution finished successfully.
   /// - "FAILED" : The execution failed with an error.
   /// - "CANCELLED" : The execution was stopped intentionally.
+  /// - "UNAVAILABLE" : Execution data is unavailable. See the `state_error`
+  /// field.
   core.String? state;
+
+  /// Error regarding the state of the Execution resource.
+  ///
+  /// For example, this field will have error details if the Execution data is
+  /// unavailable due to revoked KMS key permissions.
+  ///
+  /// Output only.
+  StateError? stateError;
 
   /// Status tracks the current steps and progress data of this execution.
   ///
@@ -495,6 +505,7 @@ class Execution {
     this.result,
     this.startTime,
     this.state,
+    this.stateError,
     this.status,
     this.workflowRevisionId,
   });
@@ -534,6 +545,10 @@ class Execution {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateError: json_.containsKey('stateError')
+              ? StateError.fromJson(
+                  json_['stateError'] as core.Map<core.String, core.dynamic>)
+              : null,
           status: json_.containsKey('status')
               ? Status.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
@@ -554,6 +569,7 @@ class Execution {
         if (result != null) 'result': result!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (stateError != null) 'stateError': stateError!,
         if (status != null) 'status': status!,
         if (workflowRevisionId != null)
           'workflowRevisionId': workflowRevisionId!,
@@ -701,6 +717,9 @@ class StackTraceElement {
         if (step != null) 'step': step!,
       };
 }
+
+/// Describes an error related to the current state of the Execution resource.
+typedef StateError = $StateError;
 
 /// Represents the current status of this execution.
 class Status {

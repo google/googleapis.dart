@@ -9,7 +9,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Tasks API - v1
+/// Google Tasks API - v1
 ///
 /// The Google Tasks API lets you manage your tasks and task lists.
 ///

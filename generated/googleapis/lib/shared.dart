@@ -1085,13 +1085,10 @@ class $Asset {
   /// Media ID of the uploaded asset.
   ///
   /// This is a unique identifier for the asset. This ID can be passed to other
-  /// API calls, e.g. CreateCreative to associate the asset with a creative.
-  /// **On April 5, 2023, the value of this ID will be updated. Before this
-  /// date, we recommend that you stop using any cached media IDs when creating
-  /// or updating creatives, and instead upload assets immediately before using
-  /// them for creative production.** **After April 5, you can update cached
-  /// media IDs to the new values by retrieving them from associated creative
-  /// resources or re-uploading them.**
+  /// API calls, e.g. CreateCreative to associate the asset with a creative. The
+  /// Media ID space updated on **April 5, 2023**. Update media IDs cached
+  /// before **April 5, 2023** by retrieving the new media ID from associated
+  /// creative resources or re-uploading the asset.
   core.String? mediaId;
 
   $Asset({
@@ -4530,6 +4527,109 @@ class $CreativeGroupAssignment {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : CryptoKeyVersionTemplate
+/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
+class $CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  $CryptoKeyVersionTemplate({
+    this.algorithm,
+    this.protectionLevel,
+  });
+
+  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
+      : this(
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
+              : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -6308,6 +6408,8 @@ class $EgressFrom {
 /// - androidpublisher:v3 : DeactivateBasePlanRequest
 /// - androidpublisher:v3 : DeactivateSubscriptionOfferRequest
 /// - androidpublisher:v3 : DeveloperInitiatedCancellation
+/// - androidpublisher:v3 : ExternalTransactionTestPurchase
+/// - androidpublisher:v3 : FullRefund
 /// - androidpublisher:v3 : MigrateBasePlanPricesResponse
 /// - androidpublisher:v3 : ReplacementCancellation
 /// - androidpublisher:v3 : SystemInitiatedCancellation
@@ -6446,6 +6548,7 @@ class $EgressFrom {
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
+/// - container:v1 : AdditionalPodRangesConfig
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
 /// - containeranalysis:v1 : Empty
@@ -16484,7 +16587,6 @@ class $Request01 {
 
 /// Used by:
 ///
-/// - privateca:v1 : DisableCertificateAuthorityRequest
 /// - privateca:v1 : EnableCertificateAuthorityRequest
 /// - privateca:v1 : FetchCaCertsRequest
 /// - privateca:v1 : UndeleteCertificateAuthorityRequest
@@ -17905,6 +18007,39 @@ class $StartPageToken {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (startPageToken != null) 'startPageToken': startPageToken!,
+      };
+}
+
+/// Used by:
+///
+/// - workflowexecutions:v1 : StateError
+/// - workflows:v1 : StateError
+class $StateError {
+  /// Provides specifics about the error.
+  core.String? details;
+
+  /// The type of this state error.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : No type specified.
+  /// - "KMS_ERROR" : Caused by an issue with KMS.
+  core.String? type;
+
+  $StateError({
+    this.details,
+    this.type,
+  });
+
+  $StateError.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (type != null) 'type': type!,
       };
 }
 

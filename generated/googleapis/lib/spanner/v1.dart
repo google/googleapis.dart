@@ -2282,6 +2282,72 @@ class ProjectsInstancesDatabasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates a Cloud Spanner database.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// updating the database. If the named database does not exist, returns
+  /// `NOT_FOUND`. While the operation is pending: * The database's reconciling
+  /// field is set to true. * Cancelling the operation is best-effort. If the
+  /// cancellation succeeds, the operation metadata's cancel_time is set, the
+  /// updates are reverted, and the operation terminates with a `CANCELLED`
+  /// status. * New UpdateDatabase requests will return a `FAILED_PRECONDITION`
+  /// error until the pending operation is done (returns successfully or with
+  /// error). * Reading the database via the API continues to give the
+  /// pre-request values. Upon completion of the returned operation: * The new
+  /// values are in effect and readable via the API. * The database's
+  /// reconciling field becomes false. The returned long-running operation will
+  /// have a name of the format `projects//instances//databases//operations/`
+  /// and can be used to track the database modification. The metadata field
+  /// type is UpdateDatabaseMetadata. The response field type is Database, if
+  /// successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the database. Values are of the form
+  /// `projects//instances//databases/`, where `` is as specified in the `CREATE
+  /// DATABASE` statement. This name can be passed to other API methods to
+  /// identify the database.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Currently, only
+  /// `enable_drop_protection` field can be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Database request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Create a new database by restoring from a completed backup.
   ///
   /// The new database must be in the same project and in an instance with the
@@ -4792,6 +4858,11 @@ class Database {
   /// Output only.
   core.String? earliestVersionTime;
 
+  /// Whether drop protection is enabled for this database.
+  ///
+  /// Defaults to false, if not set.
+  core.bool? enableDropProtection;
+
   /// For databases that are using customer managed encryption, this field
   /// contains the encryption configuration for the database.
   ///
@@ -4822,6 +4893,13 @@ class Database {
   ///
   /// Required.
   core.String? name;
+
+  /// If true, the database is being updated.
+  ///
+  /// If false, there are no ongoing update operations for the database.
+  ///
+  /// Output only.
+  core.bool? reconciling;
 
   /// Applicable only for restored databases.
   ///
@@ -4860,9 +4938,11 @@ class Database {
     this.databaseDialect,
     this.defaultLeader,
     this.earliestVersionTime,
+    this.enableDropProtection,
     this.encryptionConfig,
     this.encryptionInfo,
     this.name,
+    this.reconciling,
     this.restoreInfo,
     this.state,
     this.versionRetentionPeriod,
@@ -4882,6 +4962,9 @@ class Database {
           earliestVersionTime: json_.containsKey('earliestVersionTime')
               ? json_['earliestVersionTime'] as core.String
               : null,
+          enableDropProtection: json_.containsKey('enableDropProtection')
+              ? json_['enableDropProtection'] as core.bool
+              : null,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4893,6 +4976,9 @@ class Database {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
           restoreInfo: json_.containsKey('restoreInfo')
               ? RestoreInfo.fromJson(
                   json_['restoreInfo'] as core.Map<core.String, core.dynamic>)
@@ -4910,9 +4996,12 @@ class Database {
         if (defaultLeader != null) 'defaultLeader': defaultLeader!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
+        if (enableDropProtection != null)
+          'enableDropProtection': enableDropProtection!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
         if (restoreInfo != null) 'restoreInfo': restoreInfo!,
         if (state != null) 'state': state!,
         if (versionRetentionPeriod != null)

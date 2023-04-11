@@ -165,7 +165,6 @@ api.BuildConfig buildBuildConfig() {
   buildCounterBuildConfig++;
   if (buildCounterBuildConfig < 3) {
     o.build = 'foo';
-    o.buildpackStack = 'foo';
     o.dockerRegistry = 'foo';
     o.dockerRepository = 'foo';
     o.entryPoint = 'foo';
@@ -184,10 +183,6 @@ void checkBuildConfig(api.BuildConfig o) {
   if (buildCounterBuildConfig < 3) {
     unittest.expect(
       o.build!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.buildpackStack!,
       unittest.equals('foo'),
     );
     unittest.expect(

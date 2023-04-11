@@ -1484,7 +1484,7 @@
             }
         }
     },
-    "revision": "20230321",
+    "revision": "20230401",
     "rootUrl": "https://ml.googleapis.com/",
     "schemas": {
         "GoogleApi__HttpBody": {
@@ -1819,9 +1819,9 @@
                         "NVIDIA_TESLA_A100",
                         "TPU_V2",
                         "TPU_V3",
-                        "TPU_V4",
                         "TPU_V2_POD",
-                        "TPU_V3_POD"
+                        "TPU_V3_POD",
+                        "TPU_V4_POD"
                     ],
                     "enumDescriptions": [
                         "Unspecified accelerator type. Default to no GPU.",
@@ -1833,9 +1833,9 @@
                         "Nvidia A100 GPU.",
                         "TPU v2.",
                         "TPU v3.",
-                        "TPU v4.",
                         "TPU v2 POD.",
-                        "TPU v3 POD."
+                        "TPU v3 POD.",
+                        "TPU v4 POD."
                     ],
                     "type": "string"
                 }
@@ -1935,9 +1935,9 @@
                             "NVIDIA_TESLA_A100",
                             "TPU_V2",
                             "TPU_V3",
-                            "TPU_V4",
                             "TPU_V2_POD",
-                            "TPU_V3_POD"
+                            "TPU_V3_POD",
+                            "TPU_V4_POD"
                         ],
                         "enumDescriptions": [
                             "Unspecified accelerator type. Default to no GPU.",
@@ -1949,9 +1949,9 @@
                             "Nvidia A100 GPU.",
                             "TPU v2.",
                             "TPU v3.",
-                            "TPU v4.",
                             "TPU v2 POD.",
-                            "TPU v3 POD."
+                            "TPU v3 POD.",
+                            "TPU v4 POD."
                         ],
                         "type": "string"
                     },

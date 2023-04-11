@@ -32,6 +32,7 @@
 ///   - [EditsListingsResource]
 ///   - [EditsTestersResource]
 ///   - [EditsTracksResource]
+/// - [ExternaltransactionsResource]
 /// - [GeneratedapksResource]
 /// - [GrantsResource]
 /// - [InappproductsResource]
@@ -87,6 +88,8 @@ class AndroidPublisherApi {
 
   ApplicationsResource get applications => ApplicationsResource(_requester);
   EditsResource get edits => EditsResource(_requester);
+  ExternaltransactionsResource get externaltransactions =>
+      ExternaltransactionsResource(_requester);
   GeneratedapksResource get generatedapks => GeneratedapksResource(_requester);
   GrantsResource get grants => GrantsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
@@ -2289,6 +2292,148 @@ class EditsTracksResource {
       queryParams: queryParams_,
     );
     return Track.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ExternaltransactionsResource {
+  final commons.ApiRequester _requester;
+
+  ExternaltransactionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new external transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this external transaction
+  /// will be created. Format: applications/{package_name}
+  /// Value must have pattern `^applications/\[^/\]+$`.
+  ///
+  /// [externalTransactionId] - Required. The id to use for the external
+  /// transaction. Must be unique across all other transactions for the app.
+  /// This value should be 1-63 characters and valid characters are /a-z0-9_-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> createexternaltransaction(
+    ExternalTransaction request,
+    core.String parent, {
+    core.String? externalTransactionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (externalTransactionId != null)
+        'externalTransactionId': [externalTransactionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/' +
+        core.Uri.encodeFull('$parent') +
+        '/externalTransactions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an existing external transaction.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the external transaction to retrieve.
+  /// Format:
+  /// applications/{package_name}/externalTransactions/{external_transaction}
+  /// Value must have pattern
+  /// `^applications/\[^/\]+/externalTransactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> getexternaltransaction(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Refunds or partially refunds an existing external transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the external transaction that will be
+  /// refunded. Format:
+  /// applications/{package_name}/externalTransactions/{external_transaction}
+  /// Value must have pattern
+  /// `^applications/\[^/\]+/externalTransactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> refundexternaltransaction(
+    RefundExternalTransactionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$name') + ':refund';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6751,6 +6896,243 @@ class ExternalAccountIdentifiers {
       };
 }
 
+/// Details of an external subscription.
+class ExternalSubscription {
+  /// The type of the external subscription.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Unspecified, do not use.
+  /// - "RECURRING" : This is a recurring subscription where the user is charged
+  /// every billing cycle.
+  /// - "PREPAID" : This is a prepaid subscription where the user pays up front.
+  core.String? subscriptionType;
+
+  ExternalSubscription({
+    this.subscriptionType,
+  });
+
+  ExternalSubscription.fromJson(core.Map json_)
+      : this(
+          subscriptionType: json_.containsKey('subscriptionType')
+              ? json_['subscriptionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptionType != null) 'subscriptionType': subscriptionType!,
+      };
+}
+
+/// The details of an external transaction.
+class ExternalTransaction {
+  /// The time when this transaction was created.
+  ///
+  /// This is the time when Google was notified of the transaction.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The current transaction amount before tax.
+  ///
+  /// This represents the current pre-tax amount including any refunds that may
+  /// have been applied to this transaction.
+  ///
+  /// Output only.
+  Price? currentPreTaxAmount;
+
+  /// The current tax amount.
+  ///
+  /// This represents the current tax amount including any refunds that may have
+  /// been applied to this transaction.
+  ///
+  /// Output only.
+  Price? currentTaxAmount;
+
+  /// The id of this transaction.
+  ///
+  /// All transaction ids under the same package name must be unique. Set when
+  /// creating the external transaction.
+  ///
+  /// Output only.
+  core.String? externalTransactionId;
+
+  /// This is a one-time transaction and not part of a subscription.
+  OneTimeExternalTransaction? oneTimeTransaction;
+
+  /// The original transaction amount before taxes.
+  ///
+  /// This represents the pre-tax amount originally notified to Google before
+  /// any refunds were applied.
+  ///
+  /// Required.
+  Price? originalPreTaxAmount;
+
+  /// The original tax amount.
+  ///
+  /// This represents the tax amount originally notified to Google before any
+  /// refunds were applied.
+  ///
+  /// Required.
+  Price? originalTaxAmount;
+
+  /// The resource name of the external transaction.
+  ///
+  /// The package name of the application the inapp products were sold (for
+  /// example, 'com.some.app').
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  /// This transaction is part of a recurring series of transactions.
+  RecurringExternalTransaction? recurringTransaction;
+
+  /// If set, this transaction was a test purchase.
+  ///
+  /// Google will not charge for a test transaction.
+  ///
+  /// Output only.
+  ExternalTransactionTestPurchase? testPurchase;
+
+  /// The current state of the transaction.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRANSACTION_STATE_UNSPECIFIED" : Unspecified transaction state. Not
+  /// used.
+  /// - "TRANSACTION_REPORTED" : The transaction has been successfully reported
+  /// to Google.
+  /// - "TRANSACTION_CANCELED" : The transaction has been fully refunded.
+  core.String? transactionState;
+
+  /// The time when the transaction was completed.
+  ///
+  /// Required.
+  core.String? transactionTime;
+
+  /// User address for tax computation.
+  ///
+  /// Required.
+  ExternalTransactionAddress? userTaxAddress;
+
+  ExternalTransaction({
+    this.createTime,
+    this.currentPreTaxAmount,
+    this.currentTaxAmount,
+    this.externalTransactionId,
+    this.oneTimeTransaction,
+    this.originalPreTaxAmount,
+    this.originalTaxAmount,
+    this.packageName,
+    this.recurringTransaction,
+    this.testPurchase,
+    this.transactionState,
+    this.transactionTime,
+    this.userTaxAddress,
+  });
+
+  ExternalTransaction.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          currentPreTaxAmount: json_.containsKey('currentPreTaxAmount')
+              ? Price.fromJson(json_['currentPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          currentTaxAmount: json_.containsKey('currentTaxAmount')
+              ? Price.fromJson(json_['currentTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalTransactionId: json_.containsKey('externalTransactionId')
+              ? json_['externalTransactionId'] as core.String
+              : null,
+          oneTimeTransaction: json_.containsKey('oneTimeTransaction')
+              ? OneTimeExternalTransaction.fromJson(json_['oneTimeTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originalPreTaxAmount: json_.containsKey('originalPreTaxAmount')
+              ? Price.fromJson(json_['originalPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originalTaxAmount: json_.containsKey('originalTaxAmount')
+              ? Price.fromJson(json_['originalTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          recurringTransaction: json_.containsKey('recurringTransaction')
+              ? RecurringExternalTransaction.fromJson(
+                  json_['recurringTransaction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          testPurchase: json_.containsKey('testPurchase')
+              ? ExternalTransactionTestPurchase.fromJson(
+                  json_['testPurchase'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transactionState: json_.containsKey('transactionState')
+              ? json_['transactionState'] as core.String
+              : null,
+          transactionTime: json_.containsKey('transactionTime')
+              ? json_['transactionTime'] as core.String
+              : null,
+          userTaxAddress: json_.containsKey('userTaxAddress')
+              ? ExternalTransactionAddress.fromJson(json_['userTaxAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (currentPreTaxAmount != null)
+          'currentPreTaxAmount': currentPreTaxAmount!,
+        if (currentTaxAmount != null) 'currentTaxAmount': currentTaxAmount!,
+        if (externalTransactionId != null)
+          'externalTransactionId': externalTransactionId!,
+        if (oneTimeTransaction != null)
+          'oneTimeTransaction': oneTimeTransaction!,
+        if (originalPreTaxAmount != null)
+          'originalPreTaxAmount': originalPreTaxAmount!,
+        if (originalTaxAmount != null) 'originalTaxAmount': originalTaxAmount!,
+        if (packageName != null) 'packageName': packageName!,
+        if (recurringTransaction != null)
+          'recurringTransaction': recurringTransaction!,
+        if (testPurchase != null) 'testPurchase': testPurchase!,
+        if (transactionState != null) 'transactionState': transactionState!,
+        if (transactionTime != null) 'transactionTime': transactionTime!,
+        if (userTaxAddress != null) 'userTaxAddress': userTaxAddress!,
+      };
+}
+
+/// User's address for the external transaction.
+class ExternalTransactionAddress {
+  /// Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  ExternalTransactionAddress({
+    this.regionCode,
+  });
+
+  ExternalTransactionAddress.fromJson(core.Map json_)
+      : this(
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Represents a transaction performed using a test account.
+///
+/// These transactions will not be charged by Google.
+typedef ExternalTransactionTestPurchase = $Empty;
+
 /// Defines an APK available for this application that is hosted externally and
 /// not uploaded to Google Play.
 ///
@@ -6902,6 +7284,9 @@ class ExternallyHostedApk {
         if (versionName != null) 'versionName': versionName!,
       };
 }
+
+/// A full refund of the remaining amount of a transaction.
+typedef FullRefund = $Empty;
 
 /// Response to list generated APKs.
 class GeneratedApksListResponse {
@@ -8095,6 +8480,32 @@ class OfferTag {
       };
 }
 
+/// Represents a one-time transaction.
+class OneTimeExternalTransaction {
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Retrieved from the client when the
+  /// alternative billing flow is launched.
+  core.String? externalTransactionToken;
+
+  OneTimeExternalTransaction({
+    this.externalTransactionToken,
+  });
+
+  OneTimeExternalTransaction.fromJson(core.Map json_)
+      : this(
+          externalTransactionToken:
+              json_.containsKey('externalTransactionToken')
+                  ? json_['externalTransactionToken'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalTransactionToken != null)
+          'externalTransactionToken': externalTransactionToken!,
+      };
+}
+
 /// Pricing information for any new locations Play may launch in.
 class OtherRegionsBasePlanConfig {
   /// Price in EUR to use for any new locations Play may launch in.
@@ -8273,6 +8684,46 @@ class OtherRegionsSubscriptionOfferPhasePrices {
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
 typedef PageInfo = $PageInfo;
+
+/// A partial refund of a transaction.
+class PartialRefund {
+  /// A unique id distinguishing this partial refund.
+  ///
+  /// If the refund is successful, subsequent refunds with the same id will
+  /// fail. Must be unique across refunds for one individual transaction.
+  ///
+  /// Required.
+  core.String? refundId;
+
+  /// The pre-tax amount of the partial refund.
+  ///
+  /// Should be less than the remaining pre-tax amount of the transaction.
+  ///
+  /// Required.
+  Price? refundPreTaxAmount;
+
+  PartialRefund({
+    this.refundId,
+    this.refundPreTaxAmount,
+  });
+
+  PartialRefund.fromJson(core.Map json_)
+      : this(
+          refundId: json_.containsKey('refundId')
+              ? json_['refundId'] as core.String
+              : null,
+          refundPreTaxAmount: json_.containsKey('refundPreTaxAmount')
+              ? Price.fromJson(json_['refundPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (refundId != null) 'refundId': refundId!,
+        if (refundPreTaxAmount != null)
+          'refundPreTaxAmount': refundPreTaxAmount!,
+      };
+}
 
 /// Information specific to a subscription in paused state.
 class PausedStateContext {
@@ -8558,6 +9009,101 @@ class ProductPurchase {
 
 /// Request for the product.purchases.acknowledge API.
 typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
+
+/// Represents a transaction that is part of a recurring series of payments.
+///
+/// This can be a subscription or a one-time product with multiple payments
+/// (such as preorder).
+class RecurringExternalTransaction {
+  /// Details of an external subscription.
+  ExternalSubscription? externalSubscription;
+
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Retrieved from the client when the
+  /// alternative billing flow is launched. Required only for the initial
+  /// purchase.
+  core.String? externalTransactionToken;
+
+  /// The external transaction id of the first transaction of this recurring
+  /// series of transactions.
+  ///
+  /// For example, for a subscription this would be the transaction id of the
+  /// first payment. Required when creating recurring external transactions.
+  core.String? initialExternalTransactionId;
+
+  RecurringExternalTransaction({
+    this.externalSubscription,
+    this.externalTransactionToken,
+    this.initialExternalTransactionId,
+  });
+
+  RecurringExternalTransaction.fromJson(core.Map json_)
+      : this(
+          externalSubscription: json_.containsKey('externalSubscription')
+              ? ExternalSubscription.fromJson(json_['externalSubscription']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalTransactionToken:
+              json_.containsKey('externalTransactionToken')
+                  ? json_['externalTransactionToken'] as core.String
+                  : null,
+          initialExternalTransactionId:
+              json_.containsKey('initialExternalTransactionId')
+                  ? json_['initialExternalTransactionId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalSubscription != null)
+          'externalSubscription': externalSubscription!,
+        if (externalTransactionToken != null)
+          'externalTransactionToken': externalTransactionToken!,
+        if (initialExternalTransactionId != null)
+          'initialExternalTransactionId': initialExternalTransactionId!,
+      };
+}
+
+/// A request to refund an existing external transaction.
+class RefundExternalTransactionRequest {
+  /// A full-amount refund.
+  FullRefund? fullRefund;
+
+  /// A partial refund.
+  PartialRefund? partialRefund;
+
+  /// The time that the transaction was refunded.
+  ///
+  /// Required.
+  core.String? refundTime;
+
+  RefundExternalTransactionRequest({
+    this.fullRefund,
+    this.partialRefund,
+    this.refundTime,
+  });
+
+  RefundExternalTransactionRequest.fromJson(core.Map json_)
+      : this(
+          fullRefund: json_.containsKey('fullRefund')
+              ? FullRefund.fromJson(
+                  json_['fullRefund'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partialRefund: json_.containsKey('partialRefund')
+              ? PartialRefund.fromJson(
+                  json_['partialRefund'] as core.Map<core.String, core.dynamic>)
+              : null,
+          refundTime: json_.containsKey('refundTime')
+              ? json_['refundTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (partialRefund != null) 'partialRefund': partialRefund!,
+        if (refundTime != null) 'refundTime': refundTime!,
+      };
+}
 
 /// Configuration for a base plan specific to a region.
 class RegionalBasePlanConfig {

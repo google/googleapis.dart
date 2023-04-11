@@ -22031,11 +22031,17 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// Defaults to `us-west1`.
   core.String? analyticsRegion;
 
-  /// Name of the customer project's VPC network.
+  /// Compute Engine network used for Service Networking to be peered with
+  /// Apigee runtime instances.
   ///
-  /// If provided, the network needs to be peered through Service Networking. If
-  /// none is provided, the organization will have access only to the public
-  /// internet.
+  /// See
+  /// [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
+  /// Apigee also supports shared VPC (that is, the host network project is not
+  /// the same as the one that is peering with Apigee). See
+  /// [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To
+  /// use a shared VPC network, use the following format:
+  /// `projects/{host-project-id}/{region}/networks/{network-name}`. For
+  /// example: `projects/my-sharedvpc-host/global/networks/mynetwork`
   core.String? authorizedNetwork;
 
   /// Cloud Platform location for the runtime instance.

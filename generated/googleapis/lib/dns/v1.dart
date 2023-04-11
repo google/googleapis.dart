@@ -4647,7 +4647,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
 }
 
 class RRSetRoutingPolicyLoadBalancerTarget {
-  /// The frontend IP address of the
+  /// The frontend IP address of the Load Balancer to health check.
   core.String? ipAddress;
 
   ///
@@ -4658,28 +4658,28 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   core.String? ipProtocol;
   core.String? kind;
 
+  /// The type of Load Balancer specified by this target.
   ///
+  /// Must match the configuration of the Load Balancer located at the
+  /// LoadBalancerTarget's IP address/port and region.
   /// Possible string values are:
   /// - "none"
   /// - "regionalL4ilb"
   core.String? loadBalancerType;
 
-  /// The fully qualified url of the network on which the ILB is
-  core.String? networkUrl;
-
-  /// Load Balancer to health check.
-  ///
-  /// The configured port of the Load Balancer.
-  core.String? port;
-
-  /// present.
+  /// The fully qualified url of the network on which the ILB is present.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  /// The configured port of the Load Balancer.
+  core.String? port;
+
   /// The project ID in which the ILB exists.
   core.String? project;
 
-  /// The region for regional ILBs.
+  /// The region in which the ILB exists.
   core.String? region;
 
   RRSetRoutingPolicyLoadBalancerTarget({

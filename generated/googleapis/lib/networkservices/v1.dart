@@ -25,11 +25,6 @@
 ///     - [ProjectsLocationsGrpcRoutesResource]
 ///     - [ProjectsLocationsHttpRoutesResource]
 ///     - [ProjectsLocationsMeshesResource]
-///     - [ProjectsLocationsMulticastConsumerAssociationsResource]
-///     - [ProjectsLocationsMulticastDomainActivationsResource]
-///     - [ProjectsLocationsMulticastDomainsResource]
-///     - [ProjectsLocationsMulticastGroupDefinitionsResource]
-///     - [ProjectsLocationsMulticastGroupsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServiceBindingsResource]
 ///     - [ProjectsLocationsTcpRoutesResource]
@@ -95,19 +90,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsHttpRoutesResource(_requester);
   ProjectsLocationsMeshesResource get meshes =>
       ProjectsLocationsMeshesResource(_requester);
-  ProjectsLocationsMulticastConsumerAssociationsResource
-      get multicastConsumerAssociations =>
-          ProjectsLocationsMulticastConsumerAssociationsResource(_requester);
-  ProjectsLocationsMulticastDomainActivationsResource
-      get multicastDomainActivations =>
-          ProjectsLocationsMulticastDomainActivationsResource(_requester);
-  ProjectsLocationsMulticastDomainsResource get multicastDomains =>
-      ProjectsLocationsMulticastDomainsResource(_requester);
-  ProjectsLocationsMulticastGroupDefinitionsResource
-      get multicastGroupDefinitions =>
-          ProjectsLocationsMulticastGroupDefinitionsResource(_requester);
-  ProjectsLocationsMulticastGroupsResource get multicastGroups =>
-      ProjectsLocationsMulticastGroupsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServiceBindingsResource get serviceBindings =>
@@ -2281,819 +2263,6 @@ class ProjectsLocationsMeshesResource {
   }
 }
 
-class ProjectsLocationsMulticastConsumerAssociationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsMulticastConsumerAssociationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsMulticastDomainActivationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsMulticastDomainActivationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomainActivations/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomainActivations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomainActivations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsMulticastDomainsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsMulticastDomainsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomains/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomains/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastDomains/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsMulticastGroupDefinitionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsMulticastGroupDefinitionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupDefinitions/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupDefinitions/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupDefinitions/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsMulticastGroupsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsMulticastGroupsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroups/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroups/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroups/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -3232,13 +2401,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -4529,6 +3691,24 @@ typedef Expr = $Expr;
 /// along with any policy configurations. Routes have reference to to Gateways
 /// to dictate how requests should be routed by this Gateway.
 class Gateway {
+  /// Zero or one IPv4-address on which the Gateway will receive the traffic.
+  ///
+  /// When no address is provided, an IP from the subnetwork is allocated This
+  /// field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
+  /// type 'OPEN_MESH' listen on 0.0.0.0.
+  ///
+  /// Optional.
+  core.List<core.String>? addresses;
+
+  /// A fully-qualified Certificates URL reference.
+  ///
+  /// The proxy presents a Certificate (selected based on SNI) when establishing
+  /// a TLS connection. This feature only applies to gateways of type
+  /// 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.List<core.String>? certificateUrls;
+
   /// The timestamp when the resource was created.
   ///
   /// Output only.
@@ -4541,6 +3721,16 @@ class Gateway {
   /// Optional.
   core.String? description;
 
+  /// A fully-qualified GatewaySecurityPolicy URL reference.
+  ///
+  /// Defines how a server should apply security policy to inbound (VM to Proxy)
+  /// initiated connections. For example: `projects / * /locations / *
+  /// /gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways
+  /// of type 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.String? gatewaySecurityPolicy;
+
   /// Set of label tags associated with the Gateway resource.
   ///
   /// Optional.
@@ -4552,6 +3742,15 @@ class Gateway {
   ///
   /// Required.
   core.String? name;
+
+  /// The relative resource name identifying the VPC network that is using this
+  /// configuration.
+  ///
+  /// For example: `projects / * /global/networks/network-1`. Currently, this
+  /// field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.String? network;
 
   /// One or more port numbers (1-65535), on which the Gateway will receive
   /// traffic.
@@ -4587,6 +3786,16 @@ class Gateway {
   /// Optional.
   core.String? serverTlsPolicy;
 
+  /// The relative resource name identifying the subnetwork in which this SWG is
+  /// allocated.
+  ///
+  /// For example: `projects / * /regions/us-central1/subnetworks/network-1`
+  /// Currently, this field is specific to gateways of type
+  /// 'SECURE_WEB_GATEWAY".
+  ///
+  /// Optional.
+  core.String? subnetwork;
+
   /// The type of the customer managed gateway.
   ///
   /// This field is required. If unspecified, an error is returned.
@@ -4607,25 +3816,43 @@ class Gateway {
   core.String? updateTime;
 
   Gateway({
+    this.addresses,
+    this.certificateUrls,
     this.createTime,
     this.description,
+    this.gatewaySecurityPolicy,
     this.labels,
     this.name,
+    this.network,
     this.ports,
     this.scope,
     this.selfLink,
     this.serverTlsPolicy,
+    this.subnetwork,
     this.type,
     this.updateTime,
   });
 
   Gateway.fromJson(core.Map json_)
       : this(
+          addresses: json_.containsKey('addresses')
+              ? (json_['addresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          certificateUrls: json_.containsKey('certificateUrls')
+              ? (json_['certificateUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          gatewaySecurityPolicy: json_.containsKey('gatewaySecurityPolicy')
+              ? json_['gatewaySecurityPolicy'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -4636,6 +3863,9 @@ class Gateway {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
           ports: json_.containsKey('ports')
               ? (json_['ports'] as core.List)
                   .map((value) => value as core.int)
@@ -4649,6 +3879,9 @@ class Gateway {
           serverTlsPolicy: json_.containsKey('serverTlsPolicy')
               ? json_['serverTlsPolicy'] as core.String
               : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -4656,14 +3889,20 @@ class Gateway {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
+        if (certificateUrls != null) 'certificateUrls': certificateUrls!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (gatewaySecurityPolicy != null)
+          'gatewaySecurityPolicy': gatewaySecurityPolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
         if (ports != null) 'ports': ports!,
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (serverTlsPolicy != null) 'serverTlsPolicy': serverTlsPolicy!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

@@ -5068,7 +5068,7 @@ class KeyData {
 
   /// The specifications for the key.
   ///
-  /// Immutable.
+  /// Required.
   /// Possible string values are:
   /// - "KEY_SPEC_UNSPECIFIED" : No key specification specified.
   /// - "RSA_2048" : A 2048 bit RSA key.
@@ -7219,7 +7219,7 @@ class WorkforcePoolProviderKey {
 
   /// The purpose of the key.
   ///
-  /// Immutable.
+  /// Required.
   /// Possible string values are:
   /// - "KEY_USE_UNSPECIFIED" : KeyUse unspecified.
   /// - "ENCRYPTION" : The key is used for encryption.
@@ -7547,7 +7547,7 @@ class WorkloadIdentityPoolProviderKey {
 
   /// The purpose of the key.
   ///
-  /// Immutable.
+  /// Required.
   /// Possible string values are:
   /// - "KEY_USE_UNSPECIFIED" : The key use is not known.
   /// - "ENCRYPTION" : The public key is used for encryption purposes.

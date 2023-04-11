@@ -934,6 +934,7 @@ api.DisableCertificateAuthorityRequest
   final o = api.DisableCertificateAuthorityRequest();
   buildCounterDisableCertificateAuthorityRequest++;
   if (buildCounterDisableCertificateAuthorityRequest < 3) {
+    o.ignoreDependentResources = true;
     o.requestId = 'foo';
   }
   buildCounterDisableCertificateAuthorityRequest--;
@@ -944,6 +945,7 @@ void checkDisableCertificateAuthorityRequest(
     api.DisableCertificateAuthorityRequest o) {
   buildCounterDisableCertificateAuthorityRequest++;
   if (buildCounterDisableCertificateAuthorityRequest < 3) {
+    unittest.expect(o.ignoreDependentResources!, unittest.isTrue);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -3757,6 +3759,7 @@ void main() {
       final res =
           api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
       final arg_name = 'foo';
+      final arg_ignoreDependentResources = true;
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3792,6 +3795,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['ignoreDependentResources']!.first,
+          unittest.equals('$arg_ignoreDependentResources'),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -3807,7 +3814,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name,
-          requestId: arg_requestId, $fields: arg_$fields);
+          ignoreDependentResources: arg_ignoreDependentResources,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -4399,6 +4408,7 @@ void main() {
           .certificateAuthorities;
       final arg_name = 'foo';
       final arg_ignoreActiveCertificates = true;
+      final arg_ignoreDependentResources = true;
       final arg_requestId = 'foo';
       final arg_skipGracePeriod = true;
       final arg_$fields = 'foo';
@@ -4439,6 +4449,10 @@ void main() {
           unittest.equals('$arg_ignoreActiveCertificates'),
         );
         unittest.expect(
+          queryMap['ignoreDependentResources']!.first,
+          unittest.equals('$arg_ignoreDependentResources'),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -4459,6 +4473,7 @@ void main() {
       }), true);
       final response = await res.delete(arg_name,
           ignoreActiveCertificates: arg_ignoreActiveCertificates,
+          ignoreDependentResources: arg_ignoreDependentResources,
           requestId: arg_requestId,
           skipGracePeriod: arg_skipGracePeriod,
           $fields: arg_$fields);

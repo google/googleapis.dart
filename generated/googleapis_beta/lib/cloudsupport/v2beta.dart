@@ -950,6 +950,12 @@ class Case {
   /// The issue classification applicable to this case.
   CaseClassification? classification;
 
+  /// A user-supplied email address to send case update notifications for.
+  ///
+  /// This should only be used in BYOID flows, where we cannot infer the user's
+  /// email address directly from their EUCs.
+  core.String? contactEmail;
+
   /// The time this case was created.
   ///
   /// Output only.
@@ -1050,6 +1056,7 @@ class Case {
 
   Case({
     this.classification,
+    this.contactEmail,
     this.createTime,
     this.creator,
     this.description,
@@ -1071,6 +1078,9 @@ class Case {
           classification: json_.containsKey('classification')
               ? CaseClassification.fromJson(json_['classification']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          contactEmail: json_.containsKey('contactEmail')
+              ? json_['contactEmail'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -1119,6 +1129,7 @@ class Case {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (classification != null) 'classification': classification!,
+        if (contactEmail != null) 'contactEmail': contactEmail!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
         if (description != null) 'description': description!,

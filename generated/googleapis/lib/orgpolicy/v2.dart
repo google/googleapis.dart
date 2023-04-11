@@ -1897,11 +1897,10 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   /// false.
   core.bool? reset;
 
-  /// Up to 10 policy rules are allowed.
-  ///
   /// In policies for boolean constraints, the following requirements apply: -
-  /// There must be one and only one policy rule where condition is unset. -
-  /// Boolean policy rules with conditions must set `enforced` to the opposite
+  /// There must be one and only one policy rule where condition is unset.
+  ///
+  /// - Boolean policy rules with conditions must set `enforced` to the opposite
   /// of the policy rule without a condition. - During policy evaluation, policy
   /// rules with conditions that are true for a target resource take precedence.
   core.List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>? rules;

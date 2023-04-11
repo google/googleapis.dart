@@ -939,9 +939,6 @@ class BuildConfig {
   /// Output only.
   core.String? build;
 
-  /// Specifies one of the Google provided buildpack stacks.
-  core.String? buildpackStack;
-
   /// Docker Registry to use for this deployment.
   ///
   /// This configuration is only applicable to 1st Gen functions, 2nd Gen
@@ -949,8 +946,6 @@ class BuildConfig {
   /// specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If
   /// unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may
   /// be overridden by the backend for eligible deployments.
-  ///
-  /// Optional.
   /// Possible string values are:
   /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
   /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
@@ -1018,7 +1013,6 @@ class BuildConfig {
 
   BuildConfig({
     this.build,
-    this.buildpackStack,
     this.dockerRegistry,
     this.dockerRepository,
     this.entryPoint,
@@ -1033,9 +1027,6 @@ class BuildConfig {
       : this(
           build:
               json_.containsKey('build') ? json_['build'] as core.String : null,
-          buildpackStack: json_.containsKey('buildpackStack')
-              ? json_['buildpackStack'] as core.String
-              : null,
           dockerRegistry: json_.containsKey('dockerRegistry')
               ? json_['dockerRegistry'] as core.String
               : null,
@@ -1073,7 +1064,6 @@ class BuildConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (build != null) 'build': build!,
-        if (buildpackStack != null) 'buildpackStack': buildpackStack!,
         if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
@@ -1297,8 +1287,8 @@ class Function_ {
   /// response to a condition in another service.
   EventTrigger? eventTrigger;
 
-  /// Resource name of a KMS crypto key (managed by the user) used to
-  /// encrypt/decrypt function resources.
+  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
+  /// to encrypt/decrypt function resources.
   ///
   /// It must match the pattern
   /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1424,9 +1414,9 @@ typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlRequest {
-  /// Resource name of a KMS crypto key (managed by the user) used to
-  /// encrypt/decrypt function source code objects in intermediate Cloud Storage
-  /// buckets.
+  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
+  /// to encrypt/decrypt function source code objects in intermediate Cloud
+  /// Storage buckets.
   ///
   /// When you generate an upload url and upload your source code, it gets
   /// copied to an intermediate Cloud Storage bucket. The source code is then
@@ -2168,7 +2158,7 @@ class SecretVolume {
 
 /// Describes the Service being deployed.
 ///
-/// Currently Supported : Cloud Run (fully managed). Next tag: 23
+/// Currently Supported : Cloud Run (fully managed).
 class ServiceConfig {
   /// Whether 100% of traffic is routed to the latest revision.
   ///
@@ -2178,7 +2168,7 @@ class ServiceConfig {
   /// serving 100% of traffic.
   core.bool? allTrafficOnLatestRevision;
 
-  /// The number of CPUs used in a single container instance.
+  /// \[Preview\] The number of CPUs used in a single container instance.
   ///
   /// Default value is calculated from available memory. Supports the same
   /// values as Cloud Run, see
@@ -2220,8 +2210,8 @@ class ServiceConfig {
   /// Guide for more details.
   core.int? maxInstanceCount;
 
-  /// Sets the maximum number of concurrent requests that each instance can
-  /// receive.
+  /// \[Preview\] Sets the maximum number of concurrent requests that each
+  /// instance can receive.
   ///
   /// Defaults to 1.
   core.int? maxInstanceRequestConcurrency;

@@ -1254,6 +1254,7 @@ api.TagBinding buildTagBinding() {
     o.name = 'foo';
     o.parent = 'foo';
     o.tagValue = 'foo';
+    o.tagValueNamespacedName = 'foo';
   }
   buildCounterTagBinding--;
   return o;
@@ -1272,6 +1273,10 @@ void checkTagBinding(api.TagBinding o) {
     );
     unittest.expect(
       o.tagValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tagValueNamespacedName!,
       unittest.equals('foo'),
     );
   }
@@ -4322,6 +4327,62 @@ void main() {
       checkPolicy(response as api.Policy);
     });
 
+    unittest.test('method--getNamespaced', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudResourceManagerApi(mock).tagKeys;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('v3/tagKeys/namespaced'),
+        );
+        pathOffset += 21;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['name']!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTagKey());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getNamespaced(name: arg_name, $fields: arg_$fields);
+      checkTagKey(response as api.TagKey);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudResourceManagerApi(mock).tagKeys;
@@ -4812,6 +4873,62 @@ void main() {
       final response = await res.getIamPolicy(arg_request, arg_resource,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--getNamespaced', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudResourceManagerApi(mock).tagValues;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('v3/tagValues/namespaced'),
+        );
+        pathOffset += 23;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['name']!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTagValue());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getNamespaced(name: arg_name, $fields: arg_$fields);
+      checkTagValue(response as api.TagValue);
     });
 
     unittest.test('method--list', () async {

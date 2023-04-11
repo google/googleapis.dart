@@ -272,6 +272,7 @@ api.GoogleCloudAdvisorynotificationsV1Notification
     o.createTime = 'foo';
     o.messages = buildUnnamed5();
     o.name = 'foo';
+    o.notificationType = 'foo';
     o.subject = buildGoogleCloudAdvisorynotificationsV1Subject();
   }
   buildCounterGoogleCloudAdvisorynotificationsV1Notification--;
@@ -289,6 +290,10 @@ void checkGoogleCloudAdvisorynotificationsV1Notification(
     checkUnnamed5(o.messages!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.notificationType!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAdvisorynotificationsV1Subject(o.subject!);

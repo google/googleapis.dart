@@ -1542,7 +1542,7 @@ This API allows clients to access and modify container and tag configuration.
 - [Documentation](https://developers.google.com/tag-manager)
 - [API details](https://pub.dev/documentation/googleapis/10.2.0-dev/tagmanager.v2/tagmanager.v2-library.html)
 
-#### Tasks API - `tasks.v1`
+#### Google Tasks API - `tasks.v1`
 
 The Google Tasks API lets you manage your tasks and task lists.
 
