@@ -3595,6 +3595,10 @@ class AcceleratorConfig {
       };
 }
 
+/// AdditionalPodRangesConfig is the configuration for additional pod secondary
+/// ranges supporting the ClusterUpdate message.
+typedef AdditionalPodRangesConfig = $Empty;
+
 /// Configuration for the addons that can be automatically spun up in the
 /// cluster, enabling additional functionality.
 class AddonsConfig {
@@ -5133,6 +5137,11 @@ class ClusterAutoscaling {
 /// Exactly one update can be applied to a cluster with each request, so at most
 /// one field can be provided.
 class ClusterUpdate {
+  /// The additional pod ranges to be added to the cluster.
+  ///
+  /// These pod ranges can be used by node pools to allocate pod IPs.
+  AdditionalPodRangesConfig? additionalPodRangesConfig;
+
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig? desiredAddonsConfig;
 
@@ -5328,7 +5337,14 @@ class ClusterUpdate {
   /// update will be blocked and an ABORTED error will be returned.
   core.String? etag;
 
+  /// The additional pod ranges that are to be removed from the cluster.
+  ///
+  /// The pod ranges specified here must have been specified earlier in the
+  /// 'additional_pod_ranges_config' argument.
+  AdditionalPodRangesConfig? removedAdditionalPodRangesConfig;
+
   ClusterUpdate({
+    this.additionalPodRangesConfig,
     this.desiredAddonsConfig,
     this.desiredAuthenticatorGroupsConfig,
     this.desiredBinaryAuthorization,
@@ -5369,10 +5385,17 @@ class ClusterUpdate {
     this.desiredVerticalPodAutoscaling,
     this.desiredWorkloadIdentityConfig,
     this.etag,
+    this.removedAdditionalPodRangesConfig,
   });
 
   ClusterUpdate.fromJson(core.Map json_)
       : this(
+          additionalPodRangesConfig:
+              json_.containsKey('additionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['additionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredAddonsConfig: json_.containsKey('desiredAddonsConfig')
               ? AddonsConfig.fromJson(json_['desiredAddonsConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5556,9 +5579,17 @@ class ClusterUpdate {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          removedAdditionalPodRangesConfig:
+              json_.containsKey('removedAdditionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['removedAdditionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalPodRangesConfig != null)
+          'additionalPodRangesConfig': additionalPodRangesConfig!,
         if (desiredAddonsConfig != null)
           'desiredAddonsConfig': desiredAddonsConfig!,
         if (desiredAuthenticatorGroupsConfig != null)
@@ -5634,6 +5665,8 @@ class ClusterUpdate {
         if (desiredWorkloadIdentityConfig != null)
           'desiredWorkloadIdentityConfig': desiredWorkloadIdentityConfig!,
         if (etag != null) 'etag': etag!,
+        if (removedAdditionalPodRangesConfig != null)
+          'removedAdditionalPodRangesConfig': removedAdditionalPodRangesConfig!,
       };
 }
 
@@ -6603,6 +6636,15 @@ class ILBSubsettingConfig {
 
 /// Configuration for controlling how IPs are allocated in the cluster.
 class IPAllocationPolicy {
+  /// The additional pod ranges that are added to the cluster.
+  ///
+  /// These pod ranges can be used by new node pools to allocate pod IPs
+  /// automatically. Once the range is removed it will not show up in
+  /// IPAllocationPolicy.
+  ///
+  /// Output only.
+  AdditionalPodRangesConfig? additionalPodRangesConfig;
+
   /// This field is deprecated, use cluster_ipv4_cidr_block.
   core.String? clusterIpv4Cidr;
 
@@ -6652,6 +6694,16 @@ class IPAllocationPolicy {
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
   /// to use.
   core.String? nodeIpv4CidrBlock;
+
+  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the cluster.
+  ///
+  /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
+  /// of max_pods_per_node is doubled and then rounded off to next power of 2 to
+  /// get the size of pod CIDR block per node. Example: max_pods_per_node of 30
+  /// would result in 64 IPs (/26). This config can disable the doubling of IPs
+  /// (we still round off to next power of 2) Example: max_pods_per_node of 30
+  /// will result in 32 IPs (/27) when overprovisioning is disabled.
+  PodCIDROverprovisionConfig? podCidrOverprovisionConfig;
 
   /// This field is deprecated, use services_ipv4_cidr_block.
   core.String? servicesIpv4Cidr;
@@ -6726,6 +6778,7 @@ class IPAllocationPolicy {
   core.bool? useRoutes;
 
   IPAllocationPolicy({
+    this.additionalPodRangesConfig,
     this.clusterIpv4Cidr,
     this.clusterIpv4CidrBlock,
     this.clusterSecondaryRangeName,
@@ -6733,6 +6786,7 @@ class IPAllocationPolicy {
     this.ipv6AccessType,
     this.nodeIpv4Cidr,
     this.nodeIpv4CidrBlock,
+    this.podCidrOverprovisionConfig,
     this.servicesIpv4Cidr,
     this.servicesIpv4CidrBlock,
     this.servicesIpv6CidrBlock,
@@ -6747,6 +6801,12 @@ class IPAllocationPolicy {
 
   IPAllocationPolicy.fromJson(core.Map json_)
       : this(
+          additionalPodRangesConfig:
+              json_.containsKey('additionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['additionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           clusterIpv4Cidr: json_.containsKey('clusterIpv4Cidr')
               ? json_['clusterIpv4Cidr'] as core.String
               : null,
@@ -6769,6 +6829,12 @@ class IPAllocationPolicy {
           nodeIpv4CidrBlock: json_.containsKey('nodeIpv4CidrBlock')
               ? json_['nodeIpv4CidrBlock'] as core.String
               : null,
+          podCidrOverprovisionConfig:
+              json_.containsKey('podCidrOverprovisionConfig')
+                  ? PodCIDROverprovisionConfig.fromJson(
+                      json_['podCidrOverprovisionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           servicesIpv4Cidr: json_.containsKey('servicesIpv4Cidr')
               ? json_['servicesIpv4Cidr'] as core.String
               : null,
@@ -6803,6 +6869,8 @@ class IPAllocationPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalPodRangesConfig != null)
+          'additionalPodRangesConfig': additionalPodRangesConfig!,
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (clusterIpv4CidrBlock != null)
           'clusterIpv4CidrBlock': clusterIpv4CidrBlock!,
@@ -6812,6 +6880,8 @@ class IPAllocationPolicy {
         if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
         if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
+        if (podCidrOverprovisionConfig != null)
+          'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
         if (servicesIpv4CidrBlock != null)
           'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
@@ -8550,6 +8620,17 @@ class NodeNetworkConfig {
   /// Network bandwidth tier configuration.
   NetworkPerformanceConfig? networkPerformanceConfig;
 
+  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the nodepool.
+  ///
+  /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
+  /// of max_pods_per_node is rounded off to next power of 2 and we then double
+  /// that to get the size of pod CIDR block per node. Example:
+  /// max_pods_per_node of 30 would result in 64 IPs (/26). This config can
+  /// disable the doubling of IPs (we still round off to next power of 2)
+  /// Example: max_pods_per_node of 30 will result in 32 IPs (/27) when
+  /// overprovisioning is disabled.
+  PodCIDROverprovisionConfig? podCidrOverprovisionConfig;
+
   /// The IP address range for pod IPs in this node pool.
   ///
   /// Only applicable if `create_pod_range` is true. Set to blank to have a
@@ -8573,6 +8654,7 @@ class NodeNetworkConfig {
     this.createPodRange,
     this.enablePrivateNodes,
     this.networkPerformanceConfig,
+    this.podCidrOverprovisionConfig,
     this.podIpv4CidrBlock,
     this.podRange,
   });
@@ -8591,6 +8673,12 @@ class NodeNetworkConfig {
                       json_['networkPerformanceConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          podCidrOverprovisionConfig:
+              json_.containsKey('podCidrOverprovisionConfig')
+                  ? PodCIDROverprovisionConfig.fromJson(
+                      json_['podCidrOverprovisionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           podIpv4CidrBlock: json_.containsKey('podIpv4CidrBlock')
               ? json_['podIpv4CidrBlock'] as core.String
               : null,
@@ -8605,6 +8693,8 @@ class NodeNetworkConfig {
           'enablePrivateNodes': enablePrivateNodes!,
         if (networkPerformanceConfig != null)
           'networkPerformanceConfig': networkPerformanceConfig!,
+        if (podCidrOverprovisionConfig != null)
+          'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
         if (podRange != null) 'podRange': podRange!,
       };
@@ -9376,6 +9466,29 @@ class PlacementPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
+      };
+}
+
+/// \[PRIVATE FIELD\] Config for pod CIDR size overprovisioning.
+class PodCIDROverprovisionConfig {
+  /// Whether Pod CIDR overprovisioning is disabled.
+  ///
+  /// Note: Pod CIDR overprovisioning is enabled by default.
+  core.bool? disable;
+
+  PodCIDROverprovisionConfig({
+    this.disable,
+  });
+
+  PodCIDROverprovisionConfig.fromJson(core.Map json_)
+      : this(
+          disable: json_.containsKey('disable')
+              ? json_['disable'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disable != null) 'disable': disable!,
       };
 }
 

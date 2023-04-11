@@ -2612,8 +2612,8 @@ class AuthorizedCertificate {
 
 /// A domain that a user has been authorized to administer.
 ///
-/// To authorize use of a domain, verify ownership via Webmaster Central
-/// (https://www.google.com/webmasters/verification/home).
+/// To authorize use of a domain, verify ownership via Search Console
+/// (https://search.google.com/search-console/welcome).
 class AuthorizedDomain {
   /// Fully qualified domain name of the domain authorized for use.
   ///

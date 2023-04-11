@@ -2728,8 +2728,44 @@ class DotnetSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
+  /// Namespaces which must be aliased in snippets due to a known (but
+  /// non-generator-predictable) naming collision
+  core.List<core.String>? forcedNamespaceAliases;
+
+  /// Method signatures (in the form "service.method(signature)") which are
+  /// provided separately, so shouldn't be generated.
+  ///
+  /// Snippets *calling* these methods are still generated, however.
+  core.List<core.String>? handwrittenSignatures;
+
+  /// List of full resource types to ignore during generation.
+  ///
+  /// This is typically used for API-specific Location resources, which should
+  /// be handled by the generator as if they were actually the common Location
+  /// resources. Example entry: "documentai.googleapis.com/Location"
+  core.List<core.String>? ignoredResources;
+
+  /// Map from full resource types to the effective short name for the resource.
+  ///
+  /// This is used when otherwise resource named from different services would
+  /// cause naming collisions. Example entry:
+  /// "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+  core.Map<core.String, core.String>? renamedResources;
+
+  /// Map from original service names to renamed versions.
+  ///
+  /// This is used when the default generated types would cause a naming
+  /// conflict. (Neither name is fully-qualified.) Example: Subscriber to
+  /// SubscriberServiceApi.
+  core.Map<core.String, core.String>? renamedServices;
+
   DotnetSettings({
     this.common,
+    this.forcedNamespaceAliases,
+    this.handwrittenSignatures,
+    this.ignoredResources,
+    this.renamedResources,
+    this.renamedServices,
   });
 
   DotnetSettings.fromJson(core.Map json_)
@@ -2738,10 +2774,52 @@ class DotnetSettings {
               ? CommonLanguageSettings.fromJson(
                   json_['common'] as core.Map<core.String, core.dynamic>)
               : null,
+          forcedNamespaceAliases: json_.containsKey('forcedNamespaceAliases')
+              ? (json_['forcedNamespaceAliases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          handwrittenSignatures: json_.containsKey('handwrittenSignatures')
+              ? (json_['handwrittenSignatures'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ignoredResources: json_.containsKey('ignoredResources')
+              ? (json_['ignoredResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          renamedResources: json_.containsKey('renamedResources')
+              ? (json_['renamedResources']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          renamedServices: json_.containsKey('renamedServices')
+              ? (json_['renamedServices']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!,
+        if (forcedNamespaceAliases != null)
+          'forcedNamespaceAliases': forcedNamespaceAliases!,
+        if (handwrittenSignatures != null)
+          'handwrittenSignatures': handwrittenSignatures!,
+        if (ignoredResources != null) 'ignoredResources': ignoredResources!,
+        if (renamedResources != null) 'renamedResources': renamedResources!,
+        if (renamedServices != null) 'renamedServices': renamedServices!,
       };
 }
 

@@ -980,6 +980,28 @@ void checkComputeScheduling(api.ComputeScheduling o) {
   buildCounterComputeScheduling--;
 }
 
+core.int buildCounterCutoverForecast = 0;
+api.CutoverForecast buildCutoverForecast() {
+  final o = api.CutoverForecast();
+  buildCounterCutoverForecast++;
+  if (buildCounterCutoverForecast < 3) {
+    o.estimatedCutoverJobDuration = 'foo';
+  }
+  buildCounterCutoverForecast--;
+  return o;
+}
+
+void checkCutoverForecast(api.CutoverForecast o) {
+  buildCounterCutoverForecast++;
+  if (buildCounterCutoverForecast < 3) {
+    unittest.expect(
+      o.estimatedCutoverJobDuration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCutoverForecast--;
+}
+
 core.List<api.CutoverStep> buildUnnamed18() => [
       buildCutoverStep(),
       buildCutoverStep(),
@@ -2087,6 +2109,7 @@ api.MigratingVm buildMigratingVm() {
     o.computeEngineTargetDefaults = buildComputeEngineTargetDefaults();
     o.createTime = 'foo';
     o.currentSyncInfo = buildReplicationCycle();
+    o.cutoverForecast = buildCutoverForecast();
     o.description = 'foo';
     o.displayName = 'foo';
     o.error = buildStatus();
@@ -2117,6 +2140,7 @@ void checkMigratingVm(api.MigratingVm o) {
       unittest.equals('foo'),
     );
     checkReplicationCycle(o.currentSyncInfo!);
+    checkCutoverForecast(o.cutoverForecast!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -3444,6 +3468,16 @@ void main() {
       final od = api.ComputeScheduling.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkComputeScheduling(od);
+    });
+  });
+
+  unittest.group('obj-schema-CutoverForecast', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCutoverForecast();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CutoverForecast.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCutoverForecast(od);
     });
   });
 

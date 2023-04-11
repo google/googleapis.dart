@@ -522,7 +522,7 @@
             }
         }
     },
-    "revision": "20230323",
+    "revision": "20230330",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "ABNFGrammar": {

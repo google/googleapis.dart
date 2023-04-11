@@ -161,6 +161,7 @@ api.Case buildCase() {
   buildCounterCase++;
   if (buildCounterCase < 3) {
     o.classification = buildCaseClassification();
+    o.contactEmail = 'foo';
     o.createTime = 'foo';
     o.creator = buildActor();
     o.description = 'foo';
@@ -184,6 +185,10 @@ void checkCase(api.Case o) {
   buildCounterCase++;
   if (buildCounterCase < 3) {
     checkCaseClassification(o.classification!);
+    unittest.expect(
+      o.contactEmail!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

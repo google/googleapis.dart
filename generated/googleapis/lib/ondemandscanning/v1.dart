@@ -1960,7 +1960,7 @@ class PackageData {
   /// Historically if they've differed, we've stored the name of the source and
   /// its version in the package/version fields, but we should also store the
   /// binary package info, as that's what's actually installed. See
-  /// https://b.corp.google.com/issues/175908657#comment15
+  /// b/175908657#comment15.
   Binary? binary;
 
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which

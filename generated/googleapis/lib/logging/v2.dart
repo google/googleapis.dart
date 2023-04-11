@@ -1015,10 +1015,10 @@ class BillingAccountsLocationsBucketsLinksResource {
   BillingAccountsLocationsBucketsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Asynchronously creates linked dataset in BigQuery which makes it possible
-  /// to use BugQuery to read the logs stored in the bucket.
+  /// Asynchronously creates a linked dataset in BigQuery which makes it
+  /// possible to use BigQuery to read the logs stored in the log bucket.
   ///
-  /// A bucket may currently only contain one link.
+  /// A log bucket may currently only contain one link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1469,7 +1469,7 @@ class BillingAccountsLocationsBucketsViewsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern
@@ -1484,14 +1484,15 @@ class BillingAccountsLocationsBucketsViewsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1734,7 +1735,7 @@ class BillingAccountsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
@@ -1748,14 +1749,15 @@ class BillingAccountsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3494,10 +3496,10 @@ class FoldersLocationsBucketsLinksResource {
   FoldersLocationsBucketsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Asynchronously creates linked dataset in BigQuery which makes it possible
-  /// to use BugQuery to read the logs stored in the bucket.
+  /// Asynchronously creates a linked dataset in BigQuery which makes it
+  /// possible to use BigQuery to read the logs stored in the log bucket.
   ///
-  /// A bucket may currently only contain one link.
+  /// A log bucket may currently only contain one link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3948,7 +3950,7 @@ class FoldersLocationsBucketsViewsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern
@@ -3963,14 +3965,15 @@ class FoldersLocationsBucketsViewsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4212,7 +4215,7 @@ class FoldersLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -4226,14 +4229,15 @@ class FoldersLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5140,10 +5144,10 @@ class LocationsBucketsLinksResource {
   LocationsBucketsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Asynchronously creates linked dataset in BigQuery which makes it possible
-  /// to use BugQuery to read the logs stored in the bucket.
+  /// Asynchronously creates a linked dataset in BigQuery which makes it
+  /// possible to use BigQuery to read the logs stored in the log bucket.
   ///
-  /// A bucket may currently only contain one link.
+  /// A log bucket may currently only contain one link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5783,7 +5787,7 @@ class LogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
@@ -5797,14 +5801,15 @@ class LogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6905,10 +6910,10 @@ class OrganizationsLocationsBucketsLinksResource {
   OrganizationsLocationsBucketsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Asynchronously creates linked dataset in BigQuery which makes it possible
-  /// to use BugQuery to read the logs stored in the bucket.
+  /// Asynchronously creates a linked dataset in BigQuery which makes it
+  /// possible to use BigQuery to read the logs stored in the log bucket.
   ///
-  /// A bucket may currently only contain one link.
+  /// A log bucket may currently only contain one link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7359,7 +7364,7 @@ class OrganizationsLocationsBucketsViewsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern
@@ -7374,14 +7379,15 @@ class OrganizationsLocationsBucketsViewsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7623,7 +7629,7 @@ class OrganizationsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -7637,14 +7643,15 @@ class OrganizationsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8912,10 +8919,10 @@ class ProjectsLocationsBucketsLinksResource {
   ProjectsLocationsBucketsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Asynchronously creates linked dataset in BigQuery which makes it possible
-  /// to use BugQuery to read the logs stored in the bucket.
+  /// Asynchronously creates a linked dataset in BigQuery which makes it
+  /// possible to use BigQuery to read the logs stored in the log bucket.
   ///
-  /// A bucket may currently only contain one link.
+  /// A log bucket may currently only contain one link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -9366,7 +9373,7 @@ class ProjectsLocationsBucketsViewsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern
@@ -9381,14 +9388,15 @@ class ProjectsLocationsBucketsViewsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9630,7 +9638,7 @@ class ProjectsLogsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name that owns the logs:
+  /// [parent] - Required. The resource name to list logs for:
   /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -9644,14 +9652,15 @@ class ProjectsLogsResource {
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// [resourceNames] - Optional. List of resource names to list logs for:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
   /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
   /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
-  /// folders/\[FOLDER_ID\]
+  /// folders/\[FOLDER_ID\]The resource name in the parent field is added to
+  /// this list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11062,7 +11071,7 @@ typedef Explicit = $Explicit;
 /// Each bucket represents a constant relative uncertainty on a specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
 /// the following boundaries:Upper bound (0 \<= i \< N-1): scale *
-/// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
+/// (growth_factor ^ i).Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
 /// - 1)).
 typedef Exponential = $Exponential;
 
@@ -11291,8 +11300,8 @@ typedef LabelDescriptor = $LabelDescriptor;
 ///
 /// Each bucket represents a constant absolute uncertainty on the specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width * i).
-/// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width *
+/// i).Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
 /// Describes a link connected to an analytics enabled bucket.

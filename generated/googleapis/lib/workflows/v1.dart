@@ -760,6 +760,9 @@ class Operation {
       };
 }
 
+/// Describes an error related to the current state of the workflow.
+typedef StateError = $StateError;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -791,6 +794,18 @@ class Workflow {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The resource name of a KMS crypto key used to encrypt or decrypt the data
+  /// associated with the workflow.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+  /// Using `-` as a wildcard for the `{project}` or not providing one at all
+  /// will infer the project from the account. If not provided, data associated
+  /// with the workflow will not be CMEK-encrypted.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
 
   /// Description of the workflow provided by the user.
   ///
@@ -849,7 +864,17 @@ class Workflow {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Invalid state.
   /// - "ACTIVE" : The workflow has been deployed successfully and is serving.
+  /// - "UNAVAILABLE" : Workflow data is unavailable. See the `state_error`
+  /// field.
   core.String? state;
+
+  /// Error regarding the state of the workflow.
+  ///
+  /// For example, this field will have error details if the execution data is
+  /// unavailable due to revoked KMS key permissions.
+  ///
+  /// Output only.
+  StateError? stateError;
 
   /// The timestamp for when the workflow was last updated.
   ///
@@ -859,6 +884,7 @@ class Workflow {
   Workflow({
     this.callLogLevel,
     this.createTime,
+    this.cryptoKeyName,
     this.description,
     this.labels,
     this.name,
@@ -867,6 +893,7 @@ class Workflow {
     this.serviceAccount,
     this.sourceContents,
     this.state,
+    this.stateError,
     this.updateTime,
   });
 
@@ -877,6 +904,9 @@ class Workflow {
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          cryptoKeyName: json_.containsKey('cryptoKeyName')
+              ? json_['cryptoKeyName'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -904,6 +934,10 @@ class Workflow {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateError: json_.containsKey('stateError')
+              ? StateError.fromJson(
+                  json_['stateError'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -912,6 +946,7 @@ class Workflow {
   core.Map<core.String, core.dynamic> toJson() => {
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -921,6 +956,7 @@ class Workflow {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceContents != null) 'sourceContents': sourceContents!,
         if (state != null) 'state': state!,
+        if (stateError != null) 'stateError': stateError!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

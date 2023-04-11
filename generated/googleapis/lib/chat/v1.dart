@@ -3078,7 +3078,7 @@ class GoogleAppsCardV1TextInput {
   /// If unspecified, the suggestions are set by `initialSuggestions` and are
   /// processed by the client. If specified, the app takes the action specified
   /// here, such as running a custom function. Supported by Google Workspace
-  /// Add-ons, but not Chat apps. Support by Chat apps coming soon.
+  /// Add-ons, but not Chat apps.
   ///
   /// Optional.
   GoogleAppsCardV1Action? autoCompleteAction;

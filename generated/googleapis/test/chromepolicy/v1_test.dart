@@ -516,6 +516,7 @@ api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest
   if (buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest <
       3) {
     o.policyNamespace = 'foo';
+    o.policySchema = 'foo';
     o.policyTargetKey = buildGoogleChromePolicyVersionsV1PolicyTargetKey();
   }
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest--;
@@ -529,6 +530,10 @@ void checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest(
       3) {
     unittest.expect(
       o.policyNamespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policySchema!,
       unittest.equals('foo'),
     );
     checkGoogleChromePolicyVersionsV1PolicyTargetKey(o.policyTargetKey!);
@@ -564,6 +569,7 @@ api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
       3) {
     o.groupIds = buildUnnamed9();
     o.policyNamespace = 'foo';
+    o.policySchema = 'foo';
     o.policyTargetKey = buildGoogleChromePolicyVersionsV1PolicyTargetKey();
   }
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse--;
@@ -578,6 +584,10 @@ void checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse(
     checkUnnamed9(o.groupIds!);
     unittest.expect(
       o.policyNamespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policySchema!,
       unittest.equals('foo'),
     );
     checkGoogleChromePolicyVersionsV1PolicyTargetKey(o.policyTargetKey!);
@@ -1542,6 +1552,7 @@ api.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest
       3) {
     o.groupIds = buildUnnamed26();
     o.policyNamespace = 'foo';
+    o.policySchema = 'foo';
     o.policyTargetKey = buildGoogleChromePolicyVersionsV1PolicyTargetKey();
   }
   buildCounterGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest--;
@@ -1556,6 +1567,10 @@ void checkGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest(
     checkUnnamed26(o.groupIds!);
     unittest.expect(
       o.policyNamespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policySchema!,
       unittest.equals('foo'),
     );
     checkGoogleChromePolicyVersionsV1PolicyTargetKey(o.policyTargetKey!);

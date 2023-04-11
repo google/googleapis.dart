@@ -1810,6 +1810,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
     o.customizedAttribution = 'foo';
     o.documentInputConfig = buildDocumentInputConfig();
     o.documentOutputConfig = buildDocumentOutputConfig();
+    o.enableRotationCorrection = true;
     o.enableShadowRemovalNativePdf = true;
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
     o.isTranslateNativePdfOnly = true;
@@ -1831,6 +1832,7 @@ void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
     );
     checkDocumentInputConfig(o.documentInputConfig!);
     checkDocumentOutputConfig(o.documentOutputConfig!);
+    unittest.expect(o.enableRotationCorrection!, unittest.isTrue);
     unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
     unittest.expect(o.isTranslateNativePdfOnly!, unittest.isTrue);

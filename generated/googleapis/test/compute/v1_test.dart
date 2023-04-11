@@ -107249,6 +107249,7 @@ void main() {
       final arg_router = 'foo';
       final arg_filter = 'foo';
       final arg_maxResults = 42;
+      final arg_natName = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
       final arg_returnPartialSuccess = true;
@@ -107340,6 +107341,10 @@ void main() {
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
+          queryMap['natName']!.first,
+          unittest.equals(arg_natName),
+        );
+        unittest.expect(
           queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
@@ -107366,6 +107371,7 @@ void main() {
           arg_project, arg_region, arg_router,
           filter: arg_filter,
           maxResults: arg_maxResults,
+          natName: arg_natName,
           orderBy: arg_orderBy,
           pageToken: arg_pageToken,
           returnPartialSuccess: arg_returnPartialSuccess,

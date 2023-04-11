@@ -4066,6 +4066,31 @@ class ComputeScheduling {
       };
 }
 
+/// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+class CutoverForecast {
+  /// Estimation of the CutoverJob duration.
+  ///
+  /// Output only.
+  core.String? estimatedCutoverJobDuration;
+
+  CutoverForecast({
+    this.estimatedCutoverJobDuration,
+  });
+
+  CutoverForecast.fromJson(core.Map json_)
+      : this(
+          estimatedCutoverJobDuration:
+              json_.containsKey('estimatedCutoverJobDuration')
+                  ? json_['estimatedCutoverJobDuration'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (estimatedCutoverJobDuration != null)
+          'estimatedCutoverJobDuration': estimatedCutoverJobDuration!,
+      };
+}
+
 /// CutoverJob message describes a cutover of a migrating VM.
 ///
 /// The CutoverJob is the operation of shutting down the VM, creating a snapshot
@@ -5197,6 +5222,13 @@ class MigratingVm {
   /// Output only.
   ReplicationCycle? currentSyncInfo;
 
+  /// Provides details of future CutoverJobs of a MigratingVm.
+  ///
+  /// Set to empty when cutover forecast is unavailable.
+  ///
+  /// Output only.
+  CutoverForecast? cutoverForecast;
+
   /// The description attached to the migrating VM by the user.
   core.String? description;
 
@@ -5310,6 +5342,7 @@ class MigratingVm {
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
+    this.cutoverForecast,
     this.description,
     this.displayName,
     this.error,
@@ -5344,6 +5377,10 @@ class MigratingVm {
               : null,
           currentSyncInfo: json_.containsKey('currentSyncInfo')
               ? ReplicationCycle.fromJson(json_['currentSyncInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cutoverForecast: json_.containsKey('cutoverForecast')
+              ? CutoverForecast.fromJson(json_['cutoverForecast']
                   as core.Map<core.String, core.dynamic>)
               : null,
           description: json_.containsKey('description')
@@ -5411,6 +5448,7 @@ class MigratingVm {
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,
         if (currentSyncInfo != null) 'currentSyncInfo': currentSyncInfo!,
+        if (cutoverForecast != null) 'cutoverForecast': cutoverForecast!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (error != null) 'error': error!,

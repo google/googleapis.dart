@@ -255,6 +255,11 @@ class ProjectsLocationsCaPoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
+  /// [ignoreDependentResources] - Optional. This field allows this pool to be
+  /// deleted even if it's being depended on by another resource. However, doing
+  /// so may result in unintended and unrecoverable effects on any dependent
+  /// resource(s) since the pool will no longer be able to issue certificates.
+  ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
@@ -279,10 +284,13 @@ class ProjectsLocationsCaPoolsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? ignoreDependentResources,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (ignoreDependentResources != null)
+        'ignoreDependentResources': ['${ignoreDependentResources}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -791,6 +799,11 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// deleted even if the CA has active certs. Active certs include both
   /// unrevoked and unexpired certs.
   ///
+  /// [ignoreDependentResources] - Optional. This field allows this ca to be
+  /// deleted even if it's being depended on by another resource. However, doing
+  /// so may result in unintended and unrecoverable effects on any dependent
+  /// resource(s) since the CA will no longer be able to issue certificates.
+  ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
@@ -821,6 +834,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   async.Future<Operation> delete(
     core.String name, {
     core.bool? ignoreActiveCertificates,
+    core.bool? ignoreDependentResources,
     core.String? requestId,
     core.bool? skipGracePeriod,
     core.String? $fields,
@@ -828,6 +842,8 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (ignoreActiveCertificates != null)
         'ignoreActiveCertificates': ['${ignoreActiveCertificates}'],
+      if (ignoreDependentResources != null)
+        'ignoreDependentResources': ['${ignoreDependentResources}'],
       if (requestId != null) 'requestId': [requestId],
       if (skipGracePeriod != null) 'skipGracePeriod': ['${skipGracePeriod}'],
       if ($fields != null) 'fields': [$fields],
@@ -3812,7 +3828,55 @@ class CertificateTemplate {
 }
 
 /// Request message for CertificateAuthorityService.DisableCertificateAuthority.
-typedef DisableCertificateAuthorityRequest = $Request02;
+class DisableCertificateAuthorityRequest {
+  /// This field allows this CA to be disabled even if it's being depended on by
+  /// another resource.
+  ///
+  /// However, doing so may result in unintended and unrecoverable effects on
+  /// any dependent resource(s) since the CA will no longer be able to issue
+  /// certificates.
+  ///
+  /// Optional.
+  core.bool? ignoreDependentResources;
+
+  /// An ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  DisableCertificateAuthorityRequest({
+    this.ignoreDependentResources,
+    this.requestId,
+  });
+
+  DisableCertificateAuthorityRequest.fromJson(core.Map json_)
+      : this(
+          ignoreDependentResources:
+              json_.containsKey('ignoreDependentResources')
+                  ? json_['ignoreDependentResources'] as core.bool
+                  : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreDependentResources != null)
+          'ignoreDependentResources': ignoreDependentResources!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
 
 /// Describes an Elliptic Curve key that may be used in a Certificate issued
 /// from a CaPool.

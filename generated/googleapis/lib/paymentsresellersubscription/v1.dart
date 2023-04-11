@@ -678,6 +678,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
+  /// unrecoverable system error.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -1901,6 +1903,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
+  /// unrecoverable system error.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -2005,6 +2009,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// a prorated refund in being processed.
   /// - "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE" : The line item is scheduled to
   /// be deactivated at the end of the current cycle.
+  /// - "LINE_ITEM_STATE_OFF_CYCLE_CHARGING" : Line item is being charged
+  /// off-cycle.
   core.String? state;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({

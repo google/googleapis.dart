@@ -12983,25 +12983,21 @@ class AssetAssociation {
   /// - "ASSET_ROLE_HEADLINE" : Headline of a native creative. The content must
   /// be UTF-8 encoded with a length of no more than 25 characters. This role is
   /// only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_LONG_HEADLINE" : Long headline of a native creative. The
   /// content must be UTF-8 encoded with a length of no more than 50 characters.
   /// This role is only supported in following creative_type: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_BODY" : Body text of a native creative. The content must be
   /// UTF-8 encoded with a length of no more than 90 characters. This role is
   /// only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_LONG_BODY" : Long body text of a native creative. The
   /// content must be UTF-8 encoded with a length of no more than 150
   /// characters. This role is only supported in following creative_type: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_CAPTION_URL" : A short, friendly version of the landing page
   /// URL to show in the creative. This URL gives people an idea of where
   /// they'll arrive after they click on the creative. The content must be UTF-8
@@ -13010,52 +13006,40 @@ class AssetAssociation {
   /// 'example.com'. The protocol (http://) is optional, but the URL can't
   /// contain spaces or special characters. This role is only supported in
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_CALL_TO_ACTION" : The text to use on the call-to-action
   /// button of a native creative. The content must be UTF-8 encoded with a
   /// length of no more than 15 characters. This role is only supported in
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_ADVERTISER_NAME" : The text that identifies the advertiser
   /// or brand name. The content must be UTF-8 encoded with a length of no more
   /// than 25 characters. This role is only supported in following
   /// creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   /// - "ASSET_ROLE_PRICE" : The purchase price of your app in the Google play
   /// store or iOS app store (for example, $5.99). Note that this value is not
   /// automatically synced with the actual value listed in the store. It will
   /// always be the one provided when save the creative. The content must be
-  /// UTF-8 encoded with a length of no more than 15 characters. This role is
-  /// only supported in following creative_type: *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
+  /// UTF-8 encoded with a length of no more than 15 characters. Assets of this
+  /// role are read-only.
   /// - "ASSET_ROLE_ANDROID_APP_ID" : The ID of an Android app in the Google
   /// play store. You can find this ID in the App’s Google Play Store URL after
   /// ‘id’. For example, in
   /// https://play.google.com/store/apps/details?id=com.company.appname the
-  /// identifier is com.company.appname. This role is only supported in
-  /// following creative_type: * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
+  /// identifier is com.company.appname. Assets of this role are read-only.
   /// - "ASSET_ROLE_IOS_APP_ID" : The ID of an iOS app in the Apple app store.
   /// This ID number can be found in the Apple App Store URL as the string of
   /// numbers directly after "id". For example, in
   /// https://apps.apple.com/us/app/gmail-email-by-google/id422689480 the ID is
-  /// 422689480. This role is only supported in following creative_type: *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
+  /// 422689480. Assets of this role are read-only.
   /// - "ASSET_ROLE_RATING" : The rating of an app in the Google play store or
   /// iOS app store. Note that this value is not automatically synced with the
   /// actual rating in the store. It will always be the one provided when save
-  /// the creative. This role is only supported in following creative_type: *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
+  /// the creative. Assets of this role are read-only.
   /// - "ASSET_ROLE_ICON" : The icon of a creative. This role is only supported
   /// and required in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
   /// - "ASSET_ROLE_COVER_IMAGE" : The cover image of a native video creative.
   /// This role is only supported and required in following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
@@ -16458,9 +16442,7 @@ class Creative {
   ///
   /// Applicable when creative_type is one of: * `CREATIVE_TYPE_STANDARD` *
   /// `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
-  /// * `CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` *
   /// `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels
   /// and height_pixels are both required and must be greater than or equal to
   /// 0.
@@ -16475,10 +16457,6 @@ class Creative {
   core.String? appendedTag;
 
   /// Assets associated to this creative.
-  ///
-  /// Assets can be associated to the creative in one of following roles: *
-  /// `ASSET_ROLE_UNSPECIFIED` * `ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` *
-  /// `ASSET_ROLE_POLITE_LOAD`
   ///
   /// Required.
   core.List<AssetAssociation>? assets;
@@ -16496,9 +16474,8 @@ class Creative {
   ///
   /// Optional for the following creative_type when created by an advertiser
   /// that uses both Campaign Manager 360 and third-party ad serving: *
-  /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases.
+  /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` Output only
+  /// for other cases.
   CmTrackingAd? cmTrackingAd;
 
   /// The IDs of companion creatives for a video creative.
@@ -16569,11 +16546,10 @@ class Creative {
   /// - "CREATIVE_TYPE_LIGHTBOX" : Responsive and expandable Lightbox creative.
   /// Create and update methods are **not** supported for this creative type.
   /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL" : Native app install creative. Create
-  /// and update methods are supported for this creative type if the
-  /// hosting_source is `HOSTING_SOURCE_HOSTED`
+  /// and update methods are **not** supported for this creative type.
   /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE" : Square native app install
-  /// creative. Create and update methods are supported for this creative type
-  /// if the hosting_source is `HOSTING_SOURCE_HOSTED`
+  /// creative. Create and update methods are **not** supported for this
+  /// creative type.
   /// - "CREATIVE_TYPE_AUDIO" : Audio creative. Create and update methods are
   /// supported for this creative type if the hosting_source is
   /// `HOSTING_SOURCE_HOSTED`
@@ -16591,9 +16567,8 @@ class Creative {
   ///
   /// Applicable to all creative types. The value of width_pixels and
   /// height_pixels defaults to `0` when creative_type is one of: *
-  /// `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_INTERSTITIAL`
-  /// * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
-  /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO`
+  /// `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` *
+  /// `CREATIVE_TYPE_NATIVE_VIDEO`
   ///
   /// Required.
   Dimensions? dimensions;
@@ -16698,8 +16673,6 @@ class Creative {
   /// Campaign Manager 360. Create and update methods are supported for this
   /// hosting type if the creative_type is one of the following: *
   /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO` *
   /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`
   /// - "HOSTING_SOURCE_RICH_MEDIA" : A rich media creative created in Studio
@@ -16733,10 +16706,9 @@ class Creative {
   /// JavaScript measurement URL from supported third-party verification
   /// providers (ComScore, DoubleVerify, IAS, Moat).
   ///
-  /// HTML script tags are not supported. This field is only supported in
+  /// HTML script tags are not supported. This field is only writeable in
   /// following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   core.String? jsTrackerUrl;
 
   /// The IDs of the line items this creative is associated with.
@@ -16883,9 +16855,8 @@ class Creative {
   /// The URLs must start with https (except on inventory that doesn't require
   /// SSL compliance). If using macros in your URL, use only macros supported by
   /// Display & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field
-  /// is only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
-  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+  /// is only writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+  /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
   core.List<core.String>? trackerUrls;
 
   /// Audio/Video transcodes.
@@ -17260,11 +17231,10 @@ class CreativeConfig {
   /// - "CREATIVE_TYPE_LIGHTBOX" : Responsive and expandable Lightbox creative.
   /// Create and update methods are **not** supported for this creative type.
   /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL" : Native app install creative. Create
-  /// and update methods are supported for this creative type if the
-  /// hosting_source is `HOSTING_SOURCE_HOSTED`
+  /// and update methods are **not** supported for this creative type.
   /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE" : Square native app install
-  /// creative. Create and update methods are supported for this creative type
-  /// if the hosting_source is `HOSTING_SOURCE_HOSTED`
+  /// creative. Create and update methods are **not** supported for this
+  /// creative type.
   /// - "CREATIVE_TYPE_AUDIO" : Audio creative. Create and update methods are
   /// supported for this creative type if the hosting_source is
   /// `HOSTING_SOURCE_HOSTED`

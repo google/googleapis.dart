@@ -422,6 +422,14 @@ class GoogleCloudAdvisorynotificationsV1Notification {
   /// organizations/{organization}/locations/{location}/notifications/{notification}.
   core.String? name;
 
+  /// Type of notification
+  /// Possible string values are:
+  /// - "NOTIFICATION_TYPE_UNSPECIFIED" : Default type
+  /// - "NOTIFICATION_TYPE_SECURITY_PRIVACY_ADVISORY" : Security and privacy
+  /// advisory notifications
+  /// - "NOTIFICATION_TYPE_SENSITIVE_ACTIONS" : Sensitive action notifications
+  core.String? notificationType;
+
   /// The subject line of the notification.
   GoogleCloudAdvisorynotificationsV1Subject? subject;
 
@@ -429,6 +437,7 @@ class GoogleCloudAdvisorynotificationsV1Notification {
     this.createTime,
     this.messages,
     this.name,
+    this.notificationType,
     this.subject,
   });
 
@@ -445,6 +454,9 @@ class GoogleCloudAdvisorynotificationsV1Notification {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationType: json_.containsKey('notificationType')
+              ? json_['notificationType'] as core.String
+              : null,
           subject: json_.containsKey('subject')
               ? GoogleCloudAdvisorynotificationsV1Subject.fromJson(
                   json_['subject'] as core.Map<core.String, core.dynamic>)
@@ -455,6 +467,7 @@ class GoogleCloudAdvisorynotificationsV1Notification {
         if (createTime != null) 'createTime': createTime!,
         if (messages != null) 'messages': messages!,
         if (name != null) 'name': name!,
+        if (notificationType != null) 'notificationType': notificationType!,
         if (subject != null) 'subject': subject!,
       };
 }

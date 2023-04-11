@@ -24,6 +24,9 @@
 ///   - [FoldersFindingsResource]
 ///   - [FoldersMuteConfigsResource]
 ///   - [FoldersNotificationConfigsResource]
+///   - [FoldersSecurityHealthAnalyticsSettingsResource]
+///     - [FoldersSecurityHealthAnalyticsSettingsCustomModulesResource]
+/// - [FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource]
 ///   - [FoldersSourcesResource]
 ///     - [FoldersSourcesFindingsResource]
 ///       - [FoldersSourcesFindingsExternalSystemsResource]
@@ -34,6 +37,10 @@
 ///   - [OrganizationsMuteConfigsResource]
 ///   - [OrganizationsNotificationConfigsResource]
 ///   - [OrganizationsOperationsResource]
+///   - [OrganizationsSecurityHealthAnalyticsSettingsResource]
+///     - [OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource]
+/// -
+/// [OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource]
 ///   - [OrganizationsSourcesResource]
 ///     - [OrganizationsSourcesFindingsResource]
 ///       - [OrganizationsSourcesFindingsExternalSystemsResource]
@@ -43,6 +50,9 @@
 ///   - [ProjectsFindingsResource]
 ///   - [ProjectsMuteConfigsResource]
 ///   - [ProjectsNotificationConfigsResource]
+///   - [ProjectsSecurityHealthAnalyticsSettingsResource]
+///     - [ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource]
+/// - [ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource]
 ///   - [ProjectsSourcesResource]
 ///     - [ProjectsSourcesFindingsResource]
 ///       - [ProjectsSourcesFindingsExternalSystemsResource]
@@ -94,6 +104,9 @@ class FoldersResource {
       FoldersMuteConfigsResource(_requester);
   FoldersNotificationConfigsResource get notificationConfigs =>
       FoldersNotificationConfigsResource(_requester);
+  FoldersSecurityHealthAnalyticsSettingsResource
+      get securityHealthAnalyticsSettings =>
+          FoldersSecurityHealthAnalyticsSettingsResource(_requester);
   FoldersSourcesResource get sources => FoldersSourcesResource(_requester);
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
@@ -1114,6 +1127,447 @@ class FoldersNotificationConfigsResource {
   }
 }
 
+class FoldersSecurityHealthAnalyticsSettingsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersSecurityHealthAnalyticsSettingsCustomModulesResource
+      get customModules =>
+          FoldersSecurityHealthAnalyticsSettingsCustomModulesResource(
+              _requester);
+  FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+              _requester);
+
+  FoldersSecurityHealthAnalyticsSettingsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersSecurityHealthAnalyticsSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+  /// given CRM parent, and also creates inherited
+  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+  /// parent.
+  ///
+  /// These modules are enabled by default.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new custom module's parent. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      create(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+  /// descendants in the CRM hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a SecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list custom modules. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
+  /// the given CRM parent and all of the parent’s CRM descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list descendant custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported on both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// “inherited”). Updating the display name and custom config of a module is
+  /// supported on resident modules only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the custom module. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// The id {customModule} is server-generated and is not user settable. It
+  /// will be a numeric id containing 1-20 digits.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      patch(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the effective custom module to get. Its format
+  /// is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
+  /// the given parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list effective custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListEffectiveSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersSourcesResource {
   final commons.ApiRequester _requester;
 
@@ -1651,6 +2105,9 @@ class OrganizationsResource {
       OrganizationsNotificationConfigsResource(_requester);
   OrganizationsOperationsResource get operations =>
       OrganizationsOperationsResource(_requester);
+  OrganizationsSecurityHealthAnalyticsSettingsResource
+      get securityHealthAnalyticsSettings =>
+          OrganizationsSecurityHealthAnalyticsSettingsResource(_requester);
   OrganizationsSourcesResource get sources =>
       OrganizationsSourcesResource(_requester);
 
@@ -2989,6 +3446,448 @@ class OrganizationsOperationsResource {
   }
 }
 
+class OrganizationsSecurityHealthAnalyticsSettingsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource
+      get customModules =>
+          OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource(
+              _requester);
+  OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+              _requester);
+
+  OrganizationsSecurityHealthAnalyticsSettingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+  /// given CRM parent, and also creates inherited
+  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+  /// parent.
+  ///
+  /// These modules are enabled by default.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new custom module's parent. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      create(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+  /// descendants in the CRM hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a SecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list custom modules. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
+  /// the given CRM parent and all of the parent’s CRM descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list descendant custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported on both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// “inherited”). Updating the display name and custom config of a module is
+  /// supported on resident modules only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the custom module. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// The id {customModule} is server-generated and is not user settable. It
+  /// will be a numeric id containing 1-20 digits.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      patch(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the effective custom module to get. Its format
+  /// is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
+  /// the given parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list effective custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListEffectiveSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsSourcesResource {
   final commons.ApiRequester _requester;
 
@@ -3828,6 +4727,9 @@ class ProjectsResource {
       ProjectsMuteConfigsResource(_requester);
   ProjectsNotificationConfigsResource get notificationConfigs =>
       ProjectsNotificationConfigsResource(_requester);
+  ProjectsSecurityHealthAnalyticsSettingsResource
+      get securityHealthAnalyticsSettings =>
+          ProjectsSecurityHealthAnalyticsSettingsResource(_requester);
   ProjectsSourcesResource get sources => ProjectsSourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
@@ -4845,6 +5747,447 @@ class ProjectsNotificationConfigsResource {
       queryParams: queryParams_,
     );
     return NotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsSecurityHealthAnalyticsSettingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource
+      get customModules =>
+          ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource(
+              _requester);
+  ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+              _requester);
+
+  ProjectsSecurityHealthAnalyticsSettingsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+  /// given CRM parent, and also creates inherited
+  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+  /// parent.
+  ///
+  /// These modules are enabled by default.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new custom module's parent. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      create(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+  /// descendants in the CRM hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a SecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list custom modules. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
+  /// the given CRM parent and all of the parent’s CRM descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list descendant custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported on both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// “inherited”). Updating the display name and custom config of a module is
+  /// supported on resident modules only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the custom module. Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// The id {customModule} is server-generated and is not user settable. It
+  /// will be a numeric id containing 1-20 digits.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+      patch(
+    GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the effective custom module to get. Its format
+  /// is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
+  /// the given parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent, and
+  /// inherited modules, inherited from CRM ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list effective custom modules. Its
+  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
+  /// "folders/{folder}/securityHealthAnalyticsSettings", or
+  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last call indicating a
+  /// continuation
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListEffectiveSecurityHealthAnalyticsCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveSecurityHealthAnalyticsCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7478,6 +8821,201 @@ class GoogleCloudSecuritycenterV1Binding {
       };
 }
 
+/// Defines the properties in a custom module configuration for Security Health
+/// Analytics.
+///
+/// Use the custom module configuration to create custom detectors that generate
+/// custom findings for resources that you specify.
+class GoogleCloudSecuritycenterV1CustomConfig {
+  /// Custom output properties.
+  GoogleCloudSecuritycenterV1CustomOutputSpec? customOutput;
+
+  /// Text that describes the vulnerability or misconfiguration that the custom
+  /// module detects.
+  ///
+  /// This explanation is returned with each finding instance to help
+  /// investigators understand the detected issue. The text must be enclosed in
+  /// quotation marks.
+  core.String? description;
+
+  /// The CEL expression to evaluate to produce findings.
+  ///
+  /// When the expression evaluates to true against a resource, a finding is
+  /// generated.
+  Expr? predicate;
+
+  /// An explanation of the recommended steps that security teams can take to
+  /// resolve the detected issue.
+  ///
+  /// This explanation is returned with each finding generated by this module in
+  /// the `nextSteps` property of the finding JSON.
+  core.String? recommendation;
+
+  /// The resource types that the custom module operates on.
+  ///
+  /// Each custom module can specify up to 5 resource types.
+  GoogleCloudSecuritycenterV1ResourceSelector? resourceSelector;
+
+  /// The severity to assign to findings generated by the module.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  /// - "MEDIUM" : Medium severity.
+  /// - "LOW" : Low severity.
+  core.String? severity;
+
+  GoogleCloudSecuritycenterV1CustomConfig({
+    this.customOutput,
+    this.description,
+    this.predicate,
+    this.recommendation,
+    this.resourceSelector,
+    this.severity,
+  });
+
+  GoogleCloudSecuritycenterV1CustomConfig.fromJson(core.Map json_)
+      : this(
+          customOutput: json_.containsKey('customOutput')
+              ? GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(
+                  json_['customOutput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          predicate: json_.containsKey('predicate')
+              ? Expr.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recommendation: json_.containsKey('recommendation')
+              ? json_['recommendation'] as core.String
+              : null,
+          resourceSelector: json_.containsKey('resourceSelector')
+              ? GoogleCloudSecuritycenterV1ResourceSelector.fromJson(
+                  json_['resourceSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customOutput != null) 'customOutput': customOutput!,
+        if (description != null) 'description': description!,
+        if (predicate != null) 'predicate': predicate!,
+        if (recommendation != null) 'recommendation': recommendation!,
+        if (resourceSelector != null) 'resourceSelector': resourceSelector!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// A set of optional name-value pairs that define custom source properties to
+/// return with each finding that is generated by the custom module.
+///
+/// The custom source properties that are defined here are included in the
+/// finding JSON under `sourceProperties`.
+class GoogleCloudSecuritycenterV1CustomOutputSpec {
+  /// A list of custom output properties to add to the finding.
+  core.List<GoogleCloudSecuritycenterV1Property>? properties;
+
+  GoogleCloudSecuritycenterV1CustomOutputSpec({
+    this.properties,
+  });
+
+  GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(core.Map json_)
+      : this(
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.List)
+                  .map((value) => GoogleCloudSecuritycenterV1Property.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+      };
+}
+
+/// An EffectiveSecurityHealthAnalyticsCustomModule is the representation of a
+/// Security Health Analytics custom module at a specified level of the resource
+/// hierarchy: organization, folder, or project.
+///
+/// If a custom module is inherited from a parent organization or folder, the
+/// value of the `enablementState` property in
+/// EffectiveSecurityHealthAnalyticsCustomModule is set to the value that is
+/// effective in the parent, instead of `INHERITED`. For example, if the module
+/// is enabled in a parent organization or folder, the effective
+/// enablement_state for the module in all child folders or projects is also
+/// `enabled`. EffectiveSecurityHealthAnalyticsCustomModule is read-only.
+class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
+  /// The user-specified configuration for the module.
+  ///
+  /// Output only.
+  GoogleCloudSecuritycenterV1CustomConfig? customConfig;
+
+  /// The display name for the custom module.
+  ///
+  /// The name must be between 1 and 128 characters, start with a lowercase
+  /// letter, and contain alphanumeric characters or underscores only.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The effective state of enablement for the module at the given level of the
+  /// hierarchy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
+  /// - "ENABLED" : The module is enabled at the given level.
+  /// - "DISABLED" : The module is disabled at the given level.
+  core.String? enablementState;
+
+  /// The resource name of the custom module.
+  ///
+  /// Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// or
+  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule({
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.name,
+  });
+
+  GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule.fromJson(
+      core.Map json_)
+      : this(
+          customConfig: json_.containsKey('customConfig')
+              ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          enablementState: json_.containsKey('enablementState')
+              ? json_['enablementState'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConfig != null) 'customConfig': customConfig!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Representation of third party SIEM/SOAR fields within SCC.
 class GoogleCloudSecuritycenterV1ExternalSystem {
   /// References primary/secondary etc assignees in the external system.
@@ -7634,6 +9172,169 @@ class GoogleCloudSecuritycenterV1MuteConfig {
         if (displayName != null) 'displayName': displayName!,
         if (filter != null) 'filter': filter!,
         if (mostRecentEditor != null) 'mostRecentEditor': mostRecentEditor!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An individual name-value pair that defines a custom source property.
+class GoogleCloudSecuritycenterV1Property {
+  /// Name of the property for the custom output.
+  core.String? name;
+
+  /// The CEL expression for the custom output.
+  ///
+  /// A resource property can be specified to return the value of the property
+  /// or a text string enclosed in quotation marks.
+  Expr? valueExpression;
+
+  GoogleCloudSecuritycenterV1Property({
+    this.name,
+    this.valueExpression,
+  });
+
+  GoogleCloudSecuritycenterV1Property.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          valueExpression: json_.containsKey('valueExpression')
+              ? Expr.fromJson(json_['valueExpression']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (valueExpression != null) 'valueExpression': valueExpression!,
+      };
+}
+
+/// Resource for selecting resource type.
+class GoogleCloudSecuritycenterV1ResourceSelector {
+  /// The resource types to run the detector on.
+  core.List<core.String>? resourceTypes;
+
+  GoogleCloudSecuritycenterV1ResourceSelector({
+    this.resourceTypes,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceSelector.fromJson(core.Map json_)
+      : this(
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// Represents an instance of a Security Health Analytics custom module,
+/// including its full module name, display name, enablement state, and last
+/// updated time.
+///
+/// You can create a custom module at the organization, folder, or project
+/// level. Custom modules that you create at the organization or folder level
+/// are inherited by the child folders and projects.
+class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
+  /// If empty, indicates that the custom module was created in the
+  /// organization, folder, or project in which you are viewing the custom
+  /// module.
+  ///
+  /// Otherwise, `ancestor_module` specifies the organization or folder from
+  /// which the custom module is inherited.
+  ///
+  /// Output only.
+  core.String? ancestorModule;
+
+  /// The user specified custom configuration for the module.
+  GoogleCloudSecuritycenterV1CustomConfig? customConfig;
+
+  /// The display name of the Security Health Analytics custom module.
+  ///
+  /// This display name becomes the finding category for all findings that are
+  /// returned by this custom module. The display name must be between 1 and 128
+  /// characters, start with a lowercase letter, and contain alphanumeric
+  /// characters or underscores only.
+  core.String? displayName;
+
+  /// The enablement state of the custom module.
+  /// Possible string values are:
+  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
+  /// - "ENABLED" : The module is enabled at the given CRM resource.
+  /// - "DISABLED" : The module is disabled at the given CRM resource.
+  /// - "INHERITED" : State is inherited from an ancestor module. The module
+  /// will either be effectively ENABLED or DISABLED based on its closest
+  /// non-inherited ancestor module in the CRM hierarchy.
+  core.String? enablementState;
+
+  /// The editor that last updated the custom module.
+  ///
+  /// Output only.
+  core.String? lastEditor;
+
+  /// The resource name of the custom module.
+  ///
+  /// Its format is
+  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// or
+  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// The id {customModule} is server-generated and is not user settable. It
+  /// will be a numeric id containing 1-20 digits.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The time at which the custom module was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule({
+    this.ancestorModule,
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.lastEditor,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+      core.Map json_)
+      : this(
+          ancestorModule: json_.containsKey('ancestorModule')
+              ? json_['ancestorModule'] as core.String
+              : null,
+          customConfig: json_.containsKey('customConfig')
+              ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          enablementState: json_.containsKey('enablementState')
+              ? json_['enablementState'] as core.String
+              : null,
+          lastEditor: json_.containsKey('lastEditor')
+              ? json_['lastEditor'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestorModule != null) 'ancestorModule': ancestorModule!,
+        if (customConfig != null) 'customConfig': customConfig!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (lastEditor != null) 'lastEditor': lastEditor!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -8511,6 +10212,90 @@ class ListBigQueryExportsResponse {
       };
 }
 
+/// Response message for listing descendant security health analytics custom
+/// modules.
+class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
+  /// If not empty, indicates that there may be more custom modules to be
+  /// returned.
+  core.String? nextPageToken;
+
+  /// Custom modules belonging to the requested parent and its descendants.
+  core.List<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>?
+      securityHealthAnalyticsCustomModules;
+
+  ListDescendantSecurityHealthAnalyticsCustomModulesResponse({
+    this.nextPageToken,
+    this.securityHealthAnalyticsCustomModules,
+  });
+
+  ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityHealthAnalyticsCustomModules: json_
+                  .containsKey('securityHealthAnalyticsCustomModules')
+              ? (json_['securityHealthAnalyticsCustomModules'] as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityHealthAnalyticsCustomModules != null)
+          'securityHealthAnalyticsCustomModules':
+              securityHealthAnalyticsCustomModules!,
+      };
+}
+
+/// Response message for listing effective security health analytics custom
+/// modules.
+class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
+  /// Effective custom modules belonging to the requested parent.
+  core.List<
+          GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>?
+      effectiveSecurityHealthAnalyticsCustomModules;
+
+  /// If not empty, indicates that there may be more effective custom modules to
+  /// be returned.
+  core.String? nextPageToken;
+
+  ListEffectiveSecurityHealthAnalyticsCustomModulesResponse({
+    this.effectiveSecurityHealthAnalyticsCustomModules,
+    this.nextPageToken,
+  });
+
+  ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+      core.Map json_)
+      : this(
+          effectiveSecurityHealthAnalyticsCustomModules: json_
+                  .containsKey('effectiveSecurityHealthAnalyticsCustomModules')
+              ? (json_['effectiveSecurityHealthAnalyticsCustomModules']
+                      as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveSecurityHealthAnalyticsCustomModules != null)
+          'effectiveSecurityHealthAnalyticsCustomModules':
+              effectiveSecurityHealthAnalyticsCustomModules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for listing findings.
 class ListFindingsResponse {
   /// Findings matching the list request.
@@ -8710,6 +10495,45 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response message for listing security health analytics custom modules.
+class ListSecurityHealthAnalyticsCustomModulesResponse {
+  /// If not empty, indicates that there may be more custom modules to be
+  /// returned.
+  core.String? nextPageToken;
+
+  /// Custom modules belonging to the requested parent.
+  core.List<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>?
+      securityHealthAnalyticsCustomModules;
+
+  ListSecurityHealthAnalyticsCustomModulesResponse({
+    this.nextPageToken,
+    this.securityHealthAnalyticsCustomModules,
+  });
+
+  ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityHealthAnalyticsCustomModules: json_
+                  .containsKey('securityHealthAnalyticsCustomModules')
+              ? (json_['securityHealthAnalyticsCustomModules'] as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityHealthAnalyticsCustomModules != null)
+          'securityHealthAnalyticsCustomModules':
+              securityHealthAnalyticsCustomModules!,
       };
 }
 

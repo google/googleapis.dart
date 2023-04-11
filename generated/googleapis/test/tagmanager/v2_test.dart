@@ -683,6 +683,7 @@ api.ContainerVersionHeader buildContainerVersionHeader() {
     o.numMacros = 'foo';
     o.numRules = 'foo';
     o.numTags = 'foo';
+    o.numTransformations = 'foo';
     o.numTriggers = 'foo';
     o.numVariables = 'foo';
     o.numZones = 'foo';
@@ -734,6 +735,10 @@ void checkContainerVersionHeader(api.ContainerVersionHeader o) {
     );
     unittest.expect(
       o.numTags!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numTransformations!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -99,6 +99,7 @@ api.Execution buildExecution() {
     o.result = 'foo';
     o.startTime = 'foo';
     o.state = 'foo';
+    o.stateError = buildStateError();
     o.status = buildStatus();
     o.workflowRevisionId = 'foo';
   }
@@ -143,6 +144,7 @@ void checkExecution(api.Execution o) {
       o.state!,
       unittest.equals('foo'),
     );
+    checkStateError(o.stateError!);
     checkStatus(o.status!);
     unittest.expect(
       o.workflowRevisionId!,
@@ -334,6 +336,33 @@ void checkStackTraceElement(api.StackTraceElement o) {
   buildCounterStackTraceElement--;
 }
 
+core.int buildCounterStateError = 0;
+api.StateError buildStateError() {
+  final o = api.StateError();
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    o.details = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterStateError--;
+  return o;
+}
+
+void checkStateError(api.StateError o) {
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStateError--;
+}
+
 core.List<api.Step> buildUnnamed4() => [
       buildStep(),
       buildStep(),
@@ -498,6 +527,16 @@ void main() {
       final od = api.StackTraceElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStackTraceElement(od);
+    });
+  });
+
+  unittest.group('obj-schema-StateError', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStateError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.StateError.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStateError(od);
     });
   });
 

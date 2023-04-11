@@ -5668,6 +5668,7 @@ class ObjectMeta {
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
   /// `run.googleapis.com/ingress`: Service. *
+  /// `run.googleapis.com/launch-stage`: Service, Job. *
   /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
   /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
   /// `run.googleapis.com/secrets`: Revision, Execution. *

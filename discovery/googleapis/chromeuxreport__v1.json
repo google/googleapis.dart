@@ -129,7 +129,7 @@
             }
         }
     },
-    "revision": "20230330",
+    "revision": "20230410",
     "rootUrl": "https://chromeuxreport.googleapis.com/",
     "schemas": {
         "Bin": {

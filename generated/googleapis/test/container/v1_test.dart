@@ -57,6 +57,21 @@ void checkAcceleratorConfig(api.AcceleratorConfig o) {
   buildCounterAcceleratorConfig--;
 }
 
+core.int buildCounterAdditionalPodRangesConfig = 0;
+api.AdditionalPodRangesConfig buildAdditionalPodRangesConfig() {
+  final o = api.AdditionalPodRangesConfig();
+  buildCounterAdditionalPodRangesConfig++;
+  if (buildCounterAdditionalPodRangesConfig < 3) {}
+  buildCounterAdditionalPodRangesConfig--;
+  return o;
+}
+
+void checkAdditionalPodRangesConfig(api.AdditionalPodRangesConfig o) {
+  buildCounterAdditionalPodRangesConfig++;
+  if (buildCounterAdditionalPodRangesConfig < 3) {}
+  buildCounterAdditionalPodRangesConfig--;
+}
+
 core.int buildCounterAddonsConfig = 0;
 api.AddonsConfig buildAddonsConfig() {
   final o = api.AddonsConfig();
@@ -884,6 +899,7 @@ api.ClusterUpdate buildClusterUpdate() {
   final o = api.ClusterUpdate();
   buildCounterClusterUpdate++;
   if (buildCounterClusterUpdate < 3) {
+    o.additionalPodRangesConfig = buildAdditionalPodRangesConfig();
     o.desiredAddonsConfig = buildAddonsConfig();
     o.desiredAuthenticatorGroupsConfig = buildAuthenticatorGroupsConfig();
     o.desiredBinaryAuthorization = buildBinaryAuthorization();
@@ -925,6 +941,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredVerticalPodAutoscaling = buildVerticalPodAutoscaling();
     o.desiredWorkloadIdentityConfig = buildWorkloadIdentityConfig();
     o.etag = 'foo';
+    o.removedAdditionalPodRangesConfig = buildAdditionalPodRangesConfig();
   }
   buildCounterClusterUpdate--;
   return o;
@@ -933,6 +950,7 @@ api.ClusterUpdate buildClusterUpdate() {
 void checkClusterUpdate(api.ClusterUpdate o) {
   buildCounterClusterUpdate++;
   if (buildCounterClusterUpdate < 3) {
+    checkAdditionalPodRangesConfig(o.additionalPodRangesConfig!);
     checkAddonsConfig(o.desiredAddonsConfig!);
     checkAuthenticatorGroupsConfig(o.desiredAuthenticatorGroupsConfig!);
     checkBinaryAuthorization(o.desiredBinaryAuthorization!);
@@ -1004,6 +1022,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    checkAdditionalPodRangesConfig(o.removedAdditionalPodRangesConfig!);
   }
   buildCounterClusterUpdate--;
 }
@@ -1830,6 +1849,7 @@ api.IPAllocationPolicy buildIPAllocationPolicy() {
   final o = api.IPAllocationPolicy();
   buildCounterIPAllocationPolicy++;
   if (buildCounterIPAllocationPolicy < 3) {
+    o.additionalPodRangesConfig = buildAdditionalPodRangesConfig();
     o.clusterIpv4Cidr = 'foo';
     o.clusterIpv4CidrBlock = 'foo';
     o.clusterSecondaryRangeName = 'foo';
@@ -1837,6 +1857,7 @@ api.IPAllocationPolicy buildIPAllocationPolicy() {
     o.ipv6AccessType = 'foo';
     o.nodeIpv4Cidr = 'foo';
     o.nodeIpv4CidrBlock = 'foo';
+    o.podCidrOverprovisionConfig = buildPodCIDROverprovisionConfig();
     o.servicesIpv4Cidr = 'foo';
     o.servicesIpv4CidrBlock = 'foo';
     o.servicesIpv6CidrBlock = 'foo';
@@ -1855,6 +1876,7 @@ api.IPAllocationPolicy buildIPAllocationPolicy() {
 void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
   buildCounterIPAllocationPolicy++;
   if (buildCounterIPAllocationPolicy < 3) {
+    checkAdditionalPodRangesConfig(o.additionalPodRangesConfig!);
     unittest.expect(
       o.clusterIpv4Cidr!,
       unittest.equals('foo'),
@@ -1880,6 +1902,7 @@ void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
       o.nodeIpv4CidrBlock!,
       unittest.equals('foo'),
     );
+    checkPodCIDROverprovisionConfig(o.podCidrOverprovisionConfig!);
     unittest.expect(
       o.servicesIpv4Cidr!,
       unittest.equals('foo'),
@@ -3160,6 +3183,7 @@ api.NodeNetworkConfig buildNodeNetworkConfig() {
     o.createPodRange = true;
     o.enablePrivateNodes = true;
     o.networkPerformanceConfig = buildNetworkPerformanceConfig();
+    o.podCidrOverprovisionConfig = buildPodCIDROverprovisionConfig();
     o.podIpv4CidrBlock = 'foo';
     o.podRange = 'foo';
   }
@@ -3173,6 +3197,7 @@ void checkNodeNetworkConfig(api.NodeNetworkConfig o) {
     unittest.expect(o.createPodRange!, unittest.isTrue);
     unittest.expect(o.enablePrivateNodes!, unittest.isTrue);
     checkNetworkPerformanceConfig(o.networkPerformanceConfig!);
+    checkPodCIDROverprovisionConfig(o.podCidrOverprovisionConfig!);
     unittest.expect(
       o.podIpv4CidrBlock!,
       unittest.equals('foo'),
@@ -3668,6 +3693,25 @@ void checkPlacementPolicy(api.PlacementPolicy o) {
     );
   }
   buildCounterPlacementPolicy--;
+}
+
+core.int buildCounterPodCIDROverprovisionConfig = 0;
+api.PodCIDROverprovisionConfig buildPodCIDROverprovisionConfig() {
+  final o = api.PodCIDROverprovisionConfig();
+  buildCounterPodCIDROverprovisionConfig++;
+  if (buildCounterPodCIDROverprovisionConfig < 3) {
+    o.disable = true;
+  }
+  buildCounterPodCIDROverprovisionConfig--;
+  return o;
+}
+
+void checkPodCIDROverprovisionConfig(api.PodCIDROverprovisionConfig o) {
+  buildCounterPodCIDROverprovisionConfig++;
+  if (buildCounterPodCIDROverprovisionConfig < 3) {
+    unittest.expect(o.disable!, unittest.isTrue);
+  }
+  buildCounterPodCIDROverprovisionConfig--;
 }
 
 core.int buildCounterPrivateClusterConfig = 0;
@@ -5406,6 +5450,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AdditionalPodRangesConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdditionalPodRangesConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdditionalPodRangesConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdditionalPodRangesConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-AddonsConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAddonsConfig();
@@ -6352,6 +6406,16 @@ void main() {
       final od = api.PlacementPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPlacementPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PodCIDROverprovisionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPodCIDROverprovisionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PodCIDROverprovisionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPodCIDROverprovisionConfig(od);
     });
   });
 

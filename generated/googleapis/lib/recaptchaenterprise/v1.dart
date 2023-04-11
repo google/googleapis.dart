@@ -2515,6 +2515,11 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
+  /// Extended verdict reasons to be used for experimentation only.
+  ///
+  /// The set of possible reasons is subject to change.
+  core.List<core.String>? extendedVerdictReasons;
+
   /// Reasons contributing to the risk analysis verdict.
   core.List<core.String>? reasons;
 
@@ -2525,12 +2530,18 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   core.double? score;
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
+    this.extendedVerdictReasons,
     this.reasons,
     this.score,
   });
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map json_)
       : this(
+          extendedVerdictReasons: json_.containsKey('extendedVerdictReasons')
+              ? (json_['extendedVerdictReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           reasons: json_.containsKey('reasons')
               ? (json_['reasons'] as core.List)
                   .map((value) => value as core.String)
@@ -2542,6 +2553,8 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (extendedVerdictReasons != null)
+          'extendedVerdictReasons': extendedVerdictReasons!,
         if (reasons != null) 'reasons': reasons!,
         if (score != null) 'score': score!,
       };

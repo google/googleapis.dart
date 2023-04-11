@@ -1281,6 +1281,124 @@ void checkExternalAccountIdentifiers(api.ExternalAccountIdentifiers o) {
   buildCounterExternalAccountIdentifiers--;
 }
 
+core.int buildCounterExternalSubscription = 0;
+api.ExternalSubscription buildExternalSubscription() {
+  final o = api.ExternalSubscription();
+  buildCounterExternalSubscription++;
+  if (buildCounterExternalSubscription < 3) {
+    o.subscriptionType = 'foo';
+  }
+  buildCounterExternalSubscription--;
+  return o;
+}
+
+void checkExternalSubscription(api.ExternalSubscription o) {
+  buildCounterExternalSubscription++;
+  if (buildCounterExternalSubscription < 3) {
+    unittest.expect(
+      o.subscriptionType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExternalSubscription--;
+}
+
+core.int buildCounterExternalTransaction = 0;
+api.ExternalTransaction buildExternalTransaction() {
+  final o = api.ExternalTransaction();
+  buildCounterExternalTransaction++;
+  if (buildCounterExternalTransaction < 3) {
+    o.createTime = 'foo';
+    o.currentPreTaxAmount = buildPrice();
+    o.currentTaxAmount = buildPrice();
+    o.externalTransactionId = 'foo';
+    o.oneTimeTransaction = buildOneTimeExternalTransaction();
+    o.originalPreTaxAmount = buildPrice();
+    o.originalTaxAmount = buildPrice();
+    o.packageName = 'foo';
+    o.recurringTransaction = buildRecurringExternalTransaction();
+    o.testPurchase = buildExternalTransactionTestPurchase();
+    o.transactionState = 'foo';
+    o.transactionTime = 'foo';
+    o.userTaxAddress = buildExternalTransactionAddress();
+  }
+  buildCounterExternalTransaction--;
+  return o;
+}
+
+void checkExternalTransaction(api.ExternalTransaction o) {
+  buildCounterExternalTransaction++;
+  if (buildCounterExternalTransaction < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    checkPrice(o.currentPreTaxAmount!);
+    checkPrice(o.currentTaxAmount!);
+    unittest.expect(
+      o.externalTransactionId!,
+      unittest.equals('foo'),
+    );
+    checkOneTimeExternalTransaction(o.oneTimeTransaction!);
+    checkPrice(o.originalPreTaxAmount!);
+    checkPrice(o.originalTaxAmount!);
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    checkRecurringExternalTransaction(o.recurringTransaction!);
+    checkExternalTransactionTestPurchase(o.testPurchase!);
+    unittest.expect(
+      o.transactionState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transactionTime!,
+      unittest.equals('foo'),
+    );
+    checkExternalTransactionAddress(o.userTaxAddress!);
+  }
+  buildCounterExternalTransaction--;
+}
+
+core.int buildCounterExternalTransactionAddress = 0;
+api.ExternalTransactionAddress buildExternalTransactionAddress() {
+  final o = api.ExternalTransactionAddress();
+  buildCounterExternalTransactionAddress++;
+  if (buildCounterExternalTransactionAddress < 3) {
+    o.regionCode = 'foo';
+  }
+  buildCounterExternalTransactionAddress--;
+  return o;
+}
+
+void checkExternalTransactionAddress(api.ExternalTransactionAddress o) {
+  buildCounterExternalTransactionAddress++;
+  if (buildCounterExternalTransactionAddress < 3) {
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExternalTransactionAddress--;
+}
+
+core.int buildCounterExternalTransactionTestPurchase = 0;
+api.ExternalTransactionTestPurchase buildExternalTransactionTestPurchase() {
+  final o = api.ExternalTransactionTestPurchase();
+  buildCounterExternalTransactionTestPurchase++;
+  if (buildCounterExternalTransactionTestPurchase < 3) {}
+  buildCounterExternalTransactionTestPurchase--;
+  return o;
+}
+
+void checkExternalTransactionTestPurchase(
+    api.ExternalTransactionTestPurchase o) {
+  buildCounterExternalTransactionTestPurchase++;
+  if (buildCounterExternalTransactionTestPurchase < 3) {}
+  buildCounterExternalTransactionTestPurchase--;
+}
+
 core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
@@ -1421,6 +1539,21 @@ void checkExternallyHostedApk(api.ExternallyHostedApk o) {
     );
   }
   buildCounterExternallyHostedApk--;
+}
+
+core.int buildCounterFullRefund = 0;
+api.FullRefund buildFullRefund() {
+  final o = api.FullRefund();
+  buildCounterFullRefund++;
+  if (buildCounterFullRefund < 3) {}
+  buildCounterFullRefund--;
+  return o;
+}
+
+void checkFullRefund(api.FullRefund o) {
+  buildCounterFullRefund++;
+  if (buildCounterFullRefund < 3) {}
+  buildCounterFullRefund--;
 }
 
 core.List<api.GeneratedApksPerSigningKey> buildUnnamed21() => [
@@ -2476,6 +2609,28 @@ void checkOfferTag(api.OfferTag o) {
   buildCounterOfferTag--;
 }
 
+core.int buildCounterOneTimeExternalTransaction = 0;
+api.OneTimeExternalTransaction buildOneTimeExternalTransaction() {
+  final o = api.OneTimeExternalTransaction();
+  buildCounterOneTimeExternalTransaction++;
+  if (buildCounterOneTimeExternalTransaction < 3) {
+    o.externalTransactionToken = 'foo';
+  }
+  buildCounterOneTimeExternalTransaction--;
+  return o;
+}
+
+void checkOneTimeExternalTransaction(api.OneTimeExternalTransaction o) {
+  buildCounterOneTimeExternalTransaction++;
+  if (buildCounterOneTimeExternalTransaction < 3) {
+    unittest.expect(
+      o.externalTransactionToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOneTimeExternalTransaction--;
+}
+
 core.int buildCounterOtherRegionsBasePlanConfig = 0;
 api.OtherRegionsBasePlanConfig buildOtherRegionsBasePlanConfig() {
   final o = api.OtherRegionsBasePlanConfig();
@@ -2601,6 +2756,30 @@ void checkPageInfo(api.PageInfo o) {
     );
   }
   buildCounterPageInfo--;
+}
+
+core.int buildCounterPartialRefund = 0;
+api.PartialRefund buildPartialRefund() {
+  final o = api.PartialRefund();
+  buildCounterPartialRefund++;
+  if (buildCounterPartialRefund < 3) {
+    o.refundId = 'foo';
+    o.refundPreTaxAmount = buildPrice();
+  }
+  buildCounterPartialRefund--;
+  return o;
+}
+
+void checkPartialRefund(api.PartialRefund o) {
+  buildCounterPartialRefund++;
+  if (buildCounterPartialRefund < 3) {
+    unittest.expect(
+      o.refundId!,
+      unittest.equals('foo'),
+    );
+    checkPrice(o.refundPreTaxAmount!);
+  }
+  buildCounterPartialRefund--;
 }
 
 core.int buildCounterPausedStateContext = 0;
@@ -2810,6 +2989,62 @@ void checkProductPurchasesAcknowledgeRequest(
     );
   }
   buildCounterProductPurchasesAcknowledgeRequest--;
+}
+
+core.int buildCounterRecurringExternalTransaction = 0;
+api.RecurringExternalTransaction buildRecurringExternalTransaction() {
+  final o = api.RecurringExternalTransaction();
+  buildCounterRecurringExternalTransaction++;
+  if (buildCounterRecurringExternalTransaction < 3) {
+    o.externalSubscription = buildExternalSubscription();
+    o.externalTransactionToken = 'foo';
+    o.initialExternalTransactionId = 'foo';
+  }
+  buildCounterRecurringExternalTransaction--;
+  return o;
+}
+
+void checkRecurringExternalTransaction(api.RecurringExternalTransaction o) {
+  buildCounterRecurringExternalTransaction++;
+  if (buildCounterRecurringExternalTransaction < 3) {
+    checkExternalSubscription(o.externalSubscription!);
+    unittest.expect(
+      o.externalTransactionToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initialExternalTransactionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRecurringExternalTransaction--;
+}
+
+core.int buildCounterRefundExternalTransactionRequest = 0;
+api.RefundExternalTransactionRequest buildRefundExternalTransactionRequest() {
+  final o = api.RefundExternalTransactionRequest();
+  buildCounterRefundExternalTransactionRequest++;
+  if (buildCounterRefundExternalTransactionRequest < 3) {
+    o.fullRefund = buildFullRefund();
+    o.partialRefund = buildPartialRefund();
+    o.refundTime = 'foo';
+  }
+  buildCounterRefundExternalTransactionRequest--;
+  return o;
+}
+
+void checkRefundExternalTransactionRequest(
+    api.RefundExternalTransactionRequest o) {
+  buildCounterRefundExternalTransactionRequest++;
+  if (buildCounterRefundExternalTransactionRequest < 3) {
+    checkFullRefund(o.fullRefund!);
+    checkPartialRefund(o.partialRefund!);
+    unittest.expect(
+      o.refundTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRefundExternalTransactionRequest--;
 }
 
 core.int buildCounterRegionalBasePlanConfig = 0;
@@ -5084,6 +5319,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ExternalSubscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExternalSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExternalSubscription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExternalSubscription(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExternalTransaction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExternalTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExternalTransaction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExternalTransaction(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExternalTransactionAddress', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExternalTransactionAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExternalTransactionAddress.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExternalTransactionAddress(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExternalTransactionTestPurchase', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExternalTransactionTestPurchase();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExternalTransactionTestPurchase.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExternalTransactionTestPurchase(od);
+    });
+  });
+
   unittest.group('obj-schema-ExternallyHostedApk', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExternallyHostedApk();
@@ -5091,6 +5366,16 @@ void main() {
       final od = api.ExternallyHostedApk.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkExternallyHostedApk(od);
+    });
+  });
+
+  unittest.group('obj-schema-FullRefund', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFullRefund();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.FullRefund.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFullRefund(od);
     });
   });
 
@@ -5384,6 +5669,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OneTimeExternalTransaction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOneTimeExternalTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OneTimeExternalTransaction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOneTimeExternalTransaction(od);
+    });
+  });
+
   unittest.group('obj-schema-OtherRegionsBasePlanConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOtherRegionsBasePlanConfig();
@@ -5431,6 +5726,16 @@ void main() {
       final od =
           api.PageInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPageInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-PartialRefund', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPartialRefund();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PartialRefund.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPartialRefund(od);
     });
   });
 
@@ -5491,6 +5796,26 @@ void main() {
       final od = api.ProductPurchasesAcknowledgeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkProductPurchasesAcknowledgeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RecurringExternalTransaction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecurringExternalTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecurringExternalTransaction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecurringExternalTransaction(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefundExternalTransactionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefundExternalTransactionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefundExternalTransactionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRefundExternalTransactionRequest(od);
     });
   });
 
@@ -9537,6 +9862,185 @@ void main() {
           arg_request, arg_packageName, arg_editId, arg_track,
           $fields: arg_$fields);
       checkTrack(response as api.Track);
+    });
+  });
+
+  unittest.group('resource-ExternaltransactionsResource', () {
+    unittest.test('method--createexternaltransaction', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).externaltransactions;
+      final arg_request = buildExternalTransaction();
+      final arg_parent = 'foo';
+      final arg_externalTransactionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ExternalTransaction.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExternalTransaction(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('androidpublisher/v3/'),
+        );
+        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['externalTransactionId']!.first,
+          unittest.equals(arg_externalTransactionId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExternalTransaction());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.createexternaltransaction(
+          arg_request, arg_parent,
+          externalTransactionId: arg_externalTransactionId,
+          $fields: arg_$fields);
+      checkExternalTransaction(response as api.ExternalTransaction);
+    });
+
+    unittest.test('method--getexternaltransaction', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).externaltransactions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('androidpublisher/v3/'),
+        );
+        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExternalTransaction());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getexternaltransaction(arg_name, $fields: arg_$fields);
+      checkExternalTransaction(response as api.ExternalTransaction);
+    });
+
+    unittest.test('method--refundexternaltransaction', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).externaltransactions;
+      final arg_request = buildRefundExternalTransactionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RefundExternalTransactionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRefundExternalTransactionRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('androidpublisher/v3/'),
+        );
+        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExternalTransaction());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.refundexternaltransaction(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkExternalTransaction(response as api.ExternalTransaction);
     });
   });
 

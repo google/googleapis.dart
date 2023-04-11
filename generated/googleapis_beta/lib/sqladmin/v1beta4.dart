@@ -2651,6 +2651,27 @@ class AclEntry {
       };
 }
 
+/// Specifies options for controlling advanced machine features.
+class AdvancedMachineFeatures {
+  /// The number of threads per physical core.
+  core.int? threadsPerCore;
+
+  AdvancedMachineFeatures({
+    this.threadsPerCore,
+  });
+
+  AdvancedMachineFeatures.fromJson(core.Map json_)
+      : this(
+          threadsPerCore: json_.containsKey('threadsPerCore')
+              ? json_['threadsPerCore'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
+      };
+}
+
 /// An Admin API warning message.
 class ApiWarning {
   /// Code to uniquely identify the warning type.
@@ -3495,6 +3516,8 @@ class DatabaseInstanceFailoverReplica {
 /// A Cloud SQL instance resource.
 class DatabaseInstance {
   /// List all maintenance versions applicable on the instance
+  ///
+  /// Output only.
   core.List<core.String>? availableMaintenanceVersions;
 
   /// The backend type.
@@ -6465,6 +6488,10 @@ class Settings {
   /// Server.
   SqlActiveDirectoryConfig? activeDirectoryConfig;
 
+  /// Specifies advance machine configuration for the instance relevant only for
+  /// SQL Server.
+  AdvancedMachineFeatures? advancedMachineFeatures;
+
   /// The App Engine app IDs that can access this instance.
   ///
   /// (Deprecated) Applied to First Generation instances only.
@@ -6636,6 +6663,7 @@ class Settings {
   Settings({
     this.activationPolicy,
     this.activeDirectoryConfig,
+    this.advancedMachineFeatures,
     this.authorizedGaeApplications,
     this.availabilityType,
     this.backupConfiguration,
@@ -6673,6 +6701,11 @@ class Settings {
           activeDirectoryConfig: json_.containsKey('activeDirectoryConfig')
               ? SqlActiveDirectoryConfig.fromJson(json_['activeDirectoryConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          advancedMachineFeatures: json_.containsKey('advancedMachineFeatures')
+              ? AdvancedMachineFeatures.fromJson(
+                  json_['advancedMachineFeatures']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           authorizedGaeApplications:
               json_.containsKey('authorizedGaeApplications')
@@ -6784,6 +6817,8 @@ class Settings {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (activeDirectoryConfig != null)
           'activeDirectoryConfig': activeDirectoryConfig!,
+        if (advancedMachineFeatures != null)
+          'advancedMachineFeatures': advancedMachineFeatures!,
         if (authorizedGaeApplications != null)
           'authorizedGaeApplications': authorizedGaeApplications!,
         if (availabilityType != null) 'availabilityType': availabilityType!,

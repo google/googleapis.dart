@@ -1327,9 +1327,10 @@ class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
 /// Request message for listing the group priority ordering of an app.
 class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   /// The namespace of the policy type for the request.
-  ///
-  /// Required.
   core.String? policyNamespace;
+
+  /// The schema name of the policy for the request.
+  core.String? policySchema;
 
   /// The key of the target for which we want to retrieve the group priority
   /// ordering.
@@ -1341,6 +1342,7 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
 
   GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest({
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
@@ -1349,6 +1351,9 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
       : this(
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
+              : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
               : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
@@ -1359,6 +1364,7 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
@@ -1375,6 +1381,11 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   /// Output only.
   core.String? policyNamespace;
 
+  /// The schema name of the policy for the group IDs.
+  ///
+  /// Output only.
+  core.String? policySchema;
+
   /// The target resource for which the group priority ordering has been
   /// retrieved.
   ///
@@ -1384,6 +1395,7 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse({
     this.groupIds,
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
@@ -1398,6 +1410,9 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
               : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -1408,6 +1423,7 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupIds != null) 'groupIds': groupIds!,
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
@@ -2421,9 +2437,10 @@ class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
   core.List<core.String>? groupIds;
 
   /// The namespace of the policy type for the request.
-  ///
-  /// Required.
   core.String? policyNamespace;
+
+  /// The schema name of the policy for the request.
+  core.String? policySchema;
 
   /// The key of the target for which we want to update the group priority
   /// ordering.
@@ -2436,6 +2453,7 @@ class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
   GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest({
     this.groupIds,
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
@@ -2450,6 +2468,9 @@ class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
               : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -2460,6 +2481,7 @@ class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupIds != null) 'groupIds': groupIds!,
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }

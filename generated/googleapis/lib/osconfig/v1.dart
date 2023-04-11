@@ -4878,7 +4878,7 @@ class PatchInstanceFilterGroupLabel {
 /// completed.
 ///
 /// Instance details are not included in the job. To paginate through instance
-/// details, use ListPatchJobInstanceDetails. For more information about patch
+/// details, use `ListPatchJobInstanceDetails`. For more information about patch
 /// jobs, see
 /// [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {

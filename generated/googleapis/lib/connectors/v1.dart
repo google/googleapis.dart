@@ -1606,6 +1606,9 @@ class AuthConfig {
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   core.String? authType;
 
+  /// Oauth2AuthCodeFlow.
+  Oauth2AuthCodeFlow? oauth2AuthCodeFlow;
+
   /// Oauth2ClientCredentials.
   Oauth2ClientCredentials? oauth2ClientCredentials;
 
@@ -1621,6 +1624,7 @@ class AuthConfig {
   AuthConfig({
     this.additionalVariables,
     this.authType,
+    this.oauth2AuthCodeFlow,
     this.oauth2ClientCredentials,
     this.oauth2JwtBearer,
     this.sshPublicKey,
@@ -1637,6 +1641,10 @@ class AuthConfig {
               : null,
           authType: json_.containsKey('authType')
               ? json_['authType'] as core.String
+              : null,
+          oauth2AuthCodeFlow: json_.containsKey('oauth2AuthCodeFlow')
+              ? Oauth2AuthCodeFlow.fromJson(json_['oauth2AuthCodeFlow']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
               ? Oauth2ClientCredentials.fromJson(
@@ -1661,6 +1669,8 @@ class AuthConfig {
         if (additionalVariables != null)
           'additionalVariables': additionalVariables!,
         if (authType != null) 'authType': authType!,
+        if (oauth2AuthCodeFlow != null)
+          'oauth2AuthCodeFlow': oauth2AuthCodeFlow!,
         if (oauth2ClientCredentials != null)
           'oauth2ClientCredentials': oauth2ClientCredentials!,
         if (oauth2JwtBearer != null) 'oauth2JwtBearer': oauth2JwtBearer!,
@@ -2107,6 +2117,11 @@ class Connection {
   /// Optional.
   LockConfig? lockConfig;
 
+  /// Log configuration for the connection.
+  ///
+  /// Optional.
+  ConnectorsLogConfig? logConfig;
+
   /// Resource name of the Connection.
   ///
   /// Format: projects/{project}/locations/{location}/connections/{connection}
@@ -2163,6 +2178,7 @@ class Connection {
     this.imageLocation,
     this.labels,
     this.lockConfig,
+    this.logConfig,
     this.name,
     this.nodeConfig,
     this.serviceAccount,
@@ -2218,6 +2234,10 @@ class Connection {
               ? LockConfig.fromJson(
                   json_['lockConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          logConfig: json_.containsKey('logConfig')
+              ? ConnectorsLogConfig.fromJson(
+                  json_['logConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
@@ -2258,6 +2278,7 @@ class Connection {
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (labels != null) 'labels': labels!,
         if (lockConfig != null) 'lockConfig': lockConfig!,
+        if (logConfig != null) 'logConfig': logConfig!,
         if (name != null) 'name': name!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -2545,6 +2566,11 @@ class ConnectorVersion {
   /// Output only.
   core.String? createTime;
 
+  /// List of destination configs needed to create a connection.
+  ///
+  /// Output only.
+  core.List<DestinationConfigTemplate>? destinationConfigTemplates;
+
   /// Display name.
   ///
   /// Output only.
@@ -2619,6 +2645,7 @@ class ConnectorVersion {
     this.authConfigTemplates,
     this.configVariableTemplates,
     this.createTime,
+    this.destinationConfigTemplates,
     this.displayName,
     this.egressControlConfig,
     this.labels,
@@ -2649,6 +2676,13 @@ class ConnectorVersion {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          destinationConfigTemplates:
+              json_.containsKey('destinationConfigTemplates')
+                  ? (json_['destinationConfigTemplates'] as core.List)
+                      .map((value) => DestinationConfigTemplate.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -2702,6 +2736,8 @@ class ConnectorVersion {
         if (configVariableTemplates != null)
           'configVariableTemplates': configVariableTemplates!,
         if (createTime != null) 'createTime': createTime!,
+        if (destinationConfigTemplates != null)
+          'destinationConfigTemplates': destinationConfigTemplates!,
         if (displayName != null) 'displayName': displayName!,
         if (egressControlConfig != null)
           'egressControlConfig': egressControlConfig!,
@@ -2715,6 +2751,27 @@ class ConnectorVersion {
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Log configuration for the connection.
+class ConnectorsLogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  core.bool? enabled;
+
+  ConnectorsLogConfig({
+    this.enabled,
+  });
+
+  ConnectorsLogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -2779,6 +2836,91 @@ class DestinationConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinations != null) 'destinations': destinations!,
         if (key != null) 'key': key!,
+      };
+}
+
+/// DestinationConfigTemplate defines required destinations supported by the
+/// Connector.
+class DestinationConfigTemplate {
+  /// The default port.
+  core.int? defaultPort;
+
+  /// Description.
+  core.String? description;
+
+  /// Display name of the parameter.
+  core.String? displayName;
+
+  /// Whether the current destination tempalate is part of Advanced settings
+  core.bool? isAdvanced;
+
+  /// Key of the destination.
+  core.String? key;
+
+  /// The maximum number of destinations supported for this key.
+  core.int? max;
+
+  /// The minimum number of destinations supported for this key.
+  core.int? min;
+
+  /// Whether port number should be provided by customers.
+  /// Possible string values are:
+  /// - "FIELD_TYPE_UNSPECIFIED"
+  /// - "REQUIRED"
+  /// - "OPTIONAL"
+  /// - "NOT_USED"
+  core.String? portFieldType;
+
+  /// Regex pattern for host.
+  core.String? regexPattern;
+
+  DestinationConfigTemplate({
+    this.defaultPort,
+    this.description,
+    this.displayName,
+    this.isAdvanced,
+    this.key,
+    this.max,
+    this.min,
+    this.portFieldType,
+    this.regexPattern,
+  });
+
+  DestinationConfigTemplate.fromJson(core.Map json_)
+      : this(
+          defaultPort: json_.containsKey('defaultPort')
+              ? json_['defaultPort'] as core.int
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          isAdvanced: json_.containsKey('isAdvanced')
+              ? json_['isAdvanced'] as core.bool
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          max: json_.containsKey('max') ? json_['max'] as core.int : null,
+          min: json_.containsKey('min') ? json_['min'] as core.int : null,
+          portFieldType: json_.containsKey('portFieldType')
+              ? json_['portFieldType'] as core.String
+              : null,
+          regexPattern: json_.containsKey('regexPattern')
+              ? json_['regexPattern'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultPort != null) 'defaultPort': defaultPort!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (isAdvanced != null) 'isAdvanced': isAdvanced!,
+        if (key != null) 'key': key!,
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
+        if (portFieldType != null) 'portFieldType': portFieldType!,
+        if (regexPattern != null) 'regexPattern': regexPattern!,
       };
 }
 
@@ -3565,6 +3707,81 @@ class NodeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
         if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
+/// Parameters to support Oauth 2.0 Auth Code Grant Authentication.
+///
+/// See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+class Oauth2AuthCodeFlow {
+  /// Authorization code to be exchanged for access and refresh tokens.
+  core.String? authCode;
+
+  /// Client ID for user-provided OAuth app.
+  core.String? clientId;
+
+  /// Client secret for user-provided OAuth app.
+  Secret? clientSecret;
+
+  /// Whether to enable PKCE when the user performs the auth code flow.
+  core.bool? enablePkce;
+
+  /// PKCE verifier to be used during the auth code exchange.
+  core.String? pkceVerifier;
+
+  /// Redirect URI to be provided during the auth code exchange.
+  core.String? redirectUri;
+
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  core.List<core.String>? scopes;
+
+  Oauth2AuthCodeFlow({
+    this.authCode,
+    this.clientId,
+    this.clientSecret,
+    this.enablePkce,
+    this.pkceVerifier,
+    this.redirectUri,
+    this.scopes,
+  });
+
+  Oauth2AuthCodeFlow.fromJson(core.Map json_)
+      : this(
+          authCode: json_.containsKey('authCode')
+              ? json_['authCode'] as core.String
+              : null,
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? Secret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enablePkce: json_.containsKey('enablePkce')
+              ? json_['enablePkce'] as core.bool
+              : null,
+          pkceVerifier: json_.containsKey('pkceVerifier')
+              ? json_['pkceVerifier'] as core.String
+              : null,
+          redirectUri: json_.containsKey('redirectUri')
+              ? json_['redirectUri'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authCode != null) 'authCode': authCode!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (enablePkce != null) 'enablePkce': enablePkce!,
+        if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 

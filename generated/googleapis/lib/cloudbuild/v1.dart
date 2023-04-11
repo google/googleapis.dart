@@ -5540,7 +5540,8 @@ class GitFileSource {
 
   /// See RepoType above.
   /// Possible string values are:
-  /// - "UNKNOWN" : The default, unknown repo type.
+  /// - "UNKNOWN" : The default, unknown repo type. Don't use it, instead use
+  /// one of the other repo types.
   /// - "CLOUD_SOURCE_REPOSITORIES" : A Google Cloud Source Repositories-hosted
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
@@ -6274,7 +6275,8 @@ class GitRepoSource {
 
   /// See RepoType below.
   /// Possible string values are:
-  /// - "UNKNOWN" : The default, unknown repo type.
+  /// - "UNKNOWN" : The default, unknown repo type. Don't use it, instead use
+  /// one of the other repo types.
   /// - "CLOUD_SOURCE_REPOSITORIES" : A Google Cloud Source Repositories-hosted
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.

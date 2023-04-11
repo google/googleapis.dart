@@ -5782,7 +5782,8 @@ class ServiceMeshDataPlaneManagement {
 
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpec {
-  /// Enables automatic control plane management.
+  /// Deprecated: use `management` instead Enables automatic control plane
+  /// management.
   /// Possible string values are:
   /// - "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED" : Unspecified
   /// - "AUTOMATIC" : Google should provision a control plane revision and make

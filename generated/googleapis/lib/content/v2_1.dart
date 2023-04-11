@@ -48,6 +48,7 @@
 /// - [PromotionsResource]
 /// - [PubsubnotificationsettingsResource]
 /// - [QuotasResource]
+/// - [RecommendationsResource]
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
 /// - [ReportsResource]
@@ -119,6 +120,8 @@ class ShoppingContentApi {
   PubsubnotificationsettingsResource get pubsubnotificationsettings =>
       PubsubnotificationsettingsResource(_requester);
   QuotasResource get quotas => QuotasResource(_requester);
+  RecommendationsResource get recommendations =>
+      RecommendationsResource(_requester);
   RegionalinventoryResource get regionalinventory =>
       RegionalinventoryResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
@@ -6520,6 +6523,105 @@ class QuotasResource {
     );
     return ListMethodQuotasResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RecommendationsResource {
+  final commons.ApiRequester _requester;
+
+  RecommendationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generates recommendations for a merchant.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account to fetch recommendations
+  /// for.
+  ///
+  /// [allowedTag] - Optional. List of allowed tags. Tags are a set of
+  /// predefined strings that describe the category that individual
+  /// recommendation types. User can specify zero or more tags in this field to
+  /// indicate what group of recommendations they want to receive. Current list
+  /// of supported tags: - TREND
+  ///
+  /// [languageCode] - Optional. Language code of the client. If not set, the
+  /// result will be in default language (English). This language code affects
+  /// all fields prefixed with "localized". This should be set to ISO 639-1
+  /// country code. List of currently verified supported language code: en, fr,
+  /// cs, da, de, es, it, nl, no, pl, pt, pt, fi, sv, vi, tr, th, ko, zh-CN,
+  /// zh-TW, ja, id, hi
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateRecommendationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateRecommendationsResponse> generate(
+    core.String merchantId, {
+    core.List<core.String>? allowedTag,
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowedTag != null) 'allowedTag': allowedTag,
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        commons.escapeVariable('$merchantId') + '/recommendations/generate';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenerateRecommendationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reports an interaction on a recommendation for a merchant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that wants to report an
+  /// interaction.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> reportInteraction(
+    ReportInteractionRequest request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/recommendations/reportInteraction';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
   }
 }
 
@@ -13873,6 +13975,44 @@ class FreeListingsProgramStatusRegionStatus {
 /// Additional details for review ineligibility reasons.
 typedef FreeListingsProgramStatusReviewIneligibilityReasonDetails
     = $ProgramStatusReviewIneligibilityReasonDetails;
+
+/// Response containing generated recommendations.
+class GenerateRecommendationsResponse {
+  /// Recommendations generated for a request.
+  core.List<Recommendation>? recommendations;
+
+  /// Response token is a string created for each
+  /// `GenerateRecommendationsResponse`.
+  ///
+  /// This token doesn't expire, and is globally unique. This token must be used
+  /// when reporting interactions for recommendations.
+  ///
+  /// Output only.
+  core.String? responseToken;
+
+  GenerateRecommendationsResponse({
+    this.recommendations,
+    this.responseToken,
+  });
+
+  GenerateRecommendationsResponse.fromJson(core.Map json_)
+      : this(
+          recommendations: json_.containsKey('recommendations')
+              ? (json_['recommendations'] as core.List)
+                  .map((value) => Recommendation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          responseToken: json_.containsKey('responseToken')
+              ? json_['responseToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recommendations != null) 'recommendations': recommendations!,
+        if (responseToken != null) 'responseToken': responseToken!,
+      };
+}
 
 class GmbAccounts {
   /// The ID of the Merchant Center account.
@@ -26452,6 +26592,297 @@ class RateGroup {
       };
 }
 
+/// Recommendations are suggested ways to improve your merchant account's
+/// performance.
+///
+/// For example, to engage with a feature, or start using a new Google product.
+class Recommendation {
+  /// CTAs of this recommendation.
+  ///
+  /// Repeated.
+  ///
+  /// Output only.
+  core.List<RecommendationCallToAction>? additionalCallToAction;
+
+  /// List of additional localized descriptions for a recommendation.
+  ///
+  /// Localication uses the `languageCode` field in `GenerateRecommendations`
+  /// requests. Not all description types are guaranteed to be present and we
+  /// recommend to rely on default description.
+  ///
+  /// Output only.
+  core.List<RecommendationDescription>? additionalDescriptions;
+
+  /// Any creatives attached to the recommendation.
+  ///
+  /// Repeated.
+  ///
+  /// Output only.
+  core.List<RecommendationCreative>? creative;
+
+  /// Default CTA of the recommendation.
+  ///
+  /// Optional.
+  RecommendationCallToAction? defaultCallToAction;
+
+  /// Localized recommendation description.
+  ///
+  /// The localization the {@link
+  /// `GenerateRecommendationsRequest.language_code`} field in {@link
+  /// `GenerateRecommendationsRequest`} requests.
+  ///
+  /// Optional.
+  core.String? defaultDescription;
+
+  /// A numerical score of the impact from the recommendation's description.
+  ///
+  /// For example, a recommendation might suggest an upward trend in sales for a
+  /// certain product. Higher number means larger impact.
+  ///
+  /// Optional.
+  core.int? numericalImpact;
+
+  /// Indicates whether a user needs to pay when they complete the user journey
+  /// suggested by the recommendation.
+  ///
+  /// Optional.
+  core.bool? paid;
+
+  /// Localized recommendation name.
+  ///
+  /// The localization uses the {@link
+  /// `GenerateRecommendationsRequest.language_code`} field in {@link
+  /// `GenerateRecommendationsRequest`} requests.
+  ///
+  /// Optional.
+  core.String? recommendationName;
+
+  /// Subtype of the recommendations.
+  ///
+  /// Only applicable when multiple recommendations can be generated per type,
+  /// and is used as an identifier of recommendation under the same
+  /// recommendation type.
+  ///
+  /// Optional.
+  core.String? subType;
+
+  /// Localized Recommendation Title.
+  ///
+  /// Localization uses the {@link
+  /// `GenerateRecommendationsRequest.language_code`} field in {@link
+  /// `GenerateRecommendationsRequest`} requests.
+  ///
+  /// Optional.
+  core.String? title;
+
+  /// Type of the recommendation.
+  ///
+  /// List of currently available recommendation types: -
+  /// OPPORTUNITY_CREATE_NEW_COLLECTION - OPPORTUNITY_CREATE_EMAIL_CAMPAIGN
+  ///
+  /// Output only.
+  core.String? type;
+
+  Recommendation({
+    this.additionalCallToAction,
+    this.additionalDescriptions,
+    this.creative,
+    this.defaultCallToAction,
+    this.defaultDescription,
+    this.numericalImpact,
+    this.paid,
+    this.recommendationName,
+    this.subType,
+    this.title,
+    this.type,
+  });
+
+  Recommendation.fromJson(core.Map json_)
+      : this(
+          additionalCallToAction: json_.containsKey('additionalCallToAction')
+              ? (json_['additionalCallToAction'] as core.List)
+                  .map((value) => RecommendationCallToAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          additionalDescriptions: json_.containsKey('additionalDescriptions')
+              ? (json_['additionalDescriptions'] as core.List)
+                  .map((value) => RecommendationDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          creative: json_.containsKey('creative')
+              ? (json_['creative'] as core.List)
+                  .map((value) => RecommendationCreative.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          defaultCallToAction: json_.containsKey('defaultCallToAction')
+              ? RecommendationCallToAction.fromJson(json_['defaultCallToAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultDescription: json_.containsKey('defaultDescription')
+              ? json_['defaultDescription'] as core.String
+              : null,
+          numericalImpact: json_.containsKey('numericalImpact')
+              ? json_['numericalImpact'] as core.int
+              : null,
+          paid: json_.containsKey('paid') ? json_['paid'] as core.bool : null,
+          recommendationName: json_.containsKey('recommendationName')
+              ? json_['recommendationName'] as core.String
+              : null,
+          subType: json_.containsKey('subType')
+              ? json_['subType'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalCallToAction != null)
+          'additionalCallToAction': additionalCallToAction!,
+        if (additionalDescriptions != null)
+          'additionalDescriptions': additionalDescriptions!,
+        if (creative != null) 'creative': creative!,
+        if (defaultCallToAction != null)
+          'defaultCallToAction': defaultCallToAction!,
+        if (defaultDescription != null)
+          'defaultDescription': defaultDescription!,
+        if (numericalImpact != null) 'numericalImpact': numericalImpact!,
+        if (paid != null) 'paid': paid!,
+        if (recommendationName != null)
+          'recommendationName': recommendationName!,
+        if (subType != null) 'subType': subType!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Call to action (CTA) that explains how a merchant can implement this
+/// recommendation
+class RecommendationCallToAction {
+  /// Intent of the action.
+  ///
+  /// This value describes the intent (for example,
+  /// `OPEN_CREATE_EMAIL_CAMPAIGN_FLOW`) and can vary from recommendation to
+  /// recommendation. This value can change over time for the same
+  /// recommendation. Currently available intent values: -
+  /// OPEN_CREATE_EMAIL_CAMPAIGN_FLOW: Opens a user journey where they can
+  /// create a marketing email campaign. (No default URL) -
+  /// OPEN_CREATE_COLLECTION_TAB: Opens a user journey where they can
+  /// [create a collection](https://support.google.com/merchants/answer/9703228)
+  /// for their Merchant account. (No default URL)
+  ///
+  /// Output only.
+  core.String? intent;
+
+  /// Localized text of the CTA.
+  ///
+  /// Optional.
+  ///
+  /// Output only.
+  core.String? localizedText;
+
+  /// URL of the CTA.
+  ///
+  /// This field will only be set for some recommendations where there is a
+  /// suggested landing URL. Otherwise it will be set to an empty string. We
+  /// recommend developers to use their own custom landing page according to the
+  /// description of the intent field above when this uri field is empty.
+  ///
+  /// Optional.
+  core.String? uri;
+
+  RecommendationCallToAction({
+    this.intent,
+    this.localizedText,
+    this.uri,
+  });
+
+  RecommendationCallToAction.fromJson(core.Map json_)
+      : this(
+          intent: json_.containsKey('intent')
+              ? json_['intent'] as core.String
+              : null,
+          localizedText: json_.containsKey('localizedText')
+              ? json_['localizedText'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intent != null) 'intent': intent!,
+        if (localizedText != null) 'localizedText': localizedText!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Creative is a multimedia attachment to recommendation that can be used on
+/// the frontend.
+class RecommendationCreative {
+  /// Type of the creative.
+  /// Possible string values are:
+  /// - "CREATIVE_TYPE_UNSPECIFIED" : Default value. If provided, shall be
+  /// considered invalid.
+  /// - "VIDEO" : Video creatives.
+  /// - "PHOTO" : Photo creatives.
+  core.String? type;
+
+  /// URL of the creative.
+  core.String? uri;
+
+  RecommendationCreative({
+    this.type,
+    this.uri,
+  });
+
+  RecommendationCreative.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Google-provided description for the recommendation.
+class RecommendationDescription {
+  /// Text of the description.
+  ///
+  /// Output only.
+  core.String? text;
+
+  /// Type of the description.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DESCRIPTION_TYPE_UNSPECIFIED" : Default value. Will never be provided
+  /// by the API.
+  /// - "SHORT" : Short description.
+  /// - "LONG" : Long description.
+  core.String? type;
+
+  RecommendationDescription({
+    this.text,
+    this.type,
+  });
+
+  RecommendationDescription.fromJson(core.Map json_)
+      : this(
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+        if (type != null) 'type': type!,
+      };
+}
+
 class RefundReason {
   /// Description of the reason.
   core.String? description;
@@ -26941,6 +27372,68 @@ class RegionalinventoryCustomBatchResponseEntry {
         if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
         if (regionalInventory != null) 'regionalInventory': regionalInventory!,
+      };
+}
+
+/// Request to report interactions on a recommendation.
+class ReportInteractionRequest {
+  /// Type of the interaction that is reported, for example INTERACTION_CLICK.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INTERACTION_TYPE_UNSPECIFIED" : Default value. If provided, the service
+  /// will throw ApiError with description "Required parameter:
+  /// interactionType".
+  /// - "INTERACTION_CLICK" : When a recommendation is clicked.
+  core.String? interactionType;
+
+  /// Token of the response when recommendation was returned.
+  ///
+  /// Required.
+  core.String? responseToken;
+
+  /// Subtype of the recommendations this interaction happened on.
+  ///
+  /// This field must be set only to the value that is returned by {@link
+  /// `RecommendationsService.GenerateRecommendations`} call.
+  ///
+  /// Optional.
+  core.String? subtype;
+
+  /// Type of the recommendations on which this interaction happened.
+  ///
+  /// This field must be set only to the value that is returned by {@link
+  /// `GenerateRecommendationsResponse`} call.
+  ///
+  /// Required.
+  core.String? type;
+
+  ReportInteractionRequest({
+    this.interactionType,
+    this.responseToken,
+    this.subtype,
+    this.type,
+  });
+
+  ReportInteractionRequest.fromJson(core.Map json_)
+      : this(
+          interactionType: json_.containsKey('interactionType')
+              ? json_['interactionType'] as core.String
+              : null,
+          responseToken: json_.containsKey('responseToken')
+              ? json_['responseToken'] as core.String
+              : null,
+          subtype: json_.containsKey('subtype')
+              ? json_['subtype'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interactionType != null) 'interactionType': interactionType!,
+        if (responseToken != null) 'responseToken': responseToken!,
+        if (subtype != null) 'subtype': subtype!,
+        if (type != null) 'type': type!,
       };
 }
 

@@ -60,6 +60,28 @@ void checkAclEntry(api.AclEntry o) {
   buildCounterAclEntry--;
 }
 
+core.int buildCounterAdvancedMachineFeatures = 0;
+api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
+  final o = api.AdvancedMachineFeatures();
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    o.threadsPerCore = 42;
+  }
+  buildCounterAdvancedMachineFeatures--;
+  return o;
+}
+
+void checkAdvancedMachineFeatures(api.AdvancedMachineFeatures o) {
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    unittest.expect(
+      o.threadsPerCore!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterAdvancedMachineFeatures--;
+}
+
 core.int buildCounterApiWarning = 0;
 api.ApiWarning buildApiWarning() {
   final o = api.ApiWarning();
@@ -2681,6 +2703,7 @@ api.Settings buildSettings() {
   if (buildCounterSettings < 3) {
     o.activationPolicy = 'foo';
     o.activeDirectoryConfig = buildSqlActiveDirectoryConfig();
+    o.advancedMachineFeatures = buildAdvancedMachineFeatures();
     o.authorizedGaeApplications = buildUnnamed22();
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
@@ -2721,6 +2744,7 @@ void checkSettings(api.Settings o) {
       unittest.equals('foo'),
     );
     checkSqlActiveDirectoryConfig(o.activeDirectoryConfig!);
+    checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
     checkUnnamed22(o.authorizedGaeApplications!);
     unittest.expect(
       o.availabilityType!,
@@ -3672,6 +3696,16 @@ void main() {
       final od =
           api.AclEntry.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAclEntry(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdvancedMachineFeatures', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvancedMachineFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvancedMachineFeatures.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvancedMachineFeatures(od);
     });
   });
 

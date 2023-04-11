@@ -4826,7 +4826,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
 
 /// A message representing a rule in the phrase matcher.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
-  /// A list of phase match rules that are included in this group.
+  /// A list of phrase match rules that are included in this group.
   core.List<GoogleCloudContactcenterinsightsV1PhraseMatchRule>?
       phraseMatchRules;
 

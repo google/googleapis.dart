@@ -5490,6 +5490,9 @@ class ContainerVersionHeader {
   /// Number of tags in the container version.
   core.String? numTags;
 
+  /// Number of transformations in the container version.
+  core.String? numTransformations;
+
   /// Number of triggers in the container version.
   core.String? numTriggers;
 
@@ -5514,6 +5517,7 @@ class ContainerVersionHeader {
     this.numMacros,
     this.numRules,
     this.numTags,
+    this.numTransformations,
     this.numTriggers,
     this.numVariables,
     this.numZones,
@@ -5553,6 +5557,9 @@ class ContainerVersionHeader {
           numTags: json_.containsKey('numTags')
               ? json_['numTags'] as core.String
               : null,
+          numTransformations: json_.containsKey('numTransformations')
+              ? json_['numTransformations'] as core.String
+              : null,
           numTriggers: json_.containsKey('numTriggers')
               ? json_['numTriggers'] as core.String
               : null,
@@ -5579,6 +5586,8 @@ class ContainerVersionHeader {
         if (numMacros != null) 'numMacros': numMacros!,
         if (numRules != null) 'numRules': numRules!,
         if (numTags != null) 'numTags': numTags!,
+        if (numTransformations != null)
+          'numTransformations': numTransformations!,
         if (numTriggers != null) 'numTriggers': numTriggers!,
         if (numVariables != null) 'numVariables': numVariables!,
         if (numZones != null) 'numZones': numZones!,
