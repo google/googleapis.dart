@@ -2676,7 +2676,7 @@ class InappproductsResource {
 
   InappproductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes an in-app product (i.e. a managed product or a subscriptions).
+  /// Deletes an in-app product (i.e. a managed product or a subscription).
   ///
   /// Request parameters:
   ///
@@ -2755,7 +2755,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates an in-app product (i.e. a managed product or a subscriptions).
+  /// Creates an in-app product (i.e. a managed product or a subscription).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2820,7 +2820,7 @@ class InappproductsResource {
   /// server.
   ///
   /// [startIndex] - Deprecated and ignored. Set the `token` parameter to
-  /// rertieve the next page.
+  /// retrieve the next page.
   ///
   /// [token] - Pagination token. If empty, list starts at the first product.
   ///
@@ -2861,7 +2861,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches an in-app product (i.e. a managed product or a subscriptions).
+  /// Patches an in-app product (i.e. a managed product or a subscription).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2915,7 +2915,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an in-app product (i.e. a managed product or a subscriptions).
+  /// Updates an in-app product (i.e. a managed product or a subscription).
   ///
   /// [request] - The metadata request object.
   ///

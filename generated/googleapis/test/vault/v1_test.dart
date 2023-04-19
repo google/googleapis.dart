@@ -1134,6 +1134,7 @@ api.MailOptions buildMailOptions() {
   final o = api.MailOptions();
   buildCounterMailOptions++;
   if (buildCounterMailOptions < 3) {
+    o.clientSideEncryptedOption = 'foo';
     o.excludeDrafts = true;
   }
   buildCounterMailOptions--;
@@ -1143,6 +1144,10 @@ api.MailOptions buildMailOptions() {
 void checkMailOptions(api.MailOptions o) {
   buildCounterMailOptions++;
   if (buildCounterMailOptions < 3) {
+    unittest.expect(
+      o.clientSideEncryptedOption!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.excludeDrafts!, unittest.isTrue);
   }
   buildCounterMailOptions--;

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 10.2.0-dev
+    version: 11.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -70,7 +70,6 @@ packages:
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudfunctions:v2
     - cloudidentity:v1 # https://cloud.google.com/identity/
-    - cloudiot:v1 # https://cloud.google.com/iot
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
     - cloudprofiler:v2 # https://cloud.google.com/profiler/
     - cloudresourcemanager:v1 # https://cloud.google.com/resource-manager/

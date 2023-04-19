@@ -3519,12 +3519,6 @@ class Model {
   /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
   core.String? dataset;
 
-  /// Timestamp when the model training finished and ready to be used for
-  /// translation.
-  ///
-  /// Output only.
-  core.String? deployTime;
-
   /// The name of the model to show in the interface.
   ///
   /// The name can be up to 32 characters long and can consist only of ASCII
@@ -3568,7 +3562,6 @@ class Model {
   Model({
     this.createTime,
     this.dataset,
-    this.deployTime,
     this.displayName,
     this.name,
     this.sourceLanguageCode,
@@ -3586,9 +3579,6 @@ class Model {
               : null,
           dataset: json_.containsKey('dataset')
               ? json_['dataset'] as core.String
-              : null,
-          deployTime: json_.containsKey('deployTime')
-              ? json_['deployTime'] as core.String
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
@@ -3617,7 +3607,6 @@ class Model {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
-        if (deployTime != null) 'deployTime': deployTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (sourceLanguageCode != null)

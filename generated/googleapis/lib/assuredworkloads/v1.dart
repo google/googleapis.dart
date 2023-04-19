@@ -232,10 +232,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// Deletes the workload.
   ///
   /// Make sure that workload's direct children are already in a deleted state,
-  /// otherwise the request will fail with a FAILED_PRECONDITION error. In
-  /// addition to assuredworkloads.workload.delete permission, the user should
-  /// also have orgpolicy.policy.set permission on the deleted folder to remove
-  /// Assured Workloads OrgPolicies.
+  /// otherwise the request will fail with a FAILED_PRECONDITION error.
   ///
   /// Request parameters:
   ///
@@ -284,7 +281,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Workload to fetch. This is the
-  /// workloads's relative path in the API, formatted as
+  /// workload's relative path in the API, formatted as
   /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
   /// For example,
   /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -804,7 +801,7 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
       };
 }
 
-/// Request for updating permission settings for a partner workload.
+/// Request of updating permission settings for a partner workload.
 class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
   /// The etag of the workload.
   ///
@@ -869,9 +866,9 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   /// https://cloud.google.com/assured-workloads/docs/supported-products for the
   /// list of supported resources.
   /// - "APPEND_COMPLIANT_RESOURCES" : Similar to ALLOW_COMPLIANT_RESOURCES but
-  /// adds the list of compliant resources to the existing list of compliant
-  /// resources. Effective org-policy of the Folder is considered to ensure
-  /// there is no disruption to the existing customer workflows.
+  /// adds the list of compliant resources to the existing list of resources.
+  /// Effective org-policy of the Folder is considered to ensure there is no
+  /// disruption to the existing customer workflows.
   core.String? restrictionType;
 
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest({
@@ -901,9 +898,11 @@ class GoogleCloudAssuredworkloadsV1Violation {
   /// A boolean that indicates if the violation is acknowledged
   core.bool? acknowledged;
 
-  /// Timestamp when this violation was acknowledged last.
+  /// Timestamp when this violation was acknowledged first.
   ///
-  /// This will be absent when acknowledged field is marked as false.
+  /// Check exception_contexts to find the last time the violation was
+  /// acknowledged when there are more than one violations. This field will be
+  /// absent when acknowledged field is marked as false.
   ///
   /// Optional.
   core.String? acknowledgementTime;
@@ -941,6 +940,12 @@ class GoogleCloudAssuredworkloadsV1Violation {
   ///
   /// Output only. Immutable.
   core.String? exceptionAuditLogLink;
+
+  /// List of all the exception detail added for the violation.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>?
+      exceptionContexts;
 
   /// Name of the Violation.
   ///
@@ -1001,6 +1006,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.category,
     this.description,
     this.exceptionAuditLogLink,
+    this.exceptionContexts,
     this.name,
     this.nonCompliantOrgPolicy,
     this.orgPolicyConstraint,
@@ -1033,6 +1039,14 @@ class GoogleCloudAssuredworkloadsV1Violation {
           exceptionAuditLogLink: json_.containsKey('exceptionAuditLogLink')
               ? json_['exceptionAuditLogLink'] as core.String
               : null,
+          exceptionContexts: json_.containsKey('exceptionContexts')
+              ? (json_['exceptionContexts'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1ViolationExceptionContext
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
               ? json_['nonCompliantOrgPolicy'] as core.String
@@ -1064,6 +1078,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (description != null) 'description': description!,
         if (exceptionAuditLogLink != null)
           'exceptionAuditLogLink': exceptionAuditLogLink!,
+        if (exceptionContexts != null) 'exceptionContexts': exceptionContexts!,
         if (name != null) 'name': name!,
         if (nonCompliantOrgPolicy != null)
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
@@ -1073,6 +1088,49 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (resolveTime != null) 'resolveTime': resolveTime!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Violation exception detail.
+///
+/// Next Id: 5
+class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
+  /// Timestamp when the violation was acknowledged.
+  core.String? acknowledgementTime;
+
+  /// Business justification provided towards the acknowledgement of the
+  /// violation.
+  core.String? comment;
+
+  /// Email address of the user (or service account) who acknowledged the
+  /// violation.
+  core.String? principalEmail;
+
+  GoogleCloudAssuredworkloadsV1ViolationExceptionContext({
+    this.acknowledgementTime,
+    this.comment,
+    this.principalEmail,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
+      core.Map json_)
+      : this(
+          acknowledgementTime: json_.containsKey('acknowledgementTime')
+              ? json_['acknowledgementTime'] as core.String
+              : null,
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          principalEmail: json_.containsKey('principalEmail')
+              ? json_['principalEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgementTime != null)
+          'acknowledgementTime': acknowledgementTime!,
+        if (comment != null) 'comment': comment!,
+        if (principalEmail != null) 'principalEmail': principalEmail!,
       };
 }
 
@@ -1295,8 +1353,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
   /// and Support controls Available for public preview consumption. Don't
   /// create production workloads.
-  /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners;
-  /// - "ISR_REGIONS" : Assured Workloads for Israel
+  /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners
+  /// - "ISR_REGIONS" : Assured Workloads for Israel Regions
   /// - "ISR_REGIONS_AND_SUPPORT" : Assured Workloads for Israel Regions
   /// - "CA_PROTECTED_B" : Assured Workloads for Canada Protected B regime
   core.String? complianceRegime;
@@ -1389,6 +1447,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "LOCAL_CONTROLS_BY_S3NS" : Enum representing S3NS (Thales) partner.
   /// - "SOVEREIGN_CONTROLS_BY_T_SYSTEMS" : Enum representing T_SYSTEM (TSI)
   /// partner.
+  /// - "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT" : Enum representing SIA_MINSAIT
+  /// (Indra) partner.
+  /// - "SOVEREIGN_CONTROLS_BY_PSN" : Enum representing PSN (TIM) partner.
   core.String? partner;
 
   /// Input only.
@@ -1424,6 +1485,16 @@ class GoogleCloudAssuredworkloadsV1Workload {
   GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse?
       saaEnrollmentResponse;
 
+  /// Indicates whether the e-mail notification for a violation is enabled for a
+  /// workload.
+  ///
+  /// This value will be by default True, and if not present will be considered
+  /// as true. This should only be updated via updateWorkload call. Any Changes
+  /// to this field during the createWorkload call will not be honored.
+  ///
+  /// Optional.
+  core.bool? violationNotificationsEnabled;
+
   GoogleCloudAssuredworkloadsV1Workload({
     this.billingAccount,
     this.complianceRegime,
@@ -1443,6 +1514,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.resourceSettings,
     this.resources,
     this.saaEnrollmentResponse,
+    this.violationNotificationsEnabled,
   });
 
   GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map json_)
@@ -1523,6 +1595,10 @@ class GoogleCloudAssuredworkloadsV1Workload {
                   .fromJson(json_['saaEnrollmentResponse']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          violationNotificationsEnabled:
+              json_.containsKey('violationNotificationsEnabled')
+                  ? json_['violationNotificationsEnabled'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1550,6 +1626,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (resources != null) 'resources': resources!,
         if (saaEnrollmentResponse != null)
           'saaEnrollmentResponse': saaEnrollmentResponse!,
+        if (violationNotificationsEnabled != null)
+          'violationNotificationsEnabled': violationNotificationsEnabled!,
       };
 }
 
@@ -1601,7 +1679,14 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
   core.String? ekmProvisioningErrorDomain;
 
   /// Detailed error message if Ekm provisioning fails
-  core.String? ekmProvisioningErrorMessage;
+  /// Possible string values are:
+  /// - "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED" : Error is unspecified.
+  /// - "INVALID_SERVICE_ACCOUNT" : Service account is used is invalid.
+  /// - "MISSING_METRICS_SCOPE_ADMIN_PERMISSION" : Iam permission
+  /// monitoring.MetricsScopeAdmin wasn't applied.
+  /// - "MISSING_EKM_CONNECTION_ADMIN_PERMISSION" : Iam permission
+  /// cloudkms.ekmConnectionsAdmin wasn't applied.
+  core.String? ekmProvisioningErrorMapping;
 
   /// Indicates Ekm enrollment Provisioning of a given workload.
   /// Possible string values are:
@@ -1615,7 +1700,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
 
   GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse({
     this.ekmProvisioningErrorDomain,
-    this.ekmProvisioningErrorMessage,
+    this.ekmProvisioningErrorMapping,
     this.ekmProvisioningState,
   });
 
@@ -1626,9 +1711,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
               json_.containsKey('ekmProvisioningErrorDomain')
                   ? json_['ekmProvisioningErrorDomain'] as core.String
                   : null,
-          ekmProvisioningErrorMessage:
-              json_.containsKey('ekmProvisioningErrorMessage')
-                  ? json_['ekmProvisioningErrorMessage'] as core.String
+          ekmProvisioningErrorMapping:
+              json_.containsKey('ekmProvisioningErrorMapping')
+                  ? json_['ekmProvisioningErrorMapping'] as core.String
                   : null,
           ekmProvisioningState: json_.containsKey('ekmProvisioningState')
               ? json_['ekmProvisioningState'] as core.String
@@ -1638,14 +1723,18 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ekmProvisioningErrorDomain != null)
           'ekmProvisioningErrorDomain': ekmProvisioningErrorDomain!,
-        if (ekmProvisioningErrorMessage != null)
-          'ekmProvisioningErrorMessage': ekmProvisioningErrorMessage!,
+        if (ekmProvisioningErrorMapping != null)
+          'ekmProvisioningErrorMapping': ekmProvisioningErrorMapping!,
         if (ekmProvisioningState != null)
           'ekmProvisioningState': ekmProvisioningState!,
       };
 }
 
 /// Settings specific to the Key Management Service.
+///
+/// This message is deprecated. In order to create a Keyring, callers should
+/// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in
+/// ResourceSettings.resource_type field.
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   /// Input only.
   ///
@@ -1736,9 +1825,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// Indicates the type of resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
-  /// support this, but new CreateWorkloadRequests should not specify this as an
-  /// input value.
+  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
+  /// longer supported. This field will be ignored only in CreateWorkload
+  /// requests. ListWorkloads and GetWorkload will continue to provide projects
+  /// information. Use CONSUMER_FOLDER instead.
   /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
@@ -1782,13 +1872,14 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
 
   /// Indicates the type of resource.
   ///
-  /// This field should be specified to correspond the id to the right project
-  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+  /// This field should be specified to correspond the id to the right resource
+  /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
-  /// support this, but new CreateWorkloadRequests should not specify this as an
-  /// input value.
+  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
+  /// longer supported. This field will be ignored only in CreateWorkload
+  /// requests. ListWorkloads and GetWorkload will continue to provide projects
+  /// information. Use CONSUMER_FOLDER instead.
   /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.

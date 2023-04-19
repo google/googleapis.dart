@@ -2857,21 +2857,44 @@ class MailExportOptions {
 
 /// Additional options for Gmail search
 class MailOptions {
+  /// Specifies whether the results should include encrypted content,
+  /// unencrypted content, or both.
+  ///
+  /// Defaults to including both.
+  /// Possible string values are:
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED" : Encryption status
+  /// unspecified. Results include both client-side encrypted and non-encrypted
+  /// content.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ANY" : Include both client-side encrypted
+  /// and unencrypted content in results.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED" : Include client-side encrypted
+  /// content only.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED" : Include unencrypted content
+  /// only.
+  core.String? clientSideEncryptedOption;
+
   /// Set to **true** to exclude drafts.
   core.bool? excludeDrafts;
 
   MailOptions({
+    this.clientSideEncryptedOption,
     this.excludeDrafts,
   });
 
   MailOptions.fromJson(core.Map json_)
       : this(
+          clientSideEncryptedOption:
+              json_.containsKey('clientSideEncryptedOption')
+                  ? json_['clientSideEncryptedOption'] as core.String
+                  : null,
           excludeDrafts: json_.containsKey('excludeDrafts')
               ? json_['excludeDrafts'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientSideEncryptedOption != null)
+          'clientSideEncryptedOption': clientSideEncryptedOption!,
         if (excludeDrafts != null) 'excludeDrafts': excludeDrafts!,
       };
 }

@@ -368,6 +368,49 @@ class ProjectsLocationsGlobalDomainsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// DomainJoinMachine API joins a Compute Engine VM to the domain
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// projects/{project_id}/locations/global/domains/{domain_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DomainJoinMachineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DomainJoinMachineResponse> domainJoinMachine(
+    DomainJoinMachineRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':domainJoinMachine';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DomainJoinMachineResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Extend Schema for Domain
   ///
   /// [request] - The metadata request object.
@@ -1610,13 +1653,6 @@ class ProjectsLocationsGlobalOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2531,6 +2567,74 @@ class Domain {
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (trusts != null) 'trusts': trusts!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// DomainJoinMachineRequest is the request message for DomainJoinMachine method
+class DomainJoinMachineRequest {
+  /// force if True, forces domain join even if the computer account already
+  /// exists.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// OU name where the VM needs to be domain joined
+  ///
+  /// Optional.
+  core.String? ouName;
+
+  /// Full instance id token of compute engine VM to verify instance identity.
+  ///
+  /// More about this:
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature
+  ///
+  /// Required.
+  core.String? vmIdToken;
+
+  DomainJoinMachineRequest({
+    this.force,
+    this.ouName,
+    this.vmIdToken,
+  });
+
+  DomainJoinMachineRequest.fromJson(core.Map json_)
+      : this(
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          ouName: json_.containsKey('ouName')
+              ? json_['ouName'] as core.String
+              : null,
+          vmIdToken: json_.containsKey('vmIdToken')
+              ? json_['vmIdToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (force != null) 'force': force!,
+        if (ouName != null) 'ouName': ouName!,
+        if (vmIdToken != null) 'vmIdToken': vmIdToken!,
+      };
+}
+
+/// DomainJoinMachineResponse is the response message for DomainJoinMachine
+/// method
+class DomainJoinMachineResponse {
+  /// Offline domain join blob as the response
+  core.String? domainJoinBlob;
+
+  DomainJoinMachineResponse({
+    this.domainJoinBlob,
+  });
+
+  DomainJoinMachineResponse.fromJson(core.Map json_)
+      : this(
+          domainJoinBlob: json_.containsKey('domainJoinBlob')
+              ? json_['domainJoinBlob'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
       };
 }
 

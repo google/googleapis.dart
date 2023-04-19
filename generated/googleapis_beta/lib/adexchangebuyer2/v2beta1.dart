@@ -4071,6 +4071,8 @@ class BidMetricsRow {
   MetricValue? bidsInAuction;
 
   /// The number of bids for which the buyer was billed.
+  ///
+  /// Also called valid impressions as invalid impressions are not billed.
   MetricValue? billedImpressions;
 
   /// The number of bids that won the auction.

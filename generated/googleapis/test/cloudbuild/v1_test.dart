@@ -1919,6 +1919,38 @@ void checkGitRepoSource(api.GitRepoSource o) {
   buildCounterGitRepoSource--;
 }
 
+core.int buildCounterGitSource = 0;
+api.GitSource buildGitSource() {
+  final o = api.GitSource();
+  buildCounterGitSource++;
+  if (buildCounterGitSource < 3) {
+    o.dir = 'foo';
+    o.revision = 'foo';
+    o.url = 'foo';
+  }
+  buildCounterGitSource--;
+  return o;
+}
+
+void checkGitSource(api.GitSource o) {
+  buildCounterGitSource++;
+  if (buildCounterGitSource < 3) {
+    unittest.expect(
+      o.dir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGitSource--;
+}
+
 core.int buildCounterHash = 0;
 api.Hash buildHash() {
   final o = api.Hash();
@@ -3187,6 +3219,7 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    o.gitSource = buildGitSource();
     o.repoSource = buildRepoSource();
     o.storageSource = buildStorageSource();
     o.storageSourceManifest = buildStorageSourceManifest();
@@ -3198,6 +3231,7 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    checkGitSource(o.gitSource!);
     checkRepoSource(o.repoSource!);
     checkStorageSource(o.storageSource!);
     checkStorageSourceManifest(o.storageSourceManifest!);
@@ -4037,6 +4071,16 @@ void main() {
       final od = api.GitRepoSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGitRepoSource(od);
+    });
+  });
+
+  unittest.group('obj-schema-GitSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGitSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GitSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGitSource(od);
     });
   });
 

@@ -1005,9 +1005,9 @@ class Case {
   /// available.
   core.String? priority;
 
-  /// The severity of this case.
+  /// REMOVED.
   ///
-  /// Deprecated. Use priority instead.
+  /// The severity of this case. Use priority instead.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Severity is undefined or has not been set yet.
   /// - "S0" : Extreme impact on a production service. Service is hard down.
@@ -1206,7 +1206,7 @@ class Comment {
   /// An automatically generated plain text version of body with all rich text
   /// syntax stripped.
   ///
-  /// Output only.
+  /// Output only. Deprecated.
   core.String? plainTextBody;
 
   Comment({

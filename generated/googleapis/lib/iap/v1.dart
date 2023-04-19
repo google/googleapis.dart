@@ -1915,7 +1915,7 @@ class ReauthSettings {
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
   /// - "LOGIN" : Prompts the user to log in again.
-  /// - "PASSWORD" : Deprecated.
+  /// - "PASSWORD"
   /// - "SECURE_KEY" : User must use their secure key 2nd factor device.
   /// - "ENROLLED_SECOND_FACTORS" : User can use any enabled 2nd factor.
   core.String? method;

@@ -2567,7 +2567,7 @@
             }
         }
     },
-    "revision": "20230411",
+    "revision": "20230419",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {
@@ -2731,7 +2731,7 @@
                 },
                 "billedImpressions": {
                     "$ref": "MetricValue",
-                    "description": "The number of bids for which the buyer was billed."
+                    "description": "The number of bids for which the buyer was billed. Also called valid impressions as invalid impressions are not billed."
                 },
                 "impressionsWon": {
                     "$ref": "MetricValue",

@@ -367,6 +367,57 @@ void checkDomain(api.Domain o) {
   buildCounterDomain--;
 }
 
+core.int buildCounterDomainJoinMachineRequest = 0;
+api.DomainJoinMachineRequest buildDomainJoinMachineRequest() {
+  final o = api.DomainJoinMachineRequest();
+  buildCounterDomainJoinMachineRequest++;
+  if (buildCounterDomainJoinMachineRequest < 3) {
+    o.force = true;
+    o.ouName = 'foo';
+    o.vmIdToken = 'foo';
+  }
+  buildCounterDomainJoinMachineRequest--;
+  return o;
+}
+
+void checkDomainJoinMachineRequest(api.DomainJoinMachineRequest o) {
+  buildCounterDomainJoinMachineRequest++;
+  if (buildCounterDomainJoinMachineRequest < 3) {
+    unittest.expect(o.force!, unittest.isTrue);
+    unittest.expect(
+      o.ouName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vmIdToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDomainJoinMachineRequest--;
+}
+
+core.int buildCounterDomainJoinMachineResponse = 0;
+api.DomainJoinMachineResponse buildDomainJoinMachineResponse() {
+  final o = api.DomainJoinMachineResponse();
+  buildCounterDomainJoinMachineResponse++;
+  if (buildCounterDomainJoinMachineResponse < 3) {
+    o.domainJoinBlob = 'foo';
+  }
+  buildCounterDomainJoinMachineResponse--;
+  return o;
+}
+
+void checkDomainJoinMachineResponse(api.DomainJoinMachineResponse o) {
+  buildCounterDomainJoinMachineResponse++;
+  if (buildCounterDomainJoinMachineResponse < 3) {
+    unittest.expect(
+      o.domainJoinBlob!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDomainJoinMachineResponse--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -1601,6 +1652,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DomainJoinMachineRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDomainJoinMachineRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DomainJoinMachineRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDomainJoinMachineRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DomainJoinMachineResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDomainJoinMachineResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DomainJoinMachineResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDomainJoinMachineResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -2226,6 +2297,68 @@ void main() {
       final response =
           await res.detachTrust(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--domainJoinMachine', () async {
+      final mock = HttpServerMock();
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
+      final arg_request = buildDomainJoinMachineRequest();
+      final arg_domain = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DomainJoinMachineRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDomainJoinMachineRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDomainJoinMachineResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.domainJoinMachine(arg_request, arg_domain,
+          $fields: arg_$fields);
+      checkDomainJoinMachineResponse(response as api.DomainJoinMachineResponse);
     });
 
     unittest.test('method--extendSchema', () async {

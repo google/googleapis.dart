@@ -1435,7 +1435,6 @@ api.Model buildModel() {
   if (buildCounterModel < 3) {
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.deployTime = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -1458,10 +1457,6 @@ void checkModel(api.Model o) {
     );
     unittest.expect(
       o.dataset!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.deployTime!,
       unittest.equals('foo'),
     );
     unittest.expect(

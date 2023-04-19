@@ -23,6 +23,7 @@
 ///     - [ProjectsLocationsCertificatesResource]
 ///     - [ProjectsLocationsDnsAuthorizationsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsTrustConfigsResource]
 library;
 
 import 'dart:async' as async;
@@ -79,6 +80,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDnsAuthorizationsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsTrustConfigsResource get trustConfigs =>
+      ProjectsLocationsTrustConfigsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1511,6 +1514,245 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsTrustConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTrustConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new TrustConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the TrustConfig. Must be in
+  /// the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [trustConfigId] - Required. A user-provided name of the TrustConfig.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    TrustConfig request,
+    core.String parent, {
+    core.String? trustConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (trustConfigId != null) 'trustConfigId': [trustConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single TrustConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TrustConfig to delete. Must be in the
+  /// format `projects / * /locations / * /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - The current etag of the TrustConfig. If an etag is provided and
+  /// does not match the current etag of the resource, deletion will be blocked
+  /// and an ABORTED error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single TrustConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TrustConfig to describe. Must be in the
+  /// format `projects / * /locations / * /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TrustConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TrustConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TrustConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists TrustConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the TrustConfigs
+  /// should be listed, specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the TrustConfigs returned.
+  ///
+  /// [orderBy] - A list of TrustConfig field names used to specify the order of
+  /// the returned results. The default sorting order is ascending. To specify
+  /// descending order for a field, add a suffix " desc".
+  ///
+  /// [pageSize] - Maximum number of TrustConfigs to return per call.
+  ///
+  /// [pageToken] - The value returned by the last `ListTrustConfigsResponse`.
+  /// Indicates that this is a continuation of a prior `ListTrustConfigs` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTrustConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTrustConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTrustConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a TrustConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A user-defined name of the trust config. TrustConfig names must
+  /// be unique globally and match pattern `projects / * /locations / *
+  /// /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    TrustConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// State of the latest attempt to authorize a domain for certificate issuance.
 class AuthorizationAttemptInfo {
   /// Human readable explanation for reaching the state.
@@ -2269,6 +2511,29 @@ class GclbTarget {
       };
 }
 
+/// Defines an intermediate CA.
+class IntermediateCA {
+  /// PEM intermediate certificate used for building up paths for validation.
+  ///
+  /// Each certificate provided in PEM format may occupy up to 5kB.
+  core.String? pemCertificate;
+
+  IntermediateCA({
+    this.pemCertificate,
+  });
+
+  IntermediateCA.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
 /// Defines IP configuration where this Certificate Map is serving.
 class IpConfig {
   /// An external IP address.
@@ -2601,6 +2866,52 @@ class ListOperationsResponse {
       };
 }
 
+/// Response for the `ListTrustConfigs` method.
+class ListTrustConfigsResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// A list of TrustConfigs for the parent resource.
+  core.List<TrustConfig>? trustConfigs;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTrustConfigsResponse({
+    this.nextPageToken,
+    this.trustConfigs,
+    this.unreachable,
+  });
+
+  ListTrustConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          trustConfigs: json_.containsKey('trustConfigs')
+              ? (json_['trustConfigs'] as core.List)
+                  .map((value) => TrustConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (trustConfigs != null) 'trustConfigs': trustConfigs!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
@@ -2872,3 +3183,152 @@ class SelfManagedCertificate {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Defines a trust anchor.
+class TrustAnchor {
+  /// PEM root certificate of the PKI used for validation.
+  ///
+  /// Each certificate provided in PEM format may occupy up to 5kB.
+  core.String? pemCertificate;
+
+  TrustAnchor({
+    this.pemCertificate,
+  });
+
+  TrustAnchor.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
+/// Defines a trust config.
+class TrustConfig {
+  /// The creation timestamp of a TrustConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// One or more paragraphs of text description of a TrustConfig.
+  core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// Set of labels associated with a TrustConfig.
+  core.Map<core.String, core.String>? labels;
+
+  /// A user-defined name of the trust config.
+  ///
+  /// TrustConfig names must be unique globally and match pattern `projects / *
+  /// /locations / * /trustConfigs / * `.
+  core.String? name;
+
+  /// Set of trust stores to perform validation against.
+  ///
+  /// This field is supported when TrustConfig is configured with Load
+  /// Balancers, currently not supported for SPIFFE certificate validation. Only
+  /// one TrustStore specified is currently allowed.
+  core.List<TrustStore>? trustStores;
+
+  /// The last update timestamp of a TrustConfig.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TrustConfig({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.trustStores,
+    this.updateTime,
+  });
+
+  TrustConfig.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          trustStores: json_.containsKey('trustStores')
+              ? (json_['trustStores'] as core.List)
+                  .map((value) => TrustStore.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (trustStores != null) 'trustStores': trustStores!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Defines a trust store.
+class TrustStore {
+  /// Set of intermediate CA certificates used for the path building phase of
+  /// chain validation.
+  ///
+  /// The field is currently not supported if TrustConfig is used for the
+  /// workload certificate feature.
+  core.List<IntermediateCA>? intermediateCas;
+
+  /// List of Trust Anchors to be used while performing validation against a
+  /// given TrustStore.
+  core.List<TrustAnchor>? trustAnchors;
+
+  TrustStore({
+    this.intermediateCas,
+    this.trustAnchors,
+  });
+
+  TrustStore.fromJson(core.Map json_)
+      : this(
+          intermediateCas: json_.containsKey('intermediateCas')
+              ? (json_['intermediateCas'] as core.List)
+                  .map((value) => IntermediateCA.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trustAnchors: json_.containsKey('trustAnchors')
+              ? (json_['trustAnchors'] as core.List)
+                  .map((value) => TrustAnchor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intermediateCas != null) 'intermediateCas': intermediateCas!,
+        if (trustAnchors != null) 'trustAnchors': trustAnchors!,
+      };
+}

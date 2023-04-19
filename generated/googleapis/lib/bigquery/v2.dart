@@ -13163,8 +13163,11 @@ class TrainingOptions {
   /// Whether to enable auto ARIMA or not.
   core.bool? autoArima;
 
-  /// The max value of non-seasonal p and q.
+  /// The max value of the sum of non-seasonal p and q.
   core.String? autoArimaMaxOrder;
+
+  /// The min value of the sum of non-seasonal p and q.
+  core.String? autoArimaMinOrder;
 
   /// Batch size for dnn models.
   core.String? batchSize;
@@ -13554,6 +13557,7 @@ class TrainingOptions {
     this.adjustStepChanges,
     this.autoArima,
     this.autoArimaMaxOrder,
+    this.autoArimaMinOrder,
     this.batchSize,
     this.boosterType,
     this.calculatePValues,
@@ -13630,6 +13634,9 @@ class TrainingOptions {
               : null,
           autoArimaMaxOrder: json_.containsKey('autoArimaMaxOrder')
               ? json_['autoArimaMaxOrder'] as core.String
+              : null,
+          autoArimaMinOrder: json_.containsKey('autoArimaMinOrder')
+              ? json_['autoArimaMinOrder'] as core.String
               : null,
           batchSize: json_.containsKey('batchSize')
               ? json_['batchSize'] as core.String
@@ -13851,6 +13858,7 @@ class TrainingOptions {
         if (adjustStepChanges != null) 'adjustStepChanges': adjustStepChanges!,
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
+        if (autoArimaMinOrder != null) 'autoArimaMinOrder': autoArimaMinOrder!,
         if (batchSize != null) 'batchSize': batchSize!,
         if (boosterType != null) 'boosterType': boosterType!,
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,

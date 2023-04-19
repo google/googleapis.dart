@@ -429,7 +429,7 @@
             }
         }
     },
-    "revision": "20230330",
+    "revision": "20230405",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
         "DeleteEventsResponse": {

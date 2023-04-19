@@ -7013,11 +7013,15 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
   /// The history of this annotation.
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
+  /// Text style attributes.
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo? styleInfo;
+
   GoogleCloudDocumentaiV1DocumentPageToken({
     this.detectedBreak,
     this.detectedLanguages,
     this.layout,
     this.provenance,
+    this.styleInfo,
   });
 
   GoogleCloudDocumentaiV1DocumentPageToken.fromJson(core.Map json_)
@@ -7042,6 +7046,10 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
                   json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          styleInfo: json_.containsKey('styleInfo')
+              ? GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+                  json_['styleInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7049,12 +7057,147 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
         if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (layout != null) 'layout': layout!,
         if (provenance != null) 'provenance': provenance!,
+        if (styleInfo != null) 'styleInfo': styleInfo!,
       };
 }
 
 /// Detected break at the end of a Token.
 typedef GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak
     = $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak;
+
+/// Font and other text style attributes.
+class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
+  /// Color of the background.
+  GoogleTypeColor? backgroundColor;
+
+  /// Whether the text is bold (equivalent to font weight \>= 700).
+  core.bool? bold;
+
+  /// Font size in points (1 point is 1/72").
+  core.int? fontSize;
+
+  /// Name or style of the font.
+  core.String? fontType;
+
+  /// TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy).
+  ///
+  /// Normal is 400, Bold is 700.
+  core.int? fontWeight;
+
+  /// Whether the text is handwritten.
+  core.bool? handwritten;
+
+  /// Whether the text is italic.
+  core.bool? italic;
+
+  /// Letter spacing in points.
+  core.double? letterSpacing;
+
+  /// Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+  core.double? pixelFontSize;
+
+  /// Whether the text are small caps.
+  core.bool? smallcaps;
+
+  /// Whether the text is strikethrough.
+  core.bool? strikeout;
+
+  /// Whether the text is a subscript.
+  core.bool? subscript;
+
+  /// Whether the text is a superscript.
+  core.bool? superscript;
+
+  /// Color of the text.
+  GoogleTypeColor? textColor;
+
+  /// Whether the text is underlined.
+  core.bool? underlined;
+
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo({
+    this.backgroundColor,
+    this.bold,
+    this.fontSize,
+    this.fontType,
+    this.fontWeight,
+    this.handwritten,
+    this.italic,
+    this.letterSpacing,
+    this.pixelFontSize,
+    this.smallcaps,
+    this.strikeout,
+    this.subscript,
+    this.superscript,
+    this.textColor,
+    this.underlined,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(core.Map json_)
+      : this(
+          backgroundColor: json_.containsKey('backgroundColor')
+              ? GoogleTypeColor.fromJson(json_['backgroundColor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bold: json_.containsKey('bold') ? json_['bold'] as core.bool : null,
+          fontSize: json_.containsKey('fontSize')
+              ? json_['fontSize'] as core.int
+              : null,
+          fontType: json_.containsKey('fontType')
+              ? json_['fontType'] as core.String
+              : null,
+          fontWeight: json_.containsKey('fontWeight')
+              ? json_['fontWeight'] as core.int
+              : null,
+          handwritten: json_.containsKey('handwritten')
+              ? json_['handwritten'] as core.bool
+              : null,
+          italic:
+              json_.containsKey('italic') ? json_['italic'] as core.bool : null,
+          letterSpacing: json_.containsKey('letterSpacing')
+              ? (json_['letterSpacing'] as core.num).toDouble()
+              : null,
+          pixelFontSize: json_.containsKey('pixelFontSize')
+              ? (json_['pixelFontSize'] as core.num).toDouble()
+              : null,
+          smallcaps: json_.containsKey('smallcaps')
+              ? json_['smallcaps'] as core.bool
+              : null,
+          strikeout: json_.containsKey('strikeout')
+              ? json_['strikeout'] as core.bool
+              : null,
+          subscript: json_.containsKey('subscript')
+              ? json_['subscript'] as core.bool
+              : null,
+          superscript: json_.containsKey('superscript')
+              ? json_['superscript'] as core.bool
+              : null,
+          textColor: json_.containsKey('textColor')
+              ? GoogleTypeColor.fromJson(
+                  json_['textColor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          underlined: json_.containsKey('underlined')
+              ? json_['underlined'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (bold != null) 'bold': bold!,
+        if (fontSize != null) 'fontSize': fontSize!,
+        if (fontType != null) 'fontType': fontType!,
+        if (fontWeight != null) 'fontWeight': fontWeight!,
+        if (handwritten != null) 'handwritten': handwritten!,
+        if (italic != null) 'italic': italic!,
+        if (letterSpacing != null) 'letterSpacing': letterSpacing!,
+        if (pixelFontSize != null) 'pixelFontSize': pixelFontSize!,
+        if (smallcaps != null) 'smallcaps': smallcaps!,
+        if (strikeout != null) 'strikeout': strikeout!,
+        if (subscript != null) 'subscript': subscript!,
+        if (superscript != null) 'superscript': superscript!,
+        if (textColor != null) 'textColor': textColor!,
+        if (underlined != null) 'underlined': underlined!,
+      };
+}
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
 ///

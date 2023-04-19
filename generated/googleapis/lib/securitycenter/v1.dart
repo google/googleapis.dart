@@ -1402,7 +1402,7 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// Updating the enablement state is supported on both resident and inherited
   /// modules (though resident modules cannot have an enablement state of
-  /// “inherited”). Updating the display name and custom config of a module is
+  /// "inherited"). Updating the display name and custom config of a module is
   /// supported on resident modules only.
   ///
   /// [request] - The metadata request object.
@@ -1832,10 +1832,12 @@ class FoldersSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// [name] - The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -3722,7 +3724,7 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// Updating the enablement state is supported on both resident and inherited
   /// modules (though resident modules cannot have an enablement state of
-  /// “inherited”). Updating the display name and custom config of a module is
+  /// "inherited"). Updating the display name and custom config of a module is
   /// supported on resident modules only.
   ///
   /// [request] - The metadata request object.
@@ -4457,10 +4459,12 @@ class OrganizationsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// [name] - The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6026,7 +6030,7 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   ///
   /// Updating the enablement state is supported on both resident and inherited
   /// modules (though resident modules cannot have an enablement state of
-  /// “inherited”). Updating the display name and custom config of a module is
+  /// "inherited"). Updating the display name and custom config of a module is
   /// supported on resident modules only.
   ///
   /// [request] - The metadata request object.
@@ -6456,10 +6460,12 @@ class ProjectsSourcesFindingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this finding. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// [name] - The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding. Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6727,56 +6733,59 @@ class Access {
 
   /// Associated email, such as "foo@google.com".
   ///
-  /// The email address of the authenticated user (or service account on behalf
-  /// of third party principal) making the request. For third party identity
-  /// callers, the `principal_subject` field is populated instead of this field.
-  /// For privacy reasons, the principal email address is sometimes redacted.
-  /// For more information, see
+  /// The email address of the authenticated user or a service account acting on
+  /// behalf of a third party principal making the request. For third party
+  /// identity callers, the `principal_subject` field is populated instead of
+  /// this field. For privacy reasons, the principal email address is sometimes
+  /// redacted. For more information, see
   /// [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
   core.String? principalEmail;
 
-  /// A string representing the principal_subject associated with the identity.
+  /// A string that represents the principal_subject that is associated with the
+  /// identity.
   ///
-  /// As compared to `principal_email`, supports principals that aren't
-  /// associated with email addresses, such as third party principals. For most
-  /// identities, the format will be `principal://iam.googleapis.com/{identity
-  /// pool name}/subjects/{subject}` except for some GKE identities
-  /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
-  /// format `serviceAccount:{identity pool name}[{subject}]`
+  /// Unlike `principal_email`, `principal_subject` supports principals that
+  /// aren't associated with email addresses, such as third party principals.
+  /// For most identities, the format is
+  /// `principal://iam.googleapis.com/{identity pool name}/subject/{subject}`.
+  /// Some GKE identities, such as GKE_WORKLOAD, FREEFORM, and GKE_HUB_WORKLOAD,
+  /// still use the legacy format `serviceAccount:{identity pool
+  /// name}[{subject}]`.
   core.String? principalSubject;
 
-  /// Identity delegation history of an authenticated service account that makes
-  /// the request.
+  /// The identity delegation history of an authenticated service account that
+  /// made the request.
   ///
-  /// It contains information on the real authorities that try to access GCP
-  /// resources by delegating on a service account. When multiple authorities
-  /// are present, they are guaranteed to be sorted based on the original
-  /// ordering of the identity delegation events.
+  /// The `serviceAccountDelegationInfo[]` object contains information about the
+  /// real authorities that try to access Google Cloud resources by delegating
+  /// on a service account. When multiple authorities are present, they are
+  /// guaranteed to be sorted based on the original ordering of the identity
+  /// delegation events.
   core.List<ServiceAccountDelegationInfo>? serviceAccountDelegationInfo;
 
-  /// The name of the service account key used to create or exchange credentials
-  /// for authenticating the service account making the request.
+  /// The name of the service account key that was used to create or exchange
+  /// credentials when authenticating the service account that made the request.
   ///
   /// This is a scheme-less URI full resource name. For example:
-  /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"
+  /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}".
   core.String? serviceAccountKeyName;
 
   /// This is the API service that the service account made a call to, e.g.
   /// "iam.googleapis.com"
   core.String? serviceName;
 
-  /// What kind of user agent is associated, for example operating system
-  /// shells, embedded or stand-alone applications, etc.
+  /// Type of user agent associated with the finding.
+  ///
+  /// For example, an operating system shell or an embedded or standalone
+  /// application.
   core.String? userAgentFamily;
 
-  /// A string that represents the username of a user, user account, or other
-  /// entity involved in the access event.
+  /// A string that represents a username.
   ///
-  /// What the entity is and what its role in the access event is depends on the
-  /// finding that this field appears in. The entity is likely not an IAM
-  /// principal, but could be a user that is logged into an operating system, if
-  /// the finding is VM-related, or a user that is logged into some type of
-  /// application that is involved in the access event.
+  /// The username provided depends on the type of the finding and is likely not
+  /// an IAM principal. For example, this can be a system username if the
+  /// finding is related to a virtual machine, or it can be an application login
+  /// username.
   core.String? userName;
 
   Access({
@@ -8066,8 +8075,8 @@ class File {
 /// cross-site scripting (XSS) vulnerability in an App Engine application is a
 /// finding.
 class Finding {
-  /// Access details associated to the Finding, such as more information on the
-  /// caller, which method was accessed, from where, etc.
+  /// Access details associated with the finding, such as more information on
+  /// the caller, which method was accessed, and from where.
   Access? access;
 
   /// The canonical name of the finding.
@@ -8086,10 +8095,11 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
-  /// Cloud DLP data profile associated with the finding.
+  /// Cloud DLP data profile that is associated with the finding.
   CloudDlpDataProfile? cloudDlpDataProfile;
 
-  /// Cloud DLP inspection associated with the finding.
+  /// Cloud Data Loss Prevention (Cloud DLP) inspection results that are
+  /// associated with the finding.
   CloudDlpInspection? cloudDlpInspection;
 
   /// Contains compliance information for security standards associated to the
@@ -8112,7 +8122,7 @@ class Finding {
 
   /// Containers associated with the finding.
   ///
-  /// containers provides information for both Kubernetes and non-Kubernetes
+  /// This field provides information for both Kubernetes and non-Kubernetes
   /// containers.
   core.List<Container>? containers;
 
@@ -8122,7 +8132,7 @@ class Finding {
   /// Database associated with the finding.
   Database? database;
 
-  /// Contains more detail about the finding.
+  /// Contains more details about the finding.
   core.String? description;
 
   /// The time the finding was first detected.
@@ -8135,7 +8145,7 @@ class Finding {
   /// not be set to a value greater than the current timestamp.
   core.String? eventTime;
 
-  /// Represents exfiltration associated with the Finding.
+  /// Represents exfiltrations associated with the finding.
   Exfiltration? exfiltration;
 
   /// Third party SIEM/SOAR fields within SCC, contains external system
@@ -8168,18 +8178,19 @@ class Finding {
   /// - "SCC_ERROR" : Describes an error that prevents some SCC functionality.
   core.String? findingClass;
 
-  /// Represents IAM bindings associated with the Finding.
+  /// Represents IAM bindings associated with the finding.
   core.List<IamBinding>? iamBindings;
 
-  /// Represents what's commonly known as an Indicator of compromise (IoC) in
+  /// Represents what's commonly known as an *indicator of compromise* (IoC) in
   /// computer forensics.
   ///
   /// This is an artifact observed on a network or in an operating system that,
-  /// with high confidence, indicates a computer intrusion. Reference:
-  /// https://en.wikipedia.org/wiki/Indicator_of_compromise
+  /// with high confidence, indicates a computer intrusion. For more
+  /// information, see
+  /// [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
   Indicator? indicator;
 
-  /// Kernel Rootkit signature.
+  /// Signature of the kernel rootkit.
   KernelRootkit? kernelRootkit;
 
   /// Kubernetes resources associated with the finding.
@@ -8208,12 +8219,9 @@ class Finding {
   /// - "UNDEFINED" : Finding has never been muted/unmuted.
   core.String? mute;
 
-  /// First known as mute_annotation.
-  ///
-  /// Records additional information about the mute operation e.g. mute config
-  /// that muted the finding, user who muted the finding, etc. Unlike other
-  /// attributes of a finding, a finding provider shouldn't set the value of
-  /// mute.
+  /// Records additional information about the mute operation, for example, the
+  /// \[mute configuration\](/security-command-center/docs/how-to-mute-findings)
+  /// that muted the finding and the user who muted the finding.
   core.String? muteInitiator;
 
   /// The most recent time this finding was muted or unmuted.
@@ -8221,15 +8229,17 @@ class Finding {
   /// Output only.
   core.String? muteUpdateTime;
 
-  /// The relative resource name of this finding.
+  /// The
+  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// of the finding.
   ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   core.String? name;
 
-  /// Next steps associate to the finding.
+  /// Steps to address the finding.
   core.String? nextSteps;
 
   /// The relative resource name of the source the finding belongs to.
@@ -8277,9 +8287,9 @@ class Finding {
   /// discoverable by an external actor, exploitable, and results in the direct
   /// ability to execute arbitrary code, exfiltrate data, and otherwise gain
   /// additional access and privileges to cloud resources and workloads.
-  /// Examples include publicly accessible unprotected user data, public SSH
-  /// access with weak or no passwords, etc. Threat: Indicates a threat that is
-  /// able to access, modify, or delete data or execute unauthorized code within
+  /// Examples include publicly accessible unprotected user data and public SSH
+  /// access with weak or no passwords. Threat: Indicates a threat that is able
+  /// to access, modify, or delete data or execute unauthorized code within
   /// existing resources.
   /// - "HIGH" : Vulnerability: A high risk vulnerability can be easily
   /// discovered and exploited in combination with other vulnerabilities in
@@ -10212,7 +10222,7 @@ class ListBigQueryExportsResponse {
       };
 }
 
-/// Response message for listing descendant security health analytics custom
+/// Response message for listing descendant Security Health Analytics custom
 /// modules.
 class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
   /// If not empty, indicates that there may be more custom modules to be
@@ -10253,7 +10263,7 @@ class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
       };
 }
 
-/// Response message for listing effective security health analytics custom
+/// Response message for listing effective Security Health Analytics custom
 /// modules.
 class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
   /// Effective custom modules belonging to the requested parent.
@@ -10498,7 +10508,7 @@ class ListOperationsResponse {
       };
 }
 
-/// Response message for listing security health analytics custom modules.
+/// Response message for listing Security Health Analytics custom modules.
 class ListSecurityHealthAnalyticsCustomModulesResponse {
   /// If not empty, indicates that there may be more custom modules to be
   /// returned.

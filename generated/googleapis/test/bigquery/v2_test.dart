@@ -7403,6 +7403,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.adjustStepChanges = true;
     o.autoArima = true;
     o.autoArimaMaxOrder = 'foo';
+    o.autoArimaMinOrder = 'foo';
     o.batchSize = 'foo';
     o.boosterType = 'foo';
     o.calculatePValues = true;
@@ -7479,6 +7480,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     unittest.expect(o.autoArima!, unittest.isTrue);
     unittest.expect(
       o.autoArimaMaxOrder!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.autoArimaMinOrder!,
       unittest.equals('foo'),
     );
     unittest.expect(

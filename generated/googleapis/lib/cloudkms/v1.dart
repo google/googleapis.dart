@@ -811,6 +811,48 @@ class ProjectsLocationsEkmConnectionsResource {
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Verifies that Cloud KMS can successfully connect to the external key
+  /// manager specified by an EkmConnection.
+  ///
+  /// If there is an error connecting to the EKM, this method returns a
+  /// FAILED_PRECONDITION status containing structured information as described
+  /// at https://cloud.google.com/kms/docs/reference/ekm_errors.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EkmConnection to verify.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/ekmConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VerifyConnectivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VerifyConnectivityResponse> verifyConnectivity(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':verifyConnectivity';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VerifyConnectivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsKeyRingsResource {
@@ -5698,6 +5740,9 @@ class UpdateCryptoKeyPrimaryVersionRequest {
           'cryptoKeyVersionId': cryptoKeyVersionId!,
       };
 }
+
+/// Response message for EkmService.VerifyConnectivity.
+typedef VerifyConnectivityResponse = $Empty;
 
 /// The public key component of the wrapping key.
 ///

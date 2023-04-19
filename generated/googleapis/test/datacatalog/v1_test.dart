@@ -2344,6 +2344,7 @@ api.GoogleCloudDatacatalogV1SearchCatalogResponse
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse < 3) {
     o.nextPageToken = 'foo';
     o.results = buildUnnamed25();
+    o.totalSize = 42;
     o.unreachable = buildUnnamed26();
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse--;
@@ -2359,6 +2360,10 @@ void checkGoogleCloudDatacatalogV1SearchCatalogResponse(
       unittest.equals('foo'),
     );
     checkUnnamed25(o.results!);
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
     checkUnnamed26(o.unreachable!);
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResponse--;

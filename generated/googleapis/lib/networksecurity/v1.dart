@@ -19,8 +19,12 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAuthorizationPoliciesResource]
 ///     - [ProjectsLocationsClientTlsPoliciesResource]
+///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
+///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServerTlsPoliciesResource]
+///     - [ProjectsLocationsTlsInspectionPoliciesResource]
+///     - [ProjectsLocationsUrlListsResource]
 library;
 
 import 'dart:async' as async;
@@ -70,10 +74,17 @@ class ProjectsLocationsResource {
       ProjectsLocationsAuthorizationPoliciesResource(_requester);
   ProjectsLocationsClientTlsPoliciesResource get clientTlsPolicies =>
       ProjectsLocationsClientTlsPoliciesResource(_requester);
+  ProjectsLocationsGatewaySecurityPoliciesResource
+      get gatewaySecurityPolicies =>
+          ProjectsLocationsGatewaySecurityPoliciesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServerTlsPoliciesResource get serverTlsPolicies =>
       ProjectsLocationsServerTlsPoliciesResource(_requester);
+  ProjectsLocationsTlsInspectionPoliciesResource get tlsInspectionPolicies =>
+      ProjectsLocationsTlsInspectionPoliciesResource(_requester);
+  ProjectsLocationsUrlListsResource get urlLists =>
+      ProjectsLocationsUrlListsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -943,6 +954,485 @@ class ProjectsLocationsClientTlsPoliciesResource {
   }
 }
 
+class ProjectsLocationsGatewaySecurityPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGatewaySecurityPoliciesRulesResource get rules =>
+      ProjectsLocationsGatewaySecurityPoliciesRulesResource(_requester);
+
+  ProjectsLocationsGatewaySecurityPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new GatewaySecurityPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the GatewaySecurityPolicy.
+  /// Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [gatewaySecurityPolicyId] - Required. Short name of the
+  /// GatewaySecurityPolicy resource to be created. This value should be 1-63
+  /// characters long, containing only letters, numbers, hyphens, and
+  /// underscores, and should not start with a number. E.g.
+  /// "gateway_security_policy1".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GatewaySecurityPolicy request,
+    core.String parent, {
+    core.String? gatewaySecurityPolicyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (gatewaySecurityPolicyId != null)
+        'gatewaySecurityPolicyId': [gatewaySecurityPolicyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gatewaySecurityPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single GatewaySecurityPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the GatewaySecurityPolicy to delete. Must be
+  /// in the format
+  /// `projects/{project}/locations/{location}/gatewaySecurityPolicies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single GatewaySecurityPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the GatewaySecurityPolicy to get. Must be in
+  /// the format
+  /// `projects/{project}/locations/{location}/gatewaySecurityPolicies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GatewaySecurityPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GatewaySecurityPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GatewaySecurityPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists GatewaySecurityPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// GatewaySecurityPolicies should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of GatewaySecurityPolicies to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// 'ListGatewaySecurityPoliciesResponse' Indicates that this is a
+  /// continuation of a prior 'ListGatewaySecurityPolicies' call, and that the
+  /// system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGatewaySecurityPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGatewaySecurityPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gatewaySecurityPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGatewaySecurityPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single GatewaySecurityPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource. Name is of the form
+  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
+  /// gateway_security_policy should match the
+  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the GatewaySecurityPolicy resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GatewaySecurityPolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGatewaySecurityPoliciesRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGatewaySecurityPoliciesRulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new GatewaySecurityPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent where this rule will be created. Format :
+  /// projects/{project}/location/{location}/gatewaySecurityPolicies / *
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+$`.
+  ///
+  /// [gatewaySecurityPolicyRuleId] - The ID to use for the rule, which will
+  /// become the final component of the rule's resource name. This value should
+  /// be 4-63 characters, and valid characters are /a-z-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GatewaySecurityPolicyRule request,
+    core.String parent, {
+    core.String? gatewaySecurityPolicyRuleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (gatewaySecurityPolicyRuleId != null)
+        'gatewaySecurityPolicyRuleId': [gatewaySecurityPolicyRuleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single GatewaySecurityPolicyRule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the GatewaySecurityPolicyRule to delete. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}/rules
+  /// / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single GatewaySecurityPolicyRule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GatewaySecurityPolicyRule to retrieve.
+  /// Format: projects/{project}/location/{location}/gatewaySecurityPolicies / *
+  /// /rules / *
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GatewaySecurityPolicyRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GatewaySecurityPolicyRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GatewaySecurityPolicyRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists GatewaySecurityPolicyRules in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, location and GatewaySecurityPolicy from
+  /// which the GatewaySecurityPolicyRules should be listed, specified in the
+  /// format
+  /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of GatewaySecurityPolicyRules to return per
+  /// call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// 'ListGatewaySecurityPolicyRulesResponse' Indicates that this is a
+  /// continuation of a prior 'ListGatewaySecurityPolicyRules' call, and that
+  /// the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGatewaySecurityPolicyRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGatewaySecurityPolicyRulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGatewaySecurityPolicyRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single GatewaySecurityPolicyRule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Immutable. Name of the resource. ame is the full
+  /// resource name so
+  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
+  /// rule should match the pattern: (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gatewaySecurityPolicies/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the GatewaySecurityPolicy resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GatewaySecurityPolicyRule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1516,6 +2006,477 @@ class ProjectsLocationsServerTlsPoliciesResource {
   }
 }
 
+class ProjectsLocationsTlsInspectionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTlsInspectionPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new TlsInspectionPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the TlsInspectionPolicy. Must
+  /// be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [tlsInspectionPolicyId] - Required. Short name of the TlsInspectionPolicy
+  /// resource to be created. This value should be 1-63 characters long,
+  /// containing only letters, numbers, hyphens, and underscores, and should not
+  /// start with a number. E.g. "tls_inspection_policy1".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    TlsInspectionPolicy request,
+    core.String parent, {
+    core.String? tlsInspectionPolicyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (tlsInspectionPolicyId != null)
+        'tlsInspectionPolicyId': [tlsInspectionPolicyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/tlsInspectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single TlsInspectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TlsInspectionPolicy to delete. Must be in
+  /// the format
+  /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tlsInspectionPolicies/\[^/\]+$`.
+  ///
+  /// [force] - If set to true, any rules for this TlsInspectionPolicy will also
+  /// be deleted. (Otherwise, the request will only work if the
+  /// TlsInspectionPolicy has no rules.)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single TlsInspectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TlsInspectionPolicy to get. Must be in
+  /// the format
+  /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tlsInspectionPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TlsInspectionPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TlsInspectionPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TlsInspectionPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists TlsInspectionPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// TlsInspectionPolicies should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of TlsInspectionPolicies to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// 'ListTlsInspectionPoliciesResponse' Indicates that this is a continuation
+  /// of a prior 'ListTlsInspectionPolicies' call, and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTlsInspectionPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTlsInspectionPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/tlsInspectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTlsInspectionPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single TlsInspectionPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource. Name is of the form
+  /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}
+  /// tls_inspection_policy should match the
+  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tlsInspectionPolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the TlsInspectionPolicy resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    TlsInspectionPolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsUrlListsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsUrlListsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new UrlList in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the UrlList. Must be in the
+  /// format `projects / * /locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [urlListId] - Required. Short name of the UrlList resource to be created.
+  /// This value should be 1-63 characters long, containing only letters,
+  /// numbers, hyphens, and underscores, and should not start with a number.
+  /// E.g. "url_list".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    UrlList request,
+    core.String parent, {
+    core.String? urlListId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (urlListId != null) 'urlListId': [urlListId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/urlLists';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single UrlList.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the UrlList to delete. Must be in the format
+  /// `projects / * /locations/{location}/urlLists / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/urlLists/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single UrlList.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the UrlList to get. Must be in the format
+  /// `projects / * /locations/{location}/urlLists / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/urlLists/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UrlList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlList> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UrlList.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists UrlLists in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the UrlLists
+  /// should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of UrlLists to return per call.
+  ///
+  /// [pageToken] - The value returned by the last `ListUrlListsResponse`
+  /// Indicates that this is a continuation of a prior `ListUrlLists` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUrlListsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUrlListsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/urlLists';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUrlListsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single UrlList.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource provided by the user. Name is of
+  /// the form projects/{project}/locations/{location}/urlLists/{url_list}
+  /// url_list should match the
+  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/urlLists/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the UrlList resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    UrlList request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// AuthorizationPolicy is a resource that specifies how a server should
 /// authorize incoming connections.
 ///
@@ -1876,6 +2837,202 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// The GatewaySecurityPolicy resource contains a collection of
+/// GatewaySecurityPolicyRules and associated metadata.
+class GatewaySecurityPolicy {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free-text description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Name of the resource.
+  ///
+  /// Name is of the form
+  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
+  /// gateway_security_policy should match the
+  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Name of a TLS Inspection Policy resource that defines how TLS inspection
+  /// will be performed for any rule(s) which enables it.
+  ///
+  /// Optional.
+  core.String? tlsInspectionPolicy;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GatewaySecurityPolicy({
+    this.createTime,
+    this.description,
+    this.name,
+    this.tlsInspectionPolicy,
+    this.updateTime,
+  });
+
+  GatewaySecurityPolicy.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tlsInspectionPolicy: json_.containsKey('tlsInspectionPolicy')
+              ? json_['tlsInspectionPolicy'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (tlsInspectionPolicy != null)
+          'tlsInspectionPolicy': tlsInspectionPolicy!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The GatewaySecurityPolicyRule resource is in a nested collection within a
+/// GatewaySecurityPolicy and represents a traffic matching condition and
+/// associated action to perform.
+class GatewaySecurityPolicyRule {
+  /// CEL expression for matching on L7/application level criteria.
+  ///
+  /// Optional.
+  core.String? applicationMatcher;
+
+  /// Profile which tells what the primitive action should be.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BASIC_PROFILE_UNSPECIFIED" : If there is not a mentioned action for the
+  /// target.
+  /// - "ALLOW" : Allow the matched traffic.
+  /// - "DENY" : Deny the matched traffic.
+  core.String? basicProfile;
+
+  /// Time when the rule was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free-text description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Whether the rule is enforced.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  /// Name of the resource.
+  ///
+  /// ame is the full resource name so
+  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
+  /// rule should match the pattern: (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  ///
+  /// Required. Immutable.
+  core.String? name;
+
+  /// Priority of the rule.
+  ///
+  /// Lower number corresponds to higher precedence.
+  ///
+  /// Required.
+  core.int? priority;
+
+  /// CEL expression for matching on session criteria.
+  ///
+  /// Required.
+  core.String? sessionMatcher;
+
+  /// Flag to enable TLS inspection of traffic matching on , can only be true if
+  /// the parent GatewaySecurityPolicy references a TLSInspectionConfig.
+  ///
+  /// Optional.
+  core.bool? tlsInspectionEnabled;
+
+  /// Time when the rule was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GatewaySecurityPolicyRule({
+    this.applicationMatcher,
+    this.basicProfile,
+    this.createTime,
+    this.description,
+    this.enabled,
+    this.name,
+    this.priority,
+    this.sessionMatcher,
+    this.tlsInspectionEnabled,
+    this.updateTime,
+  });
+
+  GatewaySecurityPolicyRule.fromJson(core.Map json_)
+      : this(
+          applicationMatcher: json_.containsKey('applicationMatcher')
+              ? json_['applicationMatcher'] as core.String
+              : null,
+          basicProfile: json_.containsKey('basicProfile')
+              ? json_['basicProfile'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+          sessionMatcher: json_.containsKey('sessionMatcher')
+              ? json_['sessionMatcher'] as core.String
+              : null,
+          tlsInspectionEnabled: json_.containsKey('tlsInspectionEnabled')
+              ? json_['tlsInspectionEnabled'] as core.bool
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationMatcher != null)
+          'applicationMatcher': applicationMatcher!,
+        if (basicProfile != null) 'basicProfile': basicProfile!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (enabled != null) 'enabled': enabled!,
+        if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
+        if (sessionMatcher != null) 'sessionMatcher': sessionMatcher!,
+        if (tlsInspectionEnabled != null)
+          'tlsInspectionEnabled': tlsInspectionEnabled!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// Specification of certificate provider.
 ///
@@ -2364,6 +3521,101 @@ class ListClientTlsPoliciesResponse {
       };
 }
 
+/// Response returned by the ListGatewaySecurityPolicies method.
+class ListGatewaySecurityPoliciesResponse {
+  /// List of GatewaySecurityPolicies resources.
+  core.List<GatewaySecurityPolicy>? gatewaySecurityPolicies;
+
+  /// If there might be more results than those appearing in this response, then
+  /// 'next_page_token' is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// 'next_page_token' as 'page_token'.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGatewaySecurityPoliciesResponse({
+    this.gatewaySecurityPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGatewaySecurityPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          gatewaySecurityPolicies: json_.containsKey('gatewaySecurityPolicies')
+              ? (json_['gatewaySecurityPolicies'] as core.List)
+                  .map((value) => GatewaySecurityPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gatewaySecurityPolicies != null)
+          'gatewaySecurityPolicies': gatewaySecurityPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response returned by the ListGatewaySecurityPolicyRules method.
+class ListGatewaySecurityPolicyRulesResponse {
+  /// List of GatewaySecurityPolicyRule resources.
+  core.List<GatewaySecurityPolicyRule>? gatewaySecurityPolicyRules;
+
+  /// If there might be more results than those appearing in this response, then
+  /// 'next_page_token' is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// 'next_page_token' as 'page_token'.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGatewaySecurityPolicyRulesResponse({
+    this.gatewaySecurityPolicyRules,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGatewaySecurityPolicyRulesResponse.fromJson(core.Map json_)
+      : this(
+          gatewaySecurityPolicyRules:
+              json_.containsKey('gatewaySecurityPolicyRules')
+                  ? (json_['gatewaySecurityPolicyRules'] as core.List)
+                      .map((value) => GatewaySecurityPolicyRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gatewaySecurityPolicyRules != null)
+          'gatewaySecurityPolicyRules': gatewaySecurityPolicyRules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -2464,17 +3716,142 @@ class ListServerTlsPoliciesResponse {
       };
 }
 
+/// Response returned by the ListTlsInspectionPolicies method.
+class ListTlsInspectionPoliciesResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// 'next_page_token' is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// 'next_page_token' as 'page_token'.
+  core.String? nextPageToken;
+
+  /// List of TlsInspectionPolicies resources.
+  core.List<TlsInspectionPolicy>? tlsInspectionPolicies;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTlsInspectionPoliciesResponse({
+    this.nextPageToken,
+    this.tlsInspectionPolicies,
+    this.unreachable,
+  });
+
+  ListTlsInspectionPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          tlsInspectionPolicies: json_.containsKey('tlsInspectionPolicies')
+              ? (json_['tlsInspectionPolicies'] as core.List)
+                  .map((value) => TlsInspectionPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tlsInspectionPolicies != null)
+          'tlsInspectionPolicies': tlsInspectionPolicies!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response returned by the ListUrlLists method.
+class ListUrlListsResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// List of UrlList resources.
+  core.List<UrlList>? urlLists;
+
+  ListUrlListsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.urlLists,
+  });
+
+  ListUrlListsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          urlLists: json_.containsKey('urlLists')
+              ? (json_['urlLists'] as core.List)
+                  .map((value) => UrlList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (urlLists != null) 'urlLists': urlLists!,
+      };
+}
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
 /// Specification of the MTLSPolicy.
 class MTLSPolicy {
-  /// Defines the mechanism to obtain the Certificate Authority certificate to
-  /// validate the client certificate.
+  /// Required if the policy is to be used with Traffic Director.
+  ///
+  /// For External HTTPS LB it must be empty. Defines the mechanism to obtain
+  /// the Certificate Authority certificate to validate the client certificate.
   core.List<ValidationCA>? clientValidationCa;
+
+  /// Specifies whether client connections proceed when a client presents an
+  /// invalid certificate or no certificate.
+  ///
+  /// Required if the policy is to be used with the External HTTPS LB. For
+  /// Traffic Director it must be empty.
+  /// Possible string values are:
+  /// - "CLIENT_VALIDATION_MODE_UNSPECIFIED" : Not allowed.
+  /// - "ALLOW_INVALID_OR_MISSING_CLIENT_CERT" : Allow connection even if
+  /// certificate chain validation of the client certificate failed or no client
+  /// certificate was presented. The proof of possession of the private key is
+  /// always checked if client certificate was presented. This mode requires the
+  /// backend to implement processing of data extracted from a client
+  /// certificate to authenticate the peer, or to reject connections if the
+  /// client certificate fingerprint is missing.
+  /// - "REJECT_INVALID" : Require a client certificate and allow connection to
+  /// the backend only if validation of the client certificate passed. If set,
+  /// requires a reference to non-empty TrustConfig specified in
+  /// `client_validation_trust_config`.
+  core.String? clientValidationMode;
+
+  /// Reference to the TrustConfig from certificatemanager.googleapis.com
+  /// namespace.
+  ///
+  /// If specified, the chain validation will be performed against certificates
+  /// configured in the given TrustConfig. Allowed only if the policy is to be
+  /// used with External HTTPS LB.
+  core.String? clientValidationTrustConfig;
 
   MTLSPolicy({
     this.clientValidationCa,
+    this.clientValidationMode,
+    this.clientValidationTrustConfig,
   });
 
   MTLSPolicy.fromJson(core.Map json_)
@@ -2485,11 +3862,22 @@ class MTLSPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          clientValidationMode: json_.containsKey('clientValidationMode')
+              ? json_['clientValidationMode'] as core.String
+              : null,
+          clientValidationTrustConfig:
+              json_.containsKey('clientValidationTrustConfig')
+                  ? json_['clientValidationTrustConfig'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientValidationCa != null)
           'clientValidationCa': clientValidationCa!,
+        if (clientValidationMode != null)
+          'clientValidationMode': clientValidationMode!,
+        if (clientValidationTrustConfig != null)
+          'clientValidationTrustConfig': clientValidationTrustConfig!,
       };
 }
 
@@ -2621,17 +4009,24 @@ class Rule {
 /// authenticate incoming requests.
 ///
 /// This resource itself does not affect configuration unless it is attached to
-/// a target HTTPS proxy or endpoint config selector resource.
+/// a target HTTPS proxy or endpoint config selector resource. ServerTlsPolicy
+/// in the form accepted by External HTTPS Load Balancer can be attached only to
+/// TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED` load balancing
+/// scheme. Traffic Director compatible ServerTlsPolicies can be attached to
+/// EndpointPolicy and TargetHttpsProxy with Traffic Director
+/// `INTERNAL_SELF_MANAGED` load balancing scheme.
 class ServerTlsPolicy {
-  ///  Determines if server allows plaintext connections.
+  /// Can be enabled only for Traffic Director policies, must be false for
+  /// External HTTPS LB policies.
   ///
-  /// If set to true, server allows plain text connections. By default, it is
-  /// set to false. This setting is not exclusive of other encryption modes. For
-  /// example, if `allow_open` and `mtls_policy` are set, server allows both
-  /// plain text and mTLS connections. See documentation of other encryption
-  /// modes to confirm compatibility. Consider using it if you wish to upgrade
-  /// in place your deployment to TLS while having mixed TLS and non-TLS traffic
-  /// reaching port :80.
+  /// Determines if server allows plaintext connections. If set to true, server
+  /// allows plain text connections. By default, it is set to false. This
+  /// setting is not exclusive of other encryption modes. For example, if
+  /// `allow_open` and `mtls_policy` are set, server allows both plain text and
+  /// mTLS connections. See documentation of other encryption modes to confirm
+  /// compatibility. Consider using it if you wish to upgrade in place your
+  /// deployment to TLS while having mixed TLS and non-TLS traffic reaching port
+  /// :80.
   core.bool? allowOpen;
 
   /// The timestamp when the resource was created.
@@ -2645,12 +4040,14 @@ class ServerTlsPolicy {
   /// Set of label tags associated with the resource.
   core.Map<core.String, core.String>? labels;
 
-  /// Defines a mechanism to provision peer validation certificates for peer to
-  /// peer authentication (Mutual TLS - mTLS).
+  /// Required if policy is to be used with the External HTTPS LB, for Traffic
+  /// Director allowed to be empty.
   ///
-  /// If not specified, client certificate will not be requested. The connection
-  /// is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set,
-  /// server allows both plain text and mTLS connections.
+  /// Defines a mechanism to provision peer validation certificates for peer to
+  /// peer authentication (Mutual TLS - mTLS). If not specified, client
+  /// certificate will not be requested. The connection is treated as TLS and
+  /// not mTLS. If `allow_open` and `mtls_policy` are set, server allows both
+  /// plain text and mTLS connections.
   MTLSPolicy? mtlsPolicy;
 
   /// Name of the ServerTlsPolicy resource.
@@ -2661,11 +4058,12 @@ class ServerTlsPolicy {
   /// Required.
   core.String? name;
 
-  /// Defines a mechanism to provision server identity (public and private
-  /// keys).
+  /// Optional if policy is to be used with Traffic Director, for External HTTPS
+  /// LB must be empty.
   ///
-  /// Cannot be combined with `allow_open` as a permissive mode that allows both
-  /// plain text and TLS is not supported.
+  /// Defines a mechanism to provision server identity (public and private
+  /// keys). Cannot be combined with `allow_open` as a permissive mode that
+  /// allows both plain text and TLS is not supported.
   GoogleCloudNetworksecurityV1CertificateProvider? serverCertificate;
 
   /// The timestamp when the resource was updated.
@@ -2786,6 +4184,144 @@ class Source {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// The TlsInspectionPolicy resource contains references to CA pools in
+/// Certificate Authority Service and associated metadata.
+class TlsInspectionPolicy {
+  /// A CA pool resource used to issue interception certificates.
+  ///
+  /// The CA pool string has a relative resource path following the form
+  /// "projects/{project}/locations/{location}/caPools/{ca_pool}".
+  ///
+  /// Required.
+  core.String? caPool;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free-text description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Name of the resource.
+  ///
+  /// Name is of the form
+  /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}
+  /// tls_inspection_policy should match the
+  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TlsInspectionPolicy({
+    this.caPool,
+    this.createTime,
+    this.description,
+    this.name,
+    this.updateTime,
+  });
+
+  TlsInspectionPolicy.fromJson(core.Map json_)
+      : this(
+          caPool: json_.containsKey('caPool')
+              ? json_['caPool'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caPool != null) 'caPool': caPool!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// UrlList proto helps users to set reusable, independently manageable lists of
+/// hosts, host patterns, URLs, URL patterns.
+class UrlList {
+  /// Time when the security policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free-text description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Name of the resource provided by the user.
+  ///
+  /// Name is of the form
+  /// projects/{project}/locations/{location}/urlLists/{url_list} url_list
+  /// should match the pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Time when the security policy was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// FQDNs and URLs.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  UrlList({
+    this.createTime,
+    this.description,
+    this.name,
+    this.updateTime,
+    this.values,
+  });
+
+  UrlList.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (values != null) 'values': values!,
+      };
+}
 
 /// Specification of ValidationCA.
 ///

@@ -196,7 +196,7 @@ class ProjectsLocationsEndpointsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -251,7 +251,7 @@ class ProjectsLocationsEndpointsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -455,7 +455,7 @@ class ProjectsLocationsEndpointsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -741,13 +741,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -885,7 +878,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -901,9 +896,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

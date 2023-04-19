@@ -19888,10 +19888,11 @@ class GoogleCloudApigeeV1KeyValueEntry {
 class GoogleCloudApigeeV1KeyValueMap {
   /// Flag that specifies whether entry values will be encrypted.
   ///
-  /// You must set this value to `true`. Apigee X and hybrid do not support
-  /// unencrytped key value maps.
+  /// This field is retained for backward compatibility and the value of
+  /// encrypted will always be `true`. Apigee X and hybrid do not support
+  /// unencrypted key value maps.
   ///
-  /// Optional.
+  /// Required.
   core.bool? encrypted;
 
   /// ID of the key value map.
@@ -21497,6 +21498,21 @@ class GoogleCloudApigeeV1Organization {
   /// Required.
   core.String? analyticsRegion;
 
+  /// Cloud KMS key name used for encrypting API consumer data.
+  ///
+  /// Required for US/EU regions when \[BillingType\](#BillingType) is
+  /// `SUBSCRIPTION`. When \[BillingType\](#BillingType) is `EVALUATION` or the
+  /// region is not US/EU, a Google-Managed encryption key will be used. Format:
+  /// `projects / * /locations / * /keyRings / * /cryptoKeys / * `
+  core.String? apiConsumerDataEncryptionKeyName;
+
+  /// This field is needed only for customers with control plane in US or EU.
+  ///
+  /// Apigee stores some control plane data only in single region. This field
+  /// determines which single region Apigee should use. For example: "us-west1"
+  /// when control plane is in US or "europe-west2" when control plane is in EU.
+  core.String? apiConsumerDataLocation;
+
   /// Apigee Project ID associated with the organization.
   ///
   /// Use this project to allowlist Apigee in the Service Attachment when using
@@ -21550,6 +21566,15 @@ class GoogleCloudApigeeV1Organization {
     caCertificate =
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
+
+  /// Cloud KMS key name used for encrypting control plane data that is stored
+  /// in a multi region.
+  ///
+  /// Required when \[BillingType\](#BillingType) is `SUBSCRIPTION`. When
+  /// \[BillingType\](#BillingType) is `EVALUATION`, a Google-Managed encryption
+  /// key will be used. Format: `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `
+  core.String? controlPlaneEncryptionKeyName;
 
   /// Time that the Apigee organization was created in milliseconds since epoch.
   ///
@@ -21661,11 +21686,14 @@ class GoogleCloudApigeeV1Organization {
   GoogleCloudApigeeV1Organization({
     this.addonsConfig,
     this.analyticsRegion,
+    this.apiConsumerDataEncryptionKeyName,
+    this.apiConsumerDataLocation,
     this.apigeeProjectId,
     this.attributes,
     this.authorizedNetwork,
     this.billingType,
     this.caCertificate,
+    this.controlPlaneEncryptionKeyName,
     this.createdAt,
     this.customerName,
     this.description,
@@ -21693,6 +21721,13 @@ class GoogleCloudApigeeV1Organization {
           analyticsRegion: json_.containsKey('analyticsRegion')
               ? json_['analyticsRegion'] as core.String
               : null,
+          apiConsumerDataEncryptionKeyName:
+              json_.containsKey('apiConsumerDataEncryptionKeyName')
+                  ? json_['apiConsumerDataEncryptionKeyName'] as core.String
+                  : null,
+          apiConsumerDataLocation: json_.containsKey('apiConsumerDataLocation')
+              ? json_['apiConsumerDataLocation'] as core.String
+              : null,
           apigeeProjectId: json_.containsKey('apigeeProjectId')
               ? json_['apigeeProjectId'] as core.String
               : null,
@@ -21710,6 +21745,10 @@ class GoogleCloudApigeeV1Organization {
           caCertificate: json_.containsKey('caCertificate')
               ? json_['caCertificate'] as core.String
               : null,
+          controlPlaneEncryptionKeyName:
+              json_.containsKey('controlPlaneEncryptionKeyName')
+                  ? json_['controlPlaneEncryptionKeyName'] as core.String
+                  : null,
           createdAt: json_.containsKey('createdAt')
               ? json_['createdAt'] as core.String
               : null,
@@ -21762,11 +21801,17 @@ class GoogleCloudApigeeV1Organization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
+        if (apiConsumerDataEncryptionKeyName != null)
+          'apiConsumerDataEncryptionKeyName': apiConsumerDataEncryptionKeyName!,
+        if (apiConsumerDataLocation != null)
+          'apiConsumerDataLocation': apiConsumerDataLocation!,
         if (apigeeProjectId != null) 'apigeeProjectId': apigeeProjectId!,
         if (attributes != null) 'attributes': attributes!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
         if (billingType != null) 'billingType': billingType!,
         if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (controlPlaneEncryptionKeyName != null)
+          'controlPlaneEncryptionKeyName': controlPlaneEncryptionKeyName!,
         if (createdAt != null) 'createdAt': createdAt!,
         if (customerName != null) 'customerName': customerName!,
         if (description != null) 'description': description!,

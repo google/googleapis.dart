@@ -2971,8 +2971,18 @@ class GoogleFirestoreAdminV1Database {
 
   /// The timestamp at which this database was created.
   ///
+  /// Databases created before 2016 do not populate create_time.
+  ///
   /// Output only.
   core.String? createTime;
+
+  /// State of delete protection for the database.
+  /// Possible string values are:
+  /// - "DELETE_PROTECTION_STATE_UNSPECIFIED" : The default value. Delete
+  /// protection type is not specified
+  /// - "DELETE_PROTECTION_DISABLED" : Delete protection is disabled
+  /// - "DELETE_PROTECTION_ENABLED" : Delete protection is enabled
+  core.String? deleteProtectionState;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
@@ -3029,6 +3039,7 @@ class GoogleFirestoreAdminV1Database {
     this.appEngineIntegrationMode,
     this.concurrencyMode,
     this.createTime,
+    this.deleteProtectionState,
     this.etag,
     this.keyPrefix,
     this.locationId,
@@ -3050,6 +3061,9 @@ class GoogleFirestoreAdminV1Database {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          deleteProtectionState: json_.containsKey('deleteProtectionState')
+              ? json_['deleteProtectionState'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           keyPrefix: json_.containsKey('keyPrefix')
               ? json_['keyPrefix'] as core.String
@@ -3070,6 +3084,8 @@ class GoogleFirestoreAdminV1Database {
           'appEngineIntegrationMode': appEngineIntegrationMode!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
         if (createTime != null) 'createTime': createTime!,
+        if (deleteProtectionState != null)
+          'deleteProtectionState': deleteProtectionState!,
         if (etag != null) 'etag': etag!,
         if (keyPrefix != null) 'keyPrefix': keyPrefix!,
         if (locationId != null) 'locationId': locationId!,

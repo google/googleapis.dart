@@ -1610,6 +1610,8 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
+  /// [driveId] - If set, empties the trash of the provided shared drive.
+  ///
   /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
   /// and its last parent is deleted but the item itself is not, the item will
   /// be placed under its owner's root.
@@ -1623,10 +1625,12 @@ class FilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> emptyTrash({
+    core.String? driveId,
     core.bool? enforceSingleParent,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (driveId != null) 'driveId': [driveId],
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
       if ($fields != null) 'fields': [$fields],
