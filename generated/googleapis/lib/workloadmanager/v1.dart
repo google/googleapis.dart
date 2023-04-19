@@ -18,8 +18,12 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEvaluationsResource]
+///       - [ProjectsLocationsEvaluationsExecutionsResource]
+///         - [ProjectsLocationsEvaluationsExecutionsResultsResource]
+///         - [ProjectsLocationsEvaluationsExecutionsScannedResourcesResource]
 ///     - [ProjectsLocationsInsightsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRulesResource]
 library;
 
 import 'dart:async' as async;
@@ -71,6 +75,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsInsightsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRulesResource get rules =>
+      ProjectsLocationsRulesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -164,6 +170,9 @@ class ProjectsLocationsResource {
 
 class ProjectsLocationsEvaluationsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsEvaluationsExecutionsResource get executions =>
+      ProjectsLocationsEvaluationsExecutionsResource(_requester);
 
   ProjectsLocationsEvaluationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -315,6 +324,283 @@ class ProjectsLocationsEvaluationsResource {
       queryParams: queryParams_,
     );
     return ListEvaluationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEvaluationsExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEvaluationsExecutionsResultsResource get results =>
+      ProjectsLocationsEvaluationsExecutionsResultsResource(_requester);
+  ProjectsLocationsEvaluationsExecutionsScannedResourcesResource
+      get scannedResources =>
+          ProjectsLocationsEvaluationsExecutionsScannedResourcesResource(
+              _requester);
+
+  ProjectsLocationsEvaluationsExecutionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Executions in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource prefix of the Execution using the form:
+  /// 'projects/{project}/locations/{location}/evaluations/{evaluation}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [filter] - Filtering results
+  ///
+  /// [orderBy] - Field to sort by. See https://google.aip.dev/132#ordering for
+  /// more details.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExecutionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExecutionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new Execution in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Execution using the form:
+  /// 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunEvaluationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/executions:run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEvaluationsExecutionsResultsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEvaluationsExecutionsResultsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List the running result of a single Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The execution results. Format: {parent}/evaluations /
+  /// * /executions / * /results
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [filter] - Filtering results
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExecutionResultsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExecutionResultsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/results';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExecutionResultsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEvaluationsExecutionsScannedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEvaluationsExecutionsScannedResourcesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all scanned resources for a single Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. parent for ListScannedResourcesRequest
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [filter] - Filtering results
+  ///
+  /// [orderBy] - Field to sort by. See https://google.aip.dev/132#ordering for
+  /// more details.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [rule] - rule name
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListScannedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListScannedResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? rule,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (rule != null) 'rule': [rule],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scannedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListScannedResourcesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -555,6 +841,65 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists rules in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The \[project\] on which to execute the request. The
+  /// format is: projects/{project_id}/locations/{location} Currently, the
+  /// pre-defined rules are global available to all projects and all regions
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter based on primary_category, secondary_category
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRulesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -599,6 +944,9 @@ class Evaluation {
   /// Output only.
   core.List<core.String>? ruleVersions;
 
+  /// crontab format schedule for scheduled evaluation, example: 0  * / 3 * * *
+  core.String? schedule;
+
   /// Update time stamp
   ///
   /// Output only.
@@ -613,6 +961,7 @@ class Evaluation {
     this.resourceStatus,
     this.ruleNames,
     this.ruleVersions,
+    this.schedule,
     this.updateTime,
   });
 
@@ -651,6 +1000,9 @@ class Evaluation {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -665,7 +1017,171 @@ class Evaluation {
         if (resourceStatus != null) 'resourceStatus': resourceStatus!,
         if (ruleNames != null) 'ruleNames': ruleNames!,
         if (ruleVersions != null) 'ruleVersions': ruleVersions!,
+        if (schedule != null) 'schedule': schedule!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message describing Execution object
+class Execution {
+  /// End time stamp
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Evaluation ID
+  ///
+  /// Output only.
+  core.String? evaluationId;
+
+  /// Inventory time stamp
+  ///
+  /// Output only.
+  core.String? inventoryTime;
+
+  /// Labels as key value pairs
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of execution resource.
+  ///
+  /// The format is
+  /// projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}
+  core.String? name;
+
+  /// type represent whether the execution executed directly by user or
+  /// scheduled according evaluation.schedule field.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : type of execution is unspecified
+  /// - "ONE_TIME" : type of execution is one time
+  /// - "SCHEDULED" : type of execution is scheduled
+  core.String? runType;
+
+  /// Start time stamp
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// State
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : state of execution is unspecified
+  /// - "RUNNING" : the execution is running in backend service
+  /// - "SUCCEEDED" : the execution run success
+  /// - "FAILED" : the execution run failed
+  core.String? state;
+
+  Execution({
+    this.endTime,
+    this.evaluationId,
+    this.inventoryTime,
+    this.labels,
+    this.name,
+    this.runType,
+    this.startTime,
+    this.state,
+  });
+
+  Execution.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          evaluationId: json_.containsKey('evaluationId')
+              ? json_['evaluationId'] as core.String
+              : null,
+          inventoryTime: json_.containsKey('inventoryTime')
+              ? json_['inventoryTime'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          runType: json_.containsKey('runType')
+              ? json_['runType'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (evaluationId != null) 'evaluationId': evaluationId!,
+        if (inventoryTime != null) 'inventoryTime': inventoryTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (runType != null) 'runType': runType!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Message describing the result of an execution
+class ExecutionResult {
+  /// the document url of the rule
+  core.String? documentationUrl;
+
+  /// the violate resource
+  Resource? resource;
+
+  /// the rule which violate in execution
+  core.String? rule;
+
+  /// severity of violation
+  core.String? severity;
+
+  /// the details of violation in result
+  ViolationDetails? violationDetails;
+
+  /// the violation message of an execution
+  core.String? violationMessage;
+
+  ExecutionResult({
+    this.documentationUrl,
+    this.resource,
+    this.rule,
+    this.severity,
+    this.violationDetails,
+    this.violationMessage,
+  });
+
+  ExecutionResult.fromJson(core.Map json_)
+      : this(
+          documentationUrl: json_.containsKey('documentationUrl')
+              ? json_['documentationUrl'] as core.String
+              : null,
+          resource: json_.containsKey('resource')
+              ? Resource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rule: json_.containsKey('rule') ? json_['rule'] as core.String : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+          violationDetails: json_.containsKey('violationDetails')
+              ? ViolationDetails.fromJson(json_['violationDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          violationMessage: json_.containsKey('violationMessage')
+              ? json_['violationMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentationUrl != null) 'documentationUrl': documentationUrl!,
+        if (resource != null) 'resource': resource!,
+        if (rule != null) 'rule': rule!,
+        if (severity != null) 'severity': severity!,
+        if (violationDetails != null) 'violationDetails': violationDetails!,
+        if (violationMessage != null) 'violationMessage': violationMessage!,
       };
 }
 
@@ -778,6 +1294,82 @@ class ListEvaluationsResponse {
       };
 }
 
+/// Message for response of list execution results
+class ListExecutionResultsResponse {
+  /// The versions from the specified publisher.
+  core.List<ExecutionResult>? executionResults;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListExecutionResultsResponse({
+    this.executionResults,
+    this.nextPageToken,
+  });
+
+  ListExecutionResultsResponse.fromJson(core.Map json_)
+      : this(
+          executionResults: json_.containsKey('executionResults')
+              ? (json_['executionResults'] as core.List)
+                  .map((value) => ExecutionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionResults != null) 'executionResults': executionResults!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Message for response to listing Executions
+class ListExecutionsResponse {
+  /// The list of Execution
+  core.List<Execution>? executions;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListExecutionsResponse.fromJson(core.Map json_)
+      : this(
+          executions: json_.containsKey('executions')
+              ? (json_['executions'] as core.List)
+                  .map((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executions != null) 'executions': executions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -839,6 +1431,72 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Mesesage of response of list rules
+class ListRulesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// all rules in response
+  core.List<Rule>? rules;
+
+  ListRulesResponse({
+    this.nextPageToken,
+    this.rules,
+  });
+
+  ListRulesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => Rule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rules != null) 'rules': rules!,
+      };
+}
+
+/// Message for response to list scanned resources
+class ListScannedResourcesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// All scanned resources in response
+  core.List<ScannedResource>? scannedResources;
+
+  ListScannedResourcesResponse({
+    this.nextPageToken,
+    this.scannedResources,
+  });
+
+  ListScannedResourcesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          scannedResources: json_.containsKey('scannedResources')
+              ? (json_['scannedResources'] as core.List)
+                  .map((value) => ScannedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (scannedResources != null) 'scannedResources': scannedResources!,
       };
 }
 
@@ -918,6 +1576,39 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Message represent resource in execution result
+class Resource {
+  /// the name of the resource
+  core.String? name;
+
+  /// the service account accosiate with resource
+  core.String? serviceAccount;
+
+  /// the type of reresource
+  core.String? type;
+
+  Resource({
+    this.name,
+    this.serviceAccount,
+    this.type,
+  });
+
+  Resource.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1013,6 +1704,153 @@ class ResourceStatus {
         if (rulesNewerVersions != null)
           'rulesNewerVersions': rulesNewerVersions!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Message represent a rule
+class Rule {
+  /// descrite rule in plain language
+  core.String? description;
+
+  /// the name display in UI
+  core.String? displayName;
+
+  /// the message template for rule
+  core.String? errorMessage;
+
+  /// rule name
+  core.String? name;
+
+  /// the primary category
+  core.String? primaryCategory;
+
+  /// the remediation for the rule
+  core.String? remediation;
+
+  /// the version of the rule
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// the secondary category
+  core.String? secondaryCategory;
+
+  /// the severity of the rule
+  core.String? severity;
+
+  /// the docuement url for the rule
+  core.String? uri;
+
+  Rule({
+    this.description,
+    this.displayName,
+    this.errorMessage,
+    this.name,
+    this.primaryCategory,
+    this.remediation,
+    this.revisionId,
+    this.secondaryCategory,
+    this.severity,
+    this.uri,
+  });
+
+  Rule.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          primaryCategory: json_.containsKey('primaryCategory')
+              ? json_['primaryCategory'] as core.String
+              : null,
+          remediation: json_.containsKey('remediation')
+              ? json_['remediation'] as core.String
+              : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+          secondaryCategory: json_.containsKey('secondaryCategory')
+              ? json_['secondaryCategory'] as core.String
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (name != null) 'name': name!,
+        if (primaryCategory != null) 'primaryCategory': primaryCategory!,
+        if (remediation != null) 'remediation': remediation!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (secondaryCategory != null) 'secondaryCategory': secondaryCategory!,
+        if (severity != null) 'severity': severity!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Message for creating a Execution
+class RunEvaluationRequest {
+  /// The resource being created
+  ///
+  /// Required.
+  Execution? execution;
+
+  /// Id of the requesting object If auto-generating Id server-side, remove this
+  /// field and execution_id from the method_signature of Create RPC
+  ///
+  /// Required.
+  core.String? executionId;
+
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RunEvaluationRequest({
+    this.execution,
+    this.executionId,
+    this.requestId,
+  });
+
+  RunEvaluationRequest.fromJson(core.Map json_)
+      : this(
+          execution: json_.containsKey('execution')
+              ? Execution.fromJson(
+                  json_['execution'] as core.Map<core.String, core.dynamic>)
+              : null,
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (execution != null) 'execution': execution!,
+        if (executionId != null) 'executionId': executionId!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -1183,6 +2021,19 @@ class SapDiscoveryResource {
   /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
   core.String? resourceKind;
 
+  /// Indicates whether this is a new, updated, or missing resource.
+  /// Possible string values are:
+  /// - "RESOURCE_STATE_UNSPECIFIED" : Undefined resource state
+  /// - "ADDED" : Resource was added this cycle
+  /// - "UPDATED" : Resource already discovered, just updated this cycle
+  /// - "REMOVED" : Resource already discovered, but has been explicitly removed
+  /// this cycle
+  /// - "REPLACED" : Resource already discovered, but has been replaced by a new
+  /// resource this cycle
+  /// - "MISSING" : Resource already discovered, but is missing or unresponsive
+  /// this cycle
+  core.String? resourceState;
+
   /// The type of this resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Undefined resource type.
@@ -1200,6 +2051,7 @@ class SapDiscoveryResource {
   SapDiscoveryResource({
     this.relatedResources,
     this.resourceKind,
+    this.resourceState,
     this.resourceType,
     this.resourceUri,
     this.updateTime,
@@ -1215,6 +2067,9 @@ class SapDiscoveryResource {
           resourceKind: json_.containsKey('resourceKind')
               ? json_['resourceKind'] as core.String
               : null,
+          resourceState: json_.containsKey('resourceState')
+              ? json_['resourceState'] as core.String
+              : null,
           resourceType: json_.containsKey('resourceType')
               ? json_['resourceType'] as core.String
               : null,
@@ -1229,6 +2084,7 @@ class SapDiscoveryResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (relatedResources != null) 'relatedResources': relatedResources!,
         if (resourceKind != null) 'resourceKind': resourceKind!,
+        if (resourceState != null) 'resourceState': resourceState!,
         if (resourceType != null) 'resourceType': resourceType!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1302,6 +2158,27 @@ class SapValidationValidationDetail {
       };
 }
 
+/// Message of scanned resource
+class ScannedResource {
+  /// resource name
+  core.String? resource;
+
+  ScannedResource({
+    this.resource,
+  });
+
+  ScannedResource.fromJson(core.Map json_)
+      : this(
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resource != null) 'resource': resource!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -1310,6 +2187,47 @@ class SapValidationValidationDetail {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Message describing the violdation in execution result
+class ViolationDetails {
+  /// the name of asset
+  core.String? asset;
+
+  /// observed
+  core.Map<core.String, core.String>? observed;
+
+  /// the service account associate with resource
+  core.String? serviceAccount;
+
+  ViolationDetails({
+    this.asset,
+    this.observed,
+    this.serviceAccount,
+  });
+
+  ViolationDetails.fromJson(core.Map json_)
+      : this(
+          asset:
+              json_.containsKey('asset') ? json_['asset'] as core.String : null,
+          observed: json_.containsKey('observed')
+              ? (json_['observed'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asset != null) 'asset': asset!,
+        if (observed != null) 'observed': observed!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+      };
+}
 
 /// Request for sending the data insights.
 class WriteInsightRequest {

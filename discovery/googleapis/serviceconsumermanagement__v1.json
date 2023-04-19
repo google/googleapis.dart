@@ -540,7 +540,7 @@
             }
         }
     },
-    "revision": "20230409",
+    "revision": "20230417",
     "rootUrl": "https://serviceconsumermanagement.googleapis.com/",
     "schemas": {
         "AddTenantProjectRequest": {
@@ -2222,14 +2222,16 @@
                         "CLOUD",
                         "ADS",
                         "PHOTOS",
-                        "STREET_VIEW"
+                        "STREET_VIEW",
+                        "SHOPPING"
                     ],
                     "enumDescriptions": [
                         "Not useful.",
                         "Google Cloud Platform Org.",
                         "Ads (Advertising) Org.",
                         "Photos Org.",
-                        "Street View Org."
+                        "Street View Org.",
+                        "Shopping Org."
                     ],
                     "type": "string"
                 },

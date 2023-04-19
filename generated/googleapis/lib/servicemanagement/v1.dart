@@ -5017,7 +5017,7 @@ class Publishing {
   /// long-running operation pattern.
   core.List<MethodSettings>? methodSettings;
 
-  /// Link to a place that API users can report issues.
+  /// Link to a *public* URI where users can report issues.
   ///
   /// Example:
   /// https://issuetracker.google.com/issues/new?component=190865&template=1161103

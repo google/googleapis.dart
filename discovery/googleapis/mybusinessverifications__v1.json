@@ -254,7 +254,7 @@
             }
         }
     },
-    "revision": "20230409",
+    "revision": "20230418",
     "rootUrl": "https://mybusinessverifications.googleapis.com/",
     "schemas": {
         "AddressVerificationData": {

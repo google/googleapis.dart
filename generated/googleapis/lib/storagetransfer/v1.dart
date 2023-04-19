@@ -1621,6 +1621,8 @@ class MetadataOptions {
   /// bucket's default storage class.
   /// - "STORAGE_CLASS_PRESERVE" : Preserve the object's original storage class.
   /// This is only supported for transfers from Google Cloud Storage buckets.
+  /// REGIONAL and MULTI_REGIONAL storage classes will be mapped to STANDARD to
+  /// ensure they can be written to the destination bucket.
   /// - "STORAGE_CLASS_STANDARD" : Set the storage class to STANDARD.
   /// - "STORAGE_CLASS_NEARLINE" : Set the storage class to NEARLINE.
   /// - "STORAGE_CLASS_COLDLINE" : Set the storage class to COLDLINE.

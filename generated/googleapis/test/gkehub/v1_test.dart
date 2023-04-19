@@ -321,6 +321,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
     o.allowVerticalScale = true;
     o.enabled = true;
     o.git = buildConfigManagementGitConfig();
+    o.managed = buildConfigManagementManaged();
     o.oci = buildConfigManagementOciConfig();
     o.preventDrift = true;
     o.sourceFormat = 'foo';
@@ -335,6 +336,7 @@ void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
     unittest.expect(o.allowVerticalScale!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkConfigManagementGitConfig(o.git!);
+    checkConfigManagementManaged(o.managed!);
     checkConfigManagementOciConfig(o.oci!);
     unittest.expect(o.preventDrift!, unittest.isTrue);
     unittest.expect(
@@ -760,6 +762,25 @@ void checkConfigManagementInstallError(api.ConfigManagementInstallError o) {
     );
   }
   buildCounterConfigManagementInstallError--;
+}
+
+core.int buildCounterConfigManagementManaged = 0;
+api.ConfigManagementManaged buildConfigManagementManaged() {
+  final o = api.ConfigManagementManaged();
+  buildCounterConfigManagementManaged++;
+  if (buildCounterConfigManagementManaged < 3) {
+    o.enabled = true;
+  }
+  buildCounterConfigManagementManaged--;
+  return o;
+}
+
+void checkConfigManagementManaged(api.ConfigManagementManaged o) {
+  buildCounterConfigManagementManaged++;
+  if (buildCounterConfigManagementManaged < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterConfigManagementManaged--;
 }
 
 core.int buildCounterConfigManagementMembershipSpec = 0;
@@ -2334,6 +2355,7 @@ api.Membership buildMembership() {
     o.externalId = 'foo';
     o.labels = buildUnnamed28();
     o.lastConnectionTime = 'foo';
+    o.monitoringConfig = buildMonitoringConfig();
     o.name = 'foo';
     o.state = buildMembershipState();
     o.uniqueId = 'foo';
@@ -2369,6 +2391,7 @@ void checkMembership(api.Membership o) {
       o.lastConnectionTime!,
       unittest.equals('foo'),
     );
+    checkMonitoringConfig(o.monitoringConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2569,6 +2592,48 @@ void checkMembershipState(api.MembershipState o) {
     );
   }
   buildCounterMembershipState--;
+}
+
+core.int buildCounterMonitoringConfig = 0;
+api.MonitoringConfig buildMonitoringConfig() {
+  final o = api.MonitoringConfig();
+  buildCounterMonitoringConfig++;
+  if (buildCounterMonitoringConfig < 3) {
+    o.cluster = 'foo';
+    o.clusterHash = 'foo';
+    o.kubernetesMetricsPrefix = 'foo';
+    o.location = 'foo';
+    o.projectId = 'foo';
+  }
+  buildCounterMonitoringConfig--;
+  return o;
+}
+
+void checkMonitoringConfig(api.MonitoringConfig o) {
+  buildCounterMonitoringConfig++;
+  if (buildCounterMonitoringConfig < 3) {
+    unittest.expect(
+      o.cluster!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterHash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kubernetesMetricsPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMonitoringConfig--;
 }
 
 core.int buildCounterMultiCloudCluster = 0;
@@ -3513,6 +3578,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ConfigManagementManaged', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConfigManagementManaged();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConfigManagementManaged.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementManaged(od);
+    });
+  });
+
   unittest.group('obj-schema-ConfigManagementMembershipSpec', () {
     unittest.test('to-json--from-json', () async {
       final o = buildConfigManagementMembershipSpec();
@@ -3980,6 +4055,16 @@ void main() {
       final od = api.MembershipState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMembershipState(od);
+    });
+  });
+
+  unittest.group('obj-schema-MonitoringConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMonitoringConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MonitoringConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMonitoringConfig(od);
     });
   });
 

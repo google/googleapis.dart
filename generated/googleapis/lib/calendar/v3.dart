@@ -1549,10 +1549,21 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
-  /// [eventTypes] - Event types to return. Optional. The default is
-  /// \["default", "outOfOffice", "focusTime"\]. Only the default value is
-  /// available, unless you're enrolled in the Working Locations developer
-  /// preview. Developer Preview.
+  /// [eventTypes] - Event types to return. Optional. Possible values are:
+  /// - "default"
+  /// - "focusTime"
+  /// - "outOfOffice"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, this is the only allowed value for
+  /// this field:
+  /// - \["default", "focusTime", "outOfOffice"\] This value will be the
+  /// default.
+  ///
+  /// If you're enrolled in the Working Location developer preview program, in
+  /// addition to the default value above you can also set the "workingLocation"
+  /// event type:
+  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
+  /// - \["workingLocation"\] Additional combinations of these 4 event types
+  /// will be made available in later releases. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -2062,10 +2073,21 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
-  /// [eventTypes] - Event types to return. Optional. The default is
-  /// \["default", "outOfOffice", "focusTime"\]. Only the default value is
-  /// available, unless you're enrolled in the Working Locations developer
-  /// preview. Developer Preview.
+  /// [eventTypes] - Event types to return. Optional. Possible values are:
+  /// - "default"
+  /// - "focusTime"
+  /// - "outOfOffice"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, this is the only allowed value for
+  /// this field:
+  /// - \["default", "focusTime", "outOfOffice"\] This value will be the
+  /// default.
+  ///
+  /// If you're enrolled in the Working Location developer preview program, in
+  /// addition to the default value above you can also set the "workingLocation"
+  /// event type:
+  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
+  /// - \["workingLocation"\] Additional combinations of these 4 event types
+  /// will be made available in later releases. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by

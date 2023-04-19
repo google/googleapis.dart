@@ -3335,12 +3335,12 @@ api.GoogleCloudRetailV2SearchRequest buildGoogleCloudRetailV2SearchRequest() {
   final o = api.GoogleCloudRetailV2SearchRequest();
   buildCounterGoogleCloudRetailV2SearchRequest++;
   if (buildCounterGoogleCloudRetailV2SearchRequest < 3) {
-    o.banner = 'foo';
     o.boostSpec = buildGoogleCloudRetailV2SearchRequestBoostSpec();
     o.branch = 'foo';
     o.canonicalFilter = 'foo';
     o.dynamicFacetSpec =
         buildGoogleCloudRetailV2SearchRequestDynamicFacetSpec();
+    o.entity = 'foo';
     o.facetSpecs = buildUnnamed62();
     o.filter = 'foo';
     o.labels = buildUnnamed63();
@@ -3369,10 +3369,6 @@ void checkGoogleCloudRetailV2SearchRequest(
     api.GoogleCloudRetailV2SearchRequest o) {
   buildCounterGoogleCloudRetailV2SearchRequest++;
   if (buildCounterGoogleCloudRetailV2SearchRequest < 3) {
-    unittest.expect(
-      o.banner!,
-      unittest.equals('foo'),
-    );
     checkGoogleCloudRetailV2SearchRequestBoostSpec(o.boostSpec!);
     unittest.expect(
       o.branch!,
@@ -3383,6 +3379,10 @@ void checkGoogleCloudRetailV2SearchRequest(
       unittest.equals('foo'),
     );
     checkGoogleCloudRetailV2SearchRequestDynamicFacetSpec(o.dynamicFacetSpec!);
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
     checkUnnamed62(o.facetSpecs!);
     unittest.expect(
       o.filter!,
@@ -4495,9 +4495,9 @@ api.GoogleCloudRetailV2UserEvent buildGoogleCloudRetailV2UserEvent() {
   if (buildCounterGoogleCloudRetailV2UserEvent < 3) {
     o.attributes = buildUnnamed91();
     o.attributionToken = 'foo';
-    o.banner = 'foo';
     o.cartId = 'foo';
     o.completionDetail = buildGoogleCloudRetailV2CompletionDetail();
+    o.entity = 'foo';
     o.eventTime = 'foo';
     o.eventType = 'foo';
     o.experimentIds = buildUnnamed92();
@@ -4528,14 +4528,14 @@ void checkGoogleCloudRetailV2UserEvent(api.GoogleCloudRetailV2UserEvent o) {
       unittest.equals('foo'),
     );
     unittest.expect(
-      o.banner!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
       o.cartId!,
       unittest.equals('foo'),
     );
     checkGoogleCloudRetailV2CompletionDetail(o.completionDetail!);
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.eventTime!,
       unittest.equals('foo'),
@@ -6017,9 +6017,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudRetailApi(mock).projects.locations.catalogs;
       final arg_catalog = 'foo';
-      final arg_banner = 'foo';
       final arg_dataset = 'foo';
       final arg_deviceType = 'foo';
+      final arg_entity = 'foo';
       final arg_languageCodes = buildUnnamed101();
       final arg_maxSuggestions = 42;
       final arg_query = 'foo';
@@ -6058,16 +6058,16 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['banner']!.first,
-          unittest.equals(arg_banner),
-        );
-        unittest.expect(
           queryMap['dataset']!.first,
           unittest.equals(arg_dataset),
         );
         unittest.expect(
           queryMap['deviceType']!.first,
           unittest.equals(arg_deviceType),
+        );
+        unittest.expect(
+          queryMap['entity']!.first,
+          unittest.equals(arg_entity),
         );
         unittest.expect(
           queryMap['languageCodes']!,
@@ -6098,9 +6098,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.completeQuery(arg_catalog,
-          banner: arg_banner,
           dataset: arg_dataset,
           deviceType: arg_deviceType,
+          entity: arg_entity,
           languageCodes: arg_languageCodes,
           maxSuggestions: arg_maxSuggestions,
           query: arg_query,

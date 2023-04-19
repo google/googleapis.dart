@@ -1324,8 +1324,10 @@ api.EntityMapping buildEntityMapping() {
   buildCounterEntityMapping++;
   if (buildCounterEntityMapping < 3) {
     o.draftEntity = 'foo';
+    o.draftType = 'foo';
     o.mappingLog = buildUnnamed17();
     o.sourceEntity = 'foo';
+    o.sourceType = 'foo';
   }
   buildCounterEntityMapping--;
   return o;
@@ -1338,9 +1340,17 @@ void checkEntityMapping(api.EntityMapping o) {
       o.draftEntity!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.draftType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed17(o.mappingLog!);
     unittest.expect(
       o.sourceEntity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceType!,
       unittest.equals('foo'),
     );
   }

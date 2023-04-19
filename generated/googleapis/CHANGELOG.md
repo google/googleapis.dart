@@ -1,8 +1,16 @@
-## 10.2.0-dev
+## 11.0.0
+
+- Require Dart 2.19
 
 ### API changes
 
-TODO!
+- `acmedns` - new!
+- `cloudiot` - REMOVED!
+- `datalineage` - new!
+- `firebaseappdistribution` new!
+- `notebooks` - added v2
+- `readerrevenuesubscriptionlinking` - new!
+- `vpcaccess` - new!
 
 ## 10.1.0
 

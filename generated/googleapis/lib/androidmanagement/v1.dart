@@ -6102,12 +6102,11 @@ class Policy {
   /// tracks are specified, then the device only uses the production track.
   core.List<core.String>? androidDevicePolicyTracks;
 
-  /// Use autoUpdateMode instead.When autoUpdateMode is set to
+  /// Recommended alternative: autoUpdateMode which is set per app, provides
+  /// greater flexibility around update frequency.When autoUpdateMode is set to
   /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no
   /// effect.The app auto update policy, which controls when automatic app
   /// updates can be applied.
-  ///
-  /// Deprecated.
   /// Possible string values are:
   /// - "APP_AUTO_UPDATE_POLICY_UNSPECIFIED" : The auto-update policy is not
   /// set. Equivalent to CHOICE_TO_THE_USER.

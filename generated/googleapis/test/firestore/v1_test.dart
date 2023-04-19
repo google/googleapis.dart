@@ -768,6 +768,7 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
     o.appEngineIntegrationMode = 'foo';
     o.concurrencyMode = 'foo';
     o.createTime = 'foo';
+    o.deleteProtectionState = 'foo';
     o.etag = 'foo';
     o.keyPrefix = 'foo';
     o.locationId = 'foo';
@@ -793,6 +794,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deleteProtectionState!,
       unittest.equals('foo'),
     );
     unittest.expect(

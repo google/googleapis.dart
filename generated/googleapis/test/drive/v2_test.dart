@@ -7048,6 +7048,7 @@ void main() {
     unittest.test('method--emptyTrash', () async {
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).files;
+      final arg_driveId = 'foo';
       final arg_enforceSingleParent = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7087,6 +7088,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['driveId']!.first,
+          unittest.equals(arg_driveId),
+        );
+        unittest.expect(
           queryMap['enforceSingleParent']!.first,
           unittest.equals('$arg_enforceSingleParent'),
         );
@@ -7102,7 +7107,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.emptyTrash(
-          enforceSingleParent: arg_enforceSingleParent, $fields: arg_$fields);
+          driveId: arg_driveId,
+          enforceSingleParent: arg_enforceSingleParent,
+          $fields: arg_$fields);
     });
 
     unittest.test('method--export', () async {

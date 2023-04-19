@@ -3988,7 +3988,7 @@
             }
         }
     },
-    "revision": "20230328",
+    "revision": "20230405",
     "rootUrl": "https://dataplex.googleapis.com/",
     "schemas": {
         "Empty": {

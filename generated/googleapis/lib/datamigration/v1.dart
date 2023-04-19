@@ -4441,6 +4441,26 @@ class EntityMapping {
   /// same naming notation schema.table.column.
   core.String? draftEntity;
 
+  /// Type of draft entity.
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? draftType;
+
   /// Entity mapping log entries.
   ///
   /// Multiple rules can be effective and contribute changes to a converted
@@ -4455,16 +4475,41 @@ class EntityMapping {
   /// naming notation schema.table.column.
   core.String? sourceEntity;
 
+  /// Type of source entity.
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? sourceType;
+
   EntityMapping({
     this.draftEntity,
+    this.draftType,
     this.mappingLog,
     this.sourceEntity,
+    this.sourceType,
   });
 
   EntityMapping.fromJson(core.Map json_)
       : this(
           draftEntity: json_.containsKey('draftEntity')
               ? json_['draftEntity'] as core.String
+              : null,
+          draftType: json_.containsKey('draftType')
+              ? json_['draftType'] as core.String
               : null,
           mappingLog: json_.containsKey('mappingLog')
               ? (json_['mappingLog'] as core.List)
@@ -4475,12 +4520,17 @@ class EntityMapping {
           sourceEntity: json_.containsKey('sourceEntity')
               ? json_['sourceEntity'] as core.String
               : null,
+          sourceType: json_.containsKey('sourceType')
+              ? json_['sourceType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (draftEntity != null) 'draftEntity': draftEntity!,
+        if (draftType != null) 'draftType': draftType!,
         if (mappingLog != null) 'mappingLog': mappingLog!,
         if (sourceEntity != null) 'sourceEntity': sourceEntity!,
+        if (sourceType != null) 'sourceType': sourceType!,
       };
 }
 

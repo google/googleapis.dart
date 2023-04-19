@@ -267,7 +267,7 @@
                             "type": "integer"
                         },
                         "dailySubEntityType.dayOfWeek": {
-                            "description": "Represents the day of the week. Eg: MONDAY.",
+                            "description": "Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.",
                             "enum": [
                                 "DAY_OF_WEEK_UNSPECIFIED",
                                 "MONDAY",
@@ -415,7 +415,7 @@
             }
         }
     },
-    "revision": "20230409",
+    "revision": "20230418",
     "rootUrl": "https://businessprofileperformance.googleapis.com/",
     "schemas": {
         "DailyMetricTimeSeries": {
@@ -470,7 +470,7 @@
             "id": "DailySubEntityType",
             "properties": {
                 "dayOfWeek": {
-                    "description": "Represents the day of the week. Eg: MONDAY.",
+                    "description": "Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.",
                     "enum": [
                         "DAY_OF_WEEK_UNSPECIFIED",
                         "MONDAY",
@@ -495,7 +495,7 @@
                 },
                 "timeOfDay": {
                     "$ref": "TimeOfDay",
-                    "description": "Represents the time of the day in 24 hour format. Eg: 13:34:20"
+                    "description": "Represents the time of the day in 24 hour format. Eg: 13:34:20 Currently supported DailyMetrics = NONE."
                 }
             },
             "type": "object"

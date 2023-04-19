@@ -6984,11 +6984,14 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
   if (buildCounterGoogleCloudApigeeV1Organization < 3) {
     o.addonsConfig = buildGoogleCloudApigeeV1AddonsConfig();
     o.analyticsRegion = 'foo';
+    o.apiConsumerDataEncryptionKeyName = 'foo';
+    o.apiConsumerDataLocation = 'foo';
     o.apigeeProjectId = 'foo';
     o.attributes = buildUnnamed138();
     o.authorizedNetwork = 'foo';
     o.billingType = 'foo';
     o.caCertificate = 'foo';
+    o.controlPlaneEncryptionKeyName = 'foo';
     o.createdAt = 'foo';
     o.customerName = 'foo';
     o.description = 'foo';
@@ -7020,6 +7023,14 @@ void checkGoogleCloudApigeeV1Organization(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.apiConsumerDataEncryptionKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.apiConsumerDataLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.apigeeProjectId!,
       unittest.equals('foo'),
     );
@@ -7034,6 +7045,10 @@ void checkGoogleCloudApigeeV1Organization(
     );
     unittest.expect(
       o.caCertificate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.controlPlaneEncryptionKeyName!,
       unittest.equals('foo'),
     );
     unittest.expect(

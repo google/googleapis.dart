@@ -219,7 +219,7 @@ class LocationsResource {
   /// 0 to specify a date without a year.
   ///
   /// [dailySubEntityType_dayOfWeek] - Represents the day of the week. Eg:
-  /// MONDAY.
+  /// MONDAY. Currently supported DailyMetrics = NONE.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -514,7 +514,7 @@ class DailyMetricTimeSeries {
 class DailySubEntityType {
   /// Represents the day of the week.
   ///
-  /// Eg: MONDAY.
+  /// Eg: MONDAY. Currently supported DailyMetrics = NONE.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -528,7 +528,7 @@ class DailySubEntityType {
 
   /// Represents the time of the day in 24 hour format.
   ///
-  /// Eg: 13:34:20
+  /// Eg: 13:34:20 Currently supported DailyMetrics = NONE.
   TimeOfDay? timeOfDay;
 
   DailySubEntityType({

@@ -131,8 +131,6 @@ class ProjectsLocationsCatalogsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
-  /// [banner] - The banner context for completion suggestions.
-  ///
   /// [dataset] - Determines which dataset to use for fetching completion.
   /// "user-data" will use the imported dataset through
   /// CompletionService.ImportCompletionData. "cloud-retail" will use the
@@ -148,6 +146,12 @@ class ProjectsLocationsCatalogsResource {
   /// empty, the suggestions are across all device types. Supported formats: *
   /// `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts
   /// with `OTHER_`, e.g. `OTHER_IPHONE`.
+  ///
+  /// [entity] - The entity for customers that may run multiple different
+  /// entities, domains, sites or regions, for example, "Google US", "Google
+  /// Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should
+  /// be exactly matched with UserEvent.entity to get per-entity autocomplete
+  /// results.
   ///
   /// [languageCodes] - Note that this field applies for `user-data` dataset
   /// only. For requests with `cloud-retail` dataset, setting this field has no
@@ -185,9 +189,9 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2CompleteQueryResponse> completeQuery(
     core.String catalog, {
-    core.String? banner,
     core.String? dataset,
     core.String? deviceType,
+    core.String? entity,
     core.List<core.String>? languageCodes,
     core.int? maxSuggestions,
     core.String? query,
@@ -195,9 +199,9 @@ class ProjectsLocationsCatalogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (banner != null) 'banner': [banner],
       if (dataset != null) 'dataset': [dataset],
       if (deviceType != null) 'deviceType': [deviceType],
+      if (entity != null) 'entity': [entity],
       if (languageCodes != null) 'languageCodes': languageCodes,
       if (maxSuggestions != null) 'maxSuggestions': ['${maxSuggestions}'],
       if (query != null) 'query': [query],
@@ -7587,12 +7591,6 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
-  /// Represents the banner in request, for projects that combine banners.
-  ///
-  /// For example: a retailer can sell products under different banners like
-  /// retailer-main, retailer-baby, retailer-meds, etc. under one project.
-  core.String? banner;
-
   /// Boost specification to boost certain products.
   ///
   /// See more details at this
@@ -7630,9 +7628,17 @@ class GoogleCloudRetailV2SearchRequest {
   /// Deprecated.
   GoogleCloudRetailV2SearchRequestDynamicFacetSpec? dynamicFacetSpec;
 
+  /// The entity for customers that may run multiple different entities,
+  /// domains, sites or regions, for example, "Google US", "Google Ads",
+  /// "Waymo", "google.com", "youtube.com", etc.
+  ///
+  /// If this is set, it should be exactly matched with UserEvent.entity to get
+  /// search results boosted by entity.
+  core.String? entity;
+
   /// Facet specifications for faceted search.
   ///
-  /// If empty, no facets are returned. A maximum of 100 values are allowed.
+  /// If empty, no facets are returned. A maximum of 200 values are allowed.
   /// Otherwise, an INVALID_ARGUMENT error is returned.
   core.List<GoogleCloudRetailV2SearchRequestFacetSpec>? facetSpecs;
 
@@ -7794,11 +7800,11 @@ class GoogleCloudRetailV2SearchRequest {
   core.String? visitorId;
 
   GoogleCloudRetailV2SearchRequest({
-    this.banner,
     this.boostSpec,
     this.branch,
     this.canonicalFilter,
     this.dynamicFacetSpec,
+    this.entity,
     this.facetSpecs,
     this.filter,
     this.labels,
@@ -7819,9 +7825,6 @@ class GoogleCloudRetailV2SearchRequest {
 
   GoogleCloudRetailV2SearchRequest.fromJson(core.Map json_)
       : this(
-          banner: json_.containsKey('banner')
-              ? json_['banner'] as core.String
-              : null,
           boostSpec: json_.containsKey('boostSpec')
               ? GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(
                   json_['boostSpec'] as core.Map<core.String, core.dynamic>)
@@ -7836,6 +7839,9 @@ class GoogleCloudRetailV2SearchRequest {
               ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
                   json_['dynamicFacetSpec']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          entity: json_.containsKey('entity')
+              ? json_['entity'] as core.String
               : null,
           facetSpecs: json_.containsKey('facetSpecs')
               ? (json_['facetSpecs'] as core.List)
@@ -7906,11 +7912,11 @@ class GoogleCloudRetailV2SearchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (banner != null) 'banner': banner!,
         if (boostSpec != null) 'boostSpec': boostSpec!,
         if (branch != null) 'branch': branch!,
         if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
         if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
+        if (entity != null) 'entity': entity!,
         if (facetSpecs != null) 'facetSpecs': facetSpecs!,
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
@@ -9265,13 +9271,6 @@ class GoogleCloudRetailV2UserEvent {
   /// PredictResponse.attribution_token to this field.
   core.String? attributionToken;
 
-  /// Represents the banner of the user event, for projects that combine
-  /// banners.
-  ///
-  /// For example: retailer can have events from multiple banners like
-  /// retailer-main, retailer-baby, retailer-meds, etc. under one project.
-  core.String? banner;
-
   /// The ID or name of the associated shopping cart.
   ///
   /// This ID is used to associate multiple items added or present in the cart
@@ -9284,6 +9283,14 @@ class GoogleCloudRetailV2UserEvent {
   /// This field should be set for `search` event when autocomplete function is
   /// enabled and the user clicks a suggestion for search.
   GoogleCloudRetailV2CompletionDetail? completionDetail;
+
+  /// The entity for customers that may run multiple different entities,
+  /// domains, sites or regions, for example, "Google US", "Google Ads",
+  /// "Waymo", "google.com", "youtube.com", etc.
+  ///
+  /// It is recommended to set this field to get better per-entity search,
+  /// completion and prediction results.
+  core.String? entity;
 
   /// Only required for UserEventService.ImportUserEvents method.
   ///
@@ -9431,9 +9438,9 @@ class GoogleCloudRetailV2UserEvent {
   GoogleCloudRetailV2UserEvent({
     this.attributes,
     this.attributionToken,
-    this.banner,
     this.cartId,
     this.completionDetail,
+    this.entity,
     this.eventTime,
     this.eventType,
     this.experimentIds,
@@ -9467,9 +9474,6 @@ class GoogleCloudRetailV2UserEvent {
           attributionToken: json_.containsKey('attributionToken')
               ? json_['attributionToken'] as core.String
               : null,
-          banner: json_.containsKey('banner')
-              ? json_['banner'] as core.String
-              : null,
           cartId: json_.containsKey('cartId')
               ? json_['cartId'] as core.String
               : null,
@@ -9477,6 +9481,9 @@ class GoogleCloudRetailV2UserEvent {
               ? GoogleCloudRetailV2CompletionDetail.fromJson(
                   json_['completionDetail']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          entity: json_.containsKey('entity')
+              ? json_['entity'] as core.String
               : null,
           eventTime: json_.containsKey('eventTime')
               ? json_['eventTime'] as core.String
@@ -9538,9 +9545,9 @@ class GoogleCloudRetailV2UserEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (banner != null) 'banner': banner!,
         if (cartId != null) 'cartId': cartId!,
         if (completionDetail != null) 'completionDetail': completionDetail!,
+        if (entity != null) 'entity': entity!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (eventType != null) 'eventType': eventType!,
         if (experimentIds != null) 'experimentIds': experimentIds!,

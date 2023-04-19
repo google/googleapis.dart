@@ -705,6 +705,49 @@ class ProjectsLocationsInstancesResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Revert an existing instance's file system to a specified snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required.
+  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}. The
+  /// resource name of the instance, in the format
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> revert(
+    RevertInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revert';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsInstancesSnapshotsResource {
@@ -1214,6 +1257,8 @@ class Backup {
   /// in the backup.
   /// - "READY" : Backup is available for use.
   /// - "DELETING" : Backup is being deleted.
+  /// - "INVALID" : Backup is not valid and cannot be used for creating new
+  /// instances or restoring existing instances.
   core.String? state;
 
   /// The size of the storage used by the backup.
@@ -1426,6 +1471,7 @@ class Instance {
   /// from the `suspension_reasons` field of the `Instance` resource.
   /// - "SUSPENDING" : The instance is in the process of becoming suspended.
   /// - "RESUMING" : The instance is in the process of becoming active.
+  /// - "REVERTING" : The instance is reverting to a snapshot.
   core.String? state;
 
   /// Additional information about the instance state, if available.
@@ -2022,6 +2068,32 @@ class RestoreInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileShare != null) 'fileShare': fileShare!,
         if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+      };
+}
+
+/// RevertInstanceRequest reverts the given instance's file share to the
+/// specified snapshot.
+class RevertInstanceRequest {
+  /// The snapshot resource ID, in the format 'my-snapshot', where the specified
+  /// ID is the {snapshot_id} of the fully qualified name like
+  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}
+  ///
+  /// Required.
+  core.String? targetSnapshotId;
+
+  RevertInstanceRequest({
+    this.targetSnapshotId,
+  });
+
+  RevertInstanceRequest.fromJson(core.Map json_)
+      : this(
+          targetSnapshotId: json_.containsKey('targetSnapshotId')
+              ? json_['targetSnapshotId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetSnapshotId != null) 'targetSnapshotId': targetSnapshotId!,
       };
 }
 

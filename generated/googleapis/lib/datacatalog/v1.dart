@@ -134,8 +134,9 @@ class EntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [fullyQualifiedName] - Fully qualified name (FQN) of the resource. FQNs
-  /// take two forms: * For non-regionalized resources:
+  /// [fullyQualifiedName] - \[Fully Qualified Name
+  /// (FQN)\](https://cloud.google.com//data-catalog/docs/fully-qualified-names)
+  /// of the resource. FQNs take two forms: * For non-regionalized resources:
   /// `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For
   /// regionalized resources:
   /// `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}`
@@ -4563,17 +4564,13 @@ class GoogleCloudDatacatalogV1Entry {
   /// Valid only for entries with the `FILESET` type.
   GoogleCloudDatacatalogV1FilesetSpec? filesetSpec;
 
-  /// Fully qualified name (FQN) of the resource.
+  /// \[Fully Qualified Name
+  /// (FQN)\](https://cloud.google.com//data-catalog/docs/fully-qualified-names)
+  /// of the resource.
   ///
   /// Set automatically for entries representing resources from synced systems.
-  /// Settable only during creation and read-only afterwards. Can be used for
-  /// search and lookup of the entries. FQNs take two forms: * For
-  /// non-regionalized resources:
-  /// `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For
-  /// regionalized resources:
-  /// `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}`
-  /// Example for a DPMS table:
-  /// `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+  /// Settable only during creation, and read-only later. Can be used for search
+  /// and lookup of the entries.
   core.String? fullyQualifiedName;
 
   /// Specification that applies to a Cloud Storage fileset.
@@ -6348,6 +6345,9 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
   /// Search results.
   core.List<GoogleCloudDatacatalogV1SearchCatalogResult>? results;
 
+  /// The approximate total number of entries matched by the query.
+  core.int? totalSize;
+
   /// Unreachable locations.
   ///
   /// Search results don't include data from those locations. To get additional
@@ -6359,6 +6359,7 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
   GoogleCloudDatacatalogV1SearchCatalogResponse({
     this.nextPageToken,
     this.results,
+    this.totalSize,
     this.unreachable,
   });
 
@@ -6374,6 +6375,9 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
+              : null,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6384,6 +6388,7 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null) 'results': results!,
+        if (totalSize != null) 'totalSize': totalSize!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }

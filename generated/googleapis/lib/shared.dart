@@ -2186,161 +2186,6 @@ class $BusinessChainTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - containeranalysis:v1 : CVSS
-/// - ondemandscanning:v1 : CVSS
-class $CVSS {
-  ///
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
-  /// - "ATTACK_COMPLEXITY_LOW"
-  /// - "ATTACK_COMPLEXITY_HIGH"
-  core.String? attackComplexity;
-
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED"
-  /// - "ATTACK_VECTOR_NETWORK"
-  /// - "ATTACK_VECTOR_ADJACENT"
-  /// - "ATTACK_VECTOR_LOCAL"
-  /// - "ATTACK_VECTOR_PHYSICAL"
-  core.String? attackVector;
-
-  ///
-  /// Possible string values are:
-  /// - "AUTHENTICATION_UNSPECIFIED"
-  /// - "AUTHENTICATION_MULTIPLE"
-  /// - "AUTHENTICATION_SINGLE"
-  /// - "AUTHENTICATION_NONE"
-  core.String? authentication;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  core.double? baseScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? confidentialityImpact;
-  core.double? exploitabilityScore;
-  core.double? impactScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? integrityImpact;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  /// - "PRIVILEGES_REQUIRED_NONE"
-  /// - "PRIVILEGES_REQUIRED_LOW"
-  /// - "PRIVILEGES_REQUIRED_HIGH"
-  core.String? privilegesRequired;
-
-  ///
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED"
-  /// - "SCOPE_UNCHANGED"
-  /// - "SCOPE_CHANGED"
-  core.String? scope;
-
-  ///
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED"
-  /// - "USER_INTERACTION_NONE"
-  /// - "USER_INTERACTION_REQUIRED"
-  core.String? userInteraction;
-
-  $CVSS({
-    this.attackComplexity,
-    this.attackVector,
-    this.authentication,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  $CVSS.fromJson(core.Map json_)
-      : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          authentication: json_.containsKey('authentication')
-              ? json_['authentication'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-        if (attackVector != null) 'attackVector': attackVector!,
-        if (authentication != null) 'authentication': authentication!,
-        if (availabilityImpact != null)
-          'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
-        if (confidentialityImpact != null)
-          'confidentialityImpact': confidentialityImpact!,
-        if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
-        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-        if (privilegesRequired != null)
-          'privilegesRequired': privilegesRequired!,
-        if (scope != null) 'scope': scope!,
-        if (userInteraction != null) 'userInteraction': userInteraction!,
-      };
-}
-
-/// Used by:
-///
 /// - dfareporting:v3.5 : CampaignCreativeAssociation
 /// - dfareporting:v4 : CampaignCreativeAssociation
 class $CampaignCreativeAssociation {
@@ -6511,12 +6356,9 @@ class $EgressFrom {
 /// - cloudfunctions:v2 : GenerateDownloadUrlRequest
 /// - cloudidentity:v1 : CancelUserInvitationRequest
 /// - cloudidentity:v1 : SendUserInvitationRequest
-/// - cloudiot:v1 : BindDeviceToGatewayResponse
-/// - cloudiot:v1 : Empty
-/// - cloudiot:v1 : SendCommandToDeviceResponse
-/// - cloudiot:v1 : UnbindDeviceFromGatewayResponse
 /// - cloudkms:v1 : DestroyCryptoKeyVersionRequest
 /// - cloudkms:v1 : RestoreCryptoKeyVersionRequest
+/// - cloudkms:v1 : VerifyConnectivityResponse
 /// - cloudresourcemanager:v1 : BooleanConstraint
 /// - cloudresourcemanager:v1 : Empty
 /// - cloudresourcemanager:v1 : GetAncestryRequest
@@ -6548,7 +6390,6 @@ class $EgressFrom {
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
-/// - container:v1 : AdditionalPodRangesConfig
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
 /// - containeranalysis:v1 : Empty
@@ -6850,7 +6691,6 @@ class $EgressFrom {
 /// - retail:v2 : GoogleCloudRetailV2TuneModelRequest
 /// - retail:v2 : GoogleProtobufEmpty
 /// - run:v1 : CancelExecutionRequest
-/// - run:v1 : RunJobRequest
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
@@ -7715,7 +7555,6 @@ class $ExportOptions {
 /// - clouddeploy:v1 : Expr
 /// - cloudfunctions:v1 : Expr
 /// - cloudfunctions:v2 : Expr
-/// - cloudiot:v1 : Expr
 /// - cloudkms:v1 : Expr
 /// - cloudresourcemanager:v1 : Expr
 /// - cloudresourcemanager:v2 : Expr
@@ -8646,7 +8485,6 @@ class $GeoRegionTargetingOptionDetails {
 /// - analyticshub:v1 : GetPolicyOptions
 /// - bigquery:v2 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
-/// - cloudiot:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v3 : GetPolicyOptions
@@ -15025,7 +14863,6 @@ class $PerformanceGoalBidStrategy {
 /// - clouddeploy:v1 : TestIamPermissionsResponse
 /// - cloudfunctions:v1 : TestIamPermissionsResponse
 /// - cloudfunctions:v2 : TestIamPermissionsResponse
-/// - cloudiot:v1 : TestIamPermissionsResponse
 /// - cloudkms:v1 : TestIamPermissionsResponse
 /// - cloudresourcemanager:v1 : TestIamPermissionsResponse
 /// - cloudresourcemanager:v2 : TestIamPermissionsResponse
@@ -18070,7 +17907,6 @@ class $StateError {
 /// - cloudfunctions:v1 : Status
 /// - cloudfunctions:v2 : Status
 /// - cloudidentity:v1 : Status
-/// - cloudiot:v1 : Status
 /// - cloudresourcemanager:v1 : Status
 /// - cloudresourcemanager:v2 : Status
 /// - cloudresourcemanager:v3 : Status
@@ -18821,7 +18657,6 @@ class $TenantProjectRequest {
 /// - clouddeploy:v1 : TestIamPermissionsRequest
 /// - cloudfunctions:v1 : TestIamPermissionsRequest
 /// - cloudfunctions:v2 : TestIamPermissionsRequest
-/// - cloudiot:v1 : TestIamPermissionsRequest
 /// - cloudkms:v1 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v1 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v2 : TestIamPermissionsRequest

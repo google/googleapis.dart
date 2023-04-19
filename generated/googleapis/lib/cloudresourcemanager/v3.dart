@@ -2162,8 +2162,9 @@ class TagKeysResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagKey` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. The resource name of the new TagKey's parent. Must be
-  /// of the form `folders/{folder_id}` or `organizations/{org_id}`.
+  /// [parent] - Required. The resource name of the TagKey's parent. Must be of
+  /// the form `organizations/{org_id}` or `projects/{project_id}` or
+  /// `projects/{project_number}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3092,18 +3093,19 @@ class EffectiveTag {
   /// to the resource, inherited will be false.
   core.bool? inherited;
 
-  /// The namespaced_name of the TagKey.
+  /// The namespaced name of the TagKey.
   ///
-  /// Now only supported in the format of
-  /// `{organization_id}/{tag_key_short_name}`. Other formats will be supported
-  /// when we add non-org parented tags.
+  /// Can be in the form `{organization_id}/{tag_key_short_name}` or
+  /// `{project_id}/{tag_key_short_name}` or
+  /// `{project_number}/{tag_key_short_name}`.
   core.String? namespacedTagKey;
 
-  /// Namespaced name of the TagValue.
+  /// The namespaced name of the TagValue.
   ///
-  /// Now only supported in the format
-  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`. Other
-  /// formats will be supported when we add non-org parented tags.
+  /// Can be in the form
+  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
   core.String? namespacedTagValue;
 
   /// The name of the TagKey, in the format `tagKeys/{id}`, such as
@@ -4471,9 +4473,12 @@ class TagKey {
   /// Output only. Immutable.
   core.String? namespacedName;
 
-  /// The resource name of the new TagKey's parent.
+  /// The resource name of the TagKey's parent.
   ///
-  /// Must be of the form `organizations/{org_id}`.
+  /// A TagKey can be parented by an Organization or a Project. For a TagKey
+  /// parented by an Organization, its parent must be in the form
+  /// `organizations/{org_id}`. For a TagKey parented by a Project, its parent
+  /// can be in the form `projects/{project_id}` or `projects/{project_number}`.
   ///
   /// Immutable.
   core.String? parent;
@@ -4616,11 +4621,12 @@ class TagValue {
   /// Immutable.
   core.String? name;
 
-  /// Namespaced name of the TagValue.
+  /// The namespaced name of the TagValue.
   ///
-  /// Now only supported in the format
-  /// `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will
-  /// be supported when we add non-org parented tags.
+  /// Can be in the form
+  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
   ///
   /// Output only.
   core.String? namespacedName;

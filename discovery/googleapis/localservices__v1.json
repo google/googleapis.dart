@@ -248,7 +248,7 @@
             }
         }
     },
-    "revision": "20230409",
+    "revision": "20230417",
     "rootUrl": "https://localservices.googleapis.com/",
     "schemas": {
         "GoogleAdsHomeservicesLocalservicesV1AccountReport": {

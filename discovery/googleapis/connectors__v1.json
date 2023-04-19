@@ -1106,7 +1106,7 @@
             }
         }
     },
-    "revision": "20230403",
+    "revision": "20230412",
     "rootUrl": "https://connectors.googleapis.com/",
     "schemas": {
         "AuditConfig": {

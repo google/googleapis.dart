@@ -3597,7 +3597,28 @@ class AcceleratorConfig {
 
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary
 /// ranges supporting the ClusterUpdate message.
-typedef AdditionalPodRangesConfig = $Empty;
+class AdditionalPodRangesConfig {
+  /// Name for pod secondary ipv4 range which has the actual range defined
+  /// ahead.
+  core.List<core.String>? podRangeNames;
+
+  AdditionalPodRangesConfig({
+    this.podRangeNames,
+  });
+
+  AdditionalPodRangesConfig.fromJson(core.Map json_)
+      : this(
+          podRangeNames: json_.containsKey('podRangeNames')
+              ? (json_['podRangeNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (podRangeNames != null) 'podRangeNames': podRangeNames!,
+      };
+}
 
 /// Configuration for the addons that can be automatically spun up in the
 /// cluster, enabling additional functionality.

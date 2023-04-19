@@ -782,7 +782,163 @@ typedef BuilderConfig = $Shared00;
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-typedef CVSS = $CVSS;
+class CVSS {
+  ///
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
+  /// - "ATTACK_COMPLEXITY_MEDIUM"
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
+  core.String? attackVector;
+
+  ///
+  /// Possible string values are:
+  /// - "AUTHENTICATION_UNSPECIFIED"
+  /// - "AUTHENTICATION_MULTIPLE"
+  /// - "AUTHENTICATION_SINGLE"
+  /// - "AUTHENTICATION_NONE"
+  core.String? authentication;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? confidentialityImpact;
+  core.double? exploitabilityScore;
+  core.double? impactScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? integrityImpact;
+
+  ///
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
+  core.String? privilegesRequired;
+
+  ///
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
+  core.String? scope;
+
+  ///
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
+  core.String? userInteraction;
+
+  CVSS({
+    this.attackComplexity,
+    this.attackVector,
+    this.authentication,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  CVSS.fromJson(core.Map json_)
+      : this(
+          attackComplexity: json_.containsKey('attackComplexity')
+              ? json_['attackComplexity'] as core.String
+              : null,
+          attackVector: json_.containsKey('attackVector')
+              ? json_['attackVector'] as core.String
+              : null,
+          authentication: json_.containsKey('authentication')
+              ? json_['authentication'] as core.String
+              : null,
+          availabilityImpact: json_.containsKey('availabilityImpact')
+              ? json_['availabilityImpact'] as core.String
+              : null,
+          baseScore: json_.containsKey('baseScore')
+              ? (json_['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: json_.containsKey('confidentialityImpact')
+              ? json_['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? (json_['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: json_.containsKey('impactScore')
+              ? (json_['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: json_.containsKey('integrityImpact')
+              ? json_['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: json_.containsKey('privilegesRequired')
+              ? json_['privilegesRequired'] as core.String
+              : null,
+          scope:
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          userInteraction: json_.containsKey('userInteraction')
+              ? json_['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (authentication != null) 'authentication': authentication!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
 
 /// The category to which the update belongs.
 typedef Category = $Category;
