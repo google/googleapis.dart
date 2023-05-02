@@ -23,7 +23,6 @@
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
-///   - [ProjectsResourcesResource]
 library;
 
 import 'dart:async' as async;
@@ -65,8 +64,6 @@ class ProjectsResource {
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
-  ProjectsResourcesResource get resources =>
-      ProjectsResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1038,55 +1035,6 @@ class ProjectsOccurrencesResource {
   }
 }
 
-class ProjectsResourcesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsResourcesResource(commons.ApiRequester client) : _requester = client;
-
-  /// Gets a summary of the packages within a given resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the resource to get a packages summary for
-  /// in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
-  /// Value must have pattern `^projects/\[^/\]+/resources/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [PackagesSummaryResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<PackagesSummaryResponse> generatePackagesSummary(
-    GeneratePackagesSummaryRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$name') + ':generatePackagesSummary';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return PackagesSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -1725,156 +1673,7 @@ typedef BuilderConfig = $Shared00;
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-class CVSS {
-  ///
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
-  /// - "ATTACK_COMPLEXITY_LOW"
-  /// - "ATTACK_COMPLEXITY_HIGH"
-  core.String? attackComplexity;
-
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED"
-  /// - "ATTACK_VECTOR_NETWORK"
-  /// - "ATTACK_VECTOR_ADJACENT"
-  /// - "ATTACK_VECTOR_LOCAL"
-  /// - "ATTACK_VECTOR_PHYSICAL"
-  core.String? attackVector;
-
-  ///
-  /// Possible string values are:
-  /// - "AUTHENTICATION_UNSPECIFIED"
-  /// - "AUTHENTICATION_MULTIPLE"
-  /// - "AUTHENTICATION_SINGLE"
-  /// - "AUTHENTICATION_NONE"
-  core.String? authentication;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  core.double? baseScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? confidentialityImpact;
-  core.double? exploitabilityScore;
-  core.double? impactScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? integrityImpact;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  /// - "PRIVILEGES_REQUIRED_NONE"
-  /// - "PRIVILEGES_REQUIRED_LOW"
-  /// - "PRIVILEGES_REQUIRED_HIGH"
-  core.String? privilegesRequired;
-
-  ///
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED"
-  /// - "SCOPE_UNCHANGED"
-  /// - "SCOPE_CHANGED"
-  core.String? scope;
-
-  ///
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED"
-  /// - "USER_INTERACTION_NONE"
-  /// - "USER_INTERACTION_REQUIRED"
-  core.String? userInteraction;
-
-  CVSS({
-    this.attackComplexity,
-    this.attackVector,
-    this.authentication,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  CVSS.fromJson(core.Map json_)
-      : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          authentication: json_.containsKey('authentication')
-              ? json_['authentication'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-        if (attackVector != null) 'attackVector': attackVector!,
-        if (authentication != null) 'authentication': authentication!,
-        if (availabilityImpact != null)
-          'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
-        if (confidentialityImpact != null)
-          'confidentialityImpact': confidentialityImpact!,
-        if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
-        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-        if (privilegesRequired != null)
-          'privilegesRequired': privilegesRequired!,
-        if (scope != null) 'scope': scope!,
-        if (userInteraction != null) 'userInteraction': userInteraction!,
-      };
-}
+typedef CVSS = $CVSS;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -2940,12 +2739,6 @@ class FixableTotalByDigest {
       };
 }
 
-/// GeneratePackagesSummaryRequest is the request body for the
-/// GeneratePackagesSummary API method.
-///
-/// It just takes a single name argument, referring to the resource.
-typedef GeneratePackagesSummaryRequest = $Empty;
-
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
   /// An alias, which may be a branch or tag.
@@ -3423,38 +3216,6 @@ typedef Layer = $Layer;
 
 /// License information.
 typedef License = $License;
-
-/// Per license count
-class LicensesSummary {
-  /// The number of fixable vulnerabilities associated with this resource.
-  core.String? count;
-
-  /// The license of the package.
-  ///
-  /// Note that the format of this value is not guaranteed. It may be nil, an
-  /// empty string, a boolean value (A | B), a differently formed boolean value
-  /// (A OR B), etc...
-  core.String? license;
-
-  LicensesSummary({
-    this.count,
-    this.license,
-  });
-
-  LicensesSummary.fromJson(core.Map json_)
-      : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          license: json_.containsKey('license')
-              ? json_['license'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (license != null) 'license': license!,
-      };
-}
 
 /// Response for listing occurrences for a note.
 class ListNoteOccurrencesResponse {
@@ -4431,39 +4192,6 @@ class PackageOccurrence {
         if (name != null) 'name': name!,
         if (packageType != null) 'packageType': packageType!,
         if (version != null) 'version': version!,
-      };
-}
-
-/// A summary of the packages found within the given resource.
-class PackagesSummaryResponse {
-  /// A listing by license name of each of the licenses and their counts.
-  core.List<LicensesSummary>? licensesSummary;
-
-  /// The unique URL of the image or the container for which this summary
-  /// applies.
-  core.String? resourceUrl;
-
-  PackagesSummaryResponse({
-    this.licensesSummary,
-    this.resourceUrl,
-  });
-
-  PackagesSummaryResponse.fromJson(core.Map json_)
-      : this(
-          licensesSummary: json_.containsKey('licensesSummary')
-              ? (json_['licensesSummary'] as core.List)
-                  .map((value) => LicensesSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          resourceUrl: json_.containsKey('resourceUrl')
-              ? json_['resourceUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (licensesSummary != null) 'licensesSummary': licensesSummary!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
       };
 }
 

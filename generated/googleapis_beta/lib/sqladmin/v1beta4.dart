@@ -477,6 +477,8 @@ class DatabasesResource {
   /// Inserts a resource containing information about a database inside a Cloud
   /// SQL instance.
   ///
+  /// **Note:** You can't modify the default character set and collation.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3178,6 +3180,12 @@ class CloneContext {
   /// is cloned.
   core.String? pointInTime;
 
+  /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
+  /// specified zone.
+  ///
+  /// If no zone is specified, clone to the same zone as the source instance.
+  core.String? preferredZone;
+
   CloneContext({
     this.allocatedIpRange,
     this.binLogCoordinates,
@@ -3186,6 +3194,7 @@ class CloneContext {
     this.kind,
     this.pitrTimestampMs,
     this.pointInTime,
+    this.preferredZone,
   });
 
   CloneContext.fromJson(core.Map json_)
@@ -3212,6 +3221,9 @@ class CloneContext {
           pointInTime: json_.containsKey('pointInTime')
               ? json_['pointInTime'] as core.String
               : null,
+          preferredZone: json_.containsKey('preferredZone')
+              ? json_['preferredZone'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3223,6 +3235,7 @@ class CloneContext {
         if (kind != null) 'kind': kind!,
         if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
         if (pointInTime != null) 'pointInTime': pointInTime!,
+        if (preferredZone != null) 'preferredZone': preferredZone!,
       };
 }
 
@@ -3272,6 +3285,7 @@ class ConnectSettings {
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3589,6 +3603,7 @@ class DatabaseInstance {
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -6992,17 +7007,24 @@ class SqlInstancesGetDiskShrinkConfigResponse {
   /// This is always `sql#getDiskShrinkConfig`.
   core.String? kind;
 
+  /// Additional message to customers.
+  core.String? message;
+
   /// The minimum size to which a disk can be shrunk in GigaBytes.
   core.String? minimalTargetSizeGb;
 
   SqlInstancesGetDiskShrinkConfigResponse({
     this.kind,
+    this.message,
     this.minimalTargetSizeGb,
   });
 
   SqlInstancesGetDiskShrinkConfigResponse.fromJson(core.Map json_)
       : this(
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
           minimalTargetSizeGb: json_.containsKey('minimalTargetSizeGb')
               ? json_['minimalTargetSizeGb'] as core.String
               : null,
@@ -7010,6 +7032,7 @@ class SqlInstancesGetDiskShrinkConfigResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
         if (minimalTargetSizeGb != null)
           'minimalTargetSizeGb': minimalTargetSizeGb!,
       };

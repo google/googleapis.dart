@@ -1025,7 +1025,7 @@ api.GoogleCloudRetailV2ExperimentInfo buildGoogleCloudRetailV2ExperimentInfo() {
   final o = api.GoogleCloudRetailV2ExperimentInfo();
   buildCounterGoogleCloudRetailV2ExperimentInfo++;
   if (buildCounterGoogleCloudRetailV2ExperimentInfo < 3) {
-    o.experimentName = 'foo';
+    o.experiment = 'foo';
     o.servingConfigExperiment =
         buildGoogleCloudRetailV2ExperimentInfoServingConfigExperiment();
   }
@@ -1038,7 +1038,7 @@ void checkGoogleCloudRetailV2ExperimentInfo(
   buildCounterGoogleCloudRetailV2ExperimentInfo++;
   if (buildCounterGoogleCloudRetailV2ExperimentInfo < 3) {
     unittest.expect(
-      o.experimentName!,
+      o.experiment!,
       unittest.equals('foo'),
     );
     checkGoogleCloudRetailV2ExperimentInfoServingConfigExperiment(
@@ -1648,6 +1648,7 @@ api.GoogleCloudRetailV2Model buildGoogleCloudRetailV2Model() {
     o.displayName = 'foo';
     o.filteringOption = 'foo';
     o.lastTuneTime = 'foo';
+    o.modelFeaturesConfig = buildGoogleCloudRetailV2ModelModelFeaturesConfig();
     o.name = 'foo';
     o.optimizationObjective = 'foo';
     o.periodicTuningState = 'foo';
@@ -1685,6 +1686,7 @@ void checkGoogleCloudRetailV2Model(api.GoogleCloudRetailV2Model o) {
       o.lastTuneTime!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudRetailV2ModelModelFeaturesConfig(o.modelFeaturesConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1720,6 +1722,58 @@ void checkGoogleCloudRetailV2Model(api.GoogleCloudRetailV2Model o) {
     );
   }
   buildCounterGoogleCloudRetailV2Model--;
+}
+
+core.int
+    buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig =
+    0;
+api.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+    buildGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig() {
+  final o =
+      api.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig();
+  buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig++;
+  if (buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig <
+      3) {
+    o.contextProductsType = 'foo';
+  }
+  buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig--;
+  return o;
+}
+
+void checkGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig(
+    api.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig o) {
+  buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig++;
+  if (buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig <
+      3) {
+    unittest.expect(
+      o.contextProductsType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig--;
+}
+
+core.int buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig = 0;
+api.GoogleCloudRetailV2ModelModelFeaturesConfig
+    buildGoogleCloudRetailV2ModelModelFeaturesConfig() {
+  final o = api.GoogleCloudRetailV2ModelModelFeaturesConfig();
+  buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig++;
+  if (buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig < 3) {
+    o.frequentlyBoughtTogetherConfig =
+        buildGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig();
+  }
+  buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig--;
+  return o;
+}
+
+void checkGoogleCloudRetailV2ModelModelFeaturesConfig(
+    api.GoogleCloudRetailV2ModelModelFeaturesConfig o) {
+  buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig++;
+  if (buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig < 3) {
+    checkGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig(
+        o.frequentlyBoughtTogetherConfig!);
+  }
+  buildCounterGoogleCloudRetailV2ModelModelFeaturesConfig--;
 }
 
 core.List<core.String> buildUnnamed29() => [
@@ -5398,6 +5452,30 @@ void main() {
       final od = api.GoogleCloudRetailV2Model.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRetailV2Model(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRetailV2ModelModelFeaturesConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRetailV2ModelModelFeaturesConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRetailV2ModelModelFeaturesConfig(od);
     });
   });
 

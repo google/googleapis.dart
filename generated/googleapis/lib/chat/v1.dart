@@ -1698,11 +1698,7 @@ class GoogleAppsCardV1BorderStyle {
 /// A text, icon, or text + icon button that users can click.
 ///
 /// To make an image a clickable button, specify an Image (not an
-/// ImageComponent) and set an `onClick` action. Currently supported in Chat
-/// apps (including
-/// [dialogs](https://developers.google.com/chat/how-tos/dialogs) and
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards))
-/// and Google Workspace Add-ons.
+/// ImageComponent) and set an `onClick` action.
 class GoogleAppsCardV1Button {
   /// The alternative text used for accessibility.
   ///
@@ -1872,8 +1868,9 @@ class GoogleAppsCardV1Card {
   /// The fixed footer shown at the bottom of this card.
   ///
   /// Setting `fixedFooter` without specifying a `primaryButton` or a
-  /// `secondaryButton` causes an error. Chat apps support `fixedFooter` in
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in
+  /// `secondaryButton` causes an error. Supported by Google Workspace Add-ons
+  /// and Chat apps. For Chat apps, you can use fixed footers in
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not
   /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
   GoogleAppsCardV1CardFixedFooter? fixedFooter;
 
@@ -1991,8 +1988,9 @@ class GoogleAppsCardV1CardAction {
 /// A persistent (sticky) footer that that appears at the bottom of the card.
 ///
 /// Setting `fixedFooter` without specifying a `primaryButton` or a
-/// `secondaryButton` causes an error. Chat apps support `fixedFooter` in
-/// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in
+/// `secondaryButton` causes an error. Supported by Google Workspace Add-ons and
+/// Chat apps. For Chat apps, you can use fixed footers in
+/// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not
 /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
 class GoogleAppsCardV1CardFixedFooter {
   /// The primary button of the fixed footer.
@@ -2215,7 +2213,9 @@ class GoogleAppsCardV1DecoratedText {
 
   /// The primary text.
   ///
-  /// Supports simple formatting. See Text formatting for formatting details.
+  /// Supports simple formatting. For more information about formatting text,
+  /// see Formatting text in Google Chat apps and Formatting text in Google
+  /// Workspace Add-ons.
   ///
   /// Required.
   core.String? text;
@@ -2762,8 +2762,9 @@ class GoogleAppsCardV1Section {
 
   /// Text that appears at the top of a section.
   ///
-  /// Supports
-  /// [simple HTML formatted text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+  /// Supports simple HTML formatted text. For more information about formatting
+  /// text, see Formatting text in Google Chat apps and Formatting text in
+  /// Google Workspace Add-ons.
   core.String? header;
 
   /// The number of uncollapsible widgets which remain visible even when a
@@ -2817,19 +2818,19 @@ class GoogleAppsCardV1Section {
       };
 }
 
-/// A widget that creates a UI item with options for users to select.
+/// A widget that creates one or more UI items that users can select.
 ///
-/// For example, a dropdown menu or check list. Chat apps receive and can
-/// process the value of entered text during form input events. For details
-/// about working with form inputs, see
+/// For example, a dropdown menu or checkboxes. You can use this widget to
+/// collect data that can be predicted or enumerated. Chat apps can process the
+/// value of items that users select or input. For details about working with
+/// form inputs, see
 /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
-/// When you need to collect data from users that matches options you set, use a
-/// selection input. To collect abstract data from users, use the text input
-/// widget instead.
+/// To collect undefined or abstract data from users, use the TextInput widget.
 class GoogleAppsCardV1SelectionInput {
-  /// An array of the selected items.
+  /// An array of selectable items.
   ///
-  /// For example, all the selected check boxes.
+  /// For example, an array of radio buttons or checkboxes. Supports up to 100
+  /// items.
   core.List<GoogleAppsCardV1SelectionItem>? items;
 
   /// The text that appears above the selection input field in the user
@@ -2840,7 +2841,7 @@ class GoogleAppsCardV1SelectionInput {
   /// drop-down menu, the label might be "Urgency" or "Select urgency".
   core.String? label;
 
-  /// The name by which the selection input is identified in a form input event.
+  /// The name that identifies the selection input in a form input event.
   ///
   /// For details about working with form inputs, see
   /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
@@ -2853,21 +2854,19 @@ class GoogleAppsCardV1SelectionInput {
   /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// The way that an option appears to users.
+  /// The type of items that are displayed to users in a `SelectionInput`
+  /// widget.
   ///
-  /// Different options support different types of interactions. For example,
-  /// users can enable multiple check boxes, but can only select one value from
-  /// a dropdown menu. Each selection input supports one type of selection.
-  /// Mixing check boxes and switches, for example, is not supported.
+  /// Selection types support different types of interactions. For example,
+  /// users can select one or more checkboxes, but they can only select one
+  /// value from a dropdown menu.
   /// Possible string values are:
-  /// - "CHECK_BOX" : A set of checkboxes. Users can select multiple check boxes
-  /// per selection input.
+  /// - "CHECK_BOX" : A set of checkboxes. Users can select one or more
+  /// checkboxes.
   /// - "RADIO_BUTTON" : A set of radio buttons. Users can select one radio
-  /// button per selection input.
-  /// - "SWITCH" : A set of switches. Users can turn on multiple switches at
-  /// once per selection input.
-  /// - "DROPDOWN" : A dropdown menu. Users can select one dropdown menu item
-  /// per selection input.
+  /// button.
+  /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
+  /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -2905,7 +2904,8 @@ class GoogleAppsCardV1SelectionInput {
       };
 }
 
-/// A selectable item in a selection input, such as a check box or a switch.
+/// An item that users can select in a selection input, such as a checkbox or
+/// switch.
 class GoogleAppsCardV1SelectionItem {
   /// When `true`, more than one item is selected.
   ///
@@ -2913,7 +2913,7 @@ class GoogleAppsCardV1SelectionItem {
   /// the first selected item is received and the ones after are ignored.
   core.bool? selected;
 
-  /// The text displayed to users.
+  /// The text that identifies or describes the item to users.
   core.String? text;
 
   /// The value associated with this item.
@@ -3073,8 +3073,9 @@ class GoogleAppsCardV1SwitchControl {
 /// process the value of entered text during form input events. For details
 /// about working with form inputs, see
 /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
-/// When you need to collect abstract data from users, use a text input. To
-/// collect defined data from users, use the selection input widget instead.
+/// When you need to collect undefined or abstract data from users, use a text
+/// input. To collect defined or enumerated data from users, use the
+/// SelectionInput widget.
 class GoogleAppsCardV1TextInput {
   /// Specify what action to take when the text input field provides suggestions
   /// to users who interact with it.
@@ -3198,9 +3199,8 @@ class GoogleAppsCardV1TextInput {
 
 /// A paragraph of text that supports formatting.
 ///
-/// See
-/// [Text formatting](https://developers.google.com/workspace/add-ons/concepts/widgets#text_formatting)
-/// for details.
+/// For more information about formatting text, see Formatting text in Google
+/// Chat apps and Formatting text in Google Workspace Add-ons.
 class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
@@ -3283,13 +3283,13 @@ class GoogleAppsCardV1Widget {
 
   /// Displays a selection control that lets users select items.
   ///
-  /// Selection controls can be check boxes, radio buttons, switches, or
-  /// dropdown menus. For example, the following JSON creates a dropdown menu
-  /// that lets users choose a size: ``` "selectionInput": { "name": "size",
-  /// "label": "Size" "type": "DROPDOWN", "items": [ { "text": "S", "value":
-  /// "small", "selected": false }, { "text": "M", "value": "medium",
-  /// "selected": true }, { "text": "L", "value": "large", "selected": false },
-  /// { "text": "XL", "value": "extra_large", "selected": false } ] } ```
+  /// Selection controls can be checkboxes, radio buttons, switches, or dropdown
+  /// menus. For example, the following JSON creates a dropdown menu that lets
+  /// users choose a size: ``` "selectionInput": { "name": "size", "label":
+  /// "Size" "type": "DROPDOWN", "items": [ { "text": "S", "value": "small",
+  /// "selected": false }, { "text": "M", "value": "medium", "selected": true },
+  /// { "text": "L", "value": "large", "selected": false }, { "text": "XL",
+  /// "value": "extra_large", "selected": false } ] } ```
   GoogleAppsCardV1SelectionInput? selectionInput;
 
   /// Displays a text box that users can type into.
@@ -3305,10 +3305,10 @@ class GoogleAppsCardV1Widget {
 
   /// Displays a text paragraph.
   ///
-  /// Supports
-  /// [simple HTML formatted text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-  /// For example, the following JSON creates a bolded text: ```
-  /// "textParagraph": { "text": " *bold text*" } ```
+  /// Supports simple HTML formatted text. For more information about formatting
+  /// text, see Formatting text in Google Chat apps and Formatting text in
+  /// Google Workspace Add-ons. For example, the following JSON creates a bolded
+  /// text: ``` "textParagraph": { "text": " *bold text*" } ```
   GoogleAppsCardV1TextParagraph? textParagraph;
 
   GoogleAppsCardV1Widget({
@@ -3501,7 +3501,9 @@ class ImageButton {
 class KeyValue {
   /// The text of the bottom label.
   ///
-  /// Formatted text supported.
+  /// Formatted text supported. For more information about formatting text, see
+  /// Formatting text in Google Chat apps and Formatting text in Google
+  /// Workspace Add-ons.
   core.String? bottomLabel;
 
   /// A button that can be clicked to trigger an action.
@@ -3509,7 +3511,9 @@ class KeyValue {
 
   /// The text of the content.
   ///
-  /// Formatted text supported and always required.
+  /// Formatted text supported and always required. For more information about
+  /// formatting text, see Formatting text in Google Chat apps and Formatting
+  /// text in Google Workspace Add-ons.
   core.String? content;
 
   /// If the content should be multiline.
@@ -3561,7 +3565,9 @@ class KeyValue {
 
   /// The text of the top label.
   ///
-  /// Formatted text supported.
+  /// Formatted text supported. For more information about formatting text, see
+  /// Formatting text in Google Chat apps and Formatting text in Google
+  /// Workspace Add-ons.
   core.String? topLabel;
 
   KeyValue({
@@ -3720,6 +3726,12 @@ class Membership {
   core.String? createTime;
 
   /// The Google Chat user or app the membership corresponds to.
+  ///
+  /// If your Chat app
+  /// [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users),
+  /// the output populates the
+  /// [user](https://developers.google.com/chat/api/reference/rest/v1/User)
+  /// `name` and `type`.
   User? member;
 
   /// Resource name of the membership, assigned by the server.
@@ -4083,7 +4095,11 @@ class OpenLink {
 /// Across all platforms, cards have a narrow fixed width, so there is currently
 /// no need for layout properties (e.g. float).
 class Section {
-  /// The header of the section, text formatted supported.
+  /// The header of the section.
+  ///
+  /// Formatted text is supported. For more information about formatting text,
+  /// see Formatting text in Google Chat apps and Formatting text in Google
+  /// Workspace Add-ons.
   core.String? header;
 
   /// A section must contain at least 1 widget.
@@ -4379,7 +4395,9 @@ class TextButton {
 
 /// A paragraph of text.
 ///
-/// Formatted text supported.
+/// Formatted text supported. For more information about formatting text, see
+/// Formatting text in Google Chat apps and Formatting text in Google Workspace
+/// Add-ons.
 class TextParagraph {
   core.String? text;
 
@@ -4536,7 +4554,7 @@ class UserMentionMetadata {
 class WidgetMarkup {
   /// A list of buttons.
   ///
-  /// Buttons is also oneof data and only one of these fields should be set.
+  /// Buttons is also `oneof data` and only one of these fields should be set.
   core.List<Button>? buttons;
 
   /// Display an image in this widget.

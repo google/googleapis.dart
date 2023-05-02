@@ -2963,11 +2963,54 @@ class DeliveryPipeline {
       };
 }
 
+/// The artifacts produced by a deploy operation.
+class DeployArtifact {
+  /// URI of a directory containing the artifacts.
+  ///
+  /// All paths are relative to this location.
+  ///
+  /// Output only.
+  core.String? artifactUri;
+
+  /// File paths of the manifests applied during the deploy operation relative
+  /// to the URI.
+  ///
+  /// Output only.
+  core.List<core.String>? manifestPaths;
+
+  DeployArtifact({
+    this.artifactUri,
+    this.manifestPaths,
+  });
+
+  DeployArtifact.fromJson(core.Map json_)
+      : this(
+          artifactUri: json_.containsKey('artifactUri')
+              ? json_['artifactUri'] as core.String
+              : null,
+          manifestPaths: json_.containsKey('manifestPaths')
+              ? (json_['manifestPaths'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactUri != null) 'artifactUri': artifactUri!,
+        if (manifestPaths != null) 'manifestPaths': manifestPaths!,
+      };
+}
+
 /// A deploy Job.
 typedef DeployJob = $Empty;
 
 /// DeployJobRun contains information specific to a deploy `JobRun`.
 class DeployJobRun {
+  /// The artifact of a deploy job run, if available.
+  ///
+  /// Output only.
+  DeployArtifact? artifact;
+
   /// The resource name of the Cloud Build `Build` object that is used to
   /// deploy.
   ///
@@ -3010,6 +3053,7 @@ class DeployJobRun {
   DeployJobRunMetadata? metadata;
 
   DeployJobRun({
+    this.artifact,
     this.build,
     this.failureCause,
     this.failureMessage,
@@ -3018,6 +3062,10 @@ class DeployJobRun {
 
   DeployJobRun.fromJson(core.Map json_)
       : this(
+          artifact: json_.containsKey('artifact')
+              ? DeployArtifact.fromJson(
+                  json_['artifact'] as core.Map<core.String, core.dynamic>)
+              : null,
           build:
               json_.containsKey('build') ? json_['build'] as core.String : null,
           failureCause: json_.containsKey('failureCause')
@@ -3033,6 +3081,7 @@ class DeployJobRun {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (artifact != null) 'artifact': artifact!,
         if (build != null) 'build': build!,
         if (failureCause != null) 'failureCause': failureCause!,
         if (failureMessage != null) 'failureMessage': failureMessage!,
@@ -3070,7 +3119,7 @@ class DeployJobRunMetadata {
 class DeploymentJobs {
   /// The deploy Job.
   ///
-  /// This is the first job run in the phase.
+  /// This is the deploy job in the phase.
   ///
   /// Output only.
   Job? deployJob;
@@ -3938,7 +3987,7 @@ class ListTargetsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Metadata includes information associated with a `Rollout`.
@@ -4139,6 +4188,13 @@ class Phase {
 
 /// Contains the paths to the artifacts, relative to the URI, for a phase.
 class PhaseArtifact {
+  /// File path of the directory of rendered job manifests relative to the URI.
+  ///
+  /// This is only set if it is applicable.
+  ///
+  /// Output only.
+  core.String? jobManifestsPath;
+
   /// File path of the rendered manifest relative to the URI.
   ///
   /// Output only.
@@ -4150,12 +4206,16 @@ class PhaseArtifact {
   core.String? skaffoldConfigPath;
 
   PhaseArtifact({
+    this.jobManifestsPath,
     this.manifestPath,
     this.skaffoldConfigPath,
   });
 
   PhaseArtifact.fromJson(core.Map json_)
       : this(
+          jobManifestsPath: json_.containsKey('jobManifestsPath')
+              ? json_['jobManifestsPath'] as core.String
+              : null,
           manifestPath: json_.containsKey('manifestPath')
               ? json_['manifestPath'] as core.String
               : null,
@@ -4165,6 +4225,7 @@ class PhaseArtifact {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (jobManifestsPath != null) 'jobManifestsPath': jobManifestsPath!,
         if (manifestPath != null) 'manifestPath': manifestPath!,
         if (skaffoldConfigPath != null)
           'skaffoldConfigPath': skaffoldConfigPath!,

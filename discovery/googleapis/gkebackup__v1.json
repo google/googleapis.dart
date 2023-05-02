@@ -1686,7 +1686,7 @@
             }
         }
     },
-    "revision": "20230405",
+    "revision": "20230417",
     "rootUrl": "https://gkebackup.googleapis.com/",
     "schemas": {
         "AuditConfig": {

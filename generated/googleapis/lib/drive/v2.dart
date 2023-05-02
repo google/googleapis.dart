@@ -1606,7 +1606,7 @@ class FilesResource {
     );
   }
 
-  /// Permanently deletes all of the user's trashed files.
+  /// Permanently deletes all trashed files of a user or shared drive.
   ///
   /// Request parameters:
   ///
@@ -2680,10 +2680,7 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Subscribes to changes to a file.
-  ///
-  /// While you can establish a channel for changes to a file on a shared drive,
-  /// a change to a shared drive file won't create a notification.
+  /// Subscribe to changes on a file.
   ///
   /// [request] - The metadata request object.
   ///

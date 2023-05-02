@@ -2205,7 +2205,7 @@ class ListRegistrationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents Google Cloud location.
 typedef Location = $Location00;
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.

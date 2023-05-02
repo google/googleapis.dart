@@ -426,7 +426,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Inserts a resource containing information about a database inside a Cloud SQL instance.",
+                    "description": "Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.",
                     "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
                     "httpMethod": "POST",
                     "id": "sql.databases.insert",
@@ -2021,7 +2021,7 @@
             }
         }
     },
-    "revision": "20230405",
+    "revision": "20230422",
     "rootUrl": "https://sqladmin.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2375,6 +2375,10 @@
                     "description": "Timestamp, if specified, identifies the time to which the source instance is cloned.",
                     "format": "google-datetime",
                     "type": "string"
+                },
+                "preferredZone": {
+                    "description": "(Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2417,6 +2421,7 @@
                         "POSTGRES_12",
                         "POSTGRES_13",
                         "POSTGRES_14",
+                        "POSTGRES_15",
                         "MYSQL_8_0",
                         "MYSQL_8_0_18",
                         "MYSQL_8_0_26",
@@ -2451,6 +2456,7 @@
                         "The database version is PostgreSQL 12.",
                         "The database version is PostgreSQL 13.",
                         "The database version is PostgreSQL 14.",
+                        "The database version is PostgreSQL 15.",
                         "The database version is MySQL 8.",
                         "The database major version is MySQL 8.0 and the minor version is 18.",
                         "The database major version is MySQL 8.0 and the minor version is 26.",
@@ -2616,6 +2622,7 @@
                         "POSTGRES_12",
                         "POSTGRES_13",
                         "POSTGRES_14",
+                        "POSTGRES_15",
                         "MYSQL_8_0",
                         "MYSQL_8_0_18",
                         "MYSQL_8_0_26",
@@ -2650,6 +2657,7 @@
                         "The database version is PostgreSQL 12.",
                         "The database version is PostgreSQL 13.",
                         "The database version is PostgreSQL 14.",
+                        "The database version is PostgreSQL 15.",
                         "The database version is MySQL 8.",
                         "The database major version is MySQL 8.0 and the minor version is 18.",
                         "The database major version is MySQL 8.0 and the minor version is 26.",
@@ -3160,6 +3168,7 @@
                             "POSTGRES_12",
                             "POSTGRES_13",
                             "POSTGRES_14",
+                            "POSTGRES_15",
                             "MYSQL_8_0",
                             "MYSQL_8_0_18",
                             "MYSQL_8_0_26",
@@ -3194,6 +3203,7 @@
                             "The database version is PostgreSQL 12.",
                             "The database version is PostgreSQL 13.",
                             "The database version is PostgreSQL 14.",
+                            "The database version is PostgreSQL 15.",
                             "The database version is MySQL 8.",
                             "The database major version is MySQL 8.0 and the minor version is 18.",
                             "The database major version is MySQL 8.0 and the minor version is 26.",
@@ -4575,6 +4585,10 @@
             "properties": {
                 "kind": {
                     "description": "This is always `sql#getDiskShrinkConfig`.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Additional message to customers.",
                     "type": "string"
                 },
                 "minimalTargetSizeGb": {

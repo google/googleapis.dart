@@ -468,7 +468,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -501,7 +501,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -634,7 +634,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -930,7 +930,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -973,7 +973,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -1116,7 +1116,7 @@
                                             "type": "string"
                                         },
                                         "validateOnly": {
-                                            "description": "Required. If set, validate the request and preview the review, but do not post it.",
+                                            "description": "Optional. If set, validate the request and preview the review, but do not post it.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -1195,7 +1195,7 @@
             }
         }
     },
-    "revision": "20230331",
+    "revision": "20230428",
     "rootUrl": "https://eventarc.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1767,7 +1767,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {

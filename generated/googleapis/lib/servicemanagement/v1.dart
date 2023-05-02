@@ -5030,6 +5030,9 @@ class Publishing {
   /// - "ADS" : Ads (Advertising) Org.
   /// - "PHOTOS" : Photos Org.
   /// - "STREET_VIEW" : Street View Org.
+  /// - "SHOPPING" : Shopping Org.
+  /// - "GEO" : Geo Org.
+  /// - "GENERATIVE_AI" : Generative AI - https://developers.generativeai.google
   core.String? organization;
 
   /// Optional link to proto reference documentation.

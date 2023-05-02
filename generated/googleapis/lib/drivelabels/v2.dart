@@ -4017,6 +4017,8 @@ class GoogleAppsDriveLabelsV2Label {
   /// items.
   /// - "ADMIN" : Admin-owned label. Only creatable and editable by admins.
   /// Supports some additional admin-only features.
+  /// - "GOOGLE_APP" : A label owned by an internal Google application rather
+  /// than a customer. These labels are read-only.
   core.String? labelType;
 
   /// Custom URL to present to users to allow them to learn more about this

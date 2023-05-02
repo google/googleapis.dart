@@ -2499,6 +2499,9 @@ class ProjectsNotificationChannelsResource {
 
   /// Lists the notification channels that have been created for the project.
   ///
+  /// To list the types of notification channels that are supported, use the
+  /// ListNotificationChannelDescriptors method.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The project

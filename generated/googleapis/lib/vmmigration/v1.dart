@@ -5197,7 +5197,7 @@ class ListUtilizationReportsResponse {
 /// can be attached to an RPC error.
 typedef LocalizedMessage = $LocalizedMessage;
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// MigratingVm describes the VM that will be migrated from a Source environment

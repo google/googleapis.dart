@@ -4988,9 +4988,18 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
   /// Required.
   core.String? issuerUri;
 
+  /// Configuration for web single sign-on for the OIDC provider.
+  ///
+  /// Here, web sign-in refers to console sign-in and gcloud sign-in through the
+  /// browser.
+  ///
+  /// Required.
+  GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig? webSsoConfig;
+
   GoogleIamAdminV1WorkforcePoolProviderOidc({
     this.clientId,
     this.issuerUri,
+    this.webSsoConfig,
   });
 
   GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(core.Map json_)
@@ -5001,11 +5010,60 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
           issuerUri: json_.containsKey('issuerUri')
               ? json_['issuerUri'] as core.String
               : null,
+          webSsoConfig: json_.containsKey('webSsoConfig')
+              ? GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(
+                  json_['webSsoConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (webSsoConfig != null) 'webSsoConfig': webSsoConfig!,
+      };
+}
+
+/// Configuration for web single sign-on for the OIDC provider.
+class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
+  /// The behavior for how OIDC Claims are included in the `assertion` object
+  /// used for attribute mapping and attribute condition.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED" : No assertion claims behavior
+  /// specified.
+  /// - "ONLY_ID_TOKEN_CLAIMS" : Only include ID Token Claims.
+  core.String? assertionClaimsBehavior;
+
+  /// The Response Type to request for in the OIDC Authorization Request for web
+  /// sign-in.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESPONSE_TYPE_UNSPECIFIED" : No Response Type specified.
+  /// - "ID_TOKEN" : The `response_type=id_token` selection uses the Implicit
+  /// Flow for web sign-in.
+  core.String? responseType;
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig({
+    this.assertionClaimsBehavior,
+    this.responseType,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(core.Map json_)
+      : this(
+          assertionClaimsBehavior: json_.containsKey('assertionClaimsBehavior')
+              ? json_['assertionClaimsBehavior'] as core.String
+              : null,
+          responseType: json_.containsKey('responseType')
+              ? json_['responseType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertionClaimsBehavior != null)
+          'assertionClaimsBehavior': assertionClaimsBehavior!,
+        if (responseType != null) 'responseType': responseType!,
       };
 }
 
@@ -6916,7 +6974,7 @@ class WorkforcePool {
   /// Cannot exceed 256 characters.
   core.String? description;
 
-  /// Whether the pool is disabled.
+  /// Disables the workforce pool.
   ///
   /// You cannot use a disabled pool to exchange tokens, or use existing tokens
   /// to access resources. If the pool is re-enabled, existing tokens grant
@@ -7081,7 +7139,7 @@ class WorkforcePoolProvider {
   /// Cannot exceed 256 characters.
   core.String? description;
 
-  /// Whether the provider is disabled.
+  /// Disables the workforce pool provider.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
   /// tokens still grant access.

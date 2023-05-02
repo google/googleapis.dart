@@ -31,7 +31,7 @@ Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list 
 
 An API for controlling access to data by Google personnel.
 
-- [Documentation](https://cloud.google.com/cloud-provider-access-management/access-approval/docs)
+- [Documentation](https://cloud.google.com/assured-workloads/access-approval/docs)
 - [API details](https://pub.dev/documentation/googleapis/11.0.0/accessapproval.v1/accessapproval.v1-library.html)
 
 #### Access Context Manager API - `accesscontextmanager.v1`
@@ -883,6 +883,11 @@ Backup for GKE is a managed Kubernetes workload backup and restore service for G
 - [Documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
 - [API details](https://pub.dev/documentation/googleapis/11.0.0/gkehub.v1/gkehub.v1-library.html)
 
+#### Anthos On-Prem API - `gkeonprem.v1`
+
+- [Documentation](https://cloud.google.com/anthos/clusters/docs/on-prem/)
+- [API details](https://pub.dev/documentation/googleapis/11.0.0/gkeonprem.v1/gkeonprem.v1-library.html)
+
 #### Gmail API - `gmail.v1`
 
 The Gmail API lets you view and manage Gmail mailbox data like threads, messages, and labels.
@@ -1272,6 +1277,13 @@ The Certificate Authority Service API is a highly-available, scalable service th
 
 - [Documentation](https://cloud.google.com/)
 - [API details](https://pub.dev/documentation/googleapis/11.0.0/privateca.v1/privateca.v1-library.html)
+
+#### Public Certificate Authority API - `publicca.v1`
+
+The Public Certificate Authority API may be used to create and manage ACME external account binding keys associated with Google Trust Services' publicly trusted certificate authority. 
+
+- [Documentation](https://cloud.google.com/public-certificate-authority/docs)
+- [API details](https://pub.dev/documentation/googleapis/11.0.0/publicca.v1/publicca.v1-library.html)
 
 #### Cloud Pub/Sub API - `pubsub.v1`
 

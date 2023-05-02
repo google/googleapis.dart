@@ -409,6 +409,7 @@ api.CloneContext buildCloneContext() {
     o.kind = 'foo';
     o.pitrTimestampMs = 'foo';
     o.pointInTime = 'foo';
+    o.preferredZone = 'foo';
   }
   buildCounterCloneContext--;
   return o;
@@ -437,6 +438,10 @@ void checkCloneContext(api.CloneContext o) {
     );
     unittest.expect(
       o.pointInTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.preferredZone!,
       unittest.equals('foo'),
     );
   }
@@ -2878,6 +2883,7 @@ api.SqlInstancesGetDiskShrinkConfigResponse
   buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
   if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
     o.kind = 'foo';
+    o.message = 'foo';
     o.minimalTargetSizeGb = 'foo';
   }
   buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
@@ -2890,6 +2896,10 @@ void checkSqlInstancesGetDiskShrinkConfigResponse(
   if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
       unittest.equals('foo'),
     );
     unittest.expect(

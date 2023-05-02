@@ -141,6 +141,7 @@ packages:
     - gameservices:v1
     - gkebackup:v1
     - gkehub:v1
+    - gkeonprem:v1
     - gmail:v1 # https://developers.google.com/gmail/
     - gmailpostmastertools:v1
     - groupsmigration:v1 # https://developers.google.com/admin-sdk/groups-migration/
@@ -199,6 +200,7 @@ packages:
     - policysimulator:v1
     - policytroubleshooter:v1
     - privateca:v1
+    - publicca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
     - readerrevenuesubscriptionlinking:v1

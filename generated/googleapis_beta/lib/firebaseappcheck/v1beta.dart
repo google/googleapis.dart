@@ -124,6 +124,72 @@ class ProjectsResource {
   ProjectsServicesResource get services => ProjectsServicesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Verifies the given App Check token and returns token usage signals that
+  /// callers may act upon.
+  ///
+  /// This method currently only supports App Check tokens exchanged from the
+  /// following attestation providers: * Play Integrity API * App Attest *
+  /// DeviceCheck (`DCDevice` tokens) * reCAPTCHA Enterprise * reCAPTCHA v3 *
+  /// Custom providers App Check tokens exchanged from debug secrets are also
+  /// supported. Calling this method on an otherwise valid App Check token with
+  /// an unsupported provider will cause an HTTP 400 error to be returned.
+  /// Returns whether this token was already consumed before this call. If this
+  /// is the first time this method has seen the given App Check token, the
+  /// field `already_consumed` will contain the value `false`. The given token
+  /// will then be marked as `already_consumed` for all future invocations of
+  /// this method for that token. Note that if the given App Check token is
+  /// invalid, an HTTP 403 error is returned instead of a response object,
+  /// regardless whether the token was already consumed. Currently, when
+  /// evaluating whether an App Check token was already consumed, only calls to
+  /// this exact method are counted. Use of the App Check token elsewhere will
+  /// not mark the token as being already consumed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The relative resource name of the project for which
+  /// the token was minted, in the format: ``` projects/{project_number} ``` If
+  /// necessary, the `project_number` element can be replaced with the project
+  /// ID of the Firebase project. Learn more about using project identifiers in
+  /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse>
+      verifyAppCheckToken(
+    GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest request,
+    core.String project, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$project') + ':verifyAppCheckToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsAppsResource {
@@ -3787,6 +3853,59 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message for the VerifyAppCheckToken method.
+class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest {
+  /// The App Check token to verify.
+  ///
+  /// Required.
+  core.String? appCheckToken;
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest({
+    this.appCheckToken,
+  });
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest.fromJson(
+      core.Map json_)
+      : this(
+          appCheckToken: json_.containsKey('appCheckToken')
+              ? json_['appCheckToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appCheckToken != null) 'appCheckToken': appCheckToken!,
+      };
+}
+
+/// Response message for the VerifyAppCheckToken method.
+class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse {
+  /// Whether this token was already consumed.
+  ///
+  /// If this is the first time this method has seen the given App Check token,
+  /// this field will contain the value `false`. The given token will then be
+  /// marked as `already_consumed` for all future invocations of this method for
+  /// that token. Note that if the given App Check token is invalid, an HTTP 403
+  /// error is returned instead of a response containing this field, regardless
+  /// whether the token was already consumed.
+  core.bool? alreadyConsumed;
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse({
+    this.alreadyConsumed,
+  });
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse.fromJson(
+      core.Map json_)
+      : this(
+          alreadyConsumed: json_.containsKey('alreadyConsumed')
+              ? json_['alreadyConsumed'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alreadyConsumed != null) 'alreadyConsumed': alreadyConsumed!,
       };
 }
 

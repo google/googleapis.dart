@@ -1120,6 +1120,9 @@ class AllocationPolicy {
   /// The network policy.
   NetworkPolicy? network;
 
+  /// The placement policy.
+  PlacementPolicy? placement;
+
   /// Service account that VMs will run as.
   ServiceAccount? serviceAccount;
 
@@ -1128,6 +1131,7 @@ class AllocationPolicy {
     this.labels,
     this.location,
     this.network,
+    this.placement,
     this.serviceAccount,
   });
 
@@ -1155,6 +1159,10 @@ class AllocationPolicy {
               ? NetworkPolicy.fromJson(
                   json_['network'] as core.Map<core.String, core.dynamic>)
               : null,
+          placement: json_.containsKey('placement')
+              ? PlacementPolicy.fromJson(
+                  json_['placement'] as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
@@ -1166,6 +1174,7 @@ class AllocationPolicy {
         if (labels != null) 'labels': labels!,
         if (location != null) 'location': location!,
         if (network != null) 'network': network!,
+        if (placement != null) 'placement': placement!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }
@@ -2186,7 +2195,7 @@ class ListTasksResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 class LocationPolicy {
@@ -2506,6 +2515,45 @@ class Operation {
       };
 }
 
+/// PlacementPolicy describes a group placement policy for the VMs controlled by
+/// this AllocationPolicy.
+class PlacementPolicy {
+  /// UNSPECIFIED vs.
+  ///
+  /// COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be
+  /// located close to each other for low network latency between the VMs. No
+  /// placement policy will be generated when collocation is UNSPECIFIED.
+  core.String? collocation;
+
+  /// When specified, causes the job to fail if more than max_distance logical
+  /// switches are required between VMs.
+  ///
+  /// Batch uses the most compact possible placement of VMs even when
+  /// max_distance is not specified. An explicit max_distance makes that level
+  /// of compactness a strict requirement. Not yet implemented
+  core.String? maxDistance;
+
+  PlacementPolicy({
+    this.collocation,
+    this.maxDistance,
+  });
+
+  PlacementPolicy.fromJson(core.Map json_)
+      : this(
+          collocation: json_.containsKey('collocation')
+              ? json_['collocation'] as core.String
+              : null,
+          maxDistance: json_.containsKey('maxDistance')
+              ? json_['maxDistance'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collocation != null) 'collocation': collocation!,
+        if (maxDistance != null) 'maxDistance': maxDistance!,
+      };
+}
+
 /// Request to report agent's state.
 ///
 /// The Request itself implies the agent is healthy.
@@ -2623,6 +2671,9 @@ class Runnable {
   /// This flag allows execution of other Runnables to continue instead.
   core.bool? ignoreExitStatus;
 
+  /// Labels for this Runnable.
+  core.Map<core.String, core.String>? labels;
+
   /// Script runnable.
   Script? script;
 
@@ -2636,6 +2687,7 @@ class Runnable {
     this.container,
     this.environment,
     this.ignoreExitStatus,
+    this.labels,
     this.script,
     this.timeout,
   });
@@ -2663,6 +2715,14 @@ class Runnable {
           ignoreExitStatus: json_.containsKey('ignoreExitStatus')
               ? json_['ignoreExitStatus'] as core.bool
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           script: json_.containsKey('script')
               ? Script.fromJson(
                   json_['script'] as core.Map<core.String, core.dynamic>)
@@ -2679,6 +2739,7 @@ class Runnable {
         if (container != null) 'container': container!,
         if (environment != null) 'environment': environment!,
         if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
+        if (labels != null) 'labels': labels!,
         if (script != null) 'script': script!,
         if (timeout != null) 'timeout': timeout!,
       };

@@ -1265,7 +1265,7 @@
             }
         }
     },
-    "revision": "20230412",
+    "revision": "20230426",
     "rootUrl": "https://games.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {

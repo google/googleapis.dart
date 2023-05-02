@@ -3114,7 +3114,8 @@ class EffectiveTag {
 
   /// The parent name of the tag key.
   ///
-  /// Must be in the format `organizations/{organization_id}`.
+  /// Must be in the format `organizations/{organization_id}` or
+  /// `projects/{project_number}`
   core.String? tagKeyParentName;
 
   /// Resource name for TagValue in the format `tagValues/456`.
@@ -4495,13 +4496,13 @@ class TagKey {
   /// Possible string values are:
   /// - "PURPOSE_UNSPECIFIED" : Unspecified purpose.
   /// - "GCE_FIREWALL" : Purpose for Compute Engine firewalls. A corresponding
-  /// purpose_data should be set for the network the tag is intended for. The
-  /// key should be 'network' and the value should be in either of these two
+  /// `purpose_data` should be set for the network the tag is intended for. The
+  /// key should be `network` and the value should be in ## either of these two
   /// formats:
-  /// -https://www.googleapis.com/compute/{compute_version}/projects/{project_id}/global/networks/{network_id}
-  /// -{project_id}/{network_name} Examples:
-  /// -https://www.googleapis.com/compute/staging_v1/projects/fail-closed-load-testing/global/networks/6992953698831725600
-  /// -fail-closed-load-testing/load-testing-network
+  /// `https://www.googleapis.com/compute/{compute_version}/projects/{project_id}/global/networks/{network_id}`
+  /// - `{project_id}/{network_name}` ## Examples:
+  /// `https://www.googleapis.com/compute/staging_v1/projects/fail-closed-load-testing/global/networks/6992953698831725600`
+  /// - `fail-closed-load-testing/load-testing-network`
   core.String? purpose;
 
   /// Purpose data corresponds to the policy system that the tag is intended

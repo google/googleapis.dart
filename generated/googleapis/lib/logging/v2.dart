@@ -11897,7 +11897,7 @@ class ListViewsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location01;
 
 /// Describes a repository in which log entries are stored.

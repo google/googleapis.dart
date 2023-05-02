@@ -14,7 +14,7 @@
 /// An API for controlling access to data by Google personnel.
 ///
 /// For more information, see
-/// <https://cloud.google.com/cloud-provider-access-management/access-approval/docs>
+/// <https://cloud.google.com/assured-workloads/access-approval/docs>
 ///
 /// Create an instance of [AccessApprovalApi] to access these resources:
 ///
@@ -1438,6 +1438,16 @@ class AccessApprovalSettings {
   /// addresses are allowed.
   core.List<core.String>? notificationEmails;
 
+  /// This preference is communicated to Google personnel when sending an
+  /// approval request but can be overridden if necessary.
+  core.bool? preferNoBroadApprovalRequests;
+
+  /// This preference is shared with Google personnel, but can be overridden if
+  /// said personnel deems necessary.
+  ///
+  /// The approver ultimately can set the expiration at approval time.
+  core.int? preferredRequestExpirationDays;
+
   AccessApprovalSettings({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
@@ -1446,6 +1456,8 @@ class AccessApprovalSettings {
     this.invalidKeyVersion,
     this.name,
     this.notificationEmails,
+    this.preferNoBroadApprovalRequests,
+    this.preferredRequestExpirationDays,
   });
 
   AccessApprovalSettings.fromJson(core.Map json_)
@@ -1475,6 +1487,14 @@ class AccessApprovalSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          preferNoBroadApprovalRequests:
+              json_.containsKey('preferNoBroadApprovalRequests')
+                  ? json_['preferNoBroadApprovalRequests'] as core.bool
+                  : null,
+          preferredRequestExpirationDays:
+              json_.containsKey('preferredRequestExpirationDays')
+                  ? json_['preferredRequestExpirationDays'] as core.int
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1487,6 +1507,10 @@ class AccessApprovalSettings {
         if (name != null) 'name': name!,
         if (notificationEmails != null)
           'notificationEmails': notificationEmails!,
+        if (preferNoBroadApprovalRequests != null)
+          'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
+        if (preferredRequestExpirationDays != null)
+          'preferredRequestExpirationDays': preferredRequestExpirationDays!,
       };
 }
 
@@ -1814,10 +1838,10 @@ class EnrolledService {
   /// * Cloud Dataflow * Cloud Dataproc * Cloud DLP * Cloud EKM * Cloud
   /// Firestore * Cloud HSM * Cloud Identity and Access Management * Cloud
   /// Logging * Cloud NAT * Cloud Pub/Sub * Cloud Spanner * Cloud SQL * Cloud
-  /// Storage * Google Kubernetes Engine * Organization Policy Serivice *
-  /// Persistent Disk * Resource Manager * Secret Manager * Speaker ID Note:
-  /// These values are supported as input for legacy purposes, but will not be
-  /// returned from the API. * all * ga-only * appengine.googleapis.com *
+  /// Storage * Eventarc * Google Kubernetes Engine * Organization Policy
+  /// Serivice * Persistent Disk * Resource Manager * Secret Manager * Speaker
+  /// ID Note: These values are supported as input for legacy purposes, but will
+  /// not be returned from the API. * all * ga-only * appengine.googleapis.com *
   /// artifactregistry.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * container.googleapis.com *
   /// cloudkms.googleapis.com * cloudresourcemanager.googleapis.com *

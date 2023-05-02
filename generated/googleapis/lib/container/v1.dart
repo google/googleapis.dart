@@ -5200,6 +5200,9 @@ class ClusterUpdate {
   /// Enable/Disable private endpoint for the cluster's master.
   core.bool? desiredEnablePrivateEndpoint;
 
+  /// The desired fleet configuration for the cluster.
+  Fleet? desiredFleet;
+
   /// The desired config of Gateway API on this cluster.
   GatewayAPIConfig? desiredGatewayApiConfig;
 
@@ -5376,6 +5379,7 @@ class ClusterUpdate {
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
     this.desiredEnablePrivateEndpoint,
+    this.desiredFleet,
     this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
     this.desiredIdentityServiceConfig,
@@ -5464,6 +5468,10 @@ class ClusterUpdate {
               json_.containsKey('desiredEnablePrivateEndpoint')
                   ? json_['desiredEnablePrivateEndpoint'] as core.bool
                   : null,
+          desiredFleet: json_.containsKey('desiredFleet')
+              ? Fleet.fromJson(
+                  json_['desiredFleet'] as core.Map<core.String, core.dynamic>)
+              : null,
           desiredGatewayApiConfig: json_.containsKey('desiredGatewayApiConfig')
               ? GatewayAPIConfig.fromJson(json_['desiredGatewayApiConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5630,6 +5638,7 @@ class ClusterUpdate {
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
         if (desiredEnablePrivateEndpoint != null)
           'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
+        if (desiredFleet != null) 'desiredFleet': desiredFleet!,
         if (desiredGatewayApiConfig != null)
           'desiredGatewayApiConfig': desiredGatewayApiConfig!,
         if (desiredGcfsConfig != null) 'desiredGcfsConfig': desiredGcfsConfig!,
@@ -6067,7 +6076,7 @@ class DatabaseEncryption {
   /// projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   core.String? keyName;
 
-  /// Denotes the state of etcd encryption.
+  /// The desired state of etcd encryption.
   /// Possible string values are:
   /// - "UNKNOWN" : Should never be set
   /// - "ENCRYPTED" : Secrets in etcd are encrypted.
@@ -9255,22 +9264,74 @@ class Operation {
   /// The operation type.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Not set.
-  /// - "CREATE_CLUSTER" : Cluster create.
-  /// - "DELETE_CLUSTER" : Cluster delete.
-  /// - "UPGRADE_MASTER" : A master upgrade.
-  /// - "UPGRADE_NODES" : A node upgrade.
-  /// - "REPAIR_CLUSTER" : Cluster repair.
-  /// - "UPDATE_CLUSTER" : Cluster update.
-  /// - "CREATE_NODE_POOL" : Node pool create.
-  /// - "DELETE_NODE_POOL" : Node pool delete.
-  /// - "SET_NODE_POOL_MANAGEMENT" : Set node pool management.
-  /// - "AUTO_REPAIR_NODES" : Automatic node pool repair.
-  /// - "AUTO_UPGRADE_NODES" : Automatic node upgrade.
-  /// - "SET_LABELS" : Set labels.
-  /// - "SET_MASTER_AUTH" : Set/generate master auth materials
-  /// - "SET_NODE_POOL_SIZE" : Set node pool size.
-  /// - "SET_NETWORK_POLICY" : Updates network policy for a cluster.
-  /// - "SET_MAINTENANCE_POLICY" : Set the maintenance policy.
+  /// - "CREATE_CLUSTER" : The cluster is being created. The cluster should be
+  /// assumed to be unusable until the operation finishes. In the event of the
+  /// operation failing, the cluster will enter the ERROR state and eventually
+  /// be deleted.
+  /// - "DELETE_CLUSTER" : The cluster is being deleted. The cluster should be
+  /// assumed to be unusable as soon as this operation starts. In the event of
+  /// the operation failing, the cluster will enter the ERROR state and the
+  /// deletion will be automatically retried until completed.
+  /// - "UPGRADE_MASTER" : The cluster version is being updated. Note that this
+  /// includes "upgrades" to the same version, which are simply a recreation.
+  /// This also includes
+  /// \[auto-upgrades\](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades#upgrading_automatically).
+  /// For more details, see
+  /// [documentation on cluster upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades#cluster_upgrades).
+  /// - "UPGRADE_NODES" : A node pool is being updated. Despite calling this an
+  /// "upgrade", this includes most forms of updates to node pools. This also
+  /// includes
+  /// \[auto-upgrades\](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades).
+  /// This operation sets the progress field and may be canceled. The upgrade
+  /// strategy depends on
+  /// [node pool configuration](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies).
+  /// The nodes are generally still usable during this operation.
+  /// - "REPAIR_CLUSTER" : A problem has been detected with the control plane
+  /// and is being repaired. This operation type is initiated by GKE. For more
+  /// details, see
+  /// [documentation on repairs](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#repairs).
+  /// - "UPDATE_CLUSTER" : The cluster is being updated. This is a broad
+  /// category of operations and includes operations that only change metadata
+  /// as well as those that must recreate the entire cluster. If the control
+  /// plane must be recreated, this will cause temporary downtime for zonal
+  /// clusters. Some features require recreating the nodes as well. Those will
+  /// be recreated as separate operations and the update may not be completely
+  /// functional until the node pools recreations finish. Node recreations will
+  /// generally follow
+  /// [maintenance policies](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions).
+  /// Some GKE-initiated operations use this type. This includes certain types
+  /// of auto-upgrades and incident mitigations.
+  /// - "CREATE_NODE_POOL" : A node pool is being created. The node pool should
+  /// be assumed to be unusable until this operation finishes. In the event of
+  /// an error, the node pool may be partially created. If enabled,
+  /// [node autoprovisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+  /// may have automatically initiated such operations.
+  /// - "DELETE_NODE_POOL" : The node pool is being deleted. The node pool
+  /// should be assumed to be unusable as soon as this operation starts.
+  /// - "SET_NODE_POOL_MANAGEMENT" : The node pool's manamagent field is being
+  /// updated. These operations only update metadata and may be concurrent with
+  /// most other operations.
+  /// - "AUTO_REPAIR_NODES" : A problem has been detected with nodes and
+  /// [they are being repaired](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair).
+  /// This operation type is initiated by GKE, typically automatically. This
+  /// operation may be concurrent with other operations and there may be
+  /// multiple repairs occurring on the same node pool.
+  /// - "AUTO_UPGRADE_NODES" : Unused. Automatic node upgrade uses
+  /// UPGRADE_NODES.
+  /// - "SET_LABELS" : Unused. Updating labels uses UPDATE_CLUSTER.
+  /// - "SET_MASTER_AUTH" : Unused. Updating master auth uses UPDATE_CLUSTER.
+  /// - "SET_NODE_POOL_SIZE" : The node pool is being resized. With the
+  /// exception of resizing to or from size zero, the node pool is generally
+  /// usable during this operation.
+  /// - "SET_NETWORK_POLICY" : Unused. Updating network policy uses
+  /// UPDATE_CLUSTER.
+  /// - "SET_MAINTENANCE_POLICY" : Unused. Updating maintenance policy uses
+  /// UPDATE_CLUSTER.
+  /// - "RESIZE_CLUSTER" : The control plane is being resized. This operation
+  /// type is initiated by GKE. These operations are often performed
+  /// preemptively to ensure that the control plane has sufficient resources and
+  /// is not typically an indication of issues. For more details, see
+  /// [documentation on resizes](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#repairs).
   core.String? operationType;
 
   /// Progress information for an operation.
@@ -9278,7 +9339,10 @@ class Operation {
   /// Output only.
   OperationProgress? progress;
 
-  /// Server-defined URL for the resource.
+  /// Server-defined URI for the operation.
+  ///
+  /// Example:
+  /// `https://container.googleapis.com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
   core.String? selfLink;
 
   /// The time the operation started, in
@@ -9303,7 +9367,16 @@ class Operation {
   /// Output only.
   core.String? statusMessage;
 
-  /// Server-defined URL for the target of the operation.
+  /// Server-defined URI for the target of the operation.
+  ///
+  /// The format of this is a URI to the resource being modified (such as a
+  /// cluster, node pool, or node). For node pool repairs, there may be multiple
+  /// nodes being repaired, but only one will be the target. Examples: -
+  /// `https://container.googleapis.com/v1/projects/123/locations/us-central1/clusters/my-cluster`
+  /// -
+  /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np`
+  /// -
+  /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
   core.String? targetLink;
 
   /// The name of the Google Compute Engine

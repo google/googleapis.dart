@@ -393,6 +393,17 @@ class AndroidNotification {
   /// attention or input.
   core.String? notificationPriority;
 
+  /// Setting to control when a notification may be proxied.
+  /// Possible string values are:
+  /// - "PROXY_UNSPECIFIED" : If unspecified, default to
+  /// `Proxy.IF_PRIORITY_LOWERED`.
+  /// - "ALLOW" : Try to proxy this notification.
+  /// - "DENY" : Do not proxy this notification.
+  /// - "IF_PRIORITY_LOWERED" : Only try to proxy this notification if its
+  /// `AndroidMessagePriority` was lowered from `HIGH` to `NORMAL` on the
+  /// device.
+  core.String? proxy;
+
   /// The sound to play when the device receives the notification.
   ///
   /// Supports "default" or the filename of a sound resource bundled in the app.
@@ -480,6 +491,7 @@ class AndroidNotification {
     this.localOnly,
     this.notificationCount,
     this.notificationPriority,
+    this.proxy,
     this.sound,
     this.sticky,
     this.tag,
@@ -541,6 +553,8 @@ class AndroidNotification {
           notificationPriority: json_.containsKey('notificationPriority')
               ? json_['notificationPriority'] as core.String
               : null,
+          proxy:
+              json_.containsKey('proxy') ? json_['proxy'] as core.String : null,
           sound:
               json_.containsKey('sound') ? json_['sound'] as core.String : null,
           sticky:
@@ -591,6 +605,7 @@ class AndroidNotification {
         if (notificationCount != null) 'notificationCount': notificationCount!,
         if (notificationPriority != null)
           'notificationPriority': notificationPriority!,
+        if (proxy != null) 'proxy': proxy!,
         if (sound != null) 'sound': sound!,
         if (sticky != null) 'sticky': sticky!,
         if (tag != null) 'tag': tag!,

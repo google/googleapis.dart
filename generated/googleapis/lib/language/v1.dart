@@ -781,8 +781,7 @@ class ClassificationCategory {
   /// represents the given text.
   core.double? confidence;
 
-  /// The name of the category representing the document, from the
-  /// [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
+  /// The name of the category representing the document.
   core.String? name;
 
   ClassificationCategory({

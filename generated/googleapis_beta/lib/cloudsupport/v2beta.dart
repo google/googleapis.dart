@@ -88,7 +88,7 @@ class CaseClassificationsResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [query] - An expression written in the Cloud filter language. If
+  /// [query] - An expression written in the Google Cloud filter language. If
   /// non-empty, then only cases whose fields match the filter are returned. If
   /// empty, then no messages are filtered out.
   ///
@@ -177,17 +177,17 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a new case and associate it with the given Cloud resource.
+  /// Create a new case and associate it with the given Google Cloud Resource.
   ///
-  /// The case object must have the following fields set: display_name,
-  /// description, classification, and severity.
+  /// The case object must have the following fields set: `display_name`,
+  /// `description`, `classification`, and `priority`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the Cloud resource under which the case
-  /// should be created.
+  /// [parent] - Required. The name of the Google Cloud Resource under which the
+  /// case should be created.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -223,11 +223,11 @@ class CasesResource {
 
   /// Escalate a case.
   ///
-  /// Escalating a case will initiate the Cloud Support escalation management
-  /// process. This operation is only available to certain Customer Care tiers.
-  /// Go to https://cloud.google.com/support and look for 'Technical support
-  /// escalations' in the feature list to find out which tiers are able to
-  /// perform escalations.
+  /// Escalating a case will initiate the Google Cloud Support escalation
+  /// management process. This operation is only available to certain Customer
+  /// Care tiers. Go to https://cloud.google.com/support and look for 'Technical
+  /// support escalations' in the feature list to find out which tiers are able
+  /// to perform escalations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -323,11 +323,9 @@ class CasesResource {
   /// `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`,
   /// `P2`, `P3`, or `P4`. You can specify multiple values for priority using
   /// the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// \[DEPRECATED\] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`,
-  /// or `S4`. - `creator.email`: The email address of the case creator.
-  /// Examples: - `state=CLOSED` - `state=OPEN AND
-  /// creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR
-  /// priority=P1)`
+  /// `creator.email`: The email address of the case creator. Examples: -
+  /// `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` -
+  /// `state=OPEN AND (priority=P0 OR priority=P1)`
   ///
   /// [pageSize] - The maximum number of cases fetched with each request.
   /// Defaults to 10.
@@ -382,13 +380,13 @@ class CasesResource {
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [updateMask] - A list of attributes of the case object that should be
-  /// updated as part of this request. Supported values are severity,
-  /// display_name, and subscriber_email_addresses. If no fields are specified,
-  /// all supported fields are updated. WARNING: If you do not provide a field
-  /// mask, then you may accidentally clear some fields. For example, if you
-  /// leave field mask empty and do not provide a value for
-  /// subscriber_email_addresses, then subscriber_email_addresses is updated to
-  /// empty.
+  /// updated as part of this request. Supported values are `priority`,
+  /// `display_name`, and `subscriber_email_addresses`. If no fields are
+  /// specified, all supported fields are updated. WARNING: If you do not
+  /// provide a field mask, then you might accidentally clear some fields. For
+  /// example, if you leave the field mask empty and do not provide a value for
+  /// `subscriber_email_addresses`, then `subscriber_email_addresses` is updated
+  /// to empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -440,13 +438,12 @@ class CasesResource {
   /// values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`,
   /// `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
   /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// \[DEPRECATED\] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`,
-  /// or `S4`. - `creator.email`: The email address of the case creator. -
+  /// `creator.email`: The email address of the case creator. -
   /// `billingAccount`: A billing account in the form `billingAccounts/` You
-  /// must specify eitehr `organization` or `project`. To search across
+  /// must specify either `organization` or `project`. To search across
   /// `displayName`, `description`, and comments, use a global restriction with
   /// no keyword or operator. For example, `"my search"`. To search only cases
-  /// updated after a certain date, use `update_time` retricted with that
+  /// updated after a certain date, use `update_time` restricted with that
   /// particular date, time, and timezone in ISO datetime format. For example,
   /// `update_time>"2020-01-01T00:00:00-05:00"`. `update_time` only supports the
   /// greater than operator (`>`). Examples: -
@@ -990,8 +987,6 @@ class Case {
   core.String? name;
 
   /// The priority of this case.
-  ///
-  /// If this is set, do not set severity.
   /// Possible string values are:
   /// - "PRIORITY_UNSPECIFIED" : Priority is undefined or has not been set yet.
   /// - "P0" : Extreme impact on a production service. Service is hard down.
@@ -1766,13 +1761,13 @@ class ListAttachmentsResponse {
 
 /// The response message for the ListCases endpoint.
 class ListCasesResponse {
-  /// The list of cases associated with the cloud resource, after any filters
-  /// have been applied.
+  /// The list of cases associated with the Google Cloud Resource, after any
+  /// filters have been applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
+  /// This should be set in the `page_token` field of the subsequent
   /// `ListCasesRequest` message that is issued. If unspecified, there are no
   /// more results to retrieve.
   core.String? nextPageToken;
@@ -2252,8 +2247,8 @@ class SearchCaseClassificationsResponse {
 
 /// The response message for the SearchCases endpoint.
 class SearchCasesResponse {
-  /// The list of Case associated with the cloud resource, after any filters
-  /// have been applied.
+  /// The list of cases associated with the Google Cloud Resource, after any
+  /// filters have been applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.

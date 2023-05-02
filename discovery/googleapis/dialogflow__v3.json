@@ -3818,7 +3818,7 @@
             }
         }
     },
-    "revision": "20230407",
+    "revision": "20230505",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AdvancedSettings": {
@@ -4950,7 +4950,7 @@
                     "type": "string"
                 },
                 "agentUri": {
-                    "description": "The URI to a file containing the exported agent. This field is populated only if `agent_uri` is specified in ExportAgentRequest.",
+                    "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -5322,7 +5322,7 @@
             "id": "GoogleCloudDialogflowCxV3GcsDestination",
             "properties": {
                 "uri": {
-                    "description": "Required. The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.",
+                    "description": "Required. The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.",
                     "type": "string"
                 }
             },
@@ -5534,7 +5534,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3Intent": {
-            "description": "An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15",
+            "description": "An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.",
             "id": "GoogleCloudDialogflowCxV3Intent",
             "properties": {
                 "description": {
@@ -5606,7 +5606,7 @@
             "id": "GoogleCloudDialogflowCxV3IntentCoverageIntent",
             "properties": {
                 "covered": {
-                    "description": "Whether or not the intent is covered by at least one of the agent's test cases.",
+                    "description": "Whether the intent is covered by at least one of the agent's test cases.",
                     "type": "boolean"
                 },
                 "intent": {
@@ -6323,7 +6323,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3QueryInput": {
-            "description": "Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. ",
+            "description": "Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.",
             "id": "GoogleCloudDialogflowCxV3QueryInput",
             "properties": {
                 "audio": {
@@ -7287,14 +7287,16 @@
                         "INTENT",
                         "PAGE",
                         "PARAMETERS",
-                        "UTTERANCE"
+                        "UTTERANCE",
+                        "FLOW"
                     ],
                     "enumDescriptions": [
                         "Should never be used.",
                         "The intent.",
                         "The page.",
                         "The parameters.",
-                        "The message utterance."
+                        "The message utterance.",
+                        "The flow."
                     ],
                     "type": "string"
                 }
@@ -7313,14 +7315,14 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3TextToSpeechSettings": {
-            "description": "Settings related to speech generating.",
+            "description": "Settings related to speech synthesizing.",
             "id": "GoogleCloudDialogflowCxV3TextToSpeechSettings",
             "properties": {
                 "synthesizeSpeechConfigs": {
                     "additionalProperties": {
                         "$ref": "GoogleCloudDialogflowCxV3SynthesizeSpeechConfig"
                     },
-                    "description": "Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.",
+                    "description": "Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.",
                     "type": "object"
                 }
             },
@@ -7356,7 +7358,7 @@
             "id": "GoogleCloudDialogflowCxV3TransitionCoverageTransition",
             "properties": {
                 "covered": {
-                    "description": "Whether or not the transition is covered by at least one of the agent's test cases.",
+                    "description": "Whether the transition is covered by at least one of the agent's test cases.",
                     "type": "boolean"
                 },
                 "eventHandler": {
@@ -7499,7 +7501,7 @@
             "id": "GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition",
             "properties": {
                 "covered": {
-                    "description": "Whether or not the transition route is covered by at least one of the agent's test cases.",
+                    "description": "Whether the transition route is covered by at least one of the agent's test cases.",
                     "type": "boolean"
                 },
                 "transitionRoute": {
@@ -8479,7 +8481,7 @@
                     "type": "string"
                 },
                 "agentUri": {
-                    "description": "The URI to a file containing the exported agent. This field is populated only if `agent_uri` is specified in ExportAgentRequest.",
+                    "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -8935,7 +8937,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase": {
-            "description": "Represents an example that the agent is trained on to identify the intent. Next ID: 15",
+            "description": "Represents an example that the agent is trained on to identify the intent.",
             "id": "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase",
             "properties": {
                 "id": {
@@ -9089,7 +9091,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3beta1QueryInput": {
-            "description": "Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. ",
+            "description": "Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.",
             "id": "GoogleCloudDialogflowCxV3beta1QueryInput",
             "properties": {
                 "audio": {
@@ -9540,14 +9542,16 @@
                         "INTENT",
                         "PAGE",
                         "PARAMETERS",
-                        "UTTERANCE"
+                        "UTTERANCE",
+                        "FLOW"
                     ],
                     "enumDescriptions": [
                         "Should never be used.",
                         "The intent.",
                         "The page.",
                         "The parameters.",
-                        "The message utterance."
+                        "The message utterance.",
+                        "The flow."
                     ],
                     "type": "string"
                 }
@@ -14454,7 +14458,7 @@
             "type": "object"
         },
         "GoogleCloudLocationLocation": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "GoogleCloudLocationLocation",
             "properties": {
                 "displayName": {

@@ -13544,7 +13544,8 @@ class DeliveryAreaPostalCodeRange {
 class DeliveryTime {
   /// Business days cutoff time definition.
   ///
-  /// If not configured the cutoff time will be defaulted to 8AM PST.
+  /// If not configured the cutoff time will be defaulted to 8AM PST. If local
+  /// delivery, use Service.StoreConfig.CutoffConfig.
   CutoffTime? cutoffTime;
 
   /// The business days during which orders can be handled.
@@ -13679,6 +13680,34 @@ class DeliveryTime {
         if (transitTimeTable != null) 'transitTimeTable': transitTimeTable!,
         if (warehouseBasedDeliveryTimes != null)
           'warehouseBasedDeliveryTimes': warehouseBasedDeliveryTimes!,
+      };
+}
+
+/// Distance represented by an integer and unit.
+class Distance {
+  /// The distance unit.
+  ///
+  /// Acceptable values are `None`, `Miles`, and `Kilometers`.
+  core.String? unit;
+
+  /// The distance represented as a number.
+  core.String? value;
+
+  Distance({
+    this.unit,
+    this.value,
+  });
+
+  Distance.fromJson(core.Map json_)
+      : this(
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -16323,8 +16352,6 @@ class MerchantRejectionReason {
 }
 
 /// The quota information per method in the Content API.
-///
-/// Includes only methods with current usage greater than zero for your account.
 class MethodQuota {
   /// The method name, for example `products.list`.
   ///
@@ -23143,6 +23170,15 @@ class Product {
   /// Description of the item.
   core.String? description;
 
+  /// The date time when an offer becomes visible in search results across
+  /// Google’s YouTube surfaces, in
+  /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
+  ///
+  /// See \[Disclosure date\](
+  /// https://support.google.com/merchants/answer/13034208) for more
+  /// information.
+  core.String? disclosureDate;
+
   /// An identifier for an item for dynamic remarketing campaigns.
   core.String? displayAdsId;
 
@@ -23469,6 +23505,7 @@ class Product {
     this.customLabel3,
     this.customLabel4,
     this.description,
+    this.disclosureDate,
     this.displayAdsId,
     this.displayAdsLink,
     this.displayAdsSimilarIds,
@@ -23616,6 +23653,9 @@ class Product {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          disclosureDate: json_.containsKey('disclosureDate')
+              ? json_['disclosureDate'] as core.String
               : null,
           displayAdsId: json_.containsKey('displayAdsId')
               ? json_['displayAdsId'] as core.String
@@ -23889,6 +23929,7 @@ class Product {
         if (customLabel3 != null) 'customLabel3': customLabel3!,
         if (customLabel4 != null) 'customLabel4': customLabel4!,
         if (description != null) 'description': description!,
+        if (disclosureDate != null) 'disclosureDate': disclosureDate!,
         if (displayAdsId != null) 'displayAdsId': displayAdsId!,
         if (displayAdsLink != null) 'displayAdsLink': displayAdsLink!,
         if (displayAdsSimilarIds != null)
@@ -24666,6 +24707,8 @@ class ProductStatusDestinationStatus {
   core.List<core.String>? pendingCountries;
 
   /// Destination approval status in `targetCountry` of the offer.
+  ///
+  /// Deprecated.
   core.String? status;
 
   ProductStatusDestinationStatus({
@@ -25356,8 +25399,12 @@ class ProductViewItemIssueItemIssueType {
   /// Canonical attribute name for attribute-specific issues.
   core.String? canonicalAttribute;
 
+  /// Error code of the issue.
+  core.String? code;
+
   ProductViewItemIssueItemIssueType({
     this.canonicalAttribute,
+    this.code,
   });
 
   ProductViewItemIssueItemIssueType.fromJson(core.Map json_)
@@ -25365,11 +25412,13 @@ class ProductViewItemIssueItemIssueType {
           canonicalAttribute: json_.containsKey('canonicalAttribute')
               ? json_['canonicalAttribute'] as core.String
               : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalAttribute != null)
           'canonicalAttribute': canonicalAttribute!,
+        if (code != null) 'code': code!,
       };
 }
 
@@ -30052,8 +30101,13 @@ class Service {
 
   /// Type of locations this service ships orders to.
   ///
-  /// Acceptable values are: - "`delivery`" - "`pickup`"
+  /// Acceptable values are: - "`delivery`" - "`pickup`" - "`local_delivery`"
   core.String? shipmentType;
+
+  /// A list of stores your products are delivered from.
+  ///
+  /// This is only available for the local delivery shipment type.
+  ServiceStoreConfig? storeConfig;
 
   Service({
     this.active,
@@ -30067,6 +30121,7 @@ class Service {
     this.pickupService,
     this.rateGroups,
     this.shipmentType,
+    this.storeConfig,
   });
 
   Service.fromJson(core.Map json_)
@@ -30108,6 +30163,10 @@ class Service {
           shipmentType: json_.containsKey('shipmentType')
               ? json_['shipmentType'] as core.String
               : null,
+          storeConfig: json_.containsKey('storeConfig')
+              ? ServiceStoreConfig.fromJson(
+                  json_['storeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30123,6 +30182,134 @@ class Service {
         if (pickupService != null) 'pickupService': pickupService!,
         if (rateGroups != null) 'rateGroups': rateGroups!,
         if (shipmentType != null) 'shipmentType': shipmentType!,
+        if (storeConfig != null) 'storeConfig': storeConfig!,
+      };
+}
+
+/// Stores that provide local delivery.
+///
+/// Only valid with local delivery fulfillment.
+class ServiceStoreConfig {
+  /// Time local delivery ends for the day.
+  ///
+  /// This can be either `local_cutoff_time` or `store_close_offset_hours`, if
+  /// both are provided an error is thrown.
+  ServiceStoreConfigCutoffConfig? cutoffConfig;
+
+  /// Maximum delivery radius.
+  ///
+  /// Only needed for local delivery fulfillment type.
+  Distance? serviceRadius;
+
+  /// A list of store codes that provide local delivery.
+  ///
+  /// If empty, then `store_service_type` must be `all_stores`, or an error is
+  /// thrown. If not empty, then `store_service_type` must be `selected_stores`,
+  /// or an error is thrown.
+  core.List<core.String>? storeCodes;
+
+  /// Indicates whether all stores listed by this merchant provide local
+  /// delivery or not.
+  ///
+  /// Acceptable values are `all stores` and `selected stores`
+  core.String? storeServiceType;
+
+  ServiceStoreConfig({
+    this.cutoffConfig,
+    this.serviceRadius,
+    this.storeCodes,
+    this.storeServiceType,
+  });
+
+  ServiceStoreConfig.fromJson(core.Map json_)
+      : this(
+          cutoffConfig: json_.containsKey('cutoffConfig')
+              ? ServiceStoreConfigCutoffConfig.fromJson(
+                  json_['cutoffConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceRadius: json_.containsKey('serviceRadius')
+              ? Distance.fromJson(
+                  json_['serviceRadius'] as core.Map<core.String, core.dynamic>)
+              : null,
+          storeCodes: json_.containsKey('storeCodes')
+              ? (json_['storeCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          storeServiceType: json_.containsKey('storeServiceType')
+              ? json_['storeServiceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cutoffConfig != null) 'cutoffConfig': cutoffConfig!,
+        if (serviceRadius != null) 'serviceRadius': serviceRadius!,
+        if (storeCodes != null) 'storeCodes': storeCodes!,
+        if (storeServiceType != null) 'storeServiceType': storeServiceType!,
+      };
+}
+
+/// Time local delivery ends for the day based on the local timezone of the
+/// store.
+///
+/// `local_cutoff_time` and `store_close_offset_hours` are mutually exclusive.
+class ServiceStoreConfigCutoffConfig {
+  /// Time in hours and minutes in the local timezone when local delivery ends.
+  ServiceStoreConfigCutoffConfigLocalCutoffTime? localCutoffTime;
+
+  /// Represents cutoff time as the number of hours before store closing.
+  ///
+  /// Mutually exclusive with other fields (hour and minute).
+  core.String? storeCloseOffsetHours;
+
+  ServiceStoreConfigCutoffConfig({
+    this.localCutoffTime,
+    this.storeCloseOffsetHours,
+  });
+
+  ServiceStoreConfigCutoffConfig.fromJson(core.Map json_)
+      : this(
+          localCutoffTime: json_.containsKey('localCutoffTime')
+              ? ServiceStoreConfigCutoffConfigLocalCutoffTime.fromJson(
+                  json_['localCutoffTime']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          storeCloseOffsetHours: json_.containsKey('storeCloseOffsetHours')
+              ? json_['storeCloseOffsetHours'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localCutoffTime != null) 'localCutoffTime': localCutoffTime!,
+        if (storeCloseOffsetHours != null)
+          'storeCloseOffsetHours': storeCloseOffsetHours!,
+      };
+}
+
+/// Time in hours and minutes in the local timezone when local delivery ends.
+class ServiceStoreConfigCutoffConfigLocalCutoffTime {
+  /// Hour local delivery orders must be placed by to process the same day.
+  core.String? hour;
+
+  /// Minute local delivery orders must be placed by to process the same day.
+  core.String? minute;
+
+  ServiceStoreConfigCutoffConfigLocalCutoffTime({
+    this.hour,
+    this.minute,
+  });
+
+  ServiceStoreConfigCutoffConfigLocalCutoffTime.fromJson(core.Map json_)
+      : this(
+          hour: json_.containsKey('hour') ? json_['hour'] as core.String : null,
+          minute: json_.containsKey('minute')
+              ? json_['minute'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hour != null) 'hour': hour!,
+        if (minute != null) 'minute': minute!,
       };
 }
 

@@ -144,7 +144,7 @@
             }
         }
     },
-    "revision": "20230413",
+    "revision": "20230503",
     "rootUrl": "https://verifiedaccess.googleapis.com/",
     "schemas": {
         "Challenge": {

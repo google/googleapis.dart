@@ -608,7 +608,7 @@ class ProjectsLocationsChannelsResource {
   /// [channelId] - Required. The user-provided ID to be assigned to the
   /// channel.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -655,7 +655,7 @@ class ProjectsLocationsChannelsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -853,7 +853,7 @@ class ProjectsLocationsChannelsResource {
   /// are updated. If no field mask is provided, all provided fields in the
   /// request are updated. To update all fields, provide a field mask of "*".
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1297,7 +1297,7 @@ class ProjectsLocationsTriggersResource {
   /// [triggerId] - Required. The user-provided ID to be assigned to the
   /// trigger.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1350,7 +1350,7 @@ class ProjectsLocationsTriggersResource {
   /// [etag] - If provided, the trigger will only be deleted if the etag matches
   /// the current etag on the resource.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1562,7 +1562,7 @@ class ProjectsLocationsTriggersResource {
   /// are updated. If no field mask is provided, all provided fields in the
   /// request are updated. To update all fields, provide a field mask of "*".
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2825,7 +2825,7 @@ class ListTriggersResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access

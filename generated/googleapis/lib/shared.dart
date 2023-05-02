@@ -543,6 +543,64 @@ class $AdSlot {
 
 /// Used by:
 ///
+/// - gkeonprem:v1 : BareMetalLoadBalancerAddressPool
+/// - gkeonprem:v1 : VmwareAddressPool
+class $AddressPool {
+  /// The addresses that are part of this pool.
+  ///
+  /// Each address must be either in the CIDR form (1.2.3.0/24) or range form
+  /// (1.2.3.1-1.2.3.5).
+  ///
+  /// Required.
+  core.List<core.String>? addresses;
+
+  /// If true, avoid using IPs ending in .0 or .255.
+  ///
+  /// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
+  /// those special IP addresses.
+  core.bool? avoidBuggyIps;
+
+  /// If true, prevent IP addresses from being automatically assigned.
+  core.bool? manualAssign;
+
+  /// The name of the address pool.
+  ///
+  /// Required.
+  core.String? pool;
+
+  $AddressPool({
+    this.addresses,
+    this.avoidBuggyIps,
+    this.manualAssign,
+    this.pool,
+  });
+
+  $AddressPool.fromJson(core.Map json_)
+      : this(
+          addresses: json_.containsKey('addresses')
+              ? (json_['addresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          avoidBuggyIps: json_.containsKey('avoidBuggyIps')
+              ? json_['avoidBuggyIps'] as core.bool
+              : null,
+          manualAssign: json_.containsKey('manualAssign')
+              ? json_['manualAssign'] as core.bool
+              : null,
+          pool: json_.containsKey('pool') ? json_['pool'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
+        if (avoidBuggyIps != null) 'avoidBuggyIps': avoidBuggyIps!,
+        if (manualAssign != null) 'manualAssign': manualAssign!,
+        if (pool != null) 'pool': pool!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : Adloox
 /// - displayvideo:v2 : Adloox
 class $Adloox {
@@ -1706,15 +1764,17 @@ class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
   /// Possible string values are:
   /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
   /// seller status is not specified in this version. This enum is a placeholder
-  /// for default value and does not represent a real authorized seller status
-  /// option.
+  /// for the default value, or "Authorized Direct Sellers and Resellers" in the
+  /// UI.
   /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
   /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file.
+  /// indicated by a DIRECT declaration in the ads.txt file. This value is
+  /// equivalent to "Authorized Direct Sellers" in the UI.
   /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
   /// All authorized sellers, including publishers that have not posted an
   /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers.
+  /// sellers. This value is equivalent to "Authorized and Non-Participating
+  /// Publishers" in the UI.
   core.String? authorizedSellerStatus;
 
   /// The targeting_option_id of a TargetingOption of type
@@ -1756,15 +1816,17 @@ class $AuthorizedSellerStatusTargetingOptionDetails {
   /// Possible string values are:
   /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
   /// seller status is not specified in this version. This enum is a placeholder
-  /// for default value and does not represent a real authorized seller status
-  /// option.
+  /// for the default value, or "Authorized Direct Sellers and Resellers" in the
+  /// UI.
   /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
   /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file.
+  /// indicated by a DIRECT declaration in the ads.txt file. This value is
+  /// equivalent to "Authorized Direct Sellers" in the UI.
   /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
   /// All authorized sellers, including publishers that have not posted an
   /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers.
+  /// sellers. This value is equivalent to "Authorized and Non-Participating
+  /// Publishers" in the UI.
   core.String? authorizedSellerStatus;
 
   $AuthorizedSellerStatusTargetingOptionDetails({
@@ -2181,6 +2243,168 @@ class $BusinessChainTargetingOptionDetails {
         if (businessChain != null) 'businessChain': businessChain!,
         if (geoRegion != null) 'geoRegion': geoRegion!,
         if (geoRegionType != null) 'geoRegionType': geoRegionType!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : CVSS
+/// - ondemandscanning:v1 : CVSS
+class $CVSS {
+  ///
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
+  /// - "ATTACK_COMPLEXITY_MEDIUM"
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
+  core.String? attackVector;
+
+  ///
+  /// Possible string values are:
+  /// - "AUTHENTICATION_UNSPECIFIED"
+  /// - "AUTHENTICATION_MULTIPLE"
+  /// - "AUTHENTICATION_SINGLE"
+  /// - "AUTHENTICATION_NONE"
+  core.String? authentication;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? confidentialityImpact;
+  core.double? exploitabilityScore;
+  core.double? impactScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  /// - "IMPACT_PARTIAL"
+  /// - "IMPACT_COMPLETE"
+  core.String? integrityImpact;
+
+  ///
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
+  core.String? privilegesRequired;
+
+  ///
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
+  core.String? scope;
+
+  ///
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
+  core.String? userInteraction;
+
+  $CVSS({
+    this.attackComplexity,
+    this.attackVector,
+    this.authentication,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  $CVSS.fromJson(core.Map json_)
+      : this(
+          attackComplexity: json_.containsKey('attackComplexity')
+              ? json_['attackComplexity'] as core.String
+              : null,
+          attackVector: json_.containsKey('attackVector')
+              ? json_['attackVector'] as core.String
+              : null,
+          authentication: json_.containsKey('authentication')
+              ? json_['authentication'] as core.String
+              : null,
+          availabilityImpact: json_.containsKey('availabilityImpact')
+              ? json_['availabilityImpact'] as core.String
+              : null,
+          baseScore: json_.containsKey('baseScore')
+              ? (json_['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: json_.containsKey('confidentialityImpact')
+              ? json_['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? (json_['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: json_.containsKey('impactScore')
+              ? (json_['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: json_.containsKey('integrityImpact')
+              ? json_['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: json_.containsKey('privilegesRequired')
+              ? json_['privilegesRequired'] as core.String
+              : null,
+          scope:
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          userInteraction: json_.containsKey('userInteraction')
+              ? json_['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (authentication != null) 'authentication': authentication!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
       };
 }
 
@@ -3104,6 +3328,32 @@ class $ClickThroughUrlSuffixProperties {
           'clickThroughUrlSuffix': clickThroughUrlSuffix!,
         if (overrideInheritedSuffix != null)
           'overrideInheritedSuffix': overrideInheritedSuffix!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminClusterOperationsConfig
+/// - gkeonprem:v1 : BareMetalClusterOperationsConfig
+class $ClusterOperationsConfig {
+  /// Whether collection of application logs/metrics should be enabled (in
+  /// addition to system logs/metrics).
+  core.bool? enableApplicationLogs;
+
+  $ClusterOperationsConfig({
+    this.enableApplicationLogs,
+  });
+
+  $ClusterOperationsConfig.fromJson(core.Map json_)
+      : this(
+          enableApplicationLogs: json_.containsKey('enableApplicationLogs')
+              ? json_['enableApplicationLogs'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableApplicationLogs != null)
+          'enableApplicationLogs': enableApplicationLogs!,
       };
 }
 
@@ -5643,6 +5893,10 @@ class $DocumentationRule {
   /// definition of the proto element.
   core.String? description;
 
+  /// String of comma or space separated case-sensitive words for which
+  /// method/field name replacement will be disabled by go/api-docgen.
+  core.String? disableReplacementWords;
+
   /// The selector is a comma-separated list of patterns for any element such as
   /// a method, a field, an enum value.
   ///
@@ -5657,6 +5911,7 @@ class $DocumentationRule {
   $DocumentationRule({
     this.deprecationDescription,
     this.description,
+    this.disableReplacementWords,
     this.selector,
   });
 
@@ -5668,6 +5923,9 @@ class $DocumentationRule {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          disableReplacementWords: json_.containsKey('disableReplacementWords')
+              ? json_['disableReplacementWords'] as core.String
+              : null,
           selector: json_.containsKey('selector')
               ? json_['selector'] as core.String
               : null,
@@ -5677,6 +5935,8 @@ class $DocumentationRule {
         if (deprecationDescription != null)
           'deprecationDescription': deprecationDescription!,
         if (description != null) 'description': description!,
+        if (disableReplacementWords != null)
+          'disableReplacementWords': disableReplacementWords!,
         if (selector != null) 'selector': selector!,
       };
 }
@@ -5962,6 +6222,62 @@ class $DoubleVerifyVideoViewability {
           'playerImpressionRate': playerImpressionRate!,
         if (videoIab != null) 'videoIab': videoIab!,
         if (videoViewableRate != null) 'videoViewableRate': videoViewableRate!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminDrainedMachine
+/// - gkeonprem:v1 : BareMetalDrainedMachine
+class $DrainedMachine {
+  /// Drained machine IP address.
+  core.String? nodeIp;
+
+  $DrainedMachine({
+    this.nodeIp,
+  });
+
+  $DrainedMachine.fromJson(core.Map json_)
+      : this(
+          nodeIp: json_.containsKey('nodeIp')
+              ? json_['nodeIp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeIp != null) 'nodeIp': nodeIp!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminDrainingMachine
+/// - gkeonprem:v1 : BareMetalDrainingMachine
+class $DrainingMachine {
+  /// Draining machine IP address.
+  core.String? nodeIp;
+
+  /// The count of pods yet to drain.
+  core.int? podCount;
+
+  $DrainingMachine({
+    this.nodeIp,
+    this.podCount,
+  });
+
+  $DrainingMachine.fromJson(core.Map json_)
+      : this(
+          nodeIp: json_.containsKey('nodeIp')
+              ? json_['nodeIp'] as core.String
+              : null,
+          podCount: json_.containsKey('podCount')
+              ? json_['podCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeIp != null) 'nodeIp': nodeIp!,
+        if (podCount != null) 'podCount': podCount!,
       };
 }
 
@@ -6275,6 +6591,7 @@ class $EgressFrom {
 /// - appengine:v1 : RepairApplicationRequest
 /// - artifactregistry:v1 : Empty
 /// - artifactregistry:v1 : UploadAptArtifactRequest
+/// - artifactregistry:v1 : UploadGoogetArtifactRequest
 /// - artifactregistry:v1 : UploadYumArtifactRequest
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
@@ -6393,7 +6710,6 @@ class $EgressFrom {
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
 /// - containeranalysis:v1 : Empty
-/// - containeranalysis:v1 : GeneratePackagesSummaryRequest
 /// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
 /// - content:v2.1 : CaptureOrderRequest
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
@@ -6439,7 +6755,6 @@ class $EgressFrom {
 /// - dataplex:v1 : GoogleCloudDataplexV1ActionMissingResource
 /// - dataplex:v1 : GoogleCloudDataplexV1ActionUnauthorizedResource
 /// - dataplex:v1 : GoogleCloudDataplexV1CancelJobRequest
-/// - dataplex:v1 : GoogleCloudDataplexV1DataProfileSpec
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1RunDataScanRequest
@@ -6562,6 +6877,9 @@ class $EgressFrom {
 /// - gkehub:v1 : FleetObservabilityMembershipSpec
 /// - gkehub:v1 : FleetObservabilityMembershipState
 /// - gkehub:v1 : ScopeFeatureSpec
+/// - gkeonprem:v1 : CancelOperationRequest
+/// - gkeonprem:v1 : Empty
+/// - gkeonprem:v1 : VmwareAdminMetalLbConfig
 /// - gmail:v1 : DisableCseKeyPairRequest
 /// - gmail:v1 : EnableCseKeyPairRequest
 /// - gmail:v1 : ObliterateCseKeyPairRequest
@@ -6668,6 +6986,7 @@ class $EgressFrom {
 /// - pubsub:v1 : DetachSubscriptionResponse
 /// - pubsub:v1 : Empty
 /// - pubsub:v1 : SeekResponse
+/// - pubsub:v1 : TextConfig
 /// - pubsub:v1 : ValidateMessageResponse
 /// - pubsub:v1 : ValidateSchemaResponse
 /// - pubsublite:v1 : CancelOperationRequest
@@ -7576,6 +7895,7 @@ class $ExportOptions {
 /// - gameservices:v1 : Expr
 /// - gkebackup:v1 : Expr
 /// - gkehub:v1 : Expr
+/// - gkeonprem:v1 : Expr
 /// - healthcare:v1 : Expr
 /// - iam:v1 : Expr
 /// - iam:v2 : GoogleTypeExpr
@@ -7692,6 +8012,51 @@ class $ExternalProtectionLevelOptions {
         if (ekmConnectionKeyPath != null)
           'ekmConnectionKeyPath': ekmConnectionKeyPath!,
         if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : VmwareAdminF5BigIpConfig
+/// - gkeonprem:v1 : VmwareF5BigIpConfig
+class $F5BigIpConfig {
+  /// The load balancer's IP address.
+  core.String? address;
+
+  /// The preexisting partition to be used by the load balancer.
+  ///
+  /// This partition is usually created for the admin cluster for example:
+  /// 'my-f5-admin-partition'.
+  core.String? partition;
+
+  /// The pool name.
+  ///
+  /// Only necessary, if using SNAT.
+  core.String? snatPool;
+
+  $F5BigIpConfig({
+    this.address,
+    this.partition,
+    this.snatPool,
+  });
+
+  $F5BigIpConfig.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
+              : null,
+          snatPool: json_.containsKey('snatPool')
+              ? json_['snatPool'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (partition != null) 'partition': partition!,
+        if (snatPool != null) 'snatPool': snatPool!,
       };
 }
 
@@ -8591,9 +8956,17 @@ class $GoogleAudience {
   /// - "GOOGLE_AUDIENCE_TYPE_AFFINITY" : Affinity type Google audience.
   /// - "GOOGLE_AUDIENCE_TYPE_IN_MARKET" : In-Market type Google audience.
   /// - "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS" : Installed-Apps type Google
-  /// audience.
+  /// audience. **Warning:** This audience type will be deprecated on **May 20,
+  /// 2023**. After this date, these audiences will not be able to be added to
+  /// resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
+  /// for more information.
   /// - "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES" : New-Mobile-Devices type
-  /// Google audience.
+  /// Google audience. **Warning:** This audience type will be deprecated on
+  /// **May 20, 2023**. After this date, these audiences will not be able to be
+  /// added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
+  /// for more information.
   /// - "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT" : Life-Event type Google audience.
   /// - "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC" : Extended-Demographic type
   /// Google audience.
@@ -11705,6 +12078,7 @@ class $LocalizedMessage {
 /// - gameservices:v1 : Location
 /// - gkebackup:v1 : Location
 /// - gkehub:v1 : Location
+/// - gkeonprem:v1 : Location
 /// - healthcare:v1 : Location
 /// - ids:v1 : Location
 /// - managedidentities:v1 : Location
@@ -12043,6 +12417,64 @@ class $LookupInvoiceCurrencyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminMaintenanceConfig
+/// - gkeonprem:v1 : BareMetalMaintenanceConfig
+class $MaintenanceConfig {
+  /// All IPv4 address from these ranges will be placed into maintenance mode.
+  ///
+  /// Nodes in maintenance mode will be cordoned and drained. When both of these
+  /// are true, the "baremetal.cluster.gke.io/maintenance" annotation will be
+  /// set on the node resource.
+  ///
+  /// Required.
+  core.List<core.String>? maintenanceAddressCidrBlocks;
+
+  $MaintenanceConfig({
+    this.maintenanceAddressCidrBlocks,
+  });
+
+  $MaintenanceConfig.fromJson(core.Map json_)
+      : this(
+          maintenanceAddressCidrBlocks:
+              json_.containsKey('maintenanceAddressCidrBlocks')
+                  ? (json_['maintenanceAddressCidrBlocks'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceAddressCidrBlocks != null)
+          'maintenanceAddressCidrBlocks': maintenanceAddressCidrBlocks!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminManualLbConfig
+/// - gkeonprem:v1 : BareMetalManualLbConfig
+class $ManualLbConfig {
+  /// Whether manual load balancing is enabled.
+  core.bool? enabled;
+
+  $ManualLbConfig({
+    this.enabled,
+  });
+
+  $ManualLbConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -14881,6 +15313,7 @@ class $PerformanceGoalBidStrategy {
 /// - gameservices:v1 : TestIamPermissionsResponse
 /// - gkebackup:v1 : TestIamPermissionsResponse
 /// - gkehub:v1 : TestIamPermissionsResponse
+/// - gkeonprem:v1 : TestIamPermissionsResponse
 /// - healthcare:v1 : TestIamPermissionsResponse
 /// - iam:v1 : TestIamPermissionsResponse
 /// - iap:v1 : TestIamPermissionsResponse
@@ -15181,6 +15614,32 @@ class $PoiTargetingOptionDetails {
         if (displayName != null) 'displayName': displayName!,
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
+      };
+}
+
+/// Used by:
+///
+/// - gkeonprem:v1 : BareMetalAdminPortConfig
+/// - gkeonprem:v1 : BareMetalPortConfig
+class $PortConfig {
+  /// The port that control plane hosted load balancers will listen on.
+  core.int? controlPlaneLoadBalancerPort;
+
+  $PortConfig({
+    this.controlPlaneLoadBalancerPort,
+  });
+
+  $PortConfig.fromJson(core.Map json_)
+      : this(
+          controlPlaneLoadBalancerPort:
+              json_.containsKey('controlPlaneLoadBalancerPort')
+                  ? json_['controlPlaneLoadBalancerPort'] as core.int
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlPlaneLoadBalancerPort != null)
+          'controlPlaneLoadBalancerPort': controlPlaneLoadBalancerPort!,
       };
 }
 
@@ -17946,6 +18405,7 @@ class $StateError {
 /// - gameservices:v1 : Status
 /// - gkebackup:v1 : GoogleRpcStatus
 /// - gkehub:v1 : GoogleRpcStatus
+/// - gkeonprem:v1 : Status
 /// - healthcare:v1 : Status
 /// - iam:v1 : Status
 /// - iam:v2 : GoogleRpcStatus
@@ -18521,7 +18981,7 @@ class $TargetingExpansionConfig {
   /// `true` when deprecated, all positive first-party audience targeting
   /// assigned to this line item will be replaced with negative targeting of the
   /// same first-party audiences to ensure the continued exclusion of those
-  /// audiences. This field will be deprecated for all partners by mid-April
+  /// audiences. This field will be deprecated for all partners by early May
   /// 2023.
   ///
   /// Required.
@@ -18540,7 +19000,7 @@ class $TargetingExpansionConfig {
   /// automatically assigned if you do not set the field. * If you set the field
   /// to any value other than `NO_EXPANSION`, it will automatically be set to
   /// `LEAST_EXPANSION`. This behavior will be rolled out to all partners by
-  /// mid-April 2023.
+  /// early May 2023.
   ///
   /// Required.
   /// Possible string values are:
@@ -18673,6 +19133,7 @@ class $TenantProjectRequest {
 /// - gameservices:v1 : TestIamPermissionsRequest
 /// - gkebackup:v1 : TestIamPermissionsRequest
 /// - gkehub:v1 : TestIamPermissionsRequest
+/// - gkeonprem:v1 : TestIamPermissionsRequest
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
 /// - iap:v1 : TestIamPermissionsRequest

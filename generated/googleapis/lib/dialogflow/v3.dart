@@ -8698,7 +8698,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
 class GoogleCloudDialogflowCxV3GcsDestination {
   /// The Google Cloud Storage URI for the exported objects.
   ///
-  /// A URI is of the form: gs://bucket/object-name-or-prefix Whether a full
+  /// A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full
   /// object name, or just a prefix, its usage depends on the Dialogflow
   /// operation.
   ///
@@ -8992,7 +8992,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 ///
 /// You can provide information for the Dialogflow API to use to match user
 /// input to an intent by adding training phrases (i.e., examples of user input)
-/// to your intent. Next ID: 15
+/// to your intent.
 class GoogleCloudDialogflowCxV3Intent {
   /// Human readable description for better understanding an intent like its
   /// scope, content, result etc.
@@ -9147,8 +9147,7 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 
 /// The agent's intent.
 class GoogleCloudDialogflowCxV3IntentCoverageIntent {
-  /// Whether or not the intent is covered by at least one of the agent's test
-  /// cases.
+  /// Whether the intent is covered by at least one of the agent's test cases.
   core.bool? covered;
 
   /// The intent full resource name
@@ -10486,7 +10485,8 @@ class GoogleCloudDialogflowCxV3Page {
 ///
 /// It can contain one of: 1. A conversational query in the form of text. 2. An
 /// intent query that specifies which intent to trigger. 3. Natural language
-/// speech audio to be processed. 4. An event to be triggered.
+/// speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to
+/// invoke an intent and fill in parameter value.
 class GoogleCloudDialogflowCxV3QueryInput {
   /// The natural language speech audio to be processed.
   GoogleCloudDialogflowCxV3AudioInput? audio;
@@ -12323,6 +12323,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
   /// - "PAGE" : The page.
   /// - "PARAMETERS" : The parameters.
   /// - "UTTERANCE" : The message utterance.
+  /// - "FLOW" : The flow.
   core.String? type;
 
   GoogleCloudDialogflowCxV3TestRunDifference({
@@ -12367,11 +12368,17 @@ class GoogleCloudDialogflowCxV3TextInput {
       };
 }
 
-/// Settings related to speech generating.
+/// Settings related to speech synthesizing.
 class GoogleCloudDialogflowCxV3TextToSpeechSettings {
   /// Configuration of how speech should be synthesized, mapping from language
-  /// (https://dialogflow.com/docs/reference/language) to
+  /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to
   /// SynthesizeSpeechConfig.
+  ///
+  /// These settings affect: - The synthesize configuration used in
+  /// [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway).
+  /// - You no longer need to specify OutputAudioConfig.synthesize_speech_config
+  /// when invoking API calls. Your agent will use the pre-configured options
+  /// for speech synthesizing.
   core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
       synthesizeSpeechConfigs;
 
@@ -12441,8 +12448,8 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
 
 /// A transition in a page.
 class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
-  /// Whether or not the transition is covered by at least one of the agent's
-  /// test cases.
+  /// Whether the transition is covered by at least one of the agent's test
+  /// cases.
   core.bool? covered;
 
   /// Event handler.
@@ -12774,8 +12781,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
 
 /// A transition coverage in a transition route group.
 class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
-  /// Whether or not the transition route is covered by at least one of the
-  /// agent's test cases.
+  /// Whether the transition route is covered by at least one of the agent's
+  /// test cases.
   core.bool? covered;
 
   /// Intent route or condition route.
@@ -13340,7 +13347,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

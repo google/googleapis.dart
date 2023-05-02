@@ -400,21 +400,23 @@ class AdvertisersResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Allows filtering by advertiser properties. Supported syntax: *
+  /// [filter] - Allows filtering by advertiser fields. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
-  /// can be combined by `AND` or `OR` logical operators. A sequence of
-  /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator used on `updateTime` must be
-  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` -
-  /// `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format,
-  /// or YYYY-MM-DDTHH:MM:SSZ) Examples: * All active advertisers under a
-  /// partner: `entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an
-  /// update time less than or equal to `2020-11-04T18:54:47Z (format of ISO
-  /// 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All advertisers with an
-  /// update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO
-  /// 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The length of this field
-  /// should be no more than 500 characters.
+  /// can be combined by `AND` or `OR` logical operators. * A restriction has
+  /// the form of `{field} {operator} {value}`. * The `updateTime` field must
+  /// use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`
+  /// operators. * All other fields must use the `EQUALS (=)` operator.
+  /// Supported fields: * `advertiserId` * `displayName` * `entityStatus` *
+  /// `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
+  /// Examples: * All active advertisers under a partner:
+  /// `entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an update
+  /// time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
+  /// `updateTime<="2020-11-04T18:54:47Z"` * All advertisers with an update time
+  /// greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
+  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
+  /// more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` * `updateTime` The default
@@ -480,14 +482,16 @@ class AdvertisersResource {
   /// to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator
-  /// `OR`.. * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: - `targetingType`
-  /// Examples: * targetingType with value TARGETING_TYPE_CHANNEL
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=) operator`. Supported fields: * `targetingType` Examples: *
+  /// targetingType with value TARGETING_TYPE_CHANNEL
   /// `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should
-  /// be no more than 500 characters.
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `targetingType` (default) The default sorting order is ascending. To
@@ -812,23 +816,25 @@ class AdvertisersCampaignsResource {
   /// [advertiserId] - The ID of the advertiser to list campaigns for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by campaign properties. Supported syntax: *
-  /// Filter expressions are made up of one or more restrictions. * Restrictions
-  /// can be combined by `AND` or `OR` logical operators. A sequence of
-  /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator used on `updateTime` must be
-  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: - `campaignId` -
-  /// `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format,
-  /// or YYYY-MM-DDTHH:MM:SSZ) Examples: * All `ENTITY_STATUS_ACTIVE` or
+  /// [filter] - Allows filtering by campaign fields. Supported syntax: * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO
+  /// (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must
+  /// use the `EQUALS (=)` operator. Supported fields: * `campaignId` *
+  /// `displayName` * `entityStatus` * `updateTime` (input in ISO 8601 format,
+  /// or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All `ENTITY_STATUS_ACTIVE` or
   /// `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
   /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED")` * All campaigns with an update time
-  /// less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
   /// `updateTime<="2020-11-04T18:54:47Z"` * All campaigns with an update time
-  /// greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
   /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
-  /// more than 500 characters.
+  /// more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` * `updateTime` The default
@@ -894,18 +900,21 @@ class AdvertisersCampaignsResource {
   /// options for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`
-  /// on the same field. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-  /// `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of
-  /// targeting type TARGETING_TYPE_LANGUAGE or TARGETING_TYPE_GENDER
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance`
+  /// Examples: * `AssignedTargetingOption` resources of targeting type
+  /// `TARGETING_TYPE_LANGUAGE` or `TARGETING_TYPE_GENDER`:
   /// `targetingType="TARGETING_TYPE_LANGUAGE" OR
-  /// targetingType="TARGETING_TYPE_GENDER"` * AssignedTargetingOptions with
-  /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// targetingType="TARGETING_TYPE_GENDER"` * `AssignedTargetingOption`
+  /// resources with inheritance status of `NOT_INHERITED` or
+  /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR
+  /// inheritance="INHERITED_FROM_PARTNER"` The length of this field should be
+  /// no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `targetingType` (default) The default sorting order is ascending. To
@@ -1136,7 +1145,9 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -1316,7 +1327,9 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -1354,17 +1367,19 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` - `inheritance` Examples: *
-  /// AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-  /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-  /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` *
+  /// `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or
+  /// 2 `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` *
+  /// `AssignedTargetingOption` resources with inheritance status of
+  /// `NOT_INHERITED` or `INHERITED_FROM_PARTNER` `inheritance="NOT_INHERITED"
+  /// OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -1536,12 +1551,14 @@ class AdvertisersChannelsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
-  /// expressions for channel currently can only contain at most one *
-  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
-  /// * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+  /// expressions for channel can only contain at most one restriction. * A
+  /// restriction has the form of `{field} {operator} {value}`. * All fields
+  /// must use the `HAS (:)` operator. Supported fields: * `displayName`
   /// Examples: * All channels for which the display name contains "google":
   /// `displayName : "google"`. The length of this field should be no more than
-  /// 500 characters.
+  /// 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `channelId` The default sorting order is
@@ -1832,11 +1849,14 @@ class AdvertisersChannelsSitesResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by site fields. Supported syntax: * Filter
-  /// expressions for site currently can only contain at most one * restriction.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `CONTAINS (:)`. * Supported fields: - `urlOrAppId`
+  /// expressions for site retrieval can only contain at most one restriction. *
+  /// A restriction has the form of `{field} {operator} {value}`. * All fields
+  /// must use the `HAS (:)` operator. Supported fields: * `urlOrAppId`
   /// Examples: * All sites for which the URL or app ID contains "google":
-  /// `urlOrAppId : "google"`
+  /// `urlOrAppId : "google"` The length of this field should be no more than
+  /// 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `urlOrAppId` (default) The default sorting order is ascending. To specify
@@ -2101,45 +2121,41 @@ class AdvertisersCreativesResource {
   /// [advertiserId] - Required. The ID of the advertiser to list creatives for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by creative properties. Supported syntax: *
-  /// Filter expressions are made up of one or more restrictions. * Restriction
-  /// for the same field must be combined by `OR`. * Restriction for different
-  /// fields must be combined by `AND`. * Between `(` and `)` there can only be
-  /// restrictions combined by `OR` for the same field. * A restriction has the
-  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`
-  /// for the following fields: - `entityStatus` - `creativeType`. -
-  /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
-  /// `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be
-  /// `HAS (:)` for the following fields: - `lineItemIds` * The operator must be
-  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` for the
-  /// following fields: - `updateTime` (input in ISO 8601 format, or
-  /// YYYY-MM-DDTHH:MM:SSZ) * For `entityStatus`, `minDuration`, `maxDuration`,
-  /// `updateTime`, and `dynamic`, there may be at most one restriction. * For
-  /// `dimensions`, the value is in the form of `"{width}x{height}"`. * For
-  /// `exchangeReviewStatus`, the value is in the form of
-  /// `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the
-  /// value is in the form of `"{duration}s"`. Only seconds are supported with
-  /// millisecond granularity. * For `updateTime`, a creative resource's field
-  /// value reflects the last time that a creative has been updated, which
-  /// includes updates made by the system (e.g. creative review updates). *
-  /// There may be multiple `lineItemIds` restrictions in order to search
-  /// against multiple possible line item IDs. * There may be multiple
-  /// `creativeId` restrictions in order to search against multiple possible
-  /// creative IDs. Examples: * All native creatives:
+  /// [filter] - Allows filtering by creative fields. Supported syntax: * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * The `lineItemIds` field must use the `HAS (:)` operator. * The
+  /// `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS
+  /// THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS
+  /// (=)` operator. * For `entityStatus`, `minDuration`, `maxDuration`,
+  /// `updateTime`, and `dynamic` fields, there may be at most one restriction.
+  /// Supported Fields: * `approvalStatus` * `creativeId` * `creativeType` *
+  /// `dimensions` (input in the form of `{width}x{height}`) * `dynamic` *
+  /// `entityStatus` * `exchangeReviewStatus` (input in the form of
+  /// `{exchange}-{reviewStatus}`) * `lineItemIds` * `maxDuration` (input in the
+  /// form of `{duration}s`. Only seconds are supported) * `minDuration` (input
+  /// in the form of `{duration}s`. Only seconds are supported) * `updateTime`
+  /// (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Notes: * For
+  /// `updateTime`, a creative resource's field value reflects the last time
+  /// that a creative has been updated, which includes updates made by the
+  /// system (e.g. creative review updates). Examples: * All native creatives:
   /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400
   /// or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND
   /// (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives
   /// that are approved by AdX or AppNexus, with a minimum duration of 5 seconds
-  /// and 200ms. `dynamic="true" AND minDuration="5.2s" AND
+  /// and 200ms: `dynamic="true" AND minDuration="5.2s" AND
   /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
   /// OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All
   /// video creatives that are associated with line item ID 1 or 2:
   /// `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)`
   /// * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2`
   /// * All creatives with an update time greater than or equal to
-  /// `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// 2020-11-04T18:54:47Z (format of ISO 8601):
   /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
-  /// more than 500 characters.
+  /// more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions`
@@ -2409,30 +2425,30 @@ class AdvertisersInsertionOrdersResource {
   /// orders for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by insertion order properties. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by `AND` or `OR` logical operators. A
-  /// sequence of restrictions implicitly uses `AND`. * A restriction has the
-  /// form of `{field} {operator} {value}`. * The operator used on
-  /// `budget.budget_segments.date_range.end_date` must be LESS THAN (\<). * The
-  /// operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or
-  /// `LESS THAN OR EQUAL TO (<=)`. * The operators used on all other fields
-  /// must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` -
-  /// `entityStatus` - `budget.budget_segments.date_range.end_date` (input as
-  /// YYYY-MM-DD) - `updateTime` (input in ISO 8601 format, or
-  /// YYYY-MM-DDTHH:MM:SSZ) Examples: * All insertion orders under a campaign:
-  /// `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-  /// insertion orders under an advertiser:
-  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-  /// entityStatus="ENTITY_STATUS_PAUSED")` * All insertion orders whose budget
-  /// segments' dates end before March 28, 2019:
-  /// `budget.budget_segments.date_range.end_date<"2019-03-28"` * All insertion
-  /// orders with an update time less than or equal to `2020-11-04T18:54:47Z
-  /// (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All
-  /// insertion orders with an update time greater than or equal to
-  /// `2020-11-04T18:54:47Z (format of ISO 8601)`:
-  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
-  /// more than 500 characters.
+  /// [filter] - Allows filtering by insertion order fields. Supported syntax: *
+  /// Filter expressions are made up of one or more restrictions. * Restrictions
+  /// can be combined by `AND` or `OR` logical operators. A sequence of
+  /// restrictions implicitly uses `AND`. * A restriction has the form of
+  /// `{field} {operator} {value}`. * The
+  /// `budget.budget_segments.date_range.end_date` field must use the `LESS THAN
+  /// (<)` operator. * The `updateTime` field must use the `GREATER THAN OR
+  /// EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other
+  /// fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `campaignId` * `displayName` * `entityStatus` *
+  /// `budget.budget_segments.date_range.end_date` (input in the form of
+  /// `YYYY-MM-DD`) **Deprecated. Not available after June 8, 2023** *
+  /// `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
+  /// Examples: * All insertion orders under a campaign: `campaignId="1234"` *
+  /// All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
+  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// entityStatus="ENTITY_STATUS_PAUSED")` * All insertion orders with an
+  /// update time less than or equal to 2020-11-04T18:54:47Z (format of ISO
+  /// 8601): `updateTime<="2020-11-04T18:54:47Z"` * All insertion orders with an
+  /// update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO
+  /// 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field
+  /// should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// "displayName" (default) * "entityStatus" * "updateTime" The default
@@ -2501,19 +2517,21 @@ class AdvertisersInsertionOrdersResource {
   /// assigned targeting options for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`
-  /// on the same field. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-  /// `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of
-  /// targeting type TARGETING_TYPE_PROXIMITY_LOCATION_LIST or
-  /// TARGETING_TYPE_CHANNEL
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance`
+  /// Examples: * `AssignedTargetingOption` resources of targeting type
+  /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`:
   /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
-  /// targetingType="TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with
-  /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption`
+  /// resources with inheritance status of `NOT_INHERITED` or
+  /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR
+  /// inheritance="INHERITED_FROM_PARTNER"` The length of this field should be
+  /// no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `targetingType` (default) The default sorting order is ascending. To
@@ -2756,7 +2774,9 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -2939,7 +2959,9 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -3129,7 +3151,9 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -3322,7 +3346,9 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -3360,17 +3386,19 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` - `inheritance` Examples: *
-  /// AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-  /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-  /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` *
+  /// `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or
+  /// 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` *
+  /// `AssignedTargetingOption` resources with inheritance status of
+  /// `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED"
+  /// OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -3626,19 +3654,22 @@ class AdvertisersLineItemsResource {
   /// to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`
-  /// on the same field. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-  /// `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of
-  /// targeting type TARGETING_TYPE_PROXIMITY_LOCATION_LIST or
-  /// TARGETING_TYPE_CHANNEL
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR` on the same
+  /// field. * A restriction has the form of `{field} {operator} {value}`. * All
+  /// fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
+  /// resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or
+  /// `TARGETING_TYPE_CHANNEL`:
   /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
-  /// targetingType="TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with
-  /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption`
+  /// resources with inheritance status of `NOT_INHERITED` or
+  /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR
+  /// inheritance="INHERITED_FROM_PARTNER"` The length of this field should be
+  /// no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [lineItemIds] - Required. The IDs of the line items to list assigned
   /// targeting options for.
@@ -3995,22 +4026,22 @@ class AdvertisersLineItemsResource {
   /// for.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by line item properties. Supported syntax: *
+  /// [filter] - Allows filtering by line item fields. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator used on
-  /// `flight.dateRange.endDate` must be LESS THAN (\<). * The operator used on
-  /// `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR
-  /// EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS
-  /// (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
-  /// Supported properties: - `campaignId` - `displayName` - `insertionOrderId`
-  /// - `entityStatus` - `lineItemId` - `lineItemType` -
-  /// `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) -
-  /// `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601
-  /// format, or YYYY-MM-DDTHH:MM:SSZ) - `targetedChannelId` -
-  /// `targetedNegativeKeywordListId` Examples: * All line items under an
-  /// insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
+  /// `{field} {operator} {value}`. * The `flight.dateRange.endDate` field must
+  /// use the `LESS THAN (<)` operator. * The `updateTime` field must use the
+  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators.
+  /// * The `warningMessages` field must use the `HAS (:)` operator. * All other
+  /// fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `campaignId` * `displayName` * `entityStatus` * `flight.dateRange.endDate`
+  /// (input formatted as `YYYY-MM-DD`) **Deprecated. Not available after June
+  /// 8, 2023** * `flight.triggerId` * `insertionOrderId` * `lineItemId` *
+  /// `lineItemType` * `targetedChannelId` * `targetedNegativeKeywordListId` *
+  /// `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) *
+  /// `warningMessages` Examples: * All line items under an insertion order:
+  /// `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
   /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items
   /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND
@@ -4019,19 +4050,22 @@ class AdvertisersLineItemsResource {
   /// `flight.dateRange.endDate<"2019-03-28"` * All line items that have
   /// `NO_VALID_CREATIVE` in `warningMessages`:
   /// `warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time
-  /// less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
   /// `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
-  /// greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
   /// `updateTime>="2020-11-04T18:54:47Z"` * All line items that are using both
   /// the specified channel and specified negative keyword list in their
   /// targeting: `targetedNegativeKeywordListId=789 AND targetedChannelId=12345`
-  /// The length of this field should be no more than 500 characters.
+  /// The length of this field should be no more than 500 characters. Reference
+  /// our \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` * `flight.dateRange.endDate` *
-  /// `updateTime` The default sorting order is ascending. To specify descending
-  /// order for a field, a suffix "desc" should be added to the field name.
-  /// Example: `displayName desc`.
+  /// `displayName` (default) * `entityStatus` * `flight.dateRange.endDate`
+  /// **Deprecated. Not available after June 8, 2023** * `updateTime` The
+  /// default sorting order is ascending. To specify descending order for a
+  /// field, a suffix "desc" should be added to the field name. Example:
+  /// `displayName desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
@@ -4276,7 +4310,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -4468,7 +4504,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -4662,7 +4700,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -4859,7 +4899,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -4897,17 +4939,19 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` - `inheritance` Examples: *
-  /// AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-  /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-  /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
-  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-  /// length of this field should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` *
+  /// `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or
+  /// 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` *
+  /// `AssignedTargetingOption` resources with inheritance status of
+  /// `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED"
+  /// OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -5080,10 +5124,14 @@ class AdvertisersLocationListsResource {
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
-  /// Supported fields: - `locationType` Examples: * All regional location list:
-  /// `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location
-  /// list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`
+  /// `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
+  /// operator. Supported fields: * `locationType` Examples: * All regional
+  /// location list: `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All
+  /// proximity location list:
+  /// `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"` The length of this
+  /// field should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `locationListId` (default) * `displayName` The default sorting order is
@@ -5366,10 +5414,12 @@ class AdvertisersLocationListsAssignedLocationsResource {
   ///
   /// [filter] - Allows filtering by location list assignment fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by the logical operator `OR`. * A restriction
-  /// has the form of `{field} {operator} {value}`. * The operator must be
-  /// `EQUALS (=)`. * Supported fields: - `assignedLocationId` The length of
-  /// this field should be no more than 500 characters.
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedLocationId` The length
+  /// of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedLocationId` (default) The default sorting order is ascending. To
@@ -5437,7 +5487,11 @@ class AdvertisersManualTriggersResource {
   /// Activates a manual trigger.
   ///
   /// Each activation of the manual trigger must be at least 5 minutes apart,
-  /// otherwise an error will be returned.
+  /// otherwise an error will be returned. **Warning:** Line Items using manual
+  /// triggers will stop serving in Display & Video 360 on **May 17, 2023**.
+  /// Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5489,7 +5543,11 @@ class AdvertisersManualTriggersResource {
 
   /// Creates a new manual trigger.
   ///
-  /// Returns the newly created manual trigger if successful.
+  /// Returns the newly created manual trigger if successful. **Warning:** Line
+  /// Items using manual triggers will stop serving in Display & Video 360 on
+  /// **May 17, 2023**. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5534,6 +5592,11 @@ class AdvertisersManualTriggersResource {
   }
 
   /// Deactivates a manual trigger.
+  ///
+  /// **Warning:** Line Items using manual triggers will stop serving in Display
+  /// & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5585,6 +5648,11 @@ class AdvertisersManualTriggersResource {
 
   /// Gets a manual trigger.
   ///
+  /// **Warning:** Line Items using manual triggers will stop serving in Display
+  /// & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
+  ///
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser this manual trigger
@@ -5631,7 +5699,10 @@ class AdvertisersManualTriggersResource {
   /// advertiser ID.
   ///
   /// The order is defined by the order_by parameter. A single advertiser_id is
-  /// required.
+  /// required. **Warning:** Line Items using manual triggers will stop serving
+  /// in Display & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -5639,14 +5710,16 @@ class AdvertisersManualTriggersResource {
   /// manual triggers belong to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by manual trigger properties. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by `AND` or `OR` logical operators. A
-  /// sequence of restrictions implicitly uses `AND`. * A restriction has the
-  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`.
-  /// * Supported fields: - `displayName` - `state` Examples: * All active
-  /// manual triggers under an advertiser: `state="ACTIVE"` The length of this
-  /// field should be no more than 500 characters.
+  /// [filter] - Allows filtering by manual trigger fields. Supported syntax: *
+  /// Filter expressions are made up of one or more restrictions. * Restrictions
+  /// can be combined by `AND` or `OR` logical operators. A sequence of
+  /// restrictions implicitly uses `AND`. * A restriction has the form of
+  /// `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
+  /// operator. Supported fields: * `displayName` * `state` Examples: * All
+  /// active manual triggers under an advertiser: `state="ACTIVE"` The length of
+  /// this field should be no more than 500 characters. Reference our \[filter
+  /// `LIST` requests\](/display-video/api/guides/how-tos/filters) guide for
+  /// more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `state` The default sorting order is ascending.
@@ -5702,7 +5775,11 @@ class AdvertisersManualTriggersResource {
 
   /// Updates a manual trigger.
   ///
-  /// Returns the updated manual trigger if successful.
+  /// Returns the updated manual trigger if successful. **Warning:** Line Items
+  /// using manual triggers will stop serving in Display & Video 360 on **May
+  /// 17, 2023**. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.manual_triggers)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6188,11 +6265,14 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by negative keyword fields. Supported syntax:
-  /// * Filter expressions for negative keyword currently can only contain at
-  /// most one * restriction. * A restriction has the form of `{field}
-  /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported
-  /// fields: - `keywordValue` Examples: * All negative keywords for which the
-  /// keyword value contains "google": `keywordValue : "google"`
+  /// * Filter expressions for negative keywords can only contain at most one
+  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
+  /// * All fields must use the `HAS (:)` operator. Supported fields: *
+  /// `keywordValue` Examples: * All negative keywords for which the keyword
+  /// value contains "google": `keywordValue : "google"` The length of this
+  /// field should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `keywordValue` (default) The default sorting order is ascending. To
@@ -6408,7 +6488,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -6565,7 +6647,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -6725,7 +6809,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -6887,7 +6973,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -6925,14 +7013,16 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` Examples: * AssignedTargetingOption with ID
-  /// 123456 `assignedTargetingOptionId="123456"` The length of this field
-  /// should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId`
+  /// Examples: * `AssignedTargetingOption` with ID 123456:
+  /// `assignedTargetingOptionId="123456"` The length of this field should be no
+  /// more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -7051,16 +7141,18 @@ class AdvertisersYoutubeAdGroupAdsResource {
   ///
   /// [filter] - Allows filtering by custom YouTube ad group ad fields.
   /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by `AND` and `OR`. Only the
-  /// restrictions for * the same field can be combined by `OR`. A sequence of
-  /// restrictions * implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
-  /// Supported properties: - `adGroupId` - `displayName` - `entityStatus` -
-  /// `adGroupAdId` Examples: * All ad group ads under an ad group:
-  /// `adGroupId="1234"` and its * entityStatus is `ENTITY_STATUS_ACTIVE` or
-  /// `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence
+  /// of restrictions implicitly uses `AND`. * A restriction has the form of
+  /// `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
+  /// operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus`
+  /// * `adGroupAdId` Examples: * All ad group ads under an ad group:
+  /// `adGroupId="1234"` * All ad group ads under an ad group with an
+  /// entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`:
+  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of
-  /// this field should be no more than 500 characters.
+  /// this field should be no more than 500 characters. Reference our \[filter
+  /// `LIST` requests\](/display-video/api/guides/how-tos/filters) guide for
+  /// more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` The default sorting order is
@@ -7136,16 +7228,18 @@ class AdvertisersYoutubeAdGroupsResource {
   /// to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`
-  /// on the same field. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-  /// `targetingType` Examples: * AssignedTargetingOptions of targeting type
-  /// TARGETING_TYPE_YOUTUBE_VIDEO or TARGETING_TYPE_YOUTUBE_CHANNEL
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: *
+  /// `AssignedTargetingOption` resources of targeting type
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`:
   /// `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR
   /// targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field
-  /// should be no more than 500 characters.
+  /// should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `youtubeAdGroupId` (default) * `assignedTargetingOption.targetingType` The
@@ -7261,18 +7355,19 @@ class AdvertisersYoutubeAdGroupsResource {
   ///
   /// [filter] - Allows filtering by custom YouTube ad group fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by `AND` and `OR`. Only the restrictions for
-  /// * the same field can be combined by `OR`. A sequence of restrictions *
+  /// Restrictions can be combined by `AND` and `OR`. A sequence of restrictions
   /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported properties: -
-  /// `adGroupId` - `displayName` - `entityStatus` - `lineItemId` -
-  /// `adGroupFormat` Examples: * All ad groups under an line item:
+  /// {value}`. * All fields must use the `EQUALS (=)` operator. Supported
+  /// properties: * `adGroupId` * `displayName` * `entityStatus` * `lineItemId`
+  /// * `adGroupFormat` Examples: * All ad groups under an line item:
   /// `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-  /// and `YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM` ad groups under an
+  /// `YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM` ad groups under an
   /// advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND
   /// adGroupFormat="YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM"` The length
-  /// of this field should be no more than 500 characters.
+  /// of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` The default sorting order is
@@ -7440,7 +7535,9 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -7616,7 +7713,9 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -7654,14 +7753,16 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` Examples: * AssignedTargetingOptions with ID 1
-  /// or 2 `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The
-  /// length of this field should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId`
+  /// Examples: * `AssignedTargetingOption` resources with ID 1 or 2:
+  /// `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The
+  /// length of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -7785,12 +7886,14 @@ class CombinedAudiencesResource {
   /// combined audiences.
   ///
   /// [filter] - Allows filtering by combined audience fields. Supported syntax:
-  /// * Filter expressions for combined audiences currently can only contain at
-  /// most one restriction. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: -
+  /// * Filter expressions for combined audiences can only contain at most one
+  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
+  /// * All fields must use the `HAS (:)` operator. Supported fields: *
   /// `displayName` Examples: * All combined audiences for which the display
   /// name contains "Google": `displayName : "Google"`. The length of this field
-  /// should be no more than 500 characters.
+  /// should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `combinedAudienceId` (default) * `displayName` The default sorting order
@@ -7958,20 +8061,18 @@ class CustomBiddingAlgorithmsResource {
   ///
   /// [filter] - Allows filtering by custom bidding algorithm fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by `AND`. A sequence of restrictions *
+  /// Restrictions can be combined by `AND`. A sequence of restrictions
   /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `CONTAINS (:)` or `EQUALS (=)`. * The
-  /// operator must be `CONTAINS (:)` for the following field: - `displayName` *
-  /// The operator must be `EQUALS (=)` for the following field: -
-  /// `customBiddingAlgorithmType` * For `displayName`, the value is a string.
-  /// We return all custom bidding algorithms whose display_name contains such
-  /// string. * For `customBiddingAlgorithmType`, the value is a string. We
-  /// return all algorithms whose custom_bidding_algorithm_type is equal to the
-  /// given type. Examples: * All custom bidding algorithms for which the
-  /// display name contains "politics": `displayName:politics`. * All custom
-  /// bidding algorithms for which the type is "SCRIPT_BASED":
+  /// {value}`. * The `customBiddingAlgorithmType` field must use the `EQUALS
+  /// (=)` operator. * The `displayName` field must use the `HAS (:)` operator.
+  /// Supported fields: * `customBiddingAlgorithmType` * `displayName` Examples:
+  /// * All custom bidding algorithms for which the display name contains
+  /// "politics": `displayName:"politics"`. * All custom bidding algorithms for
+  /// which the type is "SCRIPT_BASED":
   /// `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should
-  /// be no more than 500 characters.
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -8382,12 +8483,14 @@ class CustomListsResource {
   /// fetched custom lists.
   ///
   /// [filter] - Allows filtering by custom list fields. Supported syntax: *
-  /// Filter expressions for custom lists currently can only contain at most one
+  /// Filter expressions for custom lists can only contain at most one
   /// restriction. * A restriction has the form of `{field} {operator} {value}`.
-  /// * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
-  /// Examples: * All custom lists for which the display name contains "Google":
-  /// `displayName : "Google"`. The length of this field should be no more than
-  /// 500 characters.
+  /// * All fields must use the `HAS (:)` operator. Supported fields: *
+  /// `displayName` Examples: * All custom lists for which the display name
+  /// contains "Google": `displayName:"Google"`. The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `customListId` (default) * `displayName` The default sorting order is
@@ -8599,12 +8702,14 @@ class FirstAndThirdPartyAudiencesResource {
   ///
   /// [filter] - Allows filtering by first and third party audience fields.
   /// Supported syntax: * Filter expressions for first and third party audiences
-  /// currently can only contain at most one restriction. * A restriction has
-  /// the form of `{field} {operator} {value}`. * The operator must be `CONTAINS
-  /// (:)`. * Supported fields: - `displayName` Examples: * All first and third
-  /// party audiences for which the display name contains "Google": `displayName
-  /// : "Google"`. The length of this field should be no more than 500
-  /// characters.
+  /// can only contain at most one restriction. * A restriction has the form of
+  /// `{field} {operator} {value}`. * All fields must use the `HAS (:)`
+  /// operator. Supported fields: * `displayName` Examples: * All first and
+  /// third party audiences for which the display name contains "Google":
+  /// `displayName:"Google"`. The length of this field should be no more than
+  /// 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `firstAndThirdPartyAudienceId` (default) * `displayName` The default
@@ -8885,12 +8990,14 @@ class GoogleAudiencesResource {
   /// Google audiences.
   ///
   /// [filter] - Allows filtering by Google audience fields. Supported syntax: *
-  /// Filter expressions for Google audiences currently can only contain at most
-  /// one restriction. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `CONTAINS (:)`. * Supported fields: -
+  /// Filter expressions for Google audiences can only contain at most one
+  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
+  /// * All fields must use the `HAS (:)` operator. Supported fields: *
   /// `displayName` Examples: * All Google audiences for which the display name
-  /// contains "Google": `displayName : "Google"`. The length of this field
-  /// should be no more than 500 characters.
+  /// contains "Google": `displayName:"Google"`. The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `googleAudienceId` (default) * `displayName` The default sorting order is
@@ -9107,17 +9214,19 @@ class GuaranteedOrdersResource {
   /// [advertiserId] - The ID of the advertiser that has access to the
   /// guaranteed order.
   ///
-  /// [filter] - Allows filtering by guaranteed order properties. * Filter
+  /// [filter] - Allows filtering by guaranteed order fields. * Filter
   /// expressions are made up of one or more restrictions. * Restrictions can be
   /// combined by `AND` or `OR` logical operators. A sequence of restrictions
   /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
-  /// `guaranteed_order_id` - `exchange` - `display_name` -
+  /// {value}`. * All fields must use the `EQUALS (=)` operator. Supported
+  /// fields: * `guaranteed_order_id` * `exchange` * `display_name` *
   /// `status.entityStatus` Examples: * All active guaranteed orders:
   /// `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging
   /// to Google Ad Manager or Rubicon exchanges:
   /// `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The
-  /// length of this field should be no more than 500 characters.
+  /// length of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -9403,13 +9512,14 @@ class InventorySourceGroupsResource {
   /// source group. If an inventory source group is partner-owned, only
   /// advertisers to which the group is explicitly shared can access the group.
   ///
-  /// [filter] - Allows filtering by inventory source group properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `inventorySourceGroupId` The length of this field should be no more than
-  /// 500 characters.
+  /// [filter] - Allows filtering by inventory source group fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `inventorySourceGroupId` The
+  /// length of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `inventorySourceGroupId` The default sorting
@@ -9713,10 +9823,12 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   ///
   /// [filter] - Allows filtering by assigned inventory source fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by the logical operator `OR`. * A restriction
-  /// has the form of `{field} {operator} {value}`. * The operator must be
-  /// `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId` The length
-  /// of this field should be no more than 500 characters.
+  /// Restrictions can be combined by the `OR` logical operator. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedInventorySourceId` The
+  /// length of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedInventorySourceId` (default) The default sorting order is
@@ -9932,17 +10044,19 @@ class InventorySourcesResource {
   /// [advertiserId] - The ID of the advertiser that has access to the inventory
   /// source.
   ///
-  /// [filter] - Allows filtering by inventory source properties. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// [filter] - Allows filtering by inventory source fields. Supported syntax:
+  /// * Filter expressions are made up of one or more restrictions. *
   /// Restrictions can be combined by `AND` or `OR` logical operators. A
   /// sequence of restrictions implicitly uses `AND`. * A restriction has the
-  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`.
-  /// * Supported fields: - `status.entityStatus` - `commitment` -
-  /// `deliveryMethod` - `rateDetails.rateType` - `exchange` Examples: * All
+  /// form of `{field} {operator} {value}`. * All fields must use the `EQUALS
+  /// (=)` operator. Supported fields: * `status.entityStatus` * `commitment` *
+  /// `deliveryMethod` * `rateDetails.rateType` * `exchange` Examples: * All
   /// active inventory sources: `status.entityStatus="ENTITY_STATUS_ACTIVE"` *
   /// Inventory sources belonging to Google Ad Manager or Rubicon exchanges:
   /// `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The
-  /// length of this field should be no more than 500 characters.
+  /// length of this field should be no more than 500 characters. Reference our
+  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
+  /// guide for more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -10276,14 +10390,16 @@ class PartnersResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Allows filtering by partner properties. Supported syntax: *
-  /// Filter expressions are made up of one or more restrictions. * Restrictions
-  /// can be combined by `AND` or `OR` logical operators. A sequence of
-  /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
-  /// Supported fields: - `entityStatus` Examples: * All active partners:
+  /// [filter] - Allows filtering by partner fields. Supported syntax: * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * All fields must use the `EQUALS (=)` operator. Supported
+  /// fields: * `entityStatus` Examples: * All active partners:
   /// `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be
-  /// no more than 500 characters.
+  /// no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` The default sorting order is ascending. To specify
@@ -10446,12 +10562,14 @@ class PartnersChannelsResource {
   /// [advertiserId] - The ID of the advertiser that owns the channels.
   ///
   /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
-  /// expressions for channel currently can only contain at most one *
-  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
-  /// * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+  /// expressions for channel can only contain at most one restriction. * A
+  /// restriction has the form of `{field} {operator} {value}`. * All fields
+  /// must use the `HAS (:)` operator. Supported fields: * `displayName`
   /// Examples: * All channels for which the display name contains "google":
   /// `displayName : "google"`. The length of this field should be no more than
-  /// 500 characters.
+  /// 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `channelId` The default sorting order is
@@ -10742,11 +10860,14 @@ class PartnersChannelsSitesResource {
   /// [advertiserId] - The ID of the advertiser that owns the parent channel.
   ///
   /// [filter] - Allows filtering by site fields. Supported syntax: * Filter
-  /// expressions for site currently can only contain at most one * restriction.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `CONTAINS (:)`. * Supported fields: - `urlOrAppId`
+  /// expressions for site retrieval can only contain at most one restriction. *
+  /// A restriction has the form of `{field} {operator} {value}`. * All fields
+  /// must use the `HAS (:)` operator. Supported fields: * `urlOrAppId`
   /// Examples: * All sites for which the URL or app ID contains "google":
-  /// `urlOrAppId : "google"`
+  /// `urlOrAppId : "google"` The length of this field should be no more than
+  /// 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `urlOrAppId` (default) The default sorting order is ascending. To specify
@@ -10961,7 +11082,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11116,7 +11239,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11273,7 +11398,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11432,7 +11559,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11470,14 +11599,16 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` Examples: * AssignedTargetingOption with ID
-  /// 123456 `assignedTargetingOptionId="123456"` The length of this field
-  /// should be no more than 500 characters.
+  /// [filter] - Allows filtering by assigned targeting option fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId`
+  /// Examples: * `AssignedTargetingOption` resource with ID 123456:
+  /// `assignedTargetingOptionId="123456"` The length of this field should be no
+  /// more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -11740,7 +11871,9 @@ class TargetingTypesTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11912,7 +12045,9 @@ class TargetingTypesTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -11953,20 +12088,22 @@ class TargetingTypesTargetingOptionsResource {
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
   ///
-  /// [filter] - Allows filtering by targeting option properties. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// [filter] - Allows filtering by targeting option fields. Supported syntax:
+  /// * Filter expressions are made up of one or more restrictions. *
   /// Restrictions can be combined by `OR` logical operators. * A restriction
-  /// has the form of `{field} {operator} {value}`. * The operator must be "="
-  /// (equal sign). * Supported fields: - `carrierAndIspDetails.type` -
-  /// `geoRegionDetails.geoRegionType` - `targetingOptionId` Examples: * All
+  /// has the form of `{field} {operator} {value}`. * All fields must use the
+  /// `EQUALS (=)` operator. Supported fields: * `carrierAndIspDetails.type` *
+  /// `geoRegionDetails.geoRegionType` * `targetingOptionId` Examples: * All
   /// `GEO REGION` targeting options that belong to sub type
   /// `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`:
   /// `geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR
   /// geoRegionDetails.geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND
   /// ISP` targeting options that belong to sub type
   /// `CARRIER_AND_ISP_TYPE_CARRIER`:
-  /// `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length of
-  /// this field should be no more than 500 characters.
+  /// `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"` The length of
+  /// this field should be no more than 500 characters. Reference our \[filter
+  /// `LIST` requests\](/display-video/api/guides/how-tos/filters) guide for
+  /// more information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `targetingOptionId` (default) The default sorting order is ascending. To
@@ -12104,7 +12241,9 @@ class TargetingTypesTargetingOptionsResource {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -12187,7 +12326,12 @@ class UsersResource {
   /// The operation will delete the assigned user roles provided in
   /// BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign
   /// the user roles provided in
-  /// BulkEditAssignedUserRolesRequest.createdAssignedUserRoles.
+  /// BulkEditAssignedUserRolesRequest.createdAssignedUserRoles. This method has
+  /// unique authentication requirements. Read the prerequisites in our
+  /// \[Managing Users
+  /// guide\](/display-video/api/guides/users/overview#prerequisites) before
+  /// using this method. The "Try this method" feature does not work for this
+  /// method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12233,7 +12377,11 @@ class UsersResource {
 
   /// Creates a new user.
   ///
-  /// Returns the newly created user if successful.
+  /// Returns the newly created user if successful. This method has unique
+  /// authentication requirements. Read the prerequisites in our \[Managing
+  /// Users guide\](/display-video/api/guides/users/overview#prerequisites)
+  /// before using this method. The "Try this method" feature does not work for
+  /// this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12271,6 +12419,12 @@ class UsersResource {
 
   /// Deletes a user.
   ///
+  /// This method has unique authentication requirements. Read the prerequisites
+  /// in our \[Managing Users
+  /// guide\](/display-video/api/guides/users/overview#prerequisites) before
+  /// using this method. The "Try this method" feature does not work for this
+  /// method.
+  ///
   /// Request parameters:
   ///
   /// [userId] - Required. The ID of the user to delete.
@@ -12305,6 +12459,12 @@ class UsersResource {
   }
 
   /// Gets a user.
+  ///
+  /// This method has unique authentication requirements. Read the prerequisites
+  /// in our \[Managing Users
+  /// guide\](/display-video/api/guides/users/overview#prerequisites) before
+  /// using this method. The "Try this method" feature does not work for this
+  /// method.
   ///
   /// Request parameters:
   ///
@@ -12342,33 +12502,41 @@ class UsersResource {
   /// Lists users that are accessible to the current user.
   ///
   /// If two users have user roles on the same partner or advertiser, they can
-  /// access each other.
+  /// access each other. This method has unique authentication requirements.
+  /// Read the prerequisites in our \[Managing Users
+  /// guide\](/display-video/api/guides/users/overview#prerequisites) before
+  /// using this method. The "Try this method" feature does not work for this
+  /// method.
   ///
   /// Request parameters:
   ///
-  /// [filter] - Allows filtering by user properties. Supported syntax: * Filter
+  /// [filter] - Allows filtering by user fields. Supported syntax: * Filter
   /// expressions are made up of one or more restrictions. * Restrictions can be
-  /// combined by the logical operator `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `CONTAINS (:)` or
-  /// `EQUALS (=)`. * The operator must be `CONTAINS (:)` for the following
-  /// fields: - `displayName` - `email` * The operator must be `EQUALS (=)` for
-  /// the following fields: - `assignedUserRole.userRole` -
-  /// `assignedUserRole.partnerId` - `assignedUserRole.advertiserId` -
-  /// `assignedUserRole.entityType`: A synthetic field of AssignedUserRole used
-  /// for filtering. Identifies the type of entity to which the user role is
-  /// assigned. Valid values are `Partner` and `Advertiser`. -
-  /// `assignedUserRole.parentPartnerId`: A synthetic field of AssignedUserRole
-  /// used for filtering. Identifies the parent partner of the entity to which
-  /// the user role is assigned." Examples: * The user with displayName
-  /// containing `foo`: `displayName:"foo"` * The user with email containing
-  /// `bar`: `email:"bar"` * All users with standard user roles:
-  /// `assignedUserRole.userRole="STANDARD"` * All users with user roles for
-  /// partner 123: `assignedUserRole.partnerId="123"` * All users with user
-  /// roles for advertiser 123: `assignedUserRole.advertiserId="123"` * All
-  /// users with partner level user roles: `entityType="PARTNER"` * All users
+  /// combined by the logical operator \`AND\`. * A restriction has the form of
+  /// \`{field} {operator} {value}\`. * The
+  /// \`budget.budget_segments.date_range.end_date\` field must use the \`LESS
+  /// THAN (\<)\` operator. * The \`displayName and \`email\` field must use the
+  /// \`HAS (:)\` operator. * All other fields must use the \`EQUALS (=)\`
+  /// operator. Supported fields: * \`assignedUserRole.advertiserId\` *
+  /// \`assignedUserRole.entityType\` * This is synthetic field of
+  /// \`AssignedUserRole\` used for filtering. Identifies the type of entity to
+  /// which the user role is assigned. Valid values are \`Partner\` and
+  /// \`Advertiser\`. * \`assignedUserRole.parentPartnerId\` * This is a
+  /// synthetic field of \`AssignedUserRole\` used for filtering. Identifies the
+  /// parent partner of the entity to which the user role is assigned. *
+  /// \`assignedUserRole.partnerId\` * \`assignedUserRole.userRole\` *
+  /// \`displayName\` * \`email\` Examples: * The user with \`displayName\`
+  /// containing "foo": \`displayName:"foo"\` * The user with \`email\`
+  /// containing "bar": \`email:"bar"\` * All users with standard user roles:
+  /// \`assignedUserRole.userRole="STANDARD"\` * All users with user roles for
+  /// partner 123: \`assignedUserRole.partnerId="123"\` * All users with user
+  /// roles for advertiser 123: \`assignedUserRole.advertiserId="123"\` * All
+  /// users with partner level user roles: \`entityType="PARTNER"\` * All users
   /// with user roles for partner 123 and advertisers under partner 123:
-  /// `parentPartnerId="123"` The length of this field should be no more than
-  /// 500 characters.
+  /// \`parentPartnerId="123"\` The length of this field should be no more than
+  /// 500 characters. Reference our \[filter \`LIST\`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -12421,7 +12589,11 @@ class UsersResource {
 
   /// Updates an existing user.
   ///
-  /// Returns the updated user if successful.
+  /// Returns the updated user if successful. This method has unique
+  /// authentication requirements. Read the prerequisites in our \[Managing
+  /// Users guide\](/display-video/api/guides/users/overview#prerequisites)
+  /// before using this method. The "Try this method" feature does not work for
+  /// this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13470,7 +13642,9 @@ class AssignedTargetingOption {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -13988,6 +14162,11 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// Used for negative targeting. The COMPLEMENT of the UNION of this group and
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. All items are logically ‘OR’ of each other.
+  /// **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will be
+  /// deprecated on **May 20, 2023**. After this date, these audiences will not
+  /// be able to be added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
+  /// for more information.
   FirstAndThirdPartyAudienceGroup? excludedFirstAndThirdPartyAudienceGroup;
 
   /// The Google audience ids of the excluded Google audience group.
@@ -13996,6 +14175,12 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. Only contains Affinity, In-market and Installed-apps
   /// type Google audiences. All items are logically ‘OR’ of each other.
+  /// **Warning:** `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and
+  /// `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience types will be
+  /// deprecated on **May 20, 2023**. After this date, these audiences will not
+  /// be able to be added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
+  /// for more information.
   GoogleAudienceGroup? excludedGoogleAudienceGroup;
 
   /// The combined audience ids of the included combined audience group.
@@ -14015,12 +14200,23 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// audience ids only. The relation between each first and third party
   /// audience group is INTERSECTION, and the result is UNION'ed with other
   /// audience groups. Repeated groups with same settings will be ignored.
+  /// **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will be
+  /// deprecated on **May 20, 2023**. After this date, these audiences will not
+  /// be able to be added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
+  /// for more information.
   core.List<FirstAndThirdPartyAudienceGroup>?
       includedFirstAndThirdPartyAudienceGroups;
 
   /// The Google audience ids of the included Google audience group.
   ///
-  /// Contains Google audience ids only.
+  /// Contains Google audience ids only. **Warning:**
+  /// `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and
+  /// `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience types will be
+  /// deprecated on **May 20, 2023**. After this date, these audiences will not
+  /// be able to be added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
+  /// for more information.
   GoogleAudienceGroup? includedGoogleAudienceGroup;
 
   AudienceGroupAssignedTargetingOptionDetails({
@@ -14187,7 +14383,10 @@ typedef AuditAdvertiserResponse = $AuditAdvertiserResponse;
 /// Represents an assigned authorized seller status.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
-/// when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+/// when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a
+/// resource does not have an `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned
+/// targeting option, it is using the "Authorized Direct Sellers and Resellers"
+/// option.
 typedef AuthorizedSellerStatusAssignedTargetingOptionDetails
     = $AuthorizedSellerStatusAssignedTargetingOptionDetails;
 
@@ -16281,7 +16480,9 @@ class CreateAssignedTargetingOptionsRequest {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -17817,7 +18018,9 @@ class DeleteAssignedTargetingOptionsRequest {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
@@ -18566,8 +18769,17 @@ class FirstAndThirdPartyAudience {
   /// - "CUSTOMER_MATCH_USER_ID" : Audience was generated through matching
   /// customers to known User IDs.
   /// - "ACTIVITY_BASED" : Audience was created based on campaign activity.
+  /// **Warning:** This audience type will be deprecated on **May 20, 2023**.
+  /// After this date, these audiences will not be able to be added to resource
+  /// targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
+  /// for more information.
   /// - "FREQUENCY_CAP" : Audience was created based on excluding the number of
-  /// impressions they were served.
+  /// impressions they were served. **Warning:** This audience type will be
+  /// deprecated on **May 20, 2023**. After this date, these audiences will not
+  /// be able to be added to resource targeting. Read our \[feature deprecation
+  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
+  /// for more information.
   /// - "TAG_BASED" : Audience was created based on custom variables attached to
   /// pixel.
   /// - "YOUTUBE_USERS" : Audience was created based on past interactions with
@@ -20944,7 +21156,7 @@ class LineItem {
   /// may represent the \[optimized targeting
   /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
   /// targeting expansion. This feature will be rolled out to all partners by
-  /// mid-April 2023.
+  /// early May 2023.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -22495,6 +22707,11 @@ typedef LookbackWindow = $LookbackWindow;
 typedef LookupInvoiceCurrencyResponse = $LookupInvoiceCurrencyResponse;
 
 /// A single manual trigger in Display & Video 360.
+///
+/// **Warning:** Line Items using manual triggers will stop serving in Display &
+/// Video 360 on **May 17, 2023**. Read our \[feature deprecation
+/// announcement\](/display-video/api/deprecations#features.manual_triggers) for
+/// more information.
 typedef ManualTrigger = $ManualTrigger;
 
 /// Details for a Masthead Ad.
@@ -24128,7 +24345,7 @@ class TargetFrequency {
 /// **March 25, 2023**, these settings may represent the \[optimized targeting
 /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
 /// targeting expansion. This feature will be rolled out to all partners by
-/// mid-April 2023.
+/// early May 2023.
 typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in
@@ -24310,7 +24527,9 @@ class TargetingOption {
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers.
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
   /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
   /// (for example, a city or state).
   /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a

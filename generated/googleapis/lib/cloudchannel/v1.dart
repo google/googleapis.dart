@@ -4662,17 +4662,16 @@ class GoogleCloudChannelV1CustomerRepricingConfig {
 
 /// A representation of usage or invoice date ranges.
 class GoogleCloudChannelV1DateRange {
-  /// The latest invoice date (exclusive).
+  /// The latest invoice date (inclusive).
   ///
-  /// If your product uses monthly invoices, and this value is not the beginning
-  /// of a month, this will adjust the date to the first day of the following
-  /// month.
+  /// If this value is not the last day of a month, this will move it forward to
+  /// the last day of the given month.
   GoogleTypeDate? invoiceEndDate;
 
   /// The earliest invoice date (inclusive).
   ///
-  /// If your product uses monthly invoices, and this value is not the beginning
-  /// of a month, this will adjust the date to the first day of the given month.
+  /// If this value is not the first day of a month, this will move it back to
+  /// the first day of the given month.
   GoogleTypeDate? invoiceStartDate;
 
   /// The latest usage date time (exclusive).
@@ -4782,6 +4781,12 @@ class GoogleCloudChannelV1Entitlement {
   /// Association information to other entitlements.
   GoogleCloudChannelV1AssociationInfo? associationInfo;
 
+  /// The billing account resource name that is used to pay for this
+  /// entitlement.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// Commitment settings for a commitment-based Offer.
   ///
   /// Required for commitment based offers.
@@ -4813,9 +4818,9 @@ class GoogleCloudChannelV1Entitlement {
   /// units for a flexible offer OR - num_units: The total commitment for
   /// commitment-based offers The response may additionally include the
   /// following output-only Parameters: - assigned_units: The number of licenses
-  /// assigned to users. For GCP billing subaccounts, the following Parameter
-  /// may be accepted as input: - display_name: The display name of the billing
-  /// subaccount.
+  /// assigned to users. For Google Cloud billing subaccounts, the following
+  /// Parameter may be accepted as input: - display_name: The display name of
+  /// the billing subaccount.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.
@@ -4859,6 +4864,7 @@ class GoogleCloudChannelV1Entitlement {
 
   GoogleCloudChannelV1Entitlement({
     this.associationInfo,
+    this.billingAccount,
     this.commitmentSettings,
     this.createTime,
     this.name,
@@ -4878,6 +4884,9 @@ class GoogleCloudChannelV1Entitlement {
               ? GoogleCloudChannelV1AssociationInfo.fromJson(
                   json_['associationInfo']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
               : null,
           commitmentSettings: json_.containsKey('commitmentSettings')
               ? GoogleCloudChannelV1CommitmentSettings.fromJson(
@@ -4923,6 +4932,7 @@ class GoogleCloudChannelV1Entitlement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associationInfo != null) 'associationInfo': associationInfo!,
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (commitmentSettings != null)
           'commitmentSettings': commitmentSettings!,
         if (createTime != null) 'createTime': createTime!,
@@ -5140,9 +5150,17 @@ class GoogleCloudChannelV1FetchReportResultsRequest {
   /// Optional.
   core.String? pageToken;
 
+  /// List of keys specifying which report partitions to return.
+  ///
+  /// If empty, returns all partitions.
+  ///
+  /// Optional.
+  core.List<core.String>? partitionKeys;
+
   GoogleCloudChannelV1FetchReportResultsRequest({
     this.pageSize,
     this.pageToken,
+    this.partitionKeys,
   });
 
   GoogleCloudChannelV1FetchReportResultsRequest.fromJson(core.Map json_)
@@ -5153,11 +5171,17 @@ class GoogleCloudChannelV1FetchReportResultsRequest {
           pageToken: json_.containsKey('pageToken')
               ? json_['pageToken'] as core.String
               : null,
+          partitionKeys: json_.containsKey('partitionKeys')
+              ? (json_['partitionKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (partitionKeys != null) 'partitionKeys': partitionKeys!,
       };
 }
 
@@ -6352,7 +6376,7 @@ class GoogleCloudChannelV1Period {
 class GoogleCloudChannelV1Plan {
   /// Reseller Billing account to charge after an offer transaction.
   ///
-  /// Only present for Google Cloud Platform offers.
+  /// Only present for Google Cloud offers.
   core.String? billingAccount;
 
   /// Describes how frequently the reseller will be billed, such as once per
@@ -6492,13 +6516,12 @@ class GoogleCloudChannelV1PriceByResource {
   /// - "GB" : GB (used for storage SKUs).
   /// - "LICENSED_USER" : Active licensed users(for Voice SKUs).
   /// - "MINUTES" : Voice usage.
-  /// - "IAAS_USAGE" : For IaaS SKUs like Google Cloud Platform, monetization is
-  /// based on usage accrued on your billing account irrespective of the type of
+  /// - "IAAS_USAGE" : For IaaS SKUs like Google Cloud, monetization is based on
+  /// usage accrued on your billing account irrespective of the type of
   /// monetizable resource. This enum represents an aggregated
   /// resource/container for all usage SKUs on a billing account. Currently,
-  /// only applicable to Google Cloud Platform.
-  /// - "SUBSCRIPTION" : For Google Cloud Platform subscriptions like Anthos or
-  /// SAP.
+  /// only applicable to Google Cloud.
+  /// - "SUBSCRIPTION" : For Google Cloud subscriptions like Anthos or SAP.
   core.String? resourceType;
 
   GoogleCloudChannelV1PriceByResource({
@@ -6724,7 +6747,7 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this is the underlying Subscription ID. For Google
-  /// Cloud Platform, this is the Billing Account ID of the billing subaccount."
+  /// Cloud, this is the Billing Account ID of the billing subaccount."
   ///
   /// Output only.
   core.String? provisioningId;
@@ -6907,7 +6930,8 @@ class GoogleCloudChannelV1RenewalSettings {
 
 /// The ID and description of a report that was used to generate report data.
 ///
-/// For example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+/// For example, "Google Cloud Daily Spend", "Google Workspace License
+/// Activity", etc.
 class GoogleCloudChannelV1Report {
   /// The list of columns included in the report.
   ///
@@ -7272,15 +7296,24 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 
 /// A row of report values.
 class GoogleCloudChannelV1Row {
+  /// The key for the partition this row belongs to.
+  ///
+  /// This field is empty if the report is not partitioned.
+  core.String? partitionKey;
+
   /// The list of values in the row.
   core.List<GoogleCloudChannelV1ReportValue>? values;
 
   GoogleCloudChannelV1Row({
+    this.partitionKey,
     this.values,
   });
 
   GoogleCloudChannelV1Row.fromJson(core.Map json_)
       : this(
+          partitionKey: json_.containsKey('partitionKey')
+              ? json_['partitionKey'] as core.String
+              : null,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => GoogleCloudChannelV1ReportValue.fromJson(
@@ -7290,6 +7323,7 @@ class GoogleCloudChannelV1Row {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (partitionKey != null) 'partitionKey': partitionKey!,
         if (values != null) 'values': values!,
       };
 }

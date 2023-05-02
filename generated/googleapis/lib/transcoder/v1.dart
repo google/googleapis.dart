@@ -1741,7 +1741,7 @@ class H265CodecSettings {
       };
 }
 
-/// Overlaid jpeg image.
+/// Overlaid image.
 class Image {
   /// Target image opacity.
   ///
@@ -1756,10 +1756,10 @@ class Image {
   /// `x` and `y` to `0.0`.
   NormalizedCoordinate? resolution;
 
-  /// URI of the JPEG image in Cloud Storage.
+  /// URI of the image in Cloud Storage.
   ///
-  /// For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported
-  /// image type.
+  /// For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are
+  /// supported.
   ///
   /// Required.
   core.String? uri;
@@ -2276,15 +2276,15 @@ class Manifest {
   /// Required.
   core.List<core.String>? muxStreams;
 
-  /// Type of the manifest, can be `HLS` or `DASH`.
+  /// Type of the manifest.
   ///
   /// Required.
   /// Possible string values are:
   /// - "MANIFEST_TYPE_UNSPECIFIED" : The manifest type is not specified.
-  /// - "HLS" : Create `HLS` manifest. The corresponding file extension is
+  /// - "HLS" : Create an HLS manifest. The corresponding file extension is
   /// `.m3u8`.
-  /// - "DASH" : Create `DASH` manifest. The corresponding file extension is
-  /// `.mpd`.
+  /// - "DASH" : Create an MPEG-DASH manifest. The corresponding file extension
+  /// is `.mpd`.
   core.String? type;
 
   Manifest({

@@ -471,6 +471,8 @@ class AdUnit {
 class App {
   /// The approval state for the app.
   ///
+  /// The field is read-only.
+  ///
   /// Output only.
   /// Possible string values are:
   /// - "APP_APPROVAL_STATE_UNSPECIFIED" : Default value for an unset field. Do

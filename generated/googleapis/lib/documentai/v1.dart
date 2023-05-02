@@ -137,14 +137,13 @@ class ProjectsLocationsResource {
 
   /// Fetches processor types.
   ///
-  /// Note that we do not use ListProcessorTypes here because it is not
+  /// Note that we don't use ListProcessorTypes here, because it isn't
   /// paginated.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project of processor type to list. The available
-  /// processor types may depend on the allow-listing on projects. Format:
-  /// `projects/{project}/locations/{location}`
+  /// [parent] - Required. The location of processor types to list. Format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -457,14 +456,13 @@ class ProjectsLocationsProcessorTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The location of processor type to list. The available
-  /// processor types may depend on the allow-listing on projects. Format:
-  /// `projects/{project}/locations/{location}`
+  /// [parent] - Required. The location of processor types to list. Format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of processor types to return. If
-  /// unspecified, at most 100 processor types will be returned. The maximum
-  /// value is 500; values above 500 will be coerced to 500.
+  /// unspecified, at most `100` processor types will be returned. The maximum
+  /// value is `500`. Values above `500` will be coerced to `500`.
   ///
   /// [pageToken] - Used to retrieve the next page of results, empty if at the
   /// end of the list.
@@ -561,9 +559,9 @@ class ProjectsLocationsProcessorsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a processor from the type processor that the user chose.
+  /// Creates a processor from the ProcessorType provided.
   ///
-  /// The processor will be at "ENABLED" state by default after its creation.
+  /// The processor will be at `ENABLED` state by default after its creation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -774,8 +772,8 @@ class ProjectsLocationsProcessorsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of processors to return. If unspecified,
-  /// at most 50 processors will be returned. The maximum value is 100; values
-  /// above 100 will be coerced to 100.
+  /// at most `50` processors will be returned. The maximum value is `100`.
+  /// Values above `100` will be coerced to `100`.
   ///
   /// [pageToken] - We will return the processors sorted by creation time. The
   /// page token will point to the next processor.
@@ -1194,8 +1192,8 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of processor versions to return. If
-  /// unspecified, at most 10 processor versions will be returned. The maximum
-  /// value is 20; values above 20 will be coerced to 20.
+  /// unspecified, at most `10` processor versions will be returned. The maximum
+  /// value is `20`. Values above `20` will be coerced to `20`.
   ///
   /// [pageToken] - We will return the processor versions sorted by creation
   /// time. The page token will point to the next processor version.
@@ -1281,8 +1279,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
 
   /// Trains a new processor version.
   ///
-  /// Operation metadata is returned as
-  /// cloud_documentai_core.TrainProcessorVersionMetadata.
+  /// Operation metadata is returned as TrainProcessorVersionMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1425,9 +1422,9 @@ class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
   ///
-  /// [pageSize] - The standard list page size. If unspecified, at most 5
-  /// evaluations will be returned. The maximum value is 100; values above 100
-  /// will be coerced to 100.
+  /// [pageSize] - The standard list page size. If unspecified, at most `5`
+  /// evaluations are returned. The maximum value is `100`. Values above `100`
+  /// are coerced to `100`.
   ///
   /// [pageToken] - A page token, received from a previous `ListEvaluations`
   /// call. Provide this to retrieve the subsequent page.
@@ -1545,12 +1542,12 @@ class GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
       };
 }
 
-/// Request message for batch process document method.
+/// Request message for BatchProcessDocuments.
 class GoogleCloudDocumentaiV1BatchProcessRequest {
-  /// The overall output config for batch process.
+  /// The output configuration for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1DocumentOutputConfig? documentOutputConfig;
 
-  /// The input documents for batch process.
+  /// The input documents for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? inputDocuments;
 
   /// Whether Human Review feature should be skipped for this request.
@@ -1626,10 +1623,10 @@ class GoogleCloudDocumentaiV1BoundingPoly {
       };
 }
 
-/// Request message for the deploy processor version method.
+/// Request message for the DeployProcessorVersion method.
 typedef GoogleCloudDocumentaiV1DeployProcessorVersionRequest = $Empty;
 
-/// Request message for the disable processor method.
+/// Request message for the DisableProcessor method.
 typedef GoogleCloudDocumentaiV1DisableProcessorRequest = $Empty;
 
 /// Document represents the canonical document resource in Document AI.
@@ -1703,9 +1700,8 @@ class GoogleCloudDocumentaiV1Document {
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
   ///
-  /// Object versioning is not supported. See
-  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-  /// for more info.
+  /// Object versioning is not supported. For more information, refer to
+  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
   ///
   /// Optional.
   core.String? uri;
@@ -3067,11 +3063,15 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
   /// The history of this annotation.
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
+  /// Text style attributes.
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo? styleInfo;
+
   GoogleCloudDocumentaiV1DocumentPageToken({
     this.detectedBreak,
     this.detectedLanguages,
     this.layout,
     this.provenance,
+    this.styleInfo,
   });
 
   GoogleCloudDocumentaiV1DocumentPageToken.fromJson(core.Map json_)
@@ -3096,6 +3096,10 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
                   json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          styleInfo: json_.containsKey('styleInfo')
+              ? GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+                  json_['styleInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3103,12 +3107,148 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
         if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (layout != null) 'layout': layout!,
         if (provenance != null) 'provenance': provenance!,
+        if (styleInfo != null) 'styleInfo': styleInfo!,
       };
 }
 
 /// Detected break at the end of a Token.
 typedef GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak
     = $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak;
+
+/// Font and other text style attributes.
+class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
+  /// Color of the background.
+  GoogleTypeColor? backgroundColor;
+
+  /// Whether the text is bold (equivalent to font_weight is at least `700`).
+  core.bool? bold;
+
+  /// Font size in points (`1` point is `¹⁄₇₂` inches).
+  core.int? fontSize;
+
+  /// Name or style of the font.
+  core.String? fontType;
+
+  /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy).
+  ///
+  /// Normal is `400`, bold is `700`.
+  core.int? fontWeight;
+
+  /// Whether the text is handwritten.
+  core.bool? handwritten;
+
+  /// Whether the text is italic.
+  core.bool? italic;
+
+  /// Letter spacing in points.
+  core.double? letterSpacing;
+
+  /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷
+  /// `72.0`.
+  core.double? pixelFontSize;
+
+  /// Whether the text is in small caps.
+  core.bool? smallcaps;
+
+  /// Whether the text is strikethrough.
+  core.bool? strikeout;
+
+  /// Whether the text is a subscript.
+  core.bool? subscript;
+
+  /// Whether the text is a superscript.
+  core.bool? superscript;
+
+  /// Color of the text.
+  GoogleTypeColor? textColor;
+
+  /// Whether the text is underlined.
+  core.bool? underlined;
+
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo({
+    this.backgroundColor,
+    this.bold,
+    this.fontSize,
+    this.fontType,
+    this.fontWeight,
+    this.handwritten,
+    this.italic,
+    this.letterSpacing,
+    this.pixelFontSize,
+    this.smallcaps,
+    this.strikeout,
+    this.subscript,
+    this.superscript,
+    this.textColor,
+    this.underlined,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(core.Map json_)
+      : this(
+          backgroundColor: json_.containsKey('backgroundColor')
+              ? GoogleTypeColor.fromJson(json_['backgroundColor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bold: json_.containsKey('bold') ? json_['bold'] as core.bool : null,
+          fontSize: json_.containsKey('fontSize')
+              ? json_['fontSize'] as core.int
+              : null,
+          fontType: json_.containsKey('fontType')
+              ? json_['fontType'] as core.String
+              : null,
+          fontWeight: json_.containsKey('fontWeight')
+              ? json_['fontWeight'] as core.int
+              : null,
+          handwritten: json_.containsKey('handwritten')
+              ? json_['handwritten'] as core.bool
+              : null,
+          italic:
+              json_.containsKey('italic') ? json_['italic'] as core.bool : null,
+          letterSpacing: json_.containsKey('letterSpacing')
+              ? (json_['letterSpacing'] as core.num).toDouble()
+              : null,
+          pixelFontSize: json_.containsKey('pixelFontSize')
+              ? (json_['pixelFontSize'] as core.num).toDouble()
+              : null,
+          smallcaps: json_.containsKey('smallcaps')
+              ? json_['smallcaps'] as core.bool
+              : null,
+          strikeout: json_.containsKey('strikeout')
+              ? json_['strikeout'] as core.bool
+              : null,
+          subscript: json_.containsKey('subscript')
+              ? json_['subscript'] as core.bool
+              : null,
+          superscript: json_.containsKey('superscript')
+              ? json_['superscript'] as core.bool
+              : null,
+          textColor: json_.containsKey('textColor')
+              ? GoogleTypeColor.fromJson(
+                  json_['textColor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          underlined: json_.containsKey('underlined')
+              ? json_['underlined'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (bold != null) 'bold': bold!,
+        if (fontSize != null) 'fontSize': fontSize!,
+        if (fontType != null) 'fontType': fontType!,
+        if (fontWeight != null) 'fontWeight': fontWeight!,
+        if (handwritten != null) 'handwritten': handwritten!,
+        if (italic != null) 'italic': italic!,
+        if (letterSpacing != null) 'letterSpacing': letterSpacing!,
+        if (pixelFontSize != null) 'pixelFontSize': pixelFontSize!,
+        if (smallcaps != null) 'smallcaps': smallcaps!,
+        if (strikeout != null) 'strikeout': strikeout!,
+        if (subscript != null) 'subscript': subscript!,
+        if (superscript != null) 'superscript': superscript!,
+        if (textColor != null) 'textColor': textColor!,
+        if (underlined != null) 'underlined': underlined!,
+      };
+}
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
 ///
@@ -3770,7 +3910,7 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
       };
 }
 
-/// Request message for the enable processor method.
+/// Request message for the EnableProcessor method.
 typedef GoogleCloudDocumentaiV1EnableProcessorRequest = $Empty;
 
 /// Evaluates the given ProcessorVersion against the supplied documents.
@@ -4231,7 +4371,7 @@ class GoogleCloudDocumentaiV1EvaluationReference {
       };
 }
 
-/// Response message for fetch processor types.
+/// Response message for the FetchProcessorTypes method.
 class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /// The list of processor types.
   core.List<GoogleCloudDocumentaiV1ProcessorType>? processorTypes;
@@ -4333,9 +4473,9 @@ class GoogleCloudDocumentaiV1GcsPrefix {
 class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
   ///
-  /// This field is populated only when the \[state\] is
-  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
-  /// as the long running operation returned by \[ReviewDocument\] method.
+  /// This field is populated only when the state is `HUMAN_REVIEW_IN_PROGRESS`.
+  /// It has the same response type and metadata as the long-running operation
+  /// returned by ReviewDocument.
   core.String? humanReviewOperation;
 
   /// The state of human review on the processing request.
@@ -4343,14 +4483,14 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
   /// to an internal error.
   /// - "SKIPPED" : Human review is skipped for the document. This can happen
-  /// because human review is not enabled on the processor or the processing
+  /// because human review isn't enabled on the processor or the processing
   /// request has been set to skip this document.
   /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
   /// so no review is needed.
   /// - "IN_PROGRESS" : Human review validation is triggered and the document is
   /// under review.
   /// - "ERROR" : Some error happened during triggering human review, see the
-  /// \[state_message\] for details.
+  /// state_message for details.
   core.String? state;
 
   /// A message providing more details about the human review state.
@@ -4382,7 +4522,7 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
       };
 }
 
-/// The response from ListEvaluations.
+/// The response from `ListEvaluations`.
 class GoogleCloudDocumentaiV1ListEvaluationsResponse {
   /// The evaluations requested.
   core.List<GoogleCloudDocumentaiV1Evaluation>? evaluations;
@@ -4416,7 +4556,7 @@ class GoogleCloudDocumentaiV1ListEvaluationsResponse {
       };
 }
 
-/// Response message for list processor types.
+/// Response message for the ListProcessorTypes method.
 class GoogleCloudDocumentaiV1ListProcessorTypesResponse {
   /// Points to the next page, otherwise empty.
   core.String? nextPageToken;
@@ -4448,7 +4588,7 @@ class GoogleCloudDocumentaiV1ListProcessorTypesResponse {
       };
 }
 
-/// Response message for list processors.
+/// Response message for the ListProcessorVersions method.
 class GoogleCloudDocumentaiV1ListProcessorVersionsResponse {
   /// Points to the next processor, otherwise empty.
   core.String? nextPageToken;
@@ -4481,7 +4621,7 @@ class GoogleCloudDocumentaiV1ListProcessorVersionsResponse {
       };
 }
 
-/// Response message for list processors.
+/// Response message for the ListProcessors method.
 class GoogleCloudDocumentaiV1ListProcessorsResponse {
   /// Points to the next processor, otherwise empty.
   core.String? nextPageToken;
@@ -4520,12 +4660,12 @@ class GoogleCloudDocumentaiV1ListProcessorsResponse {
 typedef GoogleCloudDocumentaiV1NormalizedVertex
     = $GoogleCloudDocumentaiV1NormalizedVertex;
 
-/// Request message for the process document method.
+/// Request message for the ProcessDocument method.
 class GoogleCloudDocumentaiV1ProcessRequest {
-  /// Specifies which fields to include in ProcessResponse's document.
+  /// Specifies which fields to include in the ProcessResponse.document output.
   ///
-  /// Only supports top level document and pages field so it must be in the form
-  /// of `{document_field_name}` or `pages.{page_field_name}`.
+  /// Only supports top-level document and pages field, so it must be in the
+  /// form of `{document_field_name}` or `pages.{page_field_name}`.
   core.String? fieldMask;
 
   /// An inline document proto.
@@ -4572,7 +4712,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
       };
 }
 
-/// Response message for the process document method.
+/// Response message for the ProcessDocument method.
 class GoogleCloudDocumentaiV1ProcessResponse {
   /// The document payload, will populate fields based on the processor's
   /// behavior.
@@ -4661,9 +4801,9 @@ class GoogleCloudDocumentaiV1Processor {
   /// successful.
   core.String? state;
 
-  /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.
+  /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`.
   ///
-  /// To get a list of processors types, see FetchProcessorTypes.
+  /// To get a list of processor types, see FetchProcessorTypes.
   core.String? type;
 
   GoogleCloudDocumentaiV1Processor({
@@ -4772,7 +4912,7 @@ class GoogleCloudDocumentaiV1ProcessorType {
   /// A set of Cloud Storage URIs of sample documents for this processor.
   core.List<core.String>? sampleDocumentUris;
 
-  /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.
+  /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`.
   core.String? type;
 
   GoogleCloudDocumentaiV1ProcessorType({
@@ -5033,7 +5173,7 @@ class GoogleCloudDocumentaiV1RawDocument {
       };
 }
 
-/// Request message for review document method.
+/// Request message for the ReviewDocument method.
 class GoogleCloudDocumentaiV1ReviewDocumentRequest {
   /// The document schema of the human review task.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
@@ -5087,7 +5227,7 @@ class GoogleCloudDocumentaiV1ReviewDocumentRequest {
       };
 }
 
-/// Request message for the set default processor version method.
+/// Request message for the SetDefaultProcessorVersion method.
 class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
   /// The resource name of child ProcessorVersion to use as default.
   ///
@@ -5115,7 +5255,7 @@ class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
       };
 }
 
-/// Request message for the create processor version method.
+/// Request message for the TrainProcessorVersion method.
 class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   /// The processor version to use as a base for training.
   ///
@@ -5130,7 +5270,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   /// Optional.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
-  /// The input data used to train the `ProcessorVersion`.
+  /// The input data used to train the ProcessorVersion.
   ///
   /// Optional.
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData? inputData;
@@ -5178,7 +5318,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
       };
 }
 
-/// The input data used to train a new `ProcessorVersion`.
+/// The input data used to train a new ProcessorVersion.
 class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
   /// The documents used for testing the trained version.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? testDocuments;
@@ -5211,7 +5351,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
       };
 }
 
-/// Request message for the undeploy processor version method.
+/// Request message for the UndeployProcessorVersion method.
 typedef GoogleCloudDocumentaiV1UndeployProcessorVersionRequest = $Empty;
 
 /// A vertex represents a 2D point in the image.
@@ -5251,7 +5391,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

@@ -3086,6 +3086,7 @@ api.GoogleCloudDialogflowV2InputAudioConfig
   if (buildCounterGoogleCloudDialogflowV2InputAudioConfig < 3) {
     o.audioEncoding = 'foo';
     o.disableNoSpeechRecognizedEvent = true;
+    o.enableAutomaticPunctuation = true;
     o.enableWordInfo = true;
     o.languageCode = 'foo';
     o.model = 'foo';
@@ -3108,6 +3109,7 @@ void checkGoogleCloudDialogflowV2InputAudioConfig(
       unittest.equals('foo'),
     );
     unittest.expect(o.disableNoSpeechRecognizedEvent!, unittest.isTrue);
+    unittest.expect(o.enableAutomaticPunctuation!, unittest.isTrue);
     unittest.expect(o.enableWordInfo!, unittest.isTrue);
     unittest.expect(
       o.languageCode!,

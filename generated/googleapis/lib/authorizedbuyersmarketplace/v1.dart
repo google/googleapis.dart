@@ -3992,6 +3992,8 @@ class ProgrammaticGuaranteedTerms {
   Price? fixedPrice;
 
   /// Count of guaranteed looks.
+  ///
+  /// For CPD deals, buyer changes to guaranteed_looks will be ignored.
   core.String? guaranteedLooks;
 
   /// The lifetime impression cap for CPM Sponsorship deals.
@@ -4000,6 +4002,9 @@ class ProgrammaticGuaranteedTerms {
   core.String? impressionCap;
 
   /// Daily minimum looks for CPD deal types.
+  ///
+  /// For CPD deals, buyer should negotiate on this field instead of
+  /// guaranteed_looks.
   core.String? minimumDailyLooks;
 
   /// For sponsorship deals, this is the percentage of the seller's eligible

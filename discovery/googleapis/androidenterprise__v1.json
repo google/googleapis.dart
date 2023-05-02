@@ -2648,7 +2648,7 @@
             }
         }
     },
-    "revision": "20230418",
+    "revision": "20230504",
     "rootUrl": "https://androidenterprise.googleapis.com/",
     "schemas": {
         "Administrator": {

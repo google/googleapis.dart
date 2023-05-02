@@ -2330,6 +2330,30 @@ class AcknowledgeRequest {
       };
 }
 
+/// Configuration for writing message data in Avro format.
+///
+/// Message payloads and metadata will be written to files as an Avro binary.
+class AvroConfig {
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key as additional fields in the output.
+  core.bool? writeMetadata;
+
+  AvroConfig({
+    this.writeMetadata,
+  });
+
+  AvroConfig.fromJson(core.Map json_)
+      : this(
+          writeMetadata: json_.containsKey('writeMetadata')
+              ? json_['writeMetadata'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
+
 /// Configuration for a BigQuery subscription.
 class BigQueryConfig {
   /// When true and use_topic_schema is true, any fields that are a part of the
@@ -2489,6 +2513,114 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Configuration for a Cloud Storage subscription.
+class CloudStorageConfig {
+  /// If set, message data will be written to Cloud Storage in Avro format.
+  AvroConfig? avroConfig;
+
+  /// User-provided name for the Cloud Storage bucket.
+  ///
+  /// The bucket must be created by the user. The bucket name must be without
+  /// any prefix like "gs://". See the
+  /// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// User-provided prefix for Cloud Storage filename.
+  ///
+  /// See the
+  /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  core.String? filenamePrefix;
+
+  /// User-provided suffix for Cloud Storage filename.
+  ///
+  /// See the
+  /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  core.String? filenameSuffix;
+
+  /// The maximum bytes that can be written to a Cloud Storage file before a new
+  /// file is created.
+  ///
+  /// Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where
+  /// messages are larger than the limit.
+  core.String? maxBytes;
+
+  /// The maximum duration that can elapse before a new Cloud Storage file is
+  /// created.
+  ///
+  /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
+  /// subscription's acknowledgement deadline.
+  core.String? maxDuration;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to Cloud Storage.
+  /// - "PERMISSION_DENIED" : Cannot write to the Cloud Storage bucket because
+  /// of permission denied errors.
+  /// - "NOT_FOUND" : Cannot write to the Cloud Storage bucket because it does
+  /// not exist.
+  core.String? state;
+
+  /// If set, message data will be written to Cloud Storage in text format.
+  TextConfig? textConfig;
+
+  CloudStorageConfig({
+    this.avroConfig,
+    this.bucket,
+    this.filenamePrefix,
+    this.filenameSuffix,
+    this.maxBytes,
+    this.maxDuration,
+    this.state,
+    this.textConfig,
+  });
+
+  CloudStorageConfig.fromJson(core.Map json_)
+      : this(
+          avroConfig: json_.containsKey('avroConfig')
+              ? AvroConfig.fromJson(
+                  json_['avroConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          filenamePrefix: json_.containsKey('filenamePrefix')
+              ? json_['filenamePrefix'] as core.String
+              : null,
+          filenameSuffix: json_.containsKey('filenameSuffix')
+              ? json_['filenameSuffix'] as core.String
+              : null,
+          maxBytes: json_.containsKey('maxBytes')
+              ? json_['maxBytes'] as core.String
+              : null,
+          maxDuration: json_.containsKey('maxDuration')
+              ? json_['maxDuration'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          textConfig: json_.containsKey('textConfig')
+              ? TextConfig.fromJson(
+                  json_['textConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avroConfig != null) 'avroConfig': avroConfig!,
+        if (bucket != null) 'bucket': bucket!,
+        if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
+        if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
+        if (maxBytes != null) 'maxBytes': maxBytes!,
+        if (maxDuration != null) 'maxDuration': maxDuration!,
+        if (state != null) 'state': state!,
+        if (textConfig != null) 'textConfig': textConfig!,
       };
 }
 
@@ -3732,9 +3864,9 @@ class Snapshot {
 
 /// A subscription resource.
 ///
-/// If none of `push_config` or `bigquery_config` is set, then the subscriber
-/// will pull and ack messages using API methods. At most one of these fields
-/// may be set.
+/// If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is
+/// set, then the subscriber will pull and ack messages using API methods. At
+/// most one of these fields may be set.
 class Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message.
@@ -3757,6 +3889,10 @@ class Subscription {
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
   BigQueryConfig? bigqueryConfig;
+
+  /// If delivery to Google Cloud Storage is used with this subscription, this
+  /// field is used to configure it.
+  CloudStorageConfig? cloudStorageConfig;
 
   /// A policy that specifies the conditions for dead lettering messages in this
   /// subscription.
@@ -3896,6 +4032,7 @@ class Subscription {
   Subscription({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
+    this.cloudStorageConfig,
     this.deadLetterPolicy,
     this.detached,
     this.enableExactlyOnceDelivery,
@@ -3920,6 +4057,10 @@ class Subscription {
               : null,
           bigqueryConfig: json_.containsKey('bigqueryConfig')
               ? BigQueryConfig.fromJson(json_['bigqueryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudStorageConfig: json_.containsKey('cloudStorageConfig')
+              ? CloudStorageConfig.fromJson(json_['cloudStorageConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           deadLetterPolicy: json_.containsKey('deadLetterPolicy')
@@ -3981,6 +4122,8 @@ class Subscription {
         if (ackDeadlineSeconds != null)
           'ackDeadlineSeconds': ackDeadlineSeconds!,
         if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
+        if (cloudStorageConfig != null)
+          'cloudStorageConfig': cloudStorageConfig!,
         if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
         if (detached != null) 'detached': detached!,
         if (enableExactlyOnceDelivery != null)
@@ -4009,6 +4152,12 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Configuration for writing message data in text format.
+///
+/// Message payloads will be written to files as raw text, separated by a
+/// newline.
+typedef TextConfig = $Empty;
 
 /// A topic resource.
 class Topic {

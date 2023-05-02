@@ -13249,7 +13249,8 @@ class GoogleCloudDialogflowV2AnswerFeedback {
 
   /// Indicates whether the answer/item was clicked by the human agent or not.
   ///
-  /// Default to false.
+  /// Default to false. For knowledge search, the answer record is considered to
+  /// be clicked if the answer was copied or any URI was clicked.
   core.bool? clicked;
 
   /// The correctness level of the specific answer.
@@ -16969,6 +16970,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.
   core.bool? disableNoSpeechRecognizedEvent;
 
+  /// Enable automatic punctuation option at the speech backend.
+  core.bool? enableAutomaticPunctuation;
+
   /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
   /// with information about the recognized speech words, e.g. start and end
   /// time offsets.
@@ -17065,6 +17069,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   GoogleCloudDialogflowV2InputAudioConfig({
     this.audioEncoding,
     this.disableNoSpeechRecognizedEvent,
+    this.enableAutomaticPunctuation,
     this.enableWordInfo,
     this.languageCode,
     this.model,
@@ -17083,6 +17088,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
           disableNoSpeechRecognizedEvent:
               json_.containsKey('disableNoSpeechRecognizedEvent')
                   ? json_['disableNoSpeechRecognizedEvent'] as core.bool
+                  : null,
+          enableAutomaticPunctuation:
+              json_.containsKey('enableAutomaticPunctuation')
+                  ? json_['enableAutomaticPunctuation'] as core.bool
                   : null,
           enableWordInfo: json_.containsKey('enableWordInfo')
               ? json_['enableWordInfo'] as core.bool
@@ -17118,6 +17127,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (disableNoSpeechRecognizedEvent != null)
           'disableNoSpeechRecognizedEvent': disableNoSpeechRecognizedEvent!,
+        if (enableAutomaticPunctuation != null)
+          'enableAutomaticPunctuation': enableAutomaticPunctuation!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (model != null) 'model': model!,
@@ -22130,7 +22141,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

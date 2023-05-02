@@ -1142,8 +1142,7 @@ class UsersMessagesResource {
   ///
   /// This method doesn't perform SPF checks, so it might not work for some spam
   /// messages, such as those attempting to perform domain spoofing. This method
-  /// does not send a message. Note: This function doesn't trigger forwarding
-  /// rules or filters set up by the user.
+  /// does not send a message.
   ///
   /// [request] - The metadata request object.
   ///

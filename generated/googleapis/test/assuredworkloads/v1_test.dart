@@ -235,19 +235,6 @@ void checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse(
   buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse--;
 }
 
-core.List<api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext>
-    buildUnnamed2() => [
-          buildGoogleCloudAssuredworkloadsV1ViolationExceptionContext(),
-          buildGoogleCloudAssuredworkloadsV1ViolationExceptionContext(),
-        ];
-
-void checkUnnamed2(
-    core.List<api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudAssuredworkloadsV1ViolationExceptionContext(o[0]);
-  checkGoogleCloudAssuredworkloadsV1ViolationExceptionContext(o[1]);
-}
-
 core.int buildCounterGoogleCloudAssuredworkloadsV1Violation = 0;
 api.GoogleCloudAssuredworkloadsV1Violation
     buildGoogleCloudAssuredworkloadsV1Violation() {
@@ -261,7 +248,6 @@ api.GoogleCloudAssuredworkloadsV1Violation
     o.category = 'foo';
     o.description = 'foo';
     o.exceptionAuditLogLink = 'foo';
-    o.exceptionContexts = buildUnnamed2();
     o.name = 'foo';
     o.nonCompliantOrgPolicy = 'foo';
     o.orgPolicyConstraint = 'foo';
@@ -303,7 +289,6 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
       o.exceptionAuditLogLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.exceptionContexts!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -333,46 +318,12 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
   buildCounterGoogleCloudAssuredworkloadsV1Violation--;
 }
 
-core.int buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext = 0;
-api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext
-    buildGoogleCloudAssuredworkloadsV1ViolationExceptionContext() {
-  final o = api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext();
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext < 3) {
-    o.acknowledgementTime = 'foo';
-    o.comment = 'foo';
-    o.principalEmail = 'foo';
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1ViolationExceptionContext(
-    api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext o) {
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext < 3) {
-    unittest.expect(
-      o.acknowledgementTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.comment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.principalEmail!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationExceptionContext--;
-}
-
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -390,7 +341,7 @@ api.GoogleCloudAssuredworkloadsV1ViolationRemediation
   final o = api.GoogleCloudAssuredworkloadsV1ViolationRemediation();
   buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediation++;
   if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediation < 3) {
-    o.compliantValues = buildUnnamed3();
+    o.compliantValues = buildUnnamed2();
     o.instructions =
         buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions();
     o.remediationType = 'foo';
@@ -403,7 +354,7 @@ void checkGoogleCloudAssuredworkloadsV1ViolationRemediation(
     api.GoogleCloudAssuredworkloadsV1ViolationRemediation o) {
   buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediation++;
   if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediation < 3) {
-    checkUnnamed3(o.compliantValues!);
+    checkUnnamed2(o.compliantValues!);
     checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions(
         o.instructions!);
     unittest.expect(
@@ -445,6 +396,23 @@ void checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions(
   buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions--;
 }
 
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
@@ -479,6 +447,37 @@ void checkUnnamed5(core.List<core.String> o) {
   );
 }
 
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole =
+    0;
+api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
+    buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole() {
+  final o = api
+      .GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole();
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole <
+      3) {
+    o.additionalLinks = buildUnnamed3();
+    o.consoleUris = buildUnnamed4();
+    o.steps = buildUnnamed5();
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole(
+    api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
+        o) {
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole <
+      3) {
+    checkUnnamed3(o.additionalLinks!);
+    checkUnnamed4(o.consoleUris!);
+    checkUnnamed5(o.steps!);
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole--;
+}
+
 core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
@@ -494,37 +493,6 @@ void checkUnnamed6(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole =
-    0;
-api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
-    buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole() {
-  final o = api
-      .GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole();
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole <
-      3) {
-    o.additionalLinks = buildUnnamed4();
-    o.consoleUris = buildUnnamed5();
-    o.steps = buildUnnamed6();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole(
-    api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
-        o) {
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole <
-      3) {
-    checkUnnamed4(o.additionalLinks!);
-    checkUnnamed5(o.consoleUris!);
-    checkUnnamed6(o.steps!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole--;
 }
 
 core.List<core.String> buildUnnamed7() => [
@@ -561,6 +529,36 @@ void checkUnnamed8(core.List<core.String> o) {
   );
 }
 
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud =
+    0;
+api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
+    buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud() {
+  final o =
+      api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud();
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud <
+      3) {
+    o.additionalLinks = buildUnnamed6();
+    o.gcloudCommands = buildUnnamed7();
+    o.steps = buildUnnamed8();
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud(
+    api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud o) {
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud <
+      3) {
+    checkUnnamed6(o.additionalLinks!);
+    checkUnnamed7(o.gcloudCommands!);
+    checkUnnamed8(o.steps!);
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud--;
+}
+
 core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
@@ -578,59 +576,12 @@ void checkUnnamed9(core.List<core.String> o) {
   );
 }
 
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud =
-    0;
-api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
-    buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud() {
-  final o =
-      api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud();
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud <
-      3) {
-    o.additionalLinks = buildUnnamed7();
-    o.gcloudCommands = buildUnnamed8();
-    o.steps = buildUnnamed9();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud(
-    api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud o) {
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud <
-      3) {
-    checkUnnamed7(o.additionalLinks!);
-    checkUnnamed8(o.gcloudCommands!);
-    checkUnnamed9(o.steps!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud--;
-}
-
-core.List<core.String> buildUnnamed10() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed10(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed11() => {
+core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed11(core.Map<core.String, core.String> o) {
+void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -643,12 +594,12 @@ void checkUnnamed11(core.Map<core.String, core.String> o) {
 }
 
 core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>
-    buildUnnamed12() => [
+    buildUnnamed11() => [
           buildGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(),
           buildGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(),
         ];
 
-void checkUnnamed12(
+void checkUnnamed11(
     core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceSettings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(o[0]);
@@ -656,12 +607,12 @@ void checkUnnamed12(
 }
 
 core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>
-    buildUnnamed13() => [
+    buildUnnamed12() => [
           buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(),
           buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(),
         ];
 
-void checkUnnamed13(
+void checkUnnamed12(
     core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(o[0]);
@@ -678,7 +629,7 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.complianceRegime = 'foo';
     o.complianceStatus =
         buildGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus();
-    o.compliantButDisallowedServices = buildUnnamed10();
+    o.compliantButDisallowedServices = buildUnnamed9();
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.ekmProvisioningResponse =
@@ -687,12 +638,12 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.etag = 'foo';
     o.kajEnrollmentState = 'foo';
     o.kmsSettings = buildGoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
-    o.labels = buildUnnamed11();
+    o.labels = buildUnnamed10();
     o.name = 'foo';
     o.partner = 'foo';
     o.provisionedResourcesParent = 'foo';
-    o.resourceSettings = buildUnnamed12();
-    o.resources = buildUnnamed13();
+    o.resourceSettings = buildUnnamed11();
+    o.resources = buildUnnamed12();
     o.saaEnrollmentResponse =
         buildGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse();
     o.violationNotificationsEnabled = true;
@@ -715,7 +666,7 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
     );
     checkGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus(
         o.complianceStatus!);
-    checkUnnamed10(o.compliantButDisallowedServices!);
+    checkUnnamed9(o.compliantButDisallowedServices!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -736,7 +687,7 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
       unittest.equals('foo'),
     );
     checkGoogleCloudAssuredworkloadsV1WorkloadKMSSettings(o.kmsSettings!);
-    checkUnnamed11(o.labels!);
+    checkUnnamed10(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -749,8 +700,8 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
       o.provisionedResourcesParent!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.resourceSettings!);
-    checkUnnamed13(o.resources!);
+    checkUnnamed11(o.resourceSettings!);
+    checkUnnamed12(o.resources!);
     checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(
         o.saaEnrollmentResponse!);
     unittest.expect(o.violationNotificationsEnabled!, unittest.isTrue);
@@ -943,12 +894,12 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadResourceSettings--;
 }
 
-core.List<core.String> buildUnnamed14() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -968,7 +919,7 @@ api.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse <
       3) {
-    o.setupErrors = buildUnnamed14();
+    o.setupErrors = buildUnnamed13();
     o.setupStatus = 'foo';
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse--;
@@ -980,7 +931,7 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse <
       3) {
-    checkUnnamed14(o.setupErrors!);
+    checkUnnamed13(o.setupErrors!);
     unittest.expect(
       o.setupStatus!,
       unittest.equals('foo'),
@@ -989,12 +940,12 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed15() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed14() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed15(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed14(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1007,7 +958,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed15();
+    o.operations = buildUnnamed14();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1021,12 +972,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.operations!);
+    checkUnnamed14(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed16() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1039,7 +990,7 @@ core.Map<core.String, core.Object?> buildUnnamed16() => {
       },
     };
 
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1071,7 +1022,7 @@ void checkUnnamed16(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed17() => {
+core.Map<core.String, core.Object?> buildUnnamed16() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1084,7 +1035,7 @@ core.Map<core.String, core.Object?> buildUnnamed17() => {
       },
     };
 
-void checkUnnamed17(core.Map<core.String, core.Object?> o) {
+void checkUnnamed16(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1123,9 +1074,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed16();
+    o.metadata = buildUnnamed15();
     o.name = 'foo';
-    o.response = buildUnnamed17();
+    o.response = buildUnnamed16();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1136,12 +1087,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed16(o.metadata!);
+    checkUnnamed15(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.response!);
+    checkUnnamed16(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -1161,7 +1112,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed17() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1174,7 +1125,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       },
     };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1206,15 +1157,15 @@ void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
-      buildUnnamed18(),
-      buildUnnamed18(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed18() => [
+      buildUnnamed17(),
+      buildUnnamed17(),
     ];
 
-void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed18(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed18(o[0]);
-  checkUnnamed18(o[1]);
+  checkUnnamed17(o[0]);
+  checkUnnamed17(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1223,7 +1174,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed19();
+    o.details = buildUnnamed18();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1237,7 +1188,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed19(o.details!);
+    checkUnnamed18(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1346,18 +1297,6 @@ void main() {
       final od = api.GoogleCloudAssuredworkloadsV1Violation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1Violation(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1ViolationExceptionContext', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1ViolationExceptionContext();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1ViolationExceptionContext(od);
     });
   });
 

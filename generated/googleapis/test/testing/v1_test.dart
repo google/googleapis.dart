@@ -2296,6 +2296,7 @@ api.ShardingOption buildShardingOption() {
   buildCounterShardingOption++;
   if (buildCounterShardingOption < 3) {
     o.manualSharding = buildManualSharding();
+    o.smartSharding = buildSmartSharding();
     o.uniformSharding = buildUniformSharding();
   }
   buildCounterShardingOption--;
@@ -2306,9 +2307,32 @@ void checkShardingOption(api.ShardingOption o) {
   buildCounterShardingOption++;
   if (buildCounterShardingOption < 3) {
     checkManualSharding(o.manualSharding!);
+    checkSmartSharding(o.smartSharding!);
     checkUniformSharding(o.uniformSharding!);
   }
   buildCounterShardingOption--;
+}
+
+core.int buildCounterSmartSharding = 0;
+api.SmartSharding buildSmartSharding() {
+  final o = api.SmartSharding();
+  buildCounterSmartSharding++;
+  if (buildCounterSmartSharding < 3) {
+    o.targetedShardDuration = 'foo';
+  }
+  buildCounterSmartSharding--;
+  return o;
+}
+
+void checkSmartSharding(api.SmartSharding o) {
+  buildCounterSmartSharding++;
+  if (buildCounterSmartSharding < 3) {
+    unittest.expect(
+      o.targetedShardDuration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSmartSharding--;
 }
 
 core.List<core.String> buildUnnamed47() => [
@@ -3538,6 +3562,16 @@ void main() {
       final od = api.ShardingOption.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkShardingOption(od);
+    });
+  });
+
+  unittest.group('obj-schema-SmartSharding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSmartSharding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SmartSharding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSmartSharding(od);
     });
   });
 

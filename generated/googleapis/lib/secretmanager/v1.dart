@@ -1349,7 +1349,7 @@ class ListSecretsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access

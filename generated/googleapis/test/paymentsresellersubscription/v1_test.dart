@@ -1101,6 +1101,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
     o.amount = buildGoogleCloudPaymentsResellerSubscriptionV1Amount();
     o.description = 'foo';
     o.lineItemFreeTrialEndTime = 'foo';
+    o.lineItemIndex = 42;
     o.lineItemPromotionSpecs = buildUnnamed15();
     o.oneTimeRecurrenceDetails =
         buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails();
@@ -1127,6 +1128,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
     unittest.expect(
       o.lineItemFreeTrialEndTime!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lineItemIndex!,
+      unittest.equals(42),
     );
     checkUnnamed15(o.lineItemPromotionSpecs!);
     checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails(

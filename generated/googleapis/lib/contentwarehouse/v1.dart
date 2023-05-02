@@ -2327,6 +2327,12 @@ class GoogleCloudContentwarehouseV1Document {
   /// Uri to display the document, for example, in the UI.
   core.String? displayUri;
 
+  /// If linked to a Collection with RetentionPolicy, the date when the document
+  /// becomes mutable.
+  ///
+  /// Output only.
+  core.String? dispositionTime;
+
   /// The Document schema name.
   ///
   /// Format:
@@ -2406,6 +2412,7 @@ class GoogleCloudContentwarehouseV1Document {
     this.creator,
     this.displayName,
     this.displayUri,
+    this.dispositionTime,
     this.documentSchemaName,
     this.inlineRawDocument,
     this.name,
@@ -2442,6 +2449,9 @@ class GoogleCloudContentwarehouseV1Document {
               : null,
           displayUri: json_.containsKey('displayUri')
               ? json_['displayUri'] as core.String
+              : null,
+          dispositionTime: json_.containsKey('dispositionTime')
+              ? json_['dispositionTime'] as core.String
               : null,
           documentSchemaName: json_.containsKey('documentSchemaName')
               ? json_['documentSchemaName'] as core.String
@@ -2492,6 +2502,7 @@ class GoogleCloudContentwarehouseV1Document {
         if (creator != null) 'creator': creator!,
         if (displayName != null) 'displayName': displayName!,
         if (displayUri != null) 'displayUri': displayUri!,
+        if (dispositionTime != null) 'dispositionTime': dispositionTime!,
         if (documentSchemaName != null)
           'documentSchemaName': documentSchemaName!,
         if (inlineRawDocument != null) 'inlineRawDocument': inlineRawDocument!,
@@ -5748,9 +5759,8 @@ class GoogleCloudDocumentaiV1Document {
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
   ///
-  /// Object versioning is not supported. See
-  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-  /// for more info.
+  /// Object versioning is not supported. For more information, refer to
+  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
   ///
   /// Optional.
   core.String? uri;
@@ -7070,18 +7080,18 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /// Color of the background.
   GoogleTypeColor? backgroundColor;
 
-  /// Whether the text is bold (equivalent to font weight \>= 700).
+  /// Whether the text is bold (equivalent to font_weight is at least `700`).
   core.bool? bold;
 
-  /// Font size in points (1 point is 1/72").
+  /// Font size in points (`1` point is `¹⁄₇₂` inches).
   core.int? fontSize;
 
   /// Name or style of the font.
   core.String? fontType;
 
-  /// TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy).
+  /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy).
   ///
-  /// Normal is 400, Bold is 700.
+  /// Normal is `400`, bold is `700`.
   core.int? fontWeight;
 
   /// Whether the text is handwritten.
@@ -7093,10 +7103,11 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /// Letter spacing in points.
   core.double? letterSpacing;
 
-  /// Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+  /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷
+  /// `72.0`.
   core.double? pixelFontSize;
 
-  /// Whether the text are small caps.
+  /// Whether the text is in small caps.
   core.bool? smallcaps;
 
   /// Whether the text is strikethrough.

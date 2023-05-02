@@ -549,7 +549,7 @@
             }
         }
     },
-    "revision": "20230414",
+    "revision": "20230420",
     "rootUrl": "https://binaryauthorization.googleapis.com/",
     "schemas": {
         "AdmissionRule": {

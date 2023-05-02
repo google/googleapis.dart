@@ -423,6 +423,8 @@ api.GoogleIamAdminV1WorkforcePoolProviderOidc
   if (buildCounterGoogleIamAdminV1WorkforcePoolProviderOidc < 3) {
     o.clientId = 'foo';
     o.issuerUri = 'foo';
+    o.webSsoConfig =
+        buildGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig();
   }
   buildCounterGoogleIamAdminV1WorkforcePoolProviderOidc--;
   return o;
@@ -440,8 +442,38 @@ void checkGoogleIamAdminV1WorkforcePoolProviderOidc(
       o.issuerUri!,
       unittest.equals('foo'),
     );
+    checkGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(o.webSsoConfig!);
   }
   buildCounterGoogleIamAdminV1WorkforcePoolProviderOidc--;
+}
+
+core.int buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig = 0;
+api.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
+    buildGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig() {
+  final o = api.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig();
+  buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig++;
+  if (buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig < 3) {
+    o.assertionClaimsBehavior = 'foo';
+    o.responseType = 'foo';
+  }
+  buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig--;
+  return o;
+}
+
+void checkGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(
+    api.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig o) {
+  buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig++;
+  if (buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig < 3) {
+    unittest.expect(
+      o.assertionClaimsBehavior!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.responseType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig--;
 }
 
 core.int buildCounterGoogleIamAdminV1WorkforcePoolProviderSaml = 0;
@@ -2581,6 +2613,18 @@ void main() {
       final od = api.GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamAdminV1WorkforcePoolProviderOidc(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(od);
     });
   });
 

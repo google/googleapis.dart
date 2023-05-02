@@ -1565,8 +1565,7 @@ class CommentsResource {
   /// [moderationStatus] - Specifies the requested moderation status. Note,
   /// comments can be in statuses, which are not available through this call.
   /// For example, this call does not allow to mark a comment as 'likely spam'.
-  /// Valid values: MODERATION_STATUS_PUBLISHED,
-  /// MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
+  /// Valid values: 'heldForReview', 'published' or 'rejected'.
   /// Possible string values are:
   /// - "published" : The comment is available for public display.
   /// - "heldForReview" : The comment is awaiting review by a moderator.

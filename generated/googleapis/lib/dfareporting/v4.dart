@@ -14609,6 +14609,11 @@ class Conversion {
   /// General Data Protection Regulation (GDPR).
   core.bool? treatmentForUnderage;
 
+  /// The user identifiers to enhance the conversion.
+  ///
+  /// The maximum number of user identifiers for each conversion is 5.
+  core.List<UserIdentifier>? userIdentifiers;
+
   /// The value of the conversion.
   core.double? value;
 
@@ -14631,6 +14636,7 @@ class Conversion {
     this.quantity,
     this.timestampMicros,
     this.treatmentForUnderage,
+    this.userIdentifiers,
     this.value,
   });
 
@@ -14693,6 +14699,12 @@ class Conversion {
           treatmentForUnderage: json_.containsKey('treatmentForUnderage')
               ? json_['treatmentForUnderage'] as core.bool
               : null,
+          userIdentifiers: json_.containsKey('userIdentifiers')
+              ? (json_['userIdentifiers'] as core.List)
+                  .map((value) => UserIdentifier.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           value: json_.containsKey('value')
               ? (json_['value'] as core.num).toDouble()
               : null,
@@ -14722,6 +14734,7 @@ class Conversion {
         if (timestampMicros != null) 'timestampMicros': timestampMicros!,
         if (treatmentForUnderage != null)
           'treatmentForUnderage': treatmentForUnderage!,
+        if (userIdentifiers != null) 'userIdentifiers': userIdentifiers!,
         if (value != null) 'value': value!,
       };
 }
@@ -20670,6 +20683,77 @@ class ObaIcon {
 /// Object Filter.
 typedef ObjectFilter = $ObjectFilter;
 
+/// Identify a user by name and address.
+class OfflineUserAddressInfo {
+  /// City of the address.
+  core.String? city;
+
+  /// 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
+  core.String? countryCode;
+
+  /// First name of the user, which is hashed as SHA-256 after normalized
+  /// (Lowercase all characters; Remove any extra spaces before, after, and in
+  /// between).
+  core.String? hashedFirstName;
+
+  /// Last name of the user, which is hashed as SHA-256 after normalized (lower
+  /// case only and no punctuation).
+  core.String? hashedLastName;
+
+  /// The street address of the user hashed using SHA-256 hash function after
+  /// normalization (lower case only).
+  core.String? hashedStreetAddress;
+
+  /// Postal code of the user's address.
+  core.String? postalCode;
+
+  /// State code of the address.
+  core.String? state;
+
+  OfflineUserAddressInfo({
+    this.city,
+    this.countryCode,
+    this.hashedFirstName,
+    this.hashedLastName,
+    this.hashedStreetAddress,
+    this.postalCode,
+    this.state,
+  });
+
+  OfflineUserAddressInfo.fromJson(core.Map json_)
+      : this(
+          city: json_.containsKey('city') ? json_['city'] as core.String : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          hashedFirstName: json_.containsKey('hashedFirstName')
+              ? json_['hashedFirstName'] as core.String
+              : null,
+          hashedLastName: json_.containsKey('hashedLastName')
+              ? json_['hashedLastName'] as core.String
+              : null,
+          hashedStreetAddress: json_.containsKey('hashedStreetAddress')
+              ? json_['hashedStreetAddress'] as core.String
+              : null,
+          postalCode: json_.containsKey('postalCode')
+              ? json_['postalCode'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (city != null) 'city': city!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
+        if (hashedLastName != null) 'hashedLastName': hashedLastName!,
+        if (hashedStreetAddress != null)
+          'hashedStreetAddress': hashedStreetAddress!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Offset Position.
 typedef OffsetPosition = $OffsetPosition;
 
@@ -25988,6 +26072,47 @@ typedef UniversalAdId = $UniversalAdId00;
 
 /// User Defined Variable configuration.
 typedef UserDefinedVariableConfiguration = $UserDefinedVariableConfiguration;
+
+/// User identifying information.
+///
+/// Exactly one type of identifier must be specified.
+class UserIdentifier {
+  /// Address information.
+  OfflineUserAddressInfo? addressInfo;
+
+  /// Hashed email address using SHA-256 hash function after normalization.
+  core.String? hashedEmail;
+
+  /// Hashed phone number using SHA-256 hash function after normalization (E164
+  /// standard).
+  core.String? hashedPhoneNumber;
+
+  UserIdentifier({
+    this.addressInfo,
+    this.hashedEmail,
+    this.hashedPhoneNumber,
+  });
+
+  UserIdentifier.fromJson(core.Map json_)
+      : this(
+          addressInfo: json_.containsKey('addressInfo')
+              ? OfflineUserAddressInfo.fromJson(
+                  json_['addressInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hashedEmail: json_.containsKey('hashedEmail')
+              ? json_['hashedEmail'] as core.String
+              : null,
+          hashedPhoneNumber: json_.containsKey('hashedPhoneNumber')
+              ? json_['hashedPhoneNumber'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addressInfo != null) 'addressInfo': addressInfo!,
+        if (hashedEmail != null) 'hashedEmail': hashedEmail!,
+        if (hashedPhoneNumber != null) 'hashedPhoneNumber': hashedPhoneNumber!,
+      };
+}
 
 /// A UserProfile resource lets you list all DFA user profiles that are
 /// associated with a Google user account.

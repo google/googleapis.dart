@@ -1449,7 +1449,7 @@
             }
         }
     },
-    "revision": "20230405",
+    "revision": "20230426",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
         "AbandonReleaseRequest": {
@@ -1943,6 +1943,26 @@
             },
             "type": "object"
         },
+        "DeployArtifact": {
+            "description": "The artifacts produced by a deploy operation.",
+            "id": "DeployArtifact",
+            "properties": {
+                "artifactUri": {
+                    "description": "Output only. URI of a directory containing the artifacts. All paths are relative to this location.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "manifestPaths": {
+                    "description": "Output only. File paths of the manifests applied during the deploy operation relative to the URI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "DeployJob": {
             "description": "A deploy Job.",
             "id": "DeployJob",
@@ -1953,6 +1973,11 @@
             "description": "DeployJobRun contains information specific to a deploy `JobRun`.",
             "id": "DeployJobRun",
             "properties": {
+                "artifact": {
+                    "$ref": "DeployArtifact",
+                    "description": "Output only. The artifact of a deploy job run, if available.",
+                    "readOnly": true
+                },
                 "build": {
                     "description": "Output only. The resource name of the Cloud Build `Build` object that is used to deploy. Format is projects/{project}/locations/{location}/builds/{build}.",
                     "readOnly": true,
@@ -2010,7 +2035,7 @@
             "properties": {
                 "deployJob": {
                     "$ref": "Job",
-                    "description": "Output only. The deploy Job. This is the first job run in the phase.",
+                    "description": "Output only. The deploy Job. This is the deploy job in the phase.",
                     "readOnly": true
                 },
                 "verifyJob": {
@@ -2537,7 +2562,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {
@@ -2729,6 +2754,11 @@
             "description": "Contains the paths to the artifacts, relative to the URI, for a phase.",
             "id": "PhaseArtifact",
             "properties": {
+                "jobManifestsPath": {
+                    "description": "Output only. File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "manifestPath": {
                     "description": "Output only. File path of the rendered manifest relative to the URI.",
                     "readOnly": true,
