@@ -33,7 +33,7 @@ Future<AccessCredentials> requestAccessCredentials({
   required Iterable<String> scopes,
   String prompt = 'select_account',
   @Deprecated('Undocumented feature. Do not include in production code.')
-      String? logLevel,
+  String? logLevel,
 }) async {
   await initializeScript('https://accounts.google.com/gsi/client');
   if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
@@ -97,7 +97,7 @@ Future<CodeResponse> requestAuthorizationCode({
   String? hint,
   String? hostedDomain,
   @Deprecated('Undocumented feature. Do not include in production code.')
-      String? logLevel,
+  String? logLevel,
 }) async {
   await initializeScript('https://accounts.google.com/gsi/client');
   if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
