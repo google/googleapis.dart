@@ -271,16 +271,16 @@ $toJsonString
 
 /// Placeholder type for forward references.
 class DartSchemaForwardRef extends DartSchemaType {
-  final String? forwardRefName;
+  final String forwardRefName;
 
   DartSchemaForwardRef(DartApiImports imports, this.forwardRefName)
       : super(imports, null);
 
   @override
   DartSchemaType resolve(DartSchemaTypeDB db) {
-    var concreteType = db.namedSchemaTypes[forwardRefName!];
+    var concreteType = db.namedSchemaTypes[forwardRefName];
     while (concreteType is DartSchemaForwardRef) {
-      concreteType = db.namedSchemaTypes[concreteType.forwardRefName!];
+      concreteType = db.namedSchemaTypes[concreteType.forwardRefName];
     }
     if (concreteType == null) {
       throw StateError('Invalid forward reference: $forwardRefName');

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 11.0.0
+    version: 11.1.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -152,6 +152,8 @@ packages:
     - iam:v2
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap
+    - identitytoolkit:v1 # https://cloud.google.com/identity-platform/docs/apis/
+    - identitytoolkit:v2 # https://cloud.google.com/identity-platform/docs/apis/
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
     - ids:v1
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/

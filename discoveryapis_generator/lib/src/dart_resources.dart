@@ -623,7 +623,7 @@ DartResourceMethod _parseMethod(
     return Comment(sb.toString());
   }
 
-  DartSchemaType getValidReference(String? ref) =>
+  DartSchemaType getValidReference(String ref) =>
       DartSchemaForwardRef(imports, ref).resolve(db);
 
   // Enqueue positional parameters with a given order first.
@@ -670,8 +670,8 @@ DartResourceMethod _parseMethod(
 
   // Check if we have a request object, if so parse it's type.
   MethodParameter? dartRequestParameter;
-  if (method.request != null) {
-    final type = getValidReference(method.request!.P_ref);
+  if (method.request != null && method.request!.P_ref != null) {
+    final type = getValidReference(method.request!.P_ref!);
     final requestName = parameterScope.newIdentifier('request');
     final comment = Comment('The metadata request object.');
     dartRequestParameter =
@@ -679,8 +679,8 @@ DartResourceMethod _parseMethod(
   }
 
   DartSchemaType? dartResponseType;
-  if (method.response != null) {
-    dartResponseType = getValidReference(method.response!.P_ref);
+  if (method.response != null && method.response!.P_ref != null) {
+    dartResponseType = getValidReference(method.response!.P_ref!);
   }
 
   final comment = Comment.header(method.description, true);

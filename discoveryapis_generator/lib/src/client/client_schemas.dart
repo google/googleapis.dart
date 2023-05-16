@@ -191,7 +191,7 @@ DartSchemaTypeDB parseSchemas(
     } else if (schema.P_ref != null) {
       // This is a forward or backward reference, it will be resolved in
       // another pass following the parsing.
-      return db.register(DartSchemaForwardRef(imports, schema.P_ref));
+      return db.register(DartSchemaForwardRef(imports, schema.P_ref!));
     } else {
       return parsePrimitive(imports, db, schema);
     }

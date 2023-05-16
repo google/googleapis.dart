@@ -75,7 +75,7 @@ extension on RestMethod {
     }
 
     final response = this.response;
-    if (response != null) {
+    if (response != null && response.P_ref != null) {
       yield response.P_ref!;
     }
   }

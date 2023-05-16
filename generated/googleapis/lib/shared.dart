@@ -1653,6 +1653,7 @@ class $AuditAdvertiserResponse {
 /// - gkehub:v1 : AuditLogConfig
 /// - healthcare:v1 : AuditLogConfig
 /// - iam:v1 : AuditLogConfig
+/// - identitytoolkit:v2 : GoogleIamV1AuditLogConfig
 /// - ids:v1 : AuditLogConfig
 /// - metastore:v1 : AuditLogConfig
 /// - ml:v1 : GoogleIamV1__AuditLogConfig
@@ -1843,6 +1844,31 @@ class $AuthorizedSellerStatusTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedSellerStatus != null)
           'authorizedSellerStatus': authorizedSellerStatus!,
+      };
+}
+
+/// Used by:
+///
+/// - identitytoolkit:v1 : GoogleCloudIdentitytoolkitV1AutoRetrievalInfo
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2AutoRetrievalInfo
+class $AutoRetrievalInfo {
+  /// The Android app's signature hash for Google Play Service's SMS Retriever
+  /// API.
+  core.String? appSignatureHash;
+
+  $AutoRetrievalInfo({
+    this.appSignatureHash,
+  });
+
+  $AutoRetrievalInfo.fromJson(core.Map json_)
+      : this(
+          appSignatureHash: json_.containsKey('appSignatureHash')
+              ? json_['appSignatureHash'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
       };
 }
 
@@ -6907,6 +6933,13 @@ class $EgressFrom {
 /// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
 /// - iap:v1 : Empty
 /// - iap:v1 : ResetIdentityAwareProxyClientSecretRequest
+/// - identitytoolkit:v1 : GoogleCloudIdentitytoolkitV1TotpInfo
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformRequest
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2RevokeTokenResponse
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
+/// - identitytoolkit:v2 : GoogleProtobufEmpty
 /// - ids:v1 : CancelOperationRequest
 /// - ids:v1 : Empty
 /// - jobs:v3 : Empty
@@ -7902,6 +7935,7 @@ class $ExportOptions {
 /// - iam:v1 : Expr
 /// - iam:v2 : GoogleTypeExpr
 /// - iap:v1 : Expr
+/// - identitytoolkit:v2 : GoogleTypeExpr
 /// - ids:v1 : Expr
 /// - managedidentities:v1 : Expr
 /// - metastore:v1 : Expr
@@ -8861,6 +8895,7 @@ class $GeoRegionTargetingOptionDetails {
 /// - dns:v1 : GoogleIamV1GetPolicyOptions
 /// - iam:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
+/// - identitytoolkit:v2 : GoogleIamV1GetPolicyOptions
 /// - securitycenter:v1 : GetPolicyOptions
 /// - servicedirectory:v1 : GetPolicyOptions
 /// - servicemanagement:v1 : GetPolicyOptions
@@ -15283,6 +15318,42 @@ class $PerformanceGoalBidStrategy {
 
 /// Used by:
 ///
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2ClientPermissions
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2Permissions
+class $Permissions {
+  /// When true, end users cannot delete their account on the associated project
+  /// through any of our API methods
+  core.bool? disabledUserDeletion;
+
+  /// When true, end users cannot sign up for a new account on the associated
+  /// project through any of our API methods
+  core.bool? disabledUserSignup;
+
+  $Permissions({
+    this.disabledUserDeletion,
+    this.disabledUserSignup,
+  });
+
+  $Permissions.fromJson(core.Map json_)
+      : this(
+          disabledUserDeletion: json_.containsKey('disabledUserDeletion')
+              ? json_['disabledUserDeletion'] as core.bool
+              : null,
+          disabledUserSignup: json_.containsKey('disabledUserSignup')
+              ? json_['disabledUserSignup'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disabledUserDeletion != null)
+          'disabledUserDeletion': disabledUserDeletion!,
+        if (disabledUserSignup != null)
+          'disabledUserSignup': disabledUserSignup!,
+      };
+}
+
+/// Used by:
+///
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - analyticshub:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
@@ -15319,6 +15390,7 @@ class $PerformanceGoalBidStrategy {
 /// - healthcare:v1 : TestIamPermissionsResponse
 /// - iam:v1 : TestIamPermissionsResponse
 /// - iap:v1 : TestIamPermissionsResponse
+/// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsResponse
 /// - ids:v1 : TestIamPermissionsResponse
 /// - managedidentities:v1 : TestIamPermissionsResponse
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsResponse
@@ -17080,6 +17152,38 @@ class $Request07 {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
+
+/// Used by:
+///
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
+class $Response {
+  /// ID token for the authenticated user.
+  core.String? idToken;
+
+  /// Refresh token for the authenticated user.
+  core.String? refreshToken;
+
+  $Response({
+    this.idToken,
+    this.refreshToken,
+  });
+
+  $Response.fromJson(core.Map json_)
+      : this(
+          idToken: json_.containsKey('idToken')
+              ? json_['idToken'] as core.String
+              : null,
+          refreshToken: json_.containsKey('refreshToken')
+              ? json_['refreshToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (idToken != null) 'idToken': idToken!,
+        if (refreshToken != null) 'refreshToken': refreshToken!,
       };
 }
 
@@ -19192,6 +19296,7 @@ class $TenantProjectRequest {
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
 /// - iap:v1 : TestIamPermissionsRequest
+/// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsRequest
 /// - ids:v1 : TestIamPermissionsRequest
 /// - managedidentities:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
@@ -20602,6 +20707,82 @@ class $V1AccessTuple {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (permission != null) 'permission': permission!,
         if (principal != null) 'principal': principal!,
+      };
+}
+
+/// Used by:
+///
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions
+/// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitV2CustomStrengthOptions
+class $V2CustomStrengthOptions {
+  /// The password must contain a lower case character.
+  core.bool? containsLowercaseCharacter;
+
+  /// The password must contain a non alpha numeric character.
+  core.bool? containsNonAlphanumericCharacter;
+
+  /// The password must contain a number.
+  core.bool? containsNumericCharacter;
+
+  /// The password must contain an upper case character.
+  core.bool? containsUppercaseCharacter;
+
+  /// Maximum password length.
+  ///
+  /// No default max length
+  core.int? maxPasswordLength;
+
+  /// Minimum password length.
+  ///
+  /// Range from 6 to 30
+  core.int? minPasswordLength;
+
+  $V2CustomStrengthOptions({
+    this.containsLowercaseCharacter,
+    this.containsNonAlphanumericCharacter,
+    this.containsNumericCharacter,
+    this.containsUppercaseCharacter,
+    this.maxPasswordLength,
+    this.minPasswordLength,
+  });
+
+  $V2CustomStrengthOptions.fromJson(core.Map json_)
+      : this(
+          containsLowercaseCharacter:
+              json_.containsKey('containsLowercaseCharacter')
+                  ? json_['containsLowercaseCharacter'] as core.bool
+                  : null,
+          containsNonAlphanumericCharacter:
+              json_.containsKey('containsNonAlphanumericCharacter')
+                  ? json_['containsNonAlphanumericCharacter'] as core.bool
+                  : null,
+          containsNumericCharacter:
+              json_.containsKey('containsNumericCharacter')
+                  ? json_['containsNumericCharacter'] as core.bool
+                  : null,
+          containsUppercaseCharacter:
+              json_.containsKey('containsUppercaseCharacter')
+                  ? json_['containsUppercaseCharacter'] as core.bool
+                  : null,
+          maxPasswordLength: json_.containsKey('maxPasswordLength')
+              ? json_['maxPasswordLength'] as core.int
+              : null,
+          minPasswordLength: json_.containsKey('minPasswordLength')
+              ? json_['minPasswordLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containsLowercaseCharacter != null)
+          'containsLowercaseCharacter': containsLowercaseCharacter!,
+        if (containsNonAlphanumericCharacter != null)
+          'containsNonAlphanumericCharacter': containsNonAlphanumericCharacter!,
+        if (containsNumericCharacter != null)
+          'containsNumericCharacter': containsNumericCharacter!,
+        if (containsUppercaseCharacter != null)
+          'containsUppercaseCharacter': containsUppercaseCharacter!,
+        if (maxPasswordLength != null) 'maxPasswordLength': maxPasswordLength!,
+        if (minPasswordLength != null) 'minPasswordLength': minPasswordLength!,
       };
 }
 

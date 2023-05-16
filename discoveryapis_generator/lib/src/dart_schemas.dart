@@ -175,7 +175,10 @@ DartSchemaTypeDB parseSchemas(
         // subclasses.
         final map = <String?, DartSchemaType>{};
         for (var mapItem in schema.variant!.map!) {
-          map[mapItem.typeValue] = DartSchemaForwardRef(imports, mapItem.P_ref);
+          if (mapItem.P_ref != null) {
+            map[mapItem.typeValue] =
+                DartSchemaForwardRef(imports, mapItem.P_ref!);
+          }
         }
         final classId = namer.schemaClass(className);
         return db.register(AbstractVariantType(
@@ -232,7 +235,7 @@ DartSchemaTypeDB parseSchemas(
     } else if (schema.P_ref != null) {
       // This is a forward or backward reference, it will be resolved in
       // another pass following the parsing.
-      return db.register(DartSchemaForwardRef(imports, schema.P_ref));
+      return db.register(DartSchemaForwardRef(imports, schema.P_ref!));
     } else {
       return parsePrimitive(imports, db, schema);
     }
