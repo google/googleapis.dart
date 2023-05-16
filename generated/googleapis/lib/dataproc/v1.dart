@@ -6224,8 +6224,7 @@ class GkeNodeConfig {
   /// to encrypt the boot disk attached to each node in the node pool.
   ///
   /// Specify the key using the following format:
-  /// projects/KEY_PROJECT_ID/locations/LOCATION
-  /// /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
   ///
   /// Optional.
   core.String? bootDiskKmsKey;
@@ -8294,8 +8293,8 @@ class ListWorkflowTemplatesResponse {
 class LoggingConfig {
   /// The per-package log levels for the driver.
   ///
-  /// This may include "root" package name to configure rootLogger. Examples:
-  /// 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+  /// This may include "root" package name to configure rootLogger. Examples: -
+  /// 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
   core.Map<core.String, core.String>? driverLogLevels;
 
   LoggingConfig({
@@ -8442,11 +8441,11 @@ class MetastoreConfig {
       };
 }
 
-/// A Dataproc OSS metric.
+/// A Dataproc custom metric.
 class Metric {
-  /// Specify one or more available OSS metrics
-  /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics)
-  /// to collect for the metric course (for the SPARK metric source, any Spark
+  /// Specify one or more Custom metrics
+  /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics)
+  /// to collect for the metric course (for the SPARK metric source (any Spark
   /// metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can
   /// be specified).Provide metrics in the following format: METRIC_SOURCE:
   /// INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
@@ -8454,30 +8453,29 @@ class Metric {
   /// spark:driver:DAGScheduler:job.allJobs
   /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed
   /// hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified
-  /// overridden metrics will be collected for the metric source.
+  /// overridden metrics are collected for the metric source.
   ///
   /// For example, if one or more spark:executive metrics are listed as metric
-  /// overrides, other SPARK metrics will not be collected. The collection of
-  /// the default metrics for other OSS metric sources is unaffected. For
+  /// overrides, other SPARK metrics are not collected. The collection of the
+  /// metrics for other enabled custom metric sources is unaffected. For
   /// example, if both SPARK andd YARN metric sources are enabled, and overrides
-  /// are provided for Spark metrics only, all default YARN metrics will be
-  /// collected.
+  /// are provided for Spark metrics only, all YARN metrics are collected.
   ///
   /// Optional.
   core.List<core.String>? metricOverrides;
 
-  /// Default metrics are collected unless metricOverrides are specified for the
-  /// metric source (see Available OSS metrics
-  /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics)
+  /// A standard set of metrics is collected unless metricOverrides are
+  /// specified for the metric source (see Custom metrics
+  /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics)
   /// for more information).
   ///
   /// Required.
   /// Possible string values are:
   /// - "METRIC_SOURCE_UNSPECIFIED" : Required unspecified metric source.
-  /// - "MONITORING_AGENT_DEFAULTS" : Default monitoring agent metrics. If this
-  /// source is enabled, Dataproc enables the monitoring agent in Compute
-  /// Engine, and collects default monitoring agent metrics, which are published
-  /// with an agent.googleapis.com prefix.
+  /// - "MONITORING_AGENT_DEFAULTS" : Monitoring agent metrics. If this source
+  /// is enabled, Dataproc enables the monitoring agent in Compute Engine, and
+  /// collects monitoring agent metrics, which are published with an
+  /// agent.googleapis.com prefix.
   /// - "HDFS" : HDFS metric source.
   /// - "SPARK" : Spark metric source.
   /// - "YARN" : YARN metric source.
@@ -9802,7 +9800,7 @@ class ReservationAffinity {
 
 /// A request to resize a node group.
 class ResizeNodeGroupRequest {
-  /// Timeout for graceful YARN decomissioning.
+  /// Timeout for graceful YARN decommissioning.
   ///
   /// Graceful decommissioning
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning)
@@ -10728,7 +10726,7 @@ class SparkStandaloneAutoscalingConfig {
   /// Timeout for Spark graceful decommissioning of spark workers.
   ///
   /// Specifies the duration to wait for spark worker to complete spark
-  /// decomissioning tasks before forcefully removing workers. Only applicable
+  /// decommissioning tasks before forcefully removing workers. Only applicable
   /// to downscaling operations.Bounds: 0s, 1d.
   ///
   /// Required.

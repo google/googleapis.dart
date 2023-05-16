@@ -2266,6 +2266,7 @@ api.Job buildJob() {
     o.replaceJobId = 'foo';
     o.replacedByJobId = 'foo';
     o.requestedState = 'foo';
+    o.runtimeUpdatableParams = buildRuntimeUpdatableParams();
     o.satisfiesPzs = true;
     o.stageStates = buildUnnamed27();
     o.startTime = 'foo';
@@ -2335,6 +2336,7 @@ void checkJob(api.Job o) {
       o.requestedState!,
       unittest.equals('foo'),
     );
+    checkRuntimeUpdatableParams(o.runtimeUpdatableParams!);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkUnnamed27(o.stageStates!);
     unittest.expect(
@@ -4816,6 +4818,33 @@ void checkRuntimeMetadata(api.RuntimeMetadata o) {
     checkSDKInfo(o.sdkInfo!);
   }
   buildCounterRuntimeMetadata--;
+}
+
+core.int buildCounterRuntimeUpdatableParams = 0;
+api.RuntimeUpdatableParams buildRuntimeUpdatableParams() {
+  final o = api.RuntimeUpdatableParams();
+  buildCounterRuntimeUpdatableParams++;
+  if (buildCounterRuntimeUpdatableParams < 3) {
+    o.maxNumWorkers = 42;
+    o.minNumWorkers = 42;
+  }
+  buildCounterRuntimeUpdatableParams--;
+  return o;
+}
+
+void checkRuntimeUpdatableParams(api.RuntimeUpdatableParams o) {
+  buildCounterRuntimeUpdatableParams++;
+  if (buildCounterRuntimeUpdatableParams < 3) {
+    unittest.expect(
+      o.maxNumWorkers!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minNumWorkers!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterRuntimeUpdatableParams--;
 }
 
 core.int buildCounterSDKInfo = 0;
@@ -9225,6 +9254,16 @@ void main() {
       final od = api.RuntimeMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRuntimeMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-RuntimeUpdatableParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRuntimeUpdatableParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RuntimeUpdatableParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRuntimeUpdatableParams(od);
     });
   });
 

@@ -197,6 +197,42 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity--;
 }
 
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGuidanceDetails = 0;
+api.GuidanceDetails buildGuidanceDetails() {
+  final o = api.GuidanceDetails();
+  buildCounterGuidanceDetails++;
+  if (buildCounterGuidanceDetails < 3) {
+    o.userRemediation = buildUnnamed2();
+  }
+  buildCounterGuidanceDetails--;
+  return o;
+}
+
+void checkGuidanceDetails(api.GuidanceDetails o) {
+  buildCounterGuidanceDetails++;
+  if (buildCounterGuidanceDetails < 3) {
+    checkUnnamed2(o.userRemediation!);
+  }
+  buildCounterGuidanceDetails--;
+}
+
 core.int buildCounterRequestDetails = 0;
 api.RequestDetails buildRequestDetails() {
   final o = api.RequestDetails();
@@ -261,6 +297,7 @@ api.TokenPayloadExternal buildTokenPayloadExternal() {
     o.accountDetails = buildAccountDetails();
     o.appIntegrity = buildAppIntegrity();
     o.deviceIntegrity = buildDeviceIntegrity();
+    o.guidanceDetails = buildGuidanceDetails();
     o.requestDetails = buildRequestDetails();
     o.testingDetails = buildTestingDetails();
   }
@@ -274,6 +311,7 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
     checkAccountDetails(o.accountDetails!);
     checkAppIntegrity(o.appIntegrity!);
     checkDeviceIntegrity(o.deviceIntegrity!);
+    checkGuidanceDetails(o.guidanceDetails!);
     checkRequestDetails(o.requestDetails!);
     checkTestingDetails(o.testingDetails!);
   }
@@ -338,6 +376,16 @@ void main() {
       final od = api.DeviceIntegrity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDeviceIntegrity(od);
+    });
+  });
+
+  unittest.group('obj-schema-GuidanceDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGuidanceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GuidanceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGuidanceDetails(od);
     });
   });
 

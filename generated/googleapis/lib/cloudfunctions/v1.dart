@@ -1784,7 +1784,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
@@ -2057,7 +2057,7 @@ class SecretVersion {
 
   /// Version of the secret (version number or the string 'latest').
   ///
-  /// It is preferrable to use `latest` version with secret volumes as secret
+  /// It is preferable to use `latest` version with secret volumes as secret
   /// value changes are reflected immediately.
   core.String? version;
 

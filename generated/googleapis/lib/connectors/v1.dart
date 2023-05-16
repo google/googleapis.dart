@@ -25,7 +25,9 @@
 ///       - [ProjectsLocationsConnectionsConnectionSchemaMetadataResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
+///     - [ProjectsLocationsEndpointAttachmentsResource]
 ///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalManagedZonesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvidersResource]
 ///       - [ProjectsLocationsProvidersConnectorsResource]
@@ -79,6 +81,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsConnectionsResource get connections =>
       ProjectsLocationsConnectionsResource(_requester);
+  ProjectsLocationsEndpointAttachmentsResource get endpointAttachments =>
+      ProjectsLocationsEndpointAttachmentsResource(_requester);
   ProjectsLocationsGlobalResource get global =>
       ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -843,8 +847,245 @@ class ProjectsLocationsConnectionsRuntimeEntitySchemasResource {
   }
 }
 
+class ProjectsLocationsEndpointAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEndpointAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new EndpointAttachment in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the EndpointAttachment, of the
+  /// form: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [endpointAttachmentId] - Required. Identifier to assign to the
+  /// EndpointAttachment. Must be unique within scope of the parent resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    EndpointAttachment request,
+    core.String parent, {
+    core.String? endpointAttachmentId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (endpointAttachmentId != null)
+        'endpointAttachmentId': [endpointAttachmentId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endpointAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single EndpointAttachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /endpointAttachments / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpointAttachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single EndpointAttachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /endpointAttachments / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpointAttachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EndpointAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EndpointAttachment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EndpointAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List EndpointAttachments in a given project
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource od the EndpointAttachment, of the
+  /// form: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter.
+  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
+  ///
+  /// [orderBy] - Order by parameters.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEndpointAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEndpointAttachmentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endpointAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEndpointAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single EndpointAttachment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the Endpoint Attachment. Format:
+  /// projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpointAttachments/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Fields are
+  /// specified relative to the endpointAttachment. A field will be overwritten
+  /// if it is in the mask. You can modify only the fields listed below. To
+  /// update the endpointAttachment details: * `description` * `labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    EndpointAttachment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsGlobalResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalManagedZonesResource get managedZones =>
+      ProjectsLocationsGlobalManagedZonesResource(_requester);
 
   ProjectsLocationsGlobalResource(commons.ApiRequester client)
       : _requester = client;
@@ -884,6 +1125,238 @@ class ProjectsLocationsGlobalResource {
       queryParams: queryParams_,
     );
     return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalManagedZonesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalManagedZonesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ManagedZone in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the ManagedZone, of the form:
+  /// `projects / * /locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [managedZoneId] - Required. Identifier to assign to the ManagedZone. Must
+  /// be unique within scope of the parent resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ManagedZone request,
+    core.String parent, {
+    core.String? managedZoneId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (managedZoneId != null) 'managedZoneId': [managedZoneId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managedZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ManagedZone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / *
+  /// /locations/global/managedZones / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/managedZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ManagedZone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / *
+  /// /locations/global/managedZones / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/managedZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedZone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZone> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagedZone.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List ManagedZones in a given project
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the Managed Zone, of the form:
+  /// `projects / * /locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [filter] - Filter.
+  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
+  ///
+  /// [orderBy] - Order by parameters.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListManagedZonesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListManagedZonesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managedZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListManagedZonesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single ManagedZone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the Managed Zone. Format:
+  /// projects/{project}/locations/global/managedZones/{managed_zone}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/managedZones/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Fields are
+  /// specified relative to the managedZone. A field will be overwritten if it
+  /// is in the mask. You can modify only the fields listed below. To update the
+  /// managedZone details: * `description` * `labels` * `target_project` *
+  /// `target_network`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ManagedZone request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1594,6 +2067,9 @@ class AuthConfig {
   /// List containing additional auth configs.
   core.List<ConfigVariable>? additionalVariables;
 
+  /// Identifier key for auth config
+  core.String? authKey;
+
   /// The type of authentication configured.
   /// Possible string values are:
   /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
@@ -1623,6 +2099,7 @@ class AuthConfig {
 
   AuthConfig({
     this.additionalVariables,
+    this.authKey,
     this.authType,
     this.oauth2AuthCodeFlow,
     this.oauth2ClientCredentials,
@@ -1638,6 +2115,9 @@ class AuthConfig {
                   .map((value) => ConfigVariable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          authKey: json_.containsKey('authKey')
+              ? json_['authKey'] as core.String
               : null,
           authType: json_.containsKey('authType')
               ? json_['authType'] as core.String
@@ -1668,6 +2148,7 @@ class AuthConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalVariables != null)
           'additionalVariables': additionalVariables!,
+        if (authKey != null) 'authKey': authKey!,
         if (authType != null) 'authType': authType!,
         if (oauth2AuthCodeFlow != null)
           'oauth2AuthCodeFlow': oauth2AuthCodeFlow!,
@@ -1681,6 +2162,9 @@ class AuthConfig {
 
 /// AuthConfigTemplate defines required field over an authentication type.
 class AuthConfigTemplate {
+  /// Identifier key for auth config
+  core.String? authKey;
+
   /// The type of authentication configured.
   /// Possible string values are:
   /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
@@ -1703,6 +2187,7 @@ class AuthConfigTemplate {
   core.String? displayName;
 
   AuthConfigTemplate({
+    this.authKey,
     this.authType,
     this.configVariableTemplates,
     this.description,
@@ -1711,6 +2196,9 @@ class AuthConfigTemplate {
 
   AuthConfigTemplate.fromJson(core.Map json_)
       : this(
+          authKey: json_.containsKey('authKey')
+              ? json_['authKey'] as core.String
+              : null,
           authType: json_.containsKey('authType')
               ? json_['authType'] as core.String
               : null,
@@ -1729,6 +2217,7 @@ class AuthConfigTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (authKey != null) 'authKey': authKey!,
         if (authType != null) 'authType': authType!,
         if (configVariableTemplates != null)
           'configVariableTemplates': configVariableTemplates!,
@@ -2157,6 +2646,15 @@ class Connection {
   /// Output only.
   ConnectionStatus? status;
 
+  /// This subscription type enum states the subscription type of the project.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Unspecified subscription type.
+  /// - "PAY_G" : PayG subscription.
+  /// - "PAID" : Paid Subscription.
+  core.String? subscriptionType;
+
   /// Suspended indicates if a user has suspended a connection or not.
   ///
   /// Optional.
@@ -2185,6 +2683,7 @@ class Connection {
     this.serviceDirectory,
     this.sslConfig,
     this.status,
+    this.subscriptionType,
     this.suspended,
     this.updateTime,
   });
@@ -2257,6 +2756,9 @@ class Connection {
               ? ConnectionStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
+          subscriptionType: json_.containsKey('subscriptionType')
+              ? json_['subscriptionType'] as core.String
+              : null,
           suspended: json_.containsKey('suspended')
               ? json_['suspended'] as core.bool
               : null,
@@ -2285,6 +2787,7 @@ class Connection {
         if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
         if (sslConfig != null) 'sslConfig': sslConfig!,
         if (status != null) 'status': status!,
+        if (subscriptionType != null) 'subscriptionType': subscriptionType!,
         if (suspended != null) 'suspended': suspended!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2388,8 +2891,8 @@ class ConnectionStatus {
   /// - "DELETING" : Connection is being deleted.
   /// - "UPDATING" : Connection is being updated.
   /// - "ERROR" : Connection is not running due to an error.
-  /// - "AUTHORIZATION_REQUIRED" : Connection is not running due to an auth
-  /// error for the Oauth2 Auth Code based connector.
+  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
+  /// authorization configuration is not complete.
   core.String? state;
 
   /// Status provides detailed information for the state.
@@ -2972,6 +3475,98 @@ class EgressControlConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// represents the Connector's Endpoint Attachment resource
+class EndpointAttachment {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The Private Service Connect connection endpoint ip
+  ///
+  /// Output only.
+  core.String? endpointIp;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Refer to cloud documentation on labels for more details.
+  /// https://cloud.google.com/compute/docs/labeling-resources
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Resource name of the Endpoint Attachment.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The path of the service attachment
+  ///
+  /// Required.
+  core.String? serviceAttachment;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  EndpointAttachment({
+    this.createTime,
+    this.description,
+    this.endpointIp,
+    this.labels,
+    this.name,
+    this.serviceAttachment,
+    this.updateTime,
+  });
+
+  EndpointAttachment.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          endpointIp: json_.containsKey('endpointIp')
+              ? json_['endpointIp'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (endpointIp != null) 'endpointIp': endpointIp!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// EnumOption definition
 class EnumOption {
   /// Display name of the option.
@@ -3476,6 +4071,49 @@ class ListConnectorsResponse {
       };
 }
 
+/// Response message for ConnectorsService.ListEndpointAttachments
+class ListEndpointAttachmentsResponse {
+  /// EndpointAttachments.
+  core.List<EndpointAttachment>? endpointAttachments;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListEndpointAttachmentsResponse({
+    this.endpointAttachments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListEndpointAttachmentsResponse.fromJson(core.Map json_)
+      : this(
+          endpointAttachments: json_.containsKey('endpointAttachments')
+              ? (json_['endpointAttachments'] as core.List)
+                  .map((value) => EndpointAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointAttachments != null)
+          'endpointAttachments': endpointAttachments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -3504,6 +4142,38 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ConnectorsService.ListManagedZones
+class ListManagedZonesResponse {
+  /// ManagedZones.
+  core.List<ManagedZone>? managedZones;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  ListManagedZonesResponse({
+    this.managedZones,
+    this.nextPageToken,
+  });
+
+  ListManagedZonesResponse.fromJson(core.Map json_)
+      : this(
+          managedZones: json_.containsKey('managedZones')
+              ? (json_['managedZones'] as core.List)
+                  .map((value) => ManagedZone.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (managedZones != null) 'managedZones': managedZones!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3648,7 +4318,7 @@ class ListRuntimeEntitySchemasResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Determines whether or no a connection is locked.
@@ -3678,6 +4348,105 @@ class LockConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locked != null) 'locked': locked!,
         if (reason != null) 'reason': reason!,
+      };
+}
+
+/// represents the Connector's Managed Zone resource
+class ManagedZone {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// DNS Name of the resource
+  ///
+  /// Required.
+  core.String? dns;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Refer to cloud documentation on labels for more details.
+  /// https://cloud.google.com/compute/docs/labeling-resources
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Resource name of the Managed Zone.
+  ///
+  /// Format: projects/{project}/locations/global/managedZones/{managed_zone}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The name of the Target Project
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  /// The name of the Target Project VPC Network
+  ///
+  /// Required.
+  core.String? targetVpc;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ManagedZone({
+    this.createTime,
+    this.description,
+    this.dns,
+    this.labels,
+    this.name,
+    this.targetProject,
+    this.targetVpc,
+    this.updateTime,
+  });
+
+  ManagedZone.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          dns: json_.containsKey('dns') ? json_['dns'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          targetProject: json_.containsKey('targetProject')
+              ? json_['targetProject'] as core.String
+              : null,
+          targetVpc: json_.containsKey('targetVpc')
+              ? json_['targetVpc'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (dns != null) 'dns': dns!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (targetProject != null) 'targetProject': targetProject!,
+        if (targetVpc != null) 'targetVpc': targetVpc!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

@@ -23,7 +23,6 @@
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
-///   - [ProjectsResourcesResource]
 library;
 
 import 'dart:async' as async;
@@ -65,8 +64,6 @@ class ProjectsResource {
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
-  ProjectsResourcesResource get resources =>
-      ProjectsResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1038,55 +1035,6 @@ class ProjectsOccurrencesResource {
   }
 }
 
-class ProjectsResourcesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsResourcesResource(commons.ApiRequester client) : _requester = client;
-
-  /// Gets a summary of the packages within a given resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the resource to get a packages summary for
-  /// in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
-  /// Value must have pattern `^projects/\[^/\]+/resources/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [PackagesSummaryResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<PackagesSummaryResponse> generatePackagesSummary(
-    GeneratePackagesSummaryRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$name') + ':generatePackagesSummary';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return PackagesSummaryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -1725,156 +1673,7 @@ typedef BuilderConfig = $Shared00;
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-class CVSS {
-  ///
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
-  /// - "ATTACK_COMPLEXITY_LOW"
-  /// - "ATTACK_COMPLEXITY_HIGH"
-  core.String? attackComplexity;
-
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED"
-  /// - "ATTACK_VECTOR_NETWORK"
-  /// - "ATTACK_VECTOR_ADJACENT"
-  /// - "ATTACK_VECTOR_LOCAL"
-  /// - "ATTACK_VECTOR_PHYSICAL"
-  core.String? attackVector;
-
-  ///
-  /// Possible string values are:
-  /// - "AUTHENTICATION_UNSPECIFIED"
-  /// - "AUTHENTICATION_MULTIPLE"
-  /// - "AUTHENTICATION_SINGLE"
-  /// - "AUTHENTICATION_NONE"
-  core.String? authentication;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  core.double? baseScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? confidentialityImpact;
-  core.double? exploitabilityScore;
-  core.double? impactScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? integrityImpact;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  /// - "PRIVILEGES_REQUIRED_NONE"
-  /// - "PRIVILEGES_REQUIRED_LOW"
-  /// - "PRIVILEGES_REQUIRED_HIGH"
-  core.String? privilegesRequired;
-
-  ///
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED"
-  /// - "SCOPE_UNCHANGED"
-  /// - "SCOPE_CHANGED"
-  core.String? scope;
-
-  ///
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED"
-  /// - "USER_INTERACTION_NONE"
-  /// - "USER_INTERACTION_REQUIRED"
-  core.String? userInteraction;
-
-  CVSS({
-    this.attackComplexity,
-    this.attackVector,
-    this.authentication,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  CVSS.fromJson(core.Map json_)
-      : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          authentication: json_.containsKey('authentication')
-              ? json_['authentication'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-        if (attackVector != null) 'attackVector': attackVector!,
-        if (authentication != null) 'authentication': authentication!,
-        if (availabilityImpact != null)
-          'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
-        if (confidentialityImpact != null)
-          'confidentialityImpact': confidentialityImpact!,
-        if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
-        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-        if (privilegesRequired != null)
-          'privilegesRequired': privilegesRequired!,
-        if (scope != null) 'scope': scope!,
-        if (userInteraction != null) 'userInteraction': userInteraction!,
-      };
-}
+typedef CVSS = $CVSS;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -2592,6 +2391,7 @@ class DiscoveryNote {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? analysisKind;
 
   DiscoveryNote({
@@ -2939,12 +2739,6 @@ class FixableTotalByDigest {
         if (totalCount != null) 'totalCount': totalCount!,
       };
 }
-
-/// GeneratePackagesSummaryRequest is the request body for the
-/// GeneratePackagesSummary API method.
-///
-/// It just takes a single name argument, referring to the resource.
-typedef GeneratePackagesSummaryRequest = $Empty;
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
@@ -3424,38 +3218,6 @@ typedef Layer = $Layer;
 /// License information.
 typedef License = $License;
 
-/// Per license count
-class LicensesSummary {
-  /// The number of fixable vulnerabilities associated with this resource.
-  core.String? count;
-
-  /// The license of the package.
-  ///
-  /// Note that the format of this value is not guaranteed. It may be nil, an
-  /// empty string, a boolean value (A | B), a differently formed boolean value
-  /// (A OR B), etc...
-  core.String? license;
-
-  LicensesSummary({
-    this.count,
-    this.license,
-  });
-
-  LicensesSummary.fromJson(core.Map json_)
-      : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          license: json_.containsKey('license')
-              ? json_['license'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (license != null) 'license': license!,
-      };
-}
-
 /// Response for listing occurrences for a note.
 class ListNoteOccurrencesResponse {
   /// Token to provide to skip to a particular spot in the list.
@@ -3725,6 +3487,7 @@ class Note {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -3744,6 +3507,9 @@ class Note {
 
   /// URLs associated with this note.
   core.List<RelatedUrl>? relatedUrl;
+
+  /// A note describing an SBOM reference.
+  SBOMReferenceNote? sbomReference;
 
   /// A one sentence description of this note.
   core.String? shortDescription;
@@ -3780,6 +3546,7 @@ class Note {
     this.package,
     this.relatedNoteNames,
     this.relatedUrl,
+    this.sbomReference,
     this.shortDescription,
     this.updateTime,
     this.upgrade,
@@ -3843,6 +3610,10 @@ class Note {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceNote.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           shortDescription: json_.containsKey('shortDescription')
               ? json_['shortDescription'] as core.String
               : null,
@@ -3880,6 +3651,7 @@ class Note {
         if (package != null) 'package': package!,
         if (relatedNoteNames != null) 'relatedNoteNames': relatedNoteNames!,
         if (relatedUrl != null) 'relatedUrl': relatedUrl!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
@@ -3941,6 +3713,7 @@ class Occurrence {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -3971,6 +3744,9 @@ class Occurrence {
   /// Required. Immutable.
   core.String? resourceUri;
 
+  /// Describes a specific SBOM reference occurrences.
+  SBOMReferenceOccurrence? sbomReference;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -3998,6 +3774,7 @@ class Occurrence {
     this.package,
     this.remediation,
     this.resourceUri,
+    this.sbomReference,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -4055,6 +3832,10 @@ class Occurrence {
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceOccurrence.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -4084,6 +3865,7 @@ class Occurrence {
         if (package != null) 'package': package!,
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -4434,39 +4216,6 @@ class PackageOccurrence {
       };
 }
 
-/// A summary of the packages found within the given resource.
-class PackagesSummaryResponse {
-  /// A listing by license name of each of the licenses and their counts.
-  core.List<LicensesSummary>? licensesSummary;
-
-  /// The unique URL of the image or the container for which this summary
-  /// applies.
-  core.String? resourceUrl;
-
-  PackagesSummaryResponse({
-    this.licensesSummary,
-    this.resourceUrl,
-  });
-
-  PackagesSummaryResponse.fromJson(core.Map json_)
-      : this(
-          licensesSummary: json_.containsKey('licensesSummary')
-              ? (json_['licensesSummary'] as core.List)
-                  .map((value) => LicensesSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          resourceUrl: json_.containsKey('resourceUrl')
-              ? json_['resourceUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (licensesSummary != null) 'licensesSummary': licensesSummary!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-      };
-}
-
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4746,6 +4495,147 @@ class RepoId {
         if (uid != null) 'uid': uid!,
       };
 }
+
+/// The note representing an SBOM reference.
+class SBOMReferenceNote {
+  /// The format that SBOM takes.
+  ///
+  /// E.g. may be spdx, cyclonedx, etc...
+  core.String? format;
+
+  /// The version of the format that the SBOM takes.
+  ///
+  /// E.g. if the format is spdx, the version may be 2.3.
+  core.String? version;
+
+  SBOMReferenceNote({
+    this.format,
+    this.version,
+  });
+
+  SBOMReferenceNote.fromJson(core.Map json_)
+      : this(
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (format != null) 'format': format!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// The occurrence representing an SBOM reference as applied to a specific
+/// resource.
+///
+/// The occurrence follows the DSSE specification. See
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more
+/// details.
+class SBOMReferenceOccurrence {
+  /// The actual payload that contains the SBOM reference data.
+  SbomReferenceIntotoPayload? payload;
+
+  /// The kind of payload that SbomReferenceIntotoPayload takes.
+  ///
+  /// Since it's in the intoto format, this value is expected to be
+  /// 'application/vnd.in-toto+json'.
+  core.String? payloadType;
+
+  /// The signatures over the payload.
+  core.List<EnvelopeSignature>? signatures;
+
+  SBOMReferenceOccurrence({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  SBOMReferenceOccurrence.fromJson(core.Map json_)
+      : this(
+          payload: json_.containsKey('payload')
+              ? SbomReferenceIntotoPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          payloadType: json_.containsKey('payloadType')
+              ? json_['payloadType'] as core.String
+              : null,
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
+                  .map((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// The actual payload that contains the SBOM Reference data.
+///
+/// The payload follows the intoto statement specification. See
+/// https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for
+/// more details.
+class SbomReferenceIntotoPayload {
+  /// Identifier for the schema of the Statement.
+  core.String? P_type;
+
+  /// Additional parameters of the Predicate.
+  ///
+  /// Includes the actual data about the SBOM.
+  SbomReferenceIntotoPredicate? predicate;
+
+  /// URI identifying the type of the Predicate.
+  core.String? predicateType;
+
+  /// Set of software artifacts that the attestation applies to.
+  ///
+  /// Each element represents a single software artifact.
+  core.List<Subject>? subject;
+
+  SbomReferenceIntotoPayload({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  SbomReferenceIntotoPayload.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SbomReferenceIntotoPredicate.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// A predicate which describes the SBOM being referenced.
+typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

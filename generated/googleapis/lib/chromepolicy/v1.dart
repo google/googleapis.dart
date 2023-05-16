@@ -1988,6 +1988,12 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
   /// Output only.
   core.String? description;
 
+  /// Field conditions required for this value to be valid.
+  ///
+  /// Output only.
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>?
+      fieldDependencies;
+
   /// The string represenstation of the value that can be set for the field.
   ///
   /// Output only.
@@ -1995,6 +2001,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
 
   GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription({
     this.description,
+    this.fieldDependencies,
     this.value,
   });
 
@@ -2004,12 +2011,21 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          fieldDependencies: json_.containsKey('fieldDependencies')
+              ? (json_['fieldDependencies'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
         if (value != null) 'value': value!,
       };
 }

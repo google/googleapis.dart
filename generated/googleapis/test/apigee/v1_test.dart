@@ -409,6 +409,7 @@ api.GoogleCloudApigeeV1ApiCategoryData
   final o = api.GoogleCloudApigeeV1ApiCategoryData();
   buildCounterGoogleCloudApigeeV1ApiCategoryData++;
   if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
+    o.gcpResource = 'foo';
     o.id = 'foo';
     o.name = 'foo';
     o.siteId = 'foo';
@@ -422,6 +423,10 @@ void checkGoogleCloudApigeeV1ApiCategoryData(
     api.GoogleCloudApigeeV1ApiCategoryData o) {
   buildCounterGoogleCloudApigeeV1ApiCategoryData++;
   if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
+    unittest.expect(
+      o.gcpResource!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1003,45 +1008,6 @@ void checkGoogleCloudApigeeV1ApiProxyRevision(
     );
   }
   buildCounterGoogleCloudApigeeV1ApiProxyRevision--;
-}
-
-core.int buildCounterGoogleCloudApigeeV1ApiResponseWrapper = 0;
-api.GoogleCloudApigeeV1ApiResponseWrapper
-    buildGoogleCloudApigeeV1ApiResponseWrapper() {
-  final o = api.GoogleCloudApigeeV1ApiResponseWrapper();
-  buildCounterGoogleCloudApigeeV1ApiResponseWrapper++;
-  if (buildCounterGoogleCloudApigeeV1ApiResponseWrapper < 3) {
-    o.errorCode = 'foo';
-    o.message = 'foo';
-    o.requestId = 'foo';
-    o.status = 'foo';
-  }
-  buildCounterGoogleCloudApigeeV1ApiResponseWrapper--;
-  return o;
-}
-
-void checkGoogleCloudApigeeV1ApiResponseWrapper(
-    api.GoogleCloudApigeeV1ApiResponseWrapper o) {
-  buildCounterGoogleCloudApigeeV1ApiResponseWrapper++;
-  if (buildCounterGoogleCloudApigeeV1ApiResponseWrapper < 3) {
-    unittest.expect(
-      o.errorCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.status!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudApigeeV1ApiResponseWrapper--;
 }
 
 core.int buildCounterGoogleCloudApigeeV1ApiSecurityConfig = 0;
@@ -2774,6 +2740,49 @@ void checkGoogleCloudApigeeV1DeleteCustomReportResponse(
     );
   }
   buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse--;
+}
+
+core.int buildCounterGoogleCloudApigeeV1DeleteResponse = 0;
+api.GoogleCloudApigeeV1DeleteResponse buildGoogleCloudApigeeV1DeleteResponse() {
+  final o = api.GoogleCloudApigeeV1DeleteResponse();
+  buildCounterGoogleCloudApigeeV1DeleteResponse++;
+  if (buildCounterGoogleCloudApigeeV1DeleteResponse < 3) {
+    o.errorCode = 'foo';
+    o.gcpResource = 'foo';
+    o.message = 'foo';
+    o.requestId = 'foo';
+    o.status = 'foo';
+  }
+  buildCounterGoogleCloudApigeeV1DeleteResponse--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1DeleteResponse(
+    api.GoogleCloudApigeeV1DeleteResponse o) {
+  buildCounterGoogleCloudApigeeV1DeleteResponse++;
+  if (buildCounterGoogleCloudApigeeV1DeleteResponse < 3) {
+    unittest.expect(
+      o.errorCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudApigeeV1DeleteResponse--;
 }
 
 core.List<api.GoogleRpcStatus> buildUnnamed51() => [
@@ -11644,16 +11653,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudApigeeV1ApiResponseWrapper', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudApigeeV1ApiResponseWrapper();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiResponseWrapper(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiSecurityConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudApigeeV1ApiSecurityConfig();
@@ -11981,6 +11980,16 @@ void main() {
       final od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeleteCustomReportResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeleteResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApigeeV1DeleteResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeleteResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1DeleteResponse(od);
     });
   });
 
@@ -30319,12 +30328,12 @@ void main() {
           'content-type': 'application/json; charset=utf-8',
         };
         final resp =
-            convert.json.encode(buildGoogleCloudApigeeV1ApiResponseWrapper());
+            convert.json.encode(buildGoogleCloudApigeeV1DeleteResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
-      checkGoogleCloudApigeeV1ApiResponseWrapper(
-          response as api.GoogleCloudApigeeV1ApiResponseWrapper);
+      checkGoogleCloudApigeeV1DeleteResponse(
+          response as api.GoogleCloudApigeeV1DeleteResponse);
     });
 
     unittest.test('method--get', () async {

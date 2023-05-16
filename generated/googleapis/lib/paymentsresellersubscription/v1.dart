@@ -420,13 +420,11 @@ class PartnersSubscriptionsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// New partners should be on auto-extend by default.
+  /// \[Opt-in only\] Most partners should be on auto-extend by default.
   ///
   /// Used by partners to extend a subscription service for their customers on
   /// an ongoing basis for the subscription to remain active and renewable. It
   /// should be called directly by the partner using service accounts.
-  ///
-  /// Deprecated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1683,7 +1681,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Required. Resource name that identifies the purchased products. The format
   /// will be 'partners/{partner_id}/products/{product_id}'.
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? products;
 
   /// Subscription-level promotions.
@@ -1950,6 +1948,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Output only.
   core.String? lineItemFreeTrialEndTime;
 
+  /// A unique index of the subscription line item.
+  ///
+  /// Output only.
+  core.int? lineItemIndex;
+
   /// The promotions applied on the line item.
   ///
   /// It can be: - a free trial promotion, which overrides the
@@ -2017,6 +2020,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
     this.amount,
     this.description,
     this.lineItemFreeTrialEndTime,
+    this.lineItemIndex,
     this.lineItemPromotionSpecs,
     this.oneTimeRecurrenceDetails,
     this.product,
@@ -2039,6 +2043,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
               json_.containsKey('lineItemFreeTrialEndTime')
                   ? json_['lineItemFreeTrialEndTime'] as core.String
                   : null,
+          lineItemIndex: json_.containsKey('lineItemIndex')
+              ? json_['lineItemIndex'] as core.int
+              : null,
           lineItemPromotionSpecs: json_.containsKey('lineItemPromotionSpecs')
               ? (json_['lineItemPromotionSpecs'] as core.List)
                   .map((value) =>
@@ -2073,6 +2080,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         if (description != null) 'description': description!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
+        if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
         if (lineItemPromotionSpecs != null)
           'lineItemPromotionSpecs': lineItemPromotionSpecs!,
         if (oneTimeRecurrenceDetails != null)

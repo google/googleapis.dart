@@ -28,7 +28,6 @@ api.Challenge buildChallenge() {
   final o = api.Challenge();
   buildCounterChallenge++;
   if (buildCounterChallenge < 3) {
-    o.alternativeChallenge = 'foo';
     o.challenge = 'foo';
   }
   buildCounterChallenge--;
@@ -39,15 +38,271 @@ void checkChallenge(api.Challenge o) {
   buildCounterChallenge++;
   if (buildCounterChallenge < 3) {
     unittest.expect(
-      o.alternativeChallenge!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
       o.challenge!,
       unittest.equals('foo'),
     );
   }
   buildCounterChallenge--;
+}
+
+core.int buildCounterCrowdStrikeAgent = 0;
+api.CrowdStrikeAgent buildCrowdStrikeAgent() {
+  final o = api.CrowdStrikeAgent();
+  buildCounterCrowdStrikeAgent++;
+  if (buildCounterCrowdStrikeAgent < 3) {
+    o.agentId = 'foo';
+    o.customerId = 'foo';
+  }
+  buildCounterCrowdStrikeAgent--;
+  return o;
+}
+
+void checkCrowdStrikeAgent(api.CrowdStrikeAgent o) {
+  buildCounterCrowdStrikeAgent++;
+  if (buildCounterCrowdStrikeAgent < 3) {
+    unittest.expect(
+      o.agentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customerId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCrowdStrikeAgent--;
+}
+
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed0(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterDeviceSignals = 0;
+api.DeviceSignals buildDeviceSignals() {
+  final o = api.DeviceSignals();
+  buildCounterDeviceSignals++;
+  if (buildCounterDeviceSignals < 3) {
+    o.allowScreenLock = true;
+    o.browserVersion = 'foo';
+    o.builtInDnsClientEnabled = true;
+    o.chromeRemoteDesktopAppBlocked = true;
+    o.crowdStrikeAgent = buildCrowdStrikeAgent();
+    o.deviceAffiliationIds = buildUnnamed0();
+    o.deviceEnrollmentDomain = 'foo';
+    o.deviceManufacturer = 'foo';
+    o.deviceModel = 'foo';
+    o.diskEncryption = 'foo';
+    o.displayName = 'foo';
+    o.hostname = 'foo';
+    o.imei = buildUnnamed1();
+    o.macAddresses = buildUnnamed2();
+    o.meid = buildUnnamed3();
+    o.operatingSystem = 'foo';
+    o.osFirewall = 'foo';
+    o.osVersion = 'foo';
+    o.passwordProtectionWarningTrigger = 'foo';
+    o.profileAffiliationIds = buildUnnamed4();
+    o.realtimeUrlCheckMode = 'foo';
+    o.safeBrowsingProtectionLevel = 'foo';
+    o.screenLockSecured = 'foo';
+    o.secureBootMode = 'foo';
+    o.serialNumber = 'foo';
+    o.siteIsolationEnabled = true;
+    o.systemDnsServers = buildUnnamed5();
+    o.thirdPartyBlockingEnabled = true;
+    o.windowsMachineDomain = 'foo';
+    o.windowsUserDomain = 'foo';
+  }
+  buildCounterDeviceSignals--;
+  return o;
+}
+
+void checkDeviceSignals(api.DeviceSignals o) {
+  buildCounterDeviceSignals++;
+  if (buildCounterDeviceSignals < 3) {
+    unittest.expect(o.allowScreenLock!, unittest.isTrue);
+    unittest.expect(
+      o.browserVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.builtInDnsClientEnabled!, unittest.isTrue);
+    unittest.expect(o.chromeRemoteDesktopAppBlocked!, unittest.isTrue);
+    checkCrowdStrikeAgent(o.crowdStrikeAgent!);
+    checkUnnamed0(o.deviceAffiliationIds!);
+    unittest.expect(
+      o.deviceEnrollmentDomain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceManufacturer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceModel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.diskEncryption!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.imei!);
+    checkUnnamed2(o.macAddresses!);
+    checkUnnamed3(o.meid!);
+    unittest.expect(
+      o.operatingSystem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.osFirewall!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.osVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.passwordProtectionWarningTrigger!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4(o.profileAffiliationIds!);
+    unittest.expect(
+      o.realtimeUrlCheckMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.safeBrowsingProtectionLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenLockSecured!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secureBootMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serialNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.siteIsolationEnabled!, unittest.isTrue);
+    checkUnnamed5(o.systemDnsServers!);
+    unittest.expect(o.thirdPartyBlockingEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.windowsMachineDomain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.windowsUserDomain!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDeviceSignals--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -100,6 +355,7 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
     o.customerId = 'foo';
     o.devicePermanentId = 'foo';
     o.deviceSignal = 'foo';
+    o.deviceSignals = buildDeviceSignals();
     o.keyTrustLevel = 'foo';
     o.signedPublicKeyAndChallenge = 'foo';
     o.virtualDeviceId = 'foo';
@@ -123,6 +379,7 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
       o.deviceSignal!,
       unittest.equals('foo'),
     );
+    checkDeviceSignals(o.deviceSignals!);
     unittest.expect(
       o.keyTrustLevel!,
       unittest.equals('foo'),
@@ -147,6 +404,26 @@ void main() {
       final od =
           api.Challenge.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkChallenge(od);
+    });
+  });
+
+  unittest.group('obj-schema-CrowdStrikeAgent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCrowdStrikeAgent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CrowdStrikeAgent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCrowdStrikeAgent(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeviceSignals', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeviceSignals();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceSignals.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeviceSignals(od);
     });
   });
 

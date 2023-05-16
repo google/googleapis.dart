@@ -1338,7 +1338,7 @@
             }
         }
     },
-    "revision": "20230407",
+    "revision": "20230506",
     "rootUrl": "https://bigquerydatatransfer.googleapis.com/",
     "schemas": {
         "CheckValidCredsRequest": {
@@ -1705,7 +1705,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {

@@ -377,9 +377,9 @@ class FoldersBigQueryExportsResource {
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of lower case letters, numbers,
-  /// and hyphen, with the first character a letter, the last a letter or a
-  /// number, and a 63 character maximum.
+  /// within the parent scope. It must consist of only lowercase letters,
+  /// numbers, and hyphens, must start with a letter, must end with either a
+  /// letter or a number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -670,9 +670,9 @@ class FoldersMuteConfigsResource {
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of lower case letters, numbers, and
-  /// hyphen, with the first character a letter, the last a letter or a number,
-  /// and a 63 character maximum.
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2515,9 +2515,9 @@ class OrganizationsBigQueryExportsResource {
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of lower case letters, numbers,
-  /// and hyphen, with the first character a letter, the last a letter or a
-  /// number, and a 63 character maximum.
+  /// within the parent scope. It must consist of only lowercase letters,
+  /// numbers, and hyphens, must start with a letter, must end with either a
+  /// letter or a number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2810,9 +2810,9 @@ class OrganizationsMuteConfigsResource {
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of lower case letters, numbers, and
-  /// hyphen, with the first character a letter, the last a letter or a number,
-  /// and a 63 character maximum.
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5004,9 +5004,9 @@ class ProjectsBigQueryExportsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of lower case letters, numbers,
-  /// and hyphen, with the first character a letter, the last a letter or a
-  /// number, and a 63 character maximum.
+  /// within the parent scope. It must consist of only lowercase letters,
+  /// numbers, and hyphens, must start with a letter, must end with either a
+  /// letter or a number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5298,9 +5298,9 @@ class ProjectsMuteConfigsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of lower case letters, numbers, and
-  /// hyphen, with the first character a letter, the last a letter or a number,
-  /// and a 63 character maximum.
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6856,15 +6856,17 @@ class Access {
       };
 }
 
-/// Conveys information about a Kubernetes access review (e.g. kubectl auth
-/// can-i ...) that was involved in a finding.
+/// Conveys information about a Kubernetes access review (such as one returned
+/// by a \[`kubectl auth
+/// can-i`\](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access)
+/// command) that was involved in a finding.
 class AccessReview {
-  /// Group is the API Group of the Resource.
+  /// The API group of the resource.
   ///
   /// "*" means all.
   core.String? group;
 
-  /// Name is the name of the resource being requested.
+  /// The name of the resource being requested.
   ///
   /// Empty means all.
   core.String? name;
@@ -6875,21 +6877,21 @@ class AccessReview {
   /// namespaces. Both are represented by "" (empty).
   core.String? ns;
 
-  /// Resource is the optional resource type requested.
+  /// The optional resource type requested.
   ///
   /// "*" means all.
   core.String? resource;
 
-  /// Subresource is the optional subresource type.
+  /// The optional subresource type.
   core.String? subresource;
 
-  /// Verb is a Kubernetes resource API verb, like: get, list, watch, create,
-  /// update, delete, proxy.
+  /// A Kubernetes resource API verb, like get, list, watch, create, update,
+  /// delete, proxy.
   ///
   /// "*" means all.
   core.String? verb;
 
-  /// Version is the API Version of the Resource.
+  /// The API version of the resource.
   ///
   /// "*" means all.
   core.String? version;
@@ -7289,8 +7291,16 @@ class CloudDlpDataProfile {
   /// `projects/123/locations/europe/tableProfiles/8383929`.
   core.String? dataProfile;
 
+  /// The resource hierarchy level at which the data profile was generated.
+  /// Possible string values are:
+  /// - "PARENT_TYPE_UNSPECIFIED" : Unspecified parent type.
+  /// - "ORGANIZATION" : Organization-level configurations.
+  /// - "PROJECT" : Project-level configurations.
+  core.String? parentType;
+
   CloudDlpDataProfile({
     this.dataProfile,
+    this.parentType,
   });
 
   CloudDlpDataProfile.fromJson(core.Map json_)
@@ -7298,10 +7308,14 @@ class CloudDlpDataProfile {
           dataProfile: json_.containsKey('dataProfile')
               ? json_['dataProfile'] as core.String
               : null,
+          parentType: json_.containsKey('parentType')
+              ? json_['parentType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataProfile != null) 'dataProfile': dataProfile!,
+        if (parentType != null) 'parentType': parentType!,
       };
 }
 
@@ -7312,8 +7326,8 @@ class CloudDlpInspection {
   /// Whether Cloud DLP scanned the complete resource or a sampled subset.
   core.bool? fullScan;
 
-  /// The
-  /// [type of information](https://cloud.google.com/dlp/docs/infotypes-reference)
+  /// The type of information (or
+  /// *[infoType](https://cloud.google.com/dlp/docs/infotypes-reference)*)
   /// found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
   core.String? infoType;
 
@@ -7359,14 +7373,14 @@ class CloudDlpInspection {
 /// Contains compliance information about a security standard indicating unmet
 /// recommendations.
 class Compliance {
-  /// Policies within the standard/benchmark e.g. A.12.4.1
+  /// Policies within the standard or benchmark, for example, A.12.4.1
   core.List<core.String>? ids;
 
-  /// Refers to industry wide standards or benchmarks e.g. "cis", "pci",
-  /// "owasp", etc.
+  /// Industry-wide compliance standards or benchmarks, such as CIS, PCI, and
+  /// OWASP.
   core.String? standard;
 
-  /// Version of the standard/benchmark e.g. 1.1
+  /// Version of the standard or benchmark, for example, 1.1
   core.String? version;
 
   Compliance({
@@ -7483,7 +7497,7 @@ class Contact {
       };
 }
 
-/// The details pertaining to specific contacts
+/// Details about specific contacts
 class ContactDetails {
   /// A list of contacts
   core.List<Contact>? contacts;
@@ -7509,7 +7523,7 @@ class ContactDetails {
 
 /// Container associated with the finding.
 class Container {
-  /// Optional container image id, when provided by the container runtime.
+  /// Optional container image ID, if provided by the container runtime.
   ///
   /// Uniquely identifies the container image launched using a container image
   /// digest.
@@ -7518,12 +7532,12 @@ class Container {
   /// Container labels, as provided by the container runtime.
   core.List<Label>? labels;
 
-  /// Container name.
+  /// Name of the container.
   core.String? name;
 
-  /// Container image URI provided when configuring a pod/container.
+  /// Container image URI provided when configuring a pod or container.
   ///
-  /// May identify a container image version using mutable tags.
+  /// This string can identify a container image version using mutable tags.
   core.String? uri;
 
   Container({
@@ -7777,31 +7791,36 @@ class Cvssv3 {
 
 /// Represents database access information, such as queries.
 ///
-/// A database may be a sub-resource of an instance (as in the case of CloudSQL
+/// A database may be a sub-resource of an instance (as in the case of Cloud SQL
 /// instances or Cloud Spanner instances), or the database instance itself. Some
-/// database resources may not have the full resource name populated because
-/// these resource types are not yet supported by Cloud Asset Inventory (e.g.
-/// CloudSQL databases). In these cases only the display name will be provided.
+/// database resources might not have the
+/// [full resource name](https://google.aip.dev/122#full-resource-names)
+/// populated because these resource types, such as Cloud SQL databases, are not
+/// yet supported by Cloud Asset Inventory. In these cases only the display name
+/// is provided. Some database resources may not have the
+/// [full resource name](https://google.aip.dev/122#full-resource-names)
+/// populated because these resource types are not yet supported by Cloud Asset
+/// Inventory (e.g. Cloud SQL databases). In these cases only the display name
+/// will be provided.
 class Database {
-  /// The human readable name of the database the user connected to.
+  /// The human-readable name of the database that the user connected to.
   core.String? displayName;
 
-  /// The target usernames/roles/groups of a SQL privilege grant (not an IAM
-  /// policy change).
+  /// The target usernames, roles, or groups of an SQL privilege grant, which is
+  /// not an IAM policy change.
   core.List<core.String>? grantees;
 
-  /// The full resource name of the database the user connected to, if it is
-  /// supported by CAI.
-  ///
-  /// (https://google.aip.dev/122#full-resource-names)
+  /// The [full resource name](https://google.aip.dev/122#full-resource-names)
+  /// of the database that the user connected to, if it is supported by Cloud
+  /// Asset Inventory.
   core.String? name;
 
-  /// The SQL statement associated with the relevant access.
+  /// The SQL statement that is associated with the database access.
   core.String? query;
 
-  /// The username used to connect to the DB.
+  /// The username used to connect to the database.
   ///
-  /// This may not necessarily be an IAM principal, and has no required format.
+  /// The username might not be an IAM principal and does not have a set format.
   core.String? userName;
 
   Database({
@@ -7878,8 +7897,8 @@ class Detection {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// EnvironmentVariable is a name-value pair to store environment variables for
-/// Process.
+/// A name-value pair representing an environment variable used in an operating
+/// system process.
 class EnvironmentVariable {
   /// Environment variable name as a JSON encoded string.
   core.String? name;
@@ -7904,16 +7923,18 @@ class EnvironmentVariable {
       };
 }
 
-/// Resource that has been exfiltrated or exfiltrated_to.
+/// Resource where data was exfiltrated from or exfiltrated to.
 class ExfilResource {
-  /// Subcomponents of the asset that is exfiltrated - these could be URIs used
-  /// during exfiltration, table names, databases, filenames, etc.
+  /// Subcomponents of the asset that was exfiltrated, like URIs used during
+  /// exfiltration, table names, databases, and filenames.
   ///
-  /// For example, multiple tables may be exfiltrated from the same CloudSQL
-  /// instance, or multiple files from the same Cloud Storage bucket.
+  /// For example, multiple tables might have been exfiltrated from the same
+  /// Cloud SQL instance, or multiple files might have been exfiltrated from the
+  /// same Cloud Storage bucket.
   core.List<core.String>? components;
 
-  /// Resource's URI (https://google.aip.dev/122#full-resource-names)
+  /// The resource's
+  /// [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name).
   core.String? name;
 
   ExfilResource({
@@ -7937,11 +7958,11 @@ class ExfilResource {
       };
 }
 
-/// Exfiltration represents a data exfiltration attempt of one or more sources
+/// Exfiltration represents a data exfiltration attempt from one or more sources
 /// to one or more targets.
 ///
-/// Sources represent the source of data that is exfiltrated, and Targets
-/// represents the destination the data was copied to.
+/// The `sources` attribute lists the sources of the exfiltrated data. The
+/// `targets` attribute lists the destinations the data was copied to.
 class Exfiltration {
   /// If there are multiple sources, then the data is considered "joined"
   /// between them.
@@ -8004,9 +8025,7 @@ typedef Expr = $Expr;
 /// File information about the related binary/library used by an executable, or
 /// the script used by a script interpreter
 class File {
-  /// Prefix of the file contents as a JSON encoded string.
-  ///
-  /// (Currently only populated for Malicious Script Executed findings.)
+  /// Prefix of the file contents as a JSON-encoded string.
   core.String? contents;
 
   /// The length in bytes of the file prefix that was hashed.
@@ -8786,10 +8805,10 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
 
 /// Represents a Kubernetes RoleBinding or ClusterRoleBinding.
 class GoogleCloudSecuritycenterV1Binding {
-  /// Name for binding.
+  /// Name for the binding.
   core.String? name;
 
-  /// Namespace for binding.
+  /// Namespace for the binding.
   core.String? ns;
 
   /// The Role or ClusterRole referenced by the binding.
@@ -9757,8 +9776,8 @@ class IamBinding {
   /// - "REMOVE" : Removal of a Binding.
   core.String? action;
 
-  /// A single identity requesting access for a Cloud Platform resource, e.g.
-  /// "foo@google.com".
+  /// A single identity requesting access for a Cloud Platform resource, for
+  /// example, "foo@google.com".
   core.String? member;
 
   /// Role that is assigned to "members".
@@ -9881,38 +9900,38 @@ class Indicator {
 
 /// Kernel mode rootkit signatures.
 class KernelRootkit {
-  /// Rootkit name when available.
+  /// Rootkit name, when available.
   core.String? name;
 
-  /// True when unexpected modifications of kernel code memory are present.
+  /// True if unexpected modifications of kernel code memory are present.
   core.bool? unexpectedCodeModification;
 
-  /// True when `ftrace` points are present with callbacks pointing to regions
+  /// True if `ftrace` points are present with callbacks pointing to regions
   /// that are not in the expected kernel or module code range.
   core.bool? unexpectedFtraceHandler;
 
-  /// True when interrupt handlers that are are not in the expected kernel or
+  /// True if interrupt handlers that are are not in the expected kernel or
   /// module code regions are present.
   core.bool? unexpectedInterruptHandler;
 
-  /// True when kernel code pages that are not in the expected kernel or module
+  /// True if kernel code pages that are not in the expected kernel or module
   /// code regions are present.
   core.bool? unexpectedKernelCodePages;
 
-  /// True when `kprobe` points are present with callbacks pointing to regions
+  /// True if `kprobe` points are present with callbacks pointing to regions
   /// that are not in the expected kernel or module code range.
   core.bool? unexpectedKprobeHandler;
 
-  /// True when unexpected processes in the scheduler run queue are present.
+  /// True if unexpected processes in the scheduler run queue are present.
   ///
   /// Such processes are in the run queue, but not in the process task list.
   core.bool? unexpectedProcessesInRunqueue;
 
-  /// True when unexpected modifications of kernel read-only data memory are
+  /// True if unexpected modifications of kernel read-only data memory are
   /// present.
   core.bool? unexpectedReadOnlyDataModification;
 
-  /// True when system call handlers that are are not in the expected kernel or
+  /// True if system call handlers that are are not in the expected kernel or
   /// module code regions are present.
   core.bool? unexpectedSystemCallHandler;
 
@@ -9987,31 +10006,36 @@ class KernelRootkit {
 
 /// Kubernetes-related attributes.
 class Kubernetes {
-  /// Provides information on any Kubernetes access reviews (i.e. privilege
-  /// checks) relevant to the finding.
+  /// Provides information on any Kubernetes access reviews (privilege checks)
+  /// relevant to the finding.
   core.List<AccessReview>? accessReviews;
 
   /// Provides Kubernetes role binding information for findings that involve
-  /// RoleBindings or ClusterRoleBindings.
+  /// [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
   core.List<GoogleCloudSecuritycenterV1Binding>? bindings;
 
-  /// GKE Node Pools associated with the finding.
+  /// GKE
+  /// [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools)
+  /// associated with the finding.
   ///
-  /// This field will contain NodePool information for each Node, when it is
+  /// This field contains node pool information for each node, when it is
   /// available.
   core.List<NodePool>? nodePools;
 
-  /// Provides Kubernetes Node information.
+  /// Provides Kubernetes
+  /// [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes)
+  /// information.
   core.List<Node>? nodes;
 
-  /// Kubernetes Pods associated with the finding.
+  /// Kubernetes
+  /// [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
+  /// associated with the finding.
   ///
-  /// This field will contain Pod records for each container that is owned by a
-  /// Pod.
+  /// This field contains Pod records for each container that is owned by a Pod.
   core.List<Pod>? pods;
 
-  /// Provides Kubernetes role information for findings that involve Roles or
-  /// ClusterRoles.
+  /// Provides Kubernetes role information for findings that involve
+  /// [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
   core.List<Role>? roles;
 
   Kubernetes({
@@ -10073,15 +10097,16 @@ class Kubernetes {
       };
 }
 
-/// Label represents a generic name=value label.
+/// Represents a generic name-value label.
 ///
-/// Label has separate name and value fields to support filtering with
-/// contains().
+/// A label has separate name and value fields to support filtering with the
+/// `contains()` function. For more information, see \[Filtering on array-type
+/// fields\](https://cloud.google.com/security-command-center/docs/how-to-api-list-findings#array-contains-filtering).
 class Label {
-  /// Label name.
+  /// Name of the label.
   core.String? name;
 
-  /// Label value.
+  /// Value that corresponds to the label's name.
   core.String? value;
 
   Label({
@@ -10701,9 +10726,10 @@ class MitreAttack {
       };
 }
 
-/// Kubernetes Nodes associated with the finding.
+/// Kubernetes nodes associated with the finding.
 class Node {
-  /// Full Resource name of the Compute Engine VM running the cluster node.
+  /// [Full resource name](https://google.aip.dev/122#full-resource-names) of
+  /// the Compute Engine VM running the cluster node.
   core.String? name;
 
   Node({
@@ -10720,9 +10746,9 @@ class Node {
       };
 }
 
-/// Provides GKE Node Pool information.
+/// Provides GKE node pool information.
 class NodePool {
-  /// Kubernetes Node pool name.
+  /// Kubernetes node pool name.
   core.String? name;
 
   /// Nodes associated with the finding.
@@ -10941,7 +10967,7 @@ class OrganizationSettings {
       };
 }
 
-/// Kubernetes Pod.
+/// A Kubernetes Pod.
 class Pod {
   /// Pod containers associated with this finding, if any.
   core.List<Container>? containers;
@@ -11131,18 +11157,20 @@ class Process {
   /// File information for libraries loaded by the process.
   core.List<File>? libraries;
 
-  /// The process name visible in utilities like `top` and `ps`; it can be
-  /// accessed via `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
+  /// The process name, as displayed in utilities like `top` and `ps`.
+  ///
+  /// This name can be accessed through `/proc/[pid]/comm` and changed with
+  /// `prctl(PR_SET_NAME)`.
   core.String? name;
 
-  /// The parent process id.
+  /// The parent process ID.
   core.String? parentPid;
 
-  /// The process id.
+  /// The process ID.
   core.String? pid;
 
   /// When the process represents the invocation of a script, `binary` provides
-  /// information about the interpreter while `script` provides information
+  /// information about the interpreter, while `script` provides information
   /// about the script file provided to the interpreter.
   File? script;
 
@@ -11821,21 +11849,21 @@ class StreamingConfig {
       };
 }
 
-/// Represents a Kubernetes Subject.
+/// Represents a Kubernetes subject.
 class Subject {
-  /// Authentication type for subject.
+  /// Authentication type for the subject.
   /// Possible string values are:
   /// - "AUTH_TYPE_UNSPECIFIED" : Authentication is not specified.
   /// - "USER" : User with valid certificate.
   /// - "SERVICEACCOUNT" : Users managed by Kubernetes API with credentials
-  /// stored as Secrets.
+  /// stored as secrets.
   /// - "GROUP" : Collection of users.
   core.String? kind;
 
-  /// Name for subject.
+  /// Name for the subject.
   core.String? name;
 
-  /// Namespace for subject.
+  /// Namespace for the subject.
   core.String? ns;
 
   Subject({

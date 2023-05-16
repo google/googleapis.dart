@@ -1304,7 +1304,8 @@ class GoogleChromeManagementV1AppDetails {
 /// * Data Collection Frequency: 10 minutes * Default Data Reporting Frequency:
 /// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
 /// collected data is stored locally, and will be reported when the device is
-/// next online: No * Reported for affiliated users only: N/A
+/// next online: No * Reported for affiliated users only: N/A * Granular
+/// permission needed: TELEMETRY_API_AUDIO_REPORT
 class GoogleChromeManagementV1AudioStatusReport {
   /// Active input device's name.
   ///
@@ -1395,7 +1396,8 @@ class GoogleChromeManagementV1AudioStatusReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BATTERY_INFO
 class GoogleChromeManagementV1BatteryInfo {
   /// Design capacity (mAmpere-hours).
   ///
@@ -1585,7 +1587,8 @@ class GoogleChromeManagementV1BatterySampleReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BATTERY_REPORT
 class GoogleChromeManagementV1BatteryStatusReport {
   /// Battery health.
   ///
@@ -1677,7 +1680,8 @@ class GoogleChromeManagementV1BatteryStatusReport {
 /// * Data Collection Frequency: On every boot up event * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: Yes * Reported for affiliated users only: N/A
+/// device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_OS_REPORT
 class GoogleChromeManagementV1BootPerformanceReport {
   /// Total time to boot up.
   core.String? bootUpDuration;
@@ -2460,7 +2464,8 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_CPU_INFO
 class GoogleChromeManagementV1CpuInfo {
   /// Architecture type for the CPU.
   ///
@@ -2547,7 +2552,8 @@ class GoogleChromeManagementV1CpuInfo {
 /// * Data Collection Frequency: Every 10 minutes * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_CPU_REPORT
 class GoogleChromeManagementV1CpuStatusReport {
   /// CPU temperature sample info per CPU core in Celsius
   ///
@@ -3187,7 +3193,8 @@ class GoogleChromeManagementV1GraphicsAdapterInfo {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_GRAPHICS_INFO
 class GoogleChromeManagementV1GraphicsInfo {
   /// Information about the graphics adapter (GPU).
   ///
@@ -3255,7 +3262,8 @@ class GoogleChromeManagementV1GraphicsInfo {
 /// * Data Collection Frequency: 3 hours. * Default Data Reporting Frequency: 3
 /// hours - Policy Controlled: Yes * Cache: If the device is offline, the
 /// collected data is stored locally, and will be reported when the device is
-/// next online: No * Reported for affiliated users only: N/A
+/// next online: No * Reported for affiliated users only: N/A * Granular
+/// permission needed: TELEMETRY_API_GRAPHICS_REPORT
 class GoogleChromeManagementV1GraphicsStatusReport {
   /// Information about the displays for the device.
   ///
@@ -3596,7 +3604,8 @@ class GoogleChromeManagementV1ListTelemetryUsersResponse {
 /// `availableRamBytes` - 3 hours - `totalMemoryEncryption` - at device startup
 /// - Policy Controlled: Yes * Cache: If the device is offline, the collected
 /// data is stored locally, and will be reported when the device is next online:
-/// only for `totalMemoryEncryption` * Reported for affiliated users only: N/A
+/// only for `totalMemoryEncryption` * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_MEMORY_INFO
 class GoogleChromeManagementV1MemoryInfo {
   /// Amount of available RAM in bytes.
   ///
@@ -3651,7 +3660,8 @@ class GoogleChromeManagementV1MemoryInfo {
 /// every 10 minutes * Default Data Reporting Frequency: Every 3 hours - Policy
 /// Controlled: Yes * Cache: If the device is offline, the collected data is
 /// stored locally, and will be reported when the device is next online: No *
-/// Reported for affiliated users only: N/A
+/// Reported for affiliated users only: N/A * Granular permission needed:
+/// TELEMETRY_API_MEMORY_REPORT
 class GoogleChromeManagementV1MemoryStatusReport {
   /// Number of page faults during this collection
   ///
@@ -3785,6 +3795,8 @@ class GoogleChromeManagementV1NetworkDevice {
 
 /// Network testing results to determine the health of the device's network
 /// connection, for example whether the HTTPS latency is high or normal.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
 class GoogleChromeManagementV1NetworkDiagnosticsReport {
   /// HTTPS latency test data.
   ///
@@ -3827,7 +3839,8 @@ class GoogleChromeManagementV1NetworkDiagnosticsReport {
 /// * Data Collection Frequency: At device startup * Default Data Reporting
 /// Frequency: At device startup - Policy Controlled: Yes * Cache: If the device
 /// is offline, the collected data is stored locally, and will be reported when
-/// the device is next online: Yes * Reported for affiliated users only: N/A
+/// the device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_NETWORK_INFO
 class GoogleChromeManagementV1NetworkInfo {
   /// List of network devices.
   ///
@@ -3862,7 +3875,8 @@ class GoogleChromeManagementV1NetworkInfo {
 /// * Data Collection Frequency: 60 minutes * Default Data Reporting Frequency:
 /// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
 /// collected data is stored locally, and will be reported when the device is
-/// next online: Yes * Reported for affiliated users only: Yes
+/// next online: Yes * Reported for affiliated users only: Yes * Granular
+/// permission needed: TELEMETRY_API_NETWORK_REPORT
 class GoogleChromeManagementV1NetworkStatusReport {
   /// Current connection state of the network.
   ///
@@ -4047,7 +4061,8 @@ class GoogleChromeManagementV1NetworkStatusReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_OS_REPORT
 class GoogleChromeManagementV1OsUpdateStatus {
   /// Timestamp of the last reboot.
   ///
@@ -4135,6 +4150,8 @@ class GoogleChromeManagementV1OsUpdateStatus {
 }
 
 /// Peripherals report.
+///
+/// * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
 class GoogleChromeManagementV1PeripheralsReport {
   /// Timestamp of when the report was collected.
   ///
@@ -4178,7 +4195,8 @@ class GoogleChromeManagementV1PeripheralsReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_STORAGE_INFO
 class GoogleChromeManagementV1StorageInfo {
   /// The available space for user data storage in the device in bytes.
   core.String? availableDiskBytes;
@@ -4265,7 +4283,8 @@ class GoogleChromeManagementV1StorageInfoDiskVolume {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_STORAGE_REPORT
 class GoogleChromeManagementV1StorageStatusReport {
   /// Reports on disk.
   ///
@@ -4303,9 +4322,13 @@ class GoogleChromeManagementV1StorageStatusReport {
 
 /// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run
 /// out of buffer data for more than 5 seconds.
+///
+/// * Granular permission needed: TELEMETRY_API_AUDIO_REPORT
 typedef GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent = $Empty;
 
 /// Telemetry data collected from a managed device.
+///
+/// * Granular permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryDevice {
   /// Audio reports collected periodically sorted in a decreasing order of
   /// report_time.
@@ -4625,6 +4648,8 @@ class GoogleChromeManagementV1TelemetryDevice {
 }
 
 /// Information about a device associated with telemetry data.
+///
+/// * Granular Permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryDeviceInfo {
   /// The unique Directory API ID of the device.
   ///
@@ -4779,7 +4804,9 @@ class GoogleChromeManagementV1TelemetryEvent {
 
 /// Https latency routine is run periodically and
 /// `TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
-/// detected or if the device has recovered from a latency problem..
+/// detected or if the device has recovered from a latency problem.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
 class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
   /// HTTPS latency routine data that triggered the event.
   GoogleChromeManagementV1HttpsLatencyRoutineData? httpsLatencyRoutineData;
@@ -4818,6 +4845,8 @@ class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
 
 /// `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
 /// removed.
+///
+/// * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
 class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
   /// List of usb devices that were either added or removed.
   core.List<GoogleChromeManagementV1UsbPeripheralReport>? usbPeripheralReport;
@@ -4844,6 +4873,8 @@ class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
 }
 
 /// Telemetry data collected from a managed user.
+///
+/// * Granular permission needed: TELEMETRY_API_USER
 class GoogleChromeManagementV1TelemetryUser {
   /// G Suite Customer whose enterprise enrolled the device.
   core.String? customer;
@@ -4907,6 +4938,8 @@ class GoogleChromeManagementV1TelemetryUser {
 }
 
 /// Telemetry data collected for a managed user and device.
+///
+/// * Granular permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryUserDevice {
   /// Audio reports collected periodically sorted in a decreasing order of
   /// report_time.
@@ -4961,6 +4994,8 @@ class GoogleChromeManagementV1TelemetryUserDevice {
 }
 
 /// Information about a user associated with telemetry data.
+///
+/// * Granular permission needed: TELEMETRY_API_USER
 class GoogleChromeManagementV1TelemetryUserInfo {
   /// User's email.
   ///
@@ -5000,7 +5035,8 @@ class GoogleChromeManagementV1TelemetryUserInfo {
 /// * Data Collection Frequency: At device startup * Default Data Reporting
 /// Frequency: At device startup - Policy Controlled: No * Cache: If the device
 /// is offline, the collected data is stored locally, and will be reported when
-/// the device is next online: Yes * Reported for affiliated users only: N/A
+/// the device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BUS_DEVICE_INFO
 class GoogleChromeManagementV1ThunderboltInfo {
   /// Security level of the Thunderbolt bus.
   /// Possible string values are:

@@ -4136,6 +4136,52 @@ class DomainMappingStatus {
       };
 }
 
+/// Ephemeral storage which can be backed by real disks (HD, SSD), network
+/// storage or memory (i.e. tmpfs).
+///
+/// For now only in memory (tmpfs) is supported. It is ephemeral in the sense
+/// that when the sandbox is taken down, the data is destroyed with it (it does
+/// not persist across sandbox runs).
+class EmptyDirVolumeSource {
+  /// The medium on which the data is stored.
+  ///
+  /// The default is "" which means to use the node's default medium. Must be an
+  /// empty string (default) or Memory. More info:
+  /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+  core.String? medium;
+
+  /// Limit on the storage usable by this EmptyDir volume.
+  ///
+  /// The size limit is also applicable for memory medium. The maximum usage on
+  /// memory medium EmptyDir would be the minimum value between the SizeLimit
+  /// specified here and the sum of memory limits of all containers in a pod.
+  /// This field's values are of the 'Quantity' k8s type:
+  /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
+  /// The default is nil which means that the limit is undefined. More info:
+  /// http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+  core.String? sizeLimit;
+
+  EmptyDirVolumeSource({
+    this.medium,
+    this.sizeLimit,
+  });
+
+  EmptyDirVolumeSource.fromJson(core.Map json_)
+      : this(
+          medium: json_.containsKey('medium')
+              ? json_['medium'] as core.String
+              : null,
+          sizeLimit: json_.containsKey('sizeLimit')
+              ? json_['sizeLimit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (medium != null) 'medium': medium!,
+        if (sizeLimit != null) 'sizeLimit': sizeLimit!,
+      };
+}
+
 /// Not supported by Cloud Run.
 ///
 /// EnvFromSource represents the source of a set of ConfigMaps
@@ -5635,7 +5681,7 @@ class LocalObjectReference {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
@@ -7863,6 +7909,9 @@ class Volume {
   /// Not supported in Cloud Run.
   ConfigMapVolumeSource? configMap;
 
+  /// Ephemeral storage used as a shared volume.
+  EmptyDirVolumeSource? emptyDir;
+
   /// Volume's name.
   ///
   /// In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
@@ -7876,6 +7925,7 @@ class Volume {
 
   Volume({
     this.configMap,
+    this.emptyDir,
     this.name,
     this.secret,
   });
@@ -7886,6 +7936,10 @@ class Volume {
               ? ConfigMapVolumeSource.fromJson(
                   json_['configMap'] as core.Map<core.String, core.dynamic>)
               : null,
+          emptyDir: json_.containsKey('emptyDir')
+              ? EmptyDirVolumeSource.fromJson(
+                  json_['emptyDir'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           secret: json_.containsKey('secret')
               ? SecretVolumeSource.fromJson(
@@ -7895,6 +7949,7 @@ class Volume {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configMap != null) 'configMap': configMap!,
+        if (emptyDir != null) 'emptyDir': emptyDir!,
         if (name != null) 'name': name!,
         if (secret != null) 'secret': secret!,
       };

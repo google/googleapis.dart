@@ -1270,9 +1270,11 @@ class FilesResource {
     );
   }
 
-  /// Permanently deletes all of the user's trashed files.
+  /// Permanently deletes all trashed files of a user or shared drive.
   ///
   /// Request parameters:
+  ///
+  /// [driveId] - If set, empties the trash of the provided shared drive.
   ///
   /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
   /// and its last parent is deleted but the item itself is not, the item will
@@ -1287,10 +1289,12 @@ class FilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> emptyTrash({
+    core.String? driveId,
     core.bool? enforceSingleParent,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (driveId != null) 'driveId': [driveId],
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
       if ($fields != null) 'fields': [$fields],
@@ -1808,10 +1812,7 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Subscribes to changes to a file.
-  ///
-  /// While you can establish a channel for changes to a file on a shared drive,
-  /// a change to a shared drive file won't create a notification.
+  /// Subscribe to changes on a file.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4184,7 +4185,7 @@ class DriveList {
 
 /// Capabilities the current user has on this file.
 ///
-/// Each capability corresponds to a fine-grained action that a user may take.
+/// Each capability corresponds to a fine-grained action that a user can take.
 class FileCapabilities {
   /// Whether the current user is the pending owner of the file.
   ///
@@ -4193,13 +4194,13 @@ class FileCapabilities {
 
   /// Whether the current user can add children to this folder.
   ///
-  /// This is always false when the item is not a folder.
+  /// This is always false when the item isn't a folder.
   core.bool? canAddChildren;
 
   /// Whether the current user can add a folder from another drive (different
   /// shared drive or My Drive) to this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is false when the item isn't a folder. Only populated for items in
   /// shared drives.
   core.bool? canAddFolderFromAnotherDrive;
 
@@ -4226,7 +4227,7 @@ class FileCapabilities {
   /// Whether the current user can copy this file.
   ///
   /// For an item in a shared drive, whether the current user can copy
-  /// non-folder descendants of this item, or this item itself if it is not a
+  /// non-folder descendants of this item, or this item itself if it's not a
   /// folder.
   core.bool? canCopy;
 
@@ -4235,7 +4236,7 @@ class FileCapabilities {
 
   /// Whether the current user can delete children of this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is false when the item isn't a folder. Only populated for items in
   /// shared drives.
   core.bool? canDeleteChildren;
 
@@ -4244,13 +4245,14 @@ class FileCapabilities {
 
   /// Whether the current user can edit this file.
   ///
-  /// Other factors may limit the type of changes a user can make to a file. For
-  /// example, see canChangeCopyRequiresWriterPermission or canModifyContent.
+  /// Other factors might limit the type of changes a user can make to a file.
+  /// For example, see canChangeCopyRequiresWriterPermission or
+  /// canModifyContent.
   core.bool? canEdit;
 
   /// Whether the current user can list the children of this folder.
   ///
-  /// This is always false when the item is not a folder.
+  /// This is always false when the item isn't a folder.
   core.bool? canListChildren;
 
   /// Whether the current user can modify the content of this file.
@@ -4265,7 +4267,7 @@ class FileCapabilities {
   /// Whether the current user can move children of this folder outside of the
   /// shared drive.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is false when the item isn't a folder. Only populated for items in
   /// shared drives.
   core.bool? canMoveChildrenOutOfDrive;
 
@@ -4273,10 +4275,10 @@ class FileCapabilities {
   core.bool? canMoveChildrenOutOfTeamDrive;
 
   /// Whether the current user can move children of this folder within this
-  /// drive.
+  /// shared drive or My Drive.
   ///
-  /// This is false when the item is not a folder. Note that a request to move
-  /// the child may still fail depending on the current user's access to the
+  /// This is false when the item isn't a folder. Note that a request to move
+  /// the child might still fail depending on the current user's access to the
   /// child and to the destination folder.
   core.bool? canMoveChildrenWithinDrive;
 
@@ -4286,21 +4288,22 @@ class FileCapabilities {
   /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool? canMoveItemIntoTeamDrive;
 
-  /// Whether the current user can move this item outside of this drive by
-  /// changing its parent.
+  /// Whether the current user can move this item outside of this shared drive
+  /// or My Drive by changing its parent.
   ///
-  /// Note that a request to change the parent of the item may still fail
-  /// depending on the new parent that is being added.
+  /// Note that a request to change the parent of the item might still fail
+  /// depending on the new parent that's being added.
   core.bool? canMoveItemOutOfDrive;
 
   /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool? canMoveItemOutOfTeamDrive;
 
-  /// Whether the current user can move this item within this drive.
+  /// Whether the current user can move this item within this shared drive or My
+  /// Drive.
   ///
-  /// Note that a request to change the parent of the item may still fail
-  /// depending on the new parent that is being added and the parent that is
-  /// being removed.
+  /// Note that a request to change the parent of the item might still fail
+  /// depending on the new parent that's being added and the parent that's being
+  /// removed.
   core.bool? canMoveItemWithinDrive;
 
   /// Deprecated - use canMoveItemWithinDrive instead.
@@ -4321,7 +4324,7 @@ class FileCapabilities {
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
-  /// this item, or this item itself if it isn't a folder, can be read.
+  /// this item, or this item itself if it's not a folder, can be read.
   core.bool? canReadRevisions;
 
   /// Deprecated - use canReadDrive instead.
@@ -4329,7 +4332,7 @@ class FileCapabilities {
 
   /// Whether the current user can remove children from this folder.
   ///
-  /// This is always false when the item is not a folder. For a folder in a
+  /// This is always false when the item isn't a folder. For a folder in a
   /// shared drive, use canDeleteChildren or canTrashChildren instead.
   core.bool? canRemoveChildren;
 
@@ -4350,7 +4353,7 @@ class FileCapabilities {
 
   /// Whether the current user can trash children of this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is false when the item isn't a folder. Only populated for items in
   /// shared drives.
   core.bool? canTrashChildren;
 
@@ -4631,7 +4634,7 @@ class FileContentHintsThumbnail {
 class FileContentHints {
   /// Text to be indexed for the file to improve fullText queries.
   ///
-  /// This is limited to 128 KB in length and may contain HTML elements. For
+  /// This is limited to 128 KB in length and might contain HTML elements. For
   /// more information, see Manage file metadata.
   core.String? indexableText;
 
@@ -4748,7 +4751,7 @@ class FileImageMediaMetadata {
   /// The metering mode used to create the photo.
   core.String? meteringMode;
 
-  /// The number of clockwise 90 degree rotations applied from the image's
+  /// The number of clockwise 90-degree rotations applied from the image's
   /// original orientation.
   core.int? rotation;
 
@@ -4981,7 +4984,7 @@ class FileShortcutDetails {
 
 /// Additional metadata about video media.
 ///
-/// This may not be available immediately upon upload.
+/// This might not be available immediately upon upload.
 class FileVideoMediaMetadata {
   /// The duration of the video in milliseconds.
   core.String? durationMillis;
@@ -5017,18 +5020,18 @@ class FileVideoMediaMetadata {
 
 /// The metadata for a file.
 class File {
-  /// A collection of arbitrary key-value pairs which are private to the
+  /// A collection of arbitrary key-value pairs that are private to the
   /// requesting app.
   /// Entries with null values are cleared in update and copy requests.
   ///
   /// These properties can only be retrieved using an authenticated request. An
-  /// authenticated request uses an access token obtained with a OAuth 2 client
+  /// authenticated request uses an access token obtained with an OAuth 2 client
   /// ID. You cannot use an API key to retrieve private properties.
   core.Map<core.String, core.String?>? appProperties;
 
   /// Capabilities the current user has on this file.
   ///
-  /// Each capability corresponds to a fine-grained action that a user may take.
+  /// Each capability corresponds to a fine-grained action that a user can take.
   FileCapabilities? capabilities;
 
   /// Additional information about the content of the file.
@@ -5078,10 +5081,10 @@ class File {
 
   /// The full file extension extracted from the name field.
   ///
-  /// May contain multiple concatenated extensions, such as "tar.gz". This is
+  /// Can contain multiple concatenated extensions, such as "tar.gz". This is
   /// only available for files with binary content in Google Drive.
-  /// This is automatically updated when the name field changes, however it
-  /// isn't cleared if the new name does not contain a valid extension.
+  /// This is automatically updated when the name field changes, however it's
+  /// not cleared if the new name does not contain a valid extension.
   core.String? fullFileExtension;
 
   /// Whether there are permissions directly on this file.
@@ -5098,8 +5101,7 @@ class File {
 
   /// The ID of the file's head revision.
   ///
-  /// This is currently only available for files with binary content in Google
-  /// Drive.
+  /// This is only available for files with binary content in Google Drive.
   core.String? headRevisionId;
 
   /// A static, unauthenticated link to the file's icon.
@@ -5111,7 +5113,7 @@ class File {
   /// Additional metadata about image media, if available.
   FileImageMediaMetadata? imageMediaMetadata;
 
-  /// Whether the file was created or opened by the requesting app.
+  /// Whether the requesting app created or opened the file.
   core.bool? isAppAuthorized;
 
   /// Identifies what kind of resource this is.
@@ -5144,21 +5146,21 @@ class File {
   /// in the About resource.
   core.String? mimeType;
 
-  /// Whether the file has been modified by this user.
+  /// Whether this user has modified the file.
   core.bool? modifiedByMe;
 
-  /// The last time the file was modified by the user (RFC 3339 date-time).
+  /// The last time the user modified the file (RFC 3339 date-time).
   core.DateTime? modifiedByMeTime;
 
-  /// The last time the file was modified by anyone (RFC 3339 date-time).
+  /// The last time anyone modified the file (RFC 3339 date-time).
   /// Note that setting modifiedTime will also update modifiedByMeTime for the
   /// user.
   core.DateTime? modifiedTime;
 
   /// The name of the file.
   ///
-  /// This is not necessarily unique within a folder. Note that for immutable
-  /// items such as the top level folders of shared drives, My Drive root
+  /// This isn't necessarily unique within a folder. Note that for immutable
+  /// items such as the top-level folders of shared drives, My Drive root
   /// folder, and Application Data folder the name is constant.
   core.String? name;
 
@@ -5175,11 +5177,11 @@ class File {
 
   /// The owner of this file.
   ///
-  /// Only certain legacy files may have more than one owner. This field isn't
+  /// Only certain legacy files might have more than one owner. This field isn't
   /// populated for items in shared drives.
   core.List<User>? owners;
 
-  /// The IDs of the parent folders which contain the file.
+  /// The IDs of the parent folders that contain the file.
   /// If not specified as part of a create request, the file will be placed
   /// directly in the user's My Drive folder.
   ///
@@ -5197,7 +5199,7 @@ class File {
   /// populated for items in shared drives.
   core.List<Permission>? permissions;
 
-  /// A collection of arbitrary key-value pairs which are visible to all apps.
+  /// A collection of arbitrary key-value pairs that are visible to all apps.
   /// Entries with null values are cleared in update and copy requests.
   core.Map<core.String, core.String?>? properties;
 
@@ -5213,13 +5215,13 @@ class File {
   /// The SHA1 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it's not populated for Docs Editors or shortcut files.
   core.String? sha1Checksum;
 
   /// The SHA256 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it's not populated for Docs Editors or shortcut files.
   core.String? sha256Checksum;
 
   /// Whether the file has been shared.
@@ -5243,11 +5245,11 @@ class File {
   /// The size of the file's content in bytes.
   ///
   /// This field is populated for files with binary content stored in Google
-  /// Drive and for Docs Editors files; it is not populated for shortcuts or
+  /// Drive and for Docs Editors files; it's not populated for shortcuts or
   /// folders.
   core.String? size;
 
-  /// The list of spaces which contain the file.
+  /// The list of spaces that contain the file.
   ///
   /// The currently supported values are 'drive', 'appDataFolder' and 'photos'.
   core.List<core.String>? spaces;
@@ -5272,7 +5274,7 @@ class File {
   /// Whether the file has been trashed, either explicitly or from a trashed
   /// parent folder.
   ///
-  /// Only the owner may trash a file. The trashed item is excluded from all
+  /// Only the owner can trash a file. The trashed item is excluded from all
   /// files.list responses returned for any user who does not own the file.
   /// However, all users with access to the file can see the trashed item
   /// metadata in an API response. All users with access can copy, download,
@@ -5297,13 +5299,13 @@ class File {
 
   /// Additional metadata about video media.
   ///
-  /// This may not be available immediately upon upload.
+  /// This might not be available immediately upon upload.
   FileVideoMediaMetadata? videoMediaMetadata;
 
-  /// Whether the file has been viewed by this user.
+  /// Whether this user has viewed the file.
   core.bool? viewedByMe;
 
-  /// The last time the file was viewed by the user (RFC 3339 date-time).
+  /// The last time the user viewed the file (RFC 3339 date-time).
   core.DateTime? viewedByMeTime;
 
   /// Deprecated - use copyRequiresWriterPermission instead.

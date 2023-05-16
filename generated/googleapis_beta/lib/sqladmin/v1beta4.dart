@@ -477,6 +477,8 @@ class DatabasesResource {
   /// Inserts a resource containing information about a database inside a Cloud
   /// SQL instance.
   ///
+  /// **Note:** You can't modify the default character set and collation.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3178,6 +3180,12 @@ class CloneContext {
   /// is cloned.
   core.String? pointInTime;
 
+  /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
+  /// specified zone.
+  ///
+  /// If no zone is specified, clone to the same zone as the source instance.
+  core.String? preferredZone;
+
   CloneContext({
     this.allocatedIpRange,
     this.binLogCoordinates,
@@ -3186,6 +3194,7 @@ class CloneContext {
     this.kind,
     this.pitrTimestampMs,
     this.pointInTime,
+    this.preferredZone,
   });
 
   CloneContext.fromJson(core.Map json_)
@@ -3212,6 +3221,9 @@ class CloneContext {
           pointInTime: json_.containsKey('pointInTime')
               ? json_['pointInTime'] as core.String
               : null,
+          preferredZone: json_.containsKey('preferredZone')
+              ? json_['preferredZone'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3223,6 +3235,7 @@ class CloneContext {
         if (kind != null) 'kind': kind!,
         if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
         if (pointInTime != null) 'pointInTime': pointInTime!,
+        if (preferredZone != null) 'preferredZone': preferredZone!,
       };
 }
 
@@ -3272,6 +3285,7 @@ class ConnectSettings {
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3589,6 +3603,7 @@ class DatabaseInstance {
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -4286,6 +4301,23 @@ class DiskEncryptionStatus {
 
 /// Options for exporting BAK files (SQL Server-only)
 class ExportContextBakExportOptions {
+  /// Type of this bak file will be export, FULL or DIFF, SQL Server only
+  /// Possible string values are:
+  /// - "BAK_TYPE_UNSPECIFIED" : default type to meet enum requirement, will be
+  /// set to FULL if not set
+  /// - "FULL" : Full backup.
+  /// - "DIFF" : Differential backup.
+  core.String? bakType;
+
+  /// Whether or not the export will be exeucted with COPY_ONLY, SQL Server only
+  /// deprecated as the behavior should default to copy_only = true use
+  /// differential_base instead
+  core.bool? copyOnly;
+
+  /// Whether or not the backup can be use as differential base only non copy
+  /// only backup can be served as differential base
+  core.bool? differentialBase;
+
   /// Option for specifying how many stripes to use for the export.
   ///
   /// If blank, and the value of the striped field is true, the number of
@@ -4296,12 +4328,24 @@ class ExportContextBakExportOptions {
   core.bool? striped;
 
   ExportContextBakExportOptions({
+    this.bakType,
+    this.copyOnly,
+    this.differentialBase,
     this.stripeCount,
     this.striped,
   });
 
   ExportContextBakExportOptions.fromJson(core.Map json_)
       : this(
+          bakType: json_.containsKey('bakType')
+              ? json_['bakType'] as core.String
+              : null,
+          copyOnly: json_.containsKey('copyOnly')
+              ? json_['copyOnly'] as core.bool
+              : null,
+          differentialBase: json_.containsKey('differentialBase')
+              ? json_['differentialBase'] as core.bool
+              : null,
           stripeCount: json_.containsKey('stripeCount')
               ? json_['stripeCount'] as core.int
               : null,
@@ -4311,6 +4355,9 @@ class ExportContextBakExportOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bakType != null) 'bakType': bakType!,
+        if (copyOnly != null) 'copyOnly': copyOnly!,
+        if (differentialBase != null) 'differentialBase': differentialBase!,
         if (stripeCount != null) 'stripeCount': stripeCount!,
         if (striped != null) 'striped': striped!,
       };
@@ -4851,7 +4898,25 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
 /// Import parameters specific to SQL Server .BAK files
 class ImportContextBakImportOptions {
+  /// Type of the bak content, FULL or DIFF.
+  /// Possible string values are:
+  /// - "BAK_TYPE_UNSPECIFIED" : default type to meet enum requirement, will be
+  /// set to FULL if not set
+  /// - "FULL" : Full backup.
+  /// - "DIFF" : Differential backup.
+  core.String? bakType;
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
+
+  /// Whether or not the backup importing will restore database with NORECOVERY
+  /// option Applies only to Cloud SQL for SQL Server.
+  core.bool? noRecovery;
+
+  /// Whether or not the backup importing request will just bring database
+  /// online without downloading Bak content only one of "no_recovery" and
+  /// "recovery_only" can be true otherwise error will return.
+  ///
+  /// Applies only to Cloud SQL for SQL Server.
+  core.bool? recoveryOnly;
 
   /// Whether or not the backup set being restored is striped.
   ///
@@ -4859,16 +4924,28 @@ class ImportContextBakImportOptions {
   core.bool? striped;
 
   ImportContextBakImportOptions({
+    this.bakType,
     this.encryptionOptions,
+    this.noRecovery,
+    this.recoveryOnly,
     this.striped,
   });
 
   ImportContextBakImportOptions.fromJson(core.Map json_)
       : this(
+          bakType: json_.containsKey('bakType')
+              ? json_['bakType'] as core.String
+              : null,
           encryptionOptions: json_.containsKey('encryptionOptions')
               ? ImportContextBakImportOptionsEncryptionOptions.fromJson(
                   json_['encryptionOptions']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          noRecovery: json_.containsKey('noRecovery')
+              ? json_['noRecovery'] as core.bool
+              : null,
+          recoveryOnly: json_.containsKey('recoveryOnly')
+              ? json_['recoveryOnly'] as core.bool
               : null,
           striped: json_.containsKey('striped')
               ? json_['striped'] as core.bool
@@ -4876,7 +4953,10 @@ class ImportContextBakImportOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bakType != null) 'bakType': bakType!,
         if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
+        if (noRecovery != null) 'noRecovery': noRecovery!,
+        if (recoveryOnly != null) 'recoveryOnly': recoveryOnly!,
         if (striped != null) 'striped': striped!,
       };
 }
@@ -6918,7 +6998,8 @@ class SqlExternalSyncSettingError {
   /// - "BINLOG_NOT_ENABLED"
   /// - "INCOMPATIBLE_DATABASE_VERSION"
   /// - "REPLICA_ALREADY_SETUP"
-  /// - "INSUFFICIENT_PRIVILEGE"
+  /// - "INSUFFICIENT_PRIVILEGE" : The replication user is missing privileges
+  /// that are required.
   /// - "UNSUPPORTED_MIGRATION_TYPE" : Unsupported migration type.
   /// - "NO_PGLOGICAL_INSTALLED" : No pglogical extension installed on
   /// databases, applicable for postgres.
@@ -6950,7 +7031,7 @@ class SqlExternalSyncSettingError {
   /// - "UNSUPPORTED_DEFINER" : The customer has a definer that will break EM
   /// setup.
   /// - "SQLSERVER_SERVERNAME_MISMATCH" : SQL Server @@SERVERNAME does not match
-  /// actual host name
+  /// actual host name.
   /// - "PRIMARY_ALREADY_SETUP" : The primary instance has been setup and will
   /// fail the setup.
   /// - "UNSUPPORTED_BINLOG_FORMAT" : The primary instance has unsupported
@@ -6963,6 +7044,8 @@ class SqlExternalSyncSettingError {
   /// PostgreSQL tables without primary keys.
   /// - "EXISTING_DATA_IN_REPLICA" : The replica instance contains existing
   /// data.
+  /// - "MISSING_OPTIONAL_PRIVILEGES" : The replication user is missing
+  /// privileges that are optional.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -6992,17 +7075,24 @@ class SqlInstancesGetDiskShrinkConfigResponse {
   /// This is always `sql#getDiskShrinkConfig`.
   core.String? kind;
 
+  /// Additional message to customers.
+  core.String? message;
+
   /// The minimum size to which a disk can be shrunk in GigaBytes.
   core.String? minimalTargetSizeGb;
 
   SqlInstancesGetDiskShrinkConfigResponse({
     this.kind,
+    this.message,
     this.minimalTargetSizeGb,
   });
 
   SqlInstancesGetDiskShrinkConfigResponse.fromJson(core.Map json_)
       : this(
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
           minimalTargetSizeGb: json_.containsKey('minimalTargetSizeGb')
               ? json_['minimalTargetSizeGb'] as core.String
               : null,
@@ -7010,6 +7100,7 @@ class SqlInstancesGetDiskShrinkConfigResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
         if (minimalTargetSizeGb != null)
           'minimalTargetSizeGb': minimalTargetSizeGb!,
       };

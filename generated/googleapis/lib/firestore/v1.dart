@@ -20,12 +20,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsDatabasesResource]
+///     - [ProjectsDatabasesBackupSchedulesResource]
 ///     - [ProjectsDatabasesCollectionGroupsResource]
 ///       - [ProjectsDatabasesCollectionGroupsFieldsResource]
 ///       - [ProjectsDatabasesCollectionGroupsIndexesResource]
 ///     - [ProjectsDatabasesDocumentsResource]
 ///     - [ProjectsDatabasesOperationsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBackupsResource]
 library;
 
 import 'dart:async' as async;
@@ -78,6 +80,8 @@ class ProjectsResource {
 class ProjectsDatabasesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsDatabasesBackupSchedulesResource get backupSchedules =>
+      ProjectsDatabasesBackupSchedulesResource(_requester);
   ProjectsDatabasesCollectionGroupsResource get collectionGroups =>
       ProjectsDatabasesCollectionGroupsResource(_requester);
   ProjectsDatabasesDocumentsResource get documents =>
@@ -403,6 +407,274 @@ class ProjectsDatabasesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Create a new database by restore from an existing backup.
+  ///
+  /// The new database must be in the same cloud region or multi-region location
+  /// as the existing backup. This behaves similar to
+  /// FirestoreAdmin.CreateDatabase except instead of creating a new empty
+  /// database, a new database is created with the database type, index
+  /// configuration, and documents from an existing backup. The long-running
+  /// operation can be used to track the progress of the restore, with the
+  /// Operation's metadata field type being the RestoreDatabaseMetadata. The
+  /// response type is the Database if the restore was successful. The new
+  /// database is not readable or writeable until the LRO has completed.
+  /// Cancelling the returned operation will stop the restore and delete the
+  /// in-progress database, if the restore is still active.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to restore the database in. Format is
+  /// `projects/{project_id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> restore(
+    GoogleFirestoreAdminV1RestoreDatabaseRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases:restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsDatabasesBackupSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDatabasesBackupSchedulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a backup schedule on a database.
+  ///
+  /// At most two backup schedules can be configured on a database, one daily
+  /// backup schedule with retention up to 7 days and one weekly backup schedule
+  /// with retention up to 14 weeks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database. Format
+  /// `projects/{project}/databases/{database}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> create(
+    GoogleFirestoreAdminV1BackupSchedule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a backup schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of backup schedule. Format
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a backup schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup schedule. Format
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List backup schedules.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database. Format is
+  /// `projects/{project}/databases/{database}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListBackupSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListBackupSchedulesResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a backup schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique backup schedule identifier across all
+  /// locations and databases for the given project. This will be auto-assigned.
+  /// Format is
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> patch(
+    GoogleFirestoreAdminV1BackupSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1854,6 +2126,9 @@ class ProjectsDatabasesOperationsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBackupsResource get backups =>
+      ProjectsLocationsBackupsResource(_requester);
+
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
@@ -1940,6 +2215,127 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBackupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup to delete. format is
+  /// `projects/{project}/locations/{location}/backups/{backup}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup to fetch. Format is
+  /// `projects/{project}/locations/{location}/backups/{backup}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1Backup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the backups.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to list backups from. Format is
+  /// `projects/{project}/locations/{location}`. Use `{location} = '-'` to list
+  /// backups from all locations for the given project. This allows listing
+  /// backups from a single location or from all locations.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListBackupsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListBackupsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2938,6 +3334,192 @@ class Filter {
       };
 }
 
+/// A Backup of a Cloud Firestore Database.
+///
+/// The backup contains all documents and index configurations for the given
+/// database at specific point in time.
+class GoogleFirestoreAdminV1Backup {
+  /// Name of the Firestore database that the backup is from.
+  ///
+  /// Format is `projects/{project}/databases/{database}`.
+  ///
+  /// Output only.
+  core.String? database;
+
+  /// The system-generated UUID4 for the Firestore database that the backup is
+  /// from.
+  ///
+  /// Output only.
+  core.String? databaseUid;
+
+  /// The timestamp at which this backup expires.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The unique resource name of the Backup.
+  ///
+  /// Format is `projects/{project}/locations/{location}/backups/{backup}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The backup contains an externally consistent copy of the database at this
+  /// time.
+  ///
+  /// Output only.
+  core.String? snapshotTime;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "CREATING" : The pending backup is still being created. Operations on
+  /// the backup will be rejected in this state.
+  /// - "READY" : The backup is complete and ready to use.
+  /// - "NOT_AVAILABLE" : The backup is not available at this moment.
+  core.String? state;
+
+  /// Statistics about the backup.
+  ///
+  /// This data only becomes available after the backup is fully materialized to
+  /// secondary storage. This field will be empty till then.
+  ///
+  /// Output only.
+  GoogleFirestoreAdminV1Stats? stats;
+
+  GoogleFirestoreAdminV1Backup({
+    this.database,
+    this.databaseUid,
+    this.expireTime,
+    this.name,
+    this.snapshotTime,
+    this.state,
+    this.stats,
+  });
+
+  GoogleFirestoreAdminV1Backup.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          databaseUid: json_.containsKey('databaseUid')
+              ? json_['databaseUid'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stats: json_.containsKey('stats')
+              ? GoogleFirestoreAdminV1Stats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (databaseUid != null) 'databaseUid': databaseUid!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+        if (state != null) 'state': state!,
+        if (stats != null) 'stats': stats!,
+      };
+}
+
+/// A backup schedule for a Cloud Firestore Database.
+///
+/// This resource is owned by the database it is backing up, and is deleted
+/// along with the database. The actual backups are not though.
+class GoogleFirestoreAdminV1BackupSchedule {
+  /// The timestamp at which this backup schedule was created and effective
+  /// since.
+  ///
+  /// No backups will be created for this schedule before this time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// For a schedule that runs daily at a specified time.
+  GoogleFirestoreAdminV1DailyRecurrence? dailyRecurrence;
+
+  /// The unique backup schedule identifier across all locations and databases
+  /// for the given project.
+  ///
+  /// This will be auto-assigned. Format is
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// At what relative time in the future, compared to the creation time of the
+  /// backup should the backup be deleted, i.e. keep backups for 7 days.
+  core.String? retention;
+
+  /// The timestamp at which this backup schedule was most recently updated.
+  ///
+  /// When a backup schedule is first created, this is the same as create_time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// For a schedule that runs weekly on a specific day and time.
+  GoogleFirestoreAdminV1WeeklyRecurrence? weeklyRecurrence;
+
+  GoogleFirestoreAdminV1BackupSchedule({
+    this.createTime,
+    this.dailyRecurrence,
+    this.name,
+    this.retention,
+    this.updateTime,
+    this.weeklyRecurrence,
+  });
+
+  GoogleFirestoreAdminV1BackupSchedule.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dailyRecurrence: json_.containsKey('dailyRecurrence')
+              ? GoogleFirestoreAdminV1DailyRecurrence.fromJson(
+                  json_['dailyRecurrence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          retention: json_.containsKey('retention')
+              ? json_['retention'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          weeklyRecurrence: json_.containsKey('weeklyRecurrence')
+              ? GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(
+                  json_['weeklyRecurrence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dailyRecurrence != null) 'dailyRecurrence': dailyRecurrence!,
+        if (name != null) 'name': name!,
+        if (retention != null) 'retention': retention!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (weeklyRecurrence != null) 'weeklyRecurrence': weeklyRecurrence!,
+      };
+}
+
+/// Represent a recurring schedule that runs at a specific time every day.
+///
+/// The time zone is UTC.
+typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
+
 /// A Cloud Firestore Database.
 ///
 /// Currently only one database is allowed per cloud project; this database must
@@ -3495,6 +4077,71 @@ class GoogleFirestoreAdminV1IndexField {
       };
 }
 
+/// The response for FirestoreAdmin.ListBackupSchedules.
+class GoogleFirestoreAdminV1ListBackupSchedulesResponse {
+  /// List of all backup schedules.
+  core.List<GoogleFirestoreAdminV1BackupSchedule>? backupSchedules;
+
+  GoogleFirestoreAdminV1ListBackupSchedulesResponse({
+    this.backupSchedules,
+  });
+
+  GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(core.Map json_)
+      : this(
+          backupSchedules: json_.containsKey('backupSchedules')
+              ? (json_['backupSchedules'] as core.List)
+                  .map((value) => GoogleFirestoreAdminV1BackupSchedule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupSchedules != null) 'backupSchedules': backupSchedules!,
+      };
+}
+
+/// The response for FirestoreAdmin.ListBackups.
+class GoogleFirestoreAdminV1ListBackupsResponse {
+  /// List of all backups for the project.
+  ///
+  /// Ordered by `location ASC, create_time DESC, name ASC`.
+  core.List<GoogleFirestoreAdminV1Backup>? backups;
+
+  /// List of locations that existing backups were not able to be fetched from.
+  ///
+  /// Instead of failing the entire requests when a single location is
+  /// unreachable, this response returns a partial result set and list of
+  /// locations unable to be reached here. The request can be retried against a
+  /// single location to get a concrete error.
+  core.List<core.String>? unreachable;
+
+  GoogleFirestoreAdminV1ListBackupsResponse({
+    this.backups,
+    this.unreachable,
+  });
+
+  GoogleFirestoreAdminV1ListBackupsResponse.fromJson(core.Map json_)
+      : this(
+          backups: json_.containsKey('backups')
+              ? (json_['backups'] as core.List)
+                  .map((value) => GoogleFirestoreAdminV1Backup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null) 'backups': backups!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The list of databases for a project.
 class GoogleFirestoreAdminV1ListDatabasesResponse {
   /// The databases in the project.
@@ -3587,6 +4234,93 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
       };
 }
 
+/// The request message for FirestoreAdmin.RestoreDatabase.
+class GoogleFirestoreAdminV1RestoreDatabaseRequest {
+  /// Backup to restore from.
+  ///
+  /// Must be from the same project as the parent. Format is:
+  /// `projects/{project_id}/locations/{location}/backups/{backup}`
+  ///
+  /// Required.
+  core.String? backup;
+
+  /// The ID to use for the database, which will become the final component of
+  /// the database's resource name.
+  ///
+  /// This database id must not be associated with an existing database. This
+  /// value should be 4-63 characters. Valid characters are /a-z-/ with first
+  /// character a letter and the last a letter or a number. Must not be
+  /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
+  /// database id is also valid.
+  ///
+  /// Required.
+  core.String? databaseId;
+
+  GoogleFirestoreAdminV1RestoreDatabaseRequest({
+    this.backup,
+    this.databaseId,
+  });
+
+  GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          backup: json_.containsKey('backup')
+              ? json_['backup'] as core.String
+              : null,
+          databaseId: json_.containsKey('databaseId')
+              ? json_['databaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (databaseId != null) 'databaseId': databaseId!,
+      };
+}
+
+/// Backup specific statistics.
+class GoogleFirestoreAdminV1Stats {
+  /// The total number of documents contained in the backup.
+  ///
+  /// Output only.
+  core.String? documentCount;
+
+  /// The total number of index entries contained in the backup.
+  ///
+  /// Output only.
+  core.String? indexCount;
+
+  /// Summation of the size of all documents and index entries in the backup,
+  /// measured in bytes.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  GoogleFirestoreAdminV1Stats({
+    this.documentCount,
+    this.indexCount,
+    this.sizeBytes,
+  });
+
+  GoogleFirestoreAdminV1Stats.fromJson(core.Map json_)
+      : this(
+          documentCount: json_.containsKey('documentCount')
+              ? json_['documentCount'] as core.String
+              : null,
+          indexCount: json_.containsKey('indexCount')
+              ? json_['indexCount'] as core.String
+              : null,
+          sizeBytes: json_.containsKey('sizeBytes')
+              ? json_['sizeBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentCount != null) 'documentCount': documentCount!,
+        if (indexCount != null) 'indexCount': indexCount!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+      };
+}
+
 /// The TTL (time-to-live) configuration for documents that have this `Field`
 /// set.
 ///
@@ -3625,6 +4359,38 @@ class GoogleFirestoreAdminV1TtlConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a recurring schedule that runs on a specified day of the week.
+///
+/// The time zone is UTC.
+class GoogleFirestoreAdminV1WeeklyRecurrence {
+  /// The day of week to run.
+  ///
+  /// DAY_OF_WEEK_UNSPECIFIED is not allowed.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  GoogleFirestoreAdminV1WeeklyRecurrence({
+    this.day,
+  });
+
+  GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(core.Map json_)
+      : this(
+          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
       };
 }
 
@@ -3884,7 +4650,7 @@ class ListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A map value.

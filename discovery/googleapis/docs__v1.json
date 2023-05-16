@@ -214,7 +214,7 @@
             }
         }
     },
-    "revision": "20230412",
+    "revision": "20230509",
     "rootUrl": "https://docs.googleapis.com/",
     "schemas": {
         "AutoText": {

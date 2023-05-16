@@ -5892,6 +5892,15 @@ class GoogleSheetsOptions {
 }
 
 class HivePartitioningOptions {
+  /// \[Output-only\] For permanent external tables, this field is populated
+  /// with the hive partition keys in the order they were inferred.
+  ///
+  /// The types of the partition keys can be deduced by checking the table
+  /// schema (which will include the partition keys). Not every API will
+  /// populate this field in the output. For example, Tables.Get will populate
+  /// it, but Tables.List will not contain this field.
+  core.List<core.String>? fields;
+
   /// When set, what mode of hive partitioning to use when reading data.
   ///
   /// The following modes are supported. (1) AUTO: automatically infer partition
@@ -5930,6 +5939,7 @@ class HivePartitioningOptions {
   core.String? sourceUriPrefix;
 
   HivePartitioningOptions({
+    this.fields,
     this.mode,
     this.requirePartitionFilter,
     this.sourceUriPrefix,
@@ -5937,6 +5947,11 @@ class HivePartitioningOptions {
 
   HivePartitioningOptions.fromJson(core.Map json_)
       : this(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           requirePartitionFilter: json_.containsKey('requirePartitionFilter')
               ? json_['requirePartitionFilter'] as core.bool
@@ -5947,6 +5962,7 @@ class HivePartitioningOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
         if (mode != null) 'mode': mode!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
@@ -9237,6 +9253,7 @@ class Model {
   /// - "DNN_CLASSIFIER" : DNN classifier model.
   /// - "TENSORFLOW" : An imported TensorFlow model.
   /// - "DNN_REGRESSOR" : DNN regressor model.
+  /// - "XGBOOST" : An imported XGBoost model.
   /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
   /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
   /// - "ARIMA" : ARIMA model.
@@ -9247,8 +9264,11 @@ class Model {
   /// - "DNN_LINEAR_COMBINED_REGRESSOR" : Wide-and-deep regressor model.
   /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
+  /// - "ARIMA_PLUS_XREG" : ARIMA with external regressors.
   /// - "RANDOM_FOREST_REGRESSOR" : Random Forest regressor model.
   /// - "RANDOM_FOREST_CLASSIFIER" : Random Forest classifier model.
+  /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
+  /// - "ONNX" : An imported ONNX model.
   core.String? modelType;
 
   /// For single-objective \[hyperparameter
@@ -9261,6 +9281,11 @@ class Model {
   ///
   /// Output only.
   core.List<core.String>? optimalTrialIds;
+
+  /// Remote model info
+  ///
+  /// Output only.
+  RemoteModelInfo? remoteModelInfo;
 
   /// Information for all training runs in increasing order of start_time.
   core.List<TrainingRun>? trainingRuns;
@@ -9284,6 +9309,7 @@ class Model {
     this.modelReference,
     this.modelType,
     this.optimalTrialIds,
+    this.remoteModelInfo,
     this.trainingRuns,
   });
 
@@ -9361,6 +9387,10 @@ class Model {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          remoteModelInfo: json_.containsKey('remoteModelInfo')
+              ? RemoteModelInfo.fromJson(json_['remoteModelInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           trainingRuns: json_.containsKey('trainingRuns')
               ? (json_['trainingRuns'] as core.List)
                   .map((value) => TrainingRun.fromJson(
@@ -9390,6 +9420,7 @@ class Model {
         if (modelReference != null) 'modelReference': modelReference!,
         if (modelType != null) 'modelType': modelType!,
         if (optimalTrialIds != null) 'optimalTrialIds': optimalTrialIds!,
+        if (remoteModelInfo != null) 'remoteModelInfo': remoteModelInfo!,
         if (trainingRuns != null) 'trainingRuns': trainingRuns!,
       };
 }
@@ -10735,6 +10766,75 @@ class RemoteFunctionOptions {
         if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
         if (userDefinedContext != null)
           'userDefinedContext': userDefinedContext!,
+      };
+}
+
+/// Remote Model Info
+class RemoteModelInfo {
+  /// Fully qualified name of the user-provided connection object of the remote
+  /// model.
+  ///
+  /// Format:
+  /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+  ///
+  /// Output only.
+  core.String? connection;
+
+  /// The endpoint for remote model.
+  ///
+  /// Output only.
+  core.String? endpoint;
+
+  /// Max number of rows in each batch sent to the remote service.
+  ///
+  /// If unset, the number of rows in each batch is set dynamically.
+  ///
+  /// Output only.
+  core.String? maxBatchingRows;
+
+  /// The remote service type for remote model.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REMOTE_SERVICE_TYPE_UNSPECIFIED" : Unspecified remote service type.
+  /// - "CLOUD_AI_TRANSLATE_V3" : V3 Cloud AI Translation API. See more details
+  /// at
+  /// [Cloud Translation API](https://cloud.google.com/translate/docs/reference/rest).
+  /// - "CLOUD_AI_VISION_V1" : V1 Cloud AI Vision API See more details at
+  /// [Cloud Vision API](https://cloud.google.com/vision/docs/reference/rest).
+  /// - "CLOUD_AI_NATURAL_LANGUAGE_V1" : V1 Cloud AI Natural Language API. See
+  /// more details at \[REST Resource:
+  /// documents\](https://cloud.google.com/natural-language/docs/reference/rest/v1/documents).
+  core.String? remoteServiceType;
+
+  RemoteModelInfo({
+    this.connection,
+    this.endpoint,
+    this.maxBatchingRows,
+    this.remoteServiceType,
+  });
+
+  RemoteModelInfo.fromJson(core.Map json_)
+      : this(
+          connection: json_.containsKey('connection')
+              ? json_['connection'] as core.String
+              : null,
+          endpoint: json_.containsKey('endpoint')
+              ? json_['endpoint'] as core.String
+              : null,
+          maxBatchingRows: json_.containsKey('maxBatchingRows')
+              ? json_['maxBatchingRows'] as core.String
+              : null,
+          remoteServiceType: json_.containsKey('remoteServiceType')
+              ? json_['remoteServiceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
+        if (remoteServiceType != null) 'remoteServiceType': remoteServiceType!,
       };
 }
 
@@ -13385,6 +13485,11 @@ class TrainingOptions {
   /// Name of input label columns in training data.
   core.List<core.String>? inputLabelColumns;
 
+  /// Name of the instance weight column for training data.
+  ///
+  /// This column isn't be used as a feature.
+  core.String? instanceWeightColumn;
+
   /// Number of integral steps for the integrated gradients explain method.
   core.String? integratedGradientsNumSteps;
 
@@ -13515,6 +13620,10 @@ class TrainingOptions {
   /// overfitting for boosted tree models.
   core.double? subsample;
 
+  /// Based on the selected TF version, the corresponding docker image is used
+  /// to train external models.
+  core.String? tfVersion;
+
   /// Column to be designated as time series data for ARIMA model.
   core.String? timeSeriesDataColumn;
 
@@ -13553,6 +13662,9 @@ class TrainingOptions {
   /// Whether to train a model from the last checkpoint.
   core.bool? warmStart;
 
+  /// User-selected XGBoost versions for training of XGBoost models.
+  core.String? xgboostVersion;
+
   TrainingOptions({
     this.adjustStepChanges,
     this.autoArima,
@@ -13584,6 +13696,7 @@ class TrainingOptions {
     this.includeDrift,
     this.initialLearnRate,
     this.inputLabelColumns,
+    this.instanceWeightColumn,
     this.integratedGradientsNumSteps,
     this.itemColumn,
     this.kmeansInitializationColumn,
@@ -13612,6 +13725,7 @@ class TrainingOptions {
     this.preserveInputStructs,
     this.sampledShapleyNumPaths,
     this.subsample,
+    this.tfVersion,
     this.timeSeriesDataColumn,
     this.timeSeriesIdColumn,
     this.timeSeriesIdColumns,
@@ -13622,6 +13736,7 @@ class TrainingOptions {
     this.userColumn,
     this.walsAlpha,
     this.warmStart,
+    this.xgboostVersion,
   });
 
   TrainingOptions.fromJson(core.Map json_)
@@ -13722,6 +13837,9 @@ class TrainingOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          instanceWeightColumn: json_.containsKey('instanceWeightColumn')
+              ? json_['instanceWeightColumn'] as core.String
+              : null,
           integratedGradientsNumSteps:
               json_.containsKey('integratedGradientsNumSteps')
                   ? json_['integratedGradientsNumSteps'] as core.String
@@ -13817,6 +13935,9 @@ class TrainingOptions {
           subsample: json_.containsKey('subsample')
               ? (json_['subsample'] as core.num).toDouble()
               : null,
+          tfVersion: json_.containsKey('tfVersion')
+              ? json_['tfVersion'] as core.String
+              : null,
           timeSeriesDataColumn: json_.containsKey('timeSeriesDataColumn')
               ? json_['timeSeriesDataColumn'] as core.String
               : null,
@@ -13851,6 +13972,9 @@ class TrainingOptions {
               : null,
           warmStart: json_.containsKey('warmStart')
               ? json_['warmStart'] as core.bool
+              : null,
+          xgboostVersion: json_.containsKey('xgboostVersion')
+              ? json_['xgboostVersion'] as core.String
               : null,
         );
 
@@ -13890,6 +14014,8 @@ class TrainingOptions {
         if (includeDrift != null) 'includeDrift': includeDrift!,
         if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
         if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
+        if (instanceWeightColumn != null)
+          'instanceWeightColumn': instanceWeightColumn!,
         if (integratedGradientsNumSteps != null)
           'integratedGradientsNumSteps': integratedGradientsNumSteps!,
         if (itemColumn != null) 'itemColumn': itemColumn!,
@@ -13928,6 +14054,7 @@ class TrainingOptions {
         if (sampledShapleyNumPaths != null)
           'sampledShapleyNumPaths': sampledShapleyNumPaths!,
         if (subsample != null) 'subsample': subsample!,
+        if (tfVersion != null) 'tfVersion': tfVersion!,
         if (timeSeriesDataColumn != null)
           'timeSeriesDataColumn': timeSeriesDataColumn!,
         if (timeSeriesIdColumn != null)
@@ -13944,6 +14071,7 @@ class TrainingOptions {
         if (userColumn != null) 'userColumn': userColumn!,
         if (walsAlpha != null) 'walsAlpha': walsAlpha!,
         if (warmStart != null) 'warmStart': warmStart!,
+        if (xgboostVersion != null) 'xgboostVersion': xgboostVersion!,
       };
 }
 

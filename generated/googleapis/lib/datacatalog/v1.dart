@@ -7320,7 +7320,7 @@ class GoogleCloudDatacatalogV1Taxonomy {
 
 /// The source system of the Taxonomy.
 class GoogleCloudDatacatalogV1TaxonomyService {
-  /// P4SA Identity of the service.
+  /// The service agent for the service.
   core.String? identity;
 
   /// The Google Cloud service name.

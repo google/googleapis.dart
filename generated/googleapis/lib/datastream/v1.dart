@@ -2357,6 +2357,8 @@ class GcsDestinationConfig {
 
   /// The maximum duration for which new events are added before a file is
   /// closed and a new file is created.
+  ///
+  /// Values within the range of 15-60 seconds are allowed.
   core.String? fileRotationInterval;
 
   /// The maximum file size to be saved in the bucket.
@@ -2747,7 +2749,7 @@ class ListStreamsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Request for looking up a specific stream object by its source object

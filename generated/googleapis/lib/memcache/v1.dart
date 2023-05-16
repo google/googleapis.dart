@@ -905,7 +905,8 @@ class Instance {
   /// be automatically determined by our system based on the latest supported
   /// minor version.
   /// Possible string values are:
-  /// - "MEMCACHE_VERSION_UNSPECIFIED"
+  /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
+  /// customer
   /// - "MEMCACHE_1_5" : Memcached 1.5 version.
   core.String? memcacheVersion;
 
@@ -1220,7 +1221,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Upcoming maintenance schedule.

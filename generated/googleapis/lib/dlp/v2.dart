@@ -7836,6 +7836,14 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// Regular expression based CustomInfoType.
   GooglePrivacyDlpV2Regex? regex;
 
+  /// Sensitivity for this CustomInfoType.
+  ///
+  /// If this CustomInfoType extends an existing InfoType, the sensitivity here
+  /// will take precedent over that of the original InfoType. If unset for a
+  /// CustomInfoType, it will default to HIGH. This only applies to data
+  /// profiling.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
   /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`.
   ///
   /// Not currently supported in `InspectContent`.
@@ -7852,6 +7860,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     this.infoType,
     this.likelihood,
     this.regex,
+    this.sensitivityScore,
     this.storedType,
     this.surrogateType,
   });
@@ -7882,6 +7891,11 @@ class GooglePrivacyDlpV2CustomInfoType {
               ? GooglePrivacyDlpV2Regex.fromJson(
                   json_['regex'] as core.Map<core.String, core.dynamic>)
               : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           storedType: json_.containsKey('storedType')
               ? GooglePrivacyDlpV2StoredType.fromJson(
                   json_['storedType'] as core.Map<core.String, core.dynamic>)
@@ -7899,6 +7913,7 @@ class GooglePrivacyDlpV2CustomInfoType {
         if (infoType != null) 'infoType': infoType!,
         if (likelihood != null) 'likelihood': likelihood!,
         if (regex != null) 'regex': regex!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (storedType != null) 'storedType': storedType!,
         if (surrogateType != null) 'surrogateType': surrogateType!,
       };
@@ -10081,17 +10096,28 @@ class GooglePrivacyDlpV2InfoType {
   /// `[A-Za-z0-9$_-]{1,64}`.
   core.String? name;
 
+  /// Optional custom sensitivity for this InfoType.
+  ///
+  /// This only applies to data profiling.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
   /// Optional version name for this InfoType.
   core.String? version;
 
   GooglePrivacyDlpV2InfoType({
     this.name,
+    this.sensitivityScore,
     this.version,
   });
 
   GooglePrivacyDlpV2InfoType.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.String
               : null,
@@ -10099,6 +10125,7 @@ class GooglePrivacyDlpV2InfoType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (version != null) 'version': version!,
       };
 }

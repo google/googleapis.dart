@@ -1595,12 +1595,6 @@ class Listing {
   /// Optional.
   core.String? requestAccess;
 
-  /// If set, restricted export configuration will be propagated and enforced on
-  /// the linked dataset.
-  ///
-  /// Optional.
-  RestrictedExportConfig? restrictedExportConfig;
-
   /// Current state of the listing.
   ///
   /// Output only.
@@ -1622,7 +1616,6 @@ class Listing {
     this.primaryContact,
     this.publisher,
     this.requestAccess,
-    this.restrictedExportConfig,
     this.state,
   });
 
@@ -1662,10 +1655,6 @@ class Listing {
           requestAccess: json_.containsKey('requestAccess')
               ? json_['requestAccess'] as core.String
               : null,
-          restrictedExportConfig: json_.containsKey('restrictedExportConfig')
-              ? RestrictedExportConfig.fromJson(json_['restrictedExportConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
@@ -1682,8 +1671,6 @@ class Listing {
         if (primaryContact != null) 'primaryContact': primaryContact!,
         if (publisher != null) 'publisher': publisher!,
         if (requestAccess != null) 'requestAccess': requestAccess!,
-        if (restrictedExportConfig != null)
-          'restrictedExportConfig': restrictedExportConfig!,
         if (state != null) 'state': state!,
       };
 }
@@ -1839,38 +1826,6 @@ class Publisher {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
-      };
-}
-
-/// Restricted export config, used to configure restricted export on linked
-/// dataset.
-class RestrictedExportConfig {
-  /// If true, enable restricted export.
-  core.bool? enabled;
-
-  /// If true, restrict export of query result derived from restricted linked
-  /// dataset table.
-  core.bool? restrictQueryResult;
-
-  RestrictedExportConfig({
-    this.enabled,
-    this.restrictQueryResult,
-  });
-
-  RestrictedExportConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          restrictQueryResult: json_.containsKey('restrictQueryResult')
-              ? json_['restrictQueryResult'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (restrictQueryResult != null)
-          'restrictQueryResult': restrictQueryResult!,
       };
 }
 

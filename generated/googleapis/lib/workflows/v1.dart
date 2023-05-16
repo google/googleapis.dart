@@ -681,7 +681,7 @@ class ListWorkflowsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a

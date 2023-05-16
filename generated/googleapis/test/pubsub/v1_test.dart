@@ -59,6 +59,25 @@ void checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest--;
 }
 
+core.int buildCounterAvroConfig = 0;
+api.AvroConfig buildAvroConfig() {
+  final o = api.AvroConfig();
+  buildCounterAvroConfig++;
+  if (buildCounterAvroConfig < 3) {
+    o.writeMetadata = true;
+  }
+  buildCounterAvroConfig--;
+  return o;
+}
+
+void checkAvroConfig(api.AvroConfig o) {
+  buildCounterAvroConfig++;
+  if (buildCounterAvroConfig < 3) {
+    unittest.expect(o.writeMetadata!, unittest.isTrue);
+  }
+  buildCounterAvroConfig--;
+}
+
 core.int buildCounterBigQueryConfig = 0;
 api.BigQueryConfig buildBigQueryConfig() {
   final o = api.BigQueryConfig();
@@ -133,6 +152,57 @@ void checkBinding(api.Binding o) {
     );
   }
   buildCounterBinding--;
+}
+
+core.int buildCounterCloudStorageConfig = 0;
+api.CloudStorageConfig buildCloudStorageConfig() {
+  final o = api.CloudStorageConfig();
+  buildCounterCloudStorageConfig++;
+  if (buildCounterCloudStorageConfig < 3) {
+    o.avroConfig = buildAvroConfig();
+    o.bucket = 'foo';
+    o.filenamePrefix = 'foo';
+    o.filenameSuffix = 'foo';
+    o.maxBytes = 'foo';
+    o.maxDuration = 'foo';
+    o.state = 'foo';
+    o.textConfig = buildTextConfig();
+  }
+  buildCounterCloudStorageConfig--;
+  return o;
+}
+
+void checkCloudStorageConfig(api.CloudStorageConfig o) {
+  buildCounterCloudStorageConfig++;
+  if (buildCounterCloudStorageConfig < 3) {
+    checkAvroConfig(o.avroConfig!);
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filenamePrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filenameSuffix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    checkTextConfig(o.textConfig!);
+  }
+  buildCounterCloudStorageConfig--;
 }
 
 core.int buildCounterCommitSchemaRequest = 0;
@@ -1243,6 +1313,7 @@ api.Subscription buildSubscription() {
   if (buildCounterSubscription < 3) {
     o.ackDeadlineSeconds = 42;
     o.bigqueryConfig = buildBigQueryConfig();
+    o.cloudStorageConfig = buildCloudStorageConfig();
     o.deadLetterPolicy = buildDeadLetterPolicy();
     o.detached = true;
     o.enableExactlyOnceDelivery = true;
@@ -1271,6 +1342,7 @@ void checkSubscription(api.Subscription o) {
       unittest.equals(42),
     );
     checkBigQueryConfig(o.bigqueryConfig!);
+    checkCloudStorageConfig(o.cloudStorageConfig!);
     checkDeadLetterPolicy(o.deadLetterPolicy!);
     unittest.expect(o.detached!, unittest.isTrue);
     unittest.expect(o.enableExactlyOnceDelivery!, unittest.isTrue);
@@ -1378,6 +1450,21 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
     checkUnnamed21(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.int buildCounterTextConfig = 0;
+api.TextConfig buildTextConfig() {
+  final o = api.TextConfig();
+  buildCounterTextConfig++;
+  if (buildCounterTextConfig < 3) {}
+  buildCounterTextConfig--;
+  return o;
+}
+
+void checkTextConfig(api.TextConfig o) {
+  buildCounterTextConfig++;
+  if (buildCounterTextConfig < 3) {}
+  buildCounterTextConfig--;
 }
 
 core.Map<core.String, core.String> buildUnnamed22() => {
@@ -1603,6 +1690,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AvroConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAvroConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AvroConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAvroConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-BigQueryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBigQueryConfig();
@@ -1620,6 +1717,16 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudStorageConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudStorageConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudStorageConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudStorageConfig(od);
     });
   });
 
@@ -1990,6 +2097,16 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TextConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTextConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TextConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTextConfig(od);
     });
   });
 

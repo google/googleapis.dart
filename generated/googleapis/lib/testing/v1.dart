@@ -1267,6 +1267,9 @@ class ApkManifest {
   /// Full Java-style package name for this application, e.g. "com.example.foo".
   core.String? packageName;
 
+  /// Services contained in the tag.
+  core.List<Service>? services;
+
   /// Specifies the API Level on which the application is designed to run.
   core.int? targetSdkVersion;
 
@@ -1289,6 +1292,7 @@ class ApkManifest {
     this.metadata,
     this.minSdkVersion,
     this.packageName,
+    this.services,
     this.targetSdkVersion,
     this.usesFeature,
     this.usesPermission,
@@ -1322,6 +1326,12 @@ class ApkManifest {
           packageName: json_.containsKey('packageName')
               ? json_['packageName'] as core.String
               : null,
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
+                  .map((value) => Service.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           targetSdkVersion: json_.containsKey('targetSdkVersion')
               ? json_['targetSdkVersion'] as core.int
               : null,
@@ -1351,6 +1361,7 @@ class ApkManifest {
         if (metadata != null) 'metadata': metadata!,
         if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
         if (packageName != null) 'packageName': packageName!,
+        if (services != null) 'services': services!,
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (usesFeature != null) 'usesFeature': usesFeature!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
@@ -3064,6 +3075,38 @@ class RoboStartingIntent {
       };
 }
 
+/// The section of an tag.
+///
+/// https://developer.android.com/guide/topics/manifest/service-element
+class Service {
+  /// Intent filters in the service
+  core.List<IntentFilter>? intentFilter;
+
+  /// The android:name value
+  core.String? name;
+
+  Service({
+    this.intentFilter,
+    this.name,
+  });
+
+  Service.fromJson(core.Map json_)
+      : this(
+          intentFilter: json_.containsKey('intentFilter')
+              ? (json_['intentFilter'] as core.List)
+                  .map((value) => IntentFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intentFilter != null) 'intentFilter': intentFilter!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Details about the shard.
 ///
 /// Output only.
@@ -3119,11 +3162,15 @@ class ShardingOption {
   /// methods.
   ManualSharding? manualSharding;
 
+  /// Shards test based on previous test case timing records.
+  SmartSharding? smartSharding;
+
   /// Uniformly shards test cases given a total number of shards.
   UniformSharding? uniformSharding;
 
   ShardingOption({
     this.manualSharding,
+    this.smartSharding,
     this.uniformSharding,
   });
 
@@ -3133,6 +3180,10 @@ class ShardingOption {
               ? ManualSharding.fromJson(json_['manualSharding']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          smartSharding: json_.containsKey('smartSharding')
+              ? SmartSharding.fromJson(
+                  json_['smartSharding'] as core.Map<core.String, core.dynamic>)
+              : null,
           uniformSharding: json_.containsKey('uniformSharding')
               ? UniformSharding.fromJson(json_['uniformSharding']
                   as core.Map<core.String, core.dynamic>)
@@ -3141,7 +3192,57 @@ class ShardingOption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manualSharding != null) 'manualSharding': manualSharding!,
+        if (smartSharding != null) 'smartSharding': smartSharding!,
         if (uniformSharding != null) 'uniformSharding': uniformSharding!,
+      };
+}
+
+/// Shards test based on previous test case timing records.
+class SmartSharding {
+  /// The amount of time tests within a shard should take.
+  ///
+  /// Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2
+  /// minutes). The shard count is dynamically set based on time, up to the
+  /// maximum shard limit (described below). To guarantee at least one test case
+  /// for each shard, the number of shards will not exceed the number of test
+  /// cases. Shard duration will be exceeded if: - The maximum shard limit is
+  /// reached and there is more calculated test time remaining to allocate into
+  /// shards. - Any individual test is estimated to be longer than the targeted
+  /// shard duration. Shard duration is not guaranteed because smart sharding
+  /// uses test case history and default durations which may not be accurate.
+  /// The rules for finding the test case timing records are: - If the service
+  /// has seen a test case in the last 30 days, the record of the latest
+  /// successful one will be used. - For new test cases, the average duration of
+  /// other known test cases will be used. - If there are no previous test case
+  /// timing records available, the test case is considered to be 15 seconds
+  /// long by default. Because the actual shard duration can exceed the targeted
+  /// shard duration, we recommend setting the targeted value at least 5 minutes
+  /// less than the maximum allowed test timeout (45 minutes for physical
+  /// devices and 60 minutes for virtual), or using the custom test timeout
+  /// value you set. This approach avoids cancelling the shard before all tests
+  /// can finish. Note that there is a limit for maximum number of shards. When
+  /// you select one or more physical devices, the number of shards must be \<=
+  /// 50. When you select one or more ARM virtual devices, it must be \<= 100.
+  /// When you select only x86 virtual devices, it must be \<= 500. To guarantee
+  /// at least one test case for per shard, the number of shards will not exceed
+  /// the number of test cases. Each shard created will count toward daily test
+  /// quota.
+  core.String? targetedShardDuration;
+
+  SmartSharding({
+    this.targetedShardDuration,
+  });
+
+  SmartSharding.fromJson(core.Map json_)
+      : this(
+          targetedShardDuration: json_.containsKey('targetedShardDuration')
+              ? json_['targetedShardDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetedShardDuration != null)
+          'targetedShardDuration': targetedShardDuration!,
       };
 }
 

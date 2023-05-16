@@ -2607,6 +2607,63 @@ class ProjectsLocationsPrivateConnectionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves a list of private connections in a given project and location.
   ///
   /// Request parameters:
@@ -2668,6 +2725,104 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return ListPrivateConnectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5087,7 +5242,7 @@ class ListPrivateConnectionsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// MachineConfig describes the configuration of a machine.
@@ -5113,6 +5268,18 @@ class MachineConfig {
 
 /// Represents a Database Migration Service migration job object.
 class MigrationJob {
+  /// The CMEK (customer-managed encryption key) fully qualified key name used
+  /// for the migration job.
+  ///
+  /// This field supports all migration jobs types except for: * Mysql to Mysql
+  /// (use the cmek field in the cloudsql connection profile instead). *
+  /// PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection
+  /// profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in
+  /// the alloydb connection profile instead). Each Cloud CMEK key has the
+  /// following format:
+  /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
+  core.String? cmekKeyName;
+
   /// The conversion workspace used by the migration.
   ConversionWorkspaceInfo? conversionWorkspace;
 
@@ -5254,6 +5421,7 @@ class MigrationJob {
   VpcPeeringConnectivity? vpcPeeringConnectivity;
 
   MigrationJob({
+    this.cmekKeyName,
     this.conversionWorkspace,
     this.createTime,
     this.destination,
@@ -5280,6 +5448,9 @@ class MigrationJob {
 
   MigrationJob.fromJson(core.Map json_)
       : this(
+          cmekKeyName: json_.containsKey('cmekKeyName')
+              ? json_['cmekKeyName'] as core.String
+              : null,
           conversionWorkspace: json_.containsKey('conversionWorkspace')
               ? ConversionWorkspaceInfo.fromJson(json_['conversionWorkspace']
                   as core.Map<core.String, core.dynamic>)
@@ -5356,6 +5527,7 @@ class MigrationJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (conversionWorkspace != null)
           'conversionWorkspace': conversionWorkspace!,
         if (createTime != null) 'createTime': createTime!,
@@ -6152,7 +6324,7 @@ class PrivateConnectivity {
 }
 
 /// Private Service Connect connectivity
-/// (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+/// (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 class PrivateServiceConnectConnectivity {
   /// A service attachment that exposes a database, and has the following
   /// format:
@@ -6574,6 +6746,18 @@ class SqlAclEntry {
 
 /// IP Management configuration.
 class SqlIpConfig {
+  /// The name of the allocated IP address range for the private IP Cloud SQL
+  /// instance.
+  ///
+  /// This name refers to an already allocated IP range address. If set, the
+  /// instance IP address will be created in the allocated range. Note that this
+  /// IP address range can't be modified after the instance is created. If you
+  /// change the VPC when configuring connectivity settings for the migration
+  /// job, this field is not relevant.
+  ///
+  /// Optional.
+  core.String? allocatedIpRange;
+
   /// The list of external networks that are allowed to connect to the instance
   /// using the IP.
   ///
@@ -6595,6 +6779,7 @@ class SqlIpConfig {
   core.bool? requireSsl;
 
   SqlIpConfig({
+    this.allocatedIpRange,
     this.authorizedNetworks,
     this.enableIpv4,
     this.privateNetwork,
@@ -6603,6 +6788,9 @@ class SqlIpConfig {
 
   SqlIpConfig.fromJson(core.Map json_)
       : this(
+          allocatedIpRange: json_.containsKey('allocatedIpRange')
+              ? json_['allocatedIpRange'] as core.String
+              : null,
           authorizedNetworks: json_.containsKey('authorizedNetworks')
               ? (json_['authorizedNetworks'] as core.List)
                   .map((value) => SqlAclEntry.fromJson(
@@ -6621,6 +6809,7 @@ class SqlIpConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
           'authorizedNetworks': authorizedNetworks!,
         if (enableIpv4 != null) 'enableIpv4': enableIpv4!,

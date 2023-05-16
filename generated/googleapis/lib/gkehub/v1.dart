@@ -1762,7 +1762,7 @@ class AppDevExperienceFeatureState {
 /// ApplianceCluster contains information specific to GDC Edge Appliance
 /// Clusters.
 class ApplianceCluster {
-  /// Self-link of the GCP resource for the Appliance Cluster.
+  /// Self-link of the Google Cloud resource for the Appliance Cluster.
   ///
   /// For example:
   /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
@@ -3420,7 +3420,7 @@ class ConnectAgentResource {
 
 /// EdgeCluster contains information specific to Google Edge Clusters.
 class EdgeCluster {
-  /// Self-link of the GCP resource for the Edge Cluster.
+  /// Self-link of the Google Cloud resource for the Edge Cluster.
   ///
   /// For example:
   /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -3489,7 +3489,7 @@ class Feature {
   /// Optional.
   CommonFleetDefaultMemberConfigSpec? fleetDefaultMemberConfig;
 
-  /// GCP labels for this Feature.
+  /// Labels for this Feature.
   core.Map<core.String, core.String>? labels;
 
   /// Membership-specific configuration for this Feature.
@@ -3827,7 +3827,7 @@ class GkeCluster {
   /// Output only.
   core.bool? clusterMissing;
 
-  /// Self-link of the GCP resource for the GKE cluster.
+  /// Self-link of the Google Cloud resource for the GKE cluster.
   ///
   /// For example:
   /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -4622,7 +4622,7 @@ class ListScopesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Membership contains information about a member cluster.
@@ -4668,7 +4668,7 @@ class Membership {
   /// Optional.
   core.String? externalId;
 
-  /// GCP labels for this membership.
+  /// Labels for this membership.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -5277,7 +5277,7 @@ class MultiCloudCluster {
   /// Output only.
   core.bool? clusterMissing;
 
-  /// Self-link of the GCP resource for the GKE Multi-Cloud cluster.
+  /// Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster.
   ///
   /// For example:
   /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
@@ -5357,7 +5357,7 @@ class OnPremCluster {
   /// - "USER" : The ClusterType is user cluster.
   core.String? clusterType;
 
-  /// Self-link of the GCP resource for the GKE On-Prem cluster.
+  /// Self-link of the Google Cloud resource for the GKE On-Prem cluster.
   ///
   /// For example:
   /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
@@ -5683,6 +5683,9 @@ class ResourceOptions {
 
 /// Scope represents a Scope in a Fleet.
 class Scope {
+  /// If true, all Memberships in the Fleet bind to this Scope.
+  core.bool? allMemberships;
+
   /// When the scope was created.
   ///
   /// Output only.
@@ -5717,6 +5720,7 @@ class Scope {
   core.String? updateTime;
 
   Scope({
+    this.allMemberships,
     this.createTime,
     this.deleteTime,
     this.name,
@@ -5727,6 +5731,9 @@ class Scope {
 
   Scope.fromJson(core.Map json_)
       : this(
+          allMemberships: json_.containsKey('allMemberships')
+              ? json_['allMemberships'] as core.bool
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -5745,6 +5752,7 @@ class Scope {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allMemberships != null) 'allMemberships': allMemberships!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (name != null) 'name': name!,

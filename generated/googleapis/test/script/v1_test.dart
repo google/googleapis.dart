@@ -505,6 +505,7 @@ api.GoogleAppsScriptTypeProcess buildGoogleAppsScriptTypeProcess() {
     o.processStatus = 'foo';
     o.processType = 'foo';
     o.projectName = 'foo';
+    o.runtimeVersion = 'foo';
     o.startTime = 'foo';
     o.userAccessLevel = 'foo';
   }
@@ -533,6 +534,10 @@ void checkGoogleAppsScriptTypeProcess(api.GoogleAppsScriptTypeProcess o) {
     );
     unittest.expect(
       o.projectName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.runtimeVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -179,7 +179,7 @@
             }
         }
     },
-    "revision": "20230406",
+    "revision": "20230504",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "Annotation": {

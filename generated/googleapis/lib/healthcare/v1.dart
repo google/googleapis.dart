@@ -8066,11 +8066,21 @@ class DeidentifyConfig {
   /// source_dataset.
   TextConfig? text;
 
+  /// Ensures in-flight data remains in the region of origin during
+  /// de-identification.
+  ///
+  /// Using this option results in a significant reduction of throughput, and is
+  /// not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes.
+  /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded
+  /// within `ImageConfig` if image redaction is required.
+  core.bool? useRegionalDataProcessing;
+
   DeidentifyConfig({
     this.dicom,
     this.fhir,
     this.image,
     this.text,
+    this.useRegionalDataProcessing,
   });
 
   DeidentifyConfig.fromJson(core.Map json_)
@@ -8091,6 +8101,10 @@ class DeidentifyConfig {
               ? TextConfig.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
+          useRegionalDataProcessing:
+              json_.containsKey('useRegionalDataProcessing')
+                  ? json_['useRegionalDataProcessing'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8098,6 +8112,8 @@ class DeidentifyConfig {
         if (fhir != null) 'fhir': fhir!,
         if (image != null) 'image': image!,
         if (text != null) 'text': text!,
+        if (useRegionalDataProcessing != null)
+          'useRegionalDataProcessing': useRegionalDataProcessing!,
       };
 }
 
@@ -9099,6 +9115,70 @@ class FhirFilter {
       };
 }
 
+/// Contains the configuration for FHIR notifications.
+class FhirNotificationConfig {
+  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+  /// notifications of changes are published on.
+  ///
+  /// Supplied by the client. The notification is a `PubsubMessage` with the
+  /// following fields: * `PubsubMessage.Data` contains the resource name. *
+  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
+  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
+  /// when the message was published. Note that notifications are only sent if
+  /// the topic is non-empty.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. The Cloud Healthcare API service account,
+  /// service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher
+  /// permissions on the given Pub/Sub topic. Not having adequate permissions
+  /// causes the calls that send notifications to fail
+  /// (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions).
+  /// If a notification can't be published to Pub/Sub, errors are logged to
+  /// Cloud Logging. For more information, see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+  core.String? pubsubTopic;
+
+  /// Whether to send full FHIR resource to this Pub/Sub topic.
+  core.bool? sendFullResource;
+
+  /// Whether to send full FHIR resource to this pubsub topic for deleting FHIR
+  /// resource.
+  ///
+  /// Note that setting this to true does not guarantee that all previous
+  /// resources will be sent in the format of full FHIR resource. When a
+  /// resource change is too large or during heavy traffic, only the resource
+  /// name will be sent. Clients should always check the "payloadType" label
+  /// from a Pub/Sub message to determine whether it needs to fetch the full
+  /// previous resource as a separate operation.
+  core.bool? sendPreviousResourceOnDelete;
+
+  FhirNotificationConfig({
+    this.pubsubTopic,
+    this.sendFullResource,
+    this.sendPreviousResourceOnDelete,
+  });
+
+  FhirNotificationConfig.fromJson(core.Map json_)
+      : this(
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? json_['pubsubTopic'] as core.String
+              : null,
+          sendFullResource: json_.containsKey('sendFullResource')
+              ? json_['sendFullResource'] as core.bool
+              : null,
+          sendPreviousResourceOnDelete:
+              json_.containsKey('sendPreviousResourceOnDelete')
+                  ? json_['sendPreviousResourceOnDelete'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (sendFullResource != null) 'sendFullResource': sendFullResource!,
+        if (sendPreviousResourceOnDelete != null)
+          'sendPreviousResourceOnDelete': sendPreviousResourceOnDelete!,
+      };
+}
+
 /// Represents a FHIR store.
 class FhirStore {
   /// Enable parsing of references within complex FHIR data types such as
@@ -9183,13 +9263,19 @@ class FhirStore {
   /// Output only.
   core.String? name;
 
-  /// If non-empty, publish all resource modifications of this FHIR store to
-  /// this destination.
+  /// Use `notification_configs` instead.
   ///
-  /// The Pub/Sub message attributes contain a map with a string describing the
-  /// action that has triggered the notification. For example,
-  /// "action":"CreateResource".
+  /// If non-empty, publish all resource modifications of this FHIR store to
+  /// this destination. The Pub/Sub message attributes contain a map with a
+  /// string describing the action that has triggered the notification. For
+  /// example, "action":"CreateResource".
+  ///
+  /// Deprecated.
   NotificationConfig? notificationConfig;
+
+  /// Specifies where and whether to send notifications upon changes to a FHIR
+  /// store.
+  core.List<FhirNotificationConfig>? notificationConfigs;
 
   /// A list of streaming configs that configure the destinations of streaming
   /// export for every resource mutation in this FHIR store.
@@ -9236,6 +9322,7 @@ class FhirStore {
     this.labels,
     this.name,
     this.notificationConfig,
+    this.notificationConfigs,
     this.streamConfigs,
     this.validationConfig,
     this.version,
@@ -9275,6 +9362,12 @@ class FhirStore {
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          notificationConfigs: json_.containsKey('notificationConfigs')
+              ? (json_['notificationConfigs'] as core.List)
+                  .map((value) => FhirNotificationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           streamConfigs: json_.containsKey('streamConfigs')
               ? (json_['streamConfigs'] as core.List)
                   .map((value) => StreamConfig.fromJson(
@@ -9305,6 +9398,8 @@ class FhirStore {
         if (name != null) 'name': name!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
+        if (notificationConfigs != null)
+          'notificationConfigs': notificationConfigs!,
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
         if (validationConfig != null) 'validationConfig': validationConfig!,
         if (version != null) 'version': version!,
@@ -10993,7 +11088,7 @@ class ListUserDataMappingsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A complete HL7v2 message.
@@ -11738,11 +11833,14 @@ class SchemaConfig {
   /// the server will not generate schemas for fields of type `Resource`, which
   /// can hold any resource type. The affected fields are
   /// `Parameters.parameter.resource`, `Bundle.entry.resource`, and
-  /// `Bundle.entry.response.outcome`.
+  /// `Bundle.entry.response.outcome`. Analytics schema does not gracefully
+  /// handle extensions with one or more occurrences, anaytics schema also does
+  /// not handle contained resource.
   /// - "ANALYTICS_V2" : Analytics V2, similar to schema defined by the FHIR
   /// community, with added support for extensions with one or more occurrences
   /// and contained resources in stringified JSON. Analytics V2 uses more space
-  /// in the destination table than Analytics V1.
+  /// in the destination table than Analytics V1. It is generally recommended to
+  /// use Analytics V2 over Analytics.
   core.String? schemaType;
 
   SchemaConfig({
@@ -12311,17 +12409,38 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 class TextConfig {
+  /// Transformations to apply to the detected data, overridden by
+  /// `exclude_info_types`.
+  core.List<InfoTypeTransformation>? additionalTransformations;
+
+  /// InfoTypes to skip transforming, overriding `additional_transformations`.
+  core.List<core.String>? excludeInfoTypes;
+
   /// The transformations to apply to the detected data.
   ///
   /// Deprecated. Use `additional_transformations` instead.
   core.List<InfoTypeTransformation>? transformations;
 
   TextConfig({
+    this.additionalTransformations,
+    this.excludeInfoTypes,
     this.transformations,
   });
 
   TextConfig.fromJson(core.Map json_)
       : this(
+          additionalTransformations:
+              json_.containsKey('additionalTransformations')
+                  ? (json_['additionalTransformations'] as core.List)
+                      .map((value) => InfoTypeTransformation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          excludeInfoTypes: json_.containsKey('excludeInfoTypes')
+              ? (json_['excludeInfoTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           transformations: json_.containsKey('transformations')
               ? (json_['transformations'] as core.List)
                   .map((value) => InfoTypeTransformation.fromJson(
@@ -12331,6 +12450,9 @@ class TextConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalTransformations != null)
+          'additionalTransformations': additionalTransformations!,
+        if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
         if (transformations != null) 'transformations': transformations!,
       };
 }

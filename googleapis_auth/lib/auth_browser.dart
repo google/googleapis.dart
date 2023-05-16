@@ -60,7 +60,7 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
     'Undocumented feature. May help debugging. '
     'Do not include in production code.',
   )
-      bool enableDebugLogs = false,
+  bool enableDebugLogs = false,
 }) async {
   final refCountedClient = baseClient == null
       ? RefCountedClient(BrowserClient())

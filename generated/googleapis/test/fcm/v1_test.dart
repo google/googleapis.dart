@@ -180,6 +180,7 @@ api.AndroidNotification buildAndroidNotification() {
     o.localOnly = true;
     o.notificationCount = 42;
     o.notificationPriority = 'foo';
+    o.proxy = 'foo';
     o.sound = 'foo';
     o.sticky = true;
     o.tag = 'foo';
@@ -242,6 +243,10 @@ void checkAndroidNotification(api.AndroidNotification o) {
     );
     unittest.expect(
       o.notificationPriority!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.proxy!,
       unittest.equals('foo'),
     );
     unittest.expect(

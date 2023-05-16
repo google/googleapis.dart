@@ -147,6 +147,8 @@ api.CustomClass buildCustomClass() {
   if (buildCounterCustomClass < 3) {
     o.customClassId = 'foo';
     o.items = buildUnnamed1();
+    o.kmsKeyName = 'foo';
+    o.kmsKeyVersionName = 'foo';
     o.name = 'foo';
   }
   buildCounterCustomClass--;
@@ -161,6 +163,14 @@ void checkCustomClass(api.CustomClass o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.items!);
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyVersionName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -476,6 +486,8 @@ api.PhraseSet buildPhraseSet() {
   buildCounterPhraseSet++;
   if (buildCounterPhraseSet < 3) {
     o.boost = 42.0;
+    o.kmsKeyName = 'foo';
+    o.kmsKeyVersionName = 'foo';
     o.name = 'foo';
     o.phrases = buildUnnamed7();
   }
@@ -489,6 +501,14 @@ void checkPhraseSet(api.PhraseSet o) {
     unittest.expect(
       o.boost!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyVersionName!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.name!,

@@ -1970,7 +1970,7 @@
             }
         }
     },
-    "revision": "20230330",
+    "revision": "20230504",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "schemas": {
         "AccessKeyCredentials": {
@@ -3406,7 +3406,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {
@@ -4313,6 +4313,10 @@
             "properties": {
                 "password": {
                     "description": "Input only. The credentials password. This is write only and can not be read in a GET operation.",
+                    "type": "string"
+                },
+                "resolvedVcenterHost": {
+                    "description": "The hostname of the vcenter.",
                     "type": "string"
                 },
                 "thumbprint": {

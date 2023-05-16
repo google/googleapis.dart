@@ -1478,6 +1478,7 @@ api.GoogleCloudDocumentaiV1DocumentPageToken
     o.detectedLanguages = buildUnnamed33();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
+    o.styleInfo = buildGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo();
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageToken--;
   return o;
@@ -1492,6 +1493,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageToken(
     checkUnnamed33(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
+    checkGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(o.styleInfo!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageToken--;
 }
@@ -1518,6 +1520,70 @@ void checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(
     );
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak--;
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo = 0;
+api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo
+    buildGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo() {
+  final o = api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo();
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo < 3) {
+    o.backgroundColor = buildGoogleTypeColor();
+    o.bold = true;
+    o.fontSize = 42;
+    o.fontType = 'foo';
+    o.fontWeight = 42;
+    o.handwritten = true;
+    o.italic = true;
+    o.letterSpacing = 42.0;
+    o.pixelFontSize = 42.0;
+    o.smallcaps = true;
+    o.strikeout = true;
+    o.subscript = true;
+    o.superscript = true;
+    o.textColor = buildGoogleTypeColor();
+    o.underlined = true;
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(
+    api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo o) {
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo < 3) {
+    checkGoogleTypeColor(o.backgroundColor!);
+    unittest.expect(o.bold!, unittest.isTrue);
+    unittest.expect(
+      o.fontSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.fontType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fontWeight!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.handwritten!, unittest.isTrue);
+    unittest.expect(o.italic!, unittest.isTrue);
+    unittest.expect(
+      o.letterSpacing!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.pixelFontSize!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.smallcaps!, unittest.isTrue);
+    unittest.expect(o.strikeout!, unittest.isTrue);
+    unittest.expect(o.subscript!, unittest.isTrue);
+    unittest.expect(o.superscript!, unittest.isTrue);
+    checkGoogleTypeColor(o.textColor!);
+    unittest.expect(o.underlined!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo--;
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
@@ -4399,6 +4465,17 @@ void main() {
           api.GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(od);
     });
   });
 

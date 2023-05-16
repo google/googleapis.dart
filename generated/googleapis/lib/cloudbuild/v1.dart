@@ -2559,6 +2559,10 @@ class ProjectsLocationsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2574,12 +2578,14 @@ class ProjectsLocationsTriggersResource {
     core.String resourceName, {
     core.String? projectId,
     core.String? triggerId,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3165,6 +3171,10 @@ class ProjectsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3179,10 +3189,12 @@ class ProjectsTriggersResource {
     BuildTrigger request,
     core.String projectId,
     core.String triggerId, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3552,6 +3564,15 @@ class Artifacts {
   /// marked FAILURE.
   core.List<MavenArtifact>? mavenArtifacts;
 
+  /// A list of npm packages to be uploaded to Artifact Registry upon successful
+  /// completion of all build steps.
+  ///
+  /// Npm packages in the specified paths will be uploaded to the specified
+  /// Artifact Registry repository using the builder service account's
+  /// credentials. If any packages fail to be pushed, the build is marked
+  /// FAILURE.
+  core.List<NpmPackage>? npmPackages;
+
   /// A list of objects to be uploaded to Cloud Storage upon successful
   /// completion of all build steps.
   ///
@@ -3572,6 +3593,7 @@ class Artifacts {
   Artifacts({
     this.images,
     this.mavenArtifacts,
+    this.npmPackages,
     this.objects,
     this.pythonPackages,
   });
@@ -3586,6 +3608,12 @@ class Artifacts {
           mavenArtifacts: json_.containsKey('mavenArtifacts')
               ? (json_['mavenArtifacts'] as core.List)
                   .map((value) => MavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          npmPackages: json_.containsKey('npmPackages')
+              ? (json_['npmPackages'] as core.List)
+                  .map((value) => NpmPackage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3604,6 +3632,7 @@ class Artifacts {
   core.Map<core.String, core.dynamic> toJson() => {
         if (images != null) 'images': images!,
         if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+        if (npmPackages != null) 'npmPackages': npmPackages!,
         if (objects != null) 'objects': objects!,
         if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
@@ -5550,6 +5579,13 @@ class GitFileSource {
   /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
+  /// The fully qualified resource name of the Repo API repository.
+  ///
+  /// Either uri or repository can be specified. If unspecified, the repo from
+  /// which the trigger invocation originated is assumed to be the repo from
+  /// which to read the specified path.
+  core.String? repository;
+
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when
   /// resolving the filename (optional).
   ///
@@ -5571,6 +5607,7 @@ class GitFileSource {
     this.githubEnterpriseConfig,
     this.path,
     this.repoType,
+    this.repository,
     this.revision,
     this.uri,
   });
@@ -5587,6 +5624,9 @@ class GitFileSource {
           repoType: json_.containsKey('repoType')
               ? json_['repoType'] as core.String
               : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -5600,6 +5640,7 @@ class GitFileSource {
           'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (path != null) 'path': path!,
         if (repoType != null) 'repoType': repoType!,
+        if (repository != null) 'repository': repository!,
         if (revision != null) 'revision': revision!,
         if (uri != null) 'uri': uri!,
       };
@@ -6285,6 +6326,10 @@ class GitRepoSource {
   /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
+  /// The qualified resource name of the Repo API repository Either uri or
+  /// repository can be specified and is required.
+  core.String? repository;
+
   /// The URI of the repo.
   ///
   /// Either uri or repository can be specified and is required.
@@ -6295,6 +6340,7 @@ class GitRepoSource {
     this.githubEnterpriseConfig,
     this.ref,
     this.repoType,
+    this.repository,
     this.uri,
   });
 
@@ -6310,6 +6356,9 @@ class GitRepoSource {
           repoType: json_.containsKey('repoType')
               ? json_['repoType'] as core.String
               : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
@@ -6320,6 +6369,7 @@ class GitRepoSource {
           'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (ref != null) 'ref': ref!,
         if (repoType != null) 'repoType': repoType!,
+        if (repository != null) 'repository': repository!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -6378,6 +6428,7 @@ class Hash {
   /// - "NONE" : No hash requested.
   /// - "SHA256" : Use a sha256 hash.
   /// - "MD5" : Use a md5 hash.
+  /// - "SHA512" : Use a sha512 hash.
   core.String? type;
 
   /// The hash value.
@@ -6857,6 +6908,41 @@ class NetworkConfig {
         if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
         if (peeredNetworkIpRange != null)
           'peeredNetworkIpRange': peeredNetworkIpRange!,
+      };
+}
+
+/// Npm package to upload to Artifact Registry upon successful completion of all
+/// build steps.
+class NpmPackage {
+  /// Path to the package.json.
+  ///
+  /// e.g. workspace/path/to/package
+  core.String? packagePath;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the
+  /// workspace specified by path will be zipped and uploaded to Artifact
+  /// Registry with this location as a prefix.
+  core.String? repository;
+
+  NpmPackage({
+    this.packagePath,
+    this.repository,
+  });
+
+  NpmPackage.fromJson(core.Map json_)
+      : this(
+          packagePath: json_.containsKey('packagePath')
+              ? json_['packagePath'] as core.String
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (packagePath != null) 'packagePath': packagePath!,
+        if (repository != null) 'repository': repository!,
       };
 }
 
@@ -7420,6 +7506,9 @@ class Results {
   /// Maven artifacts uploaded to Artifact Registry at the end of the build.
   core.List<UploadedMavenArtifact>? mavenArtifacts;
 
+  /// Npm packages uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedNpmPackage>? npmPackages;
+
   /// Number of non-container artifacts uploaded to Cloud Storage.
   ///
   /// Only populated when artifacts are uploaded to Cloud Storage.
@@ -7435,6 +7524,7 @@ class Results {
     this.buildStepOutputs,
     this.images,
     this.mavenArtifacts,
+    this.npmPackages,
     this.numArtifacts,
     this.pythonPackages,
   });
@@ -7470,6 +7560,12 @@ class Results {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          npmPackages: json_.containsKey('npmPackages')
+              ? (json_['npmPackages'] as core.List)
+                  .map((value) => UploadedNpmPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           numArtifacts: json_.containsKey('numArtifacts')
               ? json_['numArtifacts'] as core.String
               : null,
@@ -7488,6 +7584,7 @@ class Results {
         if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
         if (images != null) 'images': images!,
         if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+        if (npmPackages != null) 'npmPackages': npmPackages!,
         if (numArtifacts != null) 'numArtifacts': numArtifacts!,
         if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
@@ -7991,6 +8088,45 @@ class UploadedMavenArtifact {
   });
 
   UploadedMavenArtifact.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// An npm package uploaded to Artifact Registry using the NpmPackage directive.
+class UploadedNpmPackage {
+  /// Hash types and values of the npm package.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded npm package.
+  core.String? uri;
+
+  UploadedNpmPackage({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedNpmPackage.fromJson(core.Map json_)
       : this(
           fileHashes: json_.containsKey('fileHashes')
               ? FileHashes.fromJson(

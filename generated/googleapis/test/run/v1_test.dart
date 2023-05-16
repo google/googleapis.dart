@@ -755,6 +755,33 @@ void checkDomainMappingStatus(api.DomainMappingStatus o) {
   buildCounterDomainMappingStatus--;
 }
 
+core.int buildCounterEmptyDirVolumeSource = 0;
+api.EmptyDirVolumeSource buildEmptyDirVolumeSource() {
+  final o = api.EmptyDirVolumeSource();
+  buildCounterEmptyDirVolumeSource++;
+  if (buildCounterEmptyDirVolumeSource < 3) {
+    o.medium = 'foo';
+    o.sizeLimit = 'foo';
+  }
+  buildCounterEmptyDirVolumeSource--;
+  return o;
+}
+
+void checkEmptyDirVolumeSource(api.EmptyDirVolumeSource o) {
+  buildCounterEmptyDirVolumeSource++;
+  if (buildCounterEmptyDirVolumeSource < 3) {
+    unittest.expect(
+      o.medium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeLimit!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEmptyDirVolumeSource--;
+}
+
 core.int buildCounterEnvFromSource = 0;
 api.EnvFromSource buildEnvFromSource() {
   final o = api.EnvFromSource();
@@ -3641,6 +3668,7 @@ api.Volume buildVolume() {
   buildCounterVolume++;
   if (buildCounterVolume < 3) {
     o.configMap = buildConfigMapVolumeSource();
+    o.emptyDir = buildEmptyDirVolumeSource();
     o.name = 'foo';
     o.secret = buildSecretVolumeSource();
   }
@@ -3652,6 +3680,7 @@ void checkVolume(api.Volume o) {
   buildCounterVolume++;
   if (buildCounterVolume < 3) {
     checkConfigMapVolumeSource(o.configMap!);
+    checkEmptyDirVolumeSource(o.emptyDir!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3873,6 +3902,16 @@ void main() {
       final od = api.DomainMappingStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDomainMappingStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmptyDirVolumeSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmptyDirVolumeSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmptyDirVolumeSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEmptyDirVolumeSource(od);
     });
   });
 

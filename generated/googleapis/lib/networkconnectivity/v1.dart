@@ -28,6 +28,7 @@
 ///     - [ProjectsLocationsServiceClassesResource]
 ///     - [ProjectsLocationsServiceConnectionMapsResource]
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
+///     - [ProjectsLocationsServiceConnectionTokensResource]
 ///     - [ProjectsLocationsSpokesResource]
 library;
 
@@ -88,6 +89,9 @@ class ProjectsLocationsResource {
   ProjectsLocationsServiceConnectionPoliciesResource
       get serviceConnectionPolicies =>
           ProjectsLocationsServiceConnectionPoliciesResource(_requester);
+  ProjectsLocationsServiceConnectionTokensResource
+      get serviceConnectionTokens =>
+          ProjectsLocationsServiceConnectionTokensResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
 
@@ -1255,6 +1259,156 @@ class ProjectsLocationsServiceClassesResource {
   ProjectsLocationsServiceClassesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new ServiceClass in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the ServiceClass.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [serviceClassId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/serviceClasses/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location. If
+  /// one is not provided, one will be generated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    ServiceClass request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? serviceClassId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (serviceClassId != null) 'serviceClassId': [serviceClassId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/serviceClasses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ServiceClass.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServiceClass to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ServiceClass.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ServiceClass to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceClass].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceClass> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceClass.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1310,6 +1464,126 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ServiceClasses in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceClassesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceClassesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/serviceClasses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServiceClassesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single ServiceClass.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The name of a ServiceClass resource. Format:
+  /// projects/{project}/locations/{location}/serviceClasses/{service_class}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ServiceClass resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    ServiceClass request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1417,6 +1691,159 @@ class ProjectsLocationsServiceConnectionMapsResource {
   ProjectsLocationsServiceConnectionMapsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new ServiceConnectionMap in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the
+  /// ServiceConnectionMap.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [serviceConnectionMapId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/serviceConnectionMaps/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location. If
+  /// one is not provided, one will be generated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    ServiceConnectionMap request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? serviceConnectionMapId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (serviceConnectionMapId != null)
+        'serviceConnectionMapId': [serviceConnectionMapId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionMaps';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ServiceConnectionMap.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServiceConnectionMap to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ServiceConnectionMap.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ServiceConnectionMap to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceConnectionMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceConnectionMap> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceConnectionMap.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1472,6 +1899,127 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ServiceConnectionMaps in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceConnectionMapsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceConnectionMapsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionMaps';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServiceConnectionMapsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single ServiceConnectionMap.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The name of a ServiceConnectionMap. Format:
+  /// projects/{project}/locations/{location}/serviceConnectionMaps/{service_connection_map}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ServiceConnectionMap resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    ServiceConnectionMap request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1580,6 +2128,158 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new ServiceConnectionPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the
+  /// ServiceConnectionPolicy.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [serviceConnectionPolicyId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/serviceConnectionPolicies/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    ServiceConnectionPolicy request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? serviceConnectionPolicyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (serviceConnectionPolicyId != null)
+        'serviceConnectionPolicyId': [serviceConnectionPolicyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ServiceConnectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServiceConnectionPolicy to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ServiceConnectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ServiceConnectionPolicy to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceConnectionPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceConnectionPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceConnectionPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1635,6 +2335,127 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ServiceConnectionPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceConnectionPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceConnectionPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServiceConnectionPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single ServiceConnectionPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The name of a ServiceConnectionPolicy. Format:
+  /// projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ServiceConnectionPolicy resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    ServiceConnectionPolicy request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1732,6 +2553,221 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServiceConnectionTokensResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceConnectionTokensResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ServiceConnectionToken in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the
+  /// ServiceConnectionToken.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [serviceConnectionTokenId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/ServiceConnectionTokens/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location. If
+  /// one is not provided, one will be generated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    ServiceConnectionToken request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? serviceConnectionTokenId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (serviceConnectionTokenId != null)
+        'serviceConnectionTokenId': [serviceConnectionTokenId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ServiceConnectionToken.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServiceConnectionToken to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionTokens/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ServiceConnectionToken.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ServiceConnectionToken to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceConnectionToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceConnectionToken> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceConnectionToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ServiceConnectionTokens in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceConnectionTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceConnectionTokensResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/serviceConnectionTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServiceConnectionTokensResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2305,6 +3341,166 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Allow the producer to specify which consumers can connect to it.
+class ConsumerPscConfig {
+  /// This is used in PSC consumer ForwardingRule to control whether the PSC
+  /// endpoint can be accessed from another region.
+  core.bool? disableGlobalAccess;
+
+  /// The resource path of the consumer network where PSC connections are
+  /// allowed to be created in.
+  ///
+  /// Note, this network does not need be in the ConsumerPscConfig.project in
+  /// the case of SharedVPC. Example:
+  /// projects/{projectNumOrId}/global/networks/{networkId}.
+  core.String? network;
+
+  /// The consumer project where PSC connections are allowed to be created in.
+  core.String? project;
+
+  ConsumerPscConfig({
+    this.disableGlobalAccess,
+    this.network,
+    this.project,
+  });
+
+  ConsumerPscConfig.fromJson(core.Map json_)
+      : this(
+          disableGlobalAccess: json_.containsKey('disableGlobalAccess')
+              ? json_['disableGlobalAccess'] as core.bool
+              : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableGlobalAccess != null)
+          'disableGlobalAccess': disableGlobalAccess!,
+        if (network != null) 'network': network!,
+        if (project != null) 'project': project!,
+      };
+}
+
+/// PSC connection details on consumer side.
+class ConsumerPscConnection {
+  /// The most recent error during operating this connection.
+  GoogleRpcStatus? error;
+
+  /// The error type indicates whether the error is consumer facing, producer
+  /// facing or system internal.
+  /// Possible string values are:
+  /// - "CONNECTION_ERROR_TYPE_UNSPECIFIED" : An invalid error type as the
+  /// default case.
+  /// - "ERROR_INTERNAL" : The error is due to Service Automation system
+  /// internal.
+  /// - "ERROR_CONSUMER_SIDE" : The error is due to the setup on consumer side.
+  /// - "ERROR_PRODUCER_SIDE" : The error is due to the setup on producer side.
+  core.String? errorType;
+
+  /// The URI of the consumer forwarding rule created.
+  ///
+  /// Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
+  core.String? forwardingRule;
+
+  /// The last Compute Engine operation to setup PSC connection.
+  core.String? gceOperation;
+
+  /// The IP literal allocated on the consumer network for the PSC forwarding
+  /// rule that is created to connect to the producer service attachment in this
+  /// service connection map.
+  core.String? ip;
+
+  /// The consumer network whose PSC forwarding rule is connected to the service
+  /// attachments in this service connection map.
+  ///
+  /// Note that the network could be on a different project (shared VPC).
+  core.String? network;
+
+  /// The consumer project whose PSC forwarding rule is connected to the service
+  /// attachments in this service connection map.
+  core.String? project;
+
+  /// The PSC connection id of the PSC forwarding rule connected to the service
+  /// attachments in this service connection map.
+  core.String? pscConnectionId;
+
+  /// The URI of a service attachment which is the target of the PSC connection.
+  core.String? serviceAttachmentUri;
+
+  /// The state of the PSC connection.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : An invalid state as the default case.
+  /// - "ACTIVE" : The connection is fully established and ready to use.
+  /// - "FAILED" : The connection is not functional since some resources on the
+  /// connection fail to be created.
+  /// - "CREATING" : The connection is being created.
+  /// - "DELETING" : The connection is being deleted.
+  core.String? state;
+
+  ConsumerPscConnection({
+    this.error,
+    this.errorType,
+    this.forwardingRule,
+    this.gceOperation,
+    this.ip,
+    this.network,
+    this.project,
+    this.pscConnectionId,
+    this.serviceAttachmentUri,
+    this.state,
+  });
+
+  ConsumerPscConnection.fromJson(core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorType: json_.containsKey('errorType')
+              ? json_['errorType'] as core.String
+              : null,
+          forwardingRule: json_.containsKey('forwardingRule')
+              ? json_['forwardingRule'] as core.String
+              : null,
+          gceOperation: json_.containsKey('gceOperation')
+              ? json_['gceOperation'] as core.String
+              : null,
+          ip: json_.containsKey('ip') ? json_['ip'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+          pscConnectionId: json_.containsKey('pscConnectionId')
+              ? json_['pscConnectionId'] as core.String
+              : null,
+          serviceAttachmentUri: json_.containsKey('serviceAttachmentUri')
+              ? json_['serviceAttachmentUri'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (errorType != null) 'errorType': errorType!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (gceOperation != null) 'gceOperation': gceOperation!,
+        if (ip != null) 'ip': ip!,
+        if (network != null) 'network': network!,
+        if (project != null) 'project': project!,
+        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (serviceAttachmentUri != null)
+          'serviceAttachmentUri': serviceAttachmentUri!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3046,6 +4242,190 @@ class ListLocationsResponse {
       };
 }
 
+/// Response for ListServiceClasses.
+class ListServiceClassesResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// ServiceClasses to be returned.
+  core.List<ServiceClass>? serviceClasses;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListServiceClassesResponse({
+    this.nextPageToken,
+    this.serviceClasses,
+    this.unreachable,
+  });
+
+  ListServiceClassesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          serviceClasses: json_.containsKey('serviceClasses')
+              ? (json_['serviceClasses'] as core.List)
+                  .map((value) => ServiceClass.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceClasses != null) 'serviceClasses': serviceClasses!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for ListServiceConnectionMaps.
+class ListServiceConnectionMapsResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// ServiceConnectionMaps to be returned.
+  core.List<ServiceConnectionMap>? serviceConnectionMaps;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListServiceConnectionMapsResponse({
+    this.nextPageToken,
+    this.serviceConnectionMaps,
+    this.unreachable,
+  });
+
+  ListServiceConnectionMapsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          serviceConnectionMaps: json_.containsKey('serviceConnectionMaps')
+              ? (json_['serviceConnectionMaps'] as core.List)
+                  .map((value) => ServiceConnectionMap.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceConnectionMaps != null)
+          'serviceConnectionMaps': serviceConnectionMaps!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for ListServiceConnectionPolicies.
+class ListServiceConnectionPoliciesResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// ServiceConnectionPolicies to be returned.
+  core.List<ServiceConnectionPolicy>? serviceConnectionPolicies;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListServiceConnectionPoliciesResponse({
+    this.nextPageToken,
+    this.serviceConnectionPolicies,
+    this.unreachable,
+  });
+
+  ListServiceConnectionPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          serviceConnectionPolicies:
+              json_.containsKey('serviceConnectionPolicies')
+                  ? (json_['serviceConnectionPolicies'] as core.List)
+                      .map((value) => ServiceConnectionPolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceConnectionPolicies != null)
+          'serviceConnectionPolicies': serviceConnectionPolicies!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for ListServiceConnectionTokens.
+class ListServiceConnectionTokensResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// ServiceConnectionTokens to be returned.
+  core.List<ServiceConnectionToken>? serviceConnectionTokens;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListServiceConnectionTokensResponse({
+    this.nextPageToken,
+    this.serviceConnectionTokens,
+    this.unreachable,
+  });
+
+  ListServiceConnectionTokensResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          serviceConnectionTokens: json_.containsKey('serviceConnectionTokens')
+              ? (json_['serviceConnectionTokens'] as core.List)
+                  .map((value) => ServiceConnectionToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceConnectionTokens != null)
+          'serviceConnectionTokens': serviceConnectionTokens!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response for HubService.ListSpokes.
 class ListSpokesResponse {
   /// The token for the next page of the response.
@@ -3091,7 +4471,7 @@ class ListSpokesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3215,6 +4595,160 @@ class Policy {
       };
 }
 
+/// The PSC configurations on producer side.
+class ProducerPscConfig {
+  /// The resource path of a service attachment.
+  ///
+  /// Example:
+  /// projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+  core.String? serviceAttachmentUri;
+
+  ProducerPscConfig({
+    this.serviceAttachmentUri,
+  });
+
+  ProducerPscConfig.fromJson(core.Map json_)
+      : this(
+          serviceAttachmentUri: json_.containsKey('serviceAttachmentUri')
+              ? json_['serviceAttachmentUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAttachmentUri != null)
+          'serviceAttachmentUri': serviceAttachmentUri!,
+      };
+}
+
+/// Configuration used for Private Service Connect connections.
+///
+/// Used when Infrastructure is PSC.
+class PscConfig {
+  /// Max number of PSC connections for this policy.
+  core.String? limit;
+
+  /// The resource paths of subnetworks to use for IP address management.
+  ///
+  /// Example:
+  /// projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+  core.List<core.String>? subnetworks;
+
+  PscConfig({
+    this.limit,
+    this.subnetworks,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          limit:
+              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          subnetworks: json_.containsKey('subnetworks')
+              ? (json_['subnetworks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (limit != null) 'limit': limit!,
+        if (subnetworks != null) 'subnetworks': subnetworks!,
+      };
+}
+
+/// Information about a specific Private Service Connect connection.
+class PscConnection {
+  /// The resource reference of the consumer address.
+  core.String? consumerAddress;
+
+  /// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+  core.String? consumerForwardingRule;
+
+  /// The project where the PSC connection is created.
+  core.String? consumerTargetProject;
+
+  /// The most recent error during operating this connection.
+  GoogleRpcStatus? error;
+
+  /// The error type indicates whether the error is consumer facing, producer
+  /// facing or system internal.
+  /// Possible string values are:
+  /// - "CONNECTION_ERROR_TYPE_UNSPECIFIED" : An invalid error type as the
+  /// default case.
+  /// - "ERROR_INTERNAL" : The error is due to Service Automation system
+  /// internal.
+  /// - "ERROR_CONSUMER_SIDE" : The error is due to the setup on consumer side.
+  /// - "ERROR_PRODUCER_SIDE" : The error is due to the setup on producer side.
+  core.String? errorType;
+
+  /// The last Compute Engine operation to setup PSC connection.
+  core.String? gceOperation;
+
+  /// The PSC connection id of the PSC forwarding rule.
+  core.String? pscConnectionId;
+
+  /// State of the PSC Connection
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : An invalid state as the default case.
+  /// - "ACTIVE" : The connection is fully established and ready to use.
+  /// - "FAILED" : The connection is not functional since some resources on the
+  /// connection fail to be created.
+  /// - "CREATING" : The connection is being created.
+  /// - "DELETING" : The connection is being deleted.
+  core.String? state;
+
+  PscConnection({
+    this.consumerAddress,
+    this.consumerForwardingRule,
+    this.consumerTargetProject,
+    this.error,
+    this.errorType,
+    this.gceOperation,
+    this.pscConnectionId,
+    this.state,
+  });
+
+  PscConnection.fromJson(core.Map json_)
+      : this(
+          consumerAddress: json_.containsKey('consumerAddress')
+              ? json_['consumerAddress'] as core.String
+              : null,
+          consumerForwardingRule: json_.containsKey('consumerForwardingRule')
+              ? json_['consumerForwardingRule'] as core.String
+              : null,
+          consumerTargetProject: json_.containsKey('consumerTargetProject')
+              ? json_['consumerTargetProject'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorType: json_.containsKey('errorType')
+              ? json_['errorType'] as core.String
+              : null,
+          gceOperation: json_.containsKey('gceOperation')
+              ? json_['gceOperation'] as core.String
+              : null,
+          pscConnectionId: json_.containsKey('pscConnectionId')
+              ? json_['pscConnectionId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerAddress != null) 'consumerAddress': consumerAddress!,
+        if (consumerForwardingRule != null)
+          'consumerForwardingRule': consumerForwardingRule!,
+        if (consumerTargetProject != null)
+          'consumerTargetProject': consumerTargetProject!,
+        if (error != null) 'error': error!,
+        if (errorType != null) 'errorType': errorType!,
+        if (gceOperation != null) 'gceOperation': gceOperation!,
+        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// A router appliance instance is a Compute Engine virtual machine (VM)
 /// instance that acts as a BGP speaker.
 ///
@@ -3284,6 +4818,479 @@ class RoutingVPC {
           'requiredForNewSiteToSiteDataTransferSpokes':
               requiredForNewSiteToSiteDataTransferSpokes!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// The ServiceClass resource.
+///
+/// Next id: 8
+class ServiceClass {
+  /// Time when the ServiceClass was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  core.String? description;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a ServiceClass resource.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/serviceClasses/{service_class}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The generated service class name.
+  ///
+  /// Use this name to refer to the Service class in Service Connection Maps and
+  /// Service Connection Policies.
+  ///
+  /// Output only.
+  core.String? serviceClass;
+
+  /// URIs of all Service Connection Maps using this service class.
+  ///
+  /// Output only.
+  core.List<core.String>? serviceConnectionMaps;
+
+  /// Time when the ServiceClass was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ServiceClass({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.serviceClass,
+    this.serviceConnectionMaps,
+    this.updateTime,
+  });
+
+  ServiceClass.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceClass: json_.containsKey('serviceClass')
+              ? json_['serviceClass'] as core.String
+              : null,
+          serviceConnectionMaps: json_.containsKey('serviceConnectionMaps')
+              ? (json_['serviceConnectionMaps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (serviceClass != null) 'serviceClass': serviceClass!,
+        if (serviceConnectionMaps != null)
+          'serviceConnectionMaps': serviceConnectionMaps!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The ServiceConnectionMap resource.
+///
+/// Next id: 14
+class ServiceConnectionMap {
+  /// The PSC configurations on consumer side.
+  core.List<ConsumerPscConfig>? consumerPscConfigs;
+
+  /// PSC connection details on consumer side.
+  ///
+  /// Output only.
+  core.List<ConsumerPscConnection>? consumerPscConnections;
+
+  /// Time when the ServiceConnectionMap was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  core.String? description;
+
+  /// The infrastructure used for connections between consumers/producers.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INFRASTRUCTURE_UNSPECIFIED" : An invalid infrastructure as the default
+  /// case.
+  /// - "PSC" : Private Service Connect is used for connections.
+  core.String? infrastructure;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a ServiceConnectionMap.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/serviceConnectionMaps/{service_connection_map}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The PSC configurations on producer side.
+  core.List<ProducerPscConfig>? producerPscConfigs;
+
+  /// The service class identifier this ServiceConnectionMap is for.
+  ///
+  /// The user of ServiceConnectionMap create API needs to have
+  /// networkconnecitivty.serviceclasses.use iam permission for the service
+  /// class.
+  core.String? serviceClass;
+
+  /// The service class uri this ServiceConnectionMap is for.
+  ///
+  /// Output only.
+  core.String? serviceClassUri;
+
+  /// The token provided by the consumer.
+  ///
+  /// This token authenticates that the consumer can create a connecton within
+  /// the specified project and network.
+  core.String? token;
+
+  /// Time when the ServiceConnectionMap was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ServiceConnectionMap({
+    this.consumerPscConfigs,
+    this.consumerPscConnections,
+    this.createTime,
+    this.description,
+    this.infrastructure,
+    this.labels,
+    this.name,
+    this.producerPscConfigs,
+    this.serviceClass,
+    this.serviceClassUri,
+    this.token,
+    this.updateTime,
+  });
+
+  ServiceConnectionMap.fromJson(core.Map json_)
+      : this(
+          consumerPscConfigs: json_.containsKey('consumerPscConfigs')
+              ? (json_['consumerPscConfigs'] as core.List)
+                  .map((value) => ConsumerPscConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          consumerPscConnections: json_.containsKey('consumerPscConnections')
+              ? (json_['consumerPscConnections'] as core.List)
+                  .map((value) => ConsumerPscConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          infrastructure: json_.containsKey('infrastructure')
+              ? json_['infrastructure'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          producerPscConfigs: json_.containsKey('producerPscConfigs')
+              ? (json_['producerPscConfigs'] as core.List)
+                  .map((value) => ProducerPscConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serviceClass: json_.containsKey('serviceClass')
+              ? json_['serviceClass'] as core.String
+              : null,
+          serviceClassUri: json_.containsKey('serviceClassUri')
+              ? json_['serviceClassUri'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerPscConfigs != null)
+          'consumerPscConfigs': consumerPscConfigs!,
+        if (consumerPscConnections != null)
+          'consumerPscConnections': consumerPscConnections!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (infrastructure != null) 'infrastructure': infrastructure!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (producerPscConfigs != null)
+          'producerPscConfigs': producerPscConfigs!,
+        if (serviceClass != null) 'serviceClass': serviceClass!,
+        if (serviceClassUri != null) 'serviceClassUri': serviceClassUri!,
+        if (token != null) 'token': token!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The ServiceConnectionPolicy resource.
+///
+/// Next id: 11
+class ServiceConnectionPolicy {
+  /// Time when the ServiceConnectionMap was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  core.String? description;
+
+  /// The type of underlying resources used to create the connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INFRASTRUCTURE_UNSPECIFIED" : An invalid infrastructure as the default
+  /// case.
+  /// - "PSC" : Private Service Connect is used for connections.
+  core.String? infrastructure;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a ServiceConnectionPolicy.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource path of the consumer network.
+  ///
+  /// Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
+  core.String? network;
+
+  /// Configuration used for Private Service Connect connections.
+  ///
+  /// Used when Infrastructure is PSC.
+  PscConfig? pscConfig;
+
+  /// Information about each Private Service Connect connection.
+  ///
+  /// Output only.
+  core.List<PscConnection>? pscConnections;
+
+  /// The service class identifier for which this ServiceConnectionPolicy is
+  /// for.
+  ///
+  /// The service class identifier is a unique, symbolic representation of a
+  /// ServiceClass. It is provided by the Service Producer. Google services have
+  /// a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not.
+  /// For example, test-service-a3dfcx.
+  core.String? serviceClass;
+
+  /// Time when the ServiceConnectionMap was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ServiceConnectionPolicy({
+    this.createTime,
+    this.description,
+    this.infrastructure,
+    this.labels,
+    this.name,
+    this.network,
+    this.pscConfig,
+    this.pscConnections,
+    this.serviceClass,
+    this.updateTime,
+  });
+
+  ServiceConnectionPolicy.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          infrastructure: json_.containsKey('infrastructure')
+              ? json_['infrastructure'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pscConnections: json_.containsKey('pscConnections')
+              ? (json_['pscConnections'] as core.List)
+                  .map((value) => PscConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serviceClass: json_.containsKey('serviceClass')
+              ? json_['serviceClass'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (infrastructure != null) 'infrastructure': infrastructure!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
+        if (pscConnections != null) 'pscConnections': pscConnections!,
+        if (serviceClass != null) 'serviceClass': serviceClass!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The ServiceConnectionToken resource.
+///
+/// Next id: 9
+class ServiceConnectionToken {
+  /// Time when the ServiceConnectionToken was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  core.String? description;
+
+  /// The time to which this token is valid.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a ServiceConnectionToken.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/ServiceConnectionTokens/{service_connection_token}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource path of the network associated with this token.
+  ///
+  /// Example: projects/{projectNumOrId}/global/networks/{resourceId}.
+  core.String? network;
+
+  /// The token generated by Automation.
+  ///
+  /// Output only.
+  core.String? token;
+
+  /// Time when the ServiceConnectionToken was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ServiceConnectionToken({
+    this.createTime,
+    this.description,
+    this.expireTime,
+    this.labels,
+    this.name,
+    this.network,
+    this.token,
+    this.updateTime,
+  });
+
+  ServiceConnectionToken.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (token != null) 'token': token!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

@@ -2209,6 +2209,13 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /// Whether to run the silence annotator.
   core.bool? runSilenceAnnotator;
 
+  /// Whether to run the summarization annotator.
+  core.bool? runSummarizationAnnotator;
+
+  /// Configuration for the summarization annotator.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig?
+      summarizationConfig;
+
   GoogleCloudContactcenterinsightsV1AnnotatorSelector({
     this.issueModels,
     this.phraseMatchers,
@@ -2219,6 +2226,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
     this.runPhraseMatcherAnnotator,
     this.runSentimentAnnotator,
     this.runSilenceAnnotator,
+    this.runSummarizationAnnotator,
+    this.summarizationConfig,
   });
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(core.Map json_)
@@ -2256,6 +2265,15 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           runSilenceAnnotator: json_.containsKey('runSilenceAnnotator')
               ? json_['runSilenceAnnotator'] as core.bool
               : null,
+          runSummarizationAnnotator:
+              json_.containsKey('runSummarizationAnnotator')
+                  ? json_['runSummarizationAnnotator'] as core.bool
+                  : null,
+          summarizationConfig: json_.containsKey('summarizationConfig')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
+                  .fromJson(json_['summarizationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2275,6 +2293,48 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           'runSentimentAnnotator': runSentimentAnnotator!,
         if (runSilenceAnnotator != null)
           'runSilenceAnnotator': runSilenceAnnotator!,
+        if (runSummarizationAnnotator != null)
+          'runSummarizationAnnotator': runSummarizationAnnotator!,
+        if (summarizationConfig != null)
+          'summarizationConfig': summarizationConfig!,
+      };
+}
+
+/// Configuration for summarization.
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+  /// Resource name of the Dialogflow conversation profile.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+  core.String? conversationProfile;
+
+  /// Default summarization model to be used.
+  /// Possible string values are:
+  /// - "SUMMARIZATION_MODEL_UNSPECIFIED" : Unspecified summarization model.
+  /// - "BASELINE_MODEL" : The Insights baseline model.
+  core.String? summarizationModel;
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig({
+    this.conversationProfile,
+    this.summarizationModel,
+  });
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromJson(
+      core.Map json_)
+      : this(
+          conversationProfile: json_.containsKey('conversationProfile')
+              ? json_['conversationProfile'] as core.String
+              : null,
+          summarizationModel: json_.containsKey('summarizationModel')
+              ? json_['summarizationModel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationProfile != null)
+          'conversationProfile': conversationProfile!,
+        if (summarizationModel != null)
+          'summarizationModel': summarizationModel!,
       };
 }
 
@@ -2848,6 +2908,12 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   /// Output only.
   GoogleCloudContactcenterinsightsV1Analysis? latestAnalysis;
 
+  /// Latest summary of the conversation.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData?
+      latestSummary;
+
   /// The conversation medium, if unspecified will default to PHONE_CALL.
   ///
   /// Immutable.
@@ -2912,6 +2978,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
     this.labels,
     this.languageCode,
     this.latestAnalysis,
+    this.latestSummary,
     this.medium,
     this.name,
     this.obfuscatedUserId,
@@ -2974,6 +3041,11 @@ class GoogleCloudContactcenterinsightsV1Conversation {
                   json_['latestAnalysis']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          latestSummary: json_.containsKey('latestSummary')
+              ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
+                  .fromJson(json_['latestSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           medium: json_.containsKey('medium')
               ? json_['medium'] as core.String
               : null,
@@ -3017,6 +3089,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
         if (labels != null) 'labels': labels!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
+        if (latestSummary != null) 'latestSummary': latestSummary!,
         if (medium != null) 'medium': medium!,
         if (name != null) 'name': name!,
         if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
@@ -3193,6 +3266,87 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
           'obfuscatedExternalUserId': obfuscatedExternalUserId!,
         if (role != null) 'role': role!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Conversation summarization suggestion data.
+class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData {
+  /// The name of the answer record.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/answerRecords/{answer_record}
+  core.String? answerRecord;
+
+  /// The confidence score of the summarization.
+  core.double? confidence;
+
+  /// The name of the model that generates this summary.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/conversationModels/{conversation_model}
+  core.String? conversationModel;
+
+  /// A map that contains metadata about the summarization and the document from
+  /// which it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The summarization content that is concatenated into one string.
+  core.String? text;
+
+  /// The summarization content that is divided into sections.
+  ///
+  /// The key is the section's name and the value is the section's content.
+  /// There is no specific format for the key or value.
+  core.Map<core.String, core.String>? textSections;
+
+  GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData({
+    this.answerRecord,
+    this.confidence,
+    this.conversationModel,
+    this.metadata,
+    this.text,
+    this.textSections,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
+      core.Map json_)
+      : this(
+          answerRecord: json_.containsKey('answerRecord')
+              ? json_['answerRecord'] as core.String
+              : null,
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
+              : null,
+          conversationModel: json_.containsKey('conversationModel')
+              ? json_['conversationModel'] as core.String
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          textSections: json_.containsKey('textSections')
+              ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (conversationModel != null) 'conversationModel': conversationModel!,
+        if (metadata != null) 'metadata': metadata!,
+        if (text != null) 'text': text!,
+        if (textSections != null) 'textSections': textSections!,
       };
 }
 
@@ -5053,6 +5207,10 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /// Agent Assist Article Suggestion data.
   GoogleCloudContactcenterinsightsV1ArticleSuggestionData? articleSuggestion;
 
+  /// Conversation summarization suggestion data.
+  GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData?
+      conversationSummarizationSuggestion;
+
   /// The time at which this annotation was created.
   core.String? createTime;
 
@@ -5080,6 +5238,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
     this.annotationId,
     this.answerFeedback,
     this.articleSuggestion,
+    this.conversationSummarizationSuggestion,
     this.createTime,
     this.dialogflowInteraction,
     this.endBoundary,
@@ -5102,6 +5261,12 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
           articleSuggestion: json_.containsKey('articleSuggestion')
               ? GoogleCloudContactcenterinsightsV1ArticleSuggestionData
                   .fromJson(json_['articleSuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          conversationSummarizationSuggestion: json_
+                  .containsKey('conversationSummarizationSuggestion')
+              ? GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
+                  .fromJson(json_['conversationSummarizationSuggestion']
                       as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
@@ -5139,6 +5304,9 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
         if (annotationId != null) 'annotationId': annotationId!,
         if (answerFeedback != null) 'answerFeedback': answerFeedback!,
         if (articleSuggestion != null) 'articleSuggestion': articleSuggestion!,
+        if (conversationSummarizationSuggestion != null)
+          'conversationSummarizationSuggestion':
+              conversationSummarizationSuggestion!,
         if (createTime != null) 'createTime': createTime!,
         if (dialogflowInteraction != null)
           'dialogflowInteraction': dialogflowInteraction!,

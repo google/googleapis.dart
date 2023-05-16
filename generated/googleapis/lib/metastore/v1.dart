@@ -805,6 +805,54 @@ class ProjectsLocationsServicesResource {
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Alter metadata resource location.
+  ///
+  /// The metadata resource can be a database, table, or partition. This
+  /// functionality only updates the parent directory for the respective
+  /// metadata resource and does not transfer any existing data to the new
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to mutate metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> alterLocation(
+    AlterMetadataResourceLocationRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':alterLocation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a metastore service in a project and location.
   ///
   /// [request] - The metadata request object.
@@ -1120,6 +1168,50 @@ class ProjectsLocationsServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Move a table to another database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to mutate metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> moveTableToDatabase(
+    MoveTableToDatabaseRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$service') + ':moveTableToDatabase';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the parameters of a single service.
   ///
   /// [request] - The metadata request object.
@@ -1176,6 +1268,49 @@ class ProjectsLocationsServicesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Query DPMS metadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to query metadata, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> queryMetadata(
+    QueryMetadataRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':queryMetadata';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1888,6 +2023,42 @@ class ProjectsLocationsServicesMetadataImportsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Request message for DataprocMetastore.AlterMetadataResourceLocation.
+class AlterMetadataResourceLocationRequest {
+  /// The new location URI for the metadata resource.
+  ///
+  /// Required.
+  core.String? locationUri;
+
+  /// The relative metadata resource name in the following
+  /// format.databases/{database_id} or
+  /// databases/{database_id}/tables/{table_id} or
+  /// databases/{database_id}/tables/{table_id}/partitions/{partition_id}
+  ///
+  /// Required.
+  core.String? resourceName;
+
+  AlterMetadataResourceLocationRequest({
+    this.locationUri,
+    this.resourceName,
+  });
+
+  AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
+      : this(
+          locationUri: json_.containsKey('locationUri')
+              ? json_['locationUri'] as core.String
+              : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locationUri != null) 'locationUri': locationUri!,
+        if (resourceName != null) 'resourceName': resourceName!,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2932,7 +3103,7 @@ class ListServicesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location01;
 
 /// Maintenance window.
@@ -3175,6 +3346,49 @@ class MetadataManagementActivity {
       };
 }
 
+/// Request message for DataprocMetastore.MoveTableToDatabase.
+class MoveTableToDatabaseRequest {
+  /// The name of the database where the table resides.
+  ///
+  /// Required.
+  core.String? dbName;
+
+  /// The name of the database where the table should be moved.
+  ///
+  /// Required.
+  core.String? destinationDbName;
+
+  /// The name of the table to be moved.
+  ///
+  /// Required.
+  core.String? tableName;
+
+  MoveTableToDatabaseRequest({
+    this.dbName,
+    this.destinationDbName,
+    this.tableName,
+  });
+
+  MoveTableToDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          dbName: json_.containsKey('dbName')
+              ? json_['dbName'] as core.String
+              : null,
+          destinationDbName: json_.containsKey('destinationDbName')
+              ? json_['destinationDbName'] as core.String
+              : null,
+          tableName: json_.containsKey('tableName')
+              ? json_['tableName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dbName != null) 'dbName': dbName!,
+        if (destinationDbName != null) 'destinationDbName': destinationDbName!,
+        if (tableName != null) 'tableName': tableName!,
+      };
+}
+
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore
@@ -3394,6 +3608,30 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Request message for DataprocMetastore.QueryMetadata.
+class QueryMetadataRequest {
+  /// A read-only SQL query to execute against the metadata database.
+  ///
+  /// The query cannot change or mutate the data.
+  ///
+  /// Required.
+  core.String? query;
+
+  QueryMetadataRequest({
+    this.query,
+  });
+
+  QueryMetadataRequest.fromJson(core.Map json_)
+      : this(
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (query != null) 'query': query!,
       };
 }
 

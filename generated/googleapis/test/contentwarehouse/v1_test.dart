@@ -576,6 +576,7 @@ api.GoogleCloudContentwarehouseV1Document
     o.creator = 'foo';
     o.displayName = 'foo';
     o.displayUri = 'foo';
+    o.dispositionTime = 'foo';
     o.documentSchemaName = 'foo';
     o.inlineRawDocument = 'foo';
     o.name = 'foo';
@@ -617,6 +618,10 @@ void checkGoogleCloudContentwarehouseV1Document(
     );
     unittest.expect(
       o.displayUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dispositionTime!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -1272,8 +1272,9 @@ class ProjectsLocationsServicesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [allowMissing] - This field is currently not used by Cloud Run; setting it
-  /// does not have any effect.
+  /// [allowMissing] - If set to true, and if the Service does not exist, it
+  /// will create a new one. The caller must have 'run.services.create'
+  /// permissions if this is set to true and the Service does not exist.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
@@ -1784,25 +1785,17 @@ class GoogleCloudRunV2Condition {
 class GoogleCloudRunV2Container {
   /// Arguments to the entrypoint.
   ///
-  /// The docker image's CMD is used if this is not provided. Variable
-  /// references $(VAR_NAME) are expanded using the container's environment. If
-  /// a variable cannot be resolved, the reference in the input string will be
-  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// The docker image's CMD is used if this is not provided.
   core.List<core.String>? args;
 
   /// Entrypoint array.
   ///
   /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
-  /// is not provided. Variable references $(VAR_NAME) are expanded using the
-  /// container's environment. If a variable cannot be resolved, the reference
-  /// in the input string will be unchanged. The $(VAR_NAME) syntax can be
-  /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never
-  /// be expanded, regardless of whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// is not provided.
   core.List<core.String>? command;
+
+  /// Container names which must start before this container.
+  core.List<core.String>? dependsOn;
 
   /// List of environment variables to set in the container.
   core.List<GoogleCloudRunV2EnvVar>? env;
@@ -1810,16 +1803,14 @@ class GoogleCloudRunV2Container {
   /// Name of the container image in Dockerhub, Google Artifact Registry, or
   /// Google Container Registry.
   ///
-  /// If the host is not provided, Dockerhub is assumed. More info:
-  /// https://kubernetes.io/docs/concepts/containers/images
+  /// If the host is not provided, Dockerhub is assumed.
   ///
   /// Required.
   core.String? image;
 
   /// Periodic probe of container liveness.
   ///
-  /// Container will be restarted if the probe fails. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// Container will be restarted if the probe fails.
   GoogleCloudRunV2Probe? livenessProbe;
 
   /// Name of the container specified as a DNS_LABEL (RFC 1123).
@@ -1834,17 +1825,13 @@ class GoogleCloudRunV2Container {
   core.List<GoogleCloudRunV2ContainerPort>? ports;
 
   /// Compute Resource requirements by this container.
-  ///
-  /// More info:
-  /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   GoogleCloudRunV2ResourceRequirements? resources;
 
   /// Startup probe of application within the container.
   ///
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe
-  /// fails. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// fails.
   GoogleCloudRunV2Probe? startupProbe;
 
   /// Volume to mount into the container's filesystem.
@@ -1859,6 +1846,7 @@ class GoogleCloudRunV2Container {
   GoogleCloudRunV2Container({
     this.args,
     this.command,
+    this.dependsOn,
     this.env,
     this.image,
     this.livenessProbe,
@@ -1879,6 +1867,11 @@ class GoogleCloudRunV2Container {
               : null,
           command: json_.containsKey('command')
               ? (json_['command'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          dependsOn: json_.containsKey('dependsOn')
+              ? (json_['dependsOn'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1923,6 +1916,7 @@ class GoogleCloudRunV2Container {
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (command != null) 'command': command!,
+        if (dependsOn != null) 'dependsOn': dependsOn!,
         if (env != null) 'env': env!,
         if (image != null) 'image': image!,
         if (livenessProbe != null) 'livenessProbe': livenessProbe!,
@@ -1963,6 +1957,55 @@ class GoogleCloudRunV2ContainerPort {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerPort != null) 'containerPort': containerPort!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Ephemeral storage which can be backed by real disks (HD, SSD), network
+/// storage or memory (i.e. tmpfs).
+///
+/// For now only in memory (tmpfs) is supported. It is ephemeral in the sense
+/// that when the sandbox is taken down, the data is destroyed with it (it does
+/// not persist across sandbox runs).
+class GoogleCloudRunV2EmptyDirVolumeSource {
+  /// The medium on which the data is stored.
+  ///
+  /// Acceptable values today is only MEMORY or none. When none, the default
+  /// will currently be backed by memory but could change over time. +optional
+  /// Possible string values are:
+  /// - "MEDIUM_UNSPECIFIED" : When not specified, falls back to the default
+  /// implementation which is currently in memory (this may change over time).
+  /// - "MEMORY" : Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+  core.String? medium;
+
+  /// Limit on the storage usable by this EmptyDir volume.
+  ///
+  /// The size limit is also applicable for memory medium. The maximum usage on
+  /// memory medium EmptyDir would be the minimum value between the SizeLimit
+  /// specified here and the sum of memory limits of all containers in a pod.
+  /// This field's values are of the 'Quantity' k8s type:
+  /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
+  /// The default is nil which means that the limit is undefined. More info:
+  /// http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+  core.String? sizeLimit;
+
+  GoogleCloudRunV2EmptyDirVolumeSource({
+    this.medium,
+    this.sizeLimit,
+  });
+
+  GoogleCloudRunV2EmptyDirVolumeSource.fromJson(core.Map json_)
+      : this(
+          medium: json_.containsKey('medium')
+              ? json_['medium'] as core.String
+              : null,
+          sizeLimit: json_.containsKey('sizeLimit')
+              ? json_['sizeLimit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (medium != null) 'medium': medium!,
+        if (sizeLimit != null) 'sizeLimit': sizeLimit!,
       };
 }
 
@@ -2040,7 +2083,12 @@ class GoogleCloudRunV2EnvVarSource {
 /// A execution an immutable resource that references a container image which is
 /// run to completion.
 class GoogleCloudRunV2Execution {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
 
   /// The number of tasks which reached phase Cancelled.
@@ -2109,13 +2157,16 @@ class GoogleCloudRunV2Execution {
   /// Output only.
   core.String? job;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
   /// https://cloud.google.com/run/docs/configuring/labels
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
   /// The least stable launch stage needed to create this resource, as defined
@@ -2184,8 +2235,7 @@ class GoogleCloudRunV2Execution {
   /// Must be \<= task_count. The actual number of tasks running in steady state
   /// will be less than this number when ((.spec.task_count -
   /// .status.successful) \< .spec.parallelism), i.e. when the work left to do
-  /// is less than max parallelism. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// is less than max parallelism.
   ///
   /// Output only.
   core.int? parallelism;
@@ -2229,8 +2279,7 @@ class GoogleCloudRunV2Execution {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// that task signals the success of the execution.
   ///
   /// Output only.
   core.int? taskCount;
@@ -2448,22 +2497,30 @@ class GoogleCloudRunV2ExecutionReference {
 /// ExecutionTemplate describes the data an execution should have when created
 /// from a template.
 class GoogleCloudRunV2ExecutionTemplate {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
   ///
+  /// They are not queryable and should be preserved when modifying objects.
   /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
   /// `cloud.googleapis.com`, `serving.knative.dev`, or
   /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
   /// system annotations in v1 now have a corresponding field in v2
-  /// ExecutionTemplate.
+  /// ExecutionTemplate. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
-  /// Cloud Run API v2 does not support labels with `run.googleapis.com`,
-  /// `cloud.googleapis.com`, `serving.knative.dev`, or
-  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
-  /// system labels in v1 now have a corresponding field in v2
-  /// ExecutionTemplate.
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 ExecutionTemplate.
   core.Map<core.String, core.String>? labels;
 
   /// Specifies the maximum desired number of tasks the execution should run at
@@ -2619,16 +2676,16 @@ typedef GoogleCloudRunV2HTTPHeader = $HTTPHeader;
 /// Job represents the configuration of a single job, which references a
 /// container image that is run to completion.
 class GoogleCloudRunV2Job {
-  /// KRM-style annotations for the resource.
-  ///
   /// Unstructured key value map that may be set by external tools to store and
-  /// arbitrary metadata. They are not queryable and should be preserved when
-  /// modifying objects. Cloud Run API v2 does not support annotations with
-  /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or
-  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
-  /// system annotations in v1 now have a corresponding field in v2 Job. This
-  /// field follows Kubernetes annotations' namespacing, limits, and rules. More
-  /// info: https://kubernetes.io/docs/user-guide/annotations
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected on new
+  /// resources. All system annotations in v1 now have a corresponding field in
+  /// v2 Job. This field follows Kubernetes annotations' namespacing, limits,
+  /// and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -2688,14 +2745,15 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.String? generation;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does
-  /// not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
   /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
   /// will be rejected. All system labels in v1 now have a corresponding field
   /// in v2 Job.
@@ -3159,8 +3217,7 @@ class GoogleCloudRunV2Probe {
   /// initiated.
   ///
   /// Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness
-  /// probe is 3600. Maximum value for startup probe is 240. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// probe is 3600. Maximum value for startup probe is 240.
   core.int? initialDelaySeconds;
 
   /// How often (in seconds) to perform the probe.
@@ -3178,8 +3235,7 @@ class GoogleCloudRunV2Probe {
   /// Number of seconds after which the probe times out.
   ///
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be
-  /// smaller than period_seconds. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// smaller than period_seconds.
   core.int? timeoutSeconds;
 
   GoogleCloudRunV2Probe({
@@ -3237,17 +3293,24 @@ class GoogleCloudRunV2ResourceRequirements {
   /// Determines whether CPU should be throttled or not outside of requests.
   core.bool? cpuIdle;
 
-  /// Only memory and CPU are supported.
+  /// Only ´memory´ and 'cpu' are supported.
   ///
-  /// Note: The only supported values for CPU are '1', '2', '4', and '8'.
-  /// Setting 4 CPU requires at least 2Gi of memory. The values of the map is
-  /// string form of the 'quantity' k8s type:
-  /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+  /// Notes: * The only supported values for CPU are '1', '2', '4', and '8'.
+  /// Setting 4 CPU requires at least 2Gi of memory. For more information, go to
+  /// https://cloud.google.com/run/docs/configuring/cpu. * For supported
+  /// 'memory' values and syntax, go to
+  /// https://cloud.google.com/run/docs/configuring/memory-limits
   core.Map<core.String, core.String>? limits;
+
+  /// Determines whether CPU should be boosted on startup of a new container
+  /// instance above the requested CPU threshold, this can help reduce
+  /// cold-start latency.
+  core.bool? startupCpuBoost;
 
   GoogleCloudRunV2ResourceRequirements({
     this.cpuIdle,
     this.limits,
+    this.startupCpuBoost,
   });
 
   GoogleCloudRunV2ResourceRequirements.fromJson(core.Map json_)
@@ -3263,11 +3326,15 @@ class GoogleCloudRunV2ResourceRequirements {
                   ),
                 )
               : null,
+          startupCpuBoost: json_.containsKey('startupCpuBoost')
+              ? json_['startupCpuBoost'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuIdle != null) 'cpuIdle': cpuIdle!,
         if (limits != null) 'limits': limits!,
+        if (startupCpuBoost != null) 'startupCpuBoost': startupCpuBoost!,
       };
 }
 
@@ -3276,7 +3343,12 @@ class GoogleCloudRunV2ResourceRequirements {
 /// A Revision references a container image. Revisions are only created by
 /// updates to its parent Service.
 class GoogleCloudRunV2Revision {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
 
   /// The Condition of this Revision, containing its readiness status, and
@@ -3350,13 +3422,16 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? generation;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels
+  /// https://cloud.google.com/run/docs/configuring/labels.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
   /// The least stable launch stage needed to create this resource, as defined
@@ -3451,6 +3526,9 @@ class GoogleCloudRunV2Revision {
   /// determines what permissions the revision has.
   core.String? serviceAccount;
 
+  /// Enable session affinity.
+  core.bool? sessionAffinity;
+
   /// Max allowed time for an instance to respond to a request.
   core.String? timeout;
 
@@ -3500,6 +3578,7 @@ class GoogleCloudRunV2Revision {
     this.scaling,
     this.service,
     this.serviceAccount,
+    this.sessionAffinity,
     this.timeout,
     this.uid,
     this.updateTime,
@@ -3595,6 +3674,9 @@ class GoogleCloudRunV2Revision {
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
+          sessionAffinity: json_.containsKey('sessionAffinity')
+              ? json_['sessionAffinity'] as core.bool
+              : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
               : null,
@@ -3643,6 +3725,7 @@ class GoogleCloudRunV2Revision {
         if (scaling != null) 'scaling': scaling!,
         if (service != null) 'service': service!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3683,13 +3766,16 @@ class GoogleCloudRunV2RevisionScaling {
 /// RevisionTemplate describes the data a revision should have when created from
 /// a template.
 class GoogleCloudRunV2RevisionTemplate {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
   ///
+  /// They are not queryable and should be preserved when modifying objects.
   /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
   /// `cloud.googleapis.com`, `serving.knative.dev`, or
   /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
   /// system annotations in v1 now have a corresponding field in v2
-  /// RevisionTemplate.
+  /// RevisionTemplate. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Holds the single container that defines the unit of execution for this
@@ -3710,12 +3796,18 @@ class GoogleCloudRunV2RevisionTemplate {
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
-  /// Cloud Run API v2 does not support labels with `run.googleapis.com`,
-  /// `cloud.googleapis.com`, `serving.knative.dev`, or
-  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
-  /// system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 RevisionTemplate.
   core.Map<core.String, core.String>? labels;
 
   /// Sets the maximum number of requests that each serving instance can
@@ -3739,6 +3831,9 @@ class GoogleCloudRunV2RevisionTemplate {
   /// revision will use the project's default service account.
   core.String? serviceAccount;
 
+  /// Enable session affinity.
+  core.bool? sessionAffinity;
+
   /// Max allowed time for an instance to respond to a request.
   core.String? timeout;
 
@@ -3761,6 +3856,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.revision,
     this.scaling,
     this.serviceAccount,
+    this.sessionAffinity,
     this.timeout,
     this.volumes,
     this.vpcAccess,
@@ -3811,6 +3907,9 @@ class GoogleCloudRunV2RevisionTemplate {
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
+          sessionAffinity: json_.containsKey('sessionAffinity')
+              ? json_['sessionAffinity'] as core.bool
+              : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
               : null,
@@ -3838,6 +3937,7 @@ class GoogleCloudRunV2RevisionTemplate {
         if (revision != null) 'revision': revision!,
         if (scaling != null) 'scaling': scaling!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (volumes != null) 'volumes': volumes!,
         if (vpcAccess != null) 'vpcAccess': vpcAccess!,
@@ -3992,10 +4092,10 @@ class GoogleCloudRunV2Service {
   /// They are not queryable and should be preserved when modifying objects.
   /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
   /// `cloud.googleapis.com`, `serving.knative.dev`, or
-  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
-  /// system annotations in v1 now have a corresponding field in v2 Service.
-  /// This field follows Kubernetes annotations' namespacing, limits, and rules.
-  /// More info: https://kubernetes.io/docs/user-guide/annotations
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected in new
+  /// resources. All system annotations in v1 now have a corresponding field in
+  /// v2 Service. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -4070,15 +4170,15 @@ class GoogleCloudRunV2Service {
   /// Cloud Load Balancer traffic is allowed.
   core.String? ingress;
 
-  /// Map of string keys and values that can be used to organize and categorize
+  /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does
-  /// not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
   /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
   /// will be rejected. All system labels in v1 now have a corresponding field
   /// in v2 Service.
@@ -4441,7 +4541,12 @@ class GoogleCloudRunV2TCPSocketAction {
 
 /// Task represents a single run of a container to completion.
 class GoogleCloudRunV2Task {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
 
   /// Represents time when the Task was completed.
@@ -4529,13 +4634,16 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.String? job;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
   /// https://cloud.google.com/run/docs/configuring/labels
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
   /// Result of the last attempt of this Task.
@@ -5123,18 +5231,20 @@ class GoogleCloudRunV2Volume {
   /// information on how to connect Cloud SQL and Cloud Run.
   GoogleCloudRunV2CloudSqlInstance? cloudSqlInstance;
 
+  /// Ephemeral storage used as a shared volume.
+  GoogleCloudRunV2EmptyDirVolumeSource? emptyDir;
+
   /// Volume's name.
   ///
   /// Required.
   core.String? name;
 
   /// Secret represents a secret that should populate this volume.
-  ///
-  /// More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   GoogleCloudRunV2SecretVolumeSource? secret;
 
   GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
+    this.emptyDir,
     this.name,
     this.secret,
   });
@@ -5146,6 +5256,10 @@ class GoogleCloudRunV2Volume {
                   json_['cloudSqlInstance']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          emptyDir: json_.containsKey('emptyDir')
+              ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
+                  json_['emptyDir'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           secret: json_.containsKey('secret')
               ? GoogleCloudRunV2SecretVolumeSource.fromJson(
@@ -5155,6 +5269,7 @@ class GoogleCloudRunV2Volume {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
+        if (emptyDir != null) 'emptyDir': emptyDir!,
         if (name != null) 'name': name!,
         if (secret != null) 'secret': secret!,
       };

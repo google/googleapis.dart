@@ -1563,6 +1563,13 @@ class GoogleAppsScriptTypeProcess {
   /// Name of the script being executed.
   core.String? projectName;
 
+  /// Which version of maestro to use to execute the script.
+  /// Possible string values are:
+  /// - "RUNTIME_VERSION_UNSPECIFIED" : Runtime version unset / unknown.
+  /// - "DEPRECATED_ES5" : Legacy rhino version of the Apps script runtime
+  /// - "V8" : Current default V8 version of the apps script runtime.
+  core.String? runtimeVersion;
+
   /// Time the execution started.
   core.String? startTime;
 
@@ -1581,6 +1588,7 @@ class GoogleAppsScriptTypeProcess {
     this.processStatus,
     this.processType,
     this.projectName,
+    this.runtimeVersion,
     this.startTime,
     this.userAccessLevel,
   });
@@ -1602,6 +1610,9 @@ class GoogleAppsScriptTypeProcess {
           projectName: json_.containsKey('projectName')
               ? json_['projectName'] as core.String
               : null,
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
@@ -1616,6 +1627,7 @@ class GoogleAppsScriptTypeProcess {
         if (processStatus != null) 'processStatus': processStatus!,
         if (processType != null) 'processType': processType!,
         if (projectName != null) 'projectName': projectName!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (startTime != null) 'startTime': startTime!,
         if (userAccessLevel != null) 'userAccessLevel': userAccessLevel!,
       };

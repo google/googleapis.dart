@@ -19,11 +19,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAspectTypesResource]
 ///     - [ProjectsLocationsDataAttributeBindingsResource]
 ///     - [ProjectsLocationsDataScansResource]
 ///       - [ProjectsLocationsDataScansJobsResource]
 ///     - [ProjectsLocationsDataTaxonomiesResource]
 ///       - [ProjectsLocationsDataTaxonomiesAttributesResource]
+///     - [ProjectsLocationsEntryGroupsResource]
+///     - [ProjectsLocationsEntryTypesResource]
 ///     - [ProjectsLocationsLakesResource]
 ///       - [ProjectsLocationsLakesActionsResource]
 ///       - [ProjectsLocationsLakesContentResource]
@@ -85,12 +88,18 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAspectTypesResource get aspectTypes =>
+      ProjectsLocationsAspectTypesResource(_requester);
   ProjectsLocationsDataAttributeBindingsResource get dataAttributeBindings =>
       ProjectsLocationsDataAttributeBindingsResource(_requester);
   ProjectsLocationsDataScansResource get dataScans =>
       ProjectsLocationsDataScansResource(_requester);
   ProjectsLocationsDataTaxonomiesResource get dataTaxonomies =>
       ProjectsLocationsDataTaxonomiesResource(_requester);
+  ProjectsLocationsEntryGroupsResource get entryGroups =>
+      ProjectsLocationsEntryGroupsResource(_requester);
+  ProjectsLocationsEntryTypesResource get entryTypes =>
+      ProjectsLocationsEntryTypesResource(_requester);
   ProjectsLocationsLakesResource get lakes =>
       ProjectsLocationsLakesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -183,6 +192,170 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAspectTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAspectTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aspectTypes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aspectTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aspectTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1989,6 +2162,334 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
   /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataTaxonomies/\[^/\]+/attributes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEntryGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEntryGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEntryTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEntryTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryTypes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7922,7 +8423,45 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
 }
 
 /// DataProfileScan related setting.
-typedef GoogleCloudDataplexV1DataProfileSpec = $Empty;
+class GoogleCloudDataplexV1DataProfileSpec {
+  /// A filter applied to all rows in a single DataScan job.
+  ///
+  /// The filter needs to be a valid SQL expression for a WHERE clause in
+  /// BigQuery standard SQL syntax. Example: col1 \>= 0 AND col2 \< 10
+  ///
+  /// Optional.
+  core.String? rowFilter;
+
+  /// The percentage of the records to be selected from the dataset for
+  /// DataScan.
+  ///
+  /// Value can range between 0.0 and 100.0 with up to 3 significant decimal
+  /// digits. Sampling is not applied if sampling_percent is not specified, 0 or
+  /// 100.
+  ///
+  /// Optional.
+  core.double? samplingPercent;
+
+  GoogleCloudDataplexV1DataProfileSpec({
+    this.rowFilter,
+    this.samplingPercent,
+  });
+
+  GoogleCloudDataplexV1DataProfileSpec.fromJson(core.Map json_)
+      : this(
+          rowFilter: json_.containsKey('rowFilter')
+              ? json_['rowFilter'] as core.String
+              : null,
+          samplingPercent: json_.containsKey('samplingPercent')
+              ? (json_['samplingPercent'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rowFilter != null) 'rowFilter': rowFilter!,
+        if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+      };
+}
 
 /// DataQualityDimensionResult provides a more detailed, per-dimension view of
 /// the results.
@@ -8371,7 +8910,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// validation.At least one of min_value and max_value need to be provided.
   core.String? minValue;
 
-  ///
+  /// The aggregate metric to evaluate.
   /// Possible string values are:
   /// - "STATISTIC_UNDEFINED" : Unspecified statistic type
   /// - "MEAN" : Evaluate the column mean
@@ -8441,27 +8980,55 @@ typedef GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation = $Empty;
 
 /// DataQualityScan related setting.
 class GoogleCloudDataplexV1DataQualitySpec {
+  /// A filter applied to all rows in a single DataScan job.
+  ///
+  /// The filter needs to be a valid SQL expression for a WHERE clause in
+  /// BigQuery standard SQL syntax. Example: col1 \>= 0 AND col2 \< 10
+  ///
+  /// Optional.
+  core.String? rowFilter;
+
   /// The list of rules to evaluate against a data source.
   ///
   /// At least one rule is required.
   core.List<GoogleCloudDataplexV1DataQualityRule>? rules;
 
+  /// The percentage of the records to be selected from the dataset for
+  /// DataScan.
+  ///
+  /// Value can range between 0.0 and 100.0 with up to 3 significant decimal
+  /// digits. Sampling is not applied if sampling_percent is not specified, 0 or
+  /// 100.
+  ///
+  /// Optional.
+  core.double? samplingPercent;
+
   GoogleCloudDataplexV1DataQualitySpec({
+    this.rowFilter,
     this.rules,
+    this.samplingPercent,
   });
 
   GoogleCloudDataplexV1DataQualitySpec.fromJson(core.Map json_)
       : this(
+          rowFilter: json_.containsKey('rowFilter')
+              ? json_['rowFilter'] as core.String
+              : null,
           rules: json_.containsKey('rules')
               ? (json_['rules'] as core.List)
                   .map((value) => GoogleCloudDataplexV1DataQualityRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          samplingPercent: json_.containsKey('samplingPercent')
+              ? (json_['samplingPercent'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (rowFilter != null) 'rowFilter': rowFilter!,
         if (rules != null) 'rules': rules!,
+        if (samplingPercent != null) 'samplingPercent': samplingPercent!,
       };
 }
 
@@ -12546,7 +13113,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location01;
 
 /// Specifies the audit configuration for a service.

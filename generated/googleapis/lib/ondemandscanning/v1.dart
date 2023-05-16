@@ -548,29 +548,6 @@ class AttestationOccurrence {
       };
 }
 
-class Binary {
-  core.String? name;
-  core.String? version;
-
-  Binary({
-    this.name,
-    this.version,
-  });
-
-  Binary.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
-}
-
 /// Details of a build occurrence.
 class BuildOccurrence {
   /// See InTotoStatement for the replacement.
@@ -782,163 +759,7 @@ typedef BuilderConfig = $Shared00;
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-class CVSS {
-  ///
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
-  /// - "ATTACK_COMPLEXITY_LOW"
-  /// - "ATTACK_COMPLEXITY_HIGH"
-  /// - "ATTACK_COMPLEXITY_MEDIUM"
-  core.String? attackComplexity;
-
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED"
-  /// - "ATTACK_VECTOR_NETWORK"
-  /// - "ATTACK_VECTOR_ADJACENT"
-  /// - "ATTACK_VECTOR_LOCAL"
-  /// - "ATTACK_VECTOR_PHYSICAL"
-  core.String? attackVector;
-
-  ///
-  /// Possible string values are:
-  /// - "AUTHENTICATION_UNSPECIFIED"
-  /// - "AUTHENTICATION_MULTIPLE"
-  /// - "AUTHENTICATION_SINGLE"
-  /// - "AUTHENTICATION_NONE"
-  core.String? authentication;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  /// - "IMPACT_PARTIAL"
-  /// - "IMPACT_COMPLETE"
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  core.double? baseScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  /// - "IMPACT_PARTIAL"
-  /// - "IMPACT_COMPLETE"
-  core.String? confidentialityImpact;
-  core.double? exploitabilityScore;
-  core.double? impactScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  /// - "IMPACT_PARTIAL"
-  /// - "IMPACT_COMPLETE"
-  core.String? integrityImpact;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  /// - "PRIVILEGES_REQUIRED_NONE"
-  /// - "PRIVILEGES_REQUIRED_LOW"
-  /// - "PRIVILEGES_REQUIRED_HIGH"
-  core.String? privilegesRequired;
-
-  ///
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED"
-  /// - "SCOPE_UNCHANGED"
-  /// - "SCOPE_CHANGED"
-  core.String? scope;
-
-  ///
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED"
-  /// - "USER_INTERACTION_NONE"
-  /// - "USER_INTERACTION_REQUIRED"
-  core.String? userInteraction;
-
-  CVSS({
-    this.attackComplexity,
-    this.attackVector,
-    this.authentication,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  CVSS.fromJson(core.Map json_)
-      : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          authentication: json_.containsKey('authentication')
-              ? json_['authentication'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-        if (attackVector != null) 'attackVector': attackVector!,
-        if (authentication != null) 'authentication': authentication!,
-        if (availabilityImpact != null)
-          'availabilityImpact': availabilityImpact!,
-        if (baseScore != null) 'baseScore': baseScore!,
-        if (confidentialityImpact != null)
-          'confidentialityImpact': confidentialityImpact!,
-        if (exploitabilityScore != null)
-          'exploitabilityScore': exploitabilityScore!,
-        if (impactScore != null) 'impactScore': impactScore!,
-        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-        if (privilegesRequired != null)
-          'privilegesRequired': privilegesRequired!,
-        if (scope != null) 'scope': scope!,
-        if (userInteraction != null) 'userInteraction': userInteraction!,
-      };
-}
+typedef CVSS = $CVSS;
 
 /// The category to which the update belongs.
 typedef Category = $Category;
@@ -1881,6 +1702,7 @@ class Occurrence {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1911,6 +1733,9 @@ class Occurrence {
   /// Required. Immutable.
   core.String? resourceUri;
 
+  /// Describes a specific SBOM reference occurrences.
+  SBOMReferenceOccurrence? sbomReference;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -1938,6 +1763,7 @@ class Occurrence {
     this.package,
     this.remediation,
     this.resourceUri,
+    this.sbomReference,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -1995,6 +1821,10 @@ class Occurrence {
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceOccurrence.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -2024,6 +1854,7 @@ class Occurrence {
         if (package != null) 'package': package!,
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -2117,7 +1948,7 @@ class PackageData {
   /// its version in the package/version fields, but we should also store the
   /// binary package info, as that's what's actually installed. See
   /// b/175908657#comment15.
-  Binary? binary;
+  PackageVersion? binaryVersion;
 
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
   /// the vulnerability may manifest.
@@ -2168,6 +1999,14 @@ class PackageData {
   /// CVEs that this package is no longer vulnerable to
   /// go/drydock-dd-custom-binary-scanning
   core.List<core.String>? patchedCve;
+
+  /// The source package.
+  ///
+  /// Similar to the above, this is significant when the source is different
+  /// than the binary itself. Since the top-level package/version fields are
+  /// based on an if/else, we need a separate field for both binary and source
+  /// if we want to know definitively where the data is coming from.
+  PackageVersion? sourceVersion;
   core.String? unused;
 
   /// The version of the package being analysed
@@ -2175,7 +2014,7 @@ class PackageData {
 
   PackageData({
     this.architecture,
-    this.binary,
+    this.binaryVersion,
     this.cpeUri,
     this.dependencyChain,
     this.fileLocation,
@@ -2186,6 +2025,7 @@ class PackageData {
     this.package,
     this.packageType,
     this.patchedCve,
+    this.sourceVersion,
     this.unused,
     this.version,
   });
@@ -2195,9 +2035,9 @@ class PackageData {
           architecture: json_.containsKey('architecture')
               ? json_['architecture'] as core.String
               : null,
-          binary: json_.containsKey('binary')
-              ? Binary.fromJson(
-                  json_['binary'] as core.Map<core.String, core.dynamic>)
+          binaryVersion: json_.containsKey('binaryVersion')
+              ? PackageVersion.fromJson(
+                  json_['binaryVersion'] as core.Map<core.String, core.dynamic>)
               : null,
           cpeUri: json_.containsKey('cpeUri')
               ? json_['cpeUri'] as core.String
@@ -2236,6 +2076,10 @@ class PackageData {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          sourceVersion: json_.containsKey('sourceVersion')
+              ? PackageVersion.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
           unused: json_.containsKey('unused')
               ? json_['unused'] as core.String
               : null,
@@ -2246,7 +2090,7 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
-        if (binary != null) 'binary': binary!,
+        if (binaryVersion != null) 'binaryVersion': binaryVersion!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
@@ -2257,6 +2101,7 @@ class PackageData {
         if (package != null) 'package': package!,
         if (packageType != null) 'packageType': packageType!,
         if (patchedCve != null) 'patchedCve': patchedCve!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
         if (unused != null) 'unused': unused!,
         if (version != null) 'version': version!,
       };
@@ -2485,6 +2330,29 @@ class PackageOccurrence {
       };
 }
 
+class PackageVersion {
+  core.String? name;
+  core.String? version;
+
+  PackageVersion({
+    this.name,
+    this.version,
+  });
+
+  PackageVersion.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
 typedef ProjectRepoId = $ProjectRepoId;
@@ -2570,6 +2438,114 @@ class RepoId {
         if (uid != null) 'uid': uid!,
       };
 }
+
+/// The occurrence representing an SBOM reference as applied to a specific
+/// resource.
+///
+/// The occurrence follows the DSSE specification. See
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more
+/// details.
+class SBOMReferenceOccurrence {
+  /// The actual payload that contains the SBOM reference data.
+  SbomReferenceIntotoPayload? payload;
+
+  /// The kind of payload that SbomReferenceIntotoPayload takes.
+  ///
+  /// Since it's in the intoto format, this value is expected to be
+  /// 'application/vnd.in-toto+json'.
+  core.String? payloadType;
+
+  /// The signatures over the payload.
+  core.List<EnvelopeSignature>? signatures;
+
+  SBOMReferenceOccurrence({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  SBOMReferenceOccurrence.fromJson(core.Map json_)
+      : this(
+          payload: json_.containsKey('payload')
+              ? SbomReferenceIntotoPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          payloadType: json_.containsKey('payloadType')
+              ? json_['payloadType'] as core.String
+              : null,
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
+                  .map((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// The actual payload that contains the SBOM Reference data.
+///
+/// The payload follows the intoto statement specification. See
+/// https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for
+/// more details.
+class SbomReferenceIntotoPayload {
+  /// Identifier for the schema of the Statement.
+  core.String? P_type;
+
+  /// Additional parameters of the Predicate.
+  ///
+  /// Includes the actual data about the SBOM.
+  SbomReferenceIntotoPredicate? predicate;
+
+  /// URI identifying the type of the Predicate.
+  core.String? predicateType;
+
+  /// Set of software artifacts that the attestation applies to.
+  ///
+  /// Each element represents a single software artifact.
+  core.List<Subject>? subject;
+
+  SbomReferenceIntotoPayload({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  SbomReferenceIntotoPayload.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SbomReferenceIntotoPredicate.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// A predicate which describes the SBOM being referenced.
+typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
 /// to the trust anchors defined in policy (e.g. a Kritis policy).

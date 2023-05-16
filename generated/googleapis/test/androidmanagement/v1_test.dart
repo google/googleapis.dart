@@ -1430,6 +1430,28 @@ void checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
+core.int buildCounterDeviceConnectivityManagement = 0;
+api.DeviceConnectivityManagement buildDeviceConnectivityManagement() {
+  final o = api.DeviceConnectivityManagement();
+  buildCounterDeviceConnectivityManagement++;
+  if (buildCounterDeviceConnectivityManagement < 3) {
+    o.usbDataAccess = 'foo';
+  }
+  buildCounterDeviceConnectivityManagement--;
+  return o;
+}
+
+void checkDeviceConnectivityManagement(api.DeviceConnectivityManagement o) {
+  buildCounterDeviceConnectivityManagement++;
+  if (buildCounterDeviceConnectivityManagement < 3) {
+    unittest.expect(
+      o.usbDataAccess!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDeviceConnectivityManagement--;
+}
+
 core.int buildCounterDeviceSettings = 0;
 api.DeviceSettings buildDeviceSettings() {
   final o = api.DeviceSettings();
@@ -3572,6 +3594,7 @@ api.Policy buildPolicy() {
     o.dataRoamingDisabled = true;
     o.debuggingFeaturesAllowed = true;
     o.defaultPermissionPolicy = 'foo';
+    o.deviceConnectivityManagement = buildDeviceConnectivityManagement();
     o.deviceOwnerLockScreenInfo = buildUserFacingMessage();
     o.encryptionPolicy = 'foo';
     o.ensureVerifyAppsEnabled = true;
@@ -3680,6 +3703,7 @@ void checkPolicy(api.Policy o) {
       o.defaultPermissionPolicy!,
       unittest.equals('foo'),
     );
+    checkDeviceConnectivityManagement(o.deviceConnectivityManagement!);
     checkUserFacingMessage(o.deviceOwnerLockScreenInfo!);
     unittest.expect(
       o.encryptionPolicy!,
@@ -4908,6 +4932,16 @@ void main() {
       final od =
           api.Device.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDevice(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeviceConnectivityManagement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeviceConnectivityManagement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceConnectivityManagement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeviceConnectivityManagement(od);
     });
   });
 

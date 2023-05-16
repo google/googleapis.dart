@@ -3410,7 +3410,7 @@
             }
         }
     },
-    "revision": "20230416",
+    "revision": "20230508",
     "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {
@@ -4410,6 +4410,10 @@
                 "regex": {
                     "$ref": "GooglePrivacyDlpV2Regex",
                     "description": "Regular expression based CustomInfoType."
+                },
+                "sensitivityScore": {
+                    "$ref": "GooglePrivacyDlpV2SensitivityScore",
+                    "description": "Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling."
                 },
                 "storedType": {
                     "$ref": "GooglePrivacyDlpV2StoredType",
@@ -5602,6 +5606,10 @@
                 "name": {
                     "description": "Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.",
                     "type": "string"
+                },
+                "sensitivityScore": {
+                    "$ref": "GooglePrivacyDlpV2SensitivityScore",
+                    "description": "Optional custom sensitivity for this InfoType. This only applies to data profiling."
                 },
                 "version": {
                     "description": "Optional version name for this InfoType.",

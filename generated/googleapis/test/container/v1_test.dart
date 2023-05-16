@@ -931,6 +931,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredDefaultSnatStatus = buildDefaultSnatStatus();
     o.desiredDnsConfig = buildDNSConfig();
     o.desiredEnablePrivateEndpoint = true;
+    o.desiredFleet = buildFleet();
     o.desiredGatewayApiConfig = buildGatewayAPIConfig();
     o.desiredGcfsConfig = buildGcfsConfig();
     o.desiredIdentityServiceConfig = buildIdentityServiceConfig();
@@ -985,6 +986,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkDefaultSnatStatus(o.desiredDefaultSnatStatus!);
     checkDNSConfig(o.desiredDnsConfig!);
     unittest.expect(o.desiredEnablePrivateEndpoint!, unittest.isTrue);
+    checkFleet(o.desiredFleet!);
     checkGatewayAPIConfig(o.desiredGatewayApiConfig!);
     checkGcfsConfig(o.desiredGcfsConfig!);
     checkIdentityServiceConfig(o.desiredIdentityServiceConfig!);

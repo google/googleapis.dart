@@ -6731,7 +6731,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// the new deployment will be capturing traffic from another environment
   /// under a shared environment group or if traffic will be rerouted to a
   /// different environment due to a base path removal. The
-  /// \[GenerateDeployChangeReport API\](GenerateDeployChangeReport) may be used
+  /// \[generateDeployChangeReport API\](generateDeployChangeReport) may be used
   /// to examine routing changes before issuing the deployment request, and its
   /// response will indicate if a sequenced rollout is recommended for the
   /// deployment.
@@ -13579,14 +13579,14 @@ class OrganizationsSitesApicategoriesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudApigeeV1ApiResponseWrapper].
+  /// Completes with a [GoogleCloudApigeeV1DeleteResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(
+  async.Future<GoogleCloudApigeeV1DeleteResponse> delete(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -13601,7 +13601,7 @@ class OrganizationsSitesApicategoriesResource {
       'DELETE',
       queryParams: queryParams_,
     );
-    return GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
+    return GoogleCloudApigeeV1DeleteResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -14173,6 +14173,9 @@ class GoogleCloudApigeeV1ApiCategory {
 
 /// the Api category resource.
 class GoogleCloudApigeeV1ApiCategoryData {
+  /// GCP name of api category resource.
+  core.String? gcpResource;
+
   /// ID of the category (a UUID).
   core.String? id;
 
@@ -14186,6 +14189,7 @@ class GoogleCloudApigeeV1ApiCategoryData {
   core.String? updateTime;
 
   GoogleCloudApigeeV1ApiCategoryData({
+    this.gcpResource,
     this.id,
     this.name,
     this.siteId,
@@ -14194,6 +14198,9 @@ class GoogleCloudApigeeV1ApiCategoryData {
 
   GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map json_)
       : this(
+          gcpResource: json_.containsKey('gcpResource')
+              ? json_['gcpResource'] as core.String
+              : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           siteId: json_.containsKey('siteId')
@@ -14205,6 +14212,7 @@ class GoogleCloudApigeeV1ApiCategoryData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpResource != null) 'gcpResource': gcpResource!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (siteId != null) 'siteId': siteId!,
@@ -14878,50 +14886,6 @@ class GoogleCloudApigeeV1ApiProxyRevision {
         if (targets != null) 'targets': targets!,
         if (teams != null) 'teams': teams!,
         if (type != null) 'type': type!,
-      };
-}
-
-class GoogleCloudApigeeV1ApiResponseWrapper {
-  /// ID that can be used to find errors in the log files.
-  core.String? errorCode;
-
-  /// Description of the operation.
-  core.String? message;
-
-  /// ID that can be used to find request details in the log files.
-  core.String? requestId;
-
-  /// Status of the operation.
-  core.String? status;
-
-  GoogleCloudApigeeV1ApiResponseWrapper({
-    this.errorCode,
-    this.message,
-    this.requestId,
-    this.status,
-  });
-
-  GoogleCloudApigeeV1ApiResponseWrapper.fromJson(core.Map json_)
-      : this(
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (message != null) 'message': message!,
-        if (requestId != null) 'requestId': requestId!,
-        if (status != null) 'status': status!,
       };
 }
 
@@ -16917,6 +16881,59 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!,
+      };
+}
+
+/// Response for certain delete operations.
+class GoogleCloudApigeeV1DeleteResponse {
+  /// ID that can be used to find errors in the log files.
+  core.String? errorCode;
+
+  /// GCP name of deleted resource.
+  core.String? gcpResource;
+
+  /// Description of the operation.
+  core.String? message;
+
+  /// ID that can be used to find request details in the log files.
+  core.String? requestId;
+
+  /// Status of the operation.
+  core.String? status;
+
+  GoogleCloudApigeeV1DeleteResponse({
+    this.errorCode,
+    this.gcpResource,
+    this.message,
+    this.requestId,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1DeleteResponse.fromJson(core.Map json_)
+      : this(
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          gcpResource: json_.containsKey('gcpResource')
+              ? json_['gcpResource'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (gcpResource != null) 'gcpResource': gcpResource!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
       };
 }
 

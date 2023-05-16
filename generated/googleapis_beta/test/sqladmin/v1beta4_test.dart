@@ -409,6 +409,7 @@ api.CloneContext buildCloneContext() {
     o.kind = 'foo';
     o.pitrTimestampMs = 'foo';
     o.pointInTime = 'foo';
+    o.preferredZone = 'foo';
   }
   buildCounterCloneContext--;
   return o;
@@ -437,6 +438,10 @@ void checkCloneContext(api.CloneContext o) {
     );
     unittest.expect(
       o.pointInTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.preferredZone!,
       unittest.equals('foo'),
     );
   }
@@ -1055,6 +1060,9 @@ api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
   final o = api.ExportContextBakExportOptions();
   buildCounterExportContextBakExportOptions++;
   if (buildCounterExportContextBakExportOptions < 3) {
+    o.bakType = 'foo';
+    o.copyOnly = true;
+    o.differentialBase = true;
     o.stripeCount = 42;
     o.striped = true;
   }
@@ -1065,6 +1073,12 @@ api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
 void checkExportContextBakExportOptions(api.ExportContextBakExportOptions o) {
   buildCounterExportContextBakExportOptions++;
   if (buildCounterExportContextBakExportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.copyOnly!, unittest.isTrue);
+    unittest.expect(o.differentialBase!, unittest.isTrue);
     unittest.expect(
       o.stripeCount!,
       unittest.equals(42),
@@ -1500,7 +1514,10 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
   final o = api.ImportContextBakImportOptions();
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    o.bakType = 'foo';
     o.encryptionOptions = buildImportContextBakImportOptionsEncryptionOptions();
+    o.noRecovery = true;
+    o.recoveryOnly = true;
     o.striped = true;
   }
   buildCounterImportContextBakImportOptions--;
@@ -1510,7 +1527,13 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
 void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
     checkImportContextBakImportOptionsEncryptionOptions(o.encryptionOptions!);
+    unittest.expect(o.noRecovery!, unittest.isTrue);
+    unittest.expect(o.recoveryOnly!, unittest.isTrue);
     unittest.expect(o.striped!, unittest.isTrue);
   }
   buildCounterImportContextBakImportOptions--;
@@ -2878,6 +2901,7 @@ api.SqlInstancesGetDiskShrinkConfigResponse
   buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
   if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
     o.kind = 'foo';
+    o.message = 'foo';
     o.minimalTargetSizeGb = 'foo';
   }
   buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
@@ -2890,6 +2914,10 @@ void checkSqlInstancesGetDiskShrinkConfigResponse(
   if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
       unittest.equals('foo'),
     );
     unittest.expect(

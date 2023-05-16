@@ -873,12 +873,34 @@ class CustomClass {
   /// A collection of class items.
   core.List<ClassItem>? items;
 
+  /// The
+  /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
+  /// with which the content of the ClassItem is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyName;
+
+  /// The
+  /// [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+  /// with which content of the ClassItem is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the custom class.
   core.String? name;
 
   CustomClass({
     this.customClassId,
     this.items,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
   });
 
@@ -893,12 +915,20 @@ class CustomClass {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customClassId != null) 'customClassId': customClassId!,
         if (items != null) 'items': items!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
       };
 }
@@ -1212,6 +1242,26 @@ class PhraseSet {
   /// adding phrases both with and without boost to your requests.
   core.double? boost;
 
+  /// The
+  /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
+  /// with which the content of the PhraseSet is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyName;
+
+  /// The
+  /// [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+  /// with which content of the PhraseSet is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the phrase set.
   core.String? name;
 
@@ -1220,6 +1270,8 @@ class PhraseSet {
 
   PhraseSet({
     this.boost,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
     this.phrases,
   });
@@ -1228,6 +1280,12 @@ class PhraseSet {
       : this(
           boost: json_.containsKey('boost')
               ? (json_['boost'] as core.num).toDouble()
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           phrases: json_.containsKey('phrases')
@@ -1240,6 +1298,8 @@ class PhraseSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boost != null) 'boost': boost!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (phrases != null) 'phrases': phrases!,
       };

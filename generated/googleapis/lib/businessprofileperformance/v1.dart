@@ -574,6 +574,8 @@ class DatedValue {
   Date? date;
 
   /// The value of the datapoint.
+  ///
+  /// This will not be present when the value is zero.
   core.String? value;
 
   DatedValue({

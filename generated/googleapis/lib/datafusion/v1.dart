@@ -1458,6 +1458,11 @@ class Instance {
   /// will not be able to access the public internet.
   core.bool? privateInstance;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Use tenant_project_id instead to extract the tenant project ID.
   ///
   /// Output only. Deprecated.
@@ -1552,6 +1557,7 @@ class Instance {
     this.options,
     this.p4ServiceAccount,
     this.privateInstance,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.serviceEndpoint,
     this.state,
@@ -1649,6 +1655,9 @@ class Instance {
           privateInstance: json_.containsKey('privateInstance')
               ? json_['privateInstance'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -1700,6 +1709,7 @@ class Instance {
         if (options != null) 'options': options!,
         if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount!,
         if (privateInstance != null) 'privateInstance': privateInstance!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint!,
         if (state != null) 'state': state!,
@@ -1886,7 +1896,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Network configuration for a Data Fusion instance.

@@ -75,7 +75,9 @@
 ///     - [ProjectsLocationsKnowledgeBasesResource]
 ///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsSuggestionsResource]
 ///   - [ProjectsOperationsResource]
+///   - [ProjectsSuggestionsResource]
 library;
 
 import 'dart:async' as async;
@@ -134,6 +136,8 @@ class ProjectsResource {
       ProjectsLocationsResource(_requester);
   ProjectsOperationsResource get operations =>
       ProjectsOperationsResource(_requester);
+  ProjectsSuggestionsResource get suggestions =>
+      ProjectsSuggestionsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
@@ -6380,6 +6384,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsKnowledgeBasesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsSuggestionsResource get suggestions =>
+      ProjectsLocationsSuggestionsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -12485,6 +12491,60 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSuggestionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Generates and returns a summary for a conversation that does not have a
+  /// resource created for it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to charge for the Summary's
+  /// generation. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2GenerateStatelessSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2GenerateStatelessSummaryResponse>
+      generateStatelessSummary(
+    GoogleCloudDialogflowV2GenerateStatelessSummaryRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:generateStatelessSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -12621,6 +12681,60 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSuggestionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Generates and returns a summary for a conversation that does not have a
+  /// resource created for it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to charge for the Summary's
+  /// generation. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2GenerateStatelessSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2GenerateStatelessSummaryResponse>
+      generateStatelessSummary(
+    GoogleCloudDialogflowV2GenerateStatelessSummaryRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:generateStatelessSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -13249,7 +13363,8 @@ class GoogleCloudDialogflowV2AnswerFeedback {
 
   /// Indicates whether the answer/item was clicked by the human agent or not.
   ///
-  /// Default to false.
+  /// Default to false. For knowledge search, the answer record is considered to
+  /// be clicked if the answer was copied or any URI was clicked.
   core.bool? clicked;
 
   /// The correctness level of the specific answer.
@@ -16062,6 +16177,192 @@ class GoogleCloudDialogflowV2GcsSources {
       };
 }
 
+/// The request message for Conversations.GenerateStatelessSummary.
+class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
+  /// A ConversationProfile containing information required for Summary
+  /// generation.
+  ///
+  /// Required fields: {language_code, security_settings} Optional fields:
+  /// {agent_assistant_config}
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2ConversationProfile? conversationProfile;
+
+  /// The name of the latest conversation message used as context for generating
+  /// a Summary.
+  ///
+  /// If empty, the latest message of the conversation will be used. The format
+  /// is specific to the user and the names of the messages provided.
+  core.String? latestMessage;
+
+  /// Max number of messages prior to and including \[latest_message\] to use as
+  /// context when compiling the suggestion.
+  ///
+  /// By default 500 and at most 1000.
+  core.int? maxContextSize;
+
+  /// The conversation to suggest a summary for.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation?
+      statelessConversation;
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryRequest({
+    this.conversationProfile,
+    this.latestMessage,
+    this.maxContextSize,
+    this.statelessConversation,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
+      core.Map json_)
+      : this(
+          conversationProfile: json_.containsKey('conversationProfile')
+              ? GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                  json_['conversationProfile']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+          maxContextSize: json_.containsKey('maxContextSize')
+              ? json_['maxContextSize'] as core.int
+              : null,
+          statelessConversation: json_.containsKey('statelessConversation')
+              ? GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation
+                  .fromJson(json_['statelessConversation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationProfile != null)
+          'conversationProfile': conversationProfile!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (maxContextSize != null) 'maxContextSize': maxContextSize!,
+        if (statelessConversation != null)
+          'statelessConversation': statelessConversation!,
+      };
+}
+
+/// The minimum amount of information required to generate a Summary without
+/// having a Conversation resource created.
+class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation {
+  /// The messages that the Summary will be generated from.
+  ///
+  /// It is expected that this message content is already redacted and does not
+  /// contain any PII. Required fields: {content, language_code, participant,
+  /// participant_role} Optional fields: {send_time} If send_time is not
+  /// provided, then the messages must be provided in chronological order.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowV2Message>? messages;
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation({
+    this.messages,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
+      core.Map json_)
+      : this(
+          messages: json_.containsKey('messages')
+              ? (json_['messages'] as core.List)
+                  .map((value) => GoogleCloudDialogflowV2Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messages != null) 'messages': messages!,
+      };
+}
+
+/// The response message for Conversations.GenerateStatelessSummary.
+class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
+  /// Number of messages prior to and including last_conversation_message used
+  /// to compile the suggestion.
+  ///
+  /// It may be smaller than the GenerateStatelessSummaryRequest.context_size
+  /// field in the request if there weren't that many messages in the
+  /// conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used as context for compiling
+  /// suggestion.
+  ///
+  /// The format is specific to the user and the names of the messages provided.
+  core.String? latestMessage;
+
+  /// Generated summary.
+  GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary? summary;
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryResponse({
+    this.contextSize,
+    this.latestMessage,
+    this.summary,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
+      core.Map json_)
+      : this(
+          contextSize: json_.containsKey('contextSize')
+              ? json_['contextSize'] as core.int
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+          summary: json_.containsKey('summary')
+              ? GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary
+                  .fromJson(
+                      json_['summary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (summary != null) 'summary': summary!,
+      };
+}
+
+/// Generated summary for a conversation.
+class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
+  /// The summary content that is concatenated into one string.
+  core.String? text;
+
+  /// The summary content that is divided into sections.
+  ///
+  /// The key is the section's name and the value is the section's content.
+  /// There is no specific format for the key or value.
+  core.Map<core.String, core.String>? textSections;
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary({
+    this.text,
+    this.textSections,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
+      core.Map json_)
+      : this(
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          textSections: json_.containsKey('textSections')
+              ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+        if (textSections != null) 'textSections': textSections!,
+      };
+}
+
 /// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
@@ -16131,23 +16432,35 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 /// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY,
 /// CONVERSATION_SUMMARIZATION.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
+  /// Version of current baseline model.
+  ///
+  /// It will be ignored if model is set. Valid versions are: Article Suggestion
+  /// baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+  core.String? baselineModelVersion;
+
   /// Conversation model resource name.
   ///
   /// Format: `projects//conversationModels/`.
   core.String? model;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig({
+    this.baselineModelVersion,
     this.model,
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
       core.Map json_)
       : this(
+          baselineModelVersion: json_.containsKey('baselineModelVersion')
+              ? json_['baselineModelVersion'] as core.String
+              : null,
           model:
               json_.containsKey('model') ? json_['model'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (baselineModelVersion != null)
+          'baselineModelVersion': baselineModelVersion!,
         if (model != null) 'model': model!,
       };
 }
@@ -16377,7 +16690,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   /// from a very low value and slowly increasing until you have desired
   /// results. If this field is not set, it defaults to 0.0, which means that
   /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ,
-  /// SMART_REPLY, SMART_COMPOSE.
+  /// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
   core.double? confidenceThreshold;
 
   /// Determines how recent conversation context is filtered when generating
@@ -16969,6 +17282,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.
   core.bool? disableNoSpeechRecognizedEvent;
 
+  /// Enable automatic punctuation option at the speech backend.
+  core.bool? enableAutomaticPunctuation;
+
   /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
   /// with information about the recognized speech words, e.g. start and end
   /// time offsets.
@@ -17065,6 +17381,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   GoogleCloudDialogflowV2InputAudioConfig({
     this.audioEncoding,
     this.disableNoSpeechRecognizedEvent,
+    this.enableAutomaticPunctuation,
     this.enableWordInfo,
     this.languageCode,
     this.model,
@@ -17083,6 +17400,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
           disableNoSpeechRecognizedEvent:
               json_.containsKey('disableNoSpeechRecognizedEvent')
                   ? json_['disableNoSpeechRecognizedEvent'] as core.bool
+                  : null,
+          enableAutomaticPunctuation:
+              json_.containsKey('enableAutomaticPunctuation')
+                  ? json_['enableAutomaticPunctuation'] as core.bool
                   : null,
           enableWordInfo: json_.containsKey('enableWordInfo')
               ? json_['enableWordInfo'] as core.bool
@@ -17118,6 +17439,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (disableNoSpeechRecognizedEvent != null)
           'disableNoSpeechRecognizedEvent': disableNoSpeechRecognizedEvent!,
+        if (enableAutomaticPunctuation != null)
+          'enableAutomaticPunctuation': enableAutomaticPunctuation!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (model != null) 'model': model!,
@@ -22130,7 +22453,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

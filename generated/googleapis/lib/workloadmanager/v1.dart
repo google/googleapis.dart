@@ -1224,10 +1224,14 @@ class Insight {
   /// Output only.
   core.String? sentTime;
 
+  /// The insights data for the sqlserver workload validation.
+  SqlserverValidation? sqlserverValidation;
+
   Insight({
     this.sapDiscovery,
     this.sapValidation,
     this.sentTime,
+    this.sqlserverValidation,
   });
 
   Insight.fromJson(core.Map json_)
@@ -1243,12 +1247,18 @@ class Insight {
           sentTime: json_.containsKey('sentTime')
               ? json_['sentTime'] as core.String
               : null,
+          sqlserverValidation: json_.containsKey('sqlserverValidation')
+              ? SqlserverValidation.fromJson(json_['sqlserverValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sapDiscovery != null) 'sapDiscovery': sapDiscovery!,
         if (sapValidation != null) 'sapValidation': sapValidation!,
         if (sentTime != null) 'sentTime': sentTime!,
+        if (sqlserverValidation != null)
+          'sqlserverValidation': sqlserverValidation!,
       };
 }
 
@@ -1500,7 +1510,7 @@ class ListScannedResourcesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
@@ -2021,19 +2031,6 @@ class SapDiscoveryResource {
   /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
   core.String? resourceKind;
 
-  /// Indicates whether this is a new, updated, or missing resource.
-  /// Possible string values are:
-  /// - "RESOURCE_STATE_UNSPECIFIED" : Undefined resource state
-  /// - "ADDED" : Resource was added this cycle
-  /// - "UPDATED" : Resource already discovered, just updated this cycle
-  /// - "REMOVED" : Resource already discovered, but has been explicitly removed
-  /// this cycle
-  /// - "REPLACED" : Resource already discovered, but has been replaced by a new
-  /// resource this cycle
-  /// - "MISSING" : Resource already discovered, but is missing or unresponsive
-  /// this cycle
-  core.String? resourceState;
-
   /// The type of this resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Undefined resource type.
@@ -2051,7 +2048,6 @@ class SapDiscoveryResource {
   SapDiscoveryResource({
     this.relatedResources,
     this.resourceKind,
-    this.resourceState,
     this.resourceType,
     this.resourceUri,
     this.updateTime,
@@ -2067,9 +2063,6 @@ class SapDiscoveryResource {
           resourceKind: json_.containsKey('resourceKind')
               ? json_['resourceKind'] as core.String
               : null,
-          resourceState: json_.containsKey('resourceState')
-              ? json_['resourceState'] as core.String
-              : null,
           resourceType: json_.containsKey('resourceType')
               ? json_['resourceType'] as core.String
               : null,
@@ -2084,7 +2077,6 @@ class SapDiscoveryResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (relatedResources != null) 'relatedResources': relatedResources!,
         if (resourceKind != null) 'resourceKind': resourceKind!,
-        if (resourceState != null) 'resourceState': resourceState!,
         if (resourceType != null) 'resourceType': resourceType!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2176,6 +2168,84 @@ class ScannedResource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
+      };
+}
+
+/// A presentation of SQLServer workload insight.
+///
+/// The schema of SqlServer workloads validation related data.
+class SqlserverValidation {
+  /// The agent version collected this data point
+  core.String? agentVersion;
+
+  /// A list of SqlServer validation metrics data.
+  core.List<SqlserverValidationValidationDetail>? validationDetails;
+
+  SqlserverValidation({
+    this.agentVersion,
+    this.validationDetails,
+  });
+
+  SqlserverValidation.fromJson(core.Map json_)
+      : this(
+          agentVersion: json_.containsKey('agentVersion')
+              ? json_['agentVersion'] as core.String
+              : null,
+          validationDetails: json_.containsKey('validationDetails')
+              ? (json_['validationDetails'] as core.List)
+                  .map((value) => SqlserverValidationValidationDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (validationDetails != null) 'validationDetails': validationDetails!,
+      };
+}
+
+/// Message describing the Sqlserver validation metrics.
+class SqlserverValidationValidationDetail {
+  /// The pairs of metrics data: field name & field value.
+  core.Map<core.String, core.String>? details;
+
+  /// The instance id where the ValidationDetail is generated from
+  core.String? instanceId;
+
+  /// The Sqlserver system that the validation data is from.
+  /// Possible string values are:
+  /// - "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "OS" : The Sqlserver system named OS
+  /// - "DB" : The Sqlserver system named DB
+  core.String? type;
+
+  SqlserverValidationValidationDetail({
+    this.details,
+    this.instanceId,
+    this.type,
+  });
+
+  SqlserverValidationValidationDetail.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          instanceId: json_.containsKey('instanceId')
+              ? json_['instanceId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (type != null) 'type': type!,
       };
 }
 

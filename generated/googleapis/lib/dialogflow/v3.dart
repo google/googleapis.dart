@@ -8698,7 +8698,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
 class GoogleCloudDialogflowCxV3GcsDestination {
   /// The Google Cloud Storage URI for the exported objects.
   ///
-  /// A URI is of the form: gs://bucket/object-name-or-prefix Whether a full
+  /// A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full
   /// object name, or just a prefix, its usage depends on the Dialogflow
   /// operation.
   ///
@@ -8992,7 +8992,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 ///
 /// You can provide information for the Dialogflow API to use to match user
 /// input to an intent by adding training phrases (i.e., examples of user input)
-/// to your intent. Next ID: 15
+/// to your intent.
 class GoogleCloudDialogflowCxV3Intent {
   /// Human readable description for better understanding an intent like its
   /// scope, content, result etc.
@@ -9147,8 +9147,7 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 
 /// The agent's intent.
 class GoogleCloudDialogflowCxV3IntentCoverageIntent {
-  /// Whether or not the intent is covered by at least one of the agent's test
-  /// cases.
+  /// Whether the intent is covered by at least one of the agent's test cases.
   core.bool? covered;
 
   /// The intent full resource name
@@ -10486,7 +10485,8 @@ class GoogleCloudDialogflowCxV3Page {
 ///
 /// It can contain one of: 1. A conversational query in the form of text. 2. An
 /// intent query that specifies which intent to trigger. 3. Natural language
-/// speech audio to be processed. 4. An event to be triggered.
+/// speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to
+/// invoke an intent and fill in parameter value.
 class GoogleCloudDialogflowCxV3QueryInput {
   /// The natural language speech audio to be processed.
   GoogleCloudDialogflowCxV3AudioInput? audio;
@@ -12323,6 +12323,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
   /// - "PAGE" : The page.
   /// - "PARAMETERS" : The parameters.
   /// - "UTTERANCE" : The message utterance.
+  /// - "FLOW" : The flow.
   core.String? type;
 
   GoogleCloudDialogflowCxV3TestRunDifference({
@@ -12367,11 +12368,17 @@ class GoogleCloudDialogflowCxV3TextInput {
       };
 }
 
-/// Settings related to speech generating.
+/// Settings related to speech synthesizing.
 class GoogleCloudDialogflowCxV3TextToSpeechSettings {
   /// Configuration of how speech should be synthesized, mapping from language
-  /// (https://dialogflow.com/docs/reference/language) to
+  /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to
   /// SynthesizeSpeechConfig.
+  ///
+  /// These settings affect: - The synthesize configuration used in
+  /// [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway).
+  /// - You no longer need to specify OutputAudioConfig.synthesize_speech_config
+  /// when invoking API calls. Your agent will use the pre-configured options
+  /// for speech synthesizing.
   core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
       synthesizeSpeechConfigs;
 
@@ -12441,8 +12448,8 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
 
 /// A transition in a page.
 class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
-  /// Whether or not the transition is covered by at least one of the agent's
-  /// test cases.
+  /// Whether the transition is covered by at least one of the agent's test
+  /// cases.
   core.bool? covered;
 
   /// Event handler.
@@ -12774,8 +12781,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
 
 /// A transition coverage in a transition route group.
 class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
-  /// Whether or not the transition route is covered by at least one of the
-  /// agent's test cases.
+  /// Whether the transition route is covered by at least one of the agent's
+  /// test cases.
   core.bool? covered;
 
   /// Intent route or condition route.
@@ -13211,8 +13218,37 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// Optional.
   core.List<core.String>? allowedCaCerts;
 
+  /// HTTP method for the flexible webhook calls.
+  ///
+  /// Standard webhook always uses POST.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method not specified.
+  /// - "POST" : HTTP POST Method.
+  /// - "GET" : HTTP GET Method.
+  /// - "HEAD" : HTTP HEAD Method.
+  /// - "PUT" : HTTP PUT Method.
+  /// - "DELETE" : HTTP DELETE Method.
+  /// - "PATCH" : HTTP PATCH Method.
+  /// - "OPTIONS" : HTTP OPTIONS Method.
+  core.String? httpMethod;
+
+  /// Maps the values extracted from specific fields of the flexible webhook
+  /// response into session parameters.
+  ///
+  /// - Key: session parameter name - Value: field path in the webhook response
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? parameterMapping;
+
   /// The password for HTTP Basic authentication.
   core.String? password;
+
+  /// Defines a custom JSON object as request body to send to flexible webhook.
+  ///
+  /// Optional.
+  core.String? requestBody;
 
   /// The HTTP request headers to send together with webhook requests.
   core.Map<core.String, core.String>? requestHeaders;
@@ -13227,12 +13263,25 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// The user name for HTTP Basic authentication.
   core.String? username;
 
+  /// Type of the webhook.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEBHOOK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STANDARD" : Represents a standard webhook.
+  /// - "FLEXIBLE" : Represents a flexible webhook.
+  core.String? webhookType;
+
   GoogleCloudDialogflowCxV3WebhookGenericWebService({
     this.allowedCaCerts,
+    this.httpMethod,
+    this.parameterMapping,
     this.password,
+    this.requestBody,
     this.requestHeaders,
     this.uri,
     this.username,
+    this.webhookType,
   });
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(core.Map json_)
@@ -13242,8 +13291,24 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
+              : null,
+          parameterMapping: json_.containsKey('parameterMapping')
+              ? (json_['parameterMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           password: json_.containsKey('password')
               ? json_['password'] as core.String
+              : null,
+          requestBody: json_.containsKey('requestBody')
+              ? json_['requestBody'] as core.String
               : null,
           requestHeaders: json_.containsKey('requestHeaders')
               ? (json_['requestHeaders'] as core.Map<core.String, core.dynamic>)
@@ -13258,14 +13323,21 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
           username: json_.containsKey('username')
               ? json_['username'] as core.String
               : null,
+          webhookType: json_.containsKey('webhookType')
+              ? json_['webhookType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCaCerts != null) 'allowedCaCerts': allowedCaCerts!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (parameterMapping != null) 'parameterMapping': parameterMapping!,
         if (password != null) 'password': password!,
+        if (requestBody != null) 'requestBody': requestBody!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
+        if (webhookType != null) 'webhookType': webhookType!,
       };
 }
 
@@ -13340,7 +13412,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

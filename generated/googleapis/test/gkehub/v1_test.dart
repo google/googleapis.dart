@@ -2944,6 +2944,7 @@ api.Scope buildScope() {
   final o = api.Scope();
   buildCounterScope++;
   if (buildCounterScope < 3) {
+    o.allMemberships = true;
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.name = 'foo';
@@ -2958,6 +2959,7 @@ api.Scope buildScope() {
 void checkScope(api.Scope o) {
   buildCounterScope++;
   if (buildCounterScope < 3) {
+    unittest.expect(o.allMemberships!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

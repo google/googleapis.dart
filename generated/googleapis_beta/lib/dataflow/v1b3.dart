@@ -5767,6 +5767,12 @@ class Job {
   /// please reach out to Cloud support team if you are interested.
   core.String? requestedState;
 
+  /// This field may ONLY be modified at runtime using the projects.jobs.update
+  /// method to adjust job behavior.
+  ///
+  /// This field has no effect when specified at job creation.
+  RuntimeUpdatableParams? runtimeUpdatableParams;
+
   /// Reserved for future use.
   ///
   /// This field is set only in responses from the server; it is ignored if it
@@ -5836,6 +5842,7 @@ class Job {
     this.replaceJobId,
     this.replacedByJobId,
     this.requestedState,
+    this.runtimeUpdatableParams,
     this.satisfiesPzs,
     this.stageStates,
     this.startTime,
@@ -5904,6 +5911,10 @@ class Job {
           requestedState: json_.containsKey('requestedState')
               ? json_['requestedState'] as core.String
               : null,
+          runtimeUpdatableParams: json_.containsKey('runtimeUpdatableParams')
+              ? RuntimeUpdatableParams.fromJson(json_['runtimeUpdatableParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -5963,6 +5974,8 @@ class Job {
         if (replaceJobId != null) 'replaceJobId': replaceJobId!,
         if (replacedByJobId != null) 'replacedByJobId': replacedByJobId!,
         if (requestedState != null) 'requestedState': requestedState!,
+        if (runtimeUpdatableParams != null)
+          'runtimeUpdatableParams': runtimeUpdatableParams!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (stageStates != null) 'stageStates': stageStates!,
         if (startTime != null) 'startTime': startTime!,
@@ -7597,6 +7610,11 @@ class ParameterMetadata {
   /// - "BIGQUERY_TABLE" : The parameter specifies a BigQuery table.
   /// - "JAVASCRIPT_UDF_FILE" : The parameter specifies a JavaScript UDF in
   /// Cloud Storage.
+  /// - "SERVICE_ACCOUNT" : The parameter specifies a Service Account email.
+  /// - "MACHINE_TYPE" : The parameter specifies a Machine Type.
+  /// - "KMS_KEY_NAME" : The parameter specifies a KMS Key name.
+  /// - "WORKER_REGION" : The parameter specifies a Worker Region.
+  /// - "WORKER_ZONE" : The parameter specifies a Worker Zone.
   core.String? paramType;
 
   /// Specifies the name of the parent parameter.
@@ -8591,6 +8609,42 @@ class RuntimeMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
         if (sdkInfo != null) 'sdkInfo': sdkInfo!,
+      };
+}
+
+/// Additional job parameters that can only be updated during runtime using the
+/// projects.jobs.update method.
+///
+/// These fields have no effect when specified during job creation.
+class RuntimeUpdatableParams {
+  /// The maximum number of workers to cap autoscaling at.
+  ///
+  /// This field is currently only supported for Streaming Engine jobs.
+  core.int? maxNumWorkers;
+
+  /// The minimum number of workers to scale down to.
+  ///
+  /// This field is currently only supported for Streaming Engine jobs.
+  core.int? minNumWorkers;
+
+  RuntimeUpdatableParams({
+    this.maxNumWorkers,
+    this.minNumWorkers,
+  });
+
+  RuntimeUpdatableParams.fromJson(core.Map json_)
+      : this(
+          maxNumWorkers: json_.containsKey('maxNumWorkers')
+              ? json_['maxNumWorkers'] as core.int
+              : null,
+          minNumWorkers: json_.containsKey('minNumWorkers')
+              ? json_['minNumWorkers'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
+        if (minNumWorkers != null) 'minNumWorkers': minNumWorkers!,
       };
 }
 

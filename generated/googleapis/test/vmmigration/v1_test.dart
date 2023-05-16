@@ -3142,6 +3142,7 @@ api.VmwareSourceDetails buildVmwareSourceDetails() {
   buildCounterVmwareSourceDetails++;
   if (buildCounterVmwareSourceDetails < 3) {
     o.password = 'foo';
+    o.resolvedVcenterHost = 'foo';
     o.thumbprint = 'foo';
     o.username = 'foo';
     o.vcenterIp = 'foo';
@@ -3155,6 +3156,10 @@ void checkVmwareSourceDetails(api.VmwareSourceDetails o) {
   if (buildCounterVmwareSourceDetails < 3) {
     unittest.expect(
       o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolvedVcenterHost!,
       unittest.equals('foo'),
     );
     unittest.expect(

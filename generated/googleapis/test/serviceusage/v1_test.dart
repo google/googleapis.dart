@@ -435,6 +435,7 @@ api.DocumentationRule buildDocumentationRule() {
   if (buildCounterDocumentationRule < 3) {
     o.deprecationDescription = 'foo';
     o.description = 'foo';
+    o.disableReplacementWords = 'foo';
     o.selector = 'foo';
   }
   buildCounterDocumentationRule--;
@@ -450,6 +451,10 @@ void checkDocumentationRule(api.DocumentationRule o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.disableReplacementWords!,
       unittest.equals('foo'),
     );
     unittest.expect(

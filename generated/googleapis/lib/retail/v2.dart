@@ -147,11 +147,10 @@ class ProjectsLocationsCatalogsResource {
   /// `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts
   /// with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
-  /// [entity] - The entity for customers that may run multiple different
-  /// entities, domains, sites or regions, for example, "Google US", "Google
-  /// Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should
-  /// be exactly matched with UserEvent.entity to get per-entity autocomplete
-  /// results.
+  /// [entity] - The entity for customers who run multiple entities, domains,
+  /// sites, or regions, for example, `Google US`, `Google Ads`, `Waymo`,
+  /// `google.com`, `youtube.com`, etc. If this is set, it must be an exact
+  /// match with UserEvent.entity to get per-entity autocomplete results.
   ///
   /// [languageCodes] - Note that this field applies for `user-data` dataset
   /// only. For requests with `cloud-retail` dataset, setting this field has no
@@ -832,8 +831,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   ProjectsLocationsCatalogsBranchesProductsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// It is recommended to use the ProductService.AddLocalInventories method
-  /// instead of ProductService.AddFulfillmentPlaces.
+  /// We recommend that you use the ProductService.AddLocalInventories method
+  /// instead of the ProductService.AddFulfillmentPlaces method.
   ///
   /// ProductService.AddLocalInventories achieves the same results but provides
   /// more fine-grained control over ingesting local inventory data.
@@ -1280,8 +1279,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// It is recommended to use the ProductService.RemoveLocalInventories method
-  /// instead of ProductService.RemoveFulfillmentPlaces.
+  /// We recommend that you use the ProductService.RemoveLocalInventories method
+  /// instead of the ProductService.RemoveFulfillmentPlaces method.
   ///
   /// ProductService.RemoveLocalInventories achieves the same results but
   /// provides more fine-grained control over ingesting local inventory data.
@@ -2303,7 +2302,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// or the name of the legacy placement resource, such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
   /// This field is used to identify the serving config name and the set of
-  /// models that will be used to make the search.
+  /// models that are used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
   ///
@@ -2744,7 +2743,7 @@ class ProjectsLocationsCatalogsServingConfigsResource {
   /// or the name of the legacy placement resource, such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
   /// This field is used to identify the serving config name and the set of
-  /// models that will be used to make the search.
+  /// models that are used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
   ///
@@ -3946,14 +3945,13 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   /// Matched recent searches of this user.
   ///
   /// The maximum number of recent searches is 10. This field is a restricted
-  /// feature. Contact Retail Search support team if you are interested in
-  /// enabling it. This feature is only available when
-  /// CompleteQueryRequest.visitor_id field is set and UserEvent is imported.
-  /// The recent searches satisfy the follow rules: * They are ordered from
-  /// latest to oldest. * They are matched with CompleteQueryRequest.query case
-  /// insensitively. * They are transformed to lower case. * They are UTF-8
-  /// safe. Recent searches are deduplicated. More recent searches will be
-  /// reserved when duplication happens.
+  /// feature. If you want to enable it, contact Retail Search support. This
+  /// feature is only available when CompleteQueryRequest.visitor_id field is
+  /// set and UserEvent is imported. The recent searches satisfy the follow
+  /// rules: * They are ordered from latest to oldest. * They are matched with
+  /// CompleteQueryRequest.query case insensitively. * They are transformed to
+  /// lower case. * They are UTF-8 safe. Recent searches are deduplicated. More
+  /// recent searches will be reserved when duplication happens.
   core.List<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>?
       recentSearchResults;
 
@@ -4098,8 +4096,8 @@ class GoogleCloudRetailV2CompletionConfig {
 
   /// Name of the LRO corresponding to the latest suggestion terms list import.
   ///
-  /// Can use GetOperation API to retrieve the latest state of the Long Running
-  /// Operation.
+  /// Can use GetOperation API method to retrieve the latest state of the Long
+  /// Running Operation.
   ///
   /// Output only.
   core.String? lastSuggestionsImportOperation;
@@ -4578,28 +4576,28 @@ class GoogleCloudRetailV2CustomAttribute {
       };
 }
 
-/// Metadata for active A/B testing Experiments.
+/// Metadata for active A/B testing Experiment.
 class GoogleCloudRetailV2ExperimentInfo {
   /// The fully qualified resource name of the experiment that provides the
   /// serving config under test, should an active experiment exist.
   ///
   /// For example: `projects / *
   /// /locations/global/catalogs/default_catalog/experiments/experiment_id`
-  core.String? experimentName;
+  core.String? experiment;
 
   /// A/B test between existing Cloud Retail Search ServingConfigs.
   GoogleCloudRetailV2ExperimentInfoServingConfigExperiment?
       servingConfigExperiment;
 
   GoogleCloudRetailV2ExperimentInfo({
-    this.experimentName,
+    this.experiment,
     this.servingConfigExperiment,
   });
 
   GoogleCloudRetailV2ExperimentInfo.fromJson(core.Map json_)
       : this(
-          experimentName: json_.containsKey('experimentName')
-              ? json_['experimentName'] as core.String
+          experiment: json_.containsKey('experiment')
+              ? json_['experiment'] as core.String
               : null,
           servingConfigExperiment: json_.containsKey('servingConfigExperiment')
               ? GoogleCloudRetailV2ExperimentInfoServingConfigExperiment
@@ -4609,7 +4607,7 @@ class GoogleCloudRetailV2ExperimentInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (experimentName != null) 'experimentName': experimentName!,
+        if (experiment != null) 'experiment': experiment!,
         if (servingConfigExperiment != null)
           'servingConfigExperiment': servingConfigExperiment!,
       };
@@ -4917,9 +4915,11 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// to specified Pub/Sub topic. The message data is JSON string of a
   /// Operation. Format of the Pub/Sub topic is
   /// `projects/{project}/topics/{topic}`. It has to be within the same project
-  /// as ImportProductsRequest.parent. Make sure that
-  /// `service-@gcp-sa-retail.iam.gserviceaccount.com` has the
-  /// `pubsub.topics.publish` IAM permission on the topic.
+  /// as ImportProductsRequest.parent. Make sure that both
+  /// `cloud-retail-customer-data-access@system.gserviceaccount.com` and
+  /// `service-@gcp-sa-retail.iam.gserviceaccount.com` have the
+  /// `pubsub.topics.publish` IAM permission on the topic. Only supported when
+  /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
   core.String? notificationPubsubTopic;
 
   /// The mode of reconciliation between existing products and the products to
@@ -5370,6 +5370,11 @@ class GoogleCloudRetailV2Model {
   /// Output only.
   core.String? lastTuneTime;
 
+  /// Additional model features config.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ModelModelFeaturesConfig? modelFeaturesConfig;
+
   /// The fully qualified resource name of the model.
   ///
   /// Format:
@@ -5488,6 +5493,7 @@ class GoogleCloudRetailV2Model {
     this.displayName,
     this.filteringOption,
     this.lastTuneTime,
+    this.modelFeaturesConfig,
     this.name,
     this.optimizationObjective,
     this.periodicTuningState,
@@ -5515,6 +5521,11 @@ class GoogleCloudRetailV2Model {
               : null,
           lastTuneTime: json_.containsKey('lastTuneTime')
               ? json_['lastTuneTime'] as core.String
+              : null,
+          modelFeaturesConfig: json_.containsKey('modelFeaturesConfig')
+              ? GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(
+                  json_['modelFeaturesConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           optimizationObjective: json_.containsKey('optimizationObjective')
@@ -5551,6 +5562,8 @@ class GoogleCloudRetailV2Model {
         if (displayName != null) 'displayName': displayName!,
         if (filteringOption != null) 'filteringOption': filteringOption!,
         if (lastTuneTime != null) 'lastTuneTime': lastTuneTime!,
+        if (modelFeaturesConfig != null)
+          'modelFeaturesConfig': modelFeaturesConfig!,
         if (name != null) 'name': name!,
         if (optimizationObjective != null)
           'optimizationObjective': optimizationObjective!,
@@ -5563,6 +5576,68 @@ class GoogleCloudRetailV2Model {
         if (tuningOperation != null) 'tuningOperation': tuningOperation!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Additional configs for the frequently-bought-together model type.
+class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
+  /// Specifies the context of the model when it is used in predict requests.
+  ///
+  /// Can only be set for the `frequently-bought-together` type. If it isn't
+  /// specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED" : Unspecified default value, should
+  /// never be explicitly set. Defaults to MULTIPLE_CONTEXT_PRODUCTS.
+  /// - "SINGLE_CONTEXT_PRODUCT" : Use only a single product as context for the
+  /// recommendation. Typically used on pages like add-to-cart or product
+  /// details.
+  /// - "MULTIPLE_CONTEXT_PRODUCTS" : Use one or multiple products as context
+  /// for the recommendation. Typically used on shopping cart pages.
+  core.String? contextProductsType;
+
+  GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig({
+    this.contextProductsType,
+  });
+
+  GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
+      core.Map json_)
+      : this(
+          contextProductsType: json_.containsKey('contextProductsType')
+              ? json_['contextProductsType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextProductsType != null)
+          'contextProductsType': contextProductsType!,
+      };
+}
+
+/// Additional model features config.
+class GoogleCloudRetailV2ModelModelFeaturesConfig {
+  /// Additional configs for frequently-bought-together models.
+  GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig?
+      frequentlyBoughtTogetherConfig;
+
+  GoogleCloudRetailV2ModelModelFeaturesConfig({
+    this.frequentlyBoughtTogetherConfig,
+  });
+
+  GoogleCloudRetailV2ModelModelFeaturesConfig.fromJson(core.Map json_)
+      : this(
+          frequentlyBoughtTogetherConfig: json_
+                  .containsKey('frequentlyBoughtTogetherConfig')
+              ? GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+                  .fromJson(json_['frequentlyBoughtTogetherConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequentlyBoughtTogetherConfig != null)
+          'frequentlyBoughtTogetherConfig': frequentlyBoughtTogetherConfig!,
       };
 }
 
@@ -7393,8 +7468,8 @@ class GoogleCloudRetailV2RuleFilterAction {
   /// A filter to apply on the matching condition results.
   ///
   /// Supported features: * filter must be set. * Filter syntax is identical to
-  /// SearchRequest.filter. See more details at the Retail Search \[user
-  /// guide\](/retail/search/docs/filter-and-order#filter). * To filter products
+  /// SearchRequest.filter. For more information, see
+  /// \[Filter\](/retail/docs/filter-and-order#filter). * To filter products
   /// with product ID "product_1" or "product_2", and color "Red" or "Blue":
   /// *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red",
   /// "Blue")) *
@@ -7593,10 +7668,10 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 class GoogleCloudRetailV2SearchRequest {
   /// Boost specification to boost certain products.
   ///
-  /// See more details at this
-  /// [user guide](https://cloud.google.com/retail/docs/boosting). Notice that
-  /// if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are
-  /// set, the boost conditions from both places are evaluated. If a search
+  /// For more information, see
+  /// [Boost results](https://cloud.google.com/retail/docs/boosting). Notice
+  /// that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec
+  /// are set, the boost conditions from both places are evaluated. If a search
   /// request matches multiple boost conditions, the final boost score is equal
   /// to the sum of the boost scores from all matched boost conditions.
   GoogleCloudRetailV2SearchRequestBoostSpec? boostSpec;
@@ -7613,10 +7688,10 @@ class GoogleCloudRetailV2SearchRequest {
   ///
   /// The filter applied to every search request when quality improvement such
   /// as query expansion is needed. For example, if a query does not have enough
-  /// results, an expanded query with SearchRequest.canonical_filter will be
-  /// returned as a supplement of the original query. This field is strongly
-  /// recommended to achieve high search quality. See SearchRequest.filter for
-  /// more details about filter syntax.
+  /// results, an expanded query with SearchRequest.canonical_filter is returned
+  /// as a supplement of the original query. This field is strongly recommended
+  /// to achieve high search quality. For more information about filter syntax,
+  /// see SearchRequest.filter.
   core.String? canonicalFilter;
 
   /// Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable
@@ -7629,8 +7704,8 @@ class GoogleCloudRetailV2SearchRequest {
   GoogleCloudRetailV2SearchRequestDynamicFacetSpec? dynamicFacetSpec;
 
   /// The entity for customers that may run multiple different entities,
-  /// domains, sites or regions, for example, "Google US", "Google Ads",
-  /// "Waymo", "google.com", "youtube.com", etc.
+  /// domains, sites or regions, for example, `Google US`, `Google Ads`,
+  /// `Waymo`, `google.com`, `youtube.com`, etc.
   ///
   /// If this is set, it should be exactly matched with UserEvent.entity to get
   /// search results boosted by entity.
@@ -7645,9 +7720,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// The filter syntax consists of an expression language for constructing a
   /// predicate from one or more fields of the products being filtered.
   ///
-  /// Filter expression is case-sensitive. See more details at this
-  /// [user guide](https://cloud.google.com/retail/docs/filter-and-order#filter).
-  /// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
+  /// Filter expression is case-sensitive. For more information, see
+  /// [Filter](https://cloud.google.com/retail/docs/filter-and-order#filter). If
+  /// this field is unrecognizable, an INVALID_ARGUMENT is returned.
   core.String? filter;
 
   /// The labels applied to a resource must meet the following requirements: *
@@ -7660,9 +7735,10 @@ class GoogleCloudRetailV2SearchRequest {
   /// underscores, and dashes. All characters must use UTF-8 encoding, and
   /// international characters are allowed. * The key portion of a label must be
   /// unique. However, you can use the same key with multiple resources. * Keys
-  /// must start with a lowercase letter or international character. See
-  /// [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements)
-  /// for more details.
+  /// must start with a lowercase letter or international character. For more
+  /// information, see
+  /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements)
+  /// in the Resource Manager documentation.
   core.Map<core.String, core.String>? labels;
 
   /// A 0-indexed integer that specifies the current offset (that is, starting
@@ -7676,21 +7752,21 @@ class GoogleCloudRetailV2SearchRequest {
   /// The order in which products are returned.
   ///
   /// Products can be ordered by a field in an Product object. Leave it unset if
-  /// ordered by relevance. OrderBy expression is case-sensitive. See more
-  /// details at this
-  /// [user guide](https://cloud.google.com/retail/docs/filter-and-order#order).
-  /// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
+  /// ordered by relevance. OrderBy expression is case-sensitive. For more
+  /// information, see
+  /// [Order](https://cloud.google.com/retail/docs/filter-and-order#order). If
+  /// this field is unrecognizable, an INVALID_ARGUMENT is returned.
   core.String? orderBy;
 
   /// The categories associated with a category page.
   ///
-  /// Required for category navigation queries to achieve good search quality.
-  /// The format should be the same as UserEvent.page_categories; To represent
-  /// full path of category, use '\>' sign to separate different hierarchies. If
-  /// '\>' is part of the category name, replace it with other character(s).
-  /// Category pages include special pages such as sales or promotions. For
-  /// instance, a special sale page may have the category hierarchy:
-  /// "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
+  /// Must be set for category navigation queries to achieve good search
+  /// quality. The format should be the same as UserEvent.page_categories; To
+  /// represent full path of category, use '\>' sign to separate different
+  /// hierarchies. If '\>' is part of the category name, replace it with other
+  /// character(s). Category pages include special pages such as sales or
+  /// promotions. For instance, a special sale page may have the category
+  /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
   core.List<core.String>? pageCategories;
 
   /// Maximum number of Products to return.
@@ -7723,10 +7799,10 @@ class GoogleCloudRetailV2SearchRequest {
   core.String? query;
 
   /// The query expansion specification that specifies the conditions under
-  /// which query expansion will occur.
+  /// which query expansion occurs.
   ///
-  /// See more details at this
-  /// [user guide](https://cloud.google.com/retail/docs/result-size#query_expansion).
+  /// For more information, see
+  /// [Query expansion](https://cloud.google.com/retail/docs/result-size#query_expansion).
   GoogleCloudRetailV2SearchRequestQueryExpansionSpec? queryExpansionSpec;
 
   /// The search mode of the search request.
@@ -8062,24 +8138,24 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
   /// Enables dynamic position for this facet.
   ///
   /// If set to true, the position of this facet among all facets in the
-  /// response is determined by Google Retail Search. It will be ordered
-  /// together with dynamic facets if dynamic facets is enabled. If set to
-  /// false, the position of this facet in the response will be the same as in
-  /// the request, and it will be ranked before the facets with dynamic position
-  /// enable and all dynamic facets. For example, you may always want to have
-  /// rating facet returned in the response, but it's not necessarily to always
-  /// display the rating facet at the top. In that case, you can set
-  /// enable_dynamic_position to true so that the position of rating facet in
-  /// response will be determined by Google Retail Search. Another example,
-  /// assuming you have the following facets in the request: * "rating",
-  /// enable_dynamic_position = true * "price", enable_dynamic_position = false
-  /// * "brands", enable_dynamic_position = false And also you have a dynamic
-  /// facets enable, which will generate a facet 'gender'. Then the final order
-  /// of the facets in the response can be ("price", "brands", "rating",
-  /// "gender") or ("price", "brands", "gender", "rating") depends on how Google
-  /// Retail Search orders "gender" and "rating" facets. However, notice that
-  /// "price" and "brands" will always be ranked at 1st and 2nd position since
-  /// their enable_dynamic_position are false.
+  /// response is determined by Google Retail Search. It is ordered together
+  /// with dynamic facets if dynamic facets is enabled. If set to false, the
+  /// position of this facet in the response is the same as in the request, and
+  /// it is ranked before the facets with dynamic position enable and all
+  /// dynamic facets. For example, you may always want to have rating facet
+  /// returned in the response, but it's not necessarily to always display the
+  /// rating facet at the top. In that case, you can set enable_dynamic_position
+  /// to true so that the position of rating facet in response is determined by
+  /// Google Retail Search. Another example, assuming you have the following
+  /// facets in the request: * "rating", enable_dynamic_position = true *
+  /// "price", enable_dynamic_position = false * "brands",
+  /// enable_dynamic_position = false And also you have a dynamic facets enable,
+  /// which generates a facet "gender". Then, the final order of the facets in
+  /// the response can be ("price", "brands", "rating", "gender") or ("price",
+  /// "brands", "gender", "rating") depends on how Google Retail Search orders
+  /// "gender" and "rating" facets. However, notice that "price" and "brands"
+  /// are always ranked at first and second position because their
+  /// enable_dynamic_position values are false.
   core.bool? enableDynamicPosition;
 
   /// List of keys to exclude when faceting.
@@ -8159,19 +8235,21 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   ///
   /// For example, suppose "categories" has three values "Women \> Shoe", "Women
   /// \> Dress" and "Men \> Shoe". If set "contains" to "Shoe", the "categories"
-  /// facet will give only "Women \> Shoe" and "Men \> Shoe". Only supported on
+  /// facet gives only "Women \> Shoe" and "Men \> Shoe". Only supported on
   /// textual fields. Maximum is 10.
   core.List<core.String>? contains;
 
-  /// For all numerical facet keys that appear in the list of products from the
-  /// catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from
-  /// their distribution weekly.
+  /// Set only if values should be bucketized into intervals.
   ///
-  /// If the model assigns a high score to a numerical facet key and its
-  /// intervals are not specified in the search request, these percentiles will
-  /// become the bounds for its intervals and will be returned in the response.
-  /// If the facet key intervals are specified in the request, then the
-  /// specified intervals will be returned instead.
+  /// Must be set for facets with numerical values. Must not be set for facet
+  /// with text values. Maximum number of intervals is 40. For all numerical
+  /// facet keys that appear in the list of products from the catalog, the
+  /// percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their
+  /// distribution weekly. If the model assigns a high score to a numerical
+  /// facet key and its intervals are not specified in the search request, these
+  /// percentiles become the bounds for its intervals and are returned in the
+  /// response. If the facet key intervals are specified in the request, then
+  /// the specified intervals are returned instead.
   core.List<GoogleCloudRetailV2Interval>? intervals;
 
   /// Supported textual and numerical facet keys in Product object, over which
@@ -8208,23 +8286,22 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   ///
   /// For example, suppose "categories" has three values "Women \> Shoe", "Women
   /// \> Dress" and "Men \> Shoe". If set "prefixes" to "Women", the
-  /// "categories" facet will give only "Women \> Shoe" and "Women \> Dress".
-  /// Only supported on textual fields. Maximum is 10.
+  /// "categories" facet gives only "Women \> Shoe" and "Women \> Dress". Only
+  /// supported on textual fields. Maximum is 10.
   core.List<core.String>? prefixes;
 
   /// The query that is used to compute facet for the given facet key.
   ///
-  /// When provided, it will override the default behavior of facet computation.
-  /// The query syntax is the same as a filter expression. See
-  /// SearchRequest.filter for detail syntax and limitations. Notice that there
-  /// is no limitation on FacetKey.key when query is specified. In the response,
-  /// SearchResponse.Facet.values.value will be always "1" and
-  /// SearchResponse.Facet.values.count will be the number of results that match
-  /// the query. For example, you can set a customized facet for "shipToStore",
+  /// When provided, it overrides the default behavior of facet computation. The
+  /// query syntax is the same as a filter expression. See SearchRequest.filter
+  /// for detail syntax and limitations. Notice that there is no limitation on
+  /// FacetKey.key when query is specified. In the response,
+  /// SearchResponse.Facet.values.value is always "1" and
+  /// SearchResponse.Facet.values.count is the number of results that match the
+  /// query. For example, you can set a customized facet for "shipToStore",
   /// where FacetKey.key is "customizedShipToStore", and FacetKey.query is
   /// "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the
-  /// facet will count the products that are both in stock and ship to store
-  /// "123".
+  /// facet counts the products that are both in stock and ship to store "123".
   core.String? query;
 
   /// Only get facet for the given restricted values.
@@ -9285,11 +9362,11 @@ class GoogleCloudRetailV2UserEvent {
   GoogleCloudRetailV2CompletionDetail? completionDetail;
 
   /// The entity for customers that may run multiple different entities,
-  /// domains, sites or regions, for example, "Google US", "Google Ads",
-  /// "Waymo", "google.com", "youtube.com", etc.
+  /// domains, sites or regions, for example, `Google US`, `Google Ads`,
+  /// `Waymo`, `google.com`, `youtube.com`, etc.
   ///
-  /// It is recommended to set this field to get better per-entity search,
-  /// completion and prediction results.
+  /// We recommend that you set this field to get better per-entity search,
+  /// completion, and prediction results.
   core.String? entity;
 
   /// Only required for UserEventService.ImportUserEvents method.

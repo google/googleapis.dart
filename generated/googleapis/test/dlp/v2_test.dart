@@ -1330,6 +1330,7 @@ api.GooglePrivacyDlpV2CustomInfoType buildGooglePrivacyDlpV2CustomInfoType() {
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.likelihood = 'foo';
     o.regex = buildGooglePrivacyDlpV2Regex();
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.storedType = buildGooglePrivacyDlpV2StoredType();
     o.surrogateType = buildGooglePrivacyDlpV2SurrogateType();
   }
@@ -1353,6 +1354,7 @@ void checkGooglePrivacyDlpV2CustomInfoType(
       unittest.equals('foo'),
     );
     checkGooglePrivacyDlpV2Regex(o.regex!);
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     checkGooglePrivacyDlpV2StoredType(o.storedType!);
     checkGooglePrivacyDlpV2SurrogateType(o.surrogateType!);
   }
@@ -2830,6 +2832,7 @@ api.GooglePrivacyDlpV2InfoType buildGooglePrivacyDlpV2InfoType() {
   buildCounterGooglePrivacyDlpV2InfoType++;
   if (buildCounterGooglePrivacyDlpV2InfoType < 3) {
     o.name = 'foo';
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.version = 'foo';
   }
   buildCounterGooglePrivacyDlpV2InfoType--;
@@ -2843,6 +2846,7 @@ void checkGooglePrivacyDlpV2InfoType(api.GooglePrivacyDlpV2InfoType o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),

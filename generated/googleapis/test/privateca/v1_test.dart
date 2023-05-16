@@ -2193,6 +2193,7 @@ api.PublishingOptions buildPublishingOptions() {
   final o = api.PublishingOptions();
   buildCounterPublishingOptions++;
   if (buildCounterPublishingOptions < 3) {
+    o.encodingFormat = 'foo';
     o.publishCaCert = true;
     o.publishCrl = true;
   }
@@ -2203,6 +2204,10 @@ api.PublishingOptions buildPublishingOptions() {
 void checkPublishingOptions(api.PublishingOptions o) {
   buildCounterPublishingOptions++;
   if (buildCounterPublishingOptions < 3) {
+    unittest.expect(
+      o.encodingFormat!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.publishCaCert!, unittest.isTrue);
     unittest.expect(o.publishCrl!, unittest.isTrue);
   }

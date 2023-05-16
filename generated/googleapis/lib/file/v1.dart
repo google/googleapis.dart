@@ -1244,6 +1244,8 @@ class Backup {
   /// performance scaling capabilities.
   /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
   /// needed for mission-critical workloads.
+  /// - "ZONAL" : ZONAL instances offer expanded capacity and performance
+  /// scaling capabilities.
   core.String? sourceInstanceTier;
 
   /// The backup state.
@@ -1500,6 +1502,8 @@ class Instance {
   /// performance scaling capabilities.
   /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
   /// needed for mission-critical workloads.
+  /// - "ZONAL" : ZONAL instances offer expanded capacity and performance
+  /// scaling capabilities.
   core.String? tier;
 
   Instance({
@@ -1782,7 +1786,7 @@ class ListSnapshotsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Network configuration for the instance.

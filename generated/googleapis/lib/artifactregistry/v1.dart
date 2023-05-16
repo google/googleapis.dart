@@ -25,6 +25,7 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesKfpArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesMavenArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesNpmPackagesResource]
@@ -411,6 +412,8 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
+      ProjectsLocationsRepositoriesGoogetArtifactsResource(_requester);
   ProjectsLocationsRepositoriesKfpArtifactsResource get kfpArtifacts =>
       ProjectsLocationsRepositoriesKfpArtifactsResource(_requester);
   ProjectsLocationsRepositoriesMavenArtifactsResource get mavenArtifacts =>
@@ -1104,6 +1107,122 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesGoogetArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesGoogetArtifactsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Imports GooGet artifacts.
+  ///
+  /// The returned Operation will complete once the resources are imported.
+  /// Package, Version, and File resources are created based on the imported
+  /// artifacts. Imported artifacts that conflict with existing resources are
+  /// ignored.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the parent resource where the artifacts will be
+  /// imported.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportGoogetArtifactsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Directly uploads a GooGet artifact.
+  ///
+  /// The returned Operation will complete once the resources are uploaded.
+  /// Package, Version, and File resources are created based on the imported
+  /// artifact. Imported artifacts that conflict with existing resources are
+  /// ignored.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the parent resource where the artifacts will be
+  /// uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadGoogetArtifactMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadGoogetArtifactMediaResponse> upload(
+    UploadGoogetArtifactRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:create';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/googetArtifacts:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadGoogetArtifactMediaResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2501,6 +2620,59 @@ class ImportAptArtifactsRequest {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
+class ImportGoogetArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., gs://my_bucket/my_object).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  ImportGoogetArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
+
+  ImportGoogetArtifactsGcsSource.fromJson(core.Map json_)
+      : this(
+          uris: json_.containsKey('uris')
+              ? (json_['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: json_.containsKey('useWildcards')
+              ? json_['useWildcards'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+/// The request to import new googet artifacts.
+class ImportGoogetArtifactsRequest {
+  /// Google Cloud Storage location where input content is located.
+  ImportGoogetArtifactsGcsSource? gcsSource;
+
+  ImportGoogetArtifactsRequest({
+    this.gcsSource,
+  });
+
+  ImportGoogetArtifactsRequest.fromJson(core.Map json_)
+      : this(
+          gcsSource: json_.containsKey('gcsSource')
+              ? ImportGoogetArtifactsGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// Google Cloud Storage location where the artifacts currently reside.
 typedef ImportYumArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The request to import new yum artifacts.
@@ -2854,7 +3026,7 @@ class ListVersionsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// MavenArtifact represents a maven artifact.
@@ -3555,6 +3727,7 @@ class Repository {
   /// - "NPM" : NPM package format.
   /// - "APT" : APT package format.
   /// - "YUM" : YUM package format.
+  /// - "GOOGET" : GooGet package format.
   /// - "PYTHON" : Python package format.
   /// - "KFP" : Kubeflow Pipelines package format.
   core.String? format;
@@ -3807,6 +3980,31 @@ class UploadAptArtifactMediaResponse {
 
 /// The request to upload an artifact.
 typedef UploadAptArtifactRequest = $Empty;
+
+/// The response to upload an artifact.
+class UploadGoogetArtifactMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadGoogetArtifactMediaResponse({
+    this.operation,
+  });
+
+  UploadGoogetArtifactMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload an artifact.
+typedef UploadGoogetArtifactRequest = $Empty;
 
 /// The response to upload an artifact.
 class UploadKfpArtifactMediaResponse {

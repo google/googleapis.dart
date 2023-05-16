@@ -1418,8 +1418,7 @@ typedef Empty = $Empty;
 
 /// A Datastore data object.
 ///
-/// An entity is limited to 1 megabyte when stored. That _roughly_ corresponds
-/// to a limit of 1 megabyte for the serialized form of this message.
+/// Must not exceed 1 MiB - 4 bytes.
 class Entity {
   /// The entity's key.
   ///

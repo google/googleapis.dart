@@ -3585,6 +3585,47 @@ class Device {
       };
 }
 
+/// Covers controls for device connectivity such as Wi-Fi, USB data access,
+/// keyboard/mouse connections, and more.
+class DeviceConnectivityManagement {
+  /// Controls what can be transferred via USB, files and/or data.
+  ///
+  /// This is supported only on company-owned devices.
+  /// Possible string values are:
+  /// - "USB_DATA_ACCESS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_USB_DATA_TRANSFER, unless usbFileTransferDisabled is set to true. If
+  /// usbFileTransferDisabled is set to true, this is equivalent to
+  /// DISALLOW_USB_FILE_TRANSFER.
+  /// - "ALLOW_USB_DATA_TRANSFER" : All types of USB data transfers are allowed.
+  /// usbFileTransferDisabled is ignored.
+  /// - "DISALLOW_USB_FILE_TRANSFER" : Transferring files over USB is
+  /// disallowed. Other types of USB data connections, such as mouse and
+  /// keyboard connection, are allowed. usbFileTransferDisabled is ignored.
+  /// - "DISALLOW_USB_DATA_TRANSFER" : When set, all types of USB data transfers
+  /// are prohibited. Supported for devices running Android 12 or above with USB
+  /// HAL 1.3 or above. If the setting is not supported,
+  /// DISALLOW_USB_FILE_TRANSFER will be set. A nonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 12. A
+  /// nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
+  /// does not have USB HAL 1.3 or above. usbFileTransferDisabled is ignored.
+  core.String? usbDataAccess;
+
+  DeviceConnectivityManagement({
+    this.usbDataAccess,
+  });
+
+  DeviceConnectivityManagement.fromJson(core.Map json_)
+      : this(
+          usbDataAccess: json_.containsKey('usbDataAccess')
+              ? json_['usbDataAccess'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
+      };
+}
+
 /// Information about security related device settings on device.
 class DeviceSettings {
   /// Whether ADB (https://developer.android.com/studio/command-line/adb.html)
@@ -5213,6 +5254,8 @@ class NonComplianceDetail {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
+  /// requirements.
   core.String? nonComplianceReason;
 
   /// The package name indicating which app is out of compliance, if applicable.
@@ -5341,6 +5384,8 @@ class NonComplianceDetailCondition {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
+  /// requirements.
   core.String? nonComplianceReason;
 
   /// The package name of the app that's out of compliance.
@@ -6232,6 +6277,10 @@ class Policy {
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
 
+  /// Covers controls for device connectivity such as Wi-Fi, USB data access,
+  /// keyboard/mouse connections, and more.
+  DeviceConnectivityManagement? deviceConnectivityManagement;
+
   /// The device owner information to be shown on the lock screen.
   UserFacingMessage? deviceOwnerLockScreenInfo;
 
@@ -6587,11 +6636,17 @@ class Policy {
   /// Whether configuring VPN is disabled.
   core.bool? vpnConfigDisabled;
 
-  /// Whether configuring Wi-Fi access points is disabled.
+  /// Whether configuring Wi-Fi networks is disabled.
   ///
-  /// Note: If a network connection can't be made at boot time and configuring
-  /// Wi-Fi is disabled then network escape hatch will be shown in order to
-  /// refresh the device policy (see networkEscapeHatchEnabled).
+  /// Supported on fully managed devices and work profiles on company-owned
+  /// devices. For fully managed devices, setting this to true removes all
+  /// configured networks and retains only the networks configured using
+  /// openNetworkConfiguration. For work profiles on company-owned devices,
+  /// existing configured networks are not affected and the user is not allowed
+  /// to add, remove, or modify Wi-Fi networks. Note: If a network connection
+  /// can't be made at boot time and configuring Wi-Fi is disabled then network
+  /// escape hatch will be shown in order to refresh the device policy (see
+  /// networkEscapeHatchEnabled).
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
@@ -6623,6 +6678,7 @@ class Policy {
     this.dataRoamingDisabled,
     this.debuggingFeaturesAllowed,
     this.defaultPermissionPolicy,
+    this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
@@ -6790,6 +6846,12 @@ class Policy {
           defaultPermissionPolicy: json_.containsKey('defaultPermissionPolicy')
               ? json_['defaultPermissionPolicy'] as core.String
               : null,
+          deviceConnectivityManagement:
+              json_.containsKey('deviceConnectivityManagement')
+                  ? DeviceConnectivityManagement.fromJson(
+                      json_['deviceConnectivityManagement']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           deviceOwnerLockScreenInfo: json_
                   .containsKey('deviceOwnerLockScreenInfo')
               ? UserFacingMessage.fromJson(json_['deviceOwnerLockScreenInfo']
@@ -7077,6 +7139,8 @@ class Policy {
           'debuggingFeaturesAllowed': debuggingFeaturesAllowed!,
         if (defaultPermissionPolicy != null)
           'defaultPermissionPolicy': defaultPermissionPolicy!,
+        if (deviceConnectivityManagement != null)
+          'deviceConnectivityManagement': deviceConnectivityManagement!,
         if (deviceOwnerLockScreenInfo != null)
           'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,

@@ -1672,7 +1672,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///

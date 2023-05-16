@@ -449,6 +449,7 @@ api.CloudDlpDataProfile buildCloudDlpDataProfile() {
   buildCounterCloudDlpDataProfile++;
   if (buildCounterCloudDlpDataProfile < 3) {
     o.dataProfile = 'foo';
+    o.parentType = 'foo';
   }
   buildCounterCloudDlpDataProfile--;
   return o;
@@ -459,6 +460,10 @@ void checkCloudDlpDataProfile(api.CloudDlpDataProfile o) {
   if (buildCounterCloudDlpDataProfile < 3) {
     unittest.expect(
       o.dataProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parentType!,
       unittest.equals('foo'),
     );
   }

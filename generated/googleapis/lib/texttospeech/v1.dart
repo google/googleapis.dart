@@ -759,6 +759,8 @@ class SynthesizeLongAudioRequest {
 
   /// The Synthesizer requires either plain text or SSML as input.
   ///
+  /// While Long Audio is in preview, SSML is temporarily unsupported.
+  ///
   /// Required.
   SynthesisInput? input;
 
@@ -766,9 +768,13 @@ class SynthesizeLongAudioRequest {
   ///
   /// Must be specified in the format: `gs://bucket_name/object_name`, and the
   /// bucket must already exist.
+  ///
+  /// Required.
   core.String? outputGcsUri;
 
   /// The desired voice of the synthesized audio.
+  ///
+  /// Required.
   VoiceSelectionParams? voice;
 
   SynthesizeLongAudioRequest({

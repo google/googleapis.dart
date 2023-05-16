@@ -223,6 +223,7 @@ api.Configuration buildConfiguration() {
     o.customMessage = 'foo';
     o.dpcExtras = 'foo';
     o.dpcResourcePath = 'foo';
+    o.forcedResetTime = 'foo';
     o.isDefault = true;
     o.name = 'foo';
   }
@@ -263,6 +264,10 @@ void checkConfiguration(api.Configuration o) {
     );
     unittest.expect(
       o.dpcResourcePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.forcedResetTime!,
       unittest.equals('foo'),
     );
     unittest.expect(o.isDefault!, unittest.isTrue);

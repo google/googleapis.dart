@@ -3352,7 +3352,7 @@ class ListVolumesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Each logical network interface is effectively a network and IP pair.
