@@ -1,3 +1,8 @@
+## 11.1.0
+
+- `identitytoolkit:v1` new!
+- `identitytoolkit:v2` new!
+
 ## 11.0.0
 
 - Require Dart 2.19
