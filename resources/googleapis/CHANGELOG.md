@@ -1,7 +1,8 @@
 ## 11.1.0
 
-- `identitytoolkit:v1` new!
-- `identitytoolkit:v2` new!
+- `gkeonprem` - new!
+- `identitytoolkit` - added (back) v1 and v2!
+- `publicca` - new!
 
 ## 11.0.0
 
