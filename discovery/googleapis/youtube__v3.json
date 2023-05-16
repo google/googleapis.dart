@@ -3829,7 +3829,7 @@
             }
         }
     },
-    "revision": "20230505",
+    "revision": "20230514",
     "rootUrl": "https://youtube.googleapis.com/",
     "schemas": {
         "AbuseReport": {

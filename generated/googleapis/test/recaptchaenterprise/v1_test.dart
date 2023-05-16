@@ -230,6 +230,40 @@ void checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse(
   buildCounterGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse--;
 }
 
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId = 0;
+api.GoogleCloudRecaptchaenterpriseV1AppleDeveloperId
+    buildGoogleCloudRecaptchaenterpriseV1AppleDeveloperId() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1AppleDeveloperId();
+  buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId < 3) {
+    o.keyId = 'foo';
+    o.privateKey = 'foo';
+    o.teamId = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1AppleDeveloperId(
+    api.GoogleCloudRecaptchaenterpriseV1AppleDeveloperId o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId < 3) {
+    unittest.expect(
+      o.keyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.privateKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.teamId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1AppleDeveloperId--;
+}
+
 core.int buildCounterGoogleCloudRecaptchaenterpriseV1Assessment = 0;
 api.GoogleCloudRecaptchaenterpriseV1Assessment
     buildGoogleCloudRecaptchaenterpriseV1Assessment() {
@@ -839,6 +873,8 @@ api.GoogleCloudRecaptchaenterpriseV1IOSKeySettings
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
     o.allowAllBundleIds = true;
     o.allowedBundleIds = buildUnnamed6();
+    o.appleDeveloperId =
+        buildGoogleCloudRecaptchaenterpriseV1AppleDeveloperId();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
   return o;
@@ -850,6 +886,7 @@ void checkGoogleCloudRecaptchaenterpriseV1IOSKeySettings(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
     unittest.expect(o.allowAllBundleIds!, unittest.isTrue);
     checkUnnamed6(o.allowedBundleIds!);
+    checkGoogleCloudRecaptchaenterpriseV1AppleDeveloperId(o.appleDeveloperId!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
 }
@@ -2181,6 +2218,17 @@ void main() {
       final od = api.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRecaptchaenterpriseV1AppleDeveloperId',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecaptchaenterpriseV1AppleDeveloperId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1AppleDeveloperId(od);
     });
   });
 

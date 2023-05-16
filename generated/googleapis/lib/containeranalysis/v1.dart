@@ -2391,6 +2391,7 @@ class DiscoveryNote {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? analysisKind;
 
   DiscoveryNote({
@@ -3486,6 +3487,7 @@ class Note {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -3505,6 +3507,9 @@ class Note {
 
   /// URLs associated with this note.
   core.List<RelatedUrl>? relatedUrl;
+
+  /// A note describing an SBOM reference.
+  SBOMReferenceNote? sbomReference;
 
   /// A one sentence description of this note.
   core.String? shortDescription;
@@ -3541,6 +3546,7 @@ class Note {
     this.package,
     this.relatedNoteNames,
     this.relatedUrl,
+    this.sbomReference,
     this.shortDescription,
     this.updateTime,
     this.upgrade,
@@ -3604,6 +3610,10 @@ class Note {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceNote.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           shortDescription: json_.containsKey('shortDescription')
               ? json_['shortDescription'] as core.String
               : null,
@@ -3641,6 +3651,7 @@ class Note {
         if (package != null) 'package': package!,
         if (relatedNoteNames != null) 'relatedNoteNames': relatedNoteNames!,
         if (relatedUrl != null) 'relatedUrl': relatedUrl!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
@@ -3702,6 +3713,7 @@ class Occurrence {
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -3732,6 +3744,9 @@ class Occurrence {
   /// Required. Immutable.
   core.String? resourceUri;
 
+  /// Describes a specific SBOM reference occurrences.
+  SBOMReferenceOccurrence? sbomReference;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -3759,6 +3774,7 @@ class Occurrence {
     this.package,
     this.remediation,
     this.resourceUri,
+    this.sbomReference,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -3816,6 +3832,10 @@ class Occurrence {
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceOccurrence.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -3845,6 +3865,7 @@ class Occurrence {
         if (package != null) 'package': package!,
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -4474,6 +4495,147 @@ class RepoId {
         if (uid != null) 'uid': uid!,
       };
 }
+
+/// The note representing an SBOM reference.
+class SBOMReferenceNote {
+  /// The format that SBOM takes.
+  ///
+  /// E.g. may be spdx, cyclonedx, etc...
+  core.String? format;
+
+  /// The version of the format that the SBOM takes.
+  ///
+  /// E.g. if the format is spdx, the version may be 2.3.
+  core.String? version;
+
+  SBOMReferenceNote({
+    this.format,
+    this.version,
+  });
+
+  SBOMReferenceNote.fromJson(core.Map json_)
+      : this(
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (format != null) 'format': format!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// The occurrence representing an SBOM reference as applied to a specific
+/// resource.
+///
+/// The occurrence follows the DSSE specification. See
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more
+/// details.
+class SBOMReferenceOccurrence {
+  /// The actual payload that contains the SBOM reference data.
+  SbomReferenceIntotoPayload? payload;
+
+  /// The kind of payload that SbomReferenceIntotoPayload takes.
+  ///
+  /// Since it's in the intoto format, this value is expected to be
+  /// 'application/vnd.in-toto+json'.
+  core.String? payloadType;
+
+  /// The signatures over the payload.
+  core.List<EnvelopeSignature>? signatures;
+
+  SBOMReferenceOccurrence({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  SBOMReferenceOccurrence.fromJson(core.Map json_)
+      : this(
+          payload: json_.containsKey('payload')
+              ? SbomReferenceIntotoPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          payloadType: json_.containsKey('payloadType')
+              ? json_['payloadType'] as core.String
+              : null,
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
+                  .map((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// The actual payload that contains the SBOM Reference data.
+///
+/// The payload follows the intoto statement specification. See
+/// https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for
+/// more details.
+class SbomReferenceIntotoPayload {
+  /// Identifier for the schema of the Statement.
+  core.String? P_type;
+
+  /// Additional parameters of the Predicate.
+  ///
+  /// Includes the actual data about the SBOM.
+  SbomReferenceIntotoPredicate? predicate;
+
+  /// URI identifying the type of the Predicate.
+  core.String? predicateType;
+
+  /// Set of software artifacts that the attestation applies to.
+  ///
+  /// Each element represents a single software artifact.
+  core.List<Subject>? subject;
+
+  SbomReferenceIntotoPayload({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  SbomReferenceIntotoPayload.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SbomReferenceIntotoPredicate.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// A predicate which describes the SBOM being referenced.
+typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

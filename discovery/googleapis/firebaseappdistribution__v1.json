@@ -939,7 +939,7 @@
             }
         }
     },
-    "revision": "20230505",
+    "revision": "20230516",
     "rootUrl": "https://firebaseappdistribution.googleapis.com/",
     "schemas": {
         "GdataBlobstore2Info": {

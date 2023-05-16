@@ -6393,6 +6393,9 @@ class Product {
   /// Noteworthy features (if any) of this product.
   core.List<core.String>? features;
 
+  /// The localized full app store description, if available.
+  core.String? fullDescription;
+
   /// A link to an image that can be used as an icon for the product.
   ///
   /// This image is suitable for use at up to 512px x 512px.
@@ -6464,6 +6467,7 @@ class Product {
     this.detailsUrl,
     this.distributionChannel,
     this.features,
+    this.fullDescription,
     this.iconUrl,
     this.lastUpdatedTimestampMillis,
     this.minAndroidSdkVersion,
@@ -6530,6 +6534,9 @@ class Product {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          fullDescription: json_.containsKey('fullDescription')
+              ? json_['fullDescription'] as core.String
+              : null,
           iconUrl: json_.containsKey('iconUrl')
               ? json_['iconUrl'] as core.String
               : null,
@@ -6593,6 +6600,7 @@ class Product {
         if (distributionChannel != null)
           'distributionChannel': distributionChannel!,
         if (features != null) 'features': features!,
+        if (fullDescription != null) 'fullDescription': fullDescription!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (lastUpdatedTimestampMillis != null)
           'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,

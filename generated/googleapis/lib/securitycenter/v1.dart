@@ -7291,8 +7291,16 @@ class CloudDlpDataProfile {
   /// `projects/123/locations/europe/tableProfiles/8383929`.
   core.String? dataProfile;
 
+  /// The resource hierarchy level at which the data profile was generated.
+  /// Possible string values are:
+  /// - "PARENT_TYPE_UNSPECIFIED" : Unspecified parent type.
+  /// - "ORGANIZATION" : Organization-level configurations.
+  /// - "PROJECT" : Project-level configurations.
+  core.String? parentType;
+
   CloudDlpDataProfile({
     this.dataProfile,
+    this.parentType,
   });
 
   CloudDlpDataProfile.fromJson(core.Map json_)
@@ -7300,10 +7308,14 @@ class CloudDlpDataProfile {
           dataProfile: json_.containsKey('dataProfile')
               ? json_['dataProfile'] as core.String
               : null,
+          parentType: json_.containsKey('parentType')
+              ? json_['parentType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataProfile != null) 'dataProfile': dataProfile!,
+        if (parentType != null) 'parentType': parentType!,
       };
 }
 

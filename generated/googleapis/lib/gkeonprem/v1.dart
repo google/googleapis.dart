@@ -302,6 +302,19 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalAdminClusters/\[^/\]+$`.
   ///
+  /// [view] - View for bare metal admin cluster. When \`BASIC\` is specified,
+  /// only the cluster resource name and membership are returned. The
+  /// default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL',
+  /// which returns the complete cluster configuration details.
+  /// Possible string values are:
+  /// - "CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a cluster resource including
+  /// cluster resource name and membership.
+  /// - "FULL" : Includes the complete configuration for bare metal admin
+  /// cluster resource. This is the default value for
+  /// GetBareMetalAdminClusterRequest method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -314,9 +327,11 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<BareMetalAdminCluster> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1002,6 +1017,18 @@ class ProjectsLocationsBareMetalClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalClusters/\[^/\]+$`.
   ///
+  /// [view] - View for bare metal user cluster. When \`BASIC\` is specified,
+  /// only the cluster resource name and admin cluster membership are returned.
+  /// The default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as
+  /// \`FULL', which returns the complete cluster configuration details.
+  /// Possible string values are:
+  /// - "CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a cluster resource including
+  /// cluster resource name and admin cluster membership.
+  /// - "FULL" : Includes the complete configuration for bare metal cluster
+  /// resource. This is the default value for GetBareMetalClusterRequest method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1014,9 +1041,11 @@ class ProjectsLocationsBareMetalClustersResource {
   /// this method will complete with the same error.
   async.Future<BareMetalCluster> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3081,6 +3110,18 @@ class ProjectsLocationsVmwareClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareClusters/\[^/\]+$`.
   ///
+  /// [view] - View for VMware user cluster. When \`BASIC\` is specified, only
+  /// the cluster resource name and admin cluster membership are returned. The
+  /// default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL',
+  /// which returns the complete cluster configuration details.
+  /// Possible string values are:
+  /// - "CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a cluster resource including
+  /// cluster resource name and admin cluster membership.
+  /// - "FULL" : Includes the complete configuration for VMware cluster
+  /// resource. This is the default value for GetVmwareClusterRequest method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3093,9 +3134,11 @@ class ProjectsLocationsVmwareClustersResource {
   /// this method will complete with the same error.
   async.Future<VmwareCluster> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6794,16 +6837,6 @@ class EnrollBareMetalAdminClusterRequest {
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? bareMetalAdminClusterId;
 
-  /// The object name of the bare metal OnPremAdminCluster custom resource on
-  /// the associated admin cluster.
-  ///
-  /// This field is used to support conflicting resource names when enrolling
-  /// existing clusters to the API. When not provided, this field will resolve
-  /// to the bare_metal_admin_cluster_id. Otherwise, it must match the object
-  /// name of the bare metal OnPremAdminCluster custom resource. It is not
-  /// modifiable outside / beyond the enrollment operation.
-  core.String? localName;
-
   /// This is the full resource name of this admin cluster's fleet membership.
   ///
   /// Required.
@@ -6811,7 +6844,6 @@ class EnrollBareMetalAdminClusterRequest {
 
   EnrollBareMetalAdminClusterRequest({
     this.bareMetalAdminClusterId,
-    this.localName,
     this.membership,
   });
 
@@ -6819,9 +6851,6 @@ class EnrollBareMetalAdminClusterRequest {
       : this(
           bareMetalAdminClusterId: json_.containsKey('bareMetalAdminClusterId')
               ? json_['bareMetalAdminClusterId'] as core.String
-              : null,
-          localName: json_.containsKey('localName')
-              ? json_['localName'] as core.String
               : null,
           membership: json_.containsKey('membership')
               ? json_['membership'] as core.String
@@ -6831,7 +6860,6 @@ class EnrollBareMetalAdminClusterRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bareMetalAdminClusterId != null)
           'bareMetalAdminClusterId': bareMetalAdminClusterId!,
-        if (localName != null) 'localName': localName!,
         if (membership != null) 'membership': membership!,
       };
 }

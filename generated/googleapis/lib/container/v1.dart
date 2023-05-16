@@ -4596,6 +4596,13 @@ class Cluster {
   PrivateClusterConfig? privateClusterConfig;
 
   /// Release channel configuration.
+  ///
+  /// If left unspecified on cluster creation and a version is specified, the
+  /// cluster is enrolled in the most mature release channel where the version
+  /// is available (first checking STABLE, then REGULAR, and finally RAPID).
+  /// Otherwise, if no release channel configuration and no version is
+  /// specified, the cluster is enrolled in the REGULAR channel with its default
+  /// version.
   ReleaseChannel? releaseChannel;
 
   /// The resource labels for the cluster to use to annotate any related Google
@@ -9371,11 +9378,10 @@ class Operation {
   ///
   /// The format of this is a URI to the resource being modified (such as a
   /// cluster, node pool, or node). For node pool repairs, there may be multiple
-  /// nodes being repaired, but only one will be the target. Examples: -
+  /// nodes being repaired, but only one will be the target. Examples: - ##
   /// `https://container.googleapis.com/v1/projects/123/locations/us-central1/clusters/my-cluster`
-  /// -
+  /// ##
   /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np`
-  /// -
   /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
   core.String? targetLink;
 

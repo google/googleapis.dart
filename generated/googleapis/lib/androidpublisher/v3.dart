@@ -3246,9 +3246,7 @@ class MonetizationSubscriptionsResource {
   /// requirements on this format, see the documentation of the product_id field
   /// on the Subscription resource.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/02.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3445,9 +3443,7 @@ class MonetizationSubscriptionsResource {
   /// lower-case letter or number, and be between 1 and 40 (inclusive)
   /// characters in length.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/02.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3819,9 +3815,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// this format, see the documentation of the offer_id field on the
   /// SubscriptionOffer resource.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/02.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4118,9 +4112,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// [offerId] - Required. Immutable. Unique ID of this subscription offer.
   /// Must be unique within the base plan.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/02.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -9380,11 +9372,13 @@ class RegionalTaxRateInfo {
 }
 
 /// The version of the available regions being used for the specified resource.
+///
+/// A string representing the version of available regions being used for the
+/// specified resource. Regional prices for the resource have to be specified
+/// according to the information published in
+/// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
 class RegionsVersion {
-  /// A string representing version of the available regions being used for the
-  /// specified resource.
-  ///
-  /// The current version is 2022/02.
+  /// The latest version is 2022/02.
   ///
   /// Required.
   core.String? version;

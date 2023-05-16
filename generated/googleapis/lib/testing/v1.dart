@@ -1267,6 +1267,9 @@ class ApkManifest {
   /// Full Java-style package name for this application, e.g. "com.example.foo".
   core.String? packageName;
 
+  /// Services contained in the tag.
+  core.List<Service>? services;
+
   /// Specifies the API Level on which the application is designed to run.
   core.int? targetSdkVersion;
 
@@ -1289,6 +1292,7 @@ class ApkManifest {
     this.metadata,
     this.minSdkVersion,
     this.packageName,
+    this.services,
     this.targetSdkVersion,
     this.usesFeature,
     this.usesPermission,
@@ -1322,6 +1326,12 @@ class ApkManifest {
           packageName: json_.containsKey('packageName')
               ? json_['packageName'] as core.String
               : null,
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
+                  .map((value) => Service.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           targetSdkVersion: json_.containsKey('targetSdkVersion')
               ? json_['targetSdkVersion'] as core.int
               : null,
@@ -1351,6 +1361,7 @@ class ApkManifest {
         if (metadata != null) 'metadata': metadata!,
         if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
         if (packageName != null) 'packageName': packageName!,
+        if (services != null) 'services': services!,
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (usesFeature != null) 'usesFeature': usesFeature!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
@@ -3061,6 +3072,38 @@ class RoboStartingIntent {
         if (launcherActivity != null) 'launcherActivity': launcherActivity!,
         if (startActivity != null) 'startActivity': startActivity!,
         if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// The section of an tag.
+///
+/// https://developer.android.com/guide/topics/manifest/service-element
+class Service {
+  /// Intent filters in the service
+  core.List<IntentFilter>? intentFilter;
+
+  /// The android:name value
+  core.String? name;
+
+  Service({
+    this.intentFilter,
+    this.name,
+  });
+
+  Service.fromJson(core.Map json_)
+      : this(
+          intentFilter: json_.containsKey('intentFilter')
+              ? (json_['intentFilter'] as core.List)
+                  .map((value) => IntentFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intentFilter != null) 'intentFilter': intentFilter!,
+        if (name != null) 'name': name!,
       };
 }
 

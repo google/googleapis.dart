@@ -1165,6 +1165,53 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
 /// Empty response for AnnotateAssessment.
 typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
+/// Contains fields that are required to perform Apple-specific integrity
+/// checks.
+class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+  /// The Apple developer key ID (10-character string).
+  ///
+  /// Required.
+  core.String? keyId;
+
+  /// Input only.
+  ///
+  /// A private key (downloaded as a text file with a .p8 file extension)
+  /// generated for your Apple Developer account.
+  ///
+  /// Required.
+  core.String? privateKey;
+
+  /// The Apple team ID (10-character string) owning the provisioning profile
+  /// used to build your application.
+  ///
+  /// Required.
+  core.String? teamId;
+
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId({
+    this.keyId,
+    this.privateKey,
+    this.teamId,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(core.Map json_)
+      : this(
+          keyId:
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          privateKey: json_.containsKey('privateKey')
+              ? json_['privateKey'] as core.String
+              : null,
+          teamId: json_.containsKey('teamId')
+              ? json_['teamId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (privateKey != null) 'privateKey': privateKey!,
+        if (teamId != null) 'teamId': teamId!,
+      };
+}
+
 /// A reCAPTCHA Enterprise assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Assessment returned by account defender when a hashed_account_id is
@@ -1961,9 +2008,19 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Example: 'com.companyname.productname.appname'
   core.List<core.String>? allowedBundleIds;
 
+  /// Apple Developer account details for the app the reCAPTCHA key will
+  /// protect.
+  ///
+  /// reCAPTCHA Enterprise leverages platform specific checks like Apple
+  /// AppAttest and Apple DeviceCheck to protect your app from abuse. Providing
+  /// these fields allows reCAPTCHA Enterprise to get a better assessment of the
+  /// integrity of your app.
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
+
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
     this.allowAllBundleIds,
     this.allowedBundleIds,
+    this.appleDeveloperId,
   });
 
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(core.Map json_)
@@ -1976,11 +2033,17 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          appleDeveloperId: json_.containsKey('appleDeveloperId')
+              ? GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
+                  json_['appleDeveloperId']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAllBundleIds != null) 'allowAllBundleIds': allowAllBundleIds!,
         if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
+        if (appleDeveloperId != null) 'appleDeveloperId': appleDeveloperId!,
       };
 }
 

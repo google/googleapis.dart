@@ -6224,8 +6224,7 @@ class GkeNodeConfig {
   /// to encrypt the boot disk attached to each node in the node pool.
   ///
   /// Specify the key using the following format:
-  /// projects/KEY_PROJECT_ID/locations/LOCATION
-  /// /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
   ///
   /// Optional.
   core.String? bootDiskKmsKey;

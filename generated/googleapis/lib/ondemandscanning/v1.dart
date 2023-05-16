@@ -2545,54 +2545,7 @@ class SbomReferenceIntotoPayload {
 }
 
 /// A predicate which describes the SBOM being referenced.
-class SbomReferenceIntotoPredicate {
-  /// A map of algorithm to digest of the contents of the SBOM.
-  core.Map<core.String, core.String>? digest;
-
-  /// The location of the SBOM.
-  core.String? location;
-
-  /// The mime type of the SBOM.
-  core.String? mimeType;
-
-  /// The person or system referring this predicate to the consumer.
-  core.String? referrerId;
-
-  SbomReferenceIntotoPredicate({
-    this.digest,
-    this.location,
-    this.mimeType,
-    this.referrerId,
-  });
-
-  SbomReferenceIntotoPredicate.fromJson(core.Map json_)
-      : this(
-          digest: json_.containsKey('digest')
-              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          referrerId: json_.containsKey('referrerId')
-              ? json_['referrerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (location != null) 'location': location!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (referrerId != null) 'referrerId': referrerId!,
-      };
-}
+typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
 /// to the trust anchors defined in policy (e.g. a Kritis policy).

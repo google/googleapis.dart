@@ -6489,6 +6489,9 @@ class VmwareSourceDetails {
   /// operation.
   core.String? password;
 
+  /// The hostname of the vcenter.
+  core.String? resolvedVcenterHost;
+
   /// The thumbprint representing the certificate for the vcenter.
   core.String? thumbprint;
 
@@ -6500,6 +6503,7 @@ class VmwareSourceDetails {
 
   VmwareSourceDetails({
     this.password,
+    this.resolvedVcenterHost,
     this.thumbprint,
     this.username,
     this.vcenterIp,
@@ -6509,6 +6513,9 @@ class VmwareSourceDetails {
       : this(
           password: json_.containsKey('password')
               ? json_['password'] as core.String
+              : null,
+          resolvedVcenterHost: json_.containsKey('resolvedVcenterHost')
+              ? json_['resolvedVcenterHost'] as core.String
               : null,
           thumbprint: json_.containsKey('thumbprint')
               ? json_['thumbprint'] as core.String
@@ -6523,6 +6530,8 @@ class VmwareSourceDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (password != null) 'password': password!,
+        if (resolvedVcenterHost != null)
+          'resolvedVcenterHost': resolvedVcenterHost!,
         if (thumbprint != null) 'thumbprint': thumbprint!,
         if (username != null) 'username': username!,
         if (vcenterIp != null) 'vcenterIp': vcenterIp!,

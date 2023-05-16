@@ -719,7 +719,7 @@
             }
         }
     },
-    "revision": "20230420",
+    "revision": "20230508",
     "rootUrl": "https://tpu.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {

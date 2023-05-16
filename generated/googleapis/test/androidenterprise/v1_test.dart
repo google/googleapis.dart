@@ -2144,6 +2144,7 @@ api.Product buildProduct() {
     o.detailsUrl = 'foo';
     o.distributionChannel = 'foo';
     o.features = buildUnnamed33();
+    o.fullDescription = 'foo';
     o.iconUrl = 'foo';
     o.lastUpdatedTimestampMillis = 'foo';
     o.minAndroidSdkVersion = 42;
@@ -2195,6 +2196,10 @@ void checkProduct(api.Product o) {
       unittest.equals('foo'),
     );
     checkUnnamed33(o.features!);
+    unittest.expect(
+      o.fullDescription!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.iconUrl!,
       unittest.equals('foo'),

@@ -5268,6 +5268,18 @@ class MachineConfig {
 
 /// Represents a Database Migration Service migration job object.
 class MigrationJob {
+  /// The CMEK (customer-managed encryption key) fully qualified key name used
+  /// for the migration job.
+  ///
+  /// This field supports all migration jobs types except for: * Mysql to Mysql
+  /// (use the cmek field in the cloudsql connection profile instead). *
+  /// PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection
+  /// profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in
+  /// the alloydb connection profile instead). Each Cloud CMEK key has the
+  /// following format:
+  /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
+  core.String? cmekKeyName;
+
   /// The conversion workspace used by the migration.
   ConversionWorkspaceInfo? conversionWorkspace;
 
@@ -5409,6 +5421,7 @@ class MigrationJob {
   VpcPeeringConnectivity? vpcPeeringConnectivity;
 
   MigrationJob({
+    this.cmekKeyName,
     this.conversionWorkspace,
     this.createTime,
     this.destination,
@@ -5435,6 +5448,9 @@ class MigrationJob {
 
   MigrationJob.fromJson(core.Map json_)
       : this(
+          cmekKeyName: json_.containsKey('cmekKeyName')
+              ? json_['cmekKeyName'] as core.String
+              : null,
           conversionWorkspace: json_.containsKey('conversionWorkspace')
               ? ConversionWorkspaceInfo.fromJson(json_['conversionWorkspace']
                   as core.Map<core.String, core.dynamic>)
@@ -5511,6 +5527,7 @@ class MigrationJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (conversionWorkspace != null)
           'conversionWorkspace': conversionWorkspace!,
         if (createTime != null) 'createTime': createTime!,
@@ -6307,7 +6324,7 @@ class PrivateConnectivity {
 }
 
 /// Private Service Connect connectivity
-/// (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+/// (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 class PrivateServiceConnectConnectivity {
   /// A service attachment that exposes a database, and has the following
   /// format:

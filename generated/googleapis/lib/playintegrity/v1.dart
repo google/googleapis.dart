@@ -328,6 +328,31 @@ class DeviceIntegrity {
       };
 }
 
+/// Contains guidance details about the Integrity API response, providing
+/// additional context to the integrity verdicts.
+class GuidanceDetails {
+  /// This shows when there is an issue with at least one of the integrity
+  /// verdicts, and provides user remediation guidance.
+  core.List<core.String>? userRemediation;
+
+  GuidanceDetails({
+    this.userRemediation,
+  });
+
+  GuidanceDetails.fromJson(core.Map json_)
+      : this(
+          userRemediation: json_.containsKey('userRemediation')
+              ? (json_['userRemediation'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userRemediation != null) 'userRemediation': userRemediation!,
+      };
+}
+
 /// Contains the integrity request information.
 class RequestDetails {
   /// Nonce that was provided in the request (which is base64 web-safe no-wrap).
@@ -422,6 +447,9 @@ class TokenPayloadExternal {
   /// Required.
   DeviceIntegrity? deviceIntegrity;
 
+  /// Additional guidance related to the integrity API response.
+  GuidanceDetails? guidanceDetails;
+
   /// Details about the integrity request.
   ///
   /// Required.
@@ -435,6 +463,7 @@ class TokenPayloadExternal {
     this.accountDetails,
     this.appIntegrity,
     this.deviceIntegrity,
+    this.guidanceDetails,
     this.requestDetails,
     this.testingDetails,
   });
@@ -453,6 +482,10 @@ class TokenPayloadExternal {
               ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          guidanceDetails: json_.containsKey('guidanceDetails')
+              ? GuidanceDetails.fromJson(json_['guidanceDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           requestDetails: json_.containsKey('requestDetails')
               ? RequestDetails.fromJson(json_['requestDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -467,6 +500,7 @@ class TokenPayloadExternal {
         if (accountDetails != null) 'accountDetails': accountDetails!,
         if (appIntegrity != null) 'appIntegrity': appIntegrity!,
         if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
+        if (guidanceDetails != null) 'guidanceDetails': guidanceDetails!,
         if (requestDetails != null) 'requestDetails': requestDetails!,
         if (testingDetails != null) 'testingDetails': testingDetails!,
       };

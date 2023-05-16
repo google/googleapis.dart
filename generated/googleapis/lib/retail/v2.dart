@@ -5579,12 +5579,12 @@ class GoogleCloudRetailV2Model {
       };
 }
 
-/// More configs of the frequently-bought-together model type.
+/// Additional configs for the frequently-bought-together model type.
 class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
-  /// Specifies the context of the model when used in predict requests.
+  /// Specifies the context of the model when it is used in predict requests.
   ///
-  /// Only settable for the `frequently-bought-together` type. Will default to
-  /// MULTI_CONTEXT if not specified.
+  /// Can only be set for the `frequently-bought-together` type. If it isn't
+  /// specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
   ///
   /// Optional.
   /// Possible string values are:

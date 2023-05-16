@@ -13218,8 +13218,37 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// Optional.
   core.List<core.String>? allowedCaCerts;
 
+  /// HTTP method for the flexible webhook calls.
+  ///
+  /// Standard webhook always uses POST.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method not specified.
+  /// - "POST" : HTTP POST Method.
+  /// - "GET" : HTTP GET Method.
+  /// - "HEAD" : HTTP HEAD Method.
+  /// - "PUT" : HTTP PUT Method.
+  /// - "DELETE" : HTTP DELETE Method.
+  /// - "PATCH" : HTTP PATCH Method.
+  /// - "OPTIONS" : HTTP OPTIONS Method.
+  core.String? httpMethod;
+
+  /// Maps the values extracted from specific fields of the flexible webhook
+  /// response into session parameters.
+  ///
+  /// - Key: session parameter name - Value: field path in the webhook response
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? parameterMapping;
+
   /// The password for HTTP Basic authentication.
   core.String? password;
+
+  /// Defines a custom JSON object as request body to send to flexible webhook.
+  ///
+  /// Optional.
+  core.String? requestBody;
 
   /// The HTTP request headers to send together with webhook requests.
   core.Map<core.String, core.String>? requestHeaders;
@@ -13234,12 +13263,25 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// The user name for HTTP Basic authentication.
   core.String? username;
 
+  /// Type of the webhook.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEBHOOK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STANDARD" : Represents a standard webhook.
+  /// - "FLEXIBLE" : Represents a flexible webhook.
+  core.String? webhookType;
+
   GoogleCloudDialogflowCxV3WebhookGenericWebService({
     this.allowedCaCerts,
+    this.httpMethod,
+    this.parameterMapping,
     this.password,
+    this.requestBody,
     this.requestHeaders,
     this.uri,
     this.username,
+    this.webhookType,
   });
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(core.Map json_)
@@ -13249,8 +13291,24 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
+              : null,
+          parameterMapping: json_.containsKey('parameterMapping')
+              ? (json_['parameterMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           password: json_.containsKey('password')
               ? json_['password'] as core.String
+              : null,
+          requestBody: json_.containsKey('requestBody')
+              ? json_['requestBody'] as core.String
               : null,
           requestHeaders: json_.containsKey('requestHeaders')
               ? (json_['requestHeaders'] as core.Map<core.String, core.dynamic>)
@@ -13265,14 +13323,21 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
           username: json_.containsKey('username')
               ? json_['username'] as core.String
               : null,
+          webhookType: json_.containsKey('webhookType')
+              ? json_['webhookType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCaCerts != null) 'allowedCaCerts': allowedCaCerts!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (parameterMapping != null) 'parameterMapping': parameterMapping!,
         if (password != null) 'password': password!,
+        if (requestBody != null) 'requestBody': requestBody!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
+        if (webhookType != null) 'webhookType': webhookType!,
       };
 }
 

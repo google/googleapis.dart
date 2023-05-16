@@ -29,6 +29,7 @@
 /// - [CollectionstatusesResource]
 /// - [ConversionsourcesResource]
 /// - [CssesResource]
+/// - [CustomersResource]
 /// - [DatafeedsResource]
 /// - [DatafeedstatusesResource]
 /// - [FreelistingsprogramResource]
@@ -96,6 +97,7 @@ class ShoppingContentApi {
   ConversionsourcesResource get conversionsources =>
       ConversionsourcesResource(_requester);
   CssesResource get csses => CssesResource(_requester);
+  CustomersResource get customers => CustomersResource(_requester);
   DatafeedsResource get datafeeds => DatafeedsResource(_requester);
   DatafeedstatusesResource get datafeedstatuses =>
       DatafeedstatusesResource(_requester);
@@ -2503,6 +2505,56 @@ class CssesResource {
       queryParams: queryParams_,
     );
     return Css.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Allows uploading one customer information entry.
+  ///
+  /// Adding a customer with loyalty data enables the customer to see
+  /// personalized loyalty annotations on search. Uploading a previously
+  /// existing customer will overwrite the old entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that owns the customer
+  /// information.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Customer> create(
+    Customer request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') + '/customers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Customer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6540,9 +6592,9 @@ class RecommendationsResource {
   ///
   /// [allowedTag] - Optional. List of allowed tags. Tags are a set of
   /// predefined strings that describe the category that individual
-  /// recommendation types. User can specify zero or more tags in this field to
-  /// indicate what group of recommendations they want to receive. Current list
-  /// of supported tags: - TREND
+  /// recommendation types belong to. User can specify zero or more tags in this
+  /// field to indicate what categories of recommendations they want to receive.
+  /// Current list of supported tags: - TREND
   ///
   /// [languageCode] - Optional. Language code of the client. If not set, the
   /// result will be in default language (English). This language code affects
@@ -11065,7 +11117,7 @@ class AttributionSettings {
   /// - "CROSS_CHANNEL_LAST_CLICK" : Cross-channel Last Click model.
   /// - "ADS_PREFERRED_LAST_CLICK" : Ads-preferred Last Click model.
   /// - "CROSS_CHANNEL_DATA_DRIVEN" : Cross-channel Data Driven model.
-  /// - "CROSS_CHANNEL_FIRST_CLICK" : Cross-channel Frist Click model.
+  /// - "CROSS_CHANNEL_FIRST_CLICK" : Cross-channel First Click model.
   /// - "CROSS_CHANNEL_LINEAR" : Cross-channel Linear model.
   /// - "CROSS_CHANNEL_POSITION_BASED" : Cross-channel Position Based model.
   /// - "CROSS_CHANNEL_TIME_DECAY" : Cross-channel Time Decay model.
@@ -11652,6 +11704,115 @@ class CarriersCarrier {
         if (eddServices != null) 'eddServices': eddServices!,
         if (name != null) 'name': name!,
         if (services != null) 'services': services!,
+      };
+}
+
+/// Product property for the Cloud Retail API.
+///
+/// For example, properties for a TV product could be "Screen-Resolution" or
+/// "Screen-Size".
+class CloudExportAdditionalProperties {
+  /// Boolean value of the given property.
+  ///
+  /// For example for a TV product, "True" or "False" if the screen is UHD.
+  core.bool? boolValue;
+
+  /// Float values of the given property.
+  ///
+  /// For example for a TV product 1.2345. Maximum number of specified values
+  /// for this field is 400. Values are stored in an arbitrary but consistent
+  /// order.
+  core.List<core.double>? floatValue;
+
+  /// Integer values of the given property.
+  ///
+  /// For example, 1080 for a screen resolution of a TV product. Maximum number
+  /// of specified values for this field is 400. Values are stored in an
+  /// arbitrary but consistent order.
+  core.List<core.String>? intValue;
+
+  /// Maximum float value of the given property.
+  ///
+  /// For example for a TV product 100.00.
+  core.double? maxValue;
+
+  /// Minimum float value of the given property.
+  ///
+  /// For example for a TV product 1.00.
+  core.double? minValue;
+
+  /// Name of the given property.
+  ///
+  /// For example, "Screen-Resolution" for a TV product. Maximum string size is
+  /// 256 characters.
+  core.String? propertyName;
+
+  /// Text value of the given property.
+  ///
+  /// For example, "8K(UHD)" could be a text value for a TV product. Maximum
+  /// number of specified values for this field is 400. Values are stored in an
+  /// arbitrary but consistent order. Maximum string size is 256 characters.
+  core.List<core.String>? textValue;
+
+  /// Unit of the given property.
+  ///
+  /// For example, "Pixels" for a TV product. Maximum string size is 256 bytes.
+  core.String? unitCode;
+
+  CloudExportAdditionalProperties({
+    this.boolValue,
+    this.floatValue,
+    this.intValue,
+    this.maxValue,
+    this.minValue,
+    this.propertyName,
+    this.textValue,
+    this.unitCode,
+  });
+
+  CloudExportAdditionalProperties.fromJson(core.Map json_)
+      : this(
+          boolValue: json_.containsKey('boolValue')
+              ? json_['boolValue'] as core.bool
+              : null,
+          floatValue: json_.containsKey('floatValue')
+              ? (json_['floatValue'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+          intValue: json_.containsKey('intValue')
+              ? (json_['intValue'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          maxValue: json_.containsKey('maxValue')
+              ? (json_['maxValue'] as core.num).toDouble()
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? (json_['minValue'] as core.num).toDouble()
+              : null,
+          propertyName: json_.containsKey('propertyName')
+              ? json_['propertyName'] as core.String
+              : null,
+          textValue: json_.containsKey('textValue')
+              ? (json_['textValue'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          unitCode: json_.containsKey('unitCode')
+              ? json_['unitCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (propertyName != null) 'propertyName': propertyName!,
+        if (textValue != null) 'textValue': textValue!,
+        if (unitCode != null) 'unitCode': unitCode!,
       };
 }
 
@@ -12264,6 +12425,65 @@ class CustomAttribute {
         if (groupValues != null) 'groupValues': groupValues!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// The object representing a customer to update data for.
+///
+/// Includes a customer identifier (such as email address) and any associated
+/// metadata to add. LoyaltyData triggers adding customer data for the purpose
+/// of loyalty personalization.
+class Customer {
+  /// The customer's email address.
+  ///
+  /// No extra string processing needed.
+  core.String? emailAddress;
+
+  /// Loyalty data associated with the customer.
+  CustomerLoyaltyData? loyaltyData;
+
+  Customer({
+    this.emailAddress,
+    this.loyaltyData,
+  });
+
+  Customer.fromJson(core.Map json_)
+      : this(
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
+              : null,
+          loyaltyData: json_.containsKey('loyaltyData')
+              ? CustomerLoyaltyData.fromJson(
+                  json_['loyaltyData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (loyaltyData != null) 'loyaltyData': loyaltyData!,
+      };
+}
+
+/// The loyalty data of the customer.
+class CustomerLoyaltyData {
+  /// The tier information for the given user.
+  ///
+  /// Can be an empty string.
+  core.String? loyaltyTier;
+
+  CustomerLoyaltyData({
+    this.loyaltyTier,
+  });
+
+  CustomerLoyaltyData.fromJson(core.Map json_)
+      : this(
+          loyaltyTier: json_.containsKey('loyaltyTier')
+              ? json_['loyaltyTier'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (loyaltyTier != null) 'loyaltyTier': loyaltyTier!,
       };
 }
 
@@ -13544,7 +13764,7 @@ class DeliveryAreaPostalCodeRange {
 class DeliveryTime {
   /// Business days cutoff time definition.
   ///
-  /// If not configured the cutoff time will be defaulted to 8AM PST. If local
+  /// If not configured, the cutoff time will be defaulted to 8AM PST. If local
   /// delivery, use Service.StoreConfig.CutoffConfig.
   CutoffTime? cutoffTime;
 
@@ -23127,6 +23347,9 @@ class Product {
   /// Required.
   core.String? channel;
 
+  /// Extra fields to export to the Cloud Retail program.
+  core.List<CloudExportAdditionalProperties>? cloudExportAdditionalProperties;
+
   /// Color of the item.
   core.String? color;
 
@@ -23494,6 +23717,7 @@ class Product {
     this.brand,
     this.canonicalLink,
     this.channel,
+    this.cloudExportAdditionalProperties,
     this.color,
     this.condition,
     this.contentLanguage,
@@ -23618,6 +23842,13 @@ class Product {
           channel: json_.containsKey('channel')
               ? json_['channel'] as core.String
               : null,
+          cloudExportAdditionalProperties:
+              json_.containsKey('cloudExportAdditionalProperties')
+                  ? (json_['cloudExportAdditionalProperties'] as core.List)
+                      .map((value) => CloudExportAdditionalProperties.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           color:
               json_.containsKey('color') ? json_['color'] as core.String : null,
           condition: json_.containsKey('condition')
@@ -23918,6 +24149,8 @@ class Product {
         if (brand != null) 'brand': brand!,
         if (canonicalLink != null) 'canonicalLink': canonicalLink!,
         if (channel != null) 'channel': channel!,
+        if (cloudExportAdditionalProperties != null)
+          'cloudExportAdditionalProperties': cloudExportAdditionalProperties!,
         if (color != null) 'color': color!,
         if (condition != null) 'condition': condition!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,

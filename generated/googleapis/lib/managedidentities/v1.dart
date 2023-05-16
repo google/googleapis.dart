@@ -368,6 +368,48 @@ class ProjectsLocationsGlobalDomainsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Disable Domain Migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableMigration(
+    DisableMigrationRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':disableMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// DomainJoinMachine API joins a Compute Engine VM to the domain
   ///
   /// [request] - The metadata request object.
@@ -409,6 +451,48 @@ class ProjectsLocationsGlobalDomainsResource {
     );
     return DomainJoinMachineResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable Domain Migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableMigration(
+    EnableMigrationRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':enableMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Extend Schema for Domain
@@ -2381,6 +2465,9 @@ class DetachTrustRequest {
       };
 }
 
+/// DisableMigrationRequest is the request message for DisableMigration method.
+typedef DisableMigrationRequest = $Empty;
+
 /// Represents a managed Microsoft Active Directory domain.
 ///
 /// If the domain is being changed, it will be placed into the UPDATING state,
@@ -2645,6 +2732,32 @@ class DomainJoinMachineResponse {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EnableMigrationRequest is the request message for EnableMigration method.
+class EnableMigrationRequest {
+  /// List of the on-prem domains to be migrated.
+  ///
+  /// Required.
+  core.List<OnPremDomainDetails>? migratingDomains;
+
+  EnableMigrationRequest({
+    this.migratingDomains,
+  });
+
+  EnableMigrationRequest.fromJson(core.Map json_)
+      : this(
+          migratingDomains: json_.containsKey('migratingDomains')
+              ? (json_['migratingDomains'] as core.List)
+                  .map((value) => OnPremDomainDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migratingDomains != null) 'migratingDomains': migratingDomains!,
+      };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3059,8 +3172,43 @@ class ListSqlIntegrationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// OnPremDomainDetails is the message which contains details of on-prem domain
+/// which is trusted and needs to be migrated.
+class OnPremDomainDetails {
+  /// Option to disable SID filtering.
+  ///
+  /// Optional.
+  core.bool? disableSidFiltering;
+
+  /// FQDN of the on-prem domain being migrated.
+  ///
+  /// Required.
+  core.String? domainName;
+
+  OnPremDomainDetails({
+    this.disableSidFiltering,
+    this.domainName,
+  });
+
+  OnPremDomainDetails.fromJson(core.Map json_)
+      : this(
+          disableSidFiltering: json_.containsKey('disableSidFiltering')
+              ? json_['disableSidFiltering'] as core.bool
+              : null,
+          domainName: json_.containsKey('domainName')
+              ? json_['domainName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableSidFiltering != null)
+          'disableSidFiltering': disableSidFiltering!,
+        if (domainName != null) 'domainName': domainName!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

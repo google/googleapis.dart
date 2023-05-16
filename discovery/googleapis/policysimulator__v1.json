@@ -705,7 +705,7 @@
             }
         }
     },
-    "revision": "20230429",
+    "revision": "20230507",
     "rootUrl": "https://policysimulator.googleapis.com/",
     "schemas": {
         "GoogleCloudPolicysimulatorV1AccessStateDiff": {

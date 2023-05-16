@@ -1643,6 +1643,15 @@ class Configuration {
   /// Required.
   core.String? dpcResourcePath;
 
+  /// The timeout before forcing factory reset the device if the device doesn't
+  /// go through provisioning in the setup wizard, usually due to lack of
+  /// network connectivity during setup wizard.
+  ///
+  /// Ranges from 0-6 hours, with 2 hours being the default if unset.
+  ///
+  /// Optional.
+  core.String? forcedResetTime;
+
   /// Whether this is the default configuration that zero-touch enrollment
   /// applies to any new devices the organization purchases in the future.
   ///
@@ -1670,6 +1679,7 @@ class Configuration {
     this.customMessage,
     this.dpcExtras,
     this.dpcResourcePath,
+    this.forcedResetTime,
     this.isDefault,
     this.name,
   });
@@ -1700,6 +1710,9 @@ class Configuration {
           dpcResourcePath: json_.containsKey('dpcResourcePath')
               ? json_['dpcResourcePath'] as core.String
               : null,
+          forcedResetTime: json_.containsKey('forcedResetTime')
+              ? json_['forcedResetTime'] as core.String
+              : null,
           isDefault: json_.containsKey('isDefault')
               ? json_['isDefault'] as core.bool
               : null,
@@ -1715,6 +1728,7 @@ class Configuration {
         if (customMessage != null) 'customMessage': customMessage!,
         if (dpcExtras != null) 'dpcExtras': dpcExtras!,
         if (dpcResourcePath != null) 'dpcResourcePath': dpcResourcePath!,
+        if (forcedResetTime != null) 'forcedResetTime': forcedResetTime!,
         if (isDefault != null) 'isDefault': isDefault!,
         if (name != null) 'name': name!,
       };

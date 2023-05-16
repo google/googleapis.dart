@@ -6859,6 +6859,7 @@ class $EgressFrom {
 /// - firebaseml:v1 : Empty
 /// - firebaserules:v1 : Empty
 /// - firestore:v1 : Empty
+/// - firestore:v1 : GoogleFirestoreAdminV1DailyRecurrence
 /// - firestore:v1 : GoogleLongrunningCancelOperationRequest
 /// - forms:v1 : Empty
 /// - forms:v1 : PageBreakItem
@@ -6919,6 +6920,7 @@ class $EgressFrom {
 /// - logging:v2 : UndeleteBucketRequest
 /// - logging:v2 : WriteLogEntriesResponse
 /// - managedidentities:v1 : CancelOperationRequest
+/// - managedidentities:v1 : DisableMigrationRequest
 /// - managedidentities:v1 : Empty
 /// - managedidentities:v1 : ResetAdminPasswordRequest
 /// - manufacturers:v1 : Empty
@@ -17313,6 +17315,59 @@ class $RuntimeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : SbomReferenceIntotoPredicate
+/// - ondemandscanning:v1 : SbomReferenceIntotoPredicate
+class $SbomReferenceIntotoPredicate {
+  /// A map of algorithm to digest of the contents of the SBOM.
+  core.Map<core.String, core.String>? digest;
+
+  /// The location of the SBOM.
+  core.String? location;
+
+  /// The mime type of the SBOM.
+  core.String? mimeType;
+
+  /// The person or system referring this predicate to the consumer.
+  core.String? referrerId;
+
+  $SbomReferenceIntotoPredicate({
+    this.digest,
+    this.location,
+    this.mimeType,
+    this.referrerId,
+  });
+
+  $SbomReferenceIntotoPredicate.fromJson(core.Map json_)
+      : this(
+          digest: json_.containsKey('digest')
+              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
+              : null,
+          referrerId: json_.containsKey('referrerId')
+              ? json_['referrerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (location != null) 'location': location!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (referrerId != null) 'referrerId': referrerId!,
       };
 }
 

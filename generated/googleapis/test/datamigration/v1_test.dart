@@ -2211,6 +2211,7 @@ api.MigrationJob buildMigrationJob() {
   final o = api.MigrationJob();
   buildCounterMigrationJob++;
   if (buildCounterMigrationJob < 3) {
+    o.cmekKeyName = 'foo';
     o.conversionWorkspace = buildConversionWorkspaceInfo();
     o.createTime = 'foo';
     o.destination = 'foo';
@@ -2241,6 +2242,10 @@ api.MigrationJob buildMigrationJob() {
 void checkMigrationJob(api.MigrationJob o) {
   buildCounterMigrationJob++;
   if (buildCounterMigrationJob < 3) {
+    unittest.expect(
+      o.cmekKeyName!,
+      unittest.equals('foo'),
+    );
     checkConversionWorkspaceInfo(o.conversionWorkspace!);
     unittest.expect(
       o.createTime!,

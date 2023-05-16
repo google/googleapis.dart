@@ -821,7 +821,7 @@
             }
         }
     },
-    "revision": "20230428",
+    "revision": "20230509",
     "rootUrl": "https://bigqueryreservation.googleapis.com/",
     "schemas": {
         "Assignment": {

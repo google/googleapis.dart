@@ -2559,6 +2559,10 @@ class ProjectsLocationsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2574,12 +2578,14 @@ class ProjectsLocationsTriggersResource {
     core.String resourceName, {
     core.String? projectId,
     core.String? triggerId,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3165,6 +3171,10 @@ class ProjectsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3179,10 +3189,12 @@ class ProjectsTriggersResource {
     BuildTrigger request,
     core.String projectId,
     core.String triggerId, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 

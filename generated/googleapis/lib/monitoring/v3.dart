@@ -2023,7 +2023,8 @@ class ProjectsMetricDescriptorsResource {
   /// starts_with("custom.googleapis.com/")
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
+  /// return. The default and maximum value is 10,000. If a page_size \<= 0 or
+  /// \> 10,000 is submitted, will instead return a maximum of 10,000 results.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this

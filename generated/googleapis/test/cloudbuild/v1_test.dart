@@ -7780,6 +7780,7 @@ void main() {
       final arg_resourceName = 'foo';
       final arg_projectId = 'foo';
       final arg_triggerId = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.BuildTrigger.fromJson(
@@ -7826,6 +7827,10 @@ void main() {
           unittest.equals(arg_triggerId),
         );
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -7839,6 +7844,7 @@ void main() {
       final response = await res.patch(arg_request, arg_resourceName,
           projectId: arg_projectId,
           triggerId: arg_triggerId,
+          updateMask: arg_updateMask,
           $fields: arg_$fields);
       checkBuildTrigger(response as api.BuildTrigger);
     });
@@ -8632,6 +8638,7 @@ void main() {
       final arg_request = buildBuildTrigger();
       final arg_projectId = 'foo';
       final arg_triggerId = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.BuildTrigger.fromJson(
@@ -8689,6 +8696,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8701,7 +8712,7 @@ void main() {
       }), true);
       final response = await res.patch(
           arg_request, arg_projectId, arg_triggerId,
-          $fields: arg_$fields);
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkBuildTrigger(response as api.BuildTrigger);
     });
 

@@ -423,6 +423,7 @@ api.Instance buildInstance() {
     o.options = buildUnnamed7();
     o.p4ServiceAccount = 'foo';
     o.privateInstance = true;
+    o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.serviceEndpoint = 'foo';
     o.state = 'foo';
@@ -485,6 +486,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.privateInstance!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),

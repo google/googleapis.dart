@@ -2646,15 +2646,13 @@ class Connection {
   /// Output only.
   ConnectionStatus? status;
 
-  /// This subscription type enum value states if the metrics should be sent for
-  /// billing or not.
+  /// This subscription type enum states the subscription type of the project.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Unspecified subscription type.
-  /// - "PAY_G" : Metrics should be sent for billing for PayG type.
-  /// - "PAID" : Metrics should not be sent for billing for Paid Subscription
-  /// type.
+  /// - "PAY_G" : PayG subscription.
+  /// - "PAID" : Paid Subscription.
   core.String? subscriptionType;
 
   /// Suspended indicates if a user has suspended a connection or not.
@@ -2893,8 +2891,8 @@ class ConnectionStatus {
   /// - "DELETING" : Connection is being deleted.
   /// - "UPDATING" : Connection is being updated.
   /// - "ERROR" : Connection is not running due to an error.
-  /// - "AUTHORIZATION_REQUIRED" : Connection is not running due to an auth
-  /// error for the Oauth2 Auth Code based connector.
+  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
+  /// authorization configuration is not complete.
   core.String? state;
 
   /// Status provides detailed information for the state.

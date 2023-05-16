@@ -1670,7 +1670,7 @@
             }
         }
     },
-    "revision": "20230420",
+    "revision": "20230505",
     "rootUrl": "https://networksecurity.googleapis.com/",
     "schemas": {
         "AuthorizationPolicy": {

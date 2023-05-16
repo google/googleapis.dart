@@ -5158,6 +5158,21 @@ class PublicKey {
 /// The options set here apply to certificates issued by any
 /// CertificateAuthority in the CaPool.
 class PublishingOptions {
+  /// Specifies the encoding format of each CertificateAuthority's CA
+  /// certificate and CRLs.
+  ///
+  /// If this is omitted, CA certificates and CRLs will be published in PEM.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENCODING_FORMAT_UNSPECIFIED" : Not specified. By default, PEM format
+  /// will be used.
+  /// - "PEM" : The CertificateAuthority's CA certificate and CRLs will be
+  /// published in PEM format.
+  /// - "DER" : The CertificateAuthority's CA certificate and CRLs will be
+  /// published in DER format.
+  core.String? encodingFormat;
+
   /// When true, publishes each CertificateAuthority's CA certificate and
   /// includes its URL in the "Authority Information Access" X.509 extension in
   /// all issued Certificates.
@@ -5181,12 +5196,16 @@ class PublishingOptions {
   core.bool? publishCrl;
 
   PublishingOptions({
+    this.encodingFormat,
     this.publishCaCert,
     this.publishCrl,
   });
 
   PublishingOptions.fromJson(core.Map json_)
       : this(
+          encodingFormat: json_.containsKey('encodingFormat')
+              ? json_['encodingFormat'] as core.String
+              : null,
           publishCaCert: json_.containsKey('publishCaCert')
               ? json_['publishCaCert'] as core.bool
               : null,
@@ -5196,6 +5215,7 @@ class PublishingOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encodingFormat != null) 'encodingFormat': encodingFormat!,
         if (publishCaCert != null) 'publishCaCert': publishCaCert!,
         if (publishCrl != null) 'publishCrl': publishCrl!,
       };

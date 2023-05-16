@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20230428",
+    "revision": "20230508",
     "rootUrl": "https://redis.googleapis.com/",
     "schemas": {
         "Empty": {

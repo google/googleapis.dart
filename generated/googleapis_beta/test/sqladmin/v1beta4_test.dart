@@ -1060,6 +1060,9 @@ api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
   final o = api.ExportContextBakExportOptions();
   buildCounterExportContextBakExportOptions++;
   if (buildCounterExportContextBakExportOptions < 3) {
+    o.bakType = 'foo';
+    o.copyOnly = true;
+    o.differentialBase = true;
     o.stripeCount = 42;
     o.striped = true;
   }
@@ -1070,6 +1073,12 @@ api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
 void checkExportContextBakExportOptions(api.ExportContextBakExportOptions o) {
   buildCounterExportContextBakExportOptions++;
   if (buildCounterExportContextBakExportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.copyOnly!, unittest.isTrue);
+    unittest.expect(o.differentialBase!, unittest.isTrue);
     unittest.expect(
       o.stripeCount!,
       unittest.equals(42),
@@ -1505,7 +1514,10 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
   final o = api.ImportContextBakImportOptions();
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    o.bakType = 'foo';
     o.encryptionOptions = buildImportContextBakImportOptionsEncryptionOptions();
+    o.noRecovery = true;
+    o.recoveryOnly = true;
     o.striped = true;
   }
   buildCounterImportContextBakImportOptions--;
@@ -1515,7 +1527,13 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
 void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
     checkImportContextBakImportOptionsEncryptionOptions(o.encryptionOptions!);
+    unittest.expect(o.noRecovery!, unittest.isTrue);
+    unittest.expect(o.recoveryOnly!, unittest.isTrue);
     unittest.expect(o.striped!, unittest.isTrue);
   }
   buildCounterImportContextBakImportOptions--;

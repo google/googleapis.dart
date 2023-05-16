@@ -2057,7 +2057,7 @@ class SecretVersion {
 
   /// Version of the secret (version number or the string 'latest').
   ///
-  /// It is preferrable to use `latest` version with secret volumes as secret
+  /// It is preferable to use `latest` version with secret volumes as secret
   /// value changes are reflected immediately.
   core.String? version;
 

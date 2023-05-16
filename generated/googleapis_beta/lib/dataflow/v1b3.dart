@@ -7613,6 +7613,8 @@ class ParameterMetadata {
   /// - "SERVICE_ACCOUNT" : The parameter specifies a Service Account email.
   /// - "MACHINE_TYPE" : The parameter specifies a Machine Type.
   /// - "KMS_KEY_NAME" : The parameter specifies a KMS Key name.
+  /// - "WORKER_REGION" : The parameter specifies a Worker Region.
+  /// - "WORKER_ZONE" : The parameter specifies a Worker Zone.
   core.String? paramType;
 
   /// Specifies the name of the parent parameter.

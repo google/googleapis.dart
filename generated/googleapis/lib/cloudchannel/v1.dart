@@ -1825,6 +1825,60 @@ class AccountsCustomersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists the billing accounts that are eligible to purchase particular SKUs
+  /// for a given customer.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. Return value: Based on the provided list of SKUs, returns a
+  /// list of SKU groups that must be purchased using the same billing account
+  /// and the billing accounts eligible to purchase each SKU group.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The resource name of the customer to list eligible
+  /// billing accounts for. Format:
+  /// accounts/{account_id}/customers/{customer_id}.
+  /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [skus] - Required. List of SKUs to list eligible billing accounts for. At
+  /// least one SKU is required. Format: products/{product_id}/skus/{sku_id}.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudChannelV1QueryEligibleBillingAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse>
+      queryEligibleBillingAccounts(
+    core.String customer, {
+    core.List<core.String>? skus,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (skus != null) 'skus': skus,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        ':queryEligibleBillingAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Transfers customer entitlements to new reseller.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
@@ -3577,6 +3631,90 @@ class GoogleCloudChannelV1AssociationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
+      };
+}
+
+/// Represents a billing account.
+class GoogleCloudChannelV1BillingAccount {
+  /// The time when this billing account was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The 3-letter currency code defined in ISO 4217.
+  ///
+  /// Output only.
+  core.String? currencyCode;
+
+  /// Display name of the billing account.
+  core.String? displayName;
+
+  /// Resource name of the billing account.
+  ///
+  /// Format: accounts/{account_id}/billingAccounts/{billing_account_id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The CLDR region code.
+  ///
+  /// Output only.
+  core.String? regionCode;
+
+  GoogleCloudChannelV1BillingAccount({
+    this.createTime,
+    this.currencyCode,
+    this.displayName,
+    this.name,
+    this.regionCode,
+  });
+
+  GoogleCloudChannelV1BillingAccount.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Represents a billing account that can be used to make a purchase.
+class GoogleCloudChannelV1BillingAccountPurchaseInfo {
+  /// The billing account resource.
+  GoogleCloudChannelV1BillingAccount? billingAccount;
+
+  GoogleCloudChannelV1BillingAccountPurchaseInfo({
+    this.billingAccount,
+  });
+
+  GoogleCloudChannelV1BillingAccountPurchaseInfo.fromJson(core.Map json_)
+      : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? GoogleCloudChannelV1BillingAccount.fromJson(
+                  json_['billingAccount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
       };
 }
 
@@ -6830,6 +6968,35 @@ class GoogleCloudChannelV1PurchasableSku {
       };
 }
 
+/// Response message for QueryEligibleBillingAccounts.
+class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
+  /// List of SKU purchase groups where each group represents a set of SKUs that
+  /// must be purchased using the same billing account.
+  ///
+  /// Each SKU from \[QueryEligibleBillingAccountsRequest.skus\] will appear in
+  /// exactly one SKU group.
+  core.List<GoogleCloudChannelV1SkuPurchaseGroup>? skuPurchaseGroups;
+
+  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse({
+    this.skuPurchaseGroups,
+  });
+
+  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
+      core.Map json_)
+      : this(
+          skuPurchaseGroups: json_.containsKey('skuPurchaseGroups')
+              ? (json_['skuPurchaseGroups'] as core.List)
+                  .map((value) => GoogleCloudChannelV1SkuPurchaseGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuPurchaseGroups != null) 'skuPurchaseGroups': skuPurchaseGroups!,
+      };
+}
+
 /// Request Message for RegisterSubscriber.
 class GoogleCloudChannelV1RegisterSubscriberRequest {
   /// Service account that provides subscriber access to the registered topic.
@@ -7448,6 +7615,47 @@ class GoogleCloudChannelV1SkuGroupCondition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (skuGroup != null) 'skuGroup': skuGroup!,
+      };
+}
+
+/// Represents a set of SKUs that must be purchased using the same billing
+/// account.
+class GoogleCloudChannelV1SkuPurchaseGroup {
+  /// List of billing accounts that are eligible to purhcase these SKUs.
+  core.List<GoogleCloudChannelV1BillingAccountPurchaseInfo>?
+      billingAccountPurchaseInfos;
+
+  /// Resource names of the SKUs included in this group.
+  ///
+  /// Format: products/{product_id}/skus/{sku_id}.
+  core.List<core.String>? skus;
+
+  GoogleCloudChannelV1SkuPurchaseGroup({
+    this.billingAccountPurchaseInfos,
+    this.skus,
+  });
+
+  GoogleCloudChannelV1SkuPurchaseGroup.fromJson(core.Map json_)
+      : this(
+          billingAccountPurchaseInfos: json_
+                  .containsKey('billingAccountPurchaseInfos')
+              ? (json_['billingAccountPurchaseInfos'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1BillingAccountPurchaseInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          skus: json_.containsKey('skus')
+              ? (json_['skus'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccountPurchaseInfos != null)
+          'billingAccountPurchaseInfos': billingAccountPurchaseInfos!,
+        if (skus != null) 'skus': skus!,
       };
 }
 

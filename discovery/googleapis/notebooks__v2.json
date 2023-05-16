@@ -394,7 +394,7 @@
             }
         }
     },
-    "revision": "20230427",
+    "revision": "20230502",
     "rootUrl": "https://notebooks.googleapis.com/",
     "schemas": {
         "Binding": {

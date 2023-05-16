@@ -2075,7 +2075,7 @@
             }
         }
     },
-    "revision": "20230503",
+    "revision": "20230510",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AbuseReportingConfig": {
@@ -3257,7 +3257,6 @@
                         "FLAT_ROOM",
                         "THREADED_ROOM",
                         "IMMUTABLE_MEMBERSHIP_HUMAN_DM",
-                        "POST_ROOM",
                         "ACTIVITY_FEED",
                         "SHORTCUT"
                     ],
@@ -3269,7 +3268,6 @@
                         "A flat room that contains a single thread.",
                         "A threaded room. Topics in this room are threaded, and users can reply to any topic.",
                         "A DM with immutable group membership. It can be a 1:1 DM or a group DM with multiple human users.",
-                        "A post room. Topics in this room are organized in a post/reply style. See the design doc for more details: go/PostRoomsInDynamite. Deprecated. Post rooms are no longer supported.",
                         "Represents an Activity Feed space. These groups are modeled like flat rooms and contain items for users to catch up on important things. Each user should only have one group of this type. See go/activity-feed. Deprecated: The go/activity-feed project is cancelled and this should no longer be used.",
                         "Represents a shortcut space. These groups are modeled like flat rooms and contain items for users to catch up on important things such as user mentioned messages and starred messages. LINT.ThenChange(//depot/google3/logs/proto/apps_dynamite/dynamite_visual_element_entry.proto:LoggingGroupType,//depot/google3/java/com/google/apps/dynamite/v1/web/ui/group/groups.js:LoggingGroupType)"
                     ],
@@ -3613,6 +3611,20 @@
             "properties": {
                 "meetingCode": {
                     "description": "Required. A globally unique code (e.g. \"cxv-zbgj-wzw\") that points to a meeting space. Note: Meeting codes may be regenerated, which will cause old meeting codes to become invalid.",
+                    "type": "string"
+                },
+                "meetingType": {
+                    "description": "Required. Type of the meeting. This controls the chat client UX.",
+                    "enum": [
+                        "MEETING_TYPE_UNSPECIFIED",
+                        "HUDDLE",
+                        "CALL"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 },
                 "meetingUrl": {
@@ -12954,7 +12966,7 @@
             "type": "object"
         },
         "MembershipChangedMetadata": {
-            "description": "Annotation metadata to display system messages for membership changes. Next Tag: 8",
+            "description": "Annotation metadata to display system messages for membership changes. Next Tag: 13",
             "id": "MembershipChangedMetadata",
             "properties": {
                 "affectedMemberProfiles": {
@@ -13011,7 +13023,8 @@
                         "KICKED_DUE_TO_OTR_CONFLICT",
                         "ROLE_UPDATED",
                         "ROLE_TARGET_AUDIENCE_UPDATED",
-                        "SPACE_LIMIT_EXCEEDED"
+                        "SPACE_LIMIT_EXCEEDED",
+                        "HUMAN_MEMBERSHIP_DISPLAY_DISABLED"
                     ],
                     "enumDescriptions": [
                         "Default value for the enum. DO NOT USE.",
@@ -13025,7 +13038,8 @@
                         "This signifies the user is kicked because the user's OTR policy is conflicted with the room history settings. Joined -> Non-member. One user.",
                         "MembershipRole changed. Multiple users.",
                         "The room is now joinable by an",
-                        "Space limit exceeded"
+                        "Space limit exceeded",
+                        "HUMAN_MEMBERSHIP_DISPLAY_DISABLED indicates that the space has crossed the member size threshold above which human membership change system messages will be muted. This event can only occur once for a space over its lifetime. When this event is received, clients should display a system message stating that human membership changes will no longer be displayed in the space."
                     ],
                     "type": "string"
                 }
@@ -13240,7 +13254,7 @@
                 },
                 "messageReference": {
                     "$ref": "MessageReference",
-                    "description": "Contains reference to another message. It is used in shortcuts which are used to collect messages from different spaces with a certain common property into another space. For example, all @mentions of a user are collected into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Most information from the source message (like text) are copied onto top-level Message fields of shortcut messages by the server. The MessageReference is helpful for clients to enable things like click navigation to source message. NEXT TAG: 50"
+                    "description": "Contains reference to another message. It is used in shortcuts which are used to collect messages from different spaces with a certain common property into another space. For example, all @mentions of a user are collected into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Most information from the source message (like text) are copied onto top-level Message fields of shortcut messages by the server. The MessageReference is helpful for clients to enable things like click navigation to source message."
                 },
                 "messageSearchInfo": {
                     "$ref": "AppsDynamiteSharedMessageSearchInfo",
@@ -13257,6 +13271,11 @@
                         "Private state - only visible to the message creator, and the private_message_viewer if set."
                     ],
                     "type": "string"
+                },
+                "numberOfUnicodeEmojis": {
+                    "description": "Indicates the number of unicode emojis in the message.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "originAppSuggestions": {
                     "description": "Indicates if this message contains any suggestions that were provided by any Apps.",

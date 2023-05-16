@@ -2489,7 +2489,7 @@
                                     "type": "string"
                                 },
                                 "regionsVersion.version": {
-                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/02.",
+                                    "description": "Required. The latest version is 2022/02.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -2627,7 +2627,7 @@
                                     "type": "string"
                                 },
                                 "regionsVersion.version": {
-                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/02.",
+                                    "description": "Required. The latest version is 2022/02.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2898,7 +2898,7 @@
                                                     "type": "string"
                                                 },
                                                 "regionsVersion.version": {
-                                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/02.",
+                                                    "description": "Required. The latest version is 2022/02.",
                                                     "location": "query",
                                                     "type": "string"
                                                 }
@@ -3135,7 +3135,7 @@
                                                     "type": "string"
                                                 },
                                                 "regionsVersion.version": {
-                                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/02.",
+                                                    "description": "Required. The latest version is 2022/02.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -4044,7 +4044,7 @@
             }
         }
     },
-    "revision": "20230504",
+    "revision": "20230516",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "AcquisitionTargetingRule": {
@@ -6123,11 +6123,11 @@
             "type": "object"
         },
         "RegionsVersion": {
-            "description": "The version of the available regions being used for the specified resource.",
+            "description": "The version of the available regions being used for the specified resource. A string representing the version of available regions being used for the specified resource. Regional prices for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353).",
             "id": "RegionsVersion",
             "properties": {
                 "version": {
-                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/02.",
+                    "description": "Required. The latest version is 2022/02.",
                     "type": "string"
                 }
             },

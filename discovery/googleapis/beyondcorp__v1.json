@@ -1588,7 +1588,7 @@
             }
         }
     },
-    "revision": "20230501",
+    "revision": "20230503",
     "rootUrl": "https://beyondcorp.googleapis.com/",
     "schemas": {
         "AllocatedConnection": {

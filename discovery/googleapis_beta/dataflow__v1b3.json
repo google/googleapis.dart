@@ -2209,7 +2209,7 @@
             }
         }
     },
-    "revision": "20230427",
+    "revision": "20230506",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "ApproximateProgress": {
@@ -4732,7 +4732,9 @@
                         "JAVASCRIPT_UDF_FILE",
                         "SERVICE_ACCOUNT",
                         "MACHINE_TYPE",
-                        "KMS_KEY_NAME"
+                        "KMS_KEY_NAME",
+                        "WORKER_REGION",
+                        "WORKER_ZONE"
                     ],
                     "enumDescriptions": [
                         "Default input type.",
@@ -4749,7 +4751,9 @@
                         "The parameter specifies a JavaScript UDF in Cloud Storage.",
                         "The parameter specifies a Service Account email.",
                         "The parameter specifies a Machine Type.",
-                        "The parameter specifies a KMS Key name."
+                        "The parameter specifies a KMS Key name.",
+                        "The parameter specifies a Worker Region.",
+                        "The parameter specifies a Worker Zone."
                     ],
                     "type": "string"
                 },
