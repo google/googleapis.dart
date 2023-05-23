@@ -27,7 +27,7 @@ class Pubspec {
   String get sdkConstraint => '>=2.19.0 <3.0.0';
 
   static const dependencies = {
-    'http': '">=0.13.0 <0.14.0"',
+    'http': '">=0.13.0 <2.0.0"',
     '_discoveryapis_commons': '^1.0.0',
   };
 
