@@ -1,6 +1,7 @@
 ## 8.1.0-dev
 
-- Require Dart 2.17 or later.
+- Require Dart 2.19 or later.
+- Allow latest `package:http`.
 
 ## 8.0.0
 

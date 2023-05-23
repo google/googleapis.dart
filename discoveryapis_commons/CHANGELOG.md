@@ -1,6 +1,7 @@
-## 1.0.6-dev
+## 1.0.6
 
-- Require Dart 2.19
+- Require Dart 2.19 or later.
+- Allow latest `package:http`.
 
 ## 1.0.5
 

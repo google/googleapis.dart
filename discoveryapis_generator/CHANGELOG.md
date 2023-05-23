@@ -1,6 +1,7 @@
 ## 1.1.0-dev
 
-- Require Dart 2.16 or later.
+- Require Dart 2.19 or later.
+- Allow latest `package:http`.
 - Add positional parameters to all schema types.
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.
