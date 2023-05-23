@@ -7,6 +7,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome Verified Access API - v2
@@ -20,7 +21,7 @@
 /// Create an instance of [VerifiedaccessApi] to access these resources:
 ///
 /// - [ChallengeResource]
-library;
+library verifiedaccess_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

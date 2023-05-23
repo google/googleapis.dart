@@ -1,3 +1,7 @@
+## 11.2.0-dev
+
+- Add back in `library` directives to improve documentation.
+
 ## 11.1.0
 
 - `gkeonprem` - new!

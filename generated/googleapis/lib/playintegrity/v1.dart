@@ -7,6 +7,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play Integrity API - v1
@@ -22,7 +23,7 @@
 /// Create an instance of [PlayIntegrityApi] to access these resources:
 ///
 /// - [V1Resource]
-library;
+library playintegrity_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

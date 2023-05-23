@@ -7,6 +7,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Domains RDAP API - v1
@@ -24,7 +25,7 @@
 /// - [IpResource]
 /// - [NameserverResource]
 /// - [V1Resource]
-library;
+library domainsrdap_v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
