@@ -1,6 +1,7 @@
 ## 11.2.0-dev
 
 - Add back in `library` directives to improve documentation.
+- Allow latest `package:http`.
 
 ## 11.1.0
 
