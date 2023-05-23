@@ -7,6 +7,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// HomeGraph API - v1
@@ -18,7 +19,7 @@
 ///
 /// - [AgentUsersResource]
 /// - [DevicesResource]
-library;
+library homegraph_v1;
 
 import 'dart:async' as async_1;
 import 'dart:convert' as convert;

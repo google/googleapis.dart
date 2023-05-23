@@ -21,6 +21,8 @@ const ignoreForFileSet = {
   'prefer_interpolation_to_compose_strings',
   'unnecessary_brace_in_string_interps',
   'unnecessary_lambdas',
+  // TODO: drop name once dart-lang/dartdoc#1658 is fixed
+  'unnecessary_library_directive',
   'unnecessary_string_interpolations',
 };
 
@@ -95,19 +97,17 @@ class DartApiLibrary extends BaseApiLibrary {
       exportedClasses.addAll(exportedMediaClasses);
     }
 
-    var libraryComments =
+    final libraryComments =
         _commentFromRestDescription(description, apiClass).asDartDoc(0).trim();
-
-    if (libraryComments.isNotEmpty) {
-      libraryComments = '$libraryComments\nlibrary;';
-    }
 
     final result = [
       '// This is a generated file (see the discoveryapis_generator project).',
       '',
       ignoreForFileComments(ignoreForFileSet),
       '',
-      libraryComments,
+      if (libraryComments.isNotEmpty) libraryComments,
+      // TODO: drop name once dart-lang/dartdoc#1658 is fixed
+      'library $libraryName;',
       if (imports.async.hasPrefix) "import 'dart:async' as ${imports.async};",
       if (!imports.async.hasPrefix) "import 'dart:async';",
       if (imports.collection.wasCalled)
