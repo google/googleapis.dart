@@ -546,8 +546,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed10(
-    core.Map<core.String,
-            api.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>
+    core.Map<
+            core.String,
+            api
+            .GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(
@@ -623,7 +625,8 @@ void checkGoogleCloudContactcenterinsightsV1CalculateStatsResponse(
 }
 
 core.List<
-        api.GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>
+        api
+        .GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>
     buildUnnamed12() => [
           buildGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval(),
           buildGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval(),
@@ -631,7 +634,8 @@ core.List<
 
 void checkUnnamed12(
     core.List<
-            api.GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>
+            api
+            .GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval(
@@ -1129,7 +1133,8 @@ void checkGoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionD
 }
 
 core.List<
-        api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>
+        api
+        .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>
     buildUnnamed18() => [
           buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(),
           buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(),
@@ -1137,7 +1142,8 @@ core.List<
 
 void checkUnnamed18(
     core.List<
-            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>
+            api
+            .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(
@@ -1171,7 +1177,8 @@ void checkGoogleCloudContactcenterinsightsV1ConversationTranscript(
 }
 
 core.List<
-        api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>
+        api
+        .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>
     buildUnnamed19() => [
           buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(),
           buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(),
@@ -1179,7 +1186,8 @@ core.List<
 
 void checkUnnamed19(
     core.List<
-            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>
+            api
+            .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(
@@ -2154,8 +2162,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed23(
-    core.Map<core.String,
-            api.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>
+    core.Map<
+            core.String,
+            api
+            .GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(

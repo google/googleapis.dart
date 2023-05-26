@@ -1488,7 +1488,8 @@ void checkOSPolicyAssignmentReport(api.OSPolicyAssignmentReport o) {
 }
 
 core.List<
-        api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>
+        api
+        .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>
     buildUnnamed22() => [
           buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance(),
           buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance(),
@@ -1496,7 +1497,8 @@ core.List<
 
 void checkUnnamed22(
     core.List<
-            api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>
+            api
+            .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance(
@@ -1542,7 +1544,8 @@ void checkOSPolicyAssignmentReportOSPolicyCompliance(
 }
 
 core.List<
-        api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>
+        api
+        .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>
     buildUnnamed23() => [
           buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep(),
           buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep(),
@@ -1550,7 +1553,8 @@ core.List<
 
 void checkUnnamed23(
     core.List<
-            api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>
+            api
+            .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep(

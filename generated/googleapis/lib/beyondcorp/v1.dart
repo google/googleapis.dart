@@ -1498,8 +1498,8 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-          GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>
+  async
+      .Future<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>
       resolveInstanceConfig(
     core.String appConnector, {
     core.String? $fields,

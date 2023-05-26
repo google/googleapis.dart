@@ -405,7 +405,8 @@ void checkGoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse(
 }
 
 core.List<
-        api.GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>
+        api
+        .GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>
     buildUnnamed6() => [
           buildGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails(),
           buildGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails(),
@@ -413,7 +414,8 @@ core.List<
 
 void checkUnnamed6(
     core.List<
-            api.GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>
+            api
+            .GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails(

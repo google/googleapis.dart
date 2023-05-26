@@ -237,7 +237,8 @@ core.List<
 
 void checkUnnamed3(
     core.List<
-            api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+            api
+            .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[0]);
@@ -925,7 +926,8 @@ core.List<
 
 void checkUnnamed14(
     core.List<
-            api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
+            api
+            .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(o[0]);
@@ -1174,7 +1176,8 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
 }
 
 core.List<
-        api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
+        api
+        .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
     buildUnnamed20() => [
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
@@ -1182,7 +1185,8 @@ core.List<
 
 void checkUnnamed20(
     core.List<
-            api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
+            api
+            .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
@@ -1550,7 +1554,8 @@ core.List<
 
 void checkUnnamed24(
     core.List<
-            api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+            api
+            .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[0]);

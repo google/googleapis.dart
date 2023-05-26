@@ -96,8 +96,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed0(
-    core.Map<core.String,
-            api.GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>
+    core.Map<
+            core.String,
+            api
+            .GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership(

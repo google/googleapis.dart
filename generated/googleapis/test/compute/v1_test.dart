@@ -1184,7 +1184,8 @@ void checkUnnamed16(core.List<api.AcceleratorConfig> o) {
 }
 
 core.List<
-        api.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
+        api
+        .AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
     buildUnnamed17() => [
           buildAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk(),
           buildAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk(),
@@ -1192,7 +1193,8 @@ core.List<
 
 void checkUnnamed17(
     core.List<
-            api.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
+            api
+            .AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk(
@@ -28769,7 +28771,8 @@ void checkRegionList(api.RegionList o) {
 }
 
 core.List<
-        api.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
+        api
+        .RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
     buildUnnamed493() => [
           buildRegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy(),
           buildRegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy(),
@@ -28777,7 +28780,8 @@ core.List<
 
 void checkUnnamed493(
     core.List<
-            api.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
+            api
+            .RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy(

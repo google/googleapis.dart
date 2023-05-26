@@ -775,7 +775,8 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
 }
 
 core.List<
-        api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+        api
+        .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
     buildUnnamed10() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
           buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
@@ -783,7 +784,8 @@ core.List<
 
 void checkUnnamed10(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
@@ -930,7 +932,8 @@ core.List<
 
 void checkUnnamed13(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(o[0]);
@@ -1083,7 +1086,8 @@ core.List<
 
 void checkUnnamed15(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(o[0]);

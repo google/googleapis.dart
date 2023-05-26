@@ -532,8 +532,9 @@ class DefaultSupportedIdpsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-      GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse> list({
+  async
+      .Future<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse>
+      list({
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,

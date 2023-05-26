@@ -2606,7 +2606,8 @@ void checkListDescendantSecurityHealthAnalyticsCustomModulesResponse(
 }
 
 core.List<
-        api.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+        api
+        .GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
     buildUnnamed44() => [
           buildGoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule(),
           buildGoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule(),
@@ -2614,7 +2615,8 @@ core.List<
 
 void checkUnnamed44(
     core.List<
-            api.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+            api
+            .GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule(

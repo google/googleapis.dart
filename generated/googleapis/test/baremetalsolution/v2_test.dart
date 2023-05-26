@@ -2329,7 +2329,8 @@ core.List<
 
 void checkUnnamed43(
     core.List<
-            api.GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>
+            api
+            .GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface(

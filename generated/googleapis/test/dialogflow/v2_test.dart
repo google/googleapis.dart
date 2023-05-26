@@ -2654,7 +2654,8 @@ void checkGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig(
 }
 
 core.List<
-        api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>
+        api
+        .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>
     buildUnnamed28() => [
           buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig(),
           buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig(),
@@ -2662,7 +2663,8 @@ core.List<
 
 void checkUnnamed28(
     core.List<
-            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>
+            api
+            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig(
@@ -3801,7 +3803,8 @@ void checkGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction(
 }
 
 core.List<
-        api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
+        api
+        .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
     buildUnnamed46() => [
           buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(),
           buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(),
@@ -3809,7 +3812,8 @@ core.List<
 
 void checkUnnamed46(
     core.List<
-            api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
+            api
+            .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
@@ -4243,7 +4247,8 @@ core.List<
 
 void checkUnnamed50(
     core.List<
-            api.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>
+            api
+            .GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(

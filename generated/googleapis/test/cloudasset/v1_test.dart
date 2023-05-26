@@ -209,7 +209,8 @@ void checkAnalyzeOrgPoliciesResponse(api.AnalyzeOrgPoliciesResponse o) {
 }
 
 core.List<
-        api.GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>
+        api
+        .GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>
     buildUnnamed5() => [
           buildGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset(),
           buildGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset(),
@@ -217,7 +218,8 @@ core.List<
 
 void checkUnnamed5(
     core.List<
-            api.GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>
+            api
+            .GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset(

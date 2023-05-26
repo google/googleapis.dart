@@ -1315,7 +1315,8 @@ void checkGoogleCloudDataplexV1DataProfileResultProfileField(
 }
 
 core.List<
-        api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>
+        api
+        .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>
     buildUnnamed14() => [
           buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(),
           buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(),
@@ -1323,7 +1324,8 @@ core.List<
 
 void checkUnnamed14(
     core.List<
-            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>
+            api
+            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(

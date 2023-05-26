@@ -58,8 +58,10 @@ void checkGoogleCloudPolicytroubleshooterV1AccessTuple(
   buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple--;
 }
 
-core.Map<core.String,
-        api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
+core.Map<
+        core.String,
+        api
+        .GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
     buildUnnamed0() => {
           'x':
               buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(),
@@ -68,8 +70,10 @@ core.Map<core.String,
         };
 
 void checkUnnamed0(
-    core.Map<core.String,
-            api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
+    core.Map<
+            core.String,
+            api
+            .GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(

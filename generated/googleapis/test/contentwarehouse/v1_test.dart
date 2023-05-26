@@ -2553,7 +2553,8 @@ void checkUnnamed40(
 }
 
 core.List<
-        api.GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>
+        api
+        .GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>
     buildUnnamed41() => [
           buildGoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument(),
           buildGoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument(),
@@ -2561,7 +2562,8 @@ core.List<
 
 void checkUnnamed41(
     core.List<
-            api.GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>
+            api
+            .GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument(
@@ -4043,7 +4045,8 @@ core.List<
 
 void checkUnnamed72(
     core.List<
-            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>
+            api
+            .GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect(

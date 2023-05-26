@@ -1054,7 +1054,8 @@ core.List<
 
 void checkUnnamed24(
     core.List<
-            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>
+            api
+            .GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect(

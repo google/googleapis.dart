@@ -2126,7 +2126,8 @@ core.List<
 
 void checkUnnamed30(
     core.List<
-            api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>
+            api
+            .GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(
@@ -5639,7 +5640,8 @@ void checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage(
 }
 
 core.List<
-        api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
+        api
+        .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
     buildUnnamed88() => [
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(),
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(),
@@ -5647,7 +5649,8 @@ core.List<
 
 void checkUnnamed88(
     core.List<
-            api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
+            api
+            .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(

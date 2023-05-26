@@ -317,7 +317,8 @@ void checkGoogleCloudDatacatalogV1BusinessContext(
 }
 
 core.List<
-        api.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>
+        api
+        .GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>
     buildUnnamed2() => [
           buildGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(),
           buildGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(),
@@ -325,7 +326,8 @@ core.List<
 
 void checkUnnamed2(
     core.List<
-            api.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>
+            api
+            .GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(

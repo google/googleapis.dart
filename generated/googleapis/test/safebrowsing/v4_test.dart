@@ -93,7 +93,8 @@ void checkGoogleSecuritySafebrowsingV4ClientInfo(
 }
 
 core.List<
-        api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
+        api
+        .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
     buildUnnamed0() => [
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(),
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(),
@@ -101,7 +102,8 @@ core.List<
 
 void checkUnnamed0(
     core.List<
-            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
+            api
+            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(
@@ -255,7 +257,8 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateReq
 }
 
 core.List<
-        api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
+        api
+        .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
     buildUnnamed2() => [
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(),
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(),
@@ -263,7 +266,8 @@ core.List<
 
 void checkUnnamed2(
     core.List<
-            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
+            api
+            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(

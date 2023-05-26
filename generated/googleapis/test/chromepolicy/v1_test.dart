@@ -978,7 +978,8 @@ core.List<
 
 void checkUnnamed18(
     core.List<
-            api.GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>
+            api
+            .GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription(o[0]);
