@@ -126,6 +126,49 @@ class ProjectsLocationsEnvironmentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Triggers database failover (only for highly resilient environments).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Target environment:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> databaseFailover(
+    DatabaseFailoverRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':databaseFailover';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Delete an environment.
   ///
   /// Request parameters:
@@ -161,6 +204,91 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes Airflow CLI command.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteAirflowCommandResponse> executeAirflowCommand(
+    ExecuteAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':executeAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches database properties.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Required. The resource name of the environment, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchDatabasePropertiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchDatabasePropertiesResponse> fetchDatabaseProperties(
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$environment') +
+        ':fetchDatabaseProperties';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchDatabasePropertiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an existing environment.
@@ -416,6 +544,50 @@ class ProjectsLocationsEnvironmentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Polls Airflow CLI command execution and fetches logs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PollAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PollAirflowCommandResponse> pollAirflowCommand(
+    PollAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':pollAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PollAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a snapshots of a Cloud Composer environment.
   ///
   /// As a result of this operation, snapshot of environment's state is stored
@@ -459,6 +631,50 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops Airflow CLI command execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StopAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StopAirflowCommandResponse> stopAirflowCommand(
+    StopAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':stopAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StopAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -754,6 +970,10 @@ class DatabaseConfig {
       };
 }
 
+/// Request to trigger database failover (only for highly resilient
+/// environments).
+typedef DatabaseFailoverRequest = $Empty;
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -1006,6 +1226,19 @@ class EnvironmentConfig {
   /// Optional.
   RecoveryConfig? recoveryConfig;
 
+  /// Resilience mode of the Cloud Composer Environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.2.0-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESILIENCE_MODE_UNSPECIFIED" : Default mode doesn't change environment
+  /// parameters.
+  /// - "HIGH_RESILIENCE" : Enabled High Resilience mode, including Cloud SQL
+  /// HA.
+  core.String? resilienceMode;
+
   /// The configuration settings for software inside the environment.
   SoftwareConfig? softwareConfig;
 
@@ -1045,6 +1278,7 @@ class EnvironmentConfig {
     this.nodeCount,
     this.privateEnvironmentConfig,
     this.recoveryConfig,
+    this.resilienceMode,
     this.softwareConfig,
     this.webServerConfig,
     this.webServerNetworkAccessControl,
@@ -1103,6 +1337,9 @@ class EnvironmentConfig {
               ? RecoveryConfig.fromJson(json_['recoveryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          resilienceMode: json_.containsKey('resilienceMode')
+              ? json_['resilienceMode'] as core.String
+              : null,
           softwareConfig: json_.containsKey('softwareConfig')
               ? SoftwareConfig.fromJson(json_['softwareConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1139,11 +1376,173 @@ class EnvironmentConfig {
         if (privateEnvironmentConfig != null)
           'privateEnvironmentConfig': privateEnvironmentConfig!,
         if (recoveryConfig != null) 'recoveryConfig': recoveryConfig!,
+        if (resilienceMode != null) 'resilienceMode': resilienceMode!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (webServerConfig != null) 'webServerConfig': webServerConfig!,
         if (webServerNetworkAccessControl != null)
           'webServerNetworkAccessControl': webServerNetworkAccessControl!,
         if (workloadsConfig != null) 'workloadsConfig': workloadsConfig!,
+      };
+}
+
+/// Execute Airflow Command request.
+class ExecuteAirflowCommandRequest {
+  /// Airflow command.
+  core.String? command;
+
+  /// Parameters for the Airflow command/subcommand as an array of arguments.
+  ///
+  /// It may contain positional arguments like `["my-dag-id"]`, key-value
+  /// parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like
+  /// `["-f"]`.
+  core.List<core.String>? parameters;
+
+  /// Airflow subcommand.
+  core.String? subcommand;
+
+  ExecuteAirflowCommandRequest({
+    this.command,
+    this.parameters,
+    this.subcommand,
+  });
+
+  ExecuteAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          command: json_.containsKey('command')
+              ? json_['command'] as core.String
+              : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          subcommand: json_.containsKey('subcommand')
+              ? json_['subcommand'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
+        if (parameters != null) 'parameters': parameters!,
+        if (subcommand != null) 'subcommand': subcommand!,
+      };
+}
+
+/// Response to ExecuteAirflowCommandRequest.
+class ExecuteAirflowCommandResponse {
+  /// Error message.
+  ///
+  /// Empty if there was no error.
+  core.String? error;
+
+  /// The unique ID of the command execution for polling.
+  core.String? executionId;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  ExecuteAirflowCommandResponse({
+    this.error,
+    this.executionId,
+    this.pod,
+    this.podNamespace,
+  });
+
+  ExecuteAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (executionId != null) 'executionId': executionId!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Information about how a command ended.
+class ExitInfo {
+  /// Error message.
+  ///
+  /// Empty if there was no error.
+  core.String? error;
+
+  /// The exit code from the command execution.
+  core.int? exitCode;
+
+  ExitInfo({
+    this.error,
+    this.exitCode,
+  });
+
+  ExitInfo.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          exitCode: json_.containsKey('exitCode')
+              ? json_['exitCode'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (exitCode != null) 'exitCode': exitCode!,
+      };
+}
+
+/// Response for FetchDatabasePropertiesRequest.
+class FetchDatabasePropertiesResponse {
+  /// The availability status of the failover replica.
+  ///
+  /// A false status indicates that the failover replica is out of sync. The
+  /// primary instance can only fail over to the failover replica when the
+  /// status is true.
+  core.bool? isFailoverReplicaAvailable;
+
+  /// The Compute Engine zone that the instance is currently serving from.
+  core.String? primaryGceZone;
+
+  /// The Compute Engine zone that the failover instance is currently serving
+  /// from for a regional Cloud SQL instance.
+  core.String? secondaryGceZone;
+
+  FetchDatabasePropertiesResponse({
+    this.isFailoverReplicaAvailable,
+    this.primaryGceZone,
+    this.secondaryGceZone,
+  });
+
+  FetchDatabasePropertiesResponse.fromJson(core.Map json_)
+      : this(
+          isFailoverReplicaAvailable:
+              json_.containsKey('isFailoverReplicaAvailable')
+                  ? json_['isFailoverReplicaAvailable'] as core.bool
+                  : null,
+          primaryGceZone: json_.containsKey('primaryGceZone')
+              ? json_['primaryGceZone'] as core.String
+              : null,
+          secondaryGceZone: json_.containsKey('secondaryGceZone')
+              ? json_['secondaryGceZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isFailoverReplicaAvailable != null)
+          'isFailoverReplicaAvailable': isFailoverReplicaAvailable!,
+        if (primaryGceZone != null) 'primaryGceZone': primaryGceZone!,
+        if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
       };
 }
 
@@ -1313,6 +1712,35 @@ class ImageVersion {
         if (supportedPythonVersions != null)
           'supportedPythonVersions': supportedPythonVersions!,
         if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled!,
+      };
+}
+
+/// Contains information about a single line from logs.
+class Line {
+  /// Text content of the log line.
+  core.String? content;
+
+  /// Number of the line.
+  core.int? lineNumber;
+
+  Line({
+    this.content,
+    this.lineNumber,
+  });
+
+  Line.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          lineNumber: json_.containsKey('lineNumber')
+              ? json_['lineNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
       };
 }
 
@@ -1872,6 +2300,93 @@ class Operation {
       };
 }
 
+/// Poll Airflow Command request.
+class PollAirflowCommandRequest {
+  /// The unique ID of the command execution.
+  core.String? executionId;
+
+  /// Line number from which new logs should be fetched.
+  core.int? nextLineNumber;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  PollAirflowCommandRequest({
+    this.executionId,
+    this.nextLineNumber,
+    this.pod,
+    this.podNamespace,
+  });
+
+  PollAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          nextLineNumber: json_.containsKey('nextLineNumber')
+              ? json_['nextLineNumber'] as core.int
+              : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (nextLineNumber != null) 'nextLineNumber': nextLineNumber!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Response to PollAirflowCommandRequest.
+class PollAirflowCommandResponse {
+  /// The result exit status of the command.
+  ExitInfo? exitInfo;
+
+  /// Output from the command execution.
+  ///
+  /// It may not contain the full output and the caller may need to poll for
+  /// more lines.
+  core.List<Line>? output;
+
+  /// Whether the command execution has finished and there is no more output.
+  core.bool? outputEnd;
+
+  PollAirflowCommandResponse({
+    this.exitInfo,
+    this.output,
+    this.outputEnd,
+  });
+
+  PollAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          exitInfo: json_.containsKey('exitInfo')
+              ? ExitInfo.fromJson(
+                  json_['exitInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          output: json_.containsKey('output')
+              ? (json_['output'] as core.List)
+                  .map((value) => Line.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          outputEnd: json_.containsKey('outputEnd')
+              ? json_['outputEnd'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exitInfo != null) 'exitInfo': exitInfo!,
+        if (output != null) 'output': output!,
+        if (outputEnd != null) 'outputEnd': outputEnd!,
+      };
+}
+
 /// Configuration options for the private GKE cluster in a Cloud Composer
 /// environment.
 class PrivateClusterConfig {
@@ -2407,6 +2922,80 @@ class SoftwareConfig {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Stop Airflow Command request.
+class StopAirflowCommandRequest {
+  /// The unique ID of the command execution.
+  core.String? executionId;
+
+  /// If true, the execution is terminated forcefully (SIGKILL).
+  ///
+  /// If false, the execution is stopped gracefully, giving it time for cleanup.
+  core.bool? force;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  StopAirflowCommandRequest({
+    this.executionId,
+    this.force,
+    this.pod,
+    this.podNamespace,
+  });
+
+  StopAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (force != null) 'force': force!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Response to StopAirflowCommandRequest.
+class StopAirflowCommandResponse {
+  /// Whether the execution is still running.
+  core.bool? isDone;
+
+  /// Output message from stopping execution request.
+  core.List<core.String>? output;
+
+  StopAirflowCommandResponse({
+    this.isDone,
+    this.output,
+  });
+
+  StopAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          isDone:
+              json_.containsKey('isDone') ? json_['isDone'] as core.bool : null,
+          output: json_.containsKey('output')
+              ? (json_['output'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isDone != null) 'isDone': isDone!,
+        if (output != null) 'output': output!,
+      };
+}
 
 /// The configuration settings for the Airflow web server App Engine instance.
 ///

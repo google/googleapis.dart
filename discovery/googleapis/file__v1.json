@@ -24,6 +24,13 @@
     "name": "file",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230625",
+    "rootUrl": "https://file.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Filestore API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -872,8 +878,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://file.googleapis.com/",
     "schemas": {
         "Backup": {
             "description": "A Filestore backup.",
@@ -2097,9 +2101,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Filestore API",
-    "version": "v1",
-    "version_module": true
+    }
 }

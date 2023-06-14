@@ -23,6 +23,13 @@
     "name": "books",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230622",
+    "rootUrl": "https://books.googleapis.com/",
+    "servicePath": "",
+    "title": "Books API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -100,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "bookshelves": {
             "methods": {
@@ -2670,8 +2676,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://books.googleapis.com/",
     "schemas": {
         "Annotation": {
             "id": "Annotation",
@@ -4997,9 +5001,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Books API",
-    "version": "v1",
-    "version_module": true
+    }
 }

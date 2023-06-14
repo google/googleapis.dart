@@ -2150,6 +2150,8 @@ class AdUnit {
   core.String? reportingDimensionId;
 
   /// State of the ad unit.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
   /// - "ACTIVE" : Ad unit has been activated by the user.

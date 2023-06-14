@@ -2652,6 +2652,32 @@ void checkGoogleCloudRetailV2PurchaseTransaction(
   buildCounterGoogleCloudRetailV2PurchaseTransaction--;
 }
 
+core.int buildCounterGoogleCloudRetailV2PurgeProductsRequest = 0;
+api.GoogleCloudRetailV2PurgeProductsRequest
+    buildGoogleCloudRetailV2PurgeProductsRequest() {
+  final o = api.GoogleCloudRetailV2PurgeProductsRequest();
+  buildCounterGoogleCloudRetailV2PurgeProductsRequest++;
+  if (buildCounterGoogleCloudRetailV2PurgeProductsRequest < 3) {
+    o.filter = 'foo';
+    o.force = true;
+  }
+  buildCounterGoogleCloudRetailV2PurgeProductsRequest--;
+  return o;
+}
+
+void checkGoogleCloudRetailV2PurgeProductsRequest(
+    api.GoogleCloudRetailV2PurgeProductsRequest o) {
+  buildCounterGoogleCloudRetailV2PurgeProductsRequest++;
+  if (buildCounterGoogleCloudRetailV2PurgeProductsRequest < 3) {
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.force!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudRetailV2PurgeProductsRequest--;
+}
+
 core.int buildCounterGoogleCloudRetailV2PurgeUserEventsRequest = 0;
 api.GoogleCloudRetailV2PurgeUserEventsRequest
     buildGoogleCloudRetailV2PurgeUserEventsRequest() {
@@ -5622,6 +5648,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRetailV2PurgeProductsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRetailV2PurgeProductsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRetailV2PurgeProductsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRetailV2PurgeProductsRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRetailV2PurgeUserEventsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRetailV2PurgeUserEventsRequest();
@@ -7464,6 +7500,70 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudRetailV2Product(
           response as api.GoogleCloudRetailV2Product);
+    });
+
+    unittest.test('method--purge', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRetailApi(mock)
+          .projects
+          .locations
+          .catalogs
+          .branches
+          .products;
+      final arg_request = buildGoogleCloudRetailV2PurgeProductsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudRetailV2PurgeProductsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudRetailV2PurgeProductsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.purge(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--removeFulfillmentPlaces', () async {

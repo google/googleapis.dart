@@ -5886,9 +5886,6 @@ void main() {
     });
 
     unittest.test('method--watch', () async {
-      // TODO: Implement tests for media upload;
-      // TODO: Implement tests for media download;
-
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).files;
       final arg_request = buildChannel();

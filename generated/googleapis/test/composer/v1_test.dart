@@ -100,6 +100,21 @@ void checkDatabaseConfig(api.DatabaseConfig o) {
   buildCounterDatabaseConfig--;
 }
 
+core.int buildCounterDatabaseFailoverRequest = 0;
+api.DatabaseFailoverRequest buildDatabaseFailoverRequest() {
+  final o = api.DatabaseFailoverRequest();
+  buildCounterDatabaseFailoverRequest++;
+  if (buildCounterDatabaseFailoverRequest < 3) {}
+  buildCounterDatabaseFailoverRequest--;
+  return o;
+}
+
+void checkDatabaseFailoverRequest(api.DatabaseFailoverRequest o) {
+  buildCounterDatabaseFailoverRequest++;
+  if (buildCounterDatabaseFailoverRequest < 3) {}
+  buildCounterDatabaseFailoverRequest--;
+}
+
 core.int buildCounterDate = 0;
 api.Date buildDate() {
   final o = api.Date();
@@ -250,6 +265,7 @@ api.EnvironmentConfig buildEnvironmentConfig() {
     o.nodeCount = 42;
     o.privateEnvironmentConfig = buildPrivateEnvironmentConfig();
     o.recoveryConfig = buildRecoveryConfig();
+    o.resilienceMode = 'foo';
     o.softwareConfig = buildSoftwareConfig();
     o.webServerConfig = buildWebServerConfig();
     o.webServerNetworkAccessControl = buildWebServerNetworkAccessControl();
@@ -293,12 +309,156 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
     );
     checkPrivateEnvironmentConfig(o.privateEnvironmentConfig!);
     checkRecoveryConfig(o.recoveryConfig!);
+    unittest.expect(
+      o.resilienceMode!,
+      unittest.equals('foo'),
+    );
     checkSoftwareConfig(o.softwareConfig!);
     checkWebServerConfig(o.webServerConfig!);
     checkWebServerNetworkAccessControl(o.webServerNetworkAccessControl!);
     checkWorkloadsConfig(o.workloadsConfig!);
   }
   buildCounterEnvironmentConfig--;
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterExecuteAirflowCommandRequest = 0;
+api.ExecuteAirflowCommandRequest buildExecuteAirflowCommandRequest() {
+  final o = api.ExecuteAirflowCommandRequest();
+  buildCounterExecuteAirflowCommandRequest++;
+  if (buildCounterExecuteAirflowCommandRequest < 3) {
+    o.command = 'foo';
+    o.parameters = buildUnnamed1();
+    o.subcommand = 'foo';
+  }
+  buildCounterExecuteAirflowCommandRequest--;
+  return o;
+}
+
+void checkExecuteAirflowCommandRequest(api.ExecuteAirflowCommandRequest o) {
+  buildCounterExecuteAirflowCommandRequest++;
+  if (buildCounterExecuteAirflowCommandRequest < 3) {
+    unittest.expect(
+      o.command!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.parameters!);
+    unittest.expect(
+      o.subcommand!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExecuteAirflowCommandRequest--;
+}
+
+core.int buildCounterExecuteAirflowCommandResponse = 0;
+api.ExecuteAirflowCommandResponse buildExecuteAirflowCommandResponse() {
+  final o = api.ExecuteAirflowCommandResponse();
+  buildCounterExecuteAirflowCommandResponse++;
+  if (buildCounterExecuteAirflowCommandResponse < 3) {
+    o.error = 'foo';
+    o.executionId = 'foo';
+    o.pod = 'foo';
+    o.podNamespace = 'foo';
+  }
+  buildCounterExecuteAirflowCommandResponse--;
+  return o;
+}
+
+void checkExecuteAirflowCommandResponse(api.ExecuteAirflowCommandResponse o) {
+  buildCounterExecuteAirflowCommandResponse++;
+  if (buildCounterExecuteAirflowCommandResponse < 3) {
+    unittest.expect(
+      o.error!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.executionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.podNamespace!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExecuteAirflowCommandResponse--;
+}
+
+core.int buildCounterExitInfo = 0;
+api.ExitInfo buildExitInfo() {
+  final o = api.ExitInfo();
+  buildCounterExitInfo++;
+  if (buildCounterExitInfo < 3) {
+    o.error = 'foo';
+    o.exitCode = 42;
+  }
+  buildCounterExitInfo--;
+  return o;
+}
+
+void checkExitInfo(api.ExitInfo o) {
+  buildCounterExitInfo++;
+  if (buildCounterExitInfo < 3) {
+    unittest.expect(
+      o.error!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exitCode!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterExitInfo--;
+}
+
+core.int buildCounterFetchDatabasePropertiesResponse = 0;
+api.FetchDatabasePropertiesResponse buildFetchDatabasePropertiesResponse() {
+  final o = api.FetchDatabasePropertiesResponse();
+  buildCounterFetchDatabasePropertiesResponse++;
+  if (buildCounterFetchDatabasePropertiesResponse < 3) {
+    o.isFailoverReplicaAvailable = true;
+    o.primaryGceZone = 'foo';
+    o.secondaryGceZone = 'foo';
+  }
+  buildCounterFetchDatabasePropertiesResponse--;
+  return o;
+}
+
+void checkFetchDatabasePropertiesResponse(
+    api.FetchDatabasePropertiesResponse o) {
+  buildCounterFetchDatabasePropertiesResponse++;
+  if (buildCounterFetchDatabasePropertiesResponse < 3) {
+    unittest.expect(o.isFailoverReplicaAvailable!, unittest.isTrue);
+    unittest.expect(
+      o.primaryGceZone!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secondaryGceZone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFetchDatabasePropertiesResponse--;
 }
 
 core.int buildCounterIPAllocationPolicy = 0;
@@ -340,12 +500,12 @@ void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
   buildCounterIPAllocationPolicy--;
 }
 
-core.List<core.String> buildUnnamed1() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -366,7 +526,7 @@ api.ImageVersion buildImageVersion() {
     o.imageVersionId = 'foo';
     o.isDefault = true;
     o.releaseDate = buildDate();
-    o.supportedPythonVersions = buildUnnamed1();
+    o.supportedPythonVersions = buildUnnamed2();
     o.upgradeDisabled = true;
   }
   buildCounterImageVersion--;
@@ -383,18 +543,45 @@ void checkImageVersion(api.ImageVersion o) {
     );
     unittest.expect(o.isDefault!, unittest.isTrue);
     checkDate(o.releaseDate!);
-    checkUnnamed1(o.supportedPythonVersions!);
+    checkUnnamed2(o.supportedPythonVersions!);
     unittest.expect(o.upgradeDisabled!, unittest.isTrue);
   }
   buildCounterImageVersion--;
 }
 
-core.List<api.Environment> buildUnnamed2() => [
+core.int buildCounterLine = 0;
+api.Line buildLine() {
+  final o = api.Line();
+  buildCounterLine++;
+  if (buildCounterLine < 3) {
+    o.content = 'foo';
+    o.lineNumber = 42;
+  }
+  buildCounterLine--;
+  return o;
+}
+
+void checkLine(api.Line o) {
+  buildCounterLine++;
+  if (buildCounterLine < 3) {
+    unittest.expect(
+      o.content!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lineNumber!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterLine--;
+}
+
+core.List<api.Environment> buildUnnamed3() => [
       buildEnvironment(),
       buildEnvironment(),
     ];
 
-void checkUnnamed2(core.List<api.Environment> o) {
+void checkUnnamed3(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironment(o[0]);
   checkEnvironment(o[1]);
@@ -405,7 +592,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
   final o = api.ListEnvironmentsResponse();
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    o.environments = buildUnnamed2();
+    o.environments = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterListEnvironmentsResponse--;
@@ -415,7 +602,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
 void checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    checkUnnamed2(o.environments!);
+    checkUnnamed3(o.environments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -424,12 +611,12 @@ void checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse--;
 }
 
-core.List<api.ImageVersion> buildUnnamed3() => [
+core.List<api.ImageVersion> buildUnnamed4() => [
       buildImageVersion(),
       buildImageVersion(),
     ];
 
-void checkUnnamed3(core.List<api.ImageVersion> o) {
+void checkUnnamed4(core.List<api.ImageVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageVersion(o[0]);
   checkImageVersion(o[1]);
@@ -440,7 +627,7 @@ api.ListImageVersionsResponse buildListImageVersionsResponse() {
   final o = api.ListImageVersionsResponse();
   buildCounterListImageVersionsResponse++;
   if (buildCounterListImageVersionsResponse < 3) {
-    o.imageVersions = buildUnnamed3();
+    o.imageVersions = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterListImageVersionsResponse--;
@@ -450,7 +637,7 @@ api.ListImageVersionsResponse buildListImageVersionsResponse() {
 void checkListImageVersionsResponse(api.ListImageVersionsResponse o) {
   buildCounterListImageVersionsResponse++;
   if (buildCounterListImageVersionsResponse < 3) {
-    checkUnnamed3(o.imageVersions!);
+    checkUnnamed4(o.imageVersions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -459,12 +646,12 @@ void checkListImageVersionsResponse(api.ListImageVersionsResponse o) {
   buildCounterListImageVersionsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed4() => [
+core.List<api.Operation> buildUnnamed5() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed4(core.List<api.Operation> o) {
+void checkUnnamed5(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -476,7 +663,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed4();
+    o.operations = buildUnnamed5();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -489,7 +676,7 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.operations!);
+    checkUnnamed5(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
@@ -556,12 +743,12 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-core.List<api.CidrBlock> buildUnnamed5() => [
+core.List<api.CidrBlock> buildUnnamed6() => [
       buildCidrBlock(),
       buildCidrBlock(),
     ];
 
-void checkUnnamed5(core.List<api.CidrBlock> o) {
+void checkUnnamed6(core.List<api.CidrBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCidrBlock(o[0]);
   checkCidrBlock(o[1]);
@@ -572,7 +759,7 @@ api.MasterAuthorizedNetworksConfig buildMasterAuthorizedNetworksConfig() {
   final o = api.MasterAuthorizedNetworksConfig();
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    o.cidrBlocks = buildUnnamed5();
+    o.cidrBlocks = buildUnnamed6();
     o.enabled = true;
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -582,7 +769,7 @@ api.MasterAuthorizedNetworksConfig buildMasterAuthorizedNetworksConfig() {
 void checkMasterAuthorizedNetworksConfig(api.MasterAuthorizedNetworksConfig o) {
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    checkUnnamed5(o.cidrBlocks!);
+    checkUnnamed6(o.cidrBlocks!);
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -610,12 +797,12 @@ void checkNetworkingConfig(api.NetworkingConfig o) {
   buildCounterNetworkingConfig--;
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -627,12 +814,12 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -655,10 +842,10 @@ api.NodeConfig buildNodeConfig() {
     o.location = 'foo';
     o.machineType = 'foo';
     o.network = 'foo';
-    o.oauthScopes = buildUnnamed6();
+    o.oauthScopes = buildUnnamed7();
     o.serviceAccount = 'foo';
     o.subnetwork = 'foo';
-    o.tags = buildUnnamed7();
+    o.tags = buildUnnamed8();
   }
   buildCounterNodeConfig--;
   return o;
@@ -685,7 +872,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.network!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.oauthScopes!);
+    checkUnnamed7(o.oauthScopes!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -694,12 +881,12 @@ void checkNodeConfig(api.NodeConfig o) {
       o.subnetwork!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.tags!);
+    checkUnnamed8(o.tags!);
   }
   buildCounterNodeConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -712,7 +899,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -744,7 +931,7 @@ void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -757,7 +944,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -796,9 +983,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed8();
+    o.metadata = buildUnnamed9();
     o.name = 'foo';
-    o.response = buildUnnamed9();
+    o.response = buildUnnamed10();
   }
   buildCounterOperation--;
   return o;
@@ -809,14 +996,85 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed8(o.metadata!);
+    checkUnnamed9(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.response!);
+    checkUnnamed10(o.response!);
   }
   buildCounterOperation--;
+}
+
+core.int buildCounterPollAirflowCommandRequest = 0;
+api.PollAirflowCommandRequest buildPollAirflowCommandRequest() {
+  final o = api.PollAirflowCommandRequest();
+  buildCounterPollAirflowCommandRequest++;
+  if (buildCounterPollAirflowCommandRequest < 3) {
+    o.executionId = 'foo';
+    o.nextLineNumber = 42;
+    o.pod = 'foo';
+    o.podNamespace = 'foo';
+  }
+  buildCounterPollAirflowCommandRequest--;
+  return o;
+}
+
+void checkPollAirflowCommandRequest(api.PollAirflowCommandRequest o) {
+  buildCounterPollAirflowCommandRequest++;
+  if (buildCounterPollAirflowCommandRequest < 3) {
+    unittest.expect(
+      o.executionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextLineNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.podNamespace!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPollAirflowCommandRequest--;
+}
+
+core.List<api.Line> buildUnnamed11() => [
+      buildLine(),
+      buildLine(),
+    ];
+
+void checkUnnamed11(core.List<api.Line> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLine(o[0]);
+  checkLine(o[1]);
+}
+
+core.int buildCounterPollAirflowCommandResponse = 0;
+api.PollAirflowCommandResponse buildPollAirflowCommandResponse() {
+  final o = api.PollAirflowCommandResponse();
+  buildCounterPollAirflowCommandResponse++;
+  if (buildCounterPollAirflowCommandResponse < 3) {
+    o.exitInfo = buildExitInfo();
+    o.output = buildUnnamed11();
+    o.outputEnd = true;
+  }
+  buildCounterPollAirflowCommandResponse--;
+  return o;
+}
+
+void checkPollAirflowCommandResponse(api.PollAirflowCommandResponse o) {
+  buildCounterPollAirflowCommandResponse++;
+  if (buildCounterPollAirflowCommandResponse < 3) {
+    checkExitInfo(o.exitInfo!);
+    checkUnnamed11(o.output!);
+    unittest.expect(o.outputEnd!, unittest.isTrue);
+  }
+  buildCounterPollAirflowCommandResponse--;
 }
 
 core.int buildCounterPrivateClusterConfig = 0;
@@ -1015,40 +1273,6 @@ void checkSchedulerResource(api.SchedulerResource o) {
   buildCounterSchedulerResource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed10() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed10(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed11() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed11(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
 core.Map<core.String, core.String> buildUnnamed12() => {
       'x': 'foo',
       'y': 'foo',
@@ -1066,15 +1290,49 @@ void checkUnnamed12(core.Map<core.String, core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed13() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed13(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed14() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed14(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterSoftwareConfig = 0;
 api.SoftwareConfig buildSoftwareConfig() {
   final o = api.SoftwareConfig();
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    o.airflowConfigOverrides = buildUnnamed10();
-    o.envVariables = buildUnnamed11();
+    o.airflowConfigOverrides = buildUnnamed12();
+    o.envVariables = buildUnnamed13();
     o.imageVersion = 'foo';
-    o.pypiPackages = buildUnnamed12();
+    o.pypiPackages = buildUnnamed14();
     o.pythonVersion = 'foo';
     o.schedulerCount = 42;
   }
@@ -1085,13 +1343,13 @@ api.SoftwareConfig buildSoftwareConfig() {
 void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    checkUnnamed10(o.airflowConfigOverrides!);
-    checkUnnamed11(o.envVariables!);
+    checkUnnamed12(o.airflowConfigOverrides!);
+    checkUnnamed13(o.envVariables!);
     unittest.expect(
       o.imageVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.pypiPackages!);
+    checkUnnamed14(o.pypiPackages!);
     unittest.expect(
       o.pythonVersion!,
       unittest.equals('foo'),
@@ -1104,7 +1362,7 @@ void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1117,7 +1375,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1149,15 +1407,15 @@ void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed14() => [
-      buildUnnamed13(),
-      buildUnnamed13(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
+      buildUnnamed15(),
+      buildUnnamed15(),
     ];
 
-void checkUnnamed14(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed13(o[0]);
-  checkUnnamed13(o[1]);
+  checkUnnamed15(o[0]);
+  checkUnnamed15(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1166,7 +1424,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed14();
+    o.details = buildUnnamed16();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1180,13 +1438,85 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed14(o.details!);
+    checkUnnamed16(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterStatus--;
+}
+
+core.int buildCounterStopAirflowCommandRequest = 0;
+api.StopAirflowCommandRequest buildStopAirflowCommandRequest() {
+  final o = api.StopAirflowCommandRequest();
+  buildCounterStopAirflowCommandRequest++;
+  if (buildCounterStopAirflowCommandRequest < 3) {
+    o.executionId = 'foo';
+    o.force = true;
+    o.pod = 'foo';
+    o.podNamespace = 'foo';
+  }
+  buildCounterStopAirflowCommandRequest--;
+  return o;
+}
+
+void checkStopAirflowCommandRequest(api.StopAirflowCommandRequest o) {
+  buildCounterStopAirflowCommandRequest++;
+  if (buildCounterStopAirflowCommandRequest < 3) {
+    unittest.expect(
+      o.executionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.force!, unittest.isTrue);
+    unittest.expect(
+      o.pod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.podNamespace!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStopAirflowCommandRequest--;
+}
+
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterStopAirflowCommandResponse = 0;
+api.StopAirflowCommandResponse buildStopAirflowCommandResponse() {
+  final o = api.StopAirflowCommandResponse();
+  buildCounterStopAirflowCommandResponse++;
+  if (buildCounterStopAirflowCommandResponse < 3) {
+    o.isDone = true;
+    o.output = buildUnnamed17();
+  }
+  buildCounterStopAirflowCommandResponse--;
+  return o;
+}
+
+void checkStopAirflowCommandResponse(api.StopAirflowCommandResponse o) {
+  buildCounterStopAirflowCommandResponse++;
+  if (buildCounterStopAirflowCommandResponse < 3) {
+    unittest.expect(o.isDone!, unittest.isTrue);
+    checkUnnamed17(o.output!);
+  }
+  buildCounterStopAirflowCommandResponse--;
 }
 
 core.int buildCounterWebServerConfig = 0;
@@ -1211,12 +1541,12 @@ void checkWebServerConfig(api.WebServerConfig o) {
   buildCounterWebServerConfig--;
 }
 
-core.List<api.AllowedIpRange> buildUnnamed15() => [
+core.List<api.AllowedIpRange> buildUnnamed18() => [
       buildAllowedIpRange(),
       buildAllowedIpRange(),
     ];
 
-void checkUnnamed15(core.List<api.AllowedIpRange> o) {
+void checkUnnamed18(core.List<api.AllowedIpRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAllowedIpRange(o[0]);
   checkAllowedIpRange(o[1]);
@@ -1227,7 +1557,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
   final o = api.WebServerNetworkAccessControl();
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    o.allowedIpRanges = buildUnnamed15();
+    o.allowedIpRanges = buildUnnamed18();
   }
   buildCounterWebServerNetworkAccessControl--;
   return o;
@@ -1236,7 +1566,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
 void checkWebServerNetworkAccessControl(api.WebServerNetworkAccessControl o) {
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    checkUnnamed15(o.allowedIpRanges!);
+    checkUnnamed18(o.allowedIpRanges!);
   }
   buildCounterWebServerNetworkAccessControl--;
 }
@@ -1369,6 +1699,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DatabaseFailoverRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDatabaseFailoverRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatabaseFailoverRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDatabaseFailoverRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
@@ -1419,6 +1759,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ExecuteAirflowCommandRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExecuteAirflowCommandRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExecuteAirflowCommandRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExecuteAirflowCommandRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExecuteAirflowCommandResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExecuteAirflowCommandResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExecuteAirflowCommandResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExecuteAirflowCommandResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExitInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExitInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ExitInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkExitInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-FetchDatabasePropertiesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFetchDatabasePropertiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FetchDatabasePropertiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFetchDatabasePropertiesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-IPAllocationPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIPAllocationPolicy();
@@ -1436,6 +1816,16 @@ void main() {
       final od = api.ImageVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkImageVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-Line', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLine();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Line.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLine(od);
     });
   });
 
@@ -1529,6 +1919,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PollAirflowCommandRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPollAirflowCommandRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PollAirflowCommandRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPollAirflowCommandRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-PollAirflowCommandResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPollAirflowCommandResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PollAirflowCommandResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPollAirflowCommandResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-PrivateClusterConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPrivateClusterConfig();
@@ -1606,6 +2016,26 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopAirflowCommandRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopAirflowCommandRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopAirflowCommandRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStopAirflowCommandRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopAirflowCommandResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopAirflowCommandResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopAirflowCommandResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStopAirflowCommandResponse(od);
     });
   });
 
@@ -1718,6 +2148,64 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--databaseFailover', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildDatabaseFailoverRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DatabaseFailoverRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDatabaseFailoverRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.databaseFailover(arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
       final res = api.CloudComposerApi(mock).projects.locations.environments;
@@ -1768,6 +2256,121 @@ void main() {
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--executeAirflowCommand', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildExecuteAirflowCommandRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ExecuteAirflowCommandRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExecuteAirflowCommandRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExecuteAirflowCommandResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.executeAirflowCommand(
+          arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkExecuteAirflowCommandResponse(
+          response as api.ExecuteAirflowCommandResponse);
+    });
+
+    unittest.test('method--fetchDatabaseProperties', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildFetchDatabasePropertiesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.fetchDatabaseProperties(arg_environment,
+          $fields: arg_$fields);
+      checkFetchDatabasePropertiesResponse(
+          response as api.FetchDatabasePropertiesResponse);
     });
 
     unittest.test('method--get', () async {
@@ -2008,6 +2611,66 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--pollAirflowCommand', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildPollAirflowCommandRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.PollAirflowCommandRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPollAirflowCommandRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPollAirflowCommandResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.pollAirflowCommand(
+          arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkPollAirflowCommandResponse(
+          response as api.PollAirflowCommandResponse);
+    });
+
     unittest.test('method--saveSnapshot', () async {
       final mock = HttpServerMock();
       final res = api.CloudComposerApi(mock).projects.locations.environments;
@@ -2064,6 +2727,66 @@ void main() {
       final response = await res.saveSnapshot(arg_request, arg_environment,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--stopAirflowCommand', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildStopAirflowCommandRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.StopAirflowCommandRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStopAirflowCommandRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildStopAirflowCommandResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.stopAirflowCommand(
+          arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkStopAirflowCommandResponse(
+          response as api.StopAirflowCommandResponse);
     });
   });
 

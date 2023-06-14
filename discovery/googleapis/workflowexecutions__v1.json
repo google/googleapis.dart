@@ -24,6 +24,13 @@
     "name": "workflowexecutions",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230620",
+    "rootUrl": "https://workflowexecutions.googleapis.com/",
+    "servicePath": "",
+    "title": "Workflow Executions API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -307,8 +313,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://workflowexecutions.googleapis.com/",
     "schemas": {
         "CancelExecutionRequest": {
             "description": "Request for the CancelExecution method.",
@@ -422,7 +426,7 @@
                 },
                 "stateError": {
                     "$ref": "StateError",
-                    "description": "Output only. Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.",
+                    "description": "Output only. Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.",
                     "readOnly": true
                 },
                 "status": {
@@ -603,6 +607,11 @@
                     "description": "Required. LINT: LEGACY_NAMES The query parameter value for __GCP_CloudEventsMode, set by the Eventarc service when configuring triggers.",
                     "type": "string"
                 },
+                "deliveryAttempt": {
+                    "description": "The number of attempts that have been made to deliver this message. This is set by Pub/Sub for subscriptions that have the \"dead letter\" feature enabled, and hence provided here for compatibility, but is ignored by Workflows.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "message": {
                     "$ref": "PubsubMessage",
                     "description": "Required. The message of the Pub/Sub push notification."
@@ -614,9 +623,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Workflow Executions API",
-    "version": "v1",
-    "version_module": true
+    }
 }

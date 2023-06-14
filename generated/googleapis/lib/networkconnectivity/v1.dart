@@ -23,6 +23,9 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalHubsResource]
+///         - [ProjectsLocationsGlobalHubsGroupsResource]
+///         - [ProjectsLocationsGlobalHubsRouteTablesResource]
+///           - [ProjectsLocationsGlobalHubsRouteTablesRoutesResource]
 ///       - [ProjectsLocationsGlobalPolicyBasedRoutesResource]
 ///     - [ProjectsLocationsInternalRangesResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -200,6 +203,11 @@ class ProjectsLocationsGlobalResource {
 
 class ProjectsLocationsGlobalHubsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalHubsGroupsResource get groups =>
+      ProjectsLocationsGlobalHubsGroupsResource(_requester);
+  ProjectsLocationsGlobalHubsRouteTablesResource get routeTables =>
+      ProjectsLocationsGlobalHubsRouteTablesResource(_requester);
 
   ProjectsLocationsGlobalHubsResource(commons.ApiRequester client)
       : _requester = client;
@@ -462,6 +470,85 @@ class ProjectsLocationsGlobalHubsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists the Network Connectivity Center spokes associated with a specified
+  /// hub and location.
+  ///
+  /// The list includes both spokes that are attached to the hub and spokes that
+  /// have been proposed but not yet accepted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of results.
+  ///
+  /// [orderBy] - Sort the results by name or create_time.
+  ///
+  /// [pageSize] - The maximum number of results to return per page.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [spokeLocations] - A list of locations. Specify one of the following:
+  /// `[global]`, a single region (for example, `[us-central1]`), or a
+  /// combination of values (for example, `[global, us-central1, us-west1]`). If
+  /// the spoke_locations field is populated, the list of results includes only
+  /// spokes in the specified location. If the spoke_locations field is not
+  /// populated, the list of results includes spokes in all locations.
+  ///
+  /// [view] - The view of the spoke to return. The view you use determines
+  /// which spoke fields are included in the response.
+  /// Possible string values are:
+  /// - "SPOKE_VIEW_UNSPECIFIED" : The spoke view is unspecified. When the spoke
+  /// view is unspecified, the API returns the same fields as the `BASIC` view.
+  /// - "BASIC" : Includes `name`, `create_time`, `hub`, `unique_id`, `state`,
+  /// `reasons`, and `spoke_type`. This is the default value.
+  /// - "DETAILED" : Includes all spoke fields except `labels`. You can use the
+  /// `DETAILED` view only when you set the `spoke_locations` field to
+  /// `[global]`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListHubSpokesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListHubSpokesResponse> listSpokes(
+    core.String name, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? spokeLocations,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (spokeLocations != null) 'spokeLocations': spokeLocations,
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listSpokes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListHubSpokesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the description and/or labels of a Network Connectivity Center
   /// hub.
   ///
@@ -625,6 +712,365 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalHubsGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalHubsGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalHubsRouteTablesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalHubsRouteTablesRoutesResource get routes =>
+      ProjectsLocationsGlobalHubsRouteTablesRoutesResource(_requester);
+
+  ProjectsLocationsGlobalHubsRouteTablesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details about a Network Connectivity Center route table.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the route table resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/routeTables/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RouteTable].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RouteTable> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RouteTable.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists route tables in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of results.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results to return per page.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRouteTablesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRouteTablesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/routeTables';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRouteTablesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalHubsRouteTablesRoutesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalHubsRouteTablesRoutesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details about the specified route.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the route resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/routeTables/\[^/\]+/routes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Route].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Route> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Route.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists routes in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/routeTables/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of results.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results to return per page.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRoutesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRoutesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/routes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRoutesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1260,68 +1706,6 @@ class ProjectsLocationsServiceClassesResource {
   ProjectsLocationsServiceClassesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new ServiceClass in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource's name of the ServiceClass.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [serviceClassId] - Optional. Resource ID (i.e. 'foo' in
-  /// '\[...\]/projects/p/locations/l/serviceClasses/foo') See
-  /// https://google.aip.dev/122#resource-id-segments Unique per location. If
-  /// one is not provided, one will be generated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    ServiceClass request,
-    core.String parent, {
-    core.String? requestId,
-    core.String? serviceClassId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (serviceClassId != null) 'serviceClassId': [serviceClassId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/serviceClasses';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Deletes a single ServiceClass.
   ///
   /// Request parameters:
@@ -1329,6 +1713,10 @@ class ProjectsLocationsServiceClassesResource {
   /// [name] - Required. The name of the ServiceClass to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag is computed by the server, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -1354,10 +1742,12 @@ class ProjectsLocationsServiceClassesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.String? etag,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1765,6 +2155,10 @@ class ProjectsLocationsServiceConnectionMapsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The etag is computed by the server, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -1789,10 +2183,12 @@ class ProjectsLocationsServiceConnectionMapsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.String? etag,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2201,6 +2597,10 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The etag is computed by the server, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -2225,10 +2625,12 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.String? etag,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2637,6 +3039,10 @@ class ProjectsLocationsServiceConnectionTokensResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionTokens/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The etag is computed by the server, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -2661,10 +3067,12 @@ class ProjectsLocationsServiceConnectionTokensResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.String? etag,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2778,6 +3186,49 @@ class ProjectsLocationsSpokesResource {
 
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Accepts a proposal to attach a Network Connectivity Center spoke to the
+  /// hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the spoke to accept.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> accept(
+    AcceptSpokeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accept';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a Network Connectivity Center spoke.
   ///
@@ -3104,6 +3555,51 @@ class ProjectsLocationsSpokesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Does one of the following: * Rejects a proposal to attach a Network
+  /// Connectivity Center spoke to the hub.
+  ///
+  /// * Rejects and removes a previously attached spoke from the hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the spoke to reject.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> reject(
+    RejectSpokeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reject';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -3201,6 +3697,41 @@ class ProjectsLocationsSpokesResource {
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// The request for HubService.AcceptSpoke.
+class AcceptSpokeRequest {
+  /// A unique request ID (optional).
+  ///
+  /// If you specify this ID, you can use it in cases when you need to retry
+  /// your request. When you need to retry, this ID lets the server know that it
+  /// can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check to see whether the original operation was received.
+  /// If it was, the server ignores the second request. This behavior prevents
+  /// clients from mistakenly creating duplicate commitments. The request ID
+  /// must be a valid UUID, with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  AcceptSpokeRequest({
+    this.requestId,
+  });
+
+  AcceptSpokeRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -3362,10 +3893,24 @@ class ConsumerPscConfig {
   /// The consumer project where PSC connections are allowed to be created in.
   core.String? project;
 
+  /// Overall state of PSC Connections management for this consumer psc config.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state, when Connection Map is created
+  /// initially.
+  /// - "VALID" : Set when policy and map configuration is valid, and their
+  /// matching can lead to allowing creation of PSC Connections subject to other
+  /// constraints like connections limit.
+  /// - "CONNECTION_POLICY_MISSING" : No Service Connection Policy found for
+  /// this network and Service Class
+  core.String? state;
+
   ConsumerPscConfig({
     this.disableGlobalAccess,
     this.network,
     this.project,
+    this.state,
   });
 
   ConsumerPscConfig.fromJson(core.Map json_)
@@ -3379,6 +3924,8 @@ class ConsumerPscConfig {
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3386,6 +3933,7 @@ class ConsumerPscConfig {
           'disableGlobalAccess': disableGlobalAccess!,
         if (network != null) 'network': network!,
         if (project != null) 'project': project!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3684,11 +4232,30 @@ class Hub {
   /// Immutable.
   core.String? name;
 
+  /// The route tables that belong to this hub.
+  ///
+  /// They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}`
+  /// This field is read-only. Network Connectivity Center automatically
+  /// populates it based on the route tables nested under the hub.
+  ///
+  /// Output only.
+  core.List<core.String>? routeTables;
+
   /// The VPC networks associated with this hub's spokes.
   ///
   /// This field is read-only. Network Connectivity Center automatically
   /// populates it based on the set of spokes attached to the hub.
   core.List<RoutingVPC>? routingVpcs;
+
+  /// A summary of the spokes associated with a hub.
+  ///
+  /// The summary includes a count of spokes according to type and according to
+  /// state. If any spokes are inactive, the summary also lists the reasons they
+  /// are inactive, including a count for each reason.
+  ///
+  /// Output only.
+  SpokeSummary? spokeSummary;
 
   /// The current lifecycle state of this hub.
   ///
@@ -3698,7 +4265,12 @@ class Hub {
   /// - "CREATING" : The resource's create operation is in progress.
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
   /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
   core.String? state;
 
   /// The Google-generated UUID for the hub.
@@ -3720,7 +4292,9 @@ class Hub {
     this.description,
     this.labels,
     this.name,
+    this.routeTables,
     this.routingVpcs,
+    this.spokeSummary,
     this.state,
     this.uniqueId,
     this.updateTime,
@@ -3743,11 +4317,20 @@ class Hub {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          routeTables: json_.containsKey('routeTables')
+              ? (json_['routeTables'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           routingVpcs: json_.containsKey('routingVpcs')
               ? (json_['routingVpcs'] as core.List)
                   .map((value) => RoutingVPC.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          spokeSummary: json_.containsKey('spokeSummary')
+              ? SpokeSummary.fromJson(
+                  json_['spokeSummary'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -3764,7 +4347,9 @@ class Hub {
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (routeTables != null) 'routeTables': routeTables!,
         if (routingVpcs != null) 'routingVpcs': routingVpcs!,
+        if (spokeSummary != null) 'spokeSummary': spokeSummary!,
         if (state != null) 'state': state!,
         if (uniqueId != null) 'uniqueId': uniqueId!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4070,6 +4655,40 @@ class LinkedRouterApplianceInstances {
       };
 }
 
+/// An existing VPC network.
+class LinkedVpcNetwork {
+  /// IP Ranges encompassing the subnets to be excluded from peering.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeExportRanges;
+
+  /// The URI of the VPC network resource
+  ///
+  /// Required.
+  core.String? uri;
+
+  LinkedVpcNetwork({
+    this.excludeExportRanges,
+    this.uri,
+  });
+
+  LinkedVpcNetwork.fromJson(core.Map json_)
+      : this(
+          excludeExportRanges: json_.containsKey('excludeExportRanges')
+              ? (json_['excludeExportRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeExportRanges != null)
+          'excludeExportRanges': excludeExportRanges!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// A collection of Cloud VPN tunnel resources.
 ///
 /// These resources should be redundant HA VPN tunnels that all advertise the
@@ -4118,6 +4737,54 @@ class LinkedVpnTunnels {
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
         if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// The response for HubService.ListHubSpokes.
+class ListHubSpokesResponse {
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  /// The requested spokes.
+  ///
+  /// The spoke fields can be partially populated based on the `view` field in
+  /// the request message.
+  core.List<Spoke>? spokes;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListHubSpokesResponse({
+    this.nextPageToken,
+    this.spokes,
+    this.unreachable,
+  });
+
+  ListHubSpokesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          spokes: json_.containsKey('spokes')
+              ? (json_['spokes'] as core.List)
+                  .map((value) => Spoke.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (spokes != null) 'spokes': spokes!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4240,6 +4907,96 @@ class ListLocationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for HubService.ListRouteTables method.
+class ListRouteTablesResponse {
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  /// The requested route tables.
+  core.List<RouteTable>? routeTables;
+
+  /// Hubs that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRouteTablesResponse({
+    this.nextPageToken,
+    this.routeTables,
+    this.unreachable,
+  });
+
+  ListRouteTablesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          routeTables: json_.containsKey('routeTables')
+              ? (json_['routeTables'] as core.List)
+                  .map((value) => RouteTable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (routeTables != null) 'routeTables': routeTables!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for HubService.ListRoutes method.
+class ListRoutesResponse {
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  /// The requested routes.
+  core.List<Route>? routes;
+
+  /// RouteTables that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRoutesResponse({
+    this.nextPageToken,
+    this.routes,
+    this.unreachable,
+  });
+
+  ListRoutesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          routes: json_.containsKey('routes')
+              ? (json_['routes'] as core.List)
+                  .map((value) => Route.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (routes != null) 'routes': routes!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4475,6 +5232,24 @@ class ListSpokesResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+class NextHopVpcNetwork {
+  /// The URI of the VPC network resource
+  core.String? uri;
+
+  NextHopVpcNetwork({
+    this.uri,
+  });
+
+  NextHopVpcNetwork.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4626,6 +5401,8 @@ class ProducerPscConfig {
 /// Used when Infrastructure is PSC.
 class PscConfig {
   /// Max number of PSC connections for this policy.
+  ///
+  /// Optional.
   core.String? limit;
 
   /// The resource paths of subnetworks to use for IP address management.
@@ -4750,6 +5527,312 @@ class PscConnection {
       };
 }
 
+/// The request for HubService.RejectSpoke.
+class RejectSpokeRequest {
+  /// Additional Details behind the rejection
+  ///
+  /// Optional.
+  core.String? details;
+
+  /// A unique request ID (optional).
+  ///
+  /// If you specify this ID, you can use it in cases when you need to retry
+  /// your request. When you need to retry, this ID lets the server know that it
+  /// can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check to see whether the original operation was received.
+  /// If it was, the server ignores the second request. This behavior prevents
+  /// clients from mistakenly creating duplicate commitments. The request ID
+  /// must be a valid UUID, with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RejectSpokeRequest({
+    this.details,
+    this.requestId,
+  });
+
+  RejectSpokeRequest.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// A route defines a path from VM instances within a spoke to a specific
+/// destination resource.
+///
+/// Only VPC spokes have routes.
+class Route {
+  /// The time the route was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of the route.
+  core.String? description;
+
+  /// The destination IP address range.
+  core.String? ipCidrRange;
+
+  /// Optional labels in key:value format.
+  ///
+  /// For more information about labels, see
+  /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  core.Map<core.String, core.String>? labels;
+
+  /// The location of the route.
+  ///
+  /// Uses the following form: "projects/{project}/locations/{location}"
+  /// Example: projects/1234/locations/us-central1
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// The name of the route.
+  ///
+  /// Route names must be unique. They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}/routes/{route_id}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The destination VPC network for packets on this route.
+  ///
+  /// Immutable.
+  NextHopVpcNetwork? nextHopVpcNetwork;
+
+  /// The spoke that this route leads to.
+  ///
+  /// Example: projects/12345/locations/global/spokes/SPOKE
+  ///
+  /// Immutable.
+  core.String? spoke;
+
+  /// The current lifecycle state of the route.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state information available
+  /// - "CREATING" : The resource's create operation is in progress.
+  /// - "ACTIVE" : The resource is active
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
+  core.String? state;
+
+  /// The route's type.
+  ///
+  /// Its type is determined by the properties of its IP address range.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROUTE_TYPE_UNSPECIFIED" : No route type information specified
+  /// - "VPC_PRIMARY_SUBNET" : The route leads to a destination within the
+  /// primary address range of the VPC network's subnet.
+  /// - "VPC_SECONDARY_SUBNET" : The route leads to a destination within the
+  /// secondary address range of the VPC network's subnet.
+  core.String? type;
+
+  /// The Google-generated UUID for the route.
+  ///
+  /// This value is unique across all Network Connectivity Center route
+  /// resources. If a route is deleted and another with the same name is
+  /// created, the new route is assigned a different unique_id.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time the route was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Route({
+    this.createTime,
+    this.description,
+    this.ipCidrRange,
+    this.labels,
+    this.location,
+    this.name,
+    this.nextHopVpcNetwork,
+    this.spoke,
+    this.state,
+    this.type,
+    this.uid,
+    this.updateTime,
+  });
+
+  Route.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          ipCidrRange: json_.containsKey('ipCidrRange')
+              ? json_['ipCidrRange'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nextHopVpcNetwork: json_.containsKey('nextHopVpcNetwork')
+              ? NextHopVpcNetwork.fromJson(json_['nextHopVpcNetwork']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          spoke:
+              json_.containsKey('spoke') ? json_['spoke'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (nextHopVpcNetwork != null) 'nextHopVpcNetwork': nextHopVpcNetwork!,
+        if (spoke != null) 'spoke': spoke!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class RouteTable {
+  /// The time the route table was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of the route table.
+  core.String? description;
+
+  /// Optional labels in key:value format.
+  ///
+  /// For more information about labels, see
+  /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of the route table.
+  ///
+  /// Route Table names must be unique. They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current lifecycle state of this route table.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state information available
+  /// - "CREATING" : The resource's create operation is in progress.
+  /// - "ACTIVE" : The resource is active
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
+  core.String? state;
+
+  /// The Google-generated UUID for the route table.
+  ///
+  /// This value is unique across all route table resources. If a route table is
+  /// deleted and another with the same name is created, the new route table is
+  /// assigned a different unique_id.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time the route table was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RouteTable({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  RouteTable.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// A router appliance instance is a Compute Engine virtual machine (VM)
 /// instance that acts as a BGP speaker.
 ///
@@ -4824,7 +5907,7 @@ class RoutingVPC {
 
 /// The ServiceClass resource.
 ///
-/// Next id: 8
+/// Next id: 9
 class ServiceClass {
   /// Time when the ServiceClass was created.
   ///
@@ -4833,6 +5916,12 @@ class ServiceClass {
 
   /// A description of this resource.
   core.String? description;
+
+  /// The etag is computed by the server, and may be sent on update and delete
+  /// requests to ensure the client has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
 
   /// User-defined labels.
   core.Map<core.String, core.String>? labels;
@@ -4867,6 +5956,7 @@ class ServiceClass {
   ServiceClass({
     this.createTime,
     this.description,
+    this.etag,
     this.labels,
     this.name,
     this.serviceClass,
@@ -4882,6 +5972,7 @@ class ServiceClass {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4907,6 +5998,7 @@ class ServiceClass {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceClass != null) 'serviceClass': serviceClass!,
@@ -4918,7 +6010,7 @@ class ServiceClass {
 
 /// The ServiceConnectionMap resource.
 ///
-/// Next id: 14
+/// Next id: 15
 class ServiceConnectionMap {
   /// The PSC configurations on consumer side.
   core.List<ConsumerPscConfig>? consumerPscConfigs;
@@ -4935,6 +6027,12 @@ class ServiceConnectionMap {
 
   /// A description of this resource.
   core.String? description;
+
+  /// The etag is computed by the server, and may be sent on update and delete
+  /// requests to ensure the client has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
 
   /// The infrastructure used for connections between consumers/producers.
   ///
@@ -4988,6 +6086,7 @@ class ServiceConnectionMap {
     this.consumerPscConnections,
     this.createTime,
     this.description,
+    this.etag,
     this.infrastructure,
     this.labels,
     this.name,
@@ -5018,6 +6117,7 @@ class ServiceConnectionMap {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           infrastructure: json_.containsKey('infrastructure')
               ? json_['infrastructure'] as core.String
               : null,
@@ -5056,6 +6156,7 @@ class ServiceConnectionMap {
           'consumerPscConnections': consumerPscConnections!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (infrastructure != null) 'infrastructure': infrastructure!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -5070,7 +6171,7 @@ class ServiceConnectionMap {
 
 /// The ServiceConnectionPolicy resource.
 ///
-/// Next id: 11
+/// Next id: 12
 class ServiceConnectionPolicy {
   /// Time when the ServiceConnectionMap was created.
   ///
@@ -5079,6 +6180,12 @@ class ServiceConnectionPolicy {
 
   /// A description of this resource.
   core.String? description;
+
+  /// The etag is computed by the server, and may be sent on update and delete
+  /// requests to ensure the client has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
 
   /// The type of underlying resources used to create the connection.
   ///
@@ -5133,6 +6240,7 @@ class ServiceConnectionPolicy {
   ServiceConnectionPolicy({
     this.createTime,
     this.description,
+    this.etag,
     this.infrastructure,
     this.labels,
     this.name,
@@ -5151,6 +6259,7 @@ class ServiceConnectionPolicy {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           infrastructure: json_.containsKey('infrastructure')
               ? json_['infrastructure'] as core.String
               : null,
@@ -5187,6 +6296,7 @@ class ServiceConnectionPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (infrastructure != null) 'infrastructure': infrastructure!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -5200,7 +6310,7 @@ class ServiceConnectionPolicy {
 
 /// The ServiceConnectionToken resource.
 ///
-/// Next id: 9
+/// Next id: 10
 class ServiceConnectionToken {
   /// Time when the ServiceConnectionToken was created.
   ///
@@ -5209,6 +6319,12 @@ class ServiceConnectionToken {
 
   /// A description of this resource.
   core.String? description;
+
+  /// The etag is computed by the server, and may be sent on update and delete
+  /// requests to ensure the client has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
 
   /// The time to which this token is valid.
   ///
@@ -5245,6 +6361,7 @@ class ServiceConnectionToken {
   ServiceConnectionToken({
     this.createTime,
     this.description,
+    this.etag,
     this.expireTime,
     this.labels,
     this.name,
@@ -5261,6 +6378,7 @@ class ServiceConnectionToken {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
               : null,
@@ -5286,6 +6404,7 @@ class ServiceConnectionToken {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -5364,6 +6483,11 @@ class Spoke {
   /// Router appliance instances that are associated with the spoke.
   LinkedRouterApplianceInstances? linkedRouterApplianceInstances;
 
+  /// VPC network that is associated with the spoke.
+  ///
+  /// Optional.
+  LinkedVpcNetwork? linkedVpcNetwork;
+
   /// VPN tunnels that are associated with the spoke.
   LinkedVpnTunnels? linkedVpnTunnels;
 
@@ -5375,6 +6499,22 @@ class Spoke {
   /// Immutable.
   core.String? name;
 
+  /// The reasons for current state of the spoke.
+  ///
+  /// Output only.
+  core.List<StateReason>? reasons;
+
+  /// The type of resource associated with the spoke.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SPOKE_TYPE_UNSPECIFIED" : Unspecified spoke type.
+  /// - "VPN_TUNNEL" : Spokes associated with VPN tunnels.
+  /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
+  /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
+  /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  core.String? spokeType;
+
   /// The current lifecycle state of this spoke.
   ///
   /// Output only.
@@ -5383,7 +6523,12 @@ class Spoke {
   /// - "CREATING" : The resource's create operation is in progress.
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
   /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
   core.String? state;
 
   /// The Google-generated UUID for the spoke.
@@ -5407,8 +6552,11 @@ class Spoke {
     this.labels,
     this.linkedInterconnectAttachments,
     this.linkedRouterApplianceInstances,
+    this.linkedVpcNetwork,
     this.linkedVpnTunnels,
     this.name,
+    this.reasons,
+    this.spokeType,
     this.state,
     this.uniqueId,
     this.updateTime,
@@ -5443,11 +6591,24 @@ class Spoke {
                       json_['linkedRouterApplianceInstances']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          linkedVpcNetwork: json_.containsKey('linkedVpcNetwork')
+              ? LinkedVpcNetwork.fromJson(json_['linkedVpcNetwork']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           linkedVpnTunnels: json_.containsKey('linkedVpnTunnels')
               ? LinkedVpnTunnels.fromJson(json_['linkedVpnTunnels']
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reasons: json_.containsKey('reasons')
+              ? (json_['reasons'] as core.List)
+                  .map((value) => StateReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          spokeType: json_.containsKey('spokeType')
+              ? json_['spokeType'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           uniqueId: json_.containsKey('uniqueId')
@@ -5467,11 +6628,243 @@ class Spoke {
           'linkedInterconnectAttachments': linkedInterconnectAttachments!,
         if (linkedRouterApplianceInstances != null)
           'linkedRouterApplianceInstances': linkedRouterApplianceInstances!,
+        if (linkedVpcNetwork != null) 'linkedVpcNetwork': linkedVpcNetwork!,
         if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels!,
         if (name != null) 'name': name!,
+        if (reasons != null) 'reasons': reasons!,
+        if (spokeType != null) 'spokeType': spokeType!,
         if (state != null) 'state': state!,
         if (uniqueId != null) 'uniqueId': uniqueId!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The number of spokes that are in a particular state and associated with a
+/// given hub.
+class SpokeStateCount {
+  /// The total number of spokes that are in this state and associated with a
+  /// given hub.
+  ///
+  /// Output only.
+  core.String? count;
+
+  /// The state of the spokes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state information available
+  /// - "CREATING" : The resource's create operation is in progress.
+  /// - "ACTIVE" : The resource is active
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
+  core.String? state;
+
+  SpokeStateCount({
+    this.count,
+    this.state,
+  });
+
+  SpokeStateCount.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// The number of spokes in the hub that are inactive for this reason.
+class SpokeStateReasonCount {
+  /// The total number of spokes that are inactive for a particular reason and
+  /// associated with a given hub.
+  ///
+  /// Output only.
+  core.String? count;
+
+  /// The reason that a spoke is inactive.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : No information available.
+  /// - "PENDING_REVIEW" : The proposed spoke is pending review.
+  /// - "REJECTED" : The proposed spoke has been rejected by the hub
+  /// administrator.
+  /// - "PAUSED" : The spoke has been deactivated internally.
+  /// - "FAILED" : Network Connectivity Center encountered errors while
+  /// accepting the spoke.
+  core.String? stateReasonCode;
+
+  SpokeStateReasonCount({
+    this.count,
+    this.stateReasonCode,
+  });
+
+  SpokeStateReasonCount.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          stateReasonCode: json_.containsKey('stateReasonCode')
+              ? json_['stateReasonCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (stateReasonCode != null) 'stateReasonCode': stateReasonCode!,
+      };
+}
+
+/// Summarizes information about the spokes associated with a hub.
+///
+/// The summary includes a count of spokes according to type and according to
+/// state. If any spokes are inactive, the summary also lists the reasons they
+/// are inactive, including a count for each reason.
+class SpokeSummary {
+  /// Counts the number of spokes that are in each state and associated with a
+  /// given hub.
+  ///
+  /// Output only.
+  core.List<SpokeStateCount>? spokeStateCounts;
+
+  /// Counts the number of spokes that are inactive for each possible reason and
+  /// associated with a given hub.
+  ///
+  /// Output only.
+  core.List<SpokeStateReasonCount>? spokeStateReasonCounts;
+
+  /// Counts the number of spokes of each type that are associated with a
+  /// specific hub.
+  ///
+  /// Output only.
+  core.List<SpokeTypeCount>? spokeTypeCounts;
+
+  SpokeSummary({
+    this.spokeStateCounts,
+    this.spokeStateReasonCounts,
+    this.spokeTypeCounts,
+  });
+
+  SpokeSummary.fromJson(core.Map json_)
+      : this(
+          spokeStateCounts: json_.containsKey('spokeStateCounts')
+              ? (json_['spokeStateCounts'] as core.List)
+                  .map((value) => SpokeStateCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          spokeStateReasonCounts: json_.containsKey('spokeStateReasonCounts')
+              ? (json_['spokeStateReasonCounts'] as core.List)
+                  .map((value) => SpokeStateReasonCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          spokeTypeCounts: json_.containsKey('spokeTypeCounts')
+              ? (json_['spokeTypeCounts'] as core.List)
+                  .map((value) => SpokeTypeCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (spokeStateCounts != null) 'spokeStateCounts': spokeStateCounts!,
+        if (spokeStateReasonCounts != null)
+          'spokeStateReasonCounts': spokeStateReasonCounts!,
+        if (spokeTypeCounts != null) 'spokeTypeCounts': spokeTypeCounts!,
+      };
+}
+
+/// The number of spokes of a given type that are associated with a specific
+/// hub.
+///
+/// The type indicates what kind of resource is associated with the spoke.
+class SpokeTypeCount {
+  /// The total number of spokes of this type that are associated with the hub.
+  ///
+  /// Output only.
+  core.String? count;
+
+  /// The type of the spokes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SPOKE_TYPE_UNSPECIFIED" : Unspecified spoke type.
+  /// - "VPN_TUNNEL" : Spokes associated with VPN tunnels.
+  /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
+  /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
+  /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  core.String? spokeType;
+
+  SpokeTypeCount({
+    this.count,
+    this.spokeType,
+  });
+
+  SpokeTypeCount.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          spokeType: json_.containsKey('spokeType')
+              ? json_['spokeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (spokeType != null) 'spokeType': spokeType!,
+      };
+}
+
+/// The reason a spoke is inactive.
+class StateReason {
+  /// The code associated with this reason.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : No information available.
+  /// - "PENDING_REVIEW" : The proposed spoke is pending review.
+  /// - "REJECTED" : The proposed spoke has been rejected by the hub
+  /// administrator.
+  /// - "PAUSED" : The spoke has been deactivated internally.
+  /// - "FAILED" : Network Connectivity Center encountered errors while
+  /// accepting the spoke.
+  core.String? code;
+
+  /// Human-readable details about this reason.
+  core.String? message;
+
+  /// Additional information provided by the user in the RejectSpoke call.
+  core.String? userDetails;
+
+  StateReason({
+    this.code,
+    this.message,
+    this.userDetails,
+  });
+
+  StateReason.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          userDetails: json_.containsKey('userDetails')
+              ? json_['userDetails'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (userDetails != null) 'userDetails': userDetails!,
       };
 }
 

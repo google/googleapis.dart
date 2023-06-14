@@ -1593,6 +1593,7 @@ api.EventWorkingLocationProperties buildEventWorkingLocationProperties() {
       'string': 'foo'
     };
     o.officeLocation = buildEventWorkingLocationPropertiesOfficeLocation();
+    o.type = 'foo';
   }
   buildCounterEventWorkingLocationProperties--;
   return o;
@@ -1617,6 +1618,10 @@ void checkEventWorkingLocationProperties(api.EventWorkingLocationProperties o) {
       unittest.equals('foo'),
     );
     checkEventWorkingLocationPropertiesOfficeLocation(o.officeLocation!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEventWorkingLocationProperties--;
 }

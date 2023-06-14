@@ -27,6 +27,12 @@
     "name": "games",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://games.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play Game Services",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "achievementDefinitions": {
             "methods": {
@@ -1265,8 +1270,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://games.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
             "description": "An achievement definition object.",
@@ -3226,8 +3229,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play Game Services",
-    "version": "v1"
+    }
 }

@@ -237,6 +237,7 @@ api.Attributes buildAttributes() {
     o.theme = 'foo';
     o.title = 'foo';
     o.videoLink = buildUnnamed10();
+    o.virtualModelLink = 'foo';
   }
   buildCounterAttributes--;
   return o;
@@ -350,6 +351,10 @@ void checkAttributes(api.Attributes o) {
       unittest.equals('foo'),
     );
     checkUnnamed10(o.videoLink!);
+    unittest.expect(
+      o.virtualModelLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAttributes--;
 }

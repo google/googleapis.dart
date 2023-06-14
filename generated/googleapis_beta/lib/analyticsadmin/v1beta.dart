@@ -3946,8 +3946,6 @@ class GoogleAnalyticsAdminV1betaDataStreamWebStreamData {
   /// Domain name of the web app being measured, or empty.
   ///
   /// Example: "http://www.google.com", "https://www.google.com"
-  ///
-  /// Immutable.
   core.String? defaultUri;
 
   /// ID of the corresponding web app in Firebase, if any.
@@ -3957,9 +3955,9 @@ class GoogleAnalyticsAdminV1betaDataStreamWebStreamData {
   /// Output only.
   core.String? firebaseAppId;
 
-  /// Analytics "Measurement ID", without the "G-" prefix.
+  /// Analytics Measurement ID.
   ///
-  /// Example: "G-1A2BCD345E" would just be "1A2BCD345E"
+  /// Example: "G-1A2BCD345E"
   ///
   /// Output only.
   core.String? measurementId;

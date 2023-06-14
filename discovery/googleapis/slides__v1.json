@@ -42,6 +42,13 @@
     "name": "slides",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230620",
+    "rootUrl": "https://slides.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Slides API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -119,7 +126,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "presentations": {
             "methods": {
@@ -311,8 +317,6 @@
             }
         }
     },
-    "revision": "20230511",
-    "rootUrl": "https://slides.googleapis.com/",
     "schemas": {
         "AffineTransform": {
             "description": "AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements.",
@@ -4586,9 +4590,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Slides API",
-    "version": "v1",
-    "version_module": true
+    }
 }

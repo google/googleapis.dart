@@ -46,28 +46,6 @@ void checkAdWordsLocationExtensions(api.AdWordsLocationExtensions o) {
   buildCounterAdWordsLocationExtensions--;
 }
 
-core.int buildCounterAssociateLocationRequest = 0;
-api.AssociateLocationRequest buildAssociateLocationRequest() {
-  final o = api.AssociateLocationRequest();
-  buildCounterAssociateLocationRequest++;
-  if (buildCounterAssociateLocationRequest < 3) {
-    o.placeId = 'foo';
-  }
-  buildCounterAssociateLocationRequest--;
-  return o;
-}
-
-void checkAssociateLocationRequest(api.AssociateLocationRequest o) {
-  buildCounterAssociateLocationRequest++;
-  if (buildCounterAssociateLocationRequest < 3) {
-    unittest.expect(
-      o.placeId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAssociateLocationRequest--;
-}
-
 core.List<api.UriAttributeValue> buildUnnamed0() => [
       buildUriAttributeValue(),
       buildUriAttributeValue(),
@@ -532,22 +510,6 @@ void checkChainUri(api.ChainUri o) {
     );
   }
   buildCounterChainUri--;
-}
-
-core.int buildCounterClearLocationAssociationRequest = 0;
-api.ClearLocationAssociationRequest buildClearLocationAssociationRequest() {
-  final o = api.ClearLocationAssociationRequest();
-  buildCounterClearLocationAssociationRequest++;
-  if (buildCounterClearLocationAssociationRequest < 3) {}
-  buildCounterClearLocationAssociationRequest--;
-  return o;
-}
-
-void checkClearLocationAssociationRequest(
-    api.ClearLocationAssociationRequest o) {
-  buildCounterClearLocationAssociationRequest++;
-  if (buildCounterClearLocationAssociationRequest < 3) {}
-  buildCounterClearLocationAssociationRequest--;
 }
 
 core.int buildCounterDate = 0;
@@ -1850,16 +1812,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-AssociateLocationRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAssociateLocationRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AssociateLocationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAssociateLocationRequest(od);
-    });
-  });
-
   unittest.group('obj-schema-Attribute', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAttribute();
@@ -1967,16 +1919,6 @@ void main() {
       final od =
           api.ChainUri.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkChainUri(od);
-    });
-  });
-
-  unittest.group('obj-schema-ClearLocationAssociationRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildClearLocationAssociationRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ClearLocationAssociationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkClearLocationAssociationRequest(od);
     });
   });
 
@@ -2932,122 +2874,6 @@ void main() {
   });
 
   unittest.group('resource-LocationsResource', () {
-    unittest.test('method--associate', () async {
-      final mock = HttpServerMock();
-      final res = api.MyBusinessBusinessInformationApi(mock).locations;
-      final arg_request = buildAssociateLocationRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.AssociateLocationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkAssociateLocationRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.associate(arg_request, arg_name, $fields: arg_$fields);
-      checkEmpty(response as api.Empty);
-    });
-
-    unittest.test('method--clearLocationAssociation', () async {
-      final mock = HttpServerMock();
-      final res = api.MyBusinessBusinessInformationApi(mock).locations;
-      final arg_request = buildClearLocationAssociationRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ClearLocationAssociationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkClearLocationAssociationRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.clearLocationAssociation(arg_request, arg_name,
-          $fields: arg_$fields);
-      checkEmpty(response as api.Empty);
-    });
-
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
       final res = api.MyBusinessBusinessInformationApi(mock).locations;

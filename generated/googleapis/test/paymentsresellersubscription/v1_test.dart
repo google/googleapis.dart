@@ -1340,6 +1340,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
   final o = api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload();
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload < 3) {
+    o.accessEndTime = 'foo';
     o.partnerEligibilityIds = buildUnnamed16();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;
@@ -1350,6 +1351,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(
     api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload o) {
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload < 3) {
+    unittest.expect(
+      o.accessEndTime!,
+      unittest.equals('foo'),
+    );
     checkUnnamed16(o.partnerEligibilityIds!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;

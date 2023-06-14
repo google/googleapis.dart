@@ -293,6 +293,43 @@ class DocumentsResource {
     return ClassifyTextResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Moderates a document for harmful and sensitive categories.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ModerateTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ModerateTextResponse> moderateText(
+    ModerateTextRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/documents:moderateText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ModerateTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// The entity analysis request message.
@@ -710,6 +747,9 @@ class AnnotateTextResponse {
   /// See Document.language field for more details.
   core.String? language;
 
+  /// Harmful and sensitive categories identified in the input document.
+  core.List<ClassificationCategory>? moderationCategories;
+
   /// Sentences in the input document.
   ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
@@ -725,6 +765,7 @@ class AnnotateTextResponse {
     this.documentSentiment,
     this.entities,
     this.language,
+    this.moderationCategories,
     this.sentences,
     this.tokens,
   });
@@ -750,6 +791,12 @@ class AnnotateTextResponse {
           language: json_.containsKey('language')
               ? json_['language'] as core.String
               : null,
+          moderationCategories: json_.containsKey('moderationCategories')
+              ? (json_['moderationCategories'] as core.List)
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sentences: json_.containsKey('sentences')
               ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
@@ -769,6 +816,8 @@ class AnnotateTextResponse {
         if (documentSentiment != null) 'documentSentiment': documentSentiment!,
         if (entities != null) 'entities': entities!,
         if (language != null) 'language': language!,
+        if (moderationCategories != null)
+          'moderationCategories': moderationCategories!,
         if (sentences != null) 'sentences': sentences!,
         if (tokens != null) 'tokens': tokens!,
       };
@@ -1271,6 +1320,9 @@ class Features {
   /// Extract syntax information.
   core.bool? extractSyntax;
 
+  /// Moderate the document for harmful and sensitive categories.
+  core.bool? moderateText;
+
   Features({
     this.classificationModelOptions,
     this.classifyText,
@@ -1278,6 +1330,7 @@ class Features {
     this.extractEntities,
     this.extractEntitySentiment,
     this.extractSyntax,
+    this.moderateText,
   });
 
   Features.fromJson(core.Map json_)
@@ -1304,6 +1357,9 @@ class Features {
           extractSyntax: json_.containsKey('extractSyntax')
               ? json_['extractSyntax'] as core.bool
               : null,
+          moderateText: json_.containsKey('moderateText')
+              ? json_['moderateText'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1316,6 +1372,56 @@ class Features {
         if (extractEntitySentiment != null)
           'extractEntitySentiment': extractEntitySentiment!,
         if (extractSyntax != null) 'extractSyntax': extractSyntax!,
+        if (moderateText != null) 'moderateText': moderateText!,
+      };
+}
+
+/// The document moderation request message.
+class ModerateTextRequest {
+  /// Input document.
+  ///
+  /// Required.
+  Document? document;
+
+  ModerateTextRequest({
+    this.document,
+  });
+
+  ModerateTextRequest.fromJson(core.Map json_)
+      : this(
+          document: json_.containsKey('document')
+              ? Document.fromJson(
+                  json_['document'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (document != null) 'document': document!,
+      };
+}
+
+/// The document moderation response message.
+class ModerateTextResponse {
+  /// Harmful and sensitive categories representing the input document.
+  core.List<ClassificationCategory>? moderationCategories;
+
+  ModerateTextResponse({
+    this.moderationCategories,
+  });
+
+  ModerateTextResponse.fromJson(core.Map json_)
+      : this(
+          moderationCategories: json_.containsKey('moderationCategories')
+              ? (json_['moderationCategories'] as core.List)
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (moderationCategories != null)
+          'moderationCategories': moderationCategories!,
       };
 }
 

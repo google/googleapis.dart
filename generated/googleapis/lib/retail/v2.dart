@@ -1280,6 +1280,58 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Permanently deletes all selected Products under a branch.
+  ///
+  /// This process is asynchronous. If the request is valid, the removal will be
+  /// enqueued and processed offline. Depending on the number of Products, this
+  /// operation could take hours to complete. Before the operation completes,
+  /// some Products may still be returned by ProductService.GetProduct or
+  /// ProductService.ListProducts. Depending on the number of Products, this
+  /// operation could take hours to complete. To get a sample of Products that
+  /// would be deleted, set PurgeProductsRequest.force to false.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the branch under which the
+  /// products are created. The format is
+  /// `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> purge(
+    GoogleCloudRetailV2PurgeProductsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/products:purge';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// We recommend that you use the ProductService.RemoveLocalInventories method
   /// instead of the ProductService.RemoveFulfillmentPlaces method.
   ///
@@ -3771,7 +3823,8 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// indexed so that it can be filtered, faceted, or boosted in
   /// SearchService.Search.
   ///
-  /// Must be specified, otherwise throws INVALID_FORMAT error.
+  /// Must be specified when AttributesConfig.attribute_config_level is
+  /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error.
   /// Possible string values are:
   /// - "INDEXABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "INDEXABLE_ENABLED" : Indexable option enabled for an attribute.
@@ -3809,7 +3862,8 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// If SEARCHABLE_ENABLED but attribute type is numerical, attribute values
   /// will not be searchable by text queries in SearchService.Search, as there
   /// are no text values associated to numerical attributes. Must be specified,
-  /// otherwise throws INVALID_FORMAT error.
+  /// when AttributesConfig.attribute_config_level is
+  /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error.
   /// Possible string values are:
   /// - "SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset.
   /// - "SEARCHABLE_ENABLED" : Searchable option enabled for an attribute.
@@ -3953,6 +4007,8 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   /// CompleteQueryRequest.query case insensitively. * They are transformed to
   /// lower case. * They are UTF-8 safe. Recent searches are deduplicated. More
   /// recent searches will be reserved when duplication happens.
+  ///
+  /// Deprecated.
   core.List<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>?
       recentSearchResults;
 
@@ -6117,10 +6173,10 @@ class GoogleCloudRetailV2Product {
 
   /// The brands of the product.
   ///
-  /// A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded
-  /// string with a length limit of 1,000 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Corresponding properties: Google
-  /// Merchant Center property
+  /// A maximum of 30 brands are allowed unless overridden via pantheon UI. Each
+  /// brand must be a UTF-8 encoded string with a length limit of 1,000
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [brand](https://support.google.com/merchants/answer/6324351). Schema.org
   /// property [Product.brand](https://schema.org/brand).
   core.List<core.String>? brands;
@@ -6905,6 +6961,56 @@ class GoogleCloudRetailV2PurchaseTransaction {
         if (id != null) 'id': id!,
         if (revenue != null) 'revenue': revenue!,
         if (tax != null) 'tax': tax!,
+      };
+}
+
+/// Request message for PurgeProducts method.
+class GoogleCloudRetailV2PurgeProductsRequest {
+  /// The filter string to specify the products to be deleted with a length
+  /// limit of 5,000 characters.
+  ///
+  /// Empty string filter is not allowed. "*" implies delete all items in a
+  /// branch. The eligible fields for filtering are: * `availability`: Double
+  /// quoted Product.availability string. * `create_time` : in ISO 8601 "zulu"
+  /// format. Supported syntax: * Comparators ("\>", "\<", "\>=", "\<=", "=").
+  /// Examples: * create_time \<= "2015-02-13T17:05:46Z" * availability =
+  /// "IN_STOCK" * Conjunctions ("AND") Examples: * create_time \<=
+  /// "2015-02-13T17:05:46Z" AND availability = "PREORDER" * Disjunctions ("OR")
+  /// Examples: * create_time \<= "2015-02-13T17:05:46Z" OR availability =
+  /// "IN_STOCK" * Can support nested queries. Examples: * (create_time \<=
+  /// "2015-02-13T17:05:46Z" AND availability = "PREORDER") OR (create_time \>=
+  /// "2015-02-14T13:03:32Z" AND availability = "IN_STOCK") * Filter Limits: *
+  /// Filter should not contain more than 6 conditions. * Max nesting depth
+  /// should not exceed 2 levels. Examples queries: * Delete back order products
+  /// created before a timestamp. create_time \<= "2015-02-13T17:05:46Z" OR
+  /// availability = "BACKORDER"
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// Actually perform the purge.
+  ///
+  /// If `force` is set to false, the method will return the expected purge
+  /// count without deleting any products.
+  core.bool? force;
+
+  GoogleCloudRetailV2PurgeProductsRequest({
+    this.filter,
+    this.force,
+  });
+
+  GoogleCloudRetailV2PurgeProductsRequest.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (force != null) 'force': force!,
       };
 }
 

@@ -614,6 +614,7 @@ api.HiveMetastoreConfig buildHiveMetastoreConfig() {
   if (buildCounterHiveMetastoreConfig < 3) {
     o.auxiliaryVersions = buildUnnamed7();
     o.configOverrides = buildUnnamed8();
+    o.endpointProtocol = 'foo';
     o.kerberosConfig = buildKerberosConfig();
     o.version = 'foo';
   }
@@ -626,6 +627,10 @@ void checkHiveMetastoreConfig(api.HiveMetastoreConfig o) {
   if (buildCounterHiveMetastoreConfig < 3) {
     checkUnnamed7(o.auxiliaryVersions!);
     checkUnnamed8(o.configOverrides!);
+    unittest.expect(
+      o.endpointProtocol!,
+      unittest.equals('foo'),
+    );
     checkKerberosConfig(o.kerberosConfig!);
     unittest.expect(
       o.version!,

@@ -180,6 +180,52 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Romanize input text written in non-Latin scripts to Latin text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or location to make a call. Must refer to a
+  /// caller's project. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}` or
+  /// `projects/{project-number-or-id}`. For global calls, use
+  /// `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RomanizeTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RomanizeTextResponse> romanizeText(
+    RomanizeTextRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':romanizeText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RomanizeTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Translates input text and returns translated text.
   ///
   /// [request] - The metadata request object.
@@ -536,6 +582,52 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Romanize input text written in non-Latin scripts to Latin text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or location to make a call. Must refer to a
+  /// caller's project. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}` or
+  /// `projects/{project-number-or-id}`. For global calls, use
+  /// `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RomanizeTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RomanizeTextResponse> romanizeText(
+    RomanizeTextRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':romanizeText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RomanizeTextResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3768,6 +3860,111 @@ class OutputConfig {
       };
 }
 
+/// A single romanization response.
+class Romanization {
+  /// The ISO-639 language code of source text in the initial request, detected
+  /// automatically, if no source language was passed within the initial
+  /// request.
+  ///
+  /// If the source language was passed, auto-detection of the language does not
+  /// occur and this field is empty.
+  core.String? detectedLanguageCode;
+
+  /// Romanized text.
+  ///
+  /// If an error occurs during romanization, this field might be excluded from
+  /// the response.
+  core.String? romanizedText;
+
+  Romanization({
+    this.detectedLanguageCode,
+    this.romanizedText,
+  });
+
+  Romanization.fromJson(core.Map json_)
+      : this(
+          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
+              ? json_['detectedLanguageCode'] as core.String
+              : null,
+          romanizedText: json_.containsKey('romanizedText')
+              ? json_['romanizedText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedLanguageCode != null)
+          'detectedLanguageCode': detectedLanguageCode!,
+        if (romanizedText != null) 'romanizedText': romanizedText!,
+      };
+}
+
+/// The request message for synchronous romanization.
+class RomanizeTextRequest {
+  /// The content of the input in string format.
+  ///
+  /// Required.
+  core.List<core.String>? contents;
+
+  /// The ISO-639 language code of the input text if known, for example, "hi" or
+  /// "zh".
+  ///
+  /// If the source language isn't specified, the API attempts to identify the
+  /// source language automatically and returns the source language for each
+  /// content in the response.
+  ///
+  /// Optional.
+  core.String? sourceLanguageCode;
+
+  RomanizeTextRequest({
+    this.contents,
+    this.sourceLanguageCode,
+  });
+
+  RomanizeTextRequest.fromJson(core.Map json_)
+      : this(
+          contents: json_.containsKey('contents')
+              ? (json_['contents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+      };
+}
+
+/// The response message for synchronous romanization.
+class RomanizeTextResponse {
+  /// Text romanization responses.
+  ///
+  /// This field has the same length as `contents`.
+  core.List<Romanization>? romanizations;
+
+  RomanizeTextResponse({
+    this.romanizations,
+  });
+
+  RomanizeTextResponse.fromJson(core.Map json_)
+      : this(
+          romanizations: json_.containsKey('romanizations')
+              ? (json_['romanizations'] as core.List)
+                  .map((value) => Romanization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (romanizations != null) 'romanizations': romanizations!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -4204,6 +4401,11 @@ class TranslateTextRequest {
   /// Required.
   core.String? targetLanguageCode;
 
+  /// Transliteration to be applied.
+  ///
+  /// Optional.
+  TransliterationConfig? transliterationConfig;
+
   TranslateTextRequest({
     this.contents,
     this.glossaryConfig,
@@ -4212,6 +4414,7 @@ class TranslateTextRequest {
     this.model,
     this.sourceLanguageCode,
     this.targetLanguageCode,
+    this.transliterationConfig,
   });
 
   TranslateTextRequest.fromJson(core.Map json_)
@@ -4244,6 +4447,10 @@ class TranslateTextRequest {
           targetLanguageCode: json_.containsKey('targetLanguageCode')
               ? json_['targetLanguageCode'] as core.String
               : null,
+          transliterationConfig: json_.containsKey('transliterationConfig')
+              ? TransliterationConfig.fromJson(json_['transliterationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4256,6 +4463,8 @@ class TranslateTextRequest {
           'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCode != null)
           'targetLanguageCode': targetLanguageCode!,
+        if (transliterationConfig != null)
+          'transliterationConfig': transliterationConfig!,
       };
 }
 
@@ -4356,6 +4565,29 @@ class Translation {
         if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
         if (model != null) 'model': model!,
         if (translatedText != null) 'translatedText': translatedText!,
+      };
+}
+
+/// Configures transliteration feature on top of translation.
+class TransliterationConfig {
+  /// If true, source text in romanized form can be translated to the target
+  /// language.
+  core.bool? enableTransliteration;
+
+  TransliterationConfig({
+    this.enableTransliteration,
+  });
+
+  TransliterationConfig.fromJson(core.Map json_)
+      : this(
+          enableTransliteration: json_.containsKey('enableTransliteration')
+              ? json_['enableTransliteration'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableTransliteration != null)
+          'enableTransliteration': enableTransliteration!,
       };
 }
 

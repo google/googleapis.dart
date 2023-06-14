@@ -27,6 +27,13 @@
     "name": "vault",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://vault.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Vault API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "matters": {
             "methods": {
@@ -1191,8 +1197,6 @@
             }
         }
     },
-    "revision": "20230426",
-    "rootUrl": "https://vault.googleapis.com/",
     "schemas": {
         "AccountCount": {
             "description": "The results count for each account.",
@@ -1352,7 +1356,7 @@
             "id": "CloudStorageFile",
             "properties": {
                 "bucketName": {
-                    "description": "The name of the Cloud Storage bucket for the export file. You can use this value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis), but not to list the bucket contents. Instead, you can [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get) by object name.",
+                    "description": "The name of the Cloud Storage bucket for the export file. You can use this value in the Cloud Storage [JSON API](https://cloud.google.com/storage/docs/json_api) or [XML API](https://cloud.google.com/storage/docs/xml-api), but not to list the bucket contents. Instead, you can [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get) by object name.",
                     "type": "string"
                 },
                 "md5Hash": {
@@ -1360,7 +1364,7 @@
                     "type": "string"
                 },
                 "objectName": {
-                    "description": "The name of the Cloud Storage object for the export file. You can use this value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis).",
+                    "description": "The name of the Cloud Storage object for the export file. You can use this value in the Cloud Storage [JSON API](https://cloud.google.com/storage/docs/json_api) or [XML API](https://cloud.google.com/storage/docs/xml-api).",
                     "type": "string"
                 },
                 "size": {
@@ -2639,9 +2643,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Vault API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -6775,6 +6775,9 @@ class Access {
   /// "iam.googleapis.com"
   core.String? serviceName;
 
+  /// The caller's user agent string associated with the finding.
+  core.String? userAgent;
+
   /// Type of user agent associated with the finding.
   ///
   /// For example, an operating system shell or an embedded or standalone
@@ -6798,6 +6801,7 @@ class Access {
     this.serviceAccountDelegationInfo,
     this.serviceAccountKeyName,
     this.serviceName,
+    this.userAgent,
     this.userAgentFamily,
     this.userName,
   });
@@ -6833,6 +6837,9 @@ class Access {
           serviceName: json_.containsKey('serviceName')
               ? json_['serviceName'] as core.String
               : null,
+          userAgent: json_.containsKey('userAgent')
+              ? json_['userAgent'] as core.String
+              : null,
           userAgentFamily: json_.containsKey('userAgentFamily')
               ? json_['userAgentFamily'] as core.String
               : null,
@@ -6852,6 +6859,7 @@ class Access {
         if (serviceAccountKeyName != null)
           'serviceAccountKeyName': serviceAccountKeyName!,
         if (serviceName != null) 'serviceName': serviceName!,
+        if (userAgent != null) 'userAgent': userAgent!,
         if (userAgentFamily != null) 'userAgentFamily': userAgentFamily!,
         if (userName != null) 'userName': userName!,
       };
@@ -10929,8 +10937,8 @@ class OrganizationSettings {
 
   /// A flag that indicates if Asset Discovery should be enabled.
   ///
-  /// If the flag is set to \`true\`, then discovery of assets will occur. If it
-  /// is set to \`false, all historical assets will remain, but discovery of
+  /// If the flag is set to `true`, then discovery of assets will occur. If it
+  /// is set to `false`, all historical assets will remain, but discovery of
   /// future assets will not occur.
   core.bool? enableAssetDiscovery;
 

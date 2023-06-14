@@ -26,6 +26,7 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesGoModulesResource]
 ///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesKfpArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesMavenArtifactsResource]
@@ -413,6 +414,8 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesGoModulesResource get goModules =>
+      ProjectsLocationsRepositoriesGoModulesResource(_requester);
   ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
       ProjectsLocationsRepositoriesGoogetArtifactsResource(_requester);
   ProjectsLocationsRepositoriesKfpArtifactsResource get kfpArtifacts =>
@@ -1112,6 +1115,71 @@ class ProjectsLocationsRepositoriesFilesResource {
   }
 }
 
+class ProjectsLocationsRepositoriesGoModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesGoModulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Directly uploads a Go module.
+  ///
+  /// The returned Operation will complete once the Go module is uploaded.
+  /// Package, Version, and File resources are created based on the uploaded Go
+  /// module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the repository where the Go module will be
+  /// uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadGoModuleMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadGoModuleMediaResponse> upload(
+    UploadGoModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/goModules:create';
+    } else {
+      url_ =
+          '/upload/v1/' + core.Uri.encodeFull('$parent') + '/goModules:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadGoModuleMediaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsRepositoriesGoogetArtifactsResource {
   final commons.ApiRequester _requester;
 
@@ -1739,7 +1807,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the parent resource whose tags will be listed.
+  /// [parent] - The name of the parent package whose tags will be listed.
+  /// Example:
+  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
@@ -1848,6 +1918,50 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   ProjectsLocationsRepositoriesPackagesVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes multiple versions across a repository.
+  ///
+  /// The returned operation will complete once the versions have been deleted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the repository holding all requested versions.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchDelete(
+    BatchDeleteVersionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/versions:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Deletes a version and all of its content.
   ///
@@ -2207,6 +2321,42 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
   }
 }
 
+/// The request to delete multiple versions across a repository.
+class BatchDeleteVersionsRequest {
+  /// The names of the versions to delete.
+  ///
+  /// A maximum of 10000 versions can be deleted in a batch.
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  /// If true, the request is performed without deleting data, following
+  /// AIP-163.
+  core.bool? validateOnly;
+
+  BatchDeleteVersionsRequest({
+    this.names,
+    this.validateOnly,
+  });
+
+  BatchDeleteVersionsRequest.fromJson(core.Map json_)
+      : this(
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2287,6 +2437,183 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Artifact policy configuration for repository cleanup policies.
+class CleanupPolicy {
+  /// Policy action.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Action not specified.
+  /// - "DELETE" : Delete action.
+  /// - "KEEP" : Keep action.
+  core.String? action;
+
+  /// Policy condition for matching versions.
+  CleanupPolicyCondition? condition;
+
+  /// The user-provided ID of the cleanup policy.
+  core.String? id;
+
+  /// Policy condition for retaining a minimum number of versions.
+  ///
+  /// May only be specified with a Keep action.
+  CleanupPolicyMostRecentVersions? mostRecentVersions;
+
+  CleanupPolicy({
+    this.action,
+    this.condition,
+    this.id,
+    this.mostRecentVersions,
+  });
+
+  CleanupPolicy.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? CleanupPolicyCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          mostRecentVersions: json_.containsKey('mostRecentVersions')
+              ? CleanupPolicyMostRecentVersions.fromJson(
+                  json_['mostRecentVersions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (mostRecentVersions != null)
+          'mostRecentVersions': mostRecentVersions!,
+      };
+}
+
+/// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy.
+///
+/// If multiple entries are set, all must be satisfied for the condition to be
+/// satisfied.
+class CleanupPolicyCondition {
+  /// Match versions newer than a duration.
+  core.String? newerThan;
+
+  /// Match versions older than a duration.
+  core.String? olderThan;
+
+  /// Match versions by package prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? packageNamePrefixes;
+
+  /// Match versions by tag prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? tagPrefixes;
+
+  /// Match versions by tag status.
+  /// Possible string values are:
+  /// - "TAG_STATE_UNSPECIFIED" : Tag status not specified.
+  /// - "TAGGED" : Applies to tagged versions only.
+  /// - "UNTAGGED" : Applies to untagged versions only.
+  /// - "ANY" : Applies to all versions.
+  core.String? tagState;
+
+  /// DEPRECATED: Use older_than.
+  core.String? versionAge;
+
+  /// Match versions by version name prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? versionNamePrefixes;
+
+  CleanupPolicyCondition({
+    this.newerThan,
+    this.olderThan,
+    this.packageNamePrefixes,
+    this.tagPrefixes,
+    this.tagState,
+    this.versionAge,
+    this.versionNamePrefixes,
+  });
+
+  CleanupPolicyCondition.fromJson(core.Map json_)
+      : this(
+          newerThan: json_.containsKey('newerThan')
+              ? json_['newerThan'] as core.String
+              : null,
+          olderThan: json_.containsKey('olderThan')
+              ? json_['olderThan'] as core.String
+              : null,
+          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
+              ? (json_['packageNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagPrefixes: json_.containsKey('tagPrefixes')
+              ? (json_['tagPrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagState: json_.containsKey('tagState')
+              ? json_['tagState'] as core.String
+              : null,
+          versionAge: json_.containsKey('versionAge')
+              ? json_['versionAge'] as core.String
+              : null,
+          versionNamePrefixes: json_.containsKey('versionNamePrefixes')
+              ? (json_['versionNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newerThan != null) 'newerThan': newerThan!,
+        if (olderThan != null) 'olderThan': olderThan!,
+        if (packageNamePrefixes != null)
+          'packageNamePrefixes': packageNamePrefixes!,
+        if (tagPrefixes != null) 'tagPrefixes': tagPrefixes!,
+        if (tagState != null) 'tagState': tagState!,
+        if (versionAge != null) 'versionAge': versionAge!,
+        if (versionNamePrefixes != null)
+          'versionNamePrefixes': versionNamePrefixes!,
+      };
+}
+
+/// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
+/// for retaining a minimum number of versions.
+class CleanupPolicyMostRecentVersions {
+  /// Minimum number of versions to keep.
+  core.int? keepCount;
+
+  /// List of package name prefixes that will apply this rule.
+  core.List<core.String>? packageNamePrefixes;
+
+  CleanupPolicyMostRecentVersions({
+    this.keepCount,
+    this.packageNamePrefixes,
+  });
+
+  CleanupPolicyMostRecentVersions.fromJson(core.Map json_)
+      : this(
+          keepCount: json_.containsKey('keepCount')
+              ? json_['keepCount'] as core.int
+              : null,
+          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
+              ? (json_['packageNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keepCount != null) 'keepCount': keepCount!,
+        if (packageNamePrefixes != null)
+          'packageNamePrefixes': packageNamePrefixes!,
       };
 }
 
@@ -2622,7 +2949,7 @@ class ImportAptArtifactsRequest {
 
 /// Google Cloud Storage location where the artifacts currently reside.
 class ImportGoogetArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket/my_object).
+  /// Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`).
   core.List<core.String>? uris;
 
   /// Supports URI wildcards for matching multiple objects from a single URI.
@@ -3363,7 +3690,7 @@ class Package {
   core.String? displayName;
 
   /// The name of the package, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
   ///
   /// If the package ID part contains slashes, the slashes are escaped.
   core.String? name;
@@ -3708,6 +4035,22 @@ class RemoteRepositoryConfig {
 
 /// A Repository for storing artifacts with a specific format.
 class Repository {
+  /// Cleanup policies for this repository.
+  ///
+  /// Cleanup policies indicate when certain package versions can be
+  /// automatically deleted. Map keys are policy IDs supplied by users during
+  /// policy creation. They must unique within a repository and be under 128
+  /// characters in length.
+  ///
+  /// Optional.
+  core.Map<core.String, CleanupPolicy>? cleanupPolicies;
+
+  /// If true, the cleanup pipeline is prevented from deleting versions in this
+  /// repository.
+  ///
+  /// Optional.
+  core.bool? cleanupPolicyDryRun;
+
   /// The time when the repository was created.
   ///
   /// Output only.
@@ -3731,6 +4074,7 @@ class Repository {
   /// - "GOOGET" : GooGet package format.
   /// - "PYTHON" : Python package format.
   /// - "KFP" : Kubeflow Pipelines package format.
+  /// - "GO" : Go package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's
@@ -3792,6 +4136,8 @@ class Repository {
   VirtualRepositoryConfig? virtualRepositoryConfig;
 
   Repository({
+    this.cleanupPolicies,
+    this.cleanupPolicyDryRun,
     this.createTime,
     this.description,
     this.dockerConfig,
@@ -3810,6 +4156,20 @@ class Repository {
 
   Repository.fromJson(core.Map json_)
       : this(
+          cleanupPolicies: json_.containsKey('cleanupPolicies')
+              ? (json_['cleanupPolicies']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CleanupPolicy.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          cleanupPolicyDryRun: json_.containsKey('cleanupPolicyDryRun')
+              ? json_['cleanupPolicyDryRun'] as core.bool
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3861,6 +4221,9 @@ class Repository {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cleanupPolicies != null) 'cleanupPolicies': cleanupPolicies!,
+        if (cleanupPolicyDryRun != null)
+          'cleanupPolicyDryRun': cleanupPolicyDryRun!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (dockerConfig != null) 'dockerConfig': dockerConfig!,
@@ -3981,6 +4344,31 @@ class UploadAptArtifactMediaResponse {
 
 /// The request to upload an artifact.
 typedef UploadAptArtifactRequest = $Empty;
+
+/// The response to upload a Go module.
+class UploadGoModuleMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadGoModuleMediaResponse({
+    this.operation,
+  });
+
+  UploadGoModuleMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload a Go module.
+typedef UploadGoModuleRequest = $Empty;
 
 /// The response to upload an artifact.
 class UploadGoogetArtifactMediaResponse {

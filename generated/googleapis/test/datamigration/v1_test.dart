@@ -428,6 +428,7 @@ api.CloudSqlSettings buildCloudSqlSettings() {
     o.dataDiskType = 'foo';
     o.databaseFlags = buildUnnamed4();
     o.databaseVersion = 'foo';
+    o.edition = 'foo';
     o.ipConfig = buildSqlIpConfig();
     o.rootPassword = 'foo';
     o.rootPasswordSet = true;
@@ -473,6 +474,10 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
     checkUnnamed4(o.databaseFlags!);
     unittest.expect(
       o.databaseVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.edition!,
       unittest.equals('foo'),
     );
     checkSqlIpConfig(o.ipConfig!);
@@ -2490,6 +2495,7 @@ api.OracleConnectionProfile buildOracleConnectionProfile() {
     o.passwordSet = true;
     o.port = 42;
     o.privateConnectivity = buildPrivateConnectivity();
+    o.ssl = buildSslConfig();
     o.staticServiceIpConnectivity = buildStaticServiceIpConnectivity();
     o.username = 'foo';
   }
@@ -2519,6 +2525,7 @@ void checkOracleConnectionProfile(api.OracleConnectionProfile o) {
       unittest.equals(42),
     );
     checkPrivateConnectivity(o.privateConnectivity!);
+    checkSslConfig(o.ssl!);
     checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
     unittest.expect(
       o.username!,
@@ -6147,6 +6154,7 @@ void main() {
           .locations
           .conversionWorkspaces;
       final arg_name = 'foo';
+      final arg_force = true;
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6182,6 +6190,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
+        );
+        unittest.expect(
           queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
@@ -6197,7 +6209,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name,
-          requestId: arg_requestId, $fields: arg_$fields);
+          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

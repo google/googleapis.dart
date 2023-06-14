@@ -30,6 +30,12 @@
     "name": "cloudbilling",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://cloudbilling.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Billing API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -107,7 +113,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "billingAccounts": {
             "methods": {
@@ -519,8 +524,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://cloudbilling.googleapis.com/",
     "schemas": {
         "AggregationInfo": {
             "description": "Represents the aggregation level and interval for pricing of a single SKU.",
@@ -933,15 +936,18 @@
                     "type": "string"
                 },
                 "billingEnabled": {
-                    "description": "True if the project is associated with an open billing account, to which usage on the project is charged. False if the project is associated with a closed billing account, or no billing account at all, and therefore cannot use paid services. This field is read-only.",
+                    "description": "Output only. True if the project is associated with an open billing account, to which usage on the project is charged. False if the project is associated with a closed billing account, or no billing account at all, and therefore cannot use paid services.",
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "The resource name for the `ProjectBillingInfo`; has the form `projects/{project_id}/billingInfo`. For example, the resource name for the billing information for project `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`. This field is read-only.",
+                    "description": "Output only. The resource name for the `ProjectBillingInfo`; has the form `projects/{project_id}/billingInfo`. For example, the resource name for the billing information for project `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This is a convenience field so that you don't need to parse the `name` field to obtain a project ID. This field is read-only.",
+                    "description": "Output only. The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This is a convenience field so that you don't need to parse the `name` field to obtain a project ID.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1075,8 +1081,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Billing API",
-    "version": "v1"
+    }
 }

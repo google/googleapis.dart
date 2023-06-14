@@ -36,8 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1556,14 +1554,13 @@ class EventsResource {
   /// - "outOfOffice"This parameter can be repeated multiple times to return
   /// events of different types. Currently, this is the only allowed value for
   /// this field:
-  /// - \["default", "focusTime", "outOfOffice"\] This value will be the
-  /// default.
+  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
   ///
   /// If you're enrolled in the Working Location developer preview program, in
   /// addition to the default value above you can also set the "workingLocation"
   /// event type:
   /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] Additional combinations of these 4 event types
+  /// - \["workingLocation"\] Additional combinations of these four event types
   /// will be made available in later releases. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
@@ -2080,14 +2077,13 @@ class EventsResource {
   /// - "outOfOffice"This parameter can be repeated multiple times to return
   /// events of different types. Currently, this is the only allowed value for
   /// this field:
-  /// - \["default", "focusTime", "outOfOffice"\] This value will be the
-  /// default.
+  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
   ///
   /// If you're enrolled in the Working Location developer preview program, in
   /// addition to the default value above you can also set the "workingLocation"
   /// event type:
   /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] Additional combinations of these 4 event types
+  /// - \["workingLocation"\] Additional combinations of these four event types
   /// will be made available in later releases. Developer Preview.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
@@ -3024,7 +3020,111 @@ class CalendarNotification {
       };
 }
 
-typedef Channel = $Channel00;
+class Channel {
+  /// The address where notifications are delivered for this channel.
+  core.String? address;
+
+  /// Date and time of notification channel expiration, expressed as a Unix
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
+  core.String? expiration;
+
+  /// A UUID or similar unique string that identifies this channel.
+  core.String? id;
+
+  /// Identifies this as a notification channel used to watch for changes to a
+  /// resource, which is "api#channel".
+  core.String? kind;
+
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? params;
+
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
+  core.bool? payload;
+
+  /// An opaque ID that identifies the resource being watched on this channel.
+  ///
+  /// Stable across different API versions.
+  core.String? resourceId;
+
+  /// A version-specific identifier for the watched resource.
+  core.String? resourceUri;
+
+  /// An arbitrary string delivered to the target address with each notification
+  /// delivered over this channel.
+  ///
+  /// Optional.
+  core.String? token;
+
+  /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
+  /// where Http requests are used to deliver messages.
+  core.String? type;
+
+  Channel({
+    this.address,
+    this.expiration,
+    this.id,
+    this.kind,
+    this.params,
+    this.payload,
+    this.resourceId,
+    this.resourceUri,
+    this.token,
+    this.type,
+  });
+
+  Channel.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          expiration: json_.containsKey('expiration')
+              ? json_['expiration'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          params: json_.containsKey('params')
+              ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.bool
+              : null,
+          resourceId: json_.containsKey('resourceId')
+              ? json_['resourceId'] as core.String
+              : null,
+          resourceUri: json_.containsKey('resourceUri')
+              ? json_['resourceUri'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
+      };
+}
 
 class ColorDefinition {
   /// The background color associated with this color definition.
@@ -4211,9 +4311,9 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
-  /// Developer Preview: Working Location event data.
+  /// Working Location event data.
   ///
-  /// Read-only.
+  /// Developer Preview.
   EventWorkingLocationProperties? workingLocationProperties;
 
   Event({
@@ -4796,10 +4896,17 @@ class EventWorkingLocationProperties {
   /// If present, specifies that the user is working from an office.
   EventWorkingLocationPropertiesOfficeLocation? officeLocation;
 
+  /// Indicates what kind of location this is.
+  ///
+  /// Any details are specified in a sub-field of the specified name (but which
+  /// may be missing if empty). Any other fields are ignored.
+  core.String? type;
+
   EventWorkingLocationProperties({
     this.customLocation,
     this.homeOffice,
     this.officeLocation,
+    this.type,
   });
 
   EventWorkingLocationProperties.fromJson(core.Map json_)
@@ -4816,12 +4923,14 @@ class EventWorkingLocationProperties {
                   json_['officeLocation']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customLocation != null) 'customLocation': customLocation!,
         if (homeOffice != null) 'homeOffice': homeOffice!,
         if (officeLocation != null) 'officeLocation': officeLocation!,
+        if (type != null) 'type': type!,
       };
 }
 

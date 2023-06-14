@@ -27,6 +27,13 @@
     "name": "analyticsadmin",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://analyticsadmin.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Analytics Admin API",
+    "version": "v1beta",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accountSummaries": {
             "methods": {
@@ -1592,8 +1598,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://analyticsadmin.googleapis.com/",
     "schemas": {
         "GoogleAnalyticsAdminV1betaAccessBetweenFilter": {
             "description": "To express that the result needs to be between two numbers (inclusive).",
@@ -2496,7 +2500,7 @@
             "id": "GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
             "properties": {
                 "defaultUri": {
-                    "description": "Immutable. Domain name of the web app being measured, or empty. Example: \"http://www.google.com\", \"https://www.google.com\"",
+                    "description": "Domain name of the web app being measured, or empty. Example: \"http://www.google.com\", \"https://www.google.com\"",
                     "type": "string"
                 },
                 "firebaseAppId": {
@@ -2505,7 +2509,7 @@
                     "type": "string"
                 },
                 "measurementId": {
-                    "description": "Output only. Analytics \"Measurement ID\", without the \"G-\" prefix. Example: \"G-1A2BCD345E\" would just be \"1A2BCD345E\"",
+                    "description": "Output only. Analytics Measurement ID. Example: \"G-1A2BCD345E\"",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -3219,9 +3223,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Analytics Admin API",
-    "version": "v1beta",
-    "version_module": true
+    }
 }

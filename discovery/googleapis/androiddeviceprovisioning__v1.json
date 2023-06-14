@@ -15,6 +15,13 @@
     "name": "androiddeviceprovisioning",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
+    "servicePath": "",
+    "title": "Android Device Provisioning Partner API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "customers": {
             "methods": {
@@ -823,8 +829,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "schemas": {
         "ClaimDeviceRequest": {
             "description": "Request message to claim a device on behalf of a customer.",
@@ -1907,9 +1911,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Android Device Provisioning Partner API",
-    "version": "v1",
-    "version_module": true
+    }
 }

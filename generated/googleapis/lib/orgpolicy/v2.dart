@@ -12,8 +12,8 @@
 
 /// Organization Policy API - v2
 ///
-/// The Org Policy API allows users to configure governance rules on their GCP
-/// resources across the Cloud Resource Hierarchy.
+/// The Organization Policy API allows users to configure governance rules on
+/// their Google Cloud resources across the resource hierarchy.
 ///
 /// For more information, see
 /// <https://cloud.google.com/orgpolicy/docs/reference/rest/index.html>
@@ -46,8 +46,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Org Policy API allows users to configure governance rules on their GCP
-/// resources across the Cloud Resource Hierarchy.
+/// The Organization Policy API allows users to configure governance rules on
+/// their Google Cloud resources across the resource hierarchy.
 class OrgPolicyApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

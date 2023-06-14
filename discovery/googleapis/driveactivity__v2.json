@@ -27,6 +27,13 @@
     "name": "driveactivity",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230625",
+    "rootUrl": "https://driveactivity.googleapis.com/",
+    "servicePath": "",
+    "title": "Drive Activity API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "activity": {
             "methods": {
@@ -130,8 +136,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://driveactivity.googleapis.com/",
     "schemas": {
         "Action": {
             "description": "Information about the action.",
@@ -1426,9 +1430,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Drive Activity API",
-    "version": "v2",
-    "version_module": true
+    }
 }

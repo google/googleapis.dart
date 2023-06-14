@@ -3408,6 +3408,28 @@ void checkPushItemRequest(api.PushItemRequest o) {
   buildCounterPushItemRequest--;
 }
 
+core.int buildCounterQueryActivity = 0;
+api.QueryActivity buildQueryActivity() {
+  final o = api.QueryActivity();
+  buildCounterQueryActivity++;
+  if (buildCounterQueryActivity < 3) {
+    o.query = 'foo';
+  }
+  buildCounterQueryActivity--;
+  return o;
+}
+
+void checkQueryActivity(api.QueryActivity o) {
+  buildCounterQueryActivity++;
+  if (buildCounterQueryActivity < 3) {
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterQueryActivity--;
+}
+
 core.int buildCounterQueryCountByStatus = 0;
 api.QueryCountByStatus buildQueryCountByStatus() {
   final o = api.QueryCountByStatus();
@@ -3642,6 +3664,42 @@ void checkQuerySuggestion(api.QuerySuggestion o) {
   buildCounterQuerySuggestion++;
   if (buildCounterQuerySuggestion < 3) {}
   buildCounterQuerySuggestion--;
+}
+
+core.int buildCounterRemoveActivityRequest = 0;
+api.RemoveActivityRequest buildRemoveActivityRequest() {
+  final o = api.RemoveActivityRequest();
+  buildCounterRemoveActivityRequest++;
+  if (buildCounterRemoveActivityRequest < 3) {
+    o.requestOptions = buildRequestOptions();
+    o.userActivity = buildUserActivity();
+  }
+  buildCounterRemoveActivityRequest--;
+  return o;
+}
+
+void checkRemoveActivityRequest(api.RemoveActivityRequest o) {
+  buildCounterRemoveActivityRequest++;
+  if (buildCounterRemoveActivityRequest < 3) {
+    checkRequestOptions(o.requestOptions!);
+    checkUserActivity(o.userActivity!);
+  }
+  buildCounterRemoveActivityRequest--;
+}
+
+core.int buildCounterRemoveActivityResponse = 0;
+api.RemoveActivityResponse buildRemoveActivityResponse() {
+  final o = api.RemoveActivityResponse();
+  buildCounterRemoveActivityResponse++;
+  if (buildCounterRemoveActivityResponse < 3) {}
+  buildCounterRemoveActivityResponse--;
+  return o;
+}
+
+void checkRemoveActivityResponse(api.RemoveActivityResponse o) {
+  buildCounterRemoveActivityResponse++;
+  if (buildCounterRemoveActivityResponse < 3) {}
+  buildCounterRemoveActivityResponse--;
 }
 
 core.int buildCounterRepositoryError = 0;
@@ -3917,6 +3975,28 @@ void checkRetrievalImportance(api.RetrievalImportance o) {
     );
   }
   buildCounterRetrievalImportance--;
+}
+
+core.int buildCounterSafeHtmlProto = 0;
+api.SafeHtmlProto buildSafeHtmlProto() {
+  final o = api.SafeHtmlProto();
+  buildCounterSafeHtmlProto++;
+  if (buildCounterSafeHtmlProto < 3) {
+    o.privateDoNotAccessOrElseSafeHtmlWrappedValue = 'foo';
+  }
+  buildCounterSafeHtmlProto--;
+  return o;
+}
+
+void checkSafeHtmlProto(api.SafeHtmlProto o) {
+  buildCounterSafeHtmlProto++;
+  if (buildCounterSafeHtmlProto < 3) {
+    unittest.expect(
+      o.privateDoNotAccessOrElseSafeHtmlWrappedValue!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSafeHtmlProto--;
 }
 
 core.List<api.ObjectDefinition> buildUnnamed63() => [
@@ -4670,6 +4750,8 @@ api.SpellResult buildSpellResult() {
   buildCounterSpellResult++;
   if (buildCounterSpellResult < 3) {
     o.suggestedQuery = 'foo';
+    o.suggestedQueryHtml = buildSafeHtmlProto();
+    o.suggestionType = 'foo';
   }
   buildCounterSpellResult--;
   return o;
@@ -4680,6 +4762,11 @@ void checkSpellResult(api.SpellResult o) {
   if (buildCounterSpellResult < 3) {
     unittest.expect(
       o.suggestedQuery!,
+      unittest.equals('foo'),
+    );
+    checkSafeHtmlProto(o.suggestedQueryHtml!);
+    unittest.expect(
+      o.suggestionType!,
       unittest.equals('foo'),
     );
   }
@@ -5229,6 +5316,25 @@ void checkUploadItemRef(api.UploadItemRef o) {
     );
   }
   buildCounterUploadItemRef--;
+}
+
+core.int buildCounterUserActivity = 0;
+api.UserActivity buildUserActivity() {
+  final o = api.UserActivity();
+  buildCounterUserActivity++;
+  if (buildCounterUserActivity < 3) {
+    o.queryActivity = buildQueryActivity();
+  }
+  buildCounterUserActivity--;
+  return o;
+}
+
+void checkUserActivity(api.UserActivity o) {
+  buildCounterUserActivity++;
+  if (buildCounterUserActivity < 3) {
+    checkQueryActivity(o.queryActivity!);
+  }
+  buildCounterUserActivity--;
 }
 
 core.int buildCounterVPCSettings = 0;
@@ -6299,6 +6405,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-QueryActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkQueryActivity(od);
+    });
+  });
+
   unittest.group('obj-schema-QueryCountByStatus', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQueryCountByStatus();
@@ -6366,6 +6482,26 @@ void main() {
       final od = api.QuerySuggestion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkQuerySuggestion(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoveActivityRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoveActivityRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveActivityRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRemoveActivityRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoveActivityResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoveActivityResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveActivityResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRemoveActivityResponse(od);
     });
   });
 
@@ -6466,6 +6602,16 @@ void main() {
       final od = api.RetrievalImportance.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRetrievalImportance(od);
+    });
+  });
+
+  unittest.group('obj-schema-SafeHtmlProto', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSafeHtmlProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SafeHtmlProto.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSafeHtmlProto(od);
     });
   });
 
@@ -6846,6 +6992,16 @@ void main() {
       final od = api.UploadItemRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUploadItemRef(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserActivity(od);
     });
   });
 
@@ -8189,6 +8345,62 @@ void main() {
   });
 
   unittest.group('resource-QueryResource', () {
+    unittest.test('method--removeActivity', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSearchApi(mock).query;
+      final arg_request = buildRemoveActivityRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RemoveActivityRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemoveActivityRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('v1/query:removeActivity'),
+        );
+        pathOffset += 23;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRemoveActivityResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.removeActivity(arg_request, $fields: arg_$fields);
+      checkRemoveActivityResponse(response as api.RemoveActivityResponse);
+    });
+
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.CloudSearchApi(mock).query;

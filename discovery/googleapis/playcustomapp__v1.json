@@ -23,6 +23,12 @@
     "name": "playcustomapp",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://playcustomapp.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play Custom App Publishing API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -100,7 +106,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "resources": {
@@ -156,8 +161,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://playcustomapp.googleapis.com/",
     "schemas": {
         "CustomApp": {
             "description": "This resource represents a custom app.",
@@ -201,8 +204,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play Custom App Publishing API",
-    "version": "v1"
+    }
 }

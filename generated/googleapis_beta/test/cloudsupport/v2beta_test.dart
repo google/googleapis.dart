@@ -1685,6 +1685,7 @@ void main() {
       final res = api.CloudSupportApi(mock).cases;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_parent = 'foo';
       final arg_query = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1727,6 +1728,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['parent']!.first,
+          unittest.equals(arg_parent),
+        );
+        unittest.expect(
           queryMap['query']!.first,
           unittest.equals(arg_query),
         );
@@ -1744,6 +1749,7 @@ void main() {
       final response = await res.search(
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          parent: arg_parent,
           query: arg_query,
           $fields: arg_$fields);
       checkSearchCasesResponse(response as api.SearchCasesResponse);

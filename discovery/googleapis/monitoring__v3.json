@@ -33,6 +33,13 @@
     "name": "monitoring",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230618",
+    "rootUrl": "https://monitoring.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Monitoring API",
+    "version": "v3",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -110,7 +117,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -2712,8 +2718,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://monitoring.googleapis.com/",
     "schemas": {
         "Aggregation": {
             "description": "Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example \"the 95% latency across the average of all tasks in a cluster\". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).",
@@ -2841,7 +2845,7 @@
                     "type": "string"
                 },
                 "conditions": {
-                    "description": "A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.",
+                    "description": "A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.",
                     "items": {
                         "$ref": "Condition"
                     },
@@ -2852,7 +2856,7 @@
                     "description": "A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored."
                 },
                 "displayName": {
-                    "description": "A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.",
+                    "description": "A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is \"/\", where the and should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.",
                     "type": "string"
                 },
                 "documentation": {
@@ -2882,12 +2886,12 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.",
+                    "description": "User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus and are valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This means that they cannot be stored as is in user labels, because Prometheus labels may contain upper-case letters.",
                     "type": "object"
                 },
                 "validity": {
                     "$ref": "Status",
-                    "description": "Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents."
+                    "description": "Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents."
                 }
             },
             "type": "object"
@@ -5965,9 +5969,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Monitoring API",
-    "version": "v3",
-    "version_module": true
+    }
 }

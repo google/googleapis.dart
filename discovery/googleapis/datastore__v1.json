@@ -26,6 +26,13 @@
     "name": "datastore",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://datastore.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Datastore API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -103,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -652,8 +658,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "Aggregation": {
             "description": "Defines an aggregation that produces a single result.",
@@ -2482,9 +2486,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Datastore API",
-    "version": "v1",
-    "version_module": true
+    }
 }

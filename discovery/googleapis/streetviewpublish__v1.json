@@ -24,6 +24,13 @@
     "name": "streetviewpublish",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://streetviewpublish.googleapis.com/",
+    "servicePath": "",
+    "title": "Street View Publish API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "photo": {
             "methods": {
@@ -374,7 +380,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "filter": {
-                            "description": "Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`, and `filename_query`. See https://google.aip.dev/160 for more information. Filename queries should sent as a Phrase in order to support multple words and special characters by adding escaped quotes. Ex: filename_query=\"example of a phrase.mp4\"",
+                            "description": "Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`, `filename_query`, `min_capture_time_seconds`, `max_capture_time_seconds. See https://google.aip.dev/160 for more information. Filename queries should sent as a Phrase in order to support multiple words and special characters by adding escaped quotes. Ex: filename_query=\"example of a phrase.mp4\"",
                             "location": "query",
                             "type": "string"
                         },
@@ -486,7 +492,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "filter": {
-                            "description": "Optional. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, and `max_longitude`. See https://google.aip.dev/160 for more information.",
+                            "description": "Optional. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`. See https://google.aip.dev/160 for more information.",
                             "location": "query",
                             "type": "string"
                         },
@@ -531,8 +537,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://streetviewpublish.googleapis.com/",
     "schemas": {
         "BatchDeletePhotosRequest": {
             "description": "Request to delete multiple Photos.",
@@ -1318,9 +1322,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Street View Publish API",
-    "version": "v1",
-    "version_module": true
+    }
 }

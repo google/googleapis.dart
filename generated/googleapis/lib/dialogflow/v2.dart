@@ -13364,8 +13364,9 @@ class GoogleCloudDialogflowV2AnswerFeedback {
 
   /// Indicates whether the answer/item was clicked by the human agent or not.
   ///
-  /// Default to false. For knowledge search, the answer record is considered to
-  /// be clicked if the answer was copied or any URI was clicked.
+  /// Default to false. For knowledge search and knowledge assist, the answer
+  /// record is considered to be clicked if the answer was copied or any URI was
+  /// clicked.
   core.bool? clicked;
 
   /// The correctness level of the specific answer.
@@ -13650,18 +13651,32 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
   /// Required.
   core.String? agent;
 
+  /// Sets Dialogflow CX session life time.
+  ///
+  /// By default, a Dialogflow CX session remains active and its data is stored
+  /// for 30 minutes after the last request is sent for the session. This value
+  /// should be no longer than 1 day.
+  ///
+  /// Optional.
+  core.String? sessionTtl;
+
   GoogleCloudDialogflowV2AutomatedAgentConfig({
     this.agent,
+    this.sessionTtl,
   });
 
   GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(core.Map json_)
       : this(
           agent:
               json_.containsKey('agent') ? json_['agent'] as core.String : null,
+          sessionTtl: json_.containsKey('sessionTtl')
+              ? json_['sessionTtl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
+        if (sessionTtl != null) 'sessionTtl': sessionTtl!,
       };
 }
 
@@ -15051,7 +15066,7 @@ class GoogleCloudDialogflowV2Document {
   /// status can be tracked in `latest_reload_status`. If a reload fails, we
   /// will keep the document unchanged. If a reload fails with internal errors,
   /// the system will try to reload the document on the next day. If a reload
-  /// fails with non-retriable errors (e.g. PERMISION_DENIED), the system will
+  /// fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will
   /// not try to reload the document anymore. You need to manually reload the
   /// document successfully by calling `ReloadDocument` and clear the errors.
   ///
@@ -16691,7 +16706,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   /// from a very low value and slowly increasing until you have desired
   /// results. If this field is not set, it defaults to 0.0, which means that
   /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ,
-  /// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+  /// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST,
+  /// ENTITY_EXTRACTION.
   core.double? confidenceThreshold;
 
   /// Determines how recent conversation context is filtered when generating
@@ -17200,6 +17216,8 @@ class GoogleCloudDialogflowV2ImportDocumentsRequest {
   ///
   /// The path can include a wildcard. These URIs may have the forms `gs:///`.
   /// `gs:/// / * .`.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2GcsSources? gcsSource;
 
   /// Whether to import custom metadata from Google Cloud Storage.
@@ -21568,6 +21586,8 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
 /// The request message for Conversations.SuggestConversationSummary.
 class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   /// Parameters for a human assist query.
+  ///
+  /// Only used for POC/demo purpose.
   GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
 
   /// Max number of messages prior to and including \[latest_message\] to use as

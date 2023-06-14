@@ -36,6 +36,13 @@
     "name": "logging",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230623",
+    "rootUrl": "https://logging.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Logging API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -113,7 +120,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "billingAccounts": {
             "methods": {
@@ -1219,6 +1225,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Required. The resource in which to create the sink: \"projects/[PROJECT_ID]\" \"organizations/[ORGANIZATION_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]\" \"folders/[FOLDER_ID]\" For examples:\"projects/my-project\" \"organizations/123456789\"",
                                     "location": "path",
@@ -1346,6 +1357,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -1386,6 +1402,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -2806,6 +2827,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Required. The resource in which to create the sink: \"projects/[PROJECT_ID]\" \"organizations/[ORGANIZATION_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]\" \"folders/[FOLDER_ID]\" For examples:\"projects/my-project\" \"organizations/123456789\"",
                                     "location": "path",
@@ -2933,6 +2959,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -2973,6 +3004,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -5037,6 +5073,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Required. The resource in which to create the sink: \"projects/[PROJECT_ID]\" \"organizations/[ORGANIZATION_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]\" \"folders/[FOLDER_ID]\" For examples:\"projects/my-project\" \"organizations/123456789\"",
                                     "location": "path",
@@ -5164,6 +5205,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -5204,6 +5250,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -6501,6 +6552,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Required. The resource in which to create the sink: \"projects/[PROJECT_ID]\" \"organizations/[ORGANIZATION_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]\" \"folders/[FOLDER_ID]\" For examples:\"projects/my-project\" \"organizations/123456789\"",
                                     "location": "path",
@@ -6628,6 +6684,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -6668,6 +6729,11 @@
                                 "sinkName"
                             ],
                             "parameters": {
+                                "customWriterIdentity": {
+                                    "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "sinkName": {
                                     "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                                     "location": "path",
@@ -6714,6 +6780,11 @@
                         "parent"
                     ],
                     "parameters": {
+                        "customWriterIdentity": {
+                            "description": "Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "parent": {
                             "description": "Required. The resource in which to create the sink: \"projects/[PROJECT_ID]\" \"organizations/[ORGANIZATION_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]\" \"folders/[FOLDER_ID]\" For examples:\"projects/my-project\" \"organizations/123456789\"",
                             "location": "path",
@@ -6841,6 +6912,11 @@
                         "sinkName"
                     ],
                     "parameters": {
+                        "customWriterIdentity": {
+                            "description": "Optional. A service account provided by the caller that will be used to write the log entries. Must be of format serviceAccount:some@email. This can only be specified if writing to a destination outside the sink's project. If not specified, a p4 service account will automatically be generated.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "sinkName": {
                             "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier: \"projects/[PROJECT_ID]/sinks/[SINK_ID]\" \"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\" \"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\" \"folders/[FOLDER_ID]/sinks/[SINK_ID]\" For example:\"projects/my-project/sinks/my-sink\"",
                             "location": "path",
@@ -7005,8 +7081,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "BigQueryDataset": {
             "description": "Describes a BigQuery dataset that was created by a link.",
@@ -7636,7 +7710,7 @@
             "id": "ListLogEntriesRequest",
             "properties": {
                 "filter": {
-                    "description": "Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
+                    "description": "Optional. A filter that chooses which log entries to return. For more information, see Logging query language (https://cloud.google.com/logging/docs/view/logging-query-language).Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
                     "type": "string"
                 },
                 "orderBy": {
@@ -8249,7 +8323,7 @@
                     "type": "string"
                 },
                 "destination": {
-                    "description": "Required. The export destination: \"storage.googleapis.com/[GCS_BUCKET]\" \"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\" \"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).",
+                    "description": "Required. The export destination: \"storage.googleapis.com/[GCS_BUCKET]\" \"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\" \"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\" \"logging.googleapis.com/projects/[PROJECT_ID]\" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).",
                     "type": "string"
                 },
                 "disabled": {
@@ -8807,6 +8881,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "loggingServiceAccountId": {
+                    "description": "Output only. The service account for the given container. Sinks use this service account as their writer_identity if no custom service account is provided.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Output only. The resource name of the settings.",
                     "readOnly": true,
@@ -9020,9 +9099,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Logging API",
-    "version": "v2",
-    "version_module": true
+    }
 }

@@ -131,6 +131,7 @@ api.AwsS3Data buildAwsS3Data() {
   if (buildCounterAwsS3Data < 3) {
     o.awsAccessKey = buildAwsAccessKey();
     o.bucketName = 'foo';
+    o.credentialsSecret = 'foo';
     o.path = 'foo';
     o.roleArn = 'foo';
   }
@@ -144,6 +145,10 @@ void checkAwsS3Data(api.AwsS3Data o) {
     checkAwsAccessKey(o.awsAccessKey!);
     unittest.expect(
       o.bucketName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.credentialsSecret!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -165,6 +170,7 @@ api.AzureBlobStorageData buildAzureBlobStorageData() {
   if (buildCounterAzureBlobStorageData < 3) {
     o.azureCredentials = buildAzureCredentials();
     o.container = 'foo';
+    o.credentialsSecret = 'foo';
     o.path = 'foo';
     o.storageAccount = 'foo';
   }
@@ -178,6 +184,10 @@ void checkAzureBlobStorageData(api.AzureBlobStorageData o) {
     checkAzureCredentials(o.azureCredentials!);
     unittest.expect(
       o.container!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.credentialsSecret!,
       unittest.equals('foo'),
     );
     unittest.expect(

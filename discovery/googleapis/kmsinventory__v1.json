@@ -24,6 +24,13 @@
     "name": "kmsinventory",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230702",
+    "rootUrl": "https://kmsinventory.googleapis.com/",
+    "servicePath": "",
+    "title": "KMS Inventory API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "organizations": {
             "resources": {
@@ -234,8 +240,6 @@
             }
         }
     },
-    "revision": "20230511",
-    "rootUrl": "https://kmsinventory.googleapis.com/",
     "schemas": {
         "GoogleCloudKmsInventoryV1ListCryptoKeysResponse": {
             "description": "Response message for KeyDashboardService.ListCryptoKeys.",
@@ -425,6 +429,7 @@
                         "ENCRYPT_DECRYPT",
                         "ASYMMETRIC_SIGN",
                         "ASYMMETRIC_DECRYPT",
+                        "RAW_ENCRYPT_DECRYPT",
                         "MAC"
                     ],
                     "enumDescriptions": [
@@ -432,6 +437,7 @@
                         "CryptoKeys with this purpose may be used with Encrypt and Decrypt.",
                         "CryptoKeys with this purpose may be used with AsymmetricSign and GetPublicKey.",
                         "CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.",
+                        "CryptoKeys with this purpose may be used with RawEncrypt and RawDecrypt. This purpose is meant to be used for interoperable symmetric encryption and does not support automatic CryptoKey rotation.",
                         "CryptoKeys with this purpose may be used with MacSign."
                     ],
                     "type": "string"
@@ -457,6 +463,8 @@
                     "enum": [
                         "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED",
                         "GOOGLE_SYMMETRIC_ENCRYPTION",
+                        "AES_128_GCM",
+                        "AES_256_GCM",
                         "RSA_SIGN_PSS_2048_SHA256",
                         "RSA_SIGN_PSS_3072_SHA256",
                         "RSA_SIGN_PSS_4096_SHA256",
@@ -488,6 +496,8 @@
                     "enumDescriptions": [
                         "Not specified.",
                         "Creates symmetric encryption keys.",
+                        "AES-GCM (Galois Counter Mode) using 128-bit keys.",
+                        "AES-GCM (Galois Counter Mode) using 256-bit keys.",
                         "RSASSA-PSS 2048 bit key with a SHA256 digest.",
                         "RSASSA-PSS 3072 bit key with a SHA256 digest.",
                         "RSASSA-PSS 4096 bit key with a SHA256 digest.",
@@ -649,6 +659,8 @@
                     "enum": [
                         "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED",
                         "GOOGLE_SYMMETRIC_ENCRYPTION",
+                        "AES_128_GCM",
+                        "AES_256_GCM",
                         "RSA_SIGN_PSS_2048_SHA256",
                         "RSA_SIGN_PSS_3072_SHA256",
                         "RSA_SIGN_PSS_4096_SHA256",
@@ -680,6 +692,8 @@
                     "enumDescriptions": [
                         "Not specified.",
                         "Creates symmetric encryption keys.",
+                        "AES-GCM (Galois Counter Mode) using 128-bit keys.",
+                        "AES-GCM (Galois Counter Mode) using 256-bit keys.",
                         "RSASSA-PSS 2048 bit key with a SHA256 digest.",
                         "RSASSA-PSS 3072 bit key with a SHA256 digest.",
                         "RSASSA-PSS 4096 bit key with a SHA256 digest.",
@@ -807,9 +821,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "KMS Inventory API",
-    "version": "v1",
-    "version_module": true
+    }
 }

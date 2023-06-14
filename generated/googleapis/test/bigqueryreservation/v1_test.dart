@@ -142,6 +142,7 @@ api.CapacityCommitment buildCapacityCommitment() {
     o.commitmentStartTime = 'foo';
     o.edition = 'foo';
     o.failureStatus = buildStatus();
+    o.isFlatRate = true;
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.plan = 'foo';
@@ -169,6 +170,7 @@ void checkCapacityCommitment(api.CapacityCommitment o) {
       unittest.equals('foo'),
     );
     checkStatus(o.failureStatus!);
+    unittest.expect(o.isFlatRate!, unittest.isTrue);
     unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,

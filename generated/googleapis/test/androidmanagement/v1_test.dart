@@ -677,6 +677,7 @@ api.ApplicationReport buildApplicationReport() {
     o.packageSha256Hash = 'foo';
     o.signingKeyCertFingerprints = buildUnnamed15();
     o.state = 'foo';
+    o.userFacingType = 'foo';
     o.versionCode = 42;
     o.versionName = 'foo';
   }
@@ -712,6 +713,10 @@ void checkApplicationReport(api.ApplicationReport o) {
     checkUnnamed15(o.signingKeyCertFingerprints!);
     unittest.expect(
       o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userFacingType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1436,7 +1441,10 @@ api.DeviceConnectivityManagement buildDeviceConnectivityManagement() {
   final o = api.DeviceConnectivityManagement();
   buildCounterDeviceConnectivityManagement++;
   if (buildCounterDeviceConnectivityManagement < 3) {
+    o.configureWifi = 'foo';
+    o.tetheringSettings = 'foo';
     o.usbDataAccess = 'foo';
+    o.wifiDirectSettings = 'foo';
   }
   buildCounterDeviceConnectivityManagement--;
   return o;
@@ -1446,11 +1454,45 @@ void checkDeviceConnectivityManagement(api.DeviceConnectivityManagement o) {
   buildCounterDeviceConnectivityManagement++;
   if (buildCounterDeviceConnectivityManagement < 3) {
     unittest.expect(
+      o.configureWifi!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tetheringSettings!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.usbDataAccess!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wifiDirectSettings!,
       unittest.equals('foo'),
     );
   }
   buildCounterDeviceConnectivityManagement--;
+}
+
+core.int buildCounterDeviceRadioState = 0;
+api.DeviceRadioState buildDeviceRadioState() {
+  final o = api.DeviceRadioState();
+  buildCounterDeviceRadioState++;
+  if (buildCounterDeviceRadioState < 3) {
+    o.wifiState = 'foo';
+  }
+  buildCounterDeviceRadioState--;
+  return o;
+}
+
+void checkDeviceRadioState(api.DeviceRadioState o) {
+  buildCounterDeviceRadioState++;
+  if (buildCounterDeviceRadioState < 3) {
+    unittest.expect(
+      o.wifiState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDeviceRadioState--;
 }
 
 core.int buildCounterDeviceSettings = 0;
@@ -3597,6 +3639,7 @@ api.Policy buildPolicy() {
     o.defaultPermissionPolicy = 'foo';
     o.deviceConnectivityManagement = buildDeviceConnectivityManagement();
     o.deviceOwnerLockScreenInfo = buildUserFacingMessage();
+    o.deviceRadioState = buildDeviceRadioState();
     o.encryptionPolicy = 'foo';
     o.ensureVerifyAppsEnabled = true;
     o.factoryResetDisabled = true;
@@ -3706,6 +3749,7 @@ void checkPolicy(api.Policy o) {
     );
     checkDeviceConnectivityManagement(o.deviceConnectivityManagement!);
     checkUserFacingMessage(o.deviceOwnerLockScreenInfo!);
+    checkDeviceRadioState(o.deviceRadioState!);
     unittest.expect(
       o.encryptionPolicy!,
       unittest.equals('foo'),
@@ -4943,6 +4987,16 @@ void main() {
       final od = api.DeviceConnectivityManagement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDeviceConnectivityManagement(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeviceRadioState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeviceRadioState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceRadioState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeviceRadioState(od);
     });
   });
 

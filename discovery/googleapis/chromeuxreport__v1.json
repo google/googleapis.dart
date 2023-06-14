@@ -15,6 +15,13 @@
     "name": "chromeuxreport",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://chromeuxreport.googleapis.com/",
+    "servicePath": "",
+    "title": "Chrome UX Report API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "records": {
             "methods": {
@@ -129,8 +135,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://chromeuxreport.googleapis.com/",
     "schemas": {
         "Bin": {
             "description": "A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start to +inf. A bin's start and end values are given in the value type of the metric it represents. For example, \"first contentful paint\" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for its start and end types. However, \"cumulative layout shift\" is measured in unitless decimals and is exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value type.",
@@ -511,9 +515,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Chrome UX Report API",
-    "version": "v1",
-    "version_module": true
+    }
 }

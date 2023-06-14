@@ -21,7 +21,6 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsInstanceProvisioningSettingsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsNetworksResource]
 ///     - [ProjectsLocationsNfsSharesResource]
@@ -79,9 +78,6 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInstanceProvisioningSettingsResource
-      get instanceProvisioningSettings =>
-          ProjectsLocationsInstanceProvisioningSettingsResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsNetworksResource get networks =>
@@ -189,100 +185,11 @@ class ProjectsLocationsResource {
   }
 }
 
-class ProjectsLocationsInstanceProvisioningSettingsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsInstanceProvisioningSettingsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Get instance provisioning settings for a given project.
-  ///
-  /// This is hidden method used by UI only.
-  ///
-  /// Request parameters:
-  ///
-  /// [location] - Required. The parent project and location containing the
-  /// ProvisioningSettings.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [FetchInstanceProvisioningSettingsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<FetchInstanceProvisioningSettingsResponse> fetch(
-    core.String location, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' +
-        core.Uri.encodeFull('$location') +
-        '/instanceProvisioningSettings:fetch';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return FetchInstanceProvisioningSettingsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
-
-  /// Create an Instance.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent project and location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> create(
-    Instance request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
 
   /// Detach LUN from Instance.
   ///
@@ -2396,30 +2303,6 @@ typedef EvictLunRequest = $Empty;
 /// Request for skip volume cooloff and delete it.
 typedef EvictVolumeRequest = $Empty;
 
-/// Response with all provisioning settings.
-class FetchInstanceProvisioningSettingsResponse {
-  /// The OS images available.
-  core.List<OSImage>? images;
-
-  FetchInstanceProvisioningSettingsResponse({
-    this.images,
-  });
-
-  FetchInstanceProvisioningSettingsResponse.fromJson(core.Map json_)
-      : this(
-          images: json_.containsKey('images')
-              ? (json_['images'] as core.List)
-                  .map((value) => OSImage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (images != null) 'images': images!,
-      };
-}
-
 /// Each logical interface represents a logical abstraction of the underlying
 /// physical interface (for eg.
 ///
@@ -2467,48 +2350,6 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
         if (logicalNetworkInterfaces != null)
           'logicalNetworkInterfaces': logicalNetworkInterfaces!,
         if (name != null) 'name': name!,
-      };
-}
-
-/// Logical interface.
-class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface {
-  /// Interface name.
-  ///
-  /// This is not a globally unique identifier. Name is unique only inside the
-  /// ServerNetworkTemplate. This is of syntax or and forms part of the network
-  /// template name.
-  core.String? name;
-
-  /// If true, interface must have network connected.
-  core.bool? required;
-
-  /// Interface type.
-  /// Possible string values are:
-  /// - "INTERFACE_TYPE_UNSPECIFIED" : Unspecified value.
-  /// - "BOND" : Bond interface type.
-  /// - "NIC" : NIC interface type.
-  core.String? type;
-
-  GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface({
-    this.name,
-    this.required,
-    this.type,
-  });
-
-  GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface.fromJson(
-      core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          required: json_.containsKey('required')
-              ? json_['required'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (required != null) 'required': required!,
-        if (type != null) 'type': type!,
       };
 }
 
@@ -2816,6 +2657,9 @@ class InstanceConfig {
   /// Filled if InstanceConfig.multivlan_config is false.
   NetworkAddress? privateNetwork;
 
+  /// List of names of ssh keys used to provision the instance.
+  core.List<core.String>? sshKeyNames;
+
   /// User note field, it can be used by customers to add additional information
   /// for the BMS Ops team .
   core.String? userNote;
@@ -2832,6 +2676,7 @@ class InstanceConfig {
     this.networkTemplate,
     this.osImage,
     this.privateNetwork,
+    this.sshKeyNames,
     this.userNote,
   });
 
@@ -2872,6 +2717,11 @@ class InstanceConfig {
               ? NetworkAddress.fromJson(json_['privateNetwork']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sshKeyNames: json_.containsKey('sshKeyNames')
+              ? (json_['sshKeyNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           userNote: json_.containsKey('userNote')
               ? json_['userNote'] as core.String
               : null,
@@ -2890,6 +2740,7 @@ class InstanceConfig {
         if (networkTemplate != null) 'networkTemplate': networkTemplate!,
         if (osImage != null) 'osImage': osImage!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
+        if (sshKeyNames != null) 'sshKeyNames': sshKeyNames!,
         if (userNote != null) 'userNote': userNote!,
       };
 }
@@ -4213,67 +4064,6 @@ class NfsShare {
       };
 }
 
-/// Operation System image.
-class OSImage {
-  /// Instance types this image is applicable to.
-  ///
-  /// [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
-  core.List<core.String>? applicableInstanceTypes;
-
-  /// OS Image code.
-  core.String? code;
-
-  /// OS Image description.
-  core.String? description;
-
-  /// OS Image's unique name.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Network templates that can be used with this OS Image.
-  core.List<ServerNetworkTemplate>? supportedNetworkTemplates;
-
-  OSImage({
-    this.applicableInstanceTypes,
-    this.code,
-    this.description,
-    this.name,
-    this.supportedNetworkTemplates,
-  });
-
-  OSImage.fromJson(core.Map json_)
-      : this(
-          applicableInstanceTypes: json_.containsKey('applicableInstanceTypes')
-              ? (json_['applicableInstanceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          supportedNetworkTemplates:
-              json_.containsKey('supportedNetworkTemplates')
-                  ? (json_['supportedNetworkTemplates'] as core.List)
-                      .map((value) => ServerNetworkTemplate.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (applicableInstanceTypes != null)
-          'applicableInstanceTypes': applicableInstanceTypes!,
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (supportedNetworkTemplates != null)
-          'supportedNetworkTemplates': supportedNetworkTemplates!,
-      };
-}
-
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -4776,58 +4566,6 @@ class SSHKey {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (publicKey != null) 'publicKey': publicKey!,
-      };
-}
-
-/// Network template.
-class ServerNetworkTemplate {
-  /// Instance types this template is applicable to.
-  core.List<core.String>? applicableInstanceTypes;
-
-  /// Logical interfaces.
-  core.List<
-          GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>?
-      logicalInterfaces;
-
-  /// Template's unique name.
-  ///
-  /// The full resource name follows the pattern:
-  /// `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}`
-  /// Generally, the {server_network_template} follows the syntax of "bond" or
-  /// "nic".
-  ///
-  /// Output only.
-  core.String? name;
-
-  ServerNetworkTemplate({
-    this.applicableInstanceTypes,
-    this.logicalInterfaces,
-    this.name,
-  });
-
-  ServerNetworkTemplate.fromJson(core.Map json_)
-      : this(
-          applicableInstanceTypes: json_.containsKey('applicableInstanceTypes')
-              ? (json_['applicableInstanceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logicalInterfaces: json_.containsKey('logicalInterfaces')
-              ? (json_['logicalInterfaces'] as core.List)
-                  .map((value) =>
-                      GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (applicableInstanceTypes != null)
-          'applicableInstanceTypes': applicableInstanceTypes!,
-        if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
-        if (name != null) 'name': name!,
       };
 }
 

@@ -194,6 +194,8 @@ class ProjectsJobsResource {
 
   /// List the jobs of a project across all regions.
   ///
+  /// **Note:** This method doesn't support filtering the list of jobs by name.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - The project which owns the jobs.
@@ -214,7 +216,7 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
-  /// [name] - Optional. The job name. Optional.
+  /// [name] - Optional. The job name.
   ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
@@ -498,8 +500,11 @@ class ProjectsJobsResource {
   /// `projects.locations.jobs.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
-  /// Using `projects.jobs.list` is not recommended, as you can only get the
-  /// list of jobs that are running in `us-central1`.
+  /// Using `projects.jobs.list` is not recommended, because you can only get
+  /// the list of jobs that are running in `us-central1`.
+  /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
+  /// the list of jobs by name. Filtering by name isn't supported by
+  /// `projects.jobs.aggregated`.
   ///
   /// Request parameters:
   ///
@@ -521,7 +526,7 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
-  /// [name] - Optional. The job name. Optional.
+  /// [name] - Optional. The job name.
   ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
@@ -661,8 +666,8 @@ class ProjectsJobsResource {
   /// only RequestedJobState will be considered for update. If the FieldMask is
   /// not empty and RequestedJobState is none/empty, The fields specified in the
   /// update mask will be the only ones considered for update. If both
-  /// RequestedJobState and update_mask are specified, we will first handle
-  /// RequestedJobState and then the update_mask fields.
+  /// RequestedJobState and update_mask are specified, an error will be returned
+  /// as we cannot update both state and mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1439,8 +1444,11 @@ class ProjectsLocationsJobsResource {
   /// `projects.locations.jobs.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
-  /// Using `projects.jobs.list` is not recommended, as you can only get the
-  /// list of jobs that are running in `us-central1`.
+  /// Using `projects.jobs.list` is not recommended, because you can only get
+  /// the list of jobs that are running in `us-central1`.
+  /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
+  /// the list of jobs by name. Filtering by name isn't supported by
+  /// `projects.jobs.aggregated`.
   ///
   /// Request parameters:
   ///
@@ -1462,7 +1470,7 @@ class ProjectsLocationsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
-  /// [name] - Optional. The job name. Optional.
+  /// [name] - Optional. The job name.
   ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
@@ -1609,8 +1617,8 @@ class ProjectsLocationsJobsResource {
   /// only RequestedJobState will be considered for update. If the FieldMask is
   /// not empty and RequestedJobState is none/empty, The fields specified in the
   /// update mask will be the only ones considered for update. If both
-  /// RequestedJobState and update_mask are specified, we will first handle
-  /// RequestedJobState and then the update_mask fields.
+  /// RequestedJobState and update_mask are specified, an error will be returned
+  /// as we cannot update both state and mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7556,6 +7564,11 @@ class ParameterMetadata {
   /// Optional.
   core.Map<core.String, core.String>? customMetadata;
 
+  /// The options shown when ENUM ParameterType is specified.
+  ///
+  /// Optional.
+  core.List<ParameterMetadataEnumOption>? enumOptions;
+
   /// Specifies a group name for this parameter to be rendered under.
   ///
   /// Group header text will be rendered exactly as specified in this field.
@@ -7616,6 +7629,8 @@ class ParameterMetadata {
   /// - "KMS_KEY_NAME" : The parameter specifies a KMS Key name.
   /// - "WORKER_REGION" : The parameter specifies a Worker Region.
   /// - "WORKER_ZONE" : The parameter specifies a Worker Zone.
+  /// - "BOOLEAN" : The parameter specifies a boolean input.
+  /// - "ENUM" : The parameter specifies an enum input.
   core.String? paramType;
 
   /// Specifies the name of the parent parameter.
@@ -7644,6 +7659,7 @@ class ParameterMetadata {
 
   ParameterMetadata({
     this.customMetadata,
+    this.enumOptions,
     this.groupName,
     this.helpText,
     this.isOptional,
@@ -7665,6 +7681,12 @@ class ParameterMetadata {
                     value as core.String,
                   ),
                 )
+              : null,
+          enumOptions: json_.containsKey('enumOptions')
+              ? (json_['enumOptions'] as core.List)
+                  .map((value) => ParameterMetadataEnumOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           groupName: json_.containsKey('groupName')
               ? json_['groupName'] as core.String
@@ -7698,6 +7720,7 @@ class ParameterMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetadata != null) 'customMetadata': customMetadata!,
+        if (enumOptions != null) 'enumOptions': enumOptions!,
         if (groupName != null) 'groupName': groupName!,
         if (helpText != null) 'helpText': helpText!,
         if (isOptional != null) 'isOptional': isOptional!,
@@ -7708,6 +7731,47 @@ class ParameterMetadata {
         if (parentTriggerValues != null)
           'parentTriggerValues': parentTriggerValues!,
         if (regexes != null) 'regexes': regexes!,
+      };
+}
+
+/// ParameterMetadataEnumOption specifies the option shown in the enum form.
+class ParameterMetadataEnumOption {
+  /// The description to display for the enum option.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The label to display for the enum option.
+  ///
+  /// Optional.
+  core.String? label;
+
+  /// The value of the enum option.
+  ///
+  /// Required.
+  core.String? value;
+
+  ParameterMetadataEnumOption({
+    this.description,
+    this.label,
+    this.value,
+  });
+
+  ParameterMetadataEnumOption.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (label != null) 'label': label!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8014,6 +8078,9 @@ class PubsubLocation {
   /// Indicates whether the pipeline allows late-arriving data.
   core.bool? dropLateData;
 
+  /// If true, then this location represents dynamic topics.
+  core.bool? dynamicDestinations;
+
   /// If set, contains a pubsub label from which to extract record ids.
   ///
   /// If left empty, record deduplication will be strictly best effort.
@@ -8040,6 +8107,7 @@ class PubsubLocation {
 
   PubsubLocation({
     this.dropLateData,
+    this.dynamicDestinations,
     this.idLabel,
     this.subscription,
     this.timestampLabel,
@@ -8052,6 +8120,9 @@ class PubsubLocation {
       : this(
           dropLateData: json_.containsKey('dropLateData')
               ? json_['dropLateData'] as core.bool
+              : null,
+          dynamicDestinations: json_.containsKey('dynamicDestinations')
+              ? json_['dynamicDestinations'] as core.bool
               : null,
           idLabel: json_.containsKey('idLabel')
               ? json_['idLabel'] as core.String
@@ -8074,6 +8145,8 @@ class PubsubLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dropLateData != null) 'dropLateData': dropLateData!,
+        if (dynamicDestinations != null)
+          'dynamicDestinations': dynamicDestinations!,
         if (idLabel != null) 'idLabel': idLabel!,
         if (subscription != null) 'subscription': subscription!,
         if (timestampLabel != null) 'timestampLabel': timestampLabel!,

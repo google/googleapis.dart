@@ -24,6 +24,13 @@
     "name": "videointelligence",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230610",
+    "rootUrl": "https://videointelligence.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Video Intelligence API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "operations": {
             "resources": {
@@ -348,8 +354,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://videointelligence.googleapis.com/",
     "schemas": {
         "GoogleCloudVideointelligenceV1_AnnotateVideoProgress": {
             "description": "Video annotation progress. Included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
@@ -5002,9 +5006,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Video Intelligence API",
-    "version": "v1",
-    "version_module": true
+    }
 }

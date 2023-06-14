@@ -1852,6 +1852,8 @@ class ProjectsLocationsProvidersConnectorsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+$`.
   ///
+  /// [filter] - Filter string.
+  ///
   /// [pageSize] - Page size.
   ///
   /// [pageToken] - Page token.
@@ -1868,11 +1870,13 @@ class ProjectsLocationsProvidersConnectorsResource {
   /// this method will complete with the same error.
   async.Future<ListConnectorsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2369,6 +2373,9 @@ class ConfigVariable {
   /// Value is a bool.
   core.bool? boolValue;
 
+  /// Value is a Encryption Key.
+  EncryptionKey? encryptionKeyValue;
+
   /// Value is an integer
   core.String? intValue;
 
@@ -2383,6 +2390,7 @@ class ConfigVariable {
 
   ConfigVariable({
     this.boolValue,
+    this.encryptionKeyValue,
     this.intValue,
     this.key,
     this.secretValue,
@@ -2393,6 +2401,10 @@ class ConfigVariable {
       : this(
           boolValue: json_.containsKey('boolValue')
               ? json_['boolValue'] as core.bool
+              : null,
+          encryptionKeyValue: json_.containsKey('encryptionKeyValue')
+              ? EncryptionKey.fromJson(json_['encryptionKeyValue']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           intValue: json_.containsKey('intValue')
               ? json_['intValue'] as core.String
@@ -2409,6 +2421,8 @@ class ConfigVariable {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
+        if (encryptionKeyValue != null)
+          'encryptionKeyValue': encryptionKeyValue!,
         if (intValue != null) 'intValue': intValue!,
         if (key != null) 'key': key!,
         if (secretValue != null) 'secretValue': secretValue!,
@@ -2445,6 +2459,11 @@ class ConfigVariableTemplate {
   /// connection.
   core.bool? required;
 
+  /// Condition under which a field would be required.
+  ///
+  /// The condition can be represented in the form of a logical expression.
+  LogicalExpression? requiredCondition;
+
   /// Role grant configuration for the config variable.
   RoleGrant? roleGrant;
 
@@ -2470,6 +2489,7 @@ class ConfigVariableTemplate {
   /// - "SECRET" : Value type is secret.
   /// - "ENUM" : Value type is enum.
   /// - "AUTHORIZATION_CODE" : Value type is authorization code.
+  /// - "ENCRYPTION_KEY" : Encryption Key.
   core.String? valueType;
 
   ConfigVariableTemplate({
@@ -2480,6 +2500,7 @@ class ConfigVariableTemplate {
     this.isAdvanced,
     this.key,
     this.required,
+    this.requiredCondition,
     this.roleGrant,
     this.state,
     this.validationRegex,
@@ -2511,6 +2532,10 @@ class ConfigVariableTemplate {
           required: json_.containsKey('required')
               ? json_['required'] as core.bool
               : null,
+          requiredCondition: json_.containsKey('requiredCondition')
+              ? LogicalExpression.fromJson(json_['requiredCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           roleGrant: json_.containsKey('roleGrant')
               ? RoleGrant.fromJson(
                   json_['roleGrant'] as core.Map<core.String, core.dynamic>)
@@ -2534,6 +2559,7 @@ class ConfigVariableTemplate {
         if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
         if (required != null) 'required': required!,
+        if (requiredCondition != null) 'requiredCondition': requiredCondition!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
         if (state != null) 'state': state!,
         if (validationRegex != null) 'validationRegex': validationRegex!,
@@ -2554,6 +2580,14 @@ class Connection {
   /// Optional.
   core.List<ConfigVariable>? configVariables;
 
+  /// Connection revision.
+  ///
+  /// This field is only updated when the connection is created or updated by
+  /// User.
+  ///
+  /// Output only.
+  core.String? connectionRevision;
+
   /// Connector version on which the connection is created.
   ///
   /// The format is: projects / * /locations / * /providers / * /connectors / *
@@ -2562,6 +2596,17 @@ class Connection {
   ///
   /// Required.
   core.String? connectorVersion;
+
+  /// Flag to mark the version indicating the launch stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
+  core.String? connectorVersionLaunchStage;
 
   /// Created time.
   ///
@@ -2669,7 +2714,9 @@ class Connection {
   Connection({
     this.authConfig,
     this.configVariables,
+    this.connectionRevision,
     this.connectorVersion,
+    this.connectorVersionLaunchStage,
     this.createTime,
     this.description,
     this.destinationConfigs,
@@ -2701,9 +2748,16 @@ class Connection {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          connectionRevision: json_.containsKey('connectionRevision')
+              ? json_['connectionRevision'] as core.String
+              : null,
           connectorVersion: json_.containsKey('connectorVersion')
               ? json_['connectorVersion'] as core.String
               : null,
+          connectorVersionLaunchStage:
+              json_.containsKey('connectorVersionLaunchStage')
+                  ? json_['connectorVersionLaunchStage'] as core.String
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -2771,7 +2825,11 @@ class Connection {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authConfig != null) 'authConfig': authConfig!,
         if (configVariables != null) 'configVariables': configVariables!,
+        if (connectionRevision != null)
+          'connectionRevision': connectionRevision!,
         if (connectorVersion != null) 'connectorVersion': connectorVersion!,
+        if (connectorVersionLaunchStage != null)
+          'connectorVersionLaunchStage': connectorVersionLaunchStage!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (destinationConfigs != null)
@@ -3476,6 +3534,40 @@ class EgressControlConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Encryption Key value.
+class EncryptionKey {
+  /// The \[KMS key name\] with which the content of the Operation is encrypted.
+  ///
+  /// The expected format: `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `. Will be empty string if google managed.
+  core.String? kmsKeyName;
+
+  /// Type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
+  /// - "GOOGLE_MANAGED" : Google Managed.
+  /// - "CUSTOMER_MANAGED" : Customer Managed.
+  core.String? type;
+
+  EncryptionKey({
+    this.kmsKeyName,
+    this.type,
+  });
+
+  EncryptionKey.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// represents the Connector's Endpoint Attachment resource
 class EndpointAttachment {
   /// Created time.
@@ -3801,6 +3893,61 @@ class Field {
         if (key != null) 'key': key!,
         if (nullable != null) 'nullable': nullable!,
         if (readonly != null) 'readonly': readonly!,
+      };
+}
+
+/// Field that needs to be compared.
+class FieldComparison {
+  /// Boolean value
+  core.bool? boolValue;
+
+  /// Comparator to use for comparing the field value.
+  /// Possible string values are:
+  /// - "COMPARATOR_UNSPECIFIED" : The default value.
+  /// - "EQUALS" : The field value must be equal to the specified value.
+  /// - "NOT_EQUALS" : The field value must not be equal to the specified value.
+  core.String? comparator;
+
+  /// Integer value
+  core.String? intValue;
+
+  /// Key of the field.
+  core.String? key;
+
+  /// String value
+  core.String? stringValue;
+
+  FieldComparison({
+    this.boolValue,
+    this.comparator,
+    this.intValue,
+    this.key,
+    this.stringValue,
+  });
+
+  FieldComparison.fromJson(core.Map json_)
+      : this(
+          boolValue: json_.containsKey('boolValue')
+              ? json_['boolValue'] as core.bool
+              : null,
+          comparator: json_.containsKey('comparator')
+              ? json_['comparator'] as core.String
+              : null,
+          intValue: json_.containsKey('intValue')
+              ? json_['intValue'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (comparator != null) 'comparator': comparator!,
+        if (intValue != null) 'intValue': intValue!,
+        if (key != null) 'key': key!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -4352,6 +4499,54 @@ class LockConfig {
       };
 }
 
+/// Struct for representing boolean expressions.
+class LogicalExpression {
+  /// A list of fields to be compared.
+  core.List<FieldComparison>? fieldComparisons;
+
+  /// A list of nested conditions to be compared.
+  core.List<LogicalExpression>? logicalExpressions;
+
+  /// The logical operator to use between the fields and conditions.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : The default value.
+  /// - "AND" : AND operator; The conditions must all be true.
+  /// - "OR" : OR operator; At least one of the conditions must be true.
+  core.String? logicalOperator;
+
+  LogicalExpression({
+    this.fieldComparisons,
+    this.logicalExpressions,
+    this.logicalOperator,
+  });
+
+  LogicalExpression.fromJson(core.Map json_)
+      : this(
+          fieldComparisons: json_.containsKey('fieldComparisons')
+              ? (json_['fieldComparisons'] as core.List)
+                  .map((value) => FieldComparison.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          logicalExpressions: json_.containsKey('logicalExpressions')
+              ? (json_['logicalExpressions'] as core.List)
+                  .map((value) => LogicalExpression.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          logicalOperator: json_.containsKey('logicalOperator')
+              ? json_['logicalOperator'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldComparisons != null) 'fieldComparisons': fieldComparisons!,
+        if (logicalExpressions != null)
+          'logicalExpressions': logicalExpressions!,
+        if (logicalOperator != null) 'logicalOperator': logicalOperator!,
+      };
+}
+
 /// represents the Connector's Managed Zone resource
 class ManagedZone {
   /// Created time.
@@ -4487,6 +4682,9 @@ class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
   core.String? authCode;
 
+  /// Auth URL for Authorization Code Flow
+  core.String? authUri;
+
   /// Client ID for user-provided OAuth app.
   core.String? clientId;
 
@@ -4508,6 +4706,7 @@ class Oauth2AuthCodeFlow {
 
   Oauth2AuthCodeFlow({
     this.authCode,
+    this.authUri,
     this.clientId,
     this.clientSecret,
     this.enablePkce,
@@ -4520,6 +4719,9 @@ class Oauth2AuthCodeFlow {
       : this(
           authCode: json_.containsKey('authCode')
               ? json_['authCode'] as core.String
+              : null,
+          authUri: json_.containsKey('authUri')
+              ? json_['authUri'] as core.String
               : null,
           clientId: json_.containsKey('clientId')
               ? json_['clientId'] as core.String
@@ -4546,6 +4748,7 @@ class Oauth2AuthCodeFlow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authCode != null) 'authCode': authCode!,
+        if (authUri != null) 'authUri': authUri!,
         if (clientId != null) 'clientId': clientId!,
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (enablePkce != null) 'enablePkce': enablePkce!,
@@ -5075,7 +5278,7 @@ class ResultMetadata {
 }
 
 /// This configuration defines all the Cloud IAM roles that needs to be granted
-/// to a particular GCP resource for the selected prinicpal like service
+/// to a particular GCP resource for the selected principal like service
 /// account.
 ///
 /// These configurations will let UI display to customers what IAM roles need to
@@ -5428,6 +5631,11 @@ class Settings {
   /// Output only.
   core.bool? payg;
 
+  /// Tenant project id of the consumer project.
+  ///
+  /// Output only.
+  core.String? tenantProjectId;
+
   /// Flag indicates whether vpc-sc is enabled.
   ///
   /// Optional.
@@ -5436,6 +5644,7 @@ class Settings {
   Settings({
     this.name,
     this.payg,
+    this.tenantProjectId,
     this.vpcsc,
   });
 
@@ -5443,6 +5652,9 @@ class Settings {
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           payg: json_.containsKey('payg') ? json_['payg'] as core.bool : null,
+          tenantProjectId: json_.containsKey('tenantProjectId')
+              ? json_['tenantProjectId'] as core.String
+              : null,
           vpcsc:
               json_.containsKey('vpcsc') ? json_['vpcsc'] as core.bool : null,
         );
@@ -5450,6 +5662,7 @@ class Settings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (payg != null) 'payg': payg!,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
         if (vpcsc != null) 'vpcsc': vpcsc!,
       };
 }

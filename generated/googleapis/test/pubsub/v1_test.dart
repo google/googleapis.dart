@@ -735,6 +735,25 @@ void checkModifyPushConfigRequest(api.ModifyPushConfigRequest o) {
   buildCounterModifyPushConfigRequest--;
 }
 
+core.int buildCounterNoWrapper = 0;
+api.NoWrapper buildNoWrapper() {
+  final o = api.NoWrapper();
+  buildCounterNoWrapper++;
+  if (buildCounterNoWrapper < 3) {
+    o.writeMetadata = true;
+  }
+  buildCounterNoWrapper--;
+  return o;
+}
+
+void checkNoWrapper(api.NoWrapper o) {
+  buildCounterNoWrapper++;
+  if (buildCounterNoWrapper < 3) {
+    unittest.expect(o.writeMetadata!, unittest.isTrue);
+  }
+  buildCounterNoWrapper--;
+}
+
 core.int buildCounterOidcToken = 0;
 api.OidcToken buildOidcToken() {
   final o = api.OidcToken();
@@ -924,6 +943,21 @@ void checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage--;
 }
 
+core.int buildCounterPubsubWrapper = 0;
+api.PubsubWrapper buildPubsubWrapper() {
+  final o = api.PubsubWrapper();
+  buildCounterPubsubWrapper++;
+  if (buildCounterPubsubWrapper < 3) {}
+  buildCounterPubsubWrapper--;
+  return o;
+}
+
+void checkPubsubWrapper(api.PubsubWrapper o) {
+  buildCounterPubsubWrapper++;
+  if (buildCounterPubsubWrapper < 3) {}
+  buildCounterPubsubWrapper--;
+}
+
 core.int buildCounterPullRequest = 0;
 api.PullRequest buildPullRequest() {
   final o = api.PullRequest();
@@ -1001,7 +1035,9 @@ api.PushConfig buildPushConfig() {
   buildCounterPushConfig++;
   if (buildCounterPushConfig < 3) {
     o.attributes = buildUnnamed17();
+    o.noWrapper = buildNoWrapper();
     o.oidcToken = buildOidcToken();
+    o.pubsubWrapper = buildPubsubWrapper();
     o.pushEndpoint = 'foo';
   }
   buildCounterPushConfig--;
@@ -1012,7 +1048,9 @@ void checkPushConfig(api.PushConfig o) {
   buildCounterPushConfig++;
   if (buildCounterPushConfig < 3) {
     checkUnnamed17(o.attributes!);
+    checkNoWrapper(o.noWrapper!);
     checkOidcToken(o.oidcToken!);
+    checkPubsubWrapper(o.pubsubWrapper!);
     unittest.expect(
       o.pushEndpoint!,
       unittest.equals('foo'),
@@ -1901,6 +1939,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-NoWrapper', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNoWrapper();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.NoWrapper.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNoWrapper(od);
+    });
+  });
+
   unittest.group('obj-schema-OidcToken', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOidcToken();
@@ -1948,6 +1996,16 @@ void main() {
       final od = api.PubsubMessage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPubsubMessage(od);
+    });
+  });
+
+  unittest.group('obj-schema-PubsubWrapper', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPubsubWrapper();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PubsubWrapper.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPubsubWrapper(od);
     });
   });
 

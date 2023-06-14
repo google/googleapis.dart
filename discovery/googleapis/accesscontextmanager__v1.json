@@ -24,6 +24,13 @@
     "name": "accesscontextmanager",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230618",
+    "rootUrl": "https://accesscontextmanager.googleapis.com/",
+    "servicePath": "",
+    "title": "Access Context Manager API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accessPolicies": {
             "methods": {
@@ -1233,8 +1239,6 @@
             }
         }
     },
-    "revision": "20230510",
-    "rootUrl": "https://accesscontextmanager.googleapis.com/",
     "schemas": {
         "AccessContextManagerOperationMetadata": {
             "description": "Metadata of Access Context Manager's Long Running Operations.",
@@ -2336,9 +2340,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Access Context Manager API",
-    "version": "v1",
-    "version_module": true
+    }
 }

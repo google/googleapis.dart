@@ -24,6 +24,7 @@
 ///   - [SpacesMembersResource]
 ///   - [SpacesMessagesResource]
 ///     - [SpacesMessagesAttachmentsResource]
+///     - [SpacesMessagesReactionsResource]
 library chat_v1;
 
 import 'dart:async' as async;
@@ -55,9 +56,20 @@ class HangoutsChatApi {
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
+  /// Delete conversations and spaces & remove access to associated files in
+  /// Google Chat
+  static const chatDeleteScope = 'https://www.googleapis.com/auth/chat.delete';
+
+  /// Import spaces, messages, and memberships into Google Chat.
+  static const chatImportScope = 'https://www.googleapis.com/auth/chat.import';
+
   /// View, add, and remove members from conversations in Google Chat
   static const chatMembershipsScope =
       'https://www.googleapis.com/auth/chat.memberships';
+
+  /// Add and remove itself from conversations in Google Chat
+  static const chatMembershipsAppScope =
+      'https://www.googleapis.com/auth/chat.memberships.app';
 
   /// View members in Google Chat conversations.
   static const chatMembershipsReadonlyScope =
@@ -72,6 +84,18 @@ class HangoutsChatApi {
   static const chatMessagesCreateScope =
       'https://www.googleapis.com/auth/chat.messages.create';
 
+  /// View, add, and delete reactions to messages in Google Chat
+  static const chatMessagesReactionsScope =
+      'https://www.googleapis.com/auth/chat.messages.reactions';
+
+  /// Add reactions to messages in Google Chat
+  static const chatMessagesReactionsCreateScope =
+      'https://www.googleapis.com/auth/chat.messages.reactions.create';
+
+  /// View reactions to messages in Google Chat
+  static const chatMessagesReactionsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.messages.reactions.readonly';
+
   /// View messages and reactions in Google Chat
   static const chatMessagesReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.readonly';
@@ -79,6 +103,10 @@ class HangoutsChatApi {
   /// Create conversations and spaces and view or update metadata (including
   /// history settings) in Google Chat
   static const chatSpacesScope = 'https://www.googleapis.com/auth/chat.spaces';
+
+  /// Create new conversations in Google Chat
+  static const chatSpacesCreateScope =
+      'https://www.googleapis.com/auth/chat.spaces.create';
 
   /// View chat and spaces in Google Chat
   static const chatSpacesReadonlyScope =
@@ -152,6 +180,78 @@ class MediaResource {
       return response_ as commons.Media;
     }
   }
+
+  /// Uploads an attachment.
+  ///
+  /// For an example, see
+  /// [Upload media as a file attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/upload).
+  /// Requires user
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.messages` or `chat.messages.create` authorization scope. You
+  /// can upload attachments up to 200 MB. Certain file types aren't supported.
+  /// For details, see
+  /// [File types blocked by Google Chat](https://support.google.com/chat/answer/7651457?&co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the Chat space in which the
+  /// attachment is uploaded. Format "spaces/{space}".
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadAttachmentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadAttachmentResponse> upload(
+    UploadAttachmentRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attachments:upload';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/attachments:upload';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/attachments:upload';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadAttachmentResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class SpacesResource {
@@ -162,24 +262,174 @@ class SpacesResource {
 
   SpacesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a space.
+  /// Creates a named space.
   ///
+  /// Spaces grouped by topics or that have guest access aren't supported. For
+  /// an example, see
+  /// [Create a space](https://developers.google.com/chat/api/guides/v1/spaces/create).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.spaces.create` or `chat.spaces` scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. A random
+  /// UUID is recommended. Specifying an existing request ID returns the space
+  /// created with that ID instead of creating a new space. Specifying an
+  /// existing request ID from the same Chat app with a different authenticated
+  /// user returns an error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Space> create(
+    Space request, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/spaces';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a named space.
+  ///
+  /// Always performs a cascading delete, which means that the space's child
+  /// resources—like messages posted in the space and memberships in the
+  /// space—are also deleted. For an example, see
+  /// [Delete a space](https://developers.google.com/chat/api/guides/v1/spaces/delete).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// from a user who has permission to delete the space, and the `chat.delete`
+  /// scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the space to delete. Format:
+  /// `spaces/{space}`
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the existing direct message with the specified user.
+  ///
+  /// If no direct message space is found, returns a `404 NOT_FOUND` error. For
+  /// an example, see \[Find a direct
+  /// message\](/chat/api/guides/v1/spaces/find-direct-message). With
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users),
+  /// returns the direct message space between the specified user and the
+  /// authenticated user. With
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
+  /// returns the direct message space between the specified user and the
+  /// calling Chat app. Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// or
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the user to find direct message with.
+  /// Format: `users/{user}`, where `{user}` is either the `{person_id}` for the
+  /// [person](https://developers.google.com/people/api/rest/v1/people) from the
+  /// People API, or the `id` for the
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Directory API. For example, if the People API `Person.resourceName`
+  /// is `people/123456789`, you can find a direct message with that person by
+  /// using `users/123456789` as the `name`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Space> findDirectMessage({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/spaces:findDirectMessage';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details about a space.
+  ///
+  /// For an example, see
+  /// [Get a space](https://developers.google.com/chat/api/guides/v1/spaces/get).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
-  /// Format: spaces/{space}
+  /// Format: `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -212,31 +462,47 @@ class SpacesResource {
 
   /// Lists spaces the caller is a member of.
   ///
+  /// Group chats and DMs aren't listed until the first message is sent. For an
+  /// example, see
+  /// [List spaces](https://developers.google.com/chat/api/guides/v1/spaces/list).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
   /// Lists spaces visible to the caller or authenticated user. Group chats and
   /// DMs aren't listed until the first message is sent.
   ///
   /// Request parameters:
   ///
+  /// [filter] - Optional. A query filter. Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
+  /// You can filter spaces by the space type
+  /// (\[`space_type`\](https://developers.google.com/chat/api/reference/rest/v1/spaces#spacetype)).
+  /// To filter by space type, you must specify valid enum value, such as
+  /// `SPACE` or `GROUP_CHAT` (the `space_type` can't be
+  /// `SPACE_TYPE_UNSPECIFIED`). To query for multiple space types, use the `OR`
+  /// operator. For example, the following queries are valid: ``` space_type =
+  /// "SPACE" spaceType = "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ```
+  /// Invalid queries are rejected by the server with an `INVALID_ARGUMENT`
+  /// error. With
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
+  /// this field is ignored and the query always returns all spaces. But the
+  /// Chat API still validates the query syntax with service accounts, so
+  /// invalid queries are still rejected.
+  ///
   /// [pageSize] - Optional. The maximum number of spaces to return. The service
-  /// may return fewer than this value. If unspecified, at most 100 spaces are
-  /// returned. The maximum value is 1000; values above 1000 are coerced to
-  /// 1000. Negative values return an `INVALID_ARGUMENT` error.
+  /// might return fewer than this value. If unspecified, at most 100 spaces are
+  /// returned. The maximum value is 1,000. If you use a value more than 1,000,
+  /// it's automatically changed to 1,000. Negative values return an
+  /// `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - Optional. A page token, received from a previous list spaces
-  /// call. Provide this to retrieve the subsequent page. When paginating, the
-  /// filter value should match the call that provided the page token. Passing a
-  /// different value may lead to unexpected results.
+  /// call. Provide this parameter to retrieve the subsequent page. When
+  /// paginating, the filter value should match the call that provided the page
+  /// token. Passing a different value may lead to unexpected results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -249,11 +515,13 @@ class SpacesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSpacesResponse> list({
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -269,6 +537,137 @@ class SpacesResource {
     return ListSpacesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a space.
+  ///
+  /// For an example, see
+  /// [Update a space](https://developers.google.com/chat/api/guides/v1/spaces/update).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.spaces` scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the space. Format: `spaces/{space}`
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The updated field paths, comma separated if there
+  /// are multiple. Currently supported field paths: - `display_name` (Only
+  /// supports changing the display name of a space with the `SPACE` type, or
+  /// when also including the `space_type` mask to change a `GROUP_CHAT` space
+  /// type to `SPACE`. Trying to update the display name of a `GROUP_CHAT` or a
+  /// `DIRECT_MESSAGE` space results in an invalid argument error.) -
+  /// `space_type` (Only supports changing a `GROUP_CHAT` space type to `SPACE`.
+  /// Include `display_name` together with `space_type` in the update mask and
+  /// ensure that the specified space has a non-empty display name and the
+  /// `SPACE` space type. Including the `space_type` mask and the `SPACE` type
+  /// in the specified space when updating the display name is optional if the
+  /// existing space already has the `SPACE` type. Trying to update the space
+  /// type in other ways results in an invalid argument error). -
+  /// `space_details` - `space_history_state` (Supports
+  /// [turning history on or off for the space](https://support.google.com/chat/answer/7664687)
+  /// if
+  /// [the organization allows users to change their history setting](https://support.google.com/a/answer/7664184).
+  /// Warning: mutually exclusive with all other field paths.)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Space> patch(
+    Space request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a space and adds specified users to it.
+  ///
+  /// The calling user is automatically added to the space, and shouldn't be
+  /// specified as a membership in the request. For an example, see
+  /// [Set up a space](https://developers.google.com/chat/api/guides/v1/spaces/set-up).
+  /// To specify the human members to add, add memberships with the appropriate
+  /// `member.name` in the `SetUpSpaceRequest`. To add a human user, use
+  /// `users/{user}`, where `{user}` is either the `{person_id}` for the
+  /// [person](https://developers.google.com/people/api/rest/v1/people) from the
+  /// People API, or the `id` for the
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Admin SDK Directory API. For example, if the People API `Person`
+  /// `resourceName` is `people/123456789`, you can add the user to the space by
+  /// including a membership with `users/123456789` as the `member.name`. For a
+  /// space or group chat, if the caller blocks or is blocked by some members,
+  /// then those members aren't added to the created space. To create a direct
+  /// message (DM) between the calling user and another human user, specify
+  /// exactly one membership to represent the human user. If one user blocks the
+  /// other, the request fails and the DM isn't created. To create a DM between
+  /// the calling user and the calling app, set `Space.singleUserBotDm` to
+  /// `true` and don't specify any memberships. You can only use this method to
+  /// set up a DM with the calling app. To add the calling app as a member of a
+  /// space or an existing DM between two human users, see
+  /// [create a membership](https://developers.google.com/chat/api/guides/v1/members/create).
+  /// If a DM already exists between two users, even when one user blocks the
+  /// other at the time a request is made, then the existing DM is returned.
+  /// Spaces with threaded replies or guest access aren't supported. Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.spaces.create` or `chat.spaces` scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Space].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Space> setup(
+    SetUpSpaceRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/spaces:setup';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class SpacesMembersResource {
@@ -276,25 +675,135 @@ class SpacesMembersResource {
 
   SpacesMembersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a membership.
+  /// Creates a human membership or app membership for the calling app.
   ///
-  /// Requires
-  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
+  /// Creating memberships for other apps isn't supported. For an example, see
+  /// [ Create a membership](https://developers.google.com/chat/api/guides/v1/members/create).
+  /// When creating a membership, if the specified member has their auto-accept
+  /// policy turned off, then they're invited, and must accept the space
+  /// invitation before joining. Otherwise, creating a membership adds the
+  /// member directly to the specified space. Requires
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// and the `chat.memberships` (for human membership) or
+  /// `chat.memberships.app` (for app membership) scope. To specify the member
+  /// to add, set the `membership.member.name` in the `CreateMembershipRequest`:
+  /// - To add the calling app to a space or a direct message between two human
+  /// users, use `users/app`. Unable to add other apps to the space. - To add a
+  /// human user, use `users/{user}`, where `{user}` is either the `{person_id}`
+  /// for the [person](https://developers.google.com/people/api/rest/v1/people)
+  /// from the People API, or the `id` for the
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Directory API. For example, if the People API `Person`
+  /// `resourceName` is `people/123456789`, you can add the user to the space by
+  /// setting the `membership.member.name` to `users/123456789`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the space for which to create
+  /// the membership. Format: spaces/{space}
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Membership].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Membership> create(
+    Membership request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/members';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Membership.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a membership.
+  ///
+  /// For an example, see
+  /// [Delete a membership](https://developers.google.com/chat/api/guides/v1/members/delete).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.memberships` or `chat.memberships.app` authorization scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the membership to delete. Chat apps
+  /// can delete human users' or their own memberships. Chat apps can't delete
+  /// other apps' memberships. When deleting a human membership, requires the
+  /// `chat.memberships` scope and `spaces/{space}/members/{member}` format.
+  /// When deleting an app membership, requires the `chat.memberships.app` scope
+  /// and `spaces/{space}/members/app` format. Format:
+  /// `spaces/{space}/members/{member}` or `spaces/{space}/members/app`
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Membership].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Membership> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Membership.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details about a membership.
+  ///
+  /// For an example, see
+  /// [Get a membership](https://developers.google.com/chat/api/guides/v1/members/get).
+  /// Requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
+  /// Fully supports
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.memberships` or `chat.memberships.readonly`
   /// authorization scope.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the membership to retrieve. Format:
-  /// spaces/{space}/members/{member}
+  /// [name] - Required. Resource name of the membership to retrieve. To get the
+  /// app's own membership, you can optionally use `spaces/{space}/members/app`.
+  /// Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app`
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -328,15 +837,20 @@ class SpacesMembersResource {
 
   /// Lists memberships in a space.
   ///
+  /// For an example, see
+  /// [List memberships](https://developers.google.com/chat/api/guides/v1/members/list).
+  /// Listing memberships with
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// lists memberships in spaces that the Chat app has access to, but excludes
+  /// Chat app memberships, including its own. Listing memberships with
+  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// lists memberships in spaces that the authenticated user has access to.
   /// Requires
-  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.memberships` or `chat.memberships.readonly`
   /// authorization scope.
@@ -347,16 +861,38 @@ class SpacesMembersResource {
   /// membership list. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of memberships to return. The service may
-  /// return fewer than this value. If unspecified, at most 100 memberships are
-  /// returned. The maximum value is 1000; values above 1000 are coerced to
-  /// 1000. Negative values return an INVALID_ARGUMENT error.
+  /// [filter] - Optional. A query filter. You can filter memberships by a
+  /// member's role
+  /// (\[`role`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.members#membershiprole))
+  /// and type
+  /// (\[`member.type`\](https://developers.google.com/chat/api/reference/rest/v1/User#type)).
+  /// To filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To
+  /// filter by type, set `member.type` to `HUMAN` or `BOT`. To filter by both
+  /// role and type, use the `AND` operator. To filter by either role or type,
+  /// use the `OR` operator. For example, the following queries are valid: ```
+  /// role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND
+  /// role = "ROLE_MANAGER" ``` The following queries are invalid: ```
+  /// member.type = "HUMAN" AND member.type = "BOT" role = "ROLE_MANAGER" AND
+  /// role = "ROLE_MEMBER" ``` Invalid queries are rejected by the server with
+  /// an `INVALID_ARGUMENT` error.
+  ///
+  /// [pageSize] - The maximum number of memberships to return. The service
+  /// might return fewer than this value. If unspecified, at most 100
+  /// memberships are returned. The maximum value is 1,000. If you use a value
+  /// more than 1,000, it's automatically changed to 1,000. Negative values
+  /// return an `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - A page token, received from a previous call to list
-  /// memberships. Provide this to retrieve the subsequent page. When
+  /// memberships. Provide this parameter to retrieve the subsequent page. When
   /// paginating, all other parameters provided should match the call that
   /// provided the page token. Passing different values to the other parameters
-  /// may lead to unexpected results.
+  /// might lead to unexpected results.
+  ///
+  /// [showInvited] - Optional. When `true`, also returns memberships associated
+  /// with invited members, in addition to other types of memberships. If a
+  /// filter is set, invited memberships that don't match the filter criteria
+  /// aren't returned. Currently requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -370,13 +906,17 @@ class SpacesMembersResource {
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showInvited,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showInvited != null) 'showInvited': ['${showInvited}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -397,25 +937,26 @@ class SpacesMessagesResource {
 
   SpacesMessagesAttachmentsResource get attachments =>
       SpacesMessagesAttachmentsResource(_requester);
+  SpacesMessagesReactionsResource get reactions =>
+      SpacesMessagesReactionsResource(_requester);
 
   SpacesMessagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a message.
   ///
-  /// For example usage, see
+  /// For an example, see
   /// [Create a message](https://developers.google.com/chat/api/guides/crudl/messages#create_a_message).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
+  /// Creating a text message supports both
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// and
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` or `chat.messages.create` authorization
-  /// scope. Because Chat provides authentication for
+  /// scope. Creating a card message only supports and requires
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// Because Chat provides authentication for
   /// [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of
   /// the URL that's generated when a webhook is registered, webhooks can create
   /// messages without a service account or user authentication.
@@ -425,26 +966,33 @@ class SpacesMessagesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the space in which to create a
-  /// message. Format: spaces/{space}
+  /// message. Format: `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [messageId] - Optional. A custom name for a Chat message assigned at
   /// creation. Must start with `client-` and contain only lowercase letters,
   /// numbers, and hyphens up to 63 characters in length. Specify this field to
-  /// get, update, or delete the message with the specified value. For example
-  /// usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  /// get, update, or delete the message with the specified value. Assigning a
+  /// custom name lets a a Chat app recall the message without saving the
+  /// message `name` from the \[response
+  /// body\](/chat/api/reference/rest/v1/spaces.messages/get#response-body)
+  /// returned when creating the message. Assigning a custom name doesn't
+  /// replace the generated `name` field, the message's resource name. Instead,
+  /// it sets the custom name as the `clientAssignedMessageId` field, which you
+  /// can reference while processing later operations, like updating or deleting
+  /// the message. For example usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
   ///
   /// [messageReplyOption] - Optional. Specifies whether a message starts a
   /// thread or replies to one. Only supported in named spaces.
   /// Possible string values are:
   /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
   /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
-  /// to the thread specified by thread ID or thread_key. If it fails, the
+  /// to the thread specified by thread ID or `thread_key`. If it fails, the
   /// message starts a new thread instead.
   /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or thread_key. If it fails, a NOT_FOUND error is
-  /// returned instead.
+  /// specified by thread ID or `thread_key`. If it fails, a `NOT_FOUND` error
+  /// is returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
   /// an existing request ID returns the message created with that ID instead of
@@ -497,26 +1045,30 @@ class SpacesMessagesResource {
 
   /// Deletes a message.
   ///
-  /// For example usage, see
-  /// [Delete a message](https://developers.google.com/chat/api/guides/crudl/messages#delete_a_message).
+  /// For an example, see
+  /// [Delete a message](https://developers.google.com/chat/api/guides/v1/messages/delete).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` authorization scope.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the message to be deleted, in the form
-  /// "spaces / * /messages / * " Example:
-  /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
+  /// [name] - Required. Resource name of the message that you want to delete,
+  /// in the form `spaces / * /messages / * ` Example:
+  /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [force] - When `true`, deleting a message also deletes its threaded
+  /// replies. When `false`, if a message has threaded replies, deletion fails.
+  /// Only applies when
+  /// [authenticating as a user](https://developers.google.com/chat/api/guides/auth/users).
+  /// Has no effect when
+  /// [authenticating with a service account](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,9 +1082,11 @@ class SpacesMessagesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -546,19 +1100,16 @@ class SpacesMessagesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a message.
+  /// Returns details about a message.
   ///
-  /// For example usage, see
-  /// [Read a message](https://developers.google.com/chat/api/guides/crudl/messages#read_a_message).
+  /// For an example, see
+  /// [Read a message](https://developers.google.com/chat/api/guides/v1/messages/get).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [Service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` or `chat.messages.readonly` authorization
   /// scope. Note: Might return a message from a blocked member or space.
@@ -566,11 +1117,11 @@ class SpacesMessagesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the message to retrieve. Format:
-  /// spaces/{space}/messages/{message} If the message begins with `client-`,
+  /// `spaces/{space}/messages/{message}` If the message begins with `client-`,
   /// then it has a custom name assigned by a Chat app that created it with the
   /// Chat REST API. That Chat app (but not others) can pass the custom name to
   /// get, update, or delete the message. To learn more, see
-  /// [create and name a message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  /// [create and name a message](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -601,21 +1152,114 @@ class SpacesMessagesResource {
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists messages in a space that the caller is a member of, including
+  /// messages from blocked members and spaces.
+  ///
+  /// For an example, see \[List messages\](/chat/api/guides/v1/messages/list).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.messages` or `chat.messages.readonly` authorization scope.
+  /// This method is only supported in spaces that don't allow users from
+  /// outside the Workspace organization to join.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the space to list messages from.
+  /// Format: `spaces/{space}`
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [filter] - A query filter. You can filter messages by date (`create_time`)
+  /// and thread (`thread.name`). To filter messages by the date they were
+  /// created, specify the `create_time` with a timestamp in
+  /// \[RFC-3339\](https://www.rfc-editor.org/rfc/rfc3339) format and double
+  /// quotation marks. For example, `"2023-04-21T11:30:00-04:00"`. You can use
+  /// the greater than operator `>` to list messages that were created after a
+  /// timestamp, or the less than operator `<` to list messages that were
+  /// created before a timestamp. To filter messages within a time interval, use
+  /// the `AND` operator between two timestamps. To filter by thread, specify
+  /// the `thread.name`, formatted as `spaces/{space}/threads/{thread}`. You can
+  /// only specify one `thread.name` per query. To filter by both thread and
+  /// date, use the `AND` operator in your query. For example, the following
+  /// queries are valid: ``` create_time > "2012-04-21T11:30:00-04:00"
+  /// create_time > "2012-04-21T11:30:00-04:00" AND thread.name =
+  /// spaces/AAAAAAAAAAA/threads/123 create_time > "2012-04-21T11:30:00+00:00"
+  /// AND create_time < "2013-01-01T00:00:00+00:00" AND thread.name =
+  /// spaces/AAAAAAAAAAA/threads/123 thread.name =
+  /// spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
+  /// server with an `INVALID_ARGUMENT` error.
+  ///
+  /// [orderBy] - Optional, if resuming from a previous query. How the list of
+  /// messages is ordered. Specify a value to order by an ordering operation.
+  /// Valid ordering operation values are as follows: - `ASC` for ascending. -
+  /// `DESC` for descending. The default ordering is `create_time ASC`.
+  ///
+  /// [pageSize] - The maximum number of messages returned. The service might
+  /// return fewer messages than this value. If unspecified, at most 25 are
+  /// returned. The maximum value is 1,000. If you use a value more than 1,000,
+  /// it's automatically changed to 1,000. Negative values return an
+  /// `INVALID_ARGUMENT` error.
+  ///
+  /// [pageToken] - Optional, if resuming from a previous query. A page token
+  /// received from a previous list messages call. Provide this parameter to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided should match the call that provided the page token. Passing
+  /// different values to the other parameters might lead to unexpected results.
+  ///
+  /// [showDeleted] - Whether to include deleted messages. Deleted messages
+  /// include deleted time and metadata about their deletion, but message
+  /// content is unavailable.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMessagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMessagesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMessagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a message.
   ///
-  /// There's a difference between `patch` and `update` methods. The `patch`
+  /// There's a difference between the `patch` and `update` methods. The `patch`
   /// method uses a `patch` request while the `update` method uses a `put`
-  /// request. We recommend using the `patch` method. For example usage, see
-  /// [Update a message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message).
+  /// request. We recommend using the `patch` method. For an example, see
+  /// [Update a message](https://developers.google.com/chat/api/guides/v1/messages/update).
   /// Requires
-  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` authorization scope.
   ///
@@ -627,16 +1271,18 @@ class SpacesMessagesResource {
   /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
-  /// [allowMissing] - Optional. If `true` and the message is not found, a new
+  /// [allowMissing] - Optional. If `true` and the message isn't found, a new
   /// message is created and `updateMask` is ignored. The specified message ID
   /// must be
-  /// \[client-assigned\](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+  /// \[client-assigned\](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message)
   /// or the request fails.
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
-  /// values with commas. Currently supported field paths: - text - cards
+  /// values with commas. Currently supported field paths: - `text` -
+  /// `attachment` - `cards` (Requires \[service account
+  /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
   /// (Requires \[service account
-  /// authentication\](/chat/api/guides/auth/service-accounts).) - cards_v2
+  /// authentication\](/chat/api/guides/auth/service-accounts).)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -675,19 +1321,16 @@ class SpacesMessagesResource {
 
   /// Updates a message.
   ///
-  /// There's a difference between `patch` and `update` methods. The `patch`
+  /// There's a difference between the `patch` and `update` methods. The `patch`
   /// method uses a `patch` request while the `update` method uses a `put`
-  /// request. We recommend using the `patch` method. For example usage, see
-  /// [Update a message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message).
+  /// request. We recommend using the `patch` method. For an example, see
+  /// [Update a message](https://developers.google.com/chat/api/guides/v1/messages/update).
   /// Requires
-  /// [authentication](https://developers.google.com/chat/api/guides/auth/).
+  /// [authentication](https://developers.google.com/chat/api/guides/auth).
   /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Supports
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// as part of the
-  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// which grants early access to certain features.
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// and
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// requires the `chat.messages` authorization scope.
   ///
@@ -699,16 +1342,18 @@ class SpacesMessagesResource {
   /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
-  /// [allowMissing] - Optional. If `true` and the message is not found, a new
+  /// [allowMissing] - Optional. If `true` and the message isn't found, a new
   /// message is created and `updateMask` is ignored. The specified message ID
   /// must be
-  /// \[client-assigned\](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+  /// \[client-assigned\](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message)
   /// or the request fails.
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
-  /// values with commas. Currently supported field paths: - text - cards
+  /// values with commas. Currently supported field paths: - `text` -
+  /// `attachment` - `cards` (Requires \[service account
+  /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
   /// (Requires \[service account
-  /// authentication\](/chat/api/guides/auth/service-accounts).) - cards_v2
+  /// authentication\](/chat/api/guides/auth/service-accounts).)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -756,13 +1401,15 @@ class SpacesMessagesAttachmentsResource {
   ///
   /// The attachment data is fetched using the
   /// [media API](https://developers.google.com/chat/api/reference/rest/v1/media/download).
+  /// For an example, see
+  /// [Get a message attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/get).
   /// Requires
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the attachment, in the form "spaces /
-  /// * /messages / * /attachments / * ".
+  /// [name] - Required. Resource name of the attachment, in the form `spaces /
+  /// * /messages / * /attachments / * `.
   /// Value must have pattern
   /// `^spaces/\[^/\]+/messages/\[^/\]+/attachments/\[^/\]+$`.
   ///
@@ -796,11 +1443,193 @@ class SpacesMessagesAttachmentsResource {
   }
 }
 
+class SpacesMessagesReactionsResource {
+  final commons.ApiRequester _requester;
+
+  SpacesMessagesReactionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a reaction and adds it to a message.
+  ///
+  /// For an example, see
+  /// [Create a reaction](https://developers.google.com/chat/api/guides/v1/reactions/create).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.messages`, `chat.messages.reactions`, or
+  /// `chat.messages.reactions.create` scope. Only unicode emoji are supported.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The message where the reaction is created. Format:
+  /// `spaces/{space}/messages/{message}`
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reaction> create(
+    Reaction request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reactions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Reaction.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a reaction to a message.
+  ///
+  /// For an example, see
+  /// [Delete a reaction](https://developers.google.com/chat/api/guides/v1/reactions/delete).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and the `chat.messages` or `chat.messages.reactions` scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the reaction to delete. Format:
+  /// `spaces/{space}/messages/{message}/reactions/{reaction}`
+  /// Value must have pattern
+  /// `^spaces/\[^/\]+/messages/\[^/\]+/reactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists reactions to a message.
+  ///
+  /// For an example, see
+  /// [List reactions](https://developers.google.com/chat/api/guides/v1/reactions/list).
+  /// Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+  /// and `chat.messages`, `chat.messages.readonly`, `chat.messages.reactions`,
+  /// or `chat.messages.reactions.readonly` scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The message users reacted to. Format:
+  /// `spaces/{space}/messages/{message}`
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A query filter. You can filter reactions by
+  /// [emoji](https://developers.google.com/chat/api/reference/rest/v1/Emoji)
+  /// (either `emoji.unicode` or `emoji.custom_emoji.uid`) and
+  /// [user](https://developers.google.com/chat/api/reference/rest/v1/User)
+  /// (`user.name`). To filter reactions for multiple emojis or users, join
+  /// similar fields with the `OR` operator, such as `emoji.unicode = "🙂" OR
+  /// emoji.unicode = "👍"` and `user.name = "users/AAAAAA" OR user.name =
+  /// "users/BBBBBB"`. To filter reactions by emoji and user, use the `AND`
+  /// operator, such as `emoji.unicode = "🙂" AND user.name = "users/AAAAAA"`.
+  /// If your query uses both `AND` and `OR`, group them with parentheses. For
+  /// example, the following queries are valid: ``` user.name = "users/{user}"
+  /// emoji.unicode = "🙂" emoji.custom_emoji.uid = "{uid}" emoji.unicode = "🙂"
+  /// OR emoji.unicode = "👍" emoji.unicode = "🙂" OR emoji.custom_emoji.uid =
+  /// "{uid}" emoji.unicode = "🙂" AND user.name = "users/{user}" (emoji.unicode
+  /// = "🙂" OR emoji.custom_emoji.uid = "{uid}") AND user.name = "users/{user}"
+  /// ``` The following queries are invalid: ``` emoji.unicode = "🙂" AND
+  /// emoji.unicode = "👍" emoji.unicode = "🙂" AND emoji.custom_emoji.uid =
+  /// "{uid}" emoji.unicode = "🙂" OR user.name = "users/{user}" emoji.unicode =
+  /// "🙂" OR emoji.custom_emoji.uid = "{uid}" OR user.name = "users/{user}"
+  /// emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" AND user.name =
+  /// "users/{user}" ``` Invalid queries are rejected by the server with an
+  /// `INVALID_ARGUMENT` error.
+  ///
+  /// [pageSize] - Optional. The maximum number of reactions returned. The
+  /// service can return fewer reactions than this value. If unspecified, the
+  /// default value is 25. The maximum value is 200; values above 200 are
+  /// changed to 200.
+  ///
+  /// [pageToken] - Optional. (If resuming from a previous query.) A page token
+  /// received from a previous list reactions call. Provide this to retrieve the
+  /// subsequent page. When paginating, the filter value should match the call
+  /// that provided the page token. Passing a different value might lead to
+  /// unexpected results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReactionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReactionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reactions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListReactionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// List of string parameters to supply when the action method is invoked.
 ///
-/// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
-/// next week. You might use action method = snooze(), passing the snooze type
-/// and snooze time in the list of string parameters.
+/// For example, consider three snooze buttons: snooze now, snooze one day,
+/// snooze next week. You might use `action method = snooze()`, passing the
+/// snooze type and snooze time in the list of string parameters.
 typedef ActionParameter = $ActionParameter;
 
 /// Parameters that a Chat app can use to configure how its response is posted.
@@ -816,22 +1645,24 @@ class ActionResponse {
   ///
   /// The type of Chat app response.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default type; will be handled as NEW_MESSAGE.
+  /// - "TYPE_UNSPECIFIED" : Default type that's handled as `NEW_MESSAGE`.
   /// - "NEW_MESSAGE" : Post as a new message in the topic.
   /// - "UPDATE_MESSAGE" : Update the Chat app's message. This is only permitted
-  /// on a CARD_CLICKED event where the message sender type is BOT.
+  /// on a `CARD_CLICKED` event where the message sender type is `BOT`.
   /// - "UPDATE_USER_MESSAGE_CARDS" : Update the cards on a user's message. This
-  /// is only permitted as a response to a MESSAGE event with a matched url, or
-  /// a CARD_CLICKED event where the message sender type is HUMAN. Text will be
-  /// ignored.
-  /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
+  /// is only permitted as a response to a `MESSAGE` event with a matched url,
+  /// or a `CARD_CLICKED` event where the message sender type is `HUMAN`. Text
+  /// is ignored.
+  /// - "REQUEST_CONFIG" : Privately ask the user for additional authentication
+  /// or configuration.
   /// - "DIALOG" : Presents a
   /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
   core.String? type;
 
   /// Input only.
   ///
-  /// URL for users to auth or config. (Only for REQUEST_CONFIG response types.)
+  /// URL for users to authenticate or configure. (Only for `REQUEST_CONFIG`
+  /// response types.)
   core.String? url;
 
   ActionResponse({
@@ -991,7 +1822,7 @@ class Annotation {
 
   /// The type of this annotation.
   /// Possible string values are:
-  /// - "ANNOTATION_TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
+  /// - "ANNOTATION_TYPE_UNSPECIFIED" : Default value for the enum. Don't use.
   /// - "USER_MENTION" : A user is mentioned.
   /// - "SLASH_COMMAND" : A slash command is invoked.
   core.String? type;
@@ -1034,11 +1865,32 @@ class Annotation {
       };
 }
 
+/// A GIF image that's specified by a URL.
+class AttachedGif {
+  /// The URL that hosts the GIF image.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  AttachedGif({
+    this.uri,
+  });
+
+  AttachedGif.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// An attachment in Google Chat.
 class Attachment {
   /// A reference to the attachment data.
   ///
-  /// This is used with the media API to download the attachment data.
+  /// This field is used with the media API to download the attachment data.
   AttachmentDataRef? attachmentDataRef;
 
   /// The original file name for the content, not the full path.
@@ -1050,18 +1902,18 @@ class Attachment {
   /// The download URL which should be used to allow a human user to download
   /// the attachment.
   ///
-  /// Chat apps should not use this URL to download attachment content.
+  /// Chat apps shouldn't use this URL to download attachment content.
   ///
   /// Output only.
   core.String? downloadUri;
 
   /// A reference to the drive attachment.
   ///
-  /// This is used with the Drive API.
+  /// This field is used with the Drive API.
   DriveDataRef? driveDataRef;
 
-  /// Resource name of the attachment, in the form "spaces / * /messages / *
-  /// /attachments / * ".
+  /// Resource name of the attachment, in the form `spaces / * /messages / *
+  /// /attachments / * `.
   core.String? name;
 
   /// The source of the attachment.
@@ -1074,7 +1926,7 @@ class Attachment {
   /// The thumbnail URL which should be used to preview the attachment to a
   /// human user.
   ///
-  /// Chat apps should not use this URL to download attachment content.
+  /// Chat apps shouldn't use this URL to download attachment content.
   ///
   /// Output only.
   core.String? thumbnailUri;
@@ -1131,23 +1983,35 @@ class Attachment {
 }
 
 class AttachmentDataRef {
+  /// Opaque token containing a reference to an uploaded attachment.
+  ///
+  /// Treated by clients as an opaque string and used to create or update Chat
+  /// messages with attachments.
+  core.String? attachmentUploadToken;
+
   /// The resource name of the attachment data.
   ///
-  /// This is used with the media API to download the attachment data.
+  /// This field is used with the media API to download the attachment data.
   core.String? resourceName;
 
   AttachmentDataRef({
+    this.attachmentUploadToken,
     this.resourceName,
   });
 
   AttachmentDataRef.fromJson(core.Map json_)
       : this(
+          attachmentUploadToken: json_.containsKey('attachmentUploadToken')
+              ? json_['attachmentUploadToken'] as core.String
+              : null,
           resourceName: json_.containsKey('resourceName')
               ? json_['resourceName'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attachmentUploadToken != null)
+          'attachmentUploadToken': attachmentUploadToken!,
         if (resourceName != null) 'resourceName': resourceName!,
       };
 }
@@ -1156,10 +2020,10 @@ class AttachmentDataRef {
 ///
 /// Can be a text button or an image button.
 class Button {
-  /// A button with image and onclick action.
+  /// A button with image and `onclick` action.
   ImageButton? imageButton;
 
-  /// A button with text and onclick action.
+  /// A button with text and `onclick` action.
   TextButton? textButton;
 
   Button({
@@ -1185,7 +2049,7 @@ class Button {
       };
 }
 
-/// A card is a UI element that can contain UI widgets such as texts, images.
+/// A card is a UI element that can contain UI widgets such as text and images.
 class Card {
   /// The actions of this card.
   core.List<CardAction>? cardActions;
@@ -1271,7 +2135,7 @@ class CardAction {
 }
 
 class CardHeader {
-  /// The image's type (e.g. square border or circular border).
+  /// The image's type (for example, square border or circular border).
   /// Possible string values are:
   /// - "IMAGE_STYLE_UNSPECIFIED"
   /// - "IMAGE" : Square border.
@@ -1287,8 +2151,8 @@ class CardHeader {
   /// The title must be specified.
   ///
   /// The header has a fixed height: if both a title and subtitle is specified,
-  /// each will take up 1 line. If only the title is specified, it will take up
-  /// both lines.
+  /// each takes up one line. If only the title is specified, it takes up both
+  /// lines.
   core.String? title;
 
   CardHeader({
@@ -1359,32 +2223,32 @@ class CardWithId {
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
@@ -1408,11 +2272,64 @@ class CardWithId {
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 typedef Color = $Color;
 
+/// Represents a custom emoji.
+class CustomEmoji {
+  /// Unique key for the custom emoji resource.
+  core.String? uid;
+
+  CustomEmoji({
+    this.uid,
+  });
+
+  CustomEmoji.fromJson(core.Map json_)
+      : this(
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Information about a deleted message.
+///
+/// A message is deleted when `delete_time` is set.
+class DeletionMetadata {
+  /// Indicates who deleted the message.
+  /// Possible string values are:
+  /// - "DELETION_TYPE_UNSPECIFIED" : This value is unused.
+  /// - "CREATOR" : User deleted their own message.
+  /// - "SPACE_OWNER" : The space owner deleted the message.
+  /// - "ADMIN" : A Google Workspace admin deleted the message.
+  /// - "APP_MESSAGE_EXPIRY" : A Chat app deleted its own message when it
+  /// expired.
+  /// - "CREATOR_VIA_APP" : A Chat app deleted the message on behalf of the
+  /// user.
+  /// - "SPACE_OWNER_VIA_APP" : A Chat app deleted the message on behalf of the
+  /// space owner.
+  core.String? deletionType;
+
+  DeletionMetadata({
+    this.deletionType,
+  });
+
+  DeletionMetadata.fromJson(core.Map json_)
+      : this(
+          deletionType: json_.containsKey('deletionType')
+              ? json_['deletionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionType != null) 'deletionType': deletionType!,
+      };
+}
+
 /// Wrapper around the card body of the dialog.
 class Dialog {
   /// Input only.
   ///
-  /// Body of the dialog, which is rendered in a modal. Google Chat apps do not
+  /// Body of the dialog, which is rendered in a modal. Google Chat apps don't
   /// support the following card entities: `DateTimePicker`, `OnChangeAction`.
   GoogleAppsCardV1Card? body;
 
@@ -1475,7 +2392,9 @@ class DialogAction {
 
 /// A reference to the data of a drive attachment.
 class DriveDataRef {
-  /// The id for the drive file, for use with the Drive API.
+  /// The ID for the drive file.
+  ///
+  /// Use with the Drive API.
   core.String? driveFileId;
 
   DriveDataRef({
@@ -1494,6 +2413,68 @@ class DriveDataRef {
       };
 }
 
+/// An emoji that is used as a reaction to a message.
+class Emoji {
+  /// A custom emoji.
+  ///
+  /// Output only.
+  CustomEmoji? customEmoji;
+
+  /// A basic emoji represented by a unicode string.
+  core.String? unicode;
+
+  Emoji({
+    this.customEmoji,
+    this.unicode,
+  });
+
+  Emoji.fromJson(core.Map json_)
+      : this(
+          customEmoji: json_.containsKey('customEmoji')
+              ? CustomEmoji.fromJson(
+                  json_['customEmoji'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unicode: json_.containsKey('unicode')
+              ? json_['unicode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customEmoji != null) 'customEmoji': customEmoji!,
+        if (unicode != null) 'unicode': unicode!,
+      };
+}
+
+/// The number of people who reacted to a message with a specific emoji.
+class EmojiReactionSummary {
+  /// Emoji associated with the reactions.
+  Emoji? emoji;
+
+  /// The total number of reactions using the associated emoji.
+  core.int? reactionCount;
+
+  EmojiReactionSummary({
+    this.emoji,
+    this.reactionCount,
+  });
+
+  EmojiReactionSummary.fromJson(core.Map json_)
+      : this(
+          emoji: json_.containsKey('emoji')
+              ? Emoji.fromJson(
+                  json_['emoji'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reactionCount: json_.containsKey('reactionCount')
+              ? json_['reactionCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emoji != null) 'emoji': emoji!,
+        if (reactionCount != null) 'reactionCount': reactionCount!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1504,14 +2485,14 @@ typedef Empty = $Empty;
 
 /// A form action describes the behavior when the form is submitted.
 ///
-/// For example, an Apps Script can be invoked to handle the form.
+/// For example, you can invoke Apps Script to handle the form.
 class FormAction {
   /// The method name is used to identify which part of the form triggered the
   /// form submission.
   ///
   /// This information is echoed back to the Chat app as part of the card click
-  /// event. The same method name can be used for several elements that trigger
-  /// a common behavior if desired.
+  /// event. You can use the same method name for several elements that trigger
+  /// a common behavior.
   core.String? actionMethodName;
 
   /// List of action parameters.
@@ -1543,8 +2524,8 @@ class FormAction {
 
 /// An action that describes the behavior when the form is submitted.
 ///
-/// For example, an Apps Script can be invoked to handle the form. If the action
-/// is triggered, the form values are sent to the server.
+/// For example, you can invoke an Apps Script script to handle the form. If the
+/// action is triggered, the form values are sent to the server.
 class GoogleAppsCardV1Action {
   /// A custom function to invoke when the containing element is clicked or
   /// othrwise activated.
@@ -1557,13 +2538,12 @@ class GoogleAppsCardV1Action {
   /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
   ///
   /// What to do in response to an interaction with a user, such as a user
-  /// clicking button on a card message. If unspecified, the app responds by
-  /// executing an `action` - like opening a link or running a function - as
-  /// normal. By specifying an `interaction`, the app can respond in special
-  /// interactive ways. For example, by setting `interaction` to `OPEN_DIALOG`,
-  /// the app can open a
-  /// [dialog](https://developers.google.com/chat/how-tos/dialogs). When
-  /// specified, a loading indicator is not shown. Supported by Chat apps, but
+  /// clicking a button in a card message. If unspecified, the app responds by
+  /// executing an `action`—like opening a link or running a function—as normal.
+  /// By specifying an `interaction`, the app can respond in special interactive
+  /// ways. For example, by setting `interaction` to `OPEN_DIALOG`, the app can
+  /// open a [dialog](https://developers.google.com/chat/how-tos/dialogs). When
+  /// specified, a loading indicator isn't shown. Supported by Chat apps, but
   /// not Google Workspace Add-ons. If specified for an add-on, the entire card
   /// is stripped and nothing is shown in the client.
   ///
@@ -1594,17 +2574,17 @@ class GoogleAppsCardV1Action {
   /// The default value is `false`. If `true`, form values remain after the
   /// action is triggered. To let the user make changes while the action is
   /// being processed, set
-  /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// \[`LoadIndicator`\](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// to `NONE`. For
   /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
   /// in Chat apps, you must also set the action's
-  /// [ResponseType](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype)
+  /// \[`ResponseType`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype)
   /// to `UPDATE_MESSAGE` and use the same
   /// \[`card_id`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#CardWithId)
   /// from the card that contained the action. If `false`, the form values are
   /// cleared when the action is triggered. To prevent the user from making
   /// changes while the action is being processed, set
-  /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// \[`LoadIndicator`\](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// to `SPINNER`.
   core.bool? persistValues;
 
@@ -1649,10 +2629,11 @@ class GoogleAppsCardV1Action {
 
 /// List of string parameters to supply when the action method is invoked.
 ///
-/// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
-/// next week. You might use action method = snooze(), passing the snooze type
-/// and snooze time in the list of string parameters. To learn more, see
-/// [CommonEventObject](https://developers.google.com/chat/api/reference/rest/v1/Event#commoneventobject).
+/// For example, consider three snooze buttons: snooze now, snooze one day, or
+/// snooze next week. You might use `action method = snooze()`, passing the
+/// snooze type and snooze time in the list of string parameters. To learn more,
+/// see
+/// \[`CommonEventObject`\](https://developers.google.com/chat/api/reference/rest/v1/Event#commoneventobject).
 typedef GoogleAppsCardV1ActionParameter = $ActionParameter;
 
 /// The style options for the border of a card or widget, including the border
@@ -1666,7 +2647,7 @@ class GoogleAppsCardV1BorderStyle {
 
   /// The border type.
   /// Possible string values are:
-  /// - "BORDER_TYPE_UNSPECIFIED" : No value specified.
+  /// - "BORDER_TYPE_UNSPECIFIED" : Don't use. Unspecified.
   /// - "NO_BORDER" : Default value. No border.
   /// - "STROKE" : Outline.
   core.String? type;
@@ -1696,12 +2677,12 @@ class GoogleAppsCardV1BorderStyle {
       };
 }
 
-/// A text, icon, or text + icon button that users can click.
+/// A text, icon, or text and icon button that users can click.
 ///
-/// To make an image a clickable button, specify an Image (not an
-/// ImageComponent) and set an `onClick` action.
+/// To make an image a clickable button, specify an `Image` (not an
+/// `ImageComponent`) and set an `onClick` action.
 class GoogleAppsCardV1Button {
-  /// The alternative text used for accessibility.
+  /// The alternative text that's used for accessibility.
   ///
   /// Set descriptive text that lets users know what the button does. For
   /// example, if a button opens a hyperlink, you might write: "Opens a new
@@ -1712,19 +2693,19 @@ class GoogleAppsCardV1Button {
   /// If set, the button is filled with a solid background color and the font
   /// color changes to maintain contrast with the background color.
   ///
-  /// For example, setting a blue background will likely result in white text.
-  /// If unset, the image background is white and the font color is blue. For
-  /// red, green and blue, the value of each field is a `float` number that can
-  /// be expressed in either of two ways: as a number between 0 and 255 divided
-  /// by 255 (153/255) or as a value between 0 and 1 (0.6). 0 represents the
+  /// For example, setting a blue background likely results in white text. If
+  /// unset, the image background is white and the font color is blue. For red,
+  /// green, and blue, the value of each field is a `float` number that you can
+  /// express in either of two ways: as a number between 0 and 255 divided by
+  /// 255 (153/255), or as a value between 0 and 1 (0.6). 0 represents the
   /// absence of a color and 1 or 255/255 represent the full presence of that
-  /// color on the RGB scale. Optionally set alpha, which sets a level of
+  /// color on the RGB scale. Optionally set `alpha`, which sets a level of
   /// transparency using this equation: ``` pixel color = alpha * (this color) +
-  /// (1.0 - alpha) * (background color) ``` For alpha, a value of 1 corresponds
-  /// with a solid color, and a value of 0 corresponds with a completely
-  /// transparent color. For example, the following color represents a half
-  /// transparent red: ``` "color": { "red": 1, "green": 0, "blue": 0, "alpha":
-  /// 0.5 } ```
+  /// (1.0 - alpha) * (background color) ``` For `alpha`, a value of `1`
+  /// corresponds with a solid color, and a value of `0` corresponds with a
+  /// completely transparent color. For example, the following color represents
+  /// a half transparent red: ``` "color": { "red": 1, "green": 0, "blue": 0,
+  /// "alpha": 0.5 } ```
   Color? color;
 
   /// If `true`, the button is displayed in an inactive state and doesn't
@@ -1736,7 +2717,7 @@ class GoogleAppsCardV1Button {
   /// If both `icon` and `text` are set, then the icon appears before the text.
   GoogleAppsCardV1Icon? icon;
 
-  /// The action to perform when the button is clicked, such as opening a
+  /// The action to perform when a user clicks the button, such as opening a
   /// hyperlink or running a custom function.
   ///
   /// Required.
@@ -1820,9 +2801,9 @@ class GoogleAppsCardV1ButtonList {
 /// beneath the text message. - As a
 /// [dialog](https://developers.google.com/chat/how-tos/dialogs). The following
 /// example JSON creates a "contact card" that features: - A header with the
-/// contact's name, job title, avatar picture. - A section with the contact
+/// contact's name, job title, and avatar picture. - A section with the contact
 /// information, including formatted text. - Buttons that users can click to
-/// share the contact or see more or less info.
+/// share the contact, or see more or less information.
 /// ![Example contact card](https://developers.google.com/chat/images/card_api_reference.png)
 /// ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": {
 /// "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
@@ -1842,9 +2823,9 @@ class GoogleAppsCardV1Card {
   /// The card's actions.
   ///
   /// Actions are added to the card's toolbar menu. Because Chat app cards have
-  /// no toolbar, `cardActions[]` is not supported by Chat apps. For example,
-  /// the following JSON constructs a card action menu with Settings and Send
-  /// Feedback options: ``` "card_actions": [ { "actionLabel": "Settings",
+  /// no toolbar, `cardActions[]` isn't supported by Chat apps. For example, the
+  /// following JSON constructs a card action menu with `Settings` and `Send
+  /// Feedback` options: ``` "card_actions": [ { "actionLabel": "Settings",
   /// "onClick": { "action": { "functionName": "goToView", "parameters": [ {
   /// "key": "viewType", "value": "SETTING" } ], "loadIndicator":
   /// "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback",
@@ -1857,7 +2838,7 @@ class GoogleAppsCardV1Card {
   ///
   /// Not supported by Chat apps.
   /// Possible string values are:
-  /// - "DISPLAY_STYLE_UNSPECIFIED" : Do not use.
+  /// - "DISPLAY_STYLE_UNSPECIFIED" : Don't use. Unspecified.
   /// - "PEEK" : The header of the card appears at the bottom of the sidebar,
   /// partially covering the current top card of the stack. Clicking the header
   /// pops the card into the card stack. If the card has no header, a generated
@@ -2001,8 +2982,8 @@ class GoogleAppsCardV1CardFixedFooter {
 
   /// The secondary button of the fixed footer.
   ///
-  /// The button must be a text button with text and color set. `primaryButton`
-  /// must be set if `secondaryButton` is set.
+  /// The button must be a text button with text and color set. If
+  /// `secondaryButton` is set, you must also set `primaryButton`.
   GoogleAppsCardV1Button? secondaryButton;
 
   GoogleAppsCardV1CardFixedFooter({
@@ -2030,7 +3011,7 @@ class GoogleAppsCardV1CardFixedFooter {
 
 /// Represents a card header.
 class GoogleAppsCardV1CardHeader {
-  /// The alternative text of this image which is used for accessibility.
+  /// The alternative text of this image that's used for accessibility.
   core.String? imageAltText;
 
   /// The shape used to crop the image.
@@ -2093,52 +3074,166 @@ class GoogleAppsCardV1CardHeader {
       };
 }
 
-/// Lets users specify a date, a time, or both a date and a time.
-///
-/// Accepts text input from users, but features an interactive date and time
-/// selector that helps users enter correctly-formatted dates and times. If
-/// users enter a date or time incorrectly, the widget shows an error that
-/// prompts users to enter the correct format. Not supported by Chat apps.
-/// Support by Chat apps coming soon.
-class GoogleAppsCardV1DateTimePicker {
-  /// The text that prompts users to enter a date, time, or datetime.
+/// A column.
+class GoogleAppsCardV1Column {
+  /// Specifies whether widgets align to the left, right, or center of a column.
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "START" : Default value. Aligns widgets to the start position of the
+  /// column. For left-to-right layouts, aligns to the left. For right-to-left
+  /// layouts, aligns to the right.
+  /// - "CENTER" : Aligns widgets to the center of the column.
+  /// - "END" : Aligns widgets to the end position of the column. For
+  /// left-to-right layouts, aligns widgets to the right. For right-to-left
+  /// layouts, aligns widgets to the left.
+  core.String? horizontalAlignment;
+
+  /// Specifies how a column fills the width of the card.
+  /// Possible string values are:
+  /// - "HORIZONTAL_SIZE_STYLE_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "FILL_AVAILABLE_SPACE" : Default value. Column fills the available
+  /// space, up to 70% of the card's width. If both columns are set to
+  /// `FILL_AVAILABLE_SPACE`, each column fills 50% of the space.
+  /// - "FILL_MINIMUM_SPACE" : Column fills the least amount of space possible
+  /// and no more than 30% of the card's width.
+  core.String? horizontalSizeStyle;
+
+  /// Specifies whether widgets align to the top, bottom, or center of a column.
+  /// Possible string values are:
+  /// - "VERTICAL_ALIGNMENT_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "CENTER" : Default value. Aligns widgets to the center of a column.
+  /// - "TOP" : Aligns widgets to the top of a column.
+  /// - "BOTTOM" : Aligns widgets to the bottom of a column.
+  core.String? verticalAlignment;
+
+  /// An array of widgets included in a column.
   ///
-  /// Specify text that helps the user enter the information your app needs. For
-  /// example, if users are setting an appointment, then a label like
-  /// "Appointment date" or "Appointment date and time" might work well.
+  /// Widgets appear in the order that they are specified.
+  core.List<GoogleAppsCardV1Widgets>? widgets;
+
+  GoogleAppsCardV1Column({
+    this.horizontalAlignment,
+    this.horizontalSizeStyle,
+    this.verticalAlignment,
+    this.widgets,
+  });
+
+  GoogleAppsCardV1Column.fromJson(core.Map json_)
+      : this(
+          horizontalAlignment: json_.containsKey('horizontalAlignment')
+              ? json_['horizontalAlignment'] as core.String
+              : null,
+          horizontalSizeStyle: json_.containsKey('horizontalSizeStyle')
+              ? json_['horizontalSizeStyle'] as core.String
+              : null,
+          verticalAlignment: json_.containsKey('verticalAlignment')
+              ? json_['verticalAlignment'] as core.String
+              : null,
+          widgets: json_.containsKey('widgets')
+              ? (json_['widgets'] as core.List)
+                  .map((value) => GoogleAppsCardV1Widgets.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment!,
+        if (horizontalSizeStyle != null)
+          'horizontalSizeStyle': horizontalSizeStyle!,
+        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
+        if (widgets != null) 'widgets': widgets!,
+      };
+}
+
+/// The `Columns` widget displays up to 2 columns in a card message or dialog.
+///
+/// You can add widgets to each column; the widgets appear in the order that
+/// they are specified. The height of each column is determined by the taller
+/// column. For example, if the first column is taller than the second column,
+/// both columns have the height of the first column. Because each column can
+/// contain a different number of widgets, you can't define rows or align
+/// widgets between the columns. Columns are displayed side-by-side. You can
+/// customize the width of each column using the `HorizontalSizeStyle` field. If
+/// the user's screen width is too narrow, the second column wraps below the
+/// first: * On web, the second column wraps if the screen width is less than or
+/// equal to 480 pixels. * On iOS devices, the second column wraps if the screen
+/// width is less than or equal to 300 pt. * On Android devices, the second
+/// column wraps if the screen width is less than or equal to 320 dp. To include
+/// more than 2 columns, or to use rows, use the `Grid` widget. Supported by
+/// Chat apps, but not Google Workspace Add-ons.
+class GoogleAppsCardV1Columns {
+  /// An array of columns.
+  ///
+  /// You can include up to 2 columns in a card or dialog.
+  core.List<GoogleAppsCardV1Column>? columnItems;
+
+  GoogleAppsCardV1Columns({
+    this.columnItems,
+  });
+
+  GoogleAppsCardV1Columns.fromJson(core.Map json_)
+      : this(
+          columnItems: json_.containsKey('columnItems')
+              ? (json_['columnItems'] as core.List)
+                  .map((value) => GoogleAppsCardV1Column.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnItems != null) 'columnItems': columnItems!,
+      };
+}
+
+/// Lets users input a date, a time, or both a date and a time.
+///
+/// Users can input text or use the picker to select dates and times. If users
+/// input an invalid date or time, the picker shows an error that prompts users
+/// to input the information correctly.
+class GoogleAppsCardV1DateTimePicker {
+  /// The text that prompts users to input a date, a time, or a date and time.
+  ///
+  /// For example, if users are scheduling an appointment, use a label such as
+  /// `Appointment date` or `Appointment date and time`.
   core.String? label;
 
-  /// The name by which the datetime picker is identified in a form input event.
+  /// The name by which the `DateTimePicker` is identified in a form input
+  /// event.
   ///
   /// For details about working with form inputs, see
   /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   core.String? name;
 
-  /// Triggered when the user clicks **Save** or **Clear** from the datetime
-  /// picker interface.
+  /// Triggered when the user clicks **Save** or **Clear** from the
+  /// `DateTimePicker` interface.
   GoogleAppsCardV1Action? onChangeAction;
 
   /// The number representing the time zone offset from UTC, in minutes.
   ///
   /// If set, the `value_ms_epoch` is displayed in the specified time zone. If
-  /// not set, it uses the user's time zone setting on the client side.
+  /// unset, the value defaults to the user's time zone setting.
   core.int? timezoneOffsetDate;
 
-  /// What kind of date and time input the datetime picker supports.
+  /// Whether the widget supports inputting a date, a time, or the date and
+  /// time.
   /// Possible string values are:
-  /// - "DATE_AND_TIME" : The user can select a date and time.
-  /// - "DATE_ONLY" : The user can only select a date.
-  /// - "TIME_ONLY" : The user can only select a time.
+  /// - "DATE_AND_TIME" : Users input a date and time.
+  /// - "DATE_ONLY" : Users input a date.
+  /// - "TIME_ONLY" : Users input a time.
   core.String? type;
 
-  /// The value displayed as the default value before user input or previous
-  /// user input, represented in milliseconds
-  /// ([Epoch time](https://en.wikipedia.org/wiki/Unix_time)).
+  /// The default value displayed in the widget, in milliseconds since
+  /// [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time).
   ///
-  /// For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY`
-  /// type, only date of the epoch time is used. For `TIME_ONLY` type, only time
-  /// of the epoch time is used. For example, to represent 3:00 AM, set epoch
-  /// time to `3 * 60 * 60 * 1000`.
+  /// Specify the value based on the type of picker (`DateTimePickerType`): *
+  /// `DATE_AND_TIME`: a calendar date and time in UTC. For example, to
+  /// represent January 1, 2023 at 12:00 PM UTC, use `1672574400000`. *
+  /// `DATE_ONLY`: a calendar date at 00:00:00 UTC. For example, to represent
+  /// January 1, 2023, use `1672531200000`. * `TIME_ONLY`: a time in UTC. For
+  /// example, to represent 12:00 PM, use `43200000` (or `12 * 60 * 60 * 1000`).
   core.String? valueMsEpoch;
 
   GoogleAppsCardV1DateTimePicker({
@@ -2180,15 +3275,15 @@ class GoogleAppsCardV1DateTimePicker {
 }
 
 /// A widget that displays text with optional decorations such as a label above
-/// or below the text, an icon in front of the text, a selection widget or a
+/// or below the text, an icon in front of the text, a selection widget, or a
 /// button after the text.
 class GoogleAppsCardV1DecoratedText {
   /// The text that appears below `text`.
   ///
-  /// Always truncates.
+  /// Always wraps.
   core.String? bottomLabel;
 
-  /// A button that can be clicked to trigger an action.
+  /// A button that a user can click to trigger an action.
   GoogleAppsCardV1Button? button;
 
   /// An icon displayed after the text.
@@ -2203,20 +3298,23 @@ class GoogleAppsCardV1DecoratedText {
   /// Deprecated in favor of `startIcon`.
   GoogleAppsCardV1Icon? icon;
 
-  /// When users click on `topLabel` or `bottomLabel`, this action triggers.
+  /// This action is triggered when users click `topLabel` or `bottomLabel`.
   GoogleAppsCardV1OnClick? onClick;
 
   /// The icon displayed in front of the text.
   GoogleAppsCardV1Icon? startIcon;
 
-  /// A switch widget can be clicked to change its state and trigger an action.
+  /// A switch widget that a user can click to change its state and trigger an
+  /// action.
   GoogleAppsCardV1SwitchControl? switchControl;
 
   /// The primary text.
   ///
   /// Supports simple formatting. For more information about formatting text,
-  /// see Formatting text in Google Chat apps and Formatting text in Google
-  /// Workspace Add-ons.
+  /// see
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   ///
   /// Required.
   core.String? text;
@@ -2298,19 +3396,21 @@ class GoogleAppsCardV1DecoratedText {
       };
 }
 
-/// Displays a divider between widgets, a horizontal line.
+/// Displays a divider between widgets as a horizontal line.
 ///
 /// For example, the following JSON creates a divider: ``` "divider": {} ```
 typedef GoogleAppsCardV1Divider = $Empty;
 
 /// Displays a grid with a collection of items.
 ///
-/// A grid supports any number of columns and items. The number of rows is
-/// determined by items divided by columns. A grid with 10 items and 2 columns
-/// has 5 rows. A grid with 11 items and 2 columns has 6 rows. For example, the
-/// following JSON creates a 2 column grid with a single item: ``` "grid": {
-/// "title": "A fine collection of items", "columnCount": 2, "borderStyle": {
-/// "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri":
+/// Items can only include text or images. A grid supports any number of columns
+/// and items. The number of rows is determined by items divided by columns. A
+/// grid with 10 items and 2 columns has 5 rows. A grid with 11 items and 2
+/// columns has 6 rows. For responsive columns, or to include more than text or
+/// images, use `Columns`. For example, the following JSON creates a 2 column
+/// grid with a single item: ``` "grid": { "title": "A fine collection of
+/// items", "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius":
+/// 4 }, "items": [ { "image": { "imageUri":
 /// "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" },
 /// "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment":
 /// "CENTER" } ], "onClick": { "openLink": { "url": "https://www.example.com" }
@@ -2376,11 +3476,13 @@ class GoogleAppsCardV1Grid {
       };
 }
 
-/// Represents a single item in the grid layout.
+/// Represents an item in a grid layout.
+///
+/// Items can contain text, an image, or both text and an image.
 class GoogleAppsCardV1GridItem {
   /// A user-specified identifier for this grid item.
   ///
-  /// This identifier is returned in the parent Grid's onClick callback
+  /// This identifier is returned in the parent grid's `onClick` callback
   /// parameters.
   core.String? id;
 
@@ -2389,7 +3491,7 @@ class GoogleAppsCardV1GridItem {
 
   /// The layout to use for the grid item.
   /// Possible string values are:
-  /// - "GRID_ITEM_LAYOUT_UNSPECIFIED" : No layout specified.
+  /// - "GRID_ITEM_LAYOUT_UNSPECIFIED" : Don't use. Unspecified.
   /// - "TEXT_BELOW" : The title and subtitle are shown below the grid item's
   /// image.
   /// - "TEXT_ABOVE" : The title and subtitle are shown above the grid item's
@@ -2446,12 +3548,12 @@ class GoogleAppsCardV1GridItem {
 class GoogleAppsCardV1Icon {
   /// A description of the icon used for accessibility.
   ///
-  /// If unspecified, the default value "Button" is provided. As a best
+  /// If unspecified, the default value `Button` is provided. As a best
   /// practice, you should set a helpful description for what the icon displays,
   /// and if applicable, what it does. For example, `A user's account portrait`,
   /// or `Opens a new browser tab and navigates to the Google Chat developer
   /// documentation at https://developers.google.com/chat`. If the icon is set
-  /// in a Button, the `altText` appears as helper text when the user hovers
+  /// in a `Button`, the `altText` appears as helper text when the user hovers
   /// over the button. However, if the button also sets `text`, the icon's
   /// `altText` is ignored.
   ///
@@ -2516,16 +3618,16 @@ class GoogleAppsCardV1Icon {
 
 /// An image that is specified by a URL and can have an `onClick` action.
 class GoogleAppsCardV1Image {
-  /// The alternative text of this image, used for accessibility.
+  /// The alternative text of this image that's used for accessibility.
   core.String? altText;
 
-  /// The `https` URL that hosts the image.
+  /// The HTTPS URL that hosts the image.
   ///
   /// For example: ```
   /// https://developers.google.com/chat/images/quickstart-app-avatar.png ```
   core.String? imageUrl;
 
-  /// When a user clicks on the image, the click triggers this action.
+  /// When a user clicks the image, the click triggers this action.
   GoogleAppsCardV1OnClick? onClick;
 
   GoogleAppsCardV1Image({
@@ -2604,18 +3706,18 @@ class GoogleAppsCardV1ImageComponent {
 
 /// Represents the crop style applied to an image.
 ///
-/// For example, here's how to apply a 16 by 9 aspect ratio: ``` cropStyle {
+/// For example, here's how to apply a 16:9 aspect ratio: ``` cropStyle {
 /// "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
 class GoogleAppsCardV1ImageCropStyle {
   /// The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.
   ///
-  /// For example, here's how to apply a 16 by 9 aspect ratio: ``` cropStyle {
+  /// For example, here's how to apply a 16:9 aspect ratio: ``` cropStyle {
   /// "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
   core.double? aspectRatio;
 
   /// The crop type.
   /// Possible string values are:
-  /// - "IMAGE_CROP_TYPE_UNSPECIFIED" : No value specified. Do not use.
+  /// - "IMAGE_CROP_TYPE_UNSPECIFIED" : Don't use. Unspecified.
   /// - "SQUARE" : Default value. Applies a square crop.
   /// - "CIRCLE" : Applies a circular crop.
   /// - "RECTANGLE_CUSTOM" : Applies a rectangular crop with a custom aspect
@@ -2706,10 +3808,10 @@ class GoogleAppsCardV1OpenLink {
   ///
   /// Not supported by Chat apps.
   /// Possible string values are:
-  /// - "NOTHING" : Default value. The card does not reload; nothing happens.
+  /// - "NOTHING" : Default value. The card doesn't reload; nothing happens.
   /// - "RELOAD" : Reloads the card after the child window closes. If used in
   /// conjunction with
-  /// [OpenAs.OVERLAY](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#openas),
+  /// \[`OpenAs.OVERLAY`\](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#openas),
   /// the child window acts as a modal dialog and the parent card is blocked
   /// until the child window closes.
   core.String? onClose;
@@ -2718,8 +3820,8 @@ class GoogleAppsCardV1OpenLink {
   ///
   /// Not supported by Chat apps.
   /// Possible string values are:
-  /// - "FULL_SIZE" : The link opens as a full size window (if that's the frame
-  /// used by the client.
+  /// - "FULL_SIZE" : The link opens as a full-size window (if that's the frame
+  /// used by the client).
   /// - "OVERLAY" : The link opens as an overlay, such as a pop-up.
   core.String? openAs;
 
@@ -2751,7 +3853,7 @@ class GoogleAppsCardV1OpenLink {
 }
 
 /// A section contains a collection of widgets that are rendered vertically in
-/// the order that they are specified.
+/// the order that they're specified.
 class GoogleAppsCardV1Section {
   /// Indicates whether this section is collapsible.
   ///
@@ -2764,8 +3866,10 @@ class GoogleAppsCardV1Section {
   /// Text that appears at the top of a section.
   ///
   /// Supports simple HTML formatted text. For more information about formatting
-  /// text, see Formatting text in Google Chat apps and Formatting text in
-  /// Google Workspace Add-ons.
+  /// text, see
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
 
   /// The number of uncollapsible widgets which remain visible even when a
@@ -2780,7 +3884,7 @@ class GoogleAppsCardV1Section {
 
   /// All the widgets in the section.
   ///
-  /// Must contain at least 1 widget.
+  /// Must contain at least one widget.
   core.List<GoogleAppsCardV1Widget>? widgets;
 
   GoogleAppsCardV1Section({
@@ -2908,10 +4012,10 @@ class GoogleAppsCardV1SelectionInput {
 /// An item that users can select in a selection input, such as a checkbox or
 /// switch.
 class GoogleAppsCardV1SelectionItem {
-  /// When `true`, more than one item is selected.
+  /// Whether the item is selected by default.
   ///
-  /// If more than one item is selected for radio buttons and dropdown menus,
-  /// the first selected item is received and the ones after are ignored.
+  /// If the selection input only accepts one value (such as for radio buttons
+  /// or a dropdown menu), only set this field for one item.
   core.bool? selected;
 
   /// The text that identifies or describes the item to users.
@@ -2951,7 +4055,7 @@ class GoogleAppsCardV1SelectionItem {
 class GoogleAppsCardV1SuggestionItem {
   /// The value of a suggested input to a text input field.
   ///
-  /// This is equivalent to what users would enter themselves.
+  /// This is equivalent to what users enter themselves.
   core.String? text;
 
   GoogleAppsCardV1SuggestionItem({
@@ -2973,13 +4077,13 @@ class GoogleAppsCardV1SuggestionItem {
 /// These values appear when users click inside the text input field. As users
 /// type, the suggested values dynamically filter to match what the users have
 /// typed. For example, a text input field for programming language might
-/// suggest Java, JavaScript, Python, and C++. When users start typing "Jav",
-/// the list of suggestions filters to show just Java and JavaScript. Suggested
+/// suggest Java, JavaScript, Python, and C++. When users start typing `Jav`,
+/// the list of suggestions filters to show `Java` and `JavaScript`. Suggested
 /// values help guide users to enter values that your app can make sense of.
-/// When referring to JavaScript, some users might enter "javascript" and others
-/// "java script". Suggesting "JavaScript" can standardize how users interact
+/// When referring to JavaScript, some users might enter `javascript` and others
+/// `java script`. Suggesting `JavaScript` can standardize how users interact
 /// with your app. When specified, `TextInput.type` is always `SINGLE_LINE`,
-/// even if it is set to `MULTIPLE_LINE`.
+/// even if it's set to `MULTIPLE_LINE`.
 class GoogleAppsCardV1Suggestions {
   /// A list of suggestions used for autocomplete recommendations in text input
   /// fields.
@@ -3006,7 +4110,7 @@ class GoogleAppsCardV1Suggestions {
 
 /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
 ///
-/// Only supported on the `decoratedText` widget.
+/// Only supported in the `decoratedText` widget.
 class GoogleAppsCardV1SwitchControl {
   /// How the switch appears in the user interface.
   /// Possible string values are:
@@ -3101,13 +4205,13 @@ class GoogleAppsCardV1TextInput {
   /// These values appear when users click inside the text input field. As users
   /// type, the suggested values dynamically filter to match what the users have
   /// typed. For example, a text input field for programming language might
-  /// suggest Java, JavaScript, Python, and C++. When users start typing "Jav",
-  /// the list of suggestions filters to show just Java and JavaScript.
+  /// suggest Java, JavaScript, Python, and C++. When users start typing `Jav`,
+  /// the list of suggestions filters to show just `Java` and `JavaScript`.
   /// Suggested values help guide users to enter values that your app can make
   /// sense of. When referring to JavaScript, some users might enter
-  /// "javascript" and others "java script". Suggesting "JavaScript" can
+  /// `javascript` and others `java script`. Suggesting `JavaScript` can
   /// standardize how users interact with your app. When specified,
-  /// `TextInput.type` is always `SINGLE_LINE`, even if it is set to
+  /// `TextInput.type` is always `SINGLE_LINE`, even if it's set to
   /// `MULTIPLE_LINE`.
   GoogleAppsCardV1Suggestions? initialSuggestions;
 
@@ -3115,7 +4219,7 @@ class GoogleAppsCardV1TextInput {
   ///
   /// Specify text that helps the user enter the information your app needs. For
   /// example, if you are asking someone's name, but specifically need their
-  /// surname, write "surname" instead of "name". Required if `hintText` is
+  /// surname, write `surname` instead of `name`. Required if `hintText` is
   /// unspecified. Otherwise, optional.
   core.String? label;
 
@@ -3127,8 +4231,8 @@ class GoogleAppsCardV1TextInput {
 
   /// What to do when a change occurs in the text input field.
   ///
-  /// Examples of changes include a user adding to the field, or deleting text.
-  /// Examples of actions to take include running a custom function or opening a
+  /// For example, a user adding to the field or deleting text. Examples of
+  /// actions to take include running a custom function or opening a
   /// [dialog](https://developers.google.com/chat/how-tos/dialogs) in Google
   /// Chat.
   GoogleAppsCardV1Action? onChangeAction;
@@ -3200,8 +4304,10 @@ class GoogleAppsCardV1TextInput {
 
 /// A paragraph of text that supports formatting.
 ///
-/// For more information about formatting text, see Formatting text in Google
-/// Chat apps and Formatting text in Google Workspace Add-ons.
+/// For more information about formatting text, see
+/// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+/// and \[Formatting text in Google Workspace
+/// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
 class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
@@ -3235,10 +4341,22 @@ class GoogleAppsCardV1Widget {
   /// "openLink": { "url": "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
 
-  /// Displays a selection/input widget for date, time, or date and time.
+  /// Displays up to 2 columns.
   ///
-  /// Not supported by Chat apps. Support by Chat apps is coming soon. For
-  /// example, the following JSON creates a datetime picker to schedule an
+  /// To include more than 2 columns, or to use rows, use the `Grid` widget. For
+  /// example, the following JSON creates 2 columns that each contain text
+  /// paragraphs: ``` "columns": { "columnItems": [ { "horizontalSizeStyle":
+  /// "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER",
+  /// "verticalAlignment": "CENTER", "widgets": [ { "textParagraph": { "text":
+  /// "First column text paragraph" } } ] }, { "horizontalSizeStyle":
+  /// "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER",
+  /// "verticalAlignment": "CENTER", "widgets": [ { "textParagraph": { "text":
+  /// "Second column text paragraph" } } ] } ] } ```
+  GoogleAppsCardV1Columns? columns;
+
+  /// Displays a widget that lets users input a date, time, or date and time.
+  ///
+  /// For example, the following JSON creates a date time picker to schedule an
   /// appointment: ``` "dateTimePicker": { "name": "appointment_time", "label":
   /// "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch":
   /// "796435200000" } ```
@@ -3274,6 +4392,18 @@ class GoogleAppsCardV1Widget {
   /// "https://www.example.com" } } } ```
   GoogleAppsCardV1Grid? grid;
 
+  /// Specifies whether widgets align to the left, right, or center of a column.
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "START" : Default value. Aligns widgets to the start position of the
+  /// column. For left-to-right layouts, aligns to the left. For right-to-left
+  /// layouts, aligns to the right.
+  /// - "CENTER" : Aligns widgets to the center of the column.
+  /// - "END" : Aligns widgets to the end position of the column. For
+  /// left-to-right layouts, aligns widgets to the right. For right-to-left
+  /// layouts, aligns widgets to the left.
+  core.String? horizontalAlignment;
+
   /// Displays an image.
   ///
   /// For example, the following JSON creates an image with alternative text:
@@ -3307,17 +4437,22 @@ class GoogleAppsCardV1Widget {
   /// Displays a text paragraph.
   ///
   /// Supports simple HTML formatted text. For more information about formatting
-  /// text, see Formatting text in Google Chat apps and Formatting text in
-  /// Google Workspace Add-ons. For example, the following JSON creates a bolded
-  /// text: ``` "textParagraph": { "text": " *bold text*" } ```
+  /// text, see
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+  /// For example, the following JSON creates a bolded text: ```
+  /// "textParagraph": { "text": " *bold text*" } ```
   GoogleAppsCardV1TextParagraph? textParagraph;
 
   GoogleAppsCardV1Widget({
     this.buttonList,
+    this.columns,
     this.dateTimePicker,
     this.decoratedText,
     this.divider,
     this.grid,
+    this.horizontalAlignment,
     this.image,
     this.selectionInput,
     this.textInput,
@@ -3329,6 +4464,10 @@ class GoogleAppsCardV1Widget {
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
                   json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          columns: json_.containsKey('columns')
+              ? GoogleAppsCardV1Columns.fromJson(
+                  json_['columns'] as core.Map<core.String, core.dynamic>)
               : null,
           dateTimePicker: json_.containsKey('dateTimePicker')
               ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
@@ -3345,6 +4484,90 @@ class GoogleAppsCardV1Widget {
           grid: json_.containsKey('grid')
               ? GoogleAppsCardV1Grid.fromJson(
                   json_['grid'] as core.Map<core.String, core.dynamic>)
+              : null,
+          horizontalAlignment: json_.containsKey('horizontalAlignment')
+              ? json_['horizontalAlignment'] as core.String
+              : null,
+          image: json_.containsKey('image')
+              ? GoogleAppsCardV1Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionInput: json_.containsKey('selectionInput')
+              ? GoogleAppsCardV1SelectionInput.fromJson(json_['selectionInput']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textInput: json_.containsKey('textInput')
+              ? GoogleAppsCardV1TextInput.fromJson(
+                  json_['textInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textParagraph: json_.containsKey('textParagraph')
+              ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buttonList != null) 'buttonList': buttonList!,
+        if (columns != null) 'columns': columns!,
+        if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
+        if (decoratedText != null) 'decoratedText': decoratedText!,
+        if (divider != null) 'divider': divider!,
+        if (grid != null) 'grid': grid!,
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment!,
+        if (image != null) 'image': image!,
+        if (selectionInput != null) 'selectionInput': selectionInput!,
+        if (textInput != null) 'textInput': textInput!,
+        if (textParagraph != null) 'textParagraph': textParagraph!,
+      };
+}
+
+/// The supported widgets that you can include in a column.
+class GoogleAppsCardV1Widgets {
+  /// ButtonList widget.
+  GoogleAppsCardV1ButtonList? buttonList;
+
+  /// DateTimePicker widget.
+  GoogleAppsCardV1DateTimePicker? dateTimePicker;
+
+  /// DecoratedText widget.
+  GoogleAppsCardV1DecoratedText? decoratedText;
+
+  /// Image widget.
+  GoogleAppsCardV1Image? image;
+
+  /// SelectionInput widget.
+  GoogleAppsCardV1SelectionInput? selectionInput;
+
+  /// TextInput widget.
+  GoogleAppsCardV1TextInput? textInput;
+
+  /// TextParagraph widget.
+  GoogleAppsCardV1TextParagraph? textParagraph;
+
+  GoogleAppsCardV1Widgets({
+    this.buttonList,
+    this.dateTimePicker,
+    this.decoratedText,
+    this.image,
+    this.selectionInput,
+    this.textInput,
+    this.textParagraph,
+  });
+
+  GoogleAppsCardV1Widgets.fromJson(core.Map json_)
+      : this(
+          buttonList: json_.containsKey('buttonList')
+              ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dateTimePicker: json_.containsKey('dateTimePicker')
+              ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          decoratedText: json_.containsKey('decoratedText')
+              ? GoogleAppsCardV1DecoratedText.fromJson(
+                  json_['decoratedText'] as core.Map<core.String, core.dynamic>)
               : null,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
@@ -3368,8 +4591,6 @@ class GoogleAppsCardV1Widget {
         if (buttonList != null) 'buttonList': buttonList!,
         if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
         if (decoratedText != null) 'decoratedText': decoratedText!,
-        if (divider != null) 'divider': divider!,
-        if (grid != null) 'grid': grid!,
         if (image != null) 'image': image!,
         if (selectionInput != null) 'selectionInput': selectionInput!,
         if (textInput != null) 'textInput': textInput!,
@@ -3377,19 +4598,19 @@ class GoogleAppsCardV1Widget {
       };
 }
 
-/// An image that is specified by a URL and can have an onclick action.
+/// An image that's specified by a URL and can have an `onclick` action.
 class Image {
-  /// The aspect ratio of this image (width/height).
+  /// The aspect ratio of this image (width and height).
   ///
-  /// This field allows clients to reserve the right height for the image while
-  /// waiting for it to load. It's not meant to override the native aspect ratio
-  /// of the image. If unset, the server fills it by prefetching the image.
+  /// This field lets you reserve the right height for the image while waiting
+  /// for it to load. It's not meant to override the built-in aspect ratio of
+  /// the image. If unset, the server fills it by prefetching the image.
   core.double? aspectRatio;
 
   /// The URL of the image.
   core.String? imageUrl;
 
-  /// The onclick action.
+  /// The `onclick` action.
   OnClick? onClick;
 
   Image({
@@ -3419,9 +4640,9 @@ class Image {
       };
 }
 
-/// An image button with an onclick action.
+/// An image button with an `onclick` action.
 class ImageButton {
-  /// The icon specified by an enum that indices to an icon provided by Chat
+  /// The icon specified by an `enum` that indices to an icon provided by Chat
   /// API.
   /// Possible string values are:
   /// - "ICON_UNSPECIFIED"
@@ -3460,12 +4681,12 @@ class ImageButton {
   /// The icon specified by a URL.
   core.String? iconUrl;
 
-  /// The name of this image_button which will be used for accessibility.
+  /// The name of this `image_button` that's used for accessibility.
   ///
-  /// Default value will be provided if developers don't specify.
+  /// Default value is provided if this name isn't specified.
   core.String? name;
 
-  /// The onclick action.
+  /// The `onclick` action.
   OnClick? onClick;
 
   ImageButton({
@@ -3498,13 +4719,14 @@ class ImageButton {
 
 /// A UI element contains a key (label) and a value (content).
 ///
-/// And this element may also contain some actions such as onclick button.
+/// This element can also contain some actions such as `onclick` button.
 class KeyValue {
   /// The text of the bottom label.
   ///
   /// Formatted text supported. For more information about formatting text, see
-  /// Formatting text in Google Chat apps and Formatting text in Google
-  /// Workspace Add-ons.
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? bottomLabel;
 
   /// A button that can be clicked to trigger an action.
@@ -3513,15 +4735,17 @@ class KeyValue {
   /// The text of the content.
   ///
   /// Formatted text supported and always required. For more information about
-  /// formatting text, see Formatting text in Google Chat apps and Formatting
-  /// text in Google Workspace Add-ons.
+  /// formatting text, see
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? content;
 
   /// If the content should be multiline.
   core.bool? contentMultiline;
 
-  /// An enum value that will be replaced by the Chat API with the corresponding
-  /// icon image.
+  /// An enum value that's replaced by the Chat API with the corresponding icon
+  /// image.
   /// Possible string values are:
   /// - "ICON_UNSPECIFIED"
   /// - "AIRPLANE"
@@ -3559,16 +4783,17 @@ class KeyValue {
   /// The icon specified by a URL.
   core.String? iconUrl;
 
-  /// The onclick action.
+  /// The `onclick` action.
   ///
-  /// Only the top label, bottom label and content region are clickable.
+  /// Only the top label, bottom label, and content region are clickable.
   OnClick? onClick;
 
   /// The text of the top label.
   ///
   /// Formatted text supported. For more information about formatting text, see
-  /// Formatting text in Google Chat apps and Formatting text in Google
-  /// Workspace Add-ons.
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? topLabel;
 
   KeyValue({
@@ -3626,7 +4851,7 @@ class ListMembershipsResponse {
   /// List of memberships in the requested (or first) page.
   core.List<Membership>? memberships;
 
-  /// A token that can be sent as `pageToken` to retrieve the next page of
+  /// A token that you can send as `pageToken` to retrieve the next page of
   /// results.
   ///
   /// If empty, there are no subsequent pages.
@@ -3656,9 +4881,74 @@ class ListMembershipsResponse {
       };
 }
 
+class ListMessagesResponse {
+  /// List of messages.
+  core.List<Message>? messages;
+
+  /// You can send a token as `pageToken` to retrieve the next page of results.
+  ///
+  /// If empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMessagesResponse({
+    this.messages,
+    this.nextPageToken,
+  });
+
+  ListMessagesResponse.fromJson(core.Map json_)
+      : this(
+          messages: json_.containsKey('messages')
+              ? (json_['messages'] as core.List)
+                  .map((value) => Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messages != null) 'messages': messages!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+class ListReactionsResponse {
+  /// Continuation token to retrieve the next page of results.
+  ///
+  /// It's empty for the last page of results.
+  core.String? nextPageToken;
+
+  /// List of reactions in the requested (or first) page.
+  core.List<Reaction>? reactions;
+
+  ListReactionsResponse({
+    this.nextPageToken,
+    this.reactions,
+  });
+
+  ListReactionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          reactions: json_.containsKey('reactions')
+              ? (json_['reactions'] as core.List)
+                  .map((value) => Reaction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reactions != null) 'reactions': reactions!,
+      };
+}
+
 class ListSpacesResponse {
-  /// A token that can be sent as `pageToken` to retrieve the next page of
-  /// results.
+  /// You can send a token as `pageToken` to retrieve the next page of results.
   ///
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
@@ -3690,12 +4980,12 @@ class ListSpacesResponse {
       };
 }
 
-/// A matched url in a Chat message.
+/// A matched URL in a Chat message.
 ///
-/// Chat apps can preview matched URLs. For more information, refer to
+/// Chat apps can preview matched URLs. For more information, see
 /// [Preview links](https://developers.google.com/chat/how-tos/preview-links).
 class MatchedUrl {
-  /// The url that was matched.
+  /// The URL that was matched.
   ///
   /// Output only.
   core.String? url;
@@ -3737,7 +5027,7 @@ class Membership {
 
   /// Resource name of the membership, assigned by the server.
   ///
-  /// Format: spaces/{space}/members/{member}
+  /// Format: `spaces/{space}/members/{member}`
   core.String? name;
 
   /// User's role within a Chat space, which determines their permitted actions
@@ -3745,13 +5035,14 @@ class Membership {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "MEMBERSHIP_ROLE_UNSPECIFIED" : Default value. The user isn't a member
-  /// of the space, but might be invited.
+  /// - "MEMBERSHIP_ROLE_UNSPECIFIED" : Default value. For users: they aren't a
+  /// member of the space, but can be invited. For Google Groups: they're always
+  /// assigned this role (other enum values might be used in the future).
   /// - "ROLE_MEMBER" : A member of the space. The user has basic permissions,
   /// like sending messages to the space. In 1:1 and unnamed group
   /// conversations, everyone has this role.
   /// - "ROLE_MANAGER" : A space manager. The user has all basic permissions
-  /// plus administrative permissions that allow them to manage the space, like
+  /// plus administrative permissions that let them manage the space, like
   /// adding or removing members. Only supported in SpaceType.SPACE.
   core.String? role;
 
@@ -3759,12 +5050,12 @@ class Membership {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, do not use.
+  /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, don't use.
   /// - "JOINED" : The user has joined the space.
   /// - "INVITED" : The user has been invited, is able to join the space, but
-  /// currently has not joined.
-  /// - "NOT_A_MEMBER" : The user is not a member of the space, has not been
-  /// invited and is not able to join the space.
+  /// currently hasn't joined.
+  /// - "NOT_A_MEMBER" : The user isn't a member of the space, hasn't been
+  /// invited and isn't able to join the space.
   core.String? state;
 
   Membership({
@@ -3807,7 +5098,7 @@ class Message {
   /// posted.
   ActionResponse? actionResponse;
 
-  /// Annotations associated with the text in this message.
+  /// Annotations associated with the `text` in this message.
   ///
   /// Output only.
   core.List<Annotation>? annotations;
@@ -3817,15 +5108,20 @@ class Message {
   /// Output only.
   core.String? argumentText;
 
+  /// GIF images that are attached to the message.
+  ///
+  /// Output only.
+  core.List<AttachedGif>? attachedGifs;
+
   /// User-uploaded attachment.
   core.List<Attachment>? attachment;
 
   /// Deprecated: Use `cards_v2` instead.
   ///
-  /// Rich, formatted and interactive cards that can be used to display UI
-  /// elements such as: formatted texts, buttons, clickable images. Cards are
-  /// normally displayed below the plain-text body of the message. `cards` and
-  /// `cards_v2` can have a maximum size of 32 KB.
+  /// Rich, formatted, and interactive cards that you can use to display UI
+  /// elements such as: formatted texts, buttons, and clickable images. Cards
+  /// are normally displayed below the plain-text body of the message. `cards`
+  /// and `cards_v2` can have a maximum size of 32 KB.
   core.List<Card>? cards;
 
   /// Richly formatted and interactive cards that display UI elements and
@@ -3846,17 +5142,48 @@ class Message {
   ///
   /// Must start with `client-` and contain only lowercase letters, numbers, and
   /// hyphens up to 63 characters in length. Specify this field to get, update,
-  /// or delete the message with the specified value. For example usage, see
-  /// [Name a created message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+  /// or delete the message with the specified value. Assigning a custom name
+  /// lets a Chat app recall the message without saving the message `name` from
+  /// the \[response
+  /// body\](/chat/api/reference/rest/v1/spaces.messages/get#response-body)
+  /// returned when creating the message. Assigning a custom name doesn't
+  /// replace the generated `name` field, the message's resource name. Instead,
+  /// it sets the custom name as the `clientAssignedMessageId` field, which you
+  /// can reference while processing later operations, like updating or deleting
+  /// the message. For example usage, see
+  /// [Name a created message](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
   core.String? clientAssignedMessageId;
 
-  /// The time at which the message was created in Google Chat server.
+  /// For spaces created in Chat, the time at which the message was created.
   ///
-  /// Output only.
+  /// This field is output only, except when used in imported spaces.
+  /// [Developer Preview](https://developers.google.com/workspace/preview): For
+  /// imported spaces, set this field to the historical timestamp at which the
+  /// message was created in the source in order to preserve the original
+  /// creation time.
   core.String? createTime;
 
+  /// The time at which the message was deleted in Google Chat.
+  ///
+  /// If the message is never deleted, this field is empty.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Information about a deleted message.
+  ///
+  /// A message is deleted when `delete_time` is set.
+  ///
+  /// Output only.
+  DeletionMetadata? deletionMetadata;
+
+  /// The list of emoji reaction summaries on the message.
+  ///
+  /// Output only.
+  core.List<EmojiReactionSummary>? emojiReactionSummaries;
+
   /// A plain-text description of the message's cards, used when the actual
-  /// cards cannot be displayed (e.g. mobile notifications).
+  /// cards can't be displayed—for example, mobile notifications.
   core.String? fallbackText;
 
   /// The time at which the message was last edited by a user.
@@ -3868,7 +5195,7 @@ class Message {
 
   /// A URL in `spaces.messages.text` that matches a link preview pattern.
   ///
-  /// For more information, refer to
+  /// For more information, see
   /// [Preview links](https://developers.google.com/chat/how-tos/preview-links).
   ///
   /// Output only.
@@ -3928,11 +5255,15 @@ class Message {
     this.actionResponse,
     this.annotations,
     this.argumentText,
+    this.attachedGifs,
     this.attachment,
     this.cards,
     this.cardsV2,
     this.clientAssignedMessageId,
     this.createTime,
+    this.deleteTime,
+    this.deletionMetadata,
+    this.emojiReactionSummaries,
     this.fallbackText,
     this.lastUpdateTime,
     this.matchedUrl,
@@ -3960,6 +5291,12 @@ class Message {
           argumentText: json_.containsKey('argumentText')
               ? json_['argumentText'] as core.String
               : null,
+          attachedGifs: json_.containsKey('attachedGifs')
+              ? (json_['attachedGifs'] as core.List)
+                  .map((value) => AttachedGif.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           attachment: json_.containsKey('attachment')
               ? (json_['attachment'] as core.List)
                   .map((value) => Attachment.fromJson(
@@ -3983,6 +5320,19 @@ class Message {
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          deletionMetadata: json_.containsKey('deletionMetadata')
+              ? DeletionMetadata.fromJson(json_['deletionMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          emojiReactionSummaries: json_.containsKey('emojiReactionSummaries')
+              ? (json_['emojiReactionSummaries'] as core.List)
+                  .map((value) => EmojiReactionSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           fallbackText: json_.containsKey('fallbackText')
               ? json_['fallbackText'] as core.String
@@ -4021,12 +5371,17 @@ class Message {
         if (actionResponse != null) 'actionResponse': actionResponse!,
         if (annotations != null) 'annotations': annotations!,
         if (argumentText != null) 'argumentText': argumentText!,
+        if (attachedGifs != null) 'attachedGifs': attachedGifs!,
         if (attachment != null) 'attachment': attachment!,
         if (cards != null) 'cards': cards!,
         if (cardsV2 != null) 'cardsV2': cardsV2!,
         if (clientAssignedMessageId != null)
           'clientAssignedMessageId': clientAssignedMessageId!,
         if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (deletionMetadata != null) 'deletionMetadata': deletionMetadata!,
+        if (emojiReactionSummaries != null)
+          'emojiReactionSummaries': emojiReactionSummaries!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (matchedUrl != null) 'matchedUrl': matchedUrl!,
@@ -4040,12 +5395,12 @@ class Message {
       };
 }
 
-/// An onclick action (e.g. open a link).
+/// An `onclick` action (for example, open a link).
 class OnClick {
-  /// A form action will be triggered by this onclick if specified.
+  /// A form action is triggered by this `onclick` action if specified.
   FormAction? action;
 
-  /// This onclick triggers an open link action if specified.
+  /// This `onclick` action triggers an open link action if specified.
   OpenLink? openLink;
 
   OnClick({
@@ -4090,20 +5445,63 @@ class OpenLink {
       };
 }
 
+/// A reaction to a message.
+class Reaction {
+  /// The emoji used in the reaction.
+  Emoji? emoji;
+
+  /// The resource name of the reaction.
+  ///
+  /// Format: `spaces/{space}/messages/{message}/reactions/{reaction}`
+  core.String? name;
+
+  /// The user who created the reaction.
+  ///
+  /// Output only.
+  User? user;
+
+  Reaction({
+    this.emoji,
+    this.name,
+    this.user,
+  });
+
+  Reaction.fromJson(core.Map json_)
+      : this(
+          emoji: json_.containsKey('emoji')
+              ? Emoji.fromJson(
+                  json_['emoji'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          user: json_.containsKey('user')
+              ? User.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emoji != null) 'emoji': emoji!,
+        if (name != null) 'name': name!,
+        if (user != null) 'user': user!,
+      };
+}
+
 /// A section contains a collection of widgets that are rendered (vertically) in
 /// the order that they are specified.
 ///
-/// Across all platforms, cards have a narrow fixed width, so there is currently
-/// no need for layout properties (e.g. float).
+/// Across all platforms, cards have a narrow fixed width, so there's currently
+/// no need for layout properties (for example, float).
 class Section {
   /// The header of the section.
   ///
   /// Formatted text is supported. For more information about formatting text,
-  /// see Formatting text in Google Chat apps and Formatting text in Google
-  /// Workspace Add-ons.
+  /// see
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// and \[Formatting text in Google Workspace
+  /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
 
-  /// A section must contain at least 1 widget.
+  /// A section must contain at least one widget.
   core.List<WidgetMarkup>? widgets;
 
   Section({
@@ -4130,10 +5528,85 @@ class Section {
       };
 }
 
+class SetUpSpaceRequest {
+  /// The initial set of in-domain users invited to join the space.
+  ///
+  /// The calling user is automatically added to the space, and shouldn't be
+  /// specified as a membership. The set currently allows up to 20 memberships
+  /// (in addition to the caller). The `Membership.member` field must contain a
+  /// user with `name` populated and `User.Type.HUMAN`. All other fields are
+  /// ignored. Optional when setting `Space.spaceType` to `SPACE`. Required when
+  /// setting `Space.spaceType` to `GROUP_CHAT`, along with at least two
+  /// memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE`
+  /// with a human user, along with exactly one membership. Must be empty when
+  /// creating a 1:1 conversation between a human and the calling Chat app (when
+  /// setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm`
+  /// to `true`). Not supported: Inviting guest users, or adding other Chat
+  /// apps.
+  ///
+  /// Optional.
+  core.List<Membership>? memberships;
+
+  /// A unique identifier for this request.
+  ///
+  /// A random UUID is recommended. Specifying an existing request ID returns
+  /// the space created with that ID instead of creating a new space. Specifying
+  /// an existing request ID from the same Chat app with a different
+  /// authenticated user returns an error.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The `Space.spaceType` field is required.
+  ///
+  /// To create a space, set `Space.spaceType` to `SPACE` and set
+  /// `Space.displayName`. To create a group chat, set `Space.spaceType` to
+  /// `GROUP_CHAT`. Don't set `Space.displayName`. To create a 1:1 conversation
+  /// between humans, set `Space.spaceType` to `DIRECT_MESSAGE` and set
+  /// `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or
+  /// `Space.spaceDetails`. To create an 1:1 conversation between a human and
+  /// the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and
+  /// `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or
+  /// `Space.spaceDetails`. If a `DIRECT_MESSAGE` space already exists, that
+  /// space is returned instead of creating a new space.
+  ///
+  /// Required.
+  Space? space;
+
+  SetUpSpaceRequest({
+    this.memberships,
+    this.requestId,
+    this.space,
+  });
+
+  SetUpSpaceRequest.fromJson(core.Map json_)
+      : this(
+          memberships: json_.containsKey('memberships')
+              ? (json_['memberships'] as core.List)
+                  .map((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          space: json_.containsKey('space')
+              ? Space.fromJson(
+                  json_['space'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberships != null) 'memberships': memberships!,
+        if (requestId != null) 'requestId': requestId!,
+        if (space != null) 'space': space!,
+      };
+}
+
 /// A [slash command](https://developers.google.com/chat/how-tos/slash-commands)
 /// in Google Chat.
 class SlashCommand {
-  /// The id of the slash command invoked.
+  /// The ID of the slash command invoked.
   core.String? commandId;
 
   SlashCommand({
@@ -4157,18 +5630,18 @@ class SlashCommandMetadata {
   /// The Chat app whose command was invoked.
   User? bot;
 
-  /// The command id of the invoked slash command.
+  /// The command ID of the invoked slash command.
   core.String? commandId;
 
   /// The name of the invoked slash command.
   core.String? commandName;
 
-  /// Indicating whether the slash command is for a dialog.
+  /// Indicates whether the slash command is for a dialog.
   core.bool? triggersDialog;
 
   /// The type of slash command.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
+  /// - "TYPE_UNSPECIFIED" : Default value for the enum. Don't use.
   /// - "ADD" : Add Chat app to space.
   /// - "INVOKE" : Invoke slash command in space.
   core.String? type;
@@ -4227,13 +5700,13 @@ class Space {
   ///
   /// Required when
   /// [creating a space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create).
-  /// For direct messages, this field may be empty. Supports up to 128
+  /// For direct messages, this field might be empty. Supports up to 128
   /// characters.
   core.String? displayName;
 
   /// Resource name of the space.
   ///
-  /// Format: spaces/{space}
+  /// Format: `spaces/{space}`
   core.String? name;
 
   /// Whether the space is a DM between a Chat app and a single human.
@@ -4243,6 +5716,16 @@ class Space {
 
   /// Details about the space including description and rules.
   SpaceDetails? spaceDetails;
+
+  /// The message history state for messages and threads in this space.
+  /// Possible string values are:
+  /// - "HISTORY_STATE_UNSPECIFIED" : Default value. Do not use.
+  /// - "HISTORY_OFF" : History off.
+  /// [Messages and threads are kept for 24 hours](https://support.google.com/chat/answer/7664687).
+  /// - "HISTORY_ON" : History on. The organization's
+  /// [Vault retention rules](https://support.google.com/vault/answer/7657597)
+  /// specify for how long messages and threads are kept.
+  core.String? spaceHistoryState;
 
   /// The threading state in the Chat space.
   ///
@@ -4258,6 +5741,20 @@ class Space {
   /// group conversations between 3 or more people.
   core.String? spaceThreadingState;
 
+  /// The type of space.
+  ///
+  /// Required when creating a space or updating the space type of a space.
+  /// Output only for other usage.
+  /// Possible string values are:
+  /// - "SPACE_TYPE_UNSPECIFIED" : Reserved.
+  /// - "SPACE" : A place where people send messages, share files, and
+  /// collaborate. A `SPACE` can include Chat apps.
+  /// - "GROUP_CHAT" : Group conversations between 3 or more people. A
+  /// `GROUP_CHAT` can include Chat apps.
+  /// - "DIRECT_MESSAGE" : 1:1 messages between two humans or a human and a Chat
+  /// app.
+  core.String? spaceType;
+
   /// Deprecated: Use `spaceThreadingState` instead.
   ///
   /// Whether messages are threaded in this space.
@@ -4265,8 +5762,7 @@ class Space {
   /// Output only.
   core.bool? threaded;
 
-  /// Deprecated: Use `singleUserBotDm` or `spaceType` (developer preview)
-  /// instead.
+  /// Deprecated: Use `space_type` instead.
   ///
   /// The type of a space.
   ///
@@ -4275,7 +5771,7 @@ class Space {
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Conversations between two or more humans.
   /// - "DM" : 1:1 Direct Message between a human and a Chat app, where all
-  /// messages are flat. Note that this does not include direct messages between
+  /// messages are flat. Note that this doesn't include direct messages between
   /// two humans.
   core.String? type;
 
@@ -4285,7 +5781,9 @@ class Space {
     this.name,
     this.singleUserBotDm,
     this.spaceDetails,
+    this.spaceHistoryState,
     this.spaceThreadingState,
+    this.spaceType,
     this.threaded,
     this.type,
   });
@@ -4306,8 +5804,14 @@ class Space {
               ? SpaceDetails.fromJson(
                   json_['spaceDetails'] as core.Map<core.String, core.dynamic>)
               : null,
+          spaceHistoryState: json_.containsKey('spaceHistoryState')
+              ? json_['spaceHistoryState'] as core.String
+              : null,
           spaceThreadingState: json_.containsKey('spaceThreadingState')
               ? json_['spaceThreadingState'] as core.String
+              : null,
+          spaceType: json_.containsKey('spaceType')
+              ? json_['spaceType'] as core.String
               : null,
           threaded: json_.containsKey('threaded')
               ? json_['threaded'] as core.bool
@@ -4321,8 +5825,10 @@ class Space {
         if (name != null) 'name': name!,
         if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
         if (spaceDetails != null) 'spaceDetails': spaceDetails!,
+        if (spaceHistoryState != null) 'spaceHistoryState': spaceHistoryState!,
         if (spaceThreadingState != null)
           'spaceThreadingState': spaceThreadingState!,
+        if (spaceType != null) 'spaceType': spaceType!,
         if (threaded != null) 'threaded': threaded!,
         if (type != null) 'type': type!,
       };
@@ -4332,7 +5838,7 @@ class Space {
 class SpaceDetails {
   /// A description of the space.
   ///
-  /// It could describe the space's discussion topic, functional purpose, or
+  /// For example, describe the space's discussion topic, functional purpose, or
   /// participants. Supports up to 150 characters.
   ///
   /// Optional.
@@ -4366,9 +5872,9 @@ class SpaceDetails {
       };
 }
 
-/// A button with text and onclick action.
+/// A button with text and `onclick` action.
 class TextButton {
-  /// The onclick action of the button.
+  /// The `onclick` action of the button.
   OnClick? onClick;
 
   /// The text of the button.
@@ -4397,8 +5903,9 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported. For more information about formatting text, see
-/// Formatting text in Google Chat apps and Formatting text in Google Workspace
-/// Add-ons.
+/// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+/// and \[Formatting text in Google Workspace
+/// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
 class TextParagraph {
   core.String? text;
 
@@ -4420,7 +5927,7 @@ class TextParagraph {
 class Thread {
   /// Resource name of the thread.
   ///
-  /// Example: spaces/{space}/threads/{thread}
+  /// Example: `spaces/{space}/threads/{thread}`
   core.String? name;
 
   /// Opaque thread identifier.
@@ -4449,6 +5956,49 @@ class Thread {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (threadKey != null) 'threadKey': threadKey!,
+      };
+}
+
+class UploadAttachmentRequest {
+  /// The filename of the attachment, including the file extension.
+  ///
+  /// Required.
+  core.String? filename;
+
+  UploadAttachmentRequest({
+    this.filename,
+  });
+
+  UploadAttachmentRequest.fromJson(core.Map json_)
+      : this(
+          filename: json_.containsKey('filename')
+              ? json_['filename'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filename != null) 'filename': filename!,
+      };
+}
+
+class UploadAttachmentResponse {
+  /// Reference to the uploaded attachment.
+  AttachmentDataRef? attachmentDataRef;
+
+  UploadAttachmentResponse({
+    this.attachmentDataRef,
+  });
+
+  UploadAttachmentResponse.fromJson(core.Map json_)
+      : this(
+          attachmentDataRef: json_.containsKey('attachmentDataRef')
+              ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
       };
 }
 
@@ -4523,7 +6073,7 @@ class User {
 class UserMentionMetadata {
   /// The type of user mention.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
+  /// - "TYPE_UNSPECIFIED" : Default value for the enum. Don't use.
   /// - "ADD" : Add user to space.
   /// - "MENTION" : Mention user in space.
   core.String? type;
@@ -4551,7 +6101,7 @@ class UserMentionMetadata {
       };
 }
 
-/// A widget is a UI element that presents texts, images, etc.
+/// A widget is a UI element that presents text and images.
 class WidgetMarkup {
   /// A list of buttons.
   ///

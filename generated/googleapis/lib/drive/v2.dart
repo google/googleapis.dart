@@ -10,10 +10,9 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Drive API - v2
+/// Google Drive API - v2
 ///
-/// Manages files in Drive including uploading, downloading, searching,
-/// detecting changes, and updating sharing permissions.
+/// The Google Drive API allows clients to access resources from Google Drive.
 ///
 /// For more information, see <https://developers.google.com/drive/>
 ///
@@ -57,8 +56,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ResumableUploadOptions,
         UploadOptions;
 
-/// Manages files in Drive including uploading, downloading, searching,
-/// detecting changes, and updating sharing permissions.
+/// The Google Drive API allows clients to access resources from Google Drive.
 class DriveApi {
   /// See, edit, create, and delete all of your Google Drive files
   static const driveScope = 'https://www.googleapis.com/auth/drive';
@@ -131,7 +129,7 @@ class AboutResource {
   /// [includeSubscribed] - Whether to count changes outside the My Drive
   /// hierarchy. When set to false, changes to files such as those in the
   /// Application Data folder or shared files which have not been added to My
-  /// Drive will be omitted from the maxChangeIdCount.
+  /// Drive will be omitted from the `maxChangeIdCount`.
   ///
   /// [maxChangeIdCount] - Maximum number of remaining change IDs to count
   ///
@@ -219,14 +217,14 @@ class AppsResource {
   /// [appFilterExtensions] - A comma-separated list of file extensions for open
   /// with filtering. All apps within the given app query scope which can open
   /// any of the given file extensions will be included in the response. If
-  /// appFilterMimeTypes are provided as well, the result is a union of the two
-  /// resulting app lists.
+  /// `appFilterMimeTypes` are provided as well, the result is a union of the
+  /// two resulting app lists.
   ///
   /// [appFilterMimeTypes] - A comma-separated list of MIME types for open with
   /// filtering. All apps within the given app query scope which can open any of
   /// the given MIME types will be included in the response. If
-  /// appFilterExtensions are provided as well, the result is a union of the two
-  /// resulting app lists.
+  /// `appFilterExtensions` are provided as well, the result is a union of the
+  /// two resulting app lists.
   ///
   /// [languageCode] - A language or locale code, as defined by BCP 47, with
   /// some extensions from Unicode's LDML format
@@ -273,21 +271,21 @@ class ChangesResource {
 
   ChangesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deprecated - Use changes.getStartPageToken and changes.list to retrieve
+  /// Deprecated: Use `changes.getStartPageToken` and `changes.list` to retrieve
   /// recent changes.
   ///
   /// Request parameters:
   ///
   /// [changeId] - The ID of the change.
   ///
-  /// [driveId] - The shared drive from which the change is returned.
+  /// [driveId] - The shared drive from which the change will be returned.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [teamDriveId] - Deprecated use driveId instead.
+  /// [teamDriveId] - Deprecated: Use `driveId` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -332,14 +330,14 @@ class ChangesResource {
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive for which the starting pageToken
-  /// for listing future changes from that shared drive is returned.
+  /// for listing future changes from that shared drive will be returned.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [teamDriveId] - Deprecated use driveId instead.
+  /// [teamDriveId] - Deprecated: Use `driveId` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -383,9 +381,9 @@ class ChangesResource {
   ///
   /// Request parameters:
   ///
-  /// [driveId] - The shared drive from which changes are returned. If specified
-  /// the change IDs will be reflective of the shared drive; use the combined
-  /// drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the shared drive; use the
+  /// combined drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -400,36 +398,36 @@ class ChangesResource {
   /// should be included in results.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [includeSubscribed] - Whether to include changes outside the My Drive
   /// hierarchy in the result. When set to false, changes to files such as those
   /// in the Application Data folder or shared files which have not been added
-  /// to My Drive are omitted from the result.
+  /// to My Drive will be omitted from the result.
   ///
-  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
   /// [maxResults] - Maximum number of changes to return.
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response or to the response from the getStartPageToken method.
   ///
   /// [spaces] - A comma-separated list of spaces to query. Supported values are
-  /// 'drive', 'appDataFolder' and 'photos'.
+  /// `drive`, `appDataFolder` and `photos`.
   ///
-  /// [startChangeId] - Deprecated - use pageToken instead.
+  /// [startChangeId] - Deprecated: Use `pageToken` instead.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [teamDriveId] - Deprecated use driveId instead.
+  /// [teamDriveId] - Deprecated: Use `driveId` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -502,9 +500,9 @@ class ChangesResource {
   ///
   /// Request parameters:
   ///
-  /// [driveId] - The shared drive from which changes are returned. If specified
-  /// the change IDs will be reflective of the shared drive; use the combined
-  /// drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the shared drive; use the
+  /// combined drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -519,36 +517,36 @@ class ChangesResource {
   /// should be included in results.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [includeSubscribed] - Whether to include changes outside the My Drive
   /// hierarchy in the result. When set to false, changes to files such as those
   /// in the Application Data folder or shared files which have not been added
-  /// to My Drive are omitted from the result.
+  /// to My Drive will be omitted from the result.
   ///
-  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
   /// [maxResults] - Maximum number of changes to return.
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response or to the response from the getStartPageToken method.
   ///
   /// [spaces] - A comma-separated list of spaces to query. Supported values are
-  /// 'drive', 'appDataFolder' and 'photos'.
+  /// `drive`, `appDataFolder` and `photos`.
   ///
-  /// [startChangeId] - Deprecated - use pageToken instead.
+  /// [startChangeId] - Deprecated: Use `pageToken` instead.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [teamDriveId] - Deprecated use driveId instead.
+  /// [teamDriveId] - Deprecated: Use `driveId` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -623,7 +621,7 @@ class ChannelsResource {
 
   ChannelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Stop watching resources through this channel
+  /// Stops watching resources through this channel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -671,9 +669,8 @@ class ChildrenResource {
   ///
   /// [childId] - The ID of the child.
   ///
-  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
+  /// and its last parent is removed, the item is placed under its owner's root.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,13 +754,13 @@ class ChildrenResource {
   ///
   /// [folderId] - The ID of the folder.
   ///
-  /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
-  /// longer supported. Use shortcuts instead.
+  /// [enforceSingleParent] - Deprecated: Adding files to multiple folders is no
+  /// longer supported. Use `shortcuts` instead.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -815,10 +812,10 @@ class ChildrenResource {
   /// [maxResults] - Maximum number of children to return.
   ///
   /// [orderBy] - A comma-separated list of sort keys. Valid keys are
-  /// 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate',
-  /// 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate',
-  /// 'starred', and 'title'. Each key sorts ascending by default, but may be
-  /// reversed with the 'desc' modifier. Example usage:
+  /// `createdDate`, `folder`, `lastViewedByMeDate`, `modifiedByMeDate`,
+  /// `modifiedDate`, `quotaBytesUsed`, `recency`, `sharedWithMeDate`,
+  /// `starred`, and `title`. Each key sorts ascending by default, but may be
+  /// reversed with the `desc` modifier. Example usage:
   /// ?orderBy=folder,modifiedDate desc,title. Please note that there is a
   /// current limitation for users with approximately one million files in which
   /// the requested sort order is ignored.
@@ -1153,8 +1150,8 @@ class DrivesResource {
   /// [driveId] - The ID of the shared drive.
   ///
   /// [allowItemDeletion] - Whether any items inside the shared drive should
-  /// also be deleted. This option is only supported when useDomainAdminAccess
-  /// is also set to true.
+  /// also be deleted. This option is only supported when `useDomainAdminAccess`
+  /// is also set to `true`.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if they are an
@@ -1273,11 +1270,11 @@ class DrivesResource {
   ///
   /// Request parameters:
   ///
-  /// [requestId] - An ID, such as a random UUID, which uniquely identifies this
-  /// user's request for idempotent creation of a shared drive. A repeated
-  /// request by the same user and with the same request ID will avoid creating
-  /// duplicates by attempting to create the same shared drive. If the shared
-  /// drive already exists a 409 error will be returned.
+  /// [requestId] - Required. An ID, such as a random UUID, which uniquely
+  /// identifies this user's request for idempotent creation of a shared drive.
+  /// A repeated request by the same user and with the same request ID will
+  /// avoid creating duplicates by attempting to create the same shared drive.
+  /// If the shared drive already exists a 409 error will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1311,7 +1308,11 @@ class DrivesResource {
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the user's shared drives.
+  ///  Lists the user's shared drives.
+  ///
+  /// This method accepts the `q` parameter, which is a search query combining
+  /// one or more search terms. For more information, see the \[Search for
+  /// shared drives\](/drive/api/guides/search-shareddrives) guide.
   ///
   /// Request parameters:
   ///
@@ -1450,8 +1451,6 @@ class FilesResource {
 
   /// Creates a copy of the specified file.
   ///
-  /// Folders cannot be copied.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1461,19 +1460,19 @@ class FilesResource {
   /// [convert] - Whether to convert this file to the corresponding Docs Editors
   /// format.
   ///
-  /// [enforceSingleParent] - Deprecated. Copying files into multiple folders is
+  /// [enforceSingleParent] - Deprecated: Copying files into multiple folders is
   /// no longer supported. Use shortcuts instead.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
-  /// [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
-  /// are BCP 47 codes.
+  /// [ocrLanguage] - If `ocr` is true, hints at the language to use. Valid
+  /// values are BCP 47 codes.
   ///
   /// [pinned] - Whether to pin the head revision of the new copy. A file can
   /// have a maximum of 200 pinned revisions.
@@ -1481,7 +1480,7 @@ class FilesResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [timedTextLanguage] - The language of the timed text.
   ///
@@ -1563,14 +1562,14 @@ class FilesResource {
   ///
   /// [fileId] - The ID of the file to delete.
   ///
-  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
+  /// and its last parent is deleted but the item itself is not, the item is
+  /// placed under its owner's root.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1607,15 +1606,15 @@ class FilesResource {
     );
   }
 
-  /// Permanently deletes all trashed files of a user or shared drive.
+  /// Permanently deletes all of the user's trashed files.
   ///
   /// Request parameters:
   ///
   /// [driveId] - If set, empties the trash of the provided shared drive.
   ///
-  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
+  /// and its last parent is deleted but the item itself is not, the item is
+  /// placed under its owner's root.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1656,7 +1655,8 @@ class FilesResource {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [mimeType] - The MIME type of the format requested for this export.
+  /// [mimeType] - Required. The MIME type of the format requested for this
+  /// export.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1705,11 +1705,11 @@ class FilesResource {
   /// Value must be between "1" and "1000".
   ///
   /// [space] - The space in which the IDs can be used to create new files.
-  /// Supported values are 'drive' and 'appDataFolder'. (Default: 'drive')
+  /// Supported values are `drive` and `appDataFolder`. (Default: `drive`)
   ///
   /// [type] - The type of items which the IDs can be used for. Supported values
-  /// are 'files' and 'shortcuts'. Note that 'shortcuts' are only supported in
-  /// the drive 'space'. (Default: 'files')
+  /// are `files` and `shortcuts`. Note that `shortcuts` are only supported in
+  /// the `drive` `space`. (Default: `files`)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1745,7 +1745,15 @@ class FilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a file's metadata or content by ID.
+  ///  Gets a file's metadata or content by ID.
+  ///
+  /// If you provide the URL parameter `alt=media`, then the response includes
+  /// the file contents in the response body. Downloading content with
+  /// `alt=media` only works if the file is stored in Drive. To download Google
+  /// Docs, Sheets, and Slides use
+  /// \[`files.export`\](/drive/api/reference/rest/v2/files/export) instead. For
+  /// more information, see \[Download & export
+  /// files\](/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
   ///
@@ -1755,15 +1763,15 @@ class FilesResource {
   /// downloading known malware or other abusive files.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [projection] - This parameter is deprecated and has no function.
+  /// [projection] - Deprecated: This parameter has no function.
   /// Possible string values are:
-  /// - "BASIC" : Deprecated
-  /// - "FULL" : Deprecated
+  /// - "BASIC" : Deprecated.
+  /// - "FULL" : Deprecated.
   ///
   /// [revisionId] - Specifies the Revision ID that should be downloaded.
   /// Ignored unless alt=media is specified.
@@ -1771,11 +1779,11 @@ class FilesResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [updateViewedDate] - Deprecated: Use files.update with
-  /// modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
-  /// body.
+  /// [updateViewedDate] - Deprecated: Use `files.update` with
+  /// `modifiedDateBehavior=noChange, updateViewedDate=true` and an empty
+  /// request body.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1838,7 +1846,26 @@ class FilesResource {
     }
   }
 
-  /// Insert a new file.
+  ///  Inserts a new file.
+  ///
+  /// This method supports an * / upload* URI and accepts uploaded media with
+  /// the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted
+  /// Media MIME types:*`* / * ` Note: Specify a valid MIME type, rather than
+  /// the literal `* / * ` value. The literal `* / * ` is only used to indicate
+  /// that any valid MIME type can be uploaded. For more information on
+  /// uploading files, see \[Upload file
+  /// data\](/drive/api/guides/manage-uploads). Apps creating shortcuts with
+  /// `files.insert` must specify the MIME type
+  /// `application/vnd.google-apps.shortcut`. Apps should specify a file
+  /// extension in the `title` property when inserting files with the API. For
+  /// example, an operation to insert a JPEG file should specify something like
+  /// `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include
+  /// the read-only `fileExtension` property populated with the extension
+  /// originally specified in the `title` property. When a Google Drive user
+  /// requests to download a file, or when the file is downloaded through the
+  /// sync client, Drive builds a full filename (with extension) based on the
+  /// title. In cases where the extension is missing, Drive attempts to
+  /// determine the extension based on the file's MIME type.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1847,14 +1874,14 @@ class FilesResource {
   /// [convert] - Whether to convert this file to the corresponding Docs Editors
   /// format.
   ///
-  /// [enforceSingleParent] - Deprecated. Creating files in multiple folders is
+  /// [enforceSingleParent] - Deprecated: Creating files in multiple folders is
   /// no longer supported.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
@@ -1867,7 +1894,7 @@ class FilesResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [timedTextLanguage] - The language of the timed text.
   ///
@@ -1962,20 +1989,23 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the user's files.
+  ///  Lists the user's files.
+  ///
+  /// This method accepts the `q` parameter, which is a search query combining
+  /// one or more search terms. For more information, see the \[Search for files
+  /// & folders\](/drive/api/guides/search-files) guide. *Note:* This method
+  /// returns *all* files by default, including trashed files. If you don't want
+  /// trashed files to appear in the list, use the `trashed=false` query
+  /// parameter to remove trashed files from the results.
   ///
   /// Request parameters:
   ///
-  /// [corpora] - Groupings of files to which the query applies. Supported
-  /// groupings are: 'user' (files created by, opened by, or shared directly
-  /// with the user), 'drive' (files in the specified shared drive as indicated
-  /// by the 'driveId'), 'domain' (files shared to the user's domain), and
-  /// 'allDrives' (A combination of 'user' and 'drive' for all drives where the
-  /// user is a member). When able, use 'user' or 'drive', instead of
-  /// 'allDrives', for efficiency.
+  /// [corpora] - Bodies of items (files/documents) to which the query applies.
+  /// Supported bodies are `default`, `domain`, `drive` and `allDrives`. Prefer
+  /// `default` or `drive` to `allDrives` for efficiency.
   ///
-  /// [corpus] - The body of items (files/documents) to which the query applies.
-  /// Deprecated: use 'corpora' instead.
+  /// [corpus] - Deprecated: The body of items (files/documents) to which the
+  /// query applies. Use `corpora` instead.
   /// Possible string values are:
   /// - "DEFAULT" : The items that the user has accessed.
   /// - "DOMAIN" : Items shared to the user's domain.
@@ -1986,12 +2016,12 @@ class FilesResource {
   /// should be included in results.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
   /// [maxResults] - The maximum number of files to return per page. Partial or
@@ -1999,32 +2029,32 @@ class FilesResource {
   /// been reached.
   ///
   /// [orderBy] - A comma-separated list of sort keys. Valid keys are
-  /// 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate',
-  /// 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate',
-  /// 'starred', 'title', and 'title_natural'. Each key sorts ascending by
-  /// default, but may be reversed with the 'desc' modifier. Example usage:
+  /// `createdDate`, `folder`, `lastViewedByMeDate`, `modifiedByMeDate`,
+  /// `modifiedDate`, `quotaBytesUsed`, `recency`, `sharedWithMeDate`,
+  /// `starred`, `title`, and `title_natural`. Each key sorts ascending by
+  /// default, but may be reversed with the `desc` modifier. Example usage:
   /// ?orderBy=folder,modifiedDate desc,title. Please note that there is a
   /// current limitation for users with approximately one million files in which
   /// the requested sort order is ignored.
   ///
   /// [pageToken] - Page token for files.
   ///
-  /// [projection] - This parameter is deprecated and has no function.
+  /// [projection] - Deprecated: This parameter has no function.
   /// Possible string values are:
-  /// - "BASIC" : Deprecated
-  /// - "FULL" : Deprecated
+  /// - "BASIC" : Deprecated.
+  /// - "FULL" : Deprecated.
   ///
   /// [q] - Query string for searching files.
   ///
   /// [spaces] - A comma-separated list of spaces to query. Supported values are
-  /// 'drive' and 'appDataFolder'.
+  /// `drive`, and `appDataFolder`.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [teamDriveId] - Deprecated use driveId instead.
+  /// [teamDriveId] - Deprecated: Use `driveId` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2094,14 +2124,14 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file.
+  /// [fileId] - The ID for the file or shared drive.
   ///
   /// [maxResults] - The maximum number of labels to return per page. When not
-  /// set, this defaults to 100.
+  /// set, defaults to 100.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2136,13 +2166,15 @@ class FilesResource {
     return LabelList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Modifies the set of labels on a file.
+  /// Modifies the set of labels applied to a file.
+  ///
+  /// Returns a list of the labels that were added or modified.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file for which the labels are modified.
+  /// [fileId] - The ID of the file to which the labels belong.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2190,29 +2222,29 @@ class FilesResource {
   ///
   /// [addParents] - Comma-separated list of parent IDs to add.
   ///
-  /// [convert] - This parameter is deprecated and has no function.
+  /// [convert] - Deprecated: This parameter has no function.
   ///
-  /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
-  /// longer supported. Use shortcuts instead.
+  /// [enforceSingleParent] - Deprecated: Adding files to multiple folders is no
+  /// longer supported. Use `shortcuts` instead.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
-  /// updated. This overrides setModifiedDate.
+  /// [modifiedDateBehavior] - Determines the behavior in which `modifiedDate`
+  /// is updated. This overrides `setModifiedDate`.
   /// Possible string values are:
-  /// - "fromBody" : Set modifiedDate to the value provided in the body of the
+  /// - "fromBody" : Set `modifiedDate` to the value provided in the body of the
   /// request. No change if no value was provided.
-  /// - "fromBodyIfNeeded" : Set modifiedDate to the value provided in the body
-  /// of the request depending on other contents of the update.
+  /// - "fromBodyIfNeeded" : Set `modifiedDate` to the value provided in the
+  /// body of the request depending on other contents of the update.
   /// - "fromBodyOrNow" : Set modifiedDate to the value provided in the body of
   /// the request, or to the current time if no value was provided.
-  /// - "noChange" : Maintain the previous value of modifiedDate.
-  /// - "now" : Set modifiedDate to the current time.
-  /// - "nowIfNeeded" : Set modifiedDate to the current time depending on
+  /// - "noChange" : Maintain the previous value of `modifiedDate`.
+  /// - "now" : Set `modifiedDate` to the current time.
+  /// - "nowIfNeeded" : Set `modifiedDate` to the current time depending on
   /// contents of the update.
   ///
   /// [newRevision] - Whether a blob upload should create a new revision. If
@@ -2220,9 +2252,9 @@ class FilesResource {
   /// not set, a new blob is created as head revision, and previous unpinned
   /// revisions are preserved for a short period of time. Pinned revisions are
   /// stored indefinitely, using additional storage quota, up to a maximum of
-  /// 200 revisions. For details on how revisions are retained, see the Drive
-  /// Help Center. Note that this field is ignored if there is no payload in the
-  /// request.
+  /// 200 revisions. For details on how revisions are retained, see the
+  /// [Drive Help Center](https://support.google.com/drive/answer/2409045). Note
+  /// that this field is ignored if there is no payload in the request.
   ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
@@ -2236,15 +2268,15 @@ class FilesResource {
   /// [removeParents] - Comma-separated list of parent IDs to remove.
   ///
   /// [setModifiedDate] - Whether to set the modified date using the value
-  /// supplied in the request body. Setting this field to true is equivalent to
-  /// modifiedDateBehavior=fromBodyOrNow, and false is equivalent to
-  /// modifiedDateBehavior=now. To prevent any changes to the modified date set
-  /// modifiedDateBehavior=noChange.
+  /// supplied in the request body. Setting this field to `true` is equivalent
+  /// to `modifiedDateBehavior=fromBodyOrNow`, and `false` is equivalent to
+  /// `modifiedDateBehavior=now`. To prevent any changes to the modified date
+  /// set `modifiedDateBehavior=noChange`.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [timedTextLanguage] - The language of the timed text.
   ///
@@ -2337,15 +2369,15 @@ class FilesResource {
   /// [fileId] - The ID of the file to update.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2386,29 +2418,31 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Moves a file to the trash.
+  ///  Moves a file to the trash.
   ///
   /// The currently authenticated user must own the file or be at least a
-  /// fileOrganizer on the parent for shared drive files. Only the owner may
-  /// trash a file. The trashed item is excluded from all files.list responses
-  /// returned for any user who does not own the file. However, all users with
+  /// `fileOrganizer` on the parent for shared drive files. Only the owner may
+  /// trash a file. The trashed item is excluded from all `files.list` responses
+  /// returned for any user who doesn't own the file. However, all users with
   /// access to the file can see the trashed item metadata in an API response.
   /// All users with access can copy, download, export, and share the file.
+  /// *Note:* Files moved to the trash still appear by default in results from
+  /// the `files.list` method. To permanently remove a file, use `files.delete`.
   ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file to trash.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2452,7 +2486,7 @@ class FilesResource {
   /// Restores a file from the trash.
   ///
   /// The currently authenticated user must own the file or be at least a
-  /// fileOrganizer on the parent for shared drive files. Only the owner may
+  /// `fileOrganizer` on the parent for shared drive files. Only the owner may
   /// untrash a file.
   ///
   /// Request parameters:
@@ -2460,15 +2494,15 @@ class FilesResource {
   /// [fileId] - The ID of the file to untrash.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2509,11 +2543,18 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a file's metadata and/or content.
+  ///  Updates a file's metadata and/or content.
   ///
   /// When calling this method, only populate fields in the request that you
   /// want to modify. When updating fields, some fields might be changed
-  /// automatically, such as modifiedDate. This method supports patch semantics.
+  /// automatically, such as `modifiedDate`. This method supports patch
+  /// semantics. This method supports an * / upload* URI and accepts uploaded
+  /// media with the following characteristics: - *Maximum file size:* 5,120 GB
+  /// - *Accepted Media MIME types:*`* / * ` Note: Specify a valid MIME type,
+  /// rather than the literal `* / * ` value. The literal `* / * ` is only used
+  /// to indicate that any valid MIME type can be uploaded. For more information
+  /// on uploading files, see \[Upload file
+  /// data\](/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2523,29 +2564,29 @@ class FilesResource {
   ///
   /// [addParents] - Comma-separated list of parent IDs to add.
   ///
-  /// [convert] - This parameter is deprecated and has no function.
+  /// [convert] - Deprecated: This parameter has no function.
   ///
-  /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
-  /// longer supported. Use shortcuts instead.
+  /// [enforceSingleParent] - Deprecated: Adding files to multiple folders is no
+  /// longer supported. Use `shortcuts` instead.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
-  /// updated. This overrides setModifiedDate.
+  /// [modifiedDateBehavior] - Determines the behavior in which `modifiedDate`
+  /// is updated. This overrides `setModifiedDate`.
   /// Possible string values are:
-  /// - "fromBody" : Set modifiedDate to the value provided in the body of the
+  /// - "fromBody" : Set `modifiedDate` to the value provided in the body of the
   /// request. No change if no value was provided.
-  /// - "fromBodyIfNeeded" : Set modifiedDate to the value provided in the body
-  /// of the request depending on other contents of the update.
+  /// - "fromBodyIfNeeded" : Set `modifiedDate` to the value provided in the
+  /// body of the request depending on other contents of the update.
   /// - "fromBodyOrNow" : Set modifiedDate to the value provided in the body of
   /// the request, or to the current time if no value was provided.
-  /// - "noChange" : Maintain the previous value of modifiedDate.
-  /// - "now" : Set modifiedDate to the current time.
-  /// - "nowIfNeeded" : Set modifiedDate to the current time depending on
+  /// - "noChange" : Maintain the previous value of `modifiedDate`.
+  /// - "now" : Set `modifiedDate` to the current time.
+  /// - "nowIfNeeded" : Set `modifiedDate` to the current time depending on
   /// contents of the update.
   ///
   /// [newRevision] - Whether a blob upload should create a new revision. If
@@ -2553,9 +2594,8 @@ class FilesResource {
   /// not set, a new blob is created as head revision, and previous unpinned
   /// revisions are preserved for a short period of time. Pinned revisions are
   /// stored indefinitely, using additional storage quota, up to a maximum of
-  /// 200 revisions. For details on how revisions are retained, see the Drive
-  /// Help Center. Note that this field is ignored if there is no payload in the
-  /// request.
+  /// 200 revisions. For details on how revisions are retained, see the
+  /// [Drive Help Center](https://support.google.com/drive/answer/2409045).
   ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
@@ -2563,21 +2603,20 @@ class FilesResource {
   /// are BCP 47 codes.
   ///
   /// [pinned] - Whether to pin the new revision. A file can have a maximum of
-  /// 200 pinned revisions. Note that this field is ignored if there is no
-  /// payload in the request.
+  /// 200 pinned revisions.
   ///
   /// [removeParents] - Comma-separated list of parent IDs to remove.
   ///
   /// [setModifiedDate] - Whether to set the modified date using the value
-  /// supplied in the request body. Setting this field to true is equivalent to
-  /// modifiedDateBehavior=fromBodyOrNow, and false is equivalent to
-  /// modifiedDateBehavior=now. To prevent any changes to the modified date set
-  /// modifiedDateBehavior=noChange.
+  /// supplied in the request body. Setting this field to `true` is equivalent
+  /// to `modifiedDateBehavior=fromBodyOrNow`, and `false` is equivalent to
+  /// `modifiedDateBehavior=now`. To prevent any changes to the modified date
+  /// set `modifiedDateBehavior=noChange`.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [timedTextLanguage] - The language of the timed text.
   ///
@@ -2681,7 +2720,7 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Subscribe to changes on a file.
+  /// Subscribes to changes to a file.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2693,15 +2732,15 @@ class FilesResource {
   /// downloading known malware or other abusive files.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
-  /// the labelInfo part of the response.
+  /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [projection] - This parameter is deprecated and has no function.
+  /// [projection] - Deprecated: This parameter has no function.
   /// Possible string values are:
-  /// - "BASIC" : Deprecated
-  /// - "FULL" : Deprecated
+  /// - "BASIC" : Deprecated.
+  /// - "FULL" : Deprecated.
   ///
   /// [revisionId] - Specifies the Revision ID that should be downloaded.
   /// Ignored unless alt=media is specified.
@@ -2709,7 +2748,7 @@ class FilesResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [updateViewedDate] - Deprecated: Use files.update with
   /// modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
@@ -2718,22 +2757,14 @@ class FilesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Channel] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> watch(
+  async.Future<Channel> watch(
     Channel request,
     core.String fileId, {
     core.bool? acknowledgeAbuse,
@@ -2745,7 +2776,6 @@ class FilesResource {
     core.bool? supportsTeamDrives,
     core.bool? updateViewedDate,
     core.String? $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -2770,13 +2800,8 @@ class FilesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-      downloadOptions: downloadOptions,
     );
-    if (downloadOptions.isMetadataDownload) {
-      return Channel.fromJson(response_ as core.Map<core.String, core.dynamic>);
-    } else {
-      return response_ as commons.Media;
-    }
+    return Channel.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2793,9 +2818,8 @@ class ParentsResource {
   ///
   /// [parentId] - The ID of the parent.
   ///
-  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
+  /// and its last parent is removed, the item is placed under its owner's root.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2879,13 +2903,13 @@ class ParentsResource {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
-  /// longer supported. Use shortcuts instead.
+  /// [enforceSingleParent] - Deprecated: Adding files to multiple folders is no
+  /// longer supported. Use `shortcuts` instead.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2971,6 +2995,9 @@ class PermissionsResource {
 
   /// Deletes a permission from a file or shared drive.
   ///
+  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// supported; only the last update is applied.
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID for the file or shared drive.
@@ -2980,7 +3007,7 @@ class PermissionsResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -3037,7 +3064,7 @@ class PermissionsResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -3123,6 +3150,9 @@ class PermissionsResource {
 
   /// Inserts a permission for a file or shared drive.
   ///
+  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// supported; only the last update is applied.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3132,22 +3162,22 @@ class PermissionsResource {
   /// [emailMessage] - A plain text custom message to include in notification
   /// emails.
   ///
-  /// [enforceSingleParent] - Deprecated. See moveToNewOwnersRoot for details.
+  /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
   ///
   /// [moveToNewOwnersRoot] - This parameter will only take effect if the item
   /// is not in a shared drive and the request is attempting to transfer the
-  /// ownership of the item. If set to true, the item will be moved to the new
+  /// ownership of the item. If set to `true`, the item will be moved to the new
   /// owner's My Drive root folder and all prior parents removed. If set to
-  /// false, parents are not changed.
+  /// `false`, parents are not changed.
   ///
   /// [sendNotificationEmails] - Whether to send notification emails when
   /// sharing to users or groups. This parameter is ignored and an email is sent
-  /// if the role is owner.
+  /// if the `role` is `owner`.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -3213,7 +3243,7 @@ class PermissionsResource {
   /// [fileId] - The ID for the file or shared drive.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [maxResults] - The maximum number of permissions to return per page. When
   /// not set for files in a shared drive, at most 100 results will be returned.
@@ -3222,13 +3252,13 @@ class PermissionsResource {
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -3282,6 +3312,9 @@ class PermissionsResource {
 
   /// Updates a permission using patch semantics.
   ///
+  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// supported; only the last update is applied.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3295,11 +3328,11 @@ class PermissionsResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [transferOwnership] - Whether changing a role to 'owner' downgrades the
+  /// [transferOwnership] - Whether changing a role to `owner` downgrades the
   /// current owners to writers. Does nothing if the specified role is not
-  /// 'owner'.
+  /// `owner`.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -3358,6 +3391,9 @@ class PermissionsResource {
 
   /// Updates a permission.
   ///
+  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// supported; only the last update is applied.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3371,16 +3407,11 @@ class PermissionsResource {
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
   ///
-  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [transferOwnership] - Whether to transfer ownership to the specified user
-  /// and downgrade the current owner to a writer. This parameter is required as
-  /// an acknowledgement of the side effect. File owners can only transfer
-  /// ownership of files existing on My Drive. Files existing in a shared drive
-  /// are owned by the organization that owns that shared drive. Ownership
-  /// transfers are not supported for files and folders in shared drives.
-  /// Organizers of a shared drive can move items from that shared drive into
-  /// their My Drive which transfers the ownership to them.
+  /// [transferOwnership] - Whether changing a role to `owner` downgrades the
+  /// current owners to writers. Does nothing if the specified role is not
+  /// `owner`.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
   /// set to true, then the requester will be granted access if the file ID
@@ -4241,7 +4272,7 @@ class TeamdrivesResource {
 
   TeamdrivesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deprecated use drives.delete instead.
+  /// Deprecated: Use `drives.delete` instead.
   ///
   /// Request parameters:
   ///
@@ -4273,7 +4304,7 @@ class TeamdrivesResource {
     );
   }
 
-  /// Deprecated use drives.get instead.
+  /// Deprecated: Use `drives.get` instead.
   ///
   /// Request parameters:
   ///
@@ -4314,17 +4345,17 @@ class TeamdrivesResource {
     return TeamDrive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deprecated use drives.insert instead.
+  /// Deprecated: Use `drives.insert` instead.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [requestId] - An ID, such as a random UUID, which uniquely identifies this
-  /// user's request for idempotent creation of a Team Drive. A repeated request
-  /// by the same user and with the same request ID will avoid creating
-  /// duplicates by attempting to create the same Team Drive. If the Team Drive
-  /// already exists a 409 error will be returned.
+  /// [requestId] - Required. An ID, such as a random UUID, which uniquely
+  /// identifies this user's request for idempotent creation of a Team Drive. A
+  /// repeated request by the same user and with the same request ID will avoid
+  /// creating duplicates by attempting to create the same Team Drive. If the
+  /// Team Drive already exists a 409 error will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4358,7 +4389,7 @@ class TeamdrivesResource {
     return TeamDrive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deprecated use drives.list instead.
+  /// Deprecated: Use `drives.list` instead.
   ///
   /// Request parameters:
   ///
@@ -4410,7 +4441,7 @@ class TeamdrivesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deprecated use drives.update instead.
+  /// Deprecated: Use `drives.update` instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4692,13 +4723,13 @@ class AboutQuotaBytesByService {
 }
 
 class AboutTeamDriveThemes {
-  /// Deprecated - use driveThemes/backgroundImageLink instead.
+  /// Deprecated: Use `driveThemes/backgroundImageLink` instead.
   core.String? backgroundImageLink;
 
-  /// Deprecated - use driveThemes/colorRgb instead.
+  /// Deprecated: Use `driveThemes/colorRgb` instead.
   core.String? colorRgb;
 
-  /// Deprecated - use driveThemes/id instead.
+  /// Deprecated: Use `driveThemes/id` instead.
   core.String? id;
 
   AboutTeamDriveThemes({
@@ -4736,16 +4767,13 @@ class About {
   /// Whether the user can create shared drives.
   core.bool? canCreateDrives;
 
-  /// Deprecated - use canCreateDrives instead.
+  /// Deprecated: Use `canCreateDrives` instead.
   core.bool? canCreateTeamDrives;
 
   /// The domain sharing policy for the current user.
   ///
-  /// Possible values are:
-  /// - allowed
-  /// - allowedWithWarning
-  /// - incomingOnly
-  /// - disallowed
+  /// Possible values are: * `allowed` * `allowedWithWarning` * `incomingOnly` *
+  /// `disallowed`
   core.String? domainSharingPolicy;
 
   /// A list of themes that are supported for shared drives.
@@ -4770,7 +4798,7 @@ class About {
   /// authenticated user.
   core.bool? isCurrentAppInstalled;
 
-  /// This is always drive#about.
+  /// This is always `drive#about`.
   core.String? kind;
 
   /// The user's language or locale code, as defined by BCP 47, with some
@@ -4811,9 +4839,7 @@ class About {
 
   /// The type of the user's storage quota.
   ///
-  /// Possible values are:
-  /// - LIMITED
-  /// - UNLIMITED
+  /// Possible values are: * `LIMITED` * `UNLIMITED`
   core.String? quotaType;
 
   /// The number of remaining change ids, limited to no more than 2500.
@@ -4825,7 +4851,7 @@ class About {
   /// A link back to this item.
   core.String? selfLink;
 
-  /// Deprecated - use driveThemes instead.
+  /// Deprecated: Use `driveThemes` instead.
   core.List<AboutTeamDriveThemes>? teamDriveThemes;
 
   /// The authenticated user.
@@ -5015,10 +5041,9 @@ class About {
 class AppIcons {
   /// Category of the icon.
   ///
-  /// Allowed values are:
-  /// - application - icon for the application
-  /// - document - icon for a file associated with the app
-  /// - documentShared - icon for a shared file associated with the app
+  /// Allowed values are: * `application` - icon for the application *
+  /// `document` - icon for a file associated with the app * `documentShared` -
+  /// icon for a shared file associated with the app
   core.String? category;
 
   /// URL for the icon.
@@ -5083,7 +5108,7 @@ class App {
   /// Whether the app is installed.
   core.bool? installed;
 
-  /// This is always drive#app.
+  /// This is always `drive#app`.
   core.String? kind;
 
   /// A long description of the app.
@@ -5099,8 +5124,8 @@ class App {
 
   /// The template url for opening files with this app.
   ///
-  /// The template will contain {ids} and/or {exportIds} to be replaced by the
-  /// actual file ids. See Open Files for the full documentation.
+  /// The template will contain `{ids}` and/or `{exportIds}` to be replaced by
+  /// the actual file ids. See Open Files for the full documentation.
   core.String? openUrlTemplate;
 
   /// The list of primary file extensions.
@@ -5295,7 +5320,7 @@ class AppList {
   /// The list of apps.
   core.List<App>? items;
 
-  /// This is always drive#appList.
+  /// This is always `drive#appList`.
   core.String? kind;
 
   /// A link back to this list.
@@ -5342,7 +5367,7 @@ class AppList {
 class Change {
   /// The type of the change.
   ///
-  /// Possible values are file and drive.
+  /// Possible values are `file` and `drive`.
   core.String? changeType;
 
   /// Whether the file or shared drive has been removed from this list of
@@ -5370,7 +5395,7 @@ class Change {
   /// The ID of the change.
   core.String? id;
 
-  /// This is always drive#change.
+  /// This is always `drive#change`.
   core.String? kind;
 
   /// The time of this modification.
@@ -5379,13 +5404,13 @@ class Change {
   /// A link back to this change.
   core.String? selfLink;
 
-  /// Deprecated - use drive instead.
+  /// Deprecated: Use `drive` instead.
   TeamDrive? teamDrive;
 
-  /// Deprecated - use driveId instead.
+  /// Deprecated: Use `driveId` instead.
   core.String? teamDriveId;
 
-  /// Deprecated - use changeType instead.
+  /// Deprecated: Use `changeType` instead.
   core.String? type;
 
   Change({
@@ -5473,7 +5498,7 @@ class ChangeList {
   /// additional page of results should be fetched.
   core.List<Change>? items;
 
-  /// This is always drive#changeList.
+  /// This is always `drive#changeList`.
   core.String? kind;
 
   /// The current largest change ID.
@@ -5548,8 +5573,8 @@ class ChangeList {
       };
 }
 
-/// An notification channel used to watch for resource changes.
-typedef Channel = $Channel00;
+/// A notification channel used to watch for resource changes.
+typedef Channel = $Channel01;
 
 /// A list of children of a file.
 class ChildList {
@@ -5562,7 +5587,7 @@ class ChildList {
   /// additional page of results should be fetched.
   core.List<ChildReference>? items;
 
-  /// This is always drive#childList.
+  /// This is always `drive#childList`.
   core.String? kind;
 
   /// A link to the next page of children.
@@ -5621,15 +5646,21 @@ class ChildList {
 /// A reference to a folder's child.
 class ChildReference {
   /// A link to the child.
+  ///
+  /// Output only.
   core.String? childLink;
 
   /// The ID of the child.
   core.String? id;
 
-  /// This is always drive#childReference.
+  /// This is always `drive#childReference`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// A link back to this reference.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   ChildReference({
@@ -5692,16 +5723,20 @@ class CommentContext {
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
-  /// For details on defining anchor properties, refer to Add comments and
-  /// replies.
+  /// For details on defining anchor properties, refer to
+  /// [Add comments and replies](https://developers.google.com/drive/api/v2/manage-comments).
   core.String? anchor;
 
   /// The author of the comment.
   ///
   /// The author's email address and permission ID will not be populated.
+  ///
+  /// Output only.
   User? author;
 
   /// The ID of the comment.
+  ///
+  /// Output only.
   core.String? commentId;
 
   /// The plain text content used to create this comment.
@@ -5720,35 +5755,50 @@ class Comment {
   ///
   /// If a comment has been deleted the content will be cleared and this will
   /// only represent a comment that once existed.
+  ///
+  /// Output only.
   core.bool? deleted;
 
   /// The file which this comment is addressing.
+  ///
+  /// Output only.
   core.String? fileId;
 
   /// The title of the file which this comment is addressing.
+  ///
+  /// Output only.
   core.String? fileTitle;
 
   /// HTML formatted content for this comment.
+  ///
+  /// Output only.
   core.String? htmlContent;
 
-  /// This is always drive#comment.
+  /// This is always `drive#comment`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The date when this comment or any of its replies were last modified.
   core.DateTime? modifiedDate;
 
   /// Replies to this post.
+  ///
+  /// Output only.
   core.List<CommentReply>? replies;
 
   /// A link back to this comment.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// The status of this comment.
   ///
   /// Status can be changed by posting a reply to a comment with the desired
-  /// status.
-  /// - "open" - The comment is still open.
-  /// - "resolved" - The comment has been resolved by one of its replies.
+  /// status. * `open` - The comment is still open. * `resolved` - The comment
+  /// has been resolved by one of its replies.
+  ///
+  /// Output only.
   core.String? status;
 
   Comment({
@@ -5850,7 +5900,7 @@ class CommentList {
   /// additional page of results should be fetched.
   core.List<Comment>? items;
 
-  /// This is always drive#commentList.
+  /// This is always `drive#commentList`.
   core.String? kind;
 
   /// A link to the next page of comments.
@@ -5908,6 +5958,8 @@ class CommentReply {
   /// The author of the reply.
   ///
   /// The author's email address and permission ID will not be populated.
+  ///
+  /// Output only.
   User? author;
 
   /// The plain text content used to create this reply.
@@ -5924,26 +5976,33 @@ class CommentReply {
   ///
   /// If a reply has been deleted the content will be cleared and this will only
   /// represent a reply that once existed.
+  ///
+  /// Output only.
   core.bool? deleted;
 
   /// HTML formatted content for this reply.
+  ///
+  /// Output only.
   core.String? htmlContent;
 
-  /// This is always drive#commentReply.
+  /// This is always `drive#commentReply`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The date when this reply was last modified.
   core.DateTime? modifiedDate;
 
   /// The ID of the reply.
+  ///
+  /// Output only.
   core.String? replyId;
 
   /// The action this reply performed to the parent comment.
   ///
   /// When creating a new reply this is the action to be perform to the parent
-  /// comment. Possible values are:
-  /// - "resolve" - To resolve a comment.
-  /// - "reopen" - To reopen (un-resolve) a comment.
+  /// comment. Possible values are: * `resolve` - To resolve a comment. *
+  /// `reopen` - To reopen (un-resolve) a comment.
   core.String? verb;
 
   CommentReply({
@@ -6009,7 +6068,7 @@ class CommentReplyList {
   /// additional page of results should be fetched.
   core.List<CommentReply>? items;
 
-  /// This is always drive#commentReplyList.
+  /// This is always `drive#commentReplyList`.
   core.String? kind;
 
   /// A link to the next page of replies.
@@ -6073,12 +6132,14 @@ class ContentRestriction {
 
   /// Reason for why the content of the file is restricted.
   ///
-  /// This is only mutable on requests that also set readOnly=true.
+  /// This is only mutable on requests that also set `readOnly=true`.
   core.String? reason;
 
   /// The user who set the content restriction.
   ///
-  /// Only populated if readOnly is true.
+  /// Only populated if `readOnly` is true.
+  ///
+  /// Output only.
   User? restrictingUser;
 
   /// The time at which the content restriction was set (formatted RFC 3339
@@ -6089,7 +6150,9 @@ class ContentRestriction {
 
   /// The type of the content restriction.
   ///
-  /// Currently the only possible value is globalContentRestriction.
+  /// Currently the only possible value is `globalContentRestriction`.
+  ///
+  /// Output only.
   core.String? type;
 
   ContentRestriction({
@@ -6131,9 +6194,9 @@ class ContentRestriction {
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set.
 ///
-/// This is a write only field; it can only be set on drive.drives.update
-/// requests that don't set themeId. When specified, all fields of the
-/// backgroundImageFile must be set.
+/// This is a write only field; it can only be set on `drive.drives.update`
+/// requests that don't set `themeId`. When specified, all fields of the
+/// `backgroundImageFile` must be set.
 class DriveBackgroundImageFile {
   /// The ID of an image file in Google Drive to use for the background image.
   core.String? id;
@@ -6192,79 +6255,121 @@ class DriveBackgroundImageFile {
 }
 
 /// Capabilities the current user has on this shared drive.
+///
+/// Output only.
 class DriveCapabilities {
   /// Whether the current user can add children to folders in this shared drive.
+  ///
+  /// Output only.
   core.bool? canAddChildren;
 
-  /// Whether the current user can change the copyRequiresWriterPermission
+  /// Whether the current user can change the `copyRequiresWriterPermission`
   /// restriction of this shared drive.
+  ///
+  /// Output only.
   core.bool? canChangeCopyRequiresWriterPermissionRestriction;
 
-  /// Whether the current user can change the domainUsersOnly restriction of
+  /// Whether the current user can change the `domainUsersOnly` restriction of
   /// this shared drive.
+  ///
+  /// Output only.
   core.bool? canChangeDomainUsersOnlyRestriction;
 
   /// Whether the current user can change the background of this shared drive.
+  ///
+  /// Output only.
   core.bool? canChangeDriveBackground;
 
-  /// Whether the current user can change the driveMembersOnly restriction of
+  /// Whether the current user can change the `driveMembersOnly` restriction of
   /// this shared drive.
+  ///
+  /// Output only.
   core.bool? canChangeDriveMembersOnlyRestriction;
 
   /// Whether the current user can change the
-  /// sharingFoldersRequiresOrganizerPermission restriction of this shared
+  /// `sharingFoldersRequiresOrganizerPermission` restriction of this shared
   /// drive.
+  ///
+  /// Output only.
   core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
 
   /// Whether the current user can comment on files in this shared drive.
+  ///
+  /// Output only.
   core.bool? canComment;
 
   /// Whether the current user can copy files in this shared drive.
+  ///
+  /// Output only.
   core.bool? canCopy;
 
   /// Whether the current user can delete children from folders in this shared
   /// drive.
+  ///
+  /// Output only.
   core.bool? canDeleteChildren;
 
   /// Whether the current user can delete this shared drive.
   ///
   /// Attempting to delete the shared drive may still fail if there are
   /// untrashed items inside the shared drive.
+  ///
+  /// Output only.
   core.bool? canDeleteDrive;
 
   /// Whether the current user can download files in this shared drive.
+  ///
+  /// Output only.
   core.bool? canDownload;
 
   /// Whether the current user can edit files in this shared drive
+  ///
+  /// Output only.
   core.bool? canEdit;
 
   /// Whether the current user can list the children of folders in this shared
   /// drive.
+  ///
+  /// Output only.
   core.bool? canListChildren;
 
   /// Whether the current user can add members to this shared drive or remove
   /// them or change their role.
+  ///
+  /// Output only.
   core.bool? canManageMembers;
 
   /// Whether the current user can read the revisions resource of files in this
   /// shared drive.
+  ///
+  /// Output only.
   core.bool? canReadRevisions;
 
   /// Whether the current user can rename files or folders in this shared drive.
+  ///
+  /// Output only.
   core.bool? canRename;
 
   /// Whether the current user can rename this shared drive.
+  ///
+  /// Output only.
   core.bool? canRenameDrive;
 
   /// Whether the current user can reset the shared drive restrictions to
   /// defaults.
+  ///
+  /// Output only.
   core.bool? canResetDriveRestrictions;
 
   /// Whether the current user can share files or folders in this shared drive.
+  ///
+  /// Output only.
   core.bool? canShare;
 
   /// Whether the current user can trash children from folders in this shared
   /// drive.
+  ///
+  /// Output only.
   core.bool? canTrashChildren;
 
   DriveCapabilities({
@@ -6408,8 +6513,8 @@ class DriveRestrictions {
   /// Whether the options to copy, print, or download files inside this shared
   /// drive, should be disabled for readers and commenters.
   ///
-  /// When this restriction is set to true, it will override the similarly named
-  /// field to true for any file inside this shared drive.
+  /// When this restriction is set to `true`, it will override the similarly
+  /// named field to `true` for any file inside this shared drive.
   core.bool? copyRequiresWriterPermission;
 
   /// Whether access to this shared drive and items inside this shared drive is
@@ -6477,21 +6582,25 @@ class Drive {
   /// An image file and cropping parameters from which a background image for
   /// this shared drive is set.
   ///
-  /// This is a write only field; it can only be set on drive.drives.update
-  /// requests that don't set themeId. When specified, all fields of the
-  /// backgroundImageFile must be set.
+  /// This is a write only field; it can only be set on `drive.drives.update`
+  /// requests that don't set `themeId`. When specified, all fields of the
+  /// `backgroundImageFile` must be set.
   DriveBackgroundImageFile? backgroundImageFile;
 
   /// A short-lived link to this shared drive's background image.
+  ///
+  /// Output only.
   core.String? backgroundImageLink;
 
   /// Capabilities the current user has on this shared drive.
+  ///
+  /// Output only.
   DriveCapabilities? capabilities;
 
   /// The color of this shared drive as an RGB hex string.
   ///
-  /// It can only be set on a drive.drives.update request that does not set
-  /// themeId.
+  /// It can only be set on a `drive.drives.update` request that does not set
+  /// `themeId`.
   core.String? colorRgb;
 
   /// The time at which the shared drive was created (RFC 3339 date-time).
@@ -6502,9 +6611,13 @@ class Drive {
 
   /// The ID of this shared drive which is also the ID of the top level folder
   /// of this shared drive.
+  ///
+  /// Output only.
   core.String? id;
 
-  /// This is always drive#drive
+  /// This is always `drive#drive`
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The name of this shared drive.
@@ -6512,8 +6625,10 @@ class Drive {
 
   /// The organizational unit of this shared drive.
   ///
-  /// This field is only populated on drives.list responses when the
-  /// useDomainAdminAccess parameter is set to true.
+  /// This field is only populated on `drives.list` responses when the
+  /// `useDomainAdminAccess` parameter is set to `true`.
+  ///
+  /// Output only.
   core.String? orgUnitId;
 
   /// A set of restrictions that apply to this shared drive or items inside this
@@ -6522,11 +6637,11 @@ class Drive {
 
   /// The ID of the theme from which the background image and color will be set.
   ///
-  /// The set of possible driveThemes can be retrieved from a drive.about.get
-  /// response. When not specified on a drive.drives.insert request, a random
-  /// theme is chosen from which the background image and color are set. This is
-  /// a write-only field; it can only be set on requests that don't set colorRgb
-  /// or backgroundImageFile.
+  /// The set of possible `driveThemes` can be retrieved from a
+  /// `drive.about.get` response. When not specified on a `drive.drives.insert`
+  /// request, a random theme is chosen from which the background image and
+  /// color are set. This is a write-only field; it can only be set on requests
+  /// that don't set `colorRgb` or `backgroundImageFile`.
   core.String? themeId;
 
   Drive({
@@ -6607,7 +6722,7 @@ class DriveList {
   /// additional page of results should be fetched.
   core.List<Drive>? items;
 
-  /// This is always drive#driveList
+  /// This is always `drive#driveList`
   core.String? kind;
 
   /// The page token for the next page of shared drives.
@@ -6647,15 +6762,21 @@ class DriveList {
 /// Capabilities the current user has on this file.
 ///
 /// Each capability corresponds to a fine-grained action that a user may take.
+///
+/// Output only.
 class FileCapabilities {
   /// Whether the current user is the pending owner of the file.
   ///
   /// Not populated for shared drive files.
+  ///
+  /// Output only.
   core.bool? canAcceptOwnership;
 
   /// Whether the current user can add children to this folder.
   ///
   /// This is always false when the item is not a folder.
+  ///
+  /// Output only.
   core.bool? canAddChildren;
 
   /// Whether the current user can add a folder from another drive (different
@@ -6663,26 +6784,38 @@ class FileCapabilities {
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
+  ///
+  /// Output only.
   core.bool? canAddFolderFromAnotherDrive;
 
   /// Whether the current user can add a parent for the item without removing an
   /// existing parent in the same request.
   ///
   /// Not populated for shared drive files.
+  ///
+  /// Output only.
   core.bool? canAddMyDriveParent;
 
-  /// Whether the current user can change the copyRequiresWriterPermission
+  /// Whether the current user can change the `copyRequiresWriterPermission`
   /// restriction of this file.
+  ///
+  /// Output only.
   core.bool? canChangeCopyRequiresWriterPermission;
 
-  /// Deprecated
+  /// Deprecated.
+  ///
+  /// Output only.
   core.bool? canChangeRestrictedDownload;
 
   /// Whether the current user can change the securityUpdateEnabled field on
   /// link share metadata.
+  ///
+  /// Output only.
   core.bool? canChangeSecurityUpdateEnabled;
 
   /// Whether the current user can comment on this file.
+  ///
+  /// Output only.
   core.bool? canComment;
 
   /// Whether the current user can copy this file.
@@ -6690,38 +6823,57 @@ class FileCapabilities {
   /// For an item in a shared drive, whether the current user can copy
   /// non-folder descendants of this item, or this item itself if it is not a
   /// folder.
+  ///
+  /// Output only.
   core.bool? canCopy;
 
   /// Whether the current user can delete this file.
+  ///
+  /// Output only.
   core.bool? canDelete;
 
   /// Whether the current user can delete children of this folder.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
+  ///
+  /// Output only.
   core.bool? canDeleteChildren;
 
   /// Whether the current user can download this file.
+  ///
+  /// Output only.
   core.bool? canDownload;
 
   /// Whether the current user can edit this file.
   ///
   /// Other factors may limit the type of changes a user can make to a file. For
-  /// example, see canChangeCopyRequiresWriterPermission or canModifyContent.
+  /// example, see `canChangeCopyRequiresWriterPermission` or
+  /// `canModifyContent`.
+  ///
+  /// Output only.
   core.bool? canEdit;
 
   /// Whether the current user can list the children of this folder.
   ///
   /// This is always false when the item is not a folder.
+  ///
+  /// Output only.
   core.bool? canListChildren;
 
   /// Whether the current user can modify the content of this file.
+  ///
+  /// Output only.
   core.bool? canModifyContent;
 
   /// Whether the current user can modify restrictions on content of this file.
+  ///
+  /// Output only.
   core.bool? canModifyContentRestriction;
 
-  /// Whether the current user can modify the labels on this file.
+  /// Whether the current user can modify the labels on the file.
+  ///
+  /// Output only.
   core.bool? canModifyLabels;
 
   /// Whether the current user can move children of this folder outside of the
@@ -6729,9 +6881,13 @@ class FileCapabilities {
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
+  ///
+  /// Output only.
   core.bool? canMoveChildrenOutOfDrive;
 
-  /// Deprecated - use canMoveChildrenOutOfDrive instead.
+  /// Deprecated: Use `canMoveChildrenOutOfDrive` instead.
+  ///
+  /// Output only.
   core.bool? canMoveChildrenOutOfTeamDrive;
 
   /// Whether the current user can move children of this folder within this
@@ -6740,12 +6896,18 @@ class FileCapabilities {
   /// This is false when the item is not a folder. Note that a request to move
   /// the child may still fail depending on the current user's access to the
   /// child and to the destination folder.
+  ///
+  /// Output only.
   core.bool? canMoveChildrenWithinDrive;
 
-  /// Deprecated - use canMoveChildrenWithinDrive instead.
+  /// Deprecated: Use `canMoveChildrenWithinDrive` instead.
+  ///
+  /// Output only.
   core.bool? canMoveChildrenWithinTeamDrive;
 
-  /// Deprecated - use canMoveItemOutOfDrive instead.
+  /// Deprecated: Use `canMoveItemOutOfDrive` instead.
+  ///
+  /// Output only.
   core.bool? canMoveItemIntoTeamDrive;
 
   /// Whether the current user can move this item outside of this drive by
@@ -6753,9 +6915,13 @@ class FileCapabilities {
   ///
   /// Note that a request to change the parent of the item may still fail
   /// depending on the new parent that is being added.
+  ///
+  /// Output only.
   core.bool? canMoveItemOutOfDrive;
 
-  /// Deprecated - use canMoveItemOutOfDrive instead.
+  /// Deprecated: Use `canMoveItemOutOfDrive` instead.
+  ///
+  /// Output only.
   core.bool? canMoveItemOutOfTeamDrive;
 
   /// Whether the current user can move this item within this drive.
@@ -6763,60 +6929,89 @@ class FileCapabilities {
   /// Note that a request to change the parent of the item may still fail
   /// depending on the new parent that is being added and the parent that is
   /// being removed.
+  ///
+  /// Output only.
   core.bool? canMoveItemWithinDrive;
 
-  /// Deprecated - use canMoveItemWithinDrive instead.
+  /// Deprecated: Use `canMoveItemWithinDrive` instead.
+  ///
+  /// Output only.
   core.bool? canMoveItemWithinTeamDrive;
 
-  /// Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.
+  /// Deprecated: Use `canMoveItemWithinDrive` or `canMoveItemOutOfDrive`
+  /// instead.
+  ///
+  /// Output only.
   core.bool? canMoveTeamDriveItem;
 
   /// Whether the current user can read the shared drive to which this file
   /// belongs.
   ///
   /// Only populated for items in shared drives.
+  ///
+  /// Output only.
   core.bool? canReadDrive;
 
-  /// Whether the current user can read the labels on this file.
+  /// Whether the current user can read the labels on the file.
+  ///
+  /// Output only.
   core.bool? canReadLabels;
 
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
-  /// this item, or this item itself if it isn't a folder, can be read.
+  /// this item, or this item itself if it is not a folder, can be read.
+  ///
+  /// Output only.
   core.bool? canReadRevisions;
 
-  /// Deprecated - use canReadDrive instead.
+  /// Deprecated: Use `canReadDrive` instead.
+  ///
+  /// Output only.
   core.bool? canReadTeamDrive;
 
   /// Whether the current user can remove children from this folder.
   ///
   /// This is always false when the item is not a folder. For a folder in a
-  /// shared drive, use canDeleteChildren or canTrashChildren instead.
+  /// shared drive, use `canDeleteChildren` or `canTrashChildren` instead.
+  ///
+  /// Output only.
   core.bool? canRemoveChildren;
 
   /// Whether the current user can remove a parent from the item without adding
   /// another parent in the same request.
   ///
   /// Not populated for shared drive files.
+  ///
+  /// Output only.
   core.bool? canRemoveMyDriveParent;
 
   /// Whether the current user can rename this file.
+  ///
+  /// Output only.
   core.bool? canRename;
 
   /// Whether the current user can modify the sharing settings for this file.
+  ///
+  /// Output only.
   core.bool? canShare;
 
   /// Whether the current user can move this file to trash.
+  ///
+  /// Output only.
   core.bool? canTrash;
 
   /// Whether the current user can trash children of this folder.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
+  ///
+  /// Output only.
   core.bool? canTrashChildren;
 
   /// Whether the current user can restore this file from trash.
+  ///
+  /// Output only.
   core.bool? canUntrash;
 
   FileCapabilities({
@@ -7052,14 +7247,22 @@ class FileCapabilities {
 }
 
 /// Geographic location information stored in the image.
+///
+/// Output only.
 class FileImageMediaMetadataLocation {
   /// The altitude stored in the image.
+  ///
+  /// Output only.
   core.double? altitude;
 
   /// The latitude stored in the image.
+  ///
+  /// Output only.
   core.double? latitude;
 
   /// The longitude stored in the image.
+  ///
+  /// Output only.
   core.double? longitude;
 
   FileImageMediaMetadataLocation({
@@ -7092,70 +7295,114 @@ class FileImageMediaMetadataLocation {
 ///
 /// This will only be present for image types, and its contents will depend on
 /// what can be parsed from the image content.
+///
+/// Output only.
 class FileImageMediaMetadata {
   /// The aperture used to create the photo (f-number).
+  ///
+  /// Output only.
   core.double? aperture;
 
   /// The make of the camera used to create the photo.
+  ///
+  /// Output only.
   core.String? cameraMake;
 
   /// The model of the camera used to create the photo.
+  ///
+  /// Output only.
   core.String? cameraModel;
 
   /// The color space of the photo.
+  ///
+  /// Output only.
   core.String? colorSpace;
 
   /// The date and time the photo was taken (EXIF format timestamp).
+  ///
+  /// Output only.
   core.String? date;
 
   /// The exposure bias of the photo (APEX value).
+  ///
+  /// Output only.
   core.double? exposureBias;
 
   /// The exposure mode used to create the photo.
+  ///
+  /// Output only.
   core.String? exposureMode;
 
   /// The length of the exposure, in seconds.
+  ///
+  /// Output only.
   core.double? exposureTime;
 
   /// Whether a flash was used to create the photo.
+  ///
+  /// Output only.
   core.bool? flashUsed;
 
   /// The focal length used to create the photo, in millimeters.
+  ///
+  /// Output only.
   core.double? focalLength;
 
   /// The height of the image in pixels.
+  ///
+  /// Output only.
   core.int? height;
 
   /// The ISO speed used to create the photo.
+  ///
+  /// Output only.
   core.int? isoSpeed;
 
   /// The lens used to create the photo.
+  ///
+  /// Output only.
   core.String? lens;
 
   /// Geographic location information stored in the image.
+  ///
+  /// Output only.
   FileImageMediaMetadataLocation? location;
 
   /// The smallest f-number of the lens at the focal length used to create the
   /// photo (APEX value).
+  ///
+  /// Output only.
   core.double? maxApertureValue;
 
   /// The metering mode used to create the photo.
+  ///
+  /// Output only.
   core.String? meteringMode;
 
   /// The number of clockwise 90 degree rotations applied from the image's
   /// original orientation.
+  ///
+  /// Output only.
   core.int? rotation;
 
   /// The type of sensor used to create the photo.
+  ///
+  /// Output only.
   core.String? sensor;
 
   /// The distance to the subject of the photo, in meters.
+  ///
+  /// Output only.
   core.int? subjectDistance;
 
   /// The white balance mode used to create the photo.
+  ///
+  /// Output only.
   core.String? whiteBalance;
 
   /// The width of the image in pixels.
+  ///
+  /// Output only.
   core.int? width;
 
   FileImageMediaMetadata({
@@ -7268,9 +7515,7 @@ class FileImageMediaMetadata {
       };
 }
 
-/// Indexable text attributes for the file (can only be written).
-///
-/// For more information, see Manage file metadata.
+/// Indexable text attributes for the file (can only be written)
 class FileIndexableText {
   /// The text to be indexed for this file.
   core.String? text;
@@ -7290,11 +7535,15 @@ class FileIndexableText {
 }
 
 /// An overview of the labels on the file.
+///
+/// Output only.
 class FileLabelInfo {
   /// The set of labels on the file as requested by the label IDs in the
-  /// includeLabels parameter.
+  /// `includeLabels` parameter.
   ///
   /// By default, no labels are returned.
+  ///
+  /// Output only.
   core.List<Label>? labels;
 
   FileLabelInfo({
@@ -7319,25 +7568,27 @@ class FileLabelInfo {
 /// A group of labels for the file.
 class FileLabels {
   /// Deprecated.
+  ///
+  /// Output only.
   core.bool? hidden;
 
   /// Whether the file has been modified by this user.
+  ///
+  /// Output only.
   core.bool? modified;
 
-  /// Deprecated - use copyRequiresWriterPermission instead.
+  /// Deprecated: Use `copyRequiresWriterPermission` instead.
+  ///
+  /// Output only.
   core.bool? restricted;
 
   /// Whether this file is starred by the user.
   core.bool? starred;
 
-  /// Whether the file has been trashed, either explicitly or from a trashed
-  /// parent folder.
+  /// Whether this file has been trashed.
   ///
-  /// Only the owner may trash a file. The trashed item is excluded from all
-  /// files.list responses returned for any user who does not own the file.
-  /// However, all users with access to the file can see the trashed item
-  /// metadata in an API response. All users with access can copy, download,
-  /// export, and share the file.
+  /// This label applies to all users accessing the file; however, only owners
+  /// are allowed to see and untrash files.
   core.bool? trashed;
 
   /// Whether this file has been viewed by this user.
@@ -7386,9 +7637,13 @@ class FileLabels {
 /// item.
 class FileLinkShareMetadata {
   /// Whether the file is eligible for security update.
+  ///
+  /// Output only.
   core.bool? securityUpdateEligible;
 
   /// Whether the security update is enabled for this file.
+  ///
+  /// Output only.
   core.bool? securityUpdateEnabled;
 
   FileLinkShareMetadata({
@@ -7417,7 +7672,7 @@ class FileLinkShareMetadata {
 /// Shortcut file details.
 ///
 /// Only populated for shortcut files, which have the mimeType field set to
-/// application/vnd.google-apps.shortcut.
+/// `application/vnd.google-apps.shortcut`.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
   core.String? targetId;
@@ -7426,9 +7681,13 @@ class FileShortcutDetails {
   ///
   /// The value of this field is a snapshot of the target's MIME type, captured
   /// when the shortcut is created.
+  ///
+  /// Output only.
   core.String? targetMimeType;
 
   /// The ResourceKey for the target file.
+  ///
+  /// Output only.
   core.String? targetResourceKey;
 
   FileShortcutDetails({
@@ -7500,14 +7759,22 @@ class FileThumbnail {
 /// Metadata about video media.
 ///
 /// This will only be present for video types.
+///
+/// Output only.
 class FileVideoMediaMetadata {
   /// The duration of the video in milliseconds.
+  ///
+  /// Output only.
   core.String? durationMillis;
 
   /// The height of the video in pixels.
+  ///
+  /// Output only.
   core.int? height;
 
   /// The width of the video in pixels.
+  ///
+  /// Output only.
   core.int? width;
 
   FileVideoMediaMetadata({
@@ -7536,20 +7803,30 @@ class FileVideoMediaMetadata {
 /// The metadata for a file.
 class File {
   /// A link for opening the file in a relevant Google editor or viewer.
+  ///
+  /// Output only.
   core.String? alternateLink;
 
   /// Whether this file is in the Application Data folder.
+  ///
+  /// Output only.
   core.bool? appDataContents;
 
-  /// Deprecated: use capabilities/canComment.
+  /// Deprecated: Use `capabilities/canComment` instead.
+  ///
+  /// Output only.
   core.bool? canComment;
 
-  /// Deprecated: use capabilities/canReadRevisions.
+  /// Deprecated: Use `capabilities/canReadRevisions` instead.
+  ///
+  /// Output only.
   core.bool? canReadRevisions;
 
   /// Capabilities the current user has on this file.
   ///
   /// Each capability corresponds to a fine-grained action that a user may take.
+  ///
+  /// Output only.
   FileCapabilities? capabilities;
 
   /// Restrictions for accessing the content of the file.
@@ -7561,7 +7838,9 @@ class File {
   /// disabled for readers and commenters.
   core.bool? copyRequiresWriterPermission;
 
-  /// Deprecated: use capabilities/canCopy.
+  /// Deprecated: Use `capabilities/canCopy` instead.
+  ///
+  /// Output only.
   core.bool? copyable;
 
   /// Create time for this file (formatted RFC 3339 timestamp).
@@ -7570,6 +7849,8 @@ class File {
   /// A link to open this file with the user's default app for this file.
   ///
   /// Only populated when the drive.apps.readonly scope is used.
+  ///
+  /// Output only.
   core.String? defaultOpenWithLink;
 
   /// A short description of the file.
@@ -7578,42 +7859,59 @@ class File {
   /// Short lived download URL for the file.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Google Docs or shortcut files.
+  ///
+  /// Output only.
   core.String? downloadUrl;
 
   /// ID of the shared drive the file resides in.
   ///
   /// Only populated for items in shared drives.
+  ///
+  /// Output only.
   core.String? driveId;
 
-  /// Deprecated: use capabilities/canEdit.
+  /// Deprecated: Use `capabilities/canEdit` instead.
+  ///
+  /// Output only.
   core.bool? editable;
 
   /// A link for embedding the file.
+  ///
+  /// Output only.
   core.String? embedLink;
 
   /// ETag of the file.
+  ///
+  /// Output only.
   core.String? etag;
 
   /// Whether this file has been explicitly trashed, as opposed to recursively
   /// trashed.
+  ///
+  /// Output only.
   core.bool? explicitlyTrashed;
 
   /// Links for exporting Docs Editors files to specific formats.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? exportLinks;
 
-  /// The final component of fullFileExtension with trailing text that does not
-  /// appear to be part of the extension removed.
+  /// The final component of `fullFileExtension` with trailing text that does
+  /// not appear to be part of the extension removed.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? fileExtension;
 
-  /// The size of the file's content in bytes.
+  /// Size in bytes of blobs and first party editor files.
   ///
-  /// This field is populated for files with binary content stored in Google
-  /// Drive and for Docs Editors files; it is not populated for shortcuts or
+  /// Won't be populated for files that have no size, like shortcuts and
   /// folders.
+  ///
+  /// Output only.
   core.String? fileSize;
 
   /// Folder color as an RGB hex string if the file is a folder or a shortcut to
@@ -7629,13 +7927,17 @@ class File {
   /// May contain multiple concatenated extensions, such as "tar.gz". Removing
   /// an extension from the title does not clear this field; however, changing
   /// the extension on the title does update this field. This field is only
-  /// populated for files with content stored in Google Drive; it isn't
+  /// populated for files with content stored in Google Drive; it is not
   /// populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? fullFileExtension;
 
   /// Whether there are permissions directly on this file.
   ///
   /// This field is only populated for items in shared drives.
+  ///
+  /// Output only.
   core.bool? hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail.
@@ -7643,15 +7945,21 @@ class File {
   /// This does not indicate whether the requesting app has access to the
   /// thumbnail. To check access, look for the presence of the thumbnailLink
   /// field.
+  ///
+  /// Output only.
   core.bool? hasThumbnail;
 
   /// The ID of the file's head revision.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? headRevisionId;
 
   /// A link to the file's icon.
+  ///
+  /// Output only.
   core.String? iconLink;
 
   /// The ID of the file.
@@ -7661,31 +7969,41 @@ class File {
   ///
   /// This will only be present for image types, and its contents will depend on
   /// what can be parsed from the image content.
+  ///
+  /// Output only.
   FileImageMediaMetadata? imageMediaMetadata;
 
-  /// Indexable text attributes for the file (can only be written).
-  ///
-  /// For more information, see Manage file metadata.
+  /// Indexable text attributes for the file (can only be written)
   FileIndexableText? indexableText;
 
   /// Whether the file was created or opened by the requesting app.
+  ///
+  /// Output only.
   core.bool? isAppAuthorized;
 
   /// The type of file.
   ///
-  /// This is always drive#file.
+  /// This is always `drive#file`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// An overview of the labels on the file.
+  ///
+  /// Output only.
   FileLabelInfo? labelInfo;
 
   /// A group of labels for the file.
   FileLabels? labels;
 
   /// The last user to modify this file.
+  ///
+  /// Output only.
   User? lastModifyingUser;
 
   /// Name of the last user to modify this file.
+  ///
+  /// Output only.
   core.String? lastModifyingUserName;
 
   /// Last time this file was viewed by the user (formatted RFC 3339 timestamp).
@@ -7701,7 +8019,9 @@ class File {
   /// An MD5 checksum for the content of this file.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? md5Checksum;
 
   /// The MIME type of the file.
@@ -7727,10 +8047,12 @@ class File {
   /// with that app.
   ///
   /// Only populated when the drive.apps.readonly scope is used.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? openWithLinks;
 
   /// The original filename of the uploaded content if available, or else the
-  /// original value of the title field.
+  /// original value of the `title` field.
   ///
   /// This is only available for files with binary content in Google Drive.
   core.String? originalFilename;
@@ -7738,66 +8060,90 @@ class File {
   /// Whether the file is owned by the current user.
   ///
   /// Not populated for items in shared drives.
+  ///
+  /// Output only.
   core.bool? ownedByMe;
 
   /// Name(s) of the owner(s) of this file.
   ///
   /// Not populated for items in shared drives.
+  ///
+  /// Output only.
   core.List<core.String>? ownerNames;
 
   /// The owner of this file.
   ///
   /// Only certain legacy files may have more than one owner. This field isn't
   /// populated for items in shared drives.
+  ///
+  /// Output only.
   core.List<User>? owners;
 
   /// Collection of parent folders which contain this file.
-  /// If not specified as part of an insert request, the file will be placed
-  /// directly in the user's My Drive folder.
   ///
-  /// If not specified as part of a copy request, the file will inherit any
-  /// discoverable parents of the source file. Update requests can also use the
-  /// addParents and removeParents parameters to modify the parents list.
+  /// If not specified as part of an insert request, the file will be placed
+  /// directly in the user's My Drive folder. If not specified as part of a copy
+  /// request, the file will inherit any discoverable parents of the source
+  /// file. Update requests can also use the `addParents` and `removeParents`
+  /// parameters to modify the parents list.
   core.List<ParentReference>? parents;
 
   /// List of permission IDs for users with access to this file.
+  ///
+  /// Output only.
   core.List<core.String>? permissionIds;
 
   /// The list of permissions for users with access to this file.
   ///
   /// Not populated for items in shared drives.
+  ///
+  /// Output only.
   core.List<Permission>? permissions;
 
   /// The list of properties.
   core.List<Property>? properties;
 
   /// The number of quota bytes used by this file.
+  ///
+  /// Output only.
   core.String? quotaBytesUsed;
 
   /// A key needed to access the item via a shared link.
+  ///
+  /// Output only.
   core.String? resourceKey;
 
   /// A link back to this file.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// The SHA1 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? sha1Checksum;
 
   /// The SHA256 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it isn't populated for Docs Editors or shortcut files.
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  ///
+  /// Output only.
   core.String? sha256Checksum;
 
-  /// Deprecated: use capabilities/canShare.
+  /// Deprecated: Use `capabilities/canShare` instead.
+  ///
+  /// Output only.
   core.bool? shareable;
 
   /// Whether the file has been shared.
   ///
   /// Not populated for items in shared drives.
+  ///
+  /// Output only.
   core.bool? shared;
 
   /// Time at which this file was shared with the user (formatted RFC 3339
@@ -7805,20 +8151,26 @@ class File {
   core.DateTime? sharedWithMeDate;
 
   /// User that shared the item with the current user, if available.
+  ///
+  /// Output only.
   User? sharingUser;
 
   /// Shortcut file details.
   ///
   /// Only populated for shortcut files, which have the mimeType field set to
-  /// application/vnd.google-apps.shortcut.
+  /// `application/vnd.google-apps.shortcut`.
   FileShortcutDetails? shortcutDetails;
 
   /// The list of spaces which contain the file.
   ///
-  /// Supported values are 'drive', 'appDataFolder' and 'photos'.
+  /// Supported values are `drive`, `appDataFolder` and `photos`.
+  ///
+  /// Output only.
   core.List<core.String>? spaces;
 
-  /// Deprecated - use driveId instead.
+  /// Deprecated: Use `driveId` instead.
+  ///
+  /// Output only.
   core.String? teamDriveId;
 
   /// A thumbnail for the file.
@@ -7826,15 +8178,19 @@ class File {
   /// This will only be used if a standard thumbnail cannot be generated.
   FileThumbnail? thumbnail;
 
-  /// A short-lived link to the file's thumbnail.
+  /// A short-lived link to the file's thumbnail, if available.
   ///
   /// Typically lasts on the order of hours. Only populated when the requesting
   /// app can access the file's content. If the file isn't shared publicly, the
-  /// URL returned in Files.thumbnailLink must be fetched using a credentialed
+  /// URL returned in `Files.thumbnailLink` must be fetched using a credentialed
   /// request.
+  ///
+  /// Output only.
   core.String? thumbnailLink;
 
   /// The thumbnail version for use in thumbnail cache invalidation.
+  ///
+  /// Output only.
   core.String? thumbnailVersion;
 
   /// The title of this file.
@@ -7852,20 +8208,28 @@ class File {
   /// If the file has been explicitly trashed, the user who trashed it.
   ///
   /// Only populated for items in shared drives.
+  ///
+  /// Output only.
   User? trashingUser;
 
   /// The permissions for the authenticated user on this file.
+  ///
+  /// Output only.
   Permission? userPermission;
 
   /// A monotonically increasing version number for the file.
   ///
   /// This reflects every change made to the file on the server, even those not
   /// visible to the requesting user.
+  ///
+  /// Output only.
   core.String? version;
 
   /// Metadata about video media.
   ///
   /// This will only be present for video types.
+  ///
+  /// Output only.
   FileVideoMediaMetadata? videoMediaMetadata;
 
   /// A link for downloading the content of the file in a browser using cookie
@@ -7873,10 +8237,14 @@ class File {
   ///
   /// In cases where the content is shared publicly, the content can be
   /// downloaded without any credentials.
+  ///
+  /// Output only.
   core.String? webContentLink;
 
   /// A link only available on public folders for viewing their static web
   /// assets (HTML, CSS, JS, etc) via Google Drive's Website Hosting.
+  ///
+  /// Output only.
   core.String? webViewLink;
 
   /// Whether writers can share the document with other users.
@@ -8345,7 +8713,7 @@ class FileList {
   /// additional page of results should be fetched.
   core.List<File>? items;
 
-  /// This is always drive#fileList.
+  /// This is always `drive#fileList`.
   core.String? kind;
 
   /// A link to the next page of files.
@@ -8411,7 +8779,7 @@ class GeneratedIds {
   /// The IDs generated for the requesting user in the specified space.
   core.List<core.String>? ids;
 
-  /// This is always drive#generatedIds
+  /// This is always `drive#generatedIds`
   core.String? kind;
 
   /// The type of file that can be created with these IDs.
@@ -8442,15 +8810,15 @@ class GeneratedIds {
       };
 }
 
-/// Representation of a label and its fields.
+/// Representation of a label and label fields.
 class Label {
-  /// A map of the label's fields keyed by the field ID.
+  /// A map of the fields on the label, keyed by the field's ID.
   core.Map<core.String, LabelField>? fields;
 
   /// The ID of the label.
   core.String? id;
 
-  /// This is always drive#label
+  /// This is always `drive#label`
   core.String? kind;
 
   /// The revision ID of the label.
@@ -8489,40 +8857,36 @@ class Label {
       };
 }
 
-/// Representation of a label field.
+/// Representation of field, which is a typed key-value pair.
 class LabelField {
   /// Only present if valueType is dateString.
   ///
   /// RFC 3339 formatted date: YYYY-MM-DD.
   core.List<core.DateTime>? dateString;
 
-  /// The identifier of this field.
+  /// The identifier of this label field.
   core.String? id;
 
-  /// Only present if valueType is integer.
+  /// Only present if `valueType` is `integer`.
   core.List<core.String>? integer;
 
-  /// This is always drive#labelField.
+  /// This is always `drive#labelField`.
   core.String? kind;
 
-  /// Only present if valueType is selection.
+  /// Only present if `valueType` is `selection`
   core.List<core.String>? selection;
 
-  /// Only present if valueType is text.
+  /// Only present if `valueType` is `text`.
   core.List<core.String>? text;
 
-  /// Only present if valueType is user.
+  /// Only present if `valueType` is `user`.
   core.List<User>? user;
 
   /// The field type.
   ///
   /// While new values may be supported in the future, the following are
-  /// currently allowed:
-  /// - dateString
-  /// - integer
-  /// - selection
-  /// - text
-  /// - user
+  /// currently allowed: * `dateString` * `integer` * `selection` * `text` *
+  /// `user`
   core.String? valueType;
 
   LabelField({
@@ -8592,24 +8956,24 @@ class LabelFieldModification {
   /// The ID of the field to be modified.
   core.String? fieldId;
 
-  /// This is always drive#labelFieldModification.
+  /// This is always `drive#labelFieldModification`.
   core.String? kind;
 
-  /// Replaces a dateString field with these new values.
+  /// Replaces the value of a dateString Field with these new values.
   ///
-  /// The values must be strings in the RFC 3339 full-date format: YYYY-MM-DD.
+  /// The string must be in the RFC 3339 full-date format: YYYY-MM-DD.
   core.List<core.DateTime>? setDateValues;
 
-  /// Replaces an integer field with these new values.
+  /// Replaces the value of an `integer` field with these new values.
   core.List<core.String>? setIntegerValues;
 
-  /// Replaces a selection field with these new values.
+  /// Replaces a `selection` field with these new values.
   core.List<core.String>? setSelectionValues;
 
-  /// Replaces a text field with these new values.
+  /// Sets the value of a `text` field.
   core.List<core.String>? setTextValues;
 
-  /// Replaces a user field with these new values.
+  /// Replaces a `user` field with these new values.
   ///
   /// The values must be valid email addresses.
   core.List<core.String>? setUserValues;
@@ -8681,12 +9045,12 @@ class LabelFieldModification {
       };
 }
 
-/// A list of labels.
+/// A list of labels applied to a file.
 class LabelList {
   /// The list of labels.
   core.List<Label>? items;
 
-  /// This is always drive#labelList
+  /// This is always `drive#labelList`
   core.String? kind;
 
   /// The page token for the next page of labels.
@@ -8731,7 +9095,7 @@ class LabelModification {
   /// The list of modifications to this label's fields.
   core.List<LabelFieldModification>? fieldModifications;
 
-  /// This is always drive#labelModification.
+  /// This is always `drive#labelModification`.
   core.String? kind;
 
   /// The ID of the label to modify.
@@ -8776,9 +9140,9 @@ class LabelModification {
 /// A request to modify the set of labels on a file.
 ///
 /// This request may contain many modifications that will either all succeed or
-/// all fail transactionally.
+/// all fail atomically.
 class ModifyLabelsRequest {
-  /// This is always drive#modifyLabelsRequest
+  /// This is always `drive#modifyLabelsRequest`.
   core.String? kind;
 
   /// The list of modifications to apply to the labels on the file.
@@ -8811,7 +9175,7 @@ class ModifyLabelsRequest {
 ///
 /// This contains only those labels which were added or updated by the request.
 class ModifyLabelsResponse {
-  /// This is always drive#modifyLabelsResponse
+  /// This is always `drive#modifyLabelsResponse`
   core.String? kind;
 
   /// The list of labels which were added or updated by the request.
@@ -8847,7 +9211,7 @@ class ParentList {
   /// The list of parents.
   core.List<ParentReference>? items;
 
-  /// This is always drive#parentList.
+  /// This is always `drive#parentList`.
   core.String? kind;
 
   /// A link back to this list.
@@ -8889,15 +9253,23 @@ class ParentReference {
   core.String? id;
 
   /// Whether or not the parent is the root folder.
+  ///
+  /// Output only.
   core.bool? isRoot;
 
-  /// This is always drive#parentReference.
+  /// This is always `drive#parentReference`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// A link to the parent.
+  ///
+  /// Output only.
   core.String? parentLink;
 
   /// A link back to this reference.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   ParentReference({
@@ -8934,36 +9306,40 @@ class ParentReference {
 class PermissionPermissionDetails {
   /// Additional roles for this user.
   ///
-  /// Only commenter is currently possible, though more may be supported in the
-  /// future.
+  /// Only `commenter` is currently possible, though more may be supported in
+  /// the future.
+  ///
+  /// Output only.
   core.List<core.String>? additionalRoles;
 
   /// Whether this permission is inherited.
   ///
   /// This field is always populated. This is an output-only field.
+  ///
+  /// Output only.
   core.bool? inherited;
 
   /// The ID of the item from which this permission is inherited.
   ///
   /// This is an output-only field.
+  ///
+  /// Output only.
   core.String? inheritedFrom;
 
   /// The permission type for this user.
   ///
   /// While new values may be added in future, the following are currently
-  /// possible:
-  /// - file
-  /// - member
+  /// possible: * `file` * `member`
+  ///
+  /// Output only.
   core.String? permissionType;
 
   /// The primary role for this user.
   ///
   /// While new values may be added in the future, the following are currently
-  /// possible:
-  /// - organizer
-  /// - fileOrganizer
-  /// - writer
-  /// - reader
+  /// possible: * `organizer` * `fileOrganizer` * `writer` * `reader`
+  ///
+  /// Output only.
   core.String? role;
 
   PermissionPermissionDetails({
@@ -9003,19 +9379,29 @@ class PermissionPermissionDetails {
 }
 
 class PermissionTeamDrivePermissionDetails {
-  /// Deprecated - use permissionDetails/additionalRoles instead.
+  /// Deprecated: Use `permissionDetails/additionalRoles` instead.
+  ///
+  /// Output only.
   core.List<core.String>? additionalRoles;
 
-  /// Deprecated - use permissionDetails/inherited instead.
+  /// Deprecated: Use `permissionDetails/inherited` instead.
+  ///
+  /// Output only.
   core.bool? inherited;
 
-  /// Deprecated - use permissionDetails/inheritedFrom instead.
+  /// Deprecated: Use `permissionDetails/inheritedFrom` instead.
+  ///
+  /// Output only.
   core.String? inheritedFrom;
 
-  /// Deprecated - use permissionDetails/role instead.
+  /// Deprecated: Use `permissionDetails/role` instead.
+  ///
+  /// Output only.
   core.String? role;
 
-  /// Deprecated - use permissionDetails/permissionType instead.
+  /// Deprecated: Use `permissionDetails/permissionType` instead.
+  ///
+  /// Output only.
   core.String? teamDrivePermissionType;
 
   PermissionTeamDrivePermissionDetails({
@@ -9059,59 +9445,72 @@ class PermissionTeamDrivePermissionDetails {
 class Permission {
   /// Additional roles for this user.
   ///
-  /// Only commenter is currently allowed, though more may be supported in the
+  /// Only `commenter` is currently allowed, though more may be supported in the
   /// future.
   core.List<core.String>? additionalRoles;
 
   /// Deprecated.
+  ///
+  /// Output only.
   core.String? authKey;
 
   /// Whether the account associated with this permission has been deleted.
   ///
   /// This field only pertains to user and group permissions.
+  ///
+  /// Output only.
   core.bool? deleted;
 
   /// The domain name of the entity this permission refers to.
   ///
   /// This is an output-only field which is present when the permission type is
-  /// user, group or domain.
+  /// `user`, `group` or `domain`.
+  ///
+  /// Output only.
   core.String? domain;
 
   /// The email address of the user or group this permission refers to.
   ///
   /// This is an output-only field which is present when the permission type is
-  /// user or group.
+  /// `user` or `group`.
+  ///
+  /// Output only.
   core.String? emailAddress;
 
   /// The ETag of the permission.
+  ///
+  /// Output only.
   core.String? etag;
 
   /// The time at which this permission will expire (RFC 3339 date-time).
   ///
-  /// Expiration dates have the following restrictions:
-  /// - They cannot be set on shared drive items
-  /// - They can only be set on user and group permissions
-  /// - The date must be in the future
-  /// - The date cannot be more than a year in the future
+  /// Expiration dates have the following restrictions: - They can only be set
+  /// on user and group permissions - The date must be in the future - The date
+  /// cannot be more than a year in the future - The date can only be set on
+  /// drive.permissions.update or drive.permissions.patch requests
   core.DateTime? expirationDate;
 
   /// The ID of the user this permission refers to, and identical to the
-  /// permissionId in the About and Files resources.
+  /// `permissionId` in the About and Files resources.
   ///
-  /// When making a drive.permissions.insert request, exactly one of the id or
-  /// value fields must be specified unless the permission type is anyone, in
-  /// which case both id and value are ignored.
+  /// When making a `drive.permissions.insert` request, exactly one of the `id`
+  /// or `value` fields must be specified unless the permission type is
+  /// `anyone`, in which case both `id` and `value` are ignored.
   core.String? id;
 
-  /// This is always drive#permission.
+  /// This is always `drive#permission`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The name for this permission.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Whether the account associated with this permission is a pending owner.
   ///
-  /// Only populated for user type permissions for files that are not in a
+  /// Only populated for `user` type permissions for files that are not in a
   /// shared drive.
   core.bool? pendingOwner;
 
@@ -9119,48 +9518,48 @@ class Permission {
   /// or directly on this item.
   ///
   /// This is an output-only field which is present only for shared drive items.
+  ///
+  /// Output only.
   core.List<PermissionPermissionDetails>? permissionDetails;
 
   /// A link to the profile photo, if available.
+  ///
+  /// Output only.
   core.String? photoLink;
 
   /// The primary role for this user.
   ///
   /// While new values may be supported in the future, the following are
-  /// currently allowed:
-  /// - owner
-  /// - organizer
-  /// - fileOrganizer
-  /// - writer
-  /// - reader
+  /// currently allowed: * `owner` * `organizer` * `fileOrganizer` * `writer` *
+  /// `reader`
   core.String? role;
 
   /// A link back to this permission.
+  ///
+  /// Output only.
   core.String? selfLink;
 
-  /// Deprecated - use permissionDetails instead.
+  /// Deprecated: Use `permissionDetails` instead.
+  ///
+  /// Output only.
   core.List<PermissionTeamDrivePermissionDetails>? teamDrivePermissionDetails;
 
   /// The account type.
   ///
-  /// Allowed values are:
-  /// - user
-  /// - group
-  /// - domain
-  /// - anyone
+  /// Allowed values are: * `user` * `group` * `domain` * `anyone`
   core.String? type;
 
   /// The email address or domain name for the entity.
   ///
   /// This is used during inserts and is not populated in responses. When making
-  /// a drive.permissions.insert request, exactly one of the id or value fields
-  /// must be specified unless the permission type is anyone, in which case both
-  /// id and value are ignored.
+  /// a `drive.permissions.insert` request, exactly one of the `id` or `value`
+  /// fields must be specified unless the permission type is `anyone`, in which
+  /// case both `id` and `value` are ignored.
   core.String? value;
 
   /// Indicates the view for this permission.
   ///
-  /// Only populated for permissions that belong to a view. published is the
+  /// Only populated for permissions that belong to a view. `published` is the
   /// only supported value.
   core.String? view;
 
@@ -9279,7 +9678,7 @@ class PermissionId {
   /// The permission ID.
   core.String? id;
 
-  /// This is always drive#permissionId.
+  /// This is always `drive#permissionId`.
   core.String? kind;
 
   PermissionId({
@@ -9307,7 +9706,7 @@ class PermissionList {
   /// The list of permissions.
   core.List<Permission>? items;
 
-  /// This is always drive#permissionList.
+  /// This is always `drive#permissionList`.
   core.String? kind;
 
   /// The page token for the next page of permissions.
@@ -9357,23 +9756,28 @@ class PermissionList {
 
 /// A key-value pair attached to a file that is either public or private to an
 /// application.
-/// The following limits apply to file properties:
-/// - Maximum of 100 properties total per file
-/// - Maximum of 30 private properties per app
-/// - Maximum of 30 public properties
-/// - Maximum of 124 bytes size limit on (key + value) string in UTF-8 encoding
-/// for a single property.
+///
+/// The following limits apply to file properties: * Maximum of 100 properties
+/// total per file * Maximum of 30 private properties per app * Maximum of 30
+/// public properties * Maximum of 124 bytes size limit on (key + value) string
+/// in UTF-8 encoding for a single property
 class Property {
   /// ETag of the property.
+  ///
+  /// Output only.
   core.String? etag;
 
   /// The key of this property.
   core.String? key;
 
-  /// This is always drive#property.
+  /// This is always `drive#property`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The link back to this property.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// The value of this property.
@@ -9381,10 +9785,10 @@ class Property {
 
   /// The visibility of this property.
   ///
-  /// Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE). Private
-  /// properties can only be retrieved using an authenticated request. An
-  /// authenticated request uses an access token obtained with a OAuth 2 client
-  /// ID. You cannot use an API key to retrieve private properties.
+  /// Allowed values are PRIVATE (default) and PUBLIC. Private properties can
+  /// only be retrieved using an authenticated request. An authenticated request
+  /// uses an access token obtained with a OAuth 2 client ID. You cannot use an
+  /// API key to retrieve private properties.
   core.String? visibility;
 
   Property({
@@ -9430,7 +9834,7 @@ class PropertyList {
   /// The list of properties.
   core.List<Property>? items;
 
-  /// This is always drive#propertyList.
+  /// This is always `drive#propertyList`.
   core.String? kind;
 
   /// The link back to this list.
@@ -9468,37 +9872,60 @@ class PropertyList {
 
 /// A revision of a file.
 class Revision {
+  /// Short term download URL for the file.
+  ///
+  /// This will only be populated on files with content stored in Drive.
+  ///
+  /// Output only.
   core.String? downloadUrl;
 
   /// The ETag of the revision.
+  ///
+  /// Output only.
   core.String? etag;
 
   /// Links for exporting Docs Editors files to specific formats.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? exportLinks;
 
   /// The size of the revision in bytes.
   ///
   /// This will only be populated on files with content stored in Drive.
+  ///
+  /// Output only.
   core.String? fileSize;
 
   /// The ID of the revision.
+  ///
+  /// Output only.
   core.String? id;
 
-  /// This is always drive#revision.
+  /// This is always `drive#revision`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The last user to modify this revision.
+  ///
+  /// Output only.
   User? lastModifyingUser;
 
   /// Name of the last user to modify this revision.
+  ///
+  /// Output only.
   core.String? lastModifyingUserName;
 
   /// An MD5 checksum for the content of this revision.
   ///
   /// This will only be populated on files with content stored in Drive.
+  ///
+  /// Output only.
   core.String? md5Checksum;
 
   /// The MIME type of the revision.
+  ///
+  /// Output only.
   core.String? mimeType;
 
   /// Last time this revision was modified (formatted RFC 3339 timestamp).
@@ -9507,6 +9934,8 @@ class Revision {
   /// The original filename when this revision was created.
   ///
   /// This will only be populated on files with content stored in Drive.
+  ///
+  /// Output only.
   core.String? originalFilename;
 
   /// Whether this revision is pinned to prevent automatic purging.
@@ -9532,6 +9961,8 @@ class Revision {
   /// A link to the published revision.
   ///
   /// This is only populated for Google Sites files.
+  ///
+  /// Output only.
   core.String? publishedLink;
 
   /// Whether this revision is published outside the domain.
@@ -9540,6 +9971,8 @@ class Revision {
   core.bool? publishedOutsideDomain;
 
   /// A link back to this revision.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   Revision({
@@ -9657,7 +10090,7 @@ class RevisionList {
   /// additional page of results should be fetched.
   core.List<Revision>? items;
 
-  /// This is always drive#revisionList.
+  /// This is always `drive#revisionList`.
   core.String? kind;
 
   /// The page token for the next page of revisions.
@@ -9705,14 +10138,40 @@ class RevisionList {
       };
 }
 
-typedef StartPageToken = $StartPageToken;
+class StartPageToken {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"drive#startPageToken"`.
+  core.String? kind;
+
+  /// The starting page token for listing changes.
+  core.String? startPageToken;
+
+  StartPageToken({
+    this.kind,
+    this.startPageToken,
+  });
+
+  StartPageToken.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          startPageToken: json_.containsKey('startPageToken')
+              ? json_['startPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (startPageToken != null) 'startPageToken': startPageToken!,
+      };
+}
 
 /// An image file and cropping parameters from which a background image for this
 /// Team Drive is set.
 ///
-/// This is a write only field; it can only be set on drive.teamdrives.update
-/// requests that don't set themeId. When specified, all fields of the
-/// backgroundImageFile must be set.
+/// This is a write only field; it can only be set on `drive.teamdrives.update`
+/// requests that don't set `themeId`. When specified, all fields of the
+/// `backgroundImageFile` must be set.
 class TeamDriveBackgroundImageFile {
   /// The ID of an image file in Drive to use for the background image.
   core.String? id;
@@ -9775,22 +10234,23 @@ class TeamDriveCapabilities {
   /// Whether the current user can add children to folders in this Team Drive.
   core.bool? canAddChildren;
 
-  /// Whether the current user can change the copyRequiresWriterPermission
+  /// Whether the current user can change the `copyRequiresWriterPermission`
   /// restriction of this Team Drive.
   core.bool? canChangeCopyRequiresWriterPermissionRestriction;
 
-  /// Whether the current user can change the domainUsersOnly restriction of
+  /// Whether the current user can change the `domainUsersOnly` restriction of
   /// this Team Drive.
   core.bool? canChangeDomainUsersOnlyRestriction;
 
   /// Whether the current user can change the
-  /// sharingFoldersRequiresOrganizerPermission restriction of this Team Drive.
+  /// `sharingFoldersRequiresOrganizerPermission` restriction of this Team
+  /// Drive.
   core.bool? canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
 
   /// Whether the current user can change the background of this Team Drive.
   core.bool? canChangeTeamDriveBackground;
 
-  /// Whether the current user can change the teamMembersOnly restriction of
+  /// Whether the current user can change the `teamMembersOnly` restriction of
   /// this Team Drive.
   core.bool? canChangeTeamMembersOnlyRestriction;
 
@@ -9828,7 +10288,7 @@ class TeamDriveCapabilities {
   /// Team Drive.
   core.bool? canReadRevisions;
 
-  /// Deprecated - use canDeleteChildren or canTrashChildren instead.
+  /// Deprecated: Use `canDeleteChildren` or `canTrashChildren` instead.
   core.bool? canRemoveChildren;
 
   /// Whether the current user can rename files or folders in this Team Drive.
@@ -9996,8 +10456,8 @@ class TeamDriveRestrictions {
   /// Whether the options to copy, print, or download files inside this Team
   /// Drive, should be disabled for readers and commenters.
   ///
-  /// When this restriction is set to true, it will override the similarly named
-  /// field to true for any file inside this Team Drive.
+  /// When this restriction is set to `true`, it will override the similarly
+  /// named field to `true` for any file inside this Team Drive.
   core.bool? copyRequiresWriterPermission;
 
   /// Whether access to this Team Drive and items inside this Team Drive is
@@ -10060,14 +10520,14 @@ class TeamDriveRestrictions {
       };
 }
 
-/// Deprecated: use the drive collection instead.
+/// Deprecated: Use the `drive` collection instead.
 class TeamDrive {
   /// An image file and cropping parameters from which a background image for
   /// this Team Drive is set.
   ///
-  /// This is a write only field; it can only be set on drive.teamdrives.update
-  /// requests that don't set themeId. When specified, all fields of the
-  /// backgroundImageFile must be set.
+  /// This is a write only field; it can only be set on
+  /// `drive.teamdrives.update` requests that don't set `themeId`. When
+  /// specified, all fields of the `backgroundImageFile` must be set.
   TeamDriveBackgroundImageFile? backgroundImageFile;
 
   /// A short-lived link to this Team Drive's background image.
@@ -10078,8 +10538,8 @@ class TeamDrive {
 
   /// The color of this Team Drive as an RGB hex string.
   ///
-  /// It can only be set on a drive.teamdrives.update request that does not set
-  /// themeId.
+  /// It can only be set on a `drive.teamdrives.update` request that does not
+  /// set `themeId`.
   core.String? colorRgb;
 
   /// The time at which the Team Drive was created (RFC 3339 date-time).
@@ -10089,7 +10549,7 @@ class TeamDrive {
   /// this Team Drive.
   core.String? id;
 
-  /// This is always drive#teamDrive
+  /// This is always `drive#teamDrive`
   core.String? kind;
 
   /// The name of this Team Drive.
@@ -10097,8 +10557,8 @@ class TeamDrive {
 
   /// The organizational unit of this shared drive.
   ///
-  /// This field is only populated on drives.list responses when the
-  /// useDomainAdminAccess parameter is set to true.
+  /// This field is only populated on `drives.list` responses when the
+  /// `useDomainAdminAccess` parameter is set to `true`.
   core.String? orgUnitId;
 
   /// A set of restrictions that apply to this Team Drive or items inside this
@@ -10107,11 +10567,12 @@ class TeamDrive {
 
   /// The ID of the theme from which the background image and color will be set.
   ///
-  /// The set of possible teamDriveThemes can be retrieved from a
-  /// drive.about.get response. When not specified on a drive.teamdrives.insert
-  /// request, a random theme is chosen from which the background image and
-  /// color are set. This is a write-only field; it can only be set on requests
-  /// that don't set colorRgb or backgroundImageFile.
+  /// The set of possible `teamDriveThemes` can be retrieved from a
+  /// `drive.about.get` response. When not specified on a
+  /// `drive.teamdrives.insert` request, a random theme is chosen from which the
+  /// background image and color are set. This is a write-only field; it can
+  /// only be set on requests that don't set `colorRgb` or
+  /// `backgroundImageFile`.
   core.String? themeId;
 
   TeamDrive({
@@ -10186,7 +10647,7 @@ class TeamDriveList {
   /// The list of Team Drives.
   core.List<TeamDrive>? items;
 
-  /// This is always drive#teamDriveList
+  /// This is always `drive#teamDriveList`
   core.String? kind;
 
   /// The page token for the next page of Team Drives.
@@ -10220,8 +10681,12 @@ class TeamDriveList {
 }
 
 /// The user's profile picture.
+///
+/// Output only.
 class UserPicture {
   /// A URL that points to a profile picture of this user.
+  ///
+  /// Output only.
   core.String? url;
 
   UserPicture({
@@ -10241,22 +10706,34 @@ class UserPicture {
 /// Information about a Drive user.
 class User {
   /// A plain text displayable name for this user.
+  ///
+  /// Output only.
   core.String? displayName;
 
   /// The email address of the user.
+  ///
+  /// Output only.
   core.String? emailAddress;
 
   /// Whether this user is the same as the authenticated user for whom the
   /// request was made.
+  ///
+  /// Output only.
   core.bool? isAuthenticatedUser;
 
-  /// This is always drive#user.
+  /// This is always `drive#user`.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The user's ID as visible in the permissions collection.
+  ///
+  /// Output only.
   core.String? permissionId;
 
   /// The user's profile picture.
+  ///
+  /// Output only.
   UserPicture? picture;
 
   User({

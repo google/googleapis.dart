@@ -191,8 +191,8 @@ class LocationsResource {
   /// clicked.
   /// - "WEBSITE_CLICKS" : The number of times the business profile website was
   /// clicked.
-  /// - "BUSINESS_BOOKINGS" : The number of bookings received from the business
-  /// profile.
+  /// - "BUSINESS_BOOKINGS" : The number of bookings made from the business
+  /// profile via Reserve with Google.
   /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the
   /// business profile.
   /// - "BUSINESS_FOOD_MENU_CLICKS" : The number of clicks to view or interact
@@ -464,8 +464,8 @@ class DailyMetricTimeSeries {
   /// clicked.
   /// - "WEBSITE_CLICKS" : The number of times the business profile website was
   /// clicked.
-  /// - "BUSINESS_BOOKINGS" : The number of bookings received from the business
-  /// profile.
+  /// - "BUSINESS_BOOKINGS" : The number of bookings made from the business
+  /// profile via Reserve with Google.
   /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the
   /// business profile.
   /// - "BUSINESS_FOOD_MENU_CLICKS" : The number of clicks to view or interact

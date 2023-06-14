@@ -6307,6 +6307,8 @@ class InstanceConfig {
 
   /// The current instance config state.
   ///
+  /// Applicable only for USER_MANAGED configs.
+  ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not specified.

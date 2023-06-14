@@ -24,6 +24,13 @@
     "name": "metastore",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230622",
+    "rootUrl": "https://metastore.googleapis.com/",
+    "servicePath": "",
+    "title": "Dataproc Metastore API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1337,8 +1343,6 @@
             }
         }
     },
-    "revision": "20230502",
-    "rootUrl": "https://metastore.googleapis.com/",
     "schemas": {
         "AlterMetadataResourceLocationRequest": {
             "description": "Request message for DataprocMetastore.AlterMetadataResourceLocation.",
@@ -1440,10 +1444,12 @@
                     "description": "The type of the backend metastore.",
                     "enum": [
                         "METASTORE_TYPE_UNSPECIFIED",
+                        "BIGQUERY",
                         "DATAPROC_METASTORE"
                     ],
                     "enumDescriptions": [
                         "The metastore type is not set.",
+                        "The backend metastore is BigQuery.",
                         "The backend metastore is Dataproc Metastore."
                     ],
                     "type": "string"
@@ -1778,6 +1784,20 @@
                     },
                     "description": "A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.",
                     "type": "object"
+                },
+                "endpointProtocol": {
+                    "description": "The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.",
+                    "enum": [
+                        "ENDPOINT_PROTOCOL_UNSPECIFIED",
+                        "THRIFT",
+                        "GRPC"
+                    ],
+                    "enumDescriptions": [
+                        "The protocol is not set.",
+                        "Use the legacy Apache Thrift protocol for the metastore service endpoint.",
+                        "Use the modernized gRPC protocol for the metastore service endpoint."
+                    ],
+                    "type": "string"
                 },
                 "kerberosConfig": {
                     "$ref": "KerberosConfig",
@@ -2734,9 +2754,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Dataproc Metastore API",
-    "version": "v1",
-    "version_module": true
+    }
 }

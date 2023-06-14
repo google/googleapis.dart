@@ -24,6 +24,13 @@
     "name": "securitycenter",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://securitycenter.googleapis.com/",
+    "servicePath": "",
+    "title": "Security Command Center API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -4141,8 +4147,6 @@
             }
         }
     },
-    "revision": "20230512",
-    "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
             "description": "Represents an access event.",
@@ -4181,6 +4185,10 @@
                 },
                 "serviceName": {
                     "description": "This is the API service that the service account made a call to, e.g. \"iam.googleapis.com\"",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "The caller's user agent string associated with the finding.",
                     "type": "string"
                 },
                 "userAgentFamily": {
@@ -6786,7 +6794,7 @@
                     "description": "The configuration used for Asset Discovery runs."
                 },
                 "enableAssetDiscovery": {
-                    "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false, all historical assets will remain, but discovery of future assets will not occur.",
+                    "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false`, all historical assets will remain, but discovery of future assets will not occur.",
                     "type": "boolean"
                 },
                 "name": {
@@ -7314,9 +7322,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Security Command Center API",
-    "version": "v1",
-    "version_module": true
+    }
 }

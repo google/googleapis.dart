@@ -24,6 +24,12 @@
     "name": "toolresults",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://toolresults.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Tool Results API",
+    "version": "v1beta3",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -1462,8 +1467,6 @@
             }
         }
     },
-    "revision": "20230427",
-    "rootUrl": "https://toolresults.googleapis.com/",
     "schemas": {
         "ANR": {
             "description": "Additional details for an ANR crash.",
@@ -3913,8 +3916,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Tool Results API",
-    "version": "v1beta3"
+    }
 }

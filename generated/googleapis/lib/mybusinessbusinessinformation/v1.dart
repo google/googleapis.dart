@@ -562,93 +562,6 @@ class LocationsResource {
 
   LocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Associates a location to a place ID.
-  ///
-  /// Any previous association is overwritten. This operation is only valid if
-  /// the location is unverified. The association must be valid, that is, it
-  /// appears in the list of `SearchGoogleLocations`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the location to associate.
-  /// Value must have pattern `^locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> associate(
-    AssociateLocationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':associate';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Clears an association between a location and its place ID.
-  ///
-  /// This operation is only valid if the location is unverified.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the location to disassociate.
-  /// Value must have pattern `^locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> clearLocationAssociation(
-    ClearLocationAssociationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$name') + ':clearLocationAssociation';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Deletes a location.
   ///
   /// If this location cannot be deleted using the API and it is marked so in
@@ -979,29 +892,6 @@ class AdWordsLocationExtensions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adPhone != null) 'adPhone': adPhone!,
-      };
-}
-
-/// Request message for Locations.AssociateLocationRequest.
-class AssociateLocationRequest {
-  /// The association to establish.
-  ///
-  /// If not set, it indicates no match.
-  core.String? placeId;
-
-  AssociateLocationRequest({
-    this.placeId,
-  });
-
-  AssociateLocationRequest.fromJson(core.Map json_)
-      : this(
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (placeId != null) 'placeId': placeId!,
       };
 }
 
@@ -1522,9 +1412,6 @@ class ChainUri {
         if (uri != null) 'uri': uri!,
       };
 }
-
-/// Request message for Locations.ClearLocationAssociationRequest.
-typedef ClearLocationAssociationRequest = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///

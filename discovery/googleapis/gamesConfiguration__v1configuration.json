@@ -24,6 +24,12 @@
     "name": "gamesConfiguration",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://gamesconfiguration.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play Game Services Publishing API",
+    "version": "v1configuration",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "achievementConfigurations": {
             "methods": {
@@ -380,8 +385,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://gamesconfiguration.googleapis.com/",
     "schemas": {
         "AchievementConfiguration": {
             "description": "An achievement configuration resource.",
@@ -702,8 +705,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play Game Services Publishing API",
-    "version": "v1configuration"
+    }
 }

@@ -4419,6 +4419,16 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
   /// Output only.
   core.String? issueCount;
 
+  /// Language of the model.
+  core.String? languageCode;
+
+  /// Type of the model.
+  /// Possible string values are:
+  /// - "MODEL_TYPE_UNSPECIFIED" : Unspecified model type.
+  /// - "TYPE_V1" : Type V1.
+  /// - "TYPE_V2" : Type V2.
+  core.String? modelType;
+
   /// The resource name of the issue model.
   ///
   /// Format: projects/{project}/locations/{location}/issueModels/{issue_model}
@@ -4454,6 +4464,8 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
     this.displayName,
     this.inputDataConfig,
     this.issueCount,
+    this.languageCode,
+    this.modelType,
     this.name,
     this.state,
     this.trainingStats,
@@ -4476,6 +4488,12 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
           issueCount: json_.containsKey('issueCount')
               ? json_['issueCount'] as core.String
               : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          modelType: json_.containsKey('modelType')
+              ? json_['modelType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -4493,6 +4511,8 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
         if (displayName != null) 'displayName': displayName!,
         if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
         if (issueCount != null) 'issueCount': issueCount!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (modelType != null) 'modelType': modelType!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (trainingStats != null) 'trainingStats': trainingStats!,
@@ -5169,7 +5189,8 @@ class GoogleCloudContactcenterinsightsV1RedactionConfig {
 
   /// The fully-qualified DLP inspect template resource name.
   ///
-  /// Format: `projects/{project}/inspectTemplates/{template}`
+  /// Format:
+  /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
   core.String? inspectTemplate;
 
   GoogleCloudContactcenterinsightsV1RedactionConfig({

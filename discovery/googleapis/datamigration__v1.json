@@ -24,6 +24,13 @@
     "name": "datamigration",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230621",
+    "rootUrl": "https://datamigration.googleapis.com/",
+    "servicePath": "",
+    "title": "Database Migration API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -638,6 +644,11 @@
                                         "name"
                                     ],
                                     "parameters": {
+                                        "force": {
+                                            "description": "Force delete the conversion workspace, even if there's a running migration that is using the workspace.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
                                         "name": {
                                             "description": "Required. Name of the conversion workspace resource to delete.",
                                             "location": "path",
@@ -1916,8 +1927,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://datamigration.googleapis.com/",
     "schemas": {
         "AlloyDbConnectionProfile": {
             "description": "Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.",
@@ -2259,7 +2268,8 @@
                         "MYSQL_8_0",
                         "POSTGRES_12",
                         "POSTGRES_13",
-                        "POSTGRES_14"
+                        "POSTGRES_14",
+                        "POSTGRES_15"
                     ],
                     "enumDescriptions": [
                         "Unspecified version.",
@@ -2271,7 +2281,22 @@
                         "MySQL 8.0.",
                         "PostgreSQL 12.",
                         "PostgreSQL 13.",
-                        "PostgreSQL 14."
+                        "PostgreSQL 14.",
+                        "PostgreSQL 15."
+                    ],
+                    "type": "string"
+                },
+                "edition": {
+                    "description": "Optional. The edition of the given Cloud SQL instance.",
+                    "enum": [
+                        "EDITION_UNSPECIFIED",
+                        "ENTERPRISE",
+                        "ENTERPRISE_PLUS"
+                    ],
+                    "enumDescriptions": [
+                        "The instance did not specify the edition.",
+                        "The instance is an enterprise edition.",
+                        "The instance is an enterprise plus edition."
                     ],
                     "type": "string"
                 },
@@ -3832,6 +3857,10 @@
                     "$ref": "PrivateConnectivity",
                     "description": "Private connectivity."
                 },
+                "ssl": {
+                    "$ref": "SslConfig",
+                    "description": "SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above."
+                },
                 "staticServiceIpConnectivity": {
                     "$ref": "StaticServiceIpConnectivity",
                     "description": "Static Service IP connectivity."
@@ -4707,9 +4736,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Database Migration API",
-    "version": "v1",
-    "version_module": true
+    }
 }

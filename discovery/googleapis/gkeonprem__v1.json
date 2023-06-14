@@ -24,6 +24,13 @@
     "name": "gkeonprem",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://gkeonprem.googleapis.com/",
+    "servicePath": "",
+    "title": "Anthos On-Prem API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -508,6 +514,11 @@
                                             "description": "The current etag of the bare metal admin cluster. If an etag is provided and does not match the current etag of the cluster, deletion will be blocked and an ABORTED error will be returned.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "ignoreErrors": {
+                                            "description": "If set to true, the unenrollment of a bare metal admin cluster resource will succeed even if errors occur during unenrollment. This parameter can be used when you want to unenroll admin cluster resource and the on-prem admin cluster is disconnected / unreachable. WARNING: Using this parameter when your admin cluster still exists may result in a deleted GCP admin cluster but existing resourcelink in on-prem admin cluster and membership.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         },
                                         "name": {
                                             "description": "Required. Name of the bare metal admin cluster to be unenrolled. Format: \"projects/{project}/locations/{location}/bareMetalAdminClusters/{cluster}\"",
@@ -1164,6 +1175,21 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+/bareMetalNodePools/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "View for bare metal node pool. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details.",
+                                                    "enum": [
+                                                        "NODE_POOL_VIEW_UNSPECIFIED",
+                                                        "BASIC",
+                                                        "FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "If the value is not set, the default `FULL` view is used.",
+                                                        "Includes basic information of a node pool resource including node pool resource name.",
+                                                        "Includes the complete configuration for bare metal node pool resource. This is the default value for GetBareMetalNodePoolRequest method."
+                                                    ],
+                                                    "location": "query",
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v1/{+name}",
@@ -1231,6 +1257,21 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "View for bare metal node pools. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details.",
+                                                    "enum": [
+                                                        "NODE_POOL_VIEW_UNSPECIFIED",
+                                                        "BASIC",
+                                                        "FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "If the value is not set, the default `FULL` view is used.",
+                                                        "Includes basic information of a node pool resource including node pool resource name.",
+                                                        "Includes the complete configuration for bare metal node pool resource. This is the default value for ListBareMetalNodePoolsRequest method."
+                                                    ],
+                                                    "location": "query",
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v1/{+parent}/bareMetalNodePools",
@@ -1250,6 +1291,11 @@
                                                 "name"
                                             ],
                                             "parameters": {
+                                                "allowMissing": {
+                                                    "description": "If set to true, and the bare metal node pool is not found, the request will create a new bare metal node pool with the provided configuration. The user must have both create and update permission to call Update with allow_missing set to true.",
+                                                    "location": "query",
+                                                    "type": "boolean"
+                                                },
                                                 "name": {
                                                     "description": "Immutable. The bare metal node pool resource name.",
                                                     "location": "path",
@@ -1690,6 +1736,21 @@
                                             "pattern": "^projects/[^/]+/locations/[^/]+/vmwareAdminClusters/[^/]+$",
                                             "required": true,
                                             "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "View for VMware admin cluster. When `BASIC` is specified, only the cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details.",
+                                            "enum": [
+                                                "CLUSTER_VIEW_UNSPECIFIED",
+                                                "BASIC",
+                                                "FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "If the value is not set, the default `FULL` view is used.",
+                                                "Includes basic information of a cluster resource including cluster resource name and membership.",
+                                                "Includes the complete configuration for VMware admin cluster resource. This is the default value for GetVmwareAdminClusterRequest method."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
                                         }
                                     },
                                     "path": "v1/{+name}",
@@ -1994,7 +2055,7 @@
                         "vmwareClusters": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a new VMware cluster in a given project and location.",
+                                    "description": "Creates a new VMware user cluster in a given project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters",
                                     "httpMethod": "POST",
                                     "id": "gkeonprem.projects.locations.vmwareClusters.create",
@@ -2616,6 +2677,21 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+/vmwareNodePools/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "View for VMware node pool. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details.",
+                                                    "enum": [
+                                                        "NODE_POOL_VIEW_UNSPECIFIED",
+                                                        "BASIC",
+                                                        "FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "If the value is not set, the default `FULL` view is used.",
+                                                        "Includes basic information of a node pool resource including node pool resource name.",
+                                                        "Includes the complete configuration for VMware node pool resource. This is the default value for GetVmwareNodePoolRequest method."
+                                                    ],
+                                                    "location": "query",
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v1/{+name}",
@@ -2682,6 +2758,21 @@
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+$",
                                                     "required": true,
+                                                    "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "View for VMware node pools. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details.",
+                                                    "enum": [
+                                                        "NODE_POOL_VIEW_UNSPECIFIED",
+                                                        "BASIC",
+                                                        "FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "If the value is not set, the default `FULL` view is used.",
+                                                        "Includes basic information of a node pool resource including node pool resource name.",
+                                                        "Includes the complete configuration for VMware node pool resource. This is the default value for ListVmwareNodePoolsRequest method."
+                                                    ],
+                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
@@ -2797,6 +2888,11 @@
                                                 "name"
                                             ],
                                             "parameters": {
+                                                "allowMissing": {
+                                                    "description": "If set to true, and the VMware node pool is not found, the request will succeed but no action will be taken on the server and return a completed LRO.",
+                                                    "location": "query",
+                                                    "type": "boolean"
+                                                },
                                                 "etag": {
                                                     "description": "The current etag of the VMware node pool. If an etag is provided and does not match the current etag of node pool, deletion will be blocked and an ABORTED error will be returned.",
                                                     "location": "query",
@@ -2904,15 +3000,13 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://gkeonprem.googleapis.com/",
     "schemas": {
         "Authorization": {
             "description": "Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.",
             "id": "Authorization",
             "properties": {
                 "adminUsers": {
-                    "description": "Required. For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.",
+                    "description": "Required. For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.",
                     "items": {
                         "$ref": "ClusterUser"
                     },
@@ -3689,7 +3783,7 @@
             "type": "object"
         },
         "BareMetalKubeletConfig": {
-            "description": "KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).",
+            "description": "KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).",
             "id": "BareMetalKubeletConfig",
             "properties": {
                 "registryBurst": {
@@ -4024,6 +4118,10 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "upgradePolicy": {
+                    "$ref": "BareMetalNodePoolUpgradePolicy",
+                    "description": "The worker node pool upgrade policy."
                 }
             },
             "type": "object"
@@ -4034,7 +4132,7 @@
             "properties": {
                 "kubeletConfig": {
                     "$ref": "BareMetalKubeletConfig",
-                    "description": "The modifiable kubelet configurations for the baremetal machines."
+                    "description": "The modifiable kubelet configurations for the bare metal machines."
                 },
                 "labels": {
                     "additionalProperties": {
@@ -4072,6 +4170,17 @@
             },
             "type": "object"
         },
+        "BareMetalNodePoolUpgradePolicy": {
+            "description": "BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.",
+            "id": "BareMetalNodePoolUpgradePolicy",
+            "properties": {
+                "parallelUpgradeConfig": {
+                    "$ref": "BareMetalParallelUpgradeConfig",
+                    "description": "The parallel upgrade settings for worker node pools."
+                }
+            },
+            "type": "object"
+        },
         "BareMetalOsEnvironmentConfig": {
             "description": "Specifies operating system settings for cluster provisioning.",
             "id": "BareMetalOsEnvironmentConfig",
@@ -4079,6 +4188,23 @@
                 "packageRepoExcluded": {
                     "description": "Whether the package repo should not be included when initializing bare metal machines.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "BareMetalParallelUpgradeConfig": {
+            "description": "BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.",
+            "id": "BareMetalParallelUpgradeConfig",
+            "properties": {
+                "concurrentNodes": {
+                    "description": "Required. The maximum number of nodes that can be upgraded at once. Defaults to 1.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minimumAvailableNodes": {
+                    "description": "The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -4154,6 +4280,13 @@
             "description": "Contains information about a specific Anthos on bare metal version.",
             "id": "BareMetalVersionInfo",
             "properties": {
+                "dependencies": {
+                    "description": "The list of upgrade dependencies for this version.",
+                    "items": {
+                        "$ref": "UpgradeDependency"
+                    },
+                    "type": "array"
+                },
                 "hasDependencies": {
                     "description": "If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin cluster, version skew policy, etc) must be upgraded before this version can be installed or upgraded to.",
                     "type": "boolean"
@@ -4254,7 +4387,7 @@
             "id": "EnrollBareMetalAdminClusterRequest",
             "properties": {
                 "bareMetalAdminClusterId": {
-                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
+                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. (https://tools.ietf.org/html/rfc1123) format.",
                     "type": "string"
                 },
                 "membership": {
@@ -4273,11 +4406,11 @@
                     "type": "string"
                 },
                 "bareMetalClusterId": {
-                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all bare metal clusters within a project and location and will return a 409 if the cluster already exists. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
+                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all bare metal clusters within a project and location and will return a 409 if the cluster already exists. (https://tools.ietf.org/html/rfc1123) format.",
                     "type": "string"
                 },
                 "localName": {
-                    "description": "The object name of the bare metal cluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the bare_metal_cluster_id. Otherwise, it must match the object name of the bare metal cluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
+                    "description": "Optional. The object name of the bare metal cluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the bare_metal_cluster_id. Otherwise, it must match the object name of the bare metal cluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
                     "type": "string"
                 }
             },
@@ -4288,7 +4421,7 @@
             "id": "EnrollBareMetalNodePoolRequest",
             "properties": {
                 "bareMetalNodePoolId": {
-                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
+                    "description": "User provided OnePlatform identifier that is used as part of the resource name. (https://tools.ietf.org/html/rfc1123) format.",
                     "type": "string"
                 },
                 "validateOnly": {
@@ -4302,16 +4435,12 @@
             "description": "Message for enrolling an existing VMware admin cluster to the GKE on-prem API.",
             "id": "EnrollVmwareAdminClusterRequest",
             "properties": {
-                "localName": {
-                    "description": "The object name of the VMware OnPremAdminCluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the vmware_admin_cluster_id. Otherwise, it must match the object name of the VMware OnPremAdminCluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
-                    "type": "string"
-                },
                 "membership": {
                     "description": "Required. This is the full resource name of this admin cluster's fleet membership.",
                     "type": "string"
                 },
                 "vmwareAdminClusterId": {
-                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
+                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. (https://tools.ietf.org/html/rfc1123) format.",
                     "type": "string"
                 }
             },
@@ -4326,7 +4455,7 @@
                     "type": "string"
                 },
                 "localName": {
-                    "description": "The object name of the VMware OnPremUserCluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the vmware_cluster_id. Otherwise, it must match the object name of the VMware OnPremUserCluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
+                    "description": "Optional. The object name of the VMware OnPremUserCluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the vmware_cluster_id. Otherwise, it must match the object name of the VMware OnPremUserCluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
                     "type": "string"
                 },
                 "validateOnly": {
@@ -4334,7 +4463,7 @@
                     "type": "boolean"
                 },
                 "vmwareClusterId": {
-                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
+                    "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. (https://tools.ietf.org/html/rfc1123) format.",
                     "type": "string"
                 }
             },
@@ -4606,6 +4735,63 @@
             },
             "type": "object"
         },
+        "Metric": {
+            "description": "Progress metric is (string, int|float|string) pair.",
+            "id": "Metric",
+            "properties": {
+                "doubleValue": {
+                    "description": "For metrics with floating point value.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "intValue": {
+                    "description": "For metrics with integer value.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "metric": {
+                    "description": "Required. The metric name.",
+                    "enum": [
+                        "METRIC_ID_UNSPECIFIED",
+                        "NODES_TOTAL",
+                        "NODES_DRAINING",
+                        "NODES_UPGRADING",
+                        "NODES_PENDING_UPGRADE",
+                        "NODES_UPGRADED",
+                        "NODES_FAILED",
+                        "NODES_HEALTHY",
+                        "NODES_RECONCILING",
+                        "NODES_IN_MAINTENANCE",
+                        "PREFLIGHTS_COMPLETED",
+                        "PREFLIGHTS_RUNNING",
+                        "PREFLIGHTS_FAILED",
+                        "PREFLIGHTS_TOTAL"
+                    ],
+                    "enumDescriptions": [
+                        "Not set.",
+                        "The total number of nodes being actuated.",
+                        "The number of nodes draining.",
+                        "The number of nodes actively upgrading.",
+                        "The number of nodes to be upgraded.",
+                        "The number of nodes upgraded.",
+                        "The number of nodes to fail actuation.",
+                        "The number of nodes healthy.",
+                        "The number of nodes reconciling.",
+                        "The number of nodes in maintenance mode.",
+                        "The number of completed preflight checks.",
+                        "The number of preflight checks running.",
+                        "The number of preflight checks failed.",
+                        "The total number of preflight checks."
+                    ],
+                    "type": "string"
+                },
+                "stringValue": {
+                    "description": "For metrics with custom values (ratios, visual progress, etc.).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "NodeTaint": {
             "description": "NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent.",
             "id": "NodeTaint",
@@ -4681,6 +4867,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "controlPlaneDisconnected": {
+                    "description": "Output only. Denotes if the local managing cluster's control plane is currently disconnected. This is expected to occur temporarily during self-managed cluster upgrades.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "createTime": {
                     "description": "Output only. The time the operation was created.",
                     "format": "google-datetime",
@@ -4692,6 +4883,11 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "progress": {
+                    "$ref": "OperationProgress",
+                    "description": "Output only. Detailed progress information for the operation.",
+                    "readOnly": true
                 },
                 "requestedCancellation": {
                     "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have [Operation.error] value with a [google.rpc.Status.code] of 1, corresponding to `Code.CANCELLED`.",
@@ -4729,6 +4925,83 @@
                 },
                 "verb": {
                     "description": "Output only. Name of the verb executed by the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OperationProgress": {
+            "description": "Information about operation progress. LINT.IfChange",
+            "id": "OperationProgress",
+            "properties": {
+                "stages": {
+                    "description": "The stages of the operation.",
+                    "items": {
+                        "$ref": "OperationStage"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OperationStage": {
+            "description": "Information about a particular stage of an operation.",
+            "id": "OperationStage",
+            "properties": {
+                "endTime": {
+                    "description": "Time the stage ended.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "metrics": {
+                    "description": "Progress metric bundle.",
+                    "items": {
+                        "$ref": "Metric"
+                    },
+                    "type": "array"
+                },
+                "stage": {
+                    "description": "The high-level stage of the operation.",
+                    "enum": [
+                        "STAGE_UNSPECIFIED",
+                        "PREFLIGHT_CHECK",
+                        "CONFIGURE",
+                        "DEPLOY",
+                        "HEALTH_CHECK",
+                        "UPDATE"
+                    ],
+                    "enumDescriptions": [
+                        "Not set.",
+                        "Preflight checks are running.",
+                        "Resource is being configured.",
+                        "Resource is being deployed.",
+                        "Waiting for the resource to become healthy.",
+                        "Resource is being updated."
+                    ],
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Time the stage started.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. State of the stage.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PENDING",
+                        "RUNNING",
+                        "SUCCEEDED",
+                        "FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Not set.",
+                        "The stage is pending.",
+                        "The stage is running",
+                        "The stage has completed successfully.",
+                        "The stage has failed."
+                    ],
                     "readOnly": true,
                     "type": "string"
                 }
@@ -4921,6 +5194,29 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UpgradeDependency": {
+            "description": "UpgradeDependency represents a dependency when upgrading a resource.",
+            "id": "UpgradeDependency",
+            "properties": {
+                "currentVersion": {
+                    "description": "Current version of the dependency e.g. 1.15.0.",
+                    "type": "string"
+                },
+                "localName": {
+                    "description": "Local name of the dependency.",
+                    "type": "string"
+                },
+                "resourceName": {
+                    "description": "Resource name of the dependency.",
+                    "type": "string"
+                },
+                "targetVersion": {
+                    "description": "Target version of the dependency e.g. 1.16.1. This is the version the dependency needs to be upgraded to before a resource can be upgraded.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5521,7 +5817,7 @@
                     "description": "The VMware user cluster network configuration."
                 },
                 "onPremVersion": {
-                    "description": "The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.",
+                    "description": "Required. The Anthos clusters on the VMware version for your user cluster.",
                     "type": "string"
                 },
                 "reconciling": {
@@ -5637,6 +5933,10 @@
             "properties": {
                 "datastore": {
                     "description": "The Vsphere datastore used by the control plane Node.",
+                    "type": "string"
+                },
+                "storagePolicyName": {
+                    "description": "The Vsphere storage policy used by the control plane Node.",
                     "type": "string"
                 }
             },
@@ -6116,6 +6416,10 @@
                 "resourcePool": {
                     "description": "The name of the vCenter resource pool for the user cluster.",
                     "type": "string"
+                },
+                "storagePolicyName": {
+                    "description": "The name of the vCenter storage policy for the user cluster.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6162,6 +6466,10 @@
                     "description": "The name of the vCenter datastore. Inherited from the user cluster.",
                     "type": "string"
                 },
+                "storagePolicyName": {
+                    "description": "The name of the vCenter storage policy. Inherited from the user cluster.",
+                    "type": "string"
+                },
                 "tags": {
                     "description": "Tags to apply to VMs.",
                     "items": {
@@ -6187,9 +6495,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Anthos On-Prem API",
-    "version": "v1",
-    "version_module": true
+    }
 }

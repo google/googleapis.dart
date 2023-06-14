@@ -4973,7 +4973,9 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Fetches a list of results for a given test case.
+  /// Fetches the list of run results for the given test case.
+  ///
+  /// A maximum of 100 results are kept for each test case.
   ///
   /// Request parameters:
   ///
@@ -7870,10 +7872,16 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Optional.
   core.String? environment;
 
+  /// Whether to include BigQuery Export setting.
+  ///
+  /// Optional.
+  core.bool? includeBigqueryExportSettings;
+
   GoogleCloudDialogflowCxV3ExportAgentRequest({
     this.agentUri,
     this.dataFormat,
     this.environment,
+    this.includeBigqueryExportSettings,
   });
 
   GoogleCloudDialogflowCxV3ExportAgentRequest.fromJson(core.Map json_)
@@ -7887,12 +7895,18 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.String
               : null,
+          includeBigqueryExportSettings:
+              json_.containsKey('includeBigqueryExportSettings')
+                  ? json_['includeBigqueryExportSettings'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
         if (dataFormat != null) 'dataFormat': dataFormat!,
         if (environment != null) 'environment': environment!,
+        if (includeBigqueryExportSettings != null)
+          'includeBigqueryExportSettings': includeBigqueryExportSettings!,
       };
 }
 
@@ -10331,6 +10345,8 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
 
   /// Configuration of how speech should be synthesized.
   ///
+  /// If not specified, Agent.text_to_speech_settings is applied.
+  ///
   /// Optional.
   GoogleCloudDialogflowCxV3SynthesizeSpeechConfig? synthesizeSpeechConfig;
 
@@ -10637,6 +10653,15 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// this query.
   core.List<GoogleCloudDialogflowCxV3SessionEntityType>? sessionEntityTypes;
 
+  /// Sets Dialogflow session life time.
+  ///
+  /// By default, a Dialogflow session remains active and its data is stored for
+  /// 30 minutes after the last request is sent for the session. This value
+  /// should be no longer than 1 day.
+  ///
+  /// Optional.
+  core.String? sessionTtl;
+
   /// The time zone of this conversational query from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -10665,6 +10690,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.parameters,
     this.payload,
     this.sessionEntityTypes,
+    this.sessionTtl,
     this.timeZone,
     this.webhookHeaders,
   });
@@ -10706,6 +10732,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sessionTtl: json_.containsKey('sessionTtl')
+              ? json_['sessionTtl'] as core.String
+              : null,
           timeZone: json_.containsKey('timeZone')
               ? json_['timeZone'] as core.String
               : null,
@@ -10732,6 +10761,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (payload != null) 'payload': payload!,
         if (sessionEntityTypes != null)
           'sessionEntityTypes': sessionEntityTypes!,
+        if (sessionTtl != null) 'sessionTtl': sessionTtl!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (webhookHeaders != null) 'webhookHeaders': webhookHeaders!,
       };
@@ -12314,7 +12344,8 @@ class GoogleCloudDialogflowCxV3TestConfig {
 
 /// The description of differences between original and replayed agent output.
 class GoogleCloudDialogflowCxV3TestRunDifference {
-  /// A description of the diff, showing the actual output vs expected output.
+  /// A human readable description of the diff, showing the actual output vs
+  /// expected output.
   core.String? description;
 
   /// The type of diff.
@@ -12375,11 +12406,12 @@ class GoogleCloudDialogflowCxV3TextToSpeechSettings {
   /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to
   /// SynthesizeSpeechConfig.
   ///
-  /// These settings affect: - The synthesize configuration used in
-  /// [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway).
-  /// - You no longer need to specify OutputAudioConfig.synthesize_speech_config
-  /// when invoking API calls. Your agent will use the pre-configured options
-  /// for speech synthesizing.
+  /// These settings affect: - The
+  /// [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway)
+  /// synthesize configuration set via Agent.text_to_speech_settings. - How
+  /// speech is synthesized when invoking session APIs.
+  /// Agent.text_to_speech_settings only applies if
+  /// OutputAudioConfig.synthesize_speech_config is not specified.
   core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
       synthesizeSpeechConfigs;
 

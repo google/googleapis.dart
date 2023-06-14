@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"343135393732323330353033303234363235\"",
+    "etag": "\"37393831363834353739303933363430383634\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -39,6 +39,12 @@
     "name": "storage",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://storage.googleapis.com/",
+    "servicePath": "storage/v1/",
+    "title": "Cloud Storage JSON API",
+    "version": "v1",
     "parameters": {
         "alt": {
             "default": "json",
@@ -89,7 +95,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "bucketAccessControls": {
             "methods": {
@@ -1310,7 +1315,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1356,7 +1361,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1398,7 +1403,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1443,7 +1448,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1492,7 +1497,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1544,7 +1549,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1587,7 +1592,7 @@
                             "type": "string"
                         },
                         "destinationObject": {
-                            "description": "Name of the new object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1661,7 +1666,7 @@
                     ],
                     "parameters": {
                         "destinationBucket": {
-                            "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1772,7 +1777,7 @@
                             "type": "string"
                         },
                         "sourceObject": {
-                            "description": "Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the source object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1842,7 +1847,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1906,7 +1911,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1966,7 +1971,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2053,7 +2058,7 @@
                             "type": "string"
                         },
                         "name": {
-                            "description": "Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "query",
                             "type": "string"
                         },
@@ -2251,7 +2256,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2331,7 +2336,7 @@
                             "type": "string"
                         },
                         "destinationObject": {
-                            "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2442,7 +2447,7 @@
                             "type": "string"
                         },
                         "sourceObject": {
-                            "description": "Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the source object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2488,7 +2493,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2535,7 +2540,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2611,7 +2616,7 @@
                             "type": "string"
                         },
                         "object": {
-                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+                            "description": "Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3009,8 +3014,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://storage.googleapis.com/",
     "schemas": {
         "Bucket": {
             "description": "A bucket.",
@@ -4275,8 +4278,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "storage/v1/",
-    "title": "Cloud Storage JSON API",
-    "version": "v1"
+    }
 }

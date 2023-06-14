@@ -590,8 +590,8 @@ class CustomerUsageReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [date] - Represents the date the usage occurred, based on PST time zone.
-  /// The timestamp is in the
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
+  /// (Pacific Standard Time). The timestamp is in the
   /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
@@ -683,9 +683,9 @@ class EntityUsageReportsResource {
   /// to obtain the `entityKey` for a particular `entityType`, see the Entities
   /// Usage parameters reference guides.
   ///
-  /// [date] - Represents the date the usage occurred. The timestamp is in the
-  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
-  /// for this.
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
+  /// (Pacific Standard Time). The timestamp is in the
+  /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
@@ -804,7 +804,7 @@ class UserUsageReportResource {
   /// Directory API with `showDeleted=true`, then use the returned `ID` as the
   /// `userKey`.
   ///
-  /// [date] - Represents the date the usage occurred, based on GMT-7:00
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
   /// (Pacific Standard Time). The timestamp is in the
   /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.

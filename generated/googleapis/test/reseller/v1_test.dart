@@ -1649,7 +1649,9 @@ void main() {
       final res = api.ResellerApi(mock).subscriptions;
       final arg_request = buildSubscription();
       final arg_customerId = 'foo';
+      final arg_action = 'foo';
       final arg_customerAuthToken = 'foo';
+      final arg_sourceSkuId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Subscription.fromJson(
@@ -1701,8 +1703,16 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['action']!.first,
+          unittest.equals(arg_action),
+        );
+        unittest.expect(
           queryMap['customerAuthToken']!.first,
           unittest.equals(arg_customerAuthToken),
+        );
+        unittest.expect(
+          queryMap['sourceSkuId']!.first,
+          unittest.equals(arg_sourceSkuId),
         );
         unittest.expect(
           queryMap['fields']!.first,
@@ -1716,7 +1726,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_customerId,
-          customerAuthToken: arg_customerAuthToken, $fields: arg_$fields);
+          action: arg_action,
+          customerAuthToken: arg_customerAuthToken,
+          sourceSkuId: arg_sourceSkuId,
+          $fields: arg_$fields);
       checkSubscription(response as api.Subscription);
     });
 

@@ -1040,10 +1040,8 @@ class CloudFunction {
   /// The name of the function (as defined in source code) that will be
   /// executed.
   ///
-  /// Defaults to the resource name suffix, if not specified. For backward
-  /// compatibility, if function with given name is not found, then the system
-  /// will try to use function named "function". For Node.js this is name of a
-  /// function exported by the module specified in `source_location`.
+  /// Defaults to the resource name suffix (ID of the function), if not
+  /// specified.
   core.String? entryPoint;
 
   /// Environment variables that shall be available during function execution.

@@ -111,6 +111,7 @@ api.Evaluation buildEvaluation() {
   buildCounterEvaluation++;
   if (buildCounterEvaluation < 3) {
     o.createTime = 'foo';
+    o.customRulesBucket = 'foo';
     o.description = 'foo';
     o.labels = buildUnnamed0();
     o.name = 'foo';
@@ -130,6 +131,10 @@ void checkEvaluation(api.Evaluation o) {
   if (buildCounterEvaluation < 3) {
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customRulesBucket!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -310,6 +315,7 @@ api.Insight buildInsight() {
   final o = api.Insight();
   buildCounterInsight++;
   if (buildCounterInsight < 3) {
+    o.instanceId = 'foo';
     o.sapDiscovery = buildSapDiscovery();
     o.sapValidation = buildSapValidation();
     o.sentTime = 'foo';
@@ -322,6 +328,10 @@ api.Insight buildInsight() {
 void checkInsight(api.Insight o) {
   buildCounterInsight++;
   if (buildCounterInsight < 3) {
+    unittest.expect(
+      o.instanceId!,
+      unittest.equals('foo'),
+    );
     checkSapDiscovery(o.sapDiscovery!);
     checkSapValidation(o.sapValidation!);
     unittest.expect(
@@ -1400,14 +1410,43 @@ void checkUnnamed27(core.Map<core.String, core.String> o) {
   );
 }
 
+core.int buildCounterSqlserverValidationDetails = 0;
+api.SqlserverValidationDetails buildSqlserverValidationDetails() {
+  final o = api.SqlserverValidationDetails();
+  buildCounterSqlserverValidationDetails++;
+  if (buildCounterSqlserverValidationDetails < 3) {
+    o.fields = buildUnnamed27();
+  }
+  buildCounterSqlserverValidationDetails--;
+  return o;
+}
+
+void checkSqlserverValidationDetails(api.SqlserverValidationDetails o) {
+  buildCounterSqlserverValidationDetails++;
+  if (buildCounterSqlserverValidationDetails < 3) {
+    checkUnnamed27(o.fields!);
+  }
+  buildCounterSqlserverValidationDetails--;
+}
+
+core.List<api.SqlserverValidationDetails> buildUnnamed28() => [
+      buildSqlserverValidationDetails(),
+      buildSqlserverValidationDetails(),
+    ];
+
+void checkUnnamed28(core.List<api.SqlserverValidationDetails> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlserverValidationDetails(o[0]);
+  checkSqlserverValidationDetails(o[1]);
+}
+
 core.int buildCounterSqlserverValidationValidationDetail = 0;
 api.SqlserverValidationValidationDetail
     buildSqlserverValidationValidationDetail() {
   final o = api.SqlserverValidationValidationDetail();
   buildCounterSqlserverValidationValidationDetail++;
   if (buildCounterSqlserverValidationValidationDetail < 3) {
-    o.details = buildUnnamed27();
-    o.instanceId = 'foo';
+    o.details = buildUnnamed28();
     o.type = 'foo';
   }
   buildCounterSqlserverValidationValidationDetail--;
@@ -1418,11 +1457,7 @@ void checkSqlserverValidationValidationDetail(
     api.SqlserverValidationValidationDetail o) {
   buildCounterSqlserverValidationValidationDetail++;
   if (buildCounterSqlserverValidationValidationDetail < 3) {
-    checkUnnamed27(o.details!);
-    unittest.expect(
-      o.instanceId!,
-      unittest.equals('foo'),
-    );
+    checkUnnamed28(o.details!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1431,7 +1466,7 @@ void checkSqlserverValidationValidationDetail(
   buildCounterSqlserverValidationValidationDetail--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed28() => {
+core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1444,7 +1479,7 @@ core.Map<core.String, core.Object?> buildUnnamed28() => {
       },
     };
 
-void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1476,15 +1511,15 @@ void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed29() => [
-      buildUnnamed28(),
-      buildUnnamed28(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
+      buildUnnamed29(),
+      buildUnnamed29(),
     ];
 
-void checkUnnamed29(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed30(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed28(o[0]);
-  checkUnnamed28(o[1]);
+  checkUnnamed29(o[0]);
+  checkUnnamed29(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1493,7 +1528,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed29();
+    o.details = buildUnnamed30();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1507,7 +1542,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed29(o.details!);
+    checkUnnamed30(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1516,12 +1551,12 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed30() => {
+core.Map<core.String, core.String> buildUnnamed31() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed30(core.Map<core.String, core.String> o) {
+void checkUnnamed31(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1539,7 +1574,7 @@ api.ViolationDetails buildViolationDetails() {
   buildCounterViolationDetails++;
   if (buildCounterViolationDetails < 3) {
     o.asset = 'foo';
-    o.observed = buildUnnamed30();
+    o.observed = buildUnnamed31();
     o.serviceAccount = 'foo';
   }
   buildCounterViolationDetails--;
@@ -1553,7 +1588,7 @@ void checkViolationDetails(api.ViolationDetails o) {
       o.asset!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.observed!);
+    checkUnnamed31(o.observed!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -1889,6 +1924,16 @@ void main() {
       final od = api.SqlserverValidation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlserverValidation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlserverValidationDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlserverValidationDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlserverValidationDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlserverValidationDetails(od);
     });
   });
 
@@ -2942,6 +2987,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WorkloadManagerApi(mock).projects.locations.rules;
       final arg_parent = 'foo';
+      final arg_customRulesBucket = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2979,6 +3025,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customRulesBucket']!.first,
+          unittest.equals(arg_customRulesBucket),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -3002,6 +3052,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          customRulesBucket: arg_customRulesBucket,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

@@ -873,6 +873,8 @@ class AbortInfo {
   /// - "GKE_KONNECTIVITY_PROXY_UNSUPPORTED" : Aborted because the connection
   /// between the control plane and the node of the source cluster is initiated
   /// by the node and managed by the Konnectivity proxy.
+  /// - "RESOURCE_CONFIG_NOT_FOUND" : Aborted because expected resource
+  /// configuration was missing.
   core.String? cause;
 
   /// List of project IDs that the user has specified in the request but does
@@ -1587,6 +1589,9 @@ class DropInfo {
   /// - "GOOGLE_MANAGED_SERVICE_NO_PEERING" : Packet was dropped because there
   /// is no peering between the originating network and the Google Managed
   /// Services Network.
+  /// - "GOOGLE_MANAGED_SERVICE_NO_PSC_ENDPOINT" : Packet was dropped because
+  /// the Google-managed service uses Private Service Connect (PSC), but the PSC
+  /// endpoint is not found in the project.
   /// - "GKE_PSC_ENDPOINT_MISSING" : Packet was dropped because the GKE cluster
   /// uses Private Service Connect (PSC), but the PSC endpoint is not found in
   /// the project.
@@ -1619,6 +1624,8 @@ class DropInfo {
   /// that is not ready.
   /// - "DROPPED_INSIDE_PSC_SERVICE_PRODUCER" : Packet was dropped inside
   /// Private Service Connect service producer.
+  /// - "LOAD_BALANCER_HAS_NO_PROXY_SUBNET" : Packet sent to a load balancer,
+  /// which requires a proxy-only subnet and the subnet is not found.
   core.String? cause;
 
   /// URI of the resource that caused the drop.
@@ -2156,6 +2163,53 @@ class GKEMasterInfo {
         if (clusterUri != null) 'clusterUri': clusterUri!,
         if (externalIp != null) 'externalIp': externalIp!,
         if (internalIp != null) 'internalIp': internalIp!,
+      };
+}
+
+/// For display only.
+///
+/// Details of a Google Service sending packets to a VPC network. Although the
+/// source IP might be a publicly routable address, some Google Services use
+/// special routes within Google production infrastructure to reach Compute
+/// Engine Instances.
+/// https://cloud.google.com/vpc/docs/routes#special_return_paths
+class GoogleServiceInfo {
+  /// Recognized type of a Google Service.
+  /// Possible string values are:
+  /// - "GOOGLE_SERVICE_TYPE_UNSPECIFIED" : Unspecified Google Service. Includes
+  /// most of Google APIs and services.
+  /// - "IAP" : Identity aware proxy.
+  /// https://cloud.google.com/iap/docs/using-tcp-forwarding
+  /// - "GFE_PROXY_OR_HEALTH_CHECK_PROBER" : One of two services sharing IP
+  /// ranges: * Load Balancer proxy * Centralized Health Check prober
+  /// https://cloud.google.com/load-balancing/docs/firewall-rules
+  /// - "CLOUD_DNS" : Connectivity from Cloud DNS to forwarding targets or
+  /// alternate name servers that use private routing.
+  /// https://cloud.google.com/dns/docs/zones/forwarding-zones#firewall-rules
+  /// https://cloud.google.com/dns/docs/policies#firewall-rules
+  core.String? googleServiceType;
+
+  /// Source IP address.
+  core.String? sourceIp;
+
+  GoogleServiceInfo({
+    this.googleServiceType,
+    this.sourceIp,
+  });
+
+  GoogleServiceInfo.fromJson(core.Map json_)
+      : this(
+          googleServiceType: json_.containsKey('googleServiceType')
+              ? json_['googleServiceType'] as core.String
+              : null,
+          sourceIp: json_.containsKey('sourceIp')
+              ? json_['sourceIp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleServiceType != null) 'googleServiceType': googleServiceType!,
+        if (sourceIp != null) 'sourceIp': sourceIp!,
       };
 }
 
@@ -3062,6 +3116,9 @@ class Step {
   /// Display information of a Google Kubernetes Engine cluster master.
   GKEMasterInfo? gkeMaster;
 
+  /// Display information of a Google service
+  GoogleServiceInfo? googleService;
+
   /// Display information of a Compute Engine instance.
   InstanceInfo? instance;
 
@@ -3085,6 +3142,10 @@ class Step {
   /// information.
   /// - "START_FROM_INTERNET" : Initial state: packet originating from the
   /// internet. The endpoint information is populated.
+  /// - "START_FROM_GOOGLE_SERVICE" : Initial state: packet originating from a
+  /// Google service. Some Google services, such as health check probers or
+  /// Identity Aware Proxy use special routes, outside VPC routing configuration
+  /// to reach Compute Engine Instances.
   /// - "START_FROM_PRIVATE_NETWORK" : Initial state: packet originating from a
   /// VPC or on-premises network with internal source IP. If the source is a VPC
   /// network visible to the user, a NetworkInfo is populated with details of
@@ -3160,6 +3221,7 @@ class Step {
     this.forward,
     this.forwardingRule,
     this.gkeMaster,
+    this.googleService,
     this.instance,
     this.loadBalancer,
     this.network,
@@ -3227,6 +3289,10 @@ class Step {
               ? GKEMasterInfo.fromJson(
                   json_['gkeMaster'] as core.Map<core.String, core.dynamic>)
               : null,
+          googleService: json_.containsKey('googleService')
+              ? GoogleServiceInfo.fromJson(
+                  json_['googleService'] as core.Map<core.String, core.dynamic>)
+              : null,
           instance: json_.containsKey('instance')
               ? InstanceInfo.fromJson(
                   json_['instance'] as core.Map<core.String, core.dynamic>)
@@ -3277,6 +3343,7 @@ class Step {
         if (forward != null) 'forward': forward!,
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (gkeMaster != null) 'gkeMaster': gkeMaster!,
+        if (googleService != null) 'googleService': googleService!,
         if (instance != null) 'instance': instance!,
         if (loadBalancer != null) 'loadBalancer': loadBalancer!,
         if (network != null) 'network': network!,

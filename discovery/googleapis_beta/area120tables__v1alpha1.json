@@ -39,6 +39,13 @@
     "name": "area120tables",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://area120tables.googleapis.com/",
+    "servicePath": "",
+    "title": "Area120 Tables API",
+    "version": "v1alpha1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -116,7 +123,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "tables": {
             "methods": {
@@ -584,8 +590,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://area120tables.googleapis.com/",
     "schemas": {
         "BatchCreateRowsRequest": {
             "description": "Request message for TablesService.BatchCreateRows.",
@@ -988,9 +992,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Area120 Tables API",
-    "version": "v1alpha1",
-    "version_module": true
+    }
 }

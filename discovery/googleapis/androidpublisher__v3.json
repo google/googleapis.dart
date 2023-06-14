@@ -24,6 +24,12 @@
     "name": "androidpublisher",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://androidpublisher.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play Android Developer API",
+    "version": "v3",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "applications": {
             "resources": {
@@ -631,7 +636,7 @@
                                 "accept": [
                                     "application/octet-stream"
                                 ],
-                                "maxSize": "838860800",
+                                "maxSize": "1258291200",
                                 "protocols": {
                                     "resumable": {
                                         "multipart": true,
@@ -2098,7 +2103,7 @@
         "inappproducts": {
             "methods": {
                 "delete": {
-                    "description": "Deletes an in-app product (i.e. a managed product or a subscription).",
+                    "description": "Deletes an in-app product (i.e. a managed product or a subscription). This method should no longer be used to delete subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "DELETE",
                     "id": "androidpublisher.inappproducts.delete",
@@ -2126,7 +2131,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets an in-app product, which can be a managed product or a subscription.",
+                    "description": "Gets an in-app product, which can be a managed product or a subscription. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "GET",
                     "id": "androidpublisher.inappproducts.get",
@@ -2157,7 +2162,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates an in-app product (i.e. a managed product or a subscription).",
+                    "description": "Creates an in-app product (i.e. a managed product or a subscription). This method should no longer be used to create subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts",
                     "httpMethod": "POST",
                     "id": "androidpublisher.inappproducts.insert",
@@ -2189,7 +2194,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken` will be set and the caller should provide its value as a `token` request parameter to retrieve the next page.",
+                    "description": "Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken` will be set and the caller should provide its value as a `token` request parameter to retrieve the next page. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts",
                     "httpMethod": "GET",
                     "id": "androidpublisher.inappproducts.list",
@@ -2230,7 +2235,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patches an in-app product (i.e. a managed product or a subscription).",
+                    "description": "Patches an in-app product (i.e. a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "PATCH",
                     "id": "androidpublisher.inappproducts.patch",
@@ -2269,7 +2274,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates an in-app product (i.e. a managed product or a subscription).",
+                    "description": "Updates an in-app product (i.e. a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "PUT",
                     "id": "androidpublisher.inappproducts.update",
@@ -4044,9 +4049,55 @@
             }
         }
     },
-    "revision": "20230516",
-    "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
+        "Abi": {
+            "description": "Represents an Abi.",
+            "id": "Abi",
+            "properties": {
+                "alias": {
+                    "description": "Alias for an abi.",
+                    "enum": [
+                        "UNSPECIFIED_CPU_ARCHITECTURE",
+                        "ARMEABI",
+                        "ARMEABI_V7A",
+                        "ARM64_V8A",
+                        "X86",
+                        "X86_64"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified abi.",
+                        "ARMEABI abi.",
+                        "ARMEABI_V7A abi.",
+                        "ARM64_V8A abi.",
+                        "X86 abi.",
+                        "X86_64 abi."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AbiTargeting": {
+            "description": "Targeting based on Abi.",
+            "id": "AbiTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits.",
+                    "items": {
+                        "$ref": "Abi"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "Value of an abi.",
+                    "items": {
+                        "$ref": "Abi"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "AcquisitionTargetingRule": {
             "description": "Represents a targeting rule of the form: User never had {scope} before.",
             "id": "AcquisitionTargetingRule",
@@ -4097,6 +4148,86 @@
                 "sha256": {
                     "description": "A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApkDescription": {
+            "description": "Description of the created apks.",
+            "id": "ApkDescription",
+            "properties": {
+                "assetSliceMetadata": {
+                    "$ref": "SplitApkMetadata",
+                    "description": "Set only for asset slices."
+                },
+                "instantApkMetadata": {
+                    "$ref": "SplitApkMetadata",
+                    "description": "Set only for Instant split APKs."
+                },
+                "path": {
+                    "description": "Path of the Apk, will be in the following format: .apk where DownloadId is the ID used to download the apk using GeneratedApks.Download API.",
+                    "type": "string"
+                },
+                "splitApkMetadata": {
+                    "$ref": "SplitApkMetadata",
+                    "description": "Set only for Split APKs."
+                },
+                "standaloneApkMetadata": {
+                    "$ref": "StandaloneApkMetadata",
+                    "description": "Set only for standalone APKs."
+                },
+                "targeting": {
+                    "$ref": "ApkTargeting",
+                    "description": "Apk-level targeting."
+                }
+            },
+            "type": "object"
+        },
+        "ApkSet": {
+            "description": "A set of apks representing a module.",
+            "id": "ApkSet",
+            "properties": {
+                "apkDescription": {
+                    "description": "Description of the generated apks.",
+                    "items": {
+                        "$ref": "ApkDescription"
+                    },
+                    "type": "array"
+                },
+                "moduleMetadata": {
+                    "$ref": "ModuleMetadata",
+                    "description": "Metadata about the module represented by this ApkSet"
+                }
+            },
+            "type": "object"
+        },
+        "ApkTargeting": {
+            "description": "Represents a set of apk-level targetings.",
+            "id": "ApkTargeting",
+            "properties": {
+                "abiTargeting": {
+                    "$ref": "AbiTargeting",
+                    "description": "The abi that the apk targets"
+                },
+                "languageTargeting": {
+                    "$ref": "LanguageTargeting",
+                    "description": "The language that the apk targets"
+                },
+                "multiAbiTargeting": {
+                    "$ref": "MultiAbiTargeting",
+                    "description": "Multi-api-level targeting."
+                },
+                "screenDensityTargeting": {
+                    "$ref": "ScreenDensityTargeting",
+                    "description": "The screen density that this apk supports."
+                },
+                "sdkVersionTargeting": {
+                    "$ref": "SdkVersionTargeting",
+                    "description": "The sdk version that the apk targets"
+                },
+                "textureCompressionFormatTargeting": {
+                    "$ref": "TextureCompressionFormatTargeting",
+                    "description": "Texture-compression-format-level targeting"
                 }
             },
             "type": "object"
@@ -4185,6 +4316,51 @@
             "description": "Request message for ArchiveSubscription.",
             "id": "ArchiveSubscriptionRequest",
             "properties": {},
+            "type": "object"
+        },
+        "AssetModuleMetadata": {
+            "description": "Metadata of an asset module.",
+            "id": "AssetModuleMetadata",
+            "properties": {
+                "deliveryType": {
+                    "description": "Indicates the delivery type for persistent install.",
+                    "enum": [
+                        "UNKNOWN_DELIVERY_TYPE",
+                        "INSTALL_TIME",
+                        "ON_DEMAND",
+                        "FAST_FOLLOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified delivery type.",
+                        "This module will always be downloaded as part of the initial install of the app.",
+                        "This module is requested on-demand, which means it will not be part of the initial install, and will only be sent when requested by the client.",
+                        "This module will be downloaded immediately after initial install finishes. The app can be opened before these modules are downloaded."
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Module name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AssetSliceSet": {
+            "description": "Set of asset slices belonging to a single asset module.",
+            "id": "AssetSliceSet",
+            "properties": {
+                "apkDescription": {
+                    "description": "Asset slices.",
+                    "items": {
+                        "$ref": "ApkDescription"
+                    },
+                    "type": "array"
+                },
+                "assetModuleMetadata": {
+                    "$ref": "AssetModuleMetadata",
+                    "description": "Module level metadata."
+                }
+            },
             "type": "object"
         },
         "AutoRenewingBasePlanType": {
@@ -4507,6 +4683,17 @@
             "properties": {},
             "type": "object"
         },
+        "DeferredItemReplacement": {
+            "description": "Information related to deferred item replacement.",
+            "id": "DeferredItemReplacement",
+            "properties": {
+                "productId": {
+                    "description": "The product_id going to replace the existing product_id.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DeobfuscationFile": {
             "description": "Represents a deobfuscation file.",
             "id": "DeobfuscationFile",
@@ -4558,6 +4745,33 @@
             "description": "Information specific to cancellations initiated by developers.",
             "id": "DeveloperInitiatedCancellation",
             "properties": {},
+            "type": "object"
+        },
+        "DeviceFeature": {
+            "description": "Represents a device feature.",
+            "id": "DeviceFeature",
+            "properties": {
+                "featureName": {
+                    "description": "Name of the feature.",
+                    "type": "string"
+                },
+                "featureVersion": {
+                    "description": "The feature version specified by android:glEsVersion or android:version in in the AndroidManifest.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceFeatureTargeting": {
+            "description": "Targeting for a device feature.",
+            "id": "DeviceFeatureTargeting",
+            "properties": {
+                "requiredFeature": {
+                    "$ref": "DeviceFeature",
+                    "description": "Feature of the device."
+                }
+            },
             "type": "object"
         },
         "DeviceGroup": {
@@ -5093,6 +5307,10 @@
                 "generatedUniversalApk": {
                     "$ref": "GeneratedUniversalApk",
                     "description": "Generated universal APK, signed with a key corresponding to certificate_sha256_hash. This field is not set if no universal APK was generated for this signing key."
+                },
+                "targetingInfo": {
+                    "$ref": "TargetingInfo",
+                    "description": "Contains targeting information about the generated apks."
                 }
             },
             "type": "object"
@@ -5191,11 +5409,13 @@
                             "CAN_MANAGE_PUBLIC_LISTING",
                             "CAN_MANAGE_DRAFT_APPS",
                             "CAN_MANAGE_ORDERS",
-                            "CAN_MANAGE_APP_CONTENT"
+                            "CAN_MANAGE_APP_CONTENT",
+                            "CAN_VIEW_NON_FINANCIAL_DATA",
+                            "CAN_VIEW_APP_QUALITY"
                         ],
                         "enumDescriptions": [
                             "Unknown or unspecified permission.",
-                            "View app information (read-only).",
+                            "View app information (read-only). Deprecated: Try defining a more granular capability. Otherwise, check AppLevelPermission.CAN_VIEW_NON_FINANCIAL_DATA.",
                             "View financial data.",
                             "Admin (all permissions).",
                             "Reply to reviews.",
@@ -5205,7 +5425,9 @@
                             "Manage store presence.",
                             "Edit and delete draft apps.",
                             "Manage orders and subscriptions.",
-                            "Manage policy related pages."
+                            "Manage policy related pages.",
+                            "View app information (read-only).",
+                            "View app quality data such as Vitals, Crashes etc."
                         ],
                         "type": "string"
                     },
@@ -5461,6 +5683,27 @@
             },
             "type": "object"
         },
+        "LanguageTargeting": {
+            "description": "Targeting based on language.",
+            "id": "LanguageTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "Alternative languages.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "ISO-639: 2 or 3 letter language code.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListDeviceTierConfigsResponse": {
             "description": "Response listing existing device tier configs.",
             "id": "ListDeviceTierConfigsResponse",
@@ -5645,6 +5888,78 @@
             "properties": {},
             "type": "object"
         },
+        "ModuleMetadata": {
+            "description": "Metadata of a module.",
+            "id": "ModuleMetadata",
+            "properties": {
+                "deliveryType": {
+                    "description": "Indicates the delivery type (e.g. on-demand) of the module.",
+                    "enum": [
+                        "UNKNOWN_DELIVERY_TYPE",
+                        "INSTALL_TIME",
+                        "ON_DEMAND",
+                        "FAST_FOLLOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified delivery type.",
+                        "This module will always be downloaded as part of the initial install of the app.",
+                        "This module is requested on-demand, which means it will not be part of the initial install, and will only be sent when requested by the client.",
+                        "This module will be downloaded immediately after initial install finishes. The app can be opened before these modules are downloaded."
+                    ],
+                    "type": "string"
+                },
+                "dependencies": {
+                    "description": "Names of the modules that this module directly depends on. Each module implicitly depends on the base module.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "moduleType": {
+                    "description": "Indicates the type of this feature module.",
+                    "enum": [
+                        "UNKNOWN_MODULE_TYPE",
+                        "FEATURE_MODULE"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown feature module.",
+                        "Regular feature module."
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Module name.",
+                    "type": "string"
+                },
+                "targeting": {
+                    "$ref": "ModuleTargeting",
+                    "description": "The targeting that makes a conditional module installed. Relevant only for Split APKs."
+                }
+            },
+            "type": "object"
+        },
+        "ModuleTargeting": {
+            "description": "Targeting on the module level.",
+            "id": "ModuleTargeting",
+            "properties": {
+                "deviceFeatureTargeting": {
+                    "description": "Targeting for device features.",
+                    "items": {
+                        "$ref": "DeviceFeatureTargeting"
+                    },
+                    "type": "array"
+                },
+                "sdkVersionTargeting": {
+                    "$ref": "SdkVersionTargeting",
+                    "description": "The sdk version that the variant targets"
+                },
+                "userCountriesTargeting": {
+                    "$ref": "UserCountriesTargeting",
+                    "description": "Countries-level targeting"
+                }
+            },
+            "type": "object"
+        },
         "Money": {
             "description": "Represents an amount of money with its currency type.",
             "id": "Money",
@@ -5662,6 +5977,41 @@
                     "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MultiAbi": {
+            "description": "Represents a list of apis.",
+            "id": "MultiAbi",
+            "properties": {
+                "abi": {
+                    "description": "A list of targeted ABIs, as represented by the Android Platform",
+                    "items": {
+                        "$ref": "Abi"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MultiAbiTargeting": {
+            "description": "Targeting based on multiple abis.",
+            "id": "MultiAbiTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits.",
+                    "items": {
+                        "$ref": "MultiAbi"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "Value of a multi abi.",
+                    "items": {
+                        "$ref": "MultiAbi"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -6220,6 +6570,150 @@
             },
             "type": "object"
         },
+        "ScreenDensity": {
+            "description": "Represents a screen density.",
+            "id": "ScreenDensity",
+            "properties": {
+                "densityAlias": {
+                    "description": "Alias for a screen density.",
+                    "enum": [
+                        "DENSITY_UNSPECIFIED",
+                        "NODPI",
+                        "LDPI",
+                        "MDPI",
+                        "TVDPI",
+                        "HDPI",
+                        "XHDPI",
+                        "XXHDPI",
+                        "XXXHDPI"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified screen density.",
+                        "NODPI screen density.",
+                        "LDPI screen density.",
+                        "MDPI screen density.",
+                        "TVDPI screen density.",
+                        "HDPI screen density.",
+                        "XHDPI screen density.",
+                        "XXHDPI screen density.",
+                        "XXXHDPI screen density."
+                    ],
+                    "type": "string"
+                },
+                "densityDpi": {
+                    "description": "Value for density dpi.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ScreenDensityTargeting": {
+            "description": "Targeting based on screen density.",
+            "id": "ScreenDensityTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits.",
+                    "items": {
+                        "$ref": "ScreenDensity"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "Value of a screen density.",
+                    "items": {
+                        "$ref": "ScreenDensity"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SdkVersion": {
+            "description": "Represents an sdk version.",
+            "id": "SdkVersion",
+            "properties": {
+                "min": {
+                    "description": "Inclusive minimum value of an sdk version.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SdkVersionTargeting": {
+            "description": "Targeting based on sdk version.",
+            "id": "SdkVersionTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits.",
+                    "items": {
+                        "$ref": "SdkVersion"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "Value of an sdk version.",
+                    "items": {
+                        "$ref": "SdkVersion"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SplitApkMetadata": {
+            "description": "Holds data specific to Split APKs.",
+            "id": "SplitApkMetadata",
+            "properties": {
+                "isMasterSplit": {
+                    "description": "Indicates whether this APK is the main split of the module.",
+                    "type": "boolean"
+                },
+                "splitId": {
+                    "description": "Id of the split.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SplitApkVariant": {
+            "description": "Variant is a group of APKs that covers a part of the device configuration space. APKs from multiple variants are never combined on one device.",
+            "id": "SplitApkVariant",
+            "properties": {
+                "apkSet": {
+                    "description": "Set of APKs, one set per module.",
+                    "items": {
+                        "$ref": "ApkSet"
+                    },
+                    "type": "array"
+                },
+                "targeting": {
+                    "$ref": "VariantTargeting",
+                    "description": "Variant-level targeting."
+                },
+                "variantNumber": {
+                    "description": "Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant that matches the device configuration, with higher variant numbers having priority over lower variant numbers.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "StandaloneApkMetadata": {
+            "description": "Holds data specific to Standalone APKs.",
+            "id": "StandaloneApkMetadata",
+            "properties": {
+                "fusedModuleName": {
+                    "description": "Names of the modules fused in this standalone APK.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SubscribeWithGoogleInfo": {
             "description": "Information associated with purchases made with 'Subscribe with Google'.",
             "id": "SubscribeWithGoogleInfo",
@@ -6658,6 +7152,10 @@
                     "$ref": "AutoRenewingPlan",
                     "description": "The item is auto renewing."
                 },
+                "deferredItemReplacement": {
+                    "$ref": "DeferredItemReplacement",
+                    "description": "Information for deferred item replacement."
+                },
                 "expiryTime": {
                     "description": "Time at which the subscription expired or will expire unless the access is extended (ex. renews).",
                     "format": "google-datetime",
@@ -6864,6 +7362,31 @@
             "properties": {},
             "type": "object"
         },
+        "TargetingInfo": {
+            "description": "Targeting information about the generated apks.",
+            "id": "TargetingInfo",
+            "properties": {
+                "assetSliceSet": {
+                    "description": "List of created asset slices.",
+                    "items": {
+                        "$ref": "AssetSliceSet"
+                    },
+                    "type": "array"
+                },
+                "packageName": {
+                    "description": "The package name of this app.",
+                    "type": "string"
+                },
+                "variant": {
+                    "description": "List of the created variants.",
+                    "items": {
+                        "$ref": "SplitApkVariant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "TargetingRuleScope": {
             "description": "Defines the scope of subscriptions which a targeting rule can match to target offers to users based on past or current entitlement.",
             "id": "TargetingRuleScope",
@@ -6889,6 +7412,64 @@
                     "description": "All testing Google Groups, as email addresses.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TextureCompressionFormat": {
+            "description": "Represents texture compression format.",
+            "id": "TextureCompressionFormat",
+            "properties": {
+                "alias": {
+                    "description": "Alias for texture compression format.",
+                    "enum": [
+                        "UNSPECIFIED_TEXTURE_COMPRESSION_FORMAT",
+                        "ETC1_RGB8",
+                        "PALETTED",
+                        "THREE_DC",
+                        "ATC",
+                        "LATC",
+                        "DXT1",
+                        "S3TC",
+                        "PVRTC",
+                        "ASTC",
+                        "ETC2"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified format.",
+                        "ETC1_RGB8 format.",
+                        "PALETTED format.",
+                        "THREE_DC format.",
+                        "ATC format.",
+                        "LATC format.",
+                        "DXT1 format.",
+                        "S3TC format.",
+                        "PVRTC format.",
+                        "ASTC format.",
+                        "ETC2 format."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TextureCompressionFormatTargeting": {
+            "description": "Targeting by a texture compression format.",
+            "id": "TextureCompressionFormatTargeting",
+            "properties": {
+                "alternatives": {
+                    "description": "List of alternative TCFs (TCFs targeted by the sibling splits).",
+                    "items": {
+                        "$ref": "TextureCompressionFormat"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "The list of targeted TCFs. Should not be empty.",
+                    "items": {
+                        "$ref": "TextureCompressionFormat"
                     },
                     "type": "array"
                 }
@@ -7114,7 +7695,9 @@
                             "CAN_CREATE_MANAGED_PLAY_APPS_GLOBAL",
                             "CAN_CHANGE_MANAGED_PLAY_SETTING_GLOBAL",
                             "CAN_MANAGE_ORDERS_GLOBAL",
-                            "CAN_MANAGE_APP_CONTENT_GLOBAL"
+                            "CAN_MANAGE_APP_CONTENT_GLOBAL",
+                            "CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL",
+                            "CAN_VIEW_APP_QUALITY_GLOBAL"
                         ],
                         "enumDescriptions": [
                             "Unknown or unspecified permission.",
@@ -7132,7 +7715,9 @@
                             "Create and publish private apps to your organization.",
                             "Choose whether apps are public, or only available to your organization.",
                             "Manage orders and subscriptions.",
-                            "Manage policy related pages on all apps for the developer."
+                            "Manage policy related pages on all apps for the developer.",
+                            "View app information and download bulk reports (read-only).",
+                            "View app quality information for all apps for the developer."
                         ],
                         "type": "string"
                     },
@@ -7227,6 +7812,24 @@
             },
             "type": "object"
         },
+        "UserCountriesTargeting": {
+            "description": "Describes an inclusive/exclusive list of country codes that module targets.",
+            "id": "UserCountriesTargeting",
+            "properties": {
+                "countryCodes": {
+                    "description": "List of country codes in the two-letter CLDR territory format.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "exclude": {
+                    "description": "Indicates if the list above is exclusive.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "UserCountrySet": {
             "description": "A set of user countries. A country set determines what variation of app content gets served to a specific location.",
             "id": "UserCountrySet",
@@ -7294,6 +7897,33 @@
             },
             "type": "object"
         },
+        "VariantTargeting": {
+            "description": "Targeting on the level of variants.",
+            "id": "VariantTargeting",
+            "properties": {
+                "abiTargeting": {
+                    "$ref": "AbiTargeting",
+                    "description": "The abi that the variant targets"
+                },
+                "multiAbiTargeting": {
+                    "$ref": "MultiAbiTargeting",
+                    "description": "Multi-api-level targeting"
+                },
+                "screenDensityTargeting": {
+                    "$ref": "ScreenDensityTargeting",
+                    "description": "The screen densities that this variant supports"
+                },
+                "sdkVersionTargeting": {
+                    "$ref": "SdkVersionTargeting",
+                    "description": "The sdk version that the variant targets"
+                },
+                "textureCompressionFormatTargeting": {
+                    "$ref": "TextureCompressionFormatTargeting",
+                    "description": "Texture-compression-format-level targeting"
+                }
+            },
+            "type": "object"
+        },
         "VoidedPurchase": {
             "description": "A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-back.",
             "id": "VoidedPurchase",
@@ -7354,8 +7984,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play Android Developer API",
-    "version": "v3"
+    }
 }

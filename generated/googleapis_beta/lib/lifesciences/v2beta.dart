@@ -882,7 +882,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location;
 
 /// Carries information about a particular disk mount inside a container.

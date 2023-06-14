@@ -28,6 +28,12 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "packagePath": "admin",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://admin.googleapis.com/",
+    "servicePath": "",
+    "title": "Admin SDK API",
+    "version": "reports_v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -105,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "activities": {
             "methods": {
@@ -429,7 +434,7 @@
                             "type": "string"
                         },
                         "date": {
-                            "description": "Represents the date the usage occurred, based on PST time zone. The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.",
+                            "description": "Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.",
                             "location": "path",
                             "pattern": "(\\d){4}-(\\d){2}-(\\d){2}",
                             "required": true,
@@ -477,7 +482,7 @@
                             "type": "string"
                         },
                         "date": {
-                            "description": "Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone for this.",
+                            "description": "Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.",
                             "location": "path",
                             "pattern": "(\\d){4}-(\\d){2}-(\\d){2}",
                             "required": true,
@@ -558,7 +563,7 @@
                             "type": "string"
                         },
                         "date": {
-                            "description": "Represents the date the usage occurred, based on GMT-7:00 (Pacific Standard Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.",
+                            "description": "Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.",
                             "location": "path",
                             "pattern": "(\\d){4}-(\\d){2}-(\\d){2}",
                             "required": true,
@@ -621,8 +626,6 @@
             }
         }
     },
-    "revision": "20230516",
-    "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Activities": {
             "description": "JSON template for a collection of activities.",
@@ -1067,8 +1070,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Admin SDK API",
-    "version": "reports_v1"
+    }
 }

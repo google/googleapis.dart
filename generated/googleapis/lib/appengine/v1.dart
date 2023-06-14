@@ -33,6 +33,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsApplicationsResource]
+///       - [ProjectsLocationsApplicationsServicesResource]
 library appengine_v1;
 
 import 'dart:async' as async;
@@ -2109,6 +2110,9 @@ class ProjectsLocationsResource {
 class ProjectsLocationsApplicationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsApplicationsServicesResource get services =>
+      ProjectsLocationsApplicationsServicesResource(_requester);
+
   ProjectsLocationsApplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2211,6 +2215,182 @@ class ProjectsLocationsApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Recreates the required App Engine features for the specified App Engine
+  /// application, for example a Cloud Storage bucket or App Engine service
+  /// account.
+  ///
+  /// Use this method if you receive an error message about a missing feature,
+  /// for example, Error retrieving the App Engine service account. If you have
+  /// deleted your App Engine service account, this will not be able to recreate
+  /// it. Instead, you should attempt to use the IAM undelete API if possible at
+  /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
+  /// . If the deletion was recent, the numeric ID can be found in the Cloud
+  /// Console Activity Log.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the application to repair. Example:
+  /// apps/myapp
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> repair(
+    RepairApplicationRequest request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        ':repair';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsApplicationsServicesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsServicesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the current configuration of the specified service.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
+  /// apps/myapp/services/default.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Service].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Service> get(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the services in the application.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServicesResponse> list(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServicesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }

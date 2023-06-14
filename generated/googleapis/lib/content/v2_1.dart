@@ -30,7 +30,6 @@
 /// - [CollectionstatusesResource]
 /// - [ConversionsourcesResource]
 /// - [CssesResource]
-/// - [CustomersResource]
 /// - [DatafeedsResource]
 /// - [DatafeedstatusesResource]
 /// - [FreelistingsprogramResource]
@@ -98,7 +97,6 @@ class ShoppingContentApi {
   ConversionsourcesResource get conversionsources =>
       ConversionsourcesResource(_requester);
   CssesResource get csses => CssesResource(_requester);
-  CustomersResource get customers => CustomersResource(_requester);
   DatafeedsResource get datafeeds => DatafeedsResource(_requester);
   DatafeedstatusesResource get datafeedstatuses =>
       DatafeedstatusesResource(_requester);
@@ -2506,56 +2504,6 @@ class CssesResource {
       queryParams: queryParams_,
     );
     return Css.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class CustomersResource {
-  final commons.ApiRequester _requester;
-
-  CustomersResource(commons.ApiRequester client) : _requester = client;
-
-  /// Allows uploading one customer information entry.
-  ///
-  /// Adding a customer with loyalty data enables the customer to see
-  /// personalized loyalty annotations on search. Uploading a previously
-  /// existing customer will overwrite the old entry.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The ID of the account that owns the customer
-  /// information.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Customer].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Customer> create(
-    Customer request,
-    core.String merchantId, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/customers';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Customer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6435,6 +6383,67 @@ class PromotionsResource {
       queryParams: queryParams_,
     );
     return Promotion.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all promotions from your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that contains the
+  /// collection.
+  ///
+  /// [countryCode] -
+  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// (for example, "US"), used as a filter on promotions target country.
+  ///
+  /// [languageCode] - The two-letter ISO 639-1 language code associated with
+  /// the promotions, used as a filter.
+  ///
+  /// [pageSize] - The maximum number of promotions to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 labels will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPromotion` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListPromotion` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPromotionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPromotionResponse> list(
+    core.String merchantId, {
+    core.String? countryCode,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (countryCode != null) 'countryCode': [countryCode],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') + '/promotions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPromotionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12429,65 +12438,6 @@ class CustomAttribute {
       };
 }
 
-/// The object representing a customer to update data for.
-///
-/// Includes a customer identifier (such as email address) and any associated
-/// metadata to add. LoyaltyData triggers adding customer data for the purpose
-/// of loyalty personalization.
-class Customer {
-  /// The customer's email address.
-  ///
-  /// No extra string processing needed.
-  core.String? emailAddress;
-
-  /// Loyalty data associated with the customer.
-  CustomerLoyaltyData? loyaltyData;
-
-  Customer({
-    this.emailAddress,
-    this.loyaltyData,
-  });
-
-  Customer.fromJson(core.Map json_)
-      : this(
-          emailAddress: json_.containsKey('emailAddress')
-              ? json_['emailAddress'] as core.String
-              : null,
-          loyaltyData: json_.containsKey('loyaltyData')
-              ? CustomerLoyaltyData.fromJson(
-                  json_['loyaltyData'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (loyaltyData != null) 'loyaltyData': loyaltyData!,
-      };
-}
-
-/// The loyalty data of the customer.
-class CustomerLoyaltyData {
-  /// The tier information for the given user.
-  ///
-  /// Can be an empty string.
-  core.String? loyaltyTier;
-
-  CustomerLoyaltyData({
-    this.loyaltyTier,
-  });
-
-  CustomerLoyaltyData.fromJson(core.Map json_)
-      : this(
-          loyaltyTier: json_.containsKey('loyaltyTier')
-              ? json_['loyaltyTier'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (loyaltyTier != null) 'loyaltyTier': loyaltyTier!,
-      };
-}
-
 class CustomerReturnReason {
   /// Description of the reason.
   core.String? description;
@@ -15766,6 +15716,40 @@ class ListMethodQuotasResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (methodQuotas != null) 'methodQuotas': methodQuotas!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for Promotions.List method.
+class ListPromotionResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of all available promotions for the merchant.
+  core.List<Promotion>? promotions;
+
+  ListPromotionResponse({
+    this.nextPageToken,
+    this.promotions,
+  });
+
+  ListPromotionResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          promotions: json_.containsKey('promotions')
+              ? (json_['promotions'] as core.List)
+                  .map((value) => Promotion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (promotions != null) 'promotions': promotions!,
       };
 }
 
@@ -23341,6 +23325,12 @@ class Product {
   /// URL for the canonical version of your item's landing page.
   core.String? canonicalLink;
 
+  /// Product
+  /// [certification](https://support.google.com/merchants/answer/13528839),
+  /// introduced for EU energy efficiency labeling compliance using the
+  /// [EU EPREL](https://eprel.ec.europa.eu/screen/home) database.
+  core.List<ProductCertification>? certifications;
+
   /// The item's channel (online or local).
   ///
   /// Acceptable values are: - "`local`" - "`online`"
@@ -23398,9 +23388,9 @@ class Product {
   /// Google’s YouTube surfaces, in
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
   ///
-  /// See \[Disclosure date\](
-  /// https://support.google.com/merchants/answer/13034208) for more
-  /// information.
+  /// See
+  /// [Disclosure date](https://support.google.com/merchants/answer/13034208)
+  /// for more information.
   core.String? disclosureDate;
 
   /// An identifier for an item for dynamic remarketing campaigns.
@@ -23717,6 +23707,7 @@ class Product {
     this.availabilityDate,
     this.brand,
     this.canonicalLink,
+    this.certifications,
     this.channel,
     this.cloudExportAdditionalProperties,
     this.color,
@@ -23839,6 +23830,12 @@ class Product {
               json_.containsKey('brand') ? json_['brand'] as core.String : null,
           canonicalLink: json_.containsKey('canonicalLink')
               ? json_['canonicalLink'] as core.String
+              : null,
+          certifications: json_.containsKey('certifications')
+              ? (json_['certifications'] as core.List)
+                  .map((value) => ProductCertification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           channel: json_.containsKey('channel')
               ? json_['channel'] as core.String
@@ -24149,6 +24146,7 @@ class Product {
         if (availabilityDate != null) 'availabilityDate': availabilityDate!,
         if (brand != null) 'brand': brand!,
         if (canonicalLink != null) 'canonicalLink': canonicalLink!,
+        if (certifications != null) 'certifications': certifications!,
         if (channel != null) 'channel': channel!,
         if (cloudExportAdditionalProperties != null)
           'cloudExportAdditionalProperties': cloudExportAdditionalProperties!,
@@ -24287,6 +24285,53 @@ class ProductAmount {
         if (priceAmount != null) 'priceAmount': priceAmount!,
         if (remittedTaxAmount != null) 'remittedTaxAmount': remittedTaxAmount!,
         if (taxAmount != null) 'taxAmount': taxAmount!,
+      };
+}
+
+/// Product
+/// [certification](https://support.google.com/merchants/answer/13528839),
+/// introduced for EU energy efficiency labeling compliance using the
+/// [EU EPREL](https://eprel.ec.europa.eu/screen/home) database.
+class ProductCertification {
+  /// The certification authority, for example "European_Commission".
+  ///
+  /// Maximum length is 2000 characters.
+  core.String? certificationAuthority;
+
+  /// The certification code, for eaxample "123456".
+  ///
+  /// Maximum length is 2000 characters.
+  core.String? certificationCode;
+
+  /// The name of the certification, for example "EPREL".
+  ///
+  /// Maximum length is 2000 characters.
+  core.String? certificationName;
+
+  ProductCertification({
+    this.certificationAuthority,
+    this.certificationCode,
+    this.certificationName,
+  });
+
+  ProductCertification.fromJson(core.Map json_)
+      : this(
+          certificationAuthority: json_.containsKey('certificationAuthority')
+              ? json_['certificationAuthority'] as core.String
+              : null,
+          certificationCode: json_.containsKey('certificationCode')
+              ? json_['certificationCode'] as core.String
+              : null,
+          certificationName: json_.containsKey('certificationName')
+              ? json_['certificationName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificationAuthority != null)
+          'certificationAuthority': certificationAuthority!,
+        if (certificationCode != null) 'certificationCode': certificationCode!,
+        if (certificationName != null) 'certificationName': certificationName!,
       };
 }
 
@@ -27667,6 +27712,7 @@ class ReportInteractionRequest {
   /// - "INTERACTION_TYPE_UNSPECIFIED" : Default value. If provided, the service
   /// will throw ApiError with description "Required parameter:
   /// interactionType".
+  /// - "INTERACTION_DISMISS" : When a recommendation is dismissed.
   /// - "INTERACTION_CLICK" : When a recommendation is clicked.
   core.String? interactionType;
 
@@ -30491,6 +30537,16 @@ class ServiceStoreConfigCutoffConfig {
   /// Time in hours and minutes in the local timezone when local delivery ends.
   ServiceStoreConfigCutoffConfigLocalCutoffTime? localCutoffTime;
 
+  /// Merchants can opt-out of showing n+1 day local delivery when they have a
+  /// shipping service configured to n day local delivery.
+  ///
+  /// For example, if the shipping service defines same-day delivery, and it's
+  /// past the cut-off, setting this field to `true` results in the calculated
+  /// shipping service rate returning `NO_DELIVERY_POST_CUTOFF`. In the same
+  /// example, setting this field to `false` results in the calculated shipping
+  /// time being one day. This is only for local delivery.
+  core.bool? noDeliveryPostCutoff;
+
   /// Represents cutoff time as the number of hours before store closing.
   ///
   /// Mutually exclusive with other fields (hour and minute).
@@ -30498,6 +30554,7 @@ class ServiceStoreConfigCutoffConfig {
 
   ServiceStoreConfigCutoffConfig({
     this.localCutoffTime,
+    this.noDeliveryPostCutoff,
     this.storeCloseOffsetHours,
   });
 
@@ -30508,6 +30565,9 @@ class ServiceStoreConfigCutoffConfig {
                   json_['localCutoffTime']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          noDeliveryPostCutoff: json_.containsKey('noDeliveryPostCutoff')
+              ? json_['noDeliveryPostCutoff'] as core.bool
+              : null,
           storeCloseOffsetHours: json_.containsKey('storeCloseOffsetHours')
               ? json_['storeCloseOffsetHours'] as core.String
               : null,
@@ -30515,6 +30575,8 @@ class ServiceStoreConfigCutoffConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localCutoffTime != null) 'localCutoffTime': localCutoffTime!,
+        if (noDeliveryPostCutoff != null)
+          'noDeliveryPostCutoff': noDeliveryPostCutoff!,
         if (storeCloseOffsetHours != null)
           'storeCloseOffsetHours': storeCloseOffsetHours!,
       };

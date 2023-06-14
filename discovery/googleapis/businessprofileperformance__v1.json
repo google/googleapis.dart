@@ -15,6 +15,13 @@
     "name": "businessprofileperformance",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://businessprofileperformance.googleapis.com/",
+    "servicePath": "",
+    "title": "Business Profile Performance API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "locations": {
             "methods": {
@@ -131,7 +137,7 @@
                                 "The number of times a direction request was requested to the business location.",
                                 "The number of times the business profile call button was clicked.",
                                 "The number of times the business profile website was clicked.",
-                                "The number of bookings received from the business profile.",
+                                "The number of bookings made from the business profile via Reserve with Google.",
                                 "The number of food orders received from the business profile.",
                                 "The number of clicks to view or interact with the menu content on the business profile. Multiple clicks by a unique user within a single day are counted as 1."
                             ],
@@ -223,7 +229,7 @@
                                 "The number of times a direction request was requested to the business location.",
                                 "The number of times the business profile call button was clicked.",
                                 "The number of times the business profile website was clicked.",
-                                "The number of bookings received from the business profile.",
+                                "The number of bookings made from the business profile via Reserve with Google.",
                                 "The number of food orders received from the business profile.",
                                 "The number of clicks to view or interact with the menu content on the business profile. Multiple clicks by a unique user within a single day are counted as 1."
                             ],
@@ -415,8 +421,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://businessprofileperformance.googleapis.com/",
     "schemas": {
         "DailyMetricTimeSeries": {
             "description": "Represents a single datapoint, where each datapoint is a DailyMetric-DailySubEntityType-TimeSeries tuple.",
@@ -448,7 +452,7 @@
                         "The number of times a direction request was requested to the business location.",
                         "The number of times the business profile call button was clicked.",
                         "The number of times the business profile website was clicked.",
-                        "The number of bookings received from the business profile.",
+                        "The number of bookings made from the business profile via Reserve with Google.",
                         "The number of food orders received from the business profile.",
                         "The number of clicks to view or interact with the menu content on the business profile. Multiple clicks by a unique user within a single day are counted as 1."
                     ],
@@ -669,9 +673,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Business Profile Performance API",
-    "version": "v1",
-    "version_module": true
+    }
 }

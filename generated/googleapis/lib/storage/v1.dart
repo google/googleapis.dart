@@ -1574,7 +1574,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1630,7 +1631,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1691,7 +1693,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -1747,7 +1750,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -1802,7 +1806,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1866,7 +1871,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1938,7 +1944,8 @@ class ObjectsResource {
   /// The destination object is stored in this bucket.
   ///
   /// [destinationObject] - Name of the new object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationPredefinedAcl] - Apply a predefined set of access controls to
   /// the destination object.
@@ -2029,12 +2036,13 @@ class ObjectsResource {
   /// [sourceBucket] - Name of the bucket in which to find the source object.
   ///
   /// [sourceObject] - Name of the source object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationBucket] - Name of the bucket in which to store the new object.
   /// Overrides the provided object metadata's bucket value, if any.For
   /// information about how to URL encode object names to be path safe, see
-  /// Encoding URI Path Parts.
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationObject] - Name of the new object. Required when the object
   /// metadata is not otherwise provided. Overrides the object metadata's name
@@ -2188,7 +2196,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, permanently deletes a specific revision of this
   /// object (as opposed to the latest version, the default).
@@ -2263,7 +2272,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2361,7 +2371,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2444,7 +2455,7 @@ class ObjectsResource {
   /// [name] - Name of the object. Required when the object metadata is not
   /// otherwise provided. Overrides the object metadata's name value, if any.
   /// For information about how to URL encode object names to be path safe, see
-  /// Encoding URI Path Parts.
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [predefinedAcl] - Apply a predefined set of access controls to this
   /// object.
@@ -2652,7 +2663,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2760,7 +2772,8 @@ class ObjectsResource {
   /// [sourceBucket] - Name of the bucket in which to find the source object.
   ///
   /// [sourceObject] - Name of the source object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationBucket] - Name of the bucket in which to store the new object.
   /// Overrides the provided object metadata's bucket value, if any.
@@ -2768,7 +2781,8 @@ class ObjectsResource {
   /// [destinationObject] - Name of the new object. Required when the object
   /// metadata is not otherwise provided. Overrides the object metadata's name
   /// value, if any. For information about how to URL encode object names to be
-  /// path safe, see Encoding URI Path Parts.
+  /// path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationKmsKeyName] - Resource name of the Cloud KMS key, of the form
   /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key,
@@ -2936,7 +2950,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2992,7 +3007,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [permissions] - Permissions to test.
   ///
@@ -3054,7 +3070,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).

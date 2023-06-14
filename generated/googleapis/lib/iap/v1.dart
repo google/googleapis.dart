@@ -934,6 +934,50 @@ class V1Resource {
     return IapSettings.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Validates a given CEL expression conforms to IAP restrictions.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the IAP protected resource.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [expression] - Required. User input string expression. Should be of the
+  /// form 'attributes.saml_attributes.filter(attribute, attribute.name in
+  /// \['{attribute_name}', '{attribute_name}'\])'
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateIapAttributeExpressionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateIapAttributeExpressionResponse>
+      validateAttributeExpression(
+    core.String name, {
+    core.String? expression,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (expression != null) 'expression': [expression],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':validateAttributeExpression';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return ValidateIapAttributeExpressionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// Custom content configuration for access denied page.
@@ -2122,3 +2166,9 @@ class TunnelDestGroup {
         if (name != null) 'name': name!,
       };
 }
+
+/// API requires a return message, but currently all response strings will fit
+/// in the status and public message.
+///
+/// In the future, this response can hold AST validation info.
+typedef ValidateIapAttributeExpressionResponse = $Empty;

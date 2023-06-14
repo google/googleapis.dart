@@ -36,6 +36,13 @@
     "name": "youtubeAnalytics",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://youtubeanalytics.googleapis.com/",
+    "servicePath": "",
+    "title": "YouTube Analytics API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -113,7 +120,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "groupItems": {
             "methods": {
@@ -419,8 +425,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://youtubeanalytics.googleapis.com/",
     "schemas": {
         "EmptyResponse": {
             "description": "Empty response.",
@@ -737,9 +741,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "YouTube Analytics API",
-    "version": "v2",
-    "version_module": true
+    }
 }

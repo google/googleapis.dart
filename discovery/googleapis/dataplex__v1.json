@@ -24,6 +24,13 @@
     "name": "dataplex",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://dataplex.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Dataplex API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -893,6 +899,11 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "filter": {
+                                                    "description": "Optional. An expression for filtering the results of the ListDataScanJobs request.If unspecified, all datascan jobs will be returned. Multiple filters can be applied (with AND, OR logical operators). Filters are case-sensitive.Allowed fields are: start_time end_timestart_time and end_time expect RFC-3339 formatted strings (e.g. 2018-10-08T18:30:00-07:00).For instance, 'start_time > 2018-10-08T00:00:00.123456789Z AND end_time < 2018-10-09T00:00:00.123456789Z' limits results to DataScanJobs between specified start and end times.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "pageSize": {
                                                     "description": "Optional. Maximum number of DataScanJobs to return. The service may return fewer than this value. If unspecified, at most 10 DataScanJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                                     "format": "int32",
@@ -4261,8 +4272,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://dataplex.googleapis.com/",
     "schemas": {
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } ",
@@ -5192,7 +5201,7 @@
                     "description": "String type field information."
                 },
                 "topNValues": {
-                    "description": "The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.",
+                    "description": "The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.",
                     "items": {
                         "$ref": "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue"
                     },
@@ -5256,7 +5265,7 @@
                     "type": "string"
                 },
                 "quartiles": {
-                    "description": "A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.",
+                    "description": "A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -5302,6 +5311,11 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "ratio": {
+                    "description": "Ratio of the corresponding value in the field against the total number of rows in the scanned data.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "value": {
                     "description": "String value of a top N non-null value.",
                     "type": "string"
@@ -5313,6 +5327,14 @@
             "description": "DataProfileScan related setting.",
             "id": "GoogleCloudDataplexV1DataProfileSpec",
             "properties": {
+                "excludeFields": {
+                    "$ref": "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
+                    "description": "Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value."
+                },
+                "includeFields": {
+                    "$ref": "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
+                    "description": "Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields."
+                },
                 "rowFilter": {
                     "description": "Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10",
                     "type": "string"
@@ -5321,6 +5343,20 @@
                     "description": "Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.",
                     "format": "float",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDataplexV1DataProfileSpecSelectedFields": {
+            "description": "The specification for fields to include or exclude in data profile scan.",
+            "id": "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
+            "properties": {
+                "fieldNames": {
+                    "description": "Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5378,50 +5414,58 @@
                     "description": "Optional. The unnested column which this rule is evaluated against.",
                     "type": "string"
                 },
+                "description": {
+                    "description": "Optional. Description of the rule. The maximum length is 1,024 characters.",
+                    "type": "string"
+                },
                 "dimension": {
                     "description": "Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are \"COMPLETENESS\", \"ACCURACY\", \"CONSISTENCY\", \"VALIDITY\", \"UNIQUENESS\", \"INTEGRITY\"",
                     "type": "string"
                 },
                 "ignoreNull": {
-                    "description": "Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.",
+                    "description": "Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.",
                     "type": "boolean"
+                },
+                "name": {
+                    "description": "Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.",
+                    "type": "string"
                 },
                 "nonNullExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleNonNullExpectation",
-                    "description": "ColumnMap rule which evaluates whether each column value is null."
+                    "description": "Row-level rule which evaluates whether each column value is null."
                 },
                 "rangeExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleRangeExpectation",
-                    "description": "ColumnMap rule which evaluates whether each column value lies between a specified range."
+                    "description": "Row-level rule which evaluates whether each column value lies between a specified range."
                 },
                 "regexExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleRegexExpectation",
-                    "description": "ColumnMap rule which evaluates whether each column value matches a specified regex."
+                    "description": "Row-level rule which evaluates whether each column value matches a specified regex."
                 },
                 "rowConditionExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation",
-                    "description": "Table rule which evaluates whether each row passes the specified condition."
+                    "description": "Row-level rule which evaluates whether each row in a table passes the specified condition."
                 },
                 "setExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleSetExpectation",
-                    "description": "ColumnMap rule which evaluates whether each column value is contained by a specified set."
+                    "description": "Row-level rule which evaluates whether each column value is contained by a specified set."
                 },
                 "statisticRangeExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation",
-                    "description": "ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range."
+                    "description": "Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range."
                 },
                 "tableConditionExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation",
-                    "description": "Table rule which evaluates whether the provided expression is true."
+                    "description": "Aggregate rule which evaluates whether the provided expression is true for a table."
                 },
                 "threshold": {
-                    "description": "Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).",
+                    "description": "Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.",
                     "format": "double",
                     "type": "number"
                 },
                 "uniquenessExpectation": {
                     "$ref": "GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation",
-                    "description": "ColumnAggregate rule which evaluates whether the column has duplicates."
+                    "description": "Aggregate rule which evaluates whether the column has duplicates."
                 }
             },
             "type": "object"
@@ -5471,12 +5515,12 @@
             "id": "GoogleCloudDataplexV1DataQualityRuleResult",
             "properties": {
                 "evaluatedCount": {
-                    "description": "The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.",
+                    "description": "The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.",
                     "format": "int64",
                     "type": "string"
                 },
                 "failingRowsQuery": {
-                    "description": "The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.",
+                    "description": "The query to find rows that did not pass this rule.This field is only valid for row-level type rules.",
                     "type": "string"
                 },
                 "nullCount": {
@@ -5485,7 +5529,7 @@
                     "type": "string"
                 },
                 "passRatio": {
-                    "description": "The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.",
+                    "description": "The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.",
                     "format": "double",
                     "type": "number"
                 },
@@ -5494,7 +5538,7 @@
                     "type": "boolean"
                 },
                 "passedCount": {
-                    "description": "The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.",
+                    "description": "The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -5755,6 +5799,10 @@
                     "description": "The message describing the data scan job event.",
                     "type": "string"
                 },
+                "postScanActionsResult": {
+                    "$ref": "GoogleCloudDataplexV1DataScanEventPostScanActionsResult",
+                    "description": "The result of post scan actions."
+                },
                 "scope": {
                     "description": "The scope of the data scan (e.g. full, incremental).",
                     "enum": [
@@ -5831,6 +5879,10 @@
             "description": "Applied configs for data profile type data scan job.",
             "id": "GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs",
             "properties": {
+                "columnFilterApplied": {
+                    "description": "Boolean indicating whether a column filter was applied in the DataScan job.",
+                    "type": "boolean"
+                },
                 "rowFilterApplied": {
                     "description": "Boolean indicating whether a row filter was applied in the DataScan job.",
                     "type": "boolean"
@@ -5889,6 +5941,44 @@
                 "rowCount": {
                     "description": "The count of rows processed in the data scan job.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDataplexV1DataScanEventPostScanActionsResult": {
+            "description": "Post scan actions result for data scan job.",
+            "id": "GoogleCloudDataplexV1DataScanEventPostScanActionsResult",
+            "properties": {
+                "bigqueryExportResult": {
+                    "$ref": "GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult",
+                    "description": "The result of BigQuery export post scan action."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult": {
+            "description": "The result of BigQuery export post scan action.",
+            "id": "GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult",
+            "properties": {
+                "message": {
+                    "description": "Additional information about the BigQuery exporting.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Execution state for the BigQuery exporting.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "SKIPPED"
+                    ],
+                    "enumDescriptions": [
+                        "The exporting state is unspecified.",
+                        "The exporting completed successfully.",
+                        "The exporting is no longer running due to an error.",
+                        "The exporting is skipped due to no valid scan result to export (usually caused by scan failed)."
+                    ],
                     "type": "string"
                 }
             },
@@ -6383,7 +6473,7 @@
             "type": "object"
         },
         "GoogleCloudDataplexV1Environment": {
-            "description": "Environment represents a user-visible compute infrastructure for analytics within a lake.",
+            "description": "Environment represents a user-visible compute infrastructure for analytics within a lake. LINT.IfChange",
             "id": "GoogleCloudDataplexV1Environment",
             "properties": {
                 "createTime": {
@@ -6587,6 +6677,19 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "executionSpec": {
+                    "$ref": "GoogleCloudDataplexV1TaskExecutionSpec",
+                    "description": "Output only. Spec related to how a task is executed.",
+                    "readOnly": true
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. User-defined labels for the task.",
+                    "readOnly": true,
+                    "type": "object"
+                },
                 "message": {
                     "description": "Output only. Additional information about the current state.",
                     "readOnly": true,
@@ -6650,6 +6753,21 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "trigger": {
+                    "description": "Output only. Job execution trigger.",
+                    "enum": [
+                        "TRIGGER_UNSPECIFIED",
+                        "TASK_CONFIG",
+                        "RUN_REQUEST"
+                    ],
+                    "enumDescriptions": [
+                        "The trigger is unspecified.",
+                        "The job was triggered by Dataplex based on trigger spec from task definition.",
+                        "The job was triggered by the explicit call of Task API."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "uid": {
                     "description": "Output only. System generated globally unique ID for the job.",
                     "readOnly": true,
@@ -6665,6 +6783,20 @@
                 "endTime": {
                     "description": "The time when the job ended running.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "executionTrigger": {
+                    "description": "Job execution trigger.",
+                    "enum": [
+                        "EXECUTION_TRIGGER_UNSPECIFIED",
+                        "TASK_CONFIG",
+                        "RUN_REQUEST"
+                    ],
+                    "enumDescriptions": [
+                        "The job execution trigger is unspecified.",
+                        "The job was triggered by Dataplex based on trigger spec from task definition.",
+                        "The job was triggered by the explicit call of Task API."
+                    ],
                     "type": "string"
                 },
                 "jobId": {
@@ -7315,7 +7447,22 @@
         },
         "GoogleCloudDataplexV1RunTaskRequest": {
             "id": "GoogleCloudDataplexV1RunTaskRequest",
-            "properties": {},
+            "properties": {
+                "args": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Execution spec arguments. If the map is left empty, the task will run with existing execution spec args from task definition. If the map contains an entry with a new key, the same will be added to existing set of args. If the map contains an entry with an existing arg key in task definition, the task will run with new arg value for that entry. Clearing an existing arg will require arg value to be explicitly set to a hyphen \"-\". The arg value cannot be empty.",
+                    "type": "object"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. User-defined labels for the task. If the map is left empty, the task will run with existing labels from task definition. If the map contains an entry with a new key, the same will be added to existing set of labels. If the map contains an entry with an existing label key in task definition, the task will run with new label value for that entry. Clearing an existing label will require label value to be explicitly set to a hyphen \"-\". The label value cannot be empty.",
+                    "type": "object"
+                }
+            },
             "type": "object"
         },
         "GoogleCloudDataplexV1RunTaskResponse": {
@@ -8665,9 +8812,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Dataplex API",
-    "version": "v1",
-    "version_module": true
+    }
 }

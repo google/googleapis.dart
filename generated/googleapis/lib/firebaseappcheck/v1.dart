@@ -2527,10 +2527,17 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest({
     this.artifact,
     this.assertion,
     this.challenge,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
@@ -2545,12 +2552,16 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
           challenge: json_.containsKey('challenge')
               ? json_['challenge'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifact != null) 'artifact': artifact!,
         if (assertion != null) 'assertion': assertion!,
         if (challenge != null) 'challenge': challenge!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2593,10 +2604,17 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest({
     this.attestationStatement,
     this.challenge,
     this.keyId,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
@@ -2610,6 +2628,9 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
               : null,
           keyId:
               json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2617,6 +2638,7 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
           'attestationStatement': attestationStatement!,
         if (challenge != null) 'challenge': challenge!,
         if (keyId != null) 'keyId': keyId!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2666,8 +2688,15 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest({
     this.customToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(core.Map json_)
@@ -2675,10 +2704,14 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
           customToken: json_.containsKey('customToken')
               ? json_['customToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customToken != null) 'customToken': customToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2692,8 +2725,15 @@ class GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
   /// Required.
   core.String? debugToken;
 
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest({
     this.debugToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(core.Map json_)
@@ -2701,10 +2741,14 @@ class GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
           debugToken: json_.containsKey('debugToken')
               ? json_['debugToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugToken != null) 'debugToken': debugToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2718,8 +2762,15 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
   /// Required.
   core.String? deviceToken;
 
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest({
     this.deviceToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
@@ -2728,15 +2779,25 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
           deviceToken: json_.containsKey('deviceToken')
               ? json_['deviceToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceToken != null) 'deviceToken': deviceToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
 /// Request message for the ExchangePlayIntegrityToken method.
 class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The
   /// [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify)
   /// issued to your app.
@@ -2745,18 +2806,23 @@ class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
   core.String? playIntegrityToken;
 
   GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest({
+    this.limitedUse,
     this.playIntegrityToken,
   });
 
   GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           playIntegrityToken: json_.containsKey('playIntegrityToken')
               ? json_['playIntegrityToken'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (playIntegrityToken != null)
           'playIntegrityToken': playIntegrityToken!,
       };
@@ -2764,6 +2830,12 @@ class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The reCAPTCHA token as returned by the
   /// [reCAPTCHA Enterprise JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages).
   ///
@@ -2771,12 +2843,16 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
   core.String? recaptchaEnterpriseToken;
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest({
+    this.limitedUse,
     this.recaptchaEnterpriseToken,
   });
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           recaptchaEnterpriseToken:
               json_.containsKey('recaptchaEnterpriseToken')
                   ? json_['recaptchaEnterpriseToken'] as core.String
@@ -2784,6 +2860,7 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (recaptchaEnterpriseToken != null)
           'recaptchaEnterpriseToken': recaptchaEnterpriseToken!,
       };
@@ -2791,6 +2868,12 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
 
 /// Request message for the ExchangeRecaptchaV3Token method.
 class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
+  /// Forces a short lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to self impose stricter TTL requirements for
+  /// this exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The reCAPTCHA token as returned by the
   /// [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3).
   ///
@@ -2798,18 +2881,23 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
   core.String? recaptchaV3Token;
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest({
+    this.limitedUse,
     this.recaptchaV3Token,
   });
 
   GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           recaptchaV3Token: json_.containsKey('recaptchaV3Token')
               ? json_['recaptchaV3Token'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (recaptchaV3Token != null) 'recaptchaV3Token': recaptchaV3Token!,
       };
 }
@@ -3299,7 +3387,11 @@ class GoogleFirebaseAppcheckV1Service {
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this
   /// mode, other applicable protections, such as user authorization, are still
-  /// enforced.
+  /// enforced. Some services require certain conditions to be met before they
+  /// will work with App Check, such as requiring you to upgrade to a specific
+  /// service tier. Until those requirements are met for a service, this
+  /// `UNENFORCED` setting will have no effect and App Check will not work with
+  /// that service.
   /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
   /// will reject any request that attempts to access your project's resources
   /// if it does not have valid App Check token attached, with some exceptions
@@ -3315,7 +3407,12 @@ class GoogleFirebaseAppcheckV1Service {
   /// Firebase services that are enforcing App Check. App Check metrics can help
   /// you decide whether to enforce App Check on your Firebase services. If your
   /// app has not launched yet, you should enable enforcement immediately, since
-  /// there are no outdated clients in use.
+  /// there are no outdated clients in use. Some services require certain
+  /// conditions to be met before they will work with App Check, such as
+  /// requiring you to upgrade to a specific service tier or requiring you to
+  /// enable the service first. Until those requirements are met for a service,
+  /// this `ENFORCED` setting will have no effect and App Check will not work
+  /// with that service.
   core.String? enforcementMode;
 
   /// The relative resource name of the service configuration object, in the

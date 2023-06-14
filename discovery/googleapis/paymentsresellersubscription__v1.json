@@ -15,6 +15,13 @@
     "name": "paymentsresellersubscription",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
+    "servicePath": "",
+    "title": "Payments Reseller Subscription API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "partners": {
             "resources": {
@@ -394,8 +400,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "schemas": {
         "GoogleCloudPaymentsResellerSubscriptionV1Amount": {
             "description": "Describes the amount unit including the currency code.",
@@ -432,6 +436,7 @@
                         "CANCELLATION_REASON_UPGRADE_DOWNGRADE",
                         "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_SYSTEM_ERROR",
+                        "CANCELLATION_REASON_SYSTEM_CANCEL",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
@@ -444,6 +449,7 @@
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
                         "Cancellation due to an unrecoverable system error.",
+                        "Cancellation by a system.",
                         "Other reason."
                     ],
                     "type": "string"
@@ -742,7 +748,7 @@
             "properties": {
                 "googleOnePayload": {
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload",
-                    "description": "Payload specific to Google One products."
+                    "description": "Product-specific payloads. Payload specific to Google One products."
                 },
                 "youtubePayload": {
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload",
@@ -1047,6 +1053,7 @@
                         "CANCELLATION_REASON_UPGRADE_DOWNGRADE",
                         "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_SYSTEM_ERROR",
+                        "CANCELLATION_REASON_SYSTEM_CANCEL",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
@@ -1059,6 +1066,7 @@
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
                         "Cancellation due to an unrecoverable system error.",
+                        "Cancellation by a system.",
                         "Other reason."
                     ],
                     "type": "string"
@@ -1248,6 +1256,12 @@
             "description": "Payload specific to Youtube products.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload",
             "properties": {
+                "accessEndTime": {
+                    "description": "Output only. The access expiration time for this line item.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "partnerEligibilityIds": {
                     "description": "The list of eligibility_ids which are applicable for the line item.",
                     "items": {
@@ -1273,9 +1287,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Payments Reseller Subscription API",
-    "version": "v1",
-    "version_module": true
+    }
 }

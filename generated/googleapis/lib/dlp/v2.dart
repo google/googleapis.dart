@@ -10,7 +10,7 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Cloud Data Loss Prevention (DLP) API - v2
+/// Cloud Data Loss Prevention (DLP) - v2
 ///
 /// Provides methods for detection, risk analysis, and de-identification of
 /// privacy-sensitive fragments in text, images, and Google Cloud Platform
@@ -6732,9 +6732,11 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// Max number of bytes to scan from a file.
   ///
   /// If a scanned file's size is bigger than this value then the rest of the
-  /// bytes are omitted. Only one of bytes_limit_per_file and
-  /// bytes_limit_per_file_percent can be specified. Cannot be set if
-  /// de-identification is requested.
+  /// bytes are omitted. Only one of `bytes_limit_per_file` and
+  /// `bytes_limit_per_file_percent` can be specified. This field can't be set
+  /// if de-identification is requested. For certain file types, setting this
+  /// field has no effect. For more information, see
+  /// [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
   core.String? bytesLimitPerFile;
 
   /// Max percentage of bytes to scan from a file.
@@ -6742,7 +6744,10 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// The rest are omitted. The number of bytes scanned is rounded down. Must be
   /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
   /// 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can
-  /// be specified. Cannot be set if de-identification is requested.
+  /// be specified. This field can't be set if de-identification is requested.
+  /// For certain file types, setting this field has no effect. For more
+  /// information, see
+  /// [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
   core.int? bytesLimitPerFilePercent;
 
   /// The set of one or more files to scan.
@@ -8376,9 +8381,9 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
       };
 }
 
-/// The results of a Deidentify action from an Inspect job.
+/// The results of a Deidentify action from an inspect job.
 class GooglePrivacyDlpV2DeidentifyDataSourceDetails {
-  /// Stats about de-identification.
+  /// Stats about the de-identification operation.
   GooglePrivacyDlpV2DeidentifyDataSourceStats? deidentifyStats;
 
   /// De-identification config used for the request.
@@ -13335,16 +13340,16 @@ typedef GooglePrivacyDlpV2ReplaceWithInfoTypeConfig = $Empty;
 
 /// De-id options.
 class GooglePrivacyDlpV2RequestedDeidentifyOptions {
-  /// Snapshot of the state of the DeidentifyTemplate from the Deidentify action
-  /// at the time this job was run.
+  /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify
+  /// action at the time this job was run.
   GooglePrivacyDlpV2DeidentifyTemplate? snapshotDeidentifyTemplate;
 
-  /// Snapshot of the state of the image redact DeidentifyTemplate from the
-  /// Deidentify action at the time this job was run.
+  /// Snapshot of the state of the image transformation `DeidentifyTemplate`
+  /// from the `Deidentify` action at the time this job was run.
   GooglePrivacyDlpV2DeidentifyTemplate? snapshotImageRedactTemplate;
 
-  /// Snapshot of the state of the structured DeidentifyTemplate from the
-  /// Deidentify action at the time this job was run.
+  /// Snapshot of the state of the structured `DeidentifyTemplate` from the
+  /// `Deidentify` action at the time this job was run.
   GooglePrivacyDlpV2DeidentifyTemplate? snapshotStructuredDeidentifyTemplate;
 
   GooglePrivacyDlpV2RequestedDeidentifyOptions({
@@ -13646,20 +13651,23 @@ class GooglePrivacyDlpV2SelectedInfoTypes {
       };
 }
 
-/// Score is a summary of all elements in the data profile.
+/// Score is calculated from of all elements in the data profile.
 ///
-/// A higher number means more sensitive.
+/// A higher level means the data is more sensitive.
 class GooglePrivacyDlpV2SensitivityScore {
-  /// The score applied to the resource.
+  /// The sensitivity score applied to the resource.
   /// Possible string values are:
   /// - "SENSITIVITY_SCORE_UNSPECIFIED" : Unused.
-  /// - "SENSITIVITY_LOW" : No sensitive information detected. Limited access.
-  /// - "SENSITIVITY_MODERATE" : Medium risk - PII, potentially sensitive data,
-  /// or fields with free-text data that are at higher risk of having
-  /// intermittent sensitive data. Consider limiting access.
-  /// - "SENSITIVITY_HIGH" : High risk – SPII may be present. Exfiltration of
-  /// data may lead to user data loss. Re-identification of users may be
-  /// possible. Consider limiting usage and or removing SPII.
+  /// - "SENSITIVITY_LOW" : No sensitive information detected. The resource
+  /// isn't publicly accessible.
+  /// - "SENSITIVITY_MODERATE" : Medium risk. Contains personally identifiable
+  /// information (PII), potentially sensitive data, or fields with free-text
+  /// data that are at a higher risk of having intermittent sensitive data.
+  /// Consider limiting access.
+  /// - "SENSITIVITY_HIGH" : High risk. Sensitive personally identifiable
+  /// information (SPII) can be present. Exfiltration of data can lead to user
+  /// data loss. Re-identification of users might be possible. Consider limiting
+  /// usage and or removing SPII.
   core.String? score;
 
   GooglePrivacyDlpV2SensitivityScore({

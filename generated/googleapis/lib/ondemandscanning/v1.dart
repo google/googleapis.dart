@@ -549,6 +549,47 @@ class AttestationOccurrence {
       };
 }
 
+class BinarySourceInfo {
+  /// The binary package.
+  ///
+  /// This is significant when the source is different than the binary itself.
+  /// Historically if they've differed, we've stored the name of the source and
+  /// its version in the package/version fields, but we should also store the
+  /// binary package info, as that's what's actually installed. See
+  /// b/175908657#comment15.
+  PackageVersion? binaryVersion;
+
+  /// The source package.
+  ///
+  /// Similar to the above, this is significant when the source is different
+  /// than the binary itself. Since the top-level package/version fields are
+  /// based on an if/else, we need a separate field for both binary and source
+  /// if we want to know definitively where the data is coming from.
+  PackageVersion? sourceVersion;
+
+  BinarySourceInfo({
+    this.binaryVersion,
+    this.sourceVersion,
+  });
+
+  BinarySourceInfo.fromJson(core.Map json_)
+      : this(
+          binaryVersion: json_.containsKey('binaryVersion')
+              ? PackageVersion.fromJson(
+                  json_['binaryVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceVersion: json_.containsKey('sourceVersion')
+              ? PackageVersion.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryVersion != null) 'binaryVersion': binaryVersion!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
+      };
+}
+
 /// Details of a build occurrence.
 class BuildOccurrence {
   /// See InTotoStatement for the replacement.
@@ -1942,13 +1983,10 @@ class PackageData {
   /// The architecture of the package.
   core.String? architecture;
 
-  /// The binary package.
-  ///
-  /// This is significant when the source is different than the binary itself.
-  /// Historically if they've differed, we've stored the name of the source and
-  /// its version in the package/version fields, but we should also store the
-  /// binary package info, as that's what's actually installed. See
-  /// b/175908657#comment15.
+  /// A bundle containing the binary and source information.
+  core.List<BinarySourceInfo>? binarySourceInfo;
+
+  /// DEPRECATED
   PackageVersion? binaryVersion;
 
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
@@ -2001,12 +2039,7 @@ class PackageData {
   /// go/drydock-dd-custom-binary-scanning
   core.List<core.String>? patchedCve;
 
-  /// The source package.
-  ///
-  /// Similar to the above, this is significant when the source is different
-  /// than the binary itself. Since the top-level package/version fields are
-  /// based on an if/else, we need a separate field for both binary and source
-  /// if we want to know definitively where the data is coming from.
+  /// DEPRECATED
   PackageVersion? sourceVersion;
   core.String? unused;
 
@@ -2015,6 +2048,7 @@ class PackageData {
 
   PackageData({
     this.architecture,
+    this.binarySourceInfo,
     this.binaryVersion,
     this.cpeUri,
     this.dependencyChain,
@@ -2035,6 +2069,12 @@ class PackageData {
       : this(
           architecture: json_.containsKey('architecture')
               ? json_['architecture'] as core.String
+              : null,
+          binarySourceInfo: json_.containsKey('binarySourceInfo')
+              ? (json_['binarySourceInfo'] as core.List)
+                  .map((value) => BinarySourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           binaryVersion: json_.containsKey('binaryVersion')
               ? PackageVersion.fromJson(
@@ -2091,6 +2131,7 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
+        if (binarySourceInfo != null) 'binarySourceInfo': binarySourceInfo!,
         if (binaryVersion != null) 'binaryVersion': binaryVersion!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,

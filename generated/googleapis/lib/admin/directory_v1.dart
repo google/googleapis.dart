@@ -5418,6 +5418,12 @@ class UsersResource {
 
   /// Creates a user.
   ///
+  /// Mutate calls immediately following user creation might sometimes fail as
+  /// the user isn't fully created due to propagation delay in our backends.
+  /// Check the error details for the "User creation is not complete" message to
+  /// see if this is the case. Retrying the calls after some time can help in
+  /// this case.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -9756,7 +9762,7 @@ class ListPrintersResponse {
 class Member {
   /// Defines mail delivery preferences of member.
   ///
-  /// This is only supported by create/update/get.
+  /// This field is only supported by `insert`, `update`, and `get` methods.
   core.String? deliverySettings;
 
   /// The member's email address.

@@ -2060,209 +2060,6 @@ void checkGoogleCloudIdentitytoolkitAdminV2Trigger(
   buildCounterGoogleCloudIdentitytoolkitAdminV2Trigger--;
 }
 
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse = 0;
-api.GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse
-    buildGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse <
-      3) {
-    o.authenticatorData = 'foo';
-    o.clientDataJson = 'foo';
-    o.signature = 'foo';
-    o.userHandle = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse(
-    api.GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse <
-      3) {
-    unittest.expect(
-      o.authenticatorData!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.clientDataJson!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.signature!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.userHandle!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse--;
-}
-
-core.List<core.String> buildUnnamed19() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed19(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse =
-    0;
-api.GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse
-    buildGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse <
-      3) {
-    o.attestationObject = 'foo';
-    o.clientDataJson = 'foo';
-    o.transports = buildUnnamed19();
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse(
-    api.GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse <
-      3) {
-    unittest.expect(
-      o.attestationObject!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.clientDataJson!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed19(o.transports!);
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse =
-    0;
-api.GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse
-    buildGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse() {
-  final o =
-      api.GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse <
-      3) {
-    o.authenticatorAssertionResponse =
-        buildGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse();
-    o.credentialId = 'foo';
-    o.credentialType = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse(
-    api.GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse(
-        o.authenticatorAssertionResponse!);
-    unittest.expect(
-      o.credentialId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.credentialType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse =
-    0;
-api.GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse
-    buildGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse <
-      3) {
-    o.authenticatorAttestationResponse =
-        buildGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse();
-    o.credentialId = 'foo';
-    o.credentialType = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse(
-    api.GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse(
-        o.authenticatorAttestationResponse!);
-    unittest.expect(
-      o.credentialId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.credentialType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria = 0;
-api.GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria
-    buildGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria() {
-  final o = api.GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria();
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria <
-      3) {
-    o.authenticatorAttachment = 'foo';
-    o.requireResidentKey = true;
-    o.userVerification = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria(
-    api.GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria o) {
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria <
-      3) {
-    unittest.expect(
-      o.authenticatorAttachment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.requireResidentKey!, unittest.isTrue);
-    unittest.expect(
-      o.userVerification!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria--;
-}
-
 core.int buildCounterGoogleCloudIdentitytoolkitV2AutoRetrievalInfo = 0;
 api.GoogleCloudIdentitytoolkitV2AutoRetrievalInfo
     buildGoogleCloudIdentitytoolkitV2AutoRetrievalInfo() {
@@ -2617,144 +2414,6 @@ void checkGoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo(
   buildCounterGoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo--;
 }
 
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest =
-    0;
-api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
-    buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest() {
-  final o = api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest();
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest <
-      3) {
-    o.authenticatorRegistrationResponse =
-        buildGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse();
-    o.idToken = 'foo';
-    o.tenantId = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest(
-    api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest o) {
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse(
-        o.authenticatorRegistrationResponse!);
-    unittest.expect(
-      o.idToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tenantId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse =
-    0;
-api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
-    buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse <
-      3) {
-    o.idToken = 'foo';
-    o.refreshToken = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse(
-    api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse <
-      3) {
-    unittest.expect(
-      o.idToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.refreshToken!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest =
-    0;
-api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest
-    buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest() {
-  final o = api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest();
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest <
-      3) {
-    o.authenticatorAuthenticationResponse =
-        buildGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse();
-    o.sessionId = 'foo';
-    o.tenantId = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest(
-    api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest o) {
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse(
-        o.authenticatorAuthenticationResponse!);
-    unittest.expect(
-      o.sessionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tenantId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse =
-    0;
-api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
-    buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse <
-      3) {
-    o.idToken = 'foo';
-    o.refreshToken = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse(
-    api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse <
-      3) {
-    unittest.expect(
-      o.idToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.refreshToken!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse--;
-}
-
 core.int buildCounterGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo = 0;
 api.GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
     buildGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo() {
@@ -2779,12 +2438,12 @@ void checkGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo(
   buildCounterGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed19() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2802,7 +2461,7 @@ api.GoogleCloudIdentitytoolkitV2PasswordPolicy
   final o = api.GoogleCloudIdentitytoolkitV2PasswordPolicy();
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy++;
   if (buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy < 3) {
-    o.allowedNonAlphanumericCharacters = buildUnnamed20();
+    o.allowedNonAlphanumericCharacters = buildUnnamed19();
     o.customStrengthOptions =
         buildGoogleCloudIdentitytoolkitV2CustomStrengthOptions();
     o.schemaVersion = 42;
@@ -2815,7 +2474,7 @@ void checkGoogleCloudIdentitytoolkitV2PasswordPolicy(
     api.GoogleCloudIdentitytoolkitV2PasswordPolicy o) {
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy++;
   if (buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy < 3) {
-    checkUnnamed20(o.allowedNonAlphanumericCharacters!);
+    checkUnnamed19(o.allowedNonAlphanumericCharacters!);
     checkGoogleCloudIdentitytoolkitV2CustomStrengthOptions(
         o.customStrengthOptions!);
     unittest.expect(
@@ -2826,203 +2485,13 @@ void checkGoogleCloudIdentitytoolkitV2PasswordPolicy(
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy--;
 }
 
-core.List<api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor>
-    buildUnnamed21() => [
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(),
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(),
-        ];
-
-void checkUnnamed21(
-    core.List<api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor>
-        o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(o[0]);
-  checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(o[1]);
-}
-
-core.List<api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters>
-    buildUnnamed22() => [
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(),
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(),
-        ];
-
-void checkUnnamed22(
-    core.List<api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters>
-        o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(o[0]);
-  checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(o[1]);
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions =
-    0;
-api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions
-    buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions() {
-  final o =
-      api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions();
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions <
-      3) {
-    o.authenticatorSelection =
-        buildGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria();
-    o.challenge = 'foo';
-    o.excludeCredentials = buildUnnamed21();
-    o.pubKeyCredParams = buildUnnamed22();
-    o.rp = buildGoogleCloudIdentitytoolkitV2RpEntity();
-    o.user = buildGoogleCloudIdentitytoolkitV2UserEntity();
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions(
-    api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions o) {
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria(
-        o.authenticatorSelection!);
-    unittest.expect(
-      o.challenge!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed21(o.excludeCredentials!);
-    checkUnnamed22(o.pubKeyCredParams!);
-    checkGoogleCloudIdentitytoolkitV2RpEntity(o.rp!);
-    checkGoogleCloudIdentitytoolkitV2UserEntity(o.user!);
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions--;
-}
-
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed23(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor =
-    0;
-api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor
-    buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor() {
-  final o = api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor();
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor <
-      3) {
-    o.credentialId = 'foo';
-    o.credentialType = 'foo';
-    o.transports = buildUnnamed23();
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(
-    api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor o) {
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor <
-      3) {
-    unittest.expect(
-      o.credentialId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.credentialType!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed23(o.transports!);
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters =
-    0;
-api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters
-    buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters() {
-  final o = api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters();
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters <
-      3) {
-    o.alg = 'foo';
-    o.credentialType = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(
-    api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters o) {
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters <
-      3) {
-    unittest.expect(
-      o.alg!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.credentialType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions =
-    0;
-api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions
-    buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions() {
-  final o = api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions();
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions <
-      3) {
-    o.challenge = 'foo';
-    o.rpId = 'foo';
-    o.userVerification = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions(
-    api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions o) {
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions <
-      3) {
-    unittest.expect(
-      o.challenge!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rpId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.userVerification!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions--;
-}
-
 core.List<api.GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>
-    buildUnnamed24() => [
+    buildUnnamed20() => [
           buildGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(),
           buildGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(),
         ];
 
-void checkUnnamed24(
+void checkUnnamed20(
     core.List<api.GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(o[0]);
@@ -3035,7 +2504,7 @@ api.GoogleCloudIdentitytoolkitV2RecaptchaConfig
   final o = api.GoogleCloudIdentitytoolkitV2RecaptchaConfig();
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig++;
   if (buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig < 3) {
-    o.recaptchaEnforcementState = buildUnnamed24();
+    o.recaptchaEnforcementState = buildUnnamed20();
     o.recaptchaKey = 'foo';
   }
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig--;
@@ -3046,7 +2515,7 @@ void checkGoogleCloudIdentitytoolkitV2RecaptchaConfig(
     api.GoogleCloudIdentitytoolkitV2RecaptchaConfig o) {
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig++;
   if (buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig < 3) {
-    checkUnnamed24(o.recaptchaEnforcementState!);
+    checkUnnamed20(o.recaptchaEnforcementState!);
     unittest.expect(
       o.recaptchaKey!,
       unittest.equals('foo'),
@@ -3148,30 +2617,6 @@ void checkGoogleCloudIdentitytoolkitV2RevokeTokenResponse(
   buildCounterGoogleCloudIdentitytoolkitV2RevokeTokenResponse++;
   if (buildCounterGoogleCloudIdentitytoolkitV2RevokeTokenResponse < 3) {}
   buildCounterGoogleCloudIdentitytoolkitV2RevokeTokenResponse--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2RpEntity = 0;
-api.GoogleCloudIdentitytoolkitV2RpEntity
-    buildGoogleCloudIdentitytoolkitV2RpEntity() {
-  final o = api.GoogleCloudIdentitytoolkitV2RpEntity();
-  buildCounterGoogleCloudIdentitytoolkitV2RpEntity++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2RpEntity < 3) {
-    o.id = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2RpEntity--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2RpEntity(
-    api.GoogleCloudIdentitytoolkitV2RpEntity o) {
-  buildCounterGoogleCloudIdentitytoolkitV2RpEntity++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2RpEntity < 3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2RpEntity--;
 }
 
 core.int buildCounterGoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest = 0;
@@ -3449,140 +2894,6 @@ void checkGoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo(
   buildCounterGoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo--;
 }
 
-core.int buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest =
-    0;
-api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
-    buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest() {
-  final o = api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest();
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest <
-      3) {
-    o.idToken = 'foo';
-    o.tenantId = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest(
-    api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest o) {
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest <
-      3) {
-    unittest.expect(
-      o.idToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tenantId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest--;
-}
-
-core.int
-    buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse = 0;
-api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
-    buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse <
-      3) {
-    o.credentialCreationOptions =
-        buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions();
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse(
-    api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse <
-      3) {
-    checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions(
-        o.credentialCreationOptions!);
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest = 0;
-api.GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest
-    buildGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest() {
-  final o = api.GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest();
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest < 3) {
-    o.sessionId = 'foo';
-    o.tenantId = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest(
-    api.GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest o) {
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest < 3) {
-    unittest.expect(
-      o.sessionId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tenantId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse = 0;
-api.GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse
-    buildGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse() {
-  final o = api.GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse();
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse < 3) {
-    o.credentialRequestOptions =
-        buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions();
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse(
-    api.GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse o) {
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse < 3) {
-    checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions(
-        o.credentialRequestOptions!);
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse--;
-}
-
-core.int buildCounterGoogleCloudIdentitytoolkitV2UserEntity = 0;
-api.GoogleCloudIdentitytoolkitV2UserEntity
-    buildGoogleCloudIdentitytoolkitV2UserEntity() {
-  final o = api.GoogleCloudIdentitytoolkitV2UserEntity();
-  buildCounterGoogleCloudIdentitytoolkitV2UserEntity++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2UserEntity < 3) {
-    o.id = 'foo';
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2UserEntity--;
-  return o;
-}
-
-void checkGoogleCloudIdentitytoolkitV2UserEntity(
-    api.GoogleCloudIdentitytoolkitV2UserEntity o) {
-  buildCounterGoogleCloudIdentitytoolkitV2UserEntity++;
-  if (buildCounterGoogleCloudIdentitytoolkitV2UserEntity < 3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudIdentitytoolkitV2UserEntity--;
-}
-
 core.int buildCounterGoogleCloudIdentitytoolkitV2WithdrawMfaRequest = 0;
 api.GoogleCloudIdentitytoolkitV2WithdrawMfaRequest
     buildGoogleCloudIdentitytoolkitV2WithdrawMfaRequest() {
@@ -3646,12 +2957,12 @@ void checkGoogleCloudIdentitytoolkitV2WithdrawMfaResponse(
   buildCounterGoogleCloudIdentitytoolkitV2WithdrawMfaResponse--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed25() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed21() => [
       buildGoogleIamV1AuditLogConfig(),
       buildGoogleIamV1AuditLogConfig(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed21(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -3662,7 +2973,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed25();
+    o.auditLogConfigs = buildUnnamed21();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -3672,7 +2983,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed25(o.auditLogConfigs!);
+    checkUnnamed21(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -3681,12 +2992,12 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3703,7 +3014,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed26();
+    o.exemptedMembers = buildUnnamed22();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -3713,7 +3024,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed26(o.exemptedMembers!);
+    checkUnnamed22(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -3722,12 +3033,12 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3745,7 +3056,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed27();
+    o.members = buildUnnamed23();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -3756,7 +3067,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed27(o.members!);
+    checkUnnamed23(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -3806,23 +3117,23 @@ void checkGoogleIamV1GetPolicyOptions(api.GoogleIamV1GetPolicyOptions o) {
   buildCounterGoogleIamV1GetPolicyOptions--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed28() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed24() => [
       buildGoogleIamV1AuditConfig(),
       buildGoogleIamV1AuditConfig(),
     ];
 
-void checkUnnamed28(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed24(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed29() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed25() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed29(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed25(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -3833,8 +3144,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed28();
-    o.bindings = buildUnnamed29();
+    o.auditConfigs = buildUnnamed24();
+    o.bindings = buildUnnamed25();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -3845,8 +3156,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed28(o.auditConfigs!);
-    checkUnnamed29(o.bindings!);
+    checkUnnamed24(o.auditConfigs!);
+    checkUnnamed25(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3883,12 +3194,12 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3906,7 +3217,7 @@ api.GoogleIamV1TestIamPermissionsRequest
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed30();
+    o.permissions = buildUnnamed26();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -3916,17 +3227,17 @@ void checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed30(o.permissions!);
+    checkUnnamed26(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3944,7 +3255,7 @@ api.GoogleIamV1TestIamPermissionsResponse
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed31();
+    o.permissions = buildUnnamed27();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -3954,7 +3265,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed31(o.permissions!);
+    checkUnnamed27(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -4677,74 +3988,6 @@ void main() {
     });
   });
 
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudIdentitytoolkitV2AutoRetrievalInfo',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4872,60 +4115,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo();
@@ -4944,60 +4133,6 @@ void main() {
       final od = api.GoogleCloudIdentitytoolkitV2PasswordPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIdentitytoolkitV2PasswordPolicy(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions(od);
     });
   });
 
@@ -5042,16 +4177,6 @@ void main() {
       final od = api.GoogleCloudIdentitytoolkitV2RevokeTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIdentitytoolkitV2RevokeTokenResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudIdentitytoolkitV2RpEntity', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudIdentitytoolkitV2RpEntity();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2RpEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2RpEntity(od);
     });
   });
 
@@ -5151,66 +4276,6 @@ void main() {
           api.GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudIdentitytoolkitV2UserEntity', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudIdentitytoolkitV2UserEntity();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudIdentitytoolkitV2UserEntity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudIdentitytoolkitV2UserEntity(od);
     });
   });
 
@@ -5698,246 +4763,6 @@ void main() {
       final response = await res.start(arg_request, $fields: arg_$fields);
       checkGoogleCloudIdentitytoolkitV2StartMfaSignInResponse(
           response as api.GoogleCloudIdentitytoolkitV2StartMfaSignInResponse);
-    });
-  });
-
-  unittest.group('resource-AccountsPasskeyEnrollmentResource', () {
-    unittest.test('method--finalize', () async {
-      final mock = HttpServerMock();
-      final res = api.IdentityToolkitApi(mock).accounts.passkeyEnrollment;
-      final arg_request =
-          buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 38),
-          unittest.equals('v2/accounts/passkeyEnrollment:finalize'),
-        );
-        pathOffset += 38;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.finalize(arg_request, $fields: arg_$fields);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse(
-          response as api
-              .GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse);
-    });
-
-    unittest.test('method--start', () async {
-      final mock = HttpServerMock();
-      final res = api.IdentityToolkitApi(mock).accounts.passkeyEnrollment;
-      final arg_request =
-          buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 35),
-          unittest.equals('v2/accounts/passkeyEnrollment:start'),
-        );
-        pathOffset += 35;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.start(arg_request, $fields: arg_$fields);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse(response
-          as api.GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse);
-    });
-  });
-
-  unittest.group('resource-AccountsPasskeySignInResource', () {
-    unittest.test('method--finalize', () async {
-      final mock = HttpServerMock();
-      final res = api.IdentityToolkitApi(mock).accounts.passkeySignIn;
-      final arg_request =
-          buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest
-            .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 34),
-          unittest.equals('v2/accounts/passkeySignIn:finalize'),
-        );
-        pathOffset += 34;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.finalize(arg_request, $fields: arg_$fields);
-      checkGoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse(response
-          as api.GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse);
-    });
-
-    unittest.test('method--start', () async {
-      final mock = HttpServerMock();
-      final res = api.IdentityToolkitApi(mock).accounts.passkeySignIn;
-      final arg_request =
-          buildGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudIdentitytoolkitV2StartPasskeySignInRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 31),
-          unittest.equals('v2/accounts/passkeySignIn:start'),
-        );
-        pathOffset += 31;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.start(arg_request, $fields: arg_$fields);
-      checkGoogleCloudIdentitytoolkitV2StartPasskeySignInResponse(response
-          as api.GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse);
     });
   });
 

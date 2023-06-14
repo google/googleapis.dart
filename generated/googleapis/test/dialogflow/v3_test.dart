@@ -1624,6 +1624,7 @@ api.GoogleCloudDialogflowCxV3ExportAgentRequest
     o.agentUri = 'foo';
     o.dataFormat = 'foo';
     o.environment = 'foo';
+    o.includeBigqueryExportSettings = true;
   }
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest--;
   return o;
@@ -1645,6 +1646,7 @@ void checkGoogleCloudDialogflowCxV3ExportAgentRequest(
       o.environment!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.includeBigqueryExportSettings!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest--;
 }
@@ -3865,6 +3867,7 @@ api.GoogleCloudDialogflowCxV3QueryParameters
     o.parameters = buildUnnamed61();
     o.payload = buildUnnamed62();
     o.sessionEntityTypes = buildUnnamed63();
+    o.sessionTtl = 'foo';
     o.timeZone = 'foo';
     o.webhookHeaders = buildUnnamed64();
   }
@@ -3891,6 +3894,10 @@ void checkGoogleCloudDialogflowCxV3QueryParameters(
     checkUnnamed61(o.parameters!);
     checkUnnamed62(o.payload!);
     checkUnnamed63(o.sessionEntityTypes!);
+    unittest.expect(
+      o.sessionTtl!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.timeZone!,
       unittest.equals('foo'),

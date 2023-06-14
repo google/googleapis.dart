@@ -1818,6 +1818,12 @@ class BillingAccountsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
@@ -1842,11 +1848,14 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
@@ -2017,6 +2026,12 @@ class BillingAccountsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -2049,12 +2064,15 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2091,6 +2109,12 @@ class BillingAccountsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -2123,12 +2147,15 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -4297,6 +4324,12 @@ class FoldersSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
@@ -4321,11 +4354,14 @@ class FoldersSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
@@ -4496,6 +4532,12 @@ class FoldersSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -4528,12 +4570,15 @@ class FoldersSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -4570,6 +4615,12 @@ class FoldersSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -4602,12 +4653,15 @@ class FoldersSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -7711,6 +7765,12 @@ class OrganizationsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
@@ -7735,11 +7795,14 @@ class OrganizationsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
@@ -7910,6 +7973,12 @@ class OrganizationsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -7942,12 +8011,15 @@ class OrganizationsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -7984,6 +8056,12 @@ class OrganizationsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -8016,12 +8094,15 @@ class OrganizationsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -9934,6 +10015,12 @@ class ProjectsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
@@ -9958,11 +10045,14 @@ class ProjectsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
@@ -10133,6 +10223,12 @@ class ProjectsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -10165,12 +10261,15 @@ class ProjectsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -10207,6 +10306,12 @@ class ProjectsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -10239,12 +10344,15 @@ class ProjectsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -10284,6 +10392,12 @@ class SinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
@@ -10308,11 +10422,14 @@ class SinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
@@ -10483,6 +10600,12 @@ class SinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
+  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// caller that will be used to write the log entries. Must be of format
+  /// serviceAccount:some@email. This can only be specified if writing to a
+  /// destination outside the sink's project. If not specified, a p4 service
+  /// account will automatically be generated.
+  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -10515,12 +10638,15 @@ class SinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
+    core.String? customWriterIdentity,
     core.bool? uniqueWriterIdentity,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customWriterIdentity != null)
+        'customWriterIdentity': [customWriterIdentity],
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -11530,12 +11656,14 @@ class ListLocationsResponse {
 
 /// The parameters to ListLogEntries.
 class ListLogEntriesRequest {
-  /// Only log entries that match the filter are returned.
+  /// A filter that chooses which log entries to return.
   ///
-  /// An empty filter matches all log entries in the resources listed in
-  /// resource_names. Referencing a parent resource that is not listed in
-  /// resource_names will cause the filter to return no results. The maximum
-  /// length of a filter is 20,000 characters.
+  /// For more information, see Logging query language
+  /// (https://cloud.google.com/logging/docs/view/logging-query-language).Only
+  /// log entries that match the filter are returned. An empty filter matches
+  /// all log entries in the resources listed in resource_names. Referencing a
+  /// parent resource that is not listed in resource_names will cause the filter
+  /// to return no results. The maximum length of a filter is 20,000 characters.
   ///
   /// Optional.
   core.String? filter;
@@ -12807,9 +12935,10 @@ class LogSink {
 
   /// The export destination: "storage.googleapis.com/\[GCS_BUCKET\]"
   /// "bigquery.googleapis.com/projects/\[PROJECT_ID\]/datasets/\[DATASET\]"
-  /// "pubsub.googleapis.com/projects/\[PROJECT_ID\]/topics/\[TOPIC_ID\]" The
-  /// sink's writer_identity, set when the sink is created, must have permission
-  /// to write to the destination or else the log entries are not exported.
+  /// "pubsub.googleapis.com/projects/\[PROJECT_ID\]/topics/\[TOPIC_ID\]"
+  /// "logging.googleapis.com/projects/\[PROJECT_ID\]" The sink's
+  /// writer_identity, set when the sink is created, must have permission to
+  /// write to the destination or else the log entries are not exported.
   ///
   /// For more information, see Exporting Logs with Sinks
   /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -13633,6 +13762,14 @@ class Settings {
   /// Output only.
   core.String? kmsServiceAccountId;
 
+  /// The service account for the given container.
+  ///
+  /// Sinks use this service account as their writer_identity if no custom
+  /// service account is provided.
+  ///
+  /// Output only.
+  core.String? loggingServiceAccountId;
+
   /// The resource name of the settings.
   ///
   /// Output only.
@@ -13651,6 +13788,7 @@ class Settings {
     this.disableDefaultSink,
     this.kmsKeyName,
     this.kmsServiceAccountId,
+    this.loggingServiceAccountId,
     this.name,
     this.storageLocation,
   });
@@ -13666,6 +13804,9 @@ class Settings {
           kmsServiceAccountId: json_.containsKey('kmsServiceAccountId')
               ? json_['kmsServiceAccountId'] as core.String
               : null,
+          loggingServiceAccountId: json_.containsKey('loggingServiceAccountId')
+              ? json_['loggingServiceAccountId'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           storageLocation: json_.containsKey('storageLocation')
               ? json_['storageLocation'] as core.String
@@ -13678,6 +13819,8 @@ class Settings {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsServiceAccountId != null)
           'kmsServiceAccountId': kmsServiceAccountId!,
+        if (loggingServiceAccountId != null)
+          'loggingServiceAccountId': loggingServiceAccountId!,
         if (name != null) 'name': name!,
         if (storageLocation != null) 'storageLocation': storageLocation!,
       };

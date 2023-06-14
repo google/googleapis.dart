@@ -24,6 +24,13 @@
     "name": "libraryagent",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://libraryagent.googleapis.com/",
+    "servicePath": "",
+    "title": "Library Agent API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "shelves": {
             "methods": {
@@ -277,8 +283,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://libraryagent.googleapis.com/",
     "schemas": {
         "GoogleExampleLibraryagentV1Book": {
             "description": "A single book in the library.",
@@ -354,9 +358,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Library Agent API",
-    "version": "v1",
-    "version_module": true
+    }
 }

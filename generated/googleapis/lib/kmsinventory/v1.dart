@@ -623,6 +623,10 @@ class GoogleCloudKmsV1CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
+  /// - "RAW_ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// RawEncrypt and RawDecrypt. This purpose is meant to be used for
+  /// interoperable symmetric encryption and does not support automatic
+  /// CryptoKey rotation.
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   core.String? purpose;
 
@@ -730,6 +734,8 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256

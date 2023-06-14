@@ -1959,6 +1959,7 @@ api.WatchRequest buildWatchRequest() {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = 'foo';
+    o.labelFilterBehavior = 'foo';
     o.labelIds = buildUnnamed35();
     o.topicName = 'foo';
   }
@@ -1971,6 +1972,10 @@ void checkWatchRequest(api.WatchRequest o) {
   if (buildCounterWatchRequest < 3) {
     unittest.expect(
       o.labelFilterAction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelFilterBehavior!,
       unittest.equals('foo'),
     );
     checkUnnamed35(o.labelIds!);

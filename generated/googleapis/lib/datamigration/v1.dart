@@ -875,6 +875,9 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
+  /// [force] - Force delete the conversion workspace, even if there's a running
+  /// migration that is using the workspace.
+  ///
   /// [requestId] - A unique ID used to identify the request. If the server
   /// receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
@@ -893,10 +896,12 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3415,7 +3420,17 @@ class CloudSqlSettings {
   /// - "POSTGRES_12" : PostgreSQL 12.
   /// - "POSTGRES_13" : PostgreSQL 13.
   /// - "POSTGRES_14" : PostgreSQL 14.
+  /// - "POSTGRES_15" : PostgreSQL 15.
   core.String? databaseVersion;
+
+  /// The edition of the given Cloud SQL instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : The instance did not specify the edition.
+  /// - "ENTERPRISE" : The instance is an enterprise edition.
+  /// - "ENTERPRISE_PLUS" : The instance is an enterprise plus edition.
+  core.String? edition;
 
   /// The settings for IP Management.
   ///
@@ -3481,6 +3496,7 @@ class CloudSqlSettings {
     this.dataDiskType,
     this.databaseFlags,
     this.databaseVersion,
+    this.edition,
     this.ipConfig,
     this.rootPassword,
     this.rootPasswordSet,
@@ -3527,6 +3543,9 @@ class CloudSqlSettings {
           databaseVersion: json_.containsKey('databaseVersion')
               ? json_['databaseVersion'] as core.String
               : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
+              : null,
           ipConfig: json_.containsKey('ipConfig')
               ? SqlIpConfig.fromJson(
                   json_['ipConfig'] as core.Map<core.String, core.dynamic>)
@@ -3570,6 +3589,7 @@ class CloudSqlSettings {
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (edition != null) 'edition': edition!,
         if (ipConfig != null) 'ipConfig': ipConfig!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
         if (rootPasswordSet != null) 'rootPasswordSet': rootPasswordSet!,
@@ -5756,6 +5776,12 @@ class OracleConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
+  /// SSL configuration for the connection to the source Oracle database.
+  ///
+  /// * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is
+  /// supported for Oracle versions 12 and above.
+  SslConfig? ssl;
+
   /// Static Service IP connectivity.
   StaticServiceIpConnectivity? staticServiceIpConnectivity;
 
@@ -5775,6 +5801,7 @@ class OracleConnectionProfile {
     this.passwordSet,
     this.port,
     this.privateConnectivity,
+    this.ssl,
     this.staticServiceIpConnectivity,
     this.username,
   });
@@ -5801,6 +5828,10 @@ class OracleConnectionProfile {
               ? PrivateConnectivity.fromJson(json_['privateConnectivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          ssl: json_.containsKey('ssl')
+              ? SslConfig.fromJson(
+                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+              : null,
           staticServiceIpConnectivity:
               json_.containsKey('staticServiceIpConnectivity')
                   ? StaticServiceIpConnectivity.fromJson(
@@ -5822,6 +5853,7 @@ class OracleConnectionProfile {
         if (port != null) 'port': port!,
         if (privateConnectivity != null)
           'privateConnectivity': privateConnectivity!,
+        if (ssl != null) 'ssl': ssl!,
         if (staticServiceIpConnectivity != null)
           'staticServiceIpConnectivity': staticServiceIpConnectivity!,
         if (username != null) 'username': username!,

@@ -24,6 +24,13 @@
     "name": "smartdevicemanagement",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230618",
+    "rootUrl": "https://smartdevicemanagement.googleapis.com/",
+    "servicePath": "",
+    "title": "Smart Device Management API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "enterprises": {
             "resources": {
@@ -343,8 +349,6 @@
             }
         }
     },
-    "revision": "20230425",
-    "rootUrl": "https://smartdevicemanagement.googleapis.com/",
     "schemas": {
         "GoogleHomeEnterpriseSdmV1Device": {
             "description": "Device resource represents an instance of enterprise managed device in the property.",
@@ -523,9 +527,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Smart Device Management API",
-    "version": "v1",
-    "version_module": true
+    }
 }

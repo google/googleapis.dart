@@ -24,6 +24,13 @@
     "name": "managedidentities",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230505",
+    "rootUrl": "https://managedidentities.googleapis.com/",
+    "servicePath": "",
+    "title": "Managed Service for Microsoft Active Directory API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1485,8 +1491,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://managedidentities.googleapis.com/",
     "schemas": {
         "AttachTrustRequest": {
             "description": "Request message for AttachTrust",
@@ -3135,9 +3139,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Managed Service for Microsoft Active Directory API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -24,6 +24,12 @@
     "name": "androidenterprise",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://androidenterprise.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play EMM API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "devices": {
             "methods": {
@@ -2648,8 +2653,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://androidenterprise.googleapis.com/",
     "schemas": {
         "Administrator": {
             "description": "This represents an enterprise admin who can manage the enterprise in the managed Google Play store.",
@@ -4931,8 +4934,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play EMM API",
-    "version": "v1"
+    }
 }

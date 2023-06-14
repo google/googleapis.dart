@@ -23,6 +23,13 @@
     "name": "apigateway",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230621",
+    "rootUrl": "https://apigateway.googleapis.com/",
+    "servicePath": "",
+    "title": "API Gateway API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -100,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1081,8 +1087,6 @@
             }
         }
     },
-    "revision": "20230426",
-    "rootUrl": "https://apigateway.googleapis.com/",
     "schemas": {
         "ApigatewayApi": {
             "description": "An API that can be served by one or more Gateways.",
@@ -1796,9 +1800,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "API Gateway API",
-    "version": "v1",
-    "version_module": true
+    }
 }

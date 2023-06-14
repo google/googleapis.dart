@@ -785,6 +785,128 @@ class ActionCondition {
       };
 }
 
+/// Container runnable representation on the agent side.
+class AgentContainer {
+  /// Overrides the `CMD` specified in the container.
+  ///
+  /// If there is an ENTRYPOINT (either in the container image or with the
+  /// entrypoint field below) then commands are appended as arguments to the
+  /// ENTRYPOINT.
+  core.List<core.String>? commands;
+
+  /// Overrides the `ENTRYPOINT` specified in the container.
+  core.String? entrypoint;
+
+  /// The URI to pull the container image from.
+  core.String? imageUri;
+
+  /// Arbitrary additional options to include in the "docker run" command when
+  /// running this container, e.g. "--network host".
+  core.String? options;
+
+  /// Volumes to mount (bind mount) from the host machine files or directories
+  /// into the container, formatted to match docker run's --volume option, e.g.
+  /// /foo:/bar, or /foo:/bar:ro
+  core.List<core.String>? volumes;
+
+  AgentContainer({
+    this.commands,
+    this.entrypoint,
+    this.imageUri,
+    this.options,
+    this.volumes,
+  });
+
+  AgentContainer.fromJson(core.Map json_)
+      : this(
+          commands: json_.containsKey('commands')
+              ? (json_['commands'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          entrypoint: json_.containsKey('entrypoint')
+              ? json_['entrypoint'] as core.String
+              : null,
+          imageUri: json_.containsKey('imageUri')
+              ? json_['imageUri'] as core.String
+              : null,
+          options: json_.containsKey('options')
+              ? json_['options'] as core.String
+              : null,
+          volumes: json_.containsKey('volumes')
+              ? (json_['volumes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commands != null) 'commands': commands!,
+        if (entrypoint != null) 'entrypoint': entrypoint!,
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (options != null) 'options': options!,
+        if (volumes != null) 'volumes': volumes!,
+      };
+}
+
+/// AgentEnvironment is the Environment representation between Agent and CLH
+/// communication.
+///
+/// The environment is used in both task level and agent level.
+class AgentEnvironment {
+  /// An encrypted JSON dictionary where the key/value pairs correspond to
+  /// environment variable names and their values.
+  AgentKMSEnvMap? encryptedVariables;
+
+  /// A map of environment variable names to Secret Manager secret names.
+  ///
+  /// The VM will access the named secrets to set the value of each environment
+  /// variable.
+  core.Map<core.String, core.String>? secretVariables;
+
+  /// A map of environment variable names to values.
+  core.Map<core.String, core.String>? variables;
+
+  AgentEnvironment({
+    this.encryptedVariables,
+    this.secretVariables,
+    this.variables,
+  });
+
+  AgentEnvironment.fromJson(core.Map json_)
+      : this(
+          encryptedVariables: json_.containsKey('encryptedVariables')
+              ? AgentKMSEnvMap.fromJson(json_['encryptedVariables']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secretVariables: json_.containsKey('secretVariables')
+              ? (json_['secretVariables']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          variables: json_.containsKey('variables')
+              ? (json_['variables'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptedVariables != null)
+          'encryptedVariables': encryptedVariables!,
+        if (secretVariables != null) 'secretVariables': secretVariables!,
+        if (variables != null) 'variables': variables!,
+      };
+}
+
 /// VM Agent Info.
 class AgentInfo {
   /// The assigned Job ID
@@ -845,6 +967,10 @@ class AgentInfo {
         if (tasks != null) 'tasks': tasks!,
       };
 }
+
+/// AgentKMSEnvMap contains the encrypted key/value pair to be used in the
+/// environment on the Agent side.
+typedef AgentKMSEnvMap = $KMSEnvMap;
 
 /// VM Agent Metadata.
 class AgentMetadata {
@@ -942,9 +1068,19 @@ class AgentMetadata {
       };
 }
 
+/// Script runnable representation on the agent side.
+typedef AgentScript = $Script;
+
 /// TODO(b/182501497) The message needs to be redefined when the Agent API
 /// server updates data in storage per the backend design.
 class AgentTask {
+  /// AgentTaskSpec is the taskSpec representation between Agent and CLH
+  /// communication.
+  ///
+  /// This field will replace the TaskSpec field above in future to have a
+  /// better separation between user-facaing API and internal API.
+  AgentTaskSpec? agentTaskSpec;
+
   /// The intended state of the task.
   /// Possible string values are:
   /// - "INTENDED_STATE_UNSPECIFIED" : Unspecified state.
@@ -957,6 +1093,8 @@ class AgentTask {
   core.String? reachedBarrier;
 
   /// Task Spec.
+  ///
+  /// This field will be replaced by agent_task_spec below in future.
   TaskSpec? spec;
 
   /// Task status.
@@ -978,6 +1116,7 @@ class AgentTask {
   core.String? taskSource;
 
   AgentTask({
+    this.agentTaskSpec,
     this.intendedState,
     this.reachedBarrier,
     this.spec,
@@ -988,6 +1127,10 @@ class AgentTask {
 
   AgentTask.fromJson(core.Map json_)
       : this(
+          agentTaskSpec: json_.containsKey('agentTaskSpec')
+              ? AgentTaskSpec.fromJson(
+                  json_['agentTaskSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
           intendedState: json_.containsKey('intendedState')
               ? json_['intendedState'] as core.String
               : null,
@@ -1009,6 +1152,7 @@ class AgentTask {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (agentTaskSpec != null) 'agentTaskSpec': agentTaskSpec!,
         if (intendedState != null) 'intendedState': intendedState!,
         if (reachedBarrier != null) 'reachedBarrier': reachedBarrier!,
         if (spec != null) 'spec': spec!,
@@ -1058,6 +1202,136 @@ class AgentTaskInfo {
         if (runnable != null) 'runnable': runnable!,
         if (taskId != null) 'taskId': taskId!,
         if (taskStatus != null) 'taskStatus': taskStatus!,
+      };
+}
+
+/// AgentTaskRunnable is the Runnable representation between Agent and CLH
+/// communication.
+class AgentTaskRunnable {
+  /// By default, after a Runnable fails, no further Runnable are executed.
+  ///
+  /// This flag indicates that this Runnable must be run even if the Task has
+  /// already failed. This is useful for Runnables that copy output files off of
+  /// the VM or for debugging. The always_run flag does not override the Task's
+  /// overall max_run_duration. If the max_run_duration has expired then no
+  /// further Runnables will execute, not even always_run Runnables.
+  core.bool? alwaysRun;
+
+  /// This flag allows a Runnable to continue running in the background while
+  /// the Task executes subsequent Runnables.
+  ///
+  /// This is useful to provide services to other Runnables (or to provide
+  /// debugging support tools like SSH servers).
+  core.bool? background;
+
+  /// Container runnable.
+  AgentContainer? container;
+
+  /// Environment variables for this Runnable (overrides variables set for the
+  /// whole Task or TaskGroup).
+  AgentEnvironment? environment;
+
+  /// Normally, a non-zero exit status causes the Task to fail.
+  ///
+  /// This flag allows execution of other Runnables to continue instead.
+  core.bool? ignoreExitStatus;
+
+  /// Script runnable.
+  AgentScript? script;
+
+  /// Timeout for this Runnable.
+  core.String? timeout;
+
+  AgentTaskRunnable({
+    this.alwaysRun,
+    this.background,
+    this.container,
+    this.environment,
+    this.ignoreExitStatus,
+    this.script,
+    this.timeout,
+  });
+
+  AgentTaskRunnable.fromJson(core.Map json_)
+      : this(
+          alwaysRun: json_.containsKey('alwaysRun')
+              ? json_['alwaysRun'] as core.bool
+              : null,
+          background: json_.containsKey('background')
+              ? json_['background'] as core.bool
+              : null,
+          container: json_.containsKey('container')
+              ? AgentContainer.fromJson(
+                  json_['container'] as core.Map<core.String, core.dynamic>)
+              : null,
+          environment: json_.containsKey('environment')
+              ? AgentEnvironment.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ignoreExitStatus: json_.containsKey('ignoreExitStatus')
+              ? json_['ignoreExitStatus'] as core.bool
+              : null,
+          script: json_.containsKey('script')
+              ? AgentScript.fromJson(
+                  json_['script'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alwaysRun != null) 'alwaysRun': alwaysRun!,
+        if (background != null) 'background': background!,
+        if (container != null) 'container': container!,
+        if (environment != null) 'environment': environment!,
+        if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
+        if (script != null) 'script': script!,
+        if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// AgentTaskSpec is the user's TaskSpec representation between Agent and CLH
+/// communication.
+class AgentTaskSpec {
+  /// Environment variables to set before running the Task.
+  AgentEnvironment? environment;
+
+  /// Maximum duration the task should run.
+  ///
+  /// The task will be killed and marked as FAILED if over this limit.
+  core.String? maxRunDuration;
+
+  /// AgentTaskRunnable is runanbles that will be executed on the agent.
+  core.List<AgentTaskRunnable>? runnables;
+
+  AgentTaskSpec({
+    this.environment,
+    this.maxRunDuration,
+    this.runnables,
+  });
+
+  AgentTaskSpec.fromJson(core.Map json_)
+      : this(
+          environment: json_.containsKey('environment')
+              ? AgentEnvironment.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxRunDuration: json_.containsKey('maxRunDuration')
+              ? json_['maxRunDuration'] as core.String
+              : null,
+          runnables: json_.containsKey('runnables')
+              ? (json_['runnables'] as core.List)
+                  .map((value) => AgentTaskRunnable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (environment != null) 'environment': environment!,
+        if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
+        if (runnables != null) 'runnables': runnables!,
       };
 }
 
@@ -1401,7 +1675,8 @@ class Disk {
   /// customized image in short names. The following image values are supported
   /// for a boot disk: * "batch-debian": use Batch Debian images. *
   /// "batch-centos": use Batch CentOS images. * "batch-cos": use Batch
-  /// Container-Optimized images.
+  /// Container-Optimized images. * "batch-hpc-centos": use Batch HPC CentOS
+  /// images.
   core.String? image;
 
   /// Disk size in GB.
@@ -1569,7 +1844,6 @@ class InstancePolicy {
   ///
   /// See
   /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
-  /// Not yet implemented.
   core.String? minCpuPlatform;
 
   /// The provisioning model.
@@ -1915,7 +2189,7 @@ class JobStatus {
 
   /// Job state
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Job state unspecified.
   /// - "QUEUED" : Job is admitted (validated and persisted) and waiting for
   /// resources.
   /// - "SCHEDULED" : Job is scheduled to run as soon as resource allocation is
@@ -1978,33 +2252,7 @@ class JobStatus {
       };
 }
 
-class KMSEnvMap {
-  /// The value of the cipherText response from the `encrypt` method.
-  core.String? cipherText;
-
-  /// The name of the KMS key that will be used to decrypt the cipher text.
-  core.String? keyName;
-
-  KMSEnvMap({
-    this.cipherText,
-    this.keyName,
-  });
-
-  KMSEnvMap.fromJson(core.Map json_)
-      : this(
-          cipherText: json_.containsKey('cipherText')
-              ? json_['cipherText'] as core.String
-              : null,
-          keyName: json_.containsKey('keyName')
-              ? json_['keyName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cipherText != null) 'cipherText': cipherText!,
-        if (keyName != null) 'keyName': keyName!,
-      };
-}
+typedef KMSEnvMap = $KMSEnvMap;
 
 /// LifecyclePolicy describes how to deal with task failures based on different
 /// conditions.
@@ -2274,7 +2522,7 @@ class LogsPolicy {
 class Message {
   /// The new job state.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Job state unspecified.
   /// - "QUEUED" : Job is admitted (validated and persisted) and waiting for
   /// resources.
   /// - "SCHEDULED" : Job is scheduled to run as soon as resource allocation is
@@ -2747,42 +2995,7 @@ class Runnable {
 }
 
 /// Script runnable.
-class Script {
-  /// Script file path on the host VM.
-  ///
-  /// To specify an interpreter, please add a `#!`(also known as
-  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first
-  /// line of the file.(For example, to execute the script using bash,
-  /// `#!/bin/bash` should be the first line of the file. To execute the script
-  /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the
-  /// file.) Otherwise, the file will by default be excuted by `/bin/sh`.
-  core.String? path;
-
-  /// Shell script text.
-  ///
-  /// To specify an interpreter, please add a `#!\n` at the beginning of the
-  /// text.(For example, to execute the script using bash, `#!/bin/bash\n`
-  /// should be added. To execute the script using`Python3`, `#!/usr/bin/env
-  /// python3\n` should be added.) Otherwise, the script will by default be
-  /// excuted by `/bin/sh`.
-  core.String? text;
-
-  Script({
-    this.path,
-    this.text,
-  });
-
-  Script.fromJson(core.Map json_)
-      : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (path != null) 'path': path!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef Script = $Script;
 
 /// Carries information about a Google Cloud service account.
 class ServiceAccount {
@@ -2944,8 +3157,7 @@ class TaskExecution {
       };
 }
 
-/// A TaskGroup contains one or multiple Tasks that share the same Runnable but
-/// with different runtime parameters.
+/// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 class TaskGroup {
   /// TaskGroup name.
   ///
@@ -2972,6 +3184,17 @@ class TaskGroup {
   /// Defaults to false.
   core.bool? requireHostsFile;
 
+  /// Scheduling policy for Tasks in the TaskGroup.
+  ///
+  /// The default value is AS_SOON_AS_POSSIBLE.
+  /// Possible string values are:
+  /// - "SCHEDULING_POLICY_UNSPECIFIED" : Unspecified.
+  /// - "AS_SOON_AS_POSSIBLE" : Run Tasks as soon as resources are available.
+  /// Tasks might be executed in parallel depending on parallelism and
+  /// task_count values.
+  /// - "IN_ORDER" : Run Tasks sequentially with increased task index.
+  core.String? schedulingPolicy;
+
   /// Number of Tasks in the TaskGroup.
   ///
   /// Default is 1.
@@ -2992,7 +3215,7 @@ class TaskGroup {
   /// environment variable, in addition to any environment variables set in
   /// task_environments, specifying the number of Tasks in the Task's parent
   /// TaskGroup, and the specific Task's index in the TaskGroup (0 through
-  /// BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+  /// BATCH_TASK_COUNT - 1).
   core.List<Environment>? taskEnvironments;
 
   /// Tasks in the group share the same task spec.
@@ -3005,6 +3228,7 @@ class TaskGroup {
     this.parallelism,
     this.permissiveSsh,
     this.requireHostsFile,
+    this.schedulingPolicy,
     this.taskCount,
     this.taskCountPerNode,
     this.taskEnvironments,
@@ -3022,6 +3246,9 @@ class TaskGroup {
               : null,
           requireHostsFile: json_.containsKey('requireHostsFile')
               ? json_['requireHostsFile'] as core.bool
+              : null,
+          schedulingPolicy: json_.containsKey('schedulingPolicy')
+              ? json_['schedulingPolicy'] as core.String
               : null,
           taskCount: json_.containsKey('taskCount')
               ? json_['taskCount'] as core.String
@@ -3046,6 +3273,7 @@ class TaskGroup {
         if (parallelism != null) 'parallelism': parallelism!,
         if (permissiveSsh != null) 'permissiveSsh': permissiveSsh!,
         if (requireHostsFile != null) 'requireHostsFile': requireHostsFile!,
+        if (schedulingPolicy != null) 'schedulingPolicy': schedulingPolicy!,
         if (taskCount != null) 'taskCount': taskCount!,
         if (taskCountPerNode != null) 'taskCountPerNode': taskCountPerNode!,
         if (taskEnvironments != null) 'taskEnvironments': taskEnvironments!,

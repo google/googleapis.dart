@@ -24,6 +24,13 @@
     "name": "run",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230625",
+    "rootUrl": "https://run.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Run Admin API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1085,8 +1091,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://run.googleapis.com/",
     "schemas": {
         "GoogleCloudRunV2BinaryAuthorization": {
             "description": "Settings for Binary Authorization feature.",
@@ -1262,7 +1266,7 @@
             "type": "object"
         },
         "GoogleCloudRunV2Container": {
-            "description": "A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.",
+            "description": "A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.",
             "id": "GoogleCloudRunV2Container",
             "properties": {
                 "args": {
@@ -1367,7 +1371,7 @@
                     "type": "string"
                 },
                 "sizeLimit": {
-                    "description": "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional",
+                    "description": "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir",
                     "type": "string"
                 }
             },
@@ -1378,7 +1382,7 @@
             "id": "GoogleCloudRunV2EnvVar",
             "properties": {
                 "name": {
-                    "description": "Required. Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.",
+                    "description": "Required. Name of the environment variable. Must be a C_IDENTIFIER, and must not exceed 32768 characters.",
                     "type": "string"
                 },
                 "value": {
@@ -2402,6 +2406,13 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "customAudiences": {
+                    "description": "Custom audiences that can be used in the audience field of ID token for authenticated requests.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "deleteTime": {
                     "description": "Output only. The deletion time.",
                     "format": "google-datetime",
@@ -2968,7 +2979,7 @@
                     "type": "string"
                 },
                 "egress": {
-                    "description": "Traffic VPC egress settings.",
+                    "description": "Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.",
                     "enum": [
                         "VPC_EGRESS_UNSPECIFIED",
                         "ALL_TRAFFIC",
@@ -3250,9 +3261,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Run Admin API",
-    "version": "v2",
-    "version_module": true
+    }
 }

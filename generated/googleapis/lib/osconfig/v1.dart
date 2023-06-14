@@ -250,7 +250,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the OS policy asssignment report for the specified Compute Engine VM
+  /// Get the OS policy assignment report for the specified Compute Engine VM
   /// instance.
   ///
   /// Request parameters:
@@ -294,7 +294,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List OS policy asssignment reports for all Compute Engine VM instances in
+  /// List OS policy assignment reports for all Compute Engine VM instances in
   /// the specified zone.
   ///
   /// Request parameters:

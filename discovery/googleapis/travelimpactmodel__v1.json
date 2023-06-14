@@ -15,6 +15,13 @@
     "name": "travelimpactmodel",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://travelimpactmodel.googleapis.com/",
+    "servicePath": "",
+    "title": "Travel Impact Model API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "flights": {
             "methods": {
@@ -114,8 +120,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://travelimpactmodel.googleapis.com/",
     "schemas": {
         "ComputeFlightEmissionsRequest": {
             "description": "Input definition for the ComputeFlightEmissions request.",
@@ -267,9 +271,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Travel Impact Model API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -24,6 +24,13 @@
     "name": "datalineage",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230623",
+    "rootUrl": "https://datalineage.googleapis.com/",
+    "servicePath": "",
+    "title": "Data Lineage API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -759,8 +765,6 @@
             }
         }
     },
-    "revision": "20230407",
-    "rootUrl": "https://datalineage.googleapis.com/",
     "schemas": {
         "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest": {
             "description": "Request message for BatchSearchLinkProcesses.",
@@ -808,7 +812,7 @@
             "id": "GoogleCloudDatacatalogLineageV1EntityReference",
             "properties": {
                 "fullyQualifiedName": {
-                    "description": "Required. [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.",
+                    "description": "Required. [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.",
                     "type": "string"
                 }
             },
@@ -850,7 +854,7 @@
                     "type": "string"
                 },
                 "startTime": {
-                    "description": "Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.",
+                    "description": "Required. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.",
                     "format": "google-datetime",
                     "type": "string"
                 }
@@ -961,11 +965,13 @@
                     "description": "Output only. The type of the operation being performed.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
-                        "DELETE"
+                        "DELETE",
+                        "CREATE"
                     ],
                     "enumDescriptions": [
                         "Unused.",
-                        "The resource deletion operation."
+                        "The resource deletion operation.",
+                        "The resource creation operation."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1284,9 +1290,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Data Lineage API",
-    "version": "v1",
-    "version_module": true
+    }
 }

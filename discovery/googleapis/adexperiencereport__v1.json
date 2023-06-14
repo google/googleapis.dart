@@ -15,6 +15,13 @@
     "name": "adexperiencereport",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230508",
+    "rootUrl": "https://adexperiencereport.googleapis.com/",
+    "servicePath": "",
+    "title": "Ad Experience Report API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "sites": {
             "methods": {
@@ -137,8 +143,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
         "PlatformSummary": {
             "description": "A site's Ad Experience Report summary on a single platform.",
@@ -251,9 +255,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Ad Experience Report API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -691,6 +691,14 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// provided and does not match the current etag of the cluster, deletion will
   /// be blocked and an ABORTED error will be returned.
   ///
+  /// [ignoreErrors] - If set to true, the unenrollment of a bare metal admin
+  /// cluster resource will succeed even if errors occur during unenrollment.
+  /// This parameter can be used when you want to unenroll admin cluster
+  /// resource and the on-prem admin cluster is disconnected / unreachable.
+  /// WARNING: Using this parameter when your admin cluster still exists may
+  /// result in a deleted GCP admin cluster but existing resourcelink in on-prem
+  /// admin cluster and membership.
+  ///
   /// [validateOnly] - Validate the request without actually doing any updates.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -707,12 +715,14 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String name, {
     core.bool? allowMissing,
     core.String? etag,
+    core.bool? ignoreErrors,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
+      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1665,6 +1675,19 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalClusters/\[^/\]+/bareMetalNodePools/\[^/\]+$`.
   ///
+  /// [view] - View for bare metal node pool. When \`BASIC\` is specified, only
+  /// the node pool resource name is returned. The default/unset value
+  /// \`NODE_POOL_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns the
+  /// complete node pool configuration details.
+  /// Possible string values are:
+  /// - "NODE_POOL_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a node pool resource including
+  /// node pool resource name.
+  /// - "FULL" : Includes the complete configuration for bare metal node pool
+  /// resource. This is the default value for GetBareMetalNodePoolRequest
+  /// method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1677,9 +1700,11 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   /// this method will complete with the same error.
   async.Future<BareMetalNodePool> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1772,6 +1797,19 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   /// page. When paginating, all other parameters provided to
   /// `ListBareMetalNodePools` must match the call that provided the page token.
   ///
+  /// [view] - View for bare metal node pools. When \`BASIC\` is specified, only
+  /// the node pool resource name is returned. The default/unset value
+  /// \`NODE_POOL_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns the
+  /// complete node pool configuration details.
+  /// Possible string values are:
+  /// - "NODE_POOL_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a node pool resource including
+  /// node pool resource name.
+  /// - "FULL" : Includes the complete configuration for bare metal node pool
+  /// resource. This is the default value for ListBareMetalNodePoolsRequest
+  /// method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1786,11 +1824,13 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1815,6 +1855,11 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalClusters/\[^/\]+/bareMetalNodePools/\[^/\]+$`.
   ///
+  /// [allowMissing] - If set to true, and the bare metal node pool is not
+  /// found, the request will create a new bare metal node pool with the
+  /// provided configuration. The user must have both create and update
+  /// permission to call Update with allow_missing set to true.
+  ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the BareMetalNodePool resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
@@ -1838,12 +1883,14 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   async.Future<Operation> patch(
     BareMetalNodePool request,
     core.String name, {
+    core.bool? allowMissing,
     core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -2462,6 +2509,19 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareAdminClusters/\[^/\]+$`.
   ///
+  /// [view] - View for VMware admin cluster. When \`BASIC\` is specified, only
+  /// the cluster resource name and membership are returned. The default/unset
+  /// value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns
+  /// the complete cluster configuration details.
+  /// Possible string values are:
+  /// - "CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a cluster resource including
+  /// cluster resource name and membership.
+  /// - "FULL" : Includes the complete configuration for VMware admin cluster
+  /// resource. This is the default value for GetVmwareAdminClusterRequest
+  /// method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2474,9 +2534,11 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<VmwareAdminCluster> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2935,7 +2997,7 @@ class ProjectsLocationsVmwareClustersResource {
   ProjectsLocationsVmwareClustersResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new VMware cluster in a given project and location.
+  /// Creates a new VMware user cluster in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3841,6 +3903,18 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareClusters/\[^/\]+/vmwareNodePools/\[^/\]+$`.
   ///
+  /// [view] - View for VMware node pool. When \`BASIC\` is specified, only the
+  /// node pool resource name is returned. The default/unset value
+  /// \`NODE_POOL_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns the
+  /// complete node pool configuration details.
+  /// Possible string values are:
+  /// - "NODE_POOL_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a node pool resource including
+  /// node pool resource name.
+  /// - "FULL" : Includes the complete configuration for VMware node pool
+  /// resource. This is the default value for GetVmwareNodePoolRequest method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3853,9 +3927,11 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   /// this method will complete with the same error.
   async.Future<VmwareNodePool> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3947,6 +4023,18 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   /// other parameters provided to `ListVmwareNodePools` must match the call
   /// that provided the page token.
   ///
+  /// [view] - View for VMware node pools. When \`BASIC\` is specified, only the
+  /// node pool resource name is returned. The default/unset value
+  /// \`NODE_POOL_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns the
+  /// complete node pool configuration details.
+  /// Possible string values are:
+  /// - "NODE_POOL_VIEW_UNSPECIFIED" : If the value is not set, the default
+  /// \`FULL\` view is used.
+  /// - "BASIC" : Includes basic information of a node pool resource including
+  /// node pool resource name.
+  /// - "FULL" : Includes the complete configuration for VMware node pool
+  /// resource. This is the default value for ListVmwareNodePoolsRequest method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3961,11 +4049,13 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4142,6 +4232,10 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareClusters/\[^/\]+/vmwareNodePools/\[^/\]+$`.
   ///
+  /// [allowMissing] - If set to true, and the VMware node pool is not found,
+  /// the request will succeed but no action will be taken on the server and
+  /// return a completed LRO.
+  ///
   /// [etag] - The current etag of the VMware node pool. If an etag is provided
   /// and does not match the current etag of node pool, deletion will be blocked
   /// and an ABORTED error will be returned.
@@ -4161,11 +4255,13 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   /// this method will complete with the same error.
   async.Future<Operation> unenroll(
     core.String name, {
+    core.bool? allowMissing,
     core.String? etag,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -4283,12 +4379,12 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource {
 /// Authorization defines the On-Prem cluster authorization configuration to
 /// bootstrap onto the admin cluster.
 class Authorization {
-  /// For VMware user, bare metal user and standalone clusters, users that will
-  /// be granted the cluster-admin role on the cluster, providing full access to
-  /// the cluster.
+  /// For VMware and bare metal user clusters, users will be granted the
+  /// cluster-admin role on the cluster, which provides full administrative
+  /// access to the cluster.
   ///
-  /// For bare metal Admin cluster, users will be granted the view role, which
-  /// is a view only access.
+  /// For bare metal admin clusters, users will be granted the cluster-view
+  /// role, which limits users to read-only access.
   ///
   /// Required.
   core.List<ClusterUser>? adminUsers;
@@ -5768,7 +5864,7 @@ class BareMetalIslandModeCidrConfig {
       };
 }
 
-/// KubeletConfig defines the modifiable kubelet configurations for baremetal
+/// KubeletConfig defines the modifiable kubelet configurations for bare metal
 /// machines.
 ///
 /// Note: this list includes fields supported in GKE (see
@@ -6318,6 +6414,9 @@ class BareMetalNodePool {
   /// Output only.
   core.String? updateTime;
 
+  /// The worker node pool upgrade policy.
+  BareMetalNodePoolUpgradePolicy? upgradePolicy;
+
   BareMetalNodePool({
     this.annotations,
     this.createTime,
@@ -6331,6 +6430,7 @@ class BareMetalNodePool {
     this.status,
     this.uid,
     this.updateTime,
+    this.upgradePolicy,
   });
 
   BareMetalNodePool.fromJson(core.Map json_)
@@ -6372,6 +6472,10 @@ class BareMetalNodePool {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          upgradePolicy: json_.containsKey('upgradePolicy')
+              ? BareMetalNodePoolUpgradePolicy.fromJson(
+                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6387,13 +6491,14 @@ class BareMetalNodePool {
         if (status != null) 'status': status!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
       };
 }
 
 /// BareMetalNodePoolConfig describes the configuration of all nodes within a
 /// given bare metal node pool.
 class BareMetalNodePoolConfig {
-  /// The modifiable kubelet configurations for the baremetal machines.
+  /// The modifiable kubelet configurations for the bare metal machines.
   BareMetalKubeletConfig? kubeletConfig;
 
   /// The labels assigned to nodes of this node pool.
@@ -6464,6 +6569,30 @@ class BareMetalNodePoolConfig {
       };
 }
 
+/// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+class BareMetalNodePoolUpgradePolicy {
+  /// The parallel upgrade settings for worker node pools.
+  BareMetalParallelUpgradeConfig? parallelUpgradeConfig;
+
+  BareMetalNodePoolUpgradePolicy({
+    this.parallelUpgradeConfig,
+  });
+
+  BareMetalNodePoolUpgradePolicy.fromJson(core.Map json_)
+      : this(
+          parallelUpgradeConfig: json_.containsKey('parallelUpgradeConfig')
+              ? BareMetalParallelUpgradeConfig.fromJson(
+                  json_['parallelUpgradeConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parallelUpgradeConfig != null)
+          'parallelUpgradeConfig': parallelUpgradeConfig!,
+      };
+}
+
 /// Specifies operating system settings for cluster provisioning.
 class BareMetalOsEnvironmentConfig {
   /// Whether the package repo should not be included when initializing bare
@@ -6484,6 +6613,45 @@ class BareMetalOsEnvironmentConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (packageRepoExcluded != null)
           'packageRepoExcluded': packageRepoExcluded!,
+      };
+}
+
+/// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for
+/// worker node pools.
+class BareMetalParallelUpgradeConfig {
+  /// The maximum number of nodes that can be upgraded at once.
+  ///
+  /// Defaults to 1.
+  ///
+  /// Required.
+  core.int? concurrentNodes;
+
+  /// The minimum number of nodes that should be healthy and available during an
+  /// upgrade.
+  ///
+  /// If set to the default value of 0, it is possible that none of the nodes
+  /// will be available during an upgrade.
+  core.int? minimumAvailableNodes;
+
+  BareMetalParallelUpgradeConfig({
+    this.concurrentNodes,
+    this.minimumAvailableNodes,
+  });
+
+  BareMetalParallelUpgradeConfig.fromJson(core.Map json_)
+      : this(
+          concurrentNodes: json_.containsKey('concurrentNodes')
+              ? json_['concurrentNodes'] as core.int
+              : null,
+          minimumAvailableNodes: json_.containsKey('minimumAvailableNodes')
+              ? json_['minimumAvailableNodes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (concurrentNodes != null) 'concurrentNodes': concurrentNodes!,
+        if (minimumAvailableNodes != null)
+          'minimumAvailableNodes': minimumAvailableNodes!,
       };
 }
 
@@ -6614,6 +6782,9 @@ class BareMetalStorageConfig {
 
 /// Contains information about a specific Anthos on bare metal version.
 class BareMetalVersionInfo {
+  /// The list of upgrade dependencies for this version.
+  core.List<UpgradeDependency>? dependencies;
+
   /// If set, the cluster dependencies (e.g. the admin cluster, other user
   /// clusters managed by the same admin cluster, version skew policy, etc) must
   /// be upgraded before this version can be installed or upgraded to.
@@ -6623,12 +6794,19 @@ class BareMetalVersionInfo {
   core.String? version;
 
   BareMetalVersionInfo({
+    this.dependencies,
     this.hasDependencies,
     this.version,
   });
 
   BareMetalVersionInfo.fromJson(core.Map json_)
       : this(
+          dependencies: json_.containsKey('dependencies')
+              ? (json_['dependencies'] as core.List)
+                  .map((value) => UpgradeDependency.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           hasDependencies: json_.containsKey('hasDependencies')
               ? json_['hasDependencies'] as core.bool
               : null,
@@ -6638,6 +6816,7 @@ class BareMetalVersionInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dependencies != null) 'dependencies': dependencies!,
         if (hasDependencies != null) 'hasDependencies': hasDependencies!,
         if (version != null) 'version': version!,
       };
@@ -6833,8 +7012,7 @@ class EnrollBareMetalAdminClusterRequest {
   /// name.
   ///
   /// This must be unique among all GKE on-prem clusters within a project and
-  /// location and will return a 409 if the cluster already exists. This value
-  /// must be up to 40 characters and follow RFC-1123
+  /// location and will return a 409 if the cluster already exists.
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? bareMetalAdminClusterId;
 
@@ -6881,8 +7059,7 @@ class EnrollBareMetalClusterRequest {
   /// name.
   ///
   /// This must be unique among all bare metal clusters within a project and
-  /// location and will return a 409 if the cluster already exists. This value
-  /// must be up to 40 characters and follow RFC-1123
+  /// location and will return a 409 if the cluster already exists.
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? bareMetalClusterId;
 
@@ -6894,6 +7071,8 @@ class EnrollBareMetalClusterRequest {
   /// to the bare_metal_cluster_id. Otherwise, it must match the object name of
   /// the bare metal cluster custom resource. It is not modifiable outside /
   /// beyond the enrollment operation.
+  ///
+  /// Optional.
   core.String? localName;
 
   EnrollBareMetalClusterRequest({
@@ -6930,7 +7109,6 @@ class EnrollBareMetalNodePoolRequest {
   /// User provided OnePlatform identifier that is used as part of the resource
   /// name.
   ///
-  /// This value must be up to 40 characters and follow RFC-1123
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? bareMetalNodePoolId;
 
@@ -6963,16 +7141,6 @@ class EnrollBareMetalNodePoolRequest {
 /// Message for enrolling an existing VMware admin cluster to the GKE on-prem
 /// API.
 class EnrollVmwareAdminClusterRequest {
-  /// The object name of the VMware OnPremAdminCluster custom resource on the
-  /// associated admin cluster.
-  ///
-  /// This field is used to support conflicting resource names when enrolling
-  /// existing clusters to the API. When not provided, this field will resolve
-  /// to the vmware_admin_cluster_id. Otherwise, it must match the object name
-  /// of the VMware OnPremAdminCluster custom resource. It is not modifiable
-  /// outside / beyond the enrollment operation.
-  core.String? localName;
-
   /// This is the full resource name of this admin cluster's fleet membership.
   ///
   /// Required.
@@ -6982,22 +7150,17 @@ class EnrollVmwareAdminClusterRequest {
   /// name.
   ///
   /// This must be unique among all GKE on-prem clusters within a project and
-  /// location and will return a 409 if the cluster already exists. This value
-  /// must be up to 40 characters and follow RFC-1123
+  /// location and will return a 409 if the cluster already exists.
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? vmwareAdminClusterId;
 
   EnrollVmwareAdminClusterRequest({
-    this.localName,
     this.membership,
     this.vmwareAdminClusterId,
   });
 
   EnrollVmwareAdminClusterRequest.fromJson(core.Map json_)
       : this(
-          localName: json_.containsKey('localName')
-              ? json_['localName'] as core.String
-              : null,
           membership: json_.containsKey('membership')
               ? json_['membership'] as core.String
               : null,
@@ -7007,7 +7170,6 @@ class EnrollVmwareAdminClusterRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (localName != null) 'localName': localName!,
         if (membership != null) 'membership': membership!,
         if (vmwareAdminClusterId != null)
           'vmwareAdminClusterId': vmwareAdminClusterId!,
@@ -7033,6 +7195,8 @@ class EnrollVmwareClusterRequest {
   /// to the vmware_cluster_id. Otherwise, it must match the object name of the
   /// VMware OnPremUserCluster custom resource. It is not modifiable outside /
   /// beyond the enrollment operation.
+  ///
+  /// Optional.
   core.String? localName;
 
   /// Validate the request without actually doing any updates.
@@ -7042,8 +7206,7 @@ class EnrollVmwareClusterRequest {
   /// name.
   ///
   /// This must be unique among all GKE on-prem clusters within a project and
-  /// location and will return a 409 if the cluster already exists. This value
-  /// must be up to 40 characters and follow RFC-1123
+  /// location and will return a 409 if the cluster already exists.
   /// (https://tools.ietf.org/html/rfc1123) format.
   core.String? vmwareClusterId;
 
@@ -7936,6 +8099,54 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// UpgradeDependency represents a dependency when upgrading a resource.
+class UpgradeDependency {
+  /// Current version of the dependency e.g. 1.15.0.
+  core.String? currentVersion;
+
+  /// Local name of the dependency.
+  core.String? localName;
+
+  /// Resource name of the dependency.
+  core.String? resourceName;
+
+  /// Target version of the dependency e.g. 1.16.1.
+  ///
+  /// This is the version the dependency needs to be upgraded to before a
+  /// resource can be upgraded.
+  core.String? targetVersion;
+
+  UpgradeDependency({
+    this.currentVersion,
+    this.localName,
+    this.resourceName,
+    this.targetVersion,
+  });
+
+  UpgradeDependency.fromJson(core.Map json_)
+      : this(
+          currentVersion: json_.containsKey('currentVersion')
+              ? json_['currentVersion'] as core.String
+              : null,
+          localName: json_.containsKey('localName')
+              ? json_['localName'] as core.String
+              : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
+              : null,
+          targetVersion: json_.containsKey('targetVersion')
+              ? json_['targetVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentVersion != null) 'currentVersion': currentVersion!,
+        if (localName != null) 'localName': localName!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (targetVersion != null) 'targetVersion': targetVersion!,
+      };
+}
 
 /// ValidationCheck represents the result of preflight check.
 class ValidationCheck {
@@ -8926,7 +9137,7 @@ class VmwareCluster {
 
   /// The Anthos clusters on the VMware version for your user cluster.
   ///
-  /// Defaults to the admin cluster version.
+  /// Required.
   core.String? onPremVersion;
 
   /// If set, there are currently changes in flight to the VMware user cluster.
@@ -9245,8 +9456,12 @@ class VmwareControlPlaneVsphereConfig {
   /// The Vsphere datastore used by the control plane Node.
   core.String? datastore;
 
+  /// The Vsphere storage policy used by the control plane Node.
+  core.String? storagePolicyName;
+
   VmwareControlPlaneVsphereConfig({
     this.datastore,
+    this.storagePolicyName,
   });
 
   VmwareControlPlaneVsphereConfig.fromJson(core.Map json_)
@@ -9254,10 +9469,14 @@ class VmwareControlPlaneVsphereConfig {
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -10152,6 +10371,9 @@ class VmwareVCenterConfig {
   /// The name of the vCenter resource pool for the user cluster.
   core.String? resourcePool;
 
+  /// The name of the vCenter storage policy for the user cluster.
+  core.String? storagePolicyName;
+
   VmwareVCenterConfig({
     this.address,
     this.caCertData,
@@ -10160,6 +10382,7 @@ class VmwareVCenterConfig {
     this.datastore,
     this.folder,
     this.resourcePool,
+    this.storagePolicyName,
   });
 
   VmwareVCenterConfig.fromJson(core.Map json_)
@@ -10185,6 +10408,9 @@ class VmwareVCenterConfig {
           resourcePool: json_.containsKey('resourcePool')
               ? json_['resourcePool'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10195,6 +10421,7 @@ class VmwareVCenterConfig {
         if (datastore != null) 'datastore': datastore!,
         if (folder != null) 'folder': folder!,
         if (resourcePool != null) 'resourcePool': resourcePool!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -10279,11 +10506,17 @@ class VmwareVsphereConfig {
   /// Inherited from the user cluster.
   core.String? datastore;
 
+  /// The name of the vCenter storage policy.
+  ///
+  /// Inherited from the user cluster.
+  core.String? storagePolicyName;
+
   /// Tags to apply to VMs.
   core.List<VmwareVsphereTag>? tags;
 
   VmwareVsphereConfig({
     this.datastore,
+    this.storagePolicyName,
     this.tags,
   });
 
@@ -10291,6 +10524,9 @@ class VmwareVsphereConfig {
       : this(
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
+              : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
               : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
@@ -10302,6 +10538,7 @@ class VmwareVsphereConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
         if (tags != null) 'tags': tags!,
       };
 }

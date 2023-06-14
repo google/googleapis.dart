@@ -28,6 +28,12 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "packagePath": "admin",
+    "protocol": "rest",
+    "revision": "20230704",
+    "rootUrl": "https://admin.googleapis.com/",
+    "servicePath": "",
+    "title": "Admin SDK API",
+    "version": "datatransfer_v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -105,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "applications": {
             "methods": {
@@ -270,8 +275,6 @@
             }
         }
     },
-    "revision": "20230516",
-    "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Application": {
             "description": "Application resources represent applications installed on the domain that support transferring ownership of user data.",
@@ -444,8 +447,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Admin SDK API",
-    "version": "datatransfer_v1"
+    }
 }

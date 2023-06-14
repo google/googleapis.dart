@@ -7004,8 +7004,8 @@ class AnalyzeEntitiesResponse {
   /// These are UMLS concepts or normalized mention content.
   core.List<Entity>? entities;
 
-  /// entity_mentions contains all the annotated medical entities that were
-  /// mentioned in the provided document.
+  /// The `entity_mentions` field contains all the annotated medical entities
+  /// that were mentioned in the provided document.
   core.List<EntityMention>? entityMentions;
 
   /// relationships contains all the binary relationships that were identified
@@ -9141,7 +9141,7 @@ class FhirNotificationConfig {
   /// Whether to send full FHIR resource to this Pub/Sub topic.
   core.bool? sendFullResource;
 
-  /// Whether to send full FHIR resource to this pubsub topic for deleting FHIR
+  /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
   /// resource.
   ///
   /// Note that setting this to true does not guarantee that all previous

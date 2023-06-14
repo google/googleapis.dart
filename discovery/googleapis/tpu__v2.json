@@ -24,6 +24,13 @@
     "name": "tpu",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230621",
+    "rootUrl": "https://tpu.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud TPU API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -719,8 +725,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://tpu.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
             "description": "A TPU accelerator configuration.",
@@ -1253,7 +1257,7 @@
                         "TPU node is restarting.",
                         "TPU node is undergoing reimaging.",
                         "TPU node is being deleted.",
-                        "TPU node is being repaired and may be unusable. Details can be found in the `help_description` field.",
+                        "TPU node is being repaired and may be unusable. Details can be found in the 'help_description' field.",
                         "TPU node is stopped.",
                         "TPU node is currently stopping.",
                         "TPU node is currently starting.",
@@ -1507,9 +1511,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud TPU API",
-    "version": "v2",
-    "version_module": true
+    }
 }

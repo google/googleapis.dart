@@ -24,6 +24,12 @@
     "name": "groupsmigration",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://groupsmigration.googleapis.com/",
+    "servicePath": "",
+    "title": "Groups Migration API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "archive": {
             "methods": {
@@ -145,8 +150,6 @@
             }
         }
     },
-    "revision": "20230302",
-    "rootUrl": "https://groupsmigration.googleapis.com/",
     "schemas": {
         "Groups": {
             "description": "JSON response template for groups migration API.",
@@ -163,8 +166,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Groups Migration API",
-    "version": "v1"
+    }
 }

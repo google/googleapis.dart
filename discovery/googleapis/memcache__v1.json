@@ -24,6 +24,13 @@
     "name": "memcache",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230622",
+    "rootUrl": "https://memcache.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Memorystore for Memcached API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -554,8 +560,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://memcache.googleapis.com/",
     "schemas": {
         "ApplyParametersRequest": {
             "description": "Request for ApplyParameters.",
@@ -1099,6 +1103,13 @@
                 "parameters": {
                     "$ref": "MemcacheParameters",
                     "description": "User defined parameters to apply to the memcached process on each node."
+                },
+                "reservedIpRangeId": {
+                    "description": "Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, \"test-default\" associated with IP range 10.0.0.0/29.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "state": {
                     "description": "Output only. The state of this Memcached instance.",
@@ -1758,9 +1769,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Memorystore for Memcached API",
-    "version": "v1",
-    "version_module": true
+    }
 }

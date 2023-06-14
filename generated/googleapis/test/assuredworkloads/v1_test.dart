@@ -251,7 +251,6 @@ api.GoogleCloudAssuredworkloadsV1Violation
     o.exceptionAuditLogLink = 'foo';
     o.name = 'foo';
     o.nonCompliantOrgPolicy = 'foo';
-    o.orgPolicyConstraint = 'foo';
     o.remediation = buildGoogleCloudAssuredworkloadsV1ViolationRemediation();
     o.resolveTime = 'foo';
     o.state = 'foo';
@@ -296,10 +295,6 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
     );
     unittest.expect(
       o.nonCompliantOrgPolicy!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.orgPolicyConstraint!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAssuredworkloadsV1ViolationRemediation(o.remediation!);
@@ -642,6 +637,8 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.labels = buildUnnamed10();
     o.name = 'foo';
     o.partner = 'foo';
+    o.partnerPermissions =
+        buildGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions();
     o.provisionedResourcesParent = 'foo';
     o.resourceSettings = buildUnnamed11();
     o.resources = buildUnnamed12();
@@ -697,6 +694,8 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
       o.partner!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(
+        o.partnerPermissions!);
     unittest.expect(
       o.provisionedResourcesParent!,
       unittest.equals('foo'),
@@ -815,7 +814,6 @@ api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
     o.dataLogsViewer = true;
     o.remediateFolderViolations = true;
-    o.serviceAccessApprover = true;
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions--;
   return o;
@@ -827,7 +825,6 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
     unittest.expect(o.dataLogsViewer!, unittest.isTrue);
     unittest.expect(o.remediateFolderViolations!, unittest.isTrue);
-    unittest.expect(o.serviceAccessApprover!, unittest.isTrue);
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions--;
 }

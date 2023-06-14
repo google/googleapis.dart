@@ -42,6 +42,12 @@
     "name": "tagmanager",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230628",
+    "rootUrl": "https://tagmanager.googleapis.com/",
+    "servicePath": "",
+    "title": "Tag Manager API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -119,7 +125,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "methods": {
@@ -1931,8 +1936,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {
             "description": "Represents a Google Tag Manager Account.",
@@ -3475,8 +3478,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Tag Manager API",
-    "version": "v1"
+    }
 }

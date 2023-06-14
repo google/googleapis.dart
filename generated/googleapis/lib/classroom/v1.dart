@@ -3984,7 +3984,10 @@ class Course {
   /// The Calendar ID for a calendar that all course members can see, to which
   /// Classroom adds events for course work and announcements in the course.
   ///
-  /// Read-only.
+  /// The Calendar for a course is created asynchronously when the course is set
+  /// to `CourseState.ACTIVE` for the first time (at creation time or when it is
+  /// updated to `ACTIVE` through the UI or the API). The Calendar ID will not
+  /// be populated until the creation process is completed. Read-only.
   core.String? calendarId;
 
   /// The email address of a Google group containing all members of the course.
@@ -4742,7 +4745,7 @@ class CourseWorkMaterial {
   /// never returned.
   /// - "PUBLISHED" : Status for course work material that has been published.
   /// This is the default state.
-  /// - "DRAFT" : Status for an course work material that is not yet published.
+  /// - "DRAFT" : Status for a course work material that is not yet published.
   /// Course work material in this state is visible only to course teachers and
   /// domain administrators.
   /// - "DELETED" : Status for course work material that was published but is

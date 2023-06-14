@@ -754,7 +754,7 @@ class ProjectsLocationsInstancesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Check if a notebook instance is healthy.
+  /// Checks whether a notebook instance is healthy.
   ///
   /// Request parameters:
   ///
@@ -792,7 +792,7 @@ class ProjectsLocationsInstancesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Check if a notebook instance is upgradable.
+  /// Checks whether a notebook instance is upgradable.
   ///
   /// Request parameters:
   ///
@@ -2202,7 +2202,7 @@ class ProjectsLocationsRuntimesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Report and process a runtime event.
+  /// Reports and processes a runtime event.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2785,7 +2785,7 @@ class ProjectsLocationsSchedulesResource {
 
 /// Definition of a hardware accelerator.
 ///
-/// Note that not all combinations of `type` and `core_count` are valid. Check
+/// Note that not all combinations of `type` and `core_count` are valid. See
 /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list)
 /// to find a valid combination. TPUs are not supported.
 class AcceleratorConfig {
@@ -3996,7 +3996,7 @@ class Instance {
   /// If true, the notebook instance will not register with the proxy.
   core.bool? noProxyAccess;
 
-  /// If true, no public IP will be assigned to this instance.
+  /// If true, no external IP will be assigned to this instance.
   core.bool? noPublicIp;
 
   /// Input only.
@@ -4011,6 +4011,11 @@ class Instance {
   /// The path must be a URL or Cloud Storage path
   /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
+
+  /// Check how possible a migration from UmN to WbI is.
+  ///
+  /// Output only.
+  PreMigrationCheck? preMigrationCheck;
 
   /// The proxy endpoint that is used to access the Jupyter notebook.
   ///
@@ -4123,6 +4128,7 @@ class Instance {
     this.noPublicIp,
     this.noRemoveDataDisk,
     this.postStartupScript,
+    this.preMigrationCheck,
     this.proxyUri,
     this.reservationAffinity,
     this.serviceAccount,
@@ -4228,6 +4234,10 @@ class Instance {
           postStartupScript: json_.containsKey('postStartupScript')
               ? json_['postStartupScript'] as core.String
               : null,
+          preMigrationCheck: json_.containsKey('preMigrationCheck')
+              ? PreMigrationCheck.fromJson(json_['preMigrationCheck']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           proxyUri: json_.containsKey('proxyUri')
               ? json_['proxyUri'] as core.String
               : null,
@@ -4299,6 +4309,7 @@ class Instance {
         if (noPublicIp != null) 'noPublicIp': noPublicIp!,
         if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (preMigrationCheck != null) 'preMigrationCheck': preMigrationCheck!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
@@ -5132,6 +5143,42 @@ class Policy {
       };
 }
 
+/// PreMigrationCheck checks how feasible a migration from UmN is.
+class PreMigrationCheck {
+  /// Message provides a summary or workaround.
+  core.String? message;
+
+  /// Result returns the result of the check.
+  /// Possible string values are:
+  /// - "RESULT_UNSPECIFIED" : Default type.
+  /// - "IDENTICAL" : UmN can be migrated to WbI as is minus non-relevant parts.
+  /// - "PARTIAL" : Part of the UmN won't be ported. The migration might default
+  /// some values.
+  /// - "NOT_RECOMMENDED" : UmN has too many unsupported options for a migration
+  /// to WbI.
+  core.String? result;
+
+  PreMigrationCheck({
+    this.message,
+    this.result,
+  });
+
+  PreMigrationCheck.fromJson(core.Map json_)
+      : this(
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (message != null) 'message': message!,
+        if (result != null) 'result': result!,
+      };
+}
+
 /// Request for getting a new access token.
 class RefreshRuntimeTokenInternalRequest {
   /// The VM hardware token for authenticating the VM.
@@ -5564,7 +5611,7 @@ class RuntimeAcceleratorConfig {
   /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
-  /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100.
+  /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100 - 40GB.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
@@ -5704,7 +5751,7 @@ class RuntimeMetrics {
 
 /// A set of Shielded Instance options.
 ///
-/// Check
+/// See
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
 typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig;
@@ -6007,7 +6054,7 @@ class Schedule {
 
 /// Definition of a hardware accelerator.
 ///
-/// Note that not all combinations of `type` and `core_count` are valid. Check
+/// Note that not all combinations of `type` and `core_count` are valid. See
 /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find
 /// a valid combination. TPUs are not supported.
 class SchedulerAcceleratorConfig {
@@ -6077,7 +6124,7 @@ class SetIamPolicyRequest {
 class SetInstanceAcceleratorRequest {
   /// Count of cores of this accelerator.
   ///
-  /// Note that not all combinations of `type` and `core_count` are valid. Check
+  /// Note that not all combinations of `type` and `core_count` are valid. See
   /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list)
   /// to find a valid combination. TPUs are not supported.
   ///
@@ -6178,7 +6225,7 @@ class SetInstanceMachineTypeRequest {
 
 /// A set of Shielded Instance options.
 ///
-/// Check
+/// See
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
 typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;

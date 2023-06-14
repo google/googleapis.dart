@@ -24,6 +24,13 @@
     "name": "realtimebidding",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230705",
+    "rootUrl": "https://realtimebidding.googleapis.com/",
+    "servicePath": "",
+    "title": "Real-time Bidding API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "bidders": {
             "methods": {
@@ -1303,8 +1309,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://realtimebidding.googleapis.com/",
     "schemas": {
         "ActivatePretargetingConfigRequest": {
             "description": "A request to activate a pretargeting configuration. Sets the configuration's state to ACTIVE.",
@@ -3299,9 +3303,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Real-time Bidding API",
-    "version": "v1",
-    "version_module": true
+    }
 }

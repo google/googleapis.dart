@@ -24,6 +24,13 @@
     "name": "pubsublite",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230623",
+    "rootUrl": "https://pubsublite.googleapis.com/",
+    "servicePath": "",
+    "title": "Pub/Sub Lite API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "admin": {
             "resources": {
@@ -1038,8 +1044,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://pubsublite.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
@@ -1685,9 +1689,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Pub/Sub Lite API",
-    "version": "v1",
-    "version_module": true
+    }
 }

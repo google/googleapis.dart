@@ -24,6 +24,13 @@
     "name": "datalabeling",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://datalabeling.googleapis.com/",
+    "servicePath": "",
+    "title": "Data Labeling API",
+    "version": "v1beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1594,8 +1600,6 @@
             }
         }
     },
-    "revision": "20230429",
-    "rootUrl": "https://datalabeling.googleapis.com/",
     "schemas": {
         "GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata": {
             "description": "Metadata of a CreateInstruction operation.",
@@ -5648,9 +5652,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Data Labeling API",
-    "version": "v1beta1",
-    "version_module": true
+    }
 }

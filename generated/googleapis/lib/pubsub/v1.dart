@@ -916,11 +916,12 @@ class ProjectsSnapshotsResource {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of snapshots to return.
+  /// [pageSize] - Optional. Maximum number of snapshots to return.
   ///
-  /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
-  /// indicates that this is a continuation of a prior `ListSnapshots` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListSnapshotsResponse`; indicates that this is a continuation of a prior
+  /// `ListSnapshots` call, and that the system should return the next page of
+  /// data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,7 +968,7 @@ class ProjectsSnapshotsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the snapshot.
+  /// [name] - Optional. The name of the snapshot.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1391,11 +1392,12 @@ class ProjectsSubscriptionsResource {
   /// subscriptions. Format is `projects/{project-id}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
+  /// [pageSize] - Optional. Maximum number of subscriptions to return.
   ///
-  /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
-  /// indicates that this is a continuation of a prior `ListSubscriptions` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListSubscriptionsResponse`; indicates that this is a continuation of a
+  /// prior `ListSubscriptions` call, and that the system should return the next
+  /// page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1961,11 +1963,12 @@ class ProjectsTopicsResource {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of topics to return.
+  /// [pageSize] - Optional. Maximum number of topics to return.
   ///
-  /// [pageToken] - The value returned by the last `ListTopicsResponse`;
-  /// indicates that this is a continuation of a prior `ListTopics` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListTopicsResponse`; indicates that this is a continuation of a prior
+  /// `ListTopics` call, and that the system should return the next page of
+  /// data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2208,11 +2211,12 @@ class ProjectsTopicsSnapshotsResource {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of snapshot names to return.
+  /// [pageSize] - Optional. Maximum number of snapshot names to return.
   ///
-  /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
-  /// indicates that this is a continuation of a prior `ListTopicSnapshots`
-  /// call, and that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListTopicSnapshotsResponse`; indicates that this is a continuation of a
+  /// prior `ListTopicSnapshots` call, and that the system should return the
+  /// next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2262,9 +2266,9 @@ class ProjectsTopicsSubscriptionsResource {
   /// to. Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of subscription names to return.
+  /// [pageSize] - Optional. Maximum number of subscription names to return.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListTopicSubscriptionsResponse`; indicates that this is a continuation of
   /// a prior `ListTopicSubscriptions` call, and that the system should return
   /// the next page of data.
@@ -2337,6 +2341,8 @@ class AcknowledgeRequest {
 class AvroConfig {
   /// When true, write the subscription name, message_id, publish_time,
   /// attributes, and ordering_key as additional fields in the output.
+  ///
+  /// Optional.
   core.bool? writeMetadata;
 
   AvroConfig({
@@ -2363,6 +2369,8 @@ class BigQueryConfig {
   ///
   /// Otherwise, the schemas must be kept in sync and any messages with extra
   /// fields are not written and remain in the subscription's backlog.
+  ///
+  /// Optional.
   core.bool? dropUnknownFields;
 
   /// An output-only field that indicates whether or not the subscription can
@@ -2386,10 +2394,14 @@ class BigQueryConfig {
 
   /// The name of the table to which to write data, of the form
   /// {projectId}.{datasetId}.{tableId}
+  ///
+  /// Optional.
   core.String? table;
 
   /// When true, use the topic's schema as the columns to write to in BigQuery,
   /// if it exists.
+  ///
+  /// Optional.
   core.bool? useTopicSchema;
 
   /// When true, write the subscription name, message_id, publish_time,
@@ -2398,6 +2410,8 @@ class BigQueryConfig {
   /// The subscription name, message_id, and publish_time fields are put in
   /// their own columns while all other message properties (other than data) are
   /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
   core.bool? writeMetadata;
 
   BigQueryConfig({
@@ -2520,6 +2534,8 @@ class Binding {
 /// Configuration for a Cloud Storage subscription.
 class CloudStorageConfig {
   /// If set, message data will be written to Cloud Storage in Avro format.
+  ///
+  /// Optional.
   AvroConfig? avroConfig;
 
   /// User-provided name for the Cloud Storage bucket.
@@ -2535,12 +2551,17 @@ class CloudStorageConfig {
   ///
   /// See the
   /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  ///
+  /// Optional.
   core.String? filenamePrefix;
 
   /// User-provided suffix for Cloud Storage filename.
   ///
   /// See the
   /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  /// Must not end in "/".
+  ///
+  /// Optional.
   core.String? filenameSuffix;
 
   /// The maximum bytes that can be written to a Cloud Storage file before a new
@@ -2548,6 +2569,8 @@ class CloudStorageConfig {
   ///
   /// Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where
   /// messages are larger than the limit.
+  ///
+  /// Optional.
   core.String? maxBytes;
 
   /// The maximum duration that can elapse before a new Cloud Storage file is
@@ -2555,6 +2578,8 @@ class CloudStorageConfig {
   ///
   /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
   /// subscription's acknowledgement deadline.
+  ///
+  /// Optional.
   core.String? maxDuration;
 
   /// An output-only field that indicates whether or not the subscription can
@@ -2571,6 +2596,8 @@ class CloudStorageConfig {
   core.String? state;
 
   /// If set, message data will be written to Cloud Storage in text format.
+  ///
+  /// Optional.
   TextConfig? textConfig;
 
   CloudStorageConfig({
@@ -2653,6 +2680,8 @@ class CommitSchemaRequest {
 class CreateSnapshotRequest {
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The subscription whose backlog the snapshot retains.
@@ -2702,13 +2731,15 @@ class CreateSnapshotRequest {
 class DeadLetterPolicy {
   /// The name of the topic to which dead letter messages should be published.
   ///
-  /// Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service
-  /// account associated with the enclosing subscription's parent project (i.e.,
+  /// Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account
+  /// associated with the enclosing subscription's parent project (i.e.,
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
   /// permission to Publish() to this topic. The operation will fail if the
   /// topic does not exist. Users should ensure that there is a subscription
   /// attached to this topic since messages published to a topic with no
   /// subscriptions are lost.
+  ///
+  /// Optional.
   core.String? deadLetterTopic;
 
   /// The maximum number of delivery attempts for any message.
@@ -2719,6 +2750,8 @@ class DeadLetterPolicy {
   /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
   /// may automatically extend ack_deadlines. This field will be honored on a
   /// best effort basis. If this parameter is 0, a default value of 5 is used.
+  ///
+  /// Optional.
   core.int? maxDeliveryAttempts;
 
   DeadLetterPolicy({
@@ -2766,6 +2799,8 @@ class ExpirationPolicy {
   /// The minimum and maximum allowed values for `ttl` depend on the type of the
   /// associated resource, as well. If `ttl` is not set, the associated resource
   /// never expires.
+  ///
+  /// Optional.
   core.String? ttl;
 
   ExpirationPolicy({
@@ -2873,9 +2908,13 @@ class ListSchemasResponse {
 class ListSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshot that match the
   /// request; this value should be passed in a new `ListSnapshotsRequest`.
+  ///
+  /// Optional.
   core.String? nextPageToken;
 
   /// The resulting snapshots.
+  ///
+  /// Optional.
   core.List<Snapshot>? snapshots;
 
   ListSnapshotsResponse({
@@ -2907,9 +2946,13 @@ class ListSubscriptionsResponse {
   /// If not empty, indicates that there may be more subscriptions that match
   /// the request; this value should be passed in a new
   /// `ListSubscriptionsRequest` to get more subscriptions.
+  ///
+  /// Optional.
   core.String? nextPageToken;
 
   /// The subscriptions that match the request.
+  ///
+  /// Optional.
   core.List<Subscription>? subscriptions;
 
   ListSubscriptionsResponse({
@@ -2941,9 +2984,13 @@ class ListTopicSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshots that match the
   /// request; this value should be passed in a new `ListTopicSnapshotsRequest`
   /// to get more snapshots.
+  ///
+  /// Optional.
   core.String? nextPageToken;
 
   /// The names of the snapshots that match the request.
+  ///
+  /// Optional.
   core.List<core.String>? snapshots;
 
   ListTopicSnapshotsResponse({
@@ -2974,9 +3021,13 @@ class ListTopicSubscriptionsResponse {
   /// If not empty, indicates that there may be more subscriptions that match
   /// the request; this value should be passed in a new
   /// `ListTopicSubscriptionsRequest` to get more subscriptions.
+  ///
+  /// Optional.
   core.String? nextPageToken;
 
   /// The names of subscriptions attached to the topic specified in the request.
+  ///
+  /// Optional.
   core.List<core.String>? subscriptions;
 
   ListTopicSubscriptionsResponse({
@@ -3006,9 +3057,13 @@ class ListTopicSubscriptionsResponse {
 class ListTopicsResponse {
   /// If not empty, indicates that there may be more topics that match the
   /// request; this value should be passed in a new `ListTopicsRequest`.
+  ///
+  /// Optional.
   core.String? nextPageToken;
 
   /// The resulting topics.
+  ///
+  /// Optional.
   core.List<Topic>? topics;
 
   ListTopicsResponse({
@@ -3044,6 +3099,8 @@ class MessageStoragePolicy {
   /// running outside of GCP altogether) will be routed for storage in one of
   /// the allowed regions. An empty list means that no regions are allowed, and
   /// is not a valid configuration.
+  ///
+  /// Optional.
   core.List<core.String>? allowedPersistenceRegions;
 
   MessageStoragePolicy({
@@ -3140,13 +3197,34 @@ class ModifyPushConfigRequest {
       };
 }
 
+/// Sets the `data` field as the HTTP body for delivery.
+class NoWrapper {
+  /// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:`
+  /// headers of the HTTP request.
+  ///
+  /// Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  NoWrapper({
+    this.writeMetadata,
+  });
+
+  NoWrapper.fromJson(core.Map json_)
+      : this(
+          writeMetadata: json_.containsKey('writeMetadata')
+              ? json_['writeMetadata'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
+
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-///
-/// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-/// used for generating the OIDC token. For more information on setting up
-/// authentication, see
-/// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 class OidcToken {
   /// Audience to be used when generating OIDC token.
   ///
@@ -3156,7 +3234,17 @@ class OidcToken {
   /// the OIDC JWT token audience here:
   /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
   /// the Push endpoint URL will be used.
+  ///
+  /// Optional.
   core.String? audience;
+
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// used for generating the OIDC token.
+  ///
+  /// For more information on setting up authentication, see
+  /// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+  ///
+  /// Optional.
   core.String? serviceAccountEmail;
 
   OidcToken({
@@ -3323,6 +3411,8 @@ class PublishResponse {
   /// messages in the request.
   ///
   /// IDs are guaranteed to be unique within the topic.
+  ///
+  /// Optional.
   core.List<core.String>? messageIds;
 
   PublishResponse({
@@ -3352,7 +3442,102 @@ class PublishResponse {
 /// for more information. See
 /// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
 /// information about message limits.
-typedef PubsubMessage = $PubsubMessage;
+class PubsubMessage {
+  /// Attributes for this message.
+  ///
+  /// If this field is empty, the message must contain non-empty data. This can
+  /// be used to filter messages on the subscription.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributes;
+
+  /// The message data field.
+  ///
+  /// If this field is empty, the message must contain at least one attribute.
+  ///
+  /// Optional.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// ID of this message, assigned by the server when the message is published.
+  ///
+  /// Guaranteed to be unique within the topic. This value may be read by a
+  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+  /// delivery. It must not be populated by the publisher in a `Publish` call.
+  ///
+  /// Optional.
+  core.String? messageId;
+
+  /// If non-empty, identifies related messages for which publish order should
+  /// be respected.
+  ///
+  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
+  /// published with the same non-empty `ordering_key` value will be delivered
+  /// to subscribers in the order in which they are received by the Pub/Sub
+  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
+  /// specify the same `ordering_key` value. For more information, see
+  /// [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
+  ///
+  /// Optional.
+  core.String? orderingKey;
+
+  /// The time at which the message was published, populated by the server when
+  /// it receives the `Publish` call.
+  ///
+  /// It must not be populated by the publisher in a `Publish` call.
+  ///
+  /// Optional.
+  core.String? publishTime;
+
+  PubsubMessage({
+    this.attributes,
+    this.data,
+    this.messageId,
+    this.orderingKey,
+    this.publishTime,
+  });
+
+  PubsubMessage.fromJson(core.Map json_)
+      : this(
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          messageId: json_.containsKey('messageId')
+              ? json_['messageId'] as core.String
+              : null,
+          orderingKey: json_.containsKey('orderingKey')
+              ? json_['orderingKey'] as core.String
+              : null,
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
+      };
+}
+
+/// The payload to the push endpoint is in the form of the JSON representation
+/// of a PubsubMessage
+/// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+typedef PubsubWrapper = $Empty;
 
 /// Request for the `Pull` method.
 class PullRequest {
@@ -3406,6 +3591,8 @@ class PullResponse {
   /// For JSON, the response can be entirely empty. The Pub/Sub system may
   /// return fewer than the `maxMessages` requested even if there are more
   /// messages available in the backlog.
+  ///
+  /// Optional.
   core.List<ReceivedMessage>? receivedMessages;
 
   PullResponse({
@@ -3445,20 +3632,40 @@ class PushConfig {
   /// in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format
   /// defined in the v1 Pub/Sub API. For example: `attributes {
   /// "x-goog-version": "v1" }`
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? attributes;
+
+  /// When set, the payload to the push endpoint is not wrapped.
+  ///
+  /// Optional.
+  NoWrapper? noWrapper;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
   /// `Authorization` header in the HTTP request for every pushed message.
+  ///
+  /// Optional.
   OidcToken? oidcToken;
+
+  /// When set, the payload to the push endpoint is in the form of the JSON
+  /// representation of a PubsubMessage
+  /// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+  ///
+  /// Optional.
+  PubsubWrapper? pubsubWrapper;
 
   /// A URL locating the endpoint to which messages should be pushed.
   ///
   /// For example, a Webhook endpoint might use `https://example.com/push`.
+  ///
+  /// Optional.
   core.String? pushEndpoint;
 
   PushConfig({
     this.attributes,
+    this.noWrapper,
     this.oidcToken,
+    this.pubsubWrapper,
     this.pushEndpoint,
   });
 
@@ -3473,9 +3680,17 @@ class PushConfig {
                   ),
                 )
               : null,
+          noWrapper: json_.containsKey('noWrapper')
+              ? NoWrapper.fromJson(
+                  json_['noWrapper'] as core.Map<core.String, core.dynamic>)
+              : null,
           oidcToken: json_.containsKey('oidcToken')
               ? OidcToken.fromJson(
                   json_['oidcToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pubsubWrapper: json_.containsKey('pubsubWrapper')
+              ? PubsubWrapper.fromJson(
+                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>)
               : null,
           pushEndpoint: json_.containsKey('pushEndpoint')
               ? json_['pushEndpoint'] as core.String
@@ -3484,7 +3699,9 @@ class PushConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
+        if (noWrapper != null) 'noWrapper': noWrapper!,
         if (oidcToken != null) 'oidcToken': oidcToken!,
+        if (pubsubWrapper != null) 'pubsubWrapper': pubsubWrapper!,
         if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
       };
 }
@@ -3492,10 +3709,12 @@ class PushConfig {
 /// A message and its corresponding acknowledgment ID.
 class ReceivedMessage {
   /// This ID can be used to acknowledge the received message.
+  ///
+  /// Optional.
   core.String? ackId;
 
-  /// The approximate number of times that Cloud Pub/Sub has attempted to
-  /// deliver the associated message to a subscriber.
+  /// The approximate number of times that Pub/Sub has attempted to deliver the
+  /// associated message to a subscriber.
   ///
   /// More precisely, this is 1 + (number of NACKs) + (number of ack_deadline
   /// exceeds) for this message. A NACK is any call to ModifyAckDeadline with a
@@ -3506,9 +3725,13 @@ class ReceivedMessage {
   /// `delivery_attempt` will have a value of 1. The value is calculated at best
   /// effort and is approximate. If a DeadLetterPolicy is not set on the
   /// subscription, this will be 0.
+  ///
+  /// Optional.
   core.int? deliveryAttempt;
 
   /// The message.
+  ///
+  /// Optional.
   PubsubMessage? message;
 
   ReceivedMessage({
@@ -3537,7 +3760,7 @@ class ReceivedMessage {
       };
 }
 
-/// A policy that specifies how Cloud Pub/Sub retries message delivery.
+/// A policy that specifies how Pub/Sub retries message delivery.
 ///
 /// Retry delay will be exponential based on provided minimum and maximum
 /// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy
@@ -3549,11 +3772,15 @@ class RetryPolicy {
   /// The maximum delay between consecutive deliveries of a given message.
   ///
   /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+  ///
+  /// Optional.
   core.String? maximumBackoff;
 
   /// The minimum delay between consecutive deliveries of a given message.
   ///
   /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+  ///
+  /// Optional.
   core.String? minimumBackoff;
 
   RetryPolicy({
@@ -3670,6 +3897,8 @@ class Schema {
 /// Settings for validating messages published against a schema.
 class SchemaSettings {
   /// The encoding of messages validated against `schema`.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ENCODING_UNSPECIFIED" : Unspecified
   /// - "JSON" : JSON encoding
@@ -3681,12 +3910,16 @@ class SchemaSettings {
   ///
   /// If empty or not present, allow any revision to be validated against
   /// last_revision or any revision created before.
+  ///
+  /// Optional.
   core.String? firstRevisionId;
 
   /// The maximum (inclusive) revision allowed for validating messages.
   ///
   /// If empty or not present, allow any revision to be validated against
   /// first_revision or any revision created after.
+  ///
+  /// Optional.
   core.String? lastRevisionId;
 
   /// The name of the schema that messages published should be validated
@@ -3735,6 +3968,8 @@ class SeekRequest {
   ///
   /// The snapshot's topic must be the same as that of the provided
   /// subscription. Format is `projects/{project}/snapshots/{snap}`.
+  ///
+  /// Optional.
   core.String? snapshot;
 
   /// The time to seek to.
@@ -3749,6 +3984,8 @@ class SeekRequest {
   /// notion of the subscription creation time), only retained messages will be
   /// marked as unacknowledged, and already-expunged messages will not be
   /// restored.
+  ///
+  /// Optional.
   core.String? time;
 
   SeekRequest({
@@ -3818,16 +4055,24 @@ class Snapshot {
   /// the snapshot -- which will always capture this 3-day-old backlog as long
   /// as the snapshot exists -- will expire in 4 days. The service will refuse
   /// to create a snapshot that would expire in less than 1 hour after creation.
+  ///
+  /// Optional.
   core.String? expireTime;
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The name of the snapshot.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The name of the topic from which this snapshot is retaining messages.
+  ///
+  /// Optional.
   core.String? topic;
 
   Snapshot({
@@ -3885,24 +4130,31 @@ class Subscription {
   /// For push delivery, this value is also used to set the request timeout for
   /// the call to the push endpoint. If the subscriber never acknowledges the
   /// message, the Pub/Sub system will eventually redeliver the message.
+  ///
+  /// Optional.
   core.int? ackDeadlineSeconds;
 
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
+  ///
+  /// Optional.
   BigQueryConfig? bigqueryConfig;
 
   /// If delivery to Google Cloud Storage is used with this subscription, this
   /// field is used to configure it.
+  ///
+  /// Optional.
   CloudStorageConfig? cloudStorageConfig;
 
   /// A policy that specifies the conditions for dead lettering messages in this
   /// subscription.
   ///
-  /// If dead_letter_policy is not set, dead lettering is disabled. The Cloud
-  /// Pub/Sub service account associated with this subscriptions's parent
-  /// project (i.e.,
+  /// If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub
+  /// service account associated with this subscriptions's parent project (i.e.,
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
   /// permission to Acknowledge() messages on this subscription.
+  ///
+  /// Optional.
   DeadLetterPolicy? deadLetterPolicy;
 
   /// Indicates whether the subscription is detached from its topic.
@@ -3911,6 +4163,8 @@ class Subscription {
   /// retain any backlog. `Pull` and `StreamingPull` requests will return
   /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
   /// the endpoint will not be made.
+  ///
+  /// Optional.
   core.bool? detached;
 
   /// If true, Pub/Sub provides the following guarantees for the delivery of a
@@ -3923,6 +4177,8 @@ class Subscription {
   /// `enable_exactly_once_delivery` is true if the message was published
   /// multiple times by a publisher client. These copies are considered distinct
   /// by Pub/Sub and have distinct `message_id` values.
+  ///
+  /// Optional.
   core.bool? enableExactlyOnceDelivery;
 
   /// If true, messages published with the same `ordering_key` in
@@ -3930,6 +4186,8 @@ class Subscription {
   /// they are received by the Pub/Sub system.
   ///
   /// Otherwise, they may be delivered in any order.
+  ///
+  /// Optional.
   core.bool? enableMessageOrdering;
 
   /// A policy that specifies the conditions for this subscription's expiration.
@@ -3940,6 +4198,8 @@ class Subscription {
   /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
   /// value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set,
   /// but `expiration_policy.ttl` is not set, the subscription never expires.
+  ///
+  /// Optional.
   ExpirationPolicy? expirationPolicy;
 
   /// An expression written in the Pub/Sub
@@ -3948,10 +4208,14 @@ class Subscription {
   /// If non-empty, then only `PubsubMessage`s whose `attributes` field matches
   /// the filter are delivered on this subscription. If empty, then no messages
   /// are filtered out.
+  ///
+  /// Optional.
   core.String? filter;
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
@@ -3961,6 +4225,8 @@ class Subscription {
   /// retention of acknowledged messages, and thus configures how far back in
   /// time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days
   /// or less than 10 minutes.
+  ///
+  /// Optional.
   core.String? messageRetentionDuration;
 
   /// The name of the subscription.
@@ -3977,6 +4243,8 @@ class Subscription {
 
   /// If push delivery is used with this subscription, this field is used to
   /// configure it.
+  ///
+  /// Optional.
   PushConfig? pushConfig;
 
   /// Indicates whether to retain acknowledged messages.
@@ -3987,6 +4255,8 @@ class Subscription {
   /// to \[`Seek` to a
   /// timestamp\](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time)
   /// in the past to replay previously-acknowledged messages.
+  ///
+  /// Optional.
   core.bool? retainAckedMessages;
 
   /// A policy that specifies how Pub/Sub retries message delivery for this
@@ -3996,6 +4266,8 @@ class Subscription {
   /// that messages will be retried as soon as possible for healthy subscribers.
   /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
   /// exceeded events for a given message.
+  ///
+  /// Optional.
   RetryPolicy? retryPolicy;
 
   /// An output-only field indicating whether or not the subscription can
@@ -4167,10 +4439,14 @@ class Topic {
   ///
   /// The expected format is `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `.
+  ///
+  /// Optional.
   core.String? kmsKeyName;
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Indicates the minimum duration to retain a message after it is published
@@ -4183,12 +4459,16 @@ class Topic {
   /// that is up to `message_retention_duration` in the past. If this field is
   /// not set, message retention is controlled by settings on individual
   /// subscriptions. Cannot be more than 31 days or less than 10 minutes.
+  ///
+  /// Optional.
   core.String? messageRetentionDuration;
 
   /// Policy constraining the set of Google Cloud Platform regions where
   /// messages published to the topic may be stored.
   ///
   /// If not present, then no constraints are in effect.
+  ///
+  /// Optional.
   MessageStoragePolicy? messageStoragePolicy;
 
   /// The name of the topic.
@@ -4206,9 +4486,13 @@ class Topic {
   ///
   /// This field is set only in responses from the server; it is ignored if it
   /// is set in any requests.
+  ///
+  /// Optional.
   core.bool? satisfiesPzs;
 
   /// Settings for validating messages published against a schema.
+  ///
+  /// Optional.
   SchemaSettings? schemaSettings;
 
   Topic({

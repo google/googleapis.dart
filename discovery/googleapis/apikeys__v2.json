@@ -27,6 +27,13 @@
     "name": "apikeys",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230627",
+    "rootUrl": "https://apikeys.googleapis.com/",
+    "servicePath": "",
+    "title": "API Keys API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "keys": {
             "methods": {
@@ -394,8 +400,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://apikeys.googleapis.com/",
     "schemas": {
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a network API call.",
@@ -688,9 +692,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "API Keys API",
-    "version": "v2",
-    "version_module": true
+    }
 }

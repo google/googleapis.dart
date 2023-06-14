@@ -24,6 +24,13 @@
     "name": "osconfig",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://osconfig.googleapis.com/",
+    "servicePath": "",
+    "title": "OS Config API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -214,7 +220,7 @@
                                         "reports": {
                                             "methods": {
                                                 "get": {
-                                                    "description": "Get the OS policy asssignment report for the specified Compute Engine VM instance.",
+                                                    "description": "Get the OS policy assignment report for the specified Compute Engine VM instance.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/osPolicyAssignments/{osPolicyAssignmentsId}/report",
                                                     "httpMethod": "GET",
                                                     "id": "osconfig.projects.locations.instances.osPolicyAssignments.reports.get",
@@ -239,7 +245,7 @@
                                                     ]
                                                 },
                                                 "list": {
-                                                    "description": "List OS policy asssignment reports for all Compute Engine VM instances in the specified zone.",
+                                                    "description": "List OS policy assignment reports for all Compute Engine VM instances in the specified zone.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/osPolicyAssignments/{osPolicyAssignmentsId}/reports",
                                                     "httpMethod": "GET",
                                                     "id": "osconfig.projects.locations.instances.osPolicyAssignments.reports.list",
@@ -998,8 +1004,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://osconfig.googleapis.com/",
     "schemas": {
         "AptSettings": {
             "description": "Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.",
@@ -3764,9 +3768,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "OS Config API",
-    "version": "v1",
-    "version_module": true
+    }
 }

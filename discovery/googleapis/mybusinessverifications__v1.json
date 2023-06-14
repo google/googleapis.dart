@@ -15,6 +15,13 @@
     "name": "mybusinessverifications",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://mybusinessverifications.googleapis.com/",
+    "servicePath": "",
+    "title": "My Business Verifications API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "locations": {
             "methods": {
@@ -254,8 +260,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://mybusinessverifications.googleapis.com/",
     "schemas": {
         "AddressVerificationData": {
             "description": "Display data for verifications through postcard.",
@@ -736,9 +740,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "My Business Verifications API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -24,6 +24,13 @@
     "name": "fcmdata",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://fcmdata.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Cloud Messaging Data API",
+    "version": "v1beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -152,8 +158,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://fcmdata.googleapis.com/",
     "schemas": {
         "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData": {
             "description": "Message delivery data for a given date, app, and analytics label combination.",
@@ -318,9 +322,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Cloud Messaging Data API",
-    "version": "v1beta1",
-    "version_module": true
+    }
 }

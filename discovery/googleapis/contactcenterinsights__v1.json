@@ -24,6 +24,13 @@
     "name": "contactcenterinsights",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://contactcenterinsights.googleapis.com/",
+    "servicePath": "",
+    "title": "Contact Center AI Insights API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1382,8 +1388,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "schemas": {
         "GoogleCloudContactcenterinsightsV1Analysis": {
             "description": "The analysis resource.",
@@ -2919,6 +2923,24 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "languageCode": {
+                    "description": "Language of the model.",
+                    "type": "string"
+                },
+                "modelType": {
+                    "description": "Type of the model.",
+                    "enum": [
+                        "MODEL_TYPE_UNSPECIFIED",
+                        "TYPE_V1",
+                        "TYPE_V2"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified model type.",
+                        "Type V1.",
+                        "Type V2."
+                    ],
+                    "type": "string"
+                },
                 "name": {
                     "description": "Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}",
                     "type": "string"
@@ -3318,7 +3340,7 @@
                     "type": "string"
                 },
                 "inspectTemplate": {
-                    "description": "The fully-qualified DLP inspect template resource name. Format: `projects/{project}/inspectTemplates/{template}`",
+                    "description": "The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`",
                     "type": "string"
                 }
             },
@@ -5033,6 +5055,24 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "languageCode": {
+                    "description": "Language of the model.",
+                    "type": "string"
+                },
+                "modelType": {
+                    "description": "Type of the model.",
+                    "enum": [
+                        "MODEL_TYPE_UNSPECIFIED",
+                        "TYPE_V1",
+                        "TYPE_V2"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified model type.",
+                        "Type V1.",
+                        "Type V2."
+                    ],
+                    "type": "string"
+                },
                 "name": {
                     "description": "Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}",
                     "type": "string"
@@ -5189,7 +5229,7 @@
                     "type": "string"
                 },
                 "inspectTemplate": {
-                    "description": "The fully-qualified DLP inspect template resource name. Format: `projects/{project}/inspectTemplates/{template}`",
+                    "description": "The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`",
                     "type": "string"
                 }
             },
@@ -5507,9 +5547,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Contact Center AI Insights API",
-    "version": "v1",
-    "version_module": true
+    }
 }

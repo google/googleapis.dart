@@ -15,6 +15,13 @@
     "name": "readerrevenuesubscriptionlinking",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://readerrevenuesubscriptionlinking.googleapis.com/",
+    "servicePath": "",
+    "title": "Reader Revenue Subscription Linking API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "publications": {
             "resources": {
@@ -205,8 +211,6 @@
             }
         }
     },
-    "revision": "20230510",
-    "rootUrl": "https://readerrevenuesubscriptionlinking.googleapis.com/",
     "schemas": {
         "DeleteReaderResponse": {
             "description": "Response to deleting a reader of a publication.",
@@ -275,9 +279,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Reader Revenue Subscription Linking API",
-    "version": "v1",
-    "version_module": true
+    }
 }

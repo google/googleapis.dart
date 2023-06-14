@@ -63,6 +63,12 @@
     "name": "gmail",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://gmail.googleapis.com/",
+    "servicePath": "",
+    "title": "Gmail API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -140,7 +146,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "users": {
             "methods": {
@@ -3076,8 +3081,6 @@
             }
         }
     },
-    "revision": "20230501",
-    "rootUrl": "https://gmail.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
             "description": "Auto-forwarding settings for an account.",
@@ -3161,7 +3164,7 @@
                     "type": "string"
                 },
                 "primaryKeyPairId": {
-                    "description": "If a key pair is associated, the identifier of the key pair, CseKeyPair.",
+                    "description": "If a key pair is associated, the ID of the key pair, CseKeyPair.",
                     "type": "string"
                 }
             },
@@ -4347,7 +4350,19 @@
             "id": "WatchRequest",
             "properties": {
                 "labelFilterAction": {
-                    "description": "Filtering behavior of labelIds list specified.",
+                    "description": "Filtering behavior of `labelIds list` specified. This field is deprecated because it caused incorrect behavior in some cases; use `label_filter_behavior` instead.",
+                    "enum": [
+                        "include",
+                        "exclude"
+                    ],
+                    "enumDescriptions": [
+                        "Only get push notifications for message changes relating to labelIds specified.",
+                        "Get push notifications for all message changes except those relating to labelIds specified."
+                    ],
+                    "type": "string"
+                },
+                "labelFilterBehavior": {
+                    "description": "Filtering behavior of `labelIds list` specified. This field replaces `label_filter_action`; if set, `label_filter_action` is ignored.",
                     "enum": [
                         "include",
                         "exclude"
@@ -4389,8 +4404,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Gmail API",
-    "version": "v1"
+    }
 }

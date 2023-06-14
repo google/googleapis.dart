@@ -3083,6 +3083,29 @@ class BackupPlan {
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
   RetentionPolicy? retentionPolicy;
 
+  /// State of the BackupPlan.
+  ///
+  /// This State field reflects the various stages a BackupPlan can be in during
+  /// the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is
+  /// deactivated on an Update
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default first value for Enums.
+  /// - "CLUSTER_PENDING" : Waiting for cluster state to be RUNNING.
+  /// - "PROVISIONING" : The BackupPlan is in the process of being created.
+  /// - "READY" : The BackupPlan has successfully been created and is ready for
+  /// Backups.
+  /// - "FAILED" : BackupPlan creation has failed.
+  /// - "DEACTIVATED" : The BackupPlan has been deactivated.
+  /// - "DELETING" : The BackupPlan is in the process of being deleted.
+  core.String? state;
+
+  /// Human-readable description of why BackupPlan is in the current `state`
+  ///
+  /// Output only.
+  core.String? stateReason;
+
   /// Server generated global unique identifier of
   /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   /// format.
@@ -3107,6 +3130,8 @@ class BackupPlan {
     this.name,
     this.protectedPodCount,
     this.retentionPolicy,
+    this.state,
+    this.stateReason,
     this.uid,
     this.updateTime,
   });
@@ -3150,6 +3175,11 @@ class BackupPlan {
               ? RetentionPolicy.fromJson(json_['retentionPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateReason: json_.containsKey('stateReason')
+              ? json_['stateReason'] as core.String
+              : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -3168,6 +3198,8 @@ class BackupPlan {
         if (name != null) 'name': name!,
         if (protectedPodCount != null) 'protectedPodCount': protectedPodCount!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
+        if (state != null) 'state': state!,
+        if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3332,6 +3364,25 @@ class ClusterMetadata {
 /// group kinds are driven by restore configuration elsewhere, and will cause an
 /// error if selected here. - Namespace - PersistentVolume
 class ClusterResourceRestoreScope {
+  /// If True, all valid cluster-scoped resources will be restored.
+  ///
+  /// Mutually exclusive to any other field in the message.
+  core.bool? allGroupKinds;
+
+  /// A list of cluster-scoped resource group kinds to NOT restore from the
+  /// backup.
+  ///
+  /// If specified, all valid cluster-scoped resources will be restored except
+  /// for those specified in the list. Mutually exclusive to any other field in
+  /// the message.
+  core.List<GroupKind>? excludedGroupKinds;
+
+  /// If True, no cluster-scoped resources will be restored.
+  ///
+  /// This has the same restore scope as if the message is not defined. Mutually
+  /// exclusive to any other field in the message.
+  core.bool? noGroupKinds;
+
   /// A list of cluster-scoped resource group kinds to restore from the backup.
   ///
   /// If specified, only the selected resources will be restored. Mutually
@@ -3339,11 +3390,26 @@ class ClusterResourceRestoreScope {
   core.List<GroupKind>? selectedGroupKinds;
 
   ClusterResourceRestoreScope({
+    this.allGroupKinds,
+    this.excludedGroupKinds,
+    this.noGroupKinds,
     this.selectedGroupKinds,
   });
 
   ClusterResourceRestoreScope.fromJson(core.Map json_)
       : this(
+          allGroupKinds: json_.containsKey('allGroupKinds')
+              ? json_['allGroupKinds'] as core.bool
+              : null,
+          excludedGroupKinds: json_.containsKey('excludedGroupKinds')
+              ? (json_['excludedGroupKinds'] as core.List)
+                  .map((value) => GroupKind.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          noGroupKinds: json_.containsKey('noGroupKinds')
+              ? json_['noGroupKinds'] as core.bool
+              : null,
           selectedGroupKinds: json_.containsKey('selectedGroupKinds')
               ? (json_['selectedGroupKinds'] as core.List)
                   .map((value) => GroupKind.fromJson(
@@ -3353,6 +3419,10 @@ class ClusterResourceRestoreScope {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allGroupKinds != null) 'allGroupKinds': allGroupKinds!,
+        if (excludedGroupKinds != null)
+          'excludedGroupKinds': excludedGroupKinds!,
+        if (noGroupKinds != null) 'noGroupKinds': noGroupKinds!,
         if (selectedGroupKinds != null)
           'selectedGroupKinds': selectedGroupKinds!,
       };
@@ -4042,6 +4112,66 @@ class Policy {
       };
 }
 
+/// ResourceFilter specifies matching criteria to limit the scope of a change to
+/// a specific set of kubernetes resources that are selected for restoration
+/// from a backup.
+class ResourceFilter {
+  /// (Filtering parameter) Any resource subject to transformation must belong
+  /// to one of the listed "types".
+  ///
+  /// If this field is not provided, no type filtering will be performed (all
+  /// resources of all types matching previous filtering parameters will be
+  /// candidates for transformation).
+  core.List<GroupKind>? groupKinds;
+
+  /// This is a
+  /// [JSONPath](https://github.com/json-path/JsonPath/blob/master/README.md)
+  /// expression that matches specific fields of candidate resources and it
+  /// operates as a filtering parameter (resources that are not matched with
+  /// this expression will not be candidates for transformation).
+  core.String? jsonPath;
+
+  /// (Filtering parameter) Any resource subject to transformation must be
+  /// contained within one of the listed Kubernetes Namespace in the Backup.
+  ///
+  /// If this field is not provided, no namespace filtering will be performed
+  /// (all resources in all Namespaces, including all cluster-scoped resources,
+  /// will be candidates for transformation). To mix cluster-scoped and
+  /// namespaced resources in the same rule, use an empty string ("") as one of
+  /// the target namespaces.
+  core.List<core.String>? namespaces;
+
+  ResourceFilter({
+    this.groupKinds,
+    this.jsonPath,
+    this.namespaces,
+  });
+
+  ResourceFilter.fromJson(core.Map json_)
+      : this(
+          groupKinds: json_.containsKey('groupKinds')
+              ? (json_['groupKinds'] as core.List)
+                  .map((value) => GroupKind.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          jsonPath: json_.containsKey('jsonPath')
+              ? json_['jsonPath'] as core.String
+              : null,
+          namespaces: json_.containsKey('namespaces')
+              ? (json_['namespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupKinds != null) 'groupKinds': groupKinds!,
+        if (jsonPath != null) 'jsonPath': jsonPath!,
+        if (namespaces != null) 'namespaces': namespaces!,
+      };
+}
+
 /// Represents both a request to Restore some portion of a Backup into a target
 /// GKE cluster and a record of the restore operation itself.
 ///
@@ -4283,8 +4413,8 @@ class RestoreConfig {
   /// - "USE_EXISTING_VERSION" : Do not attempt to restore the conflicting
   /// resource.
   /// - "USE_BACKUP_VERSION" : Delete the existing version before re-creating it
-  /// from the Backup. Note that this is a dangerous option which could cause
-  /// unintentional data loss if used inappropriately - for example, deleting a
+  /// from the Backup. This is a dangerous option which could cause
+  /// unintentional data loss if used inappropriately. For example, deleting a
   /// CRD will cause Kubernetes to delete all CRs of that type.
   core.String? clusterResourceConflictPolicy;
 
@@ -4292,6 +4422,11 @@ class RestoreConfig {
   ///
   /// Not specifying it means NO cluster resource will be restored.
   ClusterResourceRestoreScope? clusterResourceRestoreScope;
+
+  /// A list of selected namespaces excluded from restoration.
+  ///
+  /// All namespaces except those in this list will be restored.
+  Namespaces? excludedNamespaces;
 
   /// Defines the behavior for handling the situation where sets of namespaced
   /// resources being restored already exist in the target cluster.
@@ -4315,6 +4450,11 @@ class RestoreConfig {
   /// reported.
   core.String? namespacedResourceRestoreMode;
 
+  /// Do not restore any namespaced resources if set to "True".
+  ///
+  /// Specifying this field to "False" is not allowed.
+  core.bool? noNamespaces;
+
   /// A list of selected ProtectedApplications to restore.
   ///
   /// The listed ProtectedApplications and all the resources to which they refer
@@ -4335,34 +4475,45 @@ class RestoreConfig {
   /// list means no substitution will occur.
   core.List<SubstitutionRule>? substitutionRules;
 
+  /// A list of transformation rules to be applied against Kubernetes resources
+  /// as they are selected for restoration from a Backup.
+  ///
+  /// Rules are executed in order defined - this order matters, as changes made
+  /// by a rule may impact the filtering logic of subsequent rules. An empty
+  /// list means no transformation will occur.
+  core.List<TransformationRule>? transformationRules;
+
   /// Specifies the mechanism to be used to restore volume data.
   ///
   /// Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
   /// NO_VOLUME_DATA_RESTORATION).
   /// Possible string values are:
   /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
-  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, will
-  /// create a new underlying volume (and PV) from the corresponding
-  /// VolumeBackup contained within the Backup.
+  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, create
+  /// a new underlying volume and PV from the corresponding VolumeBackup
+  /// contained within the Backup.
   /// - "REUSE_VOLUME_HANDLE_FROM_BACKUP" : For each PVC to be restored, attempt
   /// to reuse the original PV contained in the Backup (with its original
-  /// underlying volume). Note that option is likely only usable when restoring
-  /// a workload to its original cluster.
-  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, PVCs will be
-  /// created without any particular action to restore data. In this case, the
-  /// normal Kubernetes provisioning logic would kick in, and this would likely
-  /// result in either dynamically provisioning blank PVs or binding to
-  /// statically provisioned PVs.
+  /// underlying volume). This option is likely only usable when restoring a
+  /// workload to its original cluster.
+  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, create PVC
+  /// without any particular action to restore data. In this case, the normal
+  /// Kubernetes provisioning logic would kick in, and this would likely result
+  /// in either dynamically provisioning blank PVs or binding to statically
+  /// provisioned PVs.
   core.String? volumeDataRestorePolicy;
 
   RestoreConfig({
     this.allNamespaces,
     this.clusterResourceConflictPolicy,
     this.clusterResourceRestoreScope,
+    this.excludedNamespaces,
     this.namespacedResourceRestoreMode,
+    this.noNamespaces,
     this.selectedApplications,
     this.selectedNamespaces,
     this.substitutionRules,
+    this.transformationRules,
     this.volumeDataRestorePolicy,
   });
 
@@ -4381,10 +4532,17 @@ class RestoreConfig {
                       json_['clusterResourceRestoreScope']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          excludedNamespaces: json_.containsKey('excludedNamespaces')
+              ? Namespaces.fromJson(json_['excludedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           namespacedResourceRestoreMode:
               json_.containsKey('namespacedResourceRestoreMode')
                   ? json_['namespacedResourceRestoreMode'] as core.String
                   : null,
+          noNamespaces: json_.containsKey('noNamespaces')
+              ? json_['noNamespaces'] as core.bool
+              : null,
           selectedApplications: json_.containsKey('selectedApplications')
               ? NamespacedNames.fromJson(json_['selectedApplications']
                   as core.Map<core.String, core.dynamic>)
@@ -4399,6 +4557,12 @@ class RestoreConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          transformationRules: json_.containsKey('transformationRules')
+              ? (json_['transformationRules'] as core.List)
+                  .map((value) => TransformationRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           volumeDataRestorePolicy: json_.containsKey('volumeDataRestorePolicy')
               ? json_['volumeDataRestorePolicy'] as core.String
               : null,
@@ -4410,13 +4574,18 @@ class RestoreConfig {
           'clusterResourceConflictPolicy': clusterResourceConflictPolicy!,
         if (clusterResourceRestoreScope != null)
           'clusterResourceRestoreScope': clusterResourceRestoreScope!,
+        if (excludedNamespaces != null)
+          'excludedNamespaces': excludedNamespaces!,
         if (namespacedResourceRestoreMode != null)
           'namespacedResourceRestoreMode': namespacedResourceRestoreMode!,
+        if (noNamespaces != null) 'noNamespaces': noNamespaces!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
         if (selectedNamespaces != null)
           'selectedNamespaces': selectedNamespaces!,
         if (substitutionRules != null) 'substitutionRules': substitutionRules!,
+        if (transformationRules != null)
+          'transformationRules': transformationRules!,
         if (volumeDataRestorePolicy != null)
           'volumeDataRestorePolicy': volumeDataRestorePolicy!,
       };
@@ -4481,6 +4650,26 @@ class RestorePlan {
   /// Required.
   RestoreConfig? restoreConfig;
 
+  /// State of the RestorePlan.
+  ///
+  /// This State field reflects the various stages a RestorePlan can be in
+  /// during the Create operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default first value for Enums.
+  /// - "CLUSTER_PENDING" : Waiting for cluster state to be RUNNING.
+  /// - "READY" : The RestorePlan has successfully been created and is ready for
+  /// Restores.
+  /// - "FAILED" : RestorePlan creation has failed.
+  /// - "DELETING" : The RestorePlan is in the process of being deleted.
+  core.String? state;
+
+  /// Human-readable description of why RestorePlan is in the current `state`
+  ///
+  /// Output only.
+  core.String? stateReason;
+
   /// Server generated global unique identifier of
   /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   /// format.
@@ -4502,6 +4691,8 @@ class RestorePlan {
     this.labels,
     this.name,
     this.restoreConfig,
+    this.state,
+    this.stateReason,
     this.uid,
     this.updateTime,
   });
@@ -4534,6 +4725,11 @@ class RestorePlan {
               ? RestoreConfig.fromJson(
                   json_['restoreConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateReason: json_.containsKey('stateReason')
+              ? json_['stateReason'] as core.String
+              : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -4549,6 +4745,8 @@ class RestorePlan {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (restoreConfig != null) 'restoreConfig': restoreConfig!,
+        if (state != null) 'state': state!,
+        if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -4612,14 +4810,16 @@ class RetentionPolicy {
       };
 }
 
-/// Schedule defines scheduling parameters for automatically creating Backups
-/// via this BackupPlan.
+/// Defines scheduling parameters for automatically creating Backups via this
+/// BackupPlan.
 class Schedule {
   /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
   /// repeating schedule for creating Backups via this BackupPlan.
   ///
-  /// If this is defined, then backup_retain_days must also be defined. Default
-  /// (empty): no automatic backup creation will occur.
+  /// This is mutually exclusive with the rpo_config field since at most one
+  /// schedule can be defined for a BackupPlan. If this is defined, then
+  /// backup_retain_days must also be defined. Default (empty): no automatic
+  /// backup creation will occur.
   core.String? cronSchedule;
 
   /// This flag denotes whether automatic Backup creation is paused for this
@@ -4786,6 +4986,127 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// A transformation rule to be applied against Kubernetes resources as they are
+/// selected for restoration from a Backup.
+///
+/// A rule contains both filtering logic (which resources are subject to
+/// transform) and transformation logic.
+class TransformationRule {
+  /// The description is a user specified string description of the
+  /// transformation rule.
+  core.String? description;
+
+  /// A list of transformation rule actions to take against candidate resources.
+  ///
+  /// Actions are executed in order defined - this order matters, as they could
+  /// potentially interfere with each other and the first operation could affect
+  /// the outcome of the second operation.
+  ///
+  /// Required.
+  core.List<TransformationRuleAction>? fieldActions;
+
+  /// This field is used to specify a set of fields that should be used to
+  /// determine which resources in backup should be acted upon by the supplied
+  /// transformation rule actions, and this will ensure that only specific
+  /// resources are affected by transformation rule actions.
+  ResourceFilter? resourceFilter;
+
+  TransformationRule({
+    this.description,
+    this.fieldActions,
+    this.resourceFilter,
+  });
+
+  TransformationRule.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          fieldActions: json_.containsKey('fieldActions')
+              ? (json_['fieldActions'] as core.List)
+                  .map((value) => TransformationRuleAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceFilter: json_.containsKey('resourceFilter')
+              ? ResourceFilter.fromJson(json_['resourceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (fieldActions != null) 'fieldActions': fieldActions!,
+        if (resourceFilter != null) 'resourceFilter': resourceFilter!,
+      };
+}
+
+/// TransformationRuleAction defines a TransformationRule action based on the
+/// JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+class TransformationRuleAction {
+  /// A string containing a JSON Pointer value that references the location in
+  /// the target document to move the value from.
+  core.String? fromPath;
+
+  /// op specifies the operation to perform.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OP_UNSPECIFIED" : Unspecified operation
+  /// - "REMOVE" : The "remove" operation removes the value at the target
+  /// location.
+  /// - "MOVE" : The "move" operation removes the value at a specified location
+  /// and adds it to the target location.
+  /// - "COPY" : The "copy" operation copies the value at a specified location
+  /// to the target location.
+  /// - "ADD" : The "add" operation performs one of the following functions,
+  /// depending upon what the target location references: 1. If the target
+  /// location specifies an array index, a new value is inserted into the array
+  /// at the specified index. 2. If the target location specifies an object
+  /// member that does not already exist, a new member is added to the object.
+  /// 3. If the target location specifies an object member that does exist, that
+  /// member's value is replaced.
+  /// - "TEST" : The "test" operation tests that a value at the target location
+  /// is equal to a specified value.
+  /// - "REPLACE" : The "replace" operation replaces the value at the target
+  /// location with a new value. The operation object MUST contain a "value"
+  /// member whose content specifies the replacement value.
+  core.String? op;
+
+  /// A string containing a JSON-Pointer value that references a location within
+  /// the target document where the operation is performed.
+  core.String? path;
+
+  /// A string that specifies the desired value in string format to use for
+  /// transformation.
+  core.String? value;
+
+  TransformationRuleAction({
+    this.fromPath,
+    this.op,
+    this.path,
+    this.value,
+  });
+
+  TransformationRuleAction.fromJson(core.Map json_)
+      : this(
+          fromPath: json_.containsKey('fromPath')
+              ? json_['fromPath'] as core.String
+              : null,
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fromPath != null) 'fromPath': fromPath!,
+        if (op != null) 'op': op!,
+        if (path != null) 'path': path!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents the backup of a specific persistent volume as a component of a
 /// Backup - both the record of the operation and a pointer to the underlying

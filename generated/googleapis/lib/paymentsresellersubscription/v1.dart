@@ -679,6 +679,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// delinquency
   /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
   /// unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -1270,6 +1271,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
 
 /// Specifies product specific payload.
 class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
+  /// Product-specific payloads.
+  ///
   /// Payload specific to Google One products.
   GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload? googleOnePayload;
 
@@ -1904,6 +1907,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// delinquency
   /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
   /// unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -2258,16 +2262,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
 
 /// Payload specific to Youtube products.
 class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
+  /// The access expiration time for this line item.
+  ///
+  /// Output only.
+  core.String? accessEndTime;
+
   /// The list of eligibility_ids which are applicable for the line item.
   core.List<core.String>? partnerEligibilityIds;
 
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload({
+    this.accessEndTime,
     this.partnerEligibilityIds,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
       core.Map json_)
       : this(
+          accessEndTime: json_.containsKey('accessEndTime')
+              ? json_['accessEndTime'] as core.String
+              : null,
           partnerEligibilityIds: json_.containsKey('partnerEligibilityIds')
               ? (json_['partnerEligibilityIds'] as core.List)
                   .map((value) => value as core.String)
@@ -2276,6 +2289,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessEndTime != null) 'accessEndTime': accessEndTime!,
         if (partnerEligibilityIds != null)
           'partnerEligibilityIds': partnerEligibilityIds!,
       };

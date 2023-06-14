@@ -12,7 +12,7 @@
     "baseUrl": "https://orgpolicy.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "OrgPolicy API",
-    "description": "The Org Policy API allows users to configure governance rules on their GCP resources across the Cloud Resource Hierarchy.",
+    "description": "The Organization Policy API allows users to configure governance rules on their Google Cloud resources across the resource hierarchy.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/orgpolicy/docs/reference/rest/index.html",
     "icons": {
@@ -24,6 +24,13 @@
     "name": "orgpolicy",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230628",
+    "rootUrl": "https://orgpolicy.googleapis.com/",
+    "servicePath": "",
+    "title": "Organization Policy API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -913,8 +919,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://orgpolicy.googleapis.com/",
     "schemas": {
         "GoogleCloudOrgpolicyV2AlternatePolicySpec": {
             "description": "Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.",
@@ -1252,9 +1256,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Organization Policy API",
-    "version": "v2",
-    "version_module": true
+    }
 }

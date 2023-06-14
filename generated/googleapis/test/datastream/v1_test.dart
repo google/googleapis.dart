@@ -4942,6 +4942,10 @@ void main() {
       final res = api.DatastreamApi(mock).projects.locations.streams;
       final arg_request = buildStream();
       final arg_name = 'foo';
+      final arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile =
+          'foo';
+      final arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition =
+          42;
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
@@ -4984,6 +4988,20 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap[
+                  'cdcStrategy.specificStartPosition.mysqlLogPosition.logFile']!
+              .first,
+          unittest.equals(
+              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile),
+        );
+        unittest.expect(
+          core.int.parse(queryMap[
+                  'cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition']!
+              .first),
+          unittest.equals(
+              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition),
+        );
+        unittest.expect(
           queryMap['force']!.first,
           unittest.equals('$arg_force'),
         );
@@ -5011,6 +5029,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
+          cdcStrategy_specificStartPosition_mysqlLogPosition_logFile:
+              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile,
+          cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition:
+              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition,
           force: arg_force,
           requestId: arg_requestId,
           updateMask: arg_updateMask,

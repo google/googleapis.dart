@@ -23,6 +23,13 @@
     "name": "baremetalsolution",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230628",
+    "rootUrl": "https://baremetalsolution.googleapis.com/",
+    "servicePath": "",
+    "title": "Bare Metal Solution API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -100,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -174,65 +180,8 @@
                         }
                     },
                     "resources": {
-                        "instanceProvisioningSettings": {
-                            "methods": {
-                                "fetch": {
-                                    "description": "Get instance provisioning settings for a given project. This is hidden method used by UI only.",
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instanceProvisioningSettings:fetch",
-                                    "httpMethod": "GET",
-                                    "id": "baremetalsolution.projects.locations.instanceProvisioningSettings.fetch",
-                                    "parameterOrder": [
-                                        "location"
-                                    ],
-                                    "parameters": {
-                                        "location": {
-                                            "description": "Required. The parent project and location containing the ProvisioningSettings.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2/{+location}/instanceProvisioningSettings:fetch",
-                                    "response": {
-                                        "$ref": "FetchInstanceProvisioningSettingsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                }
-                            }
-                        },
                         "instances": {
                             "methods": {
-                                "create": {
-                                    "description": "Create an Instance.",
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances",
-                                    "httpMethod": "POST",
-                                    "id": "baremetalsolution.projects.locations.instances.create",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "parent": {
-                                            "description": "Required. The parent project and location.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2/{+parent}/instances",
-                                    "request": {
-                                        "$ref": "Instance"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
                                 "detachLun": {
                                     "description": "Detach LUN from Instance.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:detachLun",
@@ -1603,8 +1552,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "AllowedClient": {
             "description": "Represents an 'access point' for the share.",
@@ -1702,20 +1649,6 @@
             "properties": {},
             "type": "object"
         },
-        "FetchInstanceProvisioningSettingsResponse": {
-            "description": "Response with all provisioning settings.",
-            "id": "FetchInstanceProvisioningSettingsResponse",
-            "properties": {
-                "images": {
-                    "description": "The OS images available.",
-                    "items": {
-                        "$ref": "OSImage"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "GoogleCloudBaremetalsolutionV2LogicalInterface": {
             "description": "Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.",
             "id": "GoogleCloudBaremetalsolutionV2LogicalInterface",
@@ -1734,35 +1667,6 @@
                 },
                 "name": {
                     "description": "Interface name. This is of syntax or and forms part of the network template name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface": {
-            "description": "Logical interface.",
-            "id": "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface",
-            "properties": {
-                "name": {
-                    "description": "Interface name. This is not a globally unique identifier. Name is unique only inside the ServerNetworkTemplate. This is of syntax or and forms part of the network template name.",
-                    "type": "string"
-                },
-                "required": {
-                    "description": "If true, interface must have network connected.",
-                    "type": "boolean"
-                },
-                "type": {
-                    "description": "Interface type.",
-                    "enum": [
-                        "INTERFACE_TYPE_UNSPECIFIED",
-                        "BOND",
-                        "NIC"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified value.",
-                        "Bond interface type.",
-                        "NIC interface type."
-                    ],
                     "type": "string"
                 }
             },
@@ -1967,6 +1871,13 @@
                 "privateNetwork": {
                     "$ref": "NetworkAddress",
                     "description": "Private network address, if any. Filled if InstanceConfig.multivlan_config is false."
+                },
+                "sshKeyNames": {
+                    "description": "List of names of ssh keys used to provision the instance.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "userNote": {
                     "description": "User note field, it can be used by customers to add additional information for the BMS Ops team .",
@@ -2827,40 +2738,6 @@
             },
             "type": "object"
         },
-        "OSImage": {
-            "description": "Operation System image.",
-            "id": "OSImage",
-            "properties": {
-                "applicableInstanceTypes": {
-                    "description": "Instance types this image is applicable to. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "OS Image code.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "OS Image description.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Output only. OS Image's unique name.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "supportedNetworkTemplates": {
-                    "description": "Network templates that can be used with this OS Image.",
-                    "items": {
-                        "$ref": "ServerNetworkTemplate"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a network API call.",
             "id": "Operation",
@@ -3115,6 +2992,12 @@
             "properties": {},
             "type": "object"
         },
+        "ResetInstanceResponse": {
+            "description": "Response message from resetting a server.",
+            "id": "ResetInstanceResponse",
+            "properties": {},
+            "type": "object"
+        },
         "ResizeVolumeRequest": {
             "description": "Request for emergency resize Volume.",
             "id": "ResizeVolumeRequest",
@@ -3144,32 +3027,6 @@
                 },
                 "publicKey": {
                     "description": "The public SSH key. This must be in OpenSSH .authorized_keys format.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ServerNetworkTemplate": {
-            "description": "Network template.",
-            "id": "ServerNetworkTemplate",
-            "properties": {
-                "applicableInstanceTypes": {
-                    "description": "Instance types this template is applicable to.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "logicalInterfaces": {
-                    "description": "Logical interfaces.",
-                    "items": {
-                        "$ref": "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "Output only. Template's unique name. The full resource name follows the pattern: `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}` Generally, the {server_network_template} follows the syntax of \"bond\" or \"nic\".",
-                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -3208,6 +3065,12 @@
             "properties": {},
             "type": "object"
         },
+        "StartInstanceResponse": {
+            "description": "Response message from starting a server.",
+            "id": "StartInstanceResponse",
+            "properties": {},
+            "type": "object"
+        },
         "Status": {
             "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
             "id": "Status",
@@ -3238,6 +3101,12 @@
         "StopInstanceRequest": {
             "description": "Message requesting to stop a server.",
             "id": "StopInstanceRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "StopInstanceResponse": {
+            "description": "Response message from stopping a server.",
+            "id": "StopInstanceResponse",
             "properties": {},
             "type": "object"
         },
@@ -3684,9 +3553,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Bare Metal Solution API",
-    "version": "v2",
-    "version_module": true
+    }
 }

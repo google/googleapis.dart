@@ -2014,6 +2014,21 @@ void checkNetworkConfigurationCatalog(api.NetworkConfigurationCatalog o) {
   buildCounterNetworkConfigurationCatalog--;
 }
 
+core.int buildCounterNoActivityIntent = 0;
+api.NoActivityIntent buildNoActivityIntent() {
+  final o = api.NoActivityIntent();
+  buildCounterNoActivityIntent++;
+  if (buildCounterNoActivityIntent < 3) {}
+  buildCounterNoActivityIntent--;
+  return o;
+}
+
+void checkNoActivityIntent(api.NoActivityIntent o) {
+  buildCounterNoActivityIntent++;
+  if (buildCounterNoActivityIntent < 3) {}
+  buildCounterNoActivityIntent--;
+}
+
 core.int buildCounterObbFile = 0;
 api.ObbFile buildObbFile() {
   final o = api.ObbFile();
@@ -2255,6 +2270,7 @@ api.RoboStartingIntent buildRoboStartingIntent() {
   buildCounterRoboStartingIntent++;
   if (buildCounterRoboStartingIntent < 3) {
     o.launcherActivity = buildLauncherActivityIntent();
+    o.noActivity = buildNoActivityIntent();
     o.startActivity = buildStartActivityIntent();
     o.timeout = 'foo';
   }
@@ -2266,6 +2282,7 @@ void checkRoboStartingIntent(api.RoboStartingIntent o) {
   buildCounterRoboStartingIntent++;
   if (buildCounterRoboStartingIntent < 3) {
     checkLauncherActivityIntent(o.launcherActivity!);
+    checkNoActivityIntent(o.noActivity!);
     checkStartActivityIntent(o.startActivity!);
     unittest.expect(
       o.timeout!,
@@ -2315,6 +2332,7 @@ api.Shard buildShard() {
   final o = api.Shard();
   buildCounterShard++;
   if (buildCounterShard < 3) {
+    o.estimatedShardDuration = 'foo';
     o.numShards = 42;
     o.shardIndex = 42;
     o.testTargetsForShard = buildTestTargetsForShard();
@@ -2326,6 +2344,10 @@ api.Shard buildShard() {
 void checkShard(api.Shard o) {
   buildCounterShard++;
   if (buildCounterShard < 3) {
+    unittest.expect(
+      o.estimatedShardDuration!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.numShards!,
       unittest.equals(42),
@@ -3501,6 +3523,16 @@ void main() {
       final od = api.NetworkConfigurationCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkNetworkConfigurationCatalog(od);
+    });
+  });
+
+  unittest.group('obj-schema-NoActivityIntent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNoActivityIntent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NoActivityIntent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNoActivityIntent(od);
     });
   });
 

@@ -33,6 +33,13 @@
     "name": "firebasedatabase",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://firebasedatabase.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Realtime Database API",
+    "version": "v1beta",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -110,7 +117,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -349,8 +355,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://firebasedatabase.googleapis.com/",
     "schemas": {
         "DatabaseInstance": {
             "description": "Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start.",
@@ -440,9 +444,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Realtime Database API",
-    "version": "v1beta",
-    "version_module": true
+    }
 }

@@ -27,6 +27,13 @@
     "name": "cloudtrace",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230622",
+    "rootUrl": "https://cloudtrace.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Trace API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -179,8 +185,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "Annotation": {
             "description": "Text annotation with a set of attributes.",
@@ -225,7 +229,7 @@
                     "additionalProperties": {
                         "$ref": "AttributeValue"
                     },
-                    "description": "A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: \"/instance_id\": { \"string_value\": { \"value\": \"my-instance\" } } \"/http/request_bytes\": { \"int_value\": 300 } \"abc.com/myattribute\": { \"bool_value\": false }",
+                    "description": "A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: \"/instance_id\": { \"string_value\": { \"value\": \"my-instance\" } } \"/http/request_bytes\": { \"int_value\": 300 } \"example.com/myattribute\": { \"bool_value\": false }",
                     "type": "object"
                 },
                 "droppedAttributesCount": {
@@ -600,9 +604,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Trace API",
-    "version": "v2",
-    "version_module": true
+    }
 }

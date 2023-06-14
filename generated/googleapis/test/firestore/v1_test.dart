@@ -879,13 +879,16 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
     o.concurrencyMode = 'foo';
     o.createTime = 'foo';
     o.deleteProtectionState = 'foo';
+    o.earliestVersionTime = 'foo';
     o.etag = 'foo';
     o.keyPrefix = 'foo';
     o.locationId = 'foo';
     o.name = 'foo';
+    o.pointInTimeRecoveryEnablement = 'foo';
     o.type = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.versionRetentionPeriod = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Database--;
   return o;
@@ -911,6 +914,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.earliestVersionTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
@@ -927,6 +934,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.pointInTimeRecoveryEnablement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.type!,
       unittest.equals('foo'),
     );
@@ -936,6 +947,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionRetentionPeriod!,
       unittest.equals('foo'),
     );
   }
@@ -985,6 +1000,7 @@ api.GoogleFirestoreAdminV1ExportDocumentsRequest
     o.collectionIds = buildUnnamed14();
     o.namespaceIds = buildUnnamed15();
     o.outputUriPrefix = 'foo';
+    o.snapshotTime = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest--;
   return o;
@@ -998,6 +1014,10 @@ void checkGoogleFirestoreAdminV1ExportDocumentsRequest(
     checkUnnamed15(o.namespaceIds!);
     unittest.expect(
       o.outputUriPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.snapshotTime!,
       unittest.equals('foo'),
     );
   }

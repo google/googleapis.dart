@@ -24,6 +24,13 @@
     "name": "healthcare",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230616",
+    "rootUrl": "https://healthcare.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Healthcare API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -4076,8 +4082,6 @@
             }
         }
     },
-    "revision": "20230509",
-    "rootUrl": "https://healthcare.googleapis.com/",
     "schemas": {
         "ActivateConsentRequest": {
             "description": "Activates the latest revision of the specified Consent by committing a new revision with `state` updated to `ACTIVE`. If the latest revision of the given Consent is in the `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest revision of the given consent is in the `REJECTED` or `REVOKED` state.",
@@ -4140,7 +4144,7 @@
                     "type": "array"
                 },
                 "entityMentions": {
-                    "description": "entity_mentions contains all the annotated medical entities that were mentioned in the provided document.",
+                    "description": "The `entity_mentions` field contains all the annotated medical entities that were mentioned in the provided document.",
                     "items": {
                         "$ref": "EntityMention"
                     },
@@ -5122,7 +5126,7 @@
                     "type": "boolean"
                 },
                 "sendPreviousResourceOnDelete": {
-                    "description": "Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the \"payloadType\" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.",
+                    "description": "Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the \"payloadType\" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.",
                     "type": "boolean"
                 }
             },
@@ -6980,9 +6984,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Healthcare API",
-    "version": "v1",
-    "version_module": true
+    }
 }

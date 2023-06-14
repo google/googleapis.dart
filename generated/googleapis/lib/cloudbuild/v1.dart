@@ -549,13 +549,13 @@ class ProjectsBuildsResource {
   /// of that branch, which may not be the same revision as the original build.
   /// * If the original build specified a commit sha or revision ID, the retried
   /// build will use the identical source. For builds that specify
-  /// `StorageSource`: * If the original build pulled source from Google Cloud
-  /// Storage without specifying the generation of the object, the new build
-  /// will use the current object, which may be different from the original
-  /// build source. * If the original build pulled source from Cloud Storage and
-  /// specified the generation of the object, the new build will attempt to use
-  /// the same object, which may or may not be available depending on the
-  /// bucket's lifecycle management settings.
+  /// `StorageSource`: * If the original build pulled source from Cloud Storage
+  /// without specifying the generation of the object, the new build will use
+  /// the current object, which may be different from the original build source.
+  /// * If the original build pulled source from Cloud Storage and specified the
+  /// generation of the object, the new build will attempt to use the same
+  /// object, which may or may not be available depending on the bucket's
+  /// lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1542,13 +1542,13 @@ class ProjectsLocationsBuildsResource {
   /// of that branch, which may not be the same revision as the original build.
   /// * If the original build specified a commit sha or revision ID, the retried
   /// build will use the identical source. For builds that specify
-  /// `StorageSource`: * If the original build pulled source from Google Cloud
-  /// Storage without specifying the generation of the object, the new build
-  /// will use the current object, which may be different from the original
-  /// build source. * If the original build pulled source from Cloud Storage and
-  /// specified the generation of the object, the new build will attempt to use
-  /// the same object, which may or may not be available depending on the
-  /// bucket's lifecycle management settings.
+  /// `StorageSource`: * If the original build pulled source from Cloud Storage
+  /// without specifying the generation of the object, the new build will use
+  /// the current object, which may be different from the original build source.
+  /// * If the original build pulled source from Cloud Storage and specified the
+  /// generation of the object, the new build will attempt to use the same
+  /// object, which may or may not be available depending on the bucket's
+  /// lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4177,7 +4177,7 @@ class Build {
   /// Output only.
   core.String? logUrl;
 
-  /// Google Cloud Storage bucket where logs should be written (see
+  /// Cloud Storage bucket where logs should be written (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   ///
   /// Logs file names will be of the format
@@ -4569,13 +4569,13 @@ class BuildOptions {
   /// "VALUE".
   core.List<core.String>? env;
 
-  /// Option to define build log streaming behavior to Google Cloud Storage.
+  /// Option to define build log streaming behavior to Cloud Storage.
   /// Possible string values are:
   /// - "STREAM_DEFAULT" : Service may automatically determine build log
   /// streaming behavior.
-  /// - "STREAM_ON" : Build logs should be streamed to Google Cloud Storage.
-  /// - "STREAM_OFF" : Build logs should not be streamed to Google Cloud
-  /// Storage; they will be written when the build is completed.
+  /// - "STREAM_ON" : Build logs should be streamed to Cloud Storage.
+  /// - "STREAM_OFF" : Build logs should not be streamed to Cloud Storage; they
+  /// will be written when the build is completed.
   core.String? logStreamingOption;
 
   /// Option to specify the logging mode, which determines if and where build
@@ -4600,6 +4600,7 @@ class BuildOptions {
   /// - "N1_HIGHCPU_32" : Highcpu machine with 32 CPUs.
   /// - "E2_HIGHCPU_8" : Highcpu e2 machine with 8 CPUs.
   /// - "E2_HIGHCPU_32" : Highcpu e2 machine with 32 CPUs.
+  /// - "E2_MEDIUM" : E2 machine with 1 CPU.
   core.String? machineType;
 
   /// Specification for execution on a `WorkerPool`.
@@ -5580,9 +5581,9 @@ class GitFileSource {
   /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
-  /// The fully qualified resource name of the Repo API repository.
+  /// The fully qualified resource name of the Repos API repository.
   ///
-  /// Either uri or repository can be specified. If unspecified, the repo from
+  /// Either URI or repository can be specified. If unspecified, the repo from
   /// which the trigger invocation originated is assumed to be the repo from
   /// which to read the specified path.
   core.String? repository;
@@ -6327,13 +6328,15 @@ class GitRepoSource {
   /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
-  /// The qualified resource name of the Repo API repository Either uri or
-  /// repository can be specified and is required.
+  /// The connected repository resource name, in the format `projects / *
+  /// /locations / * /connections / * /repositories / * `.
+  ///
+  /// Either `uri` or `repository` can be specified and is required.
   core.String? repository;
 
-  /// The URI of the repo.
+  /// The URI of the repo (e.g. https://github.com/user/repo.git).
   ///
-  /// Either uri or repository can be specified and is required.
+  /// Either `uri` or `repository` can be specified and is required.
   core.String? uri;
 
   GitRepoSource({
@@ -7820,10 +7823,10 @@ class Source {
   /// Repository.
   RepoSource? repoSource;
 
-  /// If provided, get the source from this location in Google Cloud Storage.
+  /// If provided, get the source from this location in Cloud Storage.
   StorageSource? storageSource;
 
-  /// If provided, get the source from this manifest in Google Cloud Storage.
+  /// If provided, get the source from this manifest in Cloud Storage.
   ///
   /// This feature is in Preview; see description
   /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
@@ -7952,18 +7955,18 @@ class SourceProvenance {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// Location of the source in an archive file in Google Cloud Storage.
+/// Location of the source in an archive file in Cloud Storage.
 class StorageSource {
-  /// Google Cloud Storage bucket containing the source (see
+  /// Cloud Storage bucket containing the source (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String? bucket;
 
-  /// Google Cloud Storage generation for the object.
+  /// Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
   core.String? generation;
 
-  /// Google Cloud Storage object containing the source.
+  /// Cloud Storage object containing the source.
   ///
   /// This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`)
   /// containing source to build.
@@ -7995,21 +7998,21 @@ class StorageSource {
       };
 }
 
-/// Location of the source manifest in Google Cloud Storage.
+/// Location of the source manifest in Cloud Storage.
 ///
 /// This feature is in Preview; see description
 /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 class StorageSourceManifest {
-  /// Google Cloud Storage bucket containing the source manifest (see
+  /// Cloud Storage bucket containing the source manifest (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String? bucket;
 
-  /// Google Cloud Storage generation for the object.
+  /// Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
   core.String? generation;
 
-  /// Google Cloud Storage object containing the source manifest.
+  /// Cloud Storage object containing the source manifest.
   ///
   /// This object must be a JSON file.
   core.String? object;

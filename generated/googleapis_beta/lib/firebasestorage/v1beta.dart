@@ -80,7 +80,7 @@ class ProjectsBucketsResource {
   ///
   /// [bucket] - Required. Resource name of the bucket, mirrors the ID of the
   /// underlying Google Cloud Storage bucket,
-  /// `projects/{project_number}/buckets/{bucket_id}`.
+  /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -120,7 +120,7 @@ class ProjectsBucketsResource {
   ///
   /// [name] - Required. Resource name of the bucket, mirrors the ID of the
   /// underlying Google Cloud Storage bucket,
-  /// `projects/{project_number}/buckets/{bucket_id}`.
+  /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -156,7 +156,7 @@ class ProjectsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent Firebase project,
-  /// `projects/{project_number}`.
+  /// `projects/{project_id_or_number}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of buckets to return. If not set, the
@@ -208,7 +208,7 @@ class ProjectsBucketsResource {
   ///
   /// [bucket] - Required. Resource name of the bucket, mirrors the ID of the
   /// underlying Google Cloud Storage bucket,
-  /// `projects/{project_number}/buckets/{bucket_id}`.
+  /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

@@ -10,10 +10,10 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Cloud Debugger API - v2
+/// Cloud Debugger API (Deprecated) - v2
 ///
 /// Examines the call stack and variables of a running application without
-/// stopping or slowing it down.
+/// stopping or slowing it down. (Deprecated)
 ///
 /// For more information, see <https://cloud.google.com/debugger>
 ///
@@ -43,6 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Examines the call stack and variables of a running application without
 /// stopping or slowing it down.
+///
+/// (Deprecated)
 class CloudDebuggerApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

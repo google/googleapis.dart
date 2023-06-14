@@ -225,6 +225,46 @@ class ProjectsLocationsClustersResource {
   ProjectsLocationsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Checks the cluster compatibility with Autopilot mode, and returns a list
+  /// of compatibility issues.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckAutopilotCompatibilityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckAutopilotCompatibilityResponse> checkAutopilotCompatibility(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':checkAutopilotCompatibility';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CheckAutopilotCompatibilityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Completes master IP rotation.
   ///
   /// [request] - The metadata request object.
@@ -3555,6 +3595,9 @@ class AcceleratorConfig {
   /// [here](https://cloud.google.com/compute/docs/gpus)
   core.String? acceleratorType;
 
+  /// The configuration for auto installation of GPU driver.
+  GPUDriverInstallationConfig? gpuDriverInstallationConfig;
+
   /// Size of partitions to create on the GPU.
   ///
   /// Valid values are described in the NVIDIA
@@ -3567,6 +3610,7 @@ class AcceleratorConfig {
   AcceleratorConfig({
     this.acceleratorCount,
     this.acceleratorType,
+    this.gpuDriverInstallationConfig,
     this.gpuPartitionSize,
     this.gpuSharingConfig,
   });
@@ -3579,6 +3623,12 @@ class AcceleratorConfig {
           acceleratorType: json_.containsKey('acceleratorType')
               ? json_['acceleratorType'] as core.String
               : null,
+          gpuDriverInstallationConfig:
+              json_.containsKey('gpuDriverInstallationConfig')
+                  ? GPUDriverInstallationConfig.fromJson(
+                      json_['gpuDriverInstallationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           gpuPartitionSize: json_.containsKey('gpuPartitionSize')
               ? json_['gpuPartitionSize'] as core.String
               : null,
@@ -3591,6 +3641,8 @@ class AcceleratorConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (gpuDriverInstallationConfig != null)
+          'gpuDriverInstallationConfig': gpuDriverInstallationConfig!,
         if (gpuPartitionSize != null) 'gpuPartitionSize': gpuPartitionSize!,
         if (gpuSharingConfig != null) 'gpuSharingConfig': gpuSharingConfig!,
       };
@@ -3599,16 +3651,28 @@ class AcceleratorConfig {
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary
 /// ranges supporting the ClusterUpdate message.
 class AdditionalPodRangesConfig {
+  /// Information for additional pod range.
+  ///
+  /// Output only.
+  core.List<RangeInfo>? podRangeInfo;
+
   /// Name for pod secondary ipv4 range which has the actual range defined
   /// ahead.
   core.List<core.String>? podRangeNames;
 
   AdditionalPodRangesConfig({
+    this.podRangeInfo,
     this.podRangeNames,
   });
 
   AdditionalPodRangesConfig.fromJson(core.Map json_)
       : this(
+          podRangeInfo: json_.containsKey('podRangeInfo')
+              ? (json_['podRangeInfo'] as core.List)
+                  .map((value) => RangeInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           podRangeNames: json_.containsKey('podRangeNames')
               ? (json_['podRangeNames'] as core.List)
                   .map((value) => value as core.String)
@@ -3617,6 +3681,7 @@ class AdditionalPodRangesConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (podRangeInfo != null) 'podRangeInfo': podRangeInfo!,
         if (podRangeNames != null) 'podRangeNames': podRangeNames!,
       };
 }
@@ -3640,6 +3705,9 @@ class AddonsConfig {
 
   /// Configuration for the GCP Filestore CSI driver.
   GcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig;
+
+  /// Configuration for the Cloud Storage Fuse CSI driver.
+  GcsFuseCsiDriverConfig? gcsFuseCsiDriverConfig;
 
   /// Configuration for the Backup for GKE agent addon.
   GkeBackupAgentConfig? gkeBackupAgentConfig;
@@ -3673,6 +3741,7 @@ class AddonsConfig {
     this.dnsCacheConfig,
     this.gcePersistentDiskCsiDriverConfig,
     this.gcpFilestoreCsiDriverConfig,
+    this.gcsFuseCsiDriverConfig,
     this.gkeBackupAgentConfig,
     this.horizontalPodAutoscaling,
     this.httpLoadBalancing,
@@ -3706,6 +3775,10 @@ class AddonsConfig {
                       json_['gcpFilestoreCsiDriverConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          gcsFuseCsiDriverConfig: json_.containsKey('gcsFuseCsiDriverConfig')
+              ? GcsFuseCsiDriverConfig.fromJson(json_['gcsFuseCsiDriverConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gkeBackupAgentConfig: json_.containsKey('gkeBackupAgentConfig')
               ? GkeBackupAgentConfig.fromJson(json_['gkeBackupAgentConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3739,6 +3812,8 @@ class AddonsConfig {
           'gcePersistentDiskCsiDriverConfig': gcePersistentDiskCsiDriverConfig!,
         if (gcpFilestoreCsiDriverConfig != null)
           'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!,
+        if (gcsFuseCsiDriverConfig != null)
+          'gcsFuseCsiDriverConfig': gcsFuseCsiDriverConfig!,
         if (gkeBackupAgentConfig != null)
           'gkeBackupAgentConfig': gkeBackupAgentConfig!,
         if (horizontalPodAutoscaling != null)
@@ -3851,8 +3926,12 @@ class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
 
+  /// Workload policy configuration for Autopilot.
+  WorkloadPolicyConfig? workloadPolicyConfig;
+
   Autopilot({
     this.enabled,
+    this.workloadPolicyConfig,
   });
 
   Autopilot.fromJson(core.Map json_)
@@ -3860,10 +3939,90 @@ class Autopilot {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          workloadPolicyConfig: json_.containsKey('workloadPolicyConfig')
+              ? WorkloadPolicyConfig.fromJson(json_['workloadPolicyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+        if (workloadPolicyConfig != null)
+          'workloadPolicyConfig': workloadPolicyConfig!,
+      };
+}
+
+/// AutopilotCompatibilityIssue contains information about a specific
+/// compatibility issue with Autopilot mode.
+class AutopilotCompatibilityIssue {
+  /// The constraint type of the issue.
+  core.String? constraintType;
+
+  /// The description of the issue.
+  core.String? description;
+
+  /// A URL to a public documnetation, which addresses resolving this issue.
+  core.String? documentationUrl;
+
+  /// The incompatibility type of this issue.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value, should not be used.
+  /// - "INCOMPATIBILITY" : Indicates that the issue is a known incompatibility
+  /// between the cluster and Autopilot mode.
+  /// - "ADDITIONAL_CONFIG_REQUIRED" : Indicates the issue is an incompatibility
+  /// if customers take no further action to resolve.
+  /// - "PASSED_WITH_OPTIONAL_CONFIG" : Indicates the issue is not an
+  /// incompatibility, but depending on the workloads business logic, there is a
+  /// potential that they won't work on Autopilot.
+  core.String? incompatibilityType;
+
+  /// The last time when this issue was observed.
+  core.String? lastObservation;
+
+  /// The name of the resources which are subject to this issue.
+  core.List<core.String>? subjects;
+
+  AutopilotCompatibilityIssue({
+    this.constraintType,
+    this.description,
+    this.documentationUrl,
+    this.incompatibilityType,
+    this.lastObservation,
+    this.subjects,
+  });
+
+  AutopilotCompatibilityIssue.fromJson(core.Map json_)
+      : this(
+          constraintType: json_.containsKey('constraintType')
+              ? json_['constraintType'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          documentationUrl: json_.containsKey('documentationUrl')
+              ? json_['documentationUrl'] as core.String
+              : null,
+          incompatibilityType: json_.containsKey('incompatibilityType')
+              ? json_['incompatibilityType'] as core.String
+              : null,
+          lastObservation: json_.containsKey('lastObservation')
+              ? json_['lastObservation'] as core.String
+              : null,
+          subjects: json_.containsKey('subjects')
+              ? (json_['subjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraintType != null) 'constraintType': constraintType!,
+        if (description != null) 'description': description!,
+        if (documentationUrl != null) 'documentationUrl': documentationUrl!,
+        if (incompatibilityType != null)
+          'incompatibilityType': incompatibilityType!,
+        if (lastObservation != null) 'lastObservation': lastObservation!,
+        if (subjects != null) 'subjects': subjects!,
       };
 }
 
@@ -3896,6 +4055,9 @@ class AutoprovisioningNodePoolDefaults {
   /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
   /// available image types.
   core.String? imageType;
+
+  /// Enable or disable Kubelet read only port.
+  core.bool? insecureKubeletReadonlyPortEnabled;
 
   /// Specifies the node management options for NAP created node-pools.
   NodeManagement? management;
@@ -3931,6 +4093,7 @@ class AutoprovisioningNodePoolDefaults {
     this.diskSizeGb,
     this.diskType,
     this.imageType,
+    this.insecureKubeletReadonlyPortEnabled,
     this.management,
     this.minCpuPlatform,
     this.oauthScopes,
@@ -3953,6 +4116,10 @@ class AutoprovisioningNodePoolDefaults {
           imageType: json_.containsKey('imageType')
               ? json_['imageType'] as core.String
               : null,
+          insecureKubeletReadonlyPortEnabled:
+              json_.containsKey('insecureKubeletReadonlyPortEnabled')
+                  ? json_['insecureKubeletReadonlyPortEnabled'] as core.bool
+                  : null,
           management: json_.containsKey('management')
               ? NodeManagement.fromJson(
                   json_['management'] as core.Map<core.String, core.dynamic>)
@@ -3983,6 +4150,9 @@ class AutoprovisioningNodePoolDefaults {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (imageType != null) 'imageType': imageType!,
+        if (insecureKubeletReadonlyPortEnabled != null)
+          'insecureKubeletReadonlyPortEnabled':
+              insecureKubeletReadonlyPortEnabled!,
         if (management != null) 'management': management!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (oauthScopes != null) 'oauthScopes': oauthScopes!,
@@ -3990,6 +4160,39 @@ class AutoprovisioningNodePoolDefaults {
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
+      };
+}
+
+/// Best effort provisioning.
+class BestEffortProvisioning {
+  /// When this is enabled, cluster/node pool creations will ignore non-fatal
+  /// errors like stockout to best provision as many nodes as possible right now
+  /// and eventually bring up all target number of nodes
+  core.bool? enabled;
+
+  /// Minimum number of nodes to be provisioned to be considered as succeeded,
+  /// and the rest of nodes will be provisioned gradually and eventually when
+  /// stockout issue has been resolved.
+  core.int? minProvisionNodes;
+
+  BestEffortProvisioning({
+    this.enabled,
+    this.minProvisionNodes,
+  });
+
+  BestEffortProvisioning.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          minProvisionNodes: json_.containsKey('minProvisionNodes')
+              ? json_['minProvisionNodes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (minProvisionNodes != null) 'minProvisionNodes': minProvisionNodes!,
       };
 }
 
@@ -4222,6 +4425,38 @@ class CancelOperationRequest {
       };
 }
 
+/// CheckAutopilotCompatibilityResponse has a list of compatibility issues.
+class CheckAutopilotCompatibilityResponse {
+  /// The list of issues for the given operation.
+  core.List<AutopilotCompatibilityIssue>? issues;
+
+  /// The summary of the autopilot compatibility response.
+  core.String? summary;
+
+  CheckAutopilotCompatibilityResponse({
+    this.issues,
+    this.summary,
+  });
+
+  CheckAutopilotCompatibilityResponse.fromJson(core.Map json_)
+      : this(
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => AutopilotCompatibilityIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          summary: json_.containsKey('summary')
+              ? json_['summary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issues != null) 'issues': issues!,
+        if (summary != null) 'summary': summary!,
+      };
+}
+
 /// CidrBlock contains an optional name and one CIDR block.
 class CidrBlock {
   /// cidr_block must be specified in CIDR notation.
@@ -4385,6 +4620,9 @@ class Cluster {
 
   /// An optional description of this cluster.
   core.String? description;
+
+  /// Beta APIs Config
+  K8sBetaAPIConfig? enableK8sBetaApis;
 
   /// Kubernetes alpha features are enabled on this cluster.
   ///
@@ -4615,6 +4853,9 @@ class Cluster {
   /// Resource usage export is disabled when this config is unspecified.
   ResourceUsageExportConfig? resourceUsageExportConfig;
 
+  /// Enable/Disable Security Posture API features for the cluster.
+  SecurityPostureConfig? securityPostureConfig;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -4706,6 +4947,7 @@ class Cluster {
     this.databaseEncryption,
     this.defaultMaxPodsConstraint,
     this.description,
+    this.enableK8sBetaApis,
     this.enableKubernetesAlpha,
     this.enableTpu,
     this.endpoint,
@@ -4744,6 +4986,7 @@ class Cluster {
     this.releaseChannel,
     this.resourceLabels,
     this.resourceUsageExportConfig,
+    this.securityPostureConfig,
     this.selfLink,
     this.servicesIpv4Cidr,
     this.shieldedNodes,
@@ -4820,6 +5063,10 @@ class Cluster {
                   : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           enableKubernetesAlpha: json_.containsKey('enableKubernetesAlpha')
               ? json_['enableKubernetesAlpha'] as core.bool
@@ -4965,6 +5212,10 @@ class Cluster {
                       json_['resourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          securityPostureConfig: json_.containsKey('securityPostureConfig')
+              ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
@@ -5022,6 +5273,7 @@ class Cluster {
         if (defaultMaxPodsConstraint != null)
           'defaultMaxPodsConstraint': defaultMaxPodsConstraint!,
         if (description != null) 'description': description!,
+        if (enableK8sBetaApis != null) 'enableK8sBetaApis': enableK8sBetaApis!,
         if (enableKubernetesAlpha != null)
           'enableKubernetesAlpha': enableKubernetesAlpha!,
         if (enableTpu != null) 'enableTpu': enableTpu!,
@@ -5069,6 +5321,8 @@ class Cluster {
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceUsageExportConfig != null)
           'resourceUsageExportConfig': resourceUsageExportConfig!,
+        if (securityPostureConfig != null)
+          'securityPostureConfig': securityPostureConfig!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
         if (shieldedNodes != null) 'shieldedNodes': shieldedNodes!,
@@ -5161,6 +5415,32 @@ class ClusterAutoscaling {
       };
 }
 
+/// Configuration of network bandwidth tiers
+class ClusterNetworkPerformanceConfig {
+  /// Specifies the total network bandwidth tier for NodePools in the cluster.
+  /// Possible string values are:
+  /// - "TIER_UNSPECIFIED" : Default value
+  /// - "TIER_1" : Higher bandwidth, actual values based on VM size.
+  core.String? totalEgressBandwidthTier;
+
+  ClusterNetworkPerformanceConfig({
+    this.totalEgressBandwidthTier,
+  });
+
+  ClusterNetworkPerformanceConfig.fromJson(core.Map json_)
+      : this(
+          totalEgressBandwidthTier:
+              json_.containsKey('totalEgressBandwidthTier')
+                  ? json_['totalEgressBandwidthTier'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalEgressBandwidthTier != null)
+          'totalEgressBandwidthTier': totalEgressBandwidthTier!,
+      };
+}
+
 /// ClusterUpdate describes an update to the cluster.
 ///
 /// Exactly one update can be applied to a cluster with each request, so at most
@@ -5176,6 +5456,9 @@ class ClusterUpdate {
 
   /// The desired authenticator groups config for the cluster.
   AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
+
+  /// The desired workload policy configuration for the autopilot cluster.
+  WorkloadPolicyConfig? desiredAutopilotWorkloadPolicyConfig;
 
   /// The desired configuration options for the Binary Authorization feature.
   BinaryAuthorization? desiredBinaryAuthorization;
@@ -5205,6 +5488,9 @@ class ClusterUpdate {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
 
+  /// Enable/Disable FQDN Network Policy for the cluster.
+  core.bool? desiredEnableFqdnNetworkPolicy;
+
   /// Enable/Disable private endpoint for the cluster's master.
   core.bool? desiredEnablePrivateEndpoint;
 
@@ -5227,6 +5513,9 @@ class ClusterUpdate {
 
   /// The desired config of Intra-node visibility.
   IntraNodeVisibilityConfig? desiredIntraNodeVisibilityConfig;
+
+  /// Desired Beta APIs to be enabled for cluster.
+  K8sBetaAPIConfig? desiredK8sBetaApis;
 
   /// The desired L4 Internal Load Balancer Subsetting configuration.
   ILBSubsettingConfig? desiredL4ilbSubsettingConfig;
@@ -5285,6 +5574,9 @@ class ClusterUpdate {
   /// or `monitoring.googleapis.com` for earlier versions.
   core.String? desiredMonitoringService;
 
+  /// The desired network performance config.
+  ClusterNetworkPerformanceConfig? desiredNetworkPerformanceConfig;
+
   /// The desired network tags that apply to all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NetworkTags? desiredNodePoolAutoConfigNetworkTags;
@@ -5340,6 +5632,9 @@ class ClusterUpdate {
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig? desiredResourceUsageExportConfig;
 
+  /// Enable/Disable Security Posture API features for the cluster.
+  SecurityPostureConfig? desiredSecurityPostureConfig;
+
   /// ServiceExternalIPsConfig specifies the config for the use of Services with
   /// ExternalIPs field.
   ServiceExternalIPsConfig? desiredServiceExternalIpsConfig;
@@ -5363,6 +5658,11 @@ class ClusterUpdate {
   /// Configuration for Workload Identity.
   WorkloadIdentityConfig? desiredWorkloadIdentityConfig;
 
+  /// Kubernetes open source beta apis enabled on the cluster.
+  ///
+  /// Only beta apis
+  K8sBetaAPIConfig? enableK8sBetaApis;
+
   /// The current etag of the cluster.
   ///
   /// If an etag is provided and does not match the current etag of the cluster,
@@ -5379,6 +5679,7 @@ class ClusterUpdate {
     this.additionalPodRangesConfig,
     this.desiredAddonsConfig,
     this.desiredAuthenticatorGroupsConfig,
+    this.desiredAutopilotWorkloadPolicyConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
     this.desiredCostManagementConfig,
@@ -5386,6 +5687,7 @@ class ClusterUpdate {
     this.desiredDatapathProvider,
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
+    this.desiredEnableFqdnNetworkPolicy,
     this.desiredEnablePrivateEndpoint,
     this.desiredFleet,
     this.desiredGatewayApiConfig,
@@ -5393,6 +5695,7 @@ class ClusterUpdate {
     this.desiredIdentityServiceConfig,
     this.desiredImageType,
     this.desiredIntraNodeVisibilityConfig,
+    this.desiredK8sBetaApis,
     this.desiredL4ilbSubsettingConfig,
     this.desiredLocations,
     this.desiredLoggingConfig,
@@ -5402,6 +5705,7 @@ class ClusterUpdate {
     this.desiredMeshCertificates,
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
+    this.desiredNetworkPerformanceConfig,
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoscaling,
     this.desiredNodePoolId,
@@ -5412,11 +5716,13 @@ class ClusterUpdate {
     this.desiredPrivateIpv6GoogleAccess,
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
+    this.desiredSecurityPostureConfig,
     this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
     this.desiredStackType,
     this.desiredVerticalPodAutoscaling,
     this.desiredWorkloadIdentityConfig,
+    this.enableK8sBetaApis,
     this.etag,
     this.removedAdditionalPodRangesConfig,
   });
@@ -5437,6 +5743,12 @@ class ClusterUpdate {
               json_.containsKey('desiredAuthenticatorGroupsConfig')
                   ? AuthenticatorGroupsConfig.fromJson(
                       json_['desiredAuthenticatorGroupsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredAutopilotWorkloadPolicyConfig:
+              json_.containsKey('desiredAutopilotWorkloadPolicyConfig')
+                  ? WorkloadPolicyConfig.fromJson(
+                      json_['desiredAutopilotWorkloadPolicyConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           desiredBinaryAuthorization: json_
@@ -5472,6 +5784,10 @@ class ClusterUpdate {
               ? DNSConfig.fromJson(json_['desiredDnsConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredEnableFqdnNetworkPolicy:
+              json_.containsKey('desiredEnableFqdnNetworkPolicy')
+                  ? json_['desiredEnableFqdnNetworkPolicy'] as core.bool
+                  : null,
           desiredEnablePrivateEndpoint:
               json_.containsKey('desiredEnablePrivateEndpoint')
                   ? json_['desiredEnablePrivateEndpoint'] as core.bool
@@ -5503,6 +5819,10 @@ class ClusterUpdate {
                       json_['desiredIntraNodeVisibilityConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredK8sBetaApis: json_.containsKey('desiredK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['desiredK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredL4ilbSubsettingConfig:
               json_.containsKey('desiredL4ilbSubsettingConfig')
                   ? ILBSubsettingConfig.fromJson(
@@ -5541,6 +5861,12 @@ class ClusterUpdate {
           desiredMonitoringService:
               json_.containsKey('desiredMonitoringService')
                   ? json_['desiredMonitoringService'] as core.String
+                  : null,
+          desiredNetworkPerformanceConfig:
+              json_.containsKey('desiredNetworkPerformanceConfig')
+                  ? ClusterNetworkPerformanceConfig.fromJson(
+                      json_['desiredNetworkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           desiredNodePoolAutoConfigNetworkTags:
               json_.containsKey('desiredNodePoolAutoConfigNetworkTags')
@@ -5590,6 +5916,12 @@ class ClusterUpdate {
                       json_['desiredResourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredSecurityPostureConfig:
+              json_.containsKey('desiredSecurityPostureConfig')
+                  ? SecurityPostureConfig.fromJson(
+                      json_['desiredSecurityPostureConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredServiceExternalIpsConfig:
               json_.containsKey('desiredServiceExternalIpsConfig')
                   ? ServiceExternalIPsConfig.fromJson(
@@ -5615,6 +5947,10 @@ class ClusterUpdate {
                       json_['desiredWorkloadIdentityConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           removedAdditionalPodRangesConfig:
               json_.containsKey('removedAdditionalPodRangesConfig')
@@ -5631,6 +5967,9 @@ class ClusterUpdate {
           'desiredAddonsConfig': desiredAddonsConfig!,
         if (desiredAuthenticatorGroupsConfig != null)
           'desiredAuthenticatorGroupsConfig': desiredAuthenticatorGroupsConfig!,
+        if (desiredAutopilotWorkloadPolicyConfig != null)
+          'desiredAutopilotWorkloadPolicyConfig':
+              desiredAutopilotWorkloadPolicyConfig!,
         if (desiredBinaryAuthorization != null)
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
@@ -5644,6 +5983,8 @@ class ClusterUpdate {
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
+        if (desiredEnableFqdnNetworkPolicy != null)
+          'desiredEnableFqdnNetworkPolicy': desiredEnableFqdnNetworkPolicy!,
         if (desiredEnablePrivateEndpoint != null)
           'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
         if (desiredFleet != null) 'desiredFleet': desiredFleet!,
@@ -5655,6 +5996,8 @@ class ClusterUpdate {
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
+        if (desiredK8sBetaApis != null)
+          'desiredK8sBetaApis': desiredK8sBetaApis!,
         if (desiredL4ilbSubsettingConfig != null)
           'desiredL4ilbSubsettingConfig': desiredL4ilbSubsettingConfig!,
         if (desiredLocations != null) 'desiredLocations': desiredLocations!,
@@ -5673,6 +6016,8 @@ class ClusterUpdate {
           'desiredMonitoringConfig': desiredMonitoringConfig!,
         if (desiredMonitoringService != null)
           'desiredMonitoringService': desiredMonitoringService!,
+        if (desiredNetworkPerformanceConfig != null)
+          'desiredNetworkPerformanceConfig': desiredNetworkPerformanceConfig!,
         if (desiredNodePoolAutoConfigNetworkTags != null)
           'desiredNodePoolAutoConfigNetworkTags':
               desiredNodePoolAutoConfigNetworkTags!,
@@ -5693,6 +6038,8 @@ class ClusterUpdate {
           'desiredReleaseChannel': desiredReleaseChannel!,
         if (desiredResourceUsageExportConfig != null)
           'desiredResourceUsageExportConfig': desiredResourceUsageExportConfig!,
+        if (desiredSecurityPostureConfig != null)
+          'desiredSecurityPostureConfig': desiredSecurityPostureConfig!,
         if (desiredServiceExternalIpsConfig != null)
           'desiredServiceExternalIpsConfig': desiredServiceExternalIpsConfig!,
         if (desiredShieldedNodes != null)
@@ -5702,6 +6049,7 @@ class ClusterUpdate {
           'desiredVerticalPodAutoscaling': desiredVerticalPodAutoscaling!,
         if (desiredWorkloadIdentityConfig != null)
           'desiredWorkloadIdentityConfig': desiredWorkloadIdentityConfig!,
+        if (enableK8sBetaApis != null) 'enableK8sBetaApis': enableK8sBetaApis!,
         if (etag != null) 'etag': etag!,
         if (removedAdditionalPodRangesConfig != null)
           'removedAdditionalPodRangesConfig': removedAdditionalPodRangesConfig!,
@@ -5999,6 +6347,7 @@ class DNSConfig {
   /// - "PLATFORM_DEFAULT" : Use GKE default DNS provider(kube-dns) for DNS
   /// resolution.
   /// - "CLOUD_DNS" : Use CloudDNS for DNS resolution.
+  /// - "KUBE_DNS" : Use KubeDNS for DNS resolution
   core.String? clusterDns;
 
   /// cluster_dns_domain is the suffix used for all cluster service records.
@@ -6285,6 +6634,35 @@ class Fleet {
       };
 }
 
+/// GPUDriverInstallationConfig specifies the version of GPU driver to be auto
+/// installed.
+class GPUDriverInstallationConfig {
+  /// Mode for how the GPU driver is installed.
+  /// Possible string values are:
+  /// - "GPU_DRIVER_VERSION_UNSPECIFIED" : Default value is to not install any
+  /// GPU driver.
+  /// - "INSTALLATION_DISABLED" : Disable GPU driver auto installation and needs
+  /// manual installation
+  /// - "DEFAULT" : "Default" GPU driver in COS and Ubuntu.
+  /// - "LATEST" : "Latest" GPU driver in COS.
+  core.String? gpuDriverVersion;
+
+  GPUDriverInstallationConfig({
+    this.gpuDriverVersion,
+  });
+
+  GPUDriverInstallationConfig.fromJson(core.Map json_)
+      : this(
+          gpuDriverVersion: json_.containsKey('gpuDriverVersion')
+              ? json_['gpuDriverVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gpuDriverVersion != null) 'gpuDriverVersion': gpuDriverVersion!,
+      };
+}
+
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware
 /// Accelerators.
 class GPUSharingConfig {
@@ -6401,6 +6779,27 @@ class GcpFilestoreCsiDriverConfig {
   });
 
   GcpFilestoreCsiDriverConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration for the Cloud Storage Fuse CSI driver.
+class GcsFuseCsiDriverConfig {
+  /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+  core.bool? enabled;
+
+  GcsFuseCsiDriverConfig({
+    this.enabled,
+  });
+
+  GcsFuseCsiDriverConfig.fromJson(core.Map json_)
       : this(
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
@@ -6711,6 +7110,14 @@ class IPAllocationPolicy {
   /// This field is only applicable when `use_ip_aliases` is true.
   core.bool? createSubnetwork;
 
+  /// The utilization of the cluster default IPv4 range for pod.
+  ///
+  /// The ratio is Usage/\[Total number of IPs in the secondary range\],
+  /// Usage=numNodes*numZones*podIPsPerNode.
+  ///
+  /// Output only.
+  core.double? defaultPodIpv4RangeUtilization;
+
   /// The ipv6 access type (internal or external) when create_subnetwork is true
   /// Possible string values are:
   /// - "IPV6_ACCESS_TYPE_UNSPECIFIED" : Default value, will be defaulted as
@@ -6821,6 +7228,7 @@ class IPAllocationPolicy {
     this.clusterIpv4CidrBlock,
     this.clusterSecondaryRangeName,
     this.createSubnetwork,
+    this.defaultPodIpv4RangeUtilization,
     this.ipv6AccessType,
     this.nodeIpv4Cidr,
     this.nodeIpv4CidrBlock,
@@ -6857,6 +7265,10 @@ class IPAllocationPolicy {
                   : null,
           createSubnetwork: json_.containsKey('createSubnetwork')
               ? json_['createSubnetwork'] as core.bool
+              : null,
+          defaultPodIpv4RangeUtilization: json_
+                  .containsKey('defaultPodIpv4RangeUtilization')
+              ? (json_['defaultPodIpv4RangeUtilization'] as core.num).toDouble()
               : null,
           ipv6AccessType: json_.containsKey('ipv6AccessType')
               ? json_['ipv6AccessType'] as core.String
@@ -6915,6 +7327,8 @@ class IPAllocationPolicy {
         if (clusterSecondaryRangeName != null)
           'clusterSecondaryRangeName': clusterSecondaryRangeName!,
         if (createSubnetwork != null) 'createSubnetwork': createSubnetwork!,
+        if (defaultPodIpv4RangeUtilization != null)
+          'defaultPodIpv4RangeUtilization': defaultPodIpv4RangeUtilization!,
         if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
         if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
@@ -7045,6 +7459,29 @@ class Jwk {
         if (use != null) 'use': use!,
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
+      };
+}
+
+/// K8sBetaAPIConfig , configuration for beta APIs
+class K8sBetaAPIConfig {
+  /// Enabled k8s beta APIs.
+  core.List<core.String>? enabledApis;
+
+  K8sBetaAPIConfig({
+    this.enabledApis,
+  });
+
+  K8sBetaAPIConfig.fromJson(core.Map json_)
+      : this(
+          enabledApis: json_.containsKey('enabledApis')
+              ? (json_['enabledApis'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledApis != null) 'enabledApis': enabledApis!,
       };
 }
 
@@ -7836,6 +8273,9 @@ class NetworkConfig {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? dnsConfig;
 
+  /// Whether FQDN Network Policy is enabled on this cluster.
+  core.bool? enableFqdnNetworkPolicy;
+
   /// Whether Intra-node visibility is enabled for this cluster.
   ///
   /// This makes same node pod to pod traffic visible for VPC network.
@@ -7856,6 +8296,9 @@ class NetworkConfig {
   ///
   /// Output only.
   core.String? network;
+
+  /// Network bandwidth tier configuration.
+  ClusterNetworkPerformanceConfig? networkPerformanceConfig;
 
   /// The desired state of IPv6 connectivity to Google Services.
   ///
@@ -7889,10 +8332,12 @@ class NetworkConfig {
     this.datapathProvider,
     this.defaultSnatStatus,
     this.dnsConfig,
+    this.enableFqdnNetworkPolicy,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
     this.gatewayApiConfig,
     this.network,
+    this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
     this.serviceExternalIpsConfig,
     this.subnetwork,
@@ -7911,6 +8356,9 @@ class NetworkConfig {
               ? DNSConfig.fromJson(
                   json_['dnsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          enableFqdnNetworkPolicy: json_.containsKey('enableFqdnNetworkPolicy')
+              ? json_['enableFqdnNetworkPolicy'] as core.bool
+              : null,
           enableIntraNodeVisibility:
               json_.containsKey('enableIntraNodeVisibility')
                   ? json_['enableIntraNodeVisibility'] as core.bool
@@ -7925,6 +8373,12 @@ class NetworkConfig {
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          networkPerformanceConfig:
+              json_.containsKey('networkPerformanceConfig')
+                  ? ClusterNetworkPerformanceConfig.fromJson(
+                      json_['networkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           privateIpv6GoogleAccess: json_.containsKey('privateIpv6GoogleAccess')
               ? json_['privateIpv6GoogleAccess'] as core.String
               : null,
@@ -7943,12 +8397,16 @@ class NetworkConfig {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
         if (dnsConfig != null) 'dnsConfig': dnsConfig!,
+        if (enableFqdnNetworkPolicy != null)
+          'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy!,
         if (enableIntraNodeVisibility != null)
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
           'enableL4ilbSubsetting': enableL4ilbSubsetting!,
         if (gatewayApiConfig != null) 'gatewayApiConfig': gatewayApiConfig!,
         if (network != null) 'network': network!,
+        if (networkPerformanceConfig != null)
+          'networkPerformanceConfig': networkPerformanceConfig!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (serviceExternalIpsConfig != null)
@@ -8062,6 +8520,48 @@ class NetworkTags {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tags != null) 'tags': tags!,
+      };
+}
+
+/// Specifies the NodeAffinity key, values, and affinity operator according to
+/// [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+class NodeAffinity {
+  /// Key for NodeAffinity.
+  core.String? key;
+
+  /// Operator for NodeAffinity.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : Invalid or unspecified affinity operator.
+  /// - "IN" : Affinity operator.
+  /// - "NOT_IN" : Anti-affinity operator.
+  core.String? operator;
+
+  /// Values for NodeAffinity.
+  core.List<core.String>? values;
+
+  NodeAffinity({
+    this.key,
+    this.operator,
+    this.values,
+  });
+
+  NodeAffinity.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (operator != null) 'operator': operator!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -8237,6 +8737,9 @@ class NodeConfig {
   /// Shielded Instance options.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
+  /// Parameters for node pools to be backed by shared sole tenant node groups.
+  SoleTenantConfig? soleTenantConfig;
+
   /// Spot flag for enabling Spot VM, which is a rebrand of the existing
   /// preemptible flag.
   core.bool? spot;
@@ -8289,6 +8792,7 @@ class NodeConfig {
     this.sandboxConfig,
     this.serviceAccount,
     this.shieldedInstanceConfig,
+    this.soleTenantConfig,
     this.spot,
     this.tags,
     this.taints,
@@ -8420,6 +8924,10 @@ class NodeConfig {
               ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          soleTenantConfig: json_.containsKey('soleTenantConfig')
+              ? SoleTenantConfig.fromJson(json_['soleTenantConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           spot: json_.containsKey('spot') ? json_['spot'] as core.bool : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
@@ -8476,6 +8984,7 @@ class NodeConfig {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
+        if (soleTenantConfig != null) 'soleTenantConfig': soleTenantConfig!,
         if (spot != null) 'spot': spot!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
@@ -8546,6 +9055,9 @@ class NodeKubeletConfig {
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
 
+  /// Enable or disable Kubelet read only port.
+  core.bool? insecureKubeletReadonlyPortEnabled;
+
   /// Set the Pod PID limits.
   ///
   /// See
@@ -8558,6 +9070,7 @@ class NodeKubeletConfig {
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,
+    this.insecureKubeletReadonlyPortEnabled,
     this.podPidsLimit,
   });
 
@@ -8572,6 +9085,10 @@ class NodeKubeletConfig {
           cpuManagerPolicy: json_.containsKey('cpuManagerPolicy')
               ? json_['cpuManagerPolicy'] as core.String
               : null,
+          insecureKubeletReadonlyPortEnabled:
+              json_.containsKey('insecureKubeletReadonlyPortEnabled')
+                  ? json_['insecureKubeletReadonlyPortEnabled'] as core.bool
+                  : null,
           podPidsLimit: json_.containsKey('podPidsLimit')
               ? json_['podPidsLimit'] as core.String
               : null,
@@ -8581,6 +9098,9 @@ class NodeKubeletConfig {
         if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota!,
         if (cpuCfsQuotaPeriod != null) 'cpuCfsQuotaPeriod': cpuCfsQuotaPeriod!,
         if (cpuManagerPolicy != null) 'cpuManagerPolicy': cpuManagerPolicy!,
+        if (insecureKubeletReadonlyPortEnabled != null)
+          'insecureKubeletReadonlyPortEnabled':
+              insecureKubeletReadonlyPortEnabled!,
         if (podPidsLimit != null) 'podPidsLimit': podPidsLimit!,
       };
 }
@@ -8680,6 +9200,14 @@ class NodeNetworkConfig {
   /// cannot be changed after the node pool has been created.
   core.String? podIpv4CidrBlock;
 
+  /// The utilization of the IPv4 range for pod.
+  ///
+  /// The ratio is Usage/\[Total number of IPs in the secondary range\],
+  /// Usage=numNodes*numZones*podIPsPerNode.
+  ///
+  /// Output only.
+  core.double? podIpv4RangeUtilization;
+
   /// The ID of the secondary range for pod IPs.
   ///
   /// If `create_pod_range` is true, this ID is used for the new range. If
@@ -8694,6 +9222,7 @@ class NodeNetworkConfig {
     this.networkPerformanceConfig,
     this.podCidrOverprovisionConfig,
     this.podIpv4CidrBlock,
+    this.podIpv4RangeUtilization,
     this.podRange,
   });
 
@@ -8720,6 +9249,9 @@ class NodeNetworkConfig {
           podIpv4CidrBlock: json_.containsKey('podIpv4CidrBlock')
               ? json_['podIpv4CidrBlock'] as core.String
               : null,
+          podIpv4RangeUtilization: json_.containsKey('podIpv4RangeUtilization')
+              ? (json_['podIpv4RangeUtilization'] as core.num).toDouble()
+              : null,
           podRange: json_.containsKey('podRange')
               ? json_['podRange'] as core.String
               : null,
@@ -8734,6 +9266,8 @@ class NodeNetworkConfig {
         if (podCidrOverprovisionConfig != null)
           'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
+        if (podIpv4RangeUtilization != null)
+          'podIpv4RangeUtilization': podIpv4RangeUtilization!,
         if (podRange != null) 'podRange': podRange!,
       };
 }
@@ -8750,6 +9284,9 @@ class NodePool {
   ///
   /// Autoscaler is enabled only if a valid configuration is present.
   NodePoolAutoscaling? autoscaling;
+
+  /// Enable best effort provisioning for nodes
+  BestEffortProvisioning? bestEffortProvisioning;
 
   /// Which conditions caused the current node pool state.
   core.List<StatusCondition>? conditions;
@@ -8864,6 +9401,7 @@ class NodePool {
 
   NodePool({
     this.autoscaling,
+    this.bestEffortProvisioning,
     this.conditions,
     this.config,
     this.etag,
@@ -8889,6 +9427,10 @@ class NodePool {
           autoscaling: json_.containsKey('autoscaling')
               ? NodePoolAutoscaling.fromJson(
                   json_['autoscaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bestEffortProvisioning: json_.containsKey('bestEffortProvisioning')
+              ? BestEffortProvisioning.fromJson(json_['bestEffortProvisioning']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
@@ -8958,6 +9500,8 @@ class NodePool {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!,
+        if (bestEffortProvisioning != null)
+          'bestEffortProvisioning': bestEffortProvisioning!,
         if (conditions != null) 'conditions': conditions!,
         if (config != null) 'config': config!,
         if (etag != null) 'etag': etag!,
@@ -9757,6 +10301,39 @@ class PubSub {
       };
 }
 
+/// RangeInfo contains the range name and the range utilization by this cluster.
+class RangeInfo {
+  /// Name of a range.
+  ///
+  /// Output only.
+  core.String? rangeName;
+
+  /// The utilization of the range.
+  ///
+  /// Output only.
+  core.double? utilization;
+
+  RangeInfo({
+    this.rangeName,
+    this.utilization,
+  });
+
+  RangeInfo.fromJson(core.Map json_)
+      : this(
+          rangeName: json_.containsKey('rangeName')
+              ? json_['rangeName'] as core.String
+              : null,
+          utilization: json_.containsKey('utilization')
+              ? (json_['utilization'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rangeName != null) 'rangeName': rangeName!,
+        if (utilization != null) 'utilization': utilization!,
+      };
+}
+
 /// Represents an arbitrary window of time that recurs.
 class RecurringTimeWindow {
   /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
@@ -10135,6 +10712,44 @@ class SandboxConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
+      };
+}
+
+/// SecurityPostureConfig defines the flags needed to enable/disable features
+/// for the Security Posture API.
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 
@@ -11225,6 +11840,31 @@ class ShieldedNodes {
       };
 }
 
+/// SoleTenantConfig contains the NodeAffinities to specify what shared sole
+/// tenant node groups should back the node pool.
+class SoleTenantConfig {
+  /// NodeAffinities used to match to a shared sole tenant node group.
+  core.List<NodeAffinity>? nodeAffinities;
+
+  SoleTenantConfig({
+    this.nodeAffinities,
+  });
+
+  SoleTenantConfig.fromJson(core.Map json_)
+      : this(
+          nodeAffinities: json_.containsKey('nodeAffinities')
+              ? (json_['nodeAffinities'] as core.List)
+                  .map((value) => NodeAffinity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeAffinities != null) 'nodeAffinities': nodeAffinities!,
+      };
+}
+
 /// Standard rollout policy is the default policy for blue-green.
 class StandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
@@ -12286,5 +12926,27 @@ class WorkloadMetadataConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,
+      };
+}
+
+/// WorkloadPolicyConfig is the configuration of workload policy for autopilot
+/// clusters.
+class WorkloadPolicyConfig {
+  /// If true, workloads can use NET_ADMIN capability.
+  core.bool? allowNetAdmin;
+
+  WorkloadPolicyConfig({
+    this.allowNetAdmin,
+  });
+
+  WorkloadPolicyConfig.fromJson(core.Map json_)
+      : this(
+          allowNetAdmin: json_.containsKey('allowNetAdmin')
+              ? json_['allowNetAdmin'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowNetAdmin != null) 'allowNetAdmin': allowNetAdmin!,
       };
 }

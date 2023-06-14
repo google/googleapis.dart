@@ -233,7 +233,10 @@ class OrganizationsLocationsWorkloadsResource {
   /// Deletes the workload.
   ///
   /// Make sure that workload's direct children are already in a deleted state,
-  /// otherwise the request will fail with a FAILED_PRECONDITION error.
+  /// otherwise the request will fail with a FAILED_PRECONDITION error. In
+  /// addition to assuredworkloads.workload.delete permission, the user should
+  /// also have orgpolicy.policy.set permission on the deleted folder to remove
+  /// Assured Workloads OrgPolicies.
   ///
   /// Request parameters:
   ///
@@ -282,7 +285,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Workload to fetch. This is the
-  /// workload's relative path in the API, formatted as
+  /// workloads's relative path in the API, formatted as
   /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
   /// For example,
   /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -688,7 +691,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   }
 }
 
-/// Request for acknowledging the violation Next Id: 4
+/// Request for acknowledging the violation Next Id: 5
 class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   /// Business justification explaining the need for violation acknowledgement
   ///
@@ -802,7 +805,7 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
       };
 }
 
-/// Request of updating permission settings for a partner workload.
+/// Request for updating permission settings for a partner workload.
 class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
   /// The etag of the workload.
   ///
@@ -867,9 +870,9 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   /// https://cloud.google.com/assured-workloads/docs/supported-products for the
   /// list of supported resources.
   /// - "APPEND_COMPLIANT_RESOURCES" : Similar to ALLOW_COMPLIANT_RESOURCES but
-  /// adds the list of compliant resources to the existing list of resources.
-  /// Effective org-policy of the Folder is considered to ensure there is no
-  /// disruption to the existing customer workflows.
+  /// adds the list of compliant resources to the existing list of compliant
+  /// resources. Effective org-policy of the Folder is considered to ensure
+  /// there is no disruption to the existing customer workflows.
   core.String? restrictionType;
 
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest({
@@ -960,12 +963,6 @@ class GoogleCloudAssuredworkloadsV1Violation {
   /// Output only. Immutable.
   core.String? nonCompliantOrgPolicy;
 
-  /// The org-policy-constraint that was incorrectly changed, which resulted in
-  /// this violation.
-  ///
-  /// Output only. Immutable.
-  core.String? orgPolicyConstraint;
-
   /// Compliance violation remediation
   ///
   /// Output only.
@@ -1003,7 +1000,6 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.exceptionAuditLogLink,
     this.name,
     this.nonCompliantOrgPolicy,
-    this.orgPolicyConstraint,
     this.remediation,
     this.resolveTime,
     this.state,
@@ -1037,9 +1033,6 @@ class GoogleCloudAssuredworkloadsV1Violation {
           nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
               ? json_['nonCompliantOrgPolicy'] as core.String
               : null,
-          orgPolicyConstraint: json_.containsKey('orgPolicyConstraint')
-              ? json_['orgPolicyConstraint'] as core.String
-              : null,
           remediation: json_.containsKey('remediation')
               ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
                   json_['remediation'] as core.Map<core.String, core.dynamic>)
@@ -1067,8 +1060,6 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (name != null) 'name': name!,
         if (nonCompliantOrgPolicy != null)
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
-        if (orgPolicyConstraint != null)
-          'orgPolicyConstraint': orgPolicyConstraint!,
         if (remediation != null) 'remediation': remediation!,
         if (resolveTime != null) 'resolveTime': resolveTime!,
         if (state != null) 'state': state!,
@@ -1295,10 +1286,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
   /// and Support controls Available for public preview consumption. Don't
   /// create production workloads.
-  /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners
-  /// - "ISR_REGIONS" : Assured Workloads for Israel Regions
+  /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners;
+  /// - "ISR_REGIONS" : Assured Workloads for Israel
   /// - "ISR_REGIONS_AND_SUPPORT" : Assured Workloads for Israel Regions
   /// - "CA_PROTECTED_B" : Assured Workloads for Canada Protected B regime
+  /// - "IL5" : Information protection as per DoD IL5 requirements.
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.
@@ -1394,6 +1386,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "SOVEREIGN_CONTROLS_BY_PSN" : Enum representing PSN (TIM) partner.
   core.String? partner;
 
+  /// Permissions granted to the AW Partner SA account for the customer workload
+  ///
+  /// Optional.
+  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions? partnerPermissions;
+
   /// Input only.
   ///
   /// The parent resource for the resources managed by this Assured Workload.
@@ -1432,7 +1429,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   ///
   /// This value will be by default True, and if not present will be considered
   /// as true. This should only be updated via updateWorkload call. Any Changes
-  /// to this field during the createWorkload call will not be honored.
+  /// to this field during the createWorkload call will not be honored. This
+  /// will always be true while creating the workload.
   ///
   /// Optional.
   core.bool? violationNotificationsEnabled;
@@ -1452,6 +1450,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.labels,
     this.name,
     this.partner,
+    this.partnerPermissions,
     this.provisionedResourcesParent,
     this.resourceSettings,
     this.resources,
@@ -1512,6 +1511,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
           partner: json_.containsKey('partner')
               ? json_['partner'] as core.String
               : null,
+          partnerPermissions: json_.containsKey('partnerPermissions')
+              ? GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
+                  .fromJson(json_['partnerPermissions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           provisionedResourcesParent:
               json_.containsKey('provisionedResourcesParent')
                   ? json_['provisionedResourcesParent'] as core.String
@@ -1562,6 +1566,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (partner != null) 'partner': partner!,
+        if (partnerPermissions != null)
+          'partnerPermissions': partnerPermissions!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
         if (resourceSettings != null) 'resourceSettings': resourceSettings!,
@@ -1575,10 +1581,10 @@ class GoogleCloudAssuredworkloadsV1Workload {
 
 /// Represents the Compliance Status of this workload
 class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
-  /// Count of active Violations which are acknowledged in the Workload.
+  /// Number of current orgPolicy violations which are acknowledged.
   core.int? acknowledgedViolationCount;
 
-  /// Count of active Violations which haven't been acknowledged.
+  /// Number of current orgPolicy violations which are not acknowledged.
   core.int? activeViolationCount;
 
   GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus({
@@ -1673,10 +1679,6 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
 }
 
 /// Settings specific to the Key Management Service.
-///
-/// This message is deprecated. In order to create a Keyring, callers should
-/// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in
-/// ResourceSettings.resource_type field.
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   /// Input only.
   ///
@@ -1724,13 +1726,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   /// Allow partner to monitor folder and remediate violations
   core.bool? remediateFolderViolations;
 
-  /// Allow partner to approve or reject Service Access requests
-  core.bool? serviceAccessApprover;
-
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({
     this.dataLogsViewer,
     this.remediateFolderViolations,
-    this.serviceAccessApprover,
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
@@ -1743,17 +1741,12 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
               json_.containsKey('remediateFolderViolations')
                   ? json_['remediateFolderViolations'] as core.bool
                   : null,
-          serviceAccessApprover: json_.containsKey('serviceAccessApprover')
-              ? json_['serviceAccessApprover'] as core.bool
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
         if (remediateFolderViolations != null)
           'remediateFolderViolations': remediateFolderViolations!,
-        if (serviceAccessApprover != null)
-          'serviceAccessApprover': serviceAccessApprover!,
       };
 }
 
@@ -1767,10 +1760,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// Indicates the type of resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
-  /// longer supported. This field will be ignored only in CreateWorkload
-  /// requests. ListWorkloads and GetWorkload will continue to provide projects
-  /// information. Use CONSUMER_FOLDER instead.
+  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
+  /// support this, but new CreateWorkloadRequests should not specify this as an
+  /// input value.
   /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
@@ -1814,14 +1806,13 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
 
   /// Indicates the type of resource.
   ///
-  /// This field should be specified to correspond the id to the right resource
-  /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+  /// This field should be specified to correspond the id to the right project
+  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
-  /// longer supported. This field will be ignored only in CreateWorkload
-  /// requests. ListWorkloads and GetWorkload will continue to provide projects
-  /// information. Use CONSUMER_FOLDER instead.
+  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
+  /// support this, but new CreateWorkloadRequests should not specify this as an
+  /// input value.
   /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.

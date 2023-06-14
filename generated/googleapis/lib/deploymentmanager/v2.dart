@@ -2215,6 +2215,9 @@ class OperationWarnings {
   /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
   /// backend service is associated with a health check that is not of type
   /// HTTP/HTTPS/HTTP2.
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed which captures the amount of resources filtered out
+  /// by user-defined list filter.
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -2808,6 +2811,9 @@ class ResourceWarnings {
   /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
   /// backend service is associated with a health check that is not of type
   /// HTTP/HTTPS/HTTP2.
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed which captures the amount of resources filtered out
+  /// by user-defined list filter.
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -3170,6 +3176,9 @@ class ResourceUpdateWarnings {
   /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
   /// backend service is associated with a health check that is not of type
   /// HTTP/HTTPS/HTTP2.
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed which captures the amount of resources filtered out
+  /// by user-defined list filter.
   core.String? code;
 
   /// Metadata about this warning in key: value format.

@@ -1786,7 +1786,7 @@ class AuthorizationAttemptInfo {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State is unspecified.
   /// - "AUTHORIZING" : Certificate provisioning for this domain is under way.
-  /// GCP will attempt to authorize the domain.
+  /// Google Cloud will attempt to authorize the domain.
   /// - "AUTHORIZED" : A managed certificate can be provisioned, no issues for
   /// this domain.
   /// - "FAILED" : Attempt to authorize the domain failed. This prevents the
@@ -1875,7 +1875,8 @@ class Certificate {
   /// - "DEFAULT" : Certificates with default scope are served from core Google
   /// data centers. If unsure, choose this option.
   /// - "EDGE_CACHE" : Certificates with scope EDGE_CACHE are special-purposed
-  /// certificates, served from non-core Google data centers.
+  /// certificates, served from Edge Points of Presence. See
+  /// https://cloud.google.com/vpc/docs/edge-locations.
   core.String? scope;
 
   /// If set, defines data of a self-managed certificate.
@@ -2913,7 +2914,7 @@ class ListTrustConfigsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Configuration and state of a Managed Certificate.

@@ -1334,6 +1334,52 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reencrypt CMEK instance with latest key version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reencrypt(
+    InstancesReencryptRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/reencrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes all client certificates and generates a new server SSL certificate
   /// for the instance.
   ///
@@ -1694,6 +1740,47 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Cancels an instance operation that has been performed on an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [operation] - Instance operation ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String project,
+    core.String operation, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/operations/' +
+        commons.escapeVariable('$operation') +
+        '/cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves an instance operation that has been performed on an instance.
   ///
   /// Request parameters:
@@ -1839,6 +1926,48 @@ class ProjectsInstancesResource {
       queryParams: queryParams_,
     );
     return SqlInstancesGetDiskShrinkConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get Latest Recovery Time for a given instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesGetLatestRecoveryTimeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesGetLatestRecoveryTimeResponse> getLatestRecoveryTime(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/getLatestRecoveryTime';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SqlInstancesGetLatestRecoveryTimeResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2736,7 +2865,7 @@ class BackupConfiguration {
   /// Location of the backup
   core.String? location;
 
-  /// (Postgres only) Whether point in time recovery is enabled.
+  /// Whether point in time recovery is enabled.
   core.bool? pointInTimeRecoveryEnabled;
 
   /// Reserved for future use.
@@ -2837,6 +2966,40 @@ class BackupContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupId != null) 'backupId': backupId!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Backup Reencryption Config
+class BackupReencryptionConfig {
+  /// Backup re-encryption limit
+  core.int? backupLimit;
+
+  /// Type of backups users want to re-encrypt.
+  /// Possible string values are:
+  /// - "BACKUP_TYPE_UNSPECIFIED" : Unknown backup type, will be defaulted to
+  /// AUTOMATIC backup type
+  /// - "AUTOMATED" : Reencrypt automatic backups
+  /// - "ON_DEMAND" : Reencrypt on-demand backups
+  core.String? backupType;
+
+  BackupReencryptionConfig({
+    this.backupLimit,
+    this.backupType,
+  });
+
+  BackupReencryptionConfig.fromJson(core.Map json_)
+      : this(
+          backupLimit: json_.containsKey('backupLimit')
+              ? json_['backupLimit'] as core.int
+              : null,
+          backupType: json_.containsKey('backupType')
+              ? json_['backupType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupLimit != null) 'backupLimit': backupLimit!,
+        if (backupType != null) 'backupType': backupType!,
       };
 }
 
@@ -3185,6 +3348,8 @@ class CloneContext {
   /// specified zone.
   ///
   /// If no zone is specified, clone to the same zone as the source instance.
+  ///
+  /// Optional.
   core.String? preferredZone;
 
   CloneContext({
@@ -3319,7 +3484,17 @@ class ConnectSettings {
   /// - "SQLSERVER_2019_EXPRESS" : The database version is SQL Server 2019
   /// Express.
   /// - "SQLSERVER_2019_WEB" : The database version is SQL Server 2019 Web.
+  /// - "SQLSERVER_2022_STANDARD" : The database version is SQL Server 2022
+  /// Standard.
+  /// - "SQLSERVER_2022_ENTERPRISE" : The database version is SQL Server 2022
+  /// Enterprise.
+  /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
+  /// Express.
+  /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
   core.String? databaseVersion;
+
+  /// The dns name of the instance.
+  core.String? dnsName;
 
   /// The assigned IP addresses for the instance.
   core.List<IpMapping>? ipAddresses;
@@ -3339,6 +3514,7 @@ class ConnectSettings {
   ConnectSettings({
     this.backendType,
     this.databaseVersion,
+    this.dnsName,
     this.ipAddresses,
     this.kind,
     this.region,
@@ -3352,6 +3528,9 @@ class ConnectSettings {
               : null,
           databaseVersion: json_.containsKey('databaseVersion')
               ? json_['databaseVersion'] as core.String
+              : null,
+          dnsName: json_.containsKey('dnsName')
+              ? json_['dnsName'] as core.String
               : null,
           ipAddresses: json_.containsKey('ipAddresses')
               ? (json_['ipAddresses'] as core.List)
@@ -3372,10 +3551,32 @@ class ConnectSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (dnsName != null) 'dnsName': dnsName!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (kind != null) 'kind': kind!,
         if (region != null) 'region': region!,
         if (serverCaCert != null) 'serverCaCert': serverCaCert!,
+      };
+}
+
+/// Data cache configurations.
+class DataCacheConfig {
+  /// Whether data cache is enabled for the instance.
+  core.bool? dataCacheEnabled;
+
+  DataCacheConfig({
+    this.dataCacheEnabled,
+  });
+
+  DataCacheConfig.fromJson(core.Map json_)
+      : this(
+          dataCacheEnabled: json_.containsKey('dataCacheEnabled')
+              ? json_['dataCacheEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCacheEnabled != null) 'dataCacheEnabled': dataCacheEnabled!,
       };
 }
 
@@ -3637,6 +3838,13 @@ class DatabaseInstance {
   /// - "SQLSERVER_2019_EXPRESS" : The database version is SQL Server 2019
   /// Express.
   /// - "SQLSERVER_2019_WEB" : The database version is SQL Server 2019 Web.
+  /// - "SQLSERVER_2022_STANDARD" : The database version is SQL Server 2022
+  /// Standard.
+  /// - "SQLSERVER_2022_ENTERPRISE" : The database version is SQL Server 2022
+  /// Enterprise.
+  /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
+  /// Express.
+  /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
   core.String? databaseVersion;
 
   /// Disk encryption configuration specific to an instance.
@@ -4300,23 +4508,30 @@ class DiskEncryptionStatus {
       };
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Options for exporting BAK files (SQL Server-only)
 class ExportContextBakExportOptions {
   /// Type of this bak file will be export, FULL or DIFF, SQL Server only
   /// Possible string values are:
-  /// - "BAK_TYPE_UNSPECIFIED" : default type to meet enum requirement, will be
-  /// set to FULL if not set
+  /// - "BAK_TYPE_UNSPECIFIED" : default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
   core.String? bakType;
 
-  /// Whether or not the export will be exeucted with COPY_ONLY, SQL Server only
-  /// deprecated as the behavior should default to copy_only = true use
-  /// differential_base instead
+  /// Deprecated: copy_only is deprecated.
+  ///
+  /// Use differential_base instead
   core.bool? copyOnly;
 
-  /// Whether or not the backup can be use as differential base only non copy
-  /// only backup can be served as differential base
+  /// Whether or not the backup can be used as a differential base copy_only
+  /// backup can not be served as differential base
   core.bool? differentialBase;
 
   /// Option for specifying how many stripes to use for the export.
@@ -4901,8 +5116,7 @@ class ImportContextBakImportOptionsEncryptionOptions {
 class ImportContextBakImportOptions {
   /// Type of the bak content, FULL or DIFF.
   /// Possible string values are:
-  /// - "BAK_TYPE_UNSPECIFIED" : default type to meet enum requirement, will be
-  /// set to FULL if not set
+  /// - "BAK_TYPE_UNSPECIFIED" : default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
   core.String? bakType;
@@ -5425,6 +5639,31 @@ class InstancesListServerCasResponse {
         if (activeVersion != null) 'activeVersion': activeVersion!,
         if (certs != null) 'certs': certs!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Database Instance reencrypt request.
+class InstancesReencryptRequest {
+  /// Configuration specific to backup re-encryption
+  BackupReencryptionConfig? backupReencryptionConfig;
+
+  InstancesReencryptRequest({
+    this.backupReencryptionConfig,
+  });
+
+  InstancesReencryptRequest.fromJson(core.Map json_)
+      : this(
+          backupReencryptionConfig:
+              json_.containsKey('backupReencryptionConfig')
+                  ? BackupReencryptionConfig.fromJson(
+                      json_['backupReencryptionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupReencryptionConfig != null)
+          'backupReencryptionConfig': backupReencryptionConfig!,
       };
 }
 
@@ -6055,6 +6294,7 @@ class Operation {
   /// - "AUTO_RESTART" : Performs auto-restart of an HA-enabled Cloud SQL
   /// database for auto recovery.
   /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
+  /// - "SWITCHOVER" : Switches over to replica instance from primary.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -6638,6 +6878,9 @@ class Settings {
   /// This property was only applicable to First Generation instances.
   core.bool? crashSafeReplicationEnabled;
 
+  /// Configuration for data cache.
+  DataCacheConfig? dataCacheConfig;
+
   /// The size of data disk, in GB.
   ///
   /// The data disk size minimum is 10GB.
@@ -6668,6 +6911,15 @@ class Settings {
 
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
+
+  /// The edition of the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : The instance did not specify the edition.
+  /// - "ENTERPRISE" : The instance is an enterprise edition.
+  /// - "ENTERPRISE_PLUS" : The instance is an Enterprise Plus edition.
+  core.String? edition;
 
   /// Insights configuration, for now relevant only for Postgres.
   InsightsConfig? insightsConfig;
@@ -6767,12 +7019,14 @@ class Settings {
     this.collation,
     this.connectorEnforcement,
     this.crashSafeReplicationEnabled,
+    this.dataCacheConfig,
     this.dataDiskSizeGb,
     this.dataDiskType,
     this.databaseFlags,
     this.databaseReplicationEnabled,
     this.deletionProtectionEnabled,
     this.denyMaintenancePeriods,
+    this.edition,
     this.insightsConfig,
     this.ipConfiguration,
     this.kind,
@@ -6827,6 +7081,10 @@ class Settings {
               json_.containsKey('crashSafeReplicationEnabled')
                   ? json_['crashSafeReplicationEnabled'] as core.bool
                   : null,
+          dataCacheConfig: json_.containsKey('dataCacheConfig')
+              ? DataCacheConfig.fromJson(json_['dataCacheConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           dataDiskSizeGb: json_.containsKey('dataDiskSizeGb')
               ? json_['dataDiskSizeGb'] as core.String
               : null,
@@ -6852,6 +7110,9 @@ class Settings {
                   .map((value) => DenyMaintenancePeriod.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
               : null,
           insightsConfig: json_.containsKey('insightsConfig')
               ? InsightsConfig.fromJson(json_['insightsConfig']
@@ -6926,6 +7187,7 @@ class Settings {
           'connectorEnforcement': connectorEnforcement!,
         if (crashSafeReplicationEnabled != null)
           'crashSafeReplicationEnabled': crashSafeReplicationEnabled!,
+        if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
@@ -6935,6 +7197,7 @@ class Settings {
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods': denyMaintenancePeriods!,
+        if (edition != null) 'edition': edition!,
         if (insightsConfig != null) 'insightsConfig': insightsConfig!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kind != null) 'kind': kind!,
@@ -7047,6 +7310,17 @@ class SqlExternalSyncSettingError {
   /// data.
   /// - "MISSING_OPTIONAL_PRIVILEGES" : The replication user is missing
   /// privileges that are optional.
+  /// - "RISKY_BACKUP_ADMIN_PRIVILEGE" : Additional BACKUP_ADMIN privilege is
+  /// granted to the replication user which may lock source MySQL 8 instance for
+  /// DDLs during initial sync.
+  /// - "INSUFFICIENT_GCS_PERMISSIONS" : The Cloud Storage bucket is missing
+  /// necessary permissions.
+  /// - "INVALID_FILE_INFO" : The Cloud Storage bucket has an error in the file
+  /// or contains invalid file information.
+  /// - "UNSUPPORTED_DATABASE_SETTINGS" : The source instance has unsupported
+  /// database settings for migration.
+  /// - "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE" : The replication user is
+  /// missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -7107,6 +7381,34 @@ class SqlInstancesGetDiskShrinkConfigResponse {
       };
 }
 
+/// Instance get latest recovery time response.
+class SqlInstancesGetLatestRecoveryTimeResponse {
+  /// This is always `sql#getLatestRecoveryTime`.
+  core.String? kind;
+
+  /// Timestamp, identifies the latest recovery time of the source instance.
+  core.String? latestRecoveryTime;
+
+  SqlInstancesGetLatestRecoveryTimeResponse({
+    this.kind,
+    this.latestRecoveryTime,
+  });
+
+  SqlInstancesGetLatestRecoveryTimeResponse.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          latestRecoveryTime: json_.containsKey('latestRecoveryTime')
+              ? json_['latestRecoveryTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (latestRecoveryTime != null)
+          'latestRecoveryTime': latestRecoveryTime!,
+      };
+}
+
 /// Reschedule options for maintenance windows.
 class SqlInstancesRescheduleMaintenanceRequestBody {
   /// The type of the reschedule the user wants.
@@ -7151,10 +7453,24 @@ class SqlInstancesStartExternalSyncRequest {
   /// snapshot of the primary instance's data
   core.String? syncMode;
 
+  /// Parallel level for initial data sync.
+  ///
+  /// Currently only applicable for MySQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED" : Unknown sync parallel
+  /// level. Will be defaulted to OPTIMAL.
+  /// - "MIN" : Minimal parallel level.
+  /// - "OPTIMAL" : Optimal parallel level.
+  /// - "MAX" : Maximum parallel level.
+  core.String? syncParallelLevel;
+
   SqlInstancesStartExternalSyncRequest({
     this.mysqlSyncConfig,
     this.skipVerification,
     this.syncMode,
+    this.syncParallelLevel,
   });
 
   SqlInstancesStartExternalSyncRequest.fromJson(core.Map json_)
@@ -7169,12 +7485,16 @@ class SqlInstancesStartExternalSyncRequest {
           syncMode: json_.containsKey('syncMode')
               ? json_['syncMode'] as core.String
               : null,
+          syncParallelLevel: json_.containsKey('syncParallelLevel')
+              ? json_['syncParallelLevel'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (skipVerification != null) 'skipVerification': skipVerification!,
         if (syncMode != null) 'syncMode': syncMode!,
+        if (syncParallelLevel != null) 'syncParallelLevel': syncParallelLevel!,
       };
 }
 

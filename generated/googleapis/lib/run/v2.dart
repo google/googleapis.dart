@@ -1782,7 +1782,7 @@ class GoogleCloudRunV2Condition {
 ///
 /// This specifies both the container to run, the command to run in the
 /// container and the arguments to supply to it. Note that additional arguments
-/// may be supplied by the system to the container at runtime.
+/// can be supplied by the system to the container at runtime.
 class GoogleCloudRunV2Container {
   /// Arguments to the entrypoint.
   ///
@@ -1986,7 +1986,7 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
   /// This field's values are of the 'Quantity' k8s type:
   /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
   /// The default is nil which means that the limit is undefined. More info:
-  /// http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+  /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
   core.String? sizeLimit;
 
   GoogleCloudRunV2EmptyDirVolumeSource({
@@ -2014,7 +2014,7 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
 class GoogleCloudRunV2EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+  /// Must be a C_IDENTIFIER, and must not exceed 32768 characters.
   ///
   /// Required.
   core.String? name;
@@ -4127,6 +4127,10 @@ class GoogleCloudRunV2Service {
   /// Output only.
   core.String? creator;
 
+  /// Custom audiences that can be used in the audience field of ID token for
+  /// authenticated requests.
+  core.List<core.String>? customAudiences;
+
   /// The deletion time.
   ///
   /// Output only.
@@ -4349,6 +4353,7 @@ class GoogleCloudRunV2Service {
     this.conditions,
     this.createTime,
     this.creator,
+    this.customAudiences,
     this.deleteTime,
     this.description,
     this.etag,
@@ -4406,6 +4411,11 @@ class GoogleCloudRunV2Service {
               : null,
           creator: json_.containsKey('creator')
               ? json_['creator'] as core.String
+              : null,
+          customAudiences: json_.containsKey('customAudiences')
+              ? (json_['customAudiences'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
@@ -4489,6 +4499,7 @@ class GoogleCloudRunV2Service {
         if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
+        if (customAudiences != null) 'customAudiences': customAudiences!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -5326,6 +5337,8 @@ class GoogleCloudRunV2VpcAccess {
   core.String? connector;
 
   /// Traffic VPC egress settings.
+  ///
+  /// If not provided, it defaults to PRIVATE_RANGES_ONLY.
   /// Possible string values are:
   /// - "VPC_EGRESS_UNSPECIFIED" : Unspecified
   /// - "ALL_TRAFFIC" : All outbound traffic is routed through the VPC

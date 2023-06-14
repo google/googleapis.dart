@@ -836,10 +836,6 @@ class V1Resource {
   /// specified, the access section of the result will be determined by the
   /// selector, and this flag is not allowed to set. Default is false.
   ///
-  /// [analysisQuery_options_includeDenyPolicyAnalysis] - Optional. If true, the
-  /// response includes deny policy analysis results, and you can see which
-  /// access tuples are denied. Default is false.
-  ///
   /// [analysisQuery_options_outputGroupEdges] - Optional. If true, the result
   /// will output the relevant membership relationships between groups and other
   /// groups, and between groups and principals. Default is false.
@@ -896,7 +892,6 @@ class V1Resource {
     core.bool? analysisQuery_options_expandGroups,
     core.bool? analysisQuery_options_expandResources,
     core.bool? analysisQuery_options_expandRoles,
-    core.bool? analysisQuery_options_includeDenyPolicyAnalysis,
     core.bool? analysisQuery_options_outputGroupEdges,
     core.bool? analysisQuery_options_outputResourceEdges,
     core.String? analysisQuery_resourceSelector_fullResourceName,
@@ -934,10 +929,6 @@ class V1Resource {
       if (analysisQuery_options_expandRoles != null)
         'analysisQuery.options.expandRoles': [
           '${analysisQuery_options_expandRoles}'
-        ],
-      if (analysisQuery_options_includeDenyPolicyAnalysis != null)
-        'analysisQuery.options.includeDenyPolicyAnalysis': [
-          '${analysisQuery_options_includeDenyPolicyAnalysis}'
         ],
       if (analysisQuery_options_outputGroupEdges != null)
         'analysisQuery.options.outputGroupEdges': [
@@ -1454,15 +1445,15 @@ class V1Resource {
   }
 
   /// Issue a job that queries assets using a SQL statement compatible with
-  /// [BigQuery Standard SQL](http://cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql).
+  /// [BigQuery SQL](https://cloud.google.com/bigquery/docs/introduction-sql).
   ///
   /// If the query execution finishes within timeout and there's no pagination,
   /// the full query results will be returned in the `QueryAssetsResponse`.
   /// Otherwise, full query results can be obtained by issuing extra requests
   /// with the `job_reference` from the a previous `QueryAssets` call. Note, the
-  /// query result has approximately 10 GB limitation enforced by BigQuery
-  /// https://cloud.google.com/bigquery/docs/best-practices-performance-output,
-  /// queries return larger results will result in errors.
+  /// query result has approximately 10 GB limitation enforced by
+  /// [BigQuery](https://cloud.google.com/bigquery/docs/best-practices-performance-output).
+  /// Queries return larger results will result in errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1727,20 +1718,19 @@ class V1Resource {
   /// "Important" as a word in any of the searchable fields and are also located
   /// in the "us-west1" region or the "global" location.
   ///
-  /// [readMask] - Optional. A comma-separated list of fields specifying which
-  /// fields to be returned in ResourceSearchResult. Only '*' or combination of
-  /// top level fields can be specified. Field names of both snake_case and
-  /// camelCase are supported. Examples: `"*"`, `"name,location"`,
-  /// `"name,versionedResources"`. The read_mask paths must be valid field paths
-  /// listed but not limited to (both snake_case and camelCase are supported): *
-  /// name * assetType * project * displayName * description * location *
-  /// tagKeys * tagValues * tagValueIds * labels * networkTags * kmsKey (This
-  /// field is deprecated. Please use the `kmsKeys` field to retrieve Cloud KMS
-  /// key information.) * kmsKeys * createTime * updateTime * state *
-  /// additionalAttributes * versionedResources If read_mask is not specified,
-  /// all fields except versionedResources will be returned. If only '*' is
-  /// specified, all fields including versionedResources will be returned. Any
-  /// invalid field path will trigger INVALID_ARGUMENT error.
+  /// [readMask] - Optional. A comma-separated list of fields that you want
+  /// returned in the results. The following fields are returned by default if
+  /// not specified: * `name` * `assetType` * `project` * `folders` *
+  /// `organization` * `displayName` * `description` * `location` * `labels` *
+  /// `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` *
+  /// `additionalAttributes` * `parentFullResourceName` * `parentAssetType` Some
+  /// fields of large size, such as `versionedResources` and
+  /// `attachedResources`, are not returned by default, but you can specify them
+  /// in the `read_mask` parameter if you want to include them. If `"*"` is
+  /// specified, all
+  /// [available fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult)
+  /// are returned. Examples: `"name,location"`, `"name,versionedResources"`,
+  /// `"*"`. Any invalid field path will trigger INVALID_ARGUMENT error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2839,46 +2829,6 @@ class CreateFeedRequest {
 /// google.protobuf.Timestamp
 typedef Date = $Date;
 
-/// A denied access contains details about an access tuple that is blocked by
-/// IAM deny policies.
-class DeniedAccess {
-  /// A denied access tuple that is either fully or partially denied by IAM deny
-  /// rules.
-  ///
-  /// This access tuple should match at least one access tuple derived from
-  /// IamPolicyAnalysisResult.
-  GoogleCloudAssetV1DeniedAccessAccessTuple? deniedAccessTuple;
-
-  /// The details about how denied_access_tuple is denied.
-  core.List<GoogleCloudAssetV1DeniedAccessDenyDetail>? denyDetails;
-
-  DeniedAccess({
-    this.deniedAccessTuple,
-    this.denyDetails,
-  });
-
-  DeniedAccess.fromJson(core.Map json_)
-      : this(
-          deniedAccessTuple: json_.containsKey('deniedAccessTuple')
-              ? GoogleCloudAssetV1DeniedAccessAccessTuple.fromJson(
-                  json_['deniedAccessTuple']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          denyDetails: json_.containsKey('denyDetails')
-              ? (json_['denyDetails'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssetV1DeniedAccessDenyDetail.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deniedAccessTuple != null) 'deniedAccessTuple': deniedAccessTuple!,
-        if (denyDetails != null) 'denyDetails': denyDetails!,
-      };
-}
-
 /// The effective IAM policies on one resource.
 class EffectiveIamPolicy {
   /// The
@@ -3871,204 +3821,6 @@ class GoogleCloudAssetV1CustomConstraint {
       };
 }
 
-/// An IAM role or permission under analysis.
-class GoogleCloudAssetV1DeniedAccessAccess {
-  /// The IAM permission in
-  /// [v1 format](https://cloud.google.com/iam/docs/permissions-reference)
-  core.String? permission;
-
-  /// The IAM role.
-  core.String? role;
-
-  GoogleCloudAssetV1DeniedAccessAccess({
-    this.permission,
-    this.role,
-  });
-
-  GoogleCloudAssetV1DeniedAccessAccess.fromJson(core.Map json_)
-      : this(
-          permission: json_.containsKey('permission')
-              ? json_['permission'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null) 'permission': permission!,
-        if (role != null) 'role': role!,
-      };
-}
-
-/// An access tuple contains a tuple of a resource, an identity and an access.
-class GoogleCloudAssetV1DeniedAccessAccessTuple {
-  /// One access from IamPolicyAnalysisResult.AccessControlList.accesses.
-  GoogleCloudAssetV1DeniedAccessAccess? access;
-
-  /// One identity from IamPolicyAnalysisResult.IdentityList.identities.
-  GoogleCloudAssetV1DeniedAccessIdentity? identity;
-
-  /// One resource from IamPolicyAnalysisResult.AccessControlList.resources.
-  GoogleCloudAssetV1DeniedAccessResource? resource;
-
-  GoogleCloudAssetV1DeniedAccessAccessTuple({
-    this.access,
-    this.identity,
-    this.resource,
-  });
-
-  GoogleCloudAssetV1DeniedAccessAccessTuple.fromJson(core.Map json_)
-      : this(
-          access: json_.containsKey('access')
-              ? GoogleCloudAssetV1DeniedAccessAccess.fromJson(
-                  json_['access'] as core.Map<core.String, core.dynamic>)
-              : null,
-          identity: json_.containsKey('identity')
-              ? GoogleCloudAssetV1DeniedAccessIdentity.fromJson(
-                  json_['identity'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resource: json_.containsKey('resource')
-              ? GoogleCloudAssetV1DeniedAccessResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (access != null) 'access': access!,
-        if (identity != null) 'identity': identity!,
-        if (resource != null) 'resource': resource!,
-      };
-}
-
-/// A deny detail that explains which IAM deny rule denies the
-/// denied_access_tuple.
-class GoogleCloudAssetV1DeniedAccessDenyDetail {
-  /// The denied accesses.
-  ///
-  /// If this deny_rule fully denies the denied_access_tuple, this field will be
-  /// same as AccessTuple.access. Otherwise, this field can contain
-  /// AccessTuple.access and its descendant accesses, such as a subset of IAM
-  /// permissions contained in an IAM role.
-  core.List<GoogleCloudAssetV1DeniedAccessAccess>? accesses;
-
-  /// A deny rule in an IAM deny policy.
-  GoogleIamV2DenyRule? denyRule;
-
-  /// Whether the deny_rule fully denies all access granted by the
-  /// denied_access_tuple.
-  ///
-  /// `True` means the deny rule fully blocks the access tuple. `False` means
-  /// the deny rule partially blocks the access tuple."
-  core.bool? fullyDenied;
-
-  /// If this deny_rule fully denies the denied_access_tuple, this field will be
-  /// same as AccessTuple.identity.
-  ///
-  /// Otherwise, this field can contain AccessTuple.identity and its descendant
-  /// identities, such as a subset of users in a group.
-  core.List<GoogleCloudAssetV1DeniedAccessIdentity>? identities;
-
-  /// The resources that the identities are denied access to.
-  ///
-  /// If this deny_rule fully denies the denied_access_tuple, this field will be
-  /// same as AccessTuple.resource. Otherwise, this field can contain
-  /// AccessTuple.resource and its descendant resources.
-  core.List<GoogleCloudAssetV1DeniedAccessResource>? resources;
-
-  GoogleCloudAssetV1DeniedAccessDenyDetail({
-    this.accesses,
-    this.denyRule,
-    this.fullyDenied,
-    this.identities,
-    this.resources,
-  });
-
-  GoogleCloudAssetV1DeniedAccessDenyDetail.fromJson(core.Map json_)
-      : this(
-          accesses: json_.containsKey('accesses')
-              ? (json_['accesses'] as core.List)
-                  .map((value) => GoogleCloudAssetV1DeniedAccessAccess.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          denyRule: json_.containsKey('denyRule')
-              ? GoogleIamV2DenyRule.fromJson(
-                  json_['denyRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fullyDenied: json_.containsKey('fullyDenied')
-              ? json_['fullyDenied'] as core.bool
-              : null,
-          identities: json_.containsKey('identities')
-              ? (json_['identities'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssetV1DeniedAccessIdentity.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssetV1DeniedAccessResource.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accesses != null) 'accesses': accesses!,
-        if (denyRule != null) 'denyRule': denyRule!,
-        if (fullyDenied != null) 'fullyDenied': fullyDenied!,
-        if (identities != null) 'identities': identities!,
-        if (resources != null) 'resources': resources!,
-      };
-}
-
-/// An identity under analysis.
-class GoogleCloudAssetV1DeniedAccessIdentity {
-  /// The identity of members, formatted as appear in an
-  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
-  ///
-  /// For example, they might be formatted like the following: -
-  /// user:foo@google.com - group:group1@google.com -
-  /// serviceAccount:s1@prj1.iam.gserviceaccount.com -
-  /// projectOwner:some_project_id - domain:google.com - allUsers
-  core.String? name;
-
-  GoogleCloudAssetV1DeniedAccessIdentity({
-    this.name,
-  });
-
-  GoogleCloudAssetV1DeniedAccessIdentity.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
-/// A Google Cloud resource under analysis.
-class GoogleCloudAssetV1DeniedAccessResource {
-  /// The
-  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
-  core.String? fullResourceName;
-
-  GoogleCloudAssetV1DeniedAccessResource({
-    this.fullResourceName,
-  });
-
-  GoogleCloudAssetV1DeniedAccessResource.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_.containsKey('fullResourceName')
-              ? json_['fullResourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-      };
-}
-
 /// A directional edge.
 class GoogleCloudAssetV1Edge {
   /// The source node of the edge.
@@ -4397,7 +4149,12 @@ class GoogleCloudAssetV1Resource {
       };
 }
 
-/// Represents a rule defined in an organization policy
+/// This rule message is a customized version of the one defined in the
+/// Organization Policy system.
+///
+/// In addition to the fields defined in the original organization policy, it
+/// contains additional field(s) under specific circumstances to support
+/// analysis results.
 class GoogleCloudAssetV1Rule {
   /// Setting this to true means that all values are allowed.
   ///
@@ -4602,129 +4359,6 @@ class GoogleCloudOrgpolicyV1Policy {
 /// for only those projects, allowing those projects to have all services
 /// activated.
 typedef GoogleCloudOrgpolicyV1RestoreDefault = $Empty;
-
-/// A deny rule in an IAM deny policy.
-class GoogleIamV2DenyRule {
-  /// The condition that determines whether this deny rule applies to a request.
-  ///
-  /// If the condition expression evaluates to `true`, then the deny rule is
-  /// applied; otherwise, the deny rule is not applied. Each deny rule is
-  /// evaluated independently. If this deny rule does not apply to a request,
-  /// other deny rules might still apply. The condition can use CEL functions
-  /// that evaluate
-  /// [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags).
-  /// Other functions and operators are not supported.
-  Expr? denialCondition;
-
-  /// The permissions that are explicitly denied by this rule.
-  ///
-  /// Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where
-  /// `{service_fqdn}` is the fully qualified domain name for the service. For
-  /// example, `iam.googleapis.com/roles.list`.
-  core.List<core.String>? deniedPermissions;
-
-  /// The identities that are prevented from using one or more permissions on
-  /// Google Cloud resources.
-  ///
-  /// This field can contain the following values: *
-  /// `principalSet://goog/public:all`: A special identifier that represents any
-  /// principal that is on the internet, even if they do not have a Google
-  /// Account or are not logged in. * `principal://goog/subject/{email_id}`: A
-  /// specific Google Account. Includes Gmail, Cloud Identity, and Google
-  /// Workspace user accounts. For example,
-  /// `principal://goog/subject/alice@example.com`. *
-  /// `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google
-  /// Account that was deleted recently. For example,
-  /// `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-  /// the Google Account is recovered, this identifier reverts to the standard
-  /// identifier for a Google Account. * `principalSet://goog/group/{group_id}`:
-  /// A Google group. For example,
-  /// `principalSet://goog/group/admins@example.com`. *
-  /// `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-  /// that was deleted recently. For example,
-  /// `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If
-  /// the Google group is restored, this identifier reverts to the standard
-  /// identifier for a Google group. *
-  /// `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-  /// A Google Cloud service account. For example,
-  /// `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
-  /// *
-  /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-  /// A Google Cloud service account that was deleted recently. For example,
-  /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-  /// If the service account is undeleted, this identifier reverts to the
-  /// standard identifier for a service account. *
-  /// `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-  /// principals associated with the specified Google Workspace or Cloud
-  /// Identity customer ID. For example,
-  /// `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-  core.List<core.String>? deniedPrincipals;
-
-  /// Specifies the permissions that this rule excludes from the set of denied
-  /// permissions given by `denied_permissions`.
-  ///
-  /// If a permission appears in `denied_permissions` _and_ in
-  /// `exception_permissions` then it will _not_ be denied. The excluded
-  /// permissions can be specified using the same syntax as
-  /// `denied_permissions`.
-  core.List<core.String>? exceptionPermissions;
-
-  /// The identities that are excluded from the deny rule, even if they are
-  /// listed in the `denied_principals`.
-  ///
-  /// For example, you could add a Google group to the `denied_principals`, then
-  /// exclude specific users who belong to that group. This field can contain
-  /// the same values as the `denied_principals` field, excluding
-  /// `principalSet://goog/public:all`, which represents all users on the
-  /// internet.
-  core.List<core.String>? exceptionPrincipals;
-
-  GoogleIamV2DenyRule({
-    this.denialCondition,
-    this.deniedPermissions,
-    this.deniedPrincipals,
-    this.exceptionPermissions,
-    this.exceptionPrincipals,
-  });
-
-  GoogleIamV2DenyRule.fromJson(core.Map json_)
-      : this(
-          denialCondition: json_.containsKey('denialCondition')
-              ? Expr.fromJson(json_['denialCondition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deniedPermissions: json_.containsKey('deniedPermissions')
-              ? (json_['deniedPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          deniedPrincipals: json_.containsKey('deniedPrincipals')
-              ? (json_['deniedPrincipals'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          exceptionPermissions: json_.containsKey('exceptionPermissions')
-              ? (json_['exceptionPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          exceptionPrincipals: json_.containsKey('exceptionPrincipals')
-              ? (json_['exceptionPrincipals'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (denialCondition != null) 'denialCondition': denialCondition!,
-        if (deniedPermissions != null) 'deniedPermissions': deniedPermissions!,
-        if (deniedPrincipals != null) 'deniedPrincipals': deniedPrincipals!,
-        if (exceptionPermissions != null)
-          'exceptionPermissions': exceptionPermissions!,
-        if (exceptionPrincipals != null)
-          'exceptionPrincipals': exceptionPrincipals!,
-      };
-}
 
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
 /// services, along with a list of requirements necessary for the label to be
@@ -5626,13 +5260,6 @@ class IamPolicyAnalysis {
   /// empty if no result is found.
   core.List<IamPolicyAnalysisResult>? analysisResults;
 
-  /// A list of DeniedAccess, which contains all access tuples in the
-  /// analysis_results that are denied by IAM deny policies.
-  ///
-  /// If no access tuples are denied, the list is empty. This is only populated
-  /// when IamPolicyAnalysisQuery.Options.include_deny_policy_analysis is true.
-  core.List<DeniedAccess>? deniedAccesses;
-
   /// Represents whether all entries in the analysis_results have been fully
   /// explored to answer the query.
   core.bool? fullyExplored;
@@ -5643,7 +5270,6 @@ class IamPolicyAnalysis {
   IamPolicyAnalysis({
     this.analysisQuery,
     this.analysisResults,
-    this.deniedAccesses,
     this.fullyExplored,
     this.nonCriticalErrors,
   });
@@ -5657,12 +5283,6 @@ class IamPolicyAnalysis {
           analysisResults: json_.containsKey('analysisResults')
               ? (json_['analysisResults'] as core.List)
                   .map((value) => IamPolicyAnalysisResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          deniedAccesses: json_.containsKey('deniedAccesses')
-              ? (json_['deniedAccesses'] as core.List)
-                  .map((value) => DeniedAccess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5680,7 +5300,6 @@ class IamPolicyAnalysis {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisQuery != null) 'analysisQuery': analysisQuery!,
         if (analysisResults != null) 'analysisResults': analysisResults!,
-        if (deniedAccesses != null) 'deniedAccesses': deniedAccesses!,
         if (fullyExplored != null) 'fullyExplored': fullyExplored!,
         if (nonCriticalErrors != null) 'nonCriticalErrors': nonCriticalErrors!,
       };
@@ -6628,14 +6247,6 @@ class Options {
   /// Optional.
   core.bool? expandRoles;
 
-  /// If true, the response includes deny policy analysis results, and you can
-  /// see which access tuples are denied.
-  ///
-  /// Default is false.
-  ///
-  /// Optional.
-  core.bool? includeDenyPolicyAnalysis;
-
   /// If true, the result will output the relevant membership relationships
   /// between groups and other groups, and between groups and principals.
   ///
@@ -6657,7 +6268,6 @@ class Options {
     this.expandGroups,
     this.expandResources,
     this.expandRoles,
-    this.includeDenyPolicyAnalysis,
     this.outputGroupEdges,
     this.outputResourceEdges,
   });
@@ -6677,10 +6287,6 @@ class Options {
           expandRoles: json_.containsKey('expandRoles')
               ? json_['expandRoles'] as core.bool
               : null,
-          includeDenyPolicyAnalysis:
-              json_.containsKey('includeDenyPolicyAnalysis')
-                  ? json_['includeDenyPolicyAnalysis'] as core.bool
-                  : null,
           outputGroupEdges: json_.containsKey('outputGroupEdges')
               ? json_['outputGroupEdges'] as core.bool
               : null,
@@ -6696,8 +6302,6 @@ class Options {
         if (expandGroups != null) 'expandGroups': expandGroups!,
         if (expandResources != null) 'expandResources': expandResources!,
         if (expandRoles != null) 'expandRoles': expandRoles!,
-        if (includeDenyPolicyAnalysis != null)
-          'includeDenyPolicyAnalysis': includeDenyPolicyAnalysis!,
         if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges!,
         if (outputResourceEdges != null)
           'outputResourceEdges': outputResourceEdges!,
@@ -7093,7 +6697,7 @@ class QueryAssetsRequest {
   TimeWindow? readTimeWindow;
 
   /// A SQL statement that's compatible with
-  /// [BigQuery Standard SQL](http://cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql).
+  /// [BigQuery SQL](https://cloud.google.com/bigquery/docs/introduction-sql).
   ///
   /// Optional.
   core.String? statement;
@@ -7837,8 +7441,7 @@ class ResourceSearchResult {
   /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}.
   ///
   /// To search against the `tagValueIds`: * Use a field query. Example: -
-  /// `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * Use a free text
-  /// query. Example: - `456`
+  /// `tagValueIds="tagValues/456"`
   core.List<core.String>? tagValueIds;
 
   /// TagValue namespaced names, in the format of

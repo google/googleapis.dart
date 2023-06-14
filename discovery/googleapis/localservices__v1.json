@@ -24,6 +24,13 @@
     "name": "localservices",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230703",
+    "rootUrl": "https://localservices.googleapis.com/",
+    "servicePath": "",
+    "title": "Local Services API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accountReports": {
             "methods": {
@@ -248,8 +254,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://localservices.googleapis.com/",
     "schemas": {
         "GoogleAdsHomeservicesLocalservicesV1AccountReport": {
             "description": "An Account Report of a GLS account identified by their account id containing aggregate data gathered from a particular date range. Next ID: 18",
@@ -571,9 +575,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Local Services API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -937,6 +937,13 @@ class Instance {
   /// User defined parameters to apply to the memcached process on each node.
   MemcacheParameters? parameters;
 
+  /// Contains the id of allocated IP address ranges associated with the private
+  /// service access connection for example, "test-default" associated with IP
+  /// range 10.0.0.0/29.
+  ///
+  /// Optional.
+  core.List<core.String>? reservedIpRangeId;
+
   /// The state of this Memcached instance.
   ///
   /// Output only.
@@ -979,6 +986,7 @@ class Instance {
     this.nodeConfig,
     this.nodeCount,
     this.parameters,
+    this.reservedIpRangeId,
     this.state,
     this.updateTime,
     this.zones,
@@ -1045,6 +1053,11 @@ class Instance {
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
+          reservedIpRangeId: json_.containsKey('reservedIpRangeId')
+              ? (json_['reservedIpRangeId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -1075,6 +1088,7 @@ class Instance {
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (parameters != null) 'parameters': parameters!,
+        if (reservedIpRangeId != null) 'reservedIpRangeId': reservedIpRangeId!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (zones != null) 'zones': zones!,

@@ -24,6 +24,13 @@
     "name": "verifiedaccess",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230622",
+    "rootUrl": "https://verifiedaccess.googleapis.com/",
+    "servicePath": "",
+    "title": "Chrome Verified Access API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "challenge": {
             "methods": {
@@ -144,8 +150,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://verifiedaccess.googleapis.com/",
     "schemas": {
         "Challenge": {
             "description": "Result message for VerifiedAccess.CreateChallenge.",
@@ -223,9 +227,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Chrome Verified Access API",
-    "version": "v1",
-    "version_module": true
+    }
 }
