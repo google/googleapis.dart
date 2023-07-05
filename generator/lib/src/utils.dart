@@ -5,6 +5,22 @@
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 
 extension RestDescriptionExtension on RestDescription {
+  Map<String, dynamic> toJsonSorted() {
+    final output = toJson();
+
+    String betterKey(String key) =>
+        const {'parameters', 'resources', 'schemas'}.contains(key)
+            ? '2-$key'
+            : '1-$key';
+
+    final pairs = output.entries.toList()
+      ..sort((a, b) => betterKey(a.key).compareTo(betterKey(b.key)));
+
+    return {
+      for (var p in pairs) p.key: p.value,
+    };
+  }
+
   void sort() {
     if (auth != null) {
       if (auth!.oauth2 != null) {
