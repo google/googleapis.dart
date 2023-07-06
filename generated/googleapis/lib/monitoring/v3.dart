@@ -5527,6 +5527,9 @@ class Condition {
   /// A condition that uses the Monitoring Query Language to define alerts.
   MonitoringQueryLanguageCondition? conditionMonitoringQueryLanguage;
 
+  /// A condition that uses the Prometheus query language to define alerts.
+  PrometheusQueryLanguageCondition? conditionPrometheusQueryLanguage;
+
   /// A condition that compares a time series against a threshold.
   MetricThreshold? conditionThreshold;
 
@@ -5559,6 +5562,7 @@ class Condition {
     this.conditionAbsent,
     this.conditionMatchedLog,
     this.conditionMonitoringQueryLanguage,
+    this.conditionPrometheusQueryLanguage,
     this.conditionThreshold,
     this.displayName,
     this.name,
@@ -5580,6 +5584,12 @@ class Condition {
                       json_['conditionMonitoringQueryLanguage']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          conditionPrometheusQueryLanguage:
+              json_.containsKey('conditionPrometheusQueryLanguage')
+                  ? PrometheusQueryLanguageCondition.fromJson(
+                      json_['conditionPrometheusQueryLanguage']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           conditionThreshold: json_.containsKey('conditionThreshold')
               ? MetricThreshold.fromJson(json_['conditionThreshold']
                   as core.Map<core.String, core.dynamic>)
@@ -5596,6 +5606,8 @@ class Condition {
           'conditionMatchedLog': conditionMatchedLog!,
         if (conditionMonitoringQueryLanguage != null)
           'conditionMonitoringQueryLanguage': conditionMonitoringQueryLanguage!,
+        if (conditionPrometheusQueryLanguage != null)
+          'conditionPrometheusQueryLanguage': conditionPrometheusQueryLanguage!,
         if (conditionThreshold != null)
           'conditionThreshold': conditionThreshold!,
         if (displayName != null) 'displayName': displayName!,
@@ -6044,9 +6056,26 @@ class Documentation {
   /// (https://en.wikipedia.org/wiki/Markdown) for more information.
   core.String? mimeType;
 
+  /// The subject line of the notification.
+  ///
+  /// The subject line may not exceed 10,240 bytes. In notifications generated
+  /// by this policy, the contents of the subject line after variable expansion
+  /// will be truncated to 255 bytes or shorter at the latest UTF-8 character
+  /// boundary. The 255-byte limit is recommended by this thread
+  /// (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit).
+  /// It is both the limit imposed by some third-party ticketing products and it
+  /// is common to define textual fields in databases as VARCHAR(255).The
+  /// contents of the subject line can be templatized by using variables
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables). If this field
+  /// is missing or empty, a default subject line will be generated.
+  ///
+  /// Optional.
+  core.String? subject;
+
   Documentation({
     this.content,
     this.mimeType,
+    this.subject,
   });
 
   Documentation.fromJson(core.Map json_)
@@ -6057,11 +6086,15 @@ class Documentation {
           mimeType: json_.containsKey('mimeType')
               ? json_['mimeType'] as core.String
               : null,
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (mimeType != null) 'mimeType': mimeType!,
+        if (subject != null) 'subject': subject!,
       };
 }
 
@@ -9095,6 +9128,147 @@ class PointData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (timeInterval != null) 'timeInterval': timeInterval!,
         if (values != null) 'values': values!,
+      };
+}
+
+/// A condition type that allows alert policies to be defined using Prometheus
+/// Query Language (PromQL)
+/// (https://prometheus.io/docs/prometheus/latest/querying/basics/).The
+/// PrometheusQueryLanguageCondition message contains information from a
+/// Prometheus alerting rule and its associated rule group.A Prometheus alerting
+/// rule is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
+///
+/// The semantics of a Prometheus alerting rule is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A
+/// Prometheus rule group is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/).
+/// The semantics of a Prometheus rule group is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because
+/// Cloud Alerting has no representation of a Prometheus rule group resource, we
+/// must embed the information of the parent rule group inside each of the
+/// conditions that refer to it. We must also update the contents of all
+/// Prometheus alerts in case the information of their rule group changes.The
+/// PrometheusQueryLanguageCondition protocol buffer combines the information of
+/// the corresponding rule group and alerting rule. The structure of the
+/// PrometheusQueryLanguageCondition protocol buffer does NOT mimic the
+/// structure of the Prometheus rule group and alerting rule YAML declarations.
+/// The PrometheusQueryLanguageCondition protocol buffer may change in the
+/// future to support future rule group and/or alerting rule features. There are
+/// no new such features at the present time (2023-06-26).
+class PrometheusQueryLanguageCondition {
+  /// The alerting rule name of this alert in the corresponding Prometheus
+  /// configuration file.Some external tools may require this field to be
+  /// populated correctly in order to refer to the original Prometheus
+  /// configuration file.
+  ///
+  /// The rule group name and the alert name are necessary to update the
+  /// relevant AlertPolicies in case the definition of the rule group changes in
+  /// the future.This field is optional. If this field is not empty, then it
+  /// must be a valid Prometheus label name
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  ///
+  /// Optional.
+  core.String? alertRule;
+
+  /// Alerts are considered firing once their PromQL expression was evaluated to
+  /// be "true" for this long.
+  ///
+  /// Alerts whose PromQL expression was not evaluated to be "true" for long
+  /// enough are considered pending. The default value is zero. Must be zero or
+  /// positive.
+  ///
+  /// Optional.
+  core.String? duration;
+
+  /// How often this rule should be evaluated.
+  ///
+  /// Must be a positive multiple of 30 seconds or missing. The default value is
+  /// 30 seconds. If this PrometheusQueryLanguageCondition was generated from a
+  /// Prometheus alerting rule, then this value should be taken from the
+  /// enclosing rule group.
+  ///
+  /// Required.
+  core.String? evaluationInterval;
+
+  /// Labels to add to or overwrite in the PromQL query result.
+  ///
+  /// Label names must be valid
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  /// Label values can be templatized by using variables
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables). The only
+  /// available variable names are the names of the labels in the PromQL result,
+  /// including "__name__" and "value". "labels" may be empty.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The PromQL expression to evaluate.
+  ///
+  /// Every evaluation cycle this expression is evaluated at the current time,
+  /// and all resultant time series become pending/firing alerts. This field
+  /// must not be empty.
+  ///
+  /// Required.
+  core.String? query;
+
+  /// The rule group name of this alert in the corresponding Prometheus
+  /// configuration file.Some external tools may require this field to be
+  /// populated correctly in order to refer to the original Prometheus
+  /// configuration file.
+  ///
+  /// The rule group name and the alert name are necessary to update the
+  /// relevant AlertPolicies in case the definition of the rule group changes in
+  /// the future.This field is optional. If this field is not empty, then it
+  /// must be a valid Prometheus label name
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  ///
+  /// Optional.
+  core.String? ruleGroup;
+
+  PrometheusQueryLanguageCondition({
+    this.alertRule,
+    this.duration,
+    this.evaluationInterval,
+    this.labels,
+    this.query,
+    this.ruleGroup,
+  });
+
+  PrometheusQueryLanguageCondition.fromJson(core.Map json_)
+      : this(
+          alertRule: json_.containsKey('alertRule')
+              ? json_['alertRule'] as core.String
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          evaluationInterval: json_.containsKey('evaluationInterval')
+              ? json_['evaluationInterval'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+          ruleGroup: json_.containsKey('ruleGroup')
+              ? json_['ruleGroup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertRule != null) 'alertRule': alertRule!,
+        if (duration != null) 'duration': duration!,
+        if (evaluationInterval != null)
+          'evaluationInterval': evaluationInterval!,
+        if (labels != null) 'labels': labels!,
+        if (query != null) 'query': query!,
+        if (ruleGroup != null) 'ruleGroup': ruleGroup!,
       };
 }
 

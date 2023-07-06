@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230621",
+    "revision": "20230705",
     "rootUrl": "https://drivelabels.googleapis.com/",
     "servicePath": "",
     "title": "Drive Labels API",

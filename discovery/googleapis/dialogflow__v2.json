@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230630",
+    "revision": "20230705",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -8606,12 +8606,16 @@
             "id": "GoogleCloudDialogflowCxV3ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -10532,12 +10536,16 @@
             "id": "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },

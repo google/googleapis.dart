@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230630",
+    "revision": "20230705",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -3887,6 +3887,10 @@
                     "description": "Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.",
                     "type": "boolean"
                 },
+                "gitIntegrationSettings": {
+                    "$ref": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings",
+                    "description": "Git integration settings for this agent."
+                },
                 "locked": {
                     "description": "Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.",
                     "type": "boolean"
@@ -3920,6 +3924,47 @@
                 },
                 "timeZone": {
                     "description": "Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings": {
+            "description": "Settings for connecting to Git repository for an agent.",
+            "id": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings",
+            "properties": {
+                "githubSettings": {
+                    "$ref": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings",
+                    "description": "GitHub settings."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings": {
+            "description": "Settings of integration with GitHub.",
+            "id": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings",
+            "properties": {
+                "accessToken": {
+                    "description": "The access token used to authenticate the access to the GitHub repository.",
+                    "type": "string"
+                },
+                "branches": {
+                    "description": "A list of branches configured to be used from Dialogflow.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "displayName": {
+                    "description": "The unique repository display name for the GitHub repository.",
+                    "type": "string"
+                },
+                "repositoryUri": {
+                    "description": "The GitHub repository URI related to the agent.",
+                    "type": "string"
+                },
+                "trackingBranch": {
+                    "description": "The branch of GitHub repository tracked for this agent.",
                     "type": "string"
                 }
             },
@@ -4941,9 +4986,28 @@
                     "description": "Optional. Environment name. If not set, draft environment is assumed. Format: `projects//locations//agents//environments/`.",
                     "type": "string"
                 },
+                "gitDestination": {
+                    "$ref": "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination",
+                    "description": "Optional. The Git branch to export the agent to."
+                },
                 "includeBigqueryExportSettings": {
                     "description": "Optional. Whether to include BigQuery Export setting.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination": {
+            "description": "Settings for exporting to a git branch.",
+            "id": "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination",
+            "properties": {
+                "commitMessage": {
+                    "description": "Commit message for the git push.",
+                    "type": "string"
+                },
+                "trackingBranch": {
+                    "description": "Tracking branch for the git push.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4953,12 +5017,16 @@
             "id": "GoogleCloudDialogflowCxV3ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -6756,6 +6824,10 @@
                     "description": "The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to restore agent from. The format of this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the caller's behalf, so your request authentication must have read permissions for the object. For more information, see [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).",
                     "type": "string"
                 },
+                "gitSource": {
+                    "$ref": "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource",
+                    "description": "Setting for restoring from a git branch"
+                },
                 "restoreOption": {
                     "description": "Agent restore mode. If not specified, `KEEP` is assumed.",
                     "enum": [
@@ -6768,6 +6840,17 @@
                         "Always respect the settings from the exported agent file. It may cause a restoration failure if some settings (e.g. model type) are not supported in the target agent.",
                         "Fallback to default settings if some settings are not supported in the target agent."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource": {
+            "description": "Settings for restoring from a git branch",
+            "id": "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource",
+            "properties": {
+                "trackingBranch": {
+                    "description": "tracking branch for the git pull",
                     "type": "string"
                 }
             },
@@ -8548,12 +8631,16 @@
             "id": "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },

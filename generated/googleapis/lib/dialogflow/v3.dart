@@ -5913,6 +5913,9 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Please use agent.advanced_settings instead.
   core.bool? enableStackdriverLogging;
 
+  /// Git integration settings for this agent.
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings? gitIntegrationSettings;
+
   /// Indicates whether the agent is locked for changes.
   ///
   /// If the agent is locked, modifications to the agent will be rejected except
@@ -5965,6 +5968,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.displayName,
     this.enableSpellCorrection,
     this.enableStackdriverLogging,
+    this.gitIntegrationSettings,
     this.locked,
     this.name,
     this.securitySettings,
@@ -6001,6 +6005,11 @@ class GoogleCloudDialogflowCxV3Agent {
               json_.containsKey('enableStackdriverLogging')
                   ? json_['enableStackdriverLogging'] as core.bool
                   : null,
+          gitIntegrationSettings: json_.containsKey('gitIntegrationSettings')
+              ? GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
+                  json_['gitIntegrationSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           locked:
               json_.containsKey('locked') ? json_['locked'] as core.bool : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
@@ -6041,6 +6050,8 @@ class GoogleCloudDialogflowCxV3Agent {
           'enableSpellCorrection': enableSpellCorrection!,
         if (enableStackdriverLogging != null)
           'enableStackdriverLogging': enableStackdriverLogging!,
+        if (gitIntegrationSettings != null)
+          'gitIntegrationSettings': gitIntegrationSettings!,
         if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
@@ -6052,6 +6063,86 @@ class GoogleCloudDialogflowCxV3Agent {
         if (textToSpeechSettings != null)
           'textToSpeechSettings': textToSpeechSettings!,
         if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// Settings for connecting to Git repository for an agent.
+class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
+  /// GitHub settings.
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings?
+      githubSettings;
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings({
+    this.githubSettings,
+  });
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(core.Map json_)
+      : this(
+          githubSettings: json_.containsKey('githubSettings')
+              ? GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+                  .fromJson(json_['githubSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (githubSettings != null) 'githubSettings': githubSettings!,
+      };
+}
+
+/// Settings of integration with GitHub.
+class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
+  /// The access token used to authenticate the access to the GitHub repository.
+  core.String? accessToken;
+
+  /// A list of branches configured to be used from Dialogflow.
+  core.List<core.String>? branches;
+
+  /// The unique repository display name for the GitHub repository.
+  core.String? displayName;
+
+  /// The GitHub repository URI related to the agent.
+  core.String? repositoryUri;
+
+  /// The branch of GitHub repository tracked for this agent.
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings({
+    this.accessToken,
+    this.branches,
+    this.displayName,
+    this.repositoryUri,
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromJson(
+      core.Map json_)
+      : this(
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
+              : null,
+          branches: json_.containsKey('branches')
+              ? (json_['branches'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          repositoryUri: json_.containsKey('repositoryUri')
+              ? json_['repositoryUri'] as core.String
+              : null,
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (branches != null) 'branches': branches!,
+        if (displayName != null) 'displayName': displayName!,
+        if (repositoryUri != null) 'repositoryUri': repositoryUri!,
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 
@@ -7872,6 +7963,11 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Optional.
   core.String? environment;
 
+  /// The Git branch to export the agent to.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination? gitDestination;
+
   /// Whether to include BigQuery Export setting.
   ///
   /// Optional.
@@ -7881,6 +7977,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
     this.agentUri,
     this.dataFormat,
     this.environment,
+    this.gitDestination,
     this.includeBigqueryExportSettings,
   });
 
@@ -7895,6 +7992,11 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.String
               : null,
+          gitDestination: json_.containsKey('gitDestination')
+              ? GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
+                  .fromJson(json_['gitDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           includeBigqueryExportSettings:
               json_.containsKey('includeBigqueryExportSettings')
                   ? json_['includeBigqueryExportSettings'] as core.bool
@@ -7905,8 +8007,39 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
         if (agentUri != null) 'agentUri': agentUri!,
         if (dataFormat != null) 'dataFormat': dataFormat!,
         if (environment != null) 'environment': environment!,
+        if (gitDestination != null) 'gitDestination': gitDestination!,
         if (includeBigqueryExportSettings != null)
           'includeBigqueryExportSettings': includeBigqueryExportSettings!,
+      };
+}
+
+/// Settings for exporting to a git branch.
+class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination {
+  /// Commit message for the git push.
+  core.String? commitMessage;
+
+  /// Tracking branch for the git push.
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination({
+    this.commitMessage,
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination.fromJson(
+      core.Map json_)
+      : this(
+          commitMessage: json_.containsKey('commitMessage')
+              ? json_['commitMessage'] as core.String
+              : null,
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitMessage != null) 'commitMessage': commitMessage!,
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 
@@ -11487,6 +11620,9 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
+  /// Setting for restoring from a git branch
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource? gitSource;
+
   /// Agent restore mode.
   ///
   /// If not specified, `KEEP` is assumed.
@@ -11502,6 +11638,7 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   GoogleCloudDialogflowCxV3RestoreAgentRequest({
     this.agentContent,
     this.agentUri,
+    this.gitSource,
     this.restoreOption,
   });
 
@@ -11513,6 +11650,10 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
           agentUri: json_.containsKey('agentUri')
               ? json_['agentUri'] as core.String
               : null,
+          gitSource: json_.containsKey('gitSource')
+              ? GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
+              : null,
           restoreOption: json_.containsKey('restoreOption')
               ? json_['restoreOption'] as core.String
               : null,
@@ -11521,7 +11662,29 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+        if (gitSource != null) 'gitSource': gitSource!,
         if (restoreOption != null) 'restoreOption': restoreOption!,
+      };
+}
+
+/// Settings for restoring from a git branch
+class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource {
+  /// tracking branch for the git pull
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource({
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(core.Map json_)
+      : this(
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 

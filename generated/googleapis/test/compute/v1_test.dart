@@ -12993,6 +12993,8 @@ api.InstanceGroupManager buildInstanceGroupManager() {
     o.fingerprint = 'foo';
     o.id = 'foo';
     o.instanceGroup = 'foo';
+    o.instanceLifecyclePolicy =
+        buildInstanceGroupManagerInstanceLifecyclePolicy();
     o.instanceTemplate = 'foo';
     o.kind = 'foo';
     o.listManagedInstancesResults = 'foo';
@@ -13042,6 +13044,8 @@ void checkInstanceGroupManager(api.InstanceGroupManager o) {
       o.instanceGroup!,
       unittest.equals('foo'),
     );
+    checkInstanceGroupManagerInstanceLifecyclePolicy(
+        o.instanceLifecyclePolicy!);
     unittest.expect(
       o.instanceTemplate!,
       unittest.equals('foo'),
@@ -13343,6 +13347,30 @@ void checkInstanceGroupManagerAutoHealingPolicy(
     );
   }
   buildCounterInstanceGroupManagerAutoHealingPolicy--;
+}
+
+core.int buildCounterInstanceGroupManagerInstanceLifecyclePolicy = 0;
+api.InstanceGroupManagerInstanceLifecyclePolicy
+    buildInstanceGroupManagerInstanceLifecyclePolicy() {
+  final o = api.InstanceGroupManagerInstanceLifecyclePolicy();
+  buildCounterInstanceGroupManagerInstanceLifecyclePolicy++;
+  if (buildCounterInstanceGroupManagerInstanceLifecyclePolicy < 3) {
+    o.forceUpdateOnRepair = 'foo';
+  }
+  buildCounterInstanceGroupManagerInstanceLifecyclePolicy--;
+  return o;
+}
+
+void checkInstanceGroupManagerInstanceLifecyclePolicy(
+    api.InstanceGroupManagerInstanceLifecyclePolicy o) {
+  buildCounterInstanceGroupManagerInstanceLifecyclePolicy++;
+  if (buildCounterInstanceGroupManagerInstanceLifecyclePolicy < 3) {
+    unittest.expect(
+      o.forceUpdateOnRepair!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInstanceGroupManagerInstanceLifecyclePolicy--;
 }
 
 core.List<api.InstanceGroupManager> buildUnnamed236() => [
@@ -47129,6 +47157,16 @@ void main() {
       final od = api.InstanceGroupManagerAutoHealingPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInstanceGroupManagerAutoHealingPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstanceGroupManagerInstanceLifecyclePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstanceGroupManagerInstanceLifecyclePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstanceGroupManagerInstanceLifecyclePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstanceGroupManagerInstanceLifecyclePolicy(od);
     });
   });
 

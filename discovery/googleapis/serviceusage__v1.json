@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230627",
+    "revision": "20230705",
     "rootUrl": "https://serviceusage.googleapis.com/",
     "servicePath": "",
     "title": "Service Usage API",

@@ -3710,6 +3710,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
   core.String? encryptionState;
 
+  /// Host name of the device.
+  core.String? hostname;
+
   /// IMEI number of device if GSM device; empty otherwise.
   ///
   /// Output only.
@@ -3829,6 +3832,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.enabledDeveloperOptions,
     this.enabledUsbDebugging,
     this.encryptionState,
+    this.hostname,
     this.imei,
     this.kernelVersion,
     this.lastSyncTime,
@@ -3889,6 +3893,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           encryptionState: json_.containsKey('encryptionState')
               ? json_['encryptionState'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
               : null,
           imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
           kernelVersion: json_.containsKey('kernelVersion')
@@ -3954,6 +3961,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (enabledUsbDebugging != null)
           'enabledUsbDebugging': enabledUsbDebugging!,
         if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (hostname != null) 'hostname': hostname!,
         if (imei != null) 'imei': imei!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,

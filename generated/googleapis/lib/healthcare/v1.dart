@@ -8436,10 +8436,22 @@ class DicomStore {
   /// Supplied by the client.
   NotificationConfig? notificationConfig;
 
+  /// A list of streaming configs used to configure the destination of streaming
+  /// exports for every DICOM instance insertion in this DICOM store.
+  ///
+  /// After a new config is added to `stream_configs`, DICOM instance insertions
+  /// are streamed to the new destination. When a config is removed from
+  /// `stream_configs`, the server stops streaming to that destination. Each
+  /// config must contain a unique destination.
+  ///
+  /// Optional.
+  core.List<GoogleCloudHealthcareV1DicomStreamConfig>? streamConfigs;
+
   DicomStore({
     this.labels,
     this.name,
     this.notificationConfig,
+    this.streamConfigs,
   });
 
   DicomStore.fromJson(core.Map json_)
@@ -8457,6 +8469,13 @@ class DicomStore {
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          streamConfigs: json_.containsKey('streamConfigs')
+              ? (json_['streamConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudHealthcareV1DicomStreamConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8464,6 +8483,7 @@ class DicomStore {
         if (name != null) 'name': name!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
+        if (streamConfigs != null) 'streamConfigs': streamConfigs!,
       };
 }
 
@@ -8889,8 +8909,54 @@ class ExportMessagesRequest {
   /// (exclusive) are exported.
   core.String? endTime;
 
+  /// Restricts messages exported to those matching a filter, only applicable to
+  /// PubsubDestination and GcsDestination.
+  ///
+  /// The following syntax is available: * A string field value can be written
+  /// as text inside quotation marks, for example `"query text"`. The only valid
+  /// relational operation for text fields is equality (`=`), where text is
+  /// searched within the field, rather than having the field be equal to the
+  /// text. For example, `"Comment = great"` returns messages with `great` in
+  /// the comment field. * A number field value can be written as an integer, a
+  /// decimal, or an exponential. The valid relational operators for number
+  /// fields are the equality operator (`=`), along with the less than/greater
+  /// than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality
+  /// (`!=`) operator. You can prepend the `NOT` operator to an expression to
+  /// negate it. * A date field value must be written in the `yyyy-mm-dd`
+  /// format. Fields with date and time use the RFC3339 time format. Leading
+  /// zeros are required for one-digit months and days. The valid relational
+  /// operators for date fields are the equality operator (`=`) , along with the
+  /// less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there
+  /// is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
+  /// expression to negate it. * Multiple field query expressions can be
+  /// combined in one query by adding `AND` or `OR` operators between the
+  /// expressions. If a boolean operator appears within a quoted string, it is
+  /// not treated as special, and is just another part of the character string
+  /// to be matched. You can prepend the `NOT` operator to an expression to
+  /// negate it. The following fields and functions are available for filtering:
+  /// * `message_type`, from the MSH-9.1 field. For example, `NOT message_type =
+  /// "ADT"`. * `send_date` or `sendDate`, the `yyyy-mm-dd` date the message was
+  /// sent in the dataset's time_zone, from the MSH-7 segment. For example,
+  /// `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message
+  /// was sent, using the RFC3339 time format for comparisons, from the MSH-7
+  /// segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. *
+  /// `create_time`, the timestamp when the message was created in the HL7v2
+  /// store. Use the RFC3339 time format for comparisons. For example,
+  /// `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care
+  /// center that the message came from, from the MSH-4 segment. For example,
+  /// `send_facility = "ABC"`. Note: The filter will be applied to every message
+  /// in the HL7v2 store whose `send_time` lies in the range defined by the
+  /// `start_time` and the `end_time`. Even if the filter only matches a small
+  /// set of messages, the export operation can still take a long time to finish
+  /// when a lot of messages are between the specified `start_time` and
+  /// `end_time` range.
+  core.String? filter;
+
   /// Export to a Cloud Storage destination.
   GcsDestination? gcsDestination;
+
+  /// Export messages to a Pub/Sub topic.
+  PubsubDestination? pubsubDestination;
 
   /// The start of the range in `send_time` (MSH.7,
   /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm)
@@ -8904,7 +8970,9 @@ class ExportMessagesRequest {
 
   ExportMessagesRequest({
     this.endTime,
+    this.filter,
     this.gcsDestination,
+    this.pubsubDestination,
     this.startTime,
   });
 
@@ -8913,8 +8981,15 @@ class ExportMessagesRequest {
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
           gcsDestination: json_.containsKey('gcsDestination')
               ? GcsDestination.fromJson(json_['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pubsubDestination: json_.containsKey('pubsubDestination')
+              ? PubsubDestination.fromJson(json_['pubsubDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
           startTime: json_.containsKey('startTime')
@@ -8924,7 +8999,9 @@ class ExportMessagesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
+        if (filter != null) 'filter': filter!,
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -9852,6 +9929,52 @@ class GoogleCloudHealthcareV1DicomGcsSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// StreamConfig specifies configuration for a streaming DICOM export.
+class GoogleCloudHealthcareV1DicomStreamConfig {
+  /// Results are appended to this table.
+  ///
+  /// The server creates a new table in the given BigQuery dataset if the
+  /// specified table does not exist. To enable the Cloud Healthcare API to
+  /// write to your BigQuery table, you must give the Cloud Healthcare API
+  /// service account the bigquery.dataEditor role. The service account is:
+  /// `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The
+  /// PROJECT_NUMBER identifies the project that the DICOM store resides in. To
+  /// get the project number, go to the Cloud Console Dashboard. It is
+  /// recommended to not have a custom schema in the destination table which
+  /// could conflict with the schema created by the Cloud Healthcare API.
+  /// Instance deletions are not applied to the destination table. The
+  /// destination's table schema will be automatically updated in case a new
+  /// instance's data is incompatible with the current schema. The schema should
+  /// not be updated manually as this can cause incompatibilies that cannot be
+  /// resolved automatically. One resolution in this case is to delete the
+  /// incompatible table and let the server recreate one, though the newly
+  /// created table only contains data after the table recreation. BigQuery
+  /// imposes a 1 MB limit on streaming insert row size, therefore any instance
+  /// that generates more than 1 MB of BigQuery data will not be streamed. If an
+  /// instance cannot be streamed to BigQuery, errors will be logged to Cloud
+  /// Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  GoogleCloudHealthcareV1DicomBigQueryDestination? bigqueryDestination;
+
+  GoogleCloudHealthcareV1DicomStreamConfig({
+    this.bigqueryDestination,
+  });
+
+  GoogleCloudHealthcareV1DicomStreamConfig.fromJson(core.Map json_)
+      : this(
+          bigqueryDestination: json_.containsKey('bigqueryDestination')
+              ? GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination!,
       };
 }
 
@@ -11249,8 +11372,14 @@ class NotificationConfig {
   /// for specific details.
   core.String? pubsubTopic;
 
+  /// Indicates whether or not to send Pub/Sub notifications on bulk import.
+  ///
+  /// Only supported for DICOM imports.
+  core.bool? sendForBulkImport;
+
   NotificationConfig({
     this.pubsubTopic,
+    this.sendForBulkImport,
   });
 
   NotificationConfig.fromJson(core.Map json_)
@@ -11258,10 +11387,14 @@ class NotificationConfig {
           pubsubTopic: json_.containsKey('pubsubTopic')
               ? json_['pubsubTopic'] as core.String
               : null,
+          sendForBulkImport: json_.containsKey('sendForBulkImport')
+              ? json_['sendForBulkImport'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (sendForBulkImport != null) 'sendForBulkImport': sendForBulkImport!,
       };
 }
 
@@ -11589,6 +11722,42 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// The Pub/Sub output destination.
+///
+/// The Cloud Healthcare Service Agent requires the `roles/pubsub.publisher`
+/// Cloud IAM role on the Pub/Sub topic.
+class PubsubDestination {
+  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub
+  /// messages are published on.
+  ///
+  /// Supplied by the client. The `PubsubMessage` contains the following fields:
+  /// * `PubsubMessage.Data` contains the resource name. *
+  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
+  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
+  /// when the message was published.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. The Cloud Healthcare API service account,
+  /// service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must
+  /// have publisher permissions on the given Pub/Sub topic. Not having adequate
+  /// permissions causes the calls that send notifications to fail.
+  core.String? pubsubTopic;
+
+  PubsubDestination({
+    this.pubsubTopic,
+  });
+
+  PubsubDestination.fromJson(core.Map json_)
+      : this(
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? json_['pubsubTopic'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
       };
 }
 

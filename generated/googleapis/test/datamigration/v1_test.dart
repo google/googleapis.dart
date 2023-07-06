@@ -1615,6 +1615,43 @@ void checkGenerateSshScriptRequest(api.GenerateSshScriptRequest o) {
   buildCounterGenerateSshScriptRequest--;
 }
 
+core.int buildCounterGenerateTcpProxyScriptRequest = 0;
+api.GenerateTcpProxyScriptRequest buildGenerateTcpProxyScriptRequest() {
+  final o = api.GenerateTcpProxyScriptRequest();
+  buildCounterGenerateTcpProxyScriptRequest++;
+  if (buildCounterGenerateTcpProxyScriptRequest < 3) {
+    o.vmMachineType = 'foo';
+    o.vmName = 'foo';
+    o.vmSubnet = 'foo';
+    o.vmZone = 'foo';
+  }
+  buildCounterGenerateTcpProxyScriptRequest--;
+  return o;
+}
+
+void checkGenerateTcpProxyScriptRequest(api.GenerateTcpProxyScriptRequest o) {
+  buildCounterGenerateTcpProxyScriptRequest++;
+  if (buildCounterGenerateTcpProxyScriptRequest < 3) {
+    unittest.expect(
+      o.vmMachineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vmName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vmSubnet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vmZone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateTcpProxyScriptRequest--;
+}
+
 core.List<api.RulesFile> buildUnnamed20() => [
       buildRulesFile(),
       buildRulesFile(),
@@ -3831,6 +3868,28 @@ void checkTableEntity(api.TableEntity o) {
   buildCounterTableEntity--;
 }
 
+core.int buildCounterTcpProxyScript = 0;
+api.TcpProxyScript buildTcpProxyScript() {
+  final o = api.TcpProxyScript();
+  buildCounterTcpProxyScript++;
+  if (buildCounterTcpProxyScript < 3) {
+    o.script = 'foo';
+  }
+  buildCounterTcpProxyScript--;
+  return o;
+}
+
+void checkTcpProxyScript(api.TcpProxyScript o) {
+  buildCounterTcpProxyScript++;
+  if (buildCounterTcpProxyScript < 3) {
+    unittest.expect(
+      o.script!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTcpProxyScript--;
+}
+
 core.List<core.String> buildUnnamed58() => [
       'foo',
       'foo',
@@ -4581,6 +4640,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GenerateTcpProxyScriptRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateTcpProxyScriptRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateTcpProxyScriptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateTcpProxyScriptRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-ImportMappingRulesRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportMappingRulesRequest();
@@ -5038,6 +5107,16 @@ void main() {
       final od = api.TableEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTableEntity(od);
+    });
+  });
+
+  unittest.group('obj-schema-TcpProxyScript', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTcpProxyScript();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TcpProxyScript.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTcpProxyScript(od);
     });
   });
 
@@ -7225,6 +7304,68 @@ void main() {
           arg_request, arg_migrationJob,
           $fields: arg_$fields);
       checkSshScript(response as api.SshScript);
+    });
+
+    unittest.test('method--generateTcpProxyScript', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs;
+      final arg_request = buildGenerateTcpProxyScriptRequest();
+      final arg_migrationJob = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GenerateTcpProxyScriptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateTcpProxyScriptRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTcpProxyScript());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generateTcpProxyScript(
+          arg_request, arg_migrationJob,
+          $fields: arg_$fields);
+      checkTcpProxyScript(response as api.TcpProxyScript);
     });
 
     unittest.test('method--get', () async {

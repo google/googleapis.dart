@@ -3826,6 +3826,41 @@ class AddonsConfig {
       };
 }
 
+/// AdvancedDatapathObservabilityConfig specifies configuration of observability
+/// features of advanced datapath.
+class AdvancedDatapathObservabilityConfig {
+  /// Expose flow metrics on nodes
+  core.bool? enableMetrics;
+
+  /// Method used to make Relay available
+  /// Possible string values are:
+  /// - "RELAY_MODE_UNSPECIFIED" : Default value. This shouldn't be used.
+  /// - "DISABLED" : disabled
+  /// - "INTERNAL_VPC_LB" : exposed via internal load balancer
+  /// - "EXTERNAL_LB" : exposed via external load balancer
+  core.String? relayMode;
+
+  AdvancedDatapathObservabilityConfig({
+    this.enableMetrics,
+    this.relayMode,
+  });
+
+  AdvancedDatapathObservabilityConfig.fromJson(core.Map json_)
+      : this(
+          enableMetrics: json_.containsKey('enableMetrics')
+              ? json_['enableMetrics'] as core.bool
+              : null,
+          relayMode: json_.containsKey('relayMode')
+              ? json_['relayMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableMetrics != null) 'enableMetrics': enableMetrics!,
+        if (relayMode != null) 'relayMode': relayMode!,
+      };
+}
+
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeatures {
   /// The number of threads per physical core.
@@ -6347,7 +6382,7 @@ class DNSConfig {
   /// - "PLATFORM_DEFAULT" : Use GKE default DNS provider(kube-dns) for DNS
   /// resolution.
   /// - "CLOUD_DNS" : Use CloudDNS for DNS resolution.
-  /// - "KUBE_DNS" : Use KubeDNS for DNS resolution
+  /// - "KUBE_DNS" : Use KubeDNS for DNS resolution.
   core.String? clusterDns;
 
   /// cluster_dns_domain is the suffix used for all cluster service records.
@@ -7110,7 +7145,7 @@ class IPAllocationPolicy {
   /// This field is only applicable when `use_ip_aliases` is true.
   core.bool? createSubnetwork;
 
-  /// The utilization of the cluster default IPv4 range for pod.
+  /// The utilization of the cluster default IPv4 range for the pod.
   ///
   /// The ratio is Usage/\[Total number of IPs in the secondary range\],
   /// Usage=numNodes*numZones*podIPsPerNode.
@@ -8218,6 +8253,9 @@ class MonitoringComponentConfig {
 
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfig {
+  /// Configuration of Advanced Datapath Observability features.
+  AdvancedDatapathObservabilityConfig? advancedDatapathObservabilityConfig;
+
   /// Monitoring components configuration
   MonitoringComponentConfig? componentConfig;
 
@@ -8225,12 +8263,19 @@ class MonitoringConfig {
   ManagedPrometheusConfig? managedPrometheusConfig;
 
   MonitoringConfig({
+    this.advancedDatapathObservabilityConfig,
     this.componentConfig,
     this.managedPrometheusConfig,
   });
 
   MonitoringConfig.fromJson(core.Map json_)
       : this(
+          advancedDatapathObservabilityConfig:
+              json_.containsKey('advancedDatapathObservabilityConfig')
+                  ? AdvancedDatapathObservabilityConfig.fromJson(
+                      json_['advancedDatapathObservabilityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           componentConfig: json_.containsKey('componentConfig')
               ? MonitoringComponentConfig.fromJson(json_['componentConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -8243,6 +8288,9 @@ class MonitoringConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedDatapathObservabilityConfig != null)
+          'advancedDatapathObservabilityConfig':
+              advancedDatapathObservabilityConfig!,
         if (componentConfig != null) 'componentConfig': componentConfig!,
         if (managedPrometheusConfig != null)
           'managedPrometheusConfig': managedPrometheusConfig!,
@@ -9200,7 +9248,7 @@ class NodeNetworkConfig {
   /// cannot be changed after the node pool has been created.
   core.String? podIpv4CidrBlock;
 
-  /// The utilization of the IPv4 range for pod.
+  /// The utilization of the IPv4 range for the pod.
   ///
   /// The ratio is Usage/\[Total number of IPs in the secondary range\],
   /// Usage=numNodes*numZones*podIPsPerNode.

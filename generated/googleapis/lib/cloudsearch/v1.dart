@@ -1462,9 +1462,8 @@ class QuerySourcesResource {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. From Suggest API
-  /// perspective, for 3p suggest this is used as a hint while making
-  /// predictions to add language boosting.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   ///
   /// [requestOptions_searchApplicationId] - The ID generated when you create a
   /// search application using the
@@ -7714,9 +7713,8 @@ class RequestOptions {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. From Suggest API
-  /// perspective, for 3p suggest this is used as a hint while making
-  /// predictions to add language boosting.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   core.String? languageCode;
 
   /// The ID generated when you create a search application using the

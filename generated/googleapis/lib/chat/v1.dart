@@ -5206,6 +5206,14 @@ class Message {
   /// Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   core.String? name;
 
+  /// Information about a message that's quoted by a Google Chat user in a
+  /// space.
+  ///
+  /// Google Chat users can quote a message to reply to it.
+  ///
+  /// Output only.
+  QuotedMessageMetadata? quotedMessageMetadata;
+
   /// The user who created the message.
   ///
   /// If your Chat app
@@ -5268,6 +5276,7 @@ class Message {
     this.lastUpdateTime,
     this.matchedUrl,
     this.name,
+    this.quotedMessageMetadata,
     this.sender,
     this.slashCommand,
     this.space,
@@ -5345,6 +5354,10 @@ class Message {
                   json_['matchedUrl'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          quotedMessageMetadata: json_.containsKey('quotedMessageMetadata')
+              ? QuotedMessageMetadata.fromJson(json_['quotedMessageMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           sender: json_.containsKey('sender')
               ? User.fromJson(
                   json_['sender'] as core.Map<core.String, core.dynamic>)
@@ -5386,6 +5399,8 @@ class Message {
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (matchedUrl != null) 'matchedUrl': matchedUrl!,
         if (name != null) 'name': name!,
+        if (quotedMessageMetadata != null)
+          'quotedMessageMetadata': quotedMessageMetadata!,
         if (sender != null) 'sender': sender!,
         if (slashCommand != null) 'slashCommand': slashCommand!,
         if (space != null) 'space': space!,
@@ -5442,6 +5457,40 @@ class OpenLink {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
+      };
+}
+
+/// Information about a quoted message.
+class QuotedMessageMetadata {
+  /// The timestamp when the quoted message was created or when the quoted
+  /// message was last updated.
+  ///
+  /// Output only.
+  core.String? lastUpdateTime;
+
+  /// Resource name of the quoted message.
+  ///
+  /// Format: `spaces/{space}/messages/{message}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  QuotedMessageMetadata({
+    this.lastUpdateTime,
+    this.name,
+  });
+
+  QuotedMessageMetadata.fromJson(core.Map json_)
+      : this(
+          lastUpdateTime: json_.containsKey('lastUpdateTime')
+              ? json_['lastUpdateTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (name != null) 'name': name!,
       };
 }
 

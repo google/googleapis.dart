@@ -671,6 +671,8 @@ api.Condition buildCondition() {
     o.conditionMatchedLog = buildLogMatch();
     o.conditionMonitoringQueryLanguage =
         buildMonitoringQueryLanguageCondition();
+    o.conditionPrometheusQueryLanguage =
+        buildPrometheusQueryLanguageCondition();
     o.conditionThreshold = buildMetricThreshold();
     o.displayName = 'foo';
     o.name = 'foo';
@@ -685,6 +687,7 @@ void checkCondition(api.Condition o) {
     checkMetricAbsence(o.conditionAbsent!);
     checkLogMatch(o.conditionMatchedLog!);
     checkMonitoringQueryLanguageCondition(o.conditionMonitoringQueryLanguage!);
+    checkPrometheusQueryLanguageCondition(o.conditionPrometheusQueryLanguage!);
     checkMetricThreshold(o.conditionThreshold!);
     unittest.expect(
       o.displayName!,
@@ -1018,6 +1021,7 @@ api.Documentation buildDocumentation() {
   if (buildCounterDocumentation < 3) {
     o.content = 'foo';
     o.mimeType = 'foo';
+    o.subject = 'foo';
   }
   buildCounterDocumentation--;
   return o;
@@ -1032,6 +1036,10 @@ void checkDocumentation(api.Documentation o) {
     );
     unittest.expect(
       o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subject!,
       unittest.equals('foo'),
     );
   }
@@ -3263,6 +3271,68 @@ void checkPointData(api.PointData o) {
   buildCounterPointData--;
 }
 
+core.Map<core.String, core.String> buildUnnamed56() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed56(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPrometheusQueryLanguageCondition = 0;
+api.PrometheusQueryLanguageCondition buildPrometheusQueryLanguageCondition() {
+  final o = api.PrometheusQueryLanguageCondition();
+  buildCounterPrometheusQueryLanguageCondition++;
+  if (buildCounterPrometheusQueryLanguageCondition < 3) {
+    o.alertRule = 'foo';
+    o.duration = 'foo';
+    o.evaluationInterval = 'foo';
+    o.labels = buildUnnamed56();
+    o.query = 'foo';
+    o.ruleGroup = 'foo';
+  }
+  buildCounterPrometheusQueryLanguageCondition--;
+  return o;
+}
+
+void checkPrometheusQueryLanguageCondition(
+    api.PrometheusQueryLanguageCondition o) {
+  buildCounterPrometheusQueryLanguageCondition++;
+  if (buildCounterPrometheusQueryLanguageCondition < 3) {
+    unittest.expect(
+      o.alertRule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluationInterval!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed56(o.labels!);
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ruleGroup!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPrometheusQueryLanguageCondition--;
+}
+
 core.int buildCounterQueryTimeSeriesRequest = 0;
 api.QueryTimeSeriesRequest buildQueryTimeSeriesRequest() {
   final o = api.QueryTimeSeriesRequest();
@@ -3295,23 +3365,23 @@ void checkQueryTimeSeriesRequest(api.QueryTimeSeriesRequest o) {
   buildCounterQueryTimeSeriesRequest--;
 }
 
-core.List<api.Status> buildUnnamed56() => [
+core.List<api.Status> buildUnnamed57() => [
       buildStatus(),
       buildStatus(),
     ];
 
-void checkUnnamed56(core.List<api.Status> o) {
+void checkUnnamed57(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0]);
   checkStatus(o[1]);
 }
 
-core.List<api.TimeSeriesData> buildUnnamed57() => [
+core.List<api.TimeSeriesData> buildUnnamed58() => [
       buildTimeSeriesData(),
       buildTimeSeriesData(),
     ];
 
-void checkUnnamed57(core.List<api.TimeSeriesData> o) {
+void checkUnnamed58(core.List<api.TimeSeriesData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeSeriesData(o[0]);
   checkTimeSeriesData(o[1]);
@@ -3323,8 +3393,8 @@ api.QueryTimeSeriesResponse buildQueryTimeSeriesResponse() {
   buildCounterQueryTimeSeriesResponse++;
   if (buildCounterQueryTimeSeriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partialErrors = buildUnnamed56();
-    o.timeSeriesData = buildUnnamed57();
+    o.partialErrors = buildUnnamed57();
+    o.timeSeriesData = buildUnnamed58();
     o.timeSeriesDescriptor = buildTimeSeriesDescriptor();
   }
   buildCounterQueryTimeSeriesResponse--;
@@ -3338,8 +3408,8 @@ void checkQueryTimeSeriesResponse(api.QueryTimeSeriesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.partialErrors!);
-    checkUnnamed57(o.timeSeriesData!);
+    checkUnnamed57(o.partialErrors!);
+    checkUnnamed58(o.timeSeriesData!);
     checkTimeSeriesDescriptor(o.timeSeriesDescriptor!);
   }
   buildCounterQueryTimeSeriesResponse--;
@@ -3464,12 +3534,12 @@ void checkSendNotificationChannelVerificationCodeRequest(
   buildCounterSendNotificationChannelVerificationCodeRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed58() => {
+core.Map<core.String, core.String> buildUnnamed59() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed58(core.Map<core.String, core.String> o) {
+void checkUnnamed59(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3500,7 +3570,7 @@ api.Service buildService() {
     o.meshIstio = buildMeshIstio();
     o.name = 'foo';
     o.telemetry = buildTelemetry();
-    o.userLabels = buildUnnamed58();
+    o.userLabels = buildUnnamed59();
   }
   buildCounterService--;
   return o;
@@ -3529,7 +3599,7 @@ void checkService(api.Service o) {
       unittest.equals('foo'),
     );
     checkTelemetry(o.telemetry!);
-    checkUnnamed58(o.userLabels!);
+    checkUnnamed59(o.userLabels!);
   }
   buildCounterService--;
 }
@@ -3557,12 +3627,12 @@ void checkServiceLevelIndicator(api.ServiceLevelIndicator o) {
   buildCounterServiceLevelIndicator--;
 }
 
-core.Map<core.String, core.String> buildUnnamed59() => {
+core.Map<core.String, core.String> buildUnnamed60() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed59(core.Map<core.String, core.String> o) {
+void checkUnnamed60(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3585,7 +3655,7 @@ api.ServiceLevelObjective buildServiceLevelObjective() {
     o.name = 'foo';
     o.rollingPeriod = 'foo';
     o.serviceLevelIndicator = buildServiceLevelIndicator();
-    o.userLabels = buildUnnamed59();
+    o.userLabels = buildUnnamed60();
   }
   buildCounterServiceLevelObjective--;
   return o;
@@ -3615,7 +3685,7 @@ void checkServiceLevelObjective(api.ServiceLevelObjective o) {
       unittest.equals('foo'),
     );
     checkServiceLevelIndicator(o.serviceLevelIndicator!);
-    checkUnnamed59(o.userLabels!);
+    checkUnnamed60(o.userLabels!);
   }
   buildCounterServiceLevelObjective--;
 }
@@ -3651,7 +3721,7 @@ void checkSnooze(api.Snooze o) {
   buildCounterSnooze--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed60() => {
+core.Map<core.String, core.Object?> buildUnnamed61() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3664,7 +3734,7 @@ core.Map<core.String, core.Object?> buildUnnamed60() => {
       },
     };
 
-void checkUnnamed60(core.Map<core.String, core.Object?> o) {
+void checkUnnamed61(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3696,15 +3766,15 @@ void checkUnnamed60(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed61() => [
-      buildUnnamed60(),
-      buildUnnamed60(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed62() => [
+      buildUnnamed61(),
+      buildUnnamed61(),
     ];
 
-void checkUnnamed61(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed62(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed60(o[0]);
-  checkUnnamed60(o[1]);
+  checkUnnamed61(o[0]);
+  checkUnnamed61(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -3713,7 +3783,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed61();
+    o.details = buildUnnamed62();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -3727,7 +3797,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed61(o.details!);
+    checkUnnamed62(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -3809,12 +3879,12 @@ void checkTimeInterval(api.TimeInterval o) {
   buildCounterTimeInterval--;
 }
 
-core.List<api.Point> buildUnnamed62() => [
+core.List<api.Point> buildUnnamed63() => [
       buildPoint(),
       buildPoint(),
     ];
 
-void checkUnnamed62(core.List<api.Point> o) {
+void checkUnnamed63(core.List<api.Point> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPoint(o[0]);
   checkPoint(o[1]);
@@ -3828,7 +3898,7 @@ api.TimeSeries buildTimeSeries() {
     o.metadata = buildMonitoredResourceMetadata();
     o.metric = buildMetric();
     o.metricKind = 'foo';
-    o.points = buildUnnamed62();
+    o.points = buildUnnamed63();
     o.resource = buildMonitoredResource();
     o.unit = 'foo';
     o.valueType = 'foo';
@@ -3846,7 +3916,7 @@ void checkTimeSeries(api.TimeSeries o) {
       o.metricKind!,
       unittest.equals('foo'),
     );
-    checkUnnamed62(o.points!);
+    checkUnnamed63(o.points!);
     checkMonitoredResource(o.resource!);
     unittest.expect(
       o.unit!,
@@ -3860,23 +3930,23 @@ void checkTimeSeries(api.TimeSeries o) {
   buildCounterTimeSeries--;
 }
 
-core.List<api.LabelValue> buildUnnamed63() => [
+core.List<api.LabelValue> buildUnnamed64() => [
       buildLabelValue(),
       buildLabelValue(),
     ];
 
-void checkUnnamed63(core.List<api.LabelValue> o) {
+void checkUnnamed64(core.List<api.LabelValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelValue(o[0]);
   checkLabelValue(o[1]);
 }
 
-core.List<api.PointData> buildUnnamed64() => [
+core.List<api.PointData> buildUnnamed65() => [
       buildPointData(),
       buildPointData(),
     ];
 
-void checkUnnamed64(core.List<api.PointData> o) {
+void checkUnnamed65(core.List<api.PointData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPointData(o[0]);
   checkPointData(o[1]);
@@ -3887,8 +3957,8 @@ api.TimeSeriesData buildTimeSeriesData() {
   final o = api.TimeSeriesData();
   buildCounterTimeSeriesData++;
   if (buildCounterTimeSeriesData < 3) {
-    o.labelValues = buildUnnamed63();
-    o.pointData = buildUnnamed64();
+    o.labelValues = buildUnnamed64();
+    o.pointData = buildUnnamed65();
   }
   buildCounterTimeSeriesData--;
   return o;
@@ -3897,29 +3967,29 @@ api.TimeSeriesData buildTimeSeriesData() {
 void checkTimeSeriesData(api.TimeSeriesData o) {
   buildCounterTimeSeriesData++;
   if (buildCounterTimeSeriesData < 3) {
-    checkUnnamed63(o.labelValues!);
-    checkUnnamed64(o.pointData!);
+    checkUnnamed64(o.labelValues!);
+    checkUnnamed65(o.pointData!);
   }
   buildCounterTimeSeriesData--;
 }
 
-core.List<api.LabelDescriptor> buildUnnamed65() => [
+core.List<api.LabelDescriptor> buildUnnamed66() => [
       buildLabelDescriptor(),
       buildLabelDescriptor(),
     ];
 
-void checkUnnamed65(core.List<api.LabelDescriptor> o) {
+void checkUnnamed66(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
 }
 
-core.List<api.ValueDescriptor> buildUnnamed66() => [
+core.List<api.ValueDescriptor> buildUnnamed67() => [
       buildValueDescriptor(),
       buildValueDescriptor(),
     ];
 
-void checkUnnamed66(core.List<api.ValueDescriptor> o) {
+void checkUnnamed67(core.List<api.ValueDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueDescriptor(o[0]);
   checkValueDescriptor(o[1]);
@@ -3930,8 +4000,8 @@ api.TimeSeriesDescriptor buildTimeSeriesDescriptor() {
   final o = api.TimeSeriesDescriptor();
   buildCounterTimeSeriesDescriptor++;
   if (buildCounterTimeSeriesDescriptor < 3) {
-    o.labelDescriptors = buildUnnamed65();
-    o.pointDescriptors = buildUnnamed66();
+    o.labelDescriptors = buildUnnamed66();
+    o.pointDescriptors = buildUnnamed67();
   }
   buildCounterTimeSeriesDescriptor--;
   return o;
@@ -3940,8 +4010,8 @@ api.TimeSeriesDescriptor buildTimeSeriesDescriptor() {
 void checkTimeSeriesDescriptor(api.TimeSeriesDescriptor o) {
   buildCounterTimeSeriesDescriptor++;
   if (buildCounterTimeSeriesDescriptor < 3) {
-    checkUnnamed65(o.labelDescriptors!);
-    checkUnnamed66(o.pointDescriptors!);
+    checkUnnamed66(o.labelDescriptors!);
+    checkUnnamed67(o.pointDescriptors!);
   }
   buildCounterTimeSeriesDescriptor--;
 }
@@ -4041,34 +4111,34 @@ void checkTypedValue(api.TypedValue o) {
   buildCounterTypedValue--;
 }
 
-core.List<api.ContentMatcher> buildUnnamed67() => [
+core.List<api.ContentMatcher> buildUnnamed68() => [
       buildContentMatcher(),
       buildContentMatcher(),
     ];
 
-void checkUnnamed67(core.List<api.ContentMatcher> o) {
+void checkUnnamed68(core.List<api.ContentMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContentMatcher(o[0]);
   checkContentMatcher(o[1]);
 }
 
-core.List<api.InternalChecker> buildUnnamed68() => [
+core.List<api.InternalChecker> buildUnnamed69() => [
       buildInternalChecker(),
       buildInternalChecker(),
     ];
 
-void checkUnnamed68(core.List<api.InternalChecker> o) {
+void checkUnnamed69(core.List<api.InternalChecker> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInternalChecker(o[0]);
   checkInternalChecker(o[1]);
 }
 
-core.List<core.String> buildUnnamed69() => [
+core.List<core.String> buildUnnamed70() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed69(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4080,12 +4150,12 @@ void checkUnnamed69(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed70() => {
+core.Map<core.String, core.String> buildUnnamed71() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed70(core.Map<core.String, core.String> o) {
+void checkUnnamed71(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4103,19 +4173,19 @@ api.UptimeCheckConfig buildUptimeCheckConfig() {
   buildCounterUptimeCheckConfig++;
   if (buildCounterUptimeCheckConfig < 3) {
     o.checkerType = 'foo';
-    o.contentMatchers = buildUnnamed67();
+    o.contentMatchers = buildUnnamed68();
     o.displayName = 'foo';
     o.httpCheck = buildHttpCheck();
-    o.internalCheckers = buildUnnamed68();
+    o.internalCheckers = buildUnnamed69();
     o.isInternal = true;
     o.monitoredResource = buildMonitoredResource();
     o.name = 'foo';
     o.period = 'foo';
     o.resourceGroup = buildResourceGroup();
-    o.selectedRegions = buildUnnamed69();
+    o.selectedRegions = buildUnnamed70();
     o.tcpCheck = buildTcpCheck();
     o.timeout = 'foo';
-    o.userLabels = buildUnnamed70();
+    o.userLabels = buildUnnamed71();
   }
   buildCounterUptimeCheckConfig--;
   return o;
@@ -4128,13 +4198,13 @@ void checkUptimeCheckConfig(api.UptimeCheckConfig o) {
       o.checkerType!,
       unittest.equals('foo'),
     );
-    checkUnnamed67(o.contentMatchers!);
+    checkUnnamed68(o.contentMatchers!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
     );
     checkHttpCheck(o.httpCheck!);
-    checkUnnamed68(o.internalCheckers!);
+    checkUnnamed69(o.internalCheckers!);
     unittest.expect(o.isInternal!, unittest.isTrue);
     checkMonitoredResource(o.monitoredResource!);
     unittest.expect(
@@ -4146,13 +4216,13 @@ void checkUptimeCheckConfig(api.UptimeCheckConfig o) {
       unittest.equals('foo'),
     );
     checkResourceGroup(o.resourceGroup!);
-    checkUnnamed69(o.selectedRegions!);
+    checkUnnamed70(o.selectedRegions!);
     checkTcpCheck(o.tcpCheck!);
     unittest.expect(
       o.timeout!,
       unittest.equals('foo'),
     );
-    checkUnnamed70(o.userLabels!);
+    checkUnnamed71(o.userLabels!);
   }
   buildCounterUptimeCheckConfig--;
 }
@@ -4282,23 +4352,6 @@ void checkWindowsBasedSli(api.WindowsBasedSli o) {
   buildCounterWindowsBasedSli--;
 }
 
-core.List<core.String> buildUnnamed71() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed71(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed72() => [
       'foo',
       'foo',
@@ -4373,6 +4426,23 @@ core.List<core.String> buildUnnamed76() => [
     ];
 
 void checkUnnamed76(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed77() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5207,6 +5277,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PrometheusQueryLanguageCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPrometheusQueryLanguageCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PrometheusQueryLanguageCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPrometheusQueryLanguageCondition(od);
+    });
+  });
+
   unittest.group('obj-schema-QueryTimeSeriesRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQueryTimeSeriesRequest();
@@ -5475,7 +5555,7 @@ void main() {
       final arg_name = 'foo';
       final arg_aggregation_alignmentPeriod = 'foo';
       final arg_aggregation_crossSeriesReducer = 'foo';
-      final arg_aggregation_groupByFields = buildUnnamed71();
+      final arg_aggregation_groupByFields = buildUnnamed72();
       final arg_aggregation_perSeriesAligner = 'foo';
       final arg_filter = 'foo';
       final arg_interval_endTime = 'foo';
@@ -5485,7 +5565,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_secondaryAggregation_alignmentPeriod = 'foo';
       final arg_secondaryAggregation_crossSeriesReducer = 'foo';
-      final arg_secondaryAggregation_groupByFields = buildUnnamed72();
+      final arg_secondaryAggregation_groupByFields = buildUnnamed73();
       final arg_secondaryAggregation_perSeriesAligner = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -5624,7 +5704,7 @@ void main() {
       final arg_name = 'foo';
       final arg_aggregation_alignmentPeriod = 'foo';
       final arg_aggregation_crossSeriesReducer = 'foo';
-      final arg_aggregation_groupByFields = buildUnnamed73();
+      final arg_aggregation_groupByFields = buildUnnamed74();
       final arg_aggregation_perSeriesAligner = 'foo';
       final arg_filter = 'foo';
       final arg_interval_endTime = 'foo';
@@ -5634,7 +5714,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_secondaryAggregation_alignmentPeriod = 'foo';
       final arg_secondaryAggregation_crossSeriesReducer = 'foo';
-      final arg_secondaryAggregation_groupByFields = buildUnnamed74();
+      final arg_secondaryAggregation_groupByFields = buildUnnamed75();
       final arg_secondaryAggregation_perSeriesAligner = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -7883,7 +7963,7 @@ void main() {
       final arg_name = 'foo';
       final arg_aggregation_alignmentPeriod = 'foo';
       final arg_aggregation_crossSeriesReducer = 'foo';
-      final arg_aggregation_groupByFields = buildUnnamed75();
+      final arg_aggregation_groupByFields = buildUnnamed76();
       final arg_aggregation_perSeriesAligner = 'foo';
       final arg_filter = 'foo';
       final arg_interval_endTime = 'foo';
@@ -7893,7 +7973,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_secondaryAggregation_alignmentPeriod = 'foo';
       final arg_secondaryAggregation_crossSeriesReducer = 'foo';
-      final arg_secondaryAggregation_groupByFields = buildUnnamed76();
+      final arg_secondaryAggregation_groupByFields = buildUnnamed77();
       final arg_secondaryAggregation_perSeriesAligner = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';

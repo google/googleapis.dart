@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230628",
+    "revision": "20230705",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Channel API",

@@ -149,6 +149,32 @@ void checkAddonsConfig(api.AddonsConfig o) {
   buildCounterAddonsConfig--;
 }
 
+core.int buildCounterAdvancedDatapathObservabilityConfig = 0;
+api.AdvancedDatapathObservabilityConfig
+    buildAdvancedDatapathObservabilityConfig() {
+  final o = api.AdvancedDatapathObservabilityConfig();
+  buildCounterAdvancedDatapathObservabilityConfig++;
+  if (buildCounterAdvancedDatapathObservabilityConfig < 3) {
+    o.enableMetrics = true;
+    o.relayMode = 'foo';
+  }
+  buildCounterAdvancedDatapathObservabilityConfig--;
+  return o;
+}
+
+void checkAdvancedDatapathObservabilityConfig(
+    api.AdvancedDatapathObservabilityConfig o) {
+  buildCounterAdvancedDatapathObservabilityConfig++;
+  if (buildCounterAdvancedDatapathObservabilityConfig < 3) {
+    unittest.expect(o.enableMetrics!, unittest.isTrue);
+    unittest.expect(
+      o.relayMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdvancedDatapathObservabilityConfig--;
+}
+
 core.int buildCounterAdvancedMachineFeatures = 0;
 api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
   final o = api.AdvancedMachineFeatures();
@@ -2966,6 +2992,8 @@ api.MonitoringConfig buildMonitoringConfig() {
   final o = api.MonitoringConfig();
   buildCounterMonitoringConfig++;
   if (buildCounterMonitoringConfig < 3) {
+    o.advancedDatapathObservabilityConfig =
+        buildAdvancedDatapathObservabilityConfig();
     o.componentConfig = buildMonitoringComponentConfig();
     o.managedPrometheusConfig = buildManagedPrometheusConfig();
   }
@@ -2976,6 +3004,8 @@ api.MonitoringConfig buildMonitoringConfig() {
 void checkMonitoringConfig(api.MonitoringConfig o) {
   buildCounterMonitoringConfig++;
   if (buildCounterMonitoringConfig < 3) {
+    checkAdvancedDatapathObservabilityConfig(
+        o.advancedDatapathObservabilityConfig!);
     checkMonitoringComponentConfig(o.componentConfig!);
     checkManagedPrometheusConfig(o.managedPrometheusConfig!);
   }
@@ -5919,6 +5949,16 @@ void main() {
       final od = api.AddonsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAddonsConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdvancedDatapathObservabilityConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvancedDatapathObservabilityConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvancedDatapathObservabilityConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvancedDatapathObservabilityConfig(od);
     });
   });
 

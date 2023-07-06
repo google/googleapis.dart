@@ -569,6 +569,7 @@ api.GoogleAppsCloudidentityDevicesV1Device
     o.enabledDeveloperOptions = true;
     o.enabledUsbDebugging = true;
     o.encryptionState = 'foo';
+    o.hostname = 'foo';
     o.imei = 'foo';
     o.kernelVersion = 'foo';
     o.lastSyncTime = 'foo';
@@ -636,6 +637,10 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
     unittest.expect(o.enabledUsbDebugging!, unittest.isTrue);
     unittest.expect(
       o.encryptionState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
       unittest.equals('foo'),
     );
     unittest.expect(

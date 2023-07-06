@@ -1092,6 +1092,8 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   /// for list org policy which have denied values in the monitoring rule
   /// - "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" :
   /// Remediation type for gcp.restrictCmekCryptoKeyProjects
+  /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation type for resource
+  /// violation.
   core.String? remediationType;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation({

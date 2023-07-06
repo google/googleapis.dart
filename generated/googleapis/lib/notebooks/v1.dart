@@ -5595,7 +5595,7 @@ class Runtime {
 
 /// Definition of the types of hardware accelerators that can be used.
 ///
-/// Definition of the types of hardware accelerators that can be used. See
+/// See
 /// [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).
 /// Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` *
 /// `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
@@ -5612,6 +5612,7 @@ class RuntimeAcceleratorConfig {
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
   /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100 - 40GB.
+  /// - "NVIDIA_L4" : Accelerator type is Nvidia L4.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual

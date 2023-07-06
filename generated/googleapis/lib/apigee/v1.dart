@@ -22981,6 +22981,22 @@ class GoogleCloudApigeeV1Organization {
   /// Description of the Apigee organization.
   core.String? description;
 
+  /// Flag that specifies whether the VPC Peering through Private Google Access
+  /// should be disabled between the consumer network and Apigee.
+  ///
+  /// Valid only when RuntimeType is set to CLOUD. Required if an
+  /// authorizedNetwork on the consumer project is not provided, in which case
+  /// the flag should be set to true. The value must be set before the creation
+  /// of any Apigee runtime instance and can be updated only when there are no
+  /// runtime instances. **Note:** Apigee will be deprecating the vpc peering
+  /// model that requires you to provide 'authorizedNetwork', by making the
+  /// non-peering model as the default way of provisioning Apigee organization
+  /// in future. So, this will be a temporary flag to enable the transition. Not
+  /// supported for Apigee hybrid.
+  ///
+  /// Optional.
+  core.bool? disableVpcPeering;
+
   /// Display name for the Apigee organization.
   ///
   /// Unused, but reserved for future use.
@@ -23091,6 +23107,7 @@ class GoogleCloudApigeeV1Organization {
     this.createdAt,
     this.customerName,
     this.description,
+    this.disableVpcPeering,
     this.displayName,
     this.environments,
     this.expiresAt,
@@ -23152,6 +23169,9 @@ class GoogleCloudApigeeV1Organization {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          disableVpcPeering: json_.containsKey('disableVpcPeering')
+              ? json_['disableVpcPeering'] as core.bool
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -23209,6 +23229,7 @@ class GoogleCloudApigeeV1Organization {
         if (createdAt != null) 'createdAt': createdAt!,
         if (customerName != null) 'customerName': customerName!,
         if (description != null) 'description': description!,
+        if (disableVpcPeering != null) 'disableVpcPeering': disableVpcPeering!,
         if (displayName != null) 'displayName': displayName!,
         if (environments != null) 'environments': environments!,
         if (expiresAt != null) 'expiresAt': expiresAt!,
@@ -23483,6 +23504,21 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// example: `projects/my-sharedvpc-host/global/networks/mynetwork`
   core.String? authorizedNetwork;
 
+  /// Flag that specifies whether the VPC Peering through Private Google Access
+  /// should be disabled between the consumer network and Apigee.
+  ///
+  /// Required if an authorizedNetwork on the consumer project is not provided,
+  /// in which case the flag should be set to true. The value must be set before
+  /// the creation of any Apigee runtime instance and can be updated only when
+  /// there are no runtime instances. **Note:** Apigee will be deprecating the
+  /// vpc peering model that requires you to provide 'authorizedNetwork', by
+  /// making the non-peering model as the default way of provisioning Apigee
+  /// organization in future. So, this will be a temporary flag to enable the
+  /// transition. Not supported for Apigee hybrid.
+  ///
+  /// Optional.
+  core.bool? disableVpcPeering;
+
   /// Cloud Platform location for the runtime instance.
   ///
   /// Defaults to zone `us-west1-a`. If a region is provided, `EVAL`
@@ -23493,6 +23529,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   GoogleCloudApigeeV1ProvisionOrganizationRequest({
     this.analyticsRegion,
     this.authorizedNetwork,
+    this.disableVpcPeering,
     this.runtimeLocation,
   });
 
@@ -23504,6 +23541,9 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
           authorizedNetwork: json_.containsKey('authorizedNetwork')
               ? json_['authorizedNetwork'] as core.String
               : null,
+          disableVpcPeering: json_.containsKey('disableVpcPeering')
+              ? json_['disableVpcPeering'] as core.bool
+              : null,
           runtimeLocation: json_.containsKey('runtimeLocation')
               ? json_['runtimeLocation'] as core.String
               : null,
@@ -23512,6 +23552,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (disableVpcPeering != null) 'disableVpcPeering': disableVpcPeering!,
         if (runtimeLocation != null) 'runtimeLocation': runtimeLocation!,
       };
 }

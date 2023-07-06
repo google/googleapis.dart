@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230625",
+    "revision": "20230702",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -2407,7 +2407,7 @@
                     "type": "string"
                 },
                 "customAudiences": {
-                    "description": "Custom audiences that can be used in the audience field of ID token for authenticated requests.",
+                    "description": "One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.",
                     "items": {
                         "type": "string"
                     },

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230619",
+    "revision": "20230630",
     "rootUrl": "https://datacatalog.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Data Catalog API",

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230625",
+    "revision": "20230702",
     "rootUrl": "https://policysimulator.googleapis.com/",
     "servicePath": "",
     "title": "Policy Simulator API",

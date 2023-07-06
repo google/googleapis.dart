@@ -12,6 +12,14 @@
 
 /// Google Analytics Admin API - v1beta
 ///
+/// Manage properties in Google Analytics. Warning: Creating multiple Customer
+/// Applications, Accounts, or Projects to simulate or act as a single Customer
+/// Application, Account, or Project (respectively) or to circumvent
+/// Service-specific usage limits or quotas is a direct violation of Google
+/// Cloud Platform Terms of Service as well as Google APIs Terms of Service.
+/// These actions can result in immediate termination of your GCP project(s)
+/// without any warning.
+///
 /// For more information, see
 /// <http://code.google.com/apis/analytics/docs/mgmt/home.html>
 ///
@@ -43,6 +51,14 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Manage properties in Google Analytics.
+///
+/// Warning: Creating multiple Customer Applications, Accounts, or Projects to
+/// simulate or act as a single Customer Application, Account, or Project
+/// (respectively) or to circumvent Service-specific usage limits or quotas is a
+/// direct violation of Google Cloud Platform Terms of Service as well as Google
+/// APIs Terms of Service. These actions can result in immediate termination of
+/// your GCP project(s) without any warning.
 class GoogleAnalyticsAdminApi {
   /// Edit Google Analytics management entities
   static const analyticsEditScope =

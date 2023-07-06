@@ -67,7 +67,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230627",
+    "revision": "20230704",
     "rootUrl": "https://chat.googleapis.com/",
     "servicePath": "",
     "title": "Google Chat API",
@@ -3090,6 +3090,11 @@
                     "description": "Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`",
                     "type": "string"
                 },
+                "quotedMessageMetadata": {
+                    "$ref": "QuotedMessageMetadata",
+                    "description": "Output only. Information about a message that's quoted by a Google Chat user in a space. Google Chat users can quote a message to reply to it.",
+                    "readOnly": true
+                },
                 "sender": {
                     "$ref": "User",
                     "description": "Output only. The user who created the message. If your Chat app [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users), the output populates the [user](https://developers.google.com/chat/api/reference/rest/v1/User) `name` and `type`.",
@@ -3141,6 +3146,24 @@
             "properties": {
                 "url": {
                     "description": "The URL to open.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QuotedMessageMetadata": {
+            "description": "Information about a quoted message.",
+            "id": "QuotedMessageMetadata",
+            "properties": {
+                "lastUpdateTime": {
+                    "description": "Output only. The timestamp when the quoted message was created or when the quoted message was last updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Resource name of the quoted message. Format: `spaces/{space}/messages/{message}`",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

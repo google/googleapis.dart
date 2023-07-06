@@ -2170,6 +2170,7 @@ api.Message buildMessage() {
     o.lastUpdateTime = 'foo';
     o.matchedUrl = buildMatchedUrl();
     o.name = 'foo';
+    o.quotedMessageMetadata = buildQuotedMessageMetadata();
     o.sender = buildUser();
     o.slashCommand = buildSlashCommand();
     o.space = buildSpace();
@@ -2221,6 +2222,7 @@ void checkMessage(api.Message o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkQuotedMessageMetadata(o.quotedMessageMetadata!);
     checkUser(o.sender!);
     checkSlashCommand(o.slashCommand!);
     checkSpace(o.space!);
@@ -2275,6 +2277,33 @@ void checkOpenLink(api.OpenLink o) {
     );
   }
   buildCounterOpenLink--;
+}
+
+core.int buildCounterQuotedMessageMetadata = 0;
+api.QuotedMessageMetadata buildQuotedMessageMetadata() {
+  final o = api.QuotedMessageMetadata();
+  buildCounterQuotedMessageMetadata++;
+  if (buildCounterQuotedMessageMetadata < 3) {
+    o.lastUpdateTime = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterQuotedMessageMetadata--;
+  return o;
+}
+
+void checkQuotedMessageMetadata(api.QuotedMessageMetadata o) {
+  buildCounterQuotedMessageMetadata++;
+  if (buildCounterQuotedMessageMetadata < 3) {
+    unittest.expect(
+      o.lastUpdateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterQuotedMessageMetadata--;
 }
 
 core.int buildCounterReaction = 0;
@@ -3396,6 +3425,16 @@ void main() {
       final od =
           api.OpenLink.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOpenLink(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuotedMessageMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuotedMessageMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuotedMessageMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkQuotedMessageMetadata(od);
     });
   });
 

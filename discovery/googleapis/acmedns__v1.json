@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230703",
+    "revision": "20230705",
     "rootUrl": "https://acmedns.googleapis.com/",
     "servicePath": "",
     "title": "ACME DNS API",

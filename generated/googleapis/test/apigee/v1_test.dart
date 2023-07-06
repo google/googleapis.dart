@@ -7441,6 +7441,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.createdAt = 'foo';
     o.customerName = 'foo';
     o.description = 'foo';
+    o.disableVpcPeering = true;
     o.displayName = 'foo';
     o.environments = buildUnnamed150();
     o.expiresAt = 'foo';
@@ -7509,6 +7510,7 @@ void checkGoogleCloudApigeeV1Organization(
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableVpcPeering!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -7771,6 +7773,7 @@ api.GoogleCloudApigeeV1ProvisionOrganizationRequest
   if (buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest < 3) {
     o.analyticsRegion = 'foo';
     o.authorizedNetwork = 'foo';
+    o.disableVpcPeering = true;
     o.runtimeLocation = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest--;
@@ -7789,6 +7792,7 @@ void checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
       o.authorizedNetwork!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableVpcPeering!, unittest.isTrue);
     unittest.expect(
       o.runtimeLocation!,
       unittest.equals('foo'),
