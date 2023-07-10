@@ -5175,7 +5175,6 @@ class $EgressFrom {
 /// - datamigration:v1 : StaticIpConnectivity
 /// - datamigration:v1 : StaticServiceIpConnectivity
 /// - datamigration:v1 : StopMigrationJobRequest
-/// - datamigration:v1 : VerifyMigrationJobRequest
 /// - datapipelines:v1 : GoogleCloudDatapipelinesV1RunPipelineRequest
 /// - datapipelines:v1 : GoogleCloudDatapipelinesV1StopPipelineRequest
 /// - datapipelines:v1 : GoogleProtobufEmpty
@@ -5609,6 +5608,33 @@ class $Endpoint {
         if (allowCors != null) 'allowCors': allowCors!,
         if (name != null) 'name': name!,
         if (target != null) 'target': target!,
+      };
+}
+
+/// Used by:
+///
+/// - datamigration:v1 : DatabaseInstanceEntity
+/// - datamigration:v1 : SchemaEntity
+class $Entity {
+  /// Custom engine specific features.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  $Entity({
+    this.customFeatures,
+  });
+
+  $Entity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
       };
 }
 

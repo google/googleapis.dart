@@ -27,6 +27,7 @@
 ///   - [EnterprisesPoliciesResource]
 ///   - [EnterprisesWebAppsResource]
 ///   - [EnterprisesWebTokensResource]
+/// - [ProvisioningInfoResource]
 /// - [SignupUrlsResource]
 library androidmanagement_v1;
 
@@ -54,6 +55,8 @@ class AndroidManagementApi {
   final commons.ApiRequester _requester;
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
+  ProvisioningInfoResource get provisioningInfo =>
+      ProvisioningInfoResource(_requester);
   SignupUrlsResource get signupUrls => SignupUrlsResource(_requester);
 
   AndroidManagementApi(http.Client client,
@@ -1427,6 +1430,50 @@ class EnterprisesWebTokensResource {
       queryParams: queryParams_,
     );
     return WebToken.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProvisioningInfoResource {
+  final commons.ApiRequester _requester;
+
+  ProvisioningInfoResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get the device provisioning info by the identifier provided via the
+  /// sign-in url.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The identifier that Android Device Policy passes to the
+  /// 3P sign-in page in the form of provisioningInfo/{provisioning_info}.
+  /// Value must have pattern `^provisioningInfo/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningInfo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningInfo> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProvisioningInfo.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7540,6 +7587,96 @@ class PowerManagementEvent {
         if (batteryLevel != null) 'batteryLevel': batteryLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Information about a device that is available during setup.
+class ProvisioningInfo {
+  /// The API level of the Android platform version running on the device.
+  core.int? apiLevel;
+
+  /// The email address of the authenticated user (only present for Google
+  /// Account provisioning method).
+  core.String? authenticatedUserEmail;
+
+  /// Brand of the device.
+  ///
+  /// For example, Google.
+  core.String? brand;
+
+  /// The name of the enterprise in the form enterprises/{enterprise}.
+  core.String? enterprise;
+
+  /// The management mode of the device or profile.
+  /// Possible string values are:
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value is disallowed.
+  /// - "DEVICE_OWNER" : Device owner. Android Device Policy has full control
+  /// over the device.
+  /// - "PROFILE_OWNER" : Profile owner. Android Device Policy has control over
+  /// a managed profile on the device.
+  core.String? managementMode;
+
+  /// The model of the device.
+  ///
+  /// For example, Asus Nexus 7.
+  core.String? model;
+
+  /// The name of this resource in the form
+  /// provisioningInfo/{provisioning_info}.
+  core.String? name;
+
+  /// Ownership of the managed device.
+  /// Possible string values are:
+  /// - "OWNERSHIP_UNSPECIFIED" : Ownership is unspecified.
+  /// - "COMPANY_OWNED" : Device is company-owned.
+  /// - "PERSONALLY_OWNED" : Device is personally-owned.
+  core.String? ownership;
+
+  ProvisioningInfo({
+    this.apiLevel,
+    this.authenticatedUserEmail,
+    this.brand,
+    this.enterprise,
+    this.managementMode,
+    this.model,
+    this.name,
+    this.ownership,
+  });
+
+  ProvisioningInfo.fromJson(core.Map json_)
+      : this(
+          apiLevel: json_.containsKey('apiLevel')
+              ? json_['apiLevel'] as core.int
+              : null,
+          authenticatedUserEmail: json_.containsKey('authenticatedUserEmail')
+              ? json_['authenticatedUserEmail'] as core.String
+              : null,
+          brand:
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          enterprise: json_.containsKey('enterprise')
+              ? json_['enterprise'] as core.String
+              : null,
+          managementMode: json_.containsKey('managementMode')
+              ? json_['managementMode'] as core.String
+              : null,
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ownership: json_.containsKey('ownership')
+              ? json_['ownership'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel!,
+        if (authenticatedUserEmail != null)
+          'authenticatedUserEmail': authenticatedUserEmail!,
+        if (brand != null) 'brand': brand!,
+        if (enterprise != null) 'enterprise': enterprise!,
+        if (managementMode != null) 'managementMode': managementMode!,
+        if (model != null) 'model': model!,
+        if (name != null) 'name': name!,
+        if (ownership != null) 'ownership': ownership!,
       };
 }
 

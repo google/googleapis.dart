@@ -12,6 +12,10 @@
 
 /// Workload Manager API - v1
 ///
+/// Workload Manager is a service that provides tooling for enterprise workloads
+/// to automate the deployment and validation of your workloads against best
+/// practices and recommendations.
+///
 /// For more information, see <https://cloud.google.com/workload-manager/docs>
 ///
 /// Create an instance of [WorkloadManagerApi] to access these resources:
@@ -41,6 +45,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Workload Manager is a service that provides tooling for enterprise workloads
+/// to automate the deployment and validation of your workloads against best
+/// practices and recommendations.
 class WorkloadManagerApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -2054,9 +2061,26 @@ class SapDiscoveryResource {
   core.List<core.String>? relatedResources;
 
   /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_KIND_UNSPECIFIED" : Unspecified resource kind.
+  /// - "RESOURCE_KIND_INSTANCE" : This is a compute instance.
+  /// - "RESOURCE_KIND_DISK" : This is a compute disk.
+  /// - "RESOURCE_KIND_ADDRESS" : This is a compute address.
+  /// - "RESOURCE_KIND_FILESTORE" : This is a filestore instance.
+  /// - "RESOURCE_KIND_HEALTH_CHECK" : This is a compute health check.
+  /// - "RESOURCE_KIND_FORWARDING_RULE" : This is a compute forwarding rule.
+  /// - "RESOURCE_KIND_BACKEND_SERVICE" : This is a compute backend service.
+  /// - "RESOURCE_KIND_SUBNETWORK" : This is a compute subnetwork.
+  /// - "RESOURCE_KIND_NETWORK" : This is a compute network.
+  /// - "RESOURCE_KIND_PUBLIC_ADDRESS" : This is a public accessible IP Address.
+  /// - "RESOURCE_KIND_INSTANCE_GROUP" : This is a compute instance group.
   core.String? resourceKind;
 
   /// The type of this resource.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Undefined resource type.
   /// - "COMPUTE" : This is a compute resource.
@@ -2203,11 +2227,26 @@ class SqlserverValidation {
   /// The agent version collected this data point
   core.String? agentVersion;
 
+  /// The instance_name of the instance that the Insight data comes from.
+  ///
+  /// According to https://linter.aip.dev/122/name-suffix: field names should
+  /// not use the _name suffix unless the field would be ambiguous without it.
+  ///
+  /// Required.
+  core.String? instance;
+
+  /// The project_id of the cloud project that the Insight data comes from.
+  ///
+  /// Required.
+  core.String? projectId;
+
   /// A list of SqlServer validation metrics data.
   core.List<SqlserverValidationValidationDetail>? validationDetails;
 
   SqlserverValidation({
     this.agentVersion,
+    this.instance,
+    this.projectId,
     this.validationDetails,
   });
 
@@ -2215,6 +2254,12 @@ class SqlserverValidation {
       : this(
           agentVersion: json_.containsKey('agentVersion')
               ? json_['agentVersion'] as core.String
+              : null,
+          instance: json_.containsKey('instance')
+              ? json_['instance'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
           validationDetails: json_.containsKey('validationDetails')
               ? (json_['validationDetails'] as core.List)
@@ -2226,6 +2271,8 @@ class SqlserverValidation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (instance != null) 'instance': instance!,
+        if (projectId != null) 'projectId': projectId!,
         if (validationDetails != null) 'validationDetails': validationDetails!,
       };
 }

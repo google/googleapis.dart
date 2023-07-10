@@ -7631,6 +7631,7 @@ class ParameterMetadata {
   /// - "WORKER_ZONE" : The parameter specifies a Worker Zone.
   /// - "BOOLEAN" : The parameter specifies a boolean input.
   /// - "ENUM" : The parameter specifies an enum input.
+  /// - "NUMBER" : The parameter specifies a number input.
   core.String? paramType;
 
   /// Specifies the name of the parent parameter.
@@ -8446,6 +8447,12 @@ class RuntimeEnvironment {
   /// Optional.
   core.bool? bypassTempDirValidation;
 
+  /// The disk size, in gigabytes, to use on each remote Compute Engine worker
+  /// instance.
+  ///
+  /// Optional.
+  core.int? diskSizeGb;
+
   /// Whether to enable Streaming Engine for the job.
   ///
   /// Optional.
@@ -8554,6 +8561,7 @@ class RuntimeEnvironment {
     this.additionalExperiments,
     this.additionalUserLabels,
     this.bypassTempDirValidation,
+    this.diskSizeGb,
     this.enableStreamingEngine,
     this.ipConfiguration,
     this.kmsKeyName,
@@ -8588,6 +8596,9 @@ class RuntimeEnvironment {
               : null,
           bypassTempDirValidation: json_.containsKey('bypassTempDirValidation')
               ? json_['bypassTempDirValidation'] as core.bool
+              : null,
+          diskSizeGb: json_.containsKey('diskSizeGb')
+              ? json_['diskSizeGb'] as core.int
               : null,
           enableStreamingEngine: json_.containsKey('enableStreamingEngine')
               ? json_['enableStreamingEngine'] as core.bool
@@ -8635,6 +8646,7 @@ class RuntimeEnvironment {
           'additionalUserLabels': additionalUserLabels!,
         if (bypassTempDirValidation != null)
           'bypassTempDirValidation': bypassTempDirValidation!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (enableStreamingEngine != null)
           'enableStreamingEngine': enableStreamingEngine!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,

@@ -1711,6 +1711,8 @@ Manage workflow definitions. To execute workflows and manage executions, see the
 
 #### Workload Manager API - `workloadmanager_v1`
 
+Workload Manager is a service that provides tooling for enterprise workloads to automate the deployment and validation of your workloads against best practices and recommendations.
+
 - [Documentation](https://cloud.google.com/workload-manager/docs)
 - [API details](https://pub.dev/documentation/googleapis/11.3.0/workloadmanager_v1/workloadmanager_v1-library.html)
 

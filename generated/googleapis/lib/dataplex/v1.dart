@@ -9994,8 +9994,6 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
 
 /// Environment represents a user-visible compute infrastructure for analytics
 /// within a lake.
-///
-/// LINT.IfChange
 class GoogleCloudDataplexV1Environment {
   /// Environment creation time.
   ///

@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230619",
+    "revision": "20230703",
     "rootUrl": "https://dataflow.googleapis.com/",
     "servicePath": "",
     "title": "Dataflow API",
@@ -4746,7 +4746,8 @@
                         "WORKER_REGION",
                         "WORKER_ZONE",
                         "BOOLEAN",
-                        "ENUM"
+                        "ENUM",
+                        "NUMBER"
                     ],
                     "enumDescriptions": [
                         "Default input type.",
@@ -4767,7 +4768,8 @@
                         "The parameter specifies a Worker Region.",
                         "The parameter specifies a Worker Zone.",
                         "The parameter specifies a boolean input.",
-                        "The parameter specifies an enum input."
+                        "The parameter specifies an enum input.",
+                        "The parameter specifies a number input."
                     ],
                     "type": "string"
                 },
@@ -5167,6 +5169,11 @@
                 "bypassTempDirValidation": {
                     "description": "Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.",
                     "type": "boolean"
+                },
+                "diskSizeGb": {
+                    "description": "Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "enableStreamingEngine": {
                     "description": "Optional. Whether to enable Streaming Engine for the job.",

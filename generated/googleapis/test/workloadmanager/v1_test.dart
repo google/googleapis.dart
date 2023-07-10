@@ -1375,6 +1375,8 @@ api.SqlserverValidation buildSqlserverValidation() {
   buildCounterSqlserverValidation++;
   if (buildCounterSqlserverValidation < 3) {
     o.agentVersion = 'foo';
+    o.instance = 'foo';
+    o.projectId = 'foo';
     o.validationDetails = buildUnnamed26();
   }
   buildCounterSqlserverValidation--;
@@ -1386,6 +1388,14 @@ void checkSqlserverValidation(api.SqlserverValidation o) {
   if (buildCounterSqlserverValidation < 3) {
     unittest.expect(
       o.agentVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
       unittest.equals('foo'),
     );
     checkUnnamed26(o.validationDetails!);

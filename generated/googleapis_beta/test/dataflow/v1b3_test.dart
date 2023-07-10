@@ -4759,6 +4759,7 @@ api.RuntimeEnvironment buildRuntimeEnvironment() {
     o.additionalExperiments = buildUnnamed81();
     o.additionalUserLabels = buildUnnamed82();
     o.bypassTempDirValidation = true;
+    o.diskSizeGb = 42;
     o.enableStreamingEngine = true;
     o.ipConfiguration = 'foo';
     o.kmsKeyName = 'foo';
@@ -4783,6 +4784,10 @@ void checkRuntimeEnvironment(api.RuntimeEnvironment o) {
     checkUnnamed81(o.additionalExperiments!);
     checkUnnamed82(o.additionalUserLabels!);
     unittest.expect(o.bypassTempDirValidation!, unittest.isTrue);
+    unittest.expect(
+      o.diskSizeGb!,
+      unittest.equals(42),
+    );
     unittest.expect(o.enableStreamingEngine!, unittest.isTrue);
     unittest.expect(
       o.ipConfiguration!,

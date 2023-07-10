@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230705",
+    "revision": "20230708",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "servicePath": "",
     "title": "Google Search Console API",

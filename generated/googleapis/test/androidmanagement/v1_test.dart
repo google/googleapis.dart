@@ -3936,6 +3936,63 @@ void checkPowerManagementEvent(api.PowerManagementEvent o) {
   buildCounterPowerManagementEvent--;
 }
 
+core.int buildCounterProvisioningInfo = 0;
+api.ProvisioningInfo buildProvisioningInfo() {
+  final o = api.ProvisioningInfo();
+  buildCounterProvisioningInfo++;
+  if (buildCounterProvisioningInfo < 3) {
+    o.apiLevel = 42;
+    o.authenticatedUserEmail = 'foo';
+    o.brand = 'foo';
+    o.enterprise = 'foo';
+    o.managementMode = 'foo';
+    o.model = 'foo';
+    o.name = 'foo';
+    o.ownership = 'foo';
+  }
+  buildCounterProvisioningInfo--;
+  return o;
+}
+
+void checkProvisioningInfo(api.ProvisioningInfo o) {
+  buildCounterProvisioningInfo++;
+  if (buildCounterProvisioningInfo < 3) {
+    unittest.expect(
+      o.apiLevel!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.authenticatedUserEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.brand!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enterprise!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.managementMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ownership!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProvisioningInfo--;
+}
+
 core.List<core.String> buildUnnamed83() => [
       'foo',
       'foo',
@@ -5417,6 +5474,16 @@ void main() {
       final od = api.PowerManagementEvent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPowerManagementEvent(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProvisioningInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProvisioningInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProvisioningInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProvisioningInfo(od);
     });
   });
 
@@ -7351,6 +7418,60 @@ void main() {
       final response =
           await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkWebToken(response as api.WebToken);
+    });
+  });
+
+  unittest.group('resource-ProvisioningInfoResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidManagementApi(mock).provisioningInfo;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProvisioningInfo());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkProvisioningInfo(response as api.ProvisioningInfo);
     });
   });
 
